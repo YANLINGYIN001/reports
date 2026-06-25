@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>T200安装体验专项报告</title><script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script><style>
+:root{--g:#00B050;--gl:#2BBD6E;--d:#333;--l:#999;--r:#E74C3C;--o:#F39C12;--bg:#f5f7fa}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--d);line-height:1.6}
+.c{max-width:1200px;margin:0 auto;padding:20px}
+.hd{background:linear-gradient(135deg,var(--g),var(--gl));color:#fff;padding:32px 40px;border-radius:12px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,176,80,.15)}
+.hd h1{font-size:26px;margin-bottom:8px}.hd .m{font-size:14px;opacity:.9}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.cd{background:#fff;padding:18px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:center}
+.cd .n{font-size:30px;font-weight:700;color:var(--g)}.cd .lb{font-size:13px;color:var(--l);margin-top:4px}
+.cd.r .n{color:var(--r)}
+.s{background:#fff;border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.s h2{font-size:18px;margin-bottom:16px;padding-left:12px;border-left:4px solid var(--g)}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+table{width:100%;border-collapse:collapse;font-size:12px}table th{background:var(--g);color:#fff;padding:8px;text-align:left;font-weight:600}table td{padding:6px 8px;border-bottom:1px solid #eee}table tr:hover{background:#f9f9f9}
+.rh{color:var(--r);font-weight:600}.rm{color:var(--o);font-weight:600}.rl{color:var(--g);font-weight:600}
+.ft{text-align:center;padding:20px;color:var(--l);font-size:13px}
+.sum{background:linear-gradient(135deg,#e8f5e9,#f1f8f3);border-left:5px solid #00B050;border-radius:10px;padding:24px;margin-bottom:20px}
+.sum h2{font-size:18px;margin-bottom:16px;padding-left:12px;border-left:4px solid var(--g)}.sum p{font-size:13px;line-height:1.8;margin-bottom:10px}
+.risk{background:#ffebee;border-radius:6px;padding:10px;border-left:4px solid #E74C3C;margin-bottom:10px}.risk b{color:#E74C3C}
+.dim{background:#f9f9f9;border-radius:4px;padding:6px 8px;font-size:12px;color:#555;margin-top:6px}
+</style></head><body><div class="c">
+<div class="hd"><h1>🔧 T200公测·安装体验专项报告</h1><div class="m">数据截止：2026-06-24 | 样本：54条问卷 + 68条日常安装相关 | 公测用户：65人 | 完成率：83.1%</div></div>
+<div class="cards"><div class="cd"><div class="n">65</div><div class="lb">公测用户总数</div></div><div class="cd"><div class="n">54</div><div class="lb">安装问卷完成(83.1%)</div></div><div class="cd"><div class="n">66.7%</div><div class="lb">自行安装占比</div></div><div class="cd r"><div class="n">90.7%</div><div class="lb">APP一次绑定(目标≥98%)</div></div></div>
+
+<div class="sum"><h2>📝 报告总结</h2>
+<p><b style="color:#00B050">📊 数据概览：</b>54人完成安装问卷（完成率83.1%），66.7%用户选择自行安装，68.5%在10-30分钟内完成。APP扫码一次绑定成功率仅90.7%（目标≥98%，未达标），首次4G连接成功率96.3%，远程预览满意度74.1%。</p>
+<p><b style="color:#F39C12">⚠️ 核心问题：</b>APP一次扫码成功率低（90.7%，目标≥98%），安装角度调节不便（35.2%反馈阻尼不够或调节困难），LED指示灯不直观（40.7%需看说明书或容易混淆），语音播报音量不适（33.3%偏大或偏小），降压线端子不适配已有降压线用户。</p>
+<div class="risk"><p><b>🔴 最大风险：</b></p>
+<p><b>① 先安装后扫码配网不便</b>——设备仅支持扫码配网，二维码位于设备机身，用户如果先安装到挡风玻璃后再扫码，角度和位置导致扫码极其困难。2条问卷反馈明确提及此问题，日常反馈中更多用户遇到类似困扰。说明书未醒目提示"先配网再安装"的顺序，导致用户安装后返工，直接影响配网成功率。</p>
+<p><b>② 降压线端子不适配（已有降压线用户）</b>——日常反馈中30条涉及降压线问题（占安装相关44.1%），重点影响已有降压线的用户（如从旧设备迁移），原车保险丝为小接口而T200配大口降压线，无法直接对插。</p></div>
+<p><b style="color:#00B050">🎯 改进建议：</b>P0：说明书大字提示"先配网再安装"+优化二维码位置/增加蓝牙配网；P1：降压线增加大转小转接器；P2：改进底座角度调节机构+优化LED指示灯设计+语音音量可调。</p></div><div class="s"><h2>📊 各环节满意度对比</h2><div id="compare" style="width:100%;height:400px"></div><div class="dim">满意度均值（1-10分），选项题转换后计算（最高档=10，次高档=7，中档=4，最低=2）。从高到低排列。设备固定安装最高(9.89)，远程预览首次体验最低(9.11)。</div>
+<div style="margin-top:12px;font-size:12px;line-height:1.8">
+<p><b>🔩 设备固定安装 9.89分：</b>96.3%用户反馈支架/贴片固定“非常牢固”(52/54)，仅3.7%反馈“基本牢固偶尔松动”(2/54)，无人反馈脱落。设备安装稳定性优秀，支架固定设计可靠。</p>
+<p><b>📶 4G首次连接 9.85分：</b>96.3%用户首次连接成功(52/54)，仅3.7%需多次尝试(2/54)，4G联网体验顺畅。但需注意SIM卡安装和信号覆盖对首次连接的影响。</p>
+<p><b>📱 APP扫码绑定 9.63分：</b>90.7%用户一次扫码成功绑定(49/54)，9.3%需多次扫码才成功(5/54)。一次扫码成功率90.7%，目标≥98%未达标。设备仅支持扫码配网，先安装后扫码极不便。</p>
+<p><b>⚙️ 初始参数设置 9.44分：</b>81.5%用户设置顺畅参数生效快(44/54)，18.5%反馈设置偶有延迟(10/54)。参数配置整体顺利，但近两成用户体验有延迟，建议优化参数下发机制。</p>
+<p><b>🔌 降压线走线 9.28分：</b>79.6%用户走线顺利隐藏效果好(43/54)，16.7%走线基本顺畅部分位置难隐藏(9/54)，3.7%走线困难线材外露(2/54)。降压线走线是安装难点之一，建议优化线材柔韧性并附赠走线工具。</p>
+<p><b>🎥 远程预览首次体验 9.11分：</b>74.1%用户画面清晰720P效果满意(40/54)，22.2%基本清晰偶有卡顿(12/54)，3.7%画面模糊或严重卡顿(2/54)。远程预览体验整体良好，但25.9%用户遇到卡顿或模糊，建议优化视频流编码和网络适配。</p>
+<p style="font-size:11px;color:#999;margin-top:4px">* 安装问卷为选项题，按转换规则计算均值（最高档=10，次高档=7，中档=4，最低=2）</p>
+</div></div><div class="s"><h2>安装方式与位置</h2><div class="r2"><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">安装方式</h3><div id="method" style="width:100%;height:250px"></div><div class="dim">66.7%自行安装，33.3%三方门店。</div></div><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">安装位置</h3><div id="position" style="width:100%;height:250px"></div><div class="dim">57.4%后视镜后方居中。</div></div></div></div><div class="s"><h2>安装耗时与困难</h2><div class="r2"><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">安装耗时</h3><div id="time" style="width:100%;height:250px"></div><div class="dim">68.5%在10-30分钟完成。</div></div><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">安装困难分布</h3><div id="difficulty" style="width:100%;height:250px"></div><div class="dim">降压线/电源最大困难(55.6%)。</div></div></div></div><div class="s"><h2>设备固定与角度调节</h2><div class="r2"><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">支架固定牢固度</h3><div id="fix" style="width:100%;height:230px"></div><div class="dim">96.3%非常牢固。</div></div><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">角度调节方便性</h3><div id="angle" style="width:100%;height:230px"></div><div class="dim">64.8%满意，35.2%体验不佳。</div></div></div><div style="margin-top:12px"><h3 style="text-align:center;font-size:14px;margin-bottom:4px">镜头视野覆盖</h3><div id="view" style="width:100%;height:230px"></div><div class="dim">37.0%视野宽广，63.0%基本覆盖。</div></div></div><div class="s"><h2>供电与指示灯</h2><div class="r2"><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">通电启动</h3><div id="power" style="width:100%;height:230px"></div><div class="dim">87.0%立即正常启动。</div></div><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">LED状态</h3><div id="led" style="width:100%;height:230px"></div><div class="dim">90.7%绿灯正常。</div></div></div><div class="r2" style="margin-top:12px"><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">LED含义直观性</h3><div id="led_intuitive" style="width:100%;height:230px"></div><div class="dim">59.3%一看就懂，40.7%不够直观。</div></div><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">语音播报</h3><div id="voice" style="width:100%;height:230px"></div><div class="dim">63.0%清晰，33.3%音量不适。</div></div></div></div><div class="s"><h2>降压线与熄火</h2><div class="r2"><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">降压线走线</h3><div id="cable" style="width:100%;height:230px"></div><div class="dim">79.6%走线顺利。</div></div><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">熄火后状态</h3><div id="parking" style="width:100%;height:230px"></div><div class="dim">81.5%进入停车监控模式。</div></div></div></div><div class="s"><h2>APP绑定与4G连接</h2><div class="r2"><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">APP扫码绑定</h3><div id="bind" style="width:100%;height:230px"></div><div class="dim" style="background:#fff3e0;color:#e65100"><b>⚠️ 一次绑定90.7%，目标≥98%未达标。</b>先安装后扫码极不便。</div></div><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">绑定耗时</h3><div id="bind_time" style="width:100%;height:230px"></div><div class="dim">75.9%在1分钟内。</div></div></div><div class="r2" style="margin-top:12px"><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">参数设置</h3><div id="config" style="width:100%;height:230px"></div><div class="dim">81.5%顺畅。</div></div><div><h3 style="text-align:center;font-size:14px;margin-bottom:4px">4G连接</h3><div id="g4" style="width:100%;height:230px"></div><div class="dim">96.3%首次成功。</div></div></div><div style="margin-top:12px"><h3 style="text-align:center;font-size:14px;margin-bottom:4px">远程预览</h3><div id="preview" style="width:100%;height:230px"></div><div class="dim">74.1%清晰满意。</div></div></div><div class="s"><h2>🔥 高频问题TOP5</h2><table><thead><tr><th>问题名称</th><th>用户原声节选</th><th>反馈量</th><th>解决方案</th><th>上市风险点</th></tr></thead><tbody>
+<tr><td>降压线端子不适配</td><td>我的保险是小接口，配的降压线是大口</td><td>30+</td><td>增加大转小转接器</td><td class="rh">高—无法供电致退货</td></tr>
+<tr><td>安装角度调节不足</td><td>底座转动角度有限，拍摄角度偏下</td><td>9+</td><td>增大调节角度或改球铰结构</td><td class="rh">高—画面偏影响核心功能</td></tr>
+<tr><td>先安装后扫码配网不便</td><td>安装到挡风玻璃上以后，扫码绑定很难完成！</td><td>7+</td><td>说明书大字提示先配网再安装</td><td class="rh">高—安装后返工致差评</td></tr>
+<tr><td>LED指示灯不直观</td><td>绿灯太凹进去了，坐在驾驶位根本看不见</td><td>7+</td><td>指示灯外露或增加语音提示</td><td class="rm">中—误判故障致客诉</td></tr>
+<tr><td>语音播报音量不适</td><td>语音播报声音太大/太小</td><td>6+</td><td>增加音量调节</td><td class="rl">低—体验不佳</td></tr>
+</tbody></table></div><div class="ft"><p>🦞 由 @尹燕玲-报告分析专家 生成 | 2026-06-24</p></div></div><script>
+var G='#00B050',GL='#2BBD6E',R='#E74C3C',O='#F39C12',B='#3498DB';
+function pie(id,d){echarts.init(document.getElementById(id)).setOption({tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},series:[{type:'pie',radius:['30%','60%'],center:['50%','50%'],label:{formatter:'{b}\n{d}%',fontSize:11},data:d}]})}
+
+// Satisfaction compare - 6 core dims
+echarts.init(document.getElementById('compare')).setOption({tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'分'}},grid:{left:'22%',right:'8%',top:'5%',bottom:'5%'},xAxis:{type:'value',max:10,axisLabel:{formatter:'{value}分'}},yAxis:{type:'category',data:['远程预览首次体验','降压线走线','初始参数设置','APP扫码绑定','4G首次连接','设备固定安装']},series:[{type:'bar',barWidth:'55%',data:[{value:9.11,itemStyle:{color:O}},{value:9.28,itemStyle:{color:GL}},{value:9.44,itemStyle:{color:GL}},{value:9.63,itemStyle:{color:G}},{value:9.85,itemStyle:{color:G}},{value:9.89,itemStyle:{color:G}}],label:{show:true,position:'right',formatter:'{c}分',fontSize:12}}]});
+
+pie('method',[{value:36,name:'自行安装',itemStyle:{color:G}},{value:18,name:'三方门店',itemStyle:{color:B}}]);
+pie('position',[{value:31,name:'后视镜后方居中',itemStyle:{color:G}},{value:15,name:'挡风玻璃右侧',itemStyle:{color:O}},{value:8,name:'挡风玻璃左侧',itemStyle:{color:B}}]);
+pie('time',[{value:5,name:'10分钟以内',itemStyle:{color:G}},{value:37,name:'10-30分钟',itemStyle:{color:GL}},{value:10,name:'30分-1小时',itemStyle:{color:O}},{value:2,name:'1小时以上',itemStyle:{color:R}}]);
+pie('fix',[{value:52,name:'非常牢固',itemStyle:{color:G}},{value:2,name:'偶尔松动',itemStyle:{color:O}}]);
+pie('angle',[{value:35,name:'灵活满意',itemStyle:{color:G}},{value:12,name:'阻尼不够',itemStyle:{color:O}},{value:5,name:'调节困难',itemStyle:{color:R}},{value:2,name:'无法调节',itemStyle:{color:'#999'}}]);
+pie('view',[{value:20,name:'视野宽广完整',itemStyle:{color:G}},{value:34,name:'基本覆盖尚可',itemStyle:{color:O}}]);
+pie('power',[{value:47,name:'立即正常启动',itemStyle:{color:G}},{value:6,name:'有延迟',itemStyle:{color:O}},{value:1,name:'无法启动',itemStyle:{color:R}}]);
+pie('led',[{value:49,name:'绿灯正常',itemStyle:{color:G}},{value:3,name:'状态不明确',itemStyle:{color:O}},{value:1,name:'不亮',itemStyle:{color:R}},{value:1,name:'红灯异常',itemStyle:{color:R}}]);
+pie('led_intuitive',[{value:32,name:'一看就懂',itemStyle:{color:G}},{value:19,name:'需看说明书',itemStyle:{color:O}},{value:3,name:'容易混淆',itemStyle:{color:R}}]);
+pie('voice',[{value:34,name:'清晰音量合适',itemStyle:{color:G}},{value:18,name:'音量偏大/偏小',itemStyle:{color:O}},{value:1,name:'模糊不完整',itemStyle:{color:R}},{value:1,name:'无语音播报',itemStyle:{color:R}}]);
+pie('cable',[{value:43,name:'走线顺利',itemStyle:{color:G}},{value:9,name:'部分难隐藏',itemStyle:{color:O}},{value:2,name:'走线困难外露',itemStyle:{color:R}}]);
+pie('parking',[{value:44,name:'进入停车监控',itemStyle:{color:G}},{value:9,name:'正常关机',itemStyle:{color:B}},{value:1,name:'关机有延迟',itemStyle:{color:O}}]);
+pie('bind',[{value:49,name:'一次成功',itemStyle:{color:G}},{value:5,name:'多次才成功',itemStyle:{color:R}}]);
+pie('bind_time',[{value:41,name:'1分钟内',itemStyle:{color:G}},{value:8,name:'1-3分钟',itemStyle:{color:GL}},{value:1,name:'3-5分钟',itemStyle:{color:O}},{value:4,name:'5分钟以上',itemStyle:{color:R}}]);
+pie('config',[{value:44,name:'顺畅生效快',itemStyle:{color:G}},{value:10,name:'偶有延迟',itemStyle:{color:O}}]);
+pie('g4',[{value:52,name:'首次成功',itemStyle:{color:G}},{value:2,name:'需多次尝试',itemStyle:{color:O}}]);
+pie('preview',[{value:40,name:'清晰满意',itemStyle:{color:G}},{value:12,name:'偶有卡顿',itemStyle:{color:O}},{value:2,name:'模糊/严重卡顿',itemStyle:{color:R}}]);
+
+echarts.init(document.getElementById('difficulty')).setOption({tooltip:{trigger:'axis'},grid:{left:'18%',right:'8%',top:'5%',bottom:'5%'},xAxis:{type:'value'},yAxis:{type:'category',data:['APP绑定/配网','其他','无困难','角度/支架','降压线/电源']},series:[{type:'bar',data:[2,9,4,9,30],barWidth:'50%',itemStyle:{color:function(p){return p.dataIndex===4?R:(p.dataIndex>=3?O:G)},borderRadius:[0,4,4,0]},label:{show:true,position:'right'}}]});
+</script></body></html>
