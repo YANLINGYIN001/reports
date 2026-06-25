@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200公测·开箱体验专项报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+:root{--g:#00B050;--gl:#2BBD6E;--d:#333;--l:#999;--r:#E74C3C;--o:#F39C12;--bg:#f5f7fa}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--d);line-height:1.6}
+.c{max-width:1200px;margin:0 auto;padding:20px}
+.hd{background:linear-gradient(135deg,var(--g),var(--gl));color:#fff;padding:32px 40px;border-radius:12px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,176,80,.15)}
+.hd h1{font-size:26px;margin-bottom:8px}.hd .m{font-size:14px;opacity:.9}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.cd{background:#fff;padding:18px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:center}
+.cd .n{font-size:30px;font-weight:700;color:var(--g)}.cd .lb{font-size:13px;color:var(--l);margin-top:4px}
+.cd.w .n{color:var(--r)}.cd.o .n{color:var(--o)}
+.s{background:#fff;border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.s h2{font-size:18px;margin-bottom:16px;padding-left:12px;border-left:4px solid var(--g)}
+.ch{width:100%;height:320px}.ch2{width:100%;height:280px}
+.row{display:flex;gap:20px}.row>.s{flex:1}
+table{width:100%;border-collapse:collapse;font-size:12px}
+table th{background:var(--g);color:#fff;padding:8px;text-align:left;font-weight:600}
+table td{padding:6px 8px;border-bottom:1px solid #eee}table tr:hover{background:#f9f9f9}
+.rh{color:var(--r);font-weight:600}.rm{color:var(--o);font-weight:600}.rl{color:var(--g);font-weight:600}
+.ft{text-align:center;padding:20px;color:var(--l);font-size:13px}
+.pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.pill-g{background:#e8f5e9;color:#2e7d32}.pill-o{background:#fff3e0;color:#e65100}.pill-r{background:#ffebee;color:#c62828}
+.nps-box{background:#f9f9f9;border-radius:8px;padding:16px;margin-bottom:12px}
+.nps-box h3{font-size:15px;margin-bottom:8px}
+.nps-box .quote{font-style:italic;color:#555;font-size:12px;padding:4px 8px;border-left:3px solid var(--gl);margin:4px 0;background:#f0f9f1}
+</style>
+</head>
+<body>
+<div class="c">
+<div class="hd">
+<h1>📦 T200公测·开箱体验专项报告</h1>
+<div class="m">数据截止:2026-06-24 | 样本:64条 + 日常47条开箱相关 | 公测用户:65人 | 完成率:98.5%</div>
+</div>
+<div class="cards">
+<div class="cd"><div class="n">65</div><div class="lb">公测用户总数</div></div>
+<div class="cd"><div class="n">64</div><div class="lb">开箱问卷完成(98.5%)</div></div>
+<div class="cd"><div class="n">9.23</div><div class="lb">满意度均值(1-10)</div></div>
+<div class="cd o"><div class="n">+60.9</div><div class="lb">NPS得分</div></div>
+</div>
+
+<div class="s" style="background:linear-gradient(135deg,#e8f5e9,#f1f8f3);border-left:5px solid #00B050">
+<h2>📝 报告总结</h2>
+<div style="font-size:13px;line-height:1.8">
+<p style="margin-bottom:10px"><b style="color:#00B050">📊 数据概览:</b>本次T200公测共65人参与,64人完成开箱问卷(完成率98.5%),整体满意度<b>9.23分</b>,NPS <b>+60.9</b>,79.7%用户给出9-10分高分。</p>
+<p style="margin-bottom:10px"><b style="color:#00B050">✅ 核心优点:</b>4G免流是最大卖点(11人推荐原因提及),配件齐全度均值9.80分(84.4%给满分),包装完好度均值9.69分(78.1%给满分)。</p>
+<p style="margin-bottom:10px"><b style="color:#F39C12">⚠️ 核心问题:</b>底座支架调节角度不足(8+条反馈,安装后画面偏下),外观瑕疵/掉漆(7+条反馈,外观质感是三大维度最低9.16分,17.2%用户给7分及以下),说明书标识/参数缺失(6+条反馈)。</p>
+<p style="margin-bottom:10px;padding:10px;background:#ffebee;border-radius:6px;border-left:4px solid #E74C3C"><b style="color:#E74C3C">🔴 最大风险:</b><br><br><b>1 底座支架调节角度不足</b>--8+条反馈安装后画面偏下,直接影响行车记录仪<b>核心功能</b>(画面覆盖不全=记录失效)。部分车型因前挡玻璃弧度差异问题更突出,上市后将导致大量"拍不到车牌""画面偏地面"的差评和退货。该问题无法通过软件修复,属硬件设计缺陷,必须在量产前解决。<br><br><b>2 SIM卡误取出锁卡/装错</b>--5+条反馈,用户可能误操作导致SIM卡锁死或安装方向错误,4G功能无法使用,设备变砖需返厂解锁,将导致严重客诉和高退货率。说明书未醒目警示锁卡风险,用户意识不足。<br><br><b>3 TF卡安装方向错误</b>--4+条反馈,TF卡安装方向标识不清晰,用户可能装反导致设备无法识别存储卡,录像功能完全失效,增加售后成本和用户挫败感。</p>
+<p><b style="color:#00B050">🎯 改进建议:</b>优先改进底座角度调节范围(球铰结构)和外观质检工艺,有望将NPS从+60.9提升至+90.5。</p>
+</div>
+</div>
+
+<div class="row">
+<div class="s"><h2>开箱满意度评分分布(1-10分)</h2><div id="score" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">均值9.23</span> <span class="pill pill-o">9-10分占比79.7%(51/64)</span></div></div>
+<div class="s"><h2>NPS推荐意愿分布</h2><div id="nps" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">推荐42人</span> <span class="pill pill-o">被动19人</span> <span class="pill pill-r">贬损3人</span></div></div>
+</div>
+
+<div class="s"><h2>📊 NPS深入分析</h2>
+<div class="nps-box" style="border-left:4px solid #00B050">
+<h3>🟢 推荐者(9-10分):42人,占65.6%</h3>
+<p style="font-size:13px;margin-bottom:8px"><b>推荐原因TOP3:</b></p>
+<table style="font-size:12px"><thead><tr><th>原因</th><th>提及次数</th></tr></thead><tbody>
+<tr><td>4G免流,不用操心流量</td><td>11</td></tr>
+<tr><td>外观精致质感好</td><td>8</td></tr>
+<tr><td>远程监控+功能齐全</td><td>8</td></tr>
+</tbody></table>
+<p style="font-size:12px;margin-top:8px"><b>用户原声:</b></p>
+<div class="quote">"4G免流记录仪,不用操心流量问题"</div>
+<div class="quote">"4G免流是最大卖点。区别于大部分厂商需要额外购买流量包"</div>
+<div class="quote">"外观精致,造型好看"</div>
+</div>
+<div class="nps-box" style="border-left:4px solid #F39C12">
+<h3>🟡 被动者(7-8分):19人,占29.7%</h3>
+<p style="font-size:13px;margin-bottom:8px"><b>不给高分原因:</b></p>
+<table style="font-size:12px"><thead><tr><th>原因</th><th>提及次数</th></tr></thead><tbody>
+<tr><td>亏电/电源风险担忧</td><td>3</td></tr>
+<tr><td>4G/流量相关问题</td><td>2</td></tr>
+<tr><td>底座角度调节不足</td><td>1</td></tr>
+</tbody></table>
+<p style="font-size:12px;margin-top:8px"><b>用户原声:</b></p>
+<div class="quote">"底座转动角度有限,有些车型前档玻璃弧度小就会造成拍摄角度偏下,不能达到最佳效果"</div>
+<div class="quote">"存在亏电风险,不好随意推荐"</div>
+<div class="quote">"材质升级一些,塑料感太强"</div>
+</div>
+<div class="nps-box" style="border-left:4px solid #E74C3C">
+<h3>🔴 贬损者(0-6分):3人,占4.7%</h3>
+<p style="font-size:12px;margin-top:8px"><b>用户原声:</b></p>
+<div class="quote">"没有后置,前后一起的话使用起来会更好"</div>
+<div class="quote">"摄像头调节角度不理想,哨兵只能侦测前面,要是能设计成云台的就好"</div>
+</div>
+<div style="background:#e8f5e9;border-radius:8px;padding:14px;margin-top:12px">
+<h3 style="color:#00B050;margin-bottom:6px">💡 NPS提升机会</h3>
+<p style="font-size:13px">被动者(19人)转推荐者的<b>关键因素</b>:</p>
+<ul style="font-size:12px;padding-left:20px">
+<li>消除亏电风险担忧 → 增加低压保护提示和电量监控功能</li>
+<li>改善底座角度调节 → 增大调节范围,解决拍摄角度偏下</li>
+<li>提升材质质感 → 减少塑料感,增强高端感知</li>
+</ul>
+<p style="font-size:12px;color:#666;margin-top:6px">理论上将19名被动者全部转化为推荐者,NPS可从+60.9提升至<b>+90.5</b></p>
+</div>
+</div>
+
+<div class="s"><h2>各维度满意度评分分布</h2>
+<div id="dimscore" style="width:100%;height:350px"></div>
+<div style="margin-top:12px;font-size:12px;line-height:1.8">
+<p><b>💳 TF卡插拔便捷度 9.84分：</b>92.2%用户反馈“插拔顺畅”(59/64)，仅7.8%反馈“需稍用力”(5/64)，无人反馈插拔困难。TF卡槽位置设计合理，96.9%用户一眼即可找到卡槽(62/64)，93.8%插入后一次识别成功(60/64)，仅6.2%需重新插拔。存储卡安装体验优秀，无需改进。</p>
+<p><b>🔧 配件齐全度 9.80分：</b>84.4%用户给满分(54/64)，维度中评分最高。100%用户反馈“全部齐全”(64/64)，无缺失或多余，配件配置完善获得高度认可。仅3人给9分、3人给8分，扣分原因主要为配件类型不够丰富而非缺失。</p>
+<p><b>📦 包装完好度 9.69分：</b>78.1%用户给满分(50/64)，89.1%反馈外包装“完好无损”(57/64)，6.2%反馈“轻微破损不影响内部”(4/64)，4.7%反馈“外包装明显损坏”(3/64)。包装保护非常到位，但4.7%明显损坏率需关注物流环节保护。</p>
+<p><b>📖 说明书清晰度 9.19分：</b>64.1%认为“图文并茂一目了然”(41/64)，32.8%“基本能看懂”(21/64)，3.1%认为“不够清晰需反复看”(2/64)。整体清晰度尚可，但近三成用户需一定时间理解，建议增加快速入门卡片和锁卡警示标识，降低学习成本。</p>
+<p><b>✨ 外观质感 9.16分：</b>51.6%用户给满分(33/64)，但17.2%用户给7分及以下(含1人给6分)。42.2%认为“非常精致质感好”(27/64)，48.4%“符合预期”(31/64)，7.8%“一般没有特别感觉”(5/64)，1.6%反馈“有瑕疵或廉价感”(1/64)。外观瑕疵和掉漆是主要扣分项，建议加强外观质检和喷涂工艺。</p>
+<p><b>📐 尺寸重量手感 8.75分：</b>50.0%认为“小巧轻便很满意”(32/64)，37.5%“大小适中”(24/64)，9.4%“偏大或偏重”(6/64)，3.1%“偏小或偏轻”(2/64)。尺寸手感整体满意，但12.5%用户认为偏大偏重，建议优化机身尺寸和重量分布，提升装车兼容性。</p>
+<p style="font-size:11px;color:#999;margin-top:4px">* 包装/配件/外观为1-10分量表题均值；尺寸/说明书/TF卡为选项题转换均值（非常满意=10，满意=8，一般=6，不满意=4）</p>
+</div>
+</div>
+
+<div class="s"><h2>开箱各环节选项分布</h2>
+<div class="row" style="flex-wrap:wrap;gap:16px">
+<div style="flex:1;min-width:280px">
+<h3 style="text-align:center;font-size:14px;margin-bottom:4px">📦 外包装完好度</h3>
+<div id="opt_pkg" class="ch2" style="height:200px"></div>
+<p style="font-size:12px;color:#555;margin-top:6px;padding:6px 8px;background:#f9f9f9;border-radius:4px">89.1%反馈“完好无损”(57/64),6.2%轻微破损,4.7%明显损坏。</p>
+</div>
+<div style="flex:1;min-width:280px">
+<h3 style="text-align:center;font-size:14px;margin-bottom:4px">🔧 配件齐全度</h3>
+<div id="opt_acc" class="ch2" style="height:200px"></div>
+<p style="font-size:12px;color:#555;margin-top:6px;padding:6px 8px;background:#f9f9f9;border-radius:4px">100%反馈“全部齐全”(64/64),配件配置完善。</p>
+</div>
+<div style="flex:1;min-width:280px">
+<h3 style="text-align:center;font-size:14px;margin-bottom:4px">✨ 外观第一印象</h3>
+<div id="opt_appear" class="ch2" style="height:200px"></div>
+<p style="font-size:12px;color:#555;margin-top:6px;padding:6px 8px;background:#f9f9f9;border-radius:4px">42.2%认为“非常精致”(27/64),48.4%“符合预期”(31/64),7.8%“一般”,1.6%“有曜疵”。</p>
+</div>
+<div style="flex:1;min-width:280px">
+<h3 style="text-align:center;font-size:14px;margin-bottom:4px">📖 说明书清晰度</h3>
+<div id="opt_manual" class="ch2" style="height:200px"></div>
+<p style="font-size:12px;color:#555;margin-top:6px;padding:6px 8px;background:#f9f9f9;border-radius:4px">64.1%认为“图文并茂”(41/64),32.8%“基本能看懂”(21/64),3.1%“不够清晰”(2/64)。</p>
+</div>
+<div style="flex:1;min-width:280px">
+<h3 style="text-align:center;font-size:14px;margin-bottom:4px">📐 尺寸重量手感</h3>
+<div id="opt_size" class="ch2" style="height:200px"></div>
+<p style="font-size:12px;color:#555;margin-top:6px;padding:6px 8px;background:#f9f9f9;border-radius:4px">50.0%认为“小巧轻便”(32/64),37.5%“适中”(24/64),9.4%“偏大偏重”(6/64),3.1%“偏小偏轻”(2/64)。</p>
+</div>
+<div style="flex:1;min-width:280px">
+<h3 style="text-align:center;font-size:14px;margin-bottom:4px">💳 TF卡插拔方便性</h3>
+<div id="opt_tf" class="ch2" style="height:200px"></div>
+<p style="font-size:12px;color:#555;margin-top:6px;padding:6px 8px;background:#f9f9f9;border-radius:4px">92.2%反馈“顺畅”(59/64),7.8%“需稍用力”(5/64)。</p>
+</div>
+<div style="flex:1;min-width:280px">
+<h3 style="text-align:center;font-size:14px;margin-bottom:4px">🎯 期望对比</h3>
+<div id="opt_expect" class="ch2" style="height:200px"></div>
+<p style="font-size:12px;color:#555;margin-top:6px;padding:6px 8px;background:#f9f9f9;border-radius:4px">17.2%“超出期望”(11/64),68.8%“符合期望”(44/64),12.5%“略低于期望”(8/64),1.6%“远低于期望”(1/64)。</p>
+</div>
+<div style="flex:1;min-width:280px">
+<h3 style="text-align:center;font-size:14px;margin-bottom:4px">💾 TF卡识别</h3>
+<div id="opt_tfrec" class="ch2" style="height:200px"></div>
+<p style="font-size:12px;color:#555;margin-top:6px;padding:6px 8px;background:#f9f9f9;border-radius:4px">93.8%“一次识别成功”(60/64),6.2%“需重新插拔”(4/64)。</p>
+</div>
+<div style="flex:1;min-width:280px">
+<h3 style="text-align:center;font-size:14px;margin-bottom:4px">🔍 TF卡槽易找性</h3>
+<div id="opt_tffind" class="ch2" style="height:200px"></div>
+<p style="font-size:12px;color:#555;margin-top:6px;padding:6px 8px;background:#f9f9f9;border-radius:4px">96.9%“一眼看到”(62/64),3.1%“需找一下”(2/64)。</p>
+</div>
+</div>
+</div>
+
+<div class="s"><h2>🔥 高频问题TOP5</h2>
+<table><thead><tr><th>问题名称</th><th>用户原声节选</th><th>反馈量</th><th>解决方案</th><th>上市风险点</th></tr></thead><tbody>
+<tr><td>底座/支架调节角度不足</td><td>"底座转动角度有限,有些车型前档玻璃弧度小就会造成拍摄角度偏下"</td><td>8+</td><td>增大调节角度范围或改为球铰结构</td><td class="rh">中-安装适配差致差评</td></tr>
+<tr><td>设备外观瑕疵/掉漆</td><td>"记录仪边角有掉漆,卡扣处不合缝"</td><td>7+</td><td>加强外观质检和喷涂工艺</td><td class="rm">中-首印象影响品牌</td></tr>
+<tr><td>说明书标识/参数缺失</td><td>"按键功能未标识,保险电流强度未标注"</td><td>6+</td><td>补充锁卡警示、按键标识、规格参数</td><td class="rm">中-新手体验差致退货</td></tr>
+<tr><td>SIM卡外露易误拔锁卡</td><td>"SIM卡自行取出后直接锁死无网络"</td><td>5+</td><td>增加锁卡醒目警示标识</td><td class="rh">高-锁卡断网致投诉</td></tr>
+<tr><td>指示灯位置不便查看</td><td>"绿灯太凹进去了,坐在驾驶位根本看不见"</td><td>3+</td><td>指示灯外露设计或增加亮度</td><td class="rl">低-使用不便</td></tr>
+</tbody></table></div>
+
+<div class="ft"><p>🦞 由 @尹燕玲-报告分析专家 生成 | 2026-06-24 | 数据来源:飞书「开箱体验」sheet + 日常问题开箱相关</p></div>
+</div>
+<script>
+var G='#00B050',GL='#2BBD6E',R='#E74C3C',O='#F39C12';
+
+// 整体满意度分布 - CORRECTED: 7×2, 8×11, 9×21, 10×30
+echarts.init(document.getElementById('score')).setOption({tooltip:{trigger:'axis'},grid:{left:'8%',right:'5%',top:'10%',bottom:'10%'},xAxis:{type:'category',data:['1','2','3','4','5','6','7','8','9','10']},yAxis:{type:'value'},series:[{type:'bar',data:[0,0,0,0,0,0,2,11,21,30],barWidth:'60%',itemStyle:{color:function(p){return p.dataIndex>=8?G:(p.dataIndex>=6?O:R)},borderRadius:[4,4,0,0]},label:{show:true,position:'top'}}]});
+
+// NPS分布 - CORRECTED: 6×3, 7×2, 8×17, 9×15, 10×27
+echarts.init(document.getElementById('nps')).setOption({tooltip:{trigger:'axis'},grid:{left:'8%',right:'5%',top:'10%',bottom:'10%'},xAxis:{type:'category',data:['0','1','2','3','4','5','6','7','8','9','10']},yAxis:{type:'value'},series:[{type:'bar',data:[0,0,0,0,0,0,3,2,17,15,27],barWidth:'60%',itemStyle:{color:function(p){return p.dataIndex>=8?G:(p.dataIndex>=6?O:R)},borderRadius:[4,4,0,0]},label:{show:true,position:'top'}}]});
+
+// 各维度满意度对比（横向柱状图，6个维度）
+echarts.init(document.getElementById('dimscore')).setOption({tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'分'}},grid:{left:'15%',right:'8%',top:'5%',bottom:'5%'},xAxis:{type:'value',max:10,axisLabel:{formatter:'{value}分'}},yAxis:{type:'category',data:['尺寸重量手感','外观质感','说明书清晰度','包装完好度','配件齐全度','TF卡插拔便捷度']},series:[{type:'bar',barWidth:'50%',data:[{value:8.75,itemStyle:{color:O}},{value:9.16,itemStyle:{color:GL}},{value:9.19,itemStyle:{color:GL}},{value:9.69,itemStyle:{color:G}},{value:9.80,itemStyle:{color:G}},{value:9.84,itemStyle:{color:G}}],label:{show:true,position:'right',formatter:'{c}分',fontSize:12}}]});
+
+// Option pies
+function mp(id,d){echarts.init(document.getElementById(id)).setOption({tooltip:{trigger:'item'},series:[{type:'pie',radius:['30%','60%'],center:['50%','50%'],label:{formatter:'{b}\n{d}%',fontSize:11},data:d}]})}
+mp('opt_pkg',[{value:57,name:'完好',itemStyle:{color:G}},{value:4,name:'轻微破损',itemStyle:{color:O}},{value:3,name:'明显损坏',itemStyle:{color:R}}]);
+mp('opt_acc',[{value:64,name:'全部齐全',itemStyle:{color:G}}]);
+mp('opt_appear',[{value:27,name:'非常精致',itemStyle:{color:G}},{value:31,name:'符合预期',itemStyle:{color:O}},{value:5,name:'一般',itemStyle:{color:R}},{value:1,name:'有曜疵',itemStyle:{color:R}}]);
+mp('opt_manual',[{value:41,name:'图文并茂',itemStyle:{color:G}},{value:21,name:'基本看懂',itemStyle:{color:O}},{value:2,name:'不清晰',itemStyle:{color:R}}]);
+mp('opt_tf',[{value:59,name:'顺畅',itemStyle:{color:G}},{value:5,name:'稍用力',itemStyle:{color:O}}]);
+mp('opt_size',[{value:32,name:'小巧轻便',itemStyle:{color:G}},{value:24,name:'适中',itemStyle:{color:'#3498DB'}},{value:6,name:'偏大偏重',itemStyle:{color:O}},{value:2,name:'偏小偏轻',itemStyle:{color:'#9B59B6'}}]);
+mp('opt_expect',[{value:11,name:'超出期望',itemStyle:{color:G}},{value:44,name:'符合期望',itemStyle:{color:'#3498DB'}},{value:8,name:'略低于期望',itemStyle:{color:O}},{value:1,name:'远低于期望',itemStyle:{color:R}}]);
+mp('opt_tfrec',[{value:60,name:'一次成功',itemStyle:{color:G}},{value:4,name:'重新插拔',itemStyle:{color:O}}]);
+mp('opt_tffind',[{value:62,name:'一眼看到',itemStyle:{color:G}},{value:2,name:'需找一下',itemStyle:{color:O}}]);
+</script>
+</body>
+</html>
