@@ -25,7 +25,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 .stat-box.orange .stat-num{color:#F39C12}
 .stat-box.blue .stat-num{color:#3498db}
 .chart-container{width:100%;height:400px}
-.chart-container-sm{width:100%;height:320px}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th{background:#e8f5e9;color:#333;padding:12px;text-align:left;font-weight:600}
 td{padding:10px 12px;border-bottom:1px solid #f0f0f0;vertical-align:top}
@@ -46,9 +45,8 @@ tr:hover td{background:#f9fff9}
 .insight-text strong{display:block;margin-bottom:2px}
 .footer{text-align:center;padding:20px;color:#999;font-size:12px}
 .growth-up{color:#E74C3C;font-weight:700}
-.growth-down{color:#00B050;font-weight:700}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}}
+.growth-new{color:#F39C12;font-weight:700}
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -65,7 +63,6 @@ tr:hover td{background:#f9fff9}
 </div>
 </div>
 
-<!-- 数据概览 -->
 <div class="stats-grid">
 <div class="stat-box"><div class="stat-num">673</div><div class="stat-label">总反馈量</div></div>
 <div class="stat-box blue"><div class="stat-num">479 → 673</div><div class="stat-label">6/20 → 6/29</div></div>
@@ -73,18 +70,17 @@ tr:hover td{background:#f9fff9}
 <div class="stat-box red"><div class="stat-num">21.1%</div><div class="stat-label">已知问题占比</div></div>
 </div>
 
-<!-- 突出新增问题 Top 5 -->
 <div class="card">
 <div class="card-title">🚨 突出新增问题 Top 5</div>
 <table>
-<thead><tr><th style="width:40px">排名</th><th style="width:120px">问题</th><th style="width:60px">上周</th><th style="width:70px">本周新增</th><th style="width:70px">增长率</th><th>典型用户原声（2-3条）</th></tr></thead>
+<thead><tr><th style="width:40px">排名</th><th style="width:130px">问题</th><th style="width:60px">上周</th><th style="width:70px">本周新增</th><th style="width:70px">增长率</th><th>典型用户原声</th></tr></thead>
 <tbody>
 <tr>
 <td>🥇</td><td><strong>画面过曝</strong></td><td>1 条</td><td><span class="badge badge-red">24 条</span></td><td><span class="growth-up">↑ 2300%</span></td>
 <td>
-<div class="quote-box"><span class="user">方家欢：</span>缩时录影过曝严重，重启后问题解决</div>
 <div class="quote-box"><span class="user">周炳文：</span>熄火后，自动切换到哨兵模式或者缩时录影容易出现过曝，重启后正常</div>
 <div class="quote-box"><span class="user">王亚兵：</span>车辆停放树荫下，4G远程查看画面严重过曝、整体发白，哨兵抓拍录像也存在同样问题，远程重启后恢复</div>
+<div class="quote-box"><span class="user">马姬：</span>缩时录影过曝严重</div>
 </td>
 </tr>
 <tr>
@@ -96,40 +92,38 @@ tr:hover td{background:#f9fff9}
 </td>
 </tr>
 <tr>
-<td>🥉</td><td><strong>视频回放异常</strong></td><td>2 条</td><td><span class="badge badge-red">7 条</span></td><td><span class="growth-up">↑ 250%</span></td>
-<td>
-<div class="quote-box"><span class="user">王刚红：</span>紧急录像里在线播放哨兵视频，拖动进度条，会出现另一个视频</div>
-<div class="quote-box"><span class="user">刘坤林：</span>查看哨兵视频时发现视频播放一半停止画面了，但是还有声音继续</div>
-<div class="quote-box"><span class="user">温开礼：</span>收到哨兵发来的消息，点击查看录像时，时间进度来回跳变</div>
-</td>
-</tr>
-<tr>
-<td>4</td><td><strong>下载逻辑不合理</strong></td><td>2 条</td><td><span class="badge badge-orange">6 条</span></td><td><span class="growth-up">↑ 200%</span></td>
-<td>
-<div class="quote-box"><span class="user">方钱主：</span>下载视频，在手机相册、APP软件相册内都没，点击查看的时候也是黑屏</div>
-<div class="quote-box"><span class="user">方家欢：</span>下载提示很不清晰，正在下载到100%就不动了，以为还有最后一点点，结果等不到下载完成提示</div>
-<div class="quote-box"><span class="user">魏健伟：</span>视频显示下载100%，点查看却没有，APP相册里也没有</div>
-</td>
-</tr>
-<tr>
-<td>5</td><td><strong>提示信息不准确</strong></td><td>2 条</td><td><span class="badge badge-orange">5 条</span></td><td><span class="growth-up">↑ 150%</span></td>
+<td>🥉</td><td><strong>隐私泄露风险-其他用户查看</strong></td><td>0 条</td><td><span class="badge badge-red">4 条</span></td><td><span class="growth-new">新增问题</span></td>
 <td>
 <div class="quote-box"><span class="user">陈建建：</span>查看紧急录像显示其他用户正在观看直播？</div>
 <div class="quote-box"><span class="user">陈建建：</span>查看循环视频，等待了15秒后出现了其他用户正在观看直播</div>
-<div class="quote-box"><span class="user">方钱主：</span>APP提交反馈问题，出现请完善个人资料，请问我的意见提交成功了吗？</div>
+<div class="quote-box"><span class="user">魏健伟：</span>自己正在观看视频回放时点击下载视频，出现"其他用户正在观看直播"的提示</div>
+</td>
+</tr>
+<tr>
+<td>4</td><td><strong>抓拍无图片</strong></td><td>1 条</td><td><span class="badge badge-orange">4 条</span></td><td><span class="growth-up">↑ 300%</span></td>
+<td>
+<div class="quote-box"><span class="user">朱双喜：</span>抓拍照片不显示</div>
+<div class="quote-box"><span class="user">车国宋：</span>APP无法查看哨兵视频</div>
+<div class="quote-box"><span class="user">丁政涛：</span>远程抓拍，抓拍视频偶有失败</div>
+</td>
+</tr>
+<tr>
+<td>5</td><td><strong>视频下载后无法播放</strong></td><td>0 条</td><td><span class="badge badge-orange">3 条</span></td><td><span class="growth-new">新增问题</span></td>
+<td>
+<div class="quote-box"><span class="user">方钱主：</span>下载视频，在手机相册、APP软件相册内都没，点击查看的时候也是黑屏</div>
+<div class="quote-box"><span class="user">齐宝台：</span>下载得回放视频无法播放</div>
+<div class="quote-box"><span class="user">魏健伟：</span>视频下载完后直接点击查看能正常查看，但在APP相册里却无法查看也无缩略图，像过曝一样白屏</div>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<!-- 反馈量增长对比 -->
 <div class="card">
 <div class="card-title">📈 反馈量变化对比（上周 vs 本周新增）</div>
 <div id="chart-growth" class="chart-container"></div>
 </div>
 
-<!-- 关键洞察 -->
 <div class="card">
 <div class="card-title">💡 关键洞察与建议</div>
 
@@ -152,30 +146,30 @@ tr:hover td{background:#f9fff9}
 <div class="insight-item warning">
 <div class="insight-icon">🟡</div>
 <div class="insight-text">
-<strong>"其他用户正在观看直播"误提示反复出现（5条）</strong>
-查看紧急录像/循环视频/下载时均出现此误提示，用户困惑度高。建议：排查开流锁机制和并发判断逻辑，修正单用户场景下的误判。
+<strong>新增"隐私泄露风险"反馈——用户感知到安全风险</strong>
+4 条反馈涉及"其他用户正在观看直播"误提示，出现在查看紧急录像、循环视频、下载视频等场景。虽为误提示，但用户感知为隐私泄露风险，信任影响大。建议：立即排查开流锁机制和并发判断逻辑，修正单用户场景下的误判。
 </div>
 </div>
 
 <div class="insight-item warning">
 <div class="insight-icon">🟡</div>
 <div class="insight-text">
-<strong>下载体验持续恶化（下载逻辑不合理 +200%）</strong>
-下载后视频不在相册、下载100%无完成提示、下载卡死等问题集中爆发。建议：系统性重构下载流程——状态管理、文件存储路径、完成通知机制、后台下载支持。
+<strong>视频下载后无法播放——下载流程系统性问题</strong>
+3 条反馈明确反馈下载后视频无法播放/不在相册。叠加 APP闪退（下载场景）和下载无成功提示等问题，视频下载链路存在系统性缺陷。建议：从状态管理、文件存储路径、解码兼容性三方面系统性重构下载流程。
 </div>
 </div>
 
 <div class="insight-item info">
 <div class="insight-icon">🔵</div>
 <div class="insight-text">
-<strong>图像质量问题集中爆发，过曝为核心主因</strong>
-本周新增 38 条图像质量反馈，其中画面过曝 24 条占绝大多数，同时画面偏黄/偏色问题也有新增。建议：ISP 调优作为下个版本核心攻坚方向，重点解决模式切换时的曝光参数适配，同时排查白平衡在绿植/夜间场景下的偏色问题。
+<strong>视频进度条异常（3条，+200%）——播放器交互问题</strong>
+用户反馈拖动进度条出现其他视频、时间进度来回跳变、水印时间与进度条不一致等问题。建议：排查视频播放器的 TS 片段索引和时间戳映射逻辑，确保进度条与实际播放位置一致。
 </div>
 </div>
 </div>
 
 <div class="footer">
-<p>📊 T200 日常问题反馈对比分析报告 | 数据来源：飞书「日常问题跟进」sheet | 生成时间：2026-06-29 11:36</p>
+<p>📊 T200 日常问题反馈对比分析报告 | 数据来源：飞书「日常问题跟进」sheet | 生成时间：2026-06-29 15:45</p>
 <p>🦞 尹燕玲-报告分析专家 | 360 绿色系配色</p>
 </div>
 </div>
@@ -185,15 +179,17 @@ var growthChart = echarts.init(document.getElementById('chart-growth'));
 var growthData = [
   {name:'画面过曝',old:1,newVal:24},
   {name:'APP闪退',old:3,newVal:11},
-  {name:'视频回放异常',old:2,newVal:7},
-  {name:'下载逻辑不合理',old:2,newVal:6},
-  {name:'提示信息不准确',old:2,newVal:5},
-  {name:'白屏',old:7,newVal:6},
+  {name:'隐私泄露风险',old:0,newVal:4},
   {name:'抓拍无图片',old:1,newVal:4},
+  {name:'视频下载后无法播放',old:0,newVal:3},
+  {name:'视频进度条异常',old:1,newVal:3},
   {name:'视频画面偏色',old:1,newVal:3},
-  {name:'消息通知不详细',old:1,newVal:3},
-  {name:'碰撞误报',old:2,newVal:3},
-  {name:'黑屏',old:2,newVal:3}
+  {name:'黑屏',old:2,newVal:4},
+  {name:'抓拍图片过曝',old:19,newVal:8},
+  {name:'哨兵误报',old:23,newVal:8},
+  {name:'轨迹回放不完整',old:12,newVal:7},
+  {name:'哨兵漏报',old:18,newVal:5},
+  {name:'视频回放卡顿',old:10,newVal:5}
 ];
 growthChart.setOption({
   tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
@@ -207,10 +203,7 @@ growthChart.setOption({
       label:{show:true,position:'top',fontSize:10}}
   ]
 });
-
-window.addEventListener('resize',function(){
-  growthChart.resize();
-});
+window.addEventListener('resize',function(){growthChart.resize();});
 </script>
 </body>
 </html>
