@@ -2,109 +2,118 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>📊 尹燕玲 · 数据分析报告合集</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 公测报告合集</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC",sans-serif;background:#f0f2f5;color:#333;line-height:1.6}
-.c{max-width:960px;margin:0 auto;padding:24px}
-.h{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:48px 32px;border-radius:16px;margin-bottom:32px;text-align:center}
-.h h1{font-size:32px;margin-bottom:8px;font-weight:700}
-.h p{font-size:15px;opacity:.9}
-.h .sig{font-size:28px;margin-top:12px}
-.cat{margin-bottom:32px}
-.cat h2{font-size:18px;color:#00B050;border-left:4px solid #00B050;padding-left:12px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.cat h2 .cnt{font-size:13px;color:#999;font-weight:normal}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.card{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s;cursor:pointer;text-decoration:none;color:inherit;display:block}
-.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,176,80,.12)}
-.card .icon{font-size:36px;margin-bottom:12px}
-.card h3{font-size:16px;margin-bottom:6px;color:#333}
-.card .desc{font-size:13px;color:#999;line-height:1.5}
-.card .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-top:8px}
-.tag-p0{background:#FDEDEC;color:#E74C3C}
-.tag-p1{background:#FEF5E7;color:#F39C12}
-.tag-info{background:#E8F8F0;color:#00B050}
-.f{text-align:center;padding:32px 0;color:#999;font-size:13px}
-.f a{color:#00B050;text-decoration:none}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:32px}
-.stat{background:#fff;border-radius:10px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.stat .v{font-size:24px;font-weight:700;color:#00B050}
-.stat .l{font-size:12px;color:#999;margin-top:2px}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;line-height:1.8}
+.container{max-width:900px;margin:0 auto;padding:30px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:40px 30px;border-radius:12px;margin-bottom:30px;text-align:center}
+.header h1{font-size:28px;margin-bottom:8px}
+.header p{font-size:14px;opacity:0.9}
+.card{background:#fff;border-radius:10px;padding:24px 28px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.card h2{font-size:18px;color:#00B050;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e8f5e9}
+.report-item{display:flex;align-items:center;padding:12px 16px;margin:8px 0;background:#f9fff9;border-radius:8px;text-decoration:none;color:#333;transition:all 0.2s;border-left:4px solid #00B050}
+.report-item:hover{background:#e8f5e9;transform:translateX(4px)}
+.report-icon{font-size:24px;margin-right:12px}
+.report-info{flex:1}
+.report-title{font-weight:600;font-size:15px}
+.report-desc{font-size:13px;color:#666;margin-top:2px}
+.report-date{font-size:12px;color:#999;margin-left:10px;white-space:nowrap}
+.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.status-box{background:#e8f5e9;padding:16px;border-radius:8px;text-align:center}
+.status-num{font-size:24px;font-weight:800;color:#00B050}
+.status-label{font-size:13px;color:#666}
+.footer{text-align:center;padding:20px;color:#999;font-size:12px}
 </style>
 </head>
 <body>
-<div class="c">
-<div class="h">
-<h1>📊 数据分析报告合集</h1>
-<p>T200 记录仪公测 · V6 骑行版用户画像 · 缺陷分析</p>
-<div class="sig">🦞</div>
+<div class="container">
+<div class="header">
+<h1>📊 T200 记录仪公测报告合集</h1>
+<p>所有报告外网永久可访问 | 最后更新：2026-06-29</p>
 </div>
 
-<div class="stats">
-<div class="stat"><div class="v">7</div><div class="l">报告总数</div></div>
-<div class="stat"><div class="v">2</div><div class="l">项目</div></div>
-<div class="stat"><div class="v">479+</div><div class="l">反馈数据量</div></div>
-<div class="stat"><div class="v">194</div><div class="l">缺陷总数</div></div>
+<div class="card">
+<h2>📋 日常问题反馈报告</h2>
+<a class="report-item" href="./t200-daily-feedback-update-0629.html">
+<span class="report-icon">📊</span>
+<div class="report-info">
+<div class="report-title">日常问题对比分析报告（6/26-6/29 新增）</div>
+<div class="report-desc">对比上周新增问题 + 累计重点问题 Top 10 + 关键洞察建议</div>
+</div>
+<span class="report-date">06/29</span>
+</a>
+<a class="report-item" href="./t200-daily-feedback-0626.html">
+<span class="report-icon">📈</span>
+<div class="report-info">
+<div class="report-title">日常问题反馈专项分析报告</div>
+<div class="report-desc">全量数据分析，按问题类型分类统计</div>
+</div>
+<span class="report-date">06/26</span>
+</a>
 </div>
 
-<div class="cat">
-<h2>📦 T200 记录仪公测 <span class="cnt">5 份报告</span></h2>
-<div class="grid">
-<a class="card" href="t200-unboxing.html">
-<div class="icon">📦</div>
-<h3>开箱体验专项分析</h3>
-<p class="desc">T200 记录仪公测开箱环节用户反馈分析，涵盖开箱流程、配件完整性、初印象等维度</p>
-<span class="tag tag-info">公测专项</span>
-</a>
-<a class="card" href="t200-installation.html">
-<div class="icon">🔧</div>
-<h3>安装体验专项分析</h3>
-<p class="desc">T200 记录仪安装过程用户体验分析，含安装难度、降压线接线、走线方案等</p>
-<span class="tag tag-info">公测专项</span>
-</a>
-<a class="card" href="t200-daily-feedback-0626.html">
-<div class="icon">📊</div>
-<h3>日常问题反馈分析（6/20-6/26）</h3>
-<p class="desc">479条反馈数据，覆盖8大场景，含P0/P1分级与改进建议</p>
-<span class="tag tag-p0">P0 核心问题</span>
-</a>
-<a class="card" href="t200-daily-feedback-0629.html">
-<div class="icon">📊</div>
-<h3>日常问题反馈分析（6/27-6/29）</h3>
-<p class="desc">92条反馈数据，过曝/闪退/开流异常集中爆发，新增APP稳定性场景</p>
-<span class="tag tag-p0">P0 核心问题</span>
-</a>
+<div class="card">
+<h2>📦 开箱体验报告</h2>
+<a class="report-item" href="./t200-unboxing.html">
+<span class="report-icon">📦</span>
+<div class="report-info">
+<div class="report-title">开箱体验专项报告</div>
+<div class="report-desc">66 条数据，满意度分析，开箱问题统计</div>
 </div>
+<span class="report-date">06/25</span>
+</a>
 </div>
 
-<div class="cat">
-<h2>🚴 V6 骑行版用户画像 <span class="cnt">1 份报告</span></h2>
-<div class="grid">
-<a class="card" href="v6-rider-profile.html">
-<div class="icon">🚴</div>
-<h3>V6 骑行版用户画像报告</h3>
-<p class="desc">V6 骑行版用户画像分析，含用户群体特征、使用偏好、满意度等维度</p>
-<span class="tag tag-info">用户画像</span>
+<div class="card">
+<h2>🔧 安装体验报告</h2>
+<a class="report-item" href="./t200-installation.html">
+<span class="report-icon">🔧</span>
+<div class="report-info">
+<div class="report-title">安装体验专项报告</div>
+<div class="report-desc">66 条数据，降压线电源是最大安装困难</div>
+</div>
+<span class="report-date">06/25</span>
 </a>
 </div>
-</div>
 
-<div class="cat">
-<h2>🐞 缺陷分析 <span class="cnt">1 份报告</span></h2>
-<div class="grid">
-<a class="card" href="t200-bug-analysis.html">
-<div class="icon">🐞</div>
-<h3>T200 Bug 缺陷分析报告</h3>
-<p class="desc">极库云工作项数据，194条缺陷记录，多维度统计分析（状态/严重程度/模块/执行人/版本）</p>
-<span class="tag tag-p1">风险评估</span>
+<div class="card">
+<h2>🐛 Bug 缺陷分析</h2>
+<a class="report-item" href="./t200-bug-analysis.html">
+<span class="report-icon">🐛</span>
+<div class="report-info">
+<div class="report-title">极库云 T200 Bug 可视化报告</div>
+<div class="report-desc">40 条 Bug 数据，多维度统计分析，风险评估</div>
+</div>
+<span class="report-date">06/16</span>
 </a>
 </div>
+
+<div class="card">
+<h2>👤 用户画像报告</h2>
+<a class="report-item" href="./v6-rider-profile.html">
+<span class="report-icon">👤</span>
+<div class="report-info">
+<div class="report-title">V6 骑行版用户画像报告</div>
+<div class="report-desc">用户群体画像建模，骑行场景分析</div>
+</div>
+<span class="report-date">06/25</span>
+</a>
 </div>
 
-<div class="f">
-<p>🦞 尹燕玲 · 数据分析专家 | 报告持续更新中</p>
-<p style="margin-top:4px">最后更新：2026-06-29</p>
+<div class="card">
+<h2>📊 数据同步状态</h2>
+<div class="status-grid">
+<div class="status-box"><div class="status-num">673</div><div class="status-label">日常问题反馈</div></div>
+<div class="status-box"><div class="status-num">66</div><div class="status-label">开箱体验</div></div>
+<div class="status-box"><div class="status-num">66</div><div class="status-label">安装体验</div></div>
+</div>
+<p style="text-align:center;margin-top:12px;font-size:13px;color:#666">最后同步时间：2026-06-29 09:21 | 数据来源：问卷星 → 飞书文档</p>
+</div>
+
+<div class="footer">
+<p>📊 T200 记录仪公测报告合集 | 🦞 尹燕玲-报告分析专家</p>
 </div>
 </div>
 </body>
