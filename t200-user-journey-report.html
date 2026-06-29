@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>T200 公测用户体验旅程汇报</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<!-- 纯静态SVG图表，不依赖JS库 -->
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;line-height:1.7}
@@ -86,7 +86,45 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 <div class="card">
 <div class="card-title">🗺️ 用户旅程情绪地图</div>
 <p style="font-size:14px;color:#666;margin-bottom:12px">从开箱到日常使用，用户体验情绪呈明显下滑趋势。开箱阶段情绪最高（7.5/10），日常使用阶段情绪最低（4.5/10），过曝和闪退是情绪低谷。</p>
-<div id="chart-emotion" class="chart-container"></div>
+<div style="text-align:center">
+<svg viewBox="0 0 800 360" style="width:100%;max-width:800px;height:auto" xmlns="http://www.w3.org/2000/svg">
+  <text x="400" y="25" font-size="14" fill="#E74C3C" text-anchor="middle" font-weight="bold">⚠️ 用户情绪从开箱到日常使用下滑 40%</text>
+  <line x1="80" y1="50" x2="760" y2="50" stroke="#eee"/>
+  <line x1="80" y1="120" x2="760" y2="120" stroke="#eee"/>
+  <line x1="80" y1="190" x2="760" y2="190" stroke="#eee"/>
+  <line x1="80" y1="260" x2="760" y2="260" stroke="#eee"/>
+  <line x1="80" y1="50" x2="80" y2="290" stroke="#ccc"/>
+  <line x1="80" y1="290" x2="760" y2="290" stroke="#ccc"/>
+  <text x="70" y="55" font-size="11" fill="#999" text-anchor="end">10</text>
+  <text x="70" y="125" font-size="11" fill="#999" text-anchor="end">7.5</text>
+  <text x="70" y="195" font-size="11" fill="#999" text-anchor="end">5</text>
+  <text x="70" y="265" font-size="11" fill="#999" text-anchor="end">2.5</text>
+  <text x="70" y="294" font-size="11" fill="#999" text-anchor="end">0</text>
+  <text x="35" y="180" font-size="12" fill="#666" transform="rotate(-90,35,180)">情绪评分</text>
+  <path d="M 180 120 Q 290 140, 310 170" fill="none" stroke="#00B050" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 310 170 Q 350 200, 490 226" fill="none" stroke="#00B050" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 490 226 Q 555 200, 620 178" fill="none" stroke="#00B050" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 180 120 Q 290 140, 310 170 L 310 290 L 180 290 Z" fill="rgba(0,176,80,0.05)"/>
+  <path d="M 310 170 Q 350 200, 490 226 L 490 290 L 310 290 Z" fill="rgba(231,76,60,0.05)"/>
+  <path d="M 490 226 Q 555 200, 620 178 L 620 290 L 490 290 Z" fill="rgba(243,156,18,0.05)"/>
+  <circle cx="180" cy="120" r="10" fill="#00B050"/>
+  <circle cx="310" cy="170" r="10" fill="#F39C12"/>
+  <circle cx="490" cy="226" r="10" fill="#E74C3C"/>
+  <circle cx="620" cy="178" r="10" fill="#F39C12"/>
+  <text x="180" y="105" font-size="15" font-weight="bold" fill="#00B050" text-anchor="middle">7.5分</text>
+  <text x="310" y="155" font-size="15" font-weight="bold" fill="#F39C12" text-anchor="middle">6.5分</text>
+  <text x="490" y="251" font-size="15" font-weight="bold" fill="#E74C3C" text-anchor="middle">4.5分</text>
+  <text x="620" y="163" font-size="15" font-weight="bold" fill="#F39C12" text-anchor="middle">5.5分</text>
+  <text x="180" y="312" font-size="13" fill="#333" text-anchor="middle">📦 开箱体验</text>
+  <text x="310" y="312" font-size="13" fill="#333" text-anchor="middle">🔧 安装配网</text>
+  <text x="490" y="312" font-size="13" fill="#333" text-anchor="middle">🚗 日常使用</text>
+  <text x="620" y="312" font-size="13" fill="#333" text-anchor="middle">☁️ 增值服务</text>
+  <text x="180" y="332" font-size="11" fill="#999" text-anchor="middle">66条反馈</text>
+  <text x="310" y="332" font-size="11" fill="#999" text-anchor="middle">66条反馈</text>
+  <text x="490" y="332" font-size="11" fill="#999" text-anchor="middle">673条反馈</text>
+  <text x="620" y="332" font-size="11" fill="#999" text-anchor="middle">含在增值中</text>
+</svg>
+</div>
 </div>
 
 <!-- 分阶段详细分析 -->
@@ -385,7 +423,47 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 <!-- 情绪曲线总结 -->
 <div class="card">
 <div class="card-title">📉 体验情绪曲线总结</div>
-<div id="chart-summary" class="chart-container"></div>
+<div style="text-align:center">
+<svg viewBox="0 0 800 360" style="width:100%;max-width:800px;height:auto" xmlns="http://www.w3.org/2000/svg">
+  <line x1="80" y1="50" x2="760" y2="50" stroke="#eee"/>
+  <line x1="80" y1="120" x2="760" y2="120" stroke="#eee"/>
+  <line x1="80" y1="190" x2="760" y2="190" stroke="#eee"/>
+  <line x1="80" y1="260" x2="760" y2="260" stroke="#eee"/>
+  <line x1="80" y1="50" x2="80" y2="290" stroke="#ccc"/>
+  <line x1="80" y1="290" x2="760" y2="290" stroke="#ccc"/>
+  <text x="70" y="55" font-size="11" fill="#999" text-anchor="end">10</text>
+  <text x="70" y="125" font-size="11" fill="#999" text-anchor="end">7.5</text>
+  <text x="70" y="195" font-size="11" fill="#999" text-anchor="end">5</text>
+  <text x="70" y="265" font-size="11" fill="#999" text-anchor="end">2.5</text>
+  <text x="70" y="294" font-size="11" fill="#999" text-anchor="end">0</text>
+  <text x="35" y="180" font-size="12" fill="#666" transform="rotate(-90,35,180)">情绪评分</text>
+  <rect x="145" y="276" width="40" height="14" fill="#ccc" rx="2"/>
+  <text x="165" y="271" font-size="11" fill="#666" text-anchor="middle">66</text>
+  <rect x="295" y="276" width="40" height="14" fill="#ccc" rx="2"/>
+  <text x="315" y="271" font-size="11" fill="#666" text-anchor="middle">66</text>
+  <rect x="445" y="149" width="40" height="141" fill="#E74C3C" opacity="0.5" rx="2"/>
+  <text x="465" y="144" font-size="11" fill="#666" text-anchor="middle">673</text>
+  <rect x="595" y="285" width="40" height="5" fill="#ccc" rx="2"/>
+  <path d="M 165 120 Q 315 155, 465 226 T 615 178" fill="none" stroke="#00B050" stroke-width="3"/>
+  <circle cx="165" cy="120" r="8" fill="#00B050"/>
+  <circle cx="315" cy="170" r="8" fill="#F39C12"/>
+  <circle cx="465" cy="226" r="8" fill="#E74C3C"/>
+  <circle cx="615" cy="190" r="8" fill="#F39C12"/>
+  <text x="165" y="108" font-size="13" font-weight="bold" fill="#00B050" text-anchor="middle">7.5</text>
+  <text x="315" y="158" font-size="13" font-weight="bold" fill="#F39C12" text-anchor="middle">6.5</text>
+  <text x="465" y="251" font-size="13" font-weight="bold" fill="#E74C3C" text-anchor="middle">4.5</text>
+  <text x="615" y="178" font-size="13" font-weight="bold" fill="#F39C12" text-anchor="middle">5.5</text>
+  <text x="165" y="308" font-size="13" fill="#333" text-anchor="middle">开箱</text>
+  <text x="315" y="308" font-size="13" fill="#333" text-anchor="middle">安装</text>
+  <text x="465" y="308" font-size="13" fill="#333" text-anchor="middle">日常使用</text>
+  <text x="615" y="308" font-size="13" fill="#333" text-anchor="middle">增值服务</text>
+  <line x1="100" y1="30" x2="120" y2="30" stroke="#00B050" stroke-width="3"/>
+  <circle cx="110" cy="30" r="4" fill="#00B050"/>
+  <text x="128" y="34" font-size="12" fill="#333">情绪评分</text>
+  <rect x="200" y="25" width="12" height="10" fill="#ccc"/>
+  <text x="218" y="34" font-size="12" fill="#333">反馈量</text>
+</svg>
+</div>
 <p style="font-size:14px;color:#666;margin-top:12px;text-align:center">
 用户从开箱的<strong style="color:#00B050">期待与惊喜（7.5分）</strong> → 安装的<strong style="color:#F39C12">中性偏正（6.5分）</strong> → 日常使用的<strong style="color:#E74C3C">明显不满（4.5分）</strong>，情绪下滑 40%。<br>
 <strong>核心结论：硬件设计和开箱体验达标，但软件稳定性和图像质量是最大短板，亟需在下一版本重点突破 ISP 调优和 APP 稳定性。</strong>
@@ -398,59 +476,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 </div>
 </div>
 
-<script>
-// Emotion journey chart
-var emotionChart = echarts.init(document.getElementById('chart-emotion'));
-emotionChart.setOption({
-  tooltip: {trigger: 'axis'},
-  grid: {left: '3%', right: '4%', bottom: '3%', containLabel: true},
-  xAxis: {
-    type: 'category',
-    data: ['📦 开箱体验', '🔧 安装配网', '🚗 日常使用', '☁️ 增值服务'],
-    axisLabel: {fontSize: 13}
-  },
-  yAxis: {type: 'value', name: '情绪评分', min: 0, max: 10},
-  series: [{
-    name: '情绪评分',
-    type: 'line',
-    data: [7.5, 6.5, 4.5, 5.5],
-    smooth: true,
-    lineStyle: {width: 4, color: '#00B050'},
-    itemStyle: {color: function(p){return ['#00B050','#F39C12','#E74C3C','#F39C12'][p.dataIndex]}},
-    symbolSize: 15,
-    label: {show: true, position: 'top', fontSize: 14, fontWeight: 'bold',
-      formatter: function(p){return p.value + '分'}},
-    areaStyle: {color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-      {offset: 0, color: 'rgba(0,176,80,0.3)'},
-      {offset: 1, color: 'rgba(0,176,80,0.02)'}
-    ])},
-    markArea: {
-      data: [[{itemStyle: {color: 'rgba(231,76,60,0.05)'}], [{}]]
-    }
-  }]
-});
-
-// Summary bar chart
-var summaryChart = echarts.init(document.getElementById('chart-summary'));
-summaryChart.setOption({
-  tooltip: {trigger: 'axis', axisPointer: {type: 'shadow'}},
-  grid: {left: '3%', right: '4%', bottom: '3%', containLabel: true},
-  xAxis: {type: 'category', data: ['开箱', '安装', '日常使用', '增值服务'], axisLabel: {fontSize: 13}},
-  yAxis: [
-    {type: 'value', name: '情绪评分', min: 0, max: 10, position: 'left'},
-    {type: 'value', name: '反馈量', min: 0, max: 700, position: 'right'}
-  ],
-  series: [
-    {name: '情绪评分', type: 'line', data: [7.5, 6.5, 4.5, 5.5], smooth: true,
-      lineStyle: {width: 3, color: '#00B050'}, itemStyle: {color: '#00B050'}, symbolSize: 12,
-      label: {show: true, position: 'top', fontWeight: 'bold'}},
-    {name: '反馈量', type: 'bar', data: [66, 66, 673, 0], itemStyle: {color: '#cccccc'}, barWidth: 30,
-      label: {show: true, position: 'top', fontSize: 11}}
-  ],
-  legend: {data: ['情绪评分', '反馈量'], top: 10}
-});
-
-window.addEventListener('resize', function(){emotionChart.resize();summaryChart.resize();});
-</script>
+<!-- 纯静态HTML+SVG，无需JavaScript -->
 </body>
 </html>
