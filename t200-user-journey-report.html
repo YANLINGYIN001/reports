@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 公测用户体验旅程汇报</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;line-height:1.7}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+.cover{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:50px 40px;border-radius:12px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,176,80,0.3)}
+.cover h1{font-size:32px;margin-bottom:12px}
+.cover .subtitle{font-size:16px;opacity:0.9;margin-bottom:20px}
+.cover .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:13px}
+.cover .meta span{background:rgba(255,255,255,0.15);padding:6px 14px;border-radius:20px}
+.card{background:#fff;border-radius:10px;padding:24px 28px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.card-title{font-size:18px;font-weight:700;color:#00B050;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #e8f5e9;display:flex;align-items:center;gap:8px}
+.card-title::before{content:'';width:4px;height:20px;background:#00B050;border-radius:2px;display:inline-block;flex-shrink:0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.stat-box{background:#fff;border-radius:10px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.stat-num{font-size:30px;font-weight:800;color:#00B050}
+.stat-label{font-size:13px;color:#666;margin-top:4px}
+.stat-box.red .stat-num{color:#E74C3C}
+.stat-box.orange .stat-num{color:#F39C12}
+.stat-box.blue .stat-num{color:#3498db}
+.chart-container{width:100%;height:350px}
+.journey-stage{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.stage-card{background:#fff;border-radius:10px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.stage-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.stage-icon{font-size:28px}
+.stage-title{font-size:16px;font-weight:700}
+.stage-score{margin-left:auto;font-size:20px;font-weight:800;padding:4px 12px;border-radius:6px}
+.score-good{background:#e8f5e9;color:#00B050}
+.score-mid{background:#fef3e2;color:#F39C12}
+.score-bad{background:#fce4e4;color:#E74C3C}
+.point-item{padding:10px 14px;margin:8px 0;border-radius:8px;font-size:14px}
+.point-good{background:#e8f5e9;border-left:4px solid #00B050}
+.point-bad{background:#fce4e4;border-left:4px solid #E74C3C}
+.point-title{font-weight:600;margin-bottom:4px}
+.point-desc{font-size:13px;color:#666}
+.point-quote{font-size:12px;color:#888;font-style:italic;margin-top:4px}
+.priority-item{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;margin:8px 0;border-radius:8px}
+.p0{background:#fce4e4;border-left:4px solid #E74C3C}
+.p1{background:#fef3e2;border-left:4px solid #F39C12}
+.p2{background:#e3f2fd;border-left:4px solid #3498db}
+.priority-badge{font-size:12px;font-weight:700;padding:2px 10px;border-radius:4px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.p0 .priority-badge{background:#E74C3C;color:#fff}
+.p1 .priority-badge{background:#F39C12;color:#fff}
+.p2 .priority-badge{background:#3498db;color:#fff}
+.priority-content{font-size:14px}
+.priority-content strong{display:block;margin-bottom:2px}
+.insight-card{padding:16px 20px;margin:10px 0;border-radius:8px;background:#f5f7fa;border-left:4px solid #00B050}
+.insight-card h4{color:#00B050;margin-bottom:8px}
+.insight-card ul{list-style:none;padding-left:0}
+.insight-card li{padding:4px 0;font-size:14px}
+.insight-card li::before{content:'▸ ';color:#00B050;font-weight:700}
+.footer{text-align:center;padding:20px;color:#999;font-size:12px}
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}.journey-stage{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- 封面 -->
+<div class="cover">
+<h1>📊 T200 公测用户体验旅程汇报</h1>
+<div class="subtitle">从用户旅程全过程出发 · 体验情绪曲线变化 · 关键节点爽点与槽点</div>
+<div class="meta">
+<span>📅 汇报时间：2026-06-30</span>
+<span>📈 数据截止：2026-06-29</span>
+<span>📦 开箱 66 条 + 🔧 安装 66 条 + 🚗 日常 673 条 = 805 条反馈</span>
+<span>🦞 数据分析专家</span>
+</div>
+</div>
+
+<!-- 数据概览 -->
+<div class="stats-grid">
+<div class="stat-box"><div class="stat-num">805</div><div class="stat-label">总反馈量</div></div>
+<div class="stat-box blue"><div class="stat-num">66 + 66 + 673</div><div class="stat-label">开箱 + 安装 + 日常</div></div>
+<div class="stat-box orange"><div class="stat-num">10 天</div><div class="stat-label">公测周期 6/20-6/29</div></div>
+<div class="stat-box red"><div class="stat-num">81.7%</div><div class="stat-label">日常反馈为 bug 问题</div></div>
+</div>
+
+<!-- 用户旅程情绪地图 -->
+<div class="card">
+<div class="card-title">🗺️ 用户旅程情绪地图</div>
+<p style="font-size:14px;color:#666;margin-bottom:12px">从开箱到日常使用，用户体验情绪呈明显下滑趋势。开箱阶段情绪最高（7.5/10），日常使用阶段情绪最低（4.5/10），过曝和闪退是情绪低谷。</p>
+<div id="chart-emotion" class="chart-container"></div>
+</div>
+
+<!-- 分阶段详细分析 -->
+<div class="card">
+<div class="card-title">📦 阶段一：开箱体验</div>
+<div class="stage-header">
+<div class="stage-icon">📦</div>
+<div class="stage-title">开箱体验（66 条数据）</div>
+<div class="stage-score score-good">7.5/10</div>
+</div>
+<p style="font-size:13px;color:#666;margin-bottom:12px">平均总分 75/80，68% 用户"符合期望"，18% "超出期望"。整体开箱体验良好，4G 功能和小巧外观是核心惊喜点。</p>
+
+<div class="journey-stage">
+<div class="stage-card">
+<h4 style="color:#00B050;margin-bottom:8px">✅ 爽点 Top 3</h4>
+<div class="point-item point-good">
+<div class="point-title">4G 免流功能惊艳（21 条提及）</div>
+<div class="point-desc">用户最常提到的亮点，认为 4G 远程查看是差异化卖点</div>
+<div class="point-quote">"4G免流功能很赞" / "4G模块直接在主机里面更方便实用"</div>
+</div>
+<div class="point-item point-good">
+<div class="point-title">小巧轻便外观精致（16 条提及）</div>
+<div class="point-desc">尺寸和手感超出预期，不遮挡视野</div>
+<div class="point-quote">"外观小巧轻便不容易遮挡视野" / "非常精致质感好"</div>
+</div>
+<div class="point-item point-good">
+<div class="point-title">TF 卡即插即用（90%+ 一次识别）</div>
+<div class="point-desc">卡槽位置明显，插拔顺畅，一次识别成功率高</div>
+<div class="point-quote">"一眼就能看到" / "插拔顺畅" / "一次识别成功"</div>
+</div>
+</div>
+<div class="stage-card">
+<h4 style="color:#E74C3C;margin-bottom:8px">❌ 槽点 Top 3</h4>
+<div class="point-item point-bad">
+<div class="point-title">外观瑕疵（8 条）</div>
+<div class="point-desc">摄像头内有颗粒灰尘、卡扣印迹、维修标等</div>
+<div class="point-quote">"做工有问题，摄像头里面有很大的颗粒灰尘"</div>
+</div>
+<div class="point-item point-bad">
+<div class="point-title">期望落差（9 条"略低于期望"）</div>
+<div class="point-desc">部分用户对产品外观或功能有更高期待</div>
+<div class="point-quote">"维修标影响美观和信任感"</div>
+</div>
+<div class="point-item point-bad">
+<div class="point-title">说明书信息不足（3 条）</div>
+<div class="point-desc">缺少产品参数、配网指引等关键信息</div>
+<div class="point-quote">"纸质版操作指南无产品参数介绍"</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">🔧 阶段二：安装配网</div>
+<div class="stage-header">
+<div class="stage-icon">🔧</div>
+<div class="stage-title">安装配网（66 条数据）</div>
+<div class="stage-score score-mid">6.5/10</div>
+</div>
+<p style="font-size:13px;color:#666;margin-bottom:12px">平均总分 64.7/80，70% 用户安装耗时 10-30 分钟。降压线走线和角度调节是主要痛点。</p>
+
+<div class="journey-stage">
+<div class="stage-card">
+<h4 style="color:#00B050;margin-bottom:8px">✅ 爽点 Top 3</h4>
+<div class="point-item point-good">
+<div class="point-title">画面清晰度满意（70%）</div>
+<div class="point-desc">46/66 用户对 720P 画面效果满意</div>
+<div class="point-quote">"画面清晰720P效果满意"</div>
+</div>
+<div class="point-item point-good">
+<div class="point-title">通电启动正常率高</div>
+<div class="point-desc">绝大多数用户通电后设备正常启动，LED 状态正常</div>
+</div>
+<div class="point-item point-good">
+<div class="point-title">APP 扫码绑定顺畅</div>
+<div class="point-desc">首次 4G 远程连接成功率较高，绑定流程体验良好</div>
+</div>
+</div>
+<div class="stage-card">
+<h4 style="color:#E74C3C;margin-bottom:8px">❌ 槽点 Top 3</h4>
+<div class="point-item point-bad">
+<div class="point-title">安装角度调节受限（19 条）</div>
+<div class="point-desc">底座上倾角调节范围不足，安装位置低时画面偏下</div>
+<div class="point-quote">"模具设计问题导致上倾角调节限制" / "底座调节角度不足致画面偏下"</div>
+</div>
+<div class="point-item point-bad">
+<div class="point-title">降压线安装困难（16 条）</div>
+<div class="point-desc">走线不便、接线颜色不规范、保险丝规格问题</div>
+<div class="point-quote">"降压线接线颜色不符合行业惯例" / "保险丝规格偏小"</div>
+</div>
+<div class="point-item point-bad">
+<div class="point-title">二维码扫描不便（7 条）</div>
+<div class="point-desc">安装后二维码角度不便扫描，需拆卸重装</div>
+<div class="point-quote">"安装后二维码不便扫描，只能在正面扫码，稍微斜都不可以"</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">🚗 阶段三：日常使用</div>
+<div class="stage-header">
+<div class="stage-icon">🚗</div>
+<div class="stage-title">日常使用（673 条数据）</div>
+<div class="stage-score score-bad">4.5/10</div>
+</div>
+<p style="font-size:13px;color:#666;margin-bottom:12px">81.7% 为 bug 问题，18.3% 为需求建议。过曝（65 条）、哨兵误报漏报（54 条）、下载播放（43 条）三大问题集群主导负面情绪。</p>
+
+<div class="journey-stage">
+<div class="stage-card">
+<h4 style="color:#00B050;margin-bottom:8px">✅ 爽点 Top 3</h4>
+<div class="point-item point-good">
+<div class="point-title">4G 远程查看核心价值认可</div>
+<div class="point-desc">随时随地查看车辆状态是用户最认可的核心功能</div>
+<div class="point-quote">"停车哨兵守护，剐蹭推手机报警，证据云端留底"</div>
+</div>
+<div class="point-item point-good">
+<div class="point-title">哨兵模式安全感提升</div>
+<div class="point-desc">停车监控功能让用户安心，尽管存在误报但核心价值被认可</div>
+<div class="point-quote">"哨兵模式让我停车更安心了"</div>
+</div>
+<div class="point-item point-good">
+<div class="point-title">缩时录影创新体验</div>
+<div class="point-desc">停车期间缩时录影是差异化亮点，用户期待持续优化</div>
+<div class="point-quote">"缩时录影功能很新颖，希望能继续完善"</div>
+</div>
+</div>
+<div class="stage-card">
+<h4 style="color:#E74C3C;margin-bottom:8px">❌ 槽点 Top 3</h4>
+<div class="point-item point-bad">
+<div class="point-title">画面过曝问题集群（65 条，9.7%）</div>
+<div class="point-desc">抓拍过曝 27 条 + 画面过曝 25 条 + 逆光过曝 13 条，贯穿全场景</div>
+<div class="point-quote">"熄火后切哨兵/缩时模式过曝，重启后正常" / "远程查看画面严重过曝发白"</div>
+</div>
+<div class="point-item point-bad">
+<div class="point-title">哨兵误报与漏报并存（54 条，8.0%）</div>
+<div class="point-desc">误报 31 条（树动/下雨/灯光）+ 漏报 23 条（灵敏度中档太弱）</div>
+<div class="point-quote">"下雨触发接二连三的误报" / "灵敏度中死活不触发，改高才灵"</div>
+</div>
+<div class="point-item point-bad">
+<div class="point-title">APP 闪退 + 下载慢（28 条）</div>
+<div class="point-desc">下载视频闪退 14 条 + 云录下载慢 14 条，下载链路体验差</div>
+<div class="point-quote">"下载1分钟视频播放8秒闪退" / "21秒视频下载3分钟"</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">☁️ 阶段四：增值服务</div>
+<div class="stage-header">
+<div class="stage-icon">☁️</div>
+<div class="stage-title">云录/流量等增值服务</div>
+<div class="stage-score score-mid">5.5/10</div>
+</div>
+<p style="font-size:13px;color:#666;margin-bottom:12px">云录功能价值被认可，但下载体验和状态提示严重影响用户感知。</p>
+
+<div class="journey-stage">
+<div class="stage-card">
+<h4 style="color:#00B050;margin-bottom:8px">✅ 爽点 Top 3</h4>
+<div class="point-item point-good">
+<div class="point-title">云录证据留存价值高</div>
+<div class="point-desc">碰撞/哨兵事件自动上传云端，用户认为这是核心安全功能</div>
+</div>
+<div class="point-item point-good">
+<div class="point-title">4G 流量即开即用</div>
+<div class="point-desc">无需配 WiFi 即可远程查看，便利性突出</div>
+</div>
+<div class="point-item point-good">
+<div class="point-title">轨迹回放功能丰富</div>
+<div class="point-desc">行车轨迹记录+回放是差异化体验，用户期待持续优化</div>
+</div>
+</div>
+<div class="stage-card">
+<h4 style="color:#E74C3C;margin-bottom:8px">❌ 槽点 Top 3</h4>
+<div class="point-item point-bad">
+<div class="point-title">云录下载太慢（14 条）</div>
+<div class="point-desc">21 秒视频下载 3 分钟，用户体验极其焦虑</div>
+<div class="point-quote">"下载太慢了，一个21秒的视频用了接近3分钟"</div>
+</div>
+<div class="point-item point-bad">
+<div class="point-title">下载后找不到视频（3 条新增）</div>
+<div class="point-desc">下载完成但视频不在相册，无法播放</div>
+<div class="point-quote">"下载视频在手机相册、APP相册内都没"</div>
+</div>
+<div class="point-item point-bad">
+<div class="point-title">"其他用户正在观看直播"误提示（4 条）</div>
+<div class="point-desc">用户感知为隐私泄露风险，信任影响大</div>
+<div class="point-quote">"查看紧急录像显示其他用户正在观看直播？"</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 优先级改进建议 -->
+<div class="card">
+<div class="card-title">🎯 优先级改进建议</div>
+
+<div class="priority-item p0">
+<div class="priority-badge">P0 紧急</div>
+<div class="priority-content">
+<strong>画面过曝问题（65 条，9.7%）—— 影响核心体验</strong>
+贯穿点火抓拍、实时查看、录像回放、缩时录影全场景。重点排查哨兵/缩时模式熄火后 AE 逻辑，ISP 曝光控制作为下个版本核心攻坚方向。
+</div>
+</div>
+
+<div class="priority-item p0">
+<div class="priority-badge">P0 紧急</div>
+<div class="priority-content">
+<strong>APP 闪退 + 下载链路（28 条）—— 影响用户留存</strong>
+下载视频场景闪退率极高，9/11 条闪退与下载相关。排查下载模块内存管理，重构下载流程（状态管理+文件路径+完成通知+后台下载）。
+</div>
+</div>
+
+<div class="priority-item p0">
+<div class="priority-badge">P0 紧急</div>
+<div class="priority-content">
+<strong>"其他用户正在观看直播"误提示（4 条）—— 信任风险</strong>
+虽为误提示，但用户感知为隐私泄露风险。立即排查开流锁机制和并发判断逻辑。
+</div>
+</div>
+
+<div class="priority-item p1">
+<div class="priority-badge">P1 重要</div>
+<div class="priority-content">
+<strong>哨兵灵敏度两极分化（54 条）—— 影响核心卖点</strong>
+误报 31 条（树动/下雨/灯光）+ 漏报 23 条（中档太弱）。重新校准三档灵敏度阈值，优化人形/车辆检测算法。
+</div>
+</div>
+
+<div class="priority-item p1">
+<div class="priority-badge">P1 重要</div>
+<div class="priority-content">
+<strong>底座角度调节受限（19 条）—— 影响安装体验</strong>
+上倾角调节范围不足，建议增加左右旋转功能或分体式底座设计。
+</div>
+</div>
+
+<div class="priority-item p1">
+<div class="priority-badge">P1 重要</div>
+<div class="priority-content">
+<strong>GPS 轨迹不完整（19 条）—— 影响功能信任</strong>
+短行程丢失、起点偏差大。优化首次定位速度和信号弱场景的轨迹补全策略。
+</div>
+</div>
+
+<div class="priority-item p2">
+<div class="priority-badge">P2 优化</div>
+<div class="priority-content">
+<strong>视频回放交互优化（进度条异常 3 条 + 卡顿 15 条）</strong>
+排查 TS 片段索引和时间戳映射，优化解码和缓存策略。
+</div>
+</div>
+
+<div class="priority-item p2">
+<div class="priority-badge">P2 优化</div>
+<div class="priority-content">
+<strong>说明书完善 + 降压线规范化</strong>
+补充产品参数、配网指引；统一接线颜色和保险丝规格标识。
+</div>
+</div>
+</div>
+
+<!-- 关键洞察 -->
+<div class="card">
+<div class="card-title">💡 关键洞察</div>
+
+<div class="insight-card">
+<h4>🔴 用户最关心的 3 个核心问题</h4>
+<ul>
+<li><strong>画面过曝</strong>—— 贯穿全场景的第一大问题，65 条反馈占比 9.7%，直接影响"能不能看清"</li>
+<li><strong>哨兵模式可靠性</strong>—— 误报漏报并存，54 条反馈占比 8.0%，影响"能不能信任"</li>
+<li><strong>视频下载体验</strong>—— 下载慢+闪退+找不到视频，28 条反馈，影响"能不能用"</li>
+</ul>
+</div>
+
+<div class="insight-card">
+<h4>⚠️ 最可能影响口碑的 3 个风险点</h4>
+<ul>
+<li><strong>"其他用户正在观看直播"误提示</strong>—— 用户感知为隐私泄露，社交媒体传播风险极高</li>
+<li><strong>设备发热+存储卡烧毁</strong>—— 26°C 环境连续测试 1.5 小时即发烫休眠，存储卡烧坏</li>
+<li><strong>过曝"重启才能恢复"</strong>—— 用户需远程重启设备才能恢复正常画面，使用门槛高</li>
+</ul>
+</div>
+
+<div class="insight-card">
+<h4>✨ 最可能带来推荐的 3 个亮点</h4>
+<ul>
+<li><strong>4G 远程查看</strong>—— 第一亮点（21 条提及），"随时随地看车"是核心差异化卖点</li>
+<li><strong>小巧精致外观</strong>—— 16 条提及，"不遮挡视野"+"质感好"形成良好第一印象</li>
+<li><strong>哨兵+缩时+云录三位一体</strong>—— 停车安全闭环理念获用户认可，期待功能完善</li>
+</ul>
+</div>
+</div>
+
+<!-- 情绪曲线总结 -->
+<div class="card">
+<div class="card-title">📉 体验情绪曲线总结</div>
+<div id="chart-summary" class="chart-container"></div>
+<p style="font-size:14px;color:#666;margin-top:12px;text-align:center">
+用户从开箱的<strong style="color:#00B050">期待与惊喜（7.5分）</strong> → 安装的<strong style="color:#F39C12">中性偏正（6.5分）</strong> → 日常使用的<strong style="color:#E74C3C">明显不满（4.5分）</strong>，情绪下滑 40%。<br>
+<strong>核心结论：硬件设计和开箱体验达标，但软件稳定性和图像质量是最大短板，亟需在下一版本重点突破 ISP 调优和 APP 稳定性。</strong>
+</p>
+</div>
+
+<div class="footer">
+<p>📊 T200 公测用户体验旅程汇报 | 数据来源：开箱 66 条 + 安装 66 条 + 日常 673 条 | 生成时间：2026-06-29 17:30</p>
+<p>🦞 尹燕玲-报告分析专家 | 360 绿色系配色</p>
+</div>
+</div>
+
+<script>
+// Emotion journey chart
+var emotionChart = echarts.init(document.getElementById('chart-emotion'));
+emotionChart.setOption({
+  tooltip: {trigger: 'axis'},
+  grid: {left: '3%', right: '4%', bottom: '3%', containLabel: true},
+  xAxis: {
+    type: 'category',
+    data: ['📦 开箱体验', '🔧 安装配网', '🚗 日常使用', '☁️ 增值服务'],
+    axisLabel: {fontSize: 13}
+  },
+  yAxis: {type: 'value', name: '情绪评分', min: 0, max: 10},
+  series: [{
+    name: '情绪评分',
+    type: 'line',
+    data: [7.5, 6.5, 4.5, 5.5],
+    smooth: true,
+    lineStyle: {width: 4, color: '#00B050'},
+    itemStyle: {color: function(p){return ['#00B050','#F39C12','#E74C3C','#F39C12'][p.dataIndex]}},
+    symbolSize: 15,
+    label: {show: true, position: 'top', fontSize: 14, fontWeight: 'bold',
+      formatter: function(p){return p.value + '分'}},
+    areaStyle: {color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+      {offset: 0, color: 'rgba(0,176,80,0.3)'},
+      {offset: 1, color: 'rgba(0,176,80,0.02)'}
+    ])},
+    markArea: {
+      data: [[{itemStyle: {color: 'rgba(231,76,60,0.05)'}], [{}]]
+    }
+  }]
+});
+
+// Summary bar chart
+var summaryChart = echarts.init(document.getElementById('chart-summary'));
+summaryChart.setOption({
+  tooltip: {trigger: 'axis', axisPointer: {type: 'shadow'}},
+  grid: {left: '3%', right: '4%', bottom: '3%', containLabel: true},
+  xAxis: {type: 'category', data: ['开箱', '安装', '日常使用', '增值服务'], axisLabel: {fontSize: 13}},
+  yAxis: [
+    {type: 'value', name: '情绪评分', min: 0, max: 10, position: 'left'},
+    {type: 'value', name: '反馈量', min: 0, max: 700, position: 'right'}
+  ],
+  series: [
+    {name: '情绪评分', type: 'line', data: [7.5, 6.5, 4.5, 5.5], smooth: true,
+      lineStyle: {width: 3, color: '#00B050'}, itemStyle: {color: '#00B050'}, symbolSize: 12,
+      label: {show: true, position: 'top', fontWeight: 'bold'}},
+    {name: '反馈量', type: 'bar', data: [66, 66, 673, 0], itemStyle: {color: '#cccccc'}, barWidth: 30,
+      label: {show: true, position: 'top', fontSize: 11}}
+  ],
+  legend: {data: ['情绪评分', '反馈量'], top: 10}
+});
+
+window.addEventListener('resize', function(){emotionChart.resize();summaryChart.resize();});
+</script>
+</body>
+</html>
