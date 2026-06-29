@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>T200 日常问题反馈对比分析报告（6/26-6/29 新增）</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
@@ -24,7 +23,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 .stat-box.red .stat-num{color:#E74C3C}
 .stat-box.orange .stat-num{color:#F39C12}
 .stat-box.blue .stat-num{color:#3498db}
-.chart-container{width:100%;height:400px}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th{background:#e8f5e9;color:#333;padding:12px;text-align:left;font-weight:600}
 td{padding:10px 12px;border-bottom:1px solid #f0f0f0;vertical-align:top}
@@ -35,6 +33,8 @@ tr:hover td{background:#f9fff9}
 .badge-green{background:#e8f5e9;color:#00B050}
 .quote-box{background:#f9fff9;border-left:3px solid #00B050;padding:8px 14px;margin:6px 0;border-radius:0 6px 6px 0;font-size:13px;color:#555;font-style:italic;line-height:1.5}
 .quote-box .user{font-style:normal;font-weight:600;color:#00B050;margin-right:4px}
+.insight-section{margin-bottom:20px}
+.insight-section-title{font-size:15px;font-weight:700;color:#333;margin-bottom:10px;padding:6px 12px;background:#e8f5e9;border-radius:6px}
 .insight-item{padding:14px 16px;margin-bottom:10px;border-radius:8px;display:flex;align-items:flex-start;gap:10px}
 .insight-item.alert{background:#fce4e4}
 .insight-item.warning{background:#fef3e2}
@@ -70,6 +70,101 @@ tr:hover td{background:#f9fff9}
 <div class="stat-box red"><div class="stat-num">21.1%</div><div class="stat-label">已知问题占比</div></div>
 </div>
 
+<!-- 洞察建议移到最上面 -->
+<div class="card">
+<div class="card-title">💡 关键洞察与建议</div>
+
+<div class="insight-section">
+<div class="insight-section-title">🆕 本周新增问题洞察</div>
+
+<div class="insight-item alert">
+<div class="insight-icon">🔴</div>
+<div class="insight-text">
+<strong>画面过曝问题爆发式增长（+2300%），本周最突出问题</strong>
+本周新增 24 条画面过曝反馈，集中在哨兵模式/缩时录影模式下熄火后过曝。远程重启后恢复正常是该问题的关键规律。建议：将此问题列为 P0 优先级，重点排查 ISP 在低照度→高照度切换场景的曝光参数适配，特别是哨兵/缩时模式下的 AE 逻辑。
+</div>
+</div>
+
+<div class="insight-item alert">
+<div class="insight-icon">🔴</div>
+<div class="insight-text">
+<strong>APP闪退问题增长 267%，集中在视频下载场景</strong>
+11 条闪退反馈中，9 条与"下载视频"直接相关（下载中/下载后播放闪退），涉及 OPPO、安卓多品牌。建议：排查视频下载模块内存管理和解码流程，优先复现"下载1分钟视频播放10秒闪退"的必现路径。
+</div>
+</div>
+
+<div class="insight-item warning">
+<div class="insight-icon">🟡</div>
+<div class="insight-text">
+<strong>新增"隐私泄露风险"反馈——用户感知到安全风险</strong>
+4 条反馈涉及"其他用户正在观看直播"误提示，出现在查看紧急录像、循环视频、下载视频等场景。虽为误提示，但用户感知为隐私泄露风险，信任影响大。建议：立即排查开流锁机制和并发判断逻辑，修正单用户场景下的误判。
+</div>
+</div>
+
+<div class="insight-item warning">
+<div class="insight-icon">🟡</div>
+<div class="insight-text">
+<strong>视频下载后无法播放——下载流程系统性问题</strong>
+3 条反馈明确反馈下载后视频无法播放/不在相册。叠加 APP闪退（下载场景）和下载无成功提示等问题，视频下载链路存在系统性缺陷。建议：从状态管理、文件存储路径、解码兼容性三方面系统性重构下载流程。
+</div>
+</div>
+
+<div class="insight-item info">
+<div class="insight-icon">🔵</div>
+<div class="insight-text">
+<strong>视频进度条异常（3条，+200%）——播放器交互问题</strong>
+用户反馈拖动进度条出现其他视频、时间进度来回跳变、水印时间与进度条不一致等问题。建议：排查视频播放器的 TS 片段索引和时间戳映射逻辑，确保进度条与实际播放位置一致。
+</div>
+</div>
+</div>
+
+<div class="insight-section">
+<div class="insight-section-title">📊 累计问题洞察（全量 673 条）</div>
+
+<div class="insight-item alert">
+<div class="insight-icon">🔴</div>
+<div class="insight-text">
+<strong>过曝相关问题累计 65 条，占总量 9.7%——图像质量是首要短板</strong>
+抓拍图片过曝（27条）+ 画面过曝（25条）+ 逆光/高光环境过曝（13条）合计 65 条，是累计反馈量最大的问题集群。过曝问题贯穿点火抓拍、实时查看、录像回放、缩时录影全场景。建议：ISP 曝光控制作为下个版本核心攻坚方向，系统性优化 AE 算法在逆光、模式切换、低照度等场景的表现。
+</div>
+</div>
+
+<div class="insight-item warning">
+<div class="insight-icon">🟡</div>
+<div class="insight-text">
+<strong>哨兵模式问题累计 54 条——误报与漏报并存</strong>
+哨兵误报（31条）和哨兵漏报（23条）合计 54 条，是第二大问题集群。误报主要场景：风吹树动、下雨、灯光引起；漏报主要场景：灵敏度中档不够灵敏、夜间人车检测不到。建议：优化人形/车辆检测算法准确率，重新校准三档灵敏度阈值，减少"中档太弱、高档太敏感"的两极分化。
+</div>
+</div>
+
+<div class="insight-item warning">
+<div class="insight-icon">🟡</div>
+<div class="insight-text">
+<strong>视频下载与播放问题累计 43 条——用户体验重灾区</strong>
+云录下载慢（14条）+ APP闪退（14条）+ 视频回放卡顿（15条）合计 43 条。下载慢、下载后闪退、回放卡顿形成连锁体验问题。建议：从下载链路（带宽优化+断点续传+后台下载）、播放器（解码优化+缓存策略）、APP稳定性（内存管理+异常兜底）三端协同优化。
+</div>
+</div>
+
+<div class="insight-item info">
+<div class="insight-icon">🔵</div>
+<div class="insight-text">
+<strong>GPS轨迹问题累计 19 条——定位可靠性待提升</strong>
+轨迹回放不完整/缺少部分行程（19条），用户反馈开车后无轨迹、短行程丢失、起点偏差大等问题。建议：优化 GPS 首次定位速度和信号弱场景下的轨迹补全策略，确保点火后快速建立有效定位。
+</div>
+</div>
+
+<div class="insight-item info">
+<div class="insight-icon">🔵</div>
+<div class="insight-text">
+<strong>白屏/黑屏问题累计 26 条——视频流稳定性问题</strong>
+白屏（13条）+ 黑屏（13条）合计 26 条，涉及实时查看、回放、下载后播放等场景。多与开流失败、模式切换异常相关。建议：排查视频流初始化和切换逻辑，增加流异常的自动重连和兜底机制。
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- 突出新增问题 Top 5 -->
 <div class="card">
 <div class="card-title">🚨 突出新增问题 Top 5</div>
 <table>
@@ -119,11 +214,7 @@ tr:hover td{background:#f9fff9}
 </table>
 </div>
 
-<div class="card">
-<div class="card-title">📈 反馈量变化对比（上周 vs 本周新增）</div>
-<div id="chart-growth" class="chart-container"></div>
-</div>
-
+<!-- 累计重点问题 Top 10 -->
 <div class="card">
 <div class="card-title">📊 当前累计重点问题 Top 10（全量 673 条）</div>
 <table>
@@ -193,86 +284,10 @@ tr:hover td{background:#f9fff9}
 </table>
 </div>
 
-<div class="card">
-<div class="card-title">💡 关键洞察与建议</div>
-
-<div class="insight-item alert">
-<div class="insight-icon">🔴</div>
-<div class="insight-text">
-<strong>画面过曝问题爆发式增长（+2300%），本周最突出问题</strong>
-本周新增 24 条画面过曝反馈，集中在哨兵模式/缩时录影模式下熄火后过曝。远程重启后恢复正常是该问题的关键规律。建议：将此问题列为 P0 优先级，重点排查 ISP 在低照度→高照度切换场景的曝光参数适配，特别是哨兵/缩时模式下的 AE 逻辑。
-</div>
-</div>
-
-<div class="insight-item alert">
-<div class="insight-icon">🔴</div>
-<div class="insight-text">
-<strong>APP闪退问题增长 267%，集中在视频下载场景</strong>
-11 条闪退反馈中，9 条与"下载视频"直接相关（下载中/下载后播放闪退），涉及 OPPO、安卓多品牌。建议：排查视频下载模块内存管理和解码流程，优先复现"下载1分钟视频播放10秒闪退"的必现路径。
-</div>
-</div>
-
-<div class="insight-item warning">
-<div class="insight-icon">🟡</div>
-<div class="insight-text">
-<strong>新增"隐私泄露风险"反馈——用户感知到安全风险</strong>
-4 条反馈涉及"其他用户正在观看直播"误提示，出现在查看紧急录像、循环视频、下载视频等场景。虽为误提示，但用户感知为隐私泄露风险，信任影响大。建议：立即排查开流锁机制和并发判断逻辑，修正单用户场景下的误判。
-</div>
-</div>
-
-<div class="insight-item warning">
-<div class="insight-icon">🟡</div>
-<div class="insight-text">
-<strong>视频下载后无法播放——下载流程系统性问题</strong>
-3 条反馈明确反馈下载后视频无法播放/不在相册。叠加 APP闪退（下载场景）和下载无成功提示等问题，视频下载链路存在系统性缺陷。建议：从状态管理、文件存储路径、解码兼容性三方面系统性重构下载流程。
-</div>
-</div>
-
-<div class="insight-item info">
-<div class="insight-icon">🔵</div>
-<div class="insight-text">
-<strong>视频进度条异常（3条，+200%）——播放器交互问题</strong>
-用户反馈拖动进度条出现其他视频、时间进度来回跳变、水印时间与进度条不一致等问题。建议：排查视频播放器的 TS 片段索引和时间戳映射逻辑，确保进度条与实际播放位置一致。
-</div>
-</div>
-</div>
-
 <div class="footer">
-<p>📊 T200 日常问题反馈对比分析报告 | 数据来源：飞书「日常问题跟进」sheet | 生成时间：2026-06-29 15:51</p>
+<p>📊 T200 日常问题反馈对比分析报告 | 数据来源：飞书「日常问题跟进」sheet | 生成时间：2026-06-29 16:02</p>
 <p>🦞 尹燕玲-报告分析专家 | 360 绿色系配色</p>
 </div>
 </div>
-
-<script>
-var growthChart = echarts.init(document.getElementById('chart-growth'));
-var growthData = [
-  {name:'画面过曝',old:1,newVal:24},
-  {name:'APP闪退',old:3,newVal:11},
-  {name:'隐私泄露风险',old:0,newVal:4},
-  {name:'抓拍无图片',old:1,newVal:4},
-  {name:'视频下载后无法播放',old:0,newVal:3},
-  {name:'视频进度条异常',old:1,newVal:3},
-  {name:'视频画面偏色',old:1,newVal:3},
-  {name:'黑屏',old:2,newVal:4},
-  {name:'抓拍图片过曝',old:19,newVal:8},
-  {name:'哨兵误报',old:23,newVal:8},
-  {name:'轨迹回放不完整',old:12,newVal:7},
-  {name:'哨兵漏报',old:18,newVal:5},
-  {name:'视频回放卡顿',old:10,newVal:5}
-];
-growthChart.setOption({
-  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
-  legend:{data:['上周数量(6/20-6/25)','本周新增(6/26-6/29)'],top:10},
-  grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},
-  xAxis:{type:'category',data:growthData.map(function(d){return d.name}),axisLabel:{rotate:35,fontSize:11}},
-  yAxis:{type:'value',name:'条数'},
-  series:[
-    {name:'上周数量(6/20-6/25)',type:'bar',data:growthData.map(function(d){return d.old}),itemStyle:{color:'#cccccc'},barWidth:18},
-    {name:'本周新增(6/26-6/29)',type:'bar',data:growthData.map(function(d){return d.newVal}),itemStyle:{color:'#00B050'},barWidth:18,
-      label:{show:true,position:'top',fontSize:10}}
-  ]
-});
-window.addEventListener('resize',function(){growthChart.resize();});
-</script>
 </body>
 </html>
