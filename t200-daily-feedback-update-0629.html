@@ -129,39 +129,6 @@ tr:hover td{background:#f9fff9}
 <div id="chart-growth" class="chart-container"></div>
 </div>
 
-<!-- 一级标签分布对比 -->
-<div class="two-col">
-<div class="card">
-<div class="card-title">📊 上周一级标签分布（479条）</div>
-<div id="chart-old-pie" class="chart-container-sm"></div>
-</div>
-<div class="card">
-<div class="card-title">📊 本周新增一级标签分布（194条）</div>
-<div id="chart-new-pie" class="chart-container-sm"></div>
-</div>
-</div>
-
-<!-- 一级标签占比变化 -->
-<div class="card">
-<div class="card-title">📊 一级标签占比变化对比</div>
-<div id="chart-compare-bar" class="chart-container"></div>
-</div>
-
-<!-- 关联Bug -->
-<div class="card">
-<div class="card-title">🔗 新增反馈关联已知 Bug Top 5</div>
-<table>
-<thead><tr><th>Bug ID</th><th>标题</th><th>状态</th><th>关联反馈数</th></tr></thead>
-<tbody>
-<tr><td>Bug[885465]</td><td>逆光进出高架桥洞场景，画面严重过曝</td><td><span class="badge badge-red">新建(待修复)</span></td><td><strong>29 条</strong></td></tr>
-<tr><td>Bug[891986]</td><td>视频列表缩略图偶现加载慢</td><td><span class="badge badge-red">新建(待修复)</span></td><td>2 条</td></tr>
-<tr><td>Bug[868978]</td><td>哨兵/缩时状态下碰撞阈值偏大</td><td><span class="badge badge-orange">重新打开(待修复)</span></td><td>2 条</td></tr>
-<tr><td>Bug[892398]</td><td>缩时录影视频找不到</td><td><span class="badge badge-red">新建(待修复)</span></td><td>2 条</td></tr>
-<tr><td>Bug[881510]</td><td>下载视频耗时太久</td><td><span class="badge badge-orange">重新打开(待修复)</span></td><td>2 条</td></tr>
-</tbody>
-</table>
-</div>
-
 <!-- 关键洞察 -->
 <div class="card">
 <div class="card-title">💡 关键洞察与建议</div>
@@ -170,7 +137,7 @@ tr:hover td{background:#f9fff9}
 <div class="insight-icon">🔴</div>
 <div class="insight-text">
 <strong>画面过曝问题爆发式增长（+2300%），本周最突出问题</strong>
-本周新增 24 条画面过曝反馈，集中在哨兵模式/缩时录影模式下熄火后过曝。与已知 Bug[885465] 高度匹配（29 条关联）。建议：将此问题列为 P0 优先级，重点排查 ISP 在低照度→高照度切换场景的曝光参数适配，特别是哨兵/缩时模式下的 AE 逻辑。远程重启后恢复正常的规律值得重点分析。
+本周新增 24 条画面过曝反馈，集中在哨兵模式/缩时录影模式下熄火后过曝。远程重启后恢复正常是该问题的关键规律。建议：将此问题列为 P0 优先级，重点排查 ISP 在低照度→高照度切换场景的曝光参数适配，特别是哨兵/缩时模式下的 AE 逻辑。
 </div>
 </div>
 
@@ -202,7 +169,7 @@ tr:hover td{background:#f9fff9}
 <div class="insight-icon">🔵</div>
 <div class="insight-text">
 <strong>图像质量类反馈占比从 9% 升至 19.6%，翻倍增长</strong>
-图像质量问题从上周的 43 条增至本周新增 38 条（总 84 条），占比从 9.0% 升至 19.6%。过曝是主因，同时画面偏黄/偏色问题也有新增。建议：ISP 调优作为下个版本核心攻坚方向。
+图像质量问题从上周的 43 条增至本周新增 38 条（总 84 条），占比从 9.0% 升至 19.6%。过曝是主因，同时画面偏黄/偏色问题也有新增。建议：ISP 调优作为下个版本核心攻坚方向，重点解决模式切换时的曝光参数适配。
 </div>
 </div>
 </div>
@@ -241,64 +208,8 @@ growthChart.setOption({
   ]
 });
 
-var oldPie = echarts.init(document.getElementById('chart-old-pie'));
-oldPie.setOption({
-  tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
-  series:[{
-    type:'pie',radius:['40%','70%'],
-    data:[
-      {name:'APP功能/交互',value:193,itemStyle:{color:'#00B050'}},
-      {name:'视频/流处理',value:63,itemStyle:{color:'#2BBD6E'}},
-      {name:'硬件设计',value:56,itemStyle:{color:'#4CAF50'}},
-      {name:'图像质量',value:43,itemStyle:{color:'#81C784'}},
-      {name:'说明书/文档',value:29,itemStyle:{color:'#A5D6A7'}},
-      {name:'GPS/定位',value:27,itemStyle:{color:'#C8E6C9'}},
-      {name:'网络连接',value:19,itemStyle:{color:'#FF9800'}},
-      {name:'供电/电源管理',value:16,itemStyle:{color:'#F39C12'}},
-      {name:'其他',value:33,itemStyle:{color:'#BDBDBD'}}
-    ],
-    label:{fontSize:10,formatter:'{b}\n{d}%'}
-  }]
-});
-
-var newPie = echarts.init(document.getElementById('chart-new-pie'));
-newPie.setOption({
-  tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
-  series:[{
-    type:'pie',radius:['40%','70%'],
-    data:[
-      {name:'APP功能/交互',value:98,itemStyle:{color:'#00B050'}},
-      {name:'图像质量',value:38,itemStyle:{color:'#E74C3C'}},
-      {name:'视频/流处理',value:34,itemStyle:{color:'#2BBD6E'}},
-      {name:'硬件设计',value:10,itemStyle:{color:'#4CAF50'}},
-      {name:'GPS/定位',value:7,itemStyle:{color:'#81C784'}},
-      {name:'说明书/文档',value:3,itemStyle:{color:'#A5D6A7'}},
-      {name:'存储/TF卡',value:2,itemStyle:{color:'#FF9800'}},
-      {name:'网络连接',value:2,itemStyle:{color:'#F39C12'}}
-    ],
-    label:{fontSize:10,formatter:'{b}\n{d}%'}
-  }]
-});
-
-var compareChart = echarts.init(document.getElementById('chart-compare-bar'));
-var categories = ['APP功能/交互','图像质量','视频/流处理','硬件设计','GPS/定位','说明书/文档','网络连接','存储/TF卡','供电/电源管理','系统稳定性'];
-var oldPct = [40.3,9.0,13.2,11.7,5.6,6.1,4.0,0.6,3.3,0.6];
-var newPct = [50.5,19.6,17.5,5.2,3.6,1.5,1.0,1.0,0,0];
-compareChart.setOption({
-  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
-  legend:{data:['上周占比 %','本周新增占比 %'],top:10},
-  grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},
-  xAxis:{type:'category',data:categories,axisLabel:{rotate:35,fontSize:10}},
-  yAxis:{type:'value',name:'占比 %',max:55},
-  series:[
-    {name:'上周占比 %',type:'bar',data:oldPct,itemStyle:{color:'#cccccc'},barWidth:15},
-    {name:'本周新增占比 %',type:'bar',data:newPct,itemStyle:{color:'#00B050'},barWidth:15,
-      label:{show:true,position:'top',fontSize:9,formatter:'{c}%'}}
-  ]
-});
-
 window.addEventListener('resize',function(){
-  growthChart.resize();oldPie.resize();newPie.resize();compareChart.resize();
+  growthChart.resize();
 });
 </script>
 </body>
