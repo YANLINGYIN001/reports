@@ -2,118 +2,75 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>T200 公测报告合集</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;line-height:1.8}
-.container{max-width:900px;margin:0 auto;padding:30px}
-.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:40px 30px;border-radius:12px;margin-bottom:30px;text-align:center}
-.header h1{font-size:28px;margin-bottom:8px}
-.header p{font-size:14px;opacity:0.9}
-.card{background:#fff;border-radius:10px;padding:24px 28px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
-.card h2{font-size:18px;color:#00B050;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e8f5e9}
-.report-item{display:flex;align-items:center;padding:12px 16px;margin:8px 0;background:#f9fff9;border-radius:8px;text-decoration:none;color:#333;transition:all 0.2s;border-left:4px solid #00B050}
-.report-item:hover{background:#e8f5e9;transform:translateX(4px)}
-.report-icon{font-size:24px;margin-right:12px}
-.report-info{flex:1}
-.report-title{font-weight:600;font-size:15px}
-.report-desc{font-size:13px;color:#666;margin-top:2px}
-.report-date{font-size:12px;color:#999;margin-left:10px;white-space:nowrap}
-.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
-.status-box{background:#e8f5e9;padding:16px;border-radius:8px;text-align:center}
-.status-num{font-size:24px;font-weight:800;color:#00B050}
-.status-label{font-size:13px;color:#666}
-.footer{text-align:center;padding:20px;color:#999;font-size:12px}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.container{max-width:900px;margin:0 auto;padding:20px}
+.header{text-align:center;padding:40px 20px;background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;border-radius:12px;margin-bottom:30px}
+.header h1{font-size:28px;margin-bottom:10px}
+.card{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);transition:transform 0.2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,176,80,0.15)}
+.card h3{color:#00B050;font-size:18px;margin-bottom:8px}
+.card .desc{color:#666;font-size:14px;margin-bottom:8px}
+.card a{color:#00B050;text-decoration:none;font-size:14px;font-weight:bold}
+.card .meta{font-size:12px;color:#999}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="header">
-<h1>📊 T200 记录仪公测报告合集</h1>
-<p>所有报告外网永久可访问 | 最后更新：2026-06-29</p>
+<h1>📋 T200 记录仪公测报告合集</h1>
+<p>📊 数据截止 2026-06-29 | 🦞 数据分析专家</p>
 </div>
-
 <div class="card">
-<h2>📋 日常问题反馈报告</h2>
-<a class="report-item" href="./t200-daily-feedback-update-0629.html">
-<span class="report-icon">📊</span>
-<div class="report-info">
-<div class="report-title">日常问题对比分析报告（6/26-6/29 新增）</div>
-<div class="report-desc">对比上周新增问题 + 累计重点问题 Top 10 + 关键洞察建议</div>
+<h3>🎯 用户旅程汇报材料</h3>
+<p class="desc">明天领导汇报用，含数据概览/情绪地图/问题汇总表/爽点槽点/改进建议</p>
+<a href="https://yanlingyin001.github.io/reports/t200-user-journey-report.html">查看报告 →</a>
 </div>
-<span class="report-date">06/29</span>
-</a>
-<a class="report-item" href="./t200-daily-feedback-0626.html">
-<span class="report-icon">📈</span>
-<div class="report-info">
-<div class="report-title">日常问题反馈专项分析报告</div>
-<div class="report-desc">全量数据分析，按问题类型分类统计</div>
-</div>
-<span class="report-date">06/26</span>
-</a>
-</div>
-
 <div class="card">
-<h2>📦 开箱体验报告</h2>
-<a class="report-item" href="./t200-unboxing.html">
-<span class="report-icon">📦</span>
-<div class="report-info">
-<div class="report-title">开箱体验专项报告</div>
-<div class="report-desc">66 条数据，满意度分析，开箱问题统计</div>
+<h3>📦 开箱体验专项报告</h3>
+<p class="desc">66条开箱问卷数据分析</p>
+<a href="https://yanlingyin001.github.io/reports/t200-unboxing.html">查看报告 →</a>
 </div>
-<span class="report-date">06/25</span>
-</a>
-</div>
-
 <div class="card">
-<h2>🔧 安装体验报告</h2>
-<a class="report-item" href="./t200-installation.html">
-<span class="report-icon">🔧</span>
-<div class="report-info">
-<div class="report-title">安装体验专项报告</div>
-<div class="report-desc">66 条数据，降压线电源是最大安装困难</div>
+<h3>🔧 安装体验专项报告</h3>
+<p class="desc">66条安装问卷数据分析</p>
+<a href="https://yanlingyin001.github.io/reports/t200-installation.html">查看报告 →</a>
 </div>
-<span class="report-date">06/25</span>
-</a>
-</div>
-
 <div class="card">
-<h2>🐛 Bug 缺陷分析</h2>
-<a class="report-item" href="./t200-bug-analysis.html">
-<span class="report-icon">🐛</span>
-<div class="report-info">
-<div class="report-title">极库云 T200 Bug 可视化报告</div>
-<div class="report-desc">40 条 Bug 数据，多维度统计分析，风险评估</div>
+<h3>📊 日常问题分析报告（06/26）</h3>
+<p class="desc">479条日常问题反馈分析</p>
+<a href="https://yanlingyin001.github.io/reports/t200-daily-feedback-0626.html">查看报告 →</a>
 </div>
-<span class="report-date">06/16</span>
-</a>
-</div>
-
 <div class="card">
-<h2>👤 用户画像报告</h2>
-<a class="report-item" href="./v6-rider-profile.html">
-<span class="report-icon">👤</span>
-<div class="report-info">
-<div class="report-title">V6 骑行版用户画像报告</div>
-<div class="report-desc">用户群体画像建模，骑行场景分析</div>
+<h3>📈 日常问题对比分析（06/29 更新）</h3>
+<p class="desc">673条日常问题反馈，含新增问题对比</p>
+<a href="https://yanlingyin001.github.io/reports/t200-daily-feedback-update-0629.html">查看报告 →</a>
 </div>
-<span class="report-date">06/25</span>
-</a>
-</div>
-
 <div class="card">
-<h2>📊 数据同步状态</h2>
-<div class="status-grid">
-<div class="status-box"><div class="status-num">673</div><div class="status-label">日常问题反馈</div></div>
-<div class="status-box"><div class="status-num">66</div><div class="status-label">开箱体验</div></div>
-<div class="status-box"><div class="status-num">66</div><div class="status-label">安装体验</div></div>
+<h3>🔍 哨兵守护专项报告</h3>
+<p class="desc">66条，满意度8.02/10</p>
+<a href="https://yanlingyin001.github.io/reports/t200-sentinel-report.html">查看报告 →</a>
 </div>
-<p style="text-align:center;margin-top:12px;font-size:13px;color:#666">最后同步时间：2026-06-29 09:21 | 数据来源：问卷星 → 飞书文档</p>
+<div class="card">
+<h3>📡 远程互动专项报告</h3>
+<p class="desc">60条，满意度8.23/10</p>
+<a href="https://yanlingyin001.github.io/reports/t200-remote-report.html">查看报告 →</a>
 </div>
-
-<div class="footer">
-<p>📊 T200 记录仪公测报告合集 | 🦞 尹燕玲-报告分析专家</p>
+<div class="card">
+<h3>📶 4G联网稳定性专项报告</h3>
+<p class="desc">69条，满意度8.18/10</p>
+<a href="https://yanlingyin001.github.io/reports/t200-4g-report.html">查看报告 →</a>
+</div>
+<div class="card">
+<h3>📱 APP体验专项报告</h3>
+<p class="desc">65条，满意度8.15/10</p>
+<a href="https://yanlingyin001.github.io/reports/t200-app-report.html">查看报告 →</a>
+</div>
+<div style="text-align:center;padding:20px;color:#999;font-size:12px">
+<p>🦞 尹燕玲-报告分析专家 | 360绿色系配色</p>
 </div>
 </div>
 </body>
