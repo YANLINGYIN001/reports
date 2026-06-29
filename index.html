@@ -2,189 +2,110 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>报告合集 | 尹燕玲-报告分析专家</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>📊 尹燕玲 · 数据分析报告合集</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
-    background: #f0f2f5;
-    color: #333;
-    min-height: 100vh;
-  }
-  .header {
-    background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%);
-    color: #fff;
-    padding: 48px 24px 40px;
-    text-align: center;
-  }
-  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
-  .header p { font-size: 15px; opacity: 0.9; }
-  .header .meta { font-size: 13px; opacity: 0.75; margin-top: 8px; }
-  .container { max-width: 920px; margin: -20px auto 0; padding: 0 24px; position: relative; z-index: 1; }
-  .section-title {
-    font-size: 18px; font-weight: 600; color: #333; margin: 32px 0 16px;
-    padding-left: 12px; border-left: 4px solid #00B050;
-  }
-  .report-card {
-    background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.3s ease;
-    display: flex; align-items: flex-start; gap: 16px;
-  }
-  .report-card:hover { box-shadow: 0 4px 16px rgba(0,176,80,0.15); transform: translateY(-2px); }
-  .card-icon { font-size: 36px; flex-shrink: 0; line-height: 1; }
-  .card-body { flex: 1; }
-  .card-title { font-size: 16px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
-  .card-desc { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 8px; }
-  .card-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-  .badge {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-size: 12px; padding: 3px 10px; border-radius: 20px; font-weight: 500;
-  }
-  .badge-date { background: #f0f0f0; color: #666; }
-  .badge-tag { background: #e8f7ef; color: #00B050; }
-  .badge-new { background: #fff3e0; color: #F39C12; }
-  .card-link {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-size: 14px; color: #00B050; text-decoration: none; font-weight: 500;
-    transition: gap 0.2s;
-  }
-  .card-link:hover { gap: 8px; }
-  .card-link::after { content: '→'; }
-  .footer {
-    text-align: center; padding: 32px 24px; color: #999; font-size: 13px;
-  }
-  .footer span { color: #00B050; }
-  .divider { height: 1px; background: #e8e8e8; margin: 24px 0; }
-  .stats-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-  .stat-item {
-    flex: 1; min-width: 120px; background: #fff; border-radius: 10px;
-    padding: 16px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  }
-  .stat-num { font-size: 24px; font-weight: 700; color: #00B050; }
-  .stat-label { font-size: 12px; color: #999; margin-top: 4px; }
-  @media (max-width: 600px) {
-    .header { padding: 32px 16px 28px; }
-    .header h1 { font-size: 22px; }
-    .container { padding: 0 16px; }
-    .report-card { padding: 16px; flex-direction: column; gap: 10px; }
-    .card-icon { font-size: 28px; }
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC",sans-serif;background:#f0f2f5;color:#333;line-height:1.6}
+.c{max-width:960px;margin:0 auto;padding:24px}
+.h{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:48px 32px;border-radius:16px;margin-bottom:32px;text-align:center}
+.h h1{font-size:32px;margin-bottom:8px;font-weight:700}
+.h p{font-size:15px;opacity:.9}
+.h .sig{font-size:28px;margin-top:12px}
+.cat{margin-bottom:32px}
+.cat h2{font-size:18px;color:#00B050;border-left:4px solid #00B050;padding-left:12px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.cat h2 .cnt{font-size:13px;color:#999;font-weight:normal}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s;cursor:pointer;text-decoration:none;color:inherit;display:block}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,176,80,.12)}
+.card .icon{font-size:36px;margin-bottom:12px}
+.card h3{font-size:16px;margin-bottom:6px;color:#333}
+.card .desc{font-size:13px;color:#999;line-height:1.5}
+.card .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-top:8px}
+.tag-p0{background:#FDEDEC;color:#E74C3C}
+.tag-p1{background:#FEF5E7;color:#F39C12}
+.tag-info{background:#E8F8F0;color:#00B050}
+.f{text-align:center;padding:32px 0;color:#999;font-size:13px}
+.f a{color:#00B050;text-decoration:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:32px}
+.stat{background:#fff;border-radius:10px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.stat .v{font-size:24px;font-weight:700;color:#00B050}
+.stat .l{font-size:12px;color:#999;margin-top:2px}
 </style>
 </head>
 <body>
-
-<div class="header">
-  <h1>📊 报告合集</h1>
-  <p>尹燕玲-报告分析专家 | 数据分析 · 用户洞察 · 竞品研究</p>
-  <div class="meta">品牌色：360 绿 #00B050 / #2BBD6E 🦞</div>
+<div class="c">
+<div class="h">
+<h1>📊 数据分析报告合集</h1>
+<p>T200 记录仪公测 · V6 骑行版用户画像 · 缺陷分析</p>
+<div class="sig">🦞</div>
 </div>
 
-<div class="container">
-
-  <div class="stats-row">
-    <div class="stat-item">
-      <div class="stat-num">5</div>
-      <div class="stat-label">在线报告</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">438</div>
-      <div class="stat-label">T200公测样本</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">351</div>
-      <div class="stat-label">V6外呼样本</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">20+</div>
-      <div class="stat-label">交互图表</div>
-    </div>
-  </div>
-
-  <!-- V6 骑行版 -->
-  <div class="section-title">🛵 V6骑行版用户画像</div>
-
-  <div class="report-card">
-    <div class="card-icon">🛵</div>
-    <div class="card-body">
-      <div class="card-title">V6骑行版用户画像报告（完整版 v5）</div>
-      <div class="card-desc">基于132条有效调研 + 219条挂机记录，构建V6骑行版记录仪完整用户画像。涵盖用户画像、使用习惯、满意度NPS、问题分析、行动建议等，14张ECharts交互图表。</div>
-      <div class="card-meta">
-        <span class="badge badge-date">📅 2026-06-16</span>
-        <span class="badge badge-tag">📊 14张图表</span>
-        <span class="badge badge-tag">351条样本</span>
-        <a class="card-link" href="./v6-rider-profile.html" target="_blank">查看报告</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- T200 公测 -->
-  <div class="section-title">📋 T200公测项目</div>
-
-  <div class="report-card">
-    <div class="card-icon">📋</div>
-    <div class="card-body">
-      <div class="card-title">T200三合一综合可视化报告</div>
-      <div class="card-desc">开箱64条 + 安装54条 + 日常320条，全量438条数据综合分析。包含问题分类、模块分布、已知/新发现对比、高频问题TOP10等，20+交互图表。</div>
-      <div class="card-meta">
-        <span class="badge badge-date">📅 2026-06-24</span>
-        <span class="badge badge-tag">📊 20+图表</span>
-        <span class="badge badge-tag">438条样本</span>
-        <a class="card-link" href="./t200-comprehensive.html" target="_blank">查看报告</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="report-card">
-    <div class="card-icon">📦</div>
-    <div class="card-body">
-      <div class="card-title">T200 开箱体验专项报告</div>
-      <div class="card-desc">64条开箱体验数据深度分析。涵盖包装完好度、配件齐全度、外观质感、满意度NPS、高频问题5要素（问题名称|用户原声|反馈量|解决方案|上市风险）。</div>
-      <div class="card-meta">
-        <span class="badge badge-date">📅 2026-06-24</span>
-        <span class="badge badge-tag">64条样本</span>
-        <span class="badge badge-tag">NPS +60.9</span>
-        <a class="card-link" href="./t200-unboxing.html" target="_blank">查看报告</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="report-card">
-    <div class="card-icon">🔧</div>
-    <div class="card-body">
-      <div class="card-title">T200 安装体验专项报告</div>
-      <div class="card-desc">54条安装体验数据分析。涵盖降压线/电源安装困难（40.9%）、安装满意度、安装时长分布、高频安装问题等。</div>
-      <div class="card-meta">
-        <span class="badge badge-date">📅 2026-06-24</span>
-        <span class="badge badge-tag">54条样本</span>
-        <span class="badge badge-tag">均值8.86</span>
-        <a class="card-link" href="./t200-installation.html" target="_blank">查看报告</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="report-card">
-    <div class="card-icon">📊</div>
-    <div class="card-body">
-      <div class="card-title">T200 日常问题反馈分析报告</div>
-      <div class="card-desc">320条日常问题反馈打标分析。一级标签10类（APP功能/交互40.6%最高）、二级标签、已知vs新发现（67.8%新发现）、高频问题TOP10。</div>
-      <div class="card-meta">
-        <span class="badge badge-date">📅 2026-06-24</span>
-        <span class="badge badge-tag">320条样本</span>
-        <span class="badge badge-tag">10大模块</span>
-        <a class="card-link" href="./t200-daily-feedback.html" target="_blank">查看报告</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <div class="footer">
-    <p>🦞 尹燕玲-报告分析专家 · 数据分析专家 · <span>360绿色系</span> 主色调</p>
-    <p style="margin-top:4px;">所有报告链接永久有效 · 最后更新：2026-06-25</p>
-  </div>
-
+<div class="stats">
+<div class="stat"><div class="v">6</div><div class="l">报告总数</div></div>
+<div class="stat"><div class="v">2</div><div class="l">项目</div></div>
+<div class="stat"><div class="v">479+</div><div class="l">反馈数据量</div></div>
+<div class="stat"><div class="v">194</div><div class="l">缺陷总数</div></div>
 </div>
 
+<div class="cat">
+<h2>📦 T200 记录仪公测 <span class="cnt">4 份报告</span></h2>
+<div class="grid">
+<a class="card" href="t200-unboxing.html">
+<div class="icon">📦</div>
+<h3>开箱体验专项分析</h3>
+<p class="desc">T200 记录仪公测开箱环节用户反馈分析，涵盖开箱流程、配件完整性、初印象等维度</p>
+<span class="tag tag-info">公测专项</span>
+</a>
+<a class="card" href="t200-installation.html">
+<div class="icon">🔧</div>
+<h3>安装体验专项分析</h3>
+<p class="desc">T200 记录仪安装过程用户体验分析，含安装难度、降压线接线、走线方案等</p>
+<span class="tag tag-info">公测专项</span>
+</a>
+<a class="card" href="t200-daily-feedback.html">
+<div class="icon">📊</div>
+<h3>日常问题反馈分析</h3>
+<p class="desc">T200 公测日常问题跟进，479条反馈数据，覆盖8大场景，含P0/P1分级与改进建议</p>
+<span class="tag tag-p0">P0 核心问题</span>
+</a>
+<a class="card" href="t200-comprehensive.html">
+<div class="icon">📋</div>
+<h3>三合一综合可视化报告</h3>
+<p class="desc">开箱+安装+日常三份专项报告的综合可视化总览，全景呈现公测体验数据</p>
+<span class="tag tag-info">综合报告</span>
+</a>
+</div>
+</div>
+
+<div class="cat">
+<h2>🚴 V6 骑行版用户画像 <span class="cnt">1 份报告</span></h2>
+<div class="grid">
+<a class="card" href="v6-rider-profile.html">
+<div class="icon">🚴</div>
+<h3>V6 骑行版用户画像报告</h3>
+<p class="desc">V6 骑行版用户画像分析，含用户群体特征、使用偏好、满意度等维度</p>
+<span class="tag tag-info">用户画像</span>
+</a>
+</div>
+</div>
+
+<div class="cat">
+<h2>🐞 缺陷分析 <span class="cnt">1 份报告</span></h2>
+<div class="grid">
+<a class="card" href="t200-bug-analysis.html">
+<div class="icon">🐞</div>
+<h3>T200 Bug 缺陷分析报告</h3>
+<p class="desc">极库云工作项数据，194条缺陷记录，多维度统计分析（状态/严重程度/模块/执行人/版本）</p>
+<span class="tag tag-p1">风险评估</span>
+</a>
+</div>
+</div>
+
+<div class="f">
+<p>🦞 尹燕玲 · 数据分析专家 | 报告持续更新中</p>
+<p style="margin-top:4px">最后更新：2026-06-29</p>
+</div>
+</div>
 </body>
 </html>

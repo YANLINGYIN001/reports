@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>T200 记录仪 · Bug缺陷分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC",sans-serif;background:#f0f2f5;color:#333;line-height:1.6}
+.c{max-width:1200px;margin:0 auto;padding:20px}
+.h{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:40px 30px;border-radius:12px;margin-bottom:24px;text-align:center}
+.h h1{font-size:28px;margin-bottom:8px}
+.h p{font-size:14px;opacity:.9}
+.kg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:24px}
+.kc{background:#fff;border-radius:12px;padding:24px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kv{font-size:32px;font-weight:700;color:#00B050}
+.kl{font-size:13px;color:#999;margin-top:4px}
+.s{background:#fff;border-radius:12px;padding:30px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.s h2{font-size:20px;margin-bottom:16px;color:#00B050;border-left:4px solid #00B050;padding-left:12px}
+.ct{width:100%;height:380px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:768px){.row{grid-template-columns:1fr}}
+.b{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.br{background:#FDEDEC;color:#E74C3C}
+.bo{background:#FEF5E7;color:#F39C12}
+.bb{background:#E8F8F0;color:#00B050}
+.bg{background:#f0f0f0;color:#999}
+.f{text-align:center;padding:20px;color:#999;font-size:13px}
+.in{background:#F0FBF4;border-left:4px solid #00B050;padding:14px 18px;margin:10px 0;border-radius:0 8px 8px 0;font-size:14px}
+.in strong{color:#00B050}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th{background:#00B050;color:#fff;padding:10px 14px;text-align:left;font-size:13px}
+td{padding:9px 14px;border-bottom:1px solid #eee;font-size:13px}
+tr:hover{background:#f5f5f5}
+.risk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:20px}
+.risk-card{border-radius:8px;padding:16px;border-left:4px solid}
+.risk-red{background:#FDEDEC;border-color:#E74C3C}
+.risk-orange{background:#FEF5E7;border-color:#F39C12}
+.risk-green{background:#E8F8F0;border-color:#00B050}
+.risk-card h3{font-size:14px;margin-bottom:8px}
+.risk-card ul{font-size:13px;color:#555;line-height:2;list-style:none}
+.risk-card li::before{content:"• ";color:inherit}
+</style>
+</head>
+<body>
+<div class="c">
+<div class="h">
+<h1>🐞 T200 记录仪 · Bug缺陷分析报告</h1>
+<p>数据来源：极库云 | 194条缺陷记录 | 截至 2026-06-25</p>
+</div>
+
+<div class="kg">
+<div class="kc"><div class="kv">194</div><div class="kl">Bug总数</div></div>
+<div class="kc"><div class="kv" style="color:#E74C3C">72</div><div class="kl">未关闭</div></div>
+<div class="kc"><div class="kv" style="color:#00B050">122</div><div class="kl">已关闭</div></div>
+<div class="kc"><div class="kv" style="color:#F39C12">48</div><div class="kl">高优先级(P1)</div></div>
+<div class="kc"><div class="kv" style="color:#E74C3C">3</div><div class="kl">紧急(P0)</div></div>
+<div class="kc"><div class="kv" style="color:#9B59B6">37%</div><div class="kl">未关闭率</div></div>
+</div>
+
+<div class="s">
+<h2>📌 风险评估概览</h2>
+<div class="risk-grid">
+<div class="risk-card risk-red">
+<h3 style="color:#E74C3C">🔴 高风险领域</h3>
+<ul>
+<li><strong>回放视频</strong>（34条）：下载慢、卡顿、加载超时问题突出</li>
+<li><strong>配网功能</strong>（24条）：鸿蒙适配、热点连接、绑定流程问题</li>
+<li><strong>行驶轨迹</strong>（23条）：轨迹缺失、定位不准、回放异常</li>
+<li><strong>实时播放</strong>（19条）：开流卡顿、黑屏、延迟问题</li>
+</ul>
+</div>
+<div class="risk-card risk-orange">
+<h3 style="color:#F39C12">⚠️ 需关注问题</h3>
+<ul>
+<li><strong>重新打开3条</strong>：修复后回退，质量隐患</li>
+<li><strong>P0紧急3条</strong>：闪退、开流异常、灰屏</li>
+<li><strong>跟踪状态14条</strong>：长期未关闭，需推动</li>
+<li><strong>下载耗时</strong>：多版本反复提及，用户核心痛点</li>
+</ul>
+</div>
+<div class="risk-card risk-green">
+<h3 style="color:#00B050">✅ 积极信号</h3>
+<ul>
+<li>关闭率 <strong>63%</strong>，修复推进正常</li>
+<li>已验证23条，即将关闭</li>
+<li>P0问题仅3条，无系统性阻断</li>
+<li>核心功能缺陷已逐步收敛</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="s">
+<h2>1️⃣ 状态分布</h2>
+<div id="c1" class="ct"></div>
+</div>
+
+<div class="row">
+<div class="s">
+<h2>2️⃣ 优先级分布</h2>
+<div id="c2" class="ct"></div>
+</div>
+<div class="s">
+<h2>3️⃣ 模块分布 Top 10</h2>
+<div id="c3" class="ct"></div>
+</div>
+</div>
+
+<div class="s">
+<h2>4️⃣ 未关闭Bug · 按模块统计</h2>
+<div id="c4" class="ct"></div>
+</div>
+
+<div class="s">
+<h2>5️⃣ 未关闭Bug · 按执行人分布</h2>
+<table>
+<thead><tr><th>执行人</th><th>未关闭数</th><th>主要模块</th><th>风险等级</th></tr></thead>
+<tbody>
+<tr><td>徐凯来</td><td style="text-align:center;font-weight:700;color:#E74C3C">13</td><td>设置项、配网、实时播放</td><td><span class="b br">高</span></td></tr>
+<tr><td>李西朋</td><td style="text-align:center;font-weight:700;color:#E74C3C">12</td><td>回放视频、实时播放、行驶轨迹</td><td><span class="b br">高</span></td></tr>
+<tr><td>张俊超</td><td style="text-align:center;font-weight:700;color:#F39C12">10</td><td>设备消息、实时播放、配网</td><td><span class="b bo">中</span></td></tr>
+<tr><td>吴相廷</td><td style="text-align:center;font-weight:700;color:#F39C12">6</td><td>设备消息、配网、设置项</td><td><span class="b bo">中</span></td></tr>
+<tr><td>苏枝柏</td><td style="text-align:center;font-weight:700">4</td><td>回放视频、实时播放</td><td><span class="b bo">中</span></td></tr>
+<tr><td>李思凡</td><td style="text-align:center;font-weight:700">3</td><td>设置项、4G流量</td><td><span class="b bb">低</span></td></tr>
+<tr><td>申晨晨</td><td style="text-align:center;font-weight:700">2</td><td>4G流量套餐</td><td><span class="b bb">低</span></td></tr>
+<tr><td>吴琼</td><td style="text-align:center;font-weight:700">2</td><td>实时播放、回放视频</td><td><span class="b bo">中</span></td></tr>
+<tr><td>李越</td><td style="text-align:center;font-weight:700">1</td><td>配网功能（鸿蒙适配）</td><td><span class="b bb">低</span></td></tr>
+<tr><td>吕俊</td><td style="text-align:center;font-weight:700">1</td><td>设备消息</td><td><span class="b bb">低</span></td></tr>
+<tr><td>李修文</td><td style="text-align:center;font-weight:700">1</td><td>云存活动</td><td><span class="b bb">低</span></td></tr>
+<tr><td>李晓明</td><td style="text-align:center;font-weight:700">1</td><td>免费领取云存</td><td><span class="b bb">低</span></td></tr>
+<tr><td>张翔</td><td style="text-align:center;font-weight:700">1</td><td>回放视频</td><td><span class="b bb">低</span></td></tr>
+<tr><td>赵艳</td><td style="text-align:center;font-weight:700">1</td><td>4G流量功能</td><td><span class="b bb">低</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="s">
+<h2>6️⃣ Bug类型分布</h2>
+<div id="c5" class="ct"></div>
+</div>
+
+<div class="s">
+<h2>7️⃣ P0/P1 高优缺陷清单（未关闭）</h2>
+<table>
+<thead><tr><th style="width:60px">优先级</th><th style="width:15%">Bug ID</th><th>标题</th><th style="width:12%">模块</th><th style="width:10%">执行人</th><th style="width:10%">状态</th></tr></thead>
+<tbody>
+<tr><td><span class="b br">P0</span></td><td>884502</td><td style="font-size:12px">实时定位不准确，设备在360，定位却在上地</td><td>行驶轨迹</td><td>李西朋</td><td><span class="b br">重新打开</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>900647</td><td style="font-size:12px">产品说明书里面内容不适配</td><td>设置项</td><td>徐凯来</td><td><span class="b bg">新建</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>894201</td><td style="font-size:12px">更新liuxin账号后：流量管理页显示不对</td><td>4G流量</td><td>赵艳</td><td><span class="b bo">已验证</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>884015</td><td style="font-size:12px">远程实时直播开流偶现卡顿10s左右</td><td>实时播放</td><td>吴琼</td><td><span class="b bg">跟踪</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>883226</td><td style="font-size:12px">智汇云后台，属性字段值为空，事件上传信息查不到</td><td>云平台</td><td>徐凯来</td><td><span class="b bg">延期</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>881963</td><td style="font-size:12px">动态页消息筛选选择T200无反应</td><td>动态消息</td><td>张俊超</td><td><span class="b bg">跟踪</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>881510</td><td style="font-size:12px">下载视频耗时太久，1分钟视频IOS偶现下载耗时06:05</td><td>回放视频</td><td>吴琼</td><td><span class="b br">重新打开</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>880916</td><td style="font-size:12px">T200暂不支持纯血鸿蒙系统，需尽快做适配</td><td>配网功能</td><td>李越</td><td><span class="b bg">新建</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>880468</td><td style="font-size:12px">设备主页显示在线，首页卡片页显示离线</td><td>实时播放</td><td>徐凯来</td><td><span class="b bg">跟踪</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>877660</td><td style="font-size:12px">个别机型，下载消息列表的视频相册里不能播放</td><td>设备消息</td><td>张俊超</td><td><span class="b bo">已验证</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>876839</td><td style="font-size:12px">必现：更新完固件挂测一段时间后就一直上报文字事件</td><td>动态消息</td><td>苏枝柏</td><td><span class="b bo">已验证</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>876782</td><td style="font-size:12px">消息筛选只有两个Push消息类型，应该显示全部类型</td><td>设备消息</td><td>徐凯来</td><td><span class="b bo">已验证</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>876684</td><td style="font-size:12px">偶现：抓拍视频后不上报事件</td><td>动态消息</td><td>李西朋</td><td><span class="b bo">已验证</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>876673</td><td style="font-size:12px">消息列表：抓拍视频显示的是图片</td><td>设备消息</td><td>李西朋</td><td><span class="b bo">已验证</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>868570</td><td style="font-size:12px">近场热点查看视频回放，视频加载耗时20s多</td><td>回放视频</td><td>徐凯来</td><td><span class="b br">重新打开</span></td></tr>
+<tr><td><span class="b br">P1</span></td><td>861820</td><td style="font-size:12px">下载视频耗时太久，安卓3s视频耗时45s，IOS 4s耗时36s</td><td>回放视频</td><td>苏枝柏</td><td><span class="b bg">跟踪</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="s">
+<h2>8️⃣ 关键洞察与建议</h2>
+<div class="risk-grid">
+<div class="risk-card risk-red">
+<h3 style="color:#E74C3C">🎯 核心问题归因</h3>
+<ul>
+<li><strong>回放视频模块</strong>缺陷最多（34条），下载慢/卡顿是跨版本顽疾</li>
+<li><strong>配网功能</strong>（24条）鸿蒙适配是新增风险点</li>
+<li><strong>行驶轨迹</strong>（23条）定位不准已重新打开，需根本解决</li>
+<li>3条P0均涉及核心功能：闪退、开流异常、灰屏</li>
+</ul>
+</div>
+<div class="risk-card risk-orange">
+<h3 style="color:#F39C12">⚠️ 质量风险预警</h3>
+<ul>
+<li><strong>重新打开率1.5%</strong>（3/194），修复质量需关注</li>
+<li><strong>跟踪状态14条</strong>长期未关闭，存在遗漏风险</li>
+<li>视频下载耗时问题从2.28到2.29持续存在，未根本解决</li>
+<li>设备在线/离线状态不一致问题跨版本复现</li>
+</ul>
+</div>
+<div class="risk-card risk-green">
+<h3 style="color:#00B050">📋 改进建议</h3>
+<ul>
+<li>重点攻关<strong>回放视频</strong>模块，下载性能专项优化</li>
+<li>加快<strong>鸿蒙适配</strong>进度，P1高优长期搁置风险大</li>
+<li>建立<strong>重新打开Bug</strong>复盘机制，防止修复回退</li>
+<li>推动<strong>跟踪状态</strong>Bug定期清理，避免积压</li>
+<li>对<strong>徐凯来/李西朋</strong>两位未关闭最多，建议优先排期</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="s">
+<h2>9️⃣ 缺陷趋势 · 按创建时间</h2>
+<div id="c6" class="ct"></div>
+</div>
+
+<div class="f">
+<p>🦞 T200 记录仪 · Bug缺陷分析报告 | 数据来源：极库云 | 生成时间：2026-06-29</p>
+</div>
+</div>
+
+<script>
+var c1=echarts.init(document.getElementById("c1"));
+c1.setOption({tooltip:{trigger:"item",formatter:"{b}: {c}条 ({d}%)"},legend:{orient:"vertical",left:"left",textStyle:{fontSize:12}},series:[{type:"pie",radius:["35%","65%"],center:["60%","50%"],itemStyle:{borderRadius:8,borderColor:"#fff",borderWidth:2},label:{show:true,formatter:"{b}\n{c}条",fontSize:11},data:[{value:122,name:"关闭",itemStyle:{color:"#00B050"}},{value:23,name:"已验证",itemStyle:{color:"#2BBD6E"}},{value:19,name:"新建",itemStyle:{color:"#E74C3C"}},{value:14,name:"跟踪",itemStyle:{color:"#F39C12"}},{value:10,name:"已修复",itemStyle:{color:"#3498DB"}},{value:3,name:"重新打开",itemStyle:{color:"#C0392B"}},{value:3,name:"延期",itemStyle:{color:"#999"}}]}]});
+
+var c2=echarts.init(document.getElementById("c2"));
+c2.setOption({tooltip:{trigger:"item",formatter:"{b}: {c}条 ({d}%)"},legend:{orient:"vertical",left:"left",textStyle:{fontSize:12}},series:[{type:"pie",radius:["35%","65%"],center:["60%","50%"],itemStyle:{borderRadius:8,borderColor:"#fff",borderWidth:2},label:{show:true,formatter:"{b}\n{c}条",fontSize:11},data:[{value:135,name:"中(P2)",itemStyle:{color:"#F39C12"}},{value:48,name:"高(P1)",itemStyle:{color:"#E74C3C"}},{value:8,name:"低(P3)",itemStyle:{color:"#3498DB"}},{value:3,name:"紧急(P0)",itemStyle:{color:"#C0392B"}}]}]});
+
+var c3=echarts.init(document.getElementById("c3"));
+c3.setOption({tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},grid:{left:"3%",right:"5%",bottom:"3%",top:"8%",containLabel:true},xAxis:{type:"category",data:["回放视频","配网功能","行驶轨迹","设置项","实时播放","设备消息","设备主页","app本地相册","设备图片","动态消息"],axisLabel:{fontSize:11,rotate:30}},yAxis:{type:"value",name:"Bug数"},series:[{type:"bar",data:[34,24,23,19,19,15,10,7,5,5],itemStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:"#00B050"},{offset:1,color:"#2BBD6E"}]),borderRadius:[4,4,0,0]},label:{show:true,position:"top",fontSize:11}}]});
+
+var c4=echarts.init(document.getElementById("c4"));
+c4.setOption({tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},grid:{left:"3%",right:"5%",bottom:"3%",top:"8%",containLabel:true},xAxis:{type:"category",data:["回放视频","设置项","实时播放","行驶轨迹","设备消息","配网功能","4G流量","动态消息","用户体验","设备图片","免费云存","云平台","扫一扫","赠品领取"],axisLabel:{fontSize:10,rotate:40}},yAxis:{type:"value",name:"未关闭数"},series:[{type:"bar",data:[10,8,7,5,5,4,3,2,2,1,1,1,1,1],itemStyle:{color:"#E74C3C",borderRadius:[4,4,0,0]},label:{show:true,position:"top",fontSize:11}}]});
+
+var c5=echarts.init(document.getElementById("c5"));
+c5.setOption({tooltip:{trigger:"item",formatter:"{b}: {c}条 ({d}%)"},legend:{orient:"vertical",left:"left",textStyle:{fontSize:12}},series:[{type:"pie",radius:["35%","65%"],center:["60%","50%"],itemStyle:{borderRadius:8,borderColor:"#fff",borderWidth:2},label:{show:true,formatter:"{b}\n{c}条",fontSize:11},data:[{value:160,name:"功能实现",itemStyle:{color:"#00B050"}},{value:15,name:"UI界面",itemStyle:{color:"#3498DB"}},{value:6,name:"优化建议",itemStyle:{color:"#F39C12"}},{value:3,name:"易用性",itemStyle:{color:"#9B59B6"}},{value:2,name:"产品需求",itemStyle:{color:"#E74C3C"}}]}]});
+
+var c6=echarts.init(document.getElementById("c6"));
+c6.setOption({tooltip:{trigger:"axis"},grid:{left:"3%",right:"5%",bottom:"3%",top:"8%",containLabel:true},xAxis:{type:"category",data:["5/12","5/14","5/15","5/19","5/20","5/21","5/22","5/26","5/27","5/28","5/29","6/3","6/4","6/5","6/8","6/10","6/11","6/12","6/15","6/16","6/23","6/24"],axisLabel:{fontSize:10,rotate:30}},yAxis:{type:"value",name:"Bug数"},series:[{type:"line",data:[5,2,1,5,3,3,7,6,2,7,1,4,4,2,4,1,4,6,2,2,4,7],smooth:true,symbol:"circle",symbolSize:6,itemStyle:{color:"#00B050"},areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:"rgba(0,176,80,0.3)"},{offset:1,color:"rgba(0,176,80,0.05)"}])},label:{show:true,fontSize:10}}]});
+</script>
+</body>
+</html>
