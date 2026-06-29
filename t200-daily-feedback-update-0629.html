@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 日常问题反馈对比分析报告（6/26-6/29 新增）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:40px 30px;border-radius:12px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,176,80,0.3)}
+.header h1{font-size:28px;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:0.9}
+.header .meta{display:flex;gap:16px;margin-top:16px;font-size:13px;opacity:0.85;flex-wrap:wrap}
+.header .meta span{background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:20px}
+.card{background:#fff;border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.card-title{font-size:18px;font-weight:700;color:#00B050;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #e8f5e9;display:flex;align-items:center;gap:8px}
+.card-title::before{content:'';width:4px;height:20px;background:#00B050;border-radius:2px;display:inline-block;flex-shrink:0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.stat-box{background:#fff;border-radius:10px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.stat-num{font-size:32px;font-weight:800;color:#00B050}
+.stat-label{font-size:13px;color:#666;margin-top:4px}
+.stat-box.red .stat-num{color:#E74C3C}
+.stat-box.orange .stat-num{color:#F39C12}
+.stat-box.blue .stat-num{color:#3498db}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:#e8f5e9;color:#333;padding:12px;text-align:left;font-weight:600}
+td{padding:10px 12px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+tr:hover td{background:#f9fff9}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.badge-red{background:#fce4e4;color:#E74C3C}
+.badge-orange{background:#fef3e2;color:#F39C12}
+.badge-green{background:#e8f5e9;color:#00B050}
+.quote-box{background:#f9fff9;border-left:3px solid #00B050;padding:8px 14px;margin:6px 0;border-radius:0 6px 6px 0;font-size:13px;color:#555;font-style:italic;line-height:1.5}
+.quote-box .user{font-style:normal;font-weight:600;color:#00B050;margin-right:4px}
+.insight-section{margin-bottom:20px}
+.insight-section-title{font-size:15px;font-weight:700;color:#333;margin-bottom:10px;padding:6px 12px;background:#e8f5e9;border-radius:6px}
+.insight-item{padding:14px 16px;margin-bottom:10px;border-radius:8px;display:flex;align-items:flex-start;gap:10px}
+.insight-item.alert{background:#fce4e4}
+.insight-item.warning{background:#fef3e2}
+.insight-item.info{background:#e3f2fd}
+.insight-item.success{background:#e8f5e9}
+.insight-icon{font-size:20px;flex-shrink:0}
+.insight-text{font-size:14px}
+.insight-text strong{display:block;margin-bottom:2px}
+.footer{text-align:center;padding:20px;color:#999;font-size:12px}
+.growth-up{color:#E74C3C;font-weight:700}
+.growth-new{color:#F39C12;font-weight:700}
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>📊 T200 日常问题反馈对比分析报告</h1>
+<div class="subtitle">6/26-6/29 新增 194 条 vs 6/20-6/25 已有 479 条</div>
+<div class="meta">
+<span>📅 2026-06-29</span>
+<span>📈 总反馈：673 条</span>
+<span>🆕 新增：194 条</span>
+<span>⏱️ 对比周期：6/20 vs 6/29</span>
+<span>🦞 数据分析专家</span>
+</div>
+</div>
+
+<div class="stats-grid">
+<div class="stat-box"><div class="stat-num">673</div><div class="stat-label">总反馈量</div></div>
+<div class="stat-box blue"><div class="stat-num">479 → 673</div><div class="stat-label">6/20 → 6/29</div></div>
+<div class="stat-box orange"><div class="stat-num">+194</div><div class="stat-label">本周新增（6/26-6/29）</div></div>
+<div class="stat-box red"><div class="stat-num">21.1%</div><div class="stat-label">已知问题占比</div></div>
+</div>
+
+<!-- 洞察建议移到最上面 -->
+<div class="card">
+<div class="card-title">💡 关键洞察与建议</div>
+
+<div class="insight-section">
+<div class="insight-section-title">🆕 本周新增问题洞察</div>
+
+<div class="insight-item alert">
+<div class="insight-icon">🔴</div>
+<div class="insight-text">
+<strong>画面过曝问题爆发式增长（+2300%），本周最突出问题</strong>
+本周新增 24 条画面过曝反馈，集中在哨兵模式/缩时录影模式下熄火后过曝。远程重启后恢复正常是该问题的关键规律。建议：将此问题列为 P0 优先级，重点排查 ISP 在低照度→高照度切换场景的曝光参数适配，特别是哨兵/缩时模式下的 AE 逻辑。
+</div>
+</div>
+
+<div class="insight-item alert">
+<div class="insight-icon">🔴</div>
+<div class="insight-text">
+<strong>APP闪退问题增长 267%，集中在视频下载场景</strong>
+11 条闪退反馈中，9 条与"下载视频"直接相关（下载中/下载后播放闪退），涉及 OPPO、安卓多品牌。建议：排查视频下载模块内存管理和解码流程，优先复现"下载1分钟视频播放10秒闪退"的必现路径。
+</div>
+</div>
+
+<div class="insight-item warning">
+<div class="insight-icon">🟡</div>
+<div class="insight-text">
+<strong>新增"隐私泄露风险"反馈——用户感知到安全风险</strong>
+4 条反馈涉及"其他用户正在观看直播"误提示，出现在查看紧急录像、循环视频、下载视频等场景。虽为误提示，但用户感知为隐私泄露风险，信任影响大。建议：立即排查开流锁机制和并发判断逻辑，修正单用户场景下的误判。
+</div>
+</div>
+
+<div class="insight-item warning">
+<div class="insight-icon">🟡</div>
+<div class="insight-text">
+<strong>视频下载后无法播放——下载流程系统性问题</strong>
+3 条反馈明确反馈下载后视频无法播放/不在相册。叠加 APP闪退（下载场景）和下载无成功提示等问题，视频下载链路存在系统性缺陷。建议：从状态管理、文件存储路径、解码兼容性三方面系统性重构下载流程。
+</div>
+</div>
+
+<div class="insight-item info">
+<div class="insight-icon">🔵</div>
+<div class="insight-text">
+<strong>视频进度条异常（3条，+200%）——播放器交互问题</strong>
+用户反馈拖动进度条出现其他视频、时间进度来回跳变、水印时间与进度条不一致等问题。建议：排查视频播放器的 TS 片段索引和时间戳映射逻辑，确保进度条与实际播放位置一致。
+</div>
+</div>
+</div>
+
+<div class="insight-section">
+<div class="insight-section-title">📊 累计问题洞察（全量 673 条）</div>
+
+<div class="insight-item alert">
+<div class="insight-icon">🔴</div>
+<div class="insight-text">
+<strong>过曝相关问题累计 65 条，占总量 9.7%——图像质量是首要短板</strong>
+抓拍图片过曝（27条）+ 画面过曝（25条）+ 逆光/高光环境过曝（13条）合计 65 条，是累计反馈量最大的问题集群。过曝问题贯穿点火抓拍、实时查看、录像回放、缩时录影全场景。建议：ISP 曝光控制作为下个版本核心攻坚方向，系统性优化 AE 算法在逆光、模式切换、低照度等场景的表现。
+</div>
+</div>
+
+<div class="insight-item warning">
+<div class="insight-icon">🟡</div>
+<div class="insight-text">
+<strong>哨兵模式问题累计 54 条——误报与漏报并存</strong>
+哨兵误报（31条）和哨兵漏报（23条）合计 54 条，是第二大问题集群。误报主要场景：风吹树动、下雨、灯光引起；漏报主要场景：灵敏度中档不够灵敏、夜间人车检测不到。建议：优化人形/车辆检测算法准确率，重新校准三档灵敏度阈值，减少"中档太弱、高档太敏感"的两极分化。
+</div>
+</div>
+
+<div class="insight-item warning">
+<div class="insight-icon">🟡</div>
+<div class="insight-text">
+<strong>视频下载与播放问题累计 43 条——用户体验重灾区</strong>
+云录下载慢（14条）+ APP闪退（14条）+ 视频回放卡顿（15条）合计 43 条。下载慢、下载后闪退、回放卡顿形成连锁体验问题。建议：从下载链路（带宽优化+断点续传+后台下载）、播放器（解码优化+缓存策略）、APP稳定性（内存管理+异常兜底）三端协同优化。
+</div>
+</div>
+
+<div class="insight-item info">
+<div class="insight-icon">🔵</div>
+<div class="insight-text">
+<strong>GPS轨迹问题累计 19 条——定位可靠性待提升</strong>
+轨迹回放不完整/缺少部分行程（19条），用户反馈开车后无轨迹、短行程丢失、起点偏差大等问题。建议：优化 GPS 首次定位速度和信号弱场景下的轨迹补全策略，确保点火后快速建立有效定位。
+</div>
+</div>
+
+<div class="insight-item info">
+<div class="insight-icon">🔵</div>
+<div class="insight-text">
+<strong>白屏/黑屏问题累计 26 条——视频流稳定性问题</strong>
+白屏（13条）+ 黑屏（13条）合计 26 条，涉及实时查看、回放、下载后播放等场景。多与开流失败、模式切换异常相关。建议：排查视频流初始化和切换逻辑，增加流异常的自动重连和兜底机制。
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- 突出新增问题 Top 5 -->
+<div class="card">
+<div class="card-title">🚨 突出新增问题 Top 5</div>
+<table>
+<thead><tr><th style="width:40px">排名</th><th style="width:130px">问题</th><th style="width:60px">上周</th><th style="width:70px">本周新增</th><th style="width:70px">增长率</th><th>典型用户原声</th></tr></thead>
+<tbody>
+<tr>
+<td>🥇</td><td><strong>画面过曝</strong></td><td>1 条</td><td><span class="badge badge-red">24 条</span></td><td><span class="growth-up">↑ 2300%</span></td>
+<td>
+<div class="quote-box"><span class="user">周炳文：</span>熄火后，自动切换到哨兵模式或者缩时录影容易出现过曝，重启后正常</div>
+<div class="quote-box"><span class="user">王亚兵：</span>车辆停放树荫下，4G远程查看画面严重过曝、整体发白，哨兵抓拍录像也存在同样问题，远程重启后恢复</div>
+<div class="quote-box"><span class="user">马姬：</span>缩时录影过曝严重</div>
+</td>
+</tr>
+<tr>
+<td>🥈</td><td><strong>APP闪退</strong></td><td>3 条</td><td><span class="badge badge-red">11 条</span></td><td><span class="growth-up">↑ 267%</span></td>
+<td>
+<div class="quote-box"><span class="user">汪波：</span>一分钟视频下载到手机里播放8秒左右APP闪退</div>
+<div class="quote-box"><span class="user">李腾飞：</span>APP内播放循环视频，播放完一条后，无法返回，APP卡死</div>
+<div class="quote-box"><span class="user">陈建建：</span>查看视频回放，看完准备下载时，卡住不动，退出后显示系统崩毁了</div>
+</td>
+</tr>
+<tr>
+<td>🥉</td><td><strong>隐私泄露风险-其他用户查看</strong></td><td>0 条</td><td><span class="badge badge-red">4 条</span></td><td><span class="growth-new">新增问题</span></td>
+<td>
+<div class="quote-box"><span class="user">陈建建：</span>查看紧急录像显示其他用户正在观看直播？</div>
+<div class="quote-box"><span class="user">陈建建：</span>查看循环视频，等待了15秒后出现了其他用户正在观看直播</div>
+<div class="quote-box"><span class="user">魏健伟：</span>自己正在观看视频回放时点击下载视频，出现"其他用户正在观看直播"的提示</div>
+</td>
+</tr>
+<tr>
+<td>4</td><td><strong>抓拍无图片</strong></td><td>1 条</td><td><span class="badge badge-orange">4 条</span></td><td><span class="growth-up">↑ 300%</span></td>
+<td>
+<div class="quote-box"><span class="user">朱双喜：</span>抓拍照片不显示</div>
+<div class="quote-box"><span class="user">车国宋：</span>APP无法查看哨兵视频</div>
+<div class="quote-box"><span class="user">丁政涛：</span>远程抓拍，抓拍视频偶有失败</div>
+</td>
+</tr>
+<tr>
+<td>5</td><td><strong>视频下载后无法播放</strong></td><td>0 条</td><td><span class="badge badge-orange">3 条</span></td><td><span class="growth-new">新增问题</span></td>
+<td>
+<div class="quote-box"><span class="user">方钱主：</span>下载视频，在手机相册、APP软件相册内都没，点击查看的时候也是黑屏</div>
+<div class="quote-box"><span class="user">齐宝台：</span>下载得回放视频无法播放</div>
+<div class="quote-box"><span class="user">魏健伟：</span>视频下载完后直接点击查看能正常查看，但在APP相册里却无法查看也无缩略图，像过曝一样白屏</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- 累计重点问题 Top 10 -->
+<div class="card">
+<div class="card-title">📊 当前累计重点问题 Top 10（全量 673 条）</div>
+<table>
+<thead><tr><th style="width:40px">排名</th><th style="width:160px">问题</th><th style="width:70px">累计反馈</th><th style="width:60px">占比</th><th>典型用户原声</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>哨兵误报</strong></td><td><span class="badge badge-red">31 条</span></td><td>4.6%</td>
+<td>
+<div class="quote-box"><span class="user">用户1：</span>哨兵模式下有误报，显示有人靠近，点开视频查看无人经过，只是风吹树动的</div>
+<div class="quote-box"><span class="user">用户2：</span>下雨会触发接二连三的哨兵录像，而且里面都是有人出现的误报</div>
+<div class="quote-box"><span class="user">用户3：</span>车前面是花园植物没有人员，记录仪哨兵模式总是提示有人出现的误报消息抓拍</div>
+</td></tr>
+<tr><td>2</td><td><strong>抓拍图片过曝</strong></td><td><span class="badge badge-red">27 条</span></td><td>4.0%</td>
+<td>
+<div class="quote-box"><span class="user">用户1：</span>白天远程抓拍的照片过曝很严重，白白的什么都看不清</div>
+<div class="quote-box"><span class="user">用户2：</span>14点09到18点28分，5条抓拍都不正常</div>
+<div class="quote-box"><span class="user">用户3：</span>抓拍图片过爆，全白板</div>
+</td></tr>
+<tr><td>3</td><td><strong>画面过曝</strong></td><td><span class="badge badge-red">25 条</span></td><td>3.7%</td>
+<td>
+<div class="quote-box"><span class="user">周炳文：</span>熄火后，自动切换到哨兵模式或缩时录影容易出现过曝，重启后正常</div>
+<div class="quote-box"><span class="user">王亚兵：</span>车辆停放树荫下，4G远程查看画面严重过曝、整体发白，远程重启后恢复</div>
+<div class="quote-box"><span class="user">用户3：</span>视频实时查看的画面稍微偏白，但录像的视频确实白的厉害</div>
+</td></tr>
+<tr><td>4</td><td><strong>哨兵漏报</strong></td><td><span class="badge badge-orange">23 条</span></td><td>3.4%</td>
+<td>
+<div class="quote-box"><span class="user">用户1：</span>哨兵模式灵敏度为中，一晚上的哨兵录像只有一条，明显不正常</div>
+<div class="quote-box"><span class="user">用户2：</span>在记录仪前面活动，灵敏度中死活没触发，改成高以后立马有了</div>
+<div class="quote-box"><span class="user">用户3：</span>早上7点50以后哨兵没有录像</div>
+</td></tr>
+<tr><td>5</td><td><strong>轨迹回放不完整</strong></td><td><span class="badge badge-orange">19 条</span></td><td>2.8%</td>
+<td>
+<div class="quote-box"><span class="user">用户1：</span>16:58启动车子开了20多公里，17:44停车，轨迹回放里只有其中一段</div>
+<div class="quote-box"><span class="user">用户2：</span>今天开车了，没有轨迹记录，只有一个是昨天的轨迹</div>
+<div class="quote-box"><span class="user">用户3：</span>运行轨迹不记录</div>
+</td></tr>
+<tr><td>6</td><td><strong>视频回放卡顿</strong></td><td><span class="badge badge-orange">15 条</span></td><td>2.2%</td>
+<td>
+<div class="quote-box"><span class="user">用户1：</span>行车画面卡顿不流畅，画质模糊且有噪音</div>
+<div class="quote-box"><span class="user">用户2：</span>17时48分09秒时画面出现卡顿，同时显示迈速</div>
+<div class="quote-box"><span class="user">用户3：</span>录制的事情回看时有卡顿，不顺畅</div>
+</td></tr>
+<tr><td>7</td><td><strong>云录下载慢</strong></td><td><span class="badge badge-orange">14 条</span></td><td>2.1%</td>
+<td>
+<div class="quote-box"><span class="user">用户1：</span>远程查看下载视频的速度太慢了，不仅仅慢并且还卡顿</div>
+<div class="quote-box"><span class="user">用户2：</span>一个21秒的视频，下载足足用了接近3分钟，太考验耐心了</div>
+<div class="quote-box"><span class="user">用户3：</span>下载录像文件网速太慢只有几百k</div>
+</td></tr>
+<tr><td>8</td><td><strong>APP闪退</strong></td><td><span class="badge badge-orange">14 条</span></td><td>2.1%</td>
+<td>
+<div class="quote-box"><span class="user">汪波：</span>一分钟视频下载到手机里播放8秒左右APP闪退</div>
+<div class="quote-box"><span class="user">用户2：</span>4g模式下全屏预览实时视频后想返回竖屏状态，几秒钟后白屏App闪退</div>
+<div class="quote-box"><span class="user">用户3：</span>点击下载异常过曝的视频时APP闪退，视频也是0kb</div>
+</td></tr>
+<tr><td>9</td><td><strong>白屏</strong></td><td><span class="badge badge-green">13 条</span></td><td>1.9%</td>
+<td>
+<div class="quote-box"><span class="user">用户1：</span>哨兵视频白屏，下载下来的视频也是白屏</div>
+<div class="quote-box"><span class="user">用户2：</span>实时画面白屏</div>
+<div class="quote-box"><span class="user">用户3：</span>观看实时录像正常开流但白屏</div>
+</td></tr>
+<tr><td>10</td><td><strong>逆光/高光环境过曝</strong></td><td><span class="badge badge-green">13 条</span></td><td>1.9%</td>
+<td>
+<div class="quote-box"><span class="user">用户1：</span>实时视频白茫茫一片，什么都看不见</div>
+<div class="quote-box"><span class="user">用户2：</span>镜头误朝上对准天空时画面会产生大面积高光过曝，天空区域直接发白丢失细节</div>
+<div class="quote-box"><span class="user">用户3：</span>画面高光部分过曝有点多，画面效果可以优化一下</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="footer">
+<p>📊 T200 日常问题反馈对比分析报告 | 数据来源：飞书「日常问题跟进」sheet | 生成时间：2026-06-29 16:02</p>
+<p>🦞 尹燕玲-报告分析专家 | 360 绿色系配色</p>
+</div>
+</div>
+</body>
+</html>
