@@ -35,8 +35,12 @@ tr:nth-child(even){background:#f9f9f9}
 <div class="stats">
 <div class="stat-card"><div class="num">66</div><div class="label">样本量</div></div>
 <div class="stat-card"><div class="num">8.60</div><div class="label">整体满意度(1-10)</div></div>
-<div class="stat-card"><div class="num">10</div><div class="label">公测天数</div></div>
-<div class="stat-card"><div class="num">360</div><div class="label">绿色品质</div></div>
+<div class="stat-card"><div class="num">9.15</div><div class="label">最高分：哨兵远程查看</div></div>
+<div class="stat-card"><div class="num">8.20</div><div class="label">最低分：停车监控碰撞检测</div></div>
+</div>
+<div class="section">
+<h2>✨ 核心发现</h2>
+<div class="highlight">✅ <b>碰撞检测 8.20分、行人侦测 8.42分、车辆侦测 8.50分</b>，核心侦测能力达标</div><div class="highlight">✅ <b>功耗控制 9.08分、远程查看 9.15分</b>，用户最满意</div><div class="highlight">✅ <b>哨兵模式自动开启率 98.5%</b></div><div class="warning">⚠️ <b>误触发频繁 30.3%</b>、<b>哨兵误报频繁 25.8%</b>，根因在检测算法</div><div class="warning">⚠️ <b>行人侦测遗漏 22.7%</b>、<b>碰撞检测不唤醒 31.8%</b></div><div class="highlight">✅ <b>缩时录影 8.67分</b>，72.7% 录影完整</div>
 </div>
 <div class="section">
 <h2>📊 各维度满意度评分</h2>
@@ -350,73 +354,10 @@ tr:nth-child(even){background:#f9f9f9}
 </div>
 
 </div>
-<div class="section">
-<h2>🔄 交叉分析（占比堆积柱形图）</h2>
-<div class="chart-box"><svg viewBox="0 0 540 193" style="width:100%;max-width:540px;height:auto" xmlns="http://www.w3.org/2000/svg">
-<text x="270.0" y="22" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">灵敏度设置 vs 误报情况（占比堆积）</text>
-<rect x="110" y="35" width="9" height="9" fill="#00B050" rx="2"/>
-<text x="122" y="44" font-size="9" fill="#666">A.几乎无误报</text>
-<rect x="220" y="35" width="9" height="9" fill="#F39C12" rx="2"/>
-<text x="232" y="44" font-size="9" fill="#666">B.偶有误报</text>
-<rect x="330" y="35" width="9" height="9" fill="#E74C3C" rx="2"/>
-<text x="342" y="44" font-size="9" fill="#666">C.误报频繁(3次+)</text>
-<text x="100" y="73" font-size="10" fill="#555" text-anchor="end">A.低</text>
-<rect x="110" y="60" width="380" height="20" fill="#eee" rx="3"/>
-<text x="300.0" y="73" font-size="9" fill="#aaa" text-anchor="middle">n=0</text>
-<text x="100" y="109" font-size="10" fill="#555" text-anchor="end">B.中</text>
-<rect x="110.0" y="96" width="380.0" height="20" fill="#00B050" rx="2"/>
-<text x="300.0" y="109" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">100%</text>
-<text x="495" y="109" font-size="9" fill="#999">n=9</text>
-<text x="100" y="145" font-size="10" fill="#555" text-anchor="end">C.高</text>
-<rect x="110.0" y="132" width="380.0" height="20" fill="#00B050" rx="2"/>
-<text x="300.0" y="145" font-size="9" fill="#fff" text-anchor="middle" font-weight="bold">100%</text>
-<text x="495" y="145" font-size="9" fill="#999">n=8</text>
-</svg></div>
-<div class="chart-box"><svg viewBox="0 0 540 157" style="width:100%;max-width:540px;height:auto" xmlns="http://www.w3.org/2000/svg">
-<text x="270.0" y="22" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">哨兵模式开启 vs 功耗满意度（占比堆积）</text>
-<rect x="110" y="35" width="9" height="9" fill="#00B050" rx="2"/>
-<text x="122" y="44" font-size="9" fill="#666">A.功耗正常</text>
-<rect x="220" y="35" width="9" height="9" fill="#F39C12" rx="2"/>
-<text x="232" y="44" font-size="9" fill="#666">B.偏高可接受</text>
-<rect x="330" y="35" width="9" height="9" fill="#E74C3C" rx="2"/>
-<text x="342" y="44" font-size="9" fill="#666">C.过高担心</text>
-<text x="100" y="73" font-size="10" fill="#555" text-anchor="end">A.自动进入</text>
-<rect x="110" y="60" width="380" height="20" fill="#eee" rx="3"/>
-<text x="300.0" y="73" font-size="9" fill="#aaa" text-anchor="middle">n=0</text>
-<text x="100" y="109" font-size="10" fill="#555" text-anchor="end">D.无法进入</text>
-<rect x="110" y="96" width="380" height="20" fill="#eee" rx="3"/>
-<text x="300.0" y="109" font-size="9" fill="#aaa" text-anchor="middle">n=0</text>
-</svg></div>
-<div class="chart-box"><svg viewBox="0 0 540 229" style="width:100%;max-width:540px;height:auto" xmlns="http://www.w3.org/2000/svg">
-<text x="270.0" y="22" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">缩时录影时长 vs 视频质量（占比堆积）</text>
-<rect x="110" y="35" width="9" height="9" fill="#00B050" rx="2"/>
-<text x="122" y="44" font-size="9" fill="#666">A.清晰</text>
-<rect x="220" y="35" width="9" height="9" fill="#F39C12" rx="2"/>
-<text x="232" y="44" font-size="9" fill="#666">B.花屏/卡顿</text>
-<rect x="330" y="35" width="9" height="9" fill="#E74C3C" rx="2"/>
-<text x="342" y="44" font-size="9" fill="#666">C.失败/差</text>
-<text x="100" y="73" font-size="10" fill="#555" text-anchor="end">A.8小时</text>
-<rect x="110" y="60" width="380" height="20" fill="#eee" rx="3"/>
-<text x="300.0" y="73" font-size="9" fill="#aaa" text-anchor="middle">n=0</text>
-<text x="100" y="109" font-size="10" fill="#555" text-anchor="end">B.16小时</text>
-<rect x="110" y="96" width="380" height="20" fill="#eee" rx="3"/>
-<text x="300.0" y="109" font-size="9" fill="#aaa" text-anchor="middle">n=0</text>
-<text x="100" y="145" font-size="10" fill="#555" text-anchor="end">C.24小时</text>
-<rect x="110" y="132" width="380" height="20" fill="#eee" rx="3"/>
-<text x="300.0" y="145" font-size="9" fill="#aaa" text-anchor="middle">n=0</text>
-<text x="100" y="181" font-size="10" fill="#555" text-anchor="end">D.关闭</text>
-<rect x="110" y="168" width="380" height="20" fill="#eee" rx="3"/>
-<text x="300.0" y="181" font-size="9" fill="#aaa" text-anchor="middle">n=0</text>
-</svg></div>
 
-</div>
-<div class="section">
-<h2>✨ 核心发现</h2>
-<div class="highlight">✅ <b>碰撞检测 8.20分、行人侦测 8.42分、车辆侦测 8.50分</b>，核心侦测能力达标</div><div class="highlight">✅ <b>功耗控制 9.08分、远程查看 9.15分</b>，用户最满意</div><div class="highlight">✅ <b>哨兵模式自动开启率 98.5%</b></div><div class="warning">⚠️ <b>误触发频繁 30.3%</b>、<b>哨兵误报频繁 25.8%</b>，根因在检测算法</div><div class="warning">⚠️ <b>行人侦测遗漏 22.7%</b>、<b>碰撞检测不唤醒 31.8%</b></div><div class="highlight">✅ <b>缩时录影 8.67分</b>，72.7% 录影完整</div>
-<div class="highlight">📊 <b>数据来源</b>：飞书电子表格，66 份有效问卷，纯静态 SVG 图表，不依赖 JS</div>
-</div>
+
 <div class="footer">
-<p>T200 哨兵守护专项分析报告 | 数据来源：飞书文档 | 生成时间：2026-06-30</p>
+<p>T200 哨兵守护专项分析报告 | 生成时间：2026-06-30</p>
 <p>🦞 尹燕玲-报告分析专家 | 360 绿色系配色</p>
 </div>
 </div></body></html>
