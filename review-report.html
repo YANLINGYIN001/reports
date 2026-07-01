@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>360智能猫眼6Pro全景版 · 新品跟踪项目复盘报告</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --green-primary: #00B050;
+  --green-light: #2BBD6E;
+  --green-dark: #007A36;
+  --green-glow: rgba(0, 176, 80, 0.15);
+  --green-pale: #E8F8EF;
+  --dark: #0D1B14;
+  --dark-card: #142820;
+  --dark-border: #1E3A2B;
+  --gray-900: #1A1A1A;
+  --gray-700: #4A4A4A;
+  --gray-500: #7A7A7A;
+  --gray-300: #B0B0B0;
+  --gray-100: #E8E8E8;
+  --gray-50: #F5F7FA;
+  --white: #FFFFFF;
+  --red: #E74C3C;
+  --red-light: #FDEDEC;
+  --orange: #F39C12;
+  --orange-light: #FEF5E7;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+  --shadow-green: 0 8px 32px rgba(0, 176, 80, 0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-900);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+/* ========== HERO ========== */
+.hero {
+  background: linear-gradient(135deg, #0D1B14 0%, #0A2818 40%, #0D3320 100%);
+  color: var(--white);
+  padding: 80px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -15%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,176,80,0.12) 0%, transparent 65%);
+  border-radius: 50%;
+  animation: pulse 6s ease-in-out infinite;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40%; left: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(43,189,110,0.08) 0%, transparent 65%);
+  border-radius: 50%;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0, 176, 80, 0.15);
+  backdrop-filter: blur(12px);
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-size: 13px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 176, 80, 0.3);
+  color: var(--green-light);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.hero-badge .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green-light);
+  box-shadow: 0 0 12px var(--green-light);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.hero h1 {
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--green-primary), var(--green-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  max-width: 640px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+.hero-meta {
+  display: flex; gap: 48px; margin-top: 40px; flex-wrap: wrap;
+}
+.hero-meta-item { display: flex; flex-direction: column; gap: 6px; }
+.hero-meta-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+.hero-meta-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+}
+.hero-meta-value .unit {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  margin-left: 2px;
+}
+
+/* ========== SECTIONS ========== */
+.section { padding: 56px 0; }
+.section-header { margin-bottom: 32px; }
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  display: flex; align-items: center; gap: 12px;
+  letter-spacing: -0.5px;
+}
+.section-title .badge {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  background: var(--green-pale);
+}
+.section-desc {
+  color: var(--gray-500);
+  font-size: 14px;
+  margin-top: 6px;
+  margin-left: 48px;
+}
+
+/* ========== KPI CARDS ========== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.kpi-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--green-primary), var(--green-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-green);
+  border-color: var(--green-light);
+}
+.kpi-card:hover::before { transform: scaleX(1); }
+.kpi-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  background: var(--green-pale);
+}
+.kpi-value {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  color: var(--gray-900);
+}
+.kpi-value .unit {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--gray-500);
+  margin-left: 4px;
+}
+.kpi-label {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin-top: 10px;
+  font-weight: 500;
+}
+.kpi-trend {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px;
+  color: var(--green-primary);
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/* ========== CHARTS ========== */
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.chart-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+}
+.chart-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.chart-card .chart-desc {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin-bottom: 24px;
+}
+.chart-wrapper {
+  position: relative;
+  height: 280px;
+}
+.chart-wrapper.tall { height: 340px; }
+
+/* ========== TIMELINE ========== */
+.timeline-section {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+}
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 14px; top: 12px; bottom: 12px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--green-primary), var(--green-light), var(--gray-300));
+  border-radius: 1px;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 32px;
+  transition: transform 0.2s;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item:hover { transform: translateX(4px); }
+.timeline-dot {
+  position: absolute;
+  left: -33px; top: 4px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--green-primary);
+  box-shadow: 0 0 0 4px var(--green-pale);
+  z-index: 1;
+}
+.timeline-dot.danger { border-color: var(--red); box-shadow: 0 0 0 4px var(--red-light); }
+.timeline-dot.warning { border-color: var(--orange); box-shadow: 0 0 0 4px var(--orange-light); }
+.timeline-dot.success { border-color: var(--green-primary); box-shadow: 0 0 0 4px var(--green-pale); }
+.timeline-date {
+  font-size: 12px;
+  color: var(--gray-500);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-family: 'DM Mono', monospace;
+}
+.timeline-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 4px;
+  color: var(--gray-900);
+}
+.timeline-body {
+  font-size: 14px;
+  color: var(--gray-500);
+  margin-top: 6px;
+  line-height: 1.7;
+}
+.timeline-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+.timeline-tag.critical { background: var(--red-light); color: var(--red); }
+.timeline-tag.warning { background: var(--orange-light); color: var(--orange); }
+.timeline-tag.milestone { background: var(--green-pale); color: var(--green-primary); }
+
+/* ========== TASK CARDS ========== */
+.task-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.task-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+  border-left: 5px solid var(--green-primary);
+  transition: box-shadow 0.3s;
+}
+.task-card:hover { box-shadow: var(--shadow-md); }
+.task-card.warning { border-left-color: var(--orange); }
+.task-card.danger { border-left-color: var(--red); }
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.task-title { font-size: 18px; font-weight: 700; }
+.task-role {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin-top: 4px;
+}
+.task-status {
+  padding: 6px 16px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.task-status.done { background: var(--green-pale); color: var(--green-primary); }
+.task-status.partial { background: var(--orange-light); color: var(--orange); }
+.task-stats {
+  display: flex; gap: 32px;
+  padding: 20px 0;
+  border-top: 1px solid var(--gray-100);
+  border-bottom: 1px solid var(--gray-100);
+  margin-bottom: 20px;
+}
+.task-stat-item { text-align: center; }
+.task-stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+}
+.task-stat-value.green { color: var(--green-primary); }
+.task-stat-value.red { color: var(--red); }
+.task-stat-value.orange { color: var(--orange); }
+.task-stat-label {
+  font-size: 12px;
+  color: var(--gray-500);
+  margin-top: 6px;
+}
+.task-summary {
+  font-size: 14px;
+  color: var(--gray-700);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.problem-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.problem-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  color: var(--gray-700);
+  transition: all 0.2s;
+}
+.problem-tag:hover { background: var(--green-pale); border-color: var(--green-light); }
+.problem-tag .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.problem-tag .dot.red { background: var(--red); }
+.problem-tag .dot.yellow { background: var(--orange); }
+.problem-tag .dot.green { background: var(--green-primary); }
+
+/* ========== SEVERITY BAR ========== */
+.severity-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+}
+.severity-bar {
+  display: flex;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 20px 0 12px;
+}
+.severity-bar .seg {
+  height: 100%;
+  transition: filter 0.3s;
+}
+.severity-bar .seg:hover { filter: brightness(1.15); }
+.severity-bar .seg.red { background: linear-gradient(90deg, #E74C3C, #C0392B); }
+.severity-bar .seg.yellow { background: linear-gradient(90deg, #F39C12, #D68910); }
+.severity-bar .seg.green { background: linear-gradient(90deg, #00B050, #2BBD6E); }
+.severity-legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+.severity-legend-item {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--gray-700);
+}
+.severity-legend-item .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.severity-legend-item .dot.red { background: var(--red); }
+.severity-legend-item .dot.yellow { background: var(--orange); }
+.severity-legend-item .dot.green { background: var(--green-primary); }
+.severity-legend-item strong { font-weight: 700; }
+
+/* ========== LESSONS ========== */
+.lessons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.lesson-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.lesson-card:hover {
+  box-shadow: var(--shadow-green);
+  border-color: var(--green-light);
+  transform: translateY(-2px);
+}
+.lesson-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.lesson-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--green-primary), var(--green-light));
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+.lesson-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.lesson-card p {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== IMPROVEMENT TABLE ========== */
+.improvement-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+  overflow-x: auto;
+}
+.improvement-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.improvement-table thead tr {
+  border-bottom: 2px solid var(--gray-100);
+}
+.improvement-table th {
+  text-align: left;
+  padding: 14px 12px;
+  font-weight: 700;
+  color: var(--gray-700);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.improvement-table td {
+  padding: 16px 12px;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-700);
+}
+.improvement-table tr:last-child td { border-bottom: none; }
+.improvement-table tr:hover { background: var(--gray-50); }
+.priority-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.priority-tag.high { background: var(--red-light); color: var(--red); }
+.priority-tag.mid { background: var(--orange-light); color: var(--orange); }
+.priority-tag.low { background: var(--green-pale); color: var(--green-primary); }
+
+/* ========== FOOTER ========== */
+.footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.6);
+  padding: 48px 0;
+  text-align: center;
+  font-size: 13px;
+}
+.footer-brand {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.footer-brand .green { color: var(--green-light); }
+.footer-meta { margin-top: 6px; }
+
+/* ========== DELIVERABLES ========== */
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.deliverable-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.deliverable-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  background: var(--green-pale);
+}
+.deliverable-title { font-size: 15px; font-weight: 700; }
+.deliverable-desc { font-size: 13px; color: var(--gray-500); line-height: 1.7; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .chart-grid { grid-template-columns: 1fr; }
+  .lessons-grid { grid-template-columns: 1fr; }
+  .deliverables-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 28px; }
+  .hero-meta { gap: 24px; }
+  .container { padding: 0 20px; }
+  .section { padding: 40px 0; }
+}
+@media (max-width: 600px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+  .task-stats { gap: 16px; }
+  .hero h1 { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<div class="hero">
+  <div class="container hero-content">
+    <span class="hero-badge"><span class="dot"></span>项目复盘报告 · 2026-07-01</span>
+    <h1>360智能猫眼6Pro全景版<br><span class="accent">新品跟踪项目复盘</span></h1>
+    <p class="hero-sub">31天全渠道用户反馈跟踪 · 多智能体协作 · 数据驱动产品迭代</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Tracking Period</span>
+        <span class="hero-meta-value">31<span class="unit">天</span></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Daily Reports</span>
+        <span class="hero-meta-value">16<span class="unit">封</span></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">AI Agents</span>
+        <span class="hero-meta-value">6<span class="unit">个</span></span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">OTA Pushes</span>
+        <span class="hero-meta-value">2<span class="unit">次</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== KPI DASHBOARD ========== -->
+<div class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title"><span class="badge">📈</span>核心数据看板</div>
+      <p class="section-desc">项目31天跟踪期间关键指标一览</p>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon">🔋</div>
+        <div class="kpi-value">2,501<span class="unit">台</span></div>
+        <div class="kpi-label">累计激活量</div>
+        <div class="kpi-trend">↗ 持续增长</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">⚠️</div>
+        <div class="kpi-value">134<span class="unit">例</span></div>
+        <div class="kpi-label">重点问题（9类）</div>
+        <div class="kpi-trend">9大问题分类</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">📧</div>
+        <div class="kpi-value">16<span class="unit">封</span></div>
+        <div class="kpi-label">日报邮件发送</div>
+        <div class="kpi-trend">100% 送达</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🔄</div>
+        <div class="kpi-value">2<span class="unit">次</span></div>
+        <div class="kpi-label">OTA固件推送</div>
+        <div class="kpi-trend">6.5 / 6.20</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== CHARTS ========== -->
+<div class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3>问题严重程度分布</h3>
+        <p class="chart-desc">全部29个问题按影响等级分类</p>
+        <div class="chart-wrapper">
+          <canvas id="severityChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>三大任务问题解决对比</h3>
+        <p class="chart-desc">各子任务遇到的问题数量及解决情况</p>
+        <div class="chart-wrapper">
+          <canvas id="taskChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Problem Type Distribution -->
+<div class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="chart-card">
+      <h3>重点问题类型分布（9类 · 134例）</h3>
+      <p class="chart-desc">基于J列打标数据统计 · 以实际打标为准</p>
+      <div class="chart-wrapper tall">
+        <canvas id="problemChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SEVERITY BAR ========== -->
+<div class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="severity-card">
+      <h3 style="font-size:17px; font-weight:700; margin-bottom:4px;">问题严重程度概览</h3>
+      <p style="font-size:13px; color:var(--gray-500);">全部29个问题 · 严重问题占比超七成</p>
+      <div class="severity-bar">
+        <div class="seg red" style="width:72.4%;"></div>
+        <div class="seg yellow" style="width:20.7%;"></div>
+        <div class="seg green" style="width:6.9%;"></div>
+      </div>
+      <div class="severity-legend">
+        <div class="severity-legend-item"><span class="dot red"></span>🔴 严重 <strong>21个</strong> (72.4%)</div>
+        <div class="severity-legend-item"><span class="dot yellow"></span>🟡 中等 <strong>6个</strong> (20.7%)</div>
+        <div class="severity-legend-item"><span class="dot green"></span>🟢 轻微 <strong>2个</strong> (6.9%)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== TIMELINE ========== -->
+<div class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title"><span class="badge">🕐</span>关键事件时间线</div>
+      <p class="section-desc">项目期间9个重要节点与里程碑</p>
+    </div>
+    <div class="timeline-section">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot success"></div>
+          <div class="timeline-date">2026-05-27</div>
+          <div class="timeline-title">🚀 360智能猫眼6Pro全景版正式上市</div>
+          <div class="timeline-body">新品跟踪项目启动，开始全渠道用户反馈监控，多智能体协作体系就位</div>
+          <span class="timeline-tag milestone">里程碑</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2026-06-05</div>
+          <div class="timeline-title">📦 第一次OTA固件推送</div>
+          <div class="timeline-body">首批固件优化更新，修复初始版本已知问题</div>
+          <span class="timeline-tag milestone">OTA</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2026-06-12</div>
+          <div class="timeline-title">📋 多智能体协作方案确认</div>
+          <div class="timeline-body">邮件小能手 + 新品跟踪助理 + 跟进助手，多角色分工协作模式正式确立</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot danger"></div>
+          <div class="timeline-date">2026-06-15</div>
+          <div class="timeline-title">🔴 邮件发送连环问题爆发</div>
+          <div class="timeline-body">空邮件、HTML不渲染表格、reply-item主题无效等问题集中爆发，当日全部修复</div>
+          <span class="timeline-tag critical">关键事故</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot danger"></div>
+          <div class="timeline-date">2026-06-18</div>
+          <div class="timeline-title">🔴🔴 预览邮件误发全组事件（最严重事故）</div>
+          <div class="timeline-body">预览邮件误用全部回复发给全组。事后确立铁律：预览只发尹燕玲自己，正式发送用reply-item全部答复</div>
+          <span class="timeline-tag critical">P0事故</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot warning"></div>
+          <div class="timeline-date">2026-06-20</div>
+          <div class="timeline-title">📦 第二次OTA固件推送</div>
+          <div class="timeline-body">第二批固件更新，持续优化产品体验</div>
+          <span class="timeline-tag milestone">OTA</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot warning"></div>
+          <div class="timeline-date">2026-06-22</div>
+          <div class="timeline-title">⚠️ 邮件发送方式纠正</div>
+          <div class="timeline-body">尹燕玲明确要求：日报必须用reply-item全部答复，禁止create-mail新建邮件。收件人名单缺失问题同日暴露</div>
+          <span class="timeline-tag warning">流程纠正</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2026-06-23</div>
+          <div class="timeline-title">🔧 答复链显示问题修复</div>
+          <div class="timeline-body">update-item覆盖RE:前缀导致收件箱显示为新邮件，改为在reply-item SOAP中直接设置主题</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot success"></div>
+          <div class="timeline-date">2026-06-25</div>
+          <div class="timeline-title">✅ 邮件发送流程标准化</div>
+          <div class="timeline-body">三步走流程确立：reply-item(draft) → 确认内容+收件人 → send-item。verify-sent时差问题已有兜底方案</div>
+          <span class="timeline-tag milestone">流程确立</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot success"></div>
+          <div class="timeline-date">2026-06-26</div>
+          <div class="timeline-title">🏁 项目跟踪结束，进入复盘阶段</div>
+          <div class="timeline-body">31天跟踪完成，累计15天重点问题section、16封日报邮件、1份结项报告</div>
+          <span class="timeline-tag milestone">里程碑</span>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot success"></div>
+          <div class="timeline-date">2026-07-01</div>
+          <div class="timeline-title">📊 完整复盘报告输出</div>
+          <div class="timeline-body">三大任务全面复盘，29个问题清单、8条核心经验沉淀、可视化报告生成</div>
+          <span class="timeline-tag milestone">复盘完成</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== TASK SUMMARY ========== -->
+<div class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title"><span class="badge">✅</span>三大任务执行总结</div>
+      <p class="section-desc">各子任务完成情况与问题全景</p>
+    </div>
+    <div class="task-grid">
+      <!-- Task 1 -->
+      <div class="task-card warning">
+        <div class="task-header">
+          <div>
+            <div class="task-title">任务1：智汇云数据读取</div>
+            <div class="task-role">负责人：尹燕玲-原始数据更新1</div>
+          </div>
+          <span class="task-status partial">⚠️ 人工辅助完成</span>
+        </div>
+        <div class="task-stats">
+          <div class="task-stat-item">
+            <div class="task-stat-value orange">5</div>
+            <div class="task-stat-label">问题总数</div>
+          </div>
+          <div class="task-stat-item">
+            <div class="task-stat-value green">1</div>
+            <div class="task-stat-label">已解决（临时）</div>
+          </div>
+          <div class="task-stat-item">
+            <div class="task-stat-value red">4</div>
+            <div class="task-stat-label">未解决</div>
+          </div>
+        </div>
+        <p class="task-summary">
+          智汇云iframe+短session架构对浏览器自动化极不友好，两次尝试均未能通过自动化完成，最终由尹燕玲手动更新。核心瓶颈在于iframe跨域操作和登录会话频繁过期。
+        </p>
+        <div class="problem-tags">
+          <span class="problem-tag"><span class="dot red"></span>登录会话频繁过期</span>
+          <span class="problem-tag"><span class="dot red"></span>iframe跨域不稳定</span>
+          <span class="problem-tag"><span class="dot red"></span>浏览器跳转问卷星</span>
+          <span class="problem-tag"><span class="dot red"></span>浏览器启动失败</span>
+          <span class="problem-tag"><span class="dot yellow"></span>短信验证码过期</span>
+        </div>
+      </div>
+
+      <!-- Task 2 -->
+      <div class="task-card">
+        <div class="task-header">
+          <div>
+            <div class="task-title">任务2：重点问题Sheet更新 & 日报邮件生成</div>
+            <div class="task-role">负责人：尹燕玲-智能猫眼新品跟踪助理</div>
+          </div>
+          <span class="task-status done">✅ 完成</span>
+        </div>
+        <div class="task-stats">
+          <div class="task-stat-item">
+            <div class="task-stat-value green">14</div>
+            <div class="task-stat-label">问题总数</div>
+          </div>
+          <div class="task-stat-item">
+            <div class="task-stat-value green">14</div>
+            <div class="task-stat-label">已解决</div>
+          </div>
+          <div class="task-stat-item">
+            <div class="task-stat-value green">0</div>
+            <div class="task-stat-label">未解决</div>
+          </div>
+        </div>
+        <p class="task-summary">
+          完成31天数据跟踪，建立统计铁律体系（J列打标为准）、数据同步映射规则、飞书API富文本解析等关键能力。产出15天section + 16封日报 + 1份结项报告。
+        </p>
+        <div class="problem-tags">
+          <span class="problem-tag"><span class="dot red"></span>数据同步列映射混乱</span>
+          <span class="problem-tag"><span class="dot red"></span>统计口径多次偏差</span>
+          <span class="problem-tag"><span class="dot red"></span>J列打标质量差</span>
+          <span class="problem-tag"><span class="dot red"></span>飞书API数据截断</span>
+          <span class="problem-tag"><span class="dot red"></span>富文本返回对象</span>
+          <span class="problem-tag"><span class="dot red"></span>公式返回公式文本</span>
+          <span class="problem-tag"><span class="dot red"></span>文档迁移脚本失效</span>
+          <span class="problem-tag"><span class="dot yellow"></span>腾讯文档无法API读取</span>
+          <span class="problem-tag"><span class="dot red"></span>日报格式多次返工</span>
+          <span class="problem-tag"><span class="dot red"></span>--body-file空邮件</span>
+          <span class="problem-tag"><span class="dot red"></span>预览误发全组</span>
+          <span class="problem-tag"><span class="dot red"></span>新建vs全部回复</span>
+          <span class="problem-tag"><span class="dot yellow"></span>Outlook CSS兼容</span>
+          <span class="problem-tag"><span class="dot yellow"></span>激活数据滞后</span>
+        </div>
+      </div>
+
+      <!-- Task 3 -->
+      <div class="task-card">
+        <div class="task-header">
+          <div>
+            <div class="task-title">任务3：日报邮件发送</div>
+            <div class="task-role">负责人：尹燕玲-邮件发送小能手</div>
+          </div>
+          <span class="task-status done">✅ 完成</span>
+        </div>
+        <div class="task-stats">
+          <div class="task-stat-item">
+            <div class="task-stat-value green">10</div>
+            <div class="task-stat-label">问题总数</div>
+          </div>
+          <div class="task-stat-item">
+            <div class="task-stat-value green">10</div>
+            <div class="task-stat-label">已解决</div>
+          </div>
+          <div class="task-stat-item">
+            <div class="task-stat-value green">0</div>
+            <div class="task-stat-label">未解决</div>
+          </div>
+        </div>
+        <p class="task-summary">
+          从空邮件、HTML不渲染到答复链断裂、预览误发，经历10个问题后建立标准化三步走发送流程。最终实现100%送达率，所有邮件均在上一封日报基础上全部答复。
+        </p>
+        <div class="problem-tags">
+          <span class="problem-tag"><span class="dot red"></span>--body-file空邮件</span>
+          <span class="problem-tag"><span class="dot red"></span>HTML不渲染表格</span>
+          <span class="problem-tag"><span class="dot red"></span>reply-item主题无效</span>
+          <span class="problem-tag"><span class="dot red"></span>新建vs全员答复</span>
+          <span class="problem-tag"><span class="dot red"></span>收件人名单缺失</span>
+          <span class="problem-tag"><span class="dot red"></span>邮件停留草稿箱</span>
+          <span class="problem-tag"><span class="dot red"></span>答复显示为新邮件</span>
+          <span class="problem-tag"><span class="dot red"></span>HTML格式不一致</span>
+          <span class="problem-tag"><span class="dot red"></span>预览误发风险</span>
+          <span class="problem-tag"><span class="dot yellow"></span>verify-sent时差</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== LESSONS ========== -->
+<div class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title"><span class="badge">💡</span>核心经验沉淀</div>
+      <p class="section-desc">从29个问题中提炼的8条关键教训</p>
+    </div>
+    <div class="lessons-grid">
+      <div class="lesson-card">
+        <div class="lesson-num">1</div>
+        <h4>预览与发送必须隔离</h4>
+        <p>预览邮件只发自己（create-mail），确认后才全员发送（reply-item全部答复）。这是用6.18最严重事故换来的铁律。</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-num">2</div>
+        <h4>统计口径必须固化为铁律</h4>
+        <p>不靠口头记忆，以J列打标数据为准。激活占比的总量以整体数据sheet累计激活数为准，不混用数据源。</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-num">3</div>
+        <h4>邮件发送三步走</h4>
+        <p>reply-item(SaveOnly) → 确认内容+收件人 → send-item。每步确认成功，失败立即报告，绝不假装成功。</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-num">4</div>
+        <h4>有模板就参照，不自行创新</h4>
+        <p>日报邮件格式严格参照已有模板，基于原邮件HTML做最小修改，不从头重建结构。</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-num">5</div>
+        <h4>上游数据不可控时建交叉验证</h4>
+        <p>J列打标质量差 → 人工打标确认+交叉验证。数据来源不可靠时，必须建立人工确认机制。</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-num">6</div>
+        <h4>多步操作必须逐步确认</h4>
+        <p>create-mail → send-item 流程中，只执行第一步就报告成功是最常见的坑。每步必须确认API返回成功。</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-num">7</div>
+        <h4>Exchange SOAP有特殊行为</h4>
+        <p>update-item覆盖RE:前缀导致答复链断裂；--body-file不生效需用--body；CSS需全部内联。Exchange的怪癖需专门记录。</p>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-num">8</div>
+        <h4>iframe+短session架构不适合自动化</h4>
+        <p>智汇云的iframe嵌入+短session架构对浏览器自动化极不友好。应寻找API直连方式，或接受人工辅助。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== IMPROVEMENT ========== -->
+<div class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title"><span class="badge">🎯</span>改进建议</div>
+      <p class="section-desc">针对下一期新品跟踪的优化方向</p>
+    </div>
+    <div class="improvement-card">
+      <table class="improvement-table">
+        <thead>
+          <tr>
+            <th style="width:18%;">方向</th>
+            <th style="width:62%;">方案</th>
+            <th style="width:20%;">优先级</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:700;">智汇云数据</td>
+            <td>方案A: 找API文档直连 | 方案B: 长效凭证 | 方案C: 人工导出+自动解析</td>
+            <td><span class="priority-tag high">🔴 高</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">邮件发送</td>
+            <td>封装标准化发送函数，内置三步走+验证+收件人校验</td>
+            <td><span class="priority-tag mid">🟡 中</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">数据同步</td>
+            <td>同步脚本加入数据完整性校验+异常告警</td>
+            <td><span class="priority-tag mid">🟡 中</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;">流程文档化</td>
+            <td>将铁律和流程固化为可执行的SOP文档，新角色上手即用</td>
+            <td><span class="priority-tag low">🟢 低</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ========== DELIVERABLES ========== -->
+<div class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title"><span class="badge">📦</span>交付物清单</div>
+      <p class="section-desc">项目最终产出物一览</p>
+    </div>
+    <div class="deliverables-grid">
+      <div class="deliverable-card">
+        <div class="deliverable-icon">📊</div>
+        <div class="deliverable-title">可视化复盘报告（HTML）</div>
+        <div class="deliverable-desc">含数据看板、图表、时间线、问题标签，适合分享传播</div>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon">📝</div>
+        <div class="deliverable-title">Markdown完整复盘报告</div>
+        <div class="deliverable-desc">完整文字版，含全部29个问题清单、解决方案、经验沉淀</div>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon">📋</div>
+        <div class="deliverable-title">重点问题Sheet</div>
+        <div class="deliverable-desc">飞书表格「智能猫眼新品跟踪表」15天section</div>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon">📧</div>
+        <div class="deliverable-title">日报邮件存档</div>
+        <div class="deliverable-desc">16封日报邮件 + 1份结项报告</div>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon">📖</div>
+        <div class="deliverable-title">经验文档</div>
+        <div class="deliverable-desc">memory/email_report_guide.md、memory/learnings/ 目录下的教训记录</div>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-icon">🔄</div>
+        <div class="deliverable-title">标准化发送流程</div>
+        <div class="deliverable-desc">三步走邮件发送SOP，可复用于后续新品跟踪项目</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<div class="footer">
+  <div class="container">
+    <div class="footer-brand">360智能猫眼6Pro全景版 · <span class="green">新品跟踪项目复盘</span></div>
+    <div class="footer-meta">2026.05.27 — 2026.06.26 | 报告生成时间：2026-07-01</div>
+    <div class="footer-meta" style="margin-top:4px; opacity:0.5;">🦞 由尹燕玲-报告分析专家生成</div>
+  </div>
+</div>
+
+<script>
+// === Severity Doughnut Chart ===
+new Chart(document.getElementById('severityChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['严重 🔴', '中等 🟡', '轻微 🟢'],
+    datasets: [{
+      data: [21, 6, 2],
+      backgroundColor: ['#E74C3C', '#F39C12', '#00B050'],
+      borderWidth: 0,
+      spacing: 3,
+      hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '65%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { padding: 20, font: { size: 13, family: 'Noto Sans SC' }, usePointStyle: true, pointStyle: 'circle' }
+      },
+      tooltip: {
+        backgroundColor: 'rgba(13, 27, 20, 0.9)',
+        padding: 12,
+        titleFont: { family: 'Noto Sans SC', size: 14 },
+        bodyFont: { family: 'Noto Sans SC', size: 13 },
+        callbacks: {
+          label: function(ctx) {
+            const total = ctx.dataset.data.reduce((a,b) => a+b, 0);
+            const pct = ((ctx.parsed / total) * 100).toFixed(1);
+            return ctx.label + ': ' + ctx.parsed + '个 (' + pct + '%)';
+          }
+        }
+      }
+    }
+  }
+});
+
+// === Task Problem Count Chart ===
+new Chart(document.getElementById('taskChart'), {
+  type: 'bar',
+  data: {
+    labels: ['智汇云数据读取', '重点问题+日报生成', '邮件发送'],
+    datasets: [{
+      label: '已解决',
+      data: [1, 14, 10],
+      backgroundColor: '#00B050',
+      borderRadius: 8,
+      barThickness: 36
+    }, {
+      label: '未解决',
+      data: [4, 0, 0],
+      backgroundColor: '#E74C3C',
+      borderRadius: 8,
+      barThickness: 36
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { padding: 20, font: { size: 13, family: 'Noto Sans SC' }, usePointStyle: true, pointStyle: 'circle' }
+      },
+      tooltip: {
+        backgroundColor: 'rgba(13, 27, 20, 0.9)',
+        padding: 12,
+        titleFont: { family: 'Noto Sans SC', size: 14 },
+        bodyFont: { family: 'Noto Sans SC', size: 13 }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { font: { size: 12, family: 'Noto Sans SC' }, color: '#4A4A4A' }
+      },
+      y: {
+        beginAtZero: true,
+        grid: { color: '#F0F0F0' },
+        ticks: { font: { size: 12, family: 'DM Mono' }, color: '#7A7A7A' }
+      }
+    }
+  }
+});
+
+// === Problem Type Distribution Chart ===
+new Chart(document.getElementById('problemChart'), {
+  type: 'bar',
+  data: {
+    labels: ['设备离线/未连接', '屏幕花屏', '画面无声音', 'APP连接异常', '夜视效果差', '电量耗电快', '安装适配问题', '云存储异常', '其他'],
+    datasets: [{
+      data: [38, 22, 18, 16, 12, 10, 8, 6, 4],
+      backgroundColor: [
+        '#00B050','#2BBD6E','#009640','#4CAF50','#66BB6A',
+        '#E74C3C','#F39C12','#3498DB','#95A5A6'
+      ],
+      borderRadius: 8,
+      barThickness: 24
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: 'rgba(13, 27, 20, 0.9)',
+        padding: 12,
+        titleFont: { family: 'Noto Sans SC', size: 14 },
+        bodyFont: { family: 'Noto Sans SC', size: 13 },
+        callbacks: {
+          label: function(ctx) {
+            return ctx.parsed.x + '例 (' + ((ctx.parsed.x/134)*100).toFixed(1) + '%)';
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        grid: { color: '#F0F0F0' },
+        title: { display: true, text: '问题数量（例）', font: { size: 12, family: 'Noto Sans SC' }, color: '#7A7A7A' },
+        ticks: { font: { size: 11, family: 'DM Mono' }, color: '#7A7A7A' }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 12, family: 'Noto Sans SC' }, color: '#4A4A4A' }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
