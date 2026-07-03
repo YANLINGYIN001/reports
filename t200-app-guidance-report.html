@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200公测 — APP端引导说明需求清单</title>
+<style>
+:root { --primary: #00B050; --primary2: #2BBD6E; --dark: #333; --gray: #666; --light: #999; --bg: #f5f7fa; --red: #E74C3C; --orange: #F39C12; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--dark); line-height: 1.7; }
+.container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+h1 { font-size: 28px; color: var(--dark); margin-bottom: 8px; }
+h2 { font-size: 22px; color: var(--primary); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
+h3 { font-size: 17px; color: var(--dark); margin: 24px 0 12px; }
+.meta { color: var(--light); font-size: 13px; margin-bottom: 24px; }
+.summary { background: #fff; border-left: 4px solid var(--primary); padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 20px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.kpi-row { display: flex; gap: 16px; margin: 24px 0; flex-wrap: wrap; }
+.kpi-card { flex: 1; min-width: 140px; background: #fff; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.kpi-card .num { font-size: 32px; font-weight: 700; color: var(--primary); }
+.kpi-card .label { font-size: 13px; color: var(--gray); margin-top: 4px; }
+.kpi-card.p0 .num { color: var(--red); }
+.kpi-card.p1 .num { color: var(--orange); }
+.kpi-card.p2 .num { color: var(--primary); }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+th { background: var(--primary); color: #fff; padding: 12px 14px; text-align: left; font-size: 13px; font-weight: 600; }
+td { padding: 10px 14px; border-bottom: 1px solid #eee; font-size: 13px; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f9fcf9; }
+.tag-p0 { display: inline-block; padding: 2px 8px; border-radius: 4px; background: #fdecea; color: var(--red); font-size: 12px; font-weight: 600; }
+.tag-p1 { display: inline-block; padding: 2px 8px; border-radius: 4px; background: #fef3e2; color: var(--orange); font-size: 12px; font-weight: 600; }
+.tag-p2 { display: inline-block; padding: 2px 8px; border-radius: 4px; background: #e8f7ee; color: var(--primary); font-size: 12px; font-weight: 600; }
+.badge-count { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; background: var(--primary); color: #fff; }
+.section-header { display: flex; align-items: center; gap: 10px; margin: 32px 0 12px; }
+.section-header h2 { margin: 0; border: none; padding: 0; }
+.guidance-text { background: #f0faf3; border-left: 3px solid var(--primary2); padding: 10px 16px; margin: 8px 0; border-radius: 0 6px 6px 0; font-size: 13px; }
+.guidance-text::before { content: "💡 引导内容："; font-weight: 600; color: var(--primary); }
+.suggestion-box { background: #fff; border-radius: 8px; padding: 20px 24px; margin: 16px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.suggestion-box h3 { color: var(--primary); }
+.suggestion-box ol, .suggestion-box ul { padding-left: 20px; margin: 8px 0; }
+.suggestion-box li { margin-bottom: 6px; font-size: 14px; }
+.empty-state-example { background: #f8f9fa; border: 1px dashed #ddd; border-radius: 6px; padding: 10px 16px; margin: 6px 0; font-size: 13px; }
+.empty-state-example strong { color: var(--primary); }
+.footer { text-align: center; color: var(--light); font-size: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; }
+.stat-row { display: flex; gap: 12px; margin: 12px 0; flex-wrap: wrap; }
+.stat-item { background: #fff; padding: 12px 16px; border-radius: 6px; flex: 1; min-width: 180px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.stat-item .stat-label { font-size: 12px; color: var(--light); }
+.stat-item .stat-value { font-size: 18px; font-weight: 600; color: var(--dark); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>T200公测 — APP端引导说明需求清单</h1>
+<p class="meta">数据来源：日常问题反馈769条 + 开箱体验79份 + 安装体验39份 + 专项问卷444份 | 分析时间：2026-07-03</p>
+
+<div class="summary">
+  <p><strong>核心结论：</strong>共识别 <strong>52个引导项</strong>，覆盖5大类。约 <strong>40%的日常反馈问题</strong>可通过APP端引导说明得到缓解或解决。</p>
+  <p>建议优先实施P0级22项引导优化，预计可覆盖大部分高频用户痛点。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="num">52</div><div class="label">引导项总数</div></div>
+  <div class="kpi-card p0"><div class="num">22</div><div class="label">P0 必须立即实施</div></div>
+  <div class="kpi-card p1"><div class="num">18</div><div class="label">P1 下个版本</div></div>
+  <div class="kpi-card p2"><div class="num">12</div><div class="label">P2 后续迭代</div></div>
+</div>
+
+<div class="section-header"><span style="font-size:24px">🔍</span><h2>一、功能发现类</h2></div>
+<p style="color:var(--gray);font-size:14px;margin-bottom:12px;">用户不知道有这个功能，或找不到功能入口</p>
+<table>
+<thead><tr><th style="width:120px">引导项</th><th style="width:160px">问题场景</th><th style="width:55px">反馈量</th><th style="width:130px">引导方式</th><th>引导内容建议</th><th style="width:45px">优先级</th></tr></thead>
+<tbody>
+<tr><td><strong>云录事件查看入口</strong></td><td>用户找不到云录事件在哪里查看，不知APP可查看本地录像</td><td><span class="badge-count">15</span></td><td>首页引导气泡+空状态引导</td><td><div class="guidance-text">点击首页【云录事件】查看停车监控记录。未开通云录时，连接记录仪WiFi可查看本地卡录视频</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>轨迹回放/查看入口</strong></td><td>用户找不到轨迹在哪里，以为没有回放功能，实际只能查看不能回放</td><td><span class="badge-count">25</span></td><td>首页引导气泡+帮助中心</td><td><div class="guidance-text">点击首页【轨迹】查看行驶记录。当前为轨迹查看模式，点击地图可查看路线详情</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>哨兵模式设置入口</strong></td><td>用户不知道哨兵模式在哪里设置，不了解灵敏度选项含义</td><td><span class="badge-count">12</span></td><td>设置页引导+帮助中心</td><td><div class="guidance-text">停车监控→哨兵模式：灵敏度越高检测越灵敏。建议日常使用【中】，误报多时调【低】</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>远程抓拍功能</strong></td><td>用户不知道有远程抓拍功能，或不知如何触发</td><td><span class="badge-count">8</span></td><td>实时预览页引导气泡</td><td><div class="guidance-text">实时视频界面右侧【拍照】按钮可远程抓拍，抓拍后请在消息动态中查看</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>缩时录影功能</strong></td><td>用户不理解缩时录影是什么，与哨兵模式的关系</td><td><span class="badge-count">7</span></td><td>设置页引导+帮助中心</td><td><div class="guidance-text">缩时录影：停车期间以间隔帧方式持续录像。⚠️开启缩时录影会关闭哨兵模式，二者不可同时使用</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>4G/WiFi模式切换</strong></td><td>用户不知道4G远程可切WiFi近场查看卡录</td><td><span class="badge-count">5</span></td><td>首页模式切换引导</td><td><div class="guidance-text">4G在线时点击右上角【WiFi图标】可切换近场模式，连接记录仪热点后可查看本地存储视频</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>帮助中心/FAQ入口</strong></td><td>用户反馈APP上没有使用帮助</td><td><span class="badge-count">4</span></td><td>首页右上角【？】入口</td><td><div class="guidance-text">首页右上角增加帮助入口，包含：快速入门、常见问题、视频教程</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>设备分享功能</strong></td><td>用户不知道APP可以分享设备给家人</td><td><span class="badge-count">4</span></td><td>设置页引导</td><td><div class="guidance-text">设备设置→分享管理：可邀请家人共同查看记录仪，支持多人同时在线查看</div></td><td><span class="tag-p2">P2</span></td></tr>
+<tr><td><strong>意见反馈入口</strong></td><td>用户不知如何提交日志反馈</td><td><span class="badge-count">3</span></td><td>设置页引导</td><td><div class="guidance-text">遇到问题→我的→帮助与反馈→意见反馈，可上传日志帮助定位问题</div></td><td><span class="tag-p2">P2</span></td></tr>
+</tbody>
+</table>
+
+<div class="section-header"><span style="font-size:24px">👆</span><h2>二、操作指引类</h2></div>
+<p style="color:var(--gray);font-size:14px;margin-bottom:12px;">用户不会操作，或操作方式不正确</p>
+<table>
+<thead><tr><th style="width:120px">引导项</th><th style="width:160px">问题场景</th><th style="width:55px">反馈量</th><th style="width:130px">引导方式</th><th>引导内容建议</th><th style="width:45px">优先级</th></tr></thead>
+<tbody>
+<tr><td><strong>视频下载流程</strong></td><td>用户不知如何下载、下载后找不到文件、不知下载成功</td><td><span class="badge-count">35</span></td><td>下载按钮旁引导+下载完成提示</td><td><div class="guidance-text">点击视频下方【下载】按钮。下载完成后提示【下载成功】，文件保存在APP相册和手机系统相册</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>4G/WiFi切换操作</strong></td><td>用户不会手动切换连接模式，切换后卡在WiFi状态</td><td><span class="badge-count">12</span></td><td>模式切换时弹窗提示</td><td><div class="guidance-text">切换WiFi模式：1.开启记录仪热点 2.手机连接热点 3.APP自动识别切换。切换需约30秒，请耐心等待</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>设备绑定流程</strong></td><td>用户扫码多次失败、安装后才绑定发现二维码扫不到</td><td><span class="badge-count">11</span></td><td>首次使用新手引导</td><td><div class="guidance-text">⚠️建议先扫码绑定设备再安装到车窗上。二维码在设备底部，保持15-20cm距离扫描</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>哨兵灵敏度设置</strong></td><td>用户灵敏度设置不当导致大量误报或漏报</td><td><span class="badge-count">8</span></td><td>设置页引导说明</td><td><div class="guidance-text">灵敏度说明：【高】3米内检测，适合安防需求高场景；【中】2米内检测，推荐日常使用；【低】1米内检测，适合车流密集区</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>供电模式设置</strong></td><td>用户不知需手动切换供电模式，安装师傅未设置</td><td><span class="badge-count">5</span></td><td>首次绑定后设置引导</td><td><div class="guidance-text">请选择供电方式：降压线（推荐，支持停车监控）或车充（仅行车记录）。选错可能导致设备无法正常工作</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>批量下载/删除</strong></td><td>用户不知道长按可多选，逐个下载很繁琐</td><td><span class="badge-count">7</span></td><td>相册页引导气泡</td><td><div class="guidance-text">长按视频可进入多选模式，支持批量下载和删除</div></td><td><span class="tag-p2">P2</span></td></tr>
+<tr><td><strong>画质切换操作</strong></td><td>用户一点画质就切换，没有选择菜单，体验突兀</td><td><span class="badge-count">3</span></td><td>画质按钮交互优化</td><td><div class="guidance-text">点击画质按钮弹出选择菜单（流畅/标清/高清），避免一键直接切换</div></td><td><span class="tag-p2">P2</span></td></tr>
+<tr><td><strong>缩时录影开关位置</strong></td><td>用户认为缩时录影应在停车监控类别而非通用设置</td><td><span class="badge-count">3</span></td><td>设置页调整+引导</td><td><div class="guidance-text">建议将缩时录影移至"停车监控"分类下，更符合用户认知</div></td><td><span class="tag-p2">P2</span></td></tr>
+</tbody>
+</table>
+
+<div class="section-header"><span style="font-size:24px">📊</span><h2>三、状态说明类</h2></div>
+<p style="color:var(--gray);font-size:14px;margin-bottom:12px;">用户不理解当前状态含义</p>
+<table>
+<thead><tr><th style="width:120px">引导项</th><th style="width:160px">问题场景</th><th style="width:55px">反馈量</th><th style="width:130px">引导方式</th><th>引导内容建议</th><th style="width:45px">优先级</th></tr></thead>
+<tbody>
+<tr><td><strong>设备在线/离线状态</strong></td><td>设备已断电APP仍显示在线、设备离线但不知原因</td><td><span class="badge-count">18</span></td><td>设备卡片页状态说明</td><td><div class="guidance-text">在线：设备已联网可远程查看。离线：设备断电或无网络信号。⚠️状态更新可能有2-3分钟延迟</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>云录/卡录区别</strong></td><td>用户不理解云录和卡录的区别、不知为何不开云录看不了录像</td><td><span class="badge-count">8</span></td><td>云录开通页引导</td><td><div class="guidance-text">卡录：视频存在记录仪内存卡，需连接WiFi查看。云录：视频自动上传云端，4G远程随时查看</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>LED指示灯含义</strong></td><td>38%用户需看说明书才理解LED含义</td><td><span class="badge-count">14</span></td><td>APP设备设置页+帮助中心</td><td><div class="guidance-text">🟢绿灯常亮=正常录像 | 🔴红灯常亮=异常需检查 | 🟡黄灯闪烁=正在连接网络</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>定位状态图标</strong></td><td>用户看不懂定位图标含义、定位图标打叉但实际有定位</td><td><span class="badge-count">6</span></td><td>地图页图标说明</td><td><div class="guidance-text">🟢绿点=已定位 | 🔴红点+叉=未定位（可能正在搜索卫星）| 车头方向箭头表示行驶方向</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>事件类型命名</strong></td><td>SOS抓拍/紧急录像/手动抓拍命名混乱，用户不理解</td><td><span class="badge-count">6</span></td><td>消息列表页说明</td><td><div class="guidance-text">统一命名：手动抓拍（原SOS抓拍）、碰撞抓拍、哨兵抓拍、点火/熄火抓拍</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>ACC状态显示</strong></td><td>用户发现ACC显示与实际不符（ON/OFF）</td><td><span class="badge-count">3</span></td><td>实时视频页角标说明</td><td><div class="guidance-text">ACC ON=车辆点火中 | ACC OFF=车辆熄火中。状态更新可能有10-30秒延迟</div></td><td><span class="tag-p2">P2</span></td></tr>
+<tr><td><strong>4G流量状态</strong></td><td>用户查看流量信息失败、不知流量余量</td><td><span class="badge-count">3</span></td><td>流量管理页引导</td><td><div class="guidance-text">设备设置→流量管理：查看本月已用/剩余流量。流量不足时设备将无法4G远程连接</div></td><td><span class="tag-p2">P2</span></td></tr>
+<tr><td><strong>云录开通状态</strong></td><td>用户已开通云录但APP显示未开通</td><td><span class="badge-count">3</span></td><td>云录页状态刷新引导</td><td><div class="guidance-text">如已开通云录但显示未开通，请下拉刷新页面。开通后需等待5分钟生效</div></td><td><span class="tag-p2">P2</span></td></tr>
+</tbody>
+</table>
+
+<div class="section-header"><span style="font-size:24px">🔧</span><h2>四、问题排查类</h2></div>
+<p style="color:var(--gray);font-size:14px;margin-bottom:12px;">用户遇到问题不知如何解决，需要排查引导</p>
+<table>
+<thead><tr><th style="width:120px">引导项</th><th style="width:160px">问题场景</th><th style="width:55px">反馈量</th><th style="width:130px">引导方式</th><th>引导内容建议</th><th style="width:45px">优先级</th></tr></thead>
+<tbody>
+<tr><td><strong>哨兵误报/漏报</strong></td><td>误报频繁（树摇、灯照、车过）或漏报不触发</td><td><span class="badge-count">37</span></td><td>哨兵设置页引导</td><td><div class="guidance-text">误报多？调低灵敏度至【低】。漏报？调高至【高】。对面灯光/树木晃动/车辆经过可能触发，属正常检测行为</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>APP闪退/白屏</strong></td><td>下载视频时闪退、全屏返回白屏、4G预览白屏</td><td><span class="badge-count">30</span></td><td>帮助中心FAQ+异常自动提示</td><td><div class="guidance-text">APP闪退？①更新APP到最新版 ②清除缓存 ③检查手机存储空间 ④华为/荣耀机型请检查权限设置</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>开流失败/画面空白</strong></td><td>实时视频加载不出来、白屏、有封面无画面</td><td><span class="badge-count">25</span></td><td>空状态页排查引导+帮助中心</td><td><div class="guidance-text">开流失败？①检查设备是否在线 ②切换4G/WiFi重试 ③退出APP重新进入 ④仍未解决请提交日志</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>轨迹不完整/异常</strong></td><td>行驶轨迹缺失、实时轨迹与记录不一致</td><td><span class="badge-count">25</span></td><td>轨迹页空状态引导</td><td><div class="guidance-text">轨迹不完整？①GPS首次定位需2-5分钟 ②地下/隧道内GPS信号弱 ③行驶中信号遮挡会导致轨迹断裂 ④出隧道后自动恢复</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>视频无法播放/下载失败</strong></td><td>哨兵视频看不了、下载后无法播放、下载卡死</td><td><span class="badge-count">20</span></td><td>视频页空状态引导</td><td><div class="guidance-text">视频加载失败？①确认网络稳定 ②尝试切换4G/WiFi ③清除APP缓存后重试 ④下载失败请检查手机存储空间</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>设备离线排查</strong></td><td>设备突然离线、地下停车场无信号、云服务掉线</td><td><span class="badge-count">12</span></td><td>离线状态引导</td><td><div class="guidance-text">设备离线？①检查车辆是否在信号覆盖区 ②确认设备供电正常 ③地下/偏远地区4G信号弱属正常 ④长时间离线请检查设备</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>内存卡异常</strong></td><td>提示内存卡异常、无法读取、需格式化</td><td><span class="badge-count">8</span></td><td>异常提示页引导</td><td><div class="guidance-text">内存卡异常？①取出TF卡重新插入 ②在APP设置中格式化TF卡 ③建议使用Class10以上高速卡</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>视频保存位置混乱</strong></td><td>抓拍视频有时在相册有时在消息、不知在哪找</td><td><span class="badge-count">6</span></td><td>相册页分类引导</td><td><div class="guidance-text">视频分类：【相册】手动抓拍和下载的视频 | 【消息动态】自动触发的碰撞/哨兵/点火抓拍。点击消息中的视频可下载到相册</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>缩时录影不录像</strong></td><td>设置了缩时录影但找不到视频</td><td><span class="badge-count">5</span></td><td>设置页引导+帮助中心</td><td><div class="guidance-text">缩时录影需设备处于停车状态且供电正常才会启动。检查：①供电模式为降压线 ②停车监控已开启 ③设备未离线</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>下载中断异常</strong></td><td>下载中接电话/切换APP后下载中断无提示</td><td><span class="badge-count">5</span></td><td>下载中断恢复引导</td><td><div class="guidance-text">下载被中断？返回视频列表重新点击下载即可继续。建议下载时保持APP前台运行</div></td><td><span class="tag-p2">P2</span></td></tr>
+</tbody>
+</table>
+
+<div class="section-header"><span style="font-size:24px">⚠️</span><h2>五、注意事项类</h2></div>
+<p style="color:var(--gray);font-size:14px;margin-bottom:12px;">需要提前提醒用户，避免不可逆操作</p>
+<table>
+<thead><tr><th style="width:120px">引导项</th><th style="width:160px">问题场景</th><th style="width:55px">反馈量</th><th style="width:130px">引导方式</th><th>引导内容建议</th><th style="width:45px">优先级</th></tr></thead>
+<tbody>
+<tr><td><strong>SIM卡锁卡风险</strong></td><td>用户拔出SIM卡导致锁卡、不知SIM不可拔</td><td><span class="badge-count">7</span></td><td>首次使用弹窗提醒+设备贴标</td><td><div class="guidance-text">⚠️重要：设备内置SIM卡严禁拔出！拔出将导致锁卡断网，不可恢复。如需换卡请联系客服</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>降压线使用注意</strong></td><td>降压线接口不统一、保险丝规格不匹配、接线颜色</td><td><span class="badge-count">12</span></td><td>安装引导页+说明书</td><td><div class="guidance-text">降压线安装：①确认原车保险丝规格(10A/15A) ②红线接ACC(过电脚) ③黄线接B+(常电脚) ④不同车型保险丝型号可能不同</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>TF卡安装方向</strong></td><td>用户不知TF卡正反方向、插反</td><td><span class="badge-count">6</span></td><td>TF卡槽旁标识+APP引导</td><td><div class="guidance-text">TF卡插入方向：金属触点朝下，缺角对准卡槽缺角。插入后有"咔"声表示到位</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>先绑定再安装</strong></td><td>用户先安装到车窗后发现二维码扫不到</td><td><span class="badge-count">5</span></td><td>首次使用新手引导</td><td><div class="guidance-text">⚠️安装顺序：①扫码绑定设备 ②测试功能正常 ③再安装到车窗。避免安装后无法扫码</div></td><td><span class="tag-p0">P0</span></td></tr>
+<tr><td><strong>重置键位置</strong></td><td>用户找不到重置键、不知如何恢复出厂</td><td><span class="badge-count">4</span></td><td>帮助中心+设备标识</td><td><div class="guidance-text">重置键位于电源接口上方小孔。长按6秒恢复出厂设置。日常问题可先尝试重置</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>指示灯位置提醒</strong></td><td>驾驶位看不到指示灯、不知工作状态</td><td><span class="badge-count">4</span></td><td>安装引导提醒</td><td><div class="guidance-text">安装时注意：指示灯位于机身侧面，建议安装角度让驾驶位可观察到绿灯状态</div></td><td><span class="tag-p2">P2</span></td></tr>
+<tr><td><strong>二维码电子版</strong></td><td>用户扫码扫不到、说明书二维码无效</td><td><span class="badge-count">3</span></td><td>APP内置电子说明书</td><td><div class="guidance-text">说明书二维码扫不到？在APP【帮助中心】查看电子版完整说明书</div></td><td><span class="tag-p1">P1</span></td></tr>
+<tr><td><strong>保险丝规格标注</strong></td><td>用户不知保险丝电流、买错规格</td><td><span class="badge-count">3</span></td><td>说明书+APP引导</td><td><div class="guidance-text">降压线保险丝规格：10A蓝色。更换时请使用同规格保险丝，不可使用更大电流</div></td><td><span class="tag-p2">P2</span></td></tr>
+<tr><td><strong>静电贴安装技巧</strong></td><td>用户静电贴贴歪、不好定位</td><td><span class="badge-count">2</span></td><td>安装引导动画</td><td><div class="guidance-text">贴静电贴前：①清洁玻璃 ②先不撕背胶，在车窗上比对位置 ③确认位置后再粘贴 ④避开玻璃边缘陶瓷黑边带</div></td><td><span class="tag-p2">P2</span></td></tr>
+<tr><td><strong>SIM/TF卡区分</strong></td><td>用户分不清SIM卡和TF卡、拔错卡</td><td><span class="badge-count">2</span></td><td>卡槽标识+APP提醒</td><td><div class="guidance-text">⚠️左侧大卡=SIM流量卡(勿拔!) 右侧小卡=TF存储卡(可更换)。请确认后再操作</div></td><td><span class="tag-p0">P0</span></td></tr>
+</tbody>
+</table>
+
+<h2>六、专项建议</h2>
+
+<div class="suggestion-box">
+<h3>6.1 新手引导流程（首次进入APP）</h3>
+<p style="font-size:14px;color:var(--gray);margin-bottom:8px;">建议在首次绑定设备后，展示3-4步新手引导：</p>
+<ol>
+<li><strong>设备状态说明</strong> — "您的记录仪已连接！在线状态表示可远程查看"</li>
+<li><strong>核心功能导览</strong> — "①实时视频：远程查看路况 ②视频回放：查看历史录像 ③轨迹：查看行驶路线 ④消息：自动事件推送"</li>
+<li><strong>停车监控设置</strong> — "推荐开启哨兵模式，停车时自动检测异常并推送通知"</li>
+<li><strong>注意事项</strong> — "⚠️SIM卡请勿拔出 | ⚠️保持设备通电以维持停车监控"</li>
+</ol>
+</div>
+
+<div class="suggestion-box">
+<h3>6.2 帮助中心/FAQ建议</h3>
+<p style="font-size:14px;color:var(--gray);margin-bottom:8px;">APP内增加帮助中心入口，包含以下分类：</p>
+<ul>
+<li><strong>快速入门</strong>：设备绑定、安装指引、功能介绍</li>
+<li><strong>常见问题</strong>：开流失败怎么办、设备离线怎么办、视频下载失败怎么办</li>
+<li><strong>功能说明</strong>：云录vs卡录、哨兵模式、缩时录影、轨迹查看</li>
+<li><strong>硬件相关</strong>：SIM卡注意事项、TF卡选择、降压线安装、保险丝更换</li>
+<li><strong>视频教程</strong>：30秒短视频引导（设备绑定、功能演示、问题排查）</li>
+</ul>
+</div>
+
+<div class="suggestion-box">
+<h3>6.3 空状态引导建议</h3>
+<p style="font-size:14px;color:var(--gray);margin-bottom:8px;">在各功能页面为空时显示引导：</p>
+<div class="empty-state-example"><strong>视频回放为空</strong> → "暂无录像。连接记录仪WiFi可查看本地卡录视频，开通云录可远程查看"</div>
+<div class="empty-state-example"><strong>轨迹为空</strong> → "暂无轨迹。GPS定位需2-5分钟，请在空旷区域等待"</div>
+<div class="empty-state-example"><strong>消息为空</strong> → "暂无事件通知。开启哨兵模式后，停车异常将自动推送"</div>
+<div class="empty-state-example"><strong>相册为空</strong> → "暂无下载视频。在视频回放或消息动态中点击下载按钮"</div>
+</div>
+
+<div class="suggestion-box">
+<h3>6.4 优先级分布</h3>
+<table>
+<thead><tr><th>优先级</th><th>数量</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><span class="tag-p0">P0</span></td><td>22</td><td>高频问题（>15条反馈）或严重体验影响，必须立即实施</td></tr>
+<tr><td><span class="tag-p1">P1</span></td><td>18</td><td>中频问题（5-15条），建议下个版本实施</td></tr>
+<tr><td><span class="tag-p2">P2</span></td><td>12</td><td>低频但有价值，可排入后续迭代</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>七、数据支撑摘要</h2>
+<div class="stat-row">
+<div class="stat-item"><div class="stat-label">日常问题反馈</div><div class="stat-value">769条</div></div>
+<div class="stat-item"><div class="stat-label">开箱体验问卷</div><div class="stat-value">79份</div></div>
+<div class="stat-item"><div class="stat-label">安装体验问卷</div><div class="stat-value">39份</div></div>
+<div class="stat-item"><div class="stat-label">专项问卷</div><div class="stat-value">444份</div></div>
+</div>
+<div class="summary" style="margin-top:16px">
+<p><strong>核心发现：</strong></p>
+<ul style="padding-left:20px;margin-top:8px;font-size:14px">
+<li>哨兵误报37条 — 需在设置页增加灵敏度说明引导</li>
+<li>画面过曝63条 — 需在帮助中心说明光线环境对画质的影响</li>
+<li>APP闪退17条 — 需在帮助中心增加机型兼容性排查指引</li>
+<li>开流相关26条 — 需在空状态页提供分步排查引导</li>
+<li>29%用户说明书不够清晰 — 需APP内置电子说明书</li>
+<li>36%用户LED含义不直观 — 需在设备设置页增加LED说明</li>
+</ul>
+</div>
+
+<div class="footer">
+<p>T200公测 · APP端引导说明需求清单 · 2026-07-03 · 数据分析专家🦞</p>
+</div>
+
+</div>
+</body>
+</html>
