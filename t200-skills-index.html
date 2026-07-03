@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200公测 — 技能汇总索引</title>
+<style>
+:root { --primary: #00B050; --primary2: #2BBD6E; --dark: #333; --gray: #666; --light: #999; --bg: #f5f7fa; --red: #E74C3C; --orange: #F39C12; --blue: #3498db; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--dark); line-height: 1.7; }
+.container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+h1 { font-size: 28px; margin-bottom: 8px; }
+h2 { font-size: 22px; color: var(--primary); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
+.meta { color: var(--light); font-size: 13px; margin-bottom: 24px; }
+.summary { background: #fff; border-left: 4px solid var(--primary); padding: 20px 24px; border-radius: 0 8px 8px 0; margin: 20px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.kpi-row { display: flex; gap: 16px; margin: 24px 0; flex-wrap: wrap; }
+.kpi-card { flex: 1; min-width: 120px; background: #fff; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.kpi-card .num { font-size: 32px; font-weight: 700; color: var(--primary); }
+.kpi-card .label { font-size: 13px; color: var(--gray); margin-top: 4px; }
+.skill-card { background: #fff; border-radius: 8px; padding: 20px 24px; margin: 16px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border-left: 4px solid var(--primary); }
+.skill-card h3 { font-size: 17px; color: var(--dark); margin-bottom: 8px; }
+.skill-card .skill-meta { font-size: 13px; color: var(--gray); margin-bottom: 12px; }
+.skill-card .skill-desc { font-size: 14px; margin-bottom: 12px; }
+.skill-card .skill-features { font-size: 13px; color: var(--dark); }
+.skill-card .skill-features ul { padding-left: 20px; margin: 6px 0; }
+.skill-card .skill-features li { margin-bottom: 4px; }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-right: 6px; }
+.tag-custom { background: #e8f7ee; color: var(--primary); }
+.tag-system { background: #e8f0fe; color: var(--blue); }
+.tag-pending { background: #fef3e2; color: var(--orange); }
+.tag-owner { background: #fdecea; color: var(--red); }
+.section-header { display: flex; align-items: center; gap: 10px; margin: 32px 0 12px; }
+.section-header h2 { margin: 0; border: none; padding: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+th { background: var(--primary); color: #fff; padding: 12px 14px; text-align: left; font-size: 13px; }
+td { padding: 10px 14px; border-bottom: 1px solid #eee; font-size: 13px; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+.footer { text-align: center; color: var(--light); font-size: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>T200公测 — 技能汇总索引</h1>
+<p class="meta">生成时间：2026-07-03 | 用于团队成员 bot 学习和调用参考</p>
+
+<div class="summary">
+  <p>本页面汇总 T200 公测项目全部已沉淀技能，包括工作空间自定义技能和系统内置技能。每个技能包含名称、描述、触发词、核心能力和适用场景，便于其他 bot 快速学习和调用。</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="num">5</div><div class="label">自定义技能</div></div>
+  <div class="kpi-card"><div class="num">57</div><div class="label">系统技能</div></div>
+  <div class="kpi-card"><div class="num">4</div><div class="label">T200专属技能</div></div>
+  <div class="kpi-card"><div class="num">1</div><div class="label">待审核</div></div>
+</div>
+
+<!-- T200项目专属技能 -->
+<div class="section-header"><span style="font-size:24px">🎯</span><h2>一、T200公测项目专属技能</h2></div>
+
+<div class="skill-card">
+  <h3>report-generation <span class="tag tag-custom">自定义</span> <span class="tag tag-owner">报告分析专家</span></h3>
+  <div class="skill-meta">📁 skills/report-generation/SKILL.md | 触发词：生成报告、专项报告、公测报告、日常问题报告</div>
+  <div class="skill-desc">T200公测专项报告生成技能 — 从飞书表格读取数据，进行分类打标、统计分析、生成ECharts可视化HTML报告并部署到GitHub Pages。</div>
+  <div class="skill-features">
+    <strong>核心能力：</strong>
+    <ul>
+      <li>数据源管理：10个问卷的 spreadsheet_token + sheet_id 完整配置</li>
+      <li>分类打标：一级标签(10类) + 二级标签 + 已知Bug比对(极库云40条)</li>
+      <li>统计分析：满意度/NPS/网络测试指标/交叉分析</li>
+      <li>报告模板：HTML + ECharts + 360品牌色系(#00B050) + 单列布局</li>
+      <li>部署流程：GitHub Pages + 报告合集自动更新 + 推推共享空间备选</li>
+      <li>踩坑速查表：12条常见问题及解决方案</li>
+      <li>尹燕玲偏好规范：8条（总结在前/文字总结/5要素表格/客观公正等）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3>feishu-doc-rw <span class="tag tag-custom">自定义</span> <span class="tag tag-owner">通用</span></h3>
+  <div class="skill-meta">📁 skills/feishu-doc-rw/SKILL.md | 触发词：飞书文档、创建飞书文档、写入飞书、飞书权限、bitable</div>
+  <div class="skill-desc">飞书文档读写通用技能 — 创建飞书文档、分批写入Block内容、读取文档内容、设置权限、上传文件到云盘、管理多维表格。</div>
+  <div class="skill-features">
+    <strong>核心能力：</strong>
+    <ul>
+      <li>获取 tenant_access_token（APP_ID + APP_SECRET）</li>
+      <li>创建文档 → 分批写入Block（每批≤15个）→ 设置权限</li>
+      <li>Block类型映射：text=2, heading1=3, heading2=4, bullet=12, ordered=14, divider=22</li>
+      <li>权限设置：所有人可阅读/可编辑</li>
+      <li>多维表格：创建bitable + 添加字段 + 插入记录</li>
+      <li>踩坑：text_element_style和style必须传{}、heading字段名必须匹配block_type</li>
+    </ul>
+    <strong>关键配置：</strong> .feishu.env 文件（APP_ID=cli_aa954b826638dcd6, APP_SECRET需定期更新）
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3>public-testing-report <span class="tag tag-custom">自定义</span> <span class="tag tag-owner">报告分析专家</span></h3>
+  <div class="skill-meta">📁 skills/public-testing-report/SKILL.md | 触发词：公测报告、打标、飞书表格数据、体验分析、开箱报告</div>
+  <div class="skill-desc">公测数据分析报告技能 — 从飞书电子表格读取公测反馈数据，进行分类打标、统计分析、生成可视化HTML报告并部署上线。</div>
+  <div class="skill-features">
+    <strong>核心能力：</strong>
+    <ul>
+      <li>飞书电子表格数据读取（支持批量、多sheet）</li>
+      <li>用户反馈分类打标（一级/二级标签体系）</li>
+      <li>多维度统计分析（满意度、NPS、问题分布）</li>
+      <li>可视化HTML报告生成（ECharts图表）</li>
+      <li>部署上线（GitHub Pages / easy-deploy / 推推共享空间）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3>bug-analysis-report <span class="tag tag-custom">自定义</span> <span class="tag tag-owner">报告分析专家</span></h3>
+  <div class="skill-meta">📁 skills/bug-analysis-report/SKILL.md | 触发词：Bug分析、缺陷报告、工作项分析、遗留问题、未修复Bug</div>
+  <div class="skill-desc">Bug缺陷分析报告技能 — 从极库云工作项/项目管理系统读取缺陷数据，进行多维度统计分析，生成风险评估报告。</div>
+  <div class="skill-features">
+    <strong>核心能力：</strong>
+    <ul>
+      <li>极库云工作项数据读取（通过CLI工具）</li>
+      <li>多维度统计：状态/严重程度/模块/执行人/版本</li>
+      <li>风险评估：P1未修复、重新打开、单点过载</li>
+      <li>关键词速查表（用于公测反馈比对）</li>
+      <li>已知Bug库：T200_known_bugs.md（40条，截至6/16）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3>user-survey-profile <span class="tag tag-custom">自定义</span> <span class="tag tag-owner">报告分析专家</span></h3>
+  <div class="skill-meta">📁 skills/user-survey-profile/SKILL.md | 触发词：用户画像、外呼数据、调研报告、问卷分析、满意度调查</div>
+  <div class="skill-desc">用户画像分析技能 — 从外呼调研/问卷数据中提取用户画像，进行统计分析，生成可视化报告。</div>
+  <div class="skill-features">
+    <strong>核心能力：</strong>
+    <ul>
+      <li>调研数据读取和清洗</li>
+      <li>用户画像建模（人口特征/使用行为/满意度）</li>
+      <li>NPS计算和分桶统计</li>
+      <li>可视化报告生成</li>
+    </ul>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3>t200-inspector <span class="tag tag-pending">待审核</span> <span class="tag tag-owner">巡检员</span></h3>
+  <div class="skill-meta">📁 t200-inspector (proposal pending) | 触发词：巡检、质量检查、验证</div>
+  <div class="skill-desc">T200质量检查技能 — 覆盖飞书文档质检、数据同步质量检查、打标质量检查、专项报告质量检查等。</div>
+  <div class="skill-features">
+    <strong>核心能力：</strong>
+    <ul>
+      <li>飞书文档质检SOP：列对齐检查、空行检测、合并单元格排查、隐藏列/冻结行列/筛选残留检查</li>
+      <li>数据同步质量检查：数据量三方核对、图片链接有效性、数据连续性</li>
+      <li>打标质量检查：L/M列格式、Bug ID交叉验证、标签分布</li>
+      <li>专项报告质量检查：6维度满意度、高频问题、风险描述</li>
+      <li>问题分级标准：P0/P1/P2 + 决策树</li>
+      <li>质量评分体系：7维度100分制</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 通用自定义技能说明 -->
+<div class="section-header"><span style="font-size:24px">📋</span><h2>二、原始数据更新技能（待沉淀）</h2></div>
+
+<div class="skill-card">
+  <h3>wjx-feishu-sync <span class="tag tag-pending">待沉淀</span> <span class="tag tag-owner">原始数据更新1</span></h3>
+  <div class="skill-meta">📁 skills/wjx-feishu-sync/SKILL.md（尚未创建）</div>
+  <div class="skill-desc">问卷星→飞书数据同步技能 — 从问卷星下载Excel数据，按列映射写入飞书电子表格。</div>
+  <div class="skill-features">
+    <strong>应包含内容：</strong>
+    <ul>
+      <li>问卷星登录流程：URL https://www.wjx.cn/login.aspx，账号18910284521</li>
+      <li>10个问卷完整配置表（问卷ID + 飞书sheet_id + 数据量）</li>
+      <li>日常问题反馈列映射表（Excel→飞书列对应关系）</li>
+      <li>Excel下载→校验→写入流程</li>
+      <li>图片URL回填方法（从Excel第20列提取，写入飞书G列）</li>
+      <li>飞书API app_secret更新方法</li>
+      <li>网络超时重试机制</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 系统技能速查 -->
+<div class="section-header"><span style="font-size:24px">⚙️</span><h2>三、系统内置技能速查（57个）</h2></div>
+
+<table>
+<thead><tr><th>技能名</th><th>用途</th><th>常用场景</th></tr></thead>
+<tbody>
+<tr><td><strong>agent-browser</strong></td><td>浏览器自动化CLI</td><td>登录问卷星、网页交互、截图</td></tr>
+<tr><td><strong>feishu-doc-rw</strong></td><td>飞书文档读写</td><td>创建/写入/读取飞书文档（自定义版更完善）</td></tr>
+<tr><td><strong>easy-deploy</strong></td><td>内网静态资源部署</td><td>部署HTML报告到deploy.qihoo.net</td></tr>
+<tr><td><strong>qihoo-pan-api</strong></td><td>360办公云盘</td><td>文件搜索/分享/上传/知识库</td></tr>
+<tr><td><strong>sso-geelib-project-skill</strong></td><td>极库云项目协同</td><td>查询项目/工作项/线上反馈/工时</td></tr>
+<tr><td><strong>sso-geelib-daily-report</strong></td><td>极库云日报</td><td>写日报/查日报</td></tr>
+<tr><td><strong>sso-geelib-weekly-report</strong></td><td>极库云周报</td><td>写周报/查周报/团队周报</td></tr>
+<tr><td><strong>sso-knowledge-skill</strong></td><td>极库云知识库</td><td>文档操作/知识检索/归档</td></tr>
+<tr><td><strong>sso-geelib-code-hosting</strong></td><td>极库云代码托管</td><td>查仓库/分支/文件/合并请求</td></tr>
+<tr><td><strong>pipeline-skill</strong></td><td>极库云流水线</td><td>流水线运行/取消/状态/日志</td></tr>
+<tr><td><strong>geelib-official-document-parser</strong></td><td>文档解析</td><td>PDF/DOC/PPT转Markdown</td></tr>
+<tr><td><strong>geelib-official-pptx-generator</strong></td><td>PPT生成</td><td>用PptxGenJS创建演示文稿</td></tr>
+<tr><td><strong>ai-bangong-ppt</strong></td><td>PPT编辑</td><td>创建/编辑.pptx文件</td></tr>
+<tr><td><strong>ai-bangong-word</strong></td><td>Word编辑</td><td>创建/编辑.docx文件</td></tr>
+<tr><td><strong>360-exchangeservice-101</strong></td><td>企业邮箱</td><td>发邮件/查邮件/日程</td></tr>
+<tr><td><strong>smart-meeting-secretary</strong></td><td>会议纪要</td><td>音频转文本→结构化纪要</td></tr>
+<tr><td><strong>sysprint-cloud-print</strong></td><td>云打印</td><td>提交文件到司印打印</td></tr>
+<tr><td><strong>image_generate</strong></td><td>图片生成</td><td>AI生成图片</td></tr>
+<tr><td><strong>klingai</strong></td><td>可灵AI</td><td>文生视频/图生视频/文生图</td></tr>
+<tr><td><strong>weather</strong></td><td>天气查询</td><td>查天气/温度/预报</td></tr>
+<tr><td><strong>skill-creator</strong></td><td>技能创建</td><td>创建/修改/评估技能</td></tr>
+<tr><td><strong>qskillhub</strong></td><td>技能市场</td><td>安装/搜索/管理技能</td></tr>
+<tr><td><strong>tavily-search</strong></td><td>网页搜索</td><td>LLM优化的网络搜索</td></tr>
+<tr><td><strong>tavily-extract</strong></td><td>网页提取</td><td>从URL提取markdown内容</td></tr>
+<tr><td><strong>context-doctor</strong></td><td>上下文诊断</td><td>检查token使用/上下文健康</td></tr>
+<tr><td><strong>session-logs</strong></td><td>会话日志</td><td>搜索历史会话记录</td></tr>
+</tbody>
+</table>
+
+<!-- 关键配置信息 -->
+<div class="section-header"><span style="font-size:24px">🔧</span><h2>四、关键配置信息</h2></div>
+
+<div class="skill-card">
+  <h3>飞书电子表格</h3>
+  <div class="skill-features">
+    <ul>
+      <li><strong>spreadsheet_token</strong>: ME5PsdvcMhllJgtaeoLcVHlVnmg</li>
+      <li><strong>日常问题跟进</strong>: sheet_id = bCDvkB（当前769条）</li>
+      <li><strong>开箱体验</strong>: sheet_id = PPR3TH（79条）</li>
+      <li><strong>安装体验</strong>: sheet_id = Dkdojw（39条）</li>
+      <li><strong>凭证文件</strong>: .feishu.env（APP_ID + APP_SECRET）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3>GitHub Pages 部署</h3>
+  <div class="skill-features">
+    <ul>
+      <li><strong>仓库</strong>: https://github.com/YANLINGYIN001/reports.git</li>
+      <li><strong>链接格式</strong>: https://yanlingyin001.github.io/reports/[文件名].html</li>
+      <li><strong>Token</strong>: 已保存到 ~/.git-credentials</li>
+      <li><strong>推送方式</strong>: GitHub REST API（避免clone超时）</li>
+      <li><strong>注意</strong>: Pages有时需触发重建 POST /repos/{owner}/{repo}/pages/builds</li>
+    </ul>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3>日常问题反馈列结构</h3>
+  <div class="skill-features">
+    <ul>
+      <li>A=姓名, B=时间, C=问题类型, D=方面, E=发生时间, F=描述, G=图片, H=日志</li>
+      <li>I=一级标签, J=二级标签, K=反馈量(COUNTIFS公式), L=是否已知, M=已知问题标题</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  <p>T200公测 · 技能汇总索引 · 2026-07-03 · 报告分析专家🦞</p>
+</div>
+
+</div>
+</body>
+</html>
