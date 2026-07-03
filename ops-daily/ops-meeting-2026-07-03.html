@@ -3,173 +3,286 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>运营中心日例会报告 - 2026年7月1日-3日</title>
+<title>业管日沟通会 - 2026年7月3日</title>
 <style>
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0f1117; color: #e4e6eb; line-height: 1.7; }
-  .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
-  .header { background: linear-gradient(135deg, #1a1d29 0%, #252836 100%); border-radius: 16px; padding: 32px; margin-bottom: 24px; border: 1px solid #2a2d3a; }
-  .header h1 { font-size: 28px; font-weight: 700; color: #60a5fa; margin-bottom: 8px; }
-  .header .meta { color: #9ca3af; font-size: 14px; display: flex; gap: 20px; flex-wrap: wrap; }
-  .header .meta span { display: inline-flex; align-items: center; gap: 6px; }
-  .header .meta .dot { width: 6px; height: 6px; border-radius: 50%; background: #60a5fa; }
-  .stats-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
-  .stat-card { background: #1a1d29; border-radius: 12px; padding: 20px; border: 1px solid #2a2d3a; text-align: center; }
-  .stat-card .num { font-size: 36px; font-weight: 700; }
-  .stat-card .label { color: #9ca3af; font-size: 13px; margin-top: 4px; }
-  .solved .num { color: #34d399; } .partial .num { color: #fbbf24; } .pending .num { color: #f87171; } .total .num { color: #60a5fa; } .actions .num { color: #c084fc; }
-  .section { background: #1a1d29; border-radius: 16px; padding: 24px; margin-bottom: 20px; border: 1px solid #2a2d3a; }
-  .section-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .badge { font-size: 12px; padding: 2px 10px; border-radius: 20px; font-weight: 400; }
-  .badge.red { background: rgba(248,113,113,0.15); color: #f87171; } .badge.yellow { background: rgba(251,191,36,0.15); color: #fbbf24; } .badge.green { background: rgba(52,211,153,0.15); color: #34d399; } .badge.blue { background: rgba(96,165,250,0.15); color: #60a5fa; } .badge.purple { background: rgba(192,132,252,0.15); color: #c084fc; }
-  .item-card { background: #21242f; border-radius: 12px; padding: 20px; margin-bottom: 14px; border-left: 3px solid #3a3d4a; }
-  .item-card.pending { border-left-color: #f87171; } .item-card.partial { border-left-color: #fbbf24; } .item-card.solved { border-left-color: #34d399; }
-  .item-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px; gap: 12px; }
-  .item-title { font-size: 15px; font-weight: 600; color: #e4e6eb; }
-  .item-status { font-size: 12px; padding: 2px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
-  .status-pending { background: rgba(248,113,113,0.15); color: #f87171; } .status-partial { background: rgba(251,191,36,0.15); color: #fbbf24; } .status-solved { background: rgba(52,211,153,0.15); color: #34d399; }
-  .item-detail { display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
-  .detail-row { display: flex; gap: 6px; } .detail-label { color: #6b7280; min-width: 70px; flex-shrink: 0; } .detail-value { color: #d1d5db; } .detail-value.name { color: #818cf8; }
-  .item-desc { font-size: 13px; color: #b0b3bc; margin-bottom: 10px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; }
-  .action-items { margin-top: 10px; padding: 10px; background: rgba(96,165,250,0.05); border-radius: 8px; }
-  .action-row { display: flex; gap: 8px; padding: 4px 0; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.03); }
-  .action-row:last-child { border-bottom: none; }
-  .action-owner { color: #818cf8; min-width: 80px; flex-shrink: 0; }
-  .action-text { color: #d1d5db; }
-  .product-tag { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 4px; margin-right: 4px; background: rgba(192,132,252,0.15); color: #c084fc; }
-  .media-tags { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
-  .media-tag { font-size: 11px; padding: 1px 8px; border-radius: 4px; }
-  .media-tag.img { background: rgba(96,165,250,0.15); color: #60a5fa; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .header { background: linear-gradient(135deg, #1a1d29 0%, #252836 100%); border-radius: 16px; padding: 32px; margin-bottom: 24px; border: 1px solid #2a2d3a; text-align: center; }
+  .header h1 { font-size: 24px; font-weight: 700; color: #f59e0b; margin-bottom: 8px; }
+  .header .sub { color: #9ca3af; font-size: 14px; }
+  .header .meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 12px; font-size: 13px; color: #6b7280; }
+  .header .meta span { background: #252836; padding: 4px 12px; border-radius: 20px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+  .stat { background: #1a1d29; border-radius: 12px; padding: 16px; border: 1px solid #2a2d3a; text-align: center; min-width: 120px; flex: 1 1 120px; }
+  .stat .num { font-size: 28px; font-weight: 700; }
+  .stat .label { color: #9ca3af; font-size: 12px; margin-top: 2px; }
+  .stat.t .num { color: #60a5fa; } .stat.a .num { color: #c084fc; } .stat.p .num { color: #f87171; } .stat.s .num { color: #34d399; }
+  .section { margin-bottom: 24px; }
+  .section-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .item { background: #1a1d29; border-radius: 12px; padding: 20px; border: 1px solid #2a2d3a; margin-bottom: 12px; }
+  .item-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+  .item-title { font-size: 16px; font-weight: 600; color: #f59e0b; }
+  .item-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
+  .badge-p { background: rgba(248,113,113,0.15); color: #f87171; }
+  .badge-pa { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .badge-s { background: rgba(52,211,153,0.15); color: #34d399; }
+  .item-body { font-size: 14px; color: #d1d5db; }
+  .item-body p { margin-bottom: 8px; }
+  .item-body strong { color: #e4e6eb; }
+  .detail-row { display: flex; gap: 8px; margin-bottom: 6px; font-size: 13px; }
+  .detail-label { color: #6b7280; min-width: 80px; }
+  .detail-val { color: #d1d5db; flex: 1; }
+  .quote { background: #111318; border-left: 3px solid #f59e0b; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 8px 0; font-size: 13px; color: #9ca3af; }
+  .action-items { background: #1a1d29; border-radius: 12px; padding: 20px; border: 1px solid #2a2d3a; }
+  .action-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid #252836; font-size: 14px; }
+  .action-item:last-child { border-bottom: none; }
+  .action-checkbox { color: #f59e0b; margin-top: 2px; }
+  .action-text { flex: 1; }
+  .action-owner { color: #9ca3af; font-size: 12px; }
   .footer { text-align: center; padding: 20px; color: #4b5563; font-size: 12px; }
-  a { color: #60a5fa; text-decoration: none; }
-  
-  .stat-card, .stat { min-width: 120px; flex: 1 1 120px; }
-  .report-card { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .report-card .right { width: 100%; justify-content: space-between; }
-
-  @media (max-width: 768px) { .item-detail { grid-template-columns: 1fr; } .container { padding: 12px; } .header { padding: 20px; } .header h1 { font-size: 22px; } }
+  a { color: #f59e0b; text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 12px; }
+    .header { padding: 20px; }
+    .header h1 { font-size: 20px; }
+    .item { padding: 16px; }
+    .item-header { flex-direction: column; gap: 8px; }
+    .stats { flex-direction: column; }
+    .stat { min-width: 100%; }
+  }
 </style>
 </head>
 <body>
 <div class="container">
-<div class="header">
-  <h1>📋 运营中心日例会报告</h1>
-  <div class="meta">
-    <span><span class="dot"></span> 2026年7月1日 - 3日</span>
-    <span>📅 生成时间：2026-07-03 09:54</span>
-    <span>🤖 由 OpenClaw 自动生成</span>
+  <div class="header">
+    <h1>📋 业管日沟通会</h1>
+    <div class="sub">2026年7月3日（周五）| 智能纪要整理</div>
+    <div class="meta">
+      <span>⏰ 09:17 - 09:42</span>
+      <span>⏱️ 25分钟</span>
+      <span>👥 多人参会</span>
+      <span>📄 飞书妙记</span>
+    </div>
   </div>
-</div>
-<div class="stats-grid">
-  <div class="stat-card total"><div class="num">8</div><div class="label">议题总数</div></div>
-  <div class="stat-card pending"><div class="num">6</div><div class="label">🔴 待跟进</div></div>
-  <div class="stat-card partial"><div class="num">1</div><div class="label">🟡 部分跟进</div></div>
-  <div class="stat-card solved"><div class="num">1</div><div class="label">🟢 已完成</div></div>
-  <div class="stat-card actions"><div class="num">10</div><div class="label">行动项</div></div>
-</div>
-<div class="section">
-  <div class="section-title">🔔 运营中心日例会 <span class="badge blue">8 条议题</span></div>
-<div class="item-card pending">
-  <div class="item-header"><div class="item-title">🔴 7.1日会行动项：海外域名购买推进</div><span class="item-status status-pending">⏳ 待跟进</span></div>
-  <div class="item-desc">马兴彬需联系技术负责人徐晓东，催促其推进海外域名购买事宜。富旭需将海外域名事项加入海外推进会待办，今晚海外推进会上需邀请徐晓东汇报域名进展。邱岚需与徐晓东沟通要求其参加海外推进会。</div>
-  <div class="item-detail">
-    <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">李亚倩（记录）</span></div>
-    <div class="detail-row"><span class="detail-label">类别</span><span class="detail-value"><span class="product-tag">海外业务</span></span></div>
-    <div class="detail-row"><span class="detail-label">原因/背景</span><span class="detail-value">海外域名购买未推进，需技术负责人徐晓东跟进</span></div>
-    <div class="detail-row"><span class="detail-label">方案/进展</span><span class="detail-value">待推进中（马兴彬联系徐晓东/富旭加入待办/邱岚沟通参会）</span></div>
-    <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-01</span></div>
+
+  <div class="stats">
+    <div class="stat t"><div class="num">6</div><div class="label">讨论议题</div></div>
+    <div class="stat a"><div class="num">7</div><div class="label">行动项</div></div>
+    <div class="stat p"><div class="num">4</div><div class="label">待跟进</div></div>
+    <div class="stat s"><div class="num">2</div><div class="label">已明确</div></div>
   </div>
-  <div class="action-items"><div class="action-row"><span class="action-owner">马兴彬</span><span class="action-text">会后主动联系徐晓东，催促推进海外域名购买</span></div><div class="action-row"><span class="action-owner">富旭</span><span class="action-text">将海外域名加入海外推进会待办；邀请徐晓东参会汇报</span></div><div class="action-row"><span class="action-owner">邱岚</span><span class="action-text">与徐晓东沟通，要求参加今晚海外推进会并汇报域名进展</span></div></div>
-</div>
-<div class="item-card pending">
-  <div class="item-header"><div class="item-title">🔴 7.1日会行动项：成都BPO薪酬谈判 + 苏州BPO招聘</div><span class="item-status status-pending">⏳ 待跟进</span></div>
-  <div class="item-desc">吴伟东本周内联系成都BPO供应商，就提高员工薪酬、约定固定比例用于税前工资等条件摸底谈判。询问BPO小东是否具备苏州本地招聘和入职能力。何莹赢联系石天宇沟通苏州招聘BPO需求，并咨询集采方是否可沿用成都渠道在苏州招聘。</div>
-  <div class="item-detail">
-    <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">李亚倩（记录）</span></div>
-    <div class="detail-row"><span class="detail-label">类别</span><span class="detail-value"><span class="product-tag">BPO团队管理</span></span></div>
-    <div class="detail-row"><span class="detail-label">原因/背景</span><span class="detail-value">BPO团队薪酬和苏州招聘需求</span></div>
-    <div class="detail-row"><span class="detail-label">方案/进展</span><span class="detail-value">待执行（吴伟东本周联系供应商/何莹赢今日联系石天宇）</span></div>
-    <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-01</span></div>
+
+  <!-- 议题1: H1汇报材料 -->
+  <div class="section">
+    <div class="section-title">📌 讨论议题</div>
+
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">1. H1汇报材料 & H2优化改进</div>
+        <span class="item-badge badge-pa">部分跟进</span>
+      </div>
+      <div class="item-body">
+        <p>东哥负责的H1汇报材料，需从<strong>服务侧</strong>和<strong>AI侧</strong>分别梳理H2重点优化方向。</p>
+        <div class="detail-row">
+          <span class="detail-label">负责人：</span>
+          <span class="detail-val">东哥（贾思阳代为同步，今日赶飞机）</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">状态：</span>
+          <span class="detail-val">贾思阳已出差，会后由其同步给东哥</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 议题2: 产品经理轮岗 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">2. 产品经理轮岗沟通</div>
+        <span class="item-badge badge-pa">部分跟进</span>
+      </div>
+      <div class="item-body">
+        <p>产品经理轮岗沟通已开始筹备，<strong>昨晚已有产品经理在询问</strong>。</p>
+        <div class="detail-row">
+          <span class="detail-label">状态：</span>
+          <span class="detail-val">筹备中，已有产品经理主动关注</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 议题3: 差评邮箱跟进 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">3. 差评邮箱跟进</div>
+        <span class="item-badge badge-p">待跟进</span>
+      </div>
+      <div class="item-body">
+        <p>6月份共购买<strong>59个邮箱</strong>，可联系的约17个，目前联系上<strong>9个</strong>，2个已处理好但追问满意度未回复。</p>
+        <p><strong>⚠️ 关键变化：</strong>亚马逊全平台关闭了站内信「联系买家」后台入口，禁止卖家通过后台联系用户。原因是有买家反映被卖家频繁骚扰。</p>
+        <div class="quote">
+          过去还能通过合规入口给用户发退款，现在完全只能站外匹配。来了差评先匹配用户是否来信过，没来信的用邮箱关怀，但回复率较低。全行业都在小心翼翼做站外沟通。
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">负责人：</span>
+          <span class="detail-val">马老师</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">数据：</span>
+          <span class="detail-val">59个邮箱 → 17个可联系 → 9个已联系 → 2个已解决</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">影响：</span>
+          <span class="detail-val">亚马逊政策变化，差评处理效率大幅下降</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 议题4: 海外不可售S品退回 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">4. 海外不可售S品退回产品更新</div>
+        <span class="item-badge badge-p">待跟进</span>
+      </div>
+      <div class="item-body">
+        <p>各国退回数量<strong>待回复</strong>，今天再催。811和980老款后续不做翻新，同步运营不做退回。手表在保的安排售后。</p>
+        <div class="detail-row">
+          <span class="detail-label">负责人：</span>
+          <span class="detail-val">斌哥（韩斌）</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">决策：</span>
+          <span class="detail-val">811/980老款不再翻新和退回</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">状态：</span>
+          <span class="detail-val">各国数量待回复，今天催办</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 议题5: 英国Molly协议事件 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">5. 英国Molly协议事件</div>
+        <span class="item-badge badge-pa">部分跟进</span>
+      </div>
+      <div class="item-body">
+        <p>达成解决方案：<strong>11,006英镑赔付 + 签署协议</strong>，分两期支付。等法务今天输出协议文件。</p>
+        <p><strong>⚠️ 风险提示：</strong>用户非常难缠，喜欢用法务法律武器威胁，少一块钱都会追问。</p>
+        <div class="quote">
+          建议用公司主体签协议，走对公账户付款，避免客户声称没收到。客户要求收到全额11,006英镑不能少。
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">负责人：</span>
+          <span class="detail-val">雪芳</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">赔付金额：</span>
+          <span class="detail-val">11,006英镑（分两期，银行卡打款）</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">当前进度：</span>
+          <span class="detail-val">等法务今天输出协议文件 → 发给客户填写 → 下一步</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">付款方式：</span>
+          <span class="detail-val">银行卡打款，建议走公司对公账户</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 议题6: 海外AI客服 -->
+    <div class="item">
+      <div class="item-header">
+        <div class="item-title">6. 海外客服AI智能切入</div>
+        <span class="item-badge badge-p">待跟进</span>
+      </div>
+      <div class="item-body">
+        <p>海外客服的AI智能需要从哪些方面切入，<strong>需要思考</strong>，HR需要有动作。</p>
+        <div class="detail-row">
+          <span class="detail-label">负责人：</span>
+          <span class="detail-val">陈静</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">状态：</span>
+          <span class="detail-val">已回复确认，需进一步思考切入方向</span>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="action-items"><div class="action-row"><span class="action-owner">吴伟东</span><span class="action-text">本周联系成都BPO供应商谈薪酬；询问小东苏州招聘能力；安排谭雄处理K200报修系统标注抖音渠道</span></div><div class="action-row"><span class="action-owner">何莹赢</span><span class="action-text">今天联系石天宇沟通苏州招聘；咨询集采方是否沿用成都渠道</span></div></div>
-</div>
-<div class="item-card pending">
-  <div class="item-header"><div class="item-title">🔴 7.1日会行动项：售后备机需求 + 退货数据</div><span class="item-status status-pending">⏳ 待跟进</span></div>
-  <div class="item-desc">韩斌需与GTM和供应链提出售后备机需求，明确私域渠道发货方式（工厂直发/库房发货）及售后备机方案。下周向香港仓索取加拿大和美国6月退货数据，若数量达标发起新一轮退回。</div>
-  <div class="item-detail">
-    <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">李亚倩（记录）</span></div>
-    <div class="detail-row"><span class="detail-label">类别</span><span class="detail-value"><span class="product-tag">售后供应链</span></span></div>
-    <div class="detail-row"><span class="detail-label">原因/背景</span><span class="detail-value">私域渠道售后备机方案不明确</span></div>
-    <div class="detail-row"><span class="detail-label">方案/进展</span><span class="detail-value">待执行（韩斌与GTM/供应链沟通/下周索取退货数据）</span></div>
-    <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-01</span></div>
+
+  <!-- 行动项 -->
+  <div class="section">
+    <div class="section-title">✅ 行动项</div>
+    <div class="action-items">
+      <div class="action-item">
+        <span class="action-checkbox">☐</span>
+        <div class="action-text">
+          将H1汇报材料及H2优化方向同步给东哥（贾思阳出差中，会后同步）
+          <div class="action-owner">负责人：贾思阳</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <span class="action-checkbox">☐</span>
+        <div class="action-text">
+          继续推进产品经理轮岗沟通筹备
+          <div class="action-owner">负责人：待定</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <span class="action-checkbox">☐</span>
+        <div class="action-text">
+          差评邮箱跟进：59个邮箱中9个已联系，继续跟进剩余8个可联系客户；2个已解决客户追问满意度
+          <div class="action-owner">负责人：马老师</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <span class="action-checkbox">☐</span>
+        <div class="action-text">
+          催办各国海外不可售S品退回数量更新
+          <div class="action-owner">负责人：韩斌</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <span class="action-checkbox">☐</span>
+        <div class="action-text">
+          英国Molly协议：法务今天输出协议文件 → 发给客户填写 → 确认付款方式（对公账户）
+          <div class="action-owner">负责人：雪芳 / 法务</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <span class="action-checkbox">☐</span>
+        <div class="action-text">
+          海外客服AI智能切入方向思考，HR配合动作
+          <div class="action-owner">负责人：陈静</div>
+        </div>
+      </div>
+      <div class="action-item">
+        <span class="action-checkbox">☐</span>
+        <div class="action-text">
+          811/980老款不再翻新，同步运营人员不做退回
+          <div class="action-owner">负责人：韩斌</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="action-items"><div class="action-row"><span class="action-owner">韩斌</span><span class="action-text">与GTM和供应链提出售后备机需求，明确发货方式和备机方案</span></div><div class="action-row"><span class="action-owner">韩斌/吴伟东</span><span class="action-text">下周向香港仓索取加美6月退货数据，达标则发起新一轮退回</span></div></div>
-</div>
-<div class="item-card pending">
-  <div class="item-header"><div class="item-title">🔴 7.1日会行动项：T200 4G公测体验 + 每日日总结</div><span class="item-status status-pending">⏳ 待跟进</span></div>
-  <div class="item-desc">尹燕玲在王晓回北京后亲自体验T200 4G记录仪公测，并与王晓共同输出体验反馈。即日起所有人每日需完成日总结填写（完成/未完成事项及求助）。各渠道尽快刷新填写销售额汇总数据。</div>
-  <div class="item-detail">
-    <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">李亚倩（记录）</span></div>
-    <div class="detail-row"><span class="detail-label">类别</span><span class="detail-value"><span class="product-tag">T200-4G / 内部管理</span></span></div>
-    <div class="detail-row"><span class="detail-label">原因/背景</span><span class="detail-value">T200公测需体验反馈；日总结制度执行</span></div>
-    <div class="detail-row"><span class="detail-label">方案/进展</span><span class="detail-value">待执行（尹燕玲体验T200/所有人每日日总结/雷艳琴刷新销售额）</span></div>
-    <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-01</span></div>
+
+  <!-- 关键洞察 -->
+  <div class="section">
+    <div class="section-title">🔍 关键洞察</div>
+    <div class="item">
+      <div class="item-body">
+        <p><strong>🚨 亚马逊政策变化（高影响）：</strong>全平台关闭站内信联系买家入口，差评处理效率大幅下降。全行业影响，需调整差评处理策略，站外沟通需谨慎。</p>
+        <p><strong>💰 大额赔付风险：</strong>英国Molly事件11,006英镑赔付+签协议，用户难缠且善用法务威胁。建议规范公司主体签约+对公付款流程，防范风险。</p>
+        <p><strong>📦 产品退役决策：</strong>811/980老款停止翻新和退回，标志产品生命周期结束，需同步各相关方。</p>
+      </div>
+    </div>
   </div>
-  <div class="action-items"><div class="action-row"><span class="action-owner">尹燕玲</span><span class="action-text">王晓回北京后体验T200 4G公测，共同输出反馈</span></div><div class="action-row"><span class="action-owner">所有人</span><span class="action-text">每日完成日总结填写</span></div><div class="action-row"><span class="action-owner">雷艳琴</span><span class="action-text">刷新各渠道销售额汇总数据</span></div></div>
-</div>
-<div class="item-card pending">
-  <div class="item-header"><div class="item-title">🔴 70迈真4K视频对比 → 推动高端产品需求</div><span class="item-status status-pending">⏳ 待跟进</span></div>
-  <div class="item-desc">王晓上传70迈真4K视频（白天+晚上）和G300H-4K vs VIOFO-A229-Plus对比视频。贾思阳判断70迈也是中端产品，推动放到需求池，看是否做高端产品主打清晰画面。吴伟东提到该品迭代前销售不错（亚马逊推广时）。</div>
-  <div class="item-detail">
-    <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">王晓 / 贾思阳</span></div>
-    <div class="detail-row"><span class="detail-label">类别</span><span class="detail-value"><span class="product-tag">记录仪（竞品分析）</span></span></div>
-    <div class="detail-row"><span class="detail-label">原因/背景</span><span class="detail-value">70迈4K为中端产品，我方可考虑做高端主打清晰画面</span></div>
-    <div class="detail-row"><span class="detail-label">方案/进展</span><span class="detail-value">放入需求池推动（贾思阳）</span></div>
-    <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-02</span></div>
+
+  <div class="footer">
+    <p>🦞 报告由 OpenClaw 自动生成 | 数据来源：飞书妙记智能纪要</p>
+    <p>原文档：<a href="https://360iot-uxc.feishu.cn/wiki/PJAqwxisQiLYhbkh0P9cTCmdnlb" target="_blank">飞书文档链接</a></p>
   </div>
-  <div class="media-tags"><span class="media-tag img">📎 含视频云盘链接</span></div>
-</div>
-<div class="item-card pending">
-  <div class="item-header"><div class="item-title">🔴 邮箱购买转化率查询</div><span class="item-status status-pending">⏳ 待跟进</span></div>
-  <div class="item-desc">贾思阳询问之前购买邮箱的转化率，雷艳琴回复马上查看。</div>
-  <div class="item-detail">
-    <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">贾思阳</span></div>
-    <div class="detail-row"><span class="detail-label">类别</span><span class="detail-value"><span class="product-tag">邮箱营销</span></span></div>
-    <div class="detail-row"><span class="detail-label">原因/背景</span><span class="detail-value">需了解邮箱购买转化情况</span></div>
-    <div class="detail-row"><span class="detail-label">方案/进展</span><span class="detail-value">待雷艳琴查询回复</span></div>
-    <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-03</span></div>
-  </div>
-  <div class="media-tags"><span class="media-tag img">📎 含图片（数据截图）</span></div>
-</div>
-<div class="item-card partial">
-  <div class="item-header"><div class="item-title">🟡 W510问题收敛情况（5个问题，OTA6修复）</div><span class="item-status status-partial">🔄 部分跟进</span></div>
-  <div class="item-desc">郑雪芳详细列出W510的5个问题及原因方案：<br><br><strong>1. 带图收藏点过段时间丢失</strong> — 被当作缓存垃圾清掉。临时：引导用户不清理Botslab；长期：放到云端保存（OTA6优化）<br><strong>2. 直播偶现灰屏</strong> — 疑似君正ISP异常。临时：引导摄像机靠近基站拉高信号；长期：测试复现中拉取视频帧分析<br><strong>3. H200路由转发频繁离线</strong> — 510只支持掩码255.255.255.0。临时：修改路由器掩码；长期：OTA6修复<br><strong>4. 停车场多车频繁上报事件</strong> — 车太多阈值抖动，无车辆ID无法判断同一车。新方案评估中<br><strong>5. AI侦测到区域外事件</strong> — 固件逻辑未和Ailab一致。长期：逻辑梳理，预计OTA6带上</div>
-  <div class="item-detail">
-    <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">郑雪芳</span></div>
-    <div class="detail-row"><span class="detail-label">类别</span><span class="detail-value"><span class="product-tag">W510</span></span></div>
-    <div class="detail-row"><span class="detail-label">原因/背景</span><span class="detail-value">多个固件/逻辑问题，需OTA6修复（时间未定，资源紧张）</span></div>
-    <div class="detail-row"><span class="detail-label">方案/进展</span><span class="detail-value">OTA6修复（无具体时间）；部分问题有临时方案引导用户</span></div>
-    <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-01</span></div>
-  </div>
-</div>
-<div class="item-card solved">
-  <div class="item-header"><div class="item-title">🟢 2026 H1绩效考评自评完成</div><span class="item-status status-solved">✅ 已完成</span></div>
-  <div class="item-desc">贾思阳通知7月1日下班前完成H1绩效自评，路径：360home→HR系统→绩效管理→我的绩效→员工自评。马兴彬催促郑雪芳、刘虹财、陈建、雷艳琴提交。四人均已完成提交。</div>
-  <div class="item-detail">
-    <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">贾思阳 / 马兴彬</span></div>
-    <div class="detail-row"><span class="detail-label">类别</span><span class="detail-value"><span class="product-tag">内部管理</span></span></div>
-    <div class="detail-row"><span class="detail-label">原因/背景</span><span class="detail-value">H1绩效考评周期截止</span></div>
-    <div class="detail-row"><span class="detail-label">方案/进展</span><span class="detail-value">全员已提交完成（郑雪芳/刘虹财/陈建/雷艳琴）</span></div>
-    <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-06-30 ~ 07-01</span></div>
-  </div>
-  <div class="media-tags"><span class="media-tag img">📎 含图片（HR系统截图）</span></div>
-</div>
-</div>
-<div class="footer">
-  <p>🦞 本报告由 OpenClaw 自动生成 | 数据来源：推推群聊消息</p>
-  <p>问题排序：🔴 待跟进 → 🟡 部分跟进 → 🟢 已完成</p>
-</div>
 </div>
 </body>
 </html>
