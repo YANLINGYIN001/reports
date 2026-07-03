@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>运营中心日例会报告合集</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0f1117; color: #e4e6eb; line-height: 1.7; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .header { background: linear-gradient(135deg, #1a1d29 0%, #252836 100%); border-radius: 16px; padding: 32px; margin-bottom: 24px; border: 1px solid #2a2d3a; text-align: center; }
+  .header h1 { font-size: 28px; font-weight: 700; background: linear-gradient(135deg, #f59e0b, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  .header .sub { color: #9ca3af; font-size: 14px; }
+  .header .icon { font-size: 48px; margin-bottom: 12px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat { background: #1a1d29; border-radius: 12px; padding: 16px; border: 1px solid #2a2d3a; text-align: center; }
+  .stat .num { font-size: 28px; font-weight: 700; }
+  .stat .label { color: #9ca3af; font-size: 12px; margin-top: 2px; }
+  .stat.s .num { color: #34d399; } .stat.p .num { color: #f87171; } .stat.pa .num { color: #fbbf24; } .stat.t .num { color: #60a5fa; } .stat.a .num { color: #c084fc; }
+  .section-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .report-list { display: flex; flex-direction: column; gap: 12px; }
+  .report-card { background: #1a1d29; border-radius: 12px; padding: 20px; border: 1px solid #2a2d3a; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s; text-decoration: none; color: inherit; }
+  .report-card:hover { border-color: #f59e0b; transform: translateX(4px); }
+  .report-card .left { display: flex; align-items: center; gap: 16px; }
+  .report-card .date-icon { font-size: 32px; }
+  .report-card .date-text { font-size: 16px; font-weight: 600; }
+  .report-card .date-sub { font-size: 12px; color: #9ca3af; margin-top: 2px; }
+  .report-card .right { display: flex; align-items: center; gap: 12px; }
+  .report-card .mini-stats { display: flex; gap: 8px; }
+  .mini-badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; }
+  .mini-badge.s { background: rgba(52,211,153,0.15); color: #34d399; }
+  .mini-badge.p { background: rgba(248,113,113,0.15); color: #f87171; }
+  .mini-badge.pa { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .report-card .arrow { color: #6b7280; font-size: 20px; }
+  .report-card:hover .arrow { color: #f59e0b; }
+  .footer { text-align: center; padding: 20px; color: #4b5563; font-size: 12px; }
+  a { color: #f59e0b; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="icon">📋</div>
+    <h1>运营中心日例会报告合集</h1>
+    <div class="sub">每天18:00自动生成 · 行动项跟踪 · 会议决策记录</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat t"><div class="num">8</div><div class="label">累计议题</div></div>
+    <div class="stat s"><div class="num">1</div><div class="label">已完成</div></div>
+    <div class="stat pa"><div class="num">1</div><div class="label">部分跟进</div></div>
+    <div class="stat p"><div class="num">6</div><div class="label">待跟进</div></div>
+    <div class="stat a"><div class="num">10</div><div class="label">行动项</div></div>
+  </div>
+
+  <div class="section-title">📅 日例会报告列表</div>
+  <div class="report-list">
+    <a class="report-card" href="http://38a4d537.deploy.qihoo.net">
+      <div class="left">
+        <span class="date-icon">📋</span>
+        <div>
+          <div class="date-text">2026年7月1日 - 3日（首期）</div>
+          <div class="date-sub">8条议题10个行动项 · H1绩效完成、海外域名推进、BPO招聘、W510收敛、70迈4K对比</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="mini-stats">
+          <span class="mini-badge p">待跟进 6</span>
+          <span class="mini-badge pa">部分跟进 1</span>
+          <span class="mini-badge s">已完成 1</span>
+        </div>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="footer">
+    <p>🦞 本合集由 OpenClaw 自动维护 | 每天18:00自动生成新报告并更新此页面</p>
+    <p>行动项持续跟踪：未完成事项在后续报告中自动更新状态</p>
+  </div>
+</div>
+</body>
+</html>

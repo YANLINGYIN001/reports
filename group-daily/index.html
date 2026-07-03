@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>群聊问题日报合集</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0f1117; color: #e4e6eb; line-height: 1.7; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+  .header { background: linear-gradient(135deg, #1a1d29 0%, #252836 100%); border-radius: 16px; padding: 32px; margin-bottom: 24px; border: 1px solid #2a2d3a; text-align: center; }
+  .header h1 { font-size: 28px; font-weight: 700; background: linear-gradient(135deg, #60a5fa, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  .header .sub { color: #9ca3af; font-size: 14px; }
+  .header .icon { font-size: 48px; margin-bottom: 12px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat { background: #1a1d29; border-radius: 12px; padding: 16px; border: 1px solid #2a2d3a; text-align: center; }
+  .stat .num { font-size: 28px; font-weight: 700; }
+  .stat .label { color: #9ca3af; font-size: 12px; margin-top: 2px; }
+  .stat.s .num { color: #34d399; } .stat.p .num { color: #f87171; } .stat.pa .num { color: #fbbf24; } .stat.t .num { color: #60a5fa; } .stat.g .num { color: #c084fc; }
+  .section-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .report-list { display: flex; flex-direction: column; gap: 12px; }
+  .report-card { background: #1a1d29; border-radius: 12px; padding: 20px; border: 1px solid #2a2d3a; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s; text-decoration: none; color: inherit; }
+  .report-card:hover { border-color: #60a5fa; transform: translateX(4px); }
+  .report-card .left { display: flex; align-items: center; gap: 16px; }
+  .report-card .date-icon { font-size: 32px; }
+  .report-card .date-text { font-size: 16px; font-weight: 600; }
+  .report-card .date-sub { font-size: 12px; color: #9ca3af; margin-top: 2px; }
+  .report-card .right { display: flex; align-items: center; gap: 12px; }
+  .report-card .mini-stats { display: flex; gap: 8px; }
+  .mini-badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; }
+  .mini-badge.s { background: rgba(52,211,153,0.15); color: #34d399; }
+  .mini-badge.p { background: rgba(248,113,113,0.15); color: #f87171; }
+  .mini-badge.pa { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .report-card .arrow { color: #6b7280; font-size: 20px; }
+  .report-card:hover .arrow { color: #60a5fa; }
+  .groups-list { background: #1a1d29; border-radius: 12px; padding: 20px; border: 1px solid #2a2d3a; margin-bottom: 24px; }
+  .groups-list .grp { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 14px; }
+  .groups-list .grp .idx { color: #6b7280; width: 24px; }
+  .groups-list .grp .name { color: #d1d5db; }
+  .groups-list .grp .id { color: #4b5563; font-size: 12px; margin-left: auto; }
+  .footer { text-align: center; padding: 20px; color: #4b5563; font-size: 12px; }
+  a { color: #60a5fa; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="icon">📊</div>
+    <h1>群聊问题日报合集</h1>
+    <div class="sub">10个群聊 · 每天18:00自动生成 · 问题跟踪与可视化报告</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat t"><div class="num">26</div><div class="label">累计问题</div></div>
+    <div class="stat s"><div class="num">19</div><div class="label">已解决</div></div>
+    <div class="stat pa"><div class="num">2</div><div class="label">部分跟进</div></div>
+    <div class="stat p"><div class="num">5</div><div class="label">待跟进</div></div>
+    <div class="stat g"><div class="num">10</div><div class="label">监控群聊</div></div>
+  </div>
+
+  <div class="groups-list">
+    <div class="section-title">📡 监控群聊（10个）</div>
+    <div class="grp"><span class="idx">1</span><span class="name">IoT重点问题同步群</span><span class="id">7652738368480244</span></div>
+    <div class="grp"><span class="idx">2</span><span class="name">【用户服务部】海外技术支持群</span><span class="id">7652738368521424</span></div>
+    <div class="grp"><span class="idx">3</span><span class="name">猫眼屏项目（CS2）开发</span><span class="id">7652669649080278</span></div>
+    <div class="grp"><span class="idx">4</span><span class="name">重大事故通报群</span><span class="id">7652738368339950</span></div>
+    <div class="grp"><span class="idx">5</span><span class="name">国内车品PCT组织</span><span class="id">7652669649120879</span></div>
+    <div class="grp"><span class="idx">6</span><span class="name">R6Pro-4G门铃开发群</span><span class="id">7652738368528864</span></div>
+    <div class="grp"><span class="idx">7</span><span class="name">国内安防PCT</span><span class="id">7652669649120890</span></div>
+    <div class="grp"><span class="idx">8</span><span class="name">普联行车记录仪 云服务需求群</span><span class="id">7652738368529700</span></div>
+    <div class="grp"><span class="idx">9</span><span class="name">现场突发集中事件调度</span><span class="id">7652738368390812</span></div>
+    <div class="grp"><span class="idx">10</span><span class="name">门铃屏测试开发小群</span><span class="id">7652669649071038</span></div>
+  </div>
+
+  <div class="section-title">📅 日报列表</div>
+  <div class="report-list">
+    <a class="report-card" href="http://777b0215.deploy.qihoo.net">
+      <div class="left">
+        <span class="date-icon">📋</span>
+        <div>
+          <div class="date-text">2026年7月1日 - 3日（首期·全群完整版）</div>
+          <div class="date-sub">10个群 · 26条问题 · 含P0高德停机事故、屏线条异常、R5PRO铃声等</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="mini-stats">
+          <span class="mini-badge p">待跟进 5</span>
+          <span class="mini-badge pa">部分跟进 2</span>
+          <span class="mini-badge s">已解决 19</span>
+        </div>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="footer">
+    <p>🦞 本合集由 OpenClaw 自动维护 | 每天18:00自动生成新日报并更新此页面</p>
+    <p>问题持续跟踪：未解决的问题在后续日报中自动更新状态</p>
+  </div>
+</div>
+</body>
+</html>
