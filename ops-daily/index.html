@@ -13,7 +13,7 @@
   .header .sub { color: #9ca3af; font-size: 14px; }
   .header .icon { font-size: 48px; margin-bottom: 12px; }
   .stats { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
-  .stat { background: #1a1d29; border-radius: 12px; padding: 16px; border: 1px solid #2a2d3a; text-align: center; }
+  .stat { background: #1a1d29; border-radius: 12px; padding: 16px; border: 1px solid #2a2d3a; text-align: center; min-width: 120px; flex: 1 1 120px; }
   .stat .num { font-size: 28px; font-weight: 700; }
   .stat .label { color: #9ca3af; font-size: 12px; margin-top: 2px; }
   .stat.s .num { color: #34d399; } .stat.p .num { color: #f87171; } .stat.pa .num { color: #fbbf24; } .stat.t .num { color: #60a5fa; } .stat.a .num { color: #c084fc; }
@@ -35,7 +35,6 @@
   .report-card:hover .arrow { color: #f59e0b; }
   .footer { text-align: center; padding: 20px; color: #4b5563; font-size: 12px; }
   a { color: #f59e0b; text-decoration: none; }
-  .stat-card, .stat { min-width: 120px; flex: 1 1 120px; }
   .report-card { flex-direction: column; align-items: flex-start; gap: 10px; }
   .report-card .right { width: 100%; justify-content: space-between; }
 </style>
@@ -49,15 +48,30 @@
   </div>
 
   <div class="stats">
-    <div class="stat t"><div class="num">22</div><div class="label">累计议题</div></div>
+    <div class="stat t"><div class="num">25</div><div class="label">累计议题</div></div>
     <div class="stat s"><div class="num">2</div><div class="label">已明确</div></div>
     <div class="stat pa"><div class="num">7</div><div class="label">部分跟进</div></div>
-    <div class="stat p"><div class="num">13</div><div class="label">待跟进</div></div>
-    <div class="stat a"><div class="num">27</div><div class="label">行动项</div></div>
+    <div class="stat p"><div class="num">16</div><div class="label">待跟进</div></div>
+    <div class="stat a"><div class="num">31</div><div class="label">行动项</div></div>
   </div>
 
   <div class="section-title">📅 日例会报告列表</div>
   <div class="report-list">
+    <a class="report-card" href="ops-meeting-2026-07-06.html">
+      <div class="left">
+        <span class="date-icon">📋</span>
+        <div>
+          <div class="date-text">2026年7月6日（运营中心日例会）</div>
+          <div class="date-sub">3条议题4个行动项 · 苏州外包客服部署调整、T2004G升级无进度展示、部门职责HR材料沟通</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="mini-stats">
+          <span class="mini-badge p">待跟进 3</span>
+        </div>
+        <span class="arrow">→</span>
+      </div>
+    </a>
     <a class="report-card" href="ops-meeting-2026-07-03.html">
       <div class="left">
         <span class="date-icon">📋</span>

@@ -13,7 +13,7 @@
   .header .sub { color: #9ca3af; font-size: 14px; }
   .header .icon { font-size: 48px; margin-bottom: 12px; }
   .stats { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
-  .stat { background: #1a1d29; border-radius: 12px; padding: 16px; border: 1px solid #2a2d3a; text-align: center; }
+  .stat { background: #1a1d29; border-radius: 12px; padding: 16px; border: 1px solid #2a2d3a; text-align: center; min-width: 120px; flex: 1 1 120px; }
   .stat .num { font-size: 28px; font-weight: 700; }
   .stat .label { color: #9ca3af; font-size: 12px; margin-top: 2px; }
   .stat.s .num { color: #34d399; } .stat.p .num { color: #f87171; } .stat.pa .num { color: #fbbf24; } .stat.t .num { color: #60a5fa; } .stat.g .num { color: #c084fc; }
@@ -40,7 +40,6 @@
   .groups-list .grp .id { color: #4b5563; font-size: 12px; margin-left: auto; }
   .footer { text-align: center; padding: 20px; color: #4b5563; font-size: 12px; }
   a { color: #60a5fa; text-decoration: none; }
-  .stat-card, .stat { min-width: 120px; flex: 1 1 120px; }
   .report-card { flex-direction: column; align-items: flex-start; gap: 10px; }
   .report-card .right { width: 100%; justify-content: space-between; }
 </style>
@@ -54,10 +53,10 @@
   </div>
 
   <div class="stats">
-    <div class="stat t"><div class="num">43</div><div class="label">累计问题</div></div>
-    <div class="stat s"><div class="num">28</div><div class="label">已解决</div></div>
-    <div class="stat pa"><div class="num">5</div><div class="label">部分跟进</div></div>
-    <div class="stat p"><div class="num">10</div><div class="label">待跟进</div></div>
+    <div class="stat t"><div class="num">65</div><div class="label">累计问题</div></div>
+    <div class="stat s"><div class="num">34</div><div class="label">已解决</div></div>
+    <div class="stat pa"><div class="num">13</div><div class="label">部分跟进</div></div>
+    <div class="stat p"><div class="num">18</div><div class="label">待跟进</div></div>
     <div class="stat g"><div class="num">10</div><div class="label">监控群聊</div></div>
   </div>
 
@@ -77,6 +76,23 @@
 
   <div class="section-title">📅 日报列表</div>
   <div class="report-list">
+    <a class="report-card" href="report-2026-07-06.html">
+      <div class="left">
+        <span class="date-icon">📋</span>
+        <div>
+          <div class="date-text">2026年7月6日（周一）</div>
+          <div class="date-sub">5个群活跃 · 22条问题 · 俄罗斯C212开流闪退、美国R811不录制、G980HMC版本混淆、猫眼屏测试排期、商城购买弹窗缺失等</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="mini-stats">
+          <span class="mini-badge p">待跟进 8</span>
+          <span class="mini-badge pa">部分跟进 8</span>
+          <span class="mini-badge s">已解决 6</span>
+        </div>
+        <span class="arrow">→</span>
+      </div>
+    </a>
     <a class="report-card" href="report-2026-07-03.html">
       <div class="left">
         <span class="date-icon">📋</span>

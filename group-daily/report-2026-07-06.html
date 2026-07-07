@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>群聊问题日报 - 2026年7月6日（含周末）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0f1117; color: #e4e6eb; line-height: 1.7; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  .header { background: linear-gradient(135deg, #1a1d29 0%, #252836 100%); border-radius: 16px; padding: 32px; margin-bottom: 24px; border: 1px solid #2a2d3a; }
+  .header h1 { font-size: 28px; font-weight: 700; color: #60a5fa; margin-bottom: 8px; }
+  .header .meta { color: #9ca3af; font-size: 14px; display: flex; gap: 20px; flex-wrap: wrap; }
+  .header .meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .header .meta .dot { width: 6px; height: 6px; border-radius: 50%; background: #60a5fa; }
+  .stats-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: #1a1d29; border-radius: 12px; padding: 20px; border: 1px solid #2a2d3a; text-align: center; min-width: 120px; flex: 1 1 120px; }
+  .stat-card .num { font-size: 36px; font-weight: 700; }
+  .stat-card .label { color: #9ca3af; font-size: 13px; margin-top: 4px; }
+  .solved .num { color: #34d399; } .partial .num { color: #fbbf24; } .pending .num { color: #f87171; } .total .num { color: #60a5fa; } .groups .num { color: #c084fc; }
+  .group-section { background: #1a1d29; border-radius: 16px; padding: 24px; margin-bottom: 20px; border: 1px solid #2a2d3a; }
+  .group-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .badge { font-size: 12px; padding: 2px 10px; border-radius: 20px; font-weight: 400; }
+  .badge.red { background: rgba(248,113,113,0.15); color: #f87171; } .badge.yellow { background: rgba(251,191,36,0.15); color: #fbbf24; } .badge.green { background: rgba(52,211,153,0.15); color: #34d399; } .badge.blue { background: rgba(96,165,250,0.15); color: #60a5fa; } .badge.gray { background: rgba(107,114,128,0.15); color: #6b7280; }
+  .issue-card { background: #21242f; border-radius: 12px; padding: 20px; margin-bottom: 14px; border-left: 3px solid #3a3d4a; }
+  .issue-card.pending { border-left-color: #f87171; } .issue-card.partial { border-left-color: #fbbf24; } .issue-card.solved { border-left-color: #34d399; }
+  .issue-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px; gap: 12px; }
+  .issue-title { font-size: 15px; font-weight: 600; color: #e4e6eb; }
+  .issue-status { font-size: 12px; padding: 2px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+  .status-pending { background: rgba(248,113,113,0.15); color: #f87171; } .status-partial { background: rgba(251,191,36,0.15); color: #fbbf24; } .status-solved { background: rgba(52,211,153,0.15); color: #34d399; }
+  .issue-detail { display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
+  .detail-row { display: flex; gap: 6px; } .detail-label { color: #6b7280; min-width: 70px; flex-shrink: 0; } .detail-value { color: #d1d5db; } .detail-value.name { color: #818cf8; }
+  .issue-desc { font-size: 13px; color: #b0b3bc; margin-bottom: 10px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; }
+  .media-tags { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .media-tag { font-size: 11px; padding: 1px 8px; border-radius: 4px; }
+  .media-tag.img { background: rgba(96,165,250,0.15); color: #60a5fa; } .media-tag.video { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .product-tag { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 4px; margin-right: 4px; background: rgba(192,132,252,0.15); color: #c084fc; }
+  .tag-new { background: rgba(96,165,250,0.2); color: #60a5fa; font-size: 11px; padding: 1px 8px; border-radius: 4px; margin-left: 8px; }
+  .tag-update { background: rgba(52,211,153,0.2); color: #34d399; font-size: 11px; padding: 1px 8px; border-radius: 4px; margin-left: 8px; }
+  .tag-history { background: rgba(251,191,36,0.2); color: #fbbf24; font-size: 11px; padding: 1px 8px; border-radius: 4px; margin-left: 8px; }
+  .tag-evening { background: rgba(192,132,252,0.2); color: #c084fc; font-size: 11px; padding: 1px 8px; border-radius: 4px; margin-left: 8px; }
+  .empty-group { color: #6b7280; font-size: 14px; padding: 12px; text-align: center; }
+  .footer { text-align: center; padding: 20px; color: #4b5563; font-size: 12px; }
+  a { color: #60a5fa; text-decoration: none; }
+  @media (max-width: 768px) { .container { padding: 12px; } .header { padding: 20px; } .header h1 { font-size: 22px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📊 群聊问题日报</h1>
+    <div class="meta">
+      <span><span class="dot"></span> 2026年7月6日（周一）· 覆盖7月4日-6日</span>
+      <span>📅 生成时间：2026-07-06 18:00（晚间更新 7/7 09:54）</span>
+      <span>🤖 由 OpenClaw 自动生成</span>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-card total"><div class="num">29</div><div class="label">问题总数</div></div>
+    <div class="stat-card pending"><div class="num">9</div><div class="label">🔴 待跟进</div></div>
+    <div class="stat-card partial"><div class="num">11</div><div class="label">🟡 部分跟进</div></div>
+    <div class="stat-card solved"><div class="num">9</div><div class="label">🟢 已解决</div></div>
+    <div class="stat-card groups"><div class="num">6</div><div class="label">活跃群聊</div></div>
+  </div>
+
+<!-- 海外技术支持群 -->
+<div class="group-section">
+    <div class="group-title">🌐 海外技术支持群 <span class="badge blue">19 条问题（含4条历史待跟进）</span></div>
+
+    <div class="issue-card pending">
+      <div class="issue-header"><div class="issue-title">🔴 美国 W313 云录制无法切换至已购买套餐<span class="tag-evening">晚间</span></div><span class="issue-status status-pending">⏳ 待跟进</span></div>
+      <div class="issue-desc">Smart3-30472用户W313正使用赠送的两天云录制，购买的新云录制无法切换。同意提前结束免费云录制。订单号2618313064003000002。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">陈晓珊</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">W313</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">云录制订单切换问题</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">待唐阿明协助切换</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-07</span></div>
+      </div>
+    </div>
+    <div class="issue-card pending">
+      <div class="issue-header"><div class="issue-title">🔴 加拿大 R811S 一星差评 - 只能检测到柱子前面的事件<span class="tag-history">历史待跟进</span></div><span class="issue-status status-pending">⏳ 待跟进</span></div>
+      <div class="issue-desc">加拿大R811S用户差评反馈只能检测到柱子前面的事件，已退货。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">陈晓珊</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">R811S</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">待唐阿明分析</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">待提供</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-06-30</span></div>
+      </div>
+    </div>
+    <div class="issue-card pending">
+      <div class="issue-header"><div class="issue-title">🔴 W510 频繁离线（德国 Smart3-14253）bug_id=145685<span class="tag-history">历史待跟进</span></div><span class="issue-status status-pending">⏳ 待跟进</span></div>
+      <div class="issue-desc">德国用户W510频繁离线。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">许碧霞</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">W510</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">待唐阿明跟进</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">待提供</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-06-30</span></div>
+      </div>
+    </div>
+    <div class="issue-card pending">
+      <div class="issue-header"><div class="issue-title">🔴 多产品批量问题（C211网络/解绑/R811S漏录/R810SE门铃无声音）<span class="tag-history">历史待跟进</span></div><span class="issue-status status-pending">⏳ 待跟进</span></div>
+      <div class="issue-desc">4个问题：①香港C211信号100%但无法开流 ②印尼解绑设备 ③北美R811S漏录 ④美国R810SE门铃听不到室外声音</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">王丹 / 何青凡</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">C211</span><span class="product-tag">R811S</span><span class="product-tag">R810SE</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">待逐一分析</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">待唐阿明跟进</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-01</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片</span><span class="media-tag video">🎬 含视频</span></div>
+    </div>
+    <div class="issue-card pending">
+      <div class="issue-header"><div class="issue-title">🔴 W510 语音警报增加德语需求<span class="tag-history">历史待跟进</span></div><span class="issue-status status-pending">⏳ 待跟进</span></div>
+      <div class="issue-desc">德国客户希望W510摄像机语音警报增加德语支持。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">许碧霞</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">W510</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">功能需求，当前不支持德语</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">待跟进</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-03</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片</span></div>
+    </div>
+
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 俄罗斯 EUKM20204490001346 设备开流闪退<span class="tag-update">已提交APP日志</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">俄罗斯用户设备开流时会闪退。唐阿明判断闪退在请求发出之前。已提交APP日志待分析。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">谢甜</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">C212</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">闪退在请求发出之前或发起瞬间（唐阿明）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">已提交APP日志，待进一步分析</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片</span><span class="media-tag video">🎬 含视频</span></div>
+    </div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 美国 R811 NAKM81B04490000500 在线但不录制<span class="tag-new">新增</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">在线但不录制视频。5月30日至7月4日未正常录像，电量6%→15%后恢复录制。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">谢甜</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">R811</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">电量过低导致未录制（唐阿明）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">确认是否没充进电，充满观察耗电</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 G980HMC版本混淆导致投诉风险<span class="tag-new">新增</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">经销商一直给用户说G980HMC是专业版，实际G980H Pro Standard/Voice才是专业版。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">曾红</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">G980H</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">G980HMC是多摄版本，非专业版（王晓）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">待跟进经销商纠正</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 记录仪视频漏录<span class="tag-new">新增</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">用户反馈视频漏录，已格式化卡。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">曹文燕</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">记录仪</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">待日志分析</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">取记录仪日志，复现问题，提交日志（王晓）</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片</span></div>
+    </div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 美国 W510 智能事件过滤无效，误报录制<span class="tag-evening">晚间</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">TYXC51005352000307，已开启智能事件过滤，但无事件发生也会录制事件。已提交日志。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">谢甜</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">W510</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">有停车，智能事件过滤未生效（唐阿明）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">明天推送新版本固件</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片</span></div>
+    </div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 bug_id=146719 BLE扫描无法发现设备<span class="tag-evening">晚间</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">设备没进配网模式，BLE扫描无法发现设备。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">王丹</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">未知</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">设备没进配网模式（唐阿明）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">考虑换机</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 海外W510侦测异常 bug_id=146816 追车版本需求<span class="tag-evening">晚间</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">客户愿意试追车版本固件，请安排推送。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">郑丽娜</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">W510</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">侦测异常</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">待唐阿明安排推送追车版本固件</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 G980H后摄延长线能否叠加2条使用<span class="tag-evening">晚间</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">客户问G980H后摄延长线是否可以叠加2条使用。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">许碧霞</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">G980H</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">线太长信号到不了（王晓）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">不可以叠加使用</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 行车记录仪高温画面异常<span class="tag-new">新增</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">行车记录仪高温导致画面异常。王晓建议确认当地温度，检查安装方式（先擦干净前档玻璃→贴静电贴→贴3M）。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">王丹</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">记录仪</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">高温导致（王晓）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">确认当地温度+检查安装方式</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 R811 NAKM81B05040000923 本地存储异常<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">查看不到本地存储，没有格式化选项。23号就没数据写入，状态异常。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">谢甜</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">R811</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">状态异常（唐阿明）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">重新配网，考虑换机</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 C212 ONVIF端口及RTSP流URL咨询<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">用户尝试端口80和8899都不行，需RTSP URL格式。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">曾红</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">C212</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">端口信息需求</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">RTSP: rtsp://ip:554/live/1(主)/live/0(子)，admin/admin123（唐阿明）</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 C213重置键灯闪烁异常<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">按下重置键先闪烁蓝灯中间又闪烁绿灯。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">许碧霞</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">C213</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">设备故障，状态不对（唐阿明）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">需换机</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 Botslab S8固件版本发布时间咨询<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">客户问固件版本1.8.8.2851发布时间。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">曾红</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">Botslab S8</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">信息咨询</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">2026.3.12发布，APP设置查看最新版本（郑雪芳）</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 Botslab S8 风扇工作不正常<span class="tag-evening">晚间</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">启动机器人时语音老是提示风扇工作不正常，排障无效。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">曾红</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">Botslab S8</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">硬件故障（郑雪芳）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">已引导找经销商售后</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 C212 BLE扫描无法发现设备 bug_id=146719<span class="tag-evening">晚间</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">BLE扫描无法发现设备，设备没进配网模式。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">王丹</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">C212</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">设备没进配网模式（唐阿明）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">考虑换机</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+</div>
+
+<!-- 猫眼屏CS2 -->
+<div class="group-section">
+    <div class="group-title">🐱 猫眼屏项目（CS2）开发 <span class="badge blue">3 条问题</span></div>
+    <div class="issue-card pending">
+      <div class="issue-header"><div class="issue-title">🔴 猫眼屏项目测试排期 - 已提测无人力<span class="tag-new">新增</span></div><span class="issue-status status-pending">⏳ 待跟进</span></div>
+      <div class="issue-desc">已提测但还没人力测试，需跟项目经理、产品确认测试排期。邢亚茹接手软件产品跟进。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">徐辛新</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">猫眼屏CS2</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">人力不足</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">邢亚茹跟项目经理、产品确认测试排期</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 OTA2测试资源评估<span class="tag-update">状态更新</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">蔡恒江回复：1人力做修改项+冒烟+基础压测10工作日没问题；全流程需一起讨论确定测试时间。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">方竞</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">猫眼屏CS2</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">全流程测试需更多人力</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">需一起讨论确定全流程测试时间（蔡恒江）</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 显示画幅0611版本画面变小 bug_id=146798<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">用户更新0611版本发现画面变小。方竞解释0611版本优化显示边缘裁剪了一点（镜头灰边+工厂误差），下载录像截图是全视角。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">徐凯来</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">猫眼屏CS2</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">0611版本优化显示边缘裁剪了一点，镜头灰边+工厂误差（方竞）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">用户截图版本对不上，下拉录像截图是全视角</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片（3张对比图）</span></div>
+    </div>
+</div>
+
+<!-- IoT -->
+<div class="group-section">
+    <div class="group-title">📌 IoT重点问题同步群 <span class="badge yellow">1 条问题</span></div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 儿童卫士新语音来总是默认重复<span class="tag-new">新增</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">持续有儿童卫士用户反馈新语音来总是默认重复的问题，持续时长不短且累计量级不少。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">李姗姗</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">儿童卫士</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">已知问题（尹燕玲）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">预计下周新版本解决，在催研发发版节奏</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片</span></div>
+    </div>
+</div>
+
+<!-- R6Pro -->
+<div class="group-section">
+    <div class="group-title">🚪 R6Pro-4G门铃开发群 <span class="badge green">1 条通知</span></div>
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 R6Pro项目软件产品负责人变更<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">项目后面软件产品由邢亚茹来跟进。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">徐辛新</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">R6Pro-4G</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">人员调整</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">邢亚茹接手</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+</div>
+
+<!-- 国内车品PCT -->
+<div class="group-section">
+    <div class="group-title">🚗 国内车品PCT组织 <span class="badge green">1 条信息</span></div>
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 9Pro 600万夜灯各渠道开售数据分享<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 信息</span></div>
+      <div class="issue-desc">京东POP已开售：京东6件 / KA 5台 / 私域 2件，ROI 2.94。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">9Pro 600万夜灯</span></span></div>
+        <div class="detail-row"><span class="detail-label">状态</span><span class="detail-value">京东POP已开售</span></div>
+        <div class="detail-row"><span class="detail-label">ROI</span><span class="detail-value">2.94</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+</div>
+
+<!-- 普联云服务 -->
+<div class="group-section">
+    <div class="group-title">☁️ 普联行车记录仪 云服务需求群 <span class="badge blue">3 条问题</span></div>
+    <div class="issue-card pending">
+      <div class="issue-header"><div class="issue-title">🔴 普联云录商城购买无提示弹窗<span class="tag-new">新增</span></div><span class="issue-status status-pending">⏳ 待跟进</span></div>
+      <div class="issue-desc">1.无购买成功提示弹窗 2.订单详情弹窗没消失 3.购买失败也无购买失败提示弹窗</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">陈贵爽</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">商城</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">待跟进</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">待修复</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 批量设备购买后服务单缺失<span class="tag-new">新增</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">批量设备购买后订单有但服务单没有。套购商品配置有问题，智慧生活套购里是云智联的云存SKU。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">陈贵爽</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">商城</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">套购商品配置有问题（李修文）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">赵玉晓建议重新下单，待测试</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片</span><span class="media-tag video">🎬 含视频</span></div>
+    </div>
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 商城设计图5处不符<span class="tag-update">状态更新</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">字号/色号/斜体/字体/对齐5处与设计图不符。申晨晨回复：字体看到什么就是什么，颜色由figma导出。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">陈贵爽</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">商城</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">字体不会特地增加，颜色由figma导出（申晨晨）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">等产品确认是否还改</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-06</span></div>
+      </div>
+    </div>
+</div>
+
+<div class="group-section">
+    <div class="group-title">📋 重大事故通报群 <span class="badge gray">无消息</span></div>
+    <div class="empty-group">本期无消息</div>
+</div>
+
+<div class="group-section">
+    <div class="group-title">📷 国内安防PCT <span class="badge gray">无消息</span></div>
+    <div class="empty-group">本期无消息（周六日）</div>
+</div>
+
+<div class="group-section">
+    <div class="group-title">🚨 现场突发集中事件调度 <span class="badge gray">无消息</span></div>
+    <div class="empty-group">本期无消息</div>
+</div>
+
+<div class="group-section">
+    <div class="group-title">🔔 门铃屏测试开发小群 <span class="badge gray">无消息</span></div>
+    <div class="empty-group">本期无消息</div>
+</div>
+
+<div class="group-section">
+    <div class="group-title">📚 历史待跟进（其他群） <span class="badge red">2 条</span></div>
+    <div class="issue-card pending">
+      <div class="issue-header"><div class="issue-title">🔴 记录仪屏线条异常（LCM玻璃本体问题）<span class="tag-history">历史待跟进</span></div><span class="issue-status status-pending">⏳ 待跟进</span></div>
+      <div class="issue-desc">屏线条问题，已回收送供应商分析。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">秦桠明</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">记录仪</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">初步判断LCM玻璃本体问题（徐自明）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">待供应商拆解深入分析</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-02</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片</span></div>
+    </div>
+    <div class="issue-card pending">
+      <div class="issue-header"><div class="issue-title">🔴 T200-4G哨兵记录仪预售时间暂停<span class="tag-history">历史待跟进</span></div><span class="issue-status status-pending">⏳ 待跟进</span></div>
+      <div class="issue-desc">各销售渠道暂停T200-4G哨兵预售。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">李鑫</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">T200-4G</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">固件提测中</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">等固件提测通知</span></div>
+        <div class="detail-row"><span class="detail-label">日期</span><span class="detail-value">2026-07-02</span></div>
+      </div>
+    </div>
+</div>
+  <div class="footer">
+    <p>🦞 本报告由 OpenClaw 自动生成 | 数据来源：推推群聊消息</p>
+    <p>问题排序：🔴 待跟进 → 🟡 部分跟进 → 🟢 已解决</p>
+  </div>
+</div>
+</body>
+</html>
