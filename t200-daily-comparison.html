@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200公测日常问题反馈分析报告 — 前后期对比</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root { --primary: #00B050; --primary2: #2BBD6E; --dark: #333; --gray: #999; --red: #E74C3C; --orange: #F39C12; --blue: #3498DB; }
+* { box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; color: #333; line-height: 1.6; background: #fafafa; }
+h1 { color: var(--primary); border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
+h2 { color: var(--dark); margin-top: 40px; border-left: 4px solid var(--primary); padding-left: 12px; }
+h3 { color: var(--dark); margin-top: 25px; }
+.meta { color: var(--gray); font-size: 14px; margin-bottom: 20px; }
+.summary { background: linear-gradient(135deg, #f0faf3, #e8f5e9); border-left: 4px solid var(--primary); padding: 25px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+.summary h3 { margin-top: 0; color: var(--primary); }
+.summary ul { padding-left: 20px; }
+.summary li { margin-bottom: 8px; }
+.chart { width: 100%; height: 400px; margin: 25px 0; background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 15px; }
+.chart-tall { height: 500px; }
+.chart-short { height: 300px; }
+table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+th { background: var(--primary); color: #fff; padding: 12px; text-align: left; font-weight: 600; }
+td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; }
+tr:hover td { background: #f5f5f5; }
+.risk-high { color: var(--red); font-weight: 600; }
+.risk-mid { color: var(--orange); font-weight: 600; }
+.risk-low { color: var(--primary); font-weight: 600; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+.badge-up { background: #ffe0e0; color: var(--red); }
+.badge-down { background: #e0f5e0; color: var(--primary); }
+.badge-flat { background: #f0f0f0; color: var(--gray); }
+.period-label { display: inline-block; padding: 4px 12px; border-radius: 4px; font-weight: 600; margin-right: 10px; }
+.period-early { background: #e3f2fd; color: #1565C0; }
+.period-late { background: #fff3e0; color: #E65100; }
+.insight-box { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin: 15px 0; }
+.insight-box h4 { margin: 0 0 10px 0; color: var(--primary); }
+</style>
+</head>
+<body>
+
+<h1>📊 T200公测日常问题反馈分析报告 — 前后期对比</h1>
+<p class="meta">
+数据来源：飞书电子表格「日常问题反馈」 | 
+总数据量：897条 | 
+前期：459条（6/20-6/25） | 
+后期：438条（6/26-7/8） | 
+生成时间：2026-07-08
+</p>
+
+<div class="summary">
+<h3>📌 核心发现</h3>
+<ul>
+<li><strong>固件升级问题爆发：</strong>「固件升级无进度条」从前期0条飙升至后期37条，成为后期并列第一大问题，推测与6/26后推送固件升级有关</li>
+<li><strong>画面过曝问题恶化：</strong>「画面过曝」从前期1条激增至后期37条，已匹配Bug[885465]，逆光/高光场景过曝问题仍需紧急修复</li>
+<li><strong>APP闪退问题上升：</strong>从3条增至15条，增幅400%，需排查新版本兼容性</li>
+<li><strong>硬件/说明书类问题显著下降：</strong>硬件设计（12.2%→3.4%）、说明书文档（6.3%→0.9%），说明初期问题已消化</li>
+<li><strong>已知问题占比下降：</strong>35.9%→27.0%，部分前期Bug已修复（如轨迹回放Bug[863778]从12条降至1条），但新问题涌现导致总量仍高</li>
+<li><strong>bug问题占比上升：</strong>前期bug占比43.8%→后期57.1%，需求建议下降，说明功能性问题在增加</li>
+</ul>
+</div>
+
+<h2>一、每日反馈量趋势</h2>
+<div id="chart_daily" class="chart chart-tall"></div>
+<p>反馈量在6/24达到峰值152条，随后逐步下降。6/26后进入稳定期，日均约50-60条。7/1-7/2降至低谷（12-16条），7/3回升至59条后再次下降。7/6-7/7仅13条，可能与公测进入尾声有关。</p>
+
+<h2>二、一级标签分布对比</h2>
+<div id="chart_tag1" class="chart chart-tall"></div>
+<p>
+<span class="period-label period-early">前期</span>前三：APP功能/交互(42.0%)、视频/流处理(13.7%)、硬件设计(12.2%)<br>
+<span class="period-label period-late">后期</span>前三：APP功能/交互(48.9%)、视频/流处理(21.9%)、图像质量(14.8%)
+</p>
+<p><strong>主要变化：</strong>视频/流处理（+8.2%）和图像质量（+5.5%）占比明显上升，硬件设计（-8.8%）和说明书文档（-5.4%）大幅下降。APP功能/交互仍居首位且占比继续上升（+6.8%）。</p>
+
+<h2>三、高频问题 TOP 15 对比</h2>
+<div id="chart_tag2" class="chart chart-tall"></div>
+<p><strong>持续高频问题：</strong>哨兵误报（23→18）、哨兵漏报（18→18）、轨迹回放不完整（12→7）、视频回放卡顿（10→6）——哨兵模式问题持续未缓解。</p>
+<p><strong>新涌现问题：</strong>固件升级无进度条（0→37）、画面过曝（1→37）、APP闪退（3→15）、忽略反馈（3→13）、视频下载后无法播放（0→6）。</p>
+<p><strong>明显减少问题：</strong>抓拍图片过曝（19→9）、逆光/高光环境过曝（12→1）、抓拍图像无图片/视频（9→0）、开流失败（9→3）。</p>
+
+<h2>四、已知问题 vs 新发现问题</h2>
+<div id="chart_known" class="chart chart-short"></div>
+<p>前期已知问题占比35.9%（165/459），后期降至27.0%（86/438）。这说明前期集中暴露的已知问题得到了一定修复，但新问题的涌现使得总反馈量未显著下降。</p>
+
+<h2>五、问题类型分布对比（Bug vs 需求 vs 易用性）</h2>
+<div id="chart_type" class="chart chart-short"></div>
+<p>bug问题占比从前期43.8%升至后期57.1%，需求建议从30.3%降至21.0%，易用性问题从25.9%降至21.5%。这表明随着公测深入，功能性问题（bug）成为主要矛盾，用户需求类反馈逐步减少。</p>
+
+<h2>六、已知问题修复效果分析</h2>
+
+<div class="insight-box">
+<h4>✅ 修复效果明显的问题</h4>
+<table>
+<tr><th>Bug标题</th><th>前期反馈</th><th>后期反馈</th><th>效果</th></tr>
+<tr><td>Bug[863778] 轨迹回放缺失 - 已关闭</td><td>12条</td><td>1条</td><td class="risk-low">✅ 基本解决</td></tr>
+<tr><td>Bug[881510] 下载视频耗时太久 - 重新打开</td><td>12条</td><td>0条</td><td class="risk-low">✅ 已解决</td></tr>
+<tr><td>Bug[893367] 视频播放跳帧 - 已修复</td><td>10条</td><td>1条</td><td class="risk-low">✅ 基本解决</td></tr>
+<tr><td>Bug[880468] 设备状态不同步 - 跟踪中</td><td>8条</td><td>1条</td><td class="risk-low">✅ 明显改善</td></tr>
+<tr><td>抓拍图像无图片/视频</td><td>9条</td><td>0条</td><td class="risk-low">✅ 已解决</td></tr>
+<tr><td>开流失败</td><td>9条</td><td>3条</td><td class="risk-low">✅ 改善</td></tr>
+</table>
+</div>
+
+<div class="insight-box">
+<h4>⚠️ 仍需关注的问题</h4>
+<table>
+<tr><th>Bug标题</th><th>前期反馈</th><th>后期反馈</th><th>状态</th></tr>
+<tr><td>Bug[876247] 开流loading到90%重新开始 - 新建</td><td>6条</td><td>3条</td><td class="risk-mid">⏳ 待修复</td></tr>
+<tr><td>哨兵误报（各类场景）</td><td>23条</td><td>18条</td><td class="risk-high">🔴 未修复</td></tr>
+<tr><td>哨兵漏报</td><td>18条</td><td>18条</td><td class="risk-high">🔴 未修复</td></tr>
+</table>
+</div>
+
+<div class="insight-box">
+<h4>🔴 后期新匹配的已知问题</h4>
+<table>
+<tr><th>Bug标题</th><th>后期反馈</th><th>状态</th></tr>
+<tr><td>Bug[885465] 逆光进出高架桥洞画面严重过曝</td><td>29条</td><td class="risk-high">🔴 新建/待修复</td></tr>
+<tr><td>Bug[876734] 视频回看列表页压测异常</td><td>6条</td><td class="risk-mid">⏳ 关闭/跟进中</td></tr>
+<tr><td>Bug[870309] 哨兵抓拍事件详情显示异常</td><td>6条</td><td class="risk-mid">⏳ 关闭/跟进中</td></tr>
+<tr><td>Bug[900284] 下载视频中设备断电无提示</td><td>3条</td><td class="risk-high">🔴 新建/待修复</td></tr>
+</table>
+</div>
+
+<h2>七、后期新增问题类型</h2>
+<p>后期涌现了众多新的问题类型，以下为需重点关注的：</p>
+<table>
+<tr><th>新增问题</th><th>后期反馈量</th><th>上市风险评估</th></tr>
+<tr><td>固件升级无进度条</td><td>37</td><td class="risk-high">高 — 影响所有用户升级体验</td></tr>
+<tr><td>画面过曝（高架桥洞/逆光）</td><td>37</td><td class="risk-high">高 — 影响核心录像质量</td></tr>
+<tr><td>APP闪退</td><td>15</td><td class="risk-high">高 — 影响基础使用</td></tr>
+<tr><td>忽略反馈（功能异常）</td><td>13</td><td class="risk-mid">中 — 影响用户反馈闭环</td></tr>
+<tr><td>视频下载后无法播放</td><td>6</td><td class="risk-mid">中 — 影响视频下载功能</td></tr>
+<tr><td>哨兵抓拍不通知</td><td>5</td><td class="risk-mid">中 — 影响哨兵模式核心功能</td></tr>
+<tr><td>隐私泄露风险（其他用户可查看）</td><td>4</td><td class="risk-high">高 — 安全合规风险</td></tr>
+<tr><td>远程查看卡顿</td><td>4</td><td class="risk-mid">中 — 影响远程体验</td></tr>
+<tr><td>视频回放列表加载失败</td><td>4</td><td class="risk-mid">中 — 影响回放体验</td></tr>
+<tr><td>存储卡异常格式化</td><td>1</td><td class="risk-high">高 — 数据丢失风险</td></tr>
+</table>
+
+<h2>八、高频问题 5 要素表</h2>
+<table>
+<tr><th>问题名称</th><th>用户原声</th><th>反馈量</th><th>解决方案</th><th>上市风险</th></tr>
+<tr><td>固件升级无进度条</td><td>"升级过程中没有进度条，不知道升级到哪了"</td><td>37</td><td>增加升级进度条/百分比显示</td><td class="risk-high">高</td></tr>
+<tr><td>画面过曝</td><td>"逆光进出高架桥洞，画面白茫茫一片"</td><td>37</td><td>Bug[885465] 待修复，优化自动曝光算法</td><td class="risk-high">高</td></tr>
+<tr><td>哨兵误报</td><td>"没有碰撞也触发哨兵报警"</td><td>41</td><td>优化碰撞检测算法灵敏度</td><td class="risk-high">高</td></tr>
+<tr><td>哨兵漏报</td><td>"发生碰撞但哨兵没有触发"</td><td>36</td><td>优化碰撞检测算法阈值</td><td class="risk-high">高</td></tr>
+<tr><td>APP闪退</td><td>"打开APP就闪退/操作过程中闪退"</td><td>18</td><td>排查新版本兼容性，增加崩溃日志上报</td><td class="risk-high">高</td></tr>
+<tr><td>轨迹回放不完整</td><td>"轨迹中间断了一段/部分行程缺失"</td><td>19</td><td>Bug[863778] 已关闭，仍有少量反馈需持续跟进</td><td class="risk-mid">中</td></tr>
+<tr><td>视频下载后无法播放</td><td>"下载的视频黑屏/手机里找不到文件"</td><td>6</td><td>Bug[900284] 新建，排查下载流程和文件保存逻辑</td><td class="risk-mid">中</td></tr>
+</table>
+
+<h2>九、总结与建议</h2>
+<div class="summary">
+<h3>📊 数据总结</h3>
+<ul>
+<li><strong>数据量：</strong>前期459条 vs 后期438条，总量基本持平，反馈热度未降</li>
+<li><strong>问题结构变化：</strong>从「硬件+说明书」转向「视频/流处理+图像质量」，问题重心从开箱阶段转移到深度使用阶段</li>
+<li><strong>修复成效：</strong>轨迹回放、下载耗时、跳帧等问题已基本解决；开流失败有所改善</li>
+<li><strong>新风险：</strong>固件升级体验（37条）和画面过曝（37条）是后期最大问题，且画面过曝已匹配Bug但尚未修复</li>
+<li><strong>哨兵模式：</strong>误报+漏报共77条，前后期几乎无变化，是贯穿全程的核心痛点</li>
+</ul>
+</div>
+
+<div class="summary" style="border-left-color: var(--red);">
+<h3 style="color: var(--red);">🚨 上市前必修问题</h3>
+<ul>
+<li><strong>画面过曝（Bug[885465]）：</strong>37条反馈，逆光场景严重影响录像质量，必须修复</li>
+<li><strong>固件升级无进度条：</strong>37条反馈，影响所有用户OTA升级体验，需增加进度指示</li>
+<li><strong>哨兵误报/漏报：</strong>77条反馈，核心功能体验问题，碰撞检测算法需优化</li>
+<li><strong>APP闪退：</strong>15条反馈，影响基础使用，需排查兼容性</li>
+<li><strong>隐私泄露风险：</strong>4条反馈指出其他用户可查看设备内容，存在安全合规风险</li>
+<li><strong>存储卡异常格式化：</strong>1条但风险极高，行车中突然格式化导致数据丢失</li>
+</ul>
+</div>
+
+<p style="text-align: center; color: var(--gray); margin-top: 40px;">🦞 报告由数据分析专家生成 | 数据截至 2026-07-08</p>
+
+<script>
+const colorPalette = ['#00B050', '#2BBD6E', '#4ECDC4', '#F39C12', '#E74C3C', '#999999', '#666666', '#FFB84D', '#3498DB'];
+const earlyColor = '#3498DB';
+const lateColor = '#F39C12';
+
+// 1. Daily trend
+var chart1 = echarts.init(document.getElementById('chart_daily'));
+chart1.setOption({
+  title: { text: '每日反馈量趋势', left: 'center', textStyle: { fontSize: 15 } },
+  tooltip: { trigger: 'axis' },
+  grid: { left: '8%', right: '5%', bottom: '10%' },
+  xAxis: {
+    type: 'category',
+    data: ["06/20", "06/21", "06/22", "06/23", "06/24", "06/25", "06/26", "06/27", "06/28", "06/29", "06/30", "07/01", "07/02", "07/03", "07/04", "07/05", "07/06", "07/07"],
+    axisLabel: { rotate: 30 }
+  },
+  yAxis: { type: 'value', name: '反馈量' },
+  series: [{
+    name: '每日反馈量',
+    type: 'line',
+    data: [1, 23, 73, 122, 152, 88, 76, 80, 46, 58, 21, 12, 16, 59, 41, 16, 11, 2],
+    smooth: true,
+    itemStyle: { color: '#00B050' },
+    areaStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: 'rgba(0,176,80,0.3)' }, { offset: 1, color: 'rgba(0,176,80,0.02)' }]) },
+    markLine: {
+      silent: true,
+      data: [{
+        xAxis: '06/25',
+        label: { formatter: '分期线' },
+        lineStyle: { color: '#E74C3C', type: 'dashed', width: 2 }
+      }]
+    },
+    markArea: {
+      silent: true,
+      itemStyle: { color: 'rgba(52,152,219,0.08)' },
+      data: [[{ xAxis: '06/20' }, { xAxis: '06/25' }]]
+    }
+  }]
+});
+
+// 2. Tag1 distribution comparison
+var chart2 = echarts.init(document.getElementById('chart_tag1'));
+chart2.setOption({
+  title: { text: '一级标签占比对比（前期 vs 后期）', left: 'center', textStyle: { fontSize: 15 } },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: { type: 'shadow' },
+    formatter: function(params) {
+      let s = params[0].name + '<br/>';
+      params.forEach(p => {
+        s += p.marker + ' ' + p.seriesName + ': ' + p.value + '%<br/>';
+      });
+      return s;
+    }
+  },
+  legend: { data: ['前期占比', '后期占比'], bottom: 0 },
+  grid: { left: '15%', right: '5%', bottom: '10%' },
+  xAxis: { type: 'value', name: '占比(%)', max: 60 },
+  yAxis: { type: 'category', data: ["APP\u529f\u80fd/\u4ea4\u4e92", "\u89c6\u9891/\u6d41\u5904\u7406", "\u56fe\u50cf\u8d28\u91cf", "\u786c\u4ef6\u8bbe\u8ba1", "GPS/\u5b9a\u4f4d", "\u8bf4\u660e\u4e66/\u6587\u6863", "\u7f51\u7edc\u8fde\u63a5", "\u4f9b\u7535/\u7535\u6e90\u7ba1\u7406", "\u5b58\u50a8/TF\u5361", "\u7cfb\u7edf\u7a33\u5b9a\u6027", "\u5176\u4ed6", "\u4f9b\u7535\u7ba1\u7406", "\u6d88\u606f\u901a\u77e5"], inverse: true },
+  series: [
+    { name: '前期占比', type: 'bar', data: [42.0, 13.7, 9.4, 12.2, 5.9, 6.3, 4.1, 3.5, 0.7, 0.7, 0.0, 0.0, 0.2], itemStyle: { color: earlyColor } },
+    { name: '后期占比', type: 'bar', data: [48.9, 21.9, 14.8, 3.4, 4.3, 0.9, 1.4, 0.2, 1.6, 0.5, 0.9, 0.9, 0.2], itemStyle: { color: lateColor } }
+  ]
+});
+
+// 3. Tag2 Top 15 comparison
+var chart3 = echarts.init(document.getElementById('chart_tag2'));
+chart3.setOption({
+  title: { text: '高频问题 TOP 15 对比', left: 'center', textStyle: { fontSize: 15 } },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: { type: 'shadow' }
+  },
+  legend: { data: ['前期', '后期'], bottom: 0 },
+  grid: { left: '25%', right: '5%', bottom: '10%' },
+  xAxis: { type: 'value', name: '反馈量' },
+  yAxis: { type: 'category', data: ["\u54e8\u5175\u8bef\u62a5", "\u753b\u9762\u8fc7\u66dd", "\u56fa\u4ef6\u5347\u7ea7\u65e0\u8fdb\u5ea6\u6761", "\u54e8\u5175\u6f0f\u62a5", "\u6293\u62cd\u56fe\u7247\u8fc7\u66dd", "\u8f68\u8ff9\u56de\u653e\u4e0d\u5b8c\u6574\u7f3a\u5c11\u90e8\u5206\u884c\u7a0b", "\u4e91\u5f55\u4e0b\u8f7d\u6162", "APP\u95ea\u9000", "\u5ffd\u7565\u53cd\u9988", "\u89c6\u9891\u56de\u653e\u5361\u987f", "\u767d\u5c4f", "\u9006\u5149/\u9ad8\u5149\u73af\u5883\u8fc7\u66dd", "\u627e\u4e0d\u5230\u89c6\u9891", "\u5f00\u6d41\u5931\u8d25", "\u54e8\u5175\u6293\u62cd\u5ef6\u8fdf"], inverse: true },
+  series: [
+    { name: '前期', type: 'bar', data: [23, 1, 0, 18, 19, 12, 12, 3, 3, 10, 7, 12, 8, 9, 4], itemStyle: { color: earlyColor } },
+    { name: '后期', type: 'bar', data: [18, 37, 37, 18, 9, 7, 6, 15, 13, 6, 6, 1, 4, 3, 7], itemStyle: { color: lateColor } }
+  ]
+});
+
+// 4. Known vs New
+var chart4 = echarts.init(document.getElementById('chart_known'));
+chart4.setOption({
+  title: { text: '已知问题 vs 新发现问题', left: 'center', textStyle: { fontSize: 15 } },
+  tooltip: { trigger: 'item', formatter: '{b}: {c}条 ({d}%)' },
+  legend: { bottom: 0 },
+  series: [
+    {
+      name: '前期',
+      type: 'pie',
+      radius: ['30%', '55%'],
+      center: ['25%', '45%'],
+      data: [
+        { value: 165, name: '已知问题', itemStyle: { color: '#E74C3C' } },
+        { value: 294, name: '新发现问题', itemStyle: { color: '#00B050' } }
+      ],
+      label: { formatter: '前期\n{b}: {d}%' }
+    },
+    {
+      name: '后期',
+      type: 'pie',
+      radius: ['30%', '55%'],
+      center: ['75%', '45%'],
+      data: [
+        { value: 86, name: '已知问题', itemStyle: { color: '#E74C3C' } },
+        { value: 233, name: '新发现问题', itemStyle: { color: '#00B050' } }
+      ],
+      label: { formatter: '后期\n{b}: {d}%' }
+    }
+  ]
+});
+
+// 5. Type distribution
+var early_type_vals = [201, 0, 119, 139];
+var late_type_vals = [250, 2, 94, 92];
+var chart5 = echarts.init(document.getElementById('chart_type'));
+chart5.setOption({
+  title: { text: '问题类型分布对比', left: 'center', textStyle: { fontSize: 15 } },
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  legend: { data: ['前期', '后期'], bottom: 0 },
+  grid: { left: '10%', right: '5%', bottom: '10%' },
+  xAxis: { type: 'category', data: ["bug\u95ee\u9898", "\u5176\u4ed6", "\u6613\u7528\u6027\u95ee\u9898", "\u9700\u6c42\u5efa\u8bae"] },
+  yAxis: { type: 'value', name: '反馈量' },
+  series: [
+    { name: '前期', type: 'bar', data: early_type_vals, itemStyle: { color: earlyColor } },
+    { name: '后期', type: 'bar', data: late_type_vals, itemStyle: { color: lateColor } }
+  ]
+});
+
+// Responsive
+window.addEventListener('resize', function() {
+  chart1.resize(); chart2.resize(); chart3.resize(); chart4.resize(); chart5.resize();
+});
+</script>
+
+</body>
+</html>
