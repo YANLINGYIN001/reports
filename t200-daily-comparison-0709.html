@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200日常问题反馈对比分析报告（6/20-7/9）</title>
+<style>
+:root { --primary: #00B050; --primary2: #2BBD6E; --dark: #333; --gray: #999; --red: #E74C3C; --orange: #F39C12; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; color: #333; line-height: 1.7; }
+h1 { color: var(--primary); border-bottom: 3px solid var(--primary); padding-bottom: 10px; font-size: 24px; }
+h2 { color: var(--dark); margin-top: 40px; border-left: 4px solid var(--primary); padding-left: 12px; font-size: 18px; }
+h3 { color: var(--dark); font-size: 15px; margin-top: 25px; }
+.meta { color: var(--gray); font-size: 13px; margin-bottom: 20px; }
+.summary { background: #f0faf3; border-left: 4px solid var(--primary); padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+.summary p { margin: 8px 0; }
+.summary strong { color: var(--primary); }
+.kpi-row { display: flex; gap: 15px; margin: 20px 0; flex-wrap: wrap; }
+.kpi-card { flex: 1; min-width: 160px; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; text-align: center; }
+.kpi-card .num { font-size: 28px; font-weight: bold; color: var(--primary); }
+.kpi-card .label { font-size: 12px; color: var(--gray); margin-top: 5px; }
+.kpi-card.alert .num { color: var(--red); }
+.chart-container { margin: 25px 0; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 13px; }
+th { background: var(--primary); color: #fff; padding: 10px; text-align: left; }
+td { padding: 10px; border: 1px solid #eee; }
+tr:nth-child(even) { background: #fafafa; }
+.quote { background: #f9f9f9; border-left: 3px solid var(--primary2); padding: 8px 12px; margin: 5px 0; font-size: 13px; border-radius: 0 4px 4px 0; }
+.quote .name { color: var(--primary); font-weight: bold; }
+.quote .time { color: var(--gray); font-size: 11px; }
+.tag-known { color: var(--red); font-weight: bold; }
+.tag-new { color: var(--primary); font-weight: bold; }
+.section-divider { border-top: 1px solid #eee; margin: 30px 0; }
+.risk-high { color: var(--red); }
+.risk-mid { color: var(--orange); }
+.risk-low { color: var(--primary); }
+</style>
+</head>
+<body>
+
+<h1>T200日常问题反馈对比分析报告</h1>
+<p class="meta">数据来源：飞书电子表格「日常问题跟进」| 数据范围：6/20-7/9 | 总量：938条 | 生成时间：2026-07-09</p>
+
+<div class="kpi-row">
+<div class="kpi-card"><div class="num">938</div><div class="label">反馈总量</div></div>
+<div class="kpi-card"><div class="num">827</div><div class="label">前期 (6/20-7/3)</div></div>
+<div class="kpi-card"><div class="num">111</div><div class="label">后期 (7/4-7/9)</div></div>
+<div class="kpi-card"><div class="num">13</div><div class="label">后期已知问题</div></div>
+<div class="kpi-card"><div class="num">37</div><div class="label">后期新发现</div></div>
+</div>
+
+<div class="summary">
+<p><strong>报告概述：</strong>本报告对比T200公测日常问题反馈在7/4分界点前后的变化，分析问题演化趋势与新增风险。</p>
+<p><strong>数据分界：</strong>前期 6/20-7/3 共 827 条，后期 7/4-7/9 共 111 条</p>
+<p><strong>核心发现：</strong></p>
+<p>1. <strong>哨兵问题持续恶化</strong>：哨兵漏报从前期27条升至后期13条（占比从3.3%升至11.7%），是后期最突出问题。新增"哨兵抓拍无视频"5条、"哨兵漏录"2条，说明哨兵检测算法和视频录制链路仍存在系统性缺陷。</p>
+<p>2. <strong>画面过曝问题改善中</strong>：从前期35条降至后期5条，占比从4.2%降至4.5%，绝对数量明显下降，但仍持续出现，关联Bug[885465]尚未修复。</p>
+<p>3. <strong>GPS/定位问题集中爆发</strong>：后期新增"轨迹缺失"、"定位延迟"、"定位精度"等问题，主要出现在地下车库场景，前期仅有少量轨迹异常。</p>
+<p>4. <strong>存储/TF卡异常新增</strong>：后期出现TF卡异常3条、内存卡异常提示2条、存储卡异常格式化1条，前期仅7条，需关注卡兼容性风险。</p>
+<p>5. <strong>已知问题占比</strong>：后期已知问题13条（11.7%），新发现37条（33.3%），未标注61条（55.0%）。已知问题占比下降，但新问题类型增多。</p>
+</div>
+
+<h2>一、一级标签分布对比</h2>
+<div class="chart-container">
+<svg width="680" height="376" viewBox="0 0 680 376"><text x="0" y="20" font-size="14" font-weight="bold" fill="#333">一级标签分布：前期 vs 后期</text><text x="0" y="48" font-size="11" fill="#333">APP功能/交互</text><rect x="160" y="35" width="400" height="16" fill="#999" rx="2"/><text x="565" y="48" font-size="11" fill="#999">前期 394</text><rect x="160" y="55" width="26" height="16" fill="#00B050" rx="2"/><text x="191" y="68" font-size="11" fill="#00B050" font-weight="bold">后期 26</text><text x="0" y="90" font-size="11" fill="#333">视频/流处理</text><rect x="160" y="77" width="123" height="16" fill="#999" rx="2"/><text x="288" y="90" font-size="11" fill="#999">前期 122</text><rect x="160" y="97" width="48" height="16" fill="#00B050" rx="2"/><text x="213" y="110" font-size="11" fill="#00B050" font-weight="bold">后期 48</text><text x="0" y="132" font-size="11" fill="#333">图像质量</text><rect x="160" y="119" width="100" height="16" fill="#999" rx="2"/><text x="265" y="132" font-size="11" fill="#999">前期 99</text><rect x="160" y="139" width="12" height="16" fill="#00B050" rx="2"/><text x="177" y="152" font-size="11" fill="#00B050" font-weight="bold">后期 12</text><text x="0" y="174" font-size="11" fill="#333">硬件设计</text><rect x="160" y="161" width="71" height="16" fill="#999" rx="2"/><text x="236" y="174" font-size="11" fill="#999">前期 70</text><rect x="160" y="181" width="2" height="16" fill="#00B050" rx="2"/><text x="167" y="194" font-size="11" fill="#00B050" font-weight="bold">后期 2</text><text x="0" y="216" font-size="11" fill="#333">GPS/定位</text><rect x="160" y="203" width="44" height="16" fill="#999" rx="2"/><text x="209" y="216" font-size="11" fill="#999">前期 44</text><rect x="160" y="223" width="7" height="16" fill="#00B050" rx="2"/><text x="172" y="236" font-size="11" fill="#00B050" font-weight="bold">后期 7</text><text x="0" y="258" font-size="11" fill="#333">说明书/文档</text><rect x="160" y="245" width="33" height="16" fill="#999" rx="2"/><text x="198" y="258" font-size="11" fill="#999">前期 33</text><rect x="160" y="265" width="2" height="16" fill="#00B050" rx="2"/><text x="167" y="278" font-size="11" fill="#00B050" font-weight="bold">后期 2</text><text x="0" y="300" font-size="11" fill="#333">网络连接</text><rect x="160" y="287" width="25" height="16" fill="#999" rx="2"/><text x="190" y="300" font-size="11" fill="#999">前期 25</text><rect x="160" y="307" width="0" height="16" fill="#00B050" rx="2"/><text x="165" y="320" font-size="11" fill="#00B050" font-weight="bold">后期 0</text><text x="0" y="342" font-size="11" fill="#333">供电/电源管理</text><rect x="160" y="329" width="17" height="16" fill="#999" rx="2"/><text x="182" y="342" font-size="11" fill="#999">前期 17</text><rect x="160" y="349" width="0" height="16" fill="#00B050" rx="2"/><text x="165" y="362" font-size="11" fill="#00B050" font-weight="bold">后期 0</text><rect x="160" y="361" width="12" height="8" fill="#999"/><text x="176" y="369" font-size="10" fill="#666">前期 (6/20-7/3)</text><rect x="280" y="361" width="12" height="8" fill="#00B050"/><text x="296" y="369" font-size="10" fill="#00B050">后期 (7/4-7/9)</text></svg>
+</div>
+<p>前期以APP功能/交互（394条）为绝对主力，后期视频/流处理（48条）超越APP功能/交互（26条）成为第一。GPS/定位、存储/TF卡、供电管理问题在后期占比明显上升。</p>
+
+<h2>二、后期一级标签分布</h2>
+<div class="chart-container">
+<svg width="500" height="280" viewBox="0 0 500 280"><text x="10" y="20" font-size="14" font-weight="bold" fill="#333">7/4后一级标签分布</text><path d="M 120.0 40.0 A 80 80 0 0 1 151.1 193.7 L 137.5 161.5 A 45 45 0 0 0 120.0 75.0 Z" fill="#48CAE4" stroke="#fff" stroke-width="1"/><rect x="260" y="50" width="12" height="12" fill="#48CAE4" rx="2"/><text x="278" y="60" font-size="11" fill="#333">视频/流处理: 48 (43.6%)</text><path d="M 151.1 193.7 A 80 80 0 0 1 49.2 157.3 L 80.2 141.0 A 45 45 0 0 0 137.5 161.5 Z" fill="#00B050" stroke="#fff" stroke-width="1"/><rect x="260" y="72" width="12" height="12" fill="#00B050" rx="2"/><text x="278" y="82" font-size="11" fill="#333">APP功能/交互: 26 (23.6%)</text><path d="M 49.2 157.3 A 80 80 0 0 1 41.6 104.1 L 75.9 111.1 A 45 45 0 0 0 80.2 141.0 Z" fill="#2BBD6E" stroke="#fff" stroke-width="1"/><rect x="260" y="94" width="12" height="12" fill="#2BBD6E" rx="2"/><text x="278" y="104" font-size="11" fill="#333">图像质量: 12 (10.9%)</text><path d="M 41.6 104.1 A 80 80 0 0 1 54.0 74.8 L 82.9 94.6 A 45 45 0 0 0 75.9 111.1 Z" fill="#F39C12" stroke="#fff" stroke-width="1"/><rect x="260" y="116" width="12" height="12" fill="#F39C12" rx="2"/><text x="278" y="126" font-size="11" fill="#333">存储/TF卡: 7 (6.4%)</text><path d="M 54.0 74.8 A 80 80 0 0 1 76.7 52.7 L 95.7 82.1 A 45 45 0 0 0 82.9 94.6 Z" fill="#E74C3C" stroke="#fff" stroke-width="1"/><rect x="260" y="138" width="12" height="12" fill="#E74C3C" rx="2"/><text x="278" y="148" font-size="11" fill="#333">GPS/定位: 7 (6.4%)</text><path d="M 76.7 52.7 A 80 80 0 0 1 101.9 42.1 L 109.8 76.2 A 45 45 0 0 0 95.7 82.1 Z" fill="#999999" stroke="#fff" stroke-width="1"/><rect x="260" y="160" width="12" height="12" fill="#999999" rx="2"/><text x="278" y="170" font-size="11" fill="#333">供电管理: 6 (5.5%)</text><path d="M 101.9 42.1 A 80 80 0 0 1 110.9 40.5 L 114.9 75.3 A 45 45 0 0 0 109.8 76.2 Z" fill="#FFB84D" stroke="#fff" stroke-width="1"/><rect x="260" y="182" width="12" height="12" fill="#FFB84D" rx="2"/><text x="278" y="192" font-size="11" fill="#333">硬件设计: 2 (1.8%)</text><path d="M 110.9 40.5 A 80 80 0 0 1 120.0 40.0 L 120.0 75.0 A 45 45 0 0 0 114.9 75.3 Z" fill="#DDA0DD" stroke="#fff" stroke-width="1"/><rect x="260" y="204" width="12" height="12" fill="#DDA0DD" rx="2"/><text x="278" y="214" font-size="11" fill="#333">说明书/文档: 2 (1.8%)</text><text x="120" y="115" text-anchor="middle" font-size="20" font-weight="bold" fill="#333">110</text><text x="120" y="135" text-anchor="middle" font-size="11" fill="#999">总计</text></svg>
+</div>
+
+<h2>三、持续存在问题（7/4前后均有出现）</h2>
+<p>以下问题在7/4前后均持续出现，按后期反馈量排序：</p>
+<div class="chart-container">
+<svg width="680" height="460" viewBox="0 0 680 460"><text x="0" y="20" font-size="14" font-weight="bold" fill="#333">持续存在问题：前期 vs 后期反馈量</text><text x="0" y="48" font-size="11" fill="#333">哨兵漏报</text><rect x="160" y="35" width="291" height="16" fill="#999" rx="2"/><text x="456" y="48" font-size="11" fill="#999">前期 27</text><rect x="160" y="55" width="140" height="16" fill="#00B050" rx="2"/><text x="305" y="68" font-size="11" fill="#00B050" font-weight="bold">后期 13</text><text x="0" y="90" font-size="11" fill="#333">哨兵误报</text><rect x="160" y="77" width="400" height="16" fill="#999" rx="2"/><text x="565" y="90" font-size="11" fill="#999">前期 37</text><rect x="160" y="97" width="64" height="16" fill="#00B050" rx="2"/><text x="229" y="110" font-size="11" fill="#00B050" font-weight="bold">后期 6</text><text x="0" y="132" font-size="11" fill="#333">画面过曝</text><rect x="160" y="119" width="378" height="16" fill="#999" rx="2"/><text x="543" y="132" font-size="11" fill="#999">前期 35</text><rect x="160" y="139" width="54" height="16" fill="#00B050" rx="2"/><text x="219" y="152" font-size="11" fill="#00B050" font-weight="bold">后期 5</text><text x="0" y="174" font-size="11" fill="#333">UI交互设计优化</text><rect x="160" y="161" width="10" height="16" fill="#999" rx="2"/><text x="175" y="174" font-size="11" fill="#999">前期 1</text><rect x="160" y="181" width="32" height="16" fill="#00B050" rx="2"/><text x="197" y="194" font-size="11" fill="#00B050" font-weight="bold">后期 3</text><text x="0" y="216" font-size="11" fill="#333">哨兵抓拍不通知</text><rect x="160" y="203" width="21" height="16" fill="#999" rx="2"/><text x="186" y="216" font-size="11" fill="#999">前期 2</text><rect x="160" y="223" width="32" height="16" fill="#00B050" rx="2"/><text x="197" y="236" font-size="11" fill="#00B050" font-weight="bold">后期 3</text><text x="0" y="258" font-size="11" fill="#333">固件升级无进度条</text><rect x="160" y="245" width="367" height="16" fill="#999" rx="2"/><text x="532" y="258" font-size="11" fill="#999">前期 34</text><rect x="160" y="265" width="32" height="16" fill="#00B050" rx="2"/><text x="197" y="278" font-size="11" fill="#00B050" font-weight="bold">后期 3</text><text x="0" y="300" font-size="11" fill="#333">点火抓拍缺失</text><rect x="160" y="287" width="10" height="16" fill="#999" rx="2"/><text x="175" y="300" font-size="11" fill="#999">前期 1</text><rect x="160" y="307" width="32" height="16" fill="#00B050" rx="2"/><text x="197" y="320" font-size="11" fill="#00B050" font-weight="bold">后期 3</text><text x="0" y="342" font-size="11" fill="#333">开流慢</text><rect x="160" y="329" width="75" height="16" fill="#999" rx="2"/><text x="240" y="342" font-size="11" fill="#999">前期 7</text><rect x="160" y="349" width="21" height="16" fill="#00B050" rx="2"/><text x="186" y="362" font-size="11" fill="#00B050" font-weight="bold">后期 2</text><text x="0" y="384" font-size="11" fill="#333">远程查看卡顿</text><rect x="160" y="371" width="21" height="16" fill="#999" rx="2"/><text x="186" y="384" font-size="11" fill="#999">前期 2</text><rect x="160" y="391" width="21" height="16" fill="#00B050" rx="2"/><text x="186" y="404" font-size="11" fill="#00B050" font-weight="bold">后期 2</text><text x="0" y="426" font-size="11" fill="#333">开流失败/连接不稳定</text><rect x="160" y="413" width="10" height="16" fill="#999" rx="2"/><text x="175" y="426" font-size="11" fill="#999">前期 1</text><rect x="160" y="433" width="21" height="16" fill="#00B050" rx="2"/><text x="186" y="446" font-size="11" fill="#00B050" font-weight="bold">后期 2</text><rect x="160" y="445" width="12" height="8" fill="#999"/><text x="176" y="453" font-size="10" fill="#666">前期 (6/20-7/3)</text><rect x="280" y="445" width="12" height="8" fill="#00B050"/><text x="296" y="453" font-size="10" fill="#00B050">后期 (7/4-7/9)</text></svg>
+</div>
+
+<table>
+<tr><th>问题（二级标签）</th><th>前期反馈量</th><th>后期反馈量</th><th>趋势</th><th>用户原声（后期）</th></tr>
+<tr><td>哨兵漏报</td><td>27</td><td>13</td><td><span class="risk-mid">→ 持平</span></td><td><div class="quote"><span class="name">齐宝台</span> <span class="time">2026/7/4 7:48:10</span><br>误报，漏报，看图车都走两辆了，居然没录到人</div><div class="quote"><span class="name">陶双</span> <span class="time">2026/7/4 7:55:30</span><br>新固件哨兵事件漏录，只录了三个有人出现事件，车辆昨天停车时候前边没有车，不知道什么时候前面白车停上了，没有录到白车停车过程</div></td></tr><tr><td>哨兵误报</td><td>37</td><td>6</td><td><span class="risk-low">↓ 明显下降</span></td><td><div class="quote"><span class="name">祁达</span> <span class="time">2026/7/1 6:25:32</span><br>碰撞误报，2段视频，应该还有很多，是灵敏度调太高了吗？</div><div class="quote"><span class="name">李建</span> <span class="time">2026/7/1 16:09:07</span><br>紧急录像里面的哨兵视频，多数视频都是检测到人、车经过远离现场（记录仪车辆）或人、车已经不在视频内容里面。这个触发紧急录像是否需要调整一下。目前测试APP通用设置里停车监控选项高。</div></td></tr><tr><td>画面过曝</td><td>35</td><td>5</td><td><span class="risk-low">↓ 明显下降</span></td><td><div class="quote"><span class="name">陈建建</span> <span class="time">2026/7/1 7:30:58</span><br>碰撞抓拍和点火抓拍均为过爆严重，几乎看不到画面</div><div class="quote"><span class="name">周炳文</span> <span class="time">2026/7/3 7:42:14</span><br>屏幕过曝</div></td></tr><tr><td>UI交互设计优化</td><td>1</td><td>3</td><td><span class="risk-high">↑ 上升</span></td><td><div class="quote"><span class="name">张立新</span> <span class="time">2026/7/3 20:24:25</span><br>这次记录仪的UI使用体验和设计，都不同于之前记录仪或摄像机的设计语言，是一套全新的页面交互，尤其是重点功能的重合度，比如事件回放和紧急录像以及云录这些功能，和其他设备的重合度非常高，在一个APP里使用多个360设备，每打开一个设备就是一套全新的界面，割裂感很足，增加了学习成本，降低了舒适度。</div><div class="quote"><span class="name">朱君</span> <span class="time">2026/7/7 15:46:31</span><br>app界面t200图标较小，且与功能设置按键，建议统一起来</div></td></tr><tr><td>哨兵抓拍不通知</td><td>2</td><td>3</td><td><span class="risk-high">↑ 上升</span></td><td><div class="quote"><span class="name">孙洪士</span> <span class="time">2026/7/3 21:27:31</span><br>升级后，哨兵抓拍有抓拍但是没有通知了</div><div class="quote"><span class="name">陈建建</span> <span class="time">2026/7/3 22:41:52</span><br>建议增加点火抓拍和熄火抓拍消息通知。</div></td></tr><tr><td>固件升级无进度条</td><td>34</td><td>3</td><td><span class="risk-low">↓ 明显下降</span></td><td><div class="quote"><span class="name">黄显森</span> <span class="time">2026/7/3 20:05:24</span><br>升级缺少进度条功能，不能直观看出升级进度</div><div class="quote"><span class="name">祁达</span> <span class="time">2026/7/3 20:09:53</span><br>固件升级，一次成功，就是啥也没有，看看不到固件下载情况</div></td></tr><tr><td>点火抓拍缺失</td><td>1</td><td>3</td><td><span class="risk-high">↑ 上升</span></td><td><div class="quote"><span class="name">齐宝台</span> <span class="time">2026/7/3 21:17:04</span><br>没有点火抓拍</div><div class="quote"><span class="name">王智勇</span> <span class="time">2026/7/4 7:33:27</span><br>早晨开车未触发点火抓拍</div></td></tr><tr><td>开流慢</td><td>7</td><td>2</td><td><span class="risk-low">↓ 明显下降</span></td><td><div class="quote"><span class="name">邢宇</span> <span class="time">2026/7/6 13:41:13</span><br>升级新版本后打开实时画面越来越慢，升级后第一天打开实时画面仅需1到2秒，第二天就要5秒以上，比以前更慢</div><div class="quote"><span class="name">徐婷婷</span> <span class="time">2026/7/7 9:11:07</span><br>实时画面之前4秒，现在要8秒。视频回放也比之前慢了很多。回放画面放大很模糊，不仔细看都看不出交警</div></td></tr><tr><td>远程查看卡顿</td><td>2</td><td>2</td><td><span class="risk-mid">→ 持平</span></td><td><div class="quote"><span class="name">张立新</span> <span class="time">2026/7/3 18:33:54</span><br>在行车过程中远程查看实时录像，流畅清晰度下也卡顿明显</div><div class="quote"><span class="name">张俊</span> <span class="time">2026/7/4 8:27:17</span><br>最新固件，查看开流，人在车前走有明显卡顿情况，另外外面景色发黄也请确认</div></td></tr><tr><td>开流失败/连接不稳定</td><td>1</td><td>2</td><td><span class="risk-high">↑ 上升</span></td><td><div class="quote"><span class="name">温开礼</span> <span class="time">2026/7/3 9:49:48</span><br>同样的停车位置，原来直接就可以打开，这两天突然动不动打出来了，打开的情况也是连接2次以上才成功进入。</div><div class="quote"><span class="name">曾昭伟</span> <span class="time">2026/7/4 8:58:37</span><br>更新新固件后实时视频加载时间比之前长</div></td></tr>
+</table>
+
+<h2>四、7/4后新增问题（前期未出现）</h2>
+<p>以下问题在前期未出现，是7/4后新发现的问题类型：</p>
+<div class="chart-container">
+<svg width="720" height="400" viewBox="0 0 720 400"><text x="0" y="20" font-size="14" font-weight="bold" fill="#333">7/4后新增问题 TOP10</text><text x="0" y="55" font-size="12" fill="#333">哨兵抓拍无视频</text><rect x="180" y="35" width="500" height="28" fill="#E74C3C" rx="3"/><text x="688" y="55" font-size="12" fill="#333" font-weight="bold">5</text><text x="0" y="91" font-size="12" fill="#333">车内查看-视频文件</text><rect x="180" y="71" width="400" height="28" fill="#E74C3C" rx="3"/><text x="588" y="91" font-size="12" fill="#333" font-weight="bold">4</text><text x="0" y="127" font-size="12" fill="#333">TF卡异常</text><rect x="180" y="107" width="300" height="28" fill="#E74C3C" rx="3"/><text x="488" y="127" font-size="12" fill="#333" font-weight="bold">3</text><text x="0" y="163" font-size="12" fill="#333">电压低离线</text><rect x="180" y="143" width="200" height="28" fill="#E74C3C" rx="3"/><text x="388" y="163" font-size="12" fill="#333" font-weight="bold">2</text><text x="0" y="199" font-size="12" fill="#333">色彩异常</text><rect x="180" y="179" width="200" height="28" fill="#E74C3C" rx="3"/><text x="388" y="199" font-size="12" fill="#333" font-weight="bold">2</text><text x="0" y="235" font-size="12" fill="#333">哨兵漏录</text><rect x="180" y="215" width="200" height="28" fill="#E74C3C" rx="3"/><text x="388" y="235" font-size="12" fill="#333" font-weight="bold">2</text><text x="0" y="271" font-size="12" fill="#333">内存卡异常提示</text><rect x="180" y="251" width="200" height="28" fill="#E74C3C" rx="3"/><text x="388" y="271" font-size="12" fill="#333" font-weight="bold">2</text><text x="0" y="307" font-size="12" fill="#333">视频花屏</text><rect x="180" y="287" width="200" height="28" fill="#E74C3C" rx="3"/><text x="388" y="307" font-size="12" fill="#333" font-weight="bold">2</text><text x="0" y="343" font-size="12" fill="#333">抓拍延迟</text><rect x="180" y="323" width="100" height="28" fill="#E74C3C" rx="3"/><text x="288" y="343" font-size="12" fill="#333" font-weight="bold">1</text><text x="0" y="379" font-size="12" fill="#333">后台下载需求</text><rect x="180" y="359" width="100" height="28" fill="#E74C3C" rx="3"/><text x="288" y="379" font-size="12" fill="#333" font-weight="bold">1</text></svg>
+</div>
+
+<table>
+<tr><th>新增问题（二级标签）</th><th>后期反馈量</th><th>用户原声</th></tr>
+<tr><td>哨兵抓拍无视频</td><td>5</td><td><div class="quote"><span class="name">魏健伟</span> <span class="time">2026/7/4 21:19:25</span><br>有抓拍记录，但没有视频</div><div class="quote"><span class="name">陶双</span> <span class="time">2026/7/5 10:13:55</span><br>哨兵事件图片空白打不开</div></td></tr><tr><td>车内查看-视频文件</td><td>4</td><td><div class="quote"><span class="name">张俊</span> <span class="time">2026/7/4 15:44:41</span><br>[{'text': '通过百度网盘分享的文件：F20260704101023-60-L.ts 链接：', 'type': 'text'}, {'cellPosition': None, 'link': 'https://pan.baidu.com/s/1g6XLm7aZe9lPyeL4Go0S1g'</div><div class="quote"><span class="name">张俊</span> <span class="time">2026/7/4 15:55:36</span><br>[{'text': '通过百度网盘分享的文件：F20260704075320-60-L.ts 链接：', 'type': 'text'}, {'cellPosition': None, 'link': 'https://pan.baidu.com/s/1eeVh4_iS9ZIPiDjwdhTcwg'</div></td></tr><tr><td>TF卡异常</td><td>3</td><td><div class="quote"><span class="name">张俊</span> <span class="time">2026/7/5 10:27:08</span><br>昨天提交卡录跳贞，昨天下午18:40进行了格式化处理，今天开车突然又提示卡出错，只能换卡试下了，看是否要把这张卡寄给你们分析下</div><div class="quote"><span class="name">李铭</span> <span class="time">2026/7/7 11:32:11</span><br>TF卡报异常，更换TF卡之后，故障恢复。更换下来的TF卡使用磁盘精灵检测无问题。设备误报，建议修改后台机制。</div></td></tr><tr><td>电压低离线</td><td>2</td><td><div class="quote"><span class="name">王龙</span> <span class="time">2026/7/5 23:48:27</span><br>查看实时监控时发现已经离线，不知道什么时候离线的，点火后自动重启，应该是电压低导致的，车点火后等了几分钟自动充电，建议记录仪关机离线时提示，或者提示电压低</div><div class="quote"><span class="name">刘弼武</span> <span class="time">2026/7/7 15:54:36</span><br>无缘无故离线，不知道是不是电瓶低压引起的，来车上可以正常启动车子，启动后上线</div></td></tr><tr><td>色彩异常</td><td>2</td><td><div class="quote"><span class="name">张俊</span> <span class="time">2026/7/4 15:28:18</span><br>出小区门口，1秒前和1秒后的画面整体变化太突然，画面变黄。</div><div class="quote"><span class="name">张俊</span> <span class="time">2026/7/4 15:57:32</span><br>真看不下去了反馈提一下，春天道路两边都是绿色，但是视频拍出来的效果像秋天一样，黄黄的加红的。</div></td></tr><tr><td>哨兵漏录</td><td>2</td><td><div class="quote"><span class="name">周炳文</span> <span class="time">2026/7/9 6:41:17</span><br>还需提升成功率</div><div class="quote"><span class="name">王刚红</span> <span class="time">2026/7/9 7:54:12</span><br>哨兵模型灵敏度中，因为车停垃圾桶边，昨晚下去扔垃圾，看到有个捡垃圾的老太太把泡沫箱管都放我引擎盖上。而且有这么多人在我车头前面扔垃圾。共享单车停我车头。而哨兵模式却没有录下这些事情。</div></td></tr><tr><td>内存卡异常提示</td><td>2</td><td><div class="quote"><span class="name">张俊</span> <span class="time">2026/7/4 8:43:42</span><br>开着车突然听到语音播报，内存卡异常，请格式化内存卡</div><div class="quote"><span class="name">陈建建</span> <span class="time">2026/7/7 19:27:20</span><br>开车途中提示内存卡异常</div></td></tr><tr><td>视频花屏</td><td>2</td><td><div class="quote"><span class="name">张俊</span> <span class="time">2026/7/4 15:51:53</span><br>查看这段视频时，有出现花屏情况，也就是云录上传的这段视频。</div><div class="quote"><span class="name">黄浩烁</span> <span class="time">2026/7/8 15:13:58</span><br>花屏，小概率会遇到这种花屏</div></td></tr><tr><td>抓拍延迟</td><td>1</td><td><div class="quote"><span class="name">魏健伟</span> <span class="time">2026/7/4 6:58:22</span><br>哨兵抓拍的视频缩略图中显示有人，但视频中没有人，而且时间也不对应</div></td></tr><tr><td>后台下载需求</td><td>1</td><td><div class="quote"><span class="name">吕高文</span> <span class="time">2026/7/4 9:36:36</span><br>能否实现App后台下载？</div></td></tr>
+</table>
+
+<h2>五、已知问题 vs 新发现对比</h2>
+<div class="kpi-row">
+<div class="kpi-card"><div class="num">250</div><div class="label">前期已知问题</div></div>
+<div class="kpi-card"><div class="num">519</div><div class="label">前期新发现</div></div>
+<div class="kpi-card alert"><div class="num">13</div><div class="label">后期已知问题</div></div>
+<div class="kpi-card"><div class="num">37</div><div class="label">后期新发现</div></div>
+</div>
+
+<p><strong>分析：</strong>后期已知问题占比 11.7%，较前期 30.2% 下降。说明部分老问题得到缓解，但新问题类型持续涌现。后期新发现37条（33.3%），涉及GPS轨迹缺失、TF卡异常、哨兵无视频、高温白屏等多个新场景。</p>
+
+<h2>六、重点风险预警</h2>
+<table>
+<tr><th>风险等级</th><th>问题</th><th>依据</th><th>建议</th></tr>
+<tr><td><span class="risk-high">🔴 高</span></td><td>哨兵漏报/漏录持续恶化</td><td>后期哨兵漏报13条+漏录2条=15条，占比13.5%，为后期第一高频问题。多名用户反馈灵敏度"中"档下大面积漏录。</td><td>优先排查哨兵检测算法在中等灵敏度下的覆盖率，考虑增加灵敏度档位或提升中档检测率</td></tr>
+<tr><td><span class="risk-high">🔴 高</span></td><td>哨兵抓拍无视频</td><td>后期新增5条，前期未出现。哨兵触发事件但查看显示"暂无视频"。</td><td>排查哨兵事件视频录制→存储→上传→APP展示全链路，定位视频丢失环节</td></tr>
+<tr><td><span class="risk-high">🔴 高</span></td><td>GPS轨迹缺失/定位延迟</td><td>后期集中爆发7条，主要场景为地下车库驶出后3分钟内无定位。前期仅2条轨迹异常。</td><td>评估4G基站辅助定位方案可行性；优化GPS重新搜星速度；地下车库场景专项测试</td></tr>
+<tr><td><span class="risk-mid">🟡 中</span></td><td>TF卡/存储异常</td><td>后期7条存储相关（TF卡异常3+内存卡提示2+格式化1+存储空间不足1），前期7条。后期占比上升明显。</td><td>扩大TF卡兼容性测试范围；排查高温环境下的卡读取异常</td></tr>
+<tr><td><span class="risk-mid">🟡 中</span></td><td>高温环境异常</td><td>后期出现高温白屏1条、温度过高休眠1条，前期未出现。夏季高温环境下设备稳定性风险上升。</td><td>增加高温环境测试；评估散热方案；监控高温场景故障率</td></tr>
+<tr><td><span class="risk-mid">🟡 中</span></td><td>画面过曝</td><td>后期5条，关联Bug[885465]仍未修复。较前期35条有所下降但持续存在。</td><td>加快Bug[885465]修复进度；验证ISP调优在逆光场景的效果</td></tr>
+<tr><td><span class="risk-low">🟢 低</span></td><td>固件升级无进度条</td><td>前期34条→后期3条，大幅下降。升级体验改善明显。</td><td>持续监控，后续版本优化升级进度展示</td></tr>
+</table>
+
+<h2>七、后期（7/4-7/9）用户原声精选</h2>
+<p>以下为后期新增13条未标注数据的用户原声（7/8-7/9提交）：</p>
+<div class="quote"><span class="name">朱君</span> <span class="time">2026/7/8 16:17:07</span> | 视频/流处理 / 开流卡顿 | <span class="tag-known">已知</span> | Bug[893668] 直播流延时卡顿严重 - 新建 (P1未修复)<br>实时画面在车辆行驶中开流，太容易卡顿了，建议固件优化</div>
+<div class="quote"><span class="name">孙洪士</span> <span class="time">2026/7/8 16:28:51</span> | 图像质量 / 画面过曝 | <span class="tag-known">已知</span> | Bug[885465] 画面严重过曝 - 新建 (P1未修复)<br>说是录影还有过曝的感觉</div>
+<div class="quote"><span class="name">陈建建</span> <span class="time">2026/7/8 20:04:57</span> | 硬件设计 / SIM卡/卡槽 | <span class="tag-known">已知</span> | Bug[865540] SIM卡不易取出和插入 - 重新打开 (P2)<br>安装流量卡需要按的很进去才能安装成功，建议优化</div>
+<div class="quote"><span class="name">周炳文</span> <span class="time">2026/7/9 6:41:17</span> | APP功能/交互 / 哨兵漏录 | <span class="tag-new">新发现</span><br>还需提升成功率</div>
+<div class="quote"><span class="name">王亚兵</span> <span class="time">2026/7/9 7:09:36</span> | APP功能/交互 / 哨兵误报 | <span class="tag-new">新发现</span><br>车停在地下室，面对面刚好停着的一个的环境对面车后面是地库里的一个行车通道，这样的环境停车了半个多小时会误触发哨兵录像，这个应该是算法上的误报，技术看看。有可能是有车有人从前面通道经过但是没没抓到。</div>
+<div class="quote"><span class="name">王刚红</span> <span class="time">2026/7/9 7:54:12</span> | APP功能/交互 / 哨兵漏录 | <span class="tag-new">新发现</span><br>哨兵模型灵敏度中，因为车停垃圾桶边，昨晚下去扔垃圾，看到有个捡垃圾的老太太把泡沫箱管都放我引擎盖上。而且有这么多人在我车头前面扔垃圾。共享单车停我车头。而哨兵模式却没有录下这些事情。</div>
+<div class="quote"><span class="name">朱君</span> <span class="time">2026/7/9 9:00:19</span> | APP功能/交互 / 哨兵漏报 | <span class="tag-new">新发现</span><br>哨兵模式中敏感度存在漏报，停车之前对面两个车位没有车，对面停下车后也没有哨兵预警</div>
+<div class="quote"><span class="name">魏健伟</span> <span class="time">2026/7/9 9:27:30</span> | GPS/定位 / 轨迹不一致 | <span class="tag-new">新发现</span><br>熄火抓拍显示的地方和轨迹回放中最后显示停车的位置不一致</div>
+<div class="quote"><span class="name">钟剑鑫</span> <span class="time">2026/7/9 9:57:07</span> | APP功能/交互 / 哨兵无视频 | <span class="tag-new">新发现</span><br>查看消息提醒，哨兵模式有一个事件。打开查看显示 暂无视频</div>
+<div class="quote"><span class="name">陶双</span> <span class="time">2026/7/9 10:03:04</span> | GPS/定位 / 轨迹缺失 | <span class="tag-new">新发现</span><br>根据记录仪点火记录，7点6分在地下车库点火起步，中间过程都有定位坐标，7点8分出车库，回放轨迹7点十分才有定位记录，轨迹记录丢失不完整</div>
+<div class="quote"><span class="name">刘弼武</span> <span class="time">2026/7/9 10:27:20</span> | APP功能/交互 / 消息通知缺失 | <span class="tag-new">新发现</span><br>建议增加设备离线了的app消息提醒和后天下载视频功能</div>
+<div class="quote"><span class="name">王亚兵</span> <span class="time">2026/7/9 10:40:56</span> | GPS/定位 / 定位延迟 | <span class="tag-new">新发现</span><br>昨天我碰到和群里陶双一样的问题，开车驶出医院地下车库，开过三个红绿灯、跑了一公里左右，记录仪才显示轨迹，前后足足三分钟，出库这段路程完全没有定位记录。四个相关记录仪的视频我都发到群里了，截图也能清晰看出轨迹缺失。 这里能看出两个问题：一是设备搜寻GPS信号的速度太慢；二是地下车库、隧道这类GPS盲区不可避免。我建议增加4G基站辅助定位，在设备还没连上稳定GPS的时候，靠基站定位补齐行驶轨迹。不然车</div>
+<div class="quote"><span class="name">汪晶廷</span> <span class="time">2026/7/9 11:08:28</span> | GPS/定位 / 定位精度 | <span class="tag-new">新发现</span><br>定位不准，轨迹不正常，车辆移动后3分钟才恢复，后熄火停车定位依旧有偏移，误差50米</div>
+
+<div class="section-divider"></div>
+<p class="meta">报告生成时间：2026-07-09 | 数据来源：飞书电子表格 | 图表：纯SVG静态渲染 | 部署：GitHub Pages</p>
+<p class="meta">🦞</p>
+
+</body>
+</html>
