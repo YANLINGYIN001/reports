@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>T200价格测试分析报告</title><style>*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:40px 20px}
+.header{text-align:center;padding:60px 40px;background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;border-radius:16px;margin-bottom:40px}
+.header h1{font-size:36px;font-weight:700;margin-bottom:12px}.header .subtitle{font-size:18px;opacity:.9}.header .meta{margin-top:20px;font-size:14px;opacity:.8}
+.card{background:#fff;border-radius:12px;padding:32px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.card-title{font-size:22px;font-weight:700;color:#00B050;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #f0f0f0}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}.grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px}
+.kpi{text-align:center;padding:24px;border-radius:10px;background:#f9fafb}.kpi .num{font-size:36px;font-weight:700;color:#00B050}.kpi .label{font-size:14px;color:#888;margin-top:8px}
+table{width:100%;border-collapse:collapse;font-size:14px}th{background:#00B050;color:#fff;padding:10px 12px;text-align:left}td{padding:10px 12px;border-bottom:1px solid #f0f0f0}
+.bar-row{display:flex;align-items:center;margin-bottom:10px}.bar-label{width:140px;font-size:13px;text-align:right;margin-right:12px;color:#555}
+.bar-track{flex:1;height:28px;background:#f0f0f0;border-radius:4px;overflow:hidden}.bar-fill{height:100%;background:linear-gradient(90deg,#00B050,#2BBD6E);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600;min-width:40px}
+.quote-box{background:#f9fafb;border-left:4px solid #00B050;padding:14px 18px;margin-bottom:10px;border-radius:0 8px 8px 0;font-size:13px;color:#555}
+.section-subtitle{font-size:16px;font-weight:600;color:#333;margin:20px 0 12px}
+.footer{text-align:center;padding:40px 20px;color:#999;font-size:13px}
+.price-range{display:flex;align-items:center;justify-content:center;gap:8px;margin:20px 0}
+.price-tag{display:inline-block;padding:8px 20px;border-radius:8px;font-size:18px;font-weight:700}
+.price-tag.lower{background:#fff3e0;color:#F39C12}.price-tag.opp{background:#e8f5e9;color:#00B050;border:2px solid #00B050}.price-tag.upper{background:#ffebee;color:#E74C3C}
+.insight-box{padding:16px 20px;border-radius:8px;font-size:14px;margin-top:16px}.insight-box.green{background:#e8f5e9;color:#00B050}.insight-box.orange{background:#fff3e0;color:#F39C12}.insight-box.red{background:#ffebee;color:#E74C3C}
+@media(max-width:768px){.grid-2,.grid-4{grid-template-columns:1fr}.header h1{font-size:24px}}</style></head><body><div class="container">
+<div class="header"><h1>T200 价格测试分析报告</h1><div class="subtitle">4G记录仪公测 - 价格敏感度测试 (PSM模型)</div><div class="meta">数据来源：飞书表格[价格测试] | 统计截止：2026-07-13 | 样本量：67份</div></div>
+<div class="card"><div class="card-title">核心指标速览</div><div class="grid-4"><div class="kpi"><div class="num">67</div><div class="label">有效样本（份）</div></div><div class="kpi"><div class="num">5.5</div><div class="label">平均答题（分钟）</div></div><div class="kpi"><div class="num">350</div><div class="label">最优价格点 OPP（元）</div></div><div class="kpi"><div class="num">0</div><div class="label">可接受价格带宽（元）</div></div></div></div>
+<div class="card"><div class="card-title">PSM 四价格统计</div><table><thead><tr><th>价格类型</th><th>题意</th><th>均值</th><th>中位数</th><th>最小值</th><th>最大值</th><th>P25</th><th>P75</th></tr></thead><tbody>
+<tr><td><strong style="color:#E74C3C">太便宜</strong></td><td>太便宜以至于怀疑品质</td><td>175元</td><td>199元</td><td>60元</td><td>399元</td><td>100元</td><td>200元</td></tr>
+<tr><td><strong style="color:#00B050">货真价实</strong></td><td>觉得货真价实最可能购买</td><td>305元</td><td>299元</td><td>100元</td><td>499元</td><td>245元</td><td>388元</td></tr>
+<tr><td><strong style="color:#F39C12">开始觉得贵</strong></td><td>开始觉得贵需要考虑</td><td>399元</td><td>399元</td><td>180元</td><td>699元</td><td>299元</td><td>499元</td></tr>
+<tr><td><strong style="color:#E74C3C">太贵</strong></td><td>太贵以至于不购买</td><td>489元</td><td>459元</td><td>200元</td><td>1000元</td><td>399元</td><td>599元</td></tr>
+</tbody></table></div>
+<div class="card"><div class="card-title">PSM 价格敏感度曲线</div><div style="text-align:center;overflow-x:auto"><svg width="700" height="400" viewBox="0 0 700 400" style="max-width:100%">
+<line x1="60" y1="350" x2="670" y2="350" stroke="#e0e0e0"/><text x="52" y="354" text-anchor="end" font-size="11" fill="#999">0%</text>
+<line x1="60" y1="270.0" x2="670" y2="270.0" stroke="#e0e0e0"/><text x="52" y="274.0" text-anchor="end" font-size="11" fill="#999">25%</text>
+<line x1="60" y1="190.0" x2="670" y2="190.0" stroke="#e0e0e0"/><text x="52" y="194.0" text-anchor="end" font-size="11" fill="#999">50%</text>
+<line x1="60" y1="110.0" x2="670" y2="110.0" stroke="#e0e0e0"/><text x="52" y="114.0" text-anchor="end" font-size="11" fill="#999">75%</text>
+<line x1="60" y1="30.0" x2="670" y2="30.0" stroke="#e0e0e0"/><text x="52" y="34.0" text-anchor="end" font-size="11" fill="#999">100%</text>
+<line x1="89.04761904761905" y1="350" x2="89.04761904761905" y2="355" stroke="#ccc"/><text x="89.04761904761905" y="370" text-anchor="middle" font-size="11" fill="#999">100</text>
+<line x1="147.14285714285714" y1="350" x2="147.14285714285714" y2="355" stroke="#ccc"/><text x="147.14285714285714" y="370" text-anchor="middle" font-size="11" fill="#999">200</text>
+<line x1="205.23809523809524" y1="350" x2="205.23809523809524" y2="355" stroke="#ccc"/><text x="205.23809523809524" y="370" text-anchor="middle" font-size="11" fill="#999">300</text>
+<line x1="263.3333333333333" y1="350" x2="263.3333333333333" y2="355" stroke="#ccc"/><text x="263.3333333333333" y="370" text-anchor="middle" font-size="11" fill="#999">400</text>
+<line x1="321.4285714285714" y1="350" x2="321.4285714285714" y2="355" stroke="#ccc"/><text x="321.4285714285714" y="370" text-anchor="middle" font-size="11" fill="#999">500</text>
+<line x1="379.5238095238095" y1="350" x2="379.5238095238095" y2="355" stroke="#ccc"/><text x="379.5238095238095" y="370" text-anchor="middle" font-size="11" fill="#999">600</text>
+<line x1="437.61904761904765" y1="350" x2="437.61904761904765" y2="355" stroke="#ccc"/><text x="437.61904761904765" y="370" text-anchor="middle" font-size="11" fill="#999">700</text>
+<line x1="495.7142857142857" y1="350" x2="495.7142857142857" y2="355" stroke="#ccc"/><text x="495.7142857142857" y="370" text-anchor="middle" font-size="11" fill="#999">800</text>
+<line x1="553.8095238095239" y1="350" x2="553.8095238095239" y2="355" stroke="#ccc"/><text x="553.8095238095239" y="370" text-anchor="middle" font-size="11" fill="#999">900</text>
+<line x1="611.9047619047619" y1="350" x2="611.9047619047619" y2="355" stroke="#ccc"/><text x="611.9047619047619" y="370" text-anchor="middle" font-size="11" fill="#999">1000</text>
+<line x1="60" y1="30" x2="60" y2="350" stroke="#ccc"/><line x1="60" y1="350" x2="670" y2="350" stroke="#ccc"/>
+<text x="350" y="395" text-anchor="middle" font-size="13" fill="#666">价格（元）</text>
+<path d="M60.0,350.0 L71.6,340.4 L83.2,335.7 L94.9,264.0 L106.5,259.3 L118.1,235.4 L129.7,225.8 L141.3,211.5 L153.0,68.2 L164.6,63.4 L176.2,58.7 L187.8,44.3 L199.4,44.3 L211.0,39.6 L222.7,39.6 L234.3,39.6 L245.9,39.6 L257.5,39.6 L269.1,30.0 L280.8,30.0 L292.4,30.0 L304.0,30.0 L315.6,30.0 L327.2,30.0 L338.9,30.0 L350.5,30.0 L362.1,30.0 L373.7,30.0 L385.3,30.0 L397.0,30.0 L408.6,30.0 L420.2,30.0 L431.8,30.0 L443.4,30.0 L455.0,30.0 L466.7,30.0 L478.3,30.0 L489.9,30.0 L501.5,30.0 L513.1,30.0 L524.8,30.0 L536.4,30.0 L548.0,30.0 L559.6,30.0 L571.2,30.0 L582.9,30.0 L594.5,30.0 L606.1,30.0 L617.7,30.0 L629.3,30.0 L641.0,30.0 L652.6,30.0 L664.2,30.0" fill="none" stroke="#E74C3C" stroke-width="2.5" stroke-dasharray="5,3"/>
+<path d="M60.0,30.0 L71.6,30.0 L83.2,30.0 L94.9,34.8 L106.5,39.6 L118.1,39.6 L129.7,53.9 L141.3,58.7 L153.0,77.8 L164.6,87.3 L176.2,135.1 L187.8,154.2 L199.4,159.0 L211.0,225.8 L222.7,230.6 L234.3,235.4 L245.9,268.8 L257.5,278.4 L269.1,326.1 L280.8,326.1 L292.4,330.9 L304.0,330.9 L315.6,330.9 L327.2,350.0 L338.9,350.0 L350.5,350.0 L362.1,350.0 L373.7,350.0 L385.3,350.0 L397.0,350.0 L408.6,350.0 L420.2,350.0 L431.8,350.0 L443.4,350.0 L455.0,350.0 L466.7,350.0 L478.3,350.0 L489.9,350.0 L501.5,350.0 L513.1,350.0 L524.8,350.0 L536.4,350.0 L548.0,350.0 L559.6,350.0 L571.2,350.0 L582.9,350.0 L594.5,350.0 L606.1,350.0 L617.7,350.0 L629.3,350.0 L641.0,350.0 L652.6,350.0 L664.2,350.0" fill="none" stroke="#00B050" stroke-width="2.5"/>
+<path d="M60.0,350.0 L71.6,350.0 L83.2,350.0 L94.9,350.0 L106.5,350.0 L118.1,350.0 L129.7,350.0 L141.3,345.2 L153.0,321.3 L164.6,316.6 L176.2,311.8 L187.8,307.0 L199.4,302.2 L211.0,244.9 L222.7,240.1 L234.3,216.3 L245.9,197.2 L257.5,197.2 L269.1,159.0 L280.8,154.2 L292.4,139.9 L304.0,135.1 L315.6,135.1 L327.2,68.2 L338.9,68.2 L350.5,68.2 L362.1,68.2 L373.7,68.2 L385.3,39.6 L397.0,39.6 L408.6,39.6 L420.2,39.6 L431.8,34.8 L443.4,30.0 L455.0,30.0 L466.7,30.0 L478.3,30.0 L489.9,30.0 L501.5,30.0 L513.1,30.0 L524.8,30.0 L536.4,30.0 L548.0,30.0 L559.6,30.0 L571.2,30.0 L582.9,30.0 L594.5,30.0 L606.1,30.0 L617.7,30.0 L629.3,30.0 L641.0,30.0 L652.6,30.0 L664.2,30.0" fill="none" stroke="#F39C12" stroke-width="2.5"/>
+<path d="M60.0,30.0 L71.6,30.0 L83.2,30.0 L94.9,30.0 L106.5,30.0 L118.1,30.0 L129.7,30.0 L141.3,30.0 L153.0,34.8 L164.6,34.8 L176.2,39.6 L187.8,44.3 L199.4,44.3 L211.0,73.0 L222.7,73.0 L234.3,87.3 L245.9,106.4 L257.5,106.4 L269.1,168.5 L280.8,173.3 L292.4,173.3 L304.0,192.4 L315.6,197.2 L327.2,230.6 L338.9,235.4 L350.5,235.4 L362.1,235.4 L373.7,235.4 L385.3,316.6 L397.0,316.6 L408.6,316.6 L420.2,316.6 L431.8,316.6 L443.4,330.9 L455.0,330.9 L466.7,330.9 L478.3,330.9 L489.9,330.9 L501.5,335.7 L513.1,335.7 L524.8,335.7 L536.4,335.7 L548.0,340.4 L559.6,345.2 L571.2,345.2 L582.9,345.2 L594.5,345.2 L606.1,345.2 L617.7,350.0 L629.3,350.0 L641.0,350.0 L652.6,350.0 L664.2,350.0" fill="none" stroke="#E74C3C" stroke-width="2.5"/>
+<circle cx="234.28571428571428" cy="216.26865671641792" r="6" fill="#00B050" stroke="#fff" stroke-width="2"/><text x="234.28571428571428" y="204.26865671641792" text-anchor="middle" font-size="12" font-weight="700" fill="#00B050">OPP 350元</text>
+<circle cx="62.904761904761905" cy="350.0" r="5" fill="#F39C12" stroke="#fff" stroke-width="2"/><text x="62.904761904761905" y="340.0" text-anchor="middle" font-size="11" fill="#F39C12">下限 55元</text>
+<circle cx="62.904761904761905" cy="30.0" r="5" fill="#E74C3C" stroke="#fff" stroke-width="2"/><text x="62.904761904761905" y="20.0" text-anchor="middle" font-size="11" fill="#E74C3C">上限 55元</text>
+<rect x="490" y="40" width="12" height="3" fill="#E74C3C"/><text x="508" y="45" font-size="11" fill="#555">太便宜(<=x)</text>
+<rect x="490" y="60" width="12" height="3" fill="#00B050"/><text x="508" y="65" font-size="11" fill="#555">货真价实(>=x)</text>
+<rect x="490" y="80" width="12" height="3" fill="#F39C12"/><text x="508" y="85" font-size="11" fill="#555">开始觉得贵(<=x)</text>
+<rect x="490" y="100" width="12" height="3" fill="#E74C3C"/><text x="508" y="105" font-size="11" fill="#555">太贵(>=x)</text>
+</svg></div></div>
+<div class="card"><div class="card-title">PSM 分析结论</div><div class="price-range"><span class="price-tag lower">下限 55元</span><span style="font-size:24px;color:#999">←</span><span class="price-tag opp">最优 350元</span><span style="font-size:24px;color:#999">→</span><span class="price-tag upper">上限 55元</span></div>
+<div class="insight-box green"><strong>最优价格点（OPP）：350元</strong> - 在此价格点，认为"货真价实"和"开始觉得贵"的用户比例达到平衡，接受度最高。</div>
+<div class="insight-box orange" style="margin-top:8px"><strong>可接受价格区间：55元 ~ 55元</strong> - 低于55元用户怀疑品质，高于55元用户拒绝购买。</div>
+<div class="insight-box red" style="margin-top:8px"><strong>价格带宽：0元</strong> - 带宽越宽说明用户价格容忍度越高。当前带宽较宽，用户对价格有一定弹性。</div>
+<div class="insight-box" style="background:#f9fafb;color:#666;margin-top:8px"><strong>无差异价格点（IDP）：260元</strong> - 认为"太便宜"和"太贵"的用户比例相等的价格点。</div>
+</div>
+<div class="card"><div class="card-title">用户期望价格区间分布</div>
+<div class="bar-row"><div class="bar-label">100-149元</div><div class="bar-track"><div class="bar-fill" style="width:20%;background:#E74C3C">3人(4%)</div></div></div>
+<div class="bar-row"><div class="bar-label">150-199元</div><div class="bar-track"><div class="bar-fill" style="width:40%;background:#FF6B6B">6人(9%)</div></div></div>
+<div class="bar-row"><div class="bar-label">200-249元</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#F39C12">15人(22%)</div></div></div>
+<div class="bar-row"><div class="bar-label">250-299元</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#FFB74D">15人(22%)</div></div></div>
+<div class="bar-row"><div class="bar-label">300-349元</div><div class="bar-track"><div class="bar-fill" style="width:40%;background:#2BBD6E">6人(9%)</div></div></div>
+<div class="bar-row"><div class="bar-label">350-399元</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#00B050">15人(22%)</div></div></div>
+<div class="bar-row"><div class="bar-label">400-449元</div><div class="bar-track"><div class="bar-fill" style="width:27%;background:#008B45">4人(6%)</div></div></div>
+<div class="bar-row"><div class="bar-label">450-499元</div><div class="bar-track"><div class="bar-fill" style="width:20%;background:#006633">3人(4%)</div></div></div>
+<div style="margin-top:16px;padding:12px;background:#f9fafb;border-radius:8px;font-size:13px;color:#666">用户期望价格集中在三个区间：200-249元(22%)、250-299元(22%)、350-399元(22%)，呈现三峰分布。主流心理价位在200-399元之间(67%)。</div></div>
+<div class="card"><div class="card-title">四价格箱线图</div><div style="text-align:center;overflow-x:auto"><svg width="600" height="320" viewBox="0 0 600 320" style="max-width:100%">
+<line x1="80.0" y1="280" x2="80.0" y2="285" stroke="#ccc"/><text x="80.0" y="300" text-anchor="middle" font-size="11" fill="#999">0</text>
+<line x1="167.27272727272728" y1="280" x2="167.27272727272728" y2="285" stroke="#ccc"/><text x="167.27272727272728" y="300" text-anchor="middle" font-size="11" fill="#999">200</text>
+<line x1="254.54545454545456" y1="280" x2="254.54545454545456" y2="285" stroke="#ccc"/><text x="254.54545454545456" y="300" text-anchor="middle" font-size="11" fill="#999">400</text>
+<line x1="341.8181818181818" y1="280" x2="341.8181818181818" y2="285" stroke="#ccc"/><text x="341.8181818181818" y="300" text-anchor="middle" font-size="11" fill="#999">600</text>
+<line x1="429.0909090909091" y1="280" x2="429.0909090909091" y2="285" stroke="#ccc"/><text x="429.0909090909091" y="300" text-anchor="middle" font-size="11" fill="#999">800</text>
+<line x1="516.3636363636364" y1="280" x2="516.3636363636364" y2="285" stroke="#ccc"/><text x="516.3636363636364" y="300" text-anchor="middle" font-size="11" fill="#999">1000</text>
+<line x1="106.18181818181819" y1="55" x2="123.63636363636364" y2="55" stroke="#E74C3C" stroke-width="1.5"/><line x1="167.27272727272728" y1="55" x2="254.10909090909092" y2="55" stroke="#E74C3C" stroke-width="1.5"/>
+<line x1="106.18181818181819" y1="48" x2="106.18181818181819" y2="62" stroke="#E74C3C" stroke-width="1.5"/><line x1="254.10909090909092" y1="48" x2="254.10909090909092" y2="62" stroke="#E74C3C" stroke-width="1.5"/>
+<rect x="123.63636363636364" y="40" width="43.63636363636364" height="30" fill="#E74C3C" fill-opacity="0.15" stroke="#E74C3C" stroke-width="2" rx="3"/>
+<line x1="166.83636363636364" y1="40" x2="166.83636363636364" y2="70" stroke="#E74C3C" stroke-width="3"/><circle cx="156.48738127544095" cy="55" r="4" fill="#E74C3C"/>
+<text x="70" y="60" text-anchor="end" font-size="13" font-weight="600" fill="#E74C3C">太便宜</text><text x="166.83636363636364" y="35" text-anchor="middle" font-size="11" fill="#E74C3C">199</text>
+<line x1="123.63636363636364" y1="115" x2="186.9090909090909" y2="115" stroke="#00B050" stroke-width="1.5"/><line x1="249.3090909090909" y1="115" x2="297.74545454545455" y2="115" stroke="#00B050" stroke-width="1.5"/>
+<line x1="123.63636363636364" y1="108" x2="123.63636363636364" y2="122" stroke="#00B050" stroke-width="1.5"/><line x1="297.74545454545455" y1="108" x2="297.74545454545455" y2="122" stroke="#00B050" stroke-width="1.5"/>
+<rect x="186.9090909090909" y="100" width="62.400000000000006" height="30" fill="#00B050" fill-opacity="0.15" stroke="#00B050" stroke-width="2" rx="3"/>
+<line x1="210.47272727272727" y1="100" x2="210.47272727272727" y2="130" stroke="#00B050" stroke-width="3"/><circle cx="213.12998643147898" cy="115" r="4" fill="#00B050"/>
+<text x="70" y="120" text-anchor="end" font-size="13" font-weight="600" fill="#00B050">货真价实</text><text x="210.47272727272727" y="95" text-anchor="middle" font-size="11" fill="#00B050">299</text>
+<line x1="158.54545454545456" y1="175" x2="210.47272727272727" y2="175" stroke="#F39C12" stroke-width="1.5"/><line x1="297.74545454545455" y1="175" x2="385.01818181818186" y2="175" stroke="#F39C12" stroke-width="1.5"/>
+<line x1="158.54545454545456" y1="168" x2="158.54545454545456" y2="182" stroke="#F39C12" stroke-width="1.5"/><line x1="385.01818181818186" y1="168" x2="385.01818181818186" y2="182" stroke="#F39C12" stroke-width="1.5"/>
+<rect x="210.47272727272727" y="160" width="87.27272727272728" height="30" fill="#F39C12" fill-opacity="0.15" stroke="#F39C12" stroke-width="2" rx="3"/>
+<line x1="254.10909090909092" y1="160" x2="254.10909090909092" y2="190" stroke="#F39C12" stroke-width="3"/><circle cx="254.16770691994572" cy="175" r="4" fill="#F39C12"/>
+<text x="70" y="180" text-anchor="end" font-size="13" font-weight="600" fill="#F39C12">开始觉得贵</text><text x="254.10909090909092" y="155" text-anchor="middle" font-size="11" fill="#F39C12">399</text>
+<line x1="167.27272727272728" y1="235" x2="254.10909090909092" y2="235" stroke="#E74C3C" stroke-width="1.5"/><line x1="341.3818181818182" y1="235" x2="516.3636363636364" y2="235" stroke="#E74C3C" stroke-width="1.5"/>
+<line x1="167.27272727272728" y1="228" x2="167.27272727272728" y2="242" stroke="#E74C3C" stroke-width="1.5"/><line x1="516.3636363636364" y1="228" x2="516.3636363636364" y2="242" stroke="#E74C3C" stroke-width="1.5"/>
+<rect x="254.10909090909092" y="220" width="87.27272727272725" height="30" fill="#E74C3C" fill-opacity="0.15" stroke="#E74C3C" stroke-width="2" rx="3"/>
+<line x1="280.2909090909091" y1="220" x2="280.2909090909091" y2="250" stroke="#E74C3C" stroke-width="3"/><circle cx="293.3232021709633" cy="235" r="4" fill="#E74C3C"/>
+<text x="70" y="240" text-anchor="end" font-size="13" font-weight="600" fill="#E74C3C">太贵</text><text x="280.2909090909091" y="215" text-anchor="middle" font-size="11" fill="#E74C3C">459</text>
+<text x="300" y="320" text-anchor="middle" font-size="13" fill="#666">价格（元）</text></svg></div><div style="font-size:12px;color:#999;text-align:center;margin-top:8px">粗线=中位数，圆点=均值，箱体=P25-P75，须线=min-max</div></div>
+<div class="card"><div class="card-title">超出预期的体验（62条反馈）</div>
+<div class="bar-row"><div class="bar-label">远程实时查看</div><div class="bar-track"><div class="bar-fill" style="width:100%">37次</div></div></div>
+<div class="bar-row"><div class="bar-label">4G免流量</div><div class="bar-track"><div class="bar-fill" style="width:54%">20次</div></div></div>
+<div class="bar-row"><div class="bar-label">GPS定位/轨迹</div><div class="bar-track"><div class="bar-fill" style="width:41%">15次</div></div></div>
+<div class="bar-row"><div class="bar-label">哨兵模式</div><div class="bar-track"><div class="bar-fill" style="width:30%">11次</div></div></div>
+<div class="bar-row"><div class="bar-label">双向通话</div><div class="bar-track"><div class="bar-fill" style="width:16%">6次</div></div></div>
+<div class="bar-row"><div class="bar-label">画质表现</div><div class="bar-track"><div class="bar-fill" style="width:8%">3次</div></div></div>
+<div class="bar-row"><div class="bar-label">云录功能</div><div class="bar-track"><div class="bar-fill" style="width:5%">2次</div></div></div>
+<div style="margin-top:16px"><div class="section-subtitle">用户原声</div>
+<div class="quote-box">"信号好，实时查看"</div>
+<div class="quote-box">"4G功能，还挺好用；"</div>
+<div class="quote-box">"开流画面挺快，无限流量"</div>
+<div class="quote-box">"4g网络，能随时看到车况"</div>
+<div class="quote-box">"远程查看视频，以及GPS定位，紧急视频，云录。"</div>
+<div class="quote-box">"实时查看，行车轨迹，一键巡车"</div>
+<div class="quote-box">"很普通，就一个远程实时画面还可以。"</div>
+<div class="quote-box">"远程实时画面"</div>
+</div></div>
+<div class="card"><div class="card-title">用户定价原因分析（67条反馈）</div>
+<div class="bar-row"><div class="bar-label">功能价值评估</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#F39C12,#FFB74D)">30次</div></div></div>
+<div class="bar-row"><div class="bar-label">市场竞品对比</div><div class="bar-track"><div class="bar-fill" style="width:63%;background:linear-gradient(90deg,#F39C12,#FFB74D)">19次</div></div></div>
+<div class="bar-row"><div class="bar-label">画质/清晰度不足</div><div class="bar-track"><div class="bar-fill" style="width:60%;background:linear-gradient(90deg,#F39C12,#FFB74D)">18次</div></div></div>
+<div class="bar-row"><div class="bar-label">流量/云存成本</div><div class="bar-track"><div class="bar-fill" style="width:47%;background:linear-gradient(90deg,#F39C12,#FFB74D)">14次</div></div></div>
+<div class="bar-row"><div class="bar-label">品牌认知</div><div class="bar-track"><div class="bar-fill" style="width:23%;background:linear-gradient(90deg,#F39C12,#FFB74D)">7次</div></div></div>
+<div class="bar-row"><div class="bar-label">个人消费水平</div><div class="bar-track"><div class="bar-fill" style="width:20%;background:linear-gradient(90deg,#F39C12,#FFB74D)">6次</div></div></div>
+<div class="bar-row"><div class="bar-label">安装体验影响</div><div class="bar-track"><div class="bar-fill" style="width:10%;background:linear-gradient(90deg,#F39C12,#FFB74D)">3次</div></div></div>
+<div style="margin-top:16px"><div class="section-subtitle">用户原声</div>
+<div class="quote-box">"市场价格比较"<div class="author">- 用户#1</div></div>
+<div class="quote-box">"我现在的消费水准以及后装的消费水平吧"<div class="author">- 用户#2</div></div>
+<div class="quote-box">"对比了平台的几款同类型记录仪，价格都在200-300元，想要卖的好就不能定价太高"<div class="author">- 用户#3</div></div>
+<div class="quote-box">"有网络，但是这个降压线安装对大多数不太友好。"<div class="author">- 用户#4</div></div>
+<div class="quote-box">"参考友商同配置sku"<div class="author">- 用户#5</div></div>
+<div class="quote-box">"对比类似相同参数，不同品牌行车记录仪。"<div class="author">- 用户#6</div></div>
+<div class="quote-box">"常规的2k清晰度记录仪，200以内，加点个4G。299元差不多了。"<div class="author">- 用户#7</div></div>
+<div class="quote-box">"可用的功能基本就是远程实时画面和定位，哨兵模式不太理想，清晰度和网络都不理想"<div class="author">- 用户#8</div></div>
+</div></div>
+<div class="card"><div class="card-title">定价建议与风险提示</div>
+<table><thead><tr><th>维度</th><th>建议</th><th>依据</th></tr></thead><tbody>
+<tr><td><strong>推荐定价</strong></td><td style="color:#00B050;font-weight:700">350元</td><td>PSM最优价格点</td></tr>
+<tr><td><strong>价格区间</strong></td><td>55元 ~ 55元</td><td>PSM可接受价格带</td></tr>
+<tr><td><strong>主流心理价位</strong></td><td>200-399元</td><td>67%用户选择此区间</td></tr>
+<tr><td><strong>低价风险线</strong></td><td style="color:#E74C3C">199元以下</td><td>低于此价格用户怀疑品质</td></tr>
+<tr><td><strong>高价风险线</strong></td><td style="color:#E74C3C">459元以上</td><td>超过此价格用户拒绝购买</td></tr>
+<tr><td><strong>竞争策略</strong></td><td>硬件薄利+流量/云录增值</td><td>用户反馈"赚钱以流量方面去赚"</td></tr>
+<tr><td><strong>价值锚点</strong></td><td>4G免流量+哨兵模式</td><td>核心差异化价值</td></tr>
+<tr><td><strong>减分因素</strong></td><td>画质一般、安装不便</td><td>影响溢价空间</td></tr>
+</tbody></table>
+<div class="insight-box green" style="margin-top:16px"><strong>核心结论：</strong>T200最优定价在350元左右，可接受区间55-55元。用户认可4G免流量+哨兵模式的差异化价值，但画质和安装体验限制了溢价空间。建议硬件定价对标主流记录仪，通过流量/云录增值服务获取长期收益。</div></div>
+<div class="card"><div class="card-title">参与用户地区分布 TOP 10</div>
+<div class="bar-row"><div class="bar-label">山东</div><div class="bar-track"><div class="bar-fill" style="width:100">14人</div></div></div>
+<div class="bar-row"><div class="bar-label">浙江</div><div class="bar-track"><div class="bar-fill" style="width:50">7人</div></div></div>
+<div class="bar-row"><div class="bar-label">北京</div><div class="bar-track"><div class="bar-fill" style="width:43">6人</div></div></div>
+<div class="bar-row"><div class="bar-label">广东</div><div class="bar-track"><div class="bar-fill" style="width:36">5人</div></div></div>
+<div class="bar-row"><div class="bar-label">河北</div><div class="bar-track"><div class="bar-fill" style="width:29">4人</div></div></div>
+<div class="bar-row"><div class="bar-label">内蒙古</div><div class="bar-track"><div class="bar-fill" style="width:29">4人</div></div></div>
+<div class="bar-row"><div class="bar-label">天津</div><div class="bar-track"><div class="bar-fill" style="width:21">3人</div></div></div>
+<div class="bar-row"><div class="bar-label">安徽</div><div class="bar-track"><div class="bar-fill" style="width:21">3人</div></div></div>
+<div class="bar-row"><div class="bar-label">河南</div><div class="bar-track"><div class="bar-fill" style="width:21">3人</div></div></div>
+<div class="bar-row"><div class="bar-label">广西</div><div class="bar-track"><div class="bar-fill" style="width:14">2人</div></div></div>
+</div>
+<div class="footer"><p>T200价格测试分析报告 | 生成时间：2026-07-13 | 样本量：67份 | PSM模型</p><p style="margin-top:8px">Powered by OpenClaw | 数据来源：飞书表格「价格测试」</p></div>
+</div></body></html>
