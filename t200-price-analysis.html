@@ -29,21 +29,16 @@ body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans S
 .insight-summary p{font-size:15px;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:8px}
 .insight-summary .highlight{color:var(--green-light);font-weight:600}
 .insight-summary .price-tag{display:inline-block;background:var(--green);color:#fff;padding:2px 10px;border-radius:6px;font-weight:700;font-size:14px}
-.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;width:100%}
-.stat-card{background:#fff;border-radius:12px;padding:24px;border:1px solid var(--gray-100);transition:transform .2s,box-shadow .2s;min-width:0;overflow:hidden}
-.stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,176,80,.1)}
-.stat-card .label{font-size:13px;color:var(--gray-500);margin-bottom:8px;text-align:center}
-.stat-card .value{font-size:30px;font-weight:700;color:var(--dark);display:flex;align-items:baseline;justify-content:center;gap:2px}
-.stat-card .value .unit{font-size:14px;font-weight:400;color:var(--gray-500)}
-.stat-card .desc{font-size:12px;color:var(--green);margin-top:6px;text-align:center}
-.stat-card.highlight{background:linear-gradient(135deg,#00B050,#007a3c);color:#fff}
-.stat-card.highlight .label{color:rgba(255,255,255,.8)}
-.stat-card.highlight .value{color:#fff}
-.stat-card.highlight .desc{color:rgba(255,255,255,.7)}
 .chart-box{background:#fff;border-radius:12px;padding:28px;border:1px solid var(--gray-100);margin-bottom:20px}
 .chart-box .chart-title{font-size:15px;font-weight:600;color:var(--gray-700);margin-bottom:4px}
 .chart-box .chart-desc{font-size:13px;color:var(--gray-500);margin-bottom:16px}
 .chart{width:100%;height:340px}
+.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.stat-card{background:#fff;border-radius:12px;padding:24px;border:1px solid var(--gray-100);text-align:center}
+.stat-card .label{font-size:13px;color:var(--gray-500);margin-bottom:8px}
+.stat-card .value{font-size:30px;font-weight:700;color:var(--dark)}
+.stat-card .value .unit{font-size:14px;font-weight:400;color:var(--gray-500);margin-left:2px}
+.stat-card .desc{font-size:12px;color:var(--green);margin-top:6px}
 .insight-box{background:linear-gradient(135deg,var(--green-50),var(--green-100));border-left:4px solid var(--green);border-radius:0 12px 12px 0;padding:20px 24px;margin-bottom:20px}
 .insight-box .insight-title{font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:6px}
 .insight-box p{font-size:14px;color:var(--gray-700);line-height:1.7}
@@ -67,14 +62,12 @@ body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans S
 .price-range-bar .pt.lower{background:#e8f7ee;color:#007a3c}
 .price-range-bar .pt.opp{background:#00B050;color:#fff}
 .price-range-bar .pt.upper{background:#fde8e8;color:#c0392b}
-.conclusion{background:var(--dark);color:#fff;border-radius:16px;padding:36px;max-width:1016px;margin:20px auto 48px}
-.conclusion h2{font-size:22px;margin-bottom:20px;font-weight:700}
-.conclusion p{font-size:15px;color:rgba(255,255,255,.8);line-height:1.8}
 .footer{text-align:center;padding:24px;font-size:13px;color:var(--gray-500);border-top:1px solid var(--gray-100)}
 </style>
 </head>
 <body>
 
+<!-- 封面 -->
 <div class="cover">
 <div class="tag">PRICE ANALYSIS · 2026</div>
 <h1>T200 4G记录仪 · 价格测试分析</h1>
@@ -88,6 +81,7 @@ body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans S
 <div class="lobster">🦞</div>
 </div>
 
+<!-- 洞察小结 -->
 <div class="section">
 <div class="insight-summary">
 <h3>💡 洞察小结 🦞</h3>
@@ -98,6 +92,7 @@ body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans S
 </div>
 </div>
 
+<!-- 模块1：PSM价格敏感度分析 -->
 <div class="section">
 <div class="section-title"><div class="num">1</div><h2>PSM 价格敏感度分析</h2></div>
 <div class="chart-box">
@@ -110,8 +105,7 @@ body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans S
 <span style="font-size:20px;color:#999">→</span>
 <span class="pt upper">上限 401元</span>
 </div>
-<div style="text-align:center;overflow-x:auto;margin-top:16px">
-<svg width="780" height="400" viewBox="0 0 780 400" style="max-width:100%">
+<div style="text-align:center;overflow-x:auto"><svg width="780" height="400" viewBox="0 0 780 400" style="max-width:100%">
 <line x1="50" y1="350" x2="500" y2="350" stroke="#e0e0e0"/><text x="42" y="354" text-anchor="end" font-size="11" fill="#999">0%</text>
 <line x1="50" y1="270.0" x2="500" y2="270.0" stroke="#e0e0e0"/><text x="42" y="274.0" text-anchor="end" font-size="11" fill="#999">25%</text>
 <line x1="50" y1="190.0" x2="500" y2="190.0" stroke="#e0e0e0"/><text x="42" y="194.0" text-anchor="end" font-size="11" fill="#999">50%</text>
@@ -153,6 +147,7 @@ body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans S
 </div>
 </div>
 
+<!-- 模块2：用户偏好价格区间 -->
 <div class="section">
 <div class="section-title"><div class="num">2</div><h2>用户偏好价格区间</h2></div>
 <div class="insight-box">
@@ -166,6 +161,7 @@ body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans S
 </div>
 </div>
 
+<!-- 模块3：超预期体验 -->
 <div class="section">
 <div class="section-title"><div class="num">3</div><h2>超预期体验 — 用户原声</h2></div>
 <p style="font-size:14px;color:var(--gray-500);margin-bottom:20px">62 条用户反馈，按功能模块分类统计（多标签计数），展示典型用户原声</p>
@@ -216,6 +212,7 @@ body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans S
 </table>
 </div>
 
+<!-- 模块4：定价原因分析 -->
 <div class="section">
 <div class="section-title"><div class="num">4</div><h2>定价原因分析 — 用户原声</h2></div>
 <p style="font-size:14px;color:var(--gray-500);margin-bottom:20px">67 条用户定价理由，按类型分类统计（多标签计数），展示典型用户原声</p>
@@ -264,6 +261,7 @@ body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans S
 </table>
 </div>
 
+<!-- 页脚 -->
 <div class="footer">T200 4G记录仪价格测试分析 · 数据来源：飞书「4G记录仪公测问题跟进表-新」价格测试sheet · 2026年7月</div>
 
 <script>
