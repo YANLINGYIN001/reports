@@ -14,74 +14,129 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#f5f5f5;
 .card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,176,80,0.15)}
 .card h3{color:#00B050;font-size:18px;margin-bottom:8px}
 .card .desc{color:#666;font-size:14px;margin-bottom:8px}
-.card a{color:#00B050;text-decoration:none;font-size:14px;font-weight:bold}
-.card .meta{font-size:12px;color:#999}
+.sub-link{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:#e8f7ee;border-radius:8px;margin-bottom:8px;text-decoration:none;color:#333;font-size:14px;transition:background 0.2s}
+.sub-link:hover{background:#d1f0dc}
+.sub-link .sub-title{font-weight:600;color:#007a3c}
+.sub-link .sub-desc{color:#999;font-size:12px}
+.sub-link .arrow{color:#00B050;font-weight:bold}
+.col-2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="header">
 <h1>📋 T200 记录仪公测报告合集</h1>
-<p>📊 数据截止 2026-07-08 | 🦞 数据分析专家</p>
+<p>📊 数据截止 2026-07-14 | 🦞 数据分析专家</p>
 </div>
+
+<!-- 卡片1：开箱&安装 -->
 <div class="card">
-<h3>🎯 用户旅程汇报材料</h3>
-<p class="desc">含数据概览/情绪地图/问题汇总表/爽点槽点/改进建议</p>
-<a href="https://yanlingyin001.github.io/reports/t200-user-journey-report.html">查看报告 →</a>
+<h3>📦 开箱 & 安装体验</h3>
+<p class="desc">开箱与安装问卷数据分析</p>
+<div class="col-2">
+<a href="https://yanlingyin001.github.io/reports/t200-unboxing.html" class="sub-link">
+<span class="sub-title">开箱体验专项</span>
+<span class="sub-desc">66条</span>
+<span class="arrow">→</span>
+</a>
+<a href="https://yanlingyin001.github.io/reports/t200-installation.html" class="sub-link">
+<span class="sub-title">安装体验专项</span>
+<span class="sub-desc">66条</span>
+<span class="arrow">→</span>
+</a>
 </div>
-<div class="card">
-<h3>📦 开箱体验专项报告</h3>
-<p class="desc">66条开箱问卷数据分析</p>
-<a href="https://yanlingyin001.github.io/reports/t200-unboxing.html">查看报告 →</a>
 </div>
+
+<!-- 卡片2：日常问题 -->
 <div class="card">
-<h3>🔧 安装体验专项报告</h3>
-<p class="desc">66条安装问卷数据分析</p>
-<a href="https://yanlingyin001.github.io/reports/t200-installation.html">查看报告 →</a>
-</div>
-<div class="card">
-<h3>📊 日常问题分析报告</h3>
+<h3>📊 日常问题分析</h3>
 <p class="desc">日常问题反馈多维度分析，持续迭代更新</p>
-<div style="display:flex;gap:12px;margin-top:12px">
-<a href="https://yanlingyin001.github.io/reports/t200-daily-feedback-0626.html" style="flex:1;background:#e8f7ee;padding:10px 14px;border-radius:8px;text-align:center;font-size:13px">06/26版<br><span style="color:#999;font-size:11px">479条</span></a>
-<a href="https://yanlingyin001.github.io/reports/t200-daily-feedback-update-0629.html" style="flex:1;background:#e8f7ee;padding:10px 14px;border-radius:8px;text-align:center;font-size:13px">06/29版<br><span style="color:#999;font-size:11px">673条</span></a>
-<a href="https://yanlingyin001.github.io/reports/t200-daily-comparison.html" style="flex:1;background:#e8f7ee;padding:10px 14px;border-radius:8px;text-align:center;font-size:13px">07/08版<br><span style="color:#999;font-size:11px">897条对比</span></a>
+<div style="display:flex;gap:8px">
+<a href="https://yanlingyin001.github.io/reports/t200-daily-feedback-0626.html" class="sub-link" style="flex:1">
+<span class="sub-title">06/26版</span>
+<span class="sub-desc">479条</span>
+<span class="arrow">→</span>
+</a>
+<a href="https://yanlingyin001.github.io/reports/t200-daily-feedback-update-0629.html" class="sub-link" style="flex:1">
+<span class="sub-title">06/29版</span>
+<span class="sub-desc">673条</span>
+<span class="arrow">→</span>
+</a>
+<a href="https://yanlingyin001.github.io/reports/t200-daily-comparison.html" class="sub-link" style="flex:1">
+<span class="sub-title">07/08版</span>
+<span class="sub-desc">897条对比</span>
+<span class="arrow">→</span>
+</a>
 </div>
 </div>
+
+<!-- 卡片3：专项报告 -->
 <div class="card">
-<h3>🔍 哨兵守护专项报告</h3>
-<p class="desc">66条，满意度8.02/10</p>
-<a href="https://yanlingyin001.github.io/reports/t200-sentinel-report.html">查看报告 →</a>
+<h3>🔍 专项体验报告</h3>
+<p class="desc">各功能模块专项满意度分析</p>
+<div class="col-2">
+<a href="https://yanlingyin001.github.io/reports/t200-sentinel-report.html" class="sub-link">
+<span class="sub-title">哨兵守护</span>
+<span class="sub-desc">满意度8.02/10</span>
+<span class="arrow">→</span>
+</a>
+<a href="https://yanlingyin001.github.io/reports/t200-remote-report.html" class="sub-link">
+<span class="sub-title">远程互动</span>
+<span class="sub-desc">满意度8.23/10</span>
+<span class="arrow">→</span>
+</a>
+<a href="https://yanlingyin001.github.io/reports/t200-4g-report.html" class="sub-link">
+<span class="sub-title">4G联网稳定性</span>
+<span class="sub-desc">满意度8.18/10</span>
+<span class="arrow">→</span>
+</a>
+<a href="https://yanlingyin001.github.io/reports/t200-app-report.html" class="sub-link">
+<span class="sub-title">APP体验</span>
+<span class="sub-desc">满意度8.15/10</span>
+<span class="arrow">→</span>
+</a>
 </div>
+</div>
+
+<!-- 卡片4：其他报告 -->
 <div class="card">
-<h3>📡 远程互动专项报告</h3>
-<p class="desc">60条，满意度8.23/10</p>
-<a href="https://yanlingyin001.github.io/reports/t200-remote-report.html">查看报告 →</a>
+<h3>📋 其他报告</h3>
+<p class="desc">用户旅程与APP引导建议</p>
+<div class="col-2">
+<a href="https://yanlingyin001.github.io/reports/t200-user-journey-report.html" class="sub-link">
+<span class="sub-title">用户旅程汇报</span>
+<span class="sub-desc">数据概览/情绪地图/改进建议</span>
+<span class="arrow">→</span>
+</a>
+<a href="https://yanlingyin001.github.io/reports/t200-app-guidance-report.html" class="sub-link">
+<span class="sub-title">APP引导说明建议</span>
+<span class="sub-desc">52个引导项 · P0级22项</span>
+<span class="arrow">→</span>
+</a>
 </div>
+</div>
+
+<!-- 卡片5：终测报告 -->
 <div class="card">
-<h3>📶 4G联网稳定性专项报告</h3>
-<p class="desc">69条，满意度8.18/10</p>
-<a href="https://yanlingyin001.github.io/reports/t200-4g-report.html">查看报告 →</a>
+<h3>🏁 终测报告</h3>
+<p class="desc">终测问卷分析与价格测试</p>
+<div class="col-2">
+<a href="https://yanlingyin001.github.io/reports/t200-final-test-report.html" class="sub-link">
+<span class="sub-title">终测分析报告</span>
+<span class="sub-desc">67份 · 满意度/NPS/固件验证</span>
+<span class="arrow">→</span>
+</a>
+<a href="https://yanlingyin001.github.io/reports/t200-price-analysis.html" class="sub-link">
+<span class="sub-title">价格测试分析</span>
+<span class="sub-desc">67份 · PSM模型 · 最优定价350元</span>
+<span class="arrow">→</span>
+</a>
 </div>
-<div class="card">
-<h3>📱 APP体验专项报告</h3>
-<p class="desc">65条，满意度8.15/10</p>
-<a href="https://yanlingyin001.github.io/reports/t200-app-report.html">查看报告 →</a>
 </div>
-<div class="card">
-<h3>💰 价格测试分析报告（07/14 更新）</h3>
-<p class="desc">67份价格测试问卷，PSM模型分析，最优定价350元，可接受区间200~401元</p>
-<a href="https://yanlingyin001.github.io/reports/t200-price-analysis.html">查看报告 →</a>
-</div>
-<div class="card">
-<h3>📱 APP端引导说明需求清单</h3>
-<p class="desc">52个引导项 · P0级22项 · 40%问题可引导解决</p>
-<a href="https://yanlingyin001.github.io/reports/t200-app-guidance-report.html">查看报告 →</a>
-</div>
+
 <div style="text-align:center;padding:20px;color:#999;font-size:12px">
 <p>🦞 尹燕玲-报告分析专家 | 360绿色系配色</p>
 </div>
 </div>
-
 </body>
 </html>
