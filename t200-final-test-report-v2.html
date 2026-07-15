@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>T200终测报告 | 360行车记录仪</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2/dist/echarts-wordcloud.min.js"></script>
+<style>
+:root{--primary:#00B050;--danger:#E74C3C;--warning:#F39C12}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f0f2f5;color:#333;line-height:1.7}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:40px 30px;border-radius:12px;margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:8px}
+.header .meta{font-size:14px;opacity:.85;line-height:1.8}
+.header .meta span{margin-right:20px}
+.section{background:#fff;border-radius:12px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{font-size:20px;font-weight:700;margin-bottom:18px;padding-left:12px;border-left:4px solid var(--primary);color:#1a1a2e}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:20px}
+.kpi-card{background:#f8f9fa;border-radius:10px;padding:18px;text-align:center;border:1px solid #e9ecef}
+.kpi-card .label{font-size:13px;color:#6c757d;margin-bottom:6px}
+.kpi-card .value{font-size:28px;font-weight:700;color:#1a1a2e}
+.kpi-card .sub{font-size:12px;color:#6c757d;margin-top:4px}
+.kpi-card.success{background:#d4edda;border-color:#28a745}.kpi-card.success .value{color:#155724}
+.kpi-card.danger{background:#f8d7da;border-color:#dc3545}.kpi-card.danger .value{color:#721c24}
+.kpi-card.warning{background:#fff3cd;border-color:#ffc107}.kpi-card.warning .value{color:#856404}
+.kpi-card.info{background:#d1ecf1;border-color:#17a2b8}.kpi-card.info .value{color:#0c5460}
+.chart-box{width:100%;height:400px;margin-bottom:20px}
+.chart-box.tall{height:500px}.chart-box.short{height:300px}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600}
+.badge.success{background:#d4edda;color:#155724}.badge.danger{background:#f8d7da;color:#721c24}
+.badge.warning{background:#fff3cd;color:#856404}.badge.info{background:#d1ecf1;color:#0c5460}
+.voice-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:14px}
+.voice-table th{background:#1a1a2e;color:#fff;padding:10px 14px;text-align:left;font-weight:500}
+.voice-table td{padding:8px 14px;border-bottom:1px solid #e9ecef;vertical-align:top}
+.voice-table tr:nth-child(even){background:#f8f9fa}
+.voice-table .cat-cell{font-weight:600;color:var(--primary);white-space:nowrap}
+.voice-table .count-cell{text-align:center;font-weight:700}
+.quote{background:#f8f9fa;border-left:3px solid var(--primary);padding:10px 14px;margin:6px 0;font-size:13px;color:#555;border-radius:0 4px 4px 0}
+.conclusion-box{border-radius:10px;padding:20px;margin-bottom:12px;border:1px solid}
+.conclusion-box ul{padding-left:20px}.conclusion-box li{margin-bottom:6px;font-size:14px}
+.module-section{border:1px solid #e9ecef;border-radius:8px;padding:16px;margin-bottom:16px}
+.module-section h4{font-size:15px;color:#1a1a2e;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #e9ecef}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:#1a1a2e;color:#fff;padding:8px 12px;text-align:left;font-weight:500}
+td{padding:8px 12px;border-bottom:1px solid #e9ecef}
+tr:nth-child(even){background:#f8f9fa}
+.cloud-box{width:100%;height:320px;margin-bottom:16px}
+.footer{text-align:center;padding:24px;color:#6c757d;font-size:13px}
+</style></head><body><div class="container">
+<div class="header">
+<h1>📊 T200 终测体验评估报告</h1>
+<div style="font-size:16px;opacity:.9;margin-bottom:12px">360行车记录仪 · 1.9.6版本终测</div>
+<div class="meta">
+<span>📅 2026.07.15</span>
+<span>📋 终测问卷67份 + 1.9.6遗留问题42条</span>
+<span>🔍 6.17发货 → 7.10推送1.9.6 → 验证7.10-7.13</span>
+</div></div>
+<div class="section">
+<div class="section-title">核心结论与建议</div>
+<div class="conclusion-box" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border:none">
+<div style="display:grid;grid-template-columns:1fr 2fr;gap:12px;text-align:center">
+<div style="background:rgba(220,53,45,.3);border:1px solid rgba(220,53,45,.5);border-radius:8px;padding:20px;grid-row:span 2;display:flex;flex-direction:column;justify-content:center"><div style="font-size:14px;opacity:.9">最终公测结果</div><div style="font-size:32px;font-weight:700;color:#ff6b6b;margin:8px 0">不通过</div><div style="font-size:11px;opacity:.8">P0/P1解决率\n均未达标</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div style="background:rgba(255,255,255,.15);border-radius:8px;padding:14px"><div style="font-size:12px;opacity:.8">整体满意度</div><div style="font-size:24px;font-weight:700">8.54</div><div style="font-size:11px"><span style="background:#28a745;padding:1px 6px;border-radius:3px">达标</span> 标准7.5</div></div>
+<div style="background:rgba(255,255,255,.15);border-radius:8px;padding:14px"><div style="font-size:12px;opacity:.8">NPS得分</div><div style="font-size:24px;font-weight:700">58.2%</div><div style="font-size:11px"><span style="background:#dc3545;padding:1px 6px;border-radius:3px">未达标</span> 标准70%</div></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div style="background:rgba(255,255,255,.15);border-radius:8px;padding:14px"><div style="font-size:12px;opacity:.8">P0问题解决率</div><div style="font-size:24px;font-weight:700">87%</div><div style="font-size:11px"><span style="background:#dc3545;padding:1px 6px;border-radius:3px">未达标</span> 标准100%</div></div>
+<div style="background:rgba(255,255,255,.15);border-radius:8px;padding:14px"><div style="font-size:12px;opacity:.8">P1问题解决率</div><div style="font-size:24px;font-weight:700">90%</div><div style="font-size:11px"><span style="background:#dc3545;padding:1px 6px;border-radius:3px">未达标</span> 标准100%</div></div></div>
+</div>
+<div style="margin-top:12px;font-size:13px;opacity:.9">P0问题解决率87%、P1问题解决率90%，均未达到100%标准，不通过。哨兵模式为最大风险模块，5个P0未解决，研发预计1.9.8版本优化，待新固件测试验证。视频下载速度目前产品接受现状。</div>
+</div>
+<div class="conclusion-box" style="background:#fff3cd;border-color:#ffc107">
+<h3 style="color:#856404">🔧 上市前必须解决（P0×9）</h3>
+<ul>
+<li><b>哨兵模式</b>（5个P0）：误报8人/漏报5人/延迟4人/车辆误报2人 — 1.9.8版本优化，待新固件验证</li>
+<li><b>GPS</b>（2个P0）：轨迹不完整4人/车速错误2人 — FAQ说明引导</li>
+<li><b>碰撞不录像</b>（1个P0）：3人反馈 — FAQ说明触发条件</li>
+<li><b>点火抓拍漏</b>（1个P0）：2人反馈 — 199版本后优化</li>
+<li><b>视频播放卡顿</b>（1个P0）：2人反馈 — 198版本优化</li>
+</ul></div>
+<div class="conclusion-box" style="background:#d4edda;border-color:#28a745">
+<h3 style="color:#155724">✅ 核心优势（保持）</h3>
+<ul>
+<li><b>4G终身免流 + 远程实时查看</b>：用户最强烈感知卖点，满意度9.39分</li>
+<li><b>WiFi近场查看</b>（9.33）和<b>实时位置</b>（9.22）体验出色</li>
+<li><b>开箱安装</b>（9.13分）体验优秀，0贬损者，品牌信任度高</li>
+</ul></div>
+</div>
+<div class="section">
+<div class="section-title">一、终测概况</div>
+<div class="card-grid">
+<div class="kpi-card info"><div class="label">有效样本</div><div class="value">67</div><div class="sub">份有效答卷</div></div>
+<div class="kpi-card success"><div class="label">整体满意度</div><div class="value">8.54</div><div class="sub">超标准7.5</div></div>
+<div class="kpi-card danger"><div class="label">NPS得分</div><div class="value">58.2%</div><div class="sub">推荐58.2% · 贬损0%</div></div>
+<div class="kpi-card danger"><div class="label">遗留P0问题</div><div class="value">9</div><div class="sub">哨兵5+GPS2+碰撞1+点火1</div></div>
+</div>
+<div class="card-grid">
+<div class="kpi-card success"><div class="label">上市认可率</div><div class="value">97.0%</div><div class="sub">直接上市23.9% + 小修小补73.1%</div></div>
+<div class="kpi-card success"><div class="label">继续使用意愿</div><div class="value">100%</div><div class="sub">愿意52.2% + 基本愿意47.8%</div></div>
+<div class="kpi-card info"><div class="label">Bug类问题</div><div class="value">20</div><div class="sub">占比47.6%</div></div>
+<div class="kpi-card info"><div class="label">需求体验类</div><div class="value">22</div><div class="sub">占比52.4%</div></div>
+</div></div>
+<div class="section">
+<div class="section-title">二、整体体验评分与NPS分析</div>
+<div class="card-grid">
+<div class="kpi-card success"><div class="label">整体满意度</div><div class="value">8.54</div></div>
+<div class="kpi-card danger"><div class="label">NPS得分</div><div class="value">58.2%</div></div>
+<div class="kpi-card success"><div class="label">上市认可率</div><div class="value">97.0%</div></div>
+<div class="kpi-card success"><div class="label">继续使用意愿</div><div class="value">100%</div></div>
+</div>
+<h3 style="font-size:16px;margin:20px 0 10px"><span style="color:var(--primary)">NPS推荐话术</span> &amp; <span style="color:var(--danger)">劝阻话术分类</span></h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+<div>
+<div style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:8px">推荐关键词词频</div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">远程实时查看</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#17a2b8;width:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">41</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">4G免流远程</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#17a2b8;width:58.5%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">24</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">哨兵模式</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#00B050;width:29.3%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">12</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">轨迹定位</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#00B050;width:19.5%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">8</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">品牌信任</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#00B050;width:12.2%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">5</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">功能全面</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#00B050;width:9.8%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">4</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">停车监控</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#00B050;width:7.3%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">3</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">双向通话</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#00B050;width:4.9%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">2</div></div></div>
+</div>
+<div>
+<div style="font-size:14px;font-weight:600;color:var(--primary);margin-bottom:8px">用户原声</div>
+<div style="background:#f8f9fa;border-left:3px solid #0f3460;padding:10px 14px;margin:6px 0;font-size:13px;color:#555;border-radius:0 4px 4px 0"><span style="color:#00B050">“4G无线网实时查看监控” — <b>王龙</b></span></div>
+<div style="background:#f8f9fa;border-left:3px solid #0f3460;padding:10px 14px;margin:6px 0;font-size:13px;color:#555;border-radius:0 4px 4px 0"><span style="color:#00B050">“无限流量远程实时画面” — <b>祁达</b></span></div>
+<div style="background:#f8f9fa;border-left:3px solid #0f3460;padding:10px 14px;margin:6px 0;font-size:13px;color:#555;border-radius:0 4px 4px 0"><span style="color:#00B050">“哨兵实时监控车辆状态” — <b>蔡丙征</b></span></div>
+<div style="background:#f8f9fa;border-left:3px solid #0f3460;padding:10px 14px;margin:6px 0;font-size:13px;color:#555;border-radius:0 4px 4px 0"><span style="color:#00B050">“质量绝对可靠，高温不下线” — <b>陈岩</b></span></div>
+<div style="background:#f8f9fa;border-left:3px solid #0f3460;padding:10px 14px;margin:6px 0;font-size:13px;color:#555;border-radius:0 4px 4px 0"><span style="color:#00B050">“功能全，设置简单，体积小” — <b>刘弼武</b></span></div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+<div>
+<div style="font-size:14px;font-weight:600;color:var(--danger);margin-bottom:8px">劝阻关键词词频</div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">画质清晰度不足</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#dc3545;width:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">11</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">功能不足</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#dc3545;width:36.4%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">4</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">云服务付费</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#dc3545;width:36.4%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">4</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">安装接线麻烦</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#dc3545;width:27.3%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">3</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">网络不稳定</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#dc3545;width:18.2%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">2</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">哨兵模式问题</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#dc3545;width:18.2%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">2</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">轨迹定位不准</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#dc3545;width:18.2%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">2</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">下载速度慢</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#dc3545;width:9.1%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">1</div></div></div>
+<div class="bar-row" style="display:flex;align-items:center;margin-bottom:6px"><div style="width:120px;font-size:13px;text-align:right;padding-right:10px">升级问题</div><div style="flex:1;background:#e9ecef;border-radius:4px;height:24px"><div style="height:100%;border-radius:4px;background:#dc3545;width:9.1%;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;color:#fff;font-size:12px;font-weight:600">1</div></div></div>
+</div>
+<div>
+<div style="font-size:14px;font-weight:600;color:var(--danger);margin-bottom:8px">用户原声</div>
+<div style="background:#f8f9fa;border-left:3px solid #0f3460;padding:10px 14px;margin:6px 0;font-size:13px;color:#555;border-radius:0 4px 4px 0"><span style="color:#E74C3C">“画质一般” — <b>刘弼武</b></span></div>
+<div style="background:#f8f9fa;border-left:3px solid #0f3460;padding:10px 14px;margin:6px 0;font-size:13px;color:#555;border-radius:0 4px 4px 0"><span style="color:#E74C3C">“画质放大不清晰，对方车跑了都抓不住” — <b>徐婷婷</b></span></div>
+<div style="background:#f8f9fa;border-left:3px solid #0f3460;padding:10px 14px;margin:6px 0;font-size:13px;color:#555;border-radius:0 4px 4px 0"><span style="color:#E74C3C">“后续会购买云服务，会继续花钱” — <b>王昊</b></span></div>
+<div style="background:#f8f9fa;border-left:3px solid #0f3460;padding:10px 14px;margin:6px 0;font-size:13px;color:#555;border-radius:0 4px 4px 0"><span style="color:#E74C3C">“接电源比较麻烦” — <b>林峥嵘</b></span></div>
+<div style="background:#f8f9fa;border-left:3px solid #0f3460;padding:10px 14px;margin:6px 0;font-size:13px;color:#555;border-radius:0 4px 4px 0"><span style="color:#E74C3C">“哨兵模式抓取不及时，容易漏掉重要记录” — <b>方钱主</b></span></div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+<div><table class="voice-table"><thead><tr><th>推荐分类</th><th style="text-align:center">提及</th><th>典型原声</th></tr></thead><tbody>
+<tr><td class="cat-cell" >远程实时查看</td><td class="count-cell">41</td><td class="quote-cell"><span style="color:#00B050">&ldquo;4G无线网实时查看监控&rdquo;</span> &mdash; <b>王龙</b><br><span style="color:#00B050">&ldquo;远程实时查看，定位&rdquo;</span> &mdash; <b>李建</b><br><span style="color:#00B050">&ldquo;无限流量远程实时画面&rdquo;</span> &mdash; <b>祁达</b></td></tr>
+<tr><td class="cat-cell" >4G免流远程</td><td class="count-cell">24</td><td class="quote-cell"><span style="color:#00B050">&ldquo;4G无线网实时查看监控&rdquo;</span> &mdash; <b>王龙</b><br><span style="color:#00B050">&ldquo;无限流量远程实时画面&rdquo;</span> &mdash; <b>祁达</b><br><span style="color:#00B050">&ldquo;4G流量免费&rdquo;</span> &mdash; <b>王鸿仟</b></td></tr>
+<tr><td class="cat-cell" >哨兵模式</td><td class="count-cell">12</td><td class="quote-cell"><span style="color:#00B050">&ldquo;哨兵实时监控车辆状态&rdquo;</span> &mdash; <b>蔡丙征</b><br><span style="color:#00B050">&ldquo;可以远程查看双向通话和定位，哨兵模式&rdquo;</span> &mdash; <b>钟剑鑫</b><br><span style="color:#00B050">&ldquo;哨兵模式、碰撞唤醒实用性强，停车监控很安心&rdquo;</span> &mdash; <b>王智勇</b></td></tr>
+<tr><td class="cat-cell" >轨迹定位</td><td class="count-cell">8</td><td class="quote-cell"><span style="color:#00B050">&ldquo;可以远程查看车辆状态，有定位功能&rdquo;</span> &mdash; <b>王昊</b></td></tr>
+<tr><td class="cat-cell" >品牌信任</td><td class="count-cell">5</td><td class="quote-cell"><span style="color:#00B050">&ldquo;大品牌有保障&rdquo;</span> &mdash; <b>陈旭东</b></td></tr>
+<tr><td class="cat-cell" >功能全面</td><td class="count-cell">4</td><td class="quote-cell"><span style="color:#00B050">&ldquo;功能全，设置简单，体积小！&rdquo;</span> &mdash; <b>刘弼武</b></td></tr>
+<tr><td class="cat-cell" >停车监控</td><td class="count-cell">3</td><td class="quote-cell"><span style="color:#00B050">&ldquo;实现停车监控&rdquo;</span> &mdash; <b>朱君</b></td></tr>
+<tr><td class="cat-cell" >双向通话</td><td class="count-cell">2</td><td class="quote-cell"><span style="color:#00B050">&ldquo;实时查看，双向通话，信号稳定&rdquo;</span> &mdash; <b>朱双喜</b></td></tr>
+</tbody></table></div>
+<div><table class="voice-table"><thead><tr><th style="color:#E74C3C">劝阻分类</th><th style="text-align:center">提及</th><th>典型原声</th></tr></thead><tbody>
+<tr><td class="cat-cell" style="color:#E74C3C">画质清晰度不足</td><td class="count-cell">11</td><td class="quote-cell"><span style="color:#E74C3C">&ldquo;画质一般&rdquo;</span> &mdash; <b>刘弼武</b><br><span style="color:#E74C3C">&ldquo;画质放大不清晰，对方车跑了都抓不住&rdquo;</span> &mdash; <b>徐婷婷</b><br><span style="color:#E74C3C">&ldquo;网络不太好下载和清晰度不够&rdquo;</span> &mdash; <b>祁达</b></td></tr>
+<tr><td class="cat-cell" style="color:#E74C3C">功能不足</td><td class="count-cell">4</td><td class="quote-cell"><span style="color:#E74C3C">&ldquo;与新能源汽车功能重复比较多&rdquo;</span> &mdash; <b>陈飞</b><br><span style="color:#E74C3C">&ldquo;功能不太多，没屏幕&rdquo;</span> &mdash; <b>张景</b><br><span style="color:#E74C3C">&ldquo;部分功能差强人意&rdquo;</span> &mdash; <b>马姬</b></td></tr>
+<tr><td class="cat-cell" style="color:#E74C3C">云服务付费</td><td class="count-cell">4</td><td class="quote-cell"><span style="color:#E74C3C">&ldquo;云查看需要付费&rdquo;</span> &mdash; <b>朱双喜</b><br><span style="color:#E74C3C">&ldquo;后续会购买云服务，会继续花钱&rdquo;</span> &mdash; <b>王昊</b><br><span style="color:#E74C3C">&ldquo;依托云服务功能收费高，画质不好&rdquo;</span> &mdash; <b>齐宝台</b></td></tr>
+<tr><td class="cat-cell" style="color:#E74C3C">安装接线麻烦</td><td class="count-cell">3</td><td class="quote-cell"><span style="color:#E74C3C">&ldquo;接电源比较麻烦&rdquo;</span> &mdash; <b>林峥嵘</b></td></tr>
+<tr><td class="cat-cell" style="color:#E74C3C">网络不稳定</td><td class="count-cell">2</td><td class="quote-cell"><span style="color:#E74C3C">&ldquo;现有网速有点儿慢&rdquo;</span> &mdash; <b>李铭</b></td></tr>
+<tr><td class="cat-cell" style="color:#E74C3C">哨兵模式问题</td><td class="count-cell">2</td><td class="quote-cell"><span style="color:#E74C3C">&ldquo;哨兵模式抓取不及时，容易漏掉&rdquo;</span> &mdash; <b>方钱主</b></td></tr>
+<tr><td class="cat-cell" style="color:#E74C3C">轨迹定位不准</td><td class="count-cell">2</td><td class="quote-cell"><span style="color:#E74C3C">&ldquo;GPS有时信号不准确&rdquo;</span> &mdash; <b>李栋灵</b></td></tr>
+<tr><td class="cat-cell" style="color:#E74C3C">下载速度慢</td><td class="count-cell">1</td><td class="quote-cell"><span style="color:#E74C3C">&ldquo;网络不太好下载和清晰度不够&rdquo;</span> &mdash; <b>祁达</b></td></tr>
+<tr><td class="cat-cell" style="color:#E74C3C">升级问题</td><td class="count-cell">1</td><td class="quote-cell"><span style="color:#E74C3C">&ldquo;升级麻烦、内存卡易故障&rdquo;</span> &mdash; <b>陶家荣</b></td></tr>
+</tbody></table></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">三、各功能模块满意度</div>
+<div class="chart-box tall" id="chart-func-satisfaction"></div>
+</div>
+<div class="section">
+<div class="section-title">四、分模块深度分析</div>
+<p style="font-size:14px;color:#666;margin-bottom:16px">将问卷满意度与1.9.6遗留问题按模块合并展示，问题按反馈量从高到低排序。</p>
+<div class="module-section"><h4>🛡️ 哨兵模式 — 满意度：白天8.66 / 夜间7.79 | 遗留问题：8条（P0×4+P1×4）</h4><p style="font-size:13px;color:#666;margin-bottom:10px;padding:6px 10px;background:#fff3cd;border-radius:4px">⚠️ <b>小结：</b>哨兵模式是最大风险模块，4个P0未解决（误报/漏报/延迟/车辆误报），1.9.8版本优化中，待新固件验证通过方可上市。</p><div class="grid-2" style="margin-bottom:12px">
+<div><h3>问卷指标</h3><table style="font-size:13px">
+<tr><th>指标</th><th>结果</th></tr>
+<tr><td>误报情况</td><td>无误差15人 / 较少可接受41人 / <span style="color:#E74C3C;font-weight:600">频繁无法接受8人</span> / 未体验3人</td></tr>
+<tr><td>漏报情况</td><td>没有漏报13人 / 较少可接受43人 / <span style="color:#E74C3C;font-weight:600">大概率漏报8人</span> / 未体验3人</td></tr>
+<tr><td>视频完整性</td><td>完整28人 / 有点延迟可接受31人 / <span style="color:#E74C3C;font-weight:600">延迟多无法接受5人</span> / 未体验3人</td></tr>
+</table></div>
+<div><h3>用户评分原因</h3>
+<div class="quote" style="color:#E74C3C">录制延迟性太大，经常拍到过去了才录上缺少开头。更新新固件后好了很多 — <b>王龙</b></div>
+<div class="quote" style="color:#E74C3C">哨兵模式还是容易引起误报，漏报 — <b>李建</b></div>
+<div class="quote" style="color:#E74C3C">最新固件哨兵模式拍摄错误率好了很多，但还有误报情况，尤其是下雨天 — <b>祁达</b></div>
+</div></div><table style="font-size:13px;margin-top:8px"><thead><tr><th>等级</th><th>类型</th><th>问题</th><th style="text-align:center">反馈量</th><th>责任人</th><th>状态</th><th>解决方案</th></tr></thead><tbody><tr><td><span class="badge danger">P0</span></td><td><span class="badge danger">Bug</span></td><td>哨兵误报</td><td style="text-align:center">8</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加设置项说明+FAQ</td></tr>
+<tr><td><span class="badge danger">P0</span></td><td><span class="badge danger">Bug</span></td><td>哨兵漏报</td><td style="text-align:center">5</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">1.9.8版本优化</td></tr>
+<tr><td><span class="badge danger">P0</span></td><td><span class="badge danger">Bug</span></td><td>哨兵抓拍延迟</td><td style="text-align:center">4</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">1.9.8版本优化</td></tr>
+<tr><td><span class="badge danger">P0</span></td><td><span class="badge danger">Bug</span></td><td>哨兵车辆误报有人</td><td style="text-align:center">2</td><td>俊超</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">优化显示</td></tr>
+<tr><td><span class="badge warning">P1</span></td><td><span class="badge danger">Bug</span></td><td>行车中报哨兵</td><td style="text-align:center">1</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">个例排查</td></tr>
+<tr><td><span class="badge warning">P1</span></td><td><span class="badge danger">Bug</span></td><td>哨兵封面图时间错误</td><td style="text-align:center">1</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">199版本之后优化</td></tr>
+<tr><td><span class="badge warning">P1</span></td><td><span class="badge danger">Bug</span></td><td>哨兵进度条拖动问题</td><td style="text-align:center">1</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">待优化</td></tr>
+<tr><td><span class="badge warning">P1</span></td><td><span class="badge danger">Bug</span></td><td>哨兵视频声音异常</td><td style="text-align:center">1</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">待复现</td></tr></tbody></table></div>
+<div class="module-section"><h4>🛰️ GPS/轨迹 — 满意度：轨迹8.73 | 遗留问题：4条（P0×2+P1×2）</h4><p style="font-size:13px;color:#666;margin-bottom:10px;padding:6px 10px;background:#fff3cd;border-radius:4px">⚠️ <b>小结：</b>GPS轨迹满意度较高（8.73），但轨迹不完整（4人）和车速显示错误（2人）为P0问题，需FAQ说明引导。</p><div class="grid-2" style="margin-bottom:12px">
+<div><h3>问卷指标</h3><table style="font-size:13px">
+<tr><th>指标</th><th>结果</th></tr>
+<tr><td>轨迹正常</td><td>正常35人(52%) / 偶尔不完整可接受18人(27%) / 部分偏移可接受11人(16%) / <span style="color:#E74C3C;font-weight:600">偏移大无法接受3人(5%)</span></td></tr>
+</table></div>
+<div><h3>用户原声</h3>
+<div class="quote" style="color:#E74C3C">有时车辆近距离移动没有记录轨迹 — <b>刘弼武</b></div>
+<div class="quote" style="color:#E74C3C">轨迹的起点和终点是同一个，其实不然 — <b>李建</b></div>
+<div class="quote" style="color:#00B050">这个功能挺好，虽然有些许误差但不大 — <b>祁达</b></div>
+</div></div><table style="font-size:13px;margin-top:8px"><thead><tr><th>等级</th><th>类型</th><th>问题</th><th style="text-align:center">反馈量</th><th>责任人</th><th>状态</th><th>解决方案</th></tr></thead><tbody><tr><td><span class="badge danger">P0</span></td><td><span class="badge danger">Bug</span></td><td>轨迹不完整/偏移</td><td style="text-align:center">4</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加FAQ说明-0721</td></tr>
+<tr><td><span class="badge danger">P0</span></td><td><span class="badge danger">Bug</span></td><td>车速显示错误</td><td style="text-align:center">2</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加FAQ说明-0721</td></tr>
+<tr><td><span class="badge warning">P1</span></td><td><span class="badge danger">Bug</span></td><td>轨迹异常</td><td style="text-align:center">1</td><td>马前/徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加FAQ+客服话术</td></tr>
+<tr><td><span class="badge warning">P1</span></td><td><span class="badge danger">Bug</span></td><td>轨迹终点不一致</td><td style="text-align:center">1</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">199版本之后优化</td></tr></tbody></table></div>
+<div class="module-section"><h4>⬇️ 视频下载 — 满意度：7.39（最低） | 遗留问题：4条</h4><p style="font-size:13px;color:#666;margin-bottom:10px;padding:6px 10px;background:#fce4ec;border-radius:4px">📉 <b>小结：</b>视频下载满意度全模块最低（7.39），下载速度慢为主要痛点，产品已接受现状，通过FAQ引导用户使用近场WiFi下载。</p><div class="grid-2" style="margin-bottom:12px">
+<div><h3>用户评分原因</h3>
+<div class="quote" style="color:#E74C3C">太慢了，不能后台下载 — <b>刘弼武</b></div>
+<div class="quote" style="color:#E74C3C">下载速度太慢，中途退出又要重新下载 — <b>王龙</b></div>
+<div class="quote" style="color:#E74C3C">一分钟视频下载要5至6分钟 — <b>祁达</b></div>
+</div>
+<div><h3>说明</h3>
+<div style="font-size:13px;color:#999;line-height:1.8">
+下载慢原因：CAT1模组性能限制，属硬件约束，目前产品接受现状<br>
+后台下载：APP端增加说明引导，后续版本优化<br>
+最满意功能TOP3：远程实时查看(55票)、哨兵模式(41票)、轨迹查看(27票)<br>
+最不满意功能TOP3：远程视频下载(31票)、2K画质(25票)、哨兵模式(15票)
+</div></div></div><table style="font-size:13px;margin-top:8px"><thead><tr><th>等级</th><th>类型</th><th>问题</th><th style="text-align:center">反馈量</th><th>责任人</th><th>状态</th><th>解决方案</th></tr></thead><tbody><tr><td><span class="badge warning">P1</span></td><td><span class="badge warning">需求</span></td><td>后台下载需求</td><td style="text-align:center">4</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">APP端增加说明-0730</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>视频下载慢</td><td style="text-align:center">3</td><td>徐凯来</td><td><span class="badge success">接受现状</span></td><td style="font-size:12px">接受现状</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>循环录像无限重复下载</td><td style="text-align:center">1</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">后续版本优化-0730</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>已下载视频标记需求</td><td style="text-align:center">1</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">后续版本优化-0730</td></tr></tbody></table></div>
+<div class="module-section"><h4>📱 APP | 遗留问题：13条（P1×3+P2×10）</h4><p style="font-size:13px;color:#666;margin-bottom:10px;padding:6px 10px;background:#e8f5e9;border-radius:4px">📱 <b>小结：</b>APP无问卷满意度指标，遗留问题以需求类为主（电瓶电压/热点切换等），技术方案不支持的项目已标注不采纳。</p><table style="font-size:13px;margin-top:8px"><thead><tr><th>等级</th><th>类型</th><th>问题</th><th style="text-align:center">反馈量</th><th>责任人</th><th>状态</th><th>解决方案</th></tr></thead><tbody><tr><td><span class="badge warning">P1</span></td><td><span class="badge warning">需求</span></td><td>电瓶电压显示需求</td><td style="text-align:center">6</td><td>徐凯来</td><td><span class="badge warning">不采纳</span></td><td style="font-size:12px">技术方案不支持</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>热点切换需求</td><td style="text-align:center">3</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">结合上市反馈评估</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>停车期间模式不能切换</td><td style="text-align:center">2</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">199版本之后优化</td></tr>
+<tr><td><span class="badge warning">P1</span></td><td><span class="badge danger">Bug</span></td><td>APP闪退</td><td style="text-align:center">1</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">APP新版本解决-0730</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>哨兵模式时间段自定义需求</td><td style="text-align:center">1</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">OTA版本增加设置项-0730</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>APP细节体验问题</td><td style="text-align:center">1</td><td>俊超</td><td><span class="badge success">已解决</span></td><td style="font-size:12px">正式APP已解决</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>按键功能说明不清晰</td><td style="text-align:center">1</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">更新电子说明书-0717</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>电子说明书细节说明需求</td><td style="text-align:center">1</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">更新电子说明书-0717</td></tr>
+<tr><td><span class="badge warning">P1</span></td><td><span class="badge danger">Bug</span></td><td>封面图未及时更新</td><td style="text-align:center">1</td><td>徐凯来</td><td><span class="badge success">已解决</span></td><td style="font-size:12px">新版APP已优化</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>降压线引导位置错误</td><td style="text-align:center">1</td><td>徐凯来</td><td><span class="badge success">已解决</span></td><td style="font-size:12px">-</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>灵敏度设置说明需求</td><td style="text-align:center">1</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">OTA版本增加设置项-0730</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>设备共享需求</td><td style="text-align:center">1</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">OTA2版本计划-0830</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>有云录日期红点展示需求</td><td style="text-align:center">1</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">OTA版本计划-0730</td></tr></tbody></table></div>
+<div class="module-section"><h4>🎬 视频回看 | 遗留问题：3条（P0×1+P1×2）</h4><p style="font-size:13px;color:#666;margin-bottom:10px;padding:6px 10px;background:#fff3cd;border-radius:4px">⚠️ <b>小结：</b>视频播放卡顿为P0问题（2人反馈），198版本优化中；播放噗声和事件时长不一致为P1，待复现和FAQ说明。</p><table style="font-size:13px;margin-top:8px"><thead><tr><th>等级</th><th>类型</th><th>问题</th><th style="text-align:center">反馈量</th><th>责任人</th><th>状态</th><th>解决方案</th></tr></thead><tbody><tr><td><span class="badge danger">P0</span></td><td><span class="badge danger">Bug</span></td><td>视频播放卡顿</td><td style="text-align:center">2</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">198版本优化</td></tr>
+<tr><td><span class="badge warning">P1</span></td><td><span class="badge danger">Bug</span></td><td>视频播放噗声</td><td style="text-align:center">1</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">待复现</td></tr>
+<tr><td><span class="badge warning">P1</span></td><td><span class="badge danger">Bug</span></td><td>同一事件时长不一致</td><td style="text-align:center">1</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加FAQ说明</td></tr></tbody></table></div>
+<div class="module-section"><h4>📡 开流 | 遗留问题：2条（P1×1+P2×1）</h4><p style="font-size:13px;color:#666;margin-bottom:10px;padding:6px 10px;background:#e8f5e9;border-radius:4px">📡 <b>小结：</b>开流慢（3人反馈）产品已接受现状，开流黑屏为P1偶发问题，已提bug单跟进。</p><table style="font-size:13px;margin-top:8px"><thead><tr><th>等级</th><th>类型</th><th>问题</th><th style="text-align:center">反馈量</th><th>责任人</th><th>状态</th><th>解决方案</th></tr></thead><tbody><tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>开流慢</td><td style="text-align:center">3</td><td>徐凯来</td><td><span class="badge success">接受现状</span></td><td style="font-size:12px">接受现状</td></tr>
+<tr><td><span class="badge warning">P1</span></td><td><span class="badge danger">Bug</span></td><td>开流黑屏</td><td style="text-align:center">1</td><td>陈真</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">测试提bug单跟进</td></tr></tbody></table></div>
+<div class="module-section"><h4>🔌 离在线 | 遗留问题：2条（P1×1+P2×1）</h4><p style="font-size:13px;color:#666;margin-bottom:10px;padding:6px 10px;background:#e8f5e9;border-radius:4px">🔌 <b>小结：</b>设备离线状态更新不及时（5人反馈）为P1需求，已增加FAQ说明；异常离线为P2偶发，同样FAQ引导。</p><table style="font-size:13px;margin-top:8px"><thead><tr><th>等级</th><th>类型</th><th>问题</th><th style="text-align:center">反馈量</th><th>责任人</th><th>状态</th><th>解决方案</th></tr></thead><tbody><tr><td><span class="badge warning">P1</span></td><td><span class="badge warning">需求</span></td><td>设备离线状态更新不及时</td><td style="text-align:center">5</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加FAQ说明-0721</td></tr>
+<tr><td><span class="badge info">P2</span></td><td><span class="badge warning">需求</span></td><td>设备异常离线</td><td style="text-align:center">2</td><td>徐工；凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加FAQ说明-0721</td></tr></tbody></table></div>
+<div class="module-section"><h4>💥 碰撞视频 | 遗留问题：1条（P0×1）</h4><p style="font-size:13px;color:#666;margin-bottom:10px;padding:6px 10px;background:#fff3cd;border-radius:4px">⚠️ <b>小结：</b>碰撞不录像为P0问题（3人反馈），大力关门和过减速带不触发，需FAQ说明碰撞触发条件。</p><table style="font-size:13px;margin-top:8px"><thead><tr><th>等级</th><th>类型</th><th>问题</th><th style="text-align:center">反馈量</th><th>责任人</th><th>状态</th><th>解决方案</th></tr></thead><tbody><tr><td><span class="badge danger">P0</span></td><td><span class="badge danger">Bug</span></td><td>碰撞不录像</td><td style="text-align:center">3</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加FAQ说明-0721</td></tr></tbody></table></div>
+<div class="module-section"><h4>🔑 点火抓拍 | 遗留问题：1条（P0×1）</h4><p style="font-size:13px;color:#666;margin-bottom:10px;padding:6px 10px;background:#fff3cd;border-radius:4px">⚠️ <b>小结：</b>点火抓拍漏为P0问题（2人反馈），199版本之后优化。</p><table style="font-size:13px;margin-top:8px"><thead><tr><th>等级</th><th>类型</th><th>问题</th><th style="text-align:center">反馈量</th><th>责任人</th><th>状态</th><th>解决方案</th></tr></thead><tbody><tr><td><span class="badge danger">P0</span></td><td><span class="badge danger">Bug</span></td><td>点火抓拍漏</td><td style="text-align:center">2</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">199版本之后优化</td></tr></tbody></table></div>
+</div>
+<div class="section">
+<div class="section-title">五、1.9.6版本验证遗留问题汇总（42条）</div>
+<div class="grid-3">
+<div class="kpi-card danger"><div class="label">P0 紧急</div><div class="value">9</div><div class="sub">哨兵5+GPS2+碰撞1+点火1</div></div>
+<div class="kpi-card warning"><div class="label">P1 高</div><div class="value">14</div><div class="sub">APP3+哨兵4+视频3+离在线2</div></div>
+<div class="kpi-card info"><div class="label">P2 中</div><div class="value">19</div><div class="sub">APP9+下载3+抓拍2+其他5</div></div>
+</div>
+<div class="chart-box" id="chart-legacy-cat"></div>
+<h3 style="font-size:16px;color:var(--danger);margin:20px 0 10px">P0问题完整清单</h3>
+<table><thead><tr><th>#</th><th>分类</th><th>问题</th><th>类型</th><th style="text-align:center">反馈量</th><th>责任人</th><th>状态</th><th>解决方案</th></tr></thead>
+<tbody><tr><td style="text-align:center">1</td><td>哨兵</td><td>哨兵误报</td><td><span class="badge danger">Bug</span></td><td style="text-align:center">8</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加设置项说明+FAQ</td></tr>
+<tr><td style="text-align:center">2</td><td>哨兵</td><td>哨兵漏报</td><td><span class="badge danger">Bug</span></td><td style="text-align:center">5</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">1.9.8版本优化</td></tr>
+<tr><td style="text-align:center">3</td><td>GPS</td><td>轨迹不完整/偏移</td><td><span class="badge danger">Bug</span></td><td style="text-align:center">4</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加FAQ说明-0721</td></tr>
+<tr><td style="text-align:center">4</td><td>哨兵</td><td>哨兵抓拍延迟</td><td><span class="badge danger">Bug</span></td><td style="text-align:center">4</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">1.9.8版本优化</td></tr>
+<tr><td style="text-align:center">5</td><td>碰撞视频</td><td>碰撞不录像</td><td><span class="badge danger">Bug</span></td><td style="text-align:center">3</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加FAQ说明-0721</td></tr>
+<tr><td style="text-align:center">6</td><td>GPS</td><td>车速显示错误</td><td><span class="badge danger">Bug</span></td><td style="text-align:center">2</td><td>徐凯来</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">增加FAQ说明-0721</td></tr>
+<tr><td style="text-align:center">7</td><td>点火抓拍</td><td>点火抓拍漏</td><td><span class="badge danger">Bug</span></td><td style="text-align:center">2</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">199版本之后优化</td></tr>
+<tr><td style="text-align:center">8</td><td>哨兵</td><td>哨兵车辆误报有人</td><td><span class="badge danger">Bug</span></td><td style="text-align:center">2</td><td>俊超</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">优化显示</td></tr>
+<tr><td style="text-align:center">9</td><td>视频回看</td><td>视频播放卡顿</td><td><span class="badge danger">Bug</span></td><td style="text-align:center">2</td><td>普联徐工</td><td><span class="badge warning">跟进中</span></td><td style="font-size:12px">198版本优化</td></tr></tbody></table>
+<h3 style="font-size:16px;color:var(--primary);margin:20px 0 10px">全部42条遗留问题明细（按等级P0→P1→P2，反馈量从高到低）</h3>
+<table style="font-size:13px"><thead><tr><th>#</th><th>等级</th><th>分类</th><th>问题</th><th style="text-align:center">反馈量</th><th>类型</th><th>用户原声</th><th>责任人</th><th>解决方案</th><th>状态</th></tr></thead>
+<tbody><tr><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">P0</span></td><td>哨兵</td><td>哨兵误报</td><td style="text-align:center">8</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">盖了车衣仍误报，夜间雨天刮风都会触发。</td><td>徐凯来</td><td style="font-size:12px">增加设置项说明+FAQ</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">2</td><td style="text-align:center"><span class="badge danger">P0</span></td><td>哨兵</td><td>哨兵漏报</td><td style="text-align:center">5</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">车前走过并逗留5秒，哨兵没有拍到。</td><td>普联徐工</td><td style="font-size:12px">1.9.8版本优化</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">3</td><td style="text-align:center"><span class="badge danger">P0</span></td><td>GPS</td><td>轨迹不完整/偏移</td><td style="text-align:center">4</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">地库路径不完整，进出记录都不完整。</td><td>徐凯来</td><td style="font-size:12px">增加FAQ说明-0721</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">4</td><td style="text-align:center"><span class="badge danger">P0</span></td><td>哨兵</td><td>哨兵抓拍延迟</td><td style="text-align:center">4</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">车都要出画面了才触发。</td><td>普联徐工</td><td style="font-size:12px">1.9.8版本优化</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">5</td><td style="text-align:center"><span class="badge danger">P0</span></td><td>碰撞视频</td><td>碰撞不录像</td><td style="text-align:center">3</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">大力关门和过减速带不会触发碰撞紧急视频。</td><td>徐凯来</td><td style="font-size:12px">增加FAQ说明-0721</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">6</td><td style="text-align:center"><span class="badge danger">P0</span></td><td>GPS</td><td>车速显示错误</td><td style="text-align:center">2</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">倒车行驶，记录仪仍有0速出现。</td><td>徐凯来</td><td style="font-size:12px">增加FAQ说明-0721</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">7</td><td style="text-align:center"><span class="badge danger">P0</span></td><td>点火抓拍</td><td>点火抓拍漏</td><td style="text-align:center">2</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">点火抓拍部分缺失。</td><td>普联徐工</td><td style="font-size:12px">199版本之后优化</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">8</td><td style="text-align:center"><span class="badge danger">P0</span></td><td>哨兵</td><td>哨兵车辆误报有人</td><td style="text-align:center">2</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">车辆经过哨兵报有人。</td><td>俊超</td><td style="font-size:12px">优化显示</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">9</td><td style="text-align:center"><span class="badge danger">P0</span></td><td>视频回看</td><td>视频播放卡顿</td><td style="text-align:center">2</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">加载时间超长，视频经常一卡一卡。</td><td>普联徐工</td><td style="font-size:12px">198版本优化</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">10</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>APP</td><td>电瓶电压显示需求</td><td style="text-align:center">6</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">建议可以在APP查询到电瓶电压的数值</td><td>徐凯来</td><td style="font-size:12px">技术方案不支持</td><td style="text-align:center"><span class="badge warning">不采纳</span></td></tr>
+<tr><td style="text-align:center">11</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>离在线</td><td>设备离线状态更新不及时</td><td style="text-align:center">5</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">断电离线但状态依然显示在线。</td><td>徐凯来</td><td style="font-size:12px">增加FAQ说明-0721</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">12</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>视频下载</td><td>后台下载需求</td><td style="text-align:center">4</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">不能后台下载然后操作app其他功能。</td><td>徐凯来</td><td style="font-size:12px">APP端增加说明-0730</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">13</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>APP</td><td>APP闪退</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">下载的录像播放时，新增的分享图标，点击后少概率会闪退出app。</td><td>普联徐工</td><td style="font-size:12px">APP新版本解决-0730</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">14</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>APP</td><td>封面图未及时更新</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">图片会一直显示两天前的画面。</td><td>徐凯来</td><td style="font-size:12px">新版APP已优化</td><td style="text-align:center"><span class="badge success">已解决</span></td></tr>
+<tr><td style="text-align:center">15</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>GPS</td><td>轨迹异常</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">轨迹的起点和终点是同一个，其实不然。</td><td>马前/徐凯来</td><td style="font-size:12px">增加FAQ+客服话术</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">16</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>GPS</td><td>轨迹终点不一致</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">熄火抓拍和轨迹终点位置显示不一致。</td><td>普联徐工</td><td style="font-size:12px">199版本之后优化</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">17</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>开流</td><td>开流黑屏</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">高清切流畅后偶发画面变黑。</td><td>陈真</td><td style="font-size:12px">测试提bug单跟进</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">18</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>哨兵</td><td>行车中报哨兵</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">行进过程中触发哨兵模式。</td><td>普联徐工</td><td style="font-size:12px">个例排查</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">19</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>哨兵</td><td>哨兵封面图时间错误</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">封面图时间和视频时间相差两秒。</td><td>普联徐工</td><td style="font-size:12px">199版本之后优化</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">20</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>哨兵</td><td>哨兵进度条拖动问题</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">拖动进度条到任意位置，跳转到开始。</td><td>普联徐工</td><td style="font-size:12px">待优化</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">21</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>哨兵</td><td>哨兵视频声音异常</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">开始一秒钟会发出卟的声音，有时有电流声。</td><td>普联徐工</td><td style="font-size:12px">待复现</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">22</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>视频回看</td><td>视频播放噗声</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">打开一瞬间偶尔会有噪音杂音。</td><td>普联徐工</td><td style="font-size:12px">待复现</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">23</td><td style="text-align:center"><span class="badge warning">P1</span></td><td>视频回看</td><td>同一事件时长不一致</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge danger">Bug</span></td><td class="quote-cell" style="color:#E74C3C;font-size:12px">车辆动态视频10S，紧急录像视频有20S。</td><td>徐凯来</td><td style="font-size:12px">增加FAQ说明</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">24</td><td style="text-align:center"><span class="badge info">P2</span></td><td>APP</td><td>热点切换需求</td><td style="text-align:center">3</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">建议将Wifi热点开关增加到首页。</td><td>徐凯来</td><td style="font-size:12px">结合上市反馈评估</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">25</td><td style="text-align:center"><span class="badge info">P2</span></td><td>OTA</td><td>固件升级问题</td><td style="text-align:center">3</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">停车监控状态下一直更新失败。</td><td>徐凯来</td><td style="font-size:12px">APP已增加ACCON判断</td><td style="text-align:center"><span class="badge success">已解决</span></td></tr>
+<tr><td style="text-align:center">26</td><td style="text-align:center"><span class="badge info">P2</span></td><td>开流</td><td>开流慢</td><td style="text-align:center">3</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">流畅模式开流9秒，高清模式15秒。</td><td>徐凯来</td><td style="font-size:12px">接受现状</td><td style="text-align:center"><span class="badge success">接受现状</span></td></tr>
+<tr><td style="text-align:center">27</td><td style="text-align:center"><span class="badge info">P2</span></td><td>视频下载</td><td>视频下载慢</td><td style="text-align:center">3</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">下载时长还是5至6分钟！</td><td>徐凯来</td><td style="font-size:12px">接受现状</td><td style="text-align:center"><span class="badge success">接受现状</span></td></tr>
+<tr><td style="text-align:center">28</td><td style="text-align:center"><span class="badge info">P2</span></td><td>APP</td><td>停车期间模式不能切换</td><td style="text-align:center">2</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">停车时能从缩时切到哨兵，但不能再切回。</td><td>普联徐工</td><td style="font-size:12px">199版本之后优化</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">29</td><td style="text-align:center"><span class="badge info">P2</span></td><td>离在线</td><td>设备异常离线</td><td style="text-align:center">2</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">无缘无故离线。</td><td>徐工；凯来</td><td style="font-size:12px">增加FAQ说明-0721</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">30</td><td style="text-align:center"><span class="badge info">P2</span></td><td>APP</td><td>哨兵模式时间段自定义需求</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">晚上停车库有监控不用，白天在外面需要自动开启哨兵模式。</td><td>徐凯来</td><td style="font-size:12px">OTA版本增加设置项-0730</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">31</td><td style="text-align:center"><span class="badge info">P2</span></td><td>APP</td><td>APP细节体验问题</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">背景线条不平滑，有割裂感。</td><td>俊超</td><td style="font-size:12px">正式APP已解决</td><td style="text-align:center"><span class="badge success">已解决</span></td></tr>
+<tr><td style="text-align:center">32</td><td style="text-align:center"><span class="badge info">P2</span></td><td>APP</td><td>按键功能说明不清晰</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">电子说明书没有提到按键的具体功能。</td><td>徐凯来</td><td style="font-size:12px">更新电子说明书-0717</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">33</td><td style="text-align:center"><span class="badge info">P2</span></td><td>APP</td><td>电子说明书细节说明需求</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">避开玻璃边缘陶瓷黑边带，以防粘贴不牢。</td><td>徐凯来</td><td style="font-size:12px">更新电子说明书-0717</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">34</td><td style="text-align:center"><span class="badge info">P2</span></td><td>APP</td><td>降压线引导位置错误</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">图示线路位置是车充的，应标注为车充走线位置。</td><td>徐凯来</td><td style="font-size:12px">-</td><td style="text-align:center"><span class="badge success">已解决</span></td></tr>
+<tr><td style="text-align:center">35</td><td style="text-align:center"><span class="badge info">P2</span></td><td>APP</td><td>灵敏度设置说明需求</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">哨兵模式敏感度设置不太清晰，建议画示意图说明。</td><td>徐凯来</td><td style="font-size:12px">OTA版本增加设置项-0730</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">36</td><td style="text-align:center"><span class="badge info">P2</span></td><td>APP</td><td>设备共享需求</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">希望增加设备共享功能给别人操控。</td><td>徐凯来</td><td style="font-size:12px">OTA2版本计划-0830</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">37</td><td style="text-align:center"><span class="badge info">P2</span></td><td>APP</td><td>有云录日期红点展示需求</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">云录事件当天标红一个小点。</td><td>徐凯来</td><td style="font-size:12px">OTA版本计划-0730</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">38</td><td style="text-align:center"><span class="badge info">P2</span></td><td>IQ</td><td>画面不清晰</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">比之前强点，但还是不够清晰。</td><td>徐凯来</td><td style="font-size:12px">增加FAQ说明</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">39</td><td style="text-align:center"><span class="badge info">P2</span></td><td>视频下载</td><td>循环录像无限重复下载</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">循环录像可以无限重复下载。</td><td>普联徐工</td><td style="font-size:12px">后续版本优化-0730</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">40</td><td style="text-align:center"><span class="badge info">P2</span></td><td>视频下载</td><td>已下载视频标记需求</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">建议下载过的视频打个✓。</td><td>普联徐工</td><td style="font-size:12px">后续版本优化-0730</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">41</td><td style="text-align:center"><span class="badge info">P2</span></td><td>远程抓拍</td><td>远程抓拍提醒不及时</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">抓拍没提醒，延迟好几分钟才显示。</td><td>徐凯来</td><td style="font-size:12px">OTA版本优化-0730</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr>
+<tr><td style="text-align:center">42</td><td style="text-align:center"><span class="badge info">P2</span></td><td>远程抓拍</td><td>远程抓拍语音提示需求</td><td style="text-align:center">1</td><td style="text-align:center"><span class="badge warning">需求</span></td><td class="quote-cell" style="color:#666;font-size:12px">建议远程抓拍视频增加语音提示。</td><td>徐凯来</td><td style="font-size:12px">OTA版本优化-0730</td><td style="text-align:center"><span class="badge warning">跟进中</span></td></tr></tbody></table>
+</div>
+<div class="section">
+<div class="section-title">六、上市就绪度评估</div>
+<div class="grid-3">
+<div class="kpi-card danger">
+<div class="label">🔴 高风险</div>
+<div class="value" style="font-size:16px">哨兵模式</div>
+<div class="sub">5个P0，误报/漏报/延迟均未解决<br>1.9.8版本优化中，需测试验证</div>
+</div>
+<div class="kpi-card warning">
+<div class="label">🟡 中风险</div>
+<div class="value" style="font-size:16px">GPS/碰撞/APP</div>
+<div class="sub">4个P0 + 3个P1<br>以FAQ+方案跟进为主<br>APP部分已在新版本解决</div>
+</div>
+<div class="kpi-card success">
+<div class="label">🟢 低风险</div>
+<div class="value" style="font-size:16px">画质/下载/离在线</div>
+<div class="sub">CAT1模组性能限制属硬件约束<br>用户可接受度高<br>通过FAQ+说明引导</div>
+</div>
+</div>
+<h3 style="margin-top:16px">改进路线图</h3>
+<div class="grid-2">
+<div>
+<h3>上市前必须完成</h3>
+<div style="background:#f8f9fa;border-radius:6px;padding:12px;margin-bottom:8px;font-size:13px"><b>1. 哨兵模式1.9.8版本验证</b><br>误报/漏报/延迟是核心卖点问题，需验证通过方可上市</div>
+<div style="background:#f8f9fa;border-radius:6px;padding:12px;margin-bottom:8px;font-size:13px"><b>2. APP新版本发布（0730）</b><br>解决闪退、封面图、电子说明书、灵敏度说明等</div>
+<div style="background:#f8f9fa;border-radius:6px;padding:12px;margin-bottom:8px;font-size:13px"><b>3. FAQ文档完善</b><br>GPS轨迹/离线状态/哨兵灵敏度/碰撞灵敏度 统一话术</div>
+</div>
+<div>
+<h3>上市后持续优化</h3>
+<div style="background:#f8f9fa;border-radius:6px;padding:12px;margin-bottom:8px;font-size:13px"><b>4. OTA版本计划（0730）</b><br>哨兵时间段/灵敏度说明/云录红点/远程抓拍提示</div>
+<div style="background:#f8f9fa;border-radius:6px;padding:12px;margin-bottom:8px;font-size:13px"><b>5. OTA2版本计划（0830）</b><br>设备共享功能</div>
+<div style="background:#f8f9fa;border-radius:6px;padding:12px;margin-bottom:8px;font-size:13px"><b>6. 199版本之后优化</b><br>停车模式切换/封面图时间/轨迹终点一致性</div>
+<div style="background:#f8f9fa;border-radius:6px;padding:12px;margin-bottom:8px;font-size:13px"><b>7. 语音助手功能评估</b><br>8人最希望增加的功能，驾驶场景刚需</div>
+</div></div></div>
+<div class="footer">
+<p>📊 T200终测体验评估报告 | 数据截至 2026.07.15</p>
+<p>数据来源：飞书「4G记录仪公测问题跟进表」→ 终测明细(67份) + 1.9.6版本验证遗留问题(42条)</p>
+<p>🦞 数据分析专家 · 自动生成</p>
+</div></div>
+<script>
+var fN=["4G远程实时查看", "WiFi近场查看", "实时位置", "远程抓拍", "开箱与安装", "缩时录影", "轨迹查看", "视频分类查看", "白天画质", "哨兵模式(白天)", "紧急录像", "双向通话", "哨兵模式(夜间)", "夜间画质", "视频下载"],fS=[9.39, 9.33, 9.22, 9.15, 9.13, 8.79, 8.73, 8.72, 8.7, 8.66, 8.64, 8.42, 7.79, 7.61, 7.39];
+var c3=echarts.init(document.getElementById('chart-func-satisfaction'));
+c3.setOption({title:{text:'各功能模块满意度（从高到低）',left:'center'},tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'分'}},grid:{left:'18%',bottom:'10%'},xAxis:{type:'value',min:5,max:10,name:'满意度'},yAxis:{type:'category',data:fN.slice().reverse(),axisLabel:{fontSize:11}},series:[{type:'bar',data:fS.slice().reverse().map(function(v){return{value:v,itemStyle:{color:v<7.5?'#E74C3C':'#00B050'}}}),barWidth:'60%',label:{show:true,position:'right',formatter:'{c}分'}}]});
+
+var lCat=["APP", "哨兵", "GPS", "视频下载", "视频回看", "开流", "离在线", "远程抓拍", "IQ", "OTA", "点火抓拍", "碰撞视频"],lVal=[13, 8, 4, 4, 3, 2, 2, 2, 1, 1, 1, 1],lP0=[0, 4, 2, 0, 1, 0, 0, 0, 0, 0, 1, 1];
+var c9=echarts.init(document.getElementById('chart-legacy-cat'));
+c9.setOption({title:{text:'遗留问题分类分布',left:'center'},tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'条（P0: '+lP0[p[0].dataIndex]+'条）'}},grid:{left:'12%',bottom:'10%'},xAxis:{type:'value',name:'问题数'},yAxis:{type:'category',data:lCat.slice().reverse(),axisLabel:{fontSize:11}},series:[{type:'bar',data:lVal.slice().reverse().map(function(v){return{value:v,itemStyle:{color:v>=5?'#E74C3C':v>=3?'#F39C12':'#00B050'}}}),barWidth:'60%',label:{show:true,position:'right',formatter:'{c}条'}}]});
+
+window.addEventListener('resize',function(){c3.resize();c9.resize();});
+</script></body></html>
