@@ -3,145 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>T200 公测报告合集</title>
+<title>报告合集 | 尹燕玲-报告分析专家</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
-.container{max-width:900px;margin:0 auto;padding:20px}
-.header{text-align:center;padding:40px 20px;background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;border-radius:12px;margin-bottom:30px}
-.header h1{font-size:28px;margin-bottom:10px}
-.card{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);transition:transform 0.2s}
-.card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,176,80,0.15)}
-.card h3{color:#00B050;font-size:18px;margin-bottom:8px}
-.card .desc{color:#666;font-size:14px;margin-bottom:8px}
-.sub-link{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:#e8f7ee;border-radius:8px;margin-bottom:8px;text-decoration:none;color:#333;font-size:14px;transition:background 0.2s}
-.sub-link:hover{background:#d1f0dc}
-.sub-link .sub-title{font-weight:600;color:#007a3c}
-.sub-link .sub-desc{color:#999;font-size:12px}
-.sub-link .arrow{color:#00B050;font-weight:bold}
-.col-2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.header{text-align:center;padding:60px 20px;background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;border-radius:0 0 20px 20px;margin-bottom:40px}
+.header h1{font-size:32px;margin-bottom:10px;font-weight:800}
+.header p{font-size:16px;opacity:.9}
+.header .meta{font-size:13px;opacity:.7;margin-top:8px}
+.container{max-width:900px;margin:0 auto;padding:0 20px 40px}
+.project-card{background:#fff;border-radius:16px;margin-bottom:20px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:all .3s;text-decoration:none;display:block;color:inherit}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,176,80,.18)}
+.project-card .banner{padding:32px 28px;background:linear-gradient(135deg,#e8f7ee,#d1f0dc);position:relative;overflow:hidden}
+.project-card .banner::after{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;background:rgba(0,176,80,.06);border-radius:50%}
+.project-card .icon{font-size:48px;margin-bottom:12px;position:relative;z-index:1}
+.project-card h2{font-size:22px;color:#1a1a1a;margin-bottom:6px;position:relative;z-index:1}
+.project-card .summary{font-size:14px;color:#666;position:relative;z-index:1}
+.project-card .body{padding:20px 28px;display:flex;align-items:center;justify-content:space-between}
+.project-card .tags{display:flex;gap:8px;flex-wrap:wrap}
+.project-card .tag{font-size:12px;padding:4px 12px;border-radius:20px;background:#f0f2f3;color:#666}
+.project-card .tag.green{background:#e8f7ee;color:#007a3c}
+.project-card .arrow{font-size:24px;color:#00B050;font-weight:700}
+.footer{text-align:center;padding:30px;color:#999;font-size:13px}
+.footer span{color:#00B050}
 </style>
 </head>
 <body>
-<div class="container">
+
 <div class="header">
-<h1>📋 T200 记录仪公测报告合集</h1>
-<p>📊 数据截止 2026-07-16 | 🦞 数据分析专家</p>
+<h1>📊 报告合集</h1>
+<p>尹燕玲-报告分析专家 · 数据分析 · 用户洞察 · 竞品研究</p>
+<div class="meta">🦞 360绿色系 #00B050 / #2BBD6E</div>
 </div>
 
-<!-- 卡片1：开箱&安装 -->
-<div class="card">
-<h3>📦 开箱 & 安装体验</h3>
-<p class="desc">开箱与安装问卷数据分析</p>
-<div class="col-2">
-<a href="https://yanlingyin001.github.io/reports/t200-unboxing.html" class="sub-link">
-<span class="sub-title">开箱体验专项</span>
-<span class="sub-desc">66条</span>
-<span class="arrow">→</span>
-</a>
-<a href="https://yanlingyin001.github.io/reports/t200-installation.html" class="sub-link">
-<span class="sub-title">安装体验专项</span>
-<span class="sub-desc">66条</span>
-<span class="arrow">→</span>
-</a>
+<div class="container">
+
+<a class="project-card" href="https://yanlingyin001.github.io/reports/t200-index.html">
+<div class="banner">
+<div class="icon">📋</div>
+<h2>T200 4G记录仪公测</h2>
+<div class="summary">开箱安装 · 日常问题 · 专项体验 · 终测分析 · 价格测试 · 市场营销决策</div>
 </div>
+<div class="body">
+<div class="tags">
+<span class="tag green">15+ 报告</span>
+<span class="tag">438条公测样本</span>
+<span class="tag">67份终测</span>
+<span class="tag">67份价格测试</span>
+</div>
+<span class="arrow">→</span>
+</div>
+</a>
+
+<a class="project-card" href="https://yanlingyin001.github.io/reports/v6-rider-profile.html">
+<div class="banner">
+<div class="icon">🛵</div>
+<h2>V6骑行版用户画像</h2>
+<div class="summary">用户画像 · 使用习惯 · 满意度NPS · 问题分析 · 行动建议</div>
+</div>
+<div class="body">
+<div class="tags">
+<span class="tag green">1 报告</span>
+<span class="tag">351条样本</span>
+<span class="tag">14张图表</span>
+</div>
+<span class="arrow">→</span>
+</div>
+</a>
+
 </div>
 
-<!-- 卡片2：日常问题 -->
-<div class="card">
-<h3>📊 日常问题分析</h3>
-<p class="desc">日常问题反馈多维度分析，持续迭代更新</p>
-<div style="display:flex;gap:8px">
-<a href="https://yanlingyin001.github.io/reports/t200-daily-feedback-0626.html" class="sub-link" style="flex:1">
-<span class="sub-title">06/26版</span>
-<span class="sub-desc">479条</span>
-<span class="arrow">→</span>
-</a>
-<a href="https://yanlingyin001.github.io/reports/t200-daily-feedback-update-0629.html" class="sub-link" style="flex:1">
-<span class="sub-title">06/29版</span>
-<span class="sub-desc">673条</span>
-<span class="arrow">→</span>
-</a>
-<a href="https://yanlingyin001.github.io/reports/t200-daily-comparison.html" class="sub-link" style="flex:1">
-<span class="sub-title">07/08版</span>
-<span class="sub-desc">897条对比</span>
-<span class="arrow">→</span>
-</a>
-</div>
+<div class="footer">
+<p>🦞 尹燕玲-报告分析专家 · <span>360绿色系</span> 主色调</p>
+<p style="margin-top:4px">所有报告链接永久有效 · 最后更新：2026-07-16</p>
 </div>
 
-<!-- 卡片3：专项报告 -->
-<div class="card">
-<h3>🔍 专项体验报告</h3>
-<p class="desc">各功能模块专项满意度分析</p>
-<div class="col-2">
-<a href="https://yanlingyin001.github.io/reports/t200-sentinel-report.html" class="sub-link">
-<span class="sub-title">哨兵守护</span>
-<span class="sub-desc">满意度8.02/10</span>
-<span class="arrow">→</span>
-</a>
-<a href="https://yanlingyin001.github.io/reports/t200-remote-report.html" class="sub-link">
-<span class="sub-title">远程互动</span>
-<span class="sub-desc">满意度8.23/10</span>
-<span class="arrow">→</span>
-</a>
-<a href="https://yanlingyin001.github.io/reports/t200-4g-report.html" class="sub-link">
-<span class="sub-title">4G联网稳定性</span>
-<span class="sub-desc">满意度8.18/10</span>
-<span class="arrow">→</span>
-</a>
-<a href="https://yanlingyin001.github.io/reports/t200-app-report.html" class="sub-link">
-<span class="sub-title">APP体验</span>
-<span class="sub-desc">满意度8.15/10</span>
-<span class="arrow">→</span>
-</a>
-</div>
-</div>
-
-<!-- 卡片4：其他报告 -->
-<div class="card">
-<h3>📋 其他报告</h3>
-<p class="desc">用户旅程与APP引导建议</p>
-<div class="col-2">
-<a href="https://yanlingyin001.github.io/reports/t200-user-journey-report.html" class="sub-link">
-<span class="sub-title">用户旅程汇报</span>
-<span class="sub-desc">数据概览/情绪地图/改进建议</span>
-<span class="arrow">→</span>
-</a>
-<a href="https://yanlingyin001.github.io/reports/t200-app-guidance-report.html" class="sub-link">
-<span class="sub-title">APP引导说明建议</span>
-<span class="sub-desc">52个引导项 · P0级22项</span>
-<span class="arrow">→</span>
-</a>
-</div>
-</div>
-
-<!-- 卡片5：终测报告 -->
-<div class="card">
-<h3>🏁 终测报告</h3>
-<p class="desc">终测问卷分析与价格测试</p>
-<div class="col-2">
-<a href="https://yanlingyin001.github.io/reports/t200-final-test-report-v2.html" class="sub-link">
-<span class="sub-title">终测分析报告</span>
-<span class="sub-desc">67份 · 满意度/NPS/固件验证</span>
-<span class="arrow">→</span>
-</a>
-<a href="https://yanlingyin001.github.io/reports/t200-price-analysis.html" class="sub-link">
-<span class="sub-title">价格测试分析</span>
-<span class="sub-desc">67份 · PSM模型 · 最优定价350元</span>
-<span class="arrow">→</span>
-</a>
-<a href="https://yanlingyin001.github.io/reports/t200-marketing-report.html" class="sub-link">
-<span class="sub-title">市场营销决策报告</span>
-<span class="sub-desc">定价策略+卖点+人群+SWOT</span>
-<span class="arrow">→</span>
-</a>
-</div>
-</div>
-
-<div style="text-align:center;padding:20px;color:#999;font-size:12px">
-<p>🦞 尹燕玲-报告分析专家 | 360绿色系配色</p>
-</div>
-</div>
 </body>
 </html>
