@@ -347,24 +347,6 @@ body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans S
 <script>
 function mc(id,opt){var d=document.getElementById(id);if(!d)return;var c=echarts.init(d);c.setOption(opt);window.addEventListener('resize',function(){c.resize()})}
 
-return s}},
-legend:{data:['太便宜(累计)','货真价实(累计)','开始觉得贵(累计)','太贵(累计)'],top:5,textStyle:{fontSize:12}},
-grid:{left:'8%',right:'5%',top:'15%',bottom:'12%'},
-xAxis:{type:'category',data:['100','120','140','160','180','200','220','240','260','280','300','320','340','360','380','400','420','440','460','480','500','520','540','560','580','600','620','640','660','680','700'],name:'价格(元)',nameLocation:'middle',nameGap:30,axisLabel:{fontSize:11}},
-yAxis:{type:'value',name:'累计占比(%)',max:100,axisLabel:{fontSize:11}},
-series:[
-{name:'太便宜(累计)',type:'line',smooth:true,data:[[0,0],[1,0],[2,0],[3,0],[4,0],[5,3],[6,3],[7,3],[8,6],[9,6],[10,6],[11,6],[12,9],[13,9],[14,15],[15,15],[16,22],[17,22],[18,22],[19,28],[20,28],[21,31],[22,31],[23,37],[24,37],[25,43],[26,43],[27,49],[28,49],[29,55],[30,55]],itemStyle:{color:'#81C784'}},
-{name:'货真价实(累计)',type:'line',smooth:true,data:[[0,0],[1,0],[2,0],[3,0],[4,3],[5,3],[6,3],[7,6],[8,6],[9,9],[10,9],[11,13],[12,13],[13,16],[14,19],[15,22],[16,25],[17,28],[18,31],[19,34],[20,37],[21,40],[22,43],[23,46],[24,49],[25,52],[26,55],[27,58],[28,61],[29,64],[30,67]],itemStyle:{color:'#F39C12'}},
-{name:'开始觉得贵(累计)',type:'line',smooth:true,data:[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,3],[10,3],[11,3],[12,6],[13,6],[14,9],[15,9],[16,13],[17,16],[18,19],[19,22],[20,25],[21,28],[22,31],[23,34],[24,37],[25,43],[26,46],[27,49],[28,52],[29,55],[30,58]],itemStyle:{color:'#00B050'}},
-{name:'太贵(累计)',type:'line',smooth:true,data:[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,3],[17,3],[18,6],[19,6],[20,9],[21,9],[22,13],[23,13],[24,16],[25,19],[26,22],[27,25],[28,28],[29,31],[30,34]],itemStyle:{color:'#E74C3C'}}
-],
-markPoint:{data:[
-{coord:[10,6],name:'下限200元',itemStyle:{color:'#81C784'},label:{formatter:'下限\n200元',fontSize:10}},
-{coord:[12,13],name:'OPP 350元',itemStyle:{color:'#00B050'},label:{formatter:'OPP\n350元',fontSize:11,fontWeight:700}},
-{coord:[15,22],name:'上限401元',itemStyle:{color:'#E74C3C'},label:{formatter:'上限\n401元',fontSize:10}}
-]}
-});
-
 // Price Range Chart
 mc('chart-price-range',{
 tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){var v=p[0];return v.name+'<br/>'+v.value+'人 ('+Math.round(v.value/67*100)+'%)'}},
