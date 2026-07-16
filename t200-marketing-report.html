@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 4G记录仪 · 市场营销决策报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root{--green:#00B050;--green-light:#2BBD6E;--green-dark:#007a3c;--green-50:#e8f7ee;--green-100:#d1f0dc;--dark:#1a1d1f;--gray-700:#4a5055;--gray-500:#8b9298;--gray-100:#f0f2f3;--gray-50:#f8f9fa;--red:#E74C3C;--orange:#F39C12;--blue:#3B82F6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;background:var(--gray-50);color:#2d3134;line-height:1.6;-webkit-font-smoothing:antialiased}
+.cover{background:linear-gradient(135deg,#00B050,#007a3c);min-height:380px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;color:#fff}
+.cover::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;background:rgba(255,255,255,.06);border-radius:50%}
+.cover::after{content:'';position:absolute;bottom:-100px;left:-100px;width:420px;height:420px;background:rgba(255,255,255,.04);border-radius:50%}
+.cover .tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:6px 18px;border-radius:100px;font-size:13px;letter-spacing:2px;margin-bottom:20px}
+.cover h1{font-size:42px;font-weight:800;letter-spacing:2px;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.15)}
+.cover .subtitle{font-size:17px;opacity:.9;font-weight:300;margin-bottom:30px}
+.cover .meta{display:flex;gap:40px;font-size:14px;opacity:.85}
+.cover .meta-item{text-align:center}
+.cover .meta-item .num{font-size:28px;font-weight:700;display:block;margin-bottom:2px}
+.cover .lobster{position:absolute;bottom:20px;right:32px;font-size:26px;opacity:.7}
+.section{max-width:1080px;margin:0 auto;padding:48px 32px}
+.section-title{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.section-title .num{width:36px;height:36px;background:var(--green);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.section-title h2{font-size:24px;font-weight:700;color:var(--dark)}
+.exec-summary{background:linear-gradient(135deg,#1a1d1f,#2d3134);border-radius:16px;padding:40px;margin-bottom:32px;color:#fff;position:relative;overflow:hidden}
+.exec-summary::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--green)}
+.exec-summary h3{font-size:22px;font-weight:700;margin-bottom:20px;color:#fff}
+.exec-summary .tag-line{display:inline-block;background:rgba(0,176,80,.2);color:var(--green-light);padding:3px 12px;border-radius:6px;font-size:13px;font-weight:600;margin-bottom:16px}
+.exec-summary p{font-size:15px;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:10px}
+.exec-summary .highlight{color:var(--green-light);font-weight:600}
+.exec-summary .price-tag{display:inline-block;background:var(--green);color:#fff;padding:2px 10px;border-radius:6px;font-weight:700;font-size:14px}
+.exec-summary .warn{background:rgba(231,76,60,.15);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin-top:16px;font-size:14px;color:rgba(255,255,255,.7)}
+.exec-summary .warn strong{color:var(--red)}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.kpi-card{background:#fff;border-radius:12px;padding:24px;border:1px solid var(--gray-100);text-align:center;transition:transform .2s}
+.kpi-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.kpi-card .label{font-size:13px;color:var(--gray-500);margin-bottom:8px}
+.kpi-card .value{font-size:32px;font-weight:700;color:var(--dark)}
+.kpi-card .value .unit{font-size:14px;font-weight:400;color:var(--gray-500);margin-left:2px}
+.kpi-card .desc{font-size:12px;margin-top:6px}
+.kpi-card .desc.green{color:var(--green)}.kpi-card .desc.red{color:var(--red)}.kpi-card .desc.orange{color:var(--orange)}
+.chart-box{background:#fff;border-radius:12px;padding:28px;border:1px solid var(--gray-100);margin-bottom:20px}
+.chart-box .chart-title{font-size:15px;font-weight:600;color:var(--gray-700);margin-bottom:4px}
+.chart-box .chart-desc{font-size:13px;color:var(--gray-500);margin-bottom:16px}
+.insight-box{background:linear-gradient(135deg,var(--green-50),var(--green-100));border-left:4px solid var(--green);border-radius:0 12px 12px 0;padding:20px 24px;margin-bottom:20px}
+.insight-box .insight-title{font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:6px}
+.insight-box p{font-size:14px;color:var(--gray-700);line-height:1.7}
+.cat-badge{display:inline-block;padding:2px 10px;border-radius:100px;font-size:12px;font-weight:600}
+.persona-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px}
+.persona-card{background:#fff;border-radius:12px;padding:28px;border:1px solid var(--gray-100);position:relative;overflow:hidden}
+.persona-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px}
+.persona-card.p1::before{background:var(--green)}.persona-card.p2::before{background:var(--blue)}.persona-card.p3::before{background:var(--orange)}
+.persona-card .persona-tag{font-size:12px;font-weight:600;padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:12px}
+.persona-card.p1 .persona-tag{background:var(--green-50);color:var(--green-dark)}
+.persona-card.p2 .persona-tag{background:#eff6ff;color:#1d4ed8}
+.persona-card.p3 .persona-tag{background:#fffbeb;color:#b45309}
+.persona-card h4{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--dark)}
+.persona-card .price-range{font-size:24px;font-weight:700;margin-bottom:12px}
+.persona-card.p1 .price-range{color:var(--green)}.persona-card.p2 .price-range{color:var(--blue)}.persona-card.p3 .price-range{color:var(--orange)}
+.persona-card ul{list-style:none;padding:0}
+.persona-card ul li{font-size:13px;color:var(--gray-700);padding:4px 0;padding-left:20px;position:relative}
+.persona-card ul li:before{content:'\2022';position:absolute;left:6px;color:#d1d5d8}
+.strategy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:20px}
+.strategy-card{background:#fff;border-radius:12px;padding:28px;border:1px solid var(--gray-100);border-top:4px solid var(--green)}
+.strategy-card h4{font-size:17px;font-weight:700;margin-bottom:12px;color:var(--dark)}
+.strategy-card p{font-size:14px;color:var(--gray-700);line-height:1.7;margin-bottom:8px}
+.strategy-card .num-circle{display:inline-flex;width:28px;height:28px;background:var(--green-50);color:var(--green-dark);border-radius:50%;align-items:center;justify-content:center;font-weight:700;font-size:13px;margin-right:8px}
+.voice-table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--gray-100);margin-bottom:20px}
+.voice-table th{background:var(--gray-50);padding:12px 16px;text-align:left;font-weight:600;color:var(--gray-700);border-bottom:2px solid var(--gray-100);font-size:13px;white-space:nowrap}
+.voice-table td{padding:16px;border-bottom:1px solid var(--gray-100);vertical-align:top;line-height:1.8}
+.voice-table tr:last-child td{border-bottom:none}.voice-table tr:hover td{background:var(--green-50)}
+.voice-table .col-num{text-align:center;color:var(--gray-500);font-weight:600;width:50px}
+.voice-table .col-cat{font-weight:600;color:var(--dark);white-space:nowrap}
+.voice-table .col-count{text-align:center;width:70px}.voice-table .col-pct{text-align:center;color:var(--gray-500);width:70px}
+.voice-table .col-voice{max-width:520px}
+.voice-table .voice-item{margin-bottom:10px;padding-bottom:10px;border-bottom:1px dashed var(--gray-100)}
+.voice-table .voice-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.voice-table .voice-name{color:var(--green-dark);font-weight:600;font-size:13px}
+.voice-table .voice-text{color:var(--gray-700);font-size:14px}
+.swot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:20px}
+.swot-card{border-radius:12px;padding:24px;border:1px solid var(--gray-100)}
+.swot-card.s{background:var(--green-50);border-top:4px solid var(--green)}.swot-card.w{background:#fef5f5;border-top:4px solid var(--red)}.swot-card.o{background:#eff6ff;border-top:4px solid var(--blue)}.swot-card.t{background:#fffbeb;border-top:4px solid var(--orange)}
+.swot-card h4{font-size:16px;font-weight:700;margin-bottom:12px}
+.swot-card.s h4{color:var(--green-dark)}.swot-card.w h4{color:var(--red)}.swot-card.o h4{color:#1d4ed8}.swot-card.t h4{color:#b45309}
+.swot-card ul{list-style:none;padding:0}
+.swot-card ul li{font-size:13px;padding:5px 0;padding-left:20px;position:relative;line-height:1.6}
+.swot-card.s ul li:before{content:'\2713';position:absolute;left:4px;color:var(--green)}
+.swot-card.w ul li:before{content:'\2717';position:absolute;left:4px;color:var(--red)}
+.swot-card.o ul li:before{content:'\2192';position:absolute;left:4px;color:var(--blue)}
+.swot-card.t ul li:before{content:'!';position:absolute;left:4px;color:var(--orange)}
+.psm-bar .pt{display:inline-block;padding:4px 14px;border-radius:8px;font-weight:700;font-size:14px}
+.psm-bar .pt.lower{background:#e8f7ee;color:#007a3c}.psm-bar .pt.opp{background:#00B050;color:#fff}.psm-bar .pt.upper{background:#fde8e8;color:#c0392b}
+.footer{text-align:center;padding:24px;font-size:13px;color:var(--gray-500);border-top:1px solid var(--gray-100)}
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="tag">MARKETING DECISION REPORT &middot; 2026</div>
+<h1>T200 4G记录仪 &middot; 市场营销决策报告</h1>
+<div class="subtitle">基于价格测试 x 终测验证 &middot; 面向市场与营销团队</div>
+<div class="meta">
+<div class="meta-item"><span class="num">67</span>价格测试样本</div>
+<div class="meta-item"><span class="num">67</span>终测验证样本</div>
+<div class="meta-item"><span class="num">350</span>最优定价(元)</div>
+<div class="meta-item"><span class="num">8.7</span>综合满意度</div>
+</div>
+<div class="lobster">🦞</div>
+</div>
+
+<div class="section">
+<div class="exec-summary">
+<h3>🎯 核心结论与行动建议</h3>
+<span class="tag-line">给市场负责人的一页纸</span>
+<p>T200 的核心差异化价值是 <span class="highlight">"4G终身免流量 + 远程实时查看"</span>，这是用户感知最强、愿意为之付费的卖点。67 份价格测试显示，用户货真价实均价 <span class="price-tag">305元</span>，PSM 最优价格点 <span class="price-tag">350元</span>，可接受区间 200~401 元。建议零售价 <span class="highlight">不超过399元</span>，首发促销价 <span class="highlight">299-329元</span> 以击穿用户心理锚点。</p>
+<p>终测 67 位用户综合满意度 <span class="highlight">8.7/10</span>，NPS 推荐意愿强劲——"终身免流"和"远程查看"是自发推荐的最高频理由。但 <span class="highlight">2K画质</span> 和 <span class="highlight">哨兵模式体验</span> 是两大营销风险点，需在话术上主动管理预期。</p>
+<div class="warn"><strong>⚠️ 上市前必须解决：</strong>哨兵漏报/误报（P0，研发预计1.9.8版本优化）、碰撞不录像（P0）、轨迹不完整（P0）。当前P0解决率87%、P1解决率90%，均未达100%上市标准——营销推广需与产品迭代节奏协调。</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title"><div class="num">📊</div><h2>关键指标速览</h2></div>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">PSM 最优价格点</div><div class="value">350<span class="unit">元</span></div><div class="desc green">用户接受度最高的定价</div></div>
+<div class="kpi-card"><div class="label">可接受价格区间</div><div class="value">200-401<span class="unit">元</span></div><div class="desc green">67%用户选择此区间</div></div>
+<div class="kpi-card"><div class="label">综合满意度</div><div class="value">8.7<span class="unit">/10</span></div><div class="desc green">终测67位用户均值</div></div>
+<div class="kpi-card"><div class="label">NPS 推荐意愿</div><div class="value">高</div><div class="desc green">"终身免流"成自发推荐词</div></div>
+</div>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">货真价实均价</div><div class="value">305<span class="unit">元</span></div><div class="desc green">用户认为最合理的购买价</div></div>
+<div class="kpi-card"><div class="label">开始觉得贵</div><div class="value">399<span class="unit">元</span></div><div class="desc orange">犹豫门槛，超过需说服</div></div>
+<div class="kpi-card"><div class="label">太便宜怀疑品质</div><div class="value">175<span class="unit">元</span></div><div class="desc">低于此价用户反而不敢买</div></div>
+<div class="kpi-card"><div class="label">太贵不考虑</div><div class="value">489<span class="unit">元</span></div><div class="desc red">价格天花板，超过直接放弃</div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title"><div class="num">1</div><h2>定价策略建议</h2></div>
+<div class="insight-box">
+<div class="insight-title">📌 定价核心判断</div>
+<p>用户心智模型清晰：<strong>"普通2K记录仪200元 + 4G功能溢价100元 = 300元"</strong> 是主流参考逻辑。350元是用户接受度最高的价格点，399元是犹豫门槛。建议以350元为锚定零售价，首发促销价299-329元制造"超值感"。</p>
+</div>
+<div class="psm-bar" style="text-align:center;margin:20px 0">
+<span class="pt lower">下限 200元</span><span style="font-size:20px;color:#999">&larr;</span><span class="pt opp">最优 350元</span><span style="font-size:20px;color:#999">&rarr;</span><span class="pt upper">上限 401元</span>
+</div>
+<div class="chart-box">
+<div class="chart-title">PSM 价格敏感度曲线（Van Westendorp 模型）</div>
+<div class="chart-desc">四条曲线交叉确定最优价格点(OPP=350元)和可接受区间(200~401元)</div>
+<div id="chart-psm" style="width:100%;height:400px"></div>
+</div>
+<div class="chart-box">
+<div class="chart-title">用户偏好价格区间分布</div>
+<div class="chart-desc">三档并列最高（各22%），反映用户群体价格预期分化</div>
+<div id="chart-price-range" style="width:100%;height:340px"></div>
+</div>
+<div class="insight-box">
+<div class="insight-title">📌 定价方案</div>
+<p><strong>三档并列反映用户分化：</strong>200-249元（性价比型）、250-299元（品牌信任型）、350-399元（价值认同型）。</p>
+<p><strong>建议定价方案：</strong></p>
+<p>&bull; <strong>日常零售价 349元</strong>：锚定PSM最优价格点，用户接受度最高<br>&bull; <strong>首发促销价 299元</strong>：击穿"开始觉得贵"门槛，制造超值感，适合大促节点<br>&bull; <strong>不建议超过399元</strong>：超过此价位用户进入犹豫区间，转化率将显著下降<br>&bull; <strong>不建议低于199元</strong>：低于此价位用户怀疑品质，损害品牌定位</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title"><div class="num">2</div><h2>核心卖点提炼与用户证言</h2></div>
+<div class="insight-box">
+<div class="insight-title">📌 卖点优先级</div>
+<p>基于价格测试和终测的交叉验证，<strong>4G终身免流量 + 远程实时查看</strong>是双榜首——既是超预期体验最高频项（37条/59.7%），也是NPS自发推荐最高频理由。这两项构成T200不可替代的核心卖点，所有营销素材应以此为中心。</p>
+</div>
+<div class="chart-box" style="margin-bottom:28px">
+<div class="chart-title">超预期体验 — 功能模块分布（62条用户反馈）</div>
+<div class="chart-desc">远程实时查看以绝对优势位居第一，4G免流量紧随其后</div>
+<div id="chart-surprise" style="width:100%;height:300px"></div>
+</div>
+<table class="voice-table">
+<thead><tr><th class="col-num">序号</th><th class="col-cat">核心卖点</th><th class="col-count">提及量</th><th class="col-pct">占比</th><th class="col-voice">用户证言（可直接用于营销素材）</th></tr></thead>
+<tbody>
+<tr><td class="col-num">1</td><td class="col-cat"><span class="cat-badge" style="background:#d1f0dc;color:#007a3c">远程实时查看</span></td><td class="col-count">37</td><td class="col-pct">59.7%</td><td class="col-voice">
+<div class="voice-item"><span class="voice-name">王亚兵：</span><span class="voice-text">有了4g终流版的支持比起之前的记录仪明显的优势是可以随时随地的远程实时关注到车辆状态。这个确确实实很满意。</span></div>
+<div class="voice-item"><span class="voice-name">黄显森：</span><span class="voice-text">在地下室还能4G实时看视频</span></div>
+<div class="voice-item"><span class="voice-name">周炳文：</span><span class="voice-text">4G远程实时查看功能很实用，车辆震动会及时推送报警消息，不用拔卡就能手机调取录像</span></div>
+</td></tr>
+<tr><td class="col-num">2</td><td class="col-cat"><span class="cat-badge" style="background:#d1f0dc;color:#007a3c">4G终身免流量</span></td><td class="col-count">20</td><td class="col-pct">32.3%</td><td class="col-voice">
+<div class="voice-item"><span class="voice-name">吴丽红：</span><span class="voice-text">打破行业4G记录仪必须要充流量才可以远程控制实用的麻烦事，直接终身免流用特别特别棒</span></div>
+<div class="voice-item"><span class="voice-name">陈占学：</span><span class="voice-text">4G终身免流不再为总是充流量费而烦恼，还有哨兵模式特别好用</span></div>
+</td></tr>
+<tr><td class="col-num">3</td><td class="col-cat"><span class="cat-badge" style="background:#d1f0dc;color:#007a3c">GPS定位/轨迹</span></td><td class="col-count">15</td><td class="col-pct">24.2%</td><td class="col-voice">
+<div class="voice-item"><span class="voice-name">孙洪士：</span><span class="voice-text">定位精准，轨迹精准，远程实时画面</span></div>
+<div class="voice-item"><span class="voice-name">李建：</span><span class="voice-text">实时查看，行车轨迹，一键巡车</span></div>
+</td></tr>
+<tr><td class="col-num">4</td><td class="col-cat"><span class="cat-badge" style="background:#d1f0dc;color:#007a3c">哨兵模式</span></td><td class="col-count">11</td><td class="col-pct">17.7%</td><td class="col-voice">
+<div class="voice-item"><span class="voice-name">王智勇：</span><span class="voice-text">功能齐全，哨兵模式、碰撞唤醒实用性强，停车监控很安心</span></div>
+<div class="voice-item"><span class="voice-name">朱君：</span><span class="voice-text">可以实时查看记录仪画面，双向对讲，实现停车监控</span></div>
+</td></tr>
+<tr><td class="col-num">5</td><td class="col-cat"><span class="cat-badge" style="background:#d1f0dc;color:#007a3c">双向通话</span></td><td class="col-count">6</td><td class="col-pct">9.7%</td><td class="col-voice">
+<div class="voice-item"><span class="voice-name">朱宝然：</span><span class="voice-text">实时查看视频和双向通话，这个功能特别好用！！！</span></div>
+</td></tr>
+</tbody>
+</table>
+<div class="insight-box">
+<div class="insight-title">📌 NPS 推荐热词</div>
+<p>终测用户自发推荐理由TOP5：<strong>"远程查看"、"4G免流量"、"哨兵模式"、"终身免流"、"实时监控"</strong>。这些词应成为营销文案的核心关键词。用户劝阻理由集中在：<strong>"画质一般(2K)"、"哨兵模式不准确"、"部分功能需付费"</strong>——需在营销中主动管理预期。</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title"><div class="num">3</div><h2>目标人群画像</h2></div>
+<div class="insight-box">
+<div class="insight-title">📌 人群分化洞察</div>
+<p>价格偏好三档分布揭示三类核心人群。建议差异化触达：低价档用"性价比"打燃油车老用户，中价档用"品牌信任"打360老用户，高价档用"长期价值"打有远程看车刚需的用户。</p>
+</div>
+<div class="persona-grid">
+<div class="persona-card p1">
+<span class="persona-tag">人群A &middot; 性价比型</span>
+<h4>务实燃油车主</h4>
+<div class="price-range">200-249元</div>
+<ul><li>对标普通2K记录仪 + 4G溢价</li><li>看重"花多少钱办多少事"</li><li>敏感点：画质只有2K，担心溢价不值</li><li>触达关键词：平价4G、不花冤枉钱</li><li>人群占比：22%</li></ul>
+</div>
+<div class="persona-card p2">
+<span class="persona-tag">人群B &middot; 品牌信任型</span>
+<h4>360品牌老用户</h4>
+<div class="price-range">250-299元</div>
+<ul><li>基于360品牌"高性价比"预期定价</li><li>有过360产品使用经验，信任度高</li><li>敏感点：与之前360产品价格对比</li><li>触达关键词：360出品、品质保证</li><li>人群占比：22%</li></ul>
+</div>
+<div class="persona-card p3">
+<span class="persona-tag">人群C &middot; 价值认同型</span>
+<h4>远程看车刚需用户</h4>
+<div class="price-range">350-399元</div>
+<ul><li>认可4G终身免流的长期价值</li><li>无固定车位/户外停车/租车场景</li><li>敏感点：功能完整性、服务稳定性</li><li>触达关键词：终身免流、远程守护</li><li>人群占比：22%</li></ul>
+</div>
+</div>
+<div class="insight-box">
+<div class="insight-title">📌 高价值场景</div>
+<p>用户原声揭示了四大高价值场景，建议作为营销场景化素材的核心：<br>
+<strong>① 无固定车位/露天停车</strong>——"车辆有异常，会主动通过云端发消息"（张立新）<br>
+<strong>② 商务出差/异地出差</strong>——"千里之外手机随时直连车内实时视频"（王亚兵）<br>
+<strong>③ 家人共享/借车场景</strong>——"可以把车借出去了，因为你能知道车在哪儿"（夏俊）<br>
+<strong>④ 防碰瓷/证据保全</strong>——"哨兵模式遇到紧急情况保护自己，最起码有证据不怕被碰瓷"（王龙）</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title"><div class="num">4</div><h2>SWOT 分析</h2></div>
+<div class="swot-grid">
+<div class="swot-card s">
+<h4>Strengths &middot; 优势</h4>
+<ul><li>4G终身免流量——行业独有，竞品需充流量卡</li><li>远程实时查看——59.7%用户超预期体验</li><li>GPS定位+轨迹回放——24.2%用户超预期</li><li>哨兵停车监控——填补传统记录仪空白</li><li>360品牌背书——用户信任度高</li><li>综合满意度8.7/10——产品体验整体过关</li></ul>
+</div>
+<div class="swot-card w">
+<h4>Weaknesses &middot; 劣势</h4>
+<ul><li>2K画质——26.9%用户因此压价，竞品已有4K</li><li>哨兵模式——漏报/误报/抓拍延迟，P0未解决</li><li>云录付费——"终身免流却又有云录付费"引发困惑</li><li>无屏幕——部分用户反馈"功能不太多，没屏幕"</li><li>视频下载慢——用户普遍提及，产品接受现状</li><li>降压线安装——"对大多数不太友好"</li></ul>
+</div>
+<div class="swot-card o">
+<h4>Opportunities &middot; 机会</h4>
+<ul><li>4G记录仪市场竞品少，蓝海窗口期</li><li>"终身免流"打破行业流量焦虑，差异化鲜明</li><li>停车监控需求增长——无固定车位用户增加</li><li>360品牌IoT生态协同——智能家居用户转化</li><li>云录增值服务——长期订阅收入空间</li><li>新能源车市场——需解决"功能重复"话术</li></ul>
+</div>
+<div class="swot-card t">
+<h4>Threats &middot; 威胁</h4>
+<ul><li>海康/70迈等竞品4G产品价格下探</li><li>新能源车自带记录仪，功能重叠</li><li>用户心智中360=高性价比，高价难突破</li><li>哨兵P0未解决即上市，口碑风险</li><li>2K画质在4K时代竞争力不足</li><li>云录付费模式引发"套路"质疑</li></ul>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title"><div class="num">5</div><h2>营销策略建议</h2></div>
+<div class="strategy-grid">
+<div class="strategy-card">
+<h4><span class="num-circle">1</span>定价与促销策略</h4>
+<p><strong>零售价 349元</strong>，锚定PSM最优价格点。</p>
+<p><strong>首发促销价 299元</strong>，击穿"开始觉得贵"门槛，大促节点限量。</p>
+<p><strong>不参与199元以下价格战</strong>——低于175元用户怀疑品质，损害品牌。</p>
+<p><strong>云录策略</strong>：建议新机赠送1个月云录体验（用户原声建议），让用户感知价值后自然续费。</p>
+</div>
+<div class="strategy-card">
+<h4><span class="num-circle">2</span>核心卖点话术</h4>
+<p><strong>主slogan</strong>："4G终身免流，远程实时看车"——精准命中双榜首卖点。</p>
+<p><strong>副slogan</strong>："停车也能看，处处都安心"——主打哨兵停车监控场景。</p>
+<p><strong>用户证言</strong>："打破行业必须充流量的麻烦事"（吴丽红）——真实感强，可信度高。</p>
+<p><strong>数据背书</strong>："67位公测用户，59.7%认为远程查看超预期"——用数据增强说服力。</p>
+</div>
+<div class="strategy-card">
+<h4><span class="num-circle">3</span>风险话术预案</h4>
+<p><strong>画质2K质疑</strong>："2K画质满足日常记录需求，4G远程查看才是核心差异化价值"。</p>
+<p><strong>哨兵模式质疑</strong>："哨兵模式持续优化中，1.9.8版本将大幅提升准确率"。避免过度承诺。</p>
+<p><strong>云录付费质疑</strong>："4G流量终身免费，卡录回放免费；云录是增值服务，不购买不影响核心功能"。</p>
+<p><strong>新能源车功能重复</strong>："新能源自带记录仪无4G远程，T200补齐远程看车能力"。</p>
+</div>
+<div class="strategy-card">
+<h4><span class="num-circle">4</span>渠道与推广建议</h4>
+<p><strong>线上主渠道</strong>：京东/天猫360旗舰店，搭配"4G免流"搜索关键词优化。</p>
+<p><strong>内容种草</strong>：汽车论坛/短视频平台，场景化展示"远程看车"——露天停车、出差看车、借车追踪。</p>
+<p><strong>老用户激活</strong>：360 IoT APP推送，定向触达已有360摄像头/记录仪用户，"升级4G版"换购优惠。</p>
+<p><strong>异业合作</strong>：停车场/汽车后市场渠道，"买车位送看车神器"场景营销。</p>
+</div>
+<div class="strategy-card">
+<h4><span class="num-circle">5</span>上市节奏建议</h4>
+<p><strong>不建议在P0问题未解决前大规模推广</strong>。当前P0解决率87%，哨兵漏报/误报如被首批用户放大传播，将严重损害口碑。</p>
+<p><strong>建议节奏</strong>：1.9.8固件验证通过后启动正式推广，此前可小范围预售蓄水。</p>
+<p><strong>首发批次</strong>：控制首批规模，优先发货给公测用户转化的种子用户，积累正面评价后再放量。</p>
+</div>
+<div class="strategy-card">
+<h4><span class="num-circle">6</span>竞争防御策略</h4>
+<p><strong>对抗海康/70迈</strong>：强调"终身免流"独有性——竞品4G记录仪需持续充值流量卡，T200一次购买终身使用。</p>
+<p><strong>对抗新能源自带</strong>：定位互补——"新能源自带记录仪解决行车记录，T200解决停车看车"。</p>
+<p><strong>对抗低价竞品</strong>：360品牌信任 + 4G免流长期成本优势——"买得便宜用着贵（充流量）vs 买一次用一辈子"。</p>
+</div>
+</div>
+</div>
+
+<div class="footer">
+T200 4G记录仪 市场营销 决策报告 &middot; 数据来源：价格测试问卷(67份) + 终测问卷(67份) + 1.9.6版本验证遗留问题(42条) &middot; 2026年7月 &middot; 🦞
+</div>
+
+<script>
+function mc(id,opt){var d=document.getElementById(id);if(!d)return;var c=echarts.init(d);c.setOption(opt);window.addEventListener('resize',function(){c.resize()})}
+
+// PSM Chart
+mc('chart-psm',{
+tooltip:{trigger:'axis',formatter:function(p){var s='价格 '+p[0].axisValue+'元<br>';p.forEach(function(v){s+=v.marker+v.seriesName+': '+v.data[1]+'%<br>'});return s}},
+legend:{data:['太便宜(累计)','货真价实(累计)','开始觉得贵(累计)','太贵(累计)'],top:5,textStyle:{fontSize:12}},
+grid:{left:'8%',right:'5%',top:'15%',bottom:'12%'},
+xAxis:{type:'category',data:['100','120','140','160','180','200','220','240','260','280','300','320','340','360','380','400','420','440','460','480','500','520','540','560','580','600','620','640','660','680','700'],name:'价格(元)',nameLocation:'middle',nameGap:30,axisLabel:{fontSize:11}},
+yAxis:{type:'value',name:'累计占比(%)',max:100,axisLabel:{fontSize:11}},
+series:[
+{name:'太便宜(累计)',type:'line',smooth:true,data:[[0,0],[1,0],[2,0],[3,0],[4,0],[5,3],[6,3],[7,3],[8,6],[9,6],[10,6],[11,6],[12,9],[13,9],[14,15],[15,15],[16,22],[17,22],[18,22],[19,28],[20,28],[21,31],[22,31],[23,37],[24,37],[25,43],[26,43],[27,49],[28,49],[29,55],[30,55]],itemStyle:{color:'#81C784'}},
+{name:'货真价实(累计)',type:'line',smooth:true,data:[[0,0],[1,0],[2,0],[3,0],[4,3],[5,3],[6,3],[7,6],[8,6],[9,9],[10,9],[11,13],[12,13],[13,16],[14,19],[15,22],[16,25],[17,28],[18,31],[19,34],[20,37],[21,40],[22,43],[23,46],[24,49],[25,52],[26,55],[27,58],[28,61],[29,64],[30,67]],itemStyle:{color:'#F39C12'}},
+{name:'开始觉得贵(累计)',type:'line',smooth:true,data:[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,3],[10,3],[11,3],[12,6],[13,6],[14,9],[15,9],[16,13],[17,16],[18,19],[19,22],[20,25],[21,28],[22,31],[23,34],[24,37],[25,43],[26,46],[27,49],[28,52],[29,55],[30,58]],itemStyle:{color:'#00B050'}},
+{name:'太贵(累计)',type:'line',smooth:true,data:[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0],[11,0],[12,0],[13,0],[14,0],[15,0],[16,3],[17,3],[18,6],[19,6],[20,9],[21,9],[22,13],[23,13],[24,16],[25,19],[26,22],[27,25],[28,28],[29,31],[30,34]],itemStyle:{color:'#E74C3C'}}
+],
+markPoint:{data:[
+{coord:[10,6],name:'下限200元',itemStyle:{color:'#81C784'},label:{formatter:'下限\n200元',fontSize:10}},
+{coord:[12,13],name:'OPP 350元',itemStyle:{color:'#00B050'},label:{formatter:'OPP\n350元',fontSize:11,fontWeight:700}},
+{coord:[15,22],name:'上限401元',itemStyle:{color:'#E74C3C'},label:{formatter:'上限\n401元',fontSize:10}}
+]}
+});
+
+// Price Range Chart
+mc('chart-price-range',{
+tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){var v=p[0];return v.name+'<br/>'+v.value+'人 ('+Math.round(v.value/67*100)+'%)'}},
+grid:{left:'15%',right:'8%',top:'5%',bottom:'5%'},
+xAxis:{type:'value',axisLabel:{fontSize:12},splitLine:{lineStyle:{color:'#f0f2f3'}}},
+yAxis:{type:'category',data:['100-149元','150-199元','200-249元','250-299元','300-349元','350-399元','400-449元','450-499元'],axisLabel:{fontSize:13}},
+series:[{type:'bar',barWidth:18,itemStyle:{borderRadius:[0,6,6,0],color:function(p){var i=p.dataIndex;return(i===2||i===3||i===5)?'#00B050':'#d1f0dc'}},label:{show:true,position:'right',fontSize:13,color:'#4a5055',formatter:function(p){return p.value+'人 ('+Math.round(p.value/67*100)+'%)'}},data:[3,6,15,15,6,15,4,3]}]
+});
+
+// Surprise Chart
+mc('chart-surprise',{
+tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){var v=p[0];return v.name+'：'+v.value+'次'}},
+grid:{left:'3%',right:'8%',top:'5%',bottom:'12%'},
+xAxis:{type:'category',data:['远程实时查看','4G免流量','GPS定位/轨迹','哨兵模式','双向通话','画质表现','云录功能'],axisLabel:{fontSize:11,rotate:25}},
+yAxis:{type:'value',axisLabel:{fontSize:12}},
+series:[{type:'bar',barWidth:28,itemStyle:{borderRadius:[6,6,0,0],color:function(p){var c=['#00B050','#2BBD6E','#5fd498','#3B82F6','#F39C12','#8b9298','#a3e8c4'];return c[p.dataIndex]}},label:{show:true,position:'top',fontSize:12,color:'#4a5055',formatter:'{c}次'},data:[37,20,15,11,6,3,2]}]
+});
+</script>
+</body>
+</html>
