@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用户洞察精品课 v3 · 结构化学习笔记</title>
+<style>
+:root{--primary:#00B050;--pl:#2BBD6E;--pb:#E8F5E9;--dark:#1a1a2e;--gray:#555;--gl:#999;--bg:#f5f7fa;--card:#fff;--red:#E74C3C;--orange:#F39C12;--blue:#3498DB;--purple:#9B59B6;--border:#e0e0e0;--sh:0 2px 12px rgba(0,0,0,.06);--shh:0 4px 20px rgba(0,176,80,.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--dark);line-height:1.8;font-size:15px}
+.hdr{background:linear-gradient(135deg,var(--primary),var(--pl));color:#fff;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden}
+.hdr::before{content:'';position:absolute;top:-50%;right:-10%;width:400px;height:400px;background:rgba(255,255,255,.08);border-radius:50%}
+.hdr::after{content:'';position:absolute;bottom:-30%;left:-5%;width:300px;height:300px;background:rgba(255,255,255,.06);border-radius:50%}
+.hdr h1{font-size:28px;font-weight:700;position:relative;z-index:1}
+.hdr .sub{font-size:15px;opacity:.9;margin-top:8px;position:relative;z-index:1}
+.hdr .meta{display:inline-flex;gap:16px;margin-top:16px;background:rgba(255,255,255,.15);padding:8px 20px;border-radius:20px;font-size:13px;position:relative;z-index:1}
+.ctn{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+.mm{background:var(--card);border-radius:16px;padding:32px;box-shadow:var(--sh);margin-bottom:32px}
+.mm h2{font-size:20px;color:var(--primary);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.mm h2::before{content:'🧠';font-size:24px}
+.mn{display:flex;align-items:flex-start;gap:10px;padding:6px 0}
+.mn .ic{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;color:#fff;font-weight:600}
+.mn .tx{padding-top:4px}
+.mn .tx strong{color:var(--dark)}
+.mn .tx span{color:var(--gray);font-size:13px}
+.sec{background:var(--card);border-radius:16px;box-shadow:var(--sh);margin-bottom:24px;overflow:hidden;transition:box-shadow .3s}
+.sec:hover{box-shadow:var(--shh)}
+.sh{padding:20px 28px;cursor:pointer;display:flex;align-items:center;gap:12px;user-select:none;transition:background .2s}
+.sh:hover{background:var(--pb)}
+.sn{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--pl));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0}
+.st{font-size:18px;font-weight:600;flex:1}
+.sa{width:24px;height:24px;display:flex;align-items:center;justify-content:center;transition:transform .3s;color:var(--gl)}
+.sec.c .sa{transform:rotate(-90deg)}
+.sec.c .sb{display:none}
+.sb{padding:0 28px 28px}
+.blk{margin-top:16px}
+.bt{font-size:14px;font-weight:600;color:var(--primary);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.bt .tag{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--pb);color:var(--primary)}
+.bc{color:var(--gray);font-size:14px;line-height:1.9}
+.bc ul{padding-left:20px}.bc li{margin:4px 0}.bc strong{color:var(--dark)}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+.mc{background:var(--bg);border-radius:10px;padding:14px 16px;border-left:3px solid var(--primary)}
+.mc h4{font-size:14px;color:var(--dark);margin-bottom:4px}.mc p{font-size:13px;color:var(--gray);line-height:1.6}
+.hl{background:linear-gradient(135deg,var(--pb),#f0fdf4);border-left:4px solid var(--primary);border-radius:8px;padding:14px 18px;margin-top:12px;font-size:14px;color:var(--dark)}
+.hl strong{color:var(--primary)}.hl.w{background:#FFF3E0;border-color:var(--orange)}.hl.w strong{color:var(--orange)}.hl.d{background:#FFEBEE;border-color:var(--red)}.hl.d strong{color:var(--red)}
+.fl{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fs{background:var(--primary);color:#fff;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500}
+.fa{color:var(--gl);font-size:18px}
+.tb{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}
+.tb th{background:var(--primary);color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+.tb td{padding:10px 14px;border-bottom:1px solid var(--border)}
+.tb tr:nth-child(even) td{background:var(--bg)}.tb tr:hover td{background:var(--pb)}
+.cs{background:linear-gradient(135deg,#f8f9fa,#fff);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-top:12px}
+.cs .ct{display:inline-block;font-size:11px;padding:2px 10px;border-radius:12px;background:var(--blue);color:#fff;margin-bottom:8px}
+.cs h4{font-size:15px;color:var(--dark);margin-bottom:6px}.cs p{font-size:13px;color:var(--gray);line-height:1.8}
+.cs .ii{margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);color:var(--primary);font-weight:500;font-size:13px}
+.cl{margin-top:12px}.ci{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:14px}
+.ci .mk{width:22px;height:22px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
+.ci.y .mk{background:var(--primary)}.ci.n .mk{background:var(--red)}.ci .lb{padding-top:2px}
+.ci.n .lb{color:var(--gray)}.ci.y .lb{color:var(--dark);font-weight:500}
+.cp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.cc{border-radius:10px;padding:14px 18px}.cc.bad{background:#FFEBEE;border:1px solid #ffcdd2}.cc.good{background:var(--pb);border:1px solid #a5d6a7}
+.cc h4{font-size:13px;margin-bottom:8px}.cc.bad h4{color:var(--red)}.cc.good h4{color:var(--primary)}
+.cc ul{padding-left:18px;font-size:13px;color:var(--gray)}
+.sts{counter-reset:step;margin-top:12px}
+.sp{position:relative;padding:14px 16px 14px 56px;background:var(--bg);border-radius:10px;margin-bottom:8px}
+.sp::before{counter-increment:step;content:counter(step);position:absolute;left:14px;top:14px;width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.sp h4{font-size:14px;color:var(--dark);margin-bottom:2px}.sp p{font-size:13px;color:var(--gray)}
+.ft{text-align:center;padding:24px;color:var(--gl);font-size:13px}.ft .lg{font-size:20px;margin-bottom:4px}
+@media(max-width:700px){.cp{grid-template-columns:1fr}.cg{grid-template-columns:1fr}.hdr h1{font-size:22px}}
+@media print{.sec.c .sb{display:block!important}.sh{cursor:default}body{background:#fff}.sec{break-inside:avoid;box-shadow:none;border:1px solid var(--border)}}
+</style>
+</head>
+<body>
+<div class="hdr">
+<h1>🎯 用户洞察精品课 v3 · 结构化学习笔记</h1>
+<div class="sub">从市场研究到 Jobs-to-be-Done，一站式建立洞察知识体系</div>
+<div class="meta"><span>📚 课程时长：约 2h10min</span><span>📝 原文：53,000字</span><span>🦞 整理：2026-07-17</span></div>
+</div>
+<div class="ctn">
+
+<!-- 总览 -->
+<div class="mm"><h2>知识地图总览</h2>
+<div class="mn"><div class="ic" style="background:var(--primary)">1</div><div class="tx"><strong>研究价值链与专业领域</strong><br><span>数据→信息→洞察→知识→决策 · 四大领域</span></div></div>
+<div class="mn"><div class="ic" style="background:var(--blue)">2</div><div class="tx"><strong>产品全生命周期研究</strong><br><span>机会识别→概念开发→测试→上市→追踪</span></div></div>
+<div class="mn"><div class="ic" style="background:var(--orange)">3</div><div class="tx"><strong>UA 研究与用户画像</strong><br><span>消费者是谁·品牌表现·产品优劣势·品类驱动</span></div></div>
+<div class="mn"><div class="ic" style="background:var(--purple)">4</div><div class="tx"><strong>概念测试与包装测试</strong><br><span>概念三段论·包装四维度·Kano模型</span></div></div>
+<div class="mn"><div class="ic" style="background:var(--red)">5</div><div class="tx"><strong>JTBD 理论框架 ⭐</strong><br><span>核心思想·定义·真伪判断·经典案例</span></div></div>
+<div class="mn"><div class="ic" style="background:var(--red)">6</div><div class="tx"><strong>JTBD 访谈与分析方法</strong><br><span>场景还原三步法·流失访谈·Jobs Statements大表</span></div></div>
+<div class="mn"><div class="ic" style="background:var(--primary)">7</div><div class="tx"><strong>JTBD 落地应用</strong><br><span>嵌入IPD·洞察项目五步法·四种工作坊</span></div></div>
+</div>
+
+<!-- 模块1 -->
+<div class="sec"><div class="sh" onclick="this.parentElement.classList.toggle('c')"><div class="sn">1</div><div class="st">研究价值链与四大专业领域</div><div class="sa">▼</div></div><div class="sb">
+<div class="blk"><div class="bt">价值链：从数据到决策 <span class="tag">核心模型</span></div><div class="bc">
+<div class="fl"><div class="fs">数据收集</div><span class="fa">→</span><div class="fs">信息分析</div><span class="fa">→</span><div class="fs">洞察提炼</div><span class="fa">→</span><div class="fs">组织知识</div><span class="fa">→</span><div class="fs">决策落地</div></div>
+<p style="margin-top:10px">调研团队=洞察团队（CMI/CI/Insight），核心职能是发掘<strong>消费者洞察</strong>——消费者真正关心的、在意的、认为有价值却自己不知道的、尚未被其他品牌触及的需求。</p>
+</div></div>
+<div class="blk"><div class="bt">四大专业研究领域</div><div class="cg">
+<div class="mc" style="border-color:var(--primary)"><h4>① 产品创新（NPD）</h4><p>机会识别→概念开发→优化→评估→上市前验证→上市后追踪</p></div>
+<div class="mc" style="border-color:var(--blue)"><h4>② 用户基础洞察（UA）</h4><p>用户细分·画像·UA研究·购物者研究·战略性基础洞察</p></div>
+<div class="mc" style="border-color:var(--orange)"><h4>③ 品牌研究</h4><p>品牌定位·品牌健康度·广告测试·营销效果评估</p></div>
+<div class="mc" style="border-color:var(--purple)"><h4>④ 顾客体验</h4><p>满意度研究·体验地图·NPS·神秘客·顾客旅程</p></div>
+</div></div>
+<div class="hl"><strong>知识体系三维图谱：</strong>方法轴（定性/定量）× 专业领域轴（AOE）× 行业轴。每做一个项目都在三维空间中贴标签，积累后归纳共性，从经验层提升到理论层。</div>
+</div></div>
+
+<!-- 模块2 -->
+<div class="sec"><div class="sh" onclick="this.parentElement.classList.toggle('c')"><div class="sn">2</div><div class="st">产品全生命周期研究体系</div><div class="sa">▼</div></div><div class="sb">
+<div class="blk"><div class="bt">产品经理视角的研究闭环</div><div class="bc">
+<div class="fl"><div class="fs" style="background:var(--blue)">市场机会识别</div><span class="fa">→</span><div class="fs" style="background:var(--blue)">STP细分/定位</div><span class="fa">→</span><div class="fs">需求挖掘</div><span class="fa">→</span><div class="fs">概念开发</div><span class="fa">→</span><div class="fs" style="background:var(--pl)">产品测试</div><span class="fa">→</span><div class="fs" style="background:var(--orange)">上市前验证</div><span class="fa">→</span><div class="fs" style="background:var(--orange)">上市后评估</div><span class="fa">→</span><div class="fs" style="background:var(--purple)">品牌追踪</div></div>
+</div></div>
+<div class="blk"><div class="bt">PMF（Product-Market Fit）产品市场匹配</div><div class="bc">
+<p>初创企业的核心判断标准——目标客户是谁？未满足需求是什么？产品的价值主张能否满足这个市场？</p>
+<ul><li><strong>关键指标：</strong>转介绍率、复购率</li><li><strong>本质：</strong>一系列调研问题，需要持续获得真实用户的真实反馈</li><li><strong>迭代：</strong>未达到PMF→调整市场设定或产品设计→持续迭代</li></ul>
+</div></div>
+</div></div>
+
+<!-- 模块3 -->
+<div class="sec"><div class="sh" onclick="this.parentElement.classList.toggle('c')"><div class="sn">3</div><div class="st">UA 研究与用户画像</div><div class="sa">▼</div></div><div class="sb">
+<div class="blk"><div class="bt">UA 研究回答的四个核心问题</div>
+<table class="tb"><tr><th>问题</th><th>内容</th><th>落地价值</th></tr>
+<tr><td><strong>消费者是谁？</strong></td><td>粉丝vs游离分子画像差异，本品vs竞品粉丝对比</td><td>目标市场定义</td></tr>
+<tr><td><strong>品牌表现如何？</strong></td><td>认知漏斗：知晓→好感→尝试→购买→复购→忠诚</td><td>诊断销量问题来源</td></tr>
+<tr><td><strong>产品优劣势？</strong></td><td>品类关键指标体系下本品vs竞品表现</td><td>产品线优化</td></tr>
+<tr><td><strong>品类驱动因素？</strong></td><td>重度vs轻度消费者差异：恐惧驱动vs渴望驱动</td><td>市场杠杆/增长机会</td></tr>
+</table></div>
+<div class="blk"><div class="bt">UA 落地：年度产品规划的四个问题</div><div class="bc"><ul>
+<li><strong>消费者要什么？</strong>（最终需求起点）</li><li><strong>消费者有什么？</strong>（现有解决方案）</li>
+<li><strong>我们能提供什么？</strong>（技术/渠道/品牌关联度）</li><li><strong>如何落地？</strong>（4P：品牌定位·产品线·渠道·沟通）</li>
+</ul></div></div>
+<div class="blk"><div class="bt">用户画像：6大侧面·28个维度</div><div class="bc"><p>每个项目从中挑选<strong>6~8个维度</strong>深挖，不是全部罗列：</p>
+<div class="cg">
+<div class="mc"><h4>① 自我身份</h4><p>成长历程·人生使命·未来目标·焦虑与向往</p></div>
+<div class="mc"><h4>② 外在生活</h4><p>习惯·消费·时间花费·典型24h·衣食住行</p></div>
+<div class="mc"><h4>③ 内在状况</h4><p>身体健康·精神状态·自我评价</p></div>
+<div class="mc"><h4>④ 与自我相处</h4><p>成长发展·自我表达·工作成就·内在自信</p></div>
+<div class="mc"><h4>⑤ 与他人相处</h4><p>亲子·婚姻·社交关系·他人感知</p></div>
+<div class="mc"><h4>⑥ 品类场景</h4><p>品类相关生活场景·品类价值意义认知</p></div>
+</div></div></div>
+<div class="blk"><div class="bt">需求的结构化分类（JTBD视角）</div>
+<div class="hl"><p><strong>渴望获得的（Gains）：</strong>必须有的·期望有的·渴望有的·意外惊喜</p>
+<p style="margin-top:6px"><strong>希望避免的（Pains）：</strong></p>
+<ul style="margin-top:4px"><li><strong>痛点</strong>——不想要的结果/问题（如蛀牙、牙龈肿痛）</li><li><strong>障碍</strong>——妨碍任务完成的特性（如刷毛够不到死角）</li><li><strong>风险</strong>——长期不做会导致的后果</li></ul>
+</div></div>
+<div class="blk"><div class="bt">机会识别矩阵</div>
+<table class="tb"><tr><th></th><th>满意度高</th><th>满意度低</th></tr>
+<tr><td><strong>重要性高</strong></td><td>✅ Must-have（基础需求）</td><td>⚠️ 未满足需求（机会区）</td></tr>
+<tr><td><strong>重要性低</strong></td><td>😊 锦上添花</td><td>➖ 低优先级</td></tr></table>
+<div class="hl" style="margin-top:8px"><strong>品类机会</strong>+<strong>品牌表现</strong>→<strong>品牌机会</strong>→落到营销战略</div>
+</div></div>
+
+<!-- 模块4 -->
+<div class="sec"><div class="sh" onclick="this.parentElement.classList.toggle('c')"><div class="sn">4</div><div class="st">概念测试与包装测试</div><div class="sa">▼</div></div><div class="sb">
+<div class="blk"><div class="bt">概念三段论 <span class="tag">NPD灵魂</span></div><div class="sts">
+<div class="sp"><h4>消费者洞察（Consumer Insight）</h4><p>真实的痛点/焦虑/张力——从消费者生活情境出发</p></div>
+<div class="sp"><h4>利益点（Benefits）</h4><p>产品为消费者解决什么问题、带来什么价值</p></div>
+<div class="sp"><h4>RTB（Reason to Believe）</h4><p>为什么我们的产品能实现这个承诺——支持利益点的证据</p></div>
+</div></div>
+<div class="blk"><div class="bt">概念测试评估维度</div><div class="cg">
+<div class="mc"><h4>说服力</h4><p>能否convince消费者购买</p></div>
+<div class="mc"><h4>喜欢程度</h4><p>消费者是否喜欢这个概念</p></div>
+<div class="mc"><h4>相关性</h4><p>与消费者问题是否高相关</p></div>
+<div class="mc"><h4>可信度</h4><p>消费者是否相信产品能做到</p></div>
+<div class="mc"><h4>独特性</h4><p>与竞品概念的差异化</p></div>
+</div><div class="hl" style="margin-top:8px"><strong>二维定位图：</strong>纵轴=说服力，横轴=承诺程度（相关性+可信度+独特性综合）。竞品概念也映射到同一张图上对比。</div></div>
+<div class="blk"><div class="bt">包装测试：三阶段×四维度</div>
+<table class="tb"><tr><th>阶段</th><th>时机</th><th>方法</th></tr>
+<tr><td><strong>Pre-design</strong></td><td>设计前</td><td>定性：消费者偏好·老包装品牌资产</td></tr>
+<tr><td><strong>Pre-launch</strong></td><td>上市前</td><td>定量：多方案对比测试</td></tr>
+<tr><td><strong>Post-launch</strong></td><td>上市后</td><td>评估包装实际传播效果</td></tr></table>
+<div class="cg" style="margin-top:8px">
+<div class="mc" style="border-color:var(--red)"><h4>① 冲击力Impact</h4><p>5秒展示能否被记住（模拟货架场景）</p></div>
+<div class="mc" style="border-color:var(--primary)"><h4>② 说服力Convince</h4><p>包装促成购买的能力</p></div>
+<div class="mc" style="border-color:var(--blue)"><h4>③ 辨析力</h4><p>与竞品的区别度（颜色/配方/格式/种类）</p></div>
+<div class="mc" style="border-color:var(--purple)"><h4>④ 诊断</h4><p>新颖性·品牌匹配度·信息传达</p></div>
+</div></div>
+<div class="blk"><div class="bt">Kano模型：需求分层</div><div class="bc"><p>两个问题：①有这个功能你觉得怎样？②没有这个功能你觉得怎样？</p>
+<table class="tb"><tr><th>类型</th><th>有功能</th><th>无功能</th><th>策略</th></tr>
+<tr><td><strong>必备(Must-be)</strong></td><td>不特别高兴</td><td>很不高兴</td><td>基础门槛</td></tr>
+<tr><td><strong>期望(Performance)</strong></td><td>高兴</td><td>不高兴</td><td>核心竞争</td></tr>
+<tr><td><strong>奖励(Excitement)</strong></td><td>高兴</td><td>无所谓</td><td>差异化加分</td></tr></table>
+</div></div>
+</div></div>
+
+<!-- 模块5 -->
+<div class="sec"><div class="sh" onclick="this.parentElement.classList.toggle('c')"><div class="sn">5</div><div class="st">JTBD 理论框架 ⭐ 课程核心</div><div class="sa">▼</div></div><div class="sb">
+<div class="hl"><strong>核心思想：</strong>升级你的用户，而不是你的产品。不要创造更好的相机，要创造更好的摄影师。<br>——产品的意义在于嵌入用户生活，帮助用户从"当下的自我"升级到"期待的更好自我"。</div>
+<div class="blk"><div class="bt">JTBD 定义</div><div class="bc"><p>当消费者打算将<strong>当下的生活状况升级</strong>为他期待的生活状况时，但因<strong>各种限制</strong>还不能完成升级，于是经历各种<strong>纠结</strong>——这个过程就是代办任务。</p>
+<div class="cg" style="margin-top:8px">
+<div class="mc" style="border-color:var(--primary)"><h4>① Making Progress</h4><p>升级——人类独有的进取心，想让生活变得更好</p></div>
+<div class="mc" style="border-color:var(--orange)"><h4>② Limitation</h4><p>限制——环境的/个人能力的/产品自身的</p></div>
+<div class="mc" style="border-color:var(--red)"><h4>③ Struggling Moment</h4><p>纠结——没有躺平，在找替代方案和补偿行为</p></div>
+</div></div></div>
+<div class="blk"><div class="bt">JTBD 推动创新的逻辑</div><div class="bc"><p>通过更深入理解人们<strong>如何做出选择</strong>（放弃A→尝试B→换到C），来创造人们真正需要的产品。</p>
+<div class="hl w"><strong>关键原则：</strong>用户躺平啥也不干≠有代办任务。JTBD关注的是<strong>选择行为的变化</strong>，而非口头声称的需求。</div>
+</div></div>
+<div class="blk"><div class="bt">真伪Job判断框架 <span class="tag">核心工具</span></div>
+<div class="cl">
+<div class="ci n"><div class="mk">✗</div><div class="lb">能在脑海想象画面感？→那可能只是activity/task，不是Job</div></div>
+<div class="ci n"><div class="mk">✗</div><div class="lb">在描述不喜欢的事情？→那是在描述不喜欢的当下自我，不是Job</div></div>
+<div class="ci n"><div class="mk">✗</div><div class="lb">没有描述一个更好的生活状态？→不是Job</div></div>
+<div class="ci y"><div class="mk">✓</div><div class="lb">描述了一个更好的新自我/新的生活状态 → ✅ 这是真正的Job</div></div>
+</div>
+<div class="hl" style="margin-top:8px"><strong>灵魂判断：</strong>Job描述的不是过程（参加聚会、跟导师连线），而是用户最终期待的<strong>结果</strong>（得到鼓舞、摆脱孤单感）。</div>
+<div class="blk"><div class="bt">经典案例</div>
+<div class="cs"><div class="ct">案例1</div><h4>🔥 Weber（威贝）烧烤架—全球领导品牌</h4><p>认识到用户雇佣烧烤架的真正任务不是"烤肉"，而是<strong>与家人朋友共度美好时光</strong>。因此不仅卖产品，还教烧烤生活方式、教组织聚会、教成为"明星大厨"。</p>
+<div class="ii">💡 洞察：产品只是用户真正任务中的一小块，推广产品最好的方式是推广这种生活方式。</div></div>
+<div class="cs"><div class="ct">案例2</div><h4>💡 Clarity 创业者社群</h4><p>通过JTBD访谈发现，创业者加入社群真正想要的是：<br>① 从尊敬的导师那里得到<strong>鼓舞人心的建议</strong>，帮助走出低迷<br>② <strong>行为受到督促</strong>，有动力采取行动<br>③ 与同阶段创业者<strong>共鸣吐槽</strong>，消除孤独感和焦虑感</p>
+<div class="ii">💡 洞察：用户不需要"参加聚会"这个过程，需要的是鼓舞、督促和共鸣这些结果。</div></div>
+</div>
+</div></div>
+
+<!-- 模块6 -->
+<div class="sec"><div class="sh" onclick="this.parentElement.classList.toggle('c')"><div class="sn">6</div><div class="st">JTBD 访谈与分析方法</div><div class="sa">▼</div></div><div class="sb">
+<div class="blk"><div class="bt">场景还原三步法 <span class="tag">访谈核心</span></div><div class="sts">
+<div class="sp"><h4>Step 1：5W1H还原最近一次场景</h4><p>什么时候？跟谁？去哪？用什么交通工具？天气怎样？——让用户回到具体场景，不要直接问痛点</p></div>
+<div class="sp"><h4>Step 2：八步骤展开任务经历</h4><p>定义→准备→出发→到达→使用→收拾→返回→反思。每个步骤关注：发生了什么？遇到什么问题？做了什么补偿行为？</p></div>
+<div class="sp"><h4>Step 3：讨论理想状态</h4><p>面对发生的问题，用户理想的期待是什么？——注意不是问"你想要什么产品"，而是"你期待什么样的效果"</p></div>
+</div>
+<div class="hl"><strong>访谈时间控制：</strong>一个场景完整展开约40分钟。加上前期了解约20-30分钟，总有效访谈时间约1.5小时，最多深挖1个主场景+1个次场景。</div>
+</div>
+<div class="blk"><div class="bt">流失用户访谈（Switch Interview）</div><div class="bc"><p>三种流失类型：</p><ul>
+<li><strong>订阅流失</strong>——取消续订（如视频平台）</li>
+<li><strong>购买漏斗流失</strong>——考虑过你但最终没买（如汽车）</li>
+<li><strong>场景流失</strong>——特定场景下被替代方案取代（如手机替代单反）</li>
+</ul></div>
+<div class="hl w"><strong>关键工具：反向Timeline。</strong>从购买→使用→弃用时刻→转换→新方案吸引力。重点抓"弃用时刻"——那次具体场景下，旧方案为什么让人不满意？</div>
+</div>
+<div class="blk"><div class="bt">Jobs Statements 大表 <span class="tag">分析灵魂</span></div>
+<table class="tb"><tr><th>列</th><th>内容</th><th>说明</th></tr>
+<tr><td><strong>情境(Context)</strong></td><td>"当我在……情况下"</td><td>时间维度的容器，需求长在情境上。分L1→L2→L3→L4纵向展开</td></tr>
+<tr><td><strong>功能任务</strong></td><td>"我要做……"</td><td>从动作开始：打开、收拾、开车、导航……</td></tr>
+<tr><td><strong>情感任务</strong></td><td>"让我感觉……"</td><td>干完这个活让我感觉如何</td></tr>
+<tr><td><strong>社交任务</strong></td><td>"我希望别人觉得我……"</td><td>树一个人设、得瑟、自我表达</td></tr>
+<tr><td><strong>需求方向</strong></td><td>变化的方向（更快/更简单/更安全）</td><td>不带入具体解决方案，代表需求趋势，3-5年稳定</td></tr>
+</table>
+<div class="hl" style="margin-top:8px"><strong>产出规模：</strong>20个用户 × 1.5h访谈 → 每人5-7条Jobs Statements → 约120条任务陈述 → 自下而上归纳Core Jobs。2-3名研究人员梳理2-4周。</div>
+<div class="hl d"><strong>与Design Thinking的区别：</strong>DT依赖设计师个人共情（黑箱），JTBD用工程学方法（可讨论、可验证、可共识）。不依赖经验，依赖过程方法。</div>
+</div>
+<div class="blk"><div class="bt">情境的纵横向打开</div>
+<div class="cp">
+<div class="cc good"><h4>✅ 纵向打开（深度）</h4><ul>
+<li>L1：短途出游</li>
+<li>L2：怎么到达目的地</li>
+<li>L3：自驾过程中</li>
+<li>L4：堵车时操作导航</li>
+<li>L5：语音交互的具体细节</li>
+</ul></div>
+<div class="cc good"><h4>✅ 横向打开（广度）</h4><ul>
+<li>短途出游（L1）</li>
+<li>日常上下班（L1）</li>
+<li>周末逛商场（L1）</li>
+<li>送孩子上补习班（L1）</li>
+<li>自驾见客户（L1）</li>
+</ul></div>
+</div>
+<div class="hl"><strong>核心原则：</strong>用户细分抵达不了产品定义的颗粒度。在用户细分和产品定义之间，必须有<strong>场景层面的研究</strong>来补上这一环。</div>
+</div>
+</div></div>
+
+<!-- 模块7 -->
+<div class="sec"><div class="sh" onclick="this.parentElement.classList.toggle('c')"><div class="sn">7</div><div class="st">JTBD 落地应用</div><div class="sa">▼</div></div><div class="sb">
+<div class="blk"><div class="bt">嵌入IPD的三个层级</div>
+<table class="tb"><tr><th>层级</th><th>阶段</th><th>JTBD作用</th></tr>
+<tr><td><strong>Level 1</strong></td><td>市场管理（战略层）</td><td>用户细分与任务定义——谁是目标用户，他们的Core Jobs是什么</td></tr>
+<tr><td><strong>Level 2</strong></td><td>Charter开发（产品定义）</td><td>找到"重要且未满足 ∩ 技术可解决 ∩ 商业有回报"的交集</td></tr>
+<tr><td><strong>Level 3</strong></td><td>解决方案创新</td><td>点子工作坊——基于Job Map生成解决方案</td></tr>
+</table></div>
+<div class="blk"><div class="bt">洞察项目五步法 <span class="tag">完整流程</span></div><div class="sts">
+<div class="sp"><h4>① 知识对齐</h4><p>品类扫描 + 内部访谈 + 用户矩阵设计。与客户共识语言：什么是场景、任务、需求、痛点</p></div>
+<div class="sp"><h4>② 任务探索</h4><p>定性访谈（任务访谈/转换访谈）+ 观察 + 商业民族志。20个用户，每人1.5h</p></div>
+<div class="sp"><h4>③ 任务梳理</h4><p>Excel大表 → Jobs Statements → Core Jobs → Job Map（八步骤）。2-3名研究员，2-4周</p></div>
+<div class="sp"><h4>④ 机会量化</h4><p>场景收敛 + MaxDiff重要性/满意度测量 → Opportunity Map（机会地图）</p></div>
+<div class="sp"><h4>⑤ 创新落地</h4><p>四种工作坊：产品对证 / 产品定义 / 概念开发 / 品牌策略</p></div>
+</div></div>
+<div class="blk"><div class="bt">四种落地工作坊</div><div class="cg">
+<div class="mc" style="border-color:var(--primary)"><h4>产品对证工作坊</h4><p>现有产品 vs 用户任务，找到覆盖空白和冗余</p></div>
+<div class="mc" style="border-color:var(--blue)"><h4>产品定义工作坊</h4><p>定义新产品应该解决哪些任务、做到什么程度</p></div>
+<div class="mc" style="border-color:var(--orange)"><h4>概念开发工作坊</h4><p>基于任务生成产品概念，走概念三段论</p></div>
+<div class="mc" style="border-color:var(--purple)"><h4>品牌策略工作坊</h4><p>从任务中提炼品牌定位和沟通策略</p></div>
+</div></div>
+<div class="blk"><div class="bt">Opportunity Map 机会地图</div>
+<div class="hl"><strong>横轴：</strong>需求重要性 &nbsp;|&nbsp; <strong>纵轴：</strong>当前满意度<br><br>
+<strong>右上角（重要且满意）：</strong>Must-have，维持现状<br>
+<strong>右下角（重要且不满意）：</strong>⚠️ 核心机会区——这是产品创新该发力的地方<br>
+<strong>左上角（不重要但满意）：</strong>过度设计<br>
+<strong>左下角（不重要且不满意）：</strong>低优先级</div>
+</div>
+</div></div>
+
+<!-- 总结 -->
+<div class="sec"><div class="sh" onclick="this.parentElement.classList.toggle('c')"><div class="sn">💡</div><div class="st">一句话精华</div><div class="sa">▼</div></div><div class="sb">
+<div class="blk">
+<div class="hl"><strong>研究的本质：</strong>从数据到决策的价值链，没有落地到决策的洞察是无效的。</div>
+<div class="hl" style="margin-top:8px"><strong>洞察的本质：</strong>不要问用户想要什么，要看他们怎么选择。行为变化背后藏着真正的未满足需求。</div>
+<div class="hl" style="margin-top:8px"><strong>JTBD的本质：</strong>用户不是在买产品，是在雇佣产品帮自己完成生活升级。找到那个"更好的新自我"。</div>
+<div class="hl" style="margin-top:8px"><strong>分析的本质：</strong>不依赖直觉和经验，用工程学方法（Jobs Statements大表）让洞察可讨论、可验证、可共识。</div>
+</div>
+</div></div>
+
+<div class="ft">
+<div class="lg">🦞</div>
+<p>用户洞察精品课 v3 · 结构化学习笔记 | 整理于 2026-07-17</p>
+<p style="margin-top:4px;color:var(--gl)">点击各模块标题可展开/折叠 · 支持打印为PDF</p>
+</div>
+
+</div>
+</body>
+</html>
