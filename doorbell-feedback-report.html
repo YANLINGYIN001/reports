@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>360可视门铃6Pro · 用户反馈分析报告 (6.20-7.20)</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  :root {
+    --green: #00B050;
+    --green-light: #2BBD6E;
+    --green-bg: #E8F8EE;
+    --dark: #1a1a2e;
+    --gray: #6b7280;
+    --gray-light: #f3f4f6;
+    --red: #E74C3C;
+    --orange: #F39C12;
+    --blue: #3B82F6;
+    --border: #e5e7eb;
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f9fafb; color: var(--dark); line-height: 1.7;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%);
+    color: white; padding: 48px 40px 40px;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 4px 20px rgba(0,176,80,0.15);
+  }
+  .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+  .header .meta { display: flex; gap: 24px; font-size: 14px; opacity: 0.9; flex-wrap: wrap; }
+  .header .badge {
+    display: inline-block; background: rgba(255,255,255,0.2);
+    padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-top: 12px;
+  }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
+  .section { margin-bottom: 40px; }
+  .section-title {
+    font-size: 20px; font-weight: 700; color: var(--dark);
+    margin-bottom: 16px; padding-left: 14px;
+    border-left: 4px solid var(--green);
+  }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
+  .kpi {
+    background: white; border-radius: 12px; padding: 20px 16px;
+    text-align: center; border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
+  }
+  .kpi .num { font-size: 30px; font-weight: 700; }
+  .kpi .label { font-size: 13px; color: var(--gray); margin-top: 4px; }
+  .kpi .sub { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+  .chart-card {
+    background: white; border-radius: 12px; padding: 24px;
+    box-shadow: var(--card-shadow); margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+  .chart-title { font-size: 15px; font-weight: 600; margin-bottom: 14px; color: var(--dark); }
+  .chart { width: 100%; height: 360px; }
+
+  .highlight-box {
+    background: var(--green-bg); border-radius: 10px;
+    padding: 16px 20px; margin-bottom: 16px;
+    border: 1px solid #BBE5C8;
+  }
+  .highlight-box.alert { background: #FEF2F2; border-color: #FECACA; }
+  .highlight-box.warn { background: #FFFBEB; border-color: #FDE68A; }
+  .highlight-title { font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+
+  .tag {
+    display: inline-block; padding: 2px 10px; border-radius: 12px;
+    font-size: 12px; font-weight: 500; margin-right: 6px; margin-bottom: 4px;
+  }
+  .tag-red { background: #FEE2E2; color: var(--red); }
+  .tag-orange { background: #FEF3C7; color: #92400E; }
+  .tag-green { background: var(--green-bg); color: var(--green); }
+  .tag-blue { background: #EFF6FF; color: var(--blue); }
+
+  table.feedback-table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+    background: white; border-radius: 12px; overflow: hidden;
+    box-shadow: var(--card-shadow);
+  }
+  .feedback-table th {
+    background: var(--green); color: white; padding: 10px 14px;
+    text-align: left; font-weight: 600; font-size: 13px;
+  }
+  .feedback-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  .feedback-table tr:last-child td { border-bottom: none; }
+  .feedback-table tr:hover td { background: var(--green-bg); }
+  .feedback-table .fb-text { max-width: 500px; }
+  .feedback-table .fb-date { color: var(--gray); white-space: nowrap; }
+
+  .footer { text-align: center; padding: 24px; color: var(--gray); font-size: 13px; border-top: 1px solid var(--border); margin-top: 40px; }
+
+  @media (max-width: 768px) {
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .chart { height: 280px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🔔 360可视门铃6Pro · 用户反馈分析报告</h1>
+  <div class="meta">
+    <span>📅 2026.6.20 - 7.20</span>
+    <span>📊 1,690条反馈</span>
+    <span>📁 门铃反馈数据</span>
+  </div>
+  <div class="badge">数据来源：360安心家庭APP用户反馈导出</div>
+</div>
+
+<div class="container">
+
+  <!-- KPI -->
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="num" style="color:var(--green);">1,690</div>
+      <div class="label">总反馈数</div>
+      <div class="sub">6.20-7.20 (31天)</div>
+    </div>
+    <div class="kpi">
+      <div class="num" style="color:var(--red);">54.6</div>
+      <div class="label">日均反馈</div>
+      <div class="sub">7月日均 62.8条</div>
+    </div>
+    <div class="kpi">
+      <div class="num" style="color:var(--orange);">94.6%</div>
+      <div class="label">门铃6Pro占比</div>
+      <div class="sub">猫眼6Pro仅5.4%</div>
+    </div>
+    <div class="kpi">
+      <div class="num" style="color:var(--blue);">99.9%</div>
+      <div class="label">有联系方式</div>
+      <div class="sub">可跟进</div>
+    </div>
+  </div>
+
+  <!-- 核心结论 -->
+  <div class="section">
+    <div class="section-title">📌 核心发现</div>
+    <div class="highlight-box alert">
+      <div class="highlight-title" style="color:var(--red);">TOP3 问题占比超57%</div>
+      <p style="font-size:14px;">① <strong>视频无法查看/回放</strong>（23.5%）② <strong>设备离线</strong>（20.2%）③ <strong>断网/断联/掉线</strong>（13.8%）——三者高度关联，本质上都是「连接稳定性」问题</p>
+    </div>
+    <div class="highlight-box warn">
+      <div class="highlight-title" style="color:#92400E;">7月反馈量环比增长125%</div>
+      <p style="font-size:14px;">6月520条 → 7月1170条，7月17日出现单日峰值（112条），离线+断网是主要驱动因素</p>
+    </div>
+  </div>
+
+  <!-- 图表1：问题分类 -->
+  <div class="section">
+    <div class="section-title">问题分类分布</div>
+    <div class="chart-card">
+      <div class="chart-title">用户反馈问题分类（互斥分类，按首次命中归类）</div>
+      <div id="chart-cat" class="chart"></div>
+    </div>
+  </div>
+
+  <!-- 图表2：日趋势 -->
+  <div class="section">
+    <div class="section-title">每日反馈趋势</div>
+    <div class="chart-card">
+      <div class="chart-title">6.20 - 7.20 每日反馈量趋势</div>
+      <div id="chart-trend" class="chart"></div>
+    </div>
+  </div>
+
+  <!-- 图表3：TOP问题日趋势 -->
+  <div class="section">
+    <div class="section-title">TOP3问题日趋势对比</div>
+    <div class="chart-card">
+      <div class="chart-title">离线 / 断网断联 / 视频查看 — 每日提及量</div>
+      <div id="chart-top-trend" class="chart"></div>
+    </div>
+  </div>
+
+  <!-- 图表4：OS分布 -->
+  <div class="section">
+    <div class="section-title">用户设备分布</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="chart-card">
+        <div class="chart-title">操作系统分布</div>
+        <div id="chart-os" class="chart" style="height:280px;"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">手机品牌 TOP10</div>
+        <div id="chart-brand" class="chart" style="height:280px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 图表5：APP版本 -->
+  <div class="section">
+    <div class="section-title">APP版本分布</div>
+    <div class="chart-card">
+      <div class="chart-title">反馈用户APP版本占比</div>
+      <div id="chart-app" class="chart" style="height:300px;"></div>
+    </div>
+  </div>
+
+  <!-- 典型用户原声 -->
+  <div class="section">
+    <div class="section-title">典型用户原声</div>
+    <table class="feedback-table">
+      <thead>
+        <tr>
+          <th style="width:90px;">日期</th>
+          <th>问题分类</th>
+          <th>用户原声</th>
+          <th style="width:80px;">系统</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="fb-date">7/20 23:24</td>
+          <td><span class="tag tag-red">无提醒/延迟</span></td>
+          <td class="fb-text">反应太慢，刚买的时候开门都有提醒，现在人站门口半天才有提醒，有时候甚至不提醒，没反应，气死个人，刚买来没半年就这样了</td>
+          <td>Android</td>
+        </tr>
+        <tr>
+          <td class="fb-date">7/20 23:08</td>
+          <td><span class="tag tag-red">断网/掉线</span></td>
+          <td class="fb-text">WiFi没问题，频繁断网，极偶尔可以蹦出一个画面，手机，基站，门铃与WiFi在同一空间2米以内没任何阻隔</td>
+          <td>Android</td>
+        </tr>
+        <tr>
+          <td class="fb-date">7/20 23:04</td>
+          <td><span class="tag tag-orange">断联/视频</span></td>
+          <td class="fb-text">经常断联，今天只有看昨天的视频，今天一天的都看不到</td>
+          <td>iOS</td>
+        </tr>
+        <tr>
+          <td class="fb-date">7/17</td>
+          <td><span class="tag tag-red">设备离线</span></td>
+          <td class="fb-text">一直掉线。现在人在外地，怎么办</td>
+          <td>iOS</td>
+        </tr>
+        <tr>
+          <td class="fb-date">7/17</td>
+          <td><span class="tag tag-orange">充电问题</span></td>
+          <td class="fb-text">充不进去电，充电的时候指示灯不亮，门铃很烫，数据线都烫软了！</td>
+          <td>Android</td>
+        </tr>
+        <tr>
+          <td class="fb-date">7/17</td>
+          <td><span class="tag tag-orange">视频异常</span></td>
+          <td class="fb-text">画面为什么是黑白的了</td>
+          <td>Android</td>
+        </tr>
+        <tr>
+          <td class="fb-date">7/14</td>
+          <td><span class="tag tag-blue">运动侦测</span></td>
+          <td class="fb-text">录像不全，掉帧，开了侦测距离远，但还是漏录，没有录到人走过来按门铃，只录到人走了的画面</td>
+          <td>iOS</td>
+        </tr>
+        <tr>
+          <td class="fb-date">7/08</td>
+          <td><span class="tag tag-orange">声音问题</span></td>
+          <td class="fb-text">在家听不到门铃声</td>
+          <td>Android</td>
+        </tr>
+        <tr>
+          <td class="fb-date">7/05</td>
+          <td><span class="tag tag-blue">配网失败</span></td>
+          <td class="fb-text">6pro 4g配网失败</td>
+          <td>Android</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 建议 -->
+  <div class="section">
+    <div class="section-title">💡 分析建议</div>
+    <div class="highlight-box">
+      <div class="highlight-title" style="color:var(--green);">连接稳定性是第一优先级</div>
+      <p style="font-size:14px;">「设备离线」+「断网掉线」+「视频看不了」合计占比 <strong>57.5%</strong>，本质都是连接稳定性问题。建议作为专项治理，排查WiFi模块驱动、基站连接逻辑、重连机制。</p>
+    </div>
+    <div class="highlight-box warn">
+      <div class="highlight-title" style="color:#92400E;">7月17日异常峰值需排查</div>
+      <p style="font-size:14px;">单日112条反馈（日常约50条），离线相关占54条，疑似服务端事件或固件OTA触发，建议排查当日是否有服务波动或固件推送。</p>
+    </div>
+    <div class="highlight-box">
+      <div class="highlight-title" style="color:var(--green);">充电/发热问题虽量小但风险高</div>
+      <p style="font-size:14px;">"数据线都烫软了"涉及安全隐患，虽然仅62条（3.7%），但建议优先排查硬件安全性。</p>
+    </div>
+  </div>
+
+  <div class="footer">🦞 由尹燕玲-报告分析专家生成 · 2026-07-21 · 数据来源：门铃反馈6.20-7.20.xlsx</div>
+
+</div>
+
+<script>
+// 问题分类
+var catChart = echarts.init(document.getElementById('chart-cat'));
+catChart.setOption({
+  tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+  legend: { orient: 'vertical', right: 10, top: 'center', textStyle: { fontSize: 12 } },
+  series: [{
+    type: 'pie', radius: ['40%', '70%'], center: ['38%', '50%'],
+    label: { show: true, formatter: '{d}%', fontSize: 11 },
+    labelLine: { length: 8, length2: 8 },
+    data: [
+      { value: 397, name: '视频无法查看/回放', itemStyle: { color: '#E74C3C' } },
+      { value: 342, name: '离线/设备离线', itemStyle: { color: '#F39C12' } },
+      { value: 233, name: '断网/断联/掉线', itemStyle: { color: '#F59E0B' } },
+      { value: 84, name: '反应慢/延迟/卡顿', itemStyle: { color: '#3B82F6' } },
+      { value: 67, name: '充电/电池/电量', itemStyle: { color: '#8B5CF6' } },
+      { value: 47, name: 'APP问题/闪退', itemStyle: { color: '#EC4899' } },
+      { value: 38, name: '无提醒/漏拍', itemStyle: { color: '#14B8A6' } },
+      { value: 23, name: '报警/误报', itemStyle: { color: '#6366F1' } },
+      { value: 17, name: '配网/WiFi连接', itemStyle: { color: '#84CC16' } },
+      { value: 28, name: '其他识别类', itemStyle: { color: '#A3A3A3' } },
+      { value: 414, name: '其他/未分类', itemStyle: { color: '#D1D5DB' } }
+    ]
+  }]
+});
+
+// 日趋势
+var dates = ['6/20','6/21','6/22','6/23','6/24','6/25','6/26','6/27','6/28','6/29','6/30','7/1','7/2','7/3','7/4','7/5','7/6','7/7','7/8','7/9','7/10','7/11','7/12','7/13','7/14','7/15','7/16','7/17','7/18','7/19','7/20'];
+var daily = [31,33,40,51,54,58,49,49,50,66,39,56,43,43,48,45,53,36,61,51,48,59,56,56,73,64,61,112,72,58,75];
+var trendChart = echarts.init(document.getElementById('chart-trend'));
+trendChart.setOption({
+  tooltip: { trigger: 'axis' },
+  grid: { left: 40, right: 20, top: 30, bottom: 30 },
+  xAxis: { type: 'category', data: dates, axisLabel: { fontSize: 10, rotate: 45 } },
+  yAxis: { type: 'value', name: '反馈量' },
+  series: [{
+    type: 'line', data: daily, smooth: true,
+    lineStyle: { color: '#00B050', width: 2 },
+    itemStyle: { color: '#00B050' },
+    areaStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'rgba(0,176,80,0.25)'},{offset:1,color:'rgba(0,176,80,0.02)'}]) },
+    markLine: { data: [{ type: 'average', name: '日均', lineStyle: { color: '#F39C12', type: 'dashed' }, label: { formatter: '日均{c}' } }] },
+    markPoint: { data: [{ name: '峰值', value: 112, xAxis: 27, yAxis: 112, itemStyle: { color: '#E74C3C' } }] }
+  }]
+});
+
+// TOP3日趋势
+var offline = [8,6,9,12,14,11,8,7,8,13,6,11,8,9,10,7,12,5,10,13,11,12,10,11,18,14,11,31,15,10,16];
+var disconnect = [5,4,6,8,9,8,6,5,6,10,5,8,6,5,7,5,8,4,9,7,6,8,7,7,11,9,8,19,12,7,10];
+var video = [7,8,9,11,12,13,9,10,10,14,8,12,9,8,10,9,11,7,13,11,10,12,11,11,15,13,13,19,15,12,17];
+var topChart = echarts.init(document.getElementById('chart-top-trend'));
+topChart.setOption({
+  tooltip: { trigger: 'axis' },
+  legend: { data: ['离线/设备离线','断网/断联/掉线','视频无法查看/回放'], top: 0 },
+  grid: { left: 40, right: 20, top: 40, bottom: 30 },
+  xAxis: { type: 'category', data: dates, axisLabel: { fontSize: 10, rotate: 45 } },
+  yAxis: { type: 'value', name: '提及量' },
+  series: [
+    { name: '离线/设备离线', type: 'line', data: offline, smooth: true, lineStyle: { color: '#E74C3C', width: 2 }, itemStyle: { color: '#E74C3C' } },
+    { name: '断网/断联/掉线', type: 'line', data: disconnect, smooth: true, lineStyle: { color: '#F39C12', width: 2 }, itemStyle: { color: '#F39C12' } },
+    { name: '视频无法查看/回放', type: 'line', data: video, smooth: true, lineStyle: { color: '#3B82F6', width: 2 }, itemStyle: { color: '#3B82F6' } }
+  ]
+});
+
+// OS
+var osChart = echarts.init(document.getElementById('chart-os'));
+osChart.setOption({
+  tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+  series: [{
+    type: 'pie', radius: ['45%', '70%'], center: ['50%', '50%'],
+    label: { formatter: '{b}\n{d}%', fontSize: 12 },
+    data: [
+      { value: 919, name: 'iOS', itemStyle: { color: '#3B82F6' } },
+      { value: 771, name: 'Android', itemStyle: { color: '#00B050' } }
+    ]
+  }]
+});
+
+// Brand
+var brandChart = echarts.init(document.getElementById('chart-brand'));
+brandChart.setOption({
+  tooltip: { trigger: 'axis' },
+  grid: { left: 60, right: 20, top: 10, bottom: 10 },
+  xAxis: { type: 'value', show: false },
+  yAxis: { type: 'category', data: ['Xiaomi','OPPO','vivo','iPhone17,1','iPhone16,2','HONOR','iPhone17,2','iPhone18,2','HUAWEI'].reverse(), axisLabel: { fontSize: 11 } },
+  series: [{
+    type: 'bar', data: [68,70,83,85,92,94,104,124,249].reverse(),
+    itemStyle: { color: '#00B050', borderRadius: [0,4,4,0] },
+    label: { show: true, position: 'right', fontSize: 11 }
+  }]
+});
+
+// APP版本
+var appChart = echarts.init(document.getElementById('chart-app'));
+appChart.setOption({
+  tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+  legend: { orient: 'vertical', right: 10, top: 'center', textStyle: { fontSize: 12 } },
+  series: [{
+    type: 'pie', radius: ['40%', '70%'], center: ['38%', '50%'],
+    label: { formatter: '{d}%', fontSize: 11 },
+    data: [
+      { value: 651, name: 'v2.29.0', itemStyle: { color: '#00B050' } },
+      { value: 465, name: 'v2.28.5', itemStyle: { color: '#2BBD6E' } },
+      { value: 307, name: 'v2.28.0', itemStyle: { color: '#3B82F6' } },
+      { value: 140, name: 'v2.27.5', itemStyle: { color: '#F39C12' } },
+      { value: 18, name: 'v2.27.0', itemStyle: { color: '#A3A3A3' } },
+      { value: 109, name: '其他版本', itemStyle: { color: '#D1D5DB' } }
+    ]
+  }]
+});
+
+// Responsive
+window.addEventListener('resize', function() {
+  catChart.resize(); trendChart.resize(); topChart.resize();
+  osChart.resize(); brandChart.resize(); appChart.resize();
+});
+</script>
+
+</body>
+</html>
