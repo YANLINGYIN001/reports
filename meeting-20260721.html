@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会议纪要 · 海外行车产品周会 2026-07-21</title>
+<style>
+  :root {
+    --green: #00B050;
+    --green-light: #2BBD6E;
+    --green-bg: #E8F8EE;
+    --dark: #1a1a2e;
+    --gray: #6b7280;
+    --gray-light: #f3f4f6;
+    --red: #E74C3C;
+    --orange: #F39C12;
+    --blue: #3B82F6;
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    --border: #e5e7eb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f9fafb;
+    color: var(--dark);
+    line-height: 1.7;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%);
+    color: white;
+    padding: 48px 40px 40px;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 4px 20px rgba(0,176,80,0.15);
+  }
+  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .header .meta { display: flex; gap: 24px; font-size: 14px; opacity: 0.9; }
+  .header .meta span { display: flex; align-items: center; gap: 6px; }
+  .header .badge {
+    display: inline-block; background: rgba(255,255,255,0.2);
+    padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-top: 12px;
+  }
+
+  /* Container */
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  /* Section */
+  .section { margin-bottom: 40px; }
+  .section-title {
+    font-size: 20px; font-weight: 700; color: var(--dark);
+    margin-bottom: 16px; padding-left: 14px;
+    border-left: 4px solid var(--green);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .num {
+    background: var(--green); color: white; width: 28px; height: 28px;
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+  }
+
+  /* Cards */
+  .card {
+    background: white; border-radius: 12px; padding: 24px;
+    box-shadow: var(--card-shadow); margin-bottom: 16px;
+    border: 1px solid var(--border);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+
+  .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .card-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .card-title { font-size: 16px; font-weight: 600; }
+  .card-body { font-size: 14px; color: #374151; }
+  .card-body p { margin-bottom: 6px; }
+
+  /* Tags */
+  .tag {
+    display: inline-block; padding: 2px 10px; border-radius: 12px;
+    font-size: 12px; font-weight: 500; margin-right: 6px;
+  }
+  .tag-owner { background: #EFF6FF; color: #2563EB; }
+  .tag-due { background: #FEF3C7; color: #92400E; }
+  .tag-status { background: var(--green-bg); color: var(--green); }
+  .tag-risk { background: #FEE2E2; color: var(--red); }
+  .tag-done { background: #F3F4F6; color: var(--gray); }
+
+  /* List */
+  .item-list { list-style: none; }
+  .item-list li {
+    padding: 6px 0 6px 20px; position: relative; font-size: 14px;
+  }
+  .item-list li::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green-light); position: absolute; left: 0; top: 14px;
+  }
+  .item-list li.nested { padding-left: 32px; }
+  .item-list li.nested::before { left: 12px; background: #d1d5db; width: 4px; height: 4px; top: 15px; }
+
+  /* KPI Cards */
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .kpi {
+    background: white; border-radius: 12px; padding: 16px;
+    text-align: center; border: 1px solid var(--border);
+    box-shadow: var(--card-shadow);
+  }
+  .kpi .num { font-size: 28px; font-weight: 700; color: var(--green); }
+  .kpi .label { font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+  /* Todo Table */
+  .todo-table {
+    width: 100%; border-collapse: collapse; font-size: 14px;
+    background: white; border-radius: 12px; overflow: hidden;
+    box-shadow: var(--card-shadow);
+  }
+  .todo-table th {
+    background: var(--green); color: white; padding: 12px 16px;
+    text-align: left; font-weight: 600; font-size: 13px;
+  }
+  .todo-table td {
+    padding: 10px 16px; border-bottom: 1px solid var(--border);
+  }
+  .todo-table tr:last-child td { border-bottom: none; }
+  .todo-table tr:hover td { background: var(--green-bg); }
+
+  /* Risk */
+  .risk-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 14px; background: #FEF2F2; border-radius: 10px;
+    border-left: 3px solid var(--red); margin-bottom: 10px;
+  }
+  .risk-item.warn { background: #FFFBEB; border-left-color: var(--orange); }
+  .risk-item .icon { font-size: 18px; flex-shrink: 0; }
+  .risk-item .text { font-size: 14px; color: #374151; }
+
+  /* Divider */
+  .divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+  /* Highlight box */
+  .highlight {
+    background: var(--green-bg); border-radius: 10px;
+    padding: 16px 20px; margin-bottom: 16px;
+    border: 1px solid #BBE5C8;
+  }
+  .highlight-title { font-weight: 600; color: var(--green); font-size: 14px; margin-bottom: 6px; }
+
+  /* Sub-topic */
+  .sub-topic {
+    background: #FFFBEB; border-radius: 10px;
+    padding: 16px 20px; margin-bottom: 12px;
+    border: 1px solid #FDE68A;
+  }
+  .sub-topic.alert {
+    background: #FEF2F2; border-color: #FECACA;
+  }
+  .sub-topic .sub-title { font-weight: 600; font-size: 15px; margin-bottom: 8px; }
+
+  /* Footer */
+  .footer {
+    text-align: center; padding: 24px; color: var(--gray); font-size: 13px;
+    border-top: 1px solid var(--border); margin-top: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .header { padding: 32px 24px 28px; }
+    .container { padding: 24px 16px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📋 海外行车产品周会 · 会议纪要</h1>
+  <div class="meta">
+    <span>📅 2026年7月21日</span>
+    <span>🕐 周例会</span>
+    <span>📁 海外行车产品线</span>
+  </div>
+  <div class="badge">会议录音转录 → 结构化纪要</div>
+</div>
+
+<div class="container">
+
+  <!-- KPI 概览 -->
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="num">8</div>
+      <div class="label">议题数</div>
+    </div>
+    <div class="kpi">
+      <div class="num">11</div>
+      <div class="label">待办项</div>
+    </div>
+    <div class="kpi">
+      <div class="num">5</div>
+      <div class="label">风险预警</div>
+    </div>
+    <div class="kpi">
+      <div class="num">3</div>
+      <div class="label">售后专项</div>
+    </div>
+  </div>
+
+  <!-- 一、会议概要 -->
+  <div class="section">
+    <div class="section-title"><span class="num">1</span> 会议概要</div>
+    <div class="card">
+      <div class="card-body">
+        <p>本次周会覆盖 <strong>8大议题</strong>：蓝牙/WiFi稳定性验证、4G射频测试方案、竞品功耗分析、G300H系列售后问题（WiFi断连/说明书多语言/OBD线）、980H高温变形问题、国内版固件提测进展、980H预研及M600H/G300H硬件进度。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 二、各议题 -->
+  <div class="section">
+    <div class="section-title"><span class="num">2</span> 各议题决议与跟进项</div>
+
+    <!-- 2.1 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#EFF6FF;">🔗</div>
+        <div class="card-title">2.1 蓝牙/WiFi 稳定性验证</div>
+      </div>
+      <div class="card-body">
+        <ul class="item-list">
+          <li>蓝牙主端+从端双连，WiFi多设备连接，长时间放置验证稳定性（5~30分钟不断连）</li>
+          <li>稳定性验证通过后提测</li>
+        </ul>
+        <div style="margin-top:10px;">
+          <span class="tag tag-owner">👤 驱动/软件团队</span>
+          <span class="tag tag-status">⏳ 待验证</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.2 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#E8F8EE;">📡</div>
+        <div class="card-title">2.2 4G 射频测试方案</div>
+      </div>
+      <div class="card-body">
+        <ul class="item-list">
+          <li><strong>传导测试</strong>：沿用既有公司标准，已比较固定</li>
+          <li><strong>OTA测试</strong>：需根据当前产品状态制定标准，需要时间</li>
+          <li>侯工与姚得才（射频工程师）先完整交流，7月30日前提供初版方案</li>
+          <li>先出初版，内部评审后再迭代，不追求一步到位</li>
+        </ul>
+        <div style="margin-top:10px;">
+          <span class="tag tag-owner">👤 侯工</span>
+          <span class="tag tag-due">⏰ 7/30前（初版）</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.3 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#FEF3C7;">⚡</div>
+        <div class="card-title">2.3 竞品功耗分析（70迈 vs 本司）</div>
+      </div>
+      <div class="card-body">
+        <p>🔴 <strong>结论</strong>：70迈比本司产品功耗表现更好，必须优化</p>
+        <p>已约周会后专项会议讨论降功耗方案</p>
+        <div style="margin-top:10px;">
+          <span class="tag tag-owner">👤 乐哥/温森</span>
+          <span class="tag tag-due">⏰ 会后专项</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.4 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#EFF6FF;">📱</div>
+        <div class="card-title">2.4 国内版固件提测进展</div>
+      </div>
+      <div class="card-body">
+        <ul class="item-list">
+          <li>研发资源已转向国内版，保障本周提测</li>
+          <li>美通（固件）今天预计提交代码，需确保完整提交（含查漏补缺）</li>
+          <li>代码未完整提交可能导致相互覆盖，需协调</li>
+        </ul>
+        <div style="margin-top:10px;">
+          <span class="tag tag-owner">👤 日明/潘总/秦国</span>
+          <span class="tag tag-due">⏰ 本周四提测</span>
+          <span class="tag tag-risk">⚠️ 代码覆盖风险</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.5 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#F3E8FF;">🔬</div>
+        <div class="card-title">2.5 980H 预研启动</div>
+      </div>
+      <div class="card-body">
+        <ul class="item-list">
+          <li><strong>背景</strong>：533平台方案可行性尚未确认，需先验证</li>
+          <li><strong>决议</strong>：以预研方式启动，先做初版PCB（转接板验证或直接布板）</li>
+          <li><strong>乐哥建议</strong>：不等评估结果，直接以预研/EVT方式推进，投入不大</li>
+          <li><strong>阻塞点</strong>：美通高层尚在评估阶段，下方人员尚未配合执行</li>
+        </ul>
+        <div style="margin-top:10px;">
+          <span class="tag tag-owner">👤 雪玉/寿哥/硕哥</span>
+          <span class="tag tag-risk">⚠️ 高层评估阻塞</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.6 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#E8F8EE;">🔧</div>
+        <div class="card-title">2.6 M600H / G300H 硬件进度</div>
+      </div>
+      <div class="card-body">
+        <ul class="item-list">
+          <li><strong>M600H</strong>：前镜头+内录镜头已收到，正在调试；675主板已点亮，但主板与PIN方向反了，需重新打样（7-8天），不影响月底组装</li>
+          <li><strong>G300H 431前镜头</strong>：高了0.3mm，永泰新镜头目标本周五前寄出</li>
+          <li><strong>G300H试产</strong>：70台，计划用旧屏做软件/固件测试，50个新屏由研发自行更换（避免二次上线费用）</li>
+        </ul>
+        <div style="margin-top:10px;">
+          <span class="tag tag-owner">👤 硬件团队</span>
+          <span class="tag tag-status">✅ 不影响月底组装</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.7 G300H 售后 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon" style="background:#FEE2E2;">🛠️</div>
+        <div class="card-title">2.7 G300H Plus 售后问题汇总</div>
+      </div>
+      <div class="card-body">
+
+        <div class="sub-topic">
+          <div class="sub-title">7.1 WiFi 反复断开问题</div>
+          <ul class="item-list">
+            <li><strong>现象</strong>：手机连接摄像头WiFi后反复断开、自动关机，需拔电重启；3台设备使用超10个月</li>
+            <li><strong>王晓分析</strong>：大概率是手机WLAN助理功能自动断开无互联网的WiFi，非记录仪WiFi模组故障</li>
+            <li><strong>历史参考</strong>：AK40类似问题多与车内无线CarPlay冲突有关</li>
+            <li class="nested">1) G300H公测持续跟进，看是否有类似问题复现（目前40+样品中无反复断开案例）</li>
+            <li class="nested">2) 王晓+凯来优化断连弹窗提示：断开时提示用户检查手机WiFi设置，文案需精简</li>
+            <li class="nested">3) 香港售后仓周期性分拣退回机器，专项压测WiFi问题</li>
+            <li class="nested">4) 亚马逊用户站内信关闭/无QID无法联系，需等退回香港仓（周期1-2月）；其他渠道可从用户直退香港</li>
+          </ul>
+          <div style="margin-top:8px;">
+            <span class="tag tag-owner">👤 王晓、凯来、吴伟东</span>
+          </div>
+        </div>
+
+        <div class="sub-topic">
+          <div class="sub-title">7.2 德语版电子说明书</div>
+          <ul class="item-list">
+            <li>用户反馈需要德语版说明书，客服已回复</li>
+            <li><strong>决议</strong>：纸质仅常用语言（英、德、阿等），其他通过APP扫码看电子版多语言</li>
+            <li>行动：产品与市场对齐语言清单；APP内增加各国语言说明书入口</li>
+          </ul>
+          <div style="margin-top:8px;">
+            <span class="tag tag-owner">👤 雪玉/产品团队</span>
+          </div>
+        </div>
+
+        <div class="sub-topic">
+          <div class="sub-title">7.3 980H四摄 OBD线问题</div>
+          <ul class="item-list">
+            <li>用户反馈停车监控功能需要OBD线，未购买套餐</li>
+            <li><strong>决议</strong>：联系上用户后赠送OBD线/降压线，维护口碑</li>
+            <li>正常销售仍需购买套餐，赠送仅限售后特殊处理</li>
+          </ul>
+          <div style="margin-top:8px;">
+            <span class="tag tag-owner">👤 王晓/客服团队</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2.8 高温变形 -->
+    <div class="card" style="border-left: 4px solid var(--red);">
+      <div class="card-header">
+        <div class="card-icon" style="background:#FEE2E2;">🔥</div>
+        <div class="card-title">2.8 980H 高温变形问题 <span style="color:var(--red);font-size:12px;">⚠ 重点关注</span></div>
+      </div>
+      <div class="card-body">
+        <div class="kpi-row" style="margin-bottom:16px;">
+          <div class="kpi" style="border-color:#FECACA;">
+            <div class="num" style="color:var(--red);">5/6</div>
+            <div class="label">沙特变形率</div>
+          </div>
+          <div class="kpi" style="border-color:#FECACA;">
+            <div class="num" style="color:var(--red);">40-50°C</div>
+            <div class="label">沙特气温</div>
+          </div>
+          <div class="kpi" style="border-color:#FDE68A;">
+            <div class="num" style="color:var(--orange);">3国</div>
+            <div class="label">影响范围</div>
+          </div>
+          <div class="kpi" style="border-color:#FDE68A;">
+            <div class="num" style="color:var(--orange);">N529-1</div>
+            <div class="label">涉及批次</div>
+          </div>
+        </div>
+        <ul class="item-list">
+          <li><strong>现象</strong>：沙特6台设备中5台高温变形（G980H Pro，N529-1批次，2025年初生产）</li>
+          <li><strong>范围</strong>：沙特（常年40-50°C）、法国（近期43°C）、土耳其等欧洲国家也有反馈</li>
+          <li><strong>行业现状</strong>：友商（凌度等）同样存在，非360独有</li>
+          <li><strong>新品对策</strong>：新签ID，壳料上解决耐高温问题</li>
+          <li><strong>老品对策</strong>：从固件层面优化高温处理逻辑，尽快推进</li>
+          <li><strong>行动</strong>：王晓提供变形照片+SN；固件团队加快高温逻辑优化</li>
+        </ul>
+        <div style="margin-top:10px;">
+          <span class="tag tag-owner">👤 王晓（照片）/ 固件团队（逻辑）</span>
+          <span class="tag tag-risk">🔴 尽快推进</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 三、待办汇总 -->
+  <div class="section">
+    <div class="section-title"><span class="num">3</span> 关键待办汇总</div>
+    <table class="todo-table">
+      <thead>
+        <tr>
+          <th style="width:40px;">#</th>
+          <th>待办事项</th>
+          <th style="width:140px;">负责人</th>
+          <th style="width:120px;">截止时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>蓝牙/WiFi稳定性验证</td>
+          <td>驱动团队</td>
+          <td>本周</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>4G射频测试初版方案</td>
+          <td>侯工</td>
+          <td>7/30前</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>竞品功耗优化专项讨论</td>
+          <td>乐哥/温森</td>
+          <td>会后</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>国内版固件提测</td>
+          <td>日明/潘总</td>
+          <td>本周四</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>980H预研推进</td>
+          <td>雪玉/寿哥/硕哥</td>
+          <td>后续讨论</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>M600H主板重新打样</td>
+          <td>硬件团队</td>
+          <td>7-8天</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>G300H WiFi断连弹窗优化</td>
+          <td>王晓+凯来</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>香港售后仓WiFi专项压测</td>
+          <td>后续安排</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>纸质说明书语言清单对齐</td>
+          <td>雪玉/产品+市场</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><span style="color:var(--red);font-weight:600;">980H高温：固件逻辑优化</span></td>
+          <td>固件团队</td>
+          <td style="color:var(--red);">尽快</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><span style="color:var(--red);font-weight:600;">980H高温：新品壳料方案</span></td>
+          <td>ID团队</td>
+          <td>新品</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 四、风险 -->
+  <div class="section">
+    <div class="section-title"><span class="num">4</span> 风险与关注点</div>
+
+    <div class="risk-item">
+      <div class="icon">🟠</div>
+      <div class="text"><strong>980H预研阻塞</strong>：美通高层评估中，资源配合存在不确定性</div>
+    </div>
+    <div class="risk-item warn">
+      <div class="icon">🟡</div>
+      <div class="text"><strong>国内版固件提测风险</strong>：依赖美通今天完整提交代码，存在代码覆盖风险</div>
+    </div>
+    <div class="risk-item warn">
+      <div class="icon">🟡</div>
+      <div class="text"><strong>海外售后客退链路长</strong>：亚马逊退回周期1-2月，影响问题闭环速度</div>
+    </div>
+    <div class="risk-item">
+      <div class="icon">🔴</div>
+      <div class="text"><strong>高温变形扩大风险</strong>：随全球极端高温天气可能持续扩大影响范围</div>
+    </div>
+    <div class="risk-item warn">
+      <div class="icon">🟡</div>
+      <div class="text"><strong>G300H WiFi断连根因未确认</strong>：手机WLAN助理 vs 记录仪驱动，需实物验证</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    🦞 由尹燕玲-报告分析专家生成 · 2026-07-21
+  </div>
+
+</div>
+
+</body>
+</html>
