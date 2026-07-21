@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>群聊问题日报 - 2026年7月21日（18:00更新）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0f1117; color: #e4e6eb; line-height: 1.7; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  .header { background: linear-gradient(135deg, #1a1d29 0%, #252836 100%); border-radius: 16px; padding: 32px; margin-bottom: 24px; border: 1px solid #2a2d3a; }
+  .header h1 { font-size: 28px; font-weight: 700; color: #60a5fa; margin-bottom: 8px; }
+  .header .meta { color: #9ca3af; font-size: 14px; display: flex; gap: 20px; flex-wrap: wrap; }
+  .header .meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .header .meta .dot { width: 6px; height: 6px; border-radius: 50%; background: #60a5fa; }
+  .stats-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+  .stat-card { background: #1a1d29; border-radius: 12px; padding: 20px; border: 1px solid #2a2d3a; text-align: center; }
+  .stat-card .num { font-size: 36px; font-weight: 700; }
+  .stat-card .label { color: #9ca3af; font-size: 13px; margin-top: 4px; }
+  .solved .num { color: #34d399; } .partial .num { color: #fbbf24; } .pending .num { color: #f87171; } .total .num { color: #60a5fa; } .groups .num { color: #c084fc; }
+  .group-section { background: #1a1d29; border-radius: 16px; padding: 24px; margin-bottom: 20px; border: 1px solid #2a2d3a; }
+  .group-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .badge { font-size: 12px; padding: 2px 10px; border-radius: 20px; font-weight: 400; }
+  .badge.red { background: rgba(248,113,113,0.15); color: #f87171; } .badge.yellow { background: rgba(251,191,36,0.15); color: #fbbf24; } .badge.green { background: rgba(52,211,153,0.15); color: #34d399; } .badge.blue { background: rgba(96,165,250,0.15); color: #60a5fa; } .badge.gray { background: rgba(107,114,128,0.15); color: #6b7280; }
+  .issue-card { background: #21242f; border-radius: 12px; padding: 20px; margin-bottom: 14px; border-left: 3px solid #3a3d4a; transition: border-color 0.2s; }
+  .issue-card:hover { border-left-color: #60a5fa; }
+  .issue-card.pending { border-left-color: #f87171; } .issue-card.partial { border-left-color: #fbbf24; } .issue-card.solved { border-left-color: #34d399; }
+  .issue-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px; gap: 12px; }
+  .issue-title { font-size: 15px; font-weight: 600; color: #e4e6eb; }
+  .issue-status { font-size: 12px; padding: 2px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+  .status-pending { background: rgba(248,113,113,0.15); color: #f87171; } .status-partial { background: rgba(251,191,36,0.15); color: #fbbf24; } .status-solved { background: rgba(52,211,153,0.15); color: #34d399; }
+  .issue-detail { display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
+  .detail-row { display: flex; gap: 6px; } .detail-label { color: #6b7280; min-width: 70px; flex-shrink: 0; } .detail-value { color: #d1d5db; } .detail-value.name { color: #818cf8; }
+  .issue-desc { font-size: 13px; color: #b0b3bc; margin-bottom: 10px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; }
+  .media-tags { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .media-tag { font-size: 11px; padding: 1px 8px; border-radius: 4px; }
+  .media-tag.img { background: rgba(96,165,250,0.15); color: #60a5fa; } .media-tag.video { background: rgba(251,191,36,0.15); color: #fbbf24; } .media-tag.voice { background: rgba(192,132,252,0.15); color: #c084fc; } .media-tag.warn { background: rgba(248,113,113,0.15); color: #f87171; }
+  .product-tag { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 4px; margin-right: 4px; background: rgba(192,132,252,0.15); color: #c084fc; }
+  .tag-new { background: rgba(96,165,250,0.2); color: #60a5fa; font-size: 11px; padding: 1px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+  .tag-update { background: rgba(251,191,36,0.2); color: #fbbf24; font-size: 11px; padding: 1px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+  .empty-group { color: #6b7280; font-size: 14px; padding: 12px; text-align: center; }
+  .footer { text-align: center; padding: 20px; color: #4b5563; font-size: 12px; }
+  a { color: #60a5fa; text-decoration: none; }
+  .stat-card, .stat { min-width: 120px; flex: 1 1 120px; }
+  @media (max-width: 768px) { .issue-detail { grid-template-columns: 1fr; } .container { padding: 12px; } .header { padding: 20px; } .header h1 { font-size: 22px; } }
+  .update-tag { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 4px; background: rgba(52,211,153,0.15); color: #34d399; margin-left: 6px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📊 群聊问题日报</h1>
+    <div class="meta">
+      <span><span class="dot"></span> 2026年7月21日（周一·18:00更新）</span>
+      <span>📅 生成时间：2026-07-21 18:15</span>
+      <span>🤖 由 OpenClaw 自动生成</span>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-card total"><div class="num">11</div><div class="label">问题总数</div></div>
+    <div class="stat-card pending"><div class="num">2</div><div class="label">🔴 待跟进</div></div>
+    <div class="stat-card partial"><div class="num">5</div><div class="label">🟡 部分跟进</div></div>
+    <div class="stat-card solved"><div class="num">4</div><div class="label">🟢 已解决</div></div>
+    <div class="stat-card groups"><div class="num">5</div><div class="label">活跃群聊</div></div>
+  </div>
+
+  <!-- 海外技术支持群 -->
+  <div class="group-section">
+    <div class="group-title">🌐 海外技术支持群 <span class="badge blue">5 条问题</span></div>
+
+    <div class="issue-card pending">
+      <div class="issue-header"><div class="issue-title">🔴 R811S 无法连接、基站无法重置<span class="tag-new">新增</span></div><span class="issue-status status-pending">⏳ 待跟进</span></div>
+      <div class="issue-desc">海外安防R811S用户反馈设备无法连接，基站无法重置。bug_id=147827。何青凡@唐阿明要求排查。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">何青凡</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">R811S</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">待唐阿明分析</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">待提供</span></div>
+        <div class="detail-row"><span class="detail-label">时间</span><span class="detail-value">04:31</span></div>
+      </div>
+    </div>
+
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 C213 是否只支持2.4G WiFi<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">何青凡询问C213是否只支持2.4G WiFi，唐阿明确认"是"。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">何青凡</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">C213</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">产品规格确认，仅支持2.4G</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">唐阿明确认支持2.4G</span></div>
+        <div class="detail-row"><span class="detail-label">时间</span><span class="detail-value">10:02 - 10:07</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片（产品说明截图）</span></div>
+    </div>
+
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 G980H 后置摄像头画面异常 + 闪屏<span class="tag-new">新增</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">客户后置摄像头画面有线条和闪烁。何青凡发送视频和截图。王晓分析：后挡风玻璃颜色深+电热丝导致线条，闪屏为车内环境原因。何青凡追问发4K后摄能否改善，王晓建议先排查不要直接换配件。已是2次排障，用户拒绝拆下设备。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">何青凡</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">G980H</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">后挡风玻璃颜色深+电热丝+车内环境闪光（王晓）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">建议调整后录角度排查，不直接换配件；用户不配合需进一步沟通</span></div>
+        <div class="detail-row"><span class="detail-label">时间</span><span class="detail-value">10:27 - 10:52</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片（后摄画面截图）</span> <span class="media-tag video">🎬 含视频（IMG_8927.mov）</span></div>
+    </div>
+
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 G980H 录制时长参考信息<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">谢甜询问G980H双摄版本可以录制多长时间，王晓提供了录制时长参考信息截图。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">谢甜</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">G980H</span></span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">王晓提供录制时长参考截图</span></div>
+        <div class="detail-row"><span class="detail-label">时间</span><span class="detail-value">10:05</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片（录制时长参考）</span></div>
+    </div>
+
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 固件更新后黑屏（NAKM81B04490000117）<span class="tag-new">新增</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">设备 f5c29271c128/NAKM81B04490000117/NAKM81104490000281 更新后黑屏。唐阿明判断为自动切换夜视模式异常，暂时推回滚版本，稍晚让用户看升级提示。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">何青凡</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">安防设备</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">自动切换夜视模式异常（唐阿明）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">暂时推回滚版本，稍晚推送升级提示</span></div>
+        <div class="detail-row"><span class="detail-label">时间</span><span class="detail-value">10:55 - 11:07</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片（黑屏截图2张）</span></div>
+    </div>
+  </div>
+
+  <!-- 国内车品PCT组织 -->
+  <div class="group-section">
+    <div class="group-title">🚗 国内车品PCT组织 <span class="badge blue">1 条问题</span></div>
+
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 V9用户咨询（售前/售后）经验沉淀<span class="tag-new">新增</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">李鑫要求所有人统计之前销售V9的用户咨询（售前为主），为产品沉淀经验。吴琼已建立飞书在线表格供大家填写。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">李鑫</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">V9</span></span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">吴琼已建飞书表格，大家填写中</span></div>
+        <div class="detail-row"><span class="detail-label">时间</span><span class="detail-value">15:44 - 15:58</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- R6Pro-4G门铃开发群 -->
+  <div class="group-section">
+    <div class="group-title">🔔 R6Pro-4G门铃开发群 <span class="badge blue">3 条问题</span></div>
+
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 6Pro 4G配网速度比5Pro 4G慢<span class="tag-new">新增</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">尹燕玲反馈6Pro 4G配网速度感觉比5Pro 4G慢好多。王振凯解释：5Pro-4G早期因基站联网绑定太快导致开流失败，后改为门铃连接完成后APP才绑定完成。尹燕玲对比的是0424固件版本。王振凯追问具体在哪个加载环节慢，需进一步确认。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">尹燕玲</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">6Pro 4G</span><span class="product-tag">5Pro 4G</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">5Pro-4G改策略：门铃连接完成后才绑定，可能体感变慢（王振凯）</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">需确认具体慢在哪个加载环节</span></div>
+        <div class="detail-row"><span class="detail-label">时间</span><span class="detail-value">09:22 - 13:50</span></div>
+      </div>
+    </div>
+
+    <div class="issue-card partial">
+      <div class="issue-header"><div class="issue-title">🟡 鎏信卡账号迁移导致流量管理页异常<span class="tag-update">状态更新</span></div><span class="issue-status status-partial">🔄 部分跟进</span></div>
+      <div class="issue-desc">荆丹催促解决鎏信卡账号迁移（Business从6206518迁移到6206522）导致的流量管理页问题。王振凯要求页面和现有页面一样不按卡商页面。苗文华确认赵艳在跟进，需要开发兼容，正在处理中。赵艳表示正在处理，需要荆丹配合。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">荆丹（催促）/ 赵艳（跟进）</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">流量卡管理</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">鎏信卡账号迁移导致数据错乱，流量管理页跳转到卡商H5</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">赵艳正在处理开发兼容方案，需荆丹配合</span></div>
+        <div class="detail-row"><span class="detail-label">时间</span><span class="detail-value">14:22 - 15:36</span></div>
+      </div>
+    </div>
+
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 9Pro 400万 4G版商详会议<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">刘小瑜通知18:00召开9Pro 400万4G版商详会议（腾讯会议816-911-897），郭莎莎确认参加并@卜文庆、孙青根。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">刘小瑜</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">9Pro 400万 4G</span></span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">18:00腾讯会议进行商详</span></div>
+        <div class="detail-row"><span class="detail-label">时间</span><span class="detail-value">17:25</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 国内安防PCT -->
+  <div class="group-section">
+    <div class="group-title">🛡️ 国内安防PCT <span class="badge blue">1 条问题</span></div>
+
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 9Pro 400万 4G商详会议通知<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">（与R6Pro群同一会议通知）刘小瑜通知18:00商详会议，郭莎莎确认并@相关人员。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">刘小瑜</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">9Pro 400万 4G</span></span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">18:00腾讯会议</span></div>
+        <div class="detail-row"><span class="detail-label">时间</span><span class="detail-value">17:25 - 17:58</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 普联行车记录仪云服务需求群 -->
+  <div class="group-section">
+    <div class="group-title">📡 普联行车记录仪云服务需求群 <span class="badge blue">1 条问题</span></div>
+
+    <div class="issue-card solved">
+      <div class="issue-header"><div class="issue-title">🟢 T200流量卡36G停机 + 加流量后显示异常<span class="tag-new">新增</span></div><span class="issue-status status-solved">✅ 已解决</span></div>
+      <div class="issue-desc">李思凡发现T200的卡36G就停机了（不是100G），且加流量后还显示不对。徐凯来确认基础限额是20G（非36G），本周跟鎏信沟通统一提升。赵艳操作激活后，李思凡确认用户端已正常，尹燕玲跟用户确认正常。</div>
+      <div class="issue-detail">
+        <div class="detail-row"><span class="detail-label">提出者</span><span class="detail-value name">李思凡</span></div>
+        <div class="detail-row"><span class="detail-label">产品</span><span class="detail-value"><span class="product-tag">T200</span></span></div>
+        <div class="detail-row"><span class="detail-label">原因分析</span><span class="detail-value">基础限额仅20G（徐凯来确认），加流量后状态未及时更新</span></div>
+        <div class="detail-row"><span class="detail-label">解决方案</span><span class="detail-value">赵艳操作激活，用户端已正常；本周跟鎏信沟通提升基础限额</span></div>
+        <div class="detail-row"><span class="detail-label">时间</span><span class="detail-value">10:48 - 11:13</span></div>
+      </div>
+      <div class="media-tags"><span class="media-tag img">📎 含图片（停机截图+加流量截图）</span></div>
+    </div>
+  </div>
+
+  <!-- 无消息群 -->
+  <div class="group-section">
+    <div class="group-title">💤 今日无消息群聊（5个）</div>
+    <div class="empty-group">IoT重点问题同步群 · 猫眼屏项目CS2开发 · 重大事故通报群 · 现场突发集中事件调度 · 门铃屏测试开发小群</div>
+  </div>
+
+  <div class="footer">
+    <p>🦞 报告由 OpenClaw 自动生成 | 数据来源：推推群聊消息</p>
+    <p>问题持续跟踪：未解决的问题在后续日报中自动更新状态</p>
+  </div>
+</div>
+</body>
+</html>
