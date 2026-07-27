@@ -15,7 +15,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
 .cd{background:#fff;padding:18px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:center}
 .cd .n{font-size:30px;font-weight:700;color:var(--g)}.cd .lb{font-size:13px;color:var(--l);margin-top:4px}
-.cd.o .n{color:var(--o)}.cd.r .n{color:var(--r)}
+.cd.o .n{color:var(--o)}.cd.r .n{color:var(--r)}.cd.b .n{color:#3498DB}
 .s{background:#fff;border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .s h2{font-size:18px;margin-bottom:16px;padding-left:12px;border-left:4px solid var(--g)}
 .ch2{width:100%;height:280px}
@@ -25,8 +25,9 @@ table th{background:var(--g);color:#fff;padding:8px 12px;text-align:left;font-we
 table td{padding:8px 12px;border-bottom:1px solid #eee}table tr:hover{background:#f9f9f9}
 .ft{text-align:center;padding:20px;color:var(--l);font-size:13px}
 .pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
-.pill-g{background:#e8f5e9;color:#2e7d32}.pill-o{background:#fff3e0;color:#e65100}.pill-r{background:#ffebee;color:#c62828}
+.pill-g{background:#e8f5e9;color:#2e7d32}.pill-o{background:#fff3e0;color:#e65100}.pill-r{background:#ffebee;color:#c62828}.pill-b{background:#e3f2fd;color:#1565c0}
 .quote{font-style:italic;color:#555;font-size:12px;padding:6px 10px;border-left:3px solid var(--gl);margin:4px 0;background:#f0f9f1;border-radius:0 6px 6px 0}
+.quote .name{font-style:normal;font-weight:600;color:var(--g);margin-right:4px}
 .insight{background:#F0FBF4;border-left:4px solid var(--g);padding:14px 18px;margin:10px 0;border-radius:0 8px 8px 0;font-size:14px}
 .insight strong{color:var(--g)}
 </style>
@@ -35,7 +36,7 @@ table td{padding:8px 12px;border-bottom:1px solid #eee}table tr:hover{background
 <div class="c">
 <div class="hd">
 <h1>📦 6pro 4G门铃公测 · 开箱体验专项报告</h1>
-<div class="m">数据截止: 2026-07-27 14:44 | 样本: 19份 | 公测用户: 20人 | 完成率: 95%</div>
+<div class="m">数据截止: 2026-07-27 15:30 | 样本: 19份 | 公测用户: 20人 | 完成率: 95%</div>
 </div>
 <div class="cards">
 <div class="cd"><div class="n">19</div><div class="lb">开箱问卷完成</div></div>
@@ -45,44 +46,96 @@ table td{padding:8px 12px;border-bottom:1px solid #eee}table tr:hover{background
 </div>
 <div class="s" style="background:linear-gradient(135deg,#e8f5e9,#f1f8f3);border-left:5px solid #00B050">
 <h2>📝 报告总结</h2>
-<div style="font-size:13px;line-height:1.8">
-<p style="margin-bottom:10px"><b style="color:#00B050">📊 数据概览:</b>20人参与公测，19人完成开箱问卷(95%)，整体满意度<b>9.05分</b>，42.1%用户给出满分10分(8人)，11人给出非满分反馈。</p>
-<p style="margin-bottom:10px"><b style="color:#00B050">✅ 核心优点:</b>配件齐全度均分9.79分(最高)，尺寸手感9.74分，说明书清晰度9.68分。用户评价"保护到位""四角尖尖无磕碰""配件齐全有水平仪"。</p>
-<p style="margin-bottom:10px"><b style="color:#F39C12">⚠️ 核心问题:</b>包装材料缺乏可降解防划袋(2条反馈)，外包装填充物简陋(3条)，包装盒设计可优化(2条)，说明书有黑色污渍(1条)，包装内面保护区不足(1条)。</p>
-<p><b style="color:#00B050">🎯 改进建议:</b>增加主机可降解塑料袋防划痕，升级物流填充材料，包装盒改为开盖式设计，加强说明书印刷品控，改善包装内面保护。</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:12px">
+<div style="background:#E8F8F0;border-radius:8px;padding:16px;border-left:4px solid #00B050;margin-bottom:12px">
+<h3 style="font-size:14px;color:#00B050;margin-bottom:8px">📊 数据概览</h3>
+<p style="font-size:13px;color:#555;line-height:2">20人参与公测，19人完成开箱问卷(95%)。整体满意度<b>9.05分</b>，42.1%用户给出满分(8人)，11人给出非满分反馈。期望对比：<b>完全超出期望9人(47.4%)</b>，略超期望5人(26.3%)，符合期望3人(15.8%)，略低于期望2人(10.5%)。</p>
+</div>
+<div style="background:#E8F8F0;border-radius:8px;padding:16px;border-left:4px solid #00B050;margin-bottom:12px">
+<h3 style="font-size:14px;color:#00B050;margin-bottom:8px">✅ 核心优点（V列亮点汇总）</h3>
+<p style="font-size:13px;color:#555;line-height:2">配件齐全度均分9.79(最高)，尺寸手感9.74，说明书清晰度9.68。<b>卡针蝶形包装</b>被多次提及（王瑷珲："蝶形包装印象深刻，零件盒露出笑脸"），<b>水平仪</b>成惊喜亮点（何三涛/相杰/黄军剑），<b>4G免流量标识</b>醒目（瑞子），<b>内装黑色纸盒</b>显高级（夏俊）。</p>
+</div>
+<div style="background:#FEF5E7;border-radius:8px;padding:16px;border-left:4px solid #F39C12;margin-bottom:12px">
+<h3 style="font-size:14px;color:#F39C12;margin-bottom:8px">⚠️ 核心问题</h3>
+<p style="font-size:13px;color:#555;line-height:2">包装材料缺乏可降解防划袋/防静电PE袋(<b>4条</b>)，外包装填充物简陋(<b>4条</b>)，外观瑕疵/划痕/缝隙(<b>4条</b>)，外包装颜色太淡/太素(<b>3条</b>)，防护膜反光/镜头膜不透明(<b>2条</b>)，背板粘胶不足(<b>2条</b>)，出厂电量低(<b>1条</b>)，说明书污渍(<b>1条</b>)。</p>
+</div>
+<div style="background:#E8F8F0;border-radius:8px;padding:16px;border-left:4px solid #00B050;margin-bottom:12px">
+<h3 style="font-size:14px;color:#00B050;margin-bottom:8px">🎯 改进建议（W列汇总）</h3>
+<p style="font-size:13px;color:#555;line-height:2">增加主机可降解防划袋，升级物流填充材料，外包装颜色加深/增加科技感设计，出厂多充电量/低电量语音提示，加强出厂外观瑕疵检测，包装盒改开盖式，防护膜改不透明材质。</p>
+</div>
 </div>
 </div>
 <div class="row">
 <div class="s"><h2>整体满意度评分分布</h2><div id="score" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-o">均值9.05</span> <span class="pill pill-g">满分率42.1%(8/19)</span></div></div>
 <div class="s"><h2>各环节评价均分</h2><div id="dimscore" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">各维度均分9.53~9.79</span></div></div>
 </div>
+<div class="row">
+<div class="s"><h2>用户期望对比（U列）</h2><div id="expect" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">超期望率73.7%</span> <span class="pill pill-r">低于期望10.5%</span></div></div>
+<div class="s"><h2>问题分类统计</h2><div id="issues" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-r">包装材料类最多(9条)</span></div></div>
+</div>
 <div class="s"><h2>🔥 问题与建议汇总</h2>
-<table><thead><tr><th style="width:100px">类型</th><th style="width:35%">问题/建议</th><th style="width:50px">反馈量</th><th>用户原声</th><th style="width:80px">标签</th></tr></thead><tbody>
-<tr><td>包装材料</td><td>缺少可降解防划袋/防静电PE袋</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote">"主机及基站希望能多套一个可降解塑料袋"</div><div class="quote">"设备没有套可降解的防划袋"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-<tr><td>包装材料</td><td>外包装填充物简陋，运输颠簸风险</td><td style="text-align:center;font-weight:700">3</td><td><div class="quote">"外包装填充物特别的low，完全就是应付"</div><div class="quote">"物流填充泡沫纸只放上面没四周包裹"</div><div class="quote">"减震膜建议换成充气的那种"</div></td><td><span class="pill pill-r">问题</span></td></tr>
-<tr><td>包装材料</td><td>包装内面保护区做得不好</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote">"包装内面保护区做的不好"</div></td><td><span class="pill pill-r">问题</span></td></tr>
-<tr><td>包装设计</td><td>建议包装盒改为开盖式，镜头膜改不透明</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote">"建议包装盒像5pro4g那种开盖式的"</div><div class="quote">"镜头膜改成不透明纸，要不然感觉是旧的"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-<tr><td>文档品控</td><td>说明书有黑色污渍</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote">"快速添加指南左下角有一块黑色污渍"</div></td><td><span class="pill pill-r">问题</span></td></tr>
-<tr><td>配件建议</td><td>背板多配粘胶，卡针装嵌方式优化</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote">"背板多配一片粘胶，防止贴歪二次挪动"</div></td><td><span class="pill pill-o">建议</span></td></tr>
+<table><thead><tr><th style="width:90px">类型</th><th style="width:30%">问题/建议</th><th style="width:50px">反馈量</th><th>用户原声（H/I/V/W列）</th><th style="width:70px">标签</th></tr></thead><tbody>
+<tr><td>包装材料</td><td>缺少可降解防划袋/防静电PE袋/无纺袋</td><td style="text-align:center;font-weight:700">4</td><td><div class="quote"><span class="name">袁飞：</span>"主机及基站希望能多套一个可降解塑料袋"</div><div class="quote"><span class="name">孙晓明：</span>"设备没有套可降解的防划袋"</div><div class="quote"><span class="name">相杰：</span>"内包主机装没有防静电PE袋"</div><div class="quote"><span class="name">王瑷珲：</span>"门铃基站是否可以用无纺袋装"</div></td><td><span class="pill pill-o">建议</span></td></tr>
+<tr><td>包装材料</td><td>外包装填充物简陋，运输颠簸风险</td><td style="text-align:center;font-weight:700">4</td><td><div class="quote"><span class="name">于晨光：</span>"外包装填充物特别的low，完全就是应付"</div><div class="quote"><span class="name">朱彤：</span>"物流填充泡沫纸只放上面没四周包裹"</div><div class="quote"><span class="name">魏健伟：</span>"减震膜建议换成充气的那种"</div><div class="quote"><span class="name">周军：</span>"包装内面保护区做的不好"</div></td><td><span class="pill pill-r">问题</span></td></tr>
+<tr><td>外观品控</td><td>外观瑕疵/划痕/缝隙，需加强出厂检测</td><td style="text-align:center;font-weight:700">4</td><td><div class="quote"><span class="name">朱君：</span>"产品出厂前加强外观瑕疵检测"</div><div class="quote"><span class="name">朱彤：</span>"建议出厂前检验对外观要加强，防止有划痕"</div><div class="quote"><span class="name">王瑷珲：</span>"三处防护膜贴得不太好，反光影响第一观感"</div></td><td><span class="pill pill-r">问题</span></td></tr>
+<tr><td>包装设计</td><td>外包装颜色太淡/太素，印刷需优化</td><td style="text-align:center;font-weight:700">3</td><td><div class="quote"><span class="name">何三涛：</span>"外包装正面太素，建议配备高科技背景"</div><div class="quote"><span class="name">陈俊：</span>"外包装盒颜色太淡了，印刷优化一下"</div></td><td><span class="pill pill-o">建议</span></td></tr>
+<tr><td>包装设计</td><td>镜头膜/防护膜问题</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote"><span class="name">张雷：</span>"镜头膜改成不透明纸，要不然感觉是旧的"</div><div class="quote"><span class="name">相杰：</span>"表面保护膜气泡很大"</div></td><td><span class="pill pill-r">问题</span></td></tr>
+<tr><td>配件建议</td><td>背板多配粘胶</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote"><span class="name">袁飞：</span>"背板多配一片粘胶，防止贴歪二次挪动"</div></td><td><span class="pill pill-o">建议</span></td></tr>
+<tr><td>出厂品质</td><td>出厂电量低，无法开机</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">夏俊：</span>"长按5秒无法开机，估计电量低，建议出厂多充点电或有低电量语音提示"</div></td><td><span class="pill pill-r">问题</span></td></tr>
+<tr><td>文档品控</td><td>说明书有黑色污渍</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">美诺：</span>"产品说明书打开后有一小块黑色污渍"</div></td><td><span class="pill pill-r">问题</span></td></tr>
+<tr><td>包装设计</td><td>建议包装盒改为开盖式</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">朱君：</span>"建议包装盒像5pro4g版那种开盖式的"</div></td><td><span class="pill pill-o">建议</span></td></tr>
 </tbody></table>
-<div class="insight"><strong>💡 改进优先级:</strong> P1 增加可降解防划袋（2条反馈） | P1 升级物流填充材料（3条反馈+1条内面保护不足） | P2 包装盒开盖式改版 | P3 说明书印刷品控</div>
+<div class="insight"><strong>💡 改进优先级:</strong> P1 增加可降解防划袋/防静电袋（4条反馈，品牌一致性） | P1 升级物流填充材料（4条反馈，运输安全） | P1 加强出厂外观品控（4条反馈，第一印象） | P2 外包装设计升级（颜色+科技感） | P2 防护膜材质优化 | P3 出厂电量/说明书印刷</div>
 </div>
-<div class="s"><h2>💬 典型正面反馈</h2>
-<table><thead><tr><th>用户原声</th><th style="width:80px">评分</th></tr></thead><tbody>
-<tr><td><div class="quote">"保护得特别好，盒子四角尖尖没有磕碰"</div></td><td>10分</td></tr>
-<tr><td><div class="quote">"开启包装顶针存放外观惊喜，配件零件整体合理，既环保又不失高端形象"</div></td><td>10分</td></tr>
-<tr><td><div class="quote">"四个角非常完整，没有磕碰，膜也没有划痕"</div></td><td>10分</td></tr>
-<tr><td><div class="quote">"收到货物包装完好无损，产品外包装精美，配套设施齐全，特别是还有水平仪"</div></td><td>9分</td></tr>
-<tr><td><div class="quote">"开箱后，基站和门铃均保护到位！"</div></td><td>10分</td></tr>
-<tr><td><div class="quote">"操作简单明了，质感很好"</div></td><td>10分</td></tr>
+<div class="s"><h2>💬 用户亮点反馈（V列）</h2>
+<table><thead><tr><th style="width:70px">用户</th><th style="width:50px">评分</th><th>最大亮点/优点</th></tr></thead><tbody>
+<tr><td>袁飞</td><td style="text-align:center">9</td><td><div class="quote"><span class="name">袁飞：</span>"用料及装配都是旗舰级别"</div></td></tr>
+<tr><td>瑞子</td><td style="text-align:center">10</td><td><div class="quote"><span class="name">瑞子：</span>"包装盒上清晰可见的4G免流量，打开盒子里面配件摆放整齐"</div></td></tr>
+<tr><td>孙晓明</td><td style="text-align:center">9</td><td><div class="quote"><span class="name">孙晓明：</span>"开箱第一眼就是卡针，小细节做的很到位"</div></td></tr>
+<tr><td>何三涛</td><td style="text-align:center">10</td><td><div class="quote"><span class="name">何三涛：</span>"快速添加指南让新手快速上手，镜头保护到位，水平仪很贴心"</div></td></tr>
+<tr><td>王瑷珲</td><td style="text-align:center">10</td><td><div class="quote"><span class="name">王瑷珲：</span>"顶针蝶形包装印象深刻，零件盒露出笑脸，佩服这巧思👍情绪价值拉满"</div></td></tr>
+<tr><td>夏俊</td><td style="text-align:center">10</td><td><div class="quote"><span class="name">夏俊：</span>"内装黑色纸盒显高级奢侈感"</div></td></tr>
+<tr><td>相杰</td><td style="text-align:center">8</td><td><div class="quote"><span class="name">相杰：</span>"零配件齐全，配备水平仪是亮点，内部摆放很有条理，不像其他电子设备把说明书压在最底下"</div></td></tr>
+<tr><td>徐婷婷</td><td style="text-align:center">10</td><td><div class="quote"><span class="name">徐婷婷：</span>"针做成了小人读书形式，比较新颖"</div></td></tr>
+<tr><td>美诺</td><td style="text-align:center">9</td><td><div class="quote"><span class="name">美诺：</span>"各种细节满满，门铃配色很nice"</div></td></tr>
+<tr><td>朱君</td><td style="text-align:center">9</td><td><div class="quote"><span class="name">朱君：</span>"4g功能和全景功能很醒目，可视门铃设备手持质感好"</div></td></tr>
 </tbody></table>
 </div>
-<div class="ft"><p>🦞 由尹燕玲-报告分析专家生成 | 6pro 4G门铃公测 | 2026-07-27 | 数据来源：飞书「开箱」sheet</p></div>
+<div class="s"><h2>📋 完整用户评分明细</h2>
+<table><thead><tr><th style="width:40px">#</th><th style="width:70px">姓名</th><th style="width:60px">满意度</th><th style="width:50px">总分</th><th style="width:50px">包装</th><th style="width:50px">配件</th><th style="width:50px">外观</th><th style="width:50px">尺寸</th><th style="width:50px">说明书</th><th style="width:80px">期望对比</th></tr></thead><tbody>
+<tr><td>1</td><td>袁飞</td><td style="text-align:center;font-weight:700">9</td><td style="text-align:center">58</td><td style="text-align:center">10</td><td style="text-align:center">9</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td>符合期望</td></tr>
+<tr><td>2</td><td>吴汞</td><td style="text-align:center;font-weight:700;color:#00B050">10</td><td style="text-align:center">60</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="color:#00B050">完全超出</td></tr>
+<tr><td>3</td><td>瑞子</td><td style="text-align:center;font-weight:700;color:#00B050">10</td><td style="text-align:center">60</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="color:#00B050">完全超出</td></tr>
+<tr><td>4</td><td>孙晓明</td><td style="text-align:center;font-weight:700">9</td><td style="text-align:center">59</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="color:#00B050">完全超出</td></tr>
+<tr><td>5</td><td>何三涛</td><td style="text-align:center;font-weight:700;color:#00B050">10</td><td style="text-align:center">60</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="color:#00B050">完全超出</td></tr>
+<tr><td>6</td><td>陈俊</td><td style="text-align:center;font-weight:700;color:#00B050">10</td><td style="text-align:center">57</td><td style="text-align:center">10</td><td style="text-align:center">9</td><td style="text-align:center">9</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td>符合期望</td></tr>
+<tr><td>7</td><td>王瑷珲</td><td style="text-align:center;font-weight:700;color:#00B050">10</td><td style="text-align:center">60</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="color:#00B050">完全超出</td></tr>
+<tr><td>8</td><td>夏俊</td><td style="text-align:center;font-weight:700;color:#00B050">10</td><td style="text-align:center">60</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td>符合期望</td></tr>
+<tr><td>9</td><td>相杰</td><td style="text-align:center;font-weight:700;color:#E74C3C">8</td><td style="text-align:center">56</td><td style="text-align:center">9</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">9</td><td style="text-align:center">9</td><td style="color:#F39C12">略低于期望</td></tr>
+<tr><td>10</td><td>徐婷婷</td><td style="text-align:center;font-weight:700;color:#00B050">10</td><td style="text-align:center">60</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="color:#00B050">完全超出</td></tr>
+<tr><td>11</td><td>美诺</td><td style="text-align:center;font-weight:700">9</td><td style="text-align:center">58</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">9</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="color:#00B050">完全超出</td></tr>
+<tr><td>12</td><td>黄军剑</td><td style="text-align:center;font-weight:700">9</td><td style="text-align:center">58</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">9</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="color:#F39C12">略超期望</td></tr>
+<tr><td>13</td><td>于晨光</td><td style="text-align:center;font-weight:700;color:#E74C3C">6</td><td style="text-align:center">49</td><td style="text-align:center">3</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">8</td><td style="color:#F39C12">略超期望</td></tr>
+<tr><td>14</td><td>张雷</td><td style="text-align:center;font-weight:700">9</td><td style="text-align:center">55</td><td style="text-align:center">9</td><td style="text-align:center">10</td><td style="text-align:center">8</td><td style="text-align:center">10</td><td style="text-align:center">9</td><td style="color:#F39C12">略超期望</td></tr>
+<tr><td>15</td><td>朱君</td><td style="text-align:center;font-weight:700">9</td><td style="text-align:center">57</td><td style="text-align:center">9</td><td style="text-align:center">10</td><td style="text-align:center">9</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="color:#F39C12">略超期望</td></tr>
+<tr><td>16</td><td>朱彤</td><td style="text-align:center;font-weight:700;color:#00B050">10</td><td style="text-align:center">58</td><td style="text-align:center">9</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="color:#F39C12">略超期望</td></tr>
+<tr><td>17</td><td>魏健伟</td><td style="text-align:center;font-weight:700;color:#E74C3C">8</td><td style="text-align:center">55</td><td style="text-align:center">8</td><td style="text-align:center">10</td><td style="text-align:center">9</td><td style="text-align:center">10</td><td style="text-align:center">9</td><td style="color:#F39C12">略超期望</td></tr>
+<tr><td>18</td><td>许军州</td><td style="text-align:center;font-weight:700">9</td><td style="text-align:center">52</td><td style="text-align:center">8</td><td style="text-align:center">9</td><td style="text-align:center">9</td><td style="text-align:center">9</td><td style="text-align:center">8</td><td style="color:#E74C3C">略低于期望</td></tr>
+<tr><td>19</td><td>周军</td><td style="text-align:center;font-weight:700;color:#E74C3C">7</td><td style="text-align:center">57</td><td style="text-align:center">9</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">9</td><td style="color:#F39C12">略超期望</td></tr>
+</tbody></table>
+</div>
+<div class="ft"><p>🦞 由尹燕玲-报告分析专家生成 | 6pro 4G门铃公测 | 2026-07-27 | 数据来源：飞书「开箱」sheet（H-X列完整数据）</p></div>
 </div>
 <script>
 var G='#00B050',GL='#2BBD6E',R='#E74C3C',O='#F39C12';
-echarts.init(document.getElementById('score')).setOption({tooltip:{trigger:'axis'},grid:{left:'10%',right:'8%',top:'10%',bottom:'18%'},xAxis:{type:'category',data:['6分','7分','8分','9分','10分\n(非常满意)'],axisLabel:{fontSize:11,interval:0,formatter:function(v){return v.replace('\\n','\n')}},yAxis:{type:'value'},series:[{type:'bar',data:[1,1,2,7,8],barWidth:'55%',itemStyle:{color:function(p){return p.dataIndex>=3?G:(p.dataIndex>=2?O:R)},borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:12}}]});
+// 满意度分布
+echarts.init(document.getElementById('score')).setOption({tooltip:{trigger:'axis'},grid:{left:'10%',right:'8%',top:'10%',bottom:'18%'},xAxis:{type:'category',data:['6分','7分','8分','9分','10分(非常满意)'],axisLabel:{fontSize:11,interval:0,formatter:function(v){return v.replace('(','\n(')}}},yAxis:{type:'value'},series:[{type:'bar',data:[1,1,2,7,8],barWidth:'55%',itemStyle:{color:function(p){return p.dataIndex>=3?G:(p.dataIndex>=2?O:R)},borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:12}}]});
+// 各维度均分
 echarts.init(document.getElementById('dimscore')).setOption({tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'分'}},grid:{left:'22%',right:'14%',top:'5%',bottom:'5%'},xAxis:{type:'value',max:10,axisLabel:{formatter:'{value}分'}},yAxis:{type:'category',data:['包装完好度','外观质感','说明书清晰度','尺寸手感','配件齐全度'],axisLabel:{fontSize:12}},series:[{type:'bar',barWidth:'50%',data:[{value:9.53,itemStyle:{color:G}},{value:9.53,itemStyle:{color:G}},{value:9.68,itemStyle:{color:G}},{value:9.74,itemStyle:{color:G}},{value:9.79,itemStyle:{color:G}}],label:{show:true,position:'right',formatter:'{c}分',fontSize:12}}]});
+// 期望对比
+echarts.init(document.getElementById('expect')).setOption({tooltip:{trigger:'item',formatter:'{b}: {c}人 ({d}%)'},legend:{bottom:0,textStyle:{fontSize:11}},series:[{type:'pie',radius:['30%','60%'],center:['50%','45%'],label:{formatter:'{b}\n{c}人',fontSize:11},data:[{value:9,name:'完全超出期望',itemStyle:{color:G}},{value:5,name:'略超期望',itemStyle:{color:GL}},{value:3,name:'符合期望',itemStyle:{color:O}},{value:2,name:'略低于期望',itemStyle:{color:R}}]}]});
+// 问题分类
+echarts.init(document.getElementById('issues')).setOption({tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},grid:{left:'30%',right:'10%',top:'5%',bottom:'5%'},xAxis:{type:'value'},yAxis:{type:'category',data:['开盖式建议','说明书污渍','出厂电量低','背板粘胶','镜头膜问题','外包装颜色','外观瑕疵','填充物简陋','防划袋缺失'],axisLabel:{fontSize:11}},series:[{type:'bar',barWidth:'55%',data:[{value:1,itemStyle:{color:O}},{value:1,itemStyle:{color:R}},{value:1,itemStyle:{color:R}},{value:2,itemStyle:{color:O}},{value:2,itemStyle:{color:R}},{value:3,itemStyle:{color:O}},{value:4,itemStyle:{color:R}},{value:4,itemStyle:{color:R}},{value:4,itemStyle:{color:O}}],label:{show:true,position:'right',fontSize:11,fontWeight:600}}]});
 </script>
 </body>
 </html>
