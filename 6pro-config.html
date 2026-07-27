@@ -18,7 +18,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .cd.o .n{color:var(--o)}.cd.r .n{color:var(--r)}
 .s{background:#fff;border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .s h2{font-size:18px;margin-bottom:16px;padding-left:12px;border-left:4px solid var(--g)}
-.ch2{width:100%;height:240px}
+.ch2{width:100%;height:280px}
 .row{display:flex;gap:20px}.row>.s{flex:1}
 table{width:100%;border-collapse:collapse;font-size:13px}
 table th{background:var(--g);color:#fff;padding:8px 12px;text-align:left;font-weight:600}
@@ -106,7 +106,7 @@ table td{padding:8px 12px;border-bottom:1px solid #eee}table tr:hover{background
 </div>
 <script>
 var G='#00B050',GL='#2BBD6E',R='#E74C3C',O='#F39C12';
-echarts.init(document.getElementById('score')).setOption({tooltip:{trigger:'axis'},grid:{left:'8%',right:'5%',top:'10%',bottom:'12%'},xAxis:{type:'category',data:['8分','9分','10分(非常满意)'],axisLabel:{fontSize:12}},yAxis:{type:'value'},series:[{type:'bar',data:[2,2,14],barWidth:'55%',itemStyle:{color:function(p){return p.dataIndex>=2?G:(p.dataIndex>=1?O:R)},borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:12}}]});
+echarts.init(document.getElementById('score')).setOption({tooltip:{trigger:'axis'},grid:{left:'10%',right:'8%',top:'10%',bottom:'18%'},xAxis:{type:'category',data:['8分','9分','10分\n(非常满意)'],axisLabel:{fontSize:12,interval:0,formatter:function(v){return v.replace('\\n','\n')}},yAxis:{type:'value'},series:[{type:'bar',data:[2,2,14],barWidth:'55%',itemStyle:{color:function(p){return p.dataIndex>=2?G:(p.dataIndex>=1?O:R)},borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:12}}]});
 echarts.init(document.getElementById('signal')).setOption({tooltip:{trigger:'item',formatter:'{b}: {c}人 ({d}%)'},legend:{bottom:0,textStyle:{fontSize:11}},series:[{type:'pie',radius:['30%','60%'],center:['50%','45%'],label:{formatter:'{b}\n{c}人',fontSize:11},data:[{value:5,name:'低于60%',itemStyle:{color:R}},{value:4,name:'60-70%',itemStyle:{color:O}},{value:7,name:'70%+',itemStyle:{color:G}}]}]});
 </script>
 </body>
