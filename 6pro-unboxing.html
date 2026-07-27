@@ -41,24 +41,24 @@ table td{padding:8px 12px;border-bottom:1px solid #eee}table tr:hover{background
 
 <div class="cards">
 <div class="cd"><div class="n">19</div><div class="lb">开箱问卷完成</div></div>
-<div class="cd"><div class="n">9.5</div><div class="lb">满意度均值(/10)</div></div>
-<div class="cd"><div class="n">57.3</div><div class="lb">平均总分(/60)</div></div>
-<div class="cd o"><div class="n">5</div><div class="lb">非满分反馈</div></div>
+<div class="cd"><div class="n">9.2</div><div class="lb">满意度均值(/10)</div></div>
+<div class="cd"><div class="n">57.5</div><div class="lb">平均总分(/60)</div></div>
+<div class="cd o"><div class="n">10</div><div class="lb">非满分反馈</div></div>
 </div>
 
 <div class="s" style="background:linear-gradient(135deg,#e8f5e9,#f1f8f3);border-left:5px solid #00B050">
 <h2>📝 报告总结</h2>
 <div style="font-size:13px;line-height:1.8">
-<p style="margin-bottom:10px"><b style="color:#00B050">📊 数据概览:</b>20人参与公测，19人完成开箱问卷(95%)，整体满意度<b>9.5分</b>，73.7%用户给出满分10分，5人给出非满分反馈。</p>
-<p style="margin-bottom:10px"><b style="color:#00B050">✅ 核心优点:</b>包装完好度均分9.9分表现最佳，尺寸手感均分9.9分，外观质感9.8分，配件齐全度9.8分。用户评价"保护到位""四角尖尖无磕碰""配件齐全有水平仪"。</p>
+<p style="margin-bottom:10px"><b style="color:#00B050">📊 数据概览:</b>20人参与公测，19人完成开箱问卷(95%)，整体满意度<b>9.2分</b>，47.4%用户给出满分10分，10人给出非满分反馈。</p>
+<p style="margin-bottom:10px"><b style="color:#00B050">✅ 核心优点:</b>包装完好度均分9.53分，配件齐全度9.79分(最高)，尺寸手感9.74分，说明书清晰度9.68分，外观质感9.53分。用户评价"保护到位""四角尖尖无磕碰""配件齐全有水平仪"。</p>
 <p style="margin-bottom:10px"><b style="color:#F39C12">⚠️ 核心问题:</b>包装材料缺乏可降解防划袋(3条反馈)，外包装填充物简陋(2条)，说明书有黑色污渍(1条)，包装盒设计可优化(2条建议改为开盖式)。</p>
 <p><b style="color:#00B050">🎯 改进建议:</b>增加主机可降解塑料袋防划痕，升级物流填充材料，包装盒改为开盖式设计，加强说明书印刷品控。</p>
 </div>
 </div>
 
 <div class="row">
-<div class="s"><h2>整体满意度评分分布</h2><div id="score" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">均值9.5</span> <span class="pill pill-g">满分率73.7%(14/19)</span></div></div>
-<div class="s"><h2>各环节评价均分</h2><div id="dimscore" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">全部维度≥9.8分</span></div></div>
+<div class="s"><h2>整体满意度评分分布</h2><div id="score" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">均值9.2</span> <span class="pill pill-g">满分率47.4%(9/19)</span></div></div>
+<div class="s"><h2>各环节评价均分</h2><div id="dimscore" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">各维度均分9.53~9.79</span></div></div>
 </div>
 
 <div class="s"><h2>🔥 问题与建议汇总</h2>
@@ -87,9 +87,9 @@ table td{padding:8px 12px;border-bottom:1px solid #eee}table tr:hover{background
 <script>
 var G='#00B050',GL='#2BBD6E',R='#E74C3C',O='#F39C12';
 // 满意度分布: 6分×1, 8分×2, 9分×4, 10分×12(含"非常满意")
-echarts.init(document.getElementById('score')).setOption({tooltip:{trigger:'axis'},grid:{left:'8%',right:'5%',top:'10%',bottom:'12%'},xAxis:{type:'category',data:['6分','7分','8分','9分','10分(非常满意)'],axisLabel:{fontSize:11}},yAxis:{type:'value'},series:[{type:'bar',data:[1,0,2,4,12],barWidth:'55%',itemStyle:{color:function(p){return p.dataIndex>=3?G:(p.dataIndex>=2?O:R)},borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:12}}]});
+echarts.init(document.getElementById('score')).setOption({tooltip:{trigger:'axis'},grid:{left:'8%',right:'5%',top:'10%',bottom:'12%'},xAxis:{type:'category',data:['6分','7分','8分','9分','10分(非常满意)'],axisLabel:{fontSize:11}},yAxis:{type:'value'},series:[{type:'bar',data:[1,0,2,7,9],barWidth:'55%',itemStyle:{color:function(p){return p.dataIndex>=3?G:(p.dataIndex>=2?O:R)},borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:12}}]});
 // 各维度均分
-echarts.init(document.getElementById('dimscore')).setOption({tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'分'}},grid:{left:'18%',right:'8%',top:'5%',bottom:'5%'},xAxis:{type:'value',max:10,axisLabel:{formatter:'{value}分'}},yAxis:{type:'category',data:['说明书清晰度','配件齐全度','外观质感','包装完好度','尺寸手感']},series:[{type:'bar',barWidth:'50%',data:[{value:9.8,itemStyle:{color:G}},{value:9.8,itemStyle:{color:G}},{value:9.8,itemStyle:{color:G}},{value:9.9,itemStyle:{color:G}},{value:9.9,itemStyle:{color:G}}],label:{show:true,position:'right',formatter:'{c}分',fontSize:12}}]});
+echarts.init(document.getElementById('dimscore')).setOption({tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'分'}},grid:{left:'18%',right:'8%',top:'5%',bottom:'5%'},xAxis:{type:'value',max:10,axisLabel:{formatter:'{value}分'}},yAxis:{type:'category',data:['包装完好度','外观质感','说明书清晰度','尺寸手感','配件齐全度']},series:[{type:'bar',barWidth:'50%',data:[{value:9.53,itemStyle:{color:G}},{value:9.53,itemStyle:{color:G}},{value:9.68,itemStyle:{color:G}},{value:9.74,itemStyle:{color:G}},{value:9.79,itemStyle:{color:G}}],label:{show:true,position:'right',formatter:'{c}分',fontSize:12}}]});
 </script>
 </body>
 </html>
