@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4G记录仪 — 哨兵模式复测分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root {
+  --green:#00B050;--green-l:#2BBD6E;--green-bg:#E8F8F0;
+  --dark:#1A1A2E;--gray:#555;--gray-l:#999;--gray-bg:#F7F8FA;
+  --red:#E74C3C;--red-bg:#FDEDEC;--orange:#F39C12;--orange-bg:#FEF5E7;
+  --white:#FFF;--border:#E8E8E8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--gray-bg);color:var(--dark);line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:0 20px}
+.header{background:linear-gradient(135deg,#00B050,#008040);color:#fff;padding:48px 0 40px;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:-50%;right:-10%;width:400px;height:400px;background:rgba(255,255,255,.05);border-radius:50%}
+.header h1{font-size:28px;font-weight:700;margin-bottom:8px}
+.header .sub{font-size:15px;opacity:.85}
+.header .meta{font-size:13px;opacity:.7;margin-top:12px}
+.section{padding:36px 0}
+.section-title{font-size:20px;font-weight:700;border-left:4px solid var(--green);padding-left:12px;margin-bottom:24px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.kpi-card{background:#fff;border-radius:12px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi-value{font-size:32px;font-weight:700;margin:8px 0}
+.kpi-label{font-size:13px;color:var(--gray)}
+.kpi-sub{font-size:12px;color:var(--gray-l);margin-top:4px}
+.kpi-green .kpi-value{color:var(--green)}
+.kpi-red .kpi-value{color:var(--red)}
+.kpi-orange .kpi-value{color:var(--orange)}
+.kpi-blue .kpi-value{color:#3498DB}
+.chart-box{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.chart-title{font-size:15px;font-weight:600;margin-bottom:16px}
+.chart{width:100%;height:300px}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+th{background:var(--green);color:#fff;padding:12px 16px;text-align:left;font-size:13px;font-weight:600}
+td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--green-bg)}
+.tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.tag-red{background:var(--red-bg);color:var(--red)}
+.tag-orange{background:var(--orange-bg);color:var(--orange)}
+.tag-green{background:var(--green-bg);color:var(--green)}
+.tag-gray{background:#F0F0F0;color:var(--gray)}
+.summary{border-radius:10px;padding:14px 18px;margin-bottom:16px;font-size:14px;display:flex;align-items:flex-start;gap:10px}
+.s-red{background:var(--red-bg);border-left:4px solid var(--red)}
+.s-orange{background:var(--orange-bg);border-left:4px solid var(--orange)}
+.s-green{background:var(--green-bg);border-left:4px solid var(--green)}
+.s-icon{font-size:18px;flex-shrink:0}
+.footer{text-align:center;padding:32px 0;color:var(--gray-l);font-size:13px}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.chart{height:260px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>🛡️ 4G记录仪 — 哨兵模式复测分析报告</h1>
+    <div class="sub">基于公测用户哨兵抓拍复测问卷 · 44份有效数据</div>
+    <div class="meta">数据来源：飞书「4G记录仪公测问题跟进表-新」→ 哨兵复测Sheet ｜ 报告日期：2026-07-27</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="section-title">核心指标</div>
+    <div class="kpi-grid">
+      <div class="kpi-card kpi-green"><div class="kpi-label">平均评分</div><div class="kpi-value">8.0</div><div class="kpi-sub">满分10 · 44人</div></div>
+      <div class="kpi-card kpi-red"><div class="kpi-label">误报用户占比</div><div class="kpi-value">68%</div><div class="kpi-sub">30/44人</div></div>
+      <div class="kpi-card kpi-orange"><div class="kpi-label">延迟用户占比</div><div class="kpi-value">61%</div><div class="kpi-sub">27/44人</div></div>
+      <div class="kpi-card kpi-blue"><div class="kpi-label">认为有提升</div><div class="kpi-value">80%</div><div class="kpi-sub">35/44人</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-title">评分分布</div>
+    <div class="chart-box">
+      <div class="chart-title">用户哨兵模式评分分布（满分10分）</div>
+      <div id="c-score" class="chart"></div>
+    </div>
+    <div class="summary s-green"><span class="s-icon">✅</span><div>9-10分占比 <b>41%</b>，整体满意度尚可；但5分及以下占 <b>6.8%</b>，低分用户痛点集中在严重误报和延迟。</div></div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-title">版本对比感受</div>
+    <div class="chart-box">
+      <div class="chart-title">最新固件 vs 之前版本哨兵模式体验对比</div>
+      <div id="c-compare" class="chart"></div>
+    </div>
+    <div class="summary s-green"><span class="s-icon">📈</span><div><b>79.5%</b> 用户认为有提升，仅 <b>1人（2.3%）</b>认为比之前还差。升级方向正确，但优化空间仍大。</div></div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-title">误报问题分析 <span style="font-size:14px;color:#E74C3C">🔴 P0</span></div>
+    <div class="summary s-red"><span class="s-icon">🔴</span><div><b>误报是哨兵模式最大痛点。</b>44人中30人报告误报（68%），可量化误报总计 <b>456条</b>，人均 <b>15.2条</b>。最极端：#41用户464条事件中153条误报（33%），#14用户50条事件中48条误报（96%）。</div></div>
+    <div class="chart-box">
+      <div class="chart-title">误报场景分类</div>
+      <div id="c-false" class="chart"></div>
+    </div>
+    <table>
+      <thead><tr><th style="width:50px">序号</th><th style="width:110px">分类</th><th>误报场景描述</th><th style="width:70px">误报数</th></tr></thead>
+      <tbody>
+        <tr><td>14</td><td><span class="tag tag-red">风吹植被</span></td><td>只有风吹草动，没有人或车子等实物经过</td><td><b style="color:#E74C3C">48</b></td></tr>
+        <tr><td>41</td><td><span class="tag tag-red">风吹植被</span></td><td>下雨和树荫下视频中有树木灌木林的情况下</td><td><b style="color:#E74C3C">153</b></td></tr>
+        <tr><td>18</td><td><span class="tag tag-orange">灯光变化</span></td><td>夜间路灯下没有车个人经过，视频会忽明忽暗</td><td><b style="color:#F39C12">22</b></td></tr>
+        <tr><td>29</td><td><span class="tag tag-red">风吹植被</span></td><td>下雨天、树影摆动</td><td><b style="color:#E74C3C">30+</b></td></tr>
+        <tr><td>11</td><td><span class="tag tag-orange">灯光变化</span></td><td>夜间路灯闪烁导致误报，路灯实际并不会闪</td><td><b style="color:#F39C12">16</b></td></tr>
+        <tr><td>10</td><td><span class="tag tag-orange">灯光变化</span></td><td>路灯下灯光闪烁明暗也会上报</td><td><b style="color:#F39C12">13</b></td></tr>
+        <tr><td>3</td><td><span class="tag tag-orange">灯光变化</span></td><td>地下车库日光灯导致误报</td><td><b style="color:#F39C12">15</b></td></tr>
+        <tr><td>16</td><td><span class="tag tag-red">风吹植被</span></td><td>狭窄环境风吹树叶，远处炊烟冒烟也触发</td><td>15</td></tr>
+        <tr><td>40</td><td><span class="tag tag-red">风吹植被</span></td><td>白天露天停车场风吹树叶造成误报</td><td>18</td></tr>
+        <tr><td>6</td><td><span class="tag tag-gray">天气/光线</span></td><td>光线变化，闪电，下雨都会误报</td><td>9</td></tr>
+        <tr><td>43</td><td><span class="tag tag-gray">无明显变化</span></td><td>视频场景无变化，也有可能是延迟了</td><td>10</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-title">延迟问题分析 <span style="font-size:14px;color:#F39C12">🟠 P1</span></div>
+    <div class="summary s-orange"><span class="s-icon">🟠</span><div><b>延迟是第二大痛点。</b>44人中27人报告延迟（61%），可量化延迟总计 <b>159条</b>，人均 <b>5.9条</b>。核心问题：触发时机晚，人/车快出画面才开拍。</div></div>
+    <div class="chart-box">
+      <div class="chart-title">延迟场景分类</div>
+      <div id="c-delay" class="chart"></div>
+    </div>
+    <table>
+      <thead><tr><th style="width:50px">序号</th><th style="width:120px">分类</th><th>延迟场景描述</th><th style="width:70px">延迟数</th></tr></thead>
+      <tbody>
+        <tr><td>15</td><td><span class="tag tag-orange">行人尾部</span></td><td>车辆2辆、电动车13辆、童车1辆、行人3人经过均延迟拍摄</td><td><b style="color:#E74C3C">19</b></td></tr>
+        <tr><td>13</td><td><span class="tag tag-orange">行人尾部</span></td><td>人/车从右边走到左边马上消失在画面中才开始录制</td><td><b style="color:#F39C12">16</b></td></tr>
+        <tr><td>36</td><td><span class="tag tag-orange">车辆尾部</span></td><td>车开过去了，等到快开过去的时候才拍到</td><td><b style="color:#F39C12">18</b></td></tr>
+        <tr><td>42</td><td><span class="tag tag-orange">车辆尾部</span></td><td>汽车从车边开过，大部分时间只能看到刹车灯</td><td><b style="color:#F39C12">16</b></td></tr>
+        <tr><td>7</td><td><span class="tag tag-orange">行人尾部</span></td><td>人车总是在视频尾部</td><td><b style="color:#F39C12">10</b></td></tr>
+        <tr><td>1</td><td><span class="tag tag-orange">行人尾部</span></td><td>行人走到副驾驶前约1米处才拍到，目测延迟3-10秒</td><td>2+</td></tr>
+        <tr><td>17</td><td><span class="tag tag-orange">车辆尾部</span></td><td>车辆快驶出视频画面才开始录</td><td>6</td></tr>
+        <tr><td>44</td><td><span class="tag tag-gray">其他</span></td><td>经过物体移动稍快就延迟</td><td>6</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-title">漏报问题分析</div>
+    <div class="summary s-orange"><span class="s-icon">🟠</span><div>漏报占比相对较低，<b>8人（18%）</b>明确报告漏报，但严重影响用户信任。典型场景：骑车经过未拍、熄火未触发、车辆进出未记录。</div></div>
+    <table>
+      <thead><tr><th style="width:50px">序号</th><th>漏报场景描述</th><th style="width:70px">漏报数</th></tr></thead>
+      <tbody>
+        <tr><td>42</td><td>能确定该时段有人经过未抓拍，上车必从车前走过却没记录</td><td><b style="color:#E74C3C">5+</b></td></tr>
+        <tr><td>7</td><td>亲自试验，车头前开门，骑电动车离开等，未抓拍</td><td><b style="color:#E74C3C">3</b></td></tr>
+        <tr><td>9</td><td>共享单车停放、车位停车/离开均未记录</td><td><b style="color:#E74C3C">3</b></td></tr>
+        <tr><td>44</td><td>有漏报</td><td>3</td></tr>
+        <tr><td>16</td><td>熄火应该有的抓拍缺失一次</td><td>1</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-title">用户核心建议</div>
+    <div class="chart-box">
+      <div class="chart-title">建议分类统计</div>
+      <div id="c-sugg" class="chart"></div>
+    </div>
+    <table>
+      <thead><tr><th style="width:50px">排名</th><th style="width:160px">建议类别</th><th style="width:70px">人数</th><th>典型原声</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><b>优化延迟/提前抓拍</b></td><td><b>9</b></td><td>#17：哨兵报警以摄像头最前方画面变化为中心，导致延迟严重，建议扩大触发角度</td></tr>
+        <tr><td>2</td><td><b>减少误报/灵敏度调节</b></td><td><b>8</b></td><td>#10：算法侧重动态物体检测，降低亮度检测敏感度</td></tr>
+        <tr><td>3</td><td>引入AI识别</td><td>3</td><td>#8：希望引入AI识别，只报人和车辆的变动</td></tr>
+        <tr><td>3</td><td>画质提升</td><td>3</td><td>#2：画质最好能清晰点，能拍到别人车牌</td></tr>
+        <tr><td>5</td><td>哨兵时长可选</td><td>2</td><td>#9：哨兵模式工作时长希望有8小时、12小时、24小时选项</td></tr>
+        <tr><td>5</td><td>视频滑动切换</td><td>2</td><td>#11：视频左滑右滑切换上一个/下一个</td></tr>
+        <tr><td>5</td><td>分类显示/标记已读</td><td>2</td><td>#12：看完的视频没有标记，不知道看没看过</td></tr>
+        <tr><td>8</td><td>离线通知</td><td>1</td><td>#1：强烈建议记录仪离线前App发信息通知</td></tr>
+        <tr><td>8</td><td>GPS/定位优化</td><td>1</td><td>#23：定位不成功</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-title">地区分布</div>
+    <div class="chart-box">
+      <div class="chart-title">公测用户地区分布（省级）</div>
+      <div id="c-region" class="chart" style="height:280px"></div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-title">结论与建议</div>
+    <div class="summary s-red"><span class="s-icon">🔥</span><div><b>P0 · 误报治理</b>：风吹树叶/植被是第一大误报源（13人），灯光变化第二（9人）。建议优化算法降低环境变化敏感度，引入AI人形/车辆识别。</div></div>
+    <div class="summary s-orange"><span class="s-icon">⚡</span><div><b>P1 · 延迟优化</b>：触发时机晚是核心问题。建议扩大检测触发角度、增加预录功能、提升灵敏度，确保拍到完整事件。</div></div>
+    <div class="summary s-orange"><span class="s-icon">📋</span><div><b>P2 · 功能增强</b>：哨兵时长多档可选、视频滑动切换、已读标记、分类筛选——高频低成本的体验提升点。</div></div>
+    <div class="summary s-green"><span class="s-icon">✅</span><div><b>积极面</b>：80%用户认可升级有提升，地下停车场等稳定环境表现优秀。整体方向正确，需在算法精度和触发时效性上持续打磨。</div></div>
+  </div>
+</div>
+
+<div class="footer"><div class="container">🦞 尹燕玲-报告分析专家 ｜ 数据来源：飞书4G记录仪公测问题跟进表-新·哨兵复测 ｜ 2026-07-27</div></div>
+
+<script>
+var c1=echarts.init(document.getElementById('c-score'));
+c1.setOption({tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},grid:{left:'5%',right:'5%',bottom:'10%',top:'10%',containLabel:true},xAxis:{type:'category',data:['3分','5分','6分','7分','8分','9分','10分'],axisLabel:{fontSize:13}},yAxis:{type:'value',name:'人数'},series:[{type:'bar',barWidth:'50%',data:[{value:1,itemStyle:{color:'#E74C3C'}},{value:2,itemStyle:{color:'#E74C3C'}},{value:3,itemStyle:{color:'#F39C12'}},{value:7,itemStyle:{color:'#F39C12'}},{value:13,itemStyle:{color:'#2BBD6E'}},{value:12,itemStyle:{color:'#00B050'}},{value:6,itemStyle:{color:'#00B050'}}],label:{show:true,position:'top',fontSize:14,fontWeight:'bold'}}]});
+
+var c2=echarts.init(document.getElementById('c-compare'));
+c2.setOption({tooltip:{trigger:'item'},legend:{bottom:0,fontSize:13},series:[{type:'pie',radius:['40%','70%'],center:['50%','45%'],data:[{value:35,name:'有所提升',itemStyle:{color:'#00B050'}},{value:8,name:'没太大差别',itemStyle:{color:'#999'}},{value:1,name:'比之前还差',itemStyle:{color:'#E74C3C'}}],label:{fontSize:13,formatter:'{b}\n{c}人 ({d}%)'}}]});
+
+var c3=echarts.init(document.getElementById('c-false'));
+c3.setOption({tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},grid:{left:'5%',right:'5%',bottom:'5%',top:'5%',containLabel:true},xAxis:{type:'value'},yAxis:{type:'category',data:['无明显变化','其他','天气因素','灯光变化','风吹树叶/植被'],axisLabel:{fontSize:13}},series:[{type:'bar',barWidth:'60%',data:[{value:3,itemStyle:{color:'#999'}},{value:8,itemStyle:{color:'#F39C12'}},{value:3,itemStyle:{color:'#F39C12'}},{value:9,itemStyle:{color:'#E74C3C'}},{value:13,itemStyle:{color:'#E74C3C'}}],label:{show:true,position:'right',fontSize:13,fontWeight:'bold',formatter:'{c}人'}}]});
+
+var c4=echarts.init(document.getElementById('c-delay'));
+c4.setOption({tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},grid:{left:'5%',right:'5%',bottom:'5%',top:'5%',containLabel:true},xAxis:{type:'value'},yAxis:{type:'category',data:['车辆只拍到车尾','其他延迟','行人走到快出画面才拍'],axisLabel:{fontSize:13}},series:[{type:'bar',barWidth:'60%',data:[{value:4,itemStyle:{color:'#F39C12'}},{value:13,itemStyle:{color:'#F39C12'}},{value:10,itemStyle:{color:'#E74C3C'}}],label:{show:true,position:'right',fontSize:13,fontWeight:'bold',formatter:'{c}人'}}]});
+
+var c5=echarts.init(document.getElementById('c-sugg'));
+c5.setOption({tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},grid:{left:'5%',right:'10%',bottom:'5%',top:'5%',containLabel:true},xAxis:{type:'value'},yAxis:{type:'category',data:['GPS/定位','离线通知','分类/标记','视频滑动','哨兵时长','画质提升','AI识别','减少误报','优化延迟'],axisLabel:{fontSize:12}},series:[{type:'bar',barWidth:'60%',data:[{value:1,itemStyle:{color:'#999'}},{value:1,itemStyle:{color:'#999'}},{value:2,itemStyle:{color:'#2BBD6E'}},{value:2,itemStyle:{color:'#2BBD6E'}},{value:2,itemStyle:{color:'#2BBD6E'}},{value:3,itemStyle:{color:'#00B050'}},{value:3,itemStyle:{color:'#00B050'}},{value:8,itemStyle:{color:'#E74C3C'}},{value:9,itemStyle:{color:'#E74C3C'}}],label:{show:true,position:'right',fontSize:13,fontWeight:'bold',formatter:'{c}人'}}]});
+
+var c6=echarts.init(document.getElementById('c-region'));
+c6.setOption({tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},grid:{left:'5%',right:'5%',bottom:'10%',top:'5%',containLabel:true},xAxis:{type:'category',data:['浙江','山东','河北','广东','内蒙古','河南','安徽','北京','广西','吉林','陕西','上海','云南','江西','湖北','山西'],axisLabel:{fontSize:11,rotate:30}},yAxis:{type:'value',name:'人数'},series:[{type:'bar',barWidth:'55%',data:[8,8,5,5,2,2,2,2,2,2,1,1,1,1,1,1],itemStyle:{color:'#00B050',borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:12}}]});
+
+window.addEventListener('resize',function(){c1.resize();c2.resize();c3.resize();c4.resize();c5.resize();c6.resize()});
+</script>
+</body>
+</html>
