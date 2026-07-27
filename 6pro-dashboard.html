@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6pro 4G门铃公测 — 数据看板</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7fa; padding: 24px; color: #333; }
+.header { text-align: center; margin-bottom: 28px; }
+.header h1 { font-size: 24px; color: #1a1a1a; font-weight: 700; }
+.header p { font-size: 13px; color: #999; margin-top: 6px; }
+.kpi-row { display: flex; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+.kpi-card { flex: 1; min-width: 140px; background: #fff; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform 0.2s; }
+.kpi-card:hover { transform: translateY(-2px); }
+.kpi-num { font-size: 32px; font-weight: 800; line-height: 1.2; }
+.kpi-label { font-size: 13px; color: #888; margin-top: 6px; }
+.kpi-green .kpi-num { color: #00B050; }
+.kpi-blue .kpi-num { color: #2B7FFF; }
+.kpi-orange .kpi-num { color: #F39C12; }
+.kpi-red .kpi-num { color: #E74C3C; }
+.kpi-gray .kpi-num { color: #666; }
+.section { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.section-title { font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid #00B050; }
+.chart-row { display: flex; gap: 24px; flex-wrap: wrap; }
+.chart-box { flex: 1; min-width: 320px; }
+.chart-box h3 { font-size: 14px; color: #555; margin-bottom: 8px; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; }
+th { background: #00B050; color: #fff; font-size: 13px; font-weight: 600; padding: 12px 14px; text-align: center; }
+th:first-child { text-align: left; padding-left: 24px; border-radius: 8px 0 0 0; }
+th:last-child { border-radius: 0 8px 0 0; }
+td { padding: 10px 14px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0; color: #333; }
+td.name { font-weight: 600; text-align: left; padding-left: 24px; }
+tr:hover { background: #f9fbf9; }
+tr.total { background: #f0f7f0; font-weight: 700; }
+tr.total td { border-bottom: none; }
+tr.total td:first-child { border-radius: 0 0 0 8px; }
+tr.total td:last-child { border-radius: 0 0 8px 0; }
+.done { color: #00B050; font-size: 16px; }
+.miss { color: #ddd; font-size: 16px; }
+.daily-count { font-weight: 700; }
+.daily-count.has { color: #00B050; }
+.daily-count.zero { color: #ccc; }
+.status-done { color: #00B050; font-weight: 600; }
+.status-miss { color: #E74C3C; font-weight: 600; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.badge-new { background: #e8f5e9; color: #00B050; }
+.badge-known { background: #fff3e0; color: #F39C12; }
+.footer { text-align: center; padding: 16px; color: #999; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📊 6pro 4G门铃公测 — 数据看板</h1>
+  <p>更新时间：2026-07-27 09:30 | 数据来源：飞书文档</p>
+</div>
+
+<!-- KPI Cards -->
+<div class="kpi-row">
+  <div class="kpi-card kpi-gray"><div class="kpi-num">20</div><div class="kpi-label">公测用户总数</div></div>
+  <div class="kpi-card kpi-green"><div class="kpi-num">19</div><div class="kpi-label">开箱问卷完成</div></div>
+  <div class="kpi-card kpi-green"><div class="kpi-num">18</div><div class="kpi-label">配网问卷完成</div></div>
+  <div class="kpi-card kpi-blue"><div class="kpi-num">58</div><div class="kpi-label">日常反馈条数</div></div>
+  <div class="kpi-card kpi-green"><div class="kpi-num">14</div><div class="kpi-label">全部完成人数</div></div>
+  <div class="kpi-card kpi-red"><div class="kpi-num">6</div><div class="kpi-label">未完成人数</div></div>
+</div>
+
+<!-- Charts Row 1: Tag Distribution + New vs Known -->
+<div class="chart-row">
+  <div class="section chart-box">
+    <div class="section-title">一级标签分布（58条日常反馈）</div>
+    <div id="chart-tag1" style="height: 340px;"></div>
+  </div>
+  <div class="section chart-box">
+    <div class="section-title">新发现 vs 已知问题</div>
+    <div id="chart-new-known" style="height: 340px;"></div>
+  </div>
+</div>
+
+<!-- Charts Row 2: Top二级标签 -->
+<div class="section">
+  <div class="section-title">高频问题 TOP10（二级标签）</div>
+  <div id="chart-tag2" style="height: 360px;"></div>
+</div>
+
+<!-- User Status Table -->
+<div class="section">
+  <div class="section-title">用户作业完成情况</div>
+  <table>
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>开箱</th>
+        <th>配网</th>
+        <th>日常反馈条数</th>
+        <th>作业完成情况</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">孙晓明</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count zero">0</td><td class="status-miss">缺日常</td></tr>
+      <tr><td class="name">许军州</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">5</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">徐婷婷</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">2</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">夏君</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count zero">0</td><td class="status-miss">缺日常</td></tr>
+      <tr><td class="name">魏健伟</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">1</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">吴汞</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count zero">0</td><td class="status-miss">缺日常</td></tr>
+      <tr><td class="name">朱君</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">7</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">陈俊</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">6</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">袁飞</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count zero">0</td><td class="status-miss">缺日常</td></tr>
+      <tr><td class="name">相杰</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">6</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">朱彤</td><td class="done">✅</td><td class="miss">❌</td><td class="daily-count zero">0</td><td class="status-miss">缺配网、日常</td></tr>
+      <tr><td class="name">于晨光</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">3</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">王瑷珲</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">6</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">瑞子</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">3</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">美诺</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">5</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">黄军剑</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count zero">0</td><td class="status-miss">缺日常</td></tr>
+      <tr><td class="name">张雷</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">7</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">周军</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">1</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">何三涛</td><td class="done">✅</td><td class="done">✅</td><td class="daily-count has">4</td><td class="status-done">已完成</td></tr>
+      <tr><td class="name">蔡坤城</td><td class="miss">❌</td><td class="miss">❌</td><td class="daily-count zero">0</td><td class="status-miss">全部未完成</td></tr>
+      <tr class="total"><td class="name">合计</td><td>19人</td><td>18人</td><td>58条</td><td>14人完成</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+// Chart 1: 一级标签分布 - 横向条形图
+var chart1 = echarts.init(document.getElementById('chart-tag1'));
+chart1.setOption({
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  grid: { left: '18%', right: '8%', top: '4%', bottom: '4%' },
+  xAxis: { type: 'value', axisLabel: { fontSize: 11 } },
+  yAxis: { type: 'category', data: ['硬件/信号','包装/配件','音频/通话体验','功能需求','配网/安装引导','硬件设计','视频/流处理','APP功能/交互'], axisLabel: { fontSize: 12 } },
+  series: [{
+    type: 'bar',
+    data: [
+      {value: 2, itemStyle: {color: '#999'}},
+      {value: 2, itemStyle: {color: '#999'}},
+      {value: 2, itemStyle: {color: '#2B7FFF'}},
+      {value: 4, itemStyle: {color: '#F39C12'}},
+      {value: 4, itemStyle: {color: '#999'}},
+      {value: 5, itemStyle: {color: '#999'}},
+      {value: 16, itemStyle: {color: '#2B7FFF'}},
+      {value: 23, itemStyle: {color: '#00B050'}}
+    ],
+    barWidth: '60%',
+    label: { show: true, position: 'right', fontSize: 12, fontWeight: 600 }
+  }]
+});
+
+// Chart 2: 新发现 vs 已知 - 环形图
+var chart2 = echarts.init(document.getElementById('chart-new-known'));
+chart2.setOption({
+  tooltip: { trigger: 'item' },
+  legend: { bottom: '8%', left: 'center', fontSize: 13 },
+  series: [{
+    type: 'pie',
+    radius: ['42%', '68%'],
+    center: ['50%', '42%'],
+    data: [
+      {value: 50, name: '🟢 新发现', itemStyle: {color: '#00B050'}},
+      {value: 8, name: '🔴 已知问题', itemStyle: {color: '#F39C12'}}
+    ],
+    label: { show: true, fontSize: 13, fontWeight: 600, formatter: '{b}\n{c}条 ({d}%)' },
+    emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0,0,0,0.3)' } }
+  }]
+});
+
+// Chart 3: TOP10 二级标签
+var chart3 = echarts.init(document.getElementById('chart-tag2'));
+chart3.setOption({
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  grid: { left: '28%', right: '8%', top: '4%', bottom: '4%' },
+  xAxis: { type: 'value', axisLabel: { fontSize: 11 } },
+  yAxis: { type: 'category', data: ['通话功能失败','卡录画面空白','显示异常/数据错误','省电模式优化','基站信号弱','设置项自动重置','误报/空事件推送','开流失败','信号图标显示错误','漏录/漏拍'], axisLabel: { fontSize: 11 } },
+  series: [{
+    type: 'bar',
+    data: [
+      {value: 1, itemStyle: {color: '#E74C3C'}},
+      {value: 1, itemStyle: {color: '#E74C3C'}},
+      {value: 1, itemStyle: {color: '#F39C12'}},
+      {value: 1, itemStyle: {color: '#999'}},
+      {value: 2, itemStyle: {color: '#F39C12'}},
+      {value: 2, itemStyle: {color: '#F39C12'}},
+      {value: 2, itemStyle: {color: '#F39C12'}},
+      {value: 3, itemStyle: {color: '#2B7FFF'}},
+      {value: 4, itemStyle: {color: '#E74C3C'}},
+      {value: 4, itemStyle: {color: '#E74C3C'}}
+    ],
+    barWidth: '60%',
+    label: { show: true, position: 'right', fontSize: 12, fontWeight: 600 }
+  }]
+});
+
+// Responsive
+window.addEventListener('resize', function() {
+  chart1.resize(); chart2.resize(); chart3.resize();
+});
+</script>
+
+<div class="footer">
+  🦞 尹燕玲-报告分析专家 | 6pro 4G门铃公测数据看板 | 2026-07-27
+</div>
+</body>
+</html>
