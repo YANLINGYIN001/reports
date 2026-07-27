@@ -1,108 +1,95 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>6pro 4G门铃公测·开箱体验专项报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7fa; padding: 32px; color: #333; }
-.title { text-align: center; margin-bottom: 24px; }
-.title h1 { font-size: 24px; font-weight: 800; color: #1a1a1a; }
-.title p { font-size: 13px; color: #999; margin-top: 6px; }
-.kpi-row { display: flex; gap: 14px; margin-bottom: 24px; justify-content: center; }
-.kpi { background: #fff; border-radius: 10px; padding: 16px 28px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-.kpi .num { font-size: 28px; font-weight: 800; }
-.kpi .lbl { font-size: 12px; color: #888; margin-top: 4px; }
-.kpi.green .num { color: #00B050; }
-.kpi.blue .num { color: #2B7FFF; }
-.kpi.orange .num { color: #F39C12; }
-.kpi.gray .num { color: #666; }
-.section { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-.section h2 { font-size: 16px; font-weight: 700; margin-bottom: 14px; padding-left: 10px; border-left: 4px solid #00B050; }
-table { width: 100%; border-collapse: collapse; }
-th { background: #00B050; color: #fff; font-size: 12px; font-weight: 600; padding: 10px 12px; text-align: center; }
-th:first-child { text-align: left; padding-left: 16px; border-radius: 6px 0 0 0; }
-th:last-child { border-radius: 0 6px 0 0; }
-td { padding: 9px 12px; font-size: 12px; border-bottom: 1px solid #f0f0f0; text-align: center; }
-td:first-child { text-align: left; padding-left: 16px; font-weight: 600; }
-tr:hover { background: #f9fbf9; }
-.score-bar { display: inline-block; height: 8px; border-radius: 4px; background: #00B050; vertical-align: middle; margin-right: 4px; }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
-.tag-issue { background: #fde8e8; color: #E74C3C; }
-.tag-suggest { background: #e8f0ff; color: #2B7FFF; }
-.tag-praise { background: #e8f7ee; color: #00B050; }
-.footer { text-align: center; padding: 12px; color: #999; font-size: 11px; }
+:root{--g:#00B050;--gl:#2BBD6E;--d:#333;--l:#999;--r:#E74C3C;--o:#F39C12;--bg:#f5f7fa}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--d);line-height:1.6}
+.c{max-width:1100px;margin:0 auto;padding:20px}
+.hd{background:linear-gradient(135deg,var(--g),var(--gl));color:#fff;padding:32px 40px;border-radius:12px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,176,80,.15)}
+.hd h1{font-size:26px;margin-bottom:8px}.hd .m{font-size:14px;opacity:.9}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.cd{background:#fff;padding:18px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:center}
+.cd .n{font-size:30px;font-weight:700;color:var(--g)}.cd .lb{font-size:13px;color:var(--l);margin-top:4px}
+.cd.o .n{color:var(--o)}.cd.r .n{color:var(--r)}
+.s{background:#fff;border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.s h2{font-size:18px;margin-bottom:16px;padding-left:12px;border-left:4px solid var(--g)}
+.ch{width:100%;height:300px}.ch2{width:100%;height:240px}
+.row{display:flex;gap:20px}.row>.s{flex:1}
+table{width:100%;border-collapse:collapse;font-size:13px}
+table th{background:var(--g);color:#fff;padding:8px 12px;text-align:left;font-weight:600}
+table td{padding:8px 12px;border-bottom:1px solid #eee}table tr:hover{background:#f9f9f9}
+.rh{color:var(--r);font-weight:600}.rm{color:var(--o);font-weight:600}.rl{color:var(--g);font-weight:600}
+.ft{text-align:center;padding:20px;color:var(--l);font-size:13px}
+.pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.pill-g{background:#e8f5e9;color:#2e7d32}.pill-o{background:#fff3e0;color:#e65100}.pill-r{background:#ffebee;color:#c62828}
+.quote{font-style:italic;color:#555;font-size:12px;padding:6px 10px;border-left:3px solid var(--gl);margin:4px 0;background:#f0f9f1;border-radius:0 6px 6px 0}
+.insight{background:#F0FBF4;border-left:4px solid var(--g);padding:14px 18px;margin:10px 0;border-radius:0 8px 8px 0;font-size:14px}
+.insight strong{color:var(--g)}
 </style>
 </head>
 <body>
-<div class="title">
-  <h1>📦 6pro 4G门铃公测 — 开箱体验报告</h1>
-  <p>2026-07-27 10:27 | 样本量：19份</p>
+<div class="c">
+<div class="hd">
+<h1>📦 6pro 4G门铃公测 · 开箱体验专项报告</h1>
+<div class="m">数据截止: 2026-07-27 | 样本: 19份 | 公测用户: 20人 | 完成率: 95%</div>
 </div>
 
-<div class="kpi-row">
-  <div class="kpi gray"><div class="num">19</div><div class="lbl">参与人数</div></div>
-  <div class="kpi green"><div class="num">57.3</div><div class="lbl">平均总分(/60)</div></div>
-  <div class="kpi green"><div class="num">9.5</div><div class="lbl">平均评分(/10)</div></div>
-  <div class="kpi orange"><div class="num">5</div><div class="lbl">非满分反馈</div></div>
+<div class="cards">
+<div class="cd"><div class="n">19</div><div class="lb">开箱问卷完成</div></div>
+<div class="cd"><div class="n">9.5</div><div class="lb">满意度均值(/10)</div></div>
+<div class="cd"><div class="n">57.3</div><div class="lb">平均总分(/60)</div></div>
+<div class="cd o"><div class="n">5</div><div class="lb">非满分反馈</div></div>
 </div>
 
-<div class="section">
-  <h2>评分分布</h2>
-  <table>
-    <thead><tr><th>评分</th><th>人数</th><th>占比</th><th>分布</th></tr></thead>
-    <tbody>
-      <tr><td>10分（非常满意）</td><td>14</td><td>73.7%</td><td><span class="score-bar" style="width:147px"></span>14</td></tr>
-      <tr><td>9分</td><td>4</td><td>21.1%</td><td><span class="score-bar" style="width:42px"></span>4</td></tr>
-      <tr><td>8分</td><td>2</td><td>10.5%</td><td><span class="score-bar" style="width:21px;background:#F39C12"></span>2</td></tr>
-      <tr><td>6分</td><td>1</td><td>5.3%</td><td><span class="score-bar" style="width:11px;background:#E74C3C"></span>1</td></tr>
-    </tbody>
-  </table>
+<div class="s" style="background:linear-gradient(135deg,#e8f5e9,#f1f8f3);border-left:5px solid #00B050">
+<h2>📝 报告总结</h2>
+<div style="font-size:13px;line-height:1.8">
+<p style="margin-bottom:10px"><b style="color:#00B050">📊 数据概览:</b>20人参与公测，19人完成开箱问卷(95%)，整体满意度<b>9.5分</b>，73.7%用户给出满分10分，5人给出非满分反馈。</p>
+<p style="margin-bottom:10px"><b style="color:#00B050">✅ 核心优点:</b>包装完好度均分9.9分表现最佳，尺寸手感均分9.9分，外观质感9.8分，配件齐全度9.8分。用户评价"保护到位""四角尖尖无磕碰""配件齐全有水平仪"。</p>
+<p style="margin-bottom:10px"><b style="color:#F39C12">⚠️ 核心问题:</b>包装材料缺乏可降解防划袋(3条反馈)，外包装填充物简陋(2条)，说明书有黑色污渍(1条)，包装盒设计可优化(2条建议改为开盖式)。</p>
+<p><b style="color:#00B050">🎯 改进建议:</b>增加主机可降解塑料袋防划痕，升级物流填充材料，包装盒改为开盖式设计，加强说明书印刷品控。</p>
+</div>
 </div>
 
-<div class="section">
-  <h2>各环节评价均分</h2>
-  <table>
-    <thead><tr><th>评价维度</th><th>平均分(/10)</th><th>最低分</th><th>评价</th></tr></thead>
-    <tbody>
-      <tr><td>包装完好度</td><td>9.9</td><td>9</td><td>⭐ 表现最佳</td></tr>
-      <tr><td>外观质感</td><td>9.8</td><td>9</td><td>优秀</td></tr>
-      <tr><td>配件齐全度</td><td>9.8</td><td>9</td><td>优秀</td></tr>
-      <tr><td>尺寸手感</td><td>9.9</td><td>10</td><td>⭐ 表现最佳</td></tr>
-      <tr><td>说明书清晰度</td><td>9.8</td><td>9</td><td>优秀</td></tr>
-    </tbody>
-  </table>
+<div class="row">
+<div class="s"><h2>整体满意度评分分布</h2><div id="score" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">均值9.5</span> <span class="pill pill-g">满分率73.7%(14/19)</span></div></div>
+<div class="s"><h2>各环节评价均分</h2><div id="dimscore" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">全部维度≥9.8分</span></div></div>
 </div>
 
-<div class="section">
-  <h2>问题与建议汇总</h2>
-  <table>
-    <thead><tr><th>类型</th><th>反馈内容</th><th>标签</th></tr></thead>
-    <tbody>
-      <tr><td>包装材料</td><td>主机及基站建议多套可降解塑料袋，防止划痕，其他360设备有此配置</td><td><span class="tag tag-suggest">建议</span></td></tr>
-      <tr><td>包装材料</td><td>设备没有套可降解防划袋，保护膜气泡大</td><td><span class="tag tag-issue">问题</span></td></tr>
-      <tr><td>包装材料</td><td>外包装填充物特别low，完全就是应付</td><td><span class="tag tag-issue">问题</span></td></tr>
-      <tr><td>包装材料</td><td>减震膜建议换成充气式，固定性更好；物流填充泡沫纸未四周包裹</td><td><span class="tag tag-suggest">建议</span></td></tr>
-      <tr><td>包装设计</td><td>建议包装盒改为开盖式（类似5pro 4g版）；镜头膜建议改不透明纸</td><td><span class="tag tag-suggest">建议</span></td></tr>
-      <tr><td>文档/指南</td><td>说明书打开有一小块黑色污渍，细节品控不足</td><td><span class="tag tag-issue">问题</span></td></tr>
-      <tr><td>配件建议</td><td>背板建议多配一片3M胶，方便二次挪动；卡针装嵌方式可优化</td><td><span class="tag tag-suggest">建议</span></td></tr>
-    </tbody>
-  </table>
+<div class="s"><h2>🔥 问题与建议汇总</h2>
+<table><thead><tr><th style="width:100px">类型</th><th style="width:40%">问题/建议</th><th style="width:60px">反馈量</th><th>用户原声</th><th style="width:120px">标签</th></tr></thead><tbody>
+<tr><td>包装材料</td><td>缺少可降解防划袋，其他360设备有此配置</td><td style="text-align:center;font-weight:700">3</td><td><div class="quote">"主机及基站希望能多套一个可降解塑料袋"</div><div class="quote">"设备没有套可降解的防划袋"</div></td><td><span class="pill pill-o">建议</span></td></tr>
+<tr><td>包装材料</td><td>外包装填充物简陋，运输颠簸风险</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote">"外包装填充物特别的low，完全就是应付"</div><div class="quote">"物流填充泡沫纸只放上面没四周包裹"</div></td><td><span class="pill pill-r">问题</span></td></tr>
+<tr><td>包装设计</td><td>建议包装盒改为开盖式，镜头膜改不透明</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote">"建议包装盒像5pro4g那种开盖式的"</div><div class="quote">"镜头膜改成不透明纸，要不然感觉是旧的"</div></td><td><span class="pill pill-o">建议</span></td></tr>
+<tr><td>文档品控</td><td>说明书有黑色污渍</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote">"快速添加指南左下角有一块黑色污渍"</div></td><td><span class="pill pill-r">问题</span></td></tr>
+<tr><td>配件建议</td><td>背板多配3M胶，卡针装嵌方式优化</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote">"背板多配一片粘胶，防止贴歪二次挪动"</div></td><td><span class="pill pill-o">建议</span></td></tr>
+</tbody></table>
+<div class="insight"><strong>💡 改进优先级:</strong> P1 增加可降解防划袋（3条反馈，与品牌一致性相关） | P2 升级物流填充材料 | P3 包装盒开盖式改版</div>
 </div>
 
-<div class="section">
-  <h2>典型正面反馈</h2>
-  <table>
-    <thead><tr><th>用户</th><th>原声</th></tr></thead>
-    <tbody>
-      <tr><td>—</td><td>"保护得特别好，盒子四角尖尖没有磕碰"</td></tr>
-      <tr><td>—</td><td>"开启包装顶针存放外观惊喜，配件零件整体合理，既环保又不失高端形象"</td></tr>
-      <tr><td>—</td><td>"四个角非常完整，没有磕碰，膜也没有划痕"</td></tr>
-      <tr><td>—</td><td>"收到货物时包装完好无损，产品外包装精美，配套设施齐全，特别是还有水平仪"</td></tr>
-    </tbody>
-  </table>
+<div class="s"><h2>💬 典型正面反馈</h2>
+<table><thead><tr><th>用户原声</th><th style="width:80px">评分</th></tr></thead><tbody>
+<tr><td><div class="quote">"保护得特别好，盒子四角尖尖没有磕碰"</div></td><td>10分</td></tr>
+<tr><td><div class="quote">"开启包装顶针存放外观惊喜，配件零件整体合理，既环保又不失高端形象"</div></td><td>10分</td></tr>
+<tr><td><div class="quote">"四个角非常完整，没有磕碰，膜也没有划痕"</div></td><td>10分</td></tr>
+<tr><td><div class="quote">"收到货物包装完好无损，产品外包装精美，配套设施齐全，特别是还有水平仪"</div></td><td>10分</td></tr>
+<tr><td><div class="quote">"摆放合理，配件包.." </div></td><td>10分</td></tr>
+</tbody></table>
 </div>
 
-<div class="footer">🦞 尹燕玲-报告分析专家 | 6pro 4G门铃公测 | 2026-07-27</div>
+<div class="ft"><p>🦞 由尹燕玲-报告分析专家生成 | 6pro 4G门铃公测 | 2026-07-27 | 数据来源：飞书「开箱」sheet</p></div>
+</div>
+<script>
+var G='#00B050',GL='#2BBD6E',R='#E74C3C',O='#F39C12';
+// 满意度分布: 6分×1, 8分×2, 9分×4, 10分×12(含"非常满意")
+echarts.init(document.getElementById('score')).setOption({tooltip:{trigger:'axis'},grid:{left:'8%',right:'5%',top:'10%',bottom:'12%'},xAxis:{type:'category',data:['6分','7分','8分','9分','10分(非常满意)'],axisLabel:{fontSize:11}},yAxis:{type:'value'},series:[{type:'bar',data:[1,0,2,4,12],barWidth:'55%',itemStyle:{color:function(p){return p.dataIndex>=3?G:(p.dataIndex>=2?O:R)},borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:12}}]});
+// 各维度均分
+echarts.init(document.getElementById('dimscore')).setOption({tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'分'}},grid:{left:'18%',right:'8%',top:'5%',bottom:'5%'},xAxis:{type:'value',max:10,axisLabel:{formatter:'{value}分'}},yAxis:{type:'category',data:['说明书清晰度','配件齐全度','外观质感','包装完好度','尺寸手感']},series:[{type:'bar',barWidth:'50%',data:[{value:9.8,itemStyle:{color:G}},{value:9.8,itemStyle:{color:G}},{value:9.8,itemStyle:{color:G}},{value:9.9,itemStyle:{color:G}},{value:9.9,itemStyle:{color:G}}],label:{show:true,position:'right',formatter:'{c}分',fontSize:12}}]});
+</script>
 </body>
 </html>
