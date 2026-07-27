@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7fa; padding: 32px; color: #333; }
+.title { text-align: center; margin-bottom: 24px; }
+.title h1 { font-size: 24px; font-weight: 800; color: #1a1a1a; }
+.title p { font-size: 13px; color: #999; margin-top: 6px; }
+.kpi-row { display: flex; gap: 14px; margin-bottom: 24px; justify-content: center; }
+.kpi { background: #fff; border-radius: 10px; padding: 16px 28px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi .num { font-size: 28px; font-weight: 800; }
+.kpi .lbl { font-size: 12px; color: #888; margin-top: 4px; }
+.kpi.green .num { color: #00B050; }
+.kpi.blue .num { color: #2B7FFF; }
+.kpi.orange .num { color: #F39C12; }
+.kpi.gray .num { color: #666; }
+.section { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 16px; font-weight: 700; margin-bottom: 14px; padding-left: 10px; border-left: 4px solid #00B050; }
+table { width: 100%; border-collapse: collapse; }
+th { background: #00B050; color: #fff; font-size: 12px; font-weight: 600; padding: 10px 12px; text-align: center; }
+th:first-child { text-align: left; padding-left: 16px; border-radius: 6px 0 0 0; }
+th:last-child { border-radius: 0 6px 0 0; }
+td { padding: 9px 12px; font-size: 12px; border-bottom: 1px solid #f0f0f0; text-align: center; }
+td:first-child { text-align: left; padding-left: 16px; font-weight: 600; }
+tr:hover { background: #f9fbf9; }
+.score-bar { display: inline-block; height: 8px; border-radius: 4px; background: #00B050; vertical-align: middle; margin-right: 4px; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.tag-issue { background: #fde8e8; color: #E74C3C; }
+.tag-suggest { background: #e8f0ff; color: #2B7FFF; }
+.tag-praise { background: #e8f7ee; color: #00B050; }
+.footer { text-align: center; padding: 12px; color: #999; font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="title">
+  <h1>📦 6pro 4G门铃公测 — 开箱体验报告</h1>
+  <p>2026-07-27 10:27 | 样本量：19份</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi gray"><div class="num">19</div><div class="lbl">参与人数</div></div>
+  <div class="kpi green"><div class="num">57.3</div><div class="lbl">平均总分(/60)</div></div>
+  <div class="kpi green"><div class="num">9.5</div><div class="lbl">平均评分(/10)</div></div>
+  <div class="kpi orange"><div class="num">5</div><div class="lbl">非满分反馈</div></div>
+</div>
+
+<div class="section">
+  <h2>评分分布</h2>
+  <table>
+    <thead><tr><th>评分</th><th>人数</th><th>占比</th><th>分布</th></tr></thead>
+    <tbody>
+      <tr><td>10分（非常满意）</td><td>14</td><td>73.7%</td><td><span class="score-bar" style="width:147px"></span>14</td></tr>
+      <tr><td>9分</td><td>4</td><td>21.1%</td><td><span class="score-bar" style="width:42px"></span>4</td></tr>
+      <tr><td>8分</td><td>2</td><td>10.5%</td><td><span class="score-bar" style="width:21px;background:#F39C12"></span>2</td></tr>
+      <tr><td>6分</td><td>1</td><td>5.3%</td><td><span class="score-bar" style="width:11px;background:#E74C3C"></span>1</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <h2>各环节评价均分</h2>
+  <table>
+    <thead><tr><th>评价维度</th><th>平均分(/10)</th><th>最低分</th><th>评价</th></tr></thead>
+    <tbody>
+      <tr><td>包装完好度</td><td>9.9</td><td>9</td><td>⭐ 表现最佳</td></tr>
+      <tr><td>外观质感</td><td>9.8</td><td>9</td><td>优秀</td></tr>
+      <tr><td>配件齐全度</td><td>9.8</td><td>9</td><td>优秀</td></tr>
+      <tr><td>尺寸手感</td><td>9.9</td><td>10</td><td>⭐ 表现最佳</td></tr>
+      <tr><td>说明书清晰度</td><td>9.8</td><td>9</td><td>优秀</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <h2>问题与建议汇总</h2>
+  <table>
+    <thead><tr><th>类型</th><th>反馈内容</th><th>标签</th></tr></thead>
+    <tbody>
+      <tr><td>包装材料</td><td>主机及基站建议多套可降解塑料袋，防止划痕，其他360设备有此配置</td><td><span class="tag tag-suggest">建议</span></td></tr>
+      <tr><td>包装材料</td><td>设备没有套可降解防划袋，保护膜气泡大</td><td><span class="tag tag-issue">问题</span></td></tr>
+      <tr><td>包装材料</td><td>外包装填充物特别low，完全就是应付</td><td><span class="tag tag-issue">问题</span></td></tr>
+      <tr><td>包装材料</td><td>减震膜建议换成充气式，固定性更好；物流填充泡沫纸未四周包裹</td><td><span class="tag tag-suggest">建议</span></td></tr>
+      <tr><td>包装设计</td><td>建议包装盒改为开盖式（类似5pro 4g版）；镜头膜建议改不透明纸</td><td><span class="tag tag-suggest">建议</span></td></tr>
+      <tr><td>文档/指南</td><td>说明书打开有一小块黑色污渍，细节品控不足</td><td><span class="tag tag-issue">问题</span></td></tr>
+      <tr><td>配件建议</td><td>背板建议多配一片3M胶，方便二次挪动；卡针装嵌方式可优化</td><td><span class="tag tag-suggest">建议</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <h2>典型正面反馈</h2>
+  <table>
+    <thead><tr><th>用户</th><th>原声</th></tr></thead>
+    <tbody>
+      <tr><td>—</td><td>"保护得特别好，盒子四角尖尖没有磕碰"</td></tr>
+      <tr><td>—</td><td>"开启包装顶针存放外观惊喜，配件零件整体合理，既环保又不失高端形象"</td></tr>
+      <tr><td>—</td><td>"四个角非常完整，没有磕碰，膜也没有划痕"</td></tr>
+      <tr><td>—</td><td>"收到货物时包装完好无损，产品外包装精美，配套设施齐全，特别是还有水平仪"</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">🦞 尹燕玲-报告分析专家 | 6pro 4G门铃公测 | 2026-07-27</div>
+</body>
+</html>
