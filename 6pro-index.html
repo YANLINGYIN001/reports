@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>门铃6pro 4G公测·报告汇总</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: #F7F9FB;
+    color: #333;
+    line-height: 1.6;
+  }
+  .header {
+    background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%);
+    color: #fff;
+    padding: 48px 32px 36px;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 4px 24px rgba(0,176,80,0.18);
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
+  .header .sub { font-size: 15px; opacity: 0.9; }
+  .header .date { font-size: 13px; opacity: 0.75; margin-top: 8px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 32px 20px 48px; }
+
+  .report-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .report-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 4px solid #00B050;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .report-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  }
+  .report-card .icon { font-size: 36px; margin-bottom: 12px; }
+  .report-card h2 { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 8px; }
+  .report-card .desc { font-size: 14px; color: #999; margin-bottom: 12px; }
+  .report-card .meta { font-size: 13px; color: #00B050; font-weight: 500; }
+  .report-card .stats {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #F0F0F0;
+  }
+  .stat { font-size: 13px; color: #666; }
+  .stat strong { color: #00B050; font-size: 16px; }
+
+  .report-card.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 32px 0 16px;
+    color: #999;
+    font-size: 13px;
+  }
+  .footer .lobster { font-size: 16px; }
+
+  @media (max-width: 768px) {
+    .report-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🔔 门铃6pro 4G公测·报告汇总</h1>
+  <div class="sub">20人公测团队 · 开箱体验 / 配网安装 / 日常问题反馈</div>
+  <div class="date">数据截至 2026-07-28</div>
+</div>
+
+<div class="container">
+  <div class="report-grid">
+
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-homework-status.html">
+      <div class="icon">📋</div>
+      <h2>20人作业完成情况</h2>
+      <div class="desc">公测团队各成员开箱、配网、日常反馈完成进度一览</div>
+      <div class="stats">
+        <div class="stat">开箱 <strong>20/20</strong></div>
+        <div class="stat">配网 <strong>19/20</strong></div>
+        <div class="stat">日常反馈 <strong>109条</strong></div>
+      </div>
+    </a>
+
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-unboxing.html">
+      <div class="icon">📦</div>
+      <h2>开箱体验专项报告</h2>
+      <div class="desc">包装外观、配件完整性、开箱第一印象、用户满意度分析</div>
+      <div class="stats">
+        <div class="stat">样本量 <strong>20人</strong></div>
+        <div class="stat">满意度 <strong>9.5分</strong></div>
+      </div>
+    </a>
+
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-config.html">
+      <div class="icon">🔧</div>
+      <h2>配网安装专项报告</h2>
+      <div class="desc">首次绑定成功率、配网入口分布、各维度评分、信号强度、用户痛点与爽点</div>
+      <div class="stats">
+        <div class="stat">样本量 <strong>19人</strong></div>
+        <div class="stat">成功率 <strong>89.5%</strong></div>
+        <div class="stat">满意度 <strong>9.47分</strong></div>
+      </div>
+    </a>
+
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-daily.html">
+      <div class="icon">📊</div>
+      <h2>日常问题反馈专项报告</h2>
+      <div class="desc">109条反馈按二级标签分类统计、问题分布、改进建议</div>
+      <div class="stats">
+        <div class="stat">反馈量 <strong>109条</strong></div>
+        <div class="stat">参与人数 <strong>17人</strong></div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="footer">
+  <div class="lobster">🦞 尹燕玲-报告分析专家</div>
+  <div>门铃6pro 4G公测 · 2026-07</div>
+</div>
+
+</body>
+</html>
