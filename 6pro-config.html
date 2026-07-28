@@ -2,133 +2,576 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>6pro 4G门铃公测·配网安装专项报告</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 <style>
-:root{--g:#00B050;--gl:#2BBD6E;--d:#333;--l:#999;--r:#E74C3C;--o:#F39C12;--bg:#f5f7fa}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--d);line-height:1.6}
-.c{max-width:1100px;margin:0 auto;padding:20px}
-.hd{background:linear-gradient(135deg,var(--g),var(--gl));color:#fff;padding:32px 40px;border-radius:12px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,176,80,.15)}
-.hd h1{font-size:26px;margin-bottom:8px}.hd .m{font-size:14px;opacity:.9}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
-.cd{background:#fff;padding:18px;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:center}
-.cd .n{font-size:30px;font-weight:700;color:var(--g)}.cd .lb{font-size:13px;color:var(--l);margin-top:4px}
-.cd.o .n{color:var(--o)}.cd.r .n{color:var(--r)}.cd.b .n{color:#3498DB}
-.s{background:#fff;border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.s h2{font-size:18px;margin-bottom:16px;padding-left:12px;border-left:4px solid var(--g)}
-.ch2{width:100%;height:280px}
-.row{display:flex;gap:20px}.row>.s{flex:1}
-table{width:100%;border-collapse:collapse;font-size:13px}
-table th{background:var(--g);color:#fff;padding:8px 12px;text-align:left;font-weight:600}
-table td{padding:8px 12px;border-bottom:1px solid #eee}table tr:hover{background:#f9f9f9}
-.ft{text-align:center;padding:20px;color:var(--l);font-size:13px}
-.pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
-.pill-g{background:#e8f5e9;color:#2e7d32}.pill-o{background:#fff3e0;color:#e65100}.pill-r{background:#ffebee;color:#c62828}.pill-b{background:#e3f2fd;color:#1565c0}
-.quote{font-style:italic;color:#555;font-size:12px;padding:6px 10px;border-left:3px solid var(--gl);margin:4px 0;background:#f0f9f1;border-radius:0 6px 6px 0}
-.quote .name{font-style:normal;font-weight:600;color:var(--g);margin-right:4px}
-.insight{background:#F0FBF4;border-left:4px solid var(--g);padding:14px 18px;margin:10px 0;border-radius:0 8px 8px 0;font-size:14px}
-.insight strong{color:var(--g)}
+  :root {
+    --green-primary: #00B050;
+    --green-light: #2BBD6E;
+    --green-bg: #E8F8EF;
+    --dark: #333333;
+    --gray: #999999;
+    --light-gray: #F5F5F5;
+    --red: #E74C3C;
+    --orange: #F39C12;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: #F7F9FB;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+  .header {
+    background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%);
+    color: #fff;
+    padding: 40px 32px 32px;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 4px 24px rgba(0,176,80,0.18);
+  }
+  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .header .sub { font-size: 14px; opacity: 0.9; }
+  .header .update-time { font-size: 13px; opacity: 0.75; margin-top: 6px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px 20px 48px; }
+
+  /* KPI Cards */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 4px solid var(--green-primary);
+    transition: transform 0.2s;
+  }
+  .kpi-card:nth-child(2) { border-top-color: var(--green-light); }
+  .kpi-card:nth-child(3) { border-top-color: #1A9F4A; }
+  .kpi-card:nth-child(4) { border-top-color: #15A35A; }
+  .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+  .kpi-value { font-size: 36px; font-weight: 700; color: var(--green-primary); line-height: 1.2; }
+  .kpi-unit { font-size: 16px; color: var(--gray); margin-left: 2px; }
+  .kpi-label { font-size: 14px; color: var(--dark); margin-top: 8px; font-weight: 500; }
+  .kpi-sub { font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+  /* Section */
+  .section {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 4px solid var(--green-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .icon { font-size: 20px; }
+  .chart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .chart-box { background: var(--white); border-radius: 16px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+  .chart-box-title { font-size: 16px; font-weight: 600; color: var(--dark); margin-bottom: 12px; }
+  .chart { width: 100%; height: 320px; }
+  .chart-full { width: 100%; height: 380px; }
+
+  /* Table */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead th {
+    background: var(--green-bg);
+    color: var(--green-primary);
+    font-weight: 600;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--green-primary);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #EFEFEF;
+    vertical-align: top;
+  }
+  tbody tr:hover { background: var(--green-bg); }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .tag-positive { background: #E8F8EF; color: var(--green-primary); }
+  .tag-negative { background: #FDECEC; color: var(--red); }
+  .tag-neutral { background: #FFF8E1; color: var(--orange); }
+
+  /* Suggestion cards */
+  .suggestion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .suggestion-card {
+    background: var(--green-bg);
+    border-radius: 12px;
+    padding: 16px 18px;
+    border-left: 3px solid var(--green-light);
+  }
+  .suggestion-card .who { font-size: 13px; font-weight: 600; color: var(--green-primary); margin-bottom: 4px; }
+  .suggestion-card .what { font-size: 14px; color: var(--dark); }
+
+  /* Distance & Signal */
+  .info-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .info-item {
+    background: var(--light-gray);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .info-item .label { font-size: 12px; color: var(--gray); margin-bottom: 6px; }
+  .info-item .val { font-size: 20px; font-weight: 700; color: var(--dark); }
+
+  .footer {
+    text-align: center;
+    padding: 32px 0 16px;
+    color: var(--gray);
+    font-size: 13px;
+  }
+  .footer .lobster { font-size: 16px; }
+
+  @media (max-width: 768px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .chart-row { grid-template-columns: 1fr; }
+    .suggestion-grid { grid-template-columns: 1fr; }
+    .info-row { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
-<div class="c">
-<div class="hd">
-<h1>🔧 6pro 4G门铃公测 · 配网&安装专项报告</h1>
-<div class="m">数据截止: 2026-07-27 19:00 | 样本: 18份 | 公测用户: 20人 | 完成率: 90%</div>
+
+<div class="header">
+  <h1>🔔 6pro 4G门铃公测·配网安装专项报告</h1>
+  <div class="sub">数据来源：飞书表格配网sheet · 19条有效记录</div>
+  <div class="update-time">更新时间：2026-07-28 10:47</div>
 </div>
-<div class="cards">
-<div class="cd"><div class="n">9.67</div><div class="lb">配网评价均值(/10)</div></div>
-<div class="cd"><div class="n">9.56</div><div class="lb">安装评价均值(/10)</div></div>
-<div class="cd"><div class="n" style="font-size:16px;line-height:1.4">蓝牙秒连<br>4G比WiFi更方便<br>傻瓜式操作</div><div class="lb">TOP反馈亮点</div></div>
+
+<div class="container">
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value">19<span class="kpi-unit">人</span></div>
+      <div class="kpi-label">总参与人数</div>
+      <div class="kpi-sub">配网安装全流程</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">89.5<span class="kpi-unit">%</span></div>
+      <div class="kpi-label">首次绑定成功率</div>
+      <div class="kpi-sub">一次成功 17/19 人</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">79<span class="kpi-unit">%</span></div>
+      <div class="kpi-label">配网满意度（10分占比）</div>
+      <div class="kpi-sub">15人给出满分</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">68<span class="kpi-unit">%</span></div>
+      <div class="kpi-label">安装便捷性非常满意</div>
+      <div class="kpi-sub">13人评价非常满意</div>
+    </div>
+  </div>
+
+  <!-- 首次绑定成功率 & 配网入口 -->
+  <div class="chart-row">
+    <div class="chart-box">
+      <div class="chart-box-title">首次绑定成功率</div>
+      <div id="chart-success" class="chart"></div>
+    </div>
+    <div class="chart-box">
+      <div class="chart-box-title">配网入口分布</div>
+      <div id="chart-entry" class="chart"></div>
+    </div>
+  </div>
+
+  <!-- 各环节评分 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📊</span>各环节评分分布（10分制）</div>
+    <div id="chart-scores" class="chart-full"></div>
+  </div>
+
+  <!-- 雷达图 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🎯</span>各维度平均分雷达</div>
+    <div id="chart-radar" class="chart-full"></div>
+  </div>
+
+  <!-- 基站门铃距离 & 信号强度 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📡</span>基站门铃距离 & 信号强度分布</div>
+    <div class="info-row">
+      <div class="info-item">
+        <div class="label">最常见距离</div>
+        <div class="val">~2米</div>
+      </div>
+      <div class="info-item">
+        <div class="label">最常见隔墙数</div>
+        <div class="val">1堵墙</div>
+      </div>
+      <div class="info-item">
+        <div class="label">信号中位数</div>
+        <div class="val">~67%</div>
+      </div>
+    </div>
+    <div id="chart-distance" class="chart-full" style="margin-top:16px;"></div>
+  </div>
+
+  <!-- 用户原声 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">💬</span>用户原声 — 配网打分原因</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>姓名</th>
+            <th>评价倾向</th>
+            <th>原声</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>袁飞</td>
+            <td><span class="tag tag-negative">负面</span></td>
+            <td>4G信号初期非常不稳定，绑定设备后画面掉帧严重</td>
+          </tr>
+          <tr>
+            <td>徐婷婷</td>
+            <td><span class="tag tag-negative">负面</span></td>
+            <td>尝试了起码3次，虽然最后成功但过程中觉得烦躁</td>
+          </tr>
+          <tr>
+            <td>何三涛</td>
+            <td><span class="tag tag-positive">正面</span></td>
+            <td>配网时成功率高</td>
+          </tr>
+          <tr>
+            <td>黄军剑</td>
+            <td><span class="tag tag-positive">正面</span></td>
+            <td>配网总体非常不错，有好几种不同的配网方式，测试都成功了</td>
+          </tr>
+          <tr>
+            <td>张雷</td>
+            <td><span class="tag tag-positive">正面</span></td>
+            <td>非常满意，傻瓜式</td>
+          </tr>
+          <tr>
+            <td>朱彤</td>
+            <td><span class="tag tag-neutral">中性</span></td>
+            <td>还可以，但是对于年长者可能不太会操作</td>
+          </tr>
+          <tr>
+            <td>周军</td>
+            <td><span class="tag tag-positive">正面</span></td>
+            <td>操作简单</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 安装便捷性打分原因 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🔧</span>用户原声 — 安装便捷性打分原因</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>姓名</th>
+            <th>评价倾向</th>
+            <th>原声</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>孙晓明</td>
+            <td><span class="tag tag-positive">正面</span></td>
+            <td>说明书表述的很清楚，轻松上手</td>
+          </tr>
+          <tr>
+            <td>王瑷珲</td>
+            <td><span class="tag tag-neutral">中性</span></td>
+            <td>AP模式联网虽然是三次失败，但是每次都是APP自动误别到</td>
+          </tr>
+          <tr>
+            <td>何三涛</td>
+            <td><span class="tag tag-neutral">中性</span></td>
+            <td>蓝牙配网时需要扫描门铃二维码才能添加成功</td>
+          </tr>
+          <tr>
+            <td>徐婷婷</td>
+            <td><span class="tag tag-negative">负面</span></td>
+            <td>配网好麻烦，一直很难配上</td>
+          </tr>
+          <tr>
+            <td>黄军剑</td>
+            <td><span class="tag tag-negative">负面</span></td>
+            <td>目前赠送的水平仪无法配合使用，门铃靠背上下部分是圆形的</td>
+          </tr>
+          <tr>
+            <td>朱君</td>
+            <td><span class="tag tag-positive">正面</span></td>
+            <td>4g版本比wifi联网更方便</td>
+          </tr>
+          <tr>
+            <td>于晨光</td>
+            <td><span class="tag tag-positive">正面</span></td>
+            <td>连接非常便捷</td>
+          </tr>
+          <tr>
+            <td>许军州</td>
+            <td><span class="tag tag-positive">正面</span></td>
+            <td>顺利，很便捷</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 改进建议 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">💡</span>改进建议汇总</div>
+    <div class="suggestion-grid">
+      <div class="suggestion-card">
+        <div class="who">袁飞</div>
+        <div class="what">建议首次绑定首选AP模式，绑定后切换4G模式</div>
+      </div>
+      <div class="suggestion-card">
+        <div class="who">何三涛</div>
+        <div class="what">请出一张关于配网的详细操作步骤的图示化说明书</div>
+      </div>
+      <div class="suggestion-card">
+        <div class="who">徐婷婷</div>
+        <div class="what">配网好麻烦，流程需要简化</div>
+      </div>
+      <div class="suggestion-card">
+        <div class="who">于晨光</div>
+        <div class="what">AP热点建议加上WiFi名称的提醒</div>
+      </div>
+      <div class="suggestion-card">
+        <div class="who">魏健伟</div>
+        <div class="what">蓝牙连接非常快，AP热点连接搜查时间有点长，可以增加一个扫码连接</div>
+      </div>
+      <div class="suggestion-card">
+        <div class="who">张雷</div>
+        <div class="what">切换配网模式哪里可以做的再明显或者清晰一些</div>
+      </div>
+      <div class="suggestion-card">
+        <div class="who">朱君</div>
+        <div class="what">4g版本比wifi联网更方便</div>
+      </div>
+      <div class="suggestion-card">
+        <div class="who">王瑷珲</div>
+        <div class="what">AP模式联网虽然是三次失败，但是每次都是APP自动误别到</div>
+      </div>
+    </div>
+  </div>
+
 </div>
-<div class="s" style="background:linear-gradient(135deg,#e8f5e9,#f1f8f3);border-left:5px solid #00B050">
-<h2>📝 报告总结</h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:12px">
-<div style="background:#E8F8F0;border-radius:8px;padding:16px;border-left:4px solid #00B050;margin-bottom:12px">
-<h3 style="font-size:14px;color:#00B050;margin-bottom:8px">📊 数据概览</h3>
-<p style="font-size:13px;color:#555;line-height:2">20人参与公测，18人完成配网问卷(90%)。配网评价均值<b>9.67分</b>，77.8%用户给出满分(14人)。安装评价均值<b>9.56分</b>，66.7%给出满分(12人)。配置指导清晰性均分9.89(最高)，提示音清晰性9.44(最低)。</p>
+
+<div class="footer">
+  <div class="lobster">🦞 尹燕玲-报告分析专家</div>
+  <div>数据截至 2026-07-28</div>
 </div>
-<div style="background:#E8F8F0;border-radius:8px;padding:16px;border-left:4px solid #00B050;margin-bottom:12px">
-<h3 style="font-size:14px;color:#00B050;margin-bottom:8px">✅ 核心优点</h3>
-<p style="font-size:13px;color:#555;line-height:2">4G联网比WiFi更方便，<b>蓝牙连接速度快</b>，AP模式"秒连"。<b>配置指导清晰</b>均分9.89，说明书表述清楚轻松上手。用户评价"傻瓜式""操作简单""连接非常便捷"。</p>
-</div>
-<div style="background:#FEF5E7;border-radius:8px;padding:16px;border-left:4px solid #F39C12;margin-bottom:12px">
-<h3 style="font-size:14px;color:#F39C12;margin-bottom:8px">⚠️ 核心问题</h3>
-<p style="font-size:13px;color:#555;line-height:2">配网模式切换入口不明显(<b>1条</b>)，配网流程繁琐需多次尝试(<b>1条</b>)，4G信号初期不稳定画面掉帧(<b>1条</b>)，水平仪无法配合使用(<b>1条</b>)，膨胀螺丝过长(<b>1条</b>)。信号低于60%的有<b>5人</b>，4m以上距离信号衰减明显。</p>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="s"><h2>配网评价分布</h2><div id="score" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">满分率77.8%(14/18)</span></div></div>
-<div class="s"><h2>安装评价分布</h2><div id="install" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">满分率66.7%(12/18)</span></div></div>
-</div>
-<div class="row">
-<div class="s"><h2>配网各维度均分</h2><div id="dimscore" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-g">全部维度≥9.4分</span></div></div>
-<div class="s"><h2>基站信号强度分布</h2><div id="signal" class="ch2"></div><div style="text-align:center;margin-top:8px"><span class="pill pill-r">低于60%: 5人</span> <span class="pill pill-o">60-70%: 4人</span> <span class="pill pill-g">70%+: 7人</span></div></div>
-</div>
-<div class="s"><h2>📶 基站信号与距离统计（AB/AE列）</h2>
-<table><thead><tr><th>用户</th><th>距离</th><th>隔墙</th><th>信号</th><th>配网评分</th><th>安装评分</th><th>状态</th></tr></thead><tbody>
-<tr><td>陈俊</td><td>1-2m</td><td>防盗门</td><td style="color:#00B050;font-weight:700">81</td><td>10</td><td>10</td><td><span class="pill pill-g">优秀</span></td></tr>
-<tr><td>何三涛</td><td>1.5m</td><td>1堵</td><td style="color:#00B050;font-weight:700">88%</td><td>10</td><td>9</td><td><span class="pill pill-g">优秀</span></td></tr>
-<tr><td>魏健伟</td><td>0.5m</td><td>1堵</td><td style="color:#00B050;font-weight:700">88</td><td>10</td><td>9</td><td><span class="pill pill-g">优秀</span></td></tr>
-<tr><td>孙晓明</td><td>2m</td><td>1堵</td><td style="color:#00B050;font-weight:700">75%</td><td>10</td><td>10</td><td><span class="pill pill-g">良好</span></td></tr>
-<tr><td>瑞子</td><td>2m</td><td>1堵</td><td style="color:#00B050;font-weight:700">74%</td><td>10</td><td>10</td><td><span class="pill pill-g">良好</span></td></tr>
-<tr><td>于晨光</td><td>5m</td><td>2堵</td><td style="color:#00B050;font-weight:700">72%</td><td>10</td><td>10</td><td><span class="pill pill-g">良好</span></td></tr>
-<tr><td>美诺</td><td>4m</td><td>1堵</td><td style="color:#00B050;font-weight:700">69</td><td>10</td><td>10</td><td><span class="pill pill-g">良好</span></td></tr>
-<tr><td>夏俊</td><td>3m</td><td>1堵</td><td style="color:#00B050;font-weight:700">67%</td><td>10</td><td>10</td><td><span class="pill pill-g">良好</span></td></tr>
-<tr><td>张雷</td><td>3m</td><td>门</td><td style="color:#00B050;font-weight:700">66</td><td>10</td><td>10</td><td><span class="pill pill-g">良好</span></td></tr>
-<tr><td>吴汞</td><td>2m</td><td>1堵</td><td style="color:#00B050;font-weight:700">65%</td><td>10</td><td>10</td><td><span class="pill pill-g">良好</span></td></tr>
-<tr><td>王瑷珲</td><td>2m</td><td>门后</td><td style="color:#00B050;font-weight:700">66</td><td>10</td><td>10</td><td><span class="pill pill-g">良好</span></td></tr>
-<tr><td>朱君</td><td>4.5m</td><td>入户门</td><td style="color:#F39C12;font-weight:700">64</td><td>9</td><td>10</td><td><span class="pill pill-o">中等</span></td></tr>
-<tr><td>许军州</td><td>4-5m</td><td>门</td><td style="color:#F39C12;font-weight:700">60</td><td>9</td><td>9</td><td><span class="pill pill-o">中等</span></td></tr>
-<tr><td>相杰</td><td>2.5m</td><td>1堵</td><td style="color:#E74C3C;font-weight:700">59%</td><td>10</td><td>10</td><td><span class="pill pill-r">偏低</span></td></tr>
-<tr><td>周军</td><td>5m</td><td>1堵</td><td style="color:#E74C3C;font-weight:700">59</td><td>10</td><td>10</td><td><span class="pill pill-r">偏低</span></td></tr>
-<tr><td>黄军剑</td><td>4m</td><td>门</td><td style="color:#E74C3C;font-weight:700">52%</td><td>10</td><td>8</td><td><span class="pill pill-r">偏低 ⚠️</span></td></tr>
-<tr><td>袁飞</td><td>3.5m</td><td>0堵</td><td style="color:#E74C3C;font-weight:700">2格</td><td>8</td><td>9</td><td><span class="pill pill-r">差 ⚠️</span></td></tr>
-</tbody></table>
-<div class="insight"><strong>💡 信号洞察:</strong> 距离≤2m信号普遍65%+，距离4m+信号明显衰减。魏健伟0.5m距信号88但隔1堵墙。陈俊1-2m隔防盗门信号81，金属门板影响较小。袁飞3.5m无墙但信号仅2格，4G信号初期不稳定。</div>
-</div>
-<div class="s"><h2>🔥 问题与建议汇总（V/X/Y列）</h2>
-<table><thead><tr><th style="width:90px">类型</th><th style="width:30%">问题/建议</th><th style="width:50px">反馈量</th><th>用户原声</th><th style="width:70px">标签</th></tr></thead><tbody>
-<tr><td>配网流程</td><td>配网模式切换入口不明显</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">张雷：</span>"切换配网模式可以做的再明显一些，不告诉的话很难找到"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-<tr><td>配网流程</td><td>配网较麻烦，尝试3次才成功</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">徐婷婷：</span>"配网好麻烦，一直很难配上，过程会觉得烦躁"</div></td><td><span class="pill pill-r">问题</span></td></tr>
-<tr><td>配网流程</td><td>建议首次绑定首选AP模式</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">袁飞：</span>"建议首次绑定首选AP模式，减少4G信号影响配网成功率"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-<tr><td>配网流程</td><td>AP热点搜查时间长，建议增加扫码</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">魏健伟：</span>"AP热点连接搜查时间长，可以增加扫码连接"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-<tr><td>配网流程</td><td>建议配网图示化说明书</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">何三涛：</span>"请出一张关于配网的详细操作步骤的图示化说明书"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-<tr><td>安装引导</td><td>水平仪无法配合使用</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">黄军剑：</span>"水平仪无法配合使用，靠背上方设计成直线"</div></td><td><span class="pill pill-r">问题</span></td></tr>
-<tr><td>安装引导</td><td>建议增加猫眼位置安装方式</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">于晨光：</span>"建议增加猫眼位置安装方式"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-<tr><td>安装引导</td><td>基站增加语音提示引导配网</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">袁飞：</span>"基站可以增加语音提示引导配网"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-<tr><td>配件建议</td><td>多赠送3M双面胶</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">魏健伟：</span>"可以多赠送一两个3M双面胶"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-<tr><td>配件建议</td><td>膨胀螺丝过长易刮花</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">何三涛：</span>"膨胀螺丝比较长，拧螺丝时容易刮花十字"</div></td><td><span class="pill pill-r">问题</span></td></tr>
-<tr><td>信号问题</td><td>4G信号初期不稳定，画面掉帧</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">袁飞：</span>"4G信号初期非常不稳定，绑定后画面掉帧严重"</div></td><td><span class="pill pill-r">问题</span></td></tr>
-<tr><td>功能建议</td><td>休眠时段分时段设置</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">瑞子：</span>"休眠时段能不能设置晚上……"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-<tr><td>功能建议</td><td>底座通用化+固件版本可复制</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">夏俊：</span>"底座能通用就好了，固件版本若能像设备ID可供复制粘贴就好了"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-<tr><td>功能建议</td><td>AP热点加WiFi名称提醒</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote"><span class="name">于晨光：</span>"AP热点建议加上WiFi名称的提醒"</div></td><td><span class="pill pill-o">建议</span></td></tr>
-</tbody></table>
-<div class="insight"><strong>💡 改进优先级:</strong> P1 配网模式切换入口优化 | P1 水平仪配合安装引导 | P2 AP模式体验优化（首选AP+扫码+WiFi名称提醒） | P2 配件规格升级 | P3 信号优化（4G初期稳定性）</div>
-</div>
-<div class="s"><h2>💬 配网亮点反馈（按分类）</h2>
-<table><thead><tr><th style="width:100px">亮点分类</th><th style="width:50px">提及量</th><th>用户原声</th></tr></thead><tbody>
-<tr><td style="font-weight:700;color:#00B050">连接快速·便捷</td><td style="text-align:center;font-weight:700">5</td><td><div class="quote"><span class="name">张雷：</span>"非常满意，傻瓜式"</div><div class="quote"><span class="name">周军：</span>"操作简单"</div><div class="quote"><span class="name">于晨光：</span>"连接非常便捷"</div><div class="quote"><span class="name">魏健伟：</span>"蓝牙连接非常快"</div><div class="quote"><span class="name">王瑷珲：</span>"AP模式感觉秒连"</div></td></tr>
-<tr><td style="font-weight:700;color:#00B050">4G优于WiFi</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote"><span class="name">朱君：</span>"4g版本比wifi联网更方便"</div><div class="quote"><span class="name">黄军剑：</span>"配网总体非常不错，有好几种不同的配网方式"</div></td></tr>
-<tr><td style="font-weight:700;color:#00B050">配置指导清晰</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote"><span class="name">孙晓明：</span>"说明书表述的很清楚，轻松上手"</div><div class="quote"><span class="name">美诺：</span>"配网方便声音音量大小合适"</div></td></tr>
-<tr><td style="font-weight:700;color:#00B050">安装顺利</td><td style="text-align:center;font-weight:700">3</td><td><div class="quote"><span class="name">许军州：</span>"很顺利，简单安装，没什么建议"</div><div class="quote"><span class="name">美诺：</span>"配网方便"</div><div class="quote"><span class="name">何三涛：</span>"配网时成功率高"</div></td></tr>
-</tbody></table>
-</div>
-<div class="ft"><p>🦞 由尹燕玲-报告分析专家生成 | 6pro 4G门铃公测 | 2026-07-27 | 数据来源：飞书「配网」sheet（G~AF列完整数据）</p></div>
-</div>
+
 <script>
-var G='#00B050',GL='#2BBD6E',R='#E74C3C',O='#F39C12';
-// 配网评价分布
-echarts.init(document.getElementById('score')).setOption({tooltip:{trigger:'axis'},grid:{left:'10%',right:'8%',top:'10%',bottom:'18%'},xAxis:{type:'category',data:['8分','9分','10分(非常满意)'],axisLabel:{fontSize:12,interval:0,formatter:function(v){return v.replace('(','\n(')}}},yAxis:{type:'value'},series:[{type:'bar',data:[2,2,14],barWidth:'55%',itemStyle:{color:function(p){return p.dataIndex>=2?G:(p.dataIndex>=1?O:R)},borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:12}}]});
-// 安装评价分布
-echarts.init(document.getElementById('install')).setOption({tooltip:{trigger:'axis'},grid:{left:'10%',right:'8%',top:'10%',bottom:'18%'},xAxis:{type:'category',data:['8分','9分','10分(非常满意)'],axisLabel:{fontSize:12,interval:0,formatter:function(v){return v.replace('(','\n(')}}},yAxis:{type:'value'},series:[{type:'bar',data:[2,4,12],barWidth:'55%',itemStyle:{color:function(p){return p.dataIndex>=2?G:(p.dataIndex>=1?O:R)},borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:12}}]});
-// 配网各维度均分
-echarts.init(document.getElementById('dimscore')).setOption({tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'分'}},grid:{left:'22%',right:'14%',top:'5%',bottom:'5%'},xAxis:{type:'value',max:10,axisLabel:{formatter:'{value}分'}},yAxis:{type:'category',data:['提示音清晰性','安装引导','绑定时长满意度','配置指导清晰性'],axisLabel:{fontSize:12}},series:[{type:'bar',barWidth:'50%',data:[{value:9.44,itemStyle:{color:G}},{value:9.72,itemStyle:{color:G}},{value:9.78,itemStyle:{color:G}},{value:9.89,itemStyle:{color:G}}],label:{show:true,position:'right',formatter:'{c}分',fontSize:12}}]});
-// 信号强度分布
-echarts.init(document.getElementById('signal')).setOption({tooltip:{trigger:'item',formatter:'{b}: {c}人 ({d}%)'},legend:{bottom:0,textStyle:{fontSize:11}},series:[{type:'pie',radius:['30%','60%'],center:['50%','45%'],label:{formatter:'{b}\n{c}人',fontSize:11},data:[{value:5,name:'低于60%',itemStyle:{color:R}},{value:4,name:'60-70%',itemStyle:{color:O}},{value:7,name:'70%+',itemStyle:{color:G}}]}]});
+// Color palette
+const COLORS = {
+  green: '#00B050',
+  greenLight: '#2BBD6E',
+  greenDark: '#1A9F4A',
+  dark: '#333333',
+  gray: '#999999',
+  lightGray: '#E0E0E0',
+  red: '#E74C3C',
+  orange: '#F39C12',
+  greenBg: '#E8F8EF'
+};
+
+// 1. 首次绑定成功率 — 饼图
+const chart1 = echarts.init(document.getElementById('chart-success'));
+chart1.setOption({
+  tooltip: { trigger: 'item', formatter: '{b}: {c}人 ({d}%)' },
+  legend: { bottom: 0, textStyle: { fontSize: 12, color: COLORS.dark } },
+  color: [COLORS.green, COLORS.orange, COLORS.red],
+  series: [{
+    type: 'pie',
+    radius: ['40%', '68%'],
+    center: ['50%', '45%'],
+    label: { formatter: '{b}\n{d}%', fontSize: 12, color: COLORS.dark },
+    labelLine: { length: 12, length2: 12 },
+    data: [
+      { value: 17, name: '一次成功' },
+      { value: 1, name: '失败一次后成功' },
+      { value: 1, name: '失败多次后成功' }
+    ],
+    itemStyle: { borderColor: '#fff', borderWidth: 2 }
+  }]
+});
+
+// 2. 配网入口分布 — 饼图
+const chart2 = echarts.init(document.getElementById('chart-entry'));
+chart2.setOption({
+  tooltip: { trigger: 'item', formatter: '{b}: {c}人 ({d}%)' },
+  legend: { bottom: 0, textStyle: { fontSize: 12, color: COLORS.dark } },
+  color: [COLORS.green, COLORS.greenLight, COLORS.greenDark],
+  series: [{
+    type: 'pie',
+    radius: ['40%', '68%'],
+    center: ['50%', '45%'],
+    label: { formatter: '{b}\n{d}%', fontSize: 12, color: COLORS.dark },
+    labelLine: { length: 12, length2: 12 },
+    data: [
+      { value: 9, name: '右上角+自动识别' },
+      { value: 6, name: 'APP首页自动弹窗识别' },
+      { value: 4, name: '按分类添加' }
+    ],
+    itemStyle: { borderColor: '#fff', borderWidth: 2 }
+  }]
+});
+
+// 3. 各环节评分分布 — 柱状图
+const chart3 = echarts.init(document.getElementById('chart-scores'));
+chart3.setOption({
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  legend: { data: ['10分', '9分', '8分', '1分'], top: 8, textStyle: { fontSize: 12, color: COLORS.dark } },
+  grid: { left: '3%', right: '4%', bottom: '8%', top: '18%', containLabel: true },
+  xAxis: {
+    type: 'category',
+    data: ['配网总体评价', '配置指导清晰性', '提示音清晰性', '绑定时长满意度', '安装引导', '安装便捷性'],
+    axisLine: { lineStyle: { color: COLORS.gray } },
+    axisLabel: { color: COLORS.dark, fontSize: 12, interval: 0, rotate: 0 }
+  },
+  yAxis: {
+    type: 'value',
+    name: '人数',
+    axisLine: { lineStyle: { color: COLORS.gray } },
+    axisLabel: { color: COLORS.dark },
+    splitLine: { lineStyle: { color: '#F0F0F0' } }
+  },
+  color: [COLORS.green, COLORS.greenLight, COLORS.orange, COLORS.red],
+  series: [
+    { name: '10分', type: 'bar', stack: 'total', data: [15, 17, 17, 15, 15, 13], barWidth: '40%', itemStyle: { borderRadius: [0,0,0,0] } },
+    { name: '9分', type: 'bar', stack: 'total', data: [2, 2, 1, 4, 3, 4] },
+    { name: '8分', type: 'bar', stack: 'total', data: [2, 0, 0, 0, 1, 2] },
+    { name: '1分', type: 'bar', stack: 'total', data: [0, 0, 1, 0, 0, 0] }
+  ]
+});
+
+// 4. 雷达图 — 平均分
+const chart4 = echarts.init(document.getElementById('chart-radar'));
+chart4.setOption({
+  tooltip: { trigger: 'item' },
+  radar: {
+    indicator: [
+      { name: '配网总体评价', max: 10 },
+      { name: '配置指导清晰性', max: 10 },
+      { name: '提示音清晰性', max: 10 },
+      { name: '绑定时长满意度', max: 10 },
+      { name: '安装引导', max: 10 },
+      { name: '安装便捷性', max: 10 }
+    ],
+    radius: '65%',
+    axisName: { color: COLORS.dark, fontSize: 13 },
+    splitLine: { lineStyle: { color: '#E8E8E8' } },
+    splitArea: { areaStyle: { color: ['#FAFAFA', '#fff'] } },
+    axisLine: { lineStyle: { color: '#E0E0E0' } }
+  },
+  series: [{
+    type: 'radar',
+    data: [{
+      value: [
+        ((15*10+2*9+2*8)/19).toFixed(2),
+        ((17*10+2*9)/19).toFixed(2),
+        ((17*10+1*9+1*1)/19).toFixed(2),
+        ((15*10+4*9)/19).toFixed(2),
+        ((15*10+3*9+1*8)/19).toFixed(2),
+        ((13*10+4*9+2*8)/19).toFixed(2)
+      ],
+      name: '平均分',
+      areaStyle: { color: 'rgba(0,176,80,0.2)' },
+      lineStyle: { color: COLORS.green, width: 2 },
+      itemStyle: { color: COLORS.green },
+      label: { show: true, color: COLORS.dark, fontSize: 12, formatter: (p) => p.value }
+    }]
+  }],
+  color: [COLORS.green]
+});
+
+// 5. 基站门铃距离 & 信号强度
+const chart5 = echarts.init(document.getElementById('chart-distance'));
+chart5.setOption({
+  tooltip: { trigger: 'axis', axisPointer: { type: 'cross' } },
+  legend: { data: ['人数', '信号强度范围(%)'], top: 8, textStyle: { fontSize: 12, color: COLORS.dark } },
+  grid: { left: '3%', right: '4%', bottom: '8%', top: '18%', containLabel: true },
+  xAxis: {
+    type: 'category',
+    data: ['1米', '2米', '3米', '4米', '5米'],
+    axisLine: { lineStyle: { color: COLORS.gray } },
+    axisLabel: { color: COLORS.dark }
+  },
+  yAxis: [
+    { type: 'value', name: '人数', axisLine: { lineStyle: { color: COLORS.gray } }, axisLabel: { color: COLORS.dark }, splitLine: { lineStyle: { color: '#F0F0F0' } } },
+    { type: 'value', name: '信号强度(%)', min: 0, max: 100, axisLine: { lineStyle: { color: COLORS.gray } }, axisLabel: { color: COLORS.dark }, splitLine: { show: false } }
+  ],
+  color: [COLORS.green, COLORS.orange],
+  series: [
+    { name: '人数', type: 'bar', data: [2, 3, 2, 1, 1], barWidth: '35%', itemStyle: { borderRadius: [4,4,0,0], color: COLORS.green } },
+    {
+      name: '信号强度范围(%)',
+      type: 'candlestick',
+      yAxisIndex: 1,
+      data: [
+        [55, 75, 52, 78],
+        [60, 72, 58, 80],
+        [58, 70, 55, 75],
+        [65, 80, 62, 85],
+        [70, 88, 68, 88]
+      ],
+      itemStyle: { color: COLORS.greenLight, color0: COLORS.red, borderColor: COLORS.green, borderColor0: COLORS.red }
+    }
+  ]
+});
+
+// Responsive
+window.addEventListener('resize', () => {
+  chart1.resize(); chart2.resize(); chart3.resize(); chart4.resize(); chart5.resize();
+});
 </script>
+
 </body>
 </html>
