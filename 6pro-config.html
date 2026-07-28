@@ -30,6 +30,8 @@
     padding: 40px 32px 32px;
     border-radius: 0 0 24px 24px;
     box-shadow: 0 4px 24px rgba(0,176,80,0.18);
+    max-width: 1200px;
+    margin: 0 auto;
   }
   .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
   .header .sub { font-size: 14px; opacity: 0.9; }
@@ -275,14 +277,14 @@
   <!-- 各维度平均分柱形图 -->
   <div class="section">
     <div class="section-title"><span class="icon">🎯</span>各维度平均分对比</div>
-    <div class="module-insight insight-green-inline">🟢 配置指导清晰性最高(9.89分)，提示音清晰性最低(9.42分)</div>
+    <div class="module-insight insight-orange-inline">🟡 安装便捷性最低(8.89分)，配置指导清晰性最高(9.89分)</div>
     <div id="chart-radar" class="chart-full"></div>
   </div>
 
   <!-- 基站门铃距离 & 信号强度 -->
   <div class="section">
     <div class="section-title"><span class="icon">📡</span>基站门铃距离 & 信号强度</div>
-    <div class="module-insight insight-orange-inline">🟡 信号强度52%-88%差异大，穿墙后衰减明显</div>
+    <div class="module-insight insight-orange-inline">🟡 信号强度差异大，穿墙后衰减明显</div>
     <div class="table-wrap" style="margin-top:16px;">
       <table>
         <thead>
@@ -290,40 +292,41 @@
             <th>姓名</th>
             <th>基站门铃距离</th>
             <th>隔墙数</th>
-            <th>信号强度</th>
+            <th>基站信号强度</th>
+            <th>门铃信号强度</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>袁飞</td><td>3.5米内</td><td>0堵</td><td>2格</td></tr>
-          <tr><td>吴汞</td><td>2米</td><td>1堵</td><td>65%</td></tr>
-          <tr><td>孙晓明</td><td>2米</td><td>1堵</td><td>75%</td></tr>
-          <tr><td>瑞子</td><td>2米</td><td>1堵</td><td>74%</td></tr>
-          <tr><td>陈俊</td><td>1-2米</td><td>不隔墙，只隔一个防盗门</td><td>81%</td></tr>
-          <tr><td>王瑷珲</td><td>2米</td><td>基站在门后面</td><td>66%</td></tr>
-          <tr><td>何三涛</td><td>1.5米</td><td>1堵</td><td>88%</td></tr>
-          <tr><td>相杰</td><td>2.5米</td><td>1堵</td><td>59%</td></tr>
-          <tr><td>徐婷婷</td><td>2米</td><td>没有墙</td><td>声音可以</td></tr>
-          <tr><td>黄军剑</td><td>大约4米</td><td>一道门</td><td>52%</td></tr>
-          <tr><td>美诺</td><td>4米左右</td><td>一堵墙</td><td>69%</td></tr>
-          <tr><td>夏俊</td><td>3米</td><td>1堵</td><td>67%</td></tr>
-          <tr><td>朱君</td><td>4.5米</td><td>1个入户门</td><td>64%</td></tr>
-          <tr><td>于晨光</td><td>5米</td><td>2堵</td><td>72%</td></tr>
-          <tr><td>许军州</td><td>4-5米</td><td>没有墙，只有门</td><td>60%</td></tr>
-          <tr><td>魏健伟</td><td>0.5米</td><td>一堵</td><td>88%</td></tr>
-          <tr><td>张雷</td><td>3米</td><td>一个门</td><td>66%</td></tr>
-          <tr><td>周军</td><td>5米</td><td>1堵</td><td>59%</td></tr>
-          <tr><td>朱彤</td><td>3米</td><td>1堵</td><td>67%</td></tr>
+          <tr><td>袁飞</td><td>3.5米内</td><td>0堵</td><td>2格</td><td>2格</td></tr>
+          <tr><td>吴汞</td><td>2米</td><td>1堵</td><td>100%</td><td>65%</td></tr>
+          <tr><td>孙晓明</td><td>2米</td><td>1堵</td><td>70%</td><td>75%</td></tr>
+          <tr><td>瑞子</td><td>2米</td><td>1堵</td><td>84%</td><td>74%</td></tr>
+          <tr><td>陈俊</td><td>1-2米</td><td>不隔墙，只隔一个防盗门</td><td>主机4g信号59</td><td>81%</td></tr>
+          <tr><td>王瑷珲</td><td>2米</td><td>基站在门后面</td><td>72%</td><td>66%</td></tr>
+          <tr><td>何三涛</td><td>1.5米</td><td>1堵</td><td>64%</td><td>88%</td></tr>
+          <tr><td>相杰</td><td>2.5米</td><td>1堵</td><td>56%</td><td>59%</td></tr>
+          <tr><td>徐婷婷</td><td>2米</td><td>没有墙</td><td>信号可以</td><td>声音可以</td></tr>
+          <tr><td>黄军剑</td><td>大约4米</td><td>一道门</td><td>51%</td><td>52%</td></tr>
+          <tr><td>美诺</td><td>4米左右</td><td>一堵墙</td><td>73%</td><td>69%</td></tr>
+          <tr><td>夏俊</td><td>3米</td><td>1堵</td><td>58%</td><td>67%</td></tr>
+          <tr><td>朱君</td><td>4.5米</td><td>1个入户门</td><td>71%</td><td>64%</td></tr>
+          <tr><td>于晨光</td><td>5米</td><td>2堵</td><td>68%</td><td>72%</td></tr>
+          <tr><td>许军州</td><td>4-5米</td><td>没有墙，只有门</td><td>74%</td><td>60%</td></tr>
+          <tr><td>魏健伟</td><td>0.5米</td><td>一堵</td><td>55%</td><td>88%</td></tr>
+          <tr><td>张雷</td><td>3米</td><td>一个门</td><td>67%</td><td>66%</td></tr>
+          <tr><td>周军</td><td>5米</td><td>1堵</td><td>63%</td><td>59%</td></tr>
+          <tr><td>朱彤</td><td>3米</td><td>1堵</td><td>84%</td><td>67%</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- 用户原声 — 按二级标签分类 -->
+  <!-- 用户原声 — 痛点 -->
   <div class="section">
-    <div class="section-title"><span class="icon">💬</span>用户原声 — 按二级标签分类</div>
+    <div class="section-title"><span class="icon">💢</span>用户痛点 — 按二级标签分类</div>
 
     <!-- 配网/安装引导 -->
-    <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">📦 配网/安装引导</div>
+    <div style="font-size:15px;font-weight:700;color:var(--red);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid #FDECEC;">📦 配网/安装引导</div>
     <div class="table-wrap" style="margin-bottom:20px;">
       <table>
         <thead><tr><th style="width:180px">二级标签问题</th><th style="width:60px">反馈量</th><th>用户原声</th></tr></thead>
@@ -336,7 +339,7 @@
     </div>
 
     <!-- APP功能/交互 -->
-    <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">📱 APP功能/交互</div>
+    <div style="font-size:15px;font-weight:700;color:var(--red);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid #FDECEC;">📱 APP功能/交互</div>
     <div class="table-wrap" style="margin-bottom:20px;">
       <table>
         <thead><tr><th style="width:180px">二级标签问题</th><th style="width:60px">反馈量</th><th>用户原声</th></tr></thead>
@@ -345,22 +348,37 @@
           <tr><td>配网模式切换入口不醒目</td><td>1</td><td>张雷：<span style="color:#E74C3C;font-weight:600">切换配网模式哪里可以做的再明显或者清晰一些</span>，其他环节很完美</td></tr>
           <tr><td>AP热点连接慢</td><td>1</td><td>魏健伟：<span style="color:#00B050;font-weight:600">蓝牙连接非常快</span>，但<span style="color:#E74C3C;font-weight:600">AP热点连接搜查时间有点长</span>，可以增加扫码连接</td></tr>
           <tr><td>权限问题</td><td>1</td><td>朱彤：失败一次是因为<span style="color:#E74C3C;font-weight:600">没有给位置权限，APP弹出位置权限后过一会失败了</span></td></tr>
-          <tr><td>配网操作简单（正面）</td><td>4</td><td>何三涛：<span style="color:#00B050;font-weight:600">配网时成功率高</span><br>张雷：<span style="color:#00B050;font-weight:600">非常满意，傻瓜式</span><br>许军州：<span style="color:#00B050;font-weight:600">很顺利</span><br>周军：<span style="color:#00B050;font-weight:600">操作简单</span></td></tr>
           <tr><td>蓝牙配网需扫码</td><td>1</td><td>何三涛：蓝牙配网时，<span style="color:#E74C3C;font-weight:600">需要扫描门铃二维码才能添加成功</span></td></tr>
           <tr><td>年长者操作困难</td><td>1</td><td>朱彤：还可以，但<span style="color:#E74C3C;font-weight:600">对于年长者可能不太会操作</span></td></tr>
           <tr><td>AP模式误识别</td><td>1</td><td>王瑷珲：<span style="color:#E74C3C;font-weight:600">AP模式联网三次失败</span>，但后来成功<span style="color:#00B050;font-weight:600">感觉秒连</span></td></tr>
-          <tr><td>安装便捷正面</td><td>2</td><td>孙晓明：<span style="color:#00B050;font-weight:600">说明书表述的很清楚，轻松上手</span><br>于晨光：<span style="color:#00B050;font-weight:600">连接非常便捷</span></td></tr>
         </tbody>
       </table>
     </div>
 
     <!-- 硬件设计 -->
-    <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">🔧 硬件设计</div>
+    <div style="font-size:15px;font-weight:700;color:var(--red);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid #FDECEC;">🔧 硬件设计</div>
     <div class="table-wrap" style="margin-bottom:20px;">
       <table>
         <thead><tr><th style="width:180px">二级标签问题</th><th style="width:60px">反馈量</th><th>用户原声</th></tr></thead>
         <tbody>
           <tr><td>水平仪不匹配</td><td>1</td><td>黄军剑：<span style="color:#E74C3C;font-weight:600">水平仪无法配合使用，门铃靠背上下部分是圆形的</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 用户原声 — 爽点 -->
+  <div class="section">
+    <div class="section-title"><span class="icon">✨</span>用户爽点 — 按二级标签分类</div>
+
+    <!-- APP功能/交互 -->
+    <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">📱 APP功能/交互</div>
+    <div class="table-wrap" style="margin-bottom:20px;">
+      <table>
+        <thead><tr><th style="width:180px">二级标签问题</th><th style="width:60px">反馈量</th><th>用户原声</th></tr></thead>
+        <tbody>
+          <tr><td>配网操作简单</td><td>4</td><td>何三涛：<span style="color:#00B050;font-weight:600">配网时成功率高</span><br>张雷：<span style="color:#00B050;font-weight:600">非常满意，傻瓜式</span><br>许军州：<span style="color:#00B050;font-weight:600">很顺利</span><br>周军：<span style="color:#00B050;font-weight:600">操作简单</span></td></tr>
+          <tr><td>安装便捷正面</td><td>2</td><td>孙晓明：<span style="color:#00B050;font-weight:600">说明书表述的很清楚，轻松上手</span><br>于晨光：<span style="color:#00B050;font-weight:600">连接非常便捷</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -371,49 +389,28 @@
       <table>
         <thead><tr><th style="width:180px">二级标签问题</th><th style="width:60px">反馈量</th><th>用户原声</th></tr></thead>
         <tbody>
-          <tr><td>4G版本优势（正面）</td><td>1</td><td>朱君：<span style="color:#00B050;font-weight:600">4g版本比wifi联网更方便</span></td></tr>
+          <tr><td>4G版本优势</td><td>1</td><td>朱君：<span style="color:#00B050;font-weight:600">4g版本比wifi联网更方便</span></td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- 改进建议 -->
+  <!-- 改进建议 — 按问题标签分类 -->
   <div class="section">
     <div class="section-title"><span class="icon">💡</span>改进建议汇总</div>
-    <div class="module-insight insight-orange-inline">🟡 配网模式切换入口不够醒目，建议增加扫码连接</div>
-    <div class="suggestion-grid">
-      <div class="suggestion-card">
-        <div class="who">袁飞</div>
-        <div class="what">建议首次绑定首选AP模式，绑定后切换4G模式</div>
-      </div>
-      <div class="suggestion-card">
-        <div class="who">何三涛</div>
-        <div class="what">请出一张关于配网的详细操作步骤的图示化说明书</div>
-      </div>
-      <div class="suggestion-card">
-        <div class="who">徐婷婷</div>
-        <div class="what">配网好麻烦，流程需要简化</div>
-      </div>
-      <div class="suggestion-card">
-        <div class="who">于晨光</div>
-        <div class="what">AP热点建议加上WiFi名称的提醒</div>
-      </div>
-      <div class="suggestion-card">
-        <div class="who">魏健伟</div>
-        <div class="what">蓝牙连接非常快，AP热点连接搜查时间有点长，可以增加一个扫码连接</div>
-      </div>
-      <div class="suggestion-card">
-        <div class="who">张雷</div>
-        <div class="what">切换配网模式哪里可以做的再明显或者清晰一些</div>
-      </div>
-      <div class="suggestion-card">
-        <div class="who">朱君</div>
-        <div class="what">4g版本比wifi联网更方便</div>
-      </div>
-      <div class="suggestion-card">
-        <div class="who">王瑷珲</div>
-        <div class="what">AP模式联网虽然是三次失败，但是每次都是APP自动误别到</div>
-      </div>
+    <div class="table-wrap" style="margin-top:8px;">
+      <table>
+        <thead><tr><th style="width:180px">问题标签</th><th style="width:60px">反馈量</th><th>用户原声</th></tr></thead>
+        <tbody>
+          <tr><td>配网流程建议</td><td>2</td><td>袁飞：建议首次绑定首选AP模式，绑定后切换4G模式<br>何三涛：请出一张关于配网的详细操作步骤的图示化说明书</td></tr>
+          <tr><td>配网步骤繁琐</td><td>1</td><td>徐婷婷：配网好麻烦，流程需要简化</td></tr>
+          <tr><td>网络切换失败</td><td>1</td><td>于晨光：AP热点建议加上WiFi名称的提醒</td></tr>
+          <tr><td>AP热点连接慢</td><td>1</td><td>魏健伟：蓝牙连接非常快，AP热点连接搜查时间有点长，可以增加一个扫码连接</td></tr>
+          <tr><td>配网模式切换入口不醒目</td><td>1</td><td>张雷：切换配网模式哪里可以做的再明显或者清晰一些</td></tr>
+          <tr><td>4G版本优势</td><td>1</td><td>朱君：4g版本比wifi联网更方便</td></tr>
+          <tr><td>AP模式误识别</td><td>1</td><td>王瑷珲：AP模式联网虽然是三次失败，但是每次都是APP自动误别到</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
