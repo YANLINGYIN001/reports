@@ -170,7 +170,42 @@
     .chart-row { grid-template-columns: 1fr; }
     .suggestion-grid { grid-template-columns: 1fr; }
     .info-row { grid-template-columns: 1fr; }
+    .insight-summary { grid-template-columns: 1fr; }
   }
+
+  /* Insight Summary */
+  .insight-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .insight-item {
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .insight-red { background: #FDECEC; border-left: 4px solid #E74C3C; color: #C0392B; }
+  .insight-orange { background: #FFF8E1; border-left: 4px solid #F39C12; color: #B7950B; }
+  .insight-green { background: #E8F8EF; border-left: 4px solid #00B050; color: #1A7D43; }
+  .insight-icon { flex-shrink: 0; }
+
+  /* Module Insight Inline */
+  .module-insight {
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+  .insight-green-inline { background: #E8F8EF; color: #1A7D43; }
+  .insight-orange-inline { background: #FFF8E1; color: #B7950B; }
+  .insight-blue-inline { background: #E3F2FD; color: #1565C0; }
 </style>
 </head>
 <body>
@@ -178,7 +213,7 @@
 <div class="header">
   <h1>🔔 6pro 4G门铃公测·配网安装专项报告</h1>
   <div class="sub">数据来源：飞书表格配网sheet · 19条有效记录</div>
-  <div class="update-time">更新时间：2026-07-28 10:47</div>
+  <div class="update-time">更新时间：2026-07-28 11:02</div>
 </div>
 
 <div class="container">
@@ -196,9 +231,9 @@
       <div class="kpi-sub">一次成功 17/19 人</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-value">79<span class="kpi-unit">%</span></div>
-      <div class="kpi-label">配网满意度（10分占比）</div>
-      <div class="kpi-sub">15人给出满分</div>
+      <div class="kpi-value">9.47<span class="kpi-unit">分</span></div>
+      <div class="kpi-label">配网满意度（六维平均分）</div>
+      <div class="kpi-sub">配置指导9.89 / 提示音9.42 / 绑定时长9.79 / 安装引导9.63</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-value">68<span class="kpi-unit">%</span></div>
@@ -207,14 +242,32 @@
     </div>
   </div>
 
+  <!-- 总体洞察小结 -->
+  <div class="insight-summary">
+    <div class="insight-item insight-red">
+      <span class="insight-icon">🔴</span> 首次绑定成功率89.5%虽高但2人经历失败，4G信号不稳定是主因
+    </div>
+    <div class="insight-item insight-orange">
+      <span class="insight-icon">🟡</span> AP热点配网成功率偏低，有用户尝试3次才成功，搜索时间长
+    </div>
+    <div class="insight-item insight-green">
+      <span class="insight-icon">🟢</span> 79%配网总体评价满分(10分)，配置指导清晰性最高(9.89分)
+    </div>
+    <div class="insight-item insight-green">
+      <span class="insight-icon">🟢</span> 蓝牙配网体验好，4G版本比WiFi联网更方便
+    </div>
+  </div>
+
   <!-- 首次绑定成功率 & 配网入口 -->
   <div class="chart-row">
     <div class="chart-box">
       <div class="chart-box-title">首次绑定成功率</div>
+      <div class="module-insight insight-green-inline">🟢 一次成功率89.5%，4G信号不稳定是失败主因</div>
       <div id="chart-success" class="chart"></div>
     </div>
     <div class="chart-box">
       <div class="chart-box-title">配网入口分布</div>
+      <div class="module-insight insight-blue-inline">🔵 自动识别是主要配网入口，79%用户通过自动识别完成</div>
       <div id="chart-entry" class="chart"></div>
     </div>
   </div>
@@ -222,18 +275,20 @@
   <!-- 各环节评分 -->
   <div class="section">
     <div class="section-title"><span class="icon">📊</span>各环节评分分布（10分制）</div>
+    <div class="module-insight insight-green-inline">🟢 配置指导清晰性最高(9.89分)，提示音清晰性最低(9.42分)</div>
     <div id="chart-scores" class="chart-full"></div>
   </div>
 
-  <!-- 雷达图 -->
+  <!-- 各维度平均分柱形图 -->
   <div class="section">
-    <div class="section-title"><span class="icon">🎯</span>各维度平均分雷达</div>
+    <div class="section-title"><span class="icon">🎯</span>各维度平均分对比</div>
     <div id="chart-radar" class="chart-full"></div>
   </div>
 
   <!-- 基站门铃距离 & 信号强度 -->
   <div class="section">
     <div class="section-title"><span class="icon">📡</span>基站门铃距离 & 信号强度分布</div>
+    <div class="module-insight insight-orange-inline">🟡 信号强度52%-88%差异大，穿墙后衰减明显</div>
     <div class="info-row">
       <div class="info-item">
         <div class="label">最常见距离</div>
@@ -254,6 +309,7 @@
   <!-- 用户原声 -->
   <div class="section">
     <div class="section-title"><span class="icon">💬</span>用户原声 — 配网打分原因</div>
+    <div class="module-insight insight-orange-inline">🟡 配网步骤繁琐是主要槽点，徐婷婷尝试3次才成功</div>
     <div class="table-wrap">
       <table>
         <thead>
@@ -365,6 +421,7 @@
   <!-- 改进建议 -->
   <div class="section">
     <div class="section-title"><span class="icon">💡</span>改进建议汇总</div>
+    <div class="module-insight insight-orange-inline">🟡 配网模式切换入口不够醒目，建议增加扫码连接</div>
     <div class="suggestion-grid">
       <div class="suggestion-card">
         <div class="who">袁飞</div>
@@ -492,44 +549,47 @@ chart3.setOption({
   ]
 });
 
-// 4. 雷达图 — 平均分
+// 4. 各维度平均分 — 横向柱形图
 const chart4 = echarts.init(document.getElementById('chart-radar'));
 chart4.setOption({
-  tooltip: { trigger: 'item' },
-  radar: {
-    indicator: [
-      { name: '配网总体评价', max: 10 },
-      { name: '配置指导清晰性', max: 10 },
-      { name: '提示音清晰性', max: 10 },
-      { name: '绑定时长满意度', max: 10 },
-      { name: '安装引导', max: 10 },
-      { name: '安装便捷性', max: 10 }
-    ],
-    radius: '65%',
-    axisName: { color: COLORS.dark, fontSize: 13 },
-    splitLine: { lineStyle: { color: '#E8E8E8' } },
-    splitArea: { areaStyle: { color: ['#FAFAFA', '#fff'] } },
-    axisLine: { lineStyle: { color: '#E0E0E0' } }
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, formatter: (params) => {
+    return params[0].name + ': ' + params[0].value + '分';
+  } },
+  grid: { left: '3%', right: '8%', bottom: '3%', top: '5%', containLabel: true },
+  xAxis: {
+    type: 'value',
+    max: 10,
+    axisLine: { lineStyle: { color: COLORS.gray } },
+    axisLabel: { color: COLORS.dark, formatter: '{value}' },
+    splitLine: { lineStyle: { color: '#F0F0F0' } }
+  },
+  yAxis: {
+    type: 'category',
+    data: ['安装便捷性', '配网总体评价', '提示音清晰性', '安装引导', '绑定时长满意度', '配置指导清晰性'],
+    axisLine: { lineStyle: { color: COLORS.gray } },
+    axisLabel: { color: COLORS.dark, fontSize: 13 }
   },
   series: [{
-    type: 'radar',
-    data: [{
-      value: [
-        ((15*10+2*9+2*8)/19).toFixed(2),
-        ((17*10+2*9)/19).toFixed(2),
-        ((17*10+1*9+1*1)/19).toFixed(2),
-        ((15*10+4*9)/19).toFixed(2),
-        ((15*10+3*9+1*8)/19).toFixed(2),
-        ((13*10+4*9+2*8)/19).toFixed(2)
-      ],
-      name: '平均分',
-      areaStyle: { color: 'rgba(0,176,80,0.2)' },
-      lineStyle: { color: COLORS.green, width: 2 },
-      itemStyle: { color: COLORS.green },
-      label: { show: true, color: COLORS.dark, fontSize: 12, formatter: (p) => p.value }
-    }]
-  }],
-  color: [COLORS.green]
+    type: 'bar',
+    data: [
+      { value: 8.89, itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{ offset: 0, color: '#E8F8EF' }, { offset: 1, color: '#00B050' }]) } },
+      { value: 9.26, itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{ offset: 0, color: '#E8F8EF' }, { offset: 1, color: '#00B050' }]) } },
+      { value: 9.42, itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{ offset: 0, color: '#E8F8EF' }, { offset: 1, color: '#00B050' }]) } },
+      { value: 9.63, itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{ offset: 0, color: '#E8F8EF' }, { offset: 1, color: '#00B050' }]) } },
+      { value: 9.79, itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{ offset: 0, color: '#E8F8EF' }, { offset: 1, color: '#00B050' }]) } },
+      { value: 9.89, itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{ offset: 0, color: '#E8F8EF' }, { offset: 1, color: '#00B050' }]) } }
+    ],
+    barWidth: '55%',
+    label: {
+      show: true,
+      position: 'right',
+      formatter: '{c}分',
+      color: COLORS.dark,
+      fontSize: 13,
+      fontWeight: 600
+    },
+    itemStyle: { borderRadius: [0, 6, 6, 0] }
+  }]
 });
 
 // 5. 基站门铃距离 & 信号强度

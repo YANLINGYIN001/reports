@@ -129,6 +129,45 @@
   }
   .footer .brand { color: #00B050; font-weight: 600; }
 
+  /* Insight Summary */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .insight-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border: 1px solid #eee;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .insight-card.red { border-left: 4px solid #E74C3C; }
+  .insight-card.orange { border-left: 4px solid #F39C12; }
+  .insight-card.green { border-left: 4px solid #00B050; }
+  .insight-card .emoji { font-size: 18px; flex-shrink: 0; }
+  .insight-card .text { color: #555; }
+  .insight-card .text strong { color: #333; }
+
+  /* Module Insight */
+  .module-insight {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 14px;
+    margin-top: -8px;
+    padding: 10px 16px;
+    background: #fffbf0;
+    border-radius: 8px;
+    border-left: 3px solid #F39C12;
+  }
+  .module-insight.green { background: #f6fdf8; border-left-color: #00B050; }
+
   @media (max-width: 768px) {
     .kpi-grid { grid-template-columns: repeat(2, 1fr); }
     .chart-row, .list-grid { grid-template-columns: 1fr; }
@@ -141,7 +180,7 @@
 <div class="header">
   <h1>6pro 4G门铃公测·开箱体验专项报告</h1>
   <div class="subtitle">基于飞书表格开箱Sheet · 20条有效记录</div>
-  <div class="update-time">更新时间：2026-07-28 10:47</div>
+  <div class="update-time">更新时间：2026-07-28 11:02</div>
 </div>
 
 <div class="container">
@@ -150,13 +189,13 @@
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="kpi-value">20<span class="unit">人</span></div>
-      <div class="kpi-label">总参与人数</div>
+      <div class="kpi-label">参与人数</div>
       <div class="kpi-sub">有效记录20条</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-value">90<span class="unit">%</span></div>
-      <div class="kpi-label">开箱满意率</div>
-      <div class="kpi-sub">18/20 给9-10分或非常满意</div>
+      <div class="kpi-value">9.5<span class="unit">分</span></div>
+      <div class="kpi-label">开箱满意度</div>
+      <div class="kpi-sub">包装9.4 / 配件9.5 / 外观9.5 / 尺寸9.7 / 说明书9.7</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-value">70<span class="unit">%</span></div>
@@ -164,13 +203,33 @@
       <div class="kpi-sub">14/20 超出或略超期望</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-value">9.5<span class="unit">分</span></div>
-      <div class="kpi-label">五维平均分</div>
-      <div class="kpi-sub">包装9.4 / 配件9.5 / 外观9.5 / 尺寸9.7 / 说明书9.7</div>
+      <div class="kpi-value">85<span class="unit">%</span></div>
+      <div class="kpi-label">五星好评率</div>
+      <div class="kpi-sub">17/20 给10分</div>
     </div>
   </div>
 
-  <!-- 评分分布 + 雷达图 -->
+  <!-- 总体洞察小结 -->
+  <div class="insight-grid">
+    <div class="insight-card red">
+      <span class="emoji">🔴</span>
+      <span class="text"><strong>物流包装保护不足是最大短板</strong>：9条负面反馈中7条指向包装填充物和防护</span>
+    </div>
+    <div class="insight-card orange">
+      <span class="emoji">🟡</span>
+      <span class="text"><strong>设备缺少防静电PE袋</strong>：3位用户反馈主机无保护膜或保护膜贴得不平整</span>
+    </div>
+    <div class="insight-card green">
+      <span class="emoji">🟢</span>
+      <span class="text"><strong>五维度评分均高（9.4-9.7分）</strong>：开箱体验整体优秀，配件齐全度和包装完好度评分最高</span>
+    </div>
+    <div class="insight-card green">
+      <span class="emoji">🟢</span>
+      <span class="text"><strong>70%用户超出期望</strong>：顶针蝶形包装和水平仪配件是最大亮点</span>
+    </div>
+  </div>
+
+  <!-- 评分分布 + 满意度柱形图 -->
   <div class="section">
     <div class="section-title">各环节评分分布</div>
     <div class="chart-row">
@@ -179,8 +238,8 @@
         <div id="chart-bar" class="chart-box"></div>
       </div>
       <div class="chart-card">
-        <h3>五维度评分雷达图</h3>
-        <div id="chart-radar" class="chart-box"></div>
+        <h3>五维度满意度评分</h3>
+        <div id="chart-hbar" class="chart-box"></div>
       </div>
     </div>
   </div>
@@ -203,6 +262,7 @@
   <!-- 用户原声 -->
   <div class="section">
     <div class="section-title">用户原声（打分原因）</div>
+    <div class="module-insight">🟡 包装防护是主要槽点，9条反馈中7条涉及物流包装保护不足</div>
     <div class="table-wrap">
       <table>
         <thead>
@@ -269,6 +329,7 @@
     <div class="list-grid">
       <div class="list-card highlights">
         <h3>✨ 亮点优点</h3>
+        <div class="module-insight green" style="margin-bottom:12px">🟢 配件齐全和包装巧思是核心亮点，8条亮点中5条提到配件/水平仪</div>
         <div class="list-item">
           <span class="icon-circle icon-highlight">1</span>
           <div><span class="name">王瑷珲</span><span class="content">：开箱顶针蝶形包装印象深刻，打开看到门铃基站零件盒露出笑脸，佩服这巧思，情绪价值拉满</span></div>
@@ -305,6 +366,7 @@
 
       <div class="list-card suggestions">
         <h3>⚠️ 改进建议</h3>
+        <div class="module-insight" style="margin-bottom:12px">🟡 包装细节优化是主要诉求，6条建议中3条涉及包装改进</div>
         <div class="list-item">
           <span class="icon-circle icon-suggestion">1</span>
           <div><span class="name">何三涛</span><span class="content">：建议在顶针收纳贴上写清贴高点，防止小孩拿取</span></div>
@@ -390,35 +452,56 @@ barChart.setOption({
   ]
 });
 
-// ====== 雷达图 ======
-const radarChart = echarts.init(document.getElementById('chart-radar'));
-radarChart.setOption({
-  tooltip: { trigger: 'item' },
-  radar: {
-    indicator: [
-      { name: '包装完好度', max: 10 },
-      { name: '配件齐全度', max: 10 },
-      { name: '外观质感', max: 10 },
-      { name: '尺寸手感', max: 10 },
-      { name: '说明书清晰度', max: 10 },
-    ],
-    shape: 'polygon',
-    splitNumber: 5,
-    axisName: { color: '#333', fontSize: 13 },
-    splitLine: { lineStyle: { color: '#e0e0e0' } },
-    splitArea: { areaStyle: { color: ['rgba(0,176,80,0.02)', 'rgba(0,176,80,0.05)'] } },
+// ====== 横向柱形图：五维度满意度 ======
+const hbarChart = echarts.init(document.getElementById('chart-hbar'));
+const hbarData = [
+  { name: '尺寸手感', value: 9.7 },
+  { name: '说明书清晰度', value: 9.7 },
+  { name: '外观质感', value: 9.5 },
+  { name: '配件齐全度', value: 9.5 },
+  { name: '包装完好度', value: 9.4 },
+];
+const hbarColors = hbarData.map((d, i) => {
+  const opacity = 1 - i * 0.12;
+  return `rgba(0,176,80,${Math.max(opacity, 0.4)})`;
+});
+hbarChart.setOption({
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: { type: 'shadow' },
+    backgroundColor: 'rgba(255,255,255,0.95)',
+    borderColor: '#00B050',
+    textStyle: { color: '#333' },
+    formatter: (params) => `${params[0].name}: <b>${params[0].value}分</b>`
+  },
+  grid: { left: '3%', right: '8%', bottom: '3%', top: 20, containLabel: true },
+  xAxis: {
+    type: 'value',
+    max: 10,
+    axisLabel: { color: '#999', formatter: '{value}' },
+    splitLine: { lineStyle: { color: '#f0f0f0' } }
+  },
+  yAxis: {
+    type: 'category',
+    data: hbarData.map(d => d.name),
     axisLine: { lineStyle: { color: '#ddd' } },
+    axisLabel: { color: '#666', fontSize: 13 }
   },
   series: [{
-    type: 'radar',
-    data: [{
-      value: [9.4, 9.5, 9.5, 9.7, 9.7],
-      name: '平均分',
-      areaStyle: { color: 'rgba(0,176,80,0.15)' },
-      lineStyle: { color: '#00B050', width: 2 },
-      itemStyle: { color: '#00B050' },
-      label: { show: true, fontSize: 13, fontWeight: 'bold', color: '#00B050' }
-    }]
+    type: 'bar',
+    data: hbarData.map((d, i) => ({
+      value: d.value,
+      itemStyle: { color: hbarColors[i], borderRadius: [0, 6, 6, 0] }
+    })),
+    barWidth: '55%',
+    label: {
+      show: true,
+      position: 'right',
+      formatter: '{c}分',
+      fontSize: 14,
+      fontWeight: 'bold',
+      color: '#00B050'
+    }
   }]
 });
 
@@ -487,7 +570,7 @@ satChart.setOption({
 // 响应式
 window.addEventListener('resize', () => {
   barChart.resize();
-  radarChart.resize();
+  hbarChart.resize();
   pieChart.resize();
   satChart.resize();
 });
