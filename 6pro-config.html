@@ -272,16 +272,10 @@
     </div>
   </div>
 
-  <!-- 各环节评分 -->
-  <div class="section">
-    <div class="section-title"><span class="icon">📊</span>各环节评分分布（10分制）</div>
-    <div class="module-insight insight-green-inline">🟢 配置指导清晰性最高(9.89分)，提示音清晰性最低(9.42分)</div>
-    <div id="chart-scores" class="chart-full"></div>
-  </div>
-
   <!-- 各维度平均分柱形图 -->
   <div class="section">
     <div class="section-title"><span class="icon">🎯</span>各维度平均分对比</div>
+    <div class="module-insight insight-green-inline">🟢 配置指导清晰性最高(9.89分)，提示音清晰性最低(9.42分)</div>
     <div id="chart-radar" class="chart-full"></div>
   </div>
 
@@ -329,140 +323,57 @@
     <div class="section-title"><span class="icon">💬</span>用户原声 — 按二级标签分类</div>
 
     <!-- 配网/安装引导 -->
-    <div style="margin-bottom:28px;">
-      <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">📦 配网/安装引导</div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-orange-inline">⚠️ 4G信号初期不稳定，直接影响设备绑定后的画面传输质量</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">4G信号不稳定（1条）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>袁飞</td><td><span style="color:#E74C3C;font-weight:600">4G信号初期非常不稳定</span>，绑定设备后<span style="color:#E74C3C;font-weight:600">画面掉帧严重，信号传输超时严重</span></td></tr>
-        </tbody></table></div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-orange-inline">⚠️ AP热点切换时缺少WiFi名称提示，用户容易混淆</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">网络切换失败（1条）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>于晨光</td><td>AP热点建议加上WiFi名称的提醒</td></tr>
-        </tbody></table></div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-orange-inline">💡 用户建议首选AP模式绑定后切4G，并配套图示化说明书</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">配网流程建议（2条）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>袁飞</td><td>建议<span style="color:#E74C3C;font-weight:600">首次绑定首选AP模式，绑定后切换4G模式</span>，减少因4G信号不确定因素影响设备配网成功率</td></tr>
-          <tr><td>何三涛</td><td>请出一张<span style="color:#E74C3C;font-weight:600">配网详细操作步骤的图示化说明书</span></td></tr>
-        </tbody></table></div>
-      </div>
+    <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">📦 配网/安装引导</div>
+    <div class="table-wrap" style="margin-bottom:20px;">
+      <table>
+        <thead><tr><th style="width:180px">二级标签问题</th><th style="width:60px">反馈量</th><th>用户原声</th></tr></thead>
+        <tbody>
+          <tr><td>4G信号不稳定</td><td>1</td><td>袁飞：<span style="color:#E74C3C;font-weight:600">4G信号初期非常不稳定</span>，绑定设备后<span style="color:#E74C3C;font-weight:600">画面掉帧严重，信号传输超时严重</span></td></tr>
+          <tr><td>网络切换失败</td><td>1</td><td>于晨光：AP热点建议加上WiFi名称的提醒</td></tr>
+          <tr><td>配网流程建议</td><td>2</td><td>袁飞：建议<span style="color:#E74C3C;font-weight:600">首次绑定首选AP模式，绑定后切换4G模式</span><br>何三涛：请出一张<span style="color:#E74C3C;font-weight:600">配网详细操作步骤的图示化说明书</span></td></tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- APP功能/交互 -->
-    <div style="margin-bottom:28px;">
-      <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">📱 APP功能/交互</div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-orange-inline">⚠️ 配网步骤冗长导致用户烦躁，流程需精简</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">配网步骤繁琐（1条）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>徐婷婷</td><td>尝试了<span style="color:#E74C3C;font-weight:600">起码3次</span>，说明书，步骤引导，一起看，虽然最后成功，但是<span style="color:#E74C3C;font-weight:600">过程中会觉得烦躁</span></td></tr>
-        </tbody></table></div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-orange-inline">⚠️ 配网模式切换入口隐蔽，用户难以自主发现</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">配网模式切换入口不醒目（1条）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>张雷</td><td><span style="color:#E74C3C;font-weight:600">切换配网模式哪里可以做的再明显或者清晰一些</span>，如果不告诉我，我觉得很难找到，其他环节很完美</td></tr>
-        </tbody></table></div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-orange-inline">⚠️ AP热点搜索耗时长，建议增加扫码连接替代方案</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">AP热点连接慢（1条）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>魏健伟</td><td><span style="color:#00B050;font-weight:600">蓝牙连接非常快</span>，但<span style="color:#E74C3C;font-weight:600">AP热点连接搜查时间有点长</span>，可以增加一个扫码连接</td></tr>
-        </tbody></table></div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-orange-inline">⚠️ 位置权限未授予会导致配网失败，需提前引导授权</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">权限问题（1条）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>朱彤</td><td>失败一次是因为<span style="color:#E74C3C;font-weight:600">没有给位置权限，APP弹出位置权限后过一会失败了</span></td></tr>
-        </tbody></table></div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-green-inline">✅ 多数用户反馈配网操作简单、成功率高、体验流畅</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">配网操作简单（4条·正面）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>何三涛</td><td><span style="color:#00B050;font-weight:600">配网时成功率高</span></td></tr>
-          <tr><td>张雷</td><td><span style="color:#00B050;font-weight:600">非常满意，傻瓜式</span></td></tr>
-          <tr><td>许军州</td><td><span style="color:#00B050;font-weight:600">很顺利</span></td></tr>
-          <tr><td>周军</td><td><span style="color:#00B050;font-weight:600">操作简单</span></td></tr>
-        </tbody></table></div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-orange-inline">⚠️ 蓝牙配网需扫码门铃二维码，缺少引导会增加操作门槛</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">蓝牙配网需扫码（1条）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>何三涛</td><td>蓝牙配网时，<span style="color:#E74C3C;font-weight:600">需要扫描门铃二维码才能添加成功</span></td></tr>
-        </tbody></table></div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-orange-inline">⚠️ 年长者操作配网可能有困难，需考虑适老化设计</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">年长者操作困难（1条）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>朱彤</td><td>还可以，但<span style="color:#E74C3C;font-weight:600">对于年长者可能不太会操作</span></td></tr>
-        </tbody></table></div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-orange-inline">⚠️ AP模式被APP自动误识别干扰，用户需手动忽略后才能成功</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">AP模式误识别（1条）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>王瑷珲</td><td><span style="color:#E74C3C;font-weight:600">AP模式联网三次失败</span>，但是每次都是APP自动误别到，故意忽略，后来成功AP模式也是<span style="color:#00B050;font-weight:600">感觉秒连</span></td></tr>
-        </tbody></table></div>
-      </div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-green-inline">✅ 说明书清晰、连接便捷，用户整体安装体验良好</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">安装便捷正面（2条·正面）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>孙晓明</td><td><span style="color:#00B050;font-weight:600">说明书表述的很清楚，轻松上手</span></td></tr>
-          <tr><td>于晨光</td><td><span style="color:#00B050;font-weight:600">连接非常便捷</span></td></tr>
-        </tbody></table></div>
-      </div>
+    <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">📱 APP功能/交互</div>
+    <div class="table-wrap" style="margin-bottom:20px;">
+      <table>
+        <thead><tr><th style="width:180px">二级标签问题</th><th style="width:60px">反馈量</th><th>用户原声</th></tr></thead>
+        <tbody>
+          <tr><td>配网步骤繁琐</td><td>1</td><td>徐婷婷：尝试了<span style="color:#E74C3C;font-weight:600">起码3次</span>，虽然最后成功，但<span style="color:#E74C3C;font-weight:600">过程中会觉得烦躁</span></td></tr>
+          <tr><td>配网模式切换入口不醒目</td><td>1</td><td>张雷：<span style="color:#E74C3C;font-weight:600">切换配网模式哪里可以做的再明显或者清晰一些</span>，其他环节很完美</td></tr>
+          <tr><td>AP热点连接慢</td><td>1</td><td>魏健伟：<span style="color:#00B050;font-weight:600">蓝牙连接非常快</span>，但<span style="color:#E74C3C;font-weight:600">AP热点连接搜查时间有点长</span>，可以增加扫码连接</td></tr>
+          <tr><td>权限问题</td><td>1</td><td>朱彤：失败一次是因为<span style="color:#E74C3C;font-weight:600">没有给位置权限，APP弹出位置权限后过一会失败了</span></td></tr>
+          <tr><td>配网操作简单（正面）</td><td>4</td><td>何三涛：<span style="color:#00B050;font-weight:600">配网时成功率高</span><br>张雷：<span style="color:#00B050;font-weight:600">非常满意，傻瓜式</span><br>许军州：<span style="color:#00B050;font-weight:600">很顺利</span><br>周军：<span style="color:#00B050;font-weight:600">操作简单</span></td></tr>
+          <tr><td>蓝牙配网需扫码</td><td>1</td><td>何三涛：蓝牙配网时，<span style="color:#E74C3C;font-weight:600">需要扫描门铃二维码才能添加成功</span></td></tr>
+          <tr><td>年长者操作困难</td><td>1</td><td>朱彤：还可以，但<span style="color:#E74C3C;font-weight:600">对于年长者可能不太会操作</span></td></tr>
+          <tr><td>AP模式误识别</td><td>1</td><td>王瑷珲：<span style="color:#E74C3C;font-weight:600">AP模式联网三次失败</span>，但后来成功<span style="color:#00B050;font-weight:600">感觉秒连</span></td></tr>
+          <tr><td>安装便捷正面</td><td>2</td><td>孙晓明：<span style="color:#00B050;font-weight:600">说明书表述的很清楚，轻松上手</span><br>于晨光：<span style="color:#00B050;font-weight:600">连接非常便捷</span></td></tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- 硬件设计 -->
-    <div style="margin-bottom:28px;">
-      <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">🔧 硬件设计</div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-orange-inline">⚠️ 赠送水平仪与门铃圆形靠背不匹配，无法实际使用</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">水平仪不匹配（1条）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>黄军剑</td><td><span style="color:#E74C3C;font-weight:600">水平仪无法配合使用，门铃靠背上下部分是圆形的</span></td></tr>
-        </tbody></table></div>
-      </div>
+    <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">🔧 硬件设计</div>
+    <div class="table-wrap" style="margin-bottom:20px;">
+      <table>
+        <thead><tr><th style="width:180px">二级标签问题</th><th style="width:60px">反馈量</th><th>用户原声</th></tr></thead>
+        <tbody>
+          <tr><td>水平仪不匹配</td><td>1</td><td>黄军剑：<span style="color:#E74C3C;font-weight:600">水平仪无法配合使用，门铃靠背上下部分是圆形的</span></td></tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- 视频/流处理 -->
-    <div style="margin-bottom:8px;">
-      <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">🎥 视频/流处理</div>
-
-      <div style="margin-bottom:16px;">
-        <div class="module-insight insight-green-inline">✅ 4G版本联网便利性优于WiFi版本，用户认可度高</div>
-        <div style="font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;">4G版本优势（1条·正面）</div>
-        <div class="table-wrap"><table><thead><tr><th style="width:80px">姓名</th><th>原声</th></tr></thead><tbody>
-          <tr><td>朱君</td><td><span style="color:#00B050;font-weight:600">4g版本比wifi联网更方便</span></td></tr>
-        </tbody></table></div>
-      </div>
+    <div style="font-size:15px;font-weight:700;color:var(--green-primary);margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--green-bg);">🎥 视频/流处理</div>
+    <div class="table-wrap" style="margin-bottom:20px;">
+      <table>
+        <thead><tr><th style="width:180px">二级标签问题</th><th style="width:60px">反馈量</th><th>用户原声</th></tr></thead>
+        <tbody>
+          <tr><td>4G版本优势（正面）</td><td>1</td><td>朱君：<span style="color:#00B050;font-weight:600">4g版本比wifi联网更方便</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -569,35 +480,7 @@ chart2.setOption({
   }]
 });
 
-// 3. 各环节评分分布 — 柱状图
-const chart3 = echarts.init(document.getElementById('chart-scores'));
-chart3.setOption({
-  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-  legend: { data: ['10分', '9分', '8分', '1分'], top: 8, textStyle: { fontSize: 12, color: COLORS.dark } },
-  grid: { left: '3%', right: '4%', bottom: '8%', top: '18%', containLabel: true },
-  xAxis: {
-    type: 'category',
-    data: ['配网总体评价', '配置指导清晰性', '提示音清晰性', '绑定时长满意度', '安装引导', '安装便捷性'],
-    axisLine: { lineStyle: { color: COLORS.gray } },
-    axisLabel: { color: COLORS.dark, fontSize: 12, interval: 0, rotate: 0 }
-  },
-  yAxis: {
-    type: 'value',
-    name: '人数',
-    axisLine: { lineStyle: { color: COLORS.gray } },
-    axisLabel: { color: COLORS.dark },
-    splitLine: { lineStyle: { color: '#F0F0F0' } }
-  },
-  color: [COLORS.green, COLORS.greenLight, COLORS.orange, COLORS.red],
-  series: [
-    { name: '10分', type: 'bar', stack: 'total', data: [15, 17, 17, 15, 15, 13], barWidth: '40%', itemStyle: { borderRadius: [0,0,0,0] } },
-    { name: '9分', type: 'bar', stack: 'total', data: [2, 2, 1, 4, 3, 4] },
-    { name: '8分', type: 'bar', stack: 'total', data: [2, 0, 0, 0, 1, 2] },
-    { name: '1分', type: 'bar', stack: 'total', data: [0, 0, 1, 0, 0, 0] }
-  ]
-});
-
-// 4. 各维度平均分 — 横向柱形图
+// 3. 各维度平均分 — 横向柱形图
 const chart4 = echarts.init(document.getElementById('chart-radar'));
 chart4.setOption({
   tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, formatter: (params) => {
@@ -642,7 +525,7 @@ chart4.setOption({
 
 // Responsive
 window.addEventListener('resize', () => {
-  chart1.resize(); chart2.resize(); chart3.resize(); chart4.resize();
+  chart1.resize(); chart2.resize(); chart4.resize();
 });
 </script>
 
