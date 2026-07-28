@@ -236,9 +236,9 @@
       <div class="kpi-sub">配置指导9.89 / 提示音9.42 / 绑定时长9.79 / 安装引导9.63</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-value">68<span class="kpi-unit">%</span></div>
-      <div class="kpi-label">安装便捷性非常满意</div>
-      <div class="kpi-sub">13人评价非常满意</div>
+      <div class="kpi-value">8.89<span class="kpi-unit">分</span></div>
+      <div class="kpi-label">安装便捷性满意度</div>
+      <div class="kpi-sub">非常满意13人 / 9分4人 / 8分2人</div>
     </div>
   </div>
 
@@ -287,23 +287,41 @@
 
   <!-- 基站门铃距离 & 信号强度 -->
   <div class="section">
-    <div class="section-title"><span class="icon">📡</span>基站门铃距离 & 信号强度分布</div>
+    <div class="section-title"><span class="icon">📡</span>基站门铃距离 & 信号强度</div>
     <div class="module-insight insight-orange-inline">🟡 信号强度52%-88%差异大，穿墙后衰减明显</div>
-    <div class="info-row">
-      <div class="info-item">
-        <div class="label">最常见距离</div>
-        <div class="val">~2米</div>
-      </div>
-      <div class="info-item">
-        <div class="label">最常见隔墙数</div>
-        <div class="val">1堵墙</div>
-      </div>
-      <div class="info-item">
-        <div class="label">信号中位数</div>
-        <div class="val">~67%</div>
-      </div>
+    <div class="table-wrap" style="margin-top:16px;">
+      <table>
+        <thead>
+          <tr>
+            <th>姓名</th>
+            <th>基站门铃距离</th>
+            <th>隔墙数</th>
+            <th>信号强度</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>袁飞</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>吴汞</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>孙晓明</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>瑞子</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>陈俊</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>王瑷珲</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>何三涛</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>相杰</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>徐婷婷</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>黄军剑</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>美诺</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>夏俊</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>朱君</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>于晨光</td><td>2米</td><td>1堵墙</td><td>67%</td></tr>
+          <tr><td>许军州</td><td>3米</td><td>1堵墙</td><td>72%</td></tr>
+          <tr><td>魏健伟</td><td>2米</td><td>1堵墙</td><td>66%</td></tr>
+          <tr><td>张雷</td><td>5米</td><td>2堵墙</td><td>59%</td></tr>
+          <tr><td>周军</td><td>5米</td><td>1堵墙</td><td>52%</td></tr>
+          <tr><td>朱彤</td><td>3米</td><td>1堵墙</td><td>74%</td></tr>
+        </tbody>
+      </table>
     </div>
-    <div id="chart-distance" class="chart-full" style="margin-top:16px;"></div>
   </div>
 
   <!-- 用户原声 — 按二级标签分类 -->
@@ -594,44 +612,9 @@ chart4.setOption({
   }]
 });
 
-// 5. 基站门铃距离 & 信号强度
-const chart5 = echarts.init(document.getElementById('chart-distance'));
-chart5.setOption({
-  tooltip: { trigger: 'axis', axisPointer: { type: 'cross' } },
-  legend: { data: ['人数', '信号强度范围(%)'], top: 8, textStyle: { fontSize: 12, color: COLORS.dark } },
-  grid: { left: '3%', right: '4%', bottom: '8%', top: '18%', containLabel: true },
-  xAxis: {
-    type: 'category',
-    data: ['1米', '2米', '3米', '4米', '5米'],
-    axisLine: { lineStyle: { color: COLORS.gray } },
-    axisLabel: { color: COLORS.dark }
-  },
-  yAxis: [
-    { type: 'value', name: '人数', axisLine: { lineStyle: { color: COLORS.gray } }, axisLabel: { color: COLORS.dark }, splitLine: { lineStyle: { color: '#F0F0F0' } } },
-    { type: 'value', name: '信号强度(%)', min: 0, max: 100, axisLine: { lineStyle: { color: COLORS.gray } }, axisLabel: { color: COLORS.dark }, splitLine: { show: false } }
-  ],
-  color: [COLORS.green, COLORS.orange],
-  series: [
-    { name: '人数', type: 'bar', data: [2, 3, 2, 1, 1], barWidth: '35%', itemStyle: { borderRadius: [4,4,0,0], color: COLORS.green } },
-    {
-      name: '信号强度范围(%)',
-      type: 'candlestick',
-      yAxisIndex: 1,
-      data: [
-        [55, 75, 52, 78],
-        [60, 72, 58, 80],
-        [58, 70, 55, 75],
-        [65, 80, 62, 85],
-        [70, 88, 68, 88]
-      ],
-      itemStyle: { color: COLORS.greenLight, color0: COLORS.red, borderColor: COLORS.green, borderColor0: COLORS.red }
-    }
-  ]
-});
-
 // Responsive
 window.addEventListener('resize', () => {
-  chart1.resize(); chart2.resize(); chart3.resize(); chart4.resize(); chart5.resize();
+  chart1.resize(); chart2.resize(); chart3.resize(); chart4.resize();
 });
 </script>
 
