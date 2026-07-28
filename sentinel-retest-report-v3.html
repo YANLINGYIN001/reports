@@ -204,6 +204,7 @@ chart5.setOption({
   grid: { left: '20%', right: '10%' }
 });
 
+window.addEventListener('resize', function() {
   chart1.resize(); chart2.resize(); chart3.resize();
   chart4.resize(); chart5.resize();
 });
