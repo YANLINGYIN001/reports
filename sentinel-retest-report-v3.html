@@ -60,12 +60,12 @@ table tr:hover { background: #f8fdf9; }
   <div class="kpi-row">
     <div class="kpi-card"><div class="value">8.1</div><div class="label">最新版本哨兵模式评价</div></div>
     <div class="kpi-card"><div class="value">42/56</div><div class="label">认为较前版有提升</div></div>
-    <div class="kpi-card warn"><div class="value">67%</div><div class="label">平均正常上报率</div></div>
-    <div class="kpi-card danger"><div class="value">22%</div><div class="label">平均误报率</div></div>
-    <div class="kpi-card warn"><div class="value">11%</div><div class="label">平均延迟率</div></div>
+    <div class="kpi-card warn"><div class="value">69%</div><div class="label">平均正常上报率</div></div>
+    <div class="kpi-card danger"><div class="value">23%</div><div class="label">平均误报率</div></div>
+    <div class="kpi-card warn"><div class="value">8%</div><div class="label">平均延迟率</div></div>
   </div>
   <div class="summary-box">
-    <p><strong>总体结论：</strong>56位用户参与哨兵复测，平均总分8.1分（10分制）。42人（75%）认为新固件较前版有提升，12人认为无差别，2人认为变差。正常上报率均值67%，误报率均值22%，延迟率均值11%。</p>
+    <p><strong>总体结论：</strong>56位用户参与哨兵复测，平均总分8.1分（10分制）。42人（75%）认为新固件较前版有提升，12人认为无差别，2人认为变差。正常上报率69.3%（B总和/事件总和），误报率22.7%，延迟率8.1%。</p>
   </div>
 </div>
 
@@ -91,10 +91,11 @@ table tr:hover { background: #f8fdf9; }
     <div class="kpi-card"><div class="value">27</div><div class="label">上传延迟视频人数</div></div>
   </div>
   <div id="chart_rate_breakdown" class="chart-box"></div>
-  <h3 style="margin-top:24px;color:#333;font-size:16px;">正常/误报/延迟 三项比例（仅含IJK数据完整的53条样本）</h3>
-  <div class="bar-row"><div class="bar-label">正常上报率</div><div class="bar-track"><div class="bar-fill" style="width:66.57933110617172%;background:#00B050;">66.6%</div></div></div>
-  <div class="bar-row"><div class="bar-label">误报率</div><div class="bar-track"><div class="bar-fill" style="width:22.210213210424627%;background:#E74C3C;">22.2%</div></div></div>
-  <div class="bar-row"><div class="bar-label">延迟率</div><div class="bar-track"><div class="bar-fill" style="width:11.210455683403655%;background:#F39C12;">11.2%</div></div></div>
+  <h3 style="margin-top:24px;color:#333;font-size:16px;">正常/误报/延迟 三项比例（52条有效样本的B/C/D汇总计算，已排除行56异常值）</h3>
+  <p style="font-size:13px;color:#666;margin-bottom:12px;">计算方式：所有用户B之和 / (B+C+D之和)，B=正常上报 1562，C=误报 511，D=延迟 182，合计 2255</p>
+  <div class="bar-row"><div class="bar-label">正常上报率</div><div class="bar-track"><div class="bar-fill" style="width:69.26829268292683%;background:#00B050;">69.3%</div></div></div>
+  <div class="bar-row"><div class="bar-label">误报率</div><div class="bar-track"><div class="bar-fill" style="width:22.660753880266075%;background:#E74C3C;">22.7%</div></div></div>
+  <div class="bar-row"><div class="bar-label">延迟率</div><div class="bar-track"><div class="bar-fill" style="width:8.070953436807095%;background:#F39C12;">8.1%</div></div></div>
 </div>
 
 <div class="section">
@@ -175,9 +176,9 @@ chart3.setOption({
   tooltip: { trigger: 'item', formatter: '{b}: {c}% ({d}%)' },
   series: [{ type: 'pie', radius: ['45%','75%'],
     data: [
-      { value: 66.6, name: '正常上报', itemStyle: { color: '#00B050' }},
-      { value: 22.2, name: '误报', itemStyle: { color: '#E74C3C' }},
-      { value: 11.2, name: '延迟', itemStyle: { color: '#F39C12' }},
+      { value: 69.3, name: '正常上报', itemStyle: { color: '#00B050' }},
+      { value: 22.7, name: '误报', itemStyle: { color: '#E74C3C' }},
+      { value: 8.1, name: '延迟', itemStyle: { color: '#F39C12' }},
     ],
     label: { formatter: '{b}\n{c}%' } }]
 });
