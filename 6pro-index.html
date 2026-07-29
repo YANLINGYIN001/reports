@@ -65,6 +65,46 @@
     grid-column: 1 / -1;
   }
 
+  .daily-section {
+    margin-top: 32px;
+  }
+  .daily-section h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 16px;
+    border-left: 4px solid #00B050;
+    padding-left: 12px;
+  }
+  .daily-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .daily-tag {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #E0E0E0;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .daily-tag:hover {
+    background: #00B050;
+    color: #fff;
+    border-color: #00B050;
+  }
+  .daily-tag .date-badge {
+    font-size: 12px;
+    color: #999;
+    margin-left: 6px;
+  }
+  .daily-tag:hover .date-badge {
+    color: #E8F8F0;
+  }
+
   .footer {
     text-align: center;
     padding: 32px 0 16px;
@@ -83,7 +123,7 @@
 <div class="header">
   <h1>🔔 门铃6pro 4G公测·报告汇总</h1>
   <div class="sub">20人公测团队 · 开箱体验 / 配网安装 / 日常问题反馈</div>
-  <div class="date">数据截至 2026-07-28</div>
+  <div class="date">数据截至 2026-07-29</div>
 </div>
 
 <div class="container">
@@ -95,8 +135,8 @@
       <div class="desc">公测团队各成员开箱、配网、日常反馈完成进度一览</div>
       <div class="stats">
         <div class="stat">开箱 <strong>20/20</strong></div>
-        <div class="stat">配网 <strong>19/20</strong></div>
-        <div class="stat">日常反馈 <strong>109条</strong></div>
+        <div class="stat">配网 <strong>20/20</strong></div>
+        <div class="stat">日常反馈 <strong>152条</strong></div>
       </div>
     </a>
 
@@ -115,23 +155,34 @@
       <h2>配网安装专项报告</h2>
       <div class="desc">首次绑定成功率、配网入口分布、各维度评分、信号强度、用户痛点与爽点</div>
       <div class="stats">
-        <div class="stat">样本量 <strong>19人</strong></div>
-        <div class="stat">成功率 <strong>89.5%</strong></div>
+        <div class="stat">样本量 <strong>20人</strong></div>
+        <div class="stat">成功率 <strong>100%</strong></div>
         <div class="stat">满意度 <strong>9.47分</strong></div>
       </div>
     </a>
 
-    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-daily.html">
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-daily-20260729.html">
       <div class="icon">📊</div>
-      <h2>日常问题反馈专项报告</h2>
-      <div class="desc">109条反馈按二级标签分类统计、问题分布、改进建议</div>
+      <h2>日常问题反馈专项报告（最新）</h2>
+      <div class="desc">152条反馈按最新17个一级标签分类统计、问题分布、改进建议</div>
       <div class="stats">
-        <div class="stat">反馈量 <strong>109条</strong></div>
-        <div class="stat">参与人数 <strong>17人</strong></div>
+        <div class="stat">有效反馈 <strong>138条</strong></div>
+        <div class="stat">参与人数 <strong>19人</strong></div>
+        <div class="stat">一级标签 <strong>17个</strong></div>
       </div>
     </a>
 
   </div>
+
+  <div class="daily-section">
+    <h3>📅 每日日常问题报告归档</h3>
+    <div class="daily-list">
+      <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260729.html">
+        📊 2026-07-29 <span class="date-badge">152条 · +43新增</span>
+      </a>
+    </div>
+  </div>
+
 </div>
 
 <div class="footer">
