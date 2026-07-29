@@ -3,304 +3,367 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>6pro 4G门铃公测·日常问题反馈专项报告</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<title>6pro 4G门铃公测 — 日常问题反馈专项报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7f5; color: #333; line-height: 1.6; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
-  .header { background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%); color: #fff; padding: 36px 32px; border-radius: 16px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,176,80,0.15); }
-  .header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
-  .header .meta { font-size: 14px; opacity: 0.9; }
-  .header .meta span { margin-right: 20px; }
-  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
-  .kpi-card { background: #fff; border-radius: 12px; padding: 24px 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 3px solid #00B050; }
-  .kpi-card .num { font-size: 36px; font-weight: 700; color: #00B050; margin-bottom: 4px; }
-  .kpi-card .label { font-size: 13px; color: #999; }
-  .kpi-card.alert { border-top-color: #E74C3C; }
-  .kpi-card.alert .num { color: #E74C3C; }
-  .insight-section { margin-bottom: 24px; }
-  .insight-section h2 { font-size: 18px; font-weight: 600; margin-bottom: 14px; color: #333; padding-left: 12px; border-left: 4px solid #00B050; }
-  .insight-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .insight-card { border-radius: 10px; padding: 16px 18px; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; }
-  .insight-card.red { background: #fdf2f2; border: 1px solid #f8d7d7; }
-  .insight-card.orange { background: #fef9f0; border: 1px solid #fdecd0; }
-  .insight-card.blue { background: #f0f7ff; border: 1px solid #d4e7ff; }
-  .insight-card .icon { font-size: 18px; flex-shrink: 0; }
-  .insight-card .text { flex: 1; }
-  .insight-card .text strong { font-weight: 600; }
-  .insight-card.red .text strong { color: #E74C3C; }
-  .insight-card.orange .text strong { color: #F39C12; }
-  .insight-card.blue .text strong { color: #2BBD6E; }
-  .chart-card { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-  .chart-card h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #333; padding-left: 12px; border-left: 4px solid #00B050; }
-  .chart-box { width: 100%; height: 400px; }
-  .module { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-  .module-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-  .module-header h2 { font-size: 18px; font-weight: 600; color: #333; }
-  .module-header .count { font-size: 13px; color: #999; background: #f0f0f0; padding: 3px 10px; border-radius: 12px; }
-  .module-insight { padding: 10px 14px; border-radius: 8px; font-size: 14px; margin-bottom: 16px; }
-  .module-insight.red { background: #fdf2f2; color: #E74C3C; }
-  .module-insight.orange { background: #fef9f0; color: #F39C12; }
-  .module-insight.blue { background: #f0f7ff; color: #2BBD6E; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  thead th { background: #f8faf8; color: #666; font-weight: 600; padding: 10px 12px; text-align: left; border-bottom: 2px solid #e8e8e8; font-size: 13px; }
-  tbody td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; }
-  tbody tr:hover { background: #fafffa; }
-  .tag-name { font-weight: 600; color: #333; }
-  .voice-text { color: #555; line-height: 1.5; }
-  .voice-text.negative { color: #E74C3C; }
-  .voice-text.positive { color: #00B050; }
-  .suggestion-list { list-style: none; }
-  .suggestion-list li { padding: 14px 16px; border-radius: 8px; margin-bottom: 10px; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; }
-  .suggestion-list li.red { background: #fdf2f2; border-left: 3px solid #E74C3C; }
-  .suggestion-list li.orange { background: #fef9f0; border-left: 3px solid #F39C12; }
-  .suggestion-list li.green { background: #f0faf3; border-left: 3px solid #00B050; }
-  .suggestion-list li .priority { font-weight: 700; flex-shrink: 0; font-size: 13px; }
-  .suggestion-list li.red .priority { color: #E74C3C; }
-  .suggestion-list li.orange .priority { color: #F39C12; }
-  .suggestion-list li.green .priority { color: #00B050; }
-  .footer { text-align: center; padding: 24px; color: #999; font-size: 13px; margin-top: 12px; }
-  .footer .signature { font-size: 15px; color: #00B050; font-weight: 600; margin-bottom: 4px; }
-  @media (max-width: 768px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } .insight-cards { grid-template-columns: 1fr; } }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; }
+.c { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.h { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 40px 30px; border-radius: 12px; margin-bottom: 24px; text-align: center; }
+.h h1 { font-size: 28px; margin-bottom: 8px; }
+.h p { font-size: 14px; opacity: 0.9; }
+.kg { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.kc { background: #fff; border-radius: 12px; padding: 24px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kv { font-size: 32px; font-weight: 700; color: #00B050; }
+.kc.highlight .kv { color: #F39C12; }
+.kl { font-size: 13px; color: #999; margin-top: 4px; }
+.s { background: #fff; border-radius: 12px; padding: 30px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.s h2 { font-size: 20px; margin-bottom: 16px; color: #00B050; border-left: 4px solid #00B050; padding-left: 12px; }
+.insight-item { padding: 14px 18px; margin-bottom: 10px; border-radius: 8px; border-left: 4px solid #00B050; background: #f9f9f9; }
+.insight-item.red { border-left-color: #E74C3C; background: #fdf2f2; }
+.insight-item.orange { border-left-color: #F39C12; background: #fef9f2; }
+.insight-item.blue { border-left-color: #3498db; background: #f2f8fd; }
+.insight-item .title { font-weight: 700; font-size: 15px; margin-bottom: 4px; display: block; }
+.insight-item .desc { font-size: 13px; color: #555; }
+.insight-item .quote { font-size: 12px; color: #888; margin-top: 6px; padding-left: 12px; border-left: 2px solid #ddd; }
+.b { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+.br { background: #FDEDEC; color: #E74C3C; }
+.bo { background: #FEF5E7; color: #F39C12; }
+.bb { background: #E8F8F0; color: #00B050; }
+.bg { background: #f0f0f0; color: #999; }
+.ct { width: 100%; height: 400px; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+th { background: #00B050; color: #fff; padding: 10px 14px; text-align: left; font-size: 13px; }
+td { padding: 9px 14px; border-bottom: 1px solid #eee; font-size: 13px; vertical-align: top; }
+tr:hover { background: #f5f5f5; }
+.in { background: #F0FBF4; border-left: 4px solid #00B050; padding: 14px 18px; margin: 10px 0; border-radius: 0 8px 8px 0; font-size: 14px; }
+.in strong { color: #00B050; }
+.rank-table th { background: #00B050; color: #fff; }
+.growth-up { color: #E74C3C; font-weight: 700; }
+.growth-new { color: #E74C3C; font-weight: 700; background: #fdecea; padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+.f { text-align: center; padding: 20px; color: #999; font-size: 13px; }
+.quote-list { font-size: 12px; color: #555; font-style: italic; }
+.quote-list div { margin: 2px 0; }
 </style>
 </head>
 <body>
-<div class="container">
-
-  <div class="header">
-    <h1>6pro 4G门铃公测·日常问题反馈专项报告</h1>
-    <div class="meta">
-      <span>📅 更新时间：2026-07-28 11:08</span>
-      <span>📊 样本：109条 | 17人参与</span>
-      <span>🏷️ 按二级标签分类</span>
-    </div>
+<div class="c">
+  <div class="h">
+    <h1>📊 6pro 4G门铃公测 — 日常问题反馈专项报告</h1>
+    <p>数据截至 2026-07-29 | 累计 152条 | 今日新增 43条 | 昨日累计 109条 | 19人参与 | 数据来源：飞书表格</p>
   </div>
 
-  <div class="kpi-row">
-    <div class="kpi-card"><div class="num">109</div><div class="label">反馈总数</div></div>
-    <div class="kpi-card"><div class="num">17</div><div class="label">参与人数</div></div>
-    <div class="kpi-card"><div class="num">35</div><div class="label">二级标签数</div></div>
-    <div class="kpi-card alert"><div class="num">7</div><div class="label">误报人数（最高）</div></div>
+  <div class="kg">
+    <div class="kc"><div class="kv">152</div><div class="kl">累计反馈</div></div>
+    <div class="kc highlight"><div class="kv">+43</div><div class="kl">今日新增</div></div>
+    <div class="kc"><div class="kv" style="color:#3498DB">109</div><div class="kl">昨日累计</div></div>
+    <div class="kc"><div class="kv" style="color:#9B59B6">19</div><div class="kl">参与人数</div></div>
+    <div class="kc"><div class="kv" style="color:#E74C3C">17</div><div class="kl">一级标签</div></div>
+    <div class="kc"><div class="kv" style="color:#F39C12">67</div><div class="kl">二级标签</div></div>
   </div>
 
-  <div class="insight-section">
-    <h2>📋 总体洞察小结</h2>
-    <div class="insight-cards">
-      <div class="insight-card red"><div class="icon">🔴</div><div class="text"><strong>误报问题是最大痛点</strong>（7人/10条），AI人形检测准确率亟待优化</div></div>
-      <div class="insight-card red"><div class="icon">🔴</div><div class="text"><strong>视频流类问题最多</strong>，开流失败6人+漏录5人+卡录异常6人，涵盖多环节</div></div>
-      <div class="insight-card orange"><div class="icon">🟡</div><div class="text"><strong>信号/设置/配网类问题分散</strong>，信号图标显示错误4人、设置项自动重置4人、忽略4人</div></div>
-      <div class="insight-card orange"><div class="icon">🟡</div><div class="text"><strong>卡录远程查看体验差</strong>（6人/9条），乱码/黑屏/无法读取等问题集中</div></div>
-      <div class="insight-card blue"><div class="icon">🔵</div><div class="text"><strong>耗电、配网切换、功能需求等长尾问题</strong>需持续关注</div></div>
-    </div>
+  <div class="s">
+    <h2>💡 关键洞察与建议</h2>
+    <div style="font-size:16px;font-weight:700;color:#F39C12;margin-bottom:12px">🆕 今日新增问题洞察</div>
+<div class="insight-item red"><span class="title">🔴 误报仍是最大痛点</span><span class="desc">今日新增8条误报反馈（累计10人18条），占今日新增的19%</span><div class="quote">相杰：画面变化录制没有人，画面也没任何变化</div></div>
+<div class="insight-item orange"><span class="title">🟠 漏录/回放问题集中</span><span class="desc">今日新增漏录/漏拍4条+回放卡顿4条</span><div class="quote">瑞子：漏录视频 / 朱彤：上午8点到12点事件不显示或延迟显示</div></div>
+<div class="insight-item orange"><span class="title">🟠 电量显示缺失新增2条</span><span class="desc">袁飞和吴汞均反馈电量与网络菜单中无电量显示</span><div class="quote">袁飞：电量与网络选项，点开未见电量显示</div></div>
+<div class="insight-item blue"><span class="title">🔵 底噪异常为新发现问题</span><span class="desc">何三涛反馈实时画面背景音有异常嚎叫声</span><div class="quote">何三涛：实时页面中的背景音有类似杀猪的嚎叫声</div></div>
+<div style="font-size:16px;font-weight:700;color:#00B050;margin:20px 0 12px">📊 累计问题洞察（全量 152 条）</div>
+<div class="insight-item red"><span class="title">🔴 误报是最大痛点</span><span class="desc">10人反馈18条误报，占总量11.8%，云录模块下最集中问题。建议：优化AI人形检测算法，列为P0。</span></div>
+<div class="insight-item red"><span class="title">🔴 漏录/漏拍影响核心体验</span><span class="desc">7人9条漏录，门铃核心功能缺失。建议：排查录制触发逻辑。</span></div>
+<div class="insight-item orange"><span class="title">🟠 云录模块问题最集中</span><span class="desc">41条占27%，误报+漏录+录制延迟+事件分类是核心问题。</span></div>
+<div class="insight-item orange"><span class="title">🟠 APP交互问题频发</span><span class="desc">23条占15%，设置项自动重置5条、信号图标4条、电量显示4条。</span></div>
+<div class="insight-item blue"><span class="title">🔵 功能需求长尾分布</span><span class="desc">8条需求分散在隐私遮挡、铃声、镜头方向等场景，按优先级排期。</span></div>
+
   </div>
 
-  <div class="chart-card">
-    <h2>📈 二级标签 TOP10 问题</h2>
-    <div id="chart-bar-tag" class="chart-box"></div>
+  <div class="s">
+    <h2>🚨 突出新增问题 Top 5</h2>
+    <table class="rank-table">
+      <thead><tr><th style="width:50px">排名</th><th>问题</th><th style="width:80px">昨日</th><th style="width:80px">今日</th><th style="width:80px">增长率</th><th>典型用户原声</th></tr></thead>
+      <tbody>
+<tr><td style="text-align:center;font-size:18px">🥇</td><td><b>误报</b></td><td style="text-align:center">10条</td><td style="text-align:center">8条</td><td style="text-align:center"><span class="growth-up">+-20%</span></td><td>何三涛：AI智见搜索中AI算法误报：视频中的人物年龄50岁左右，应该不属于老年人。</td></tr>
+<tr><td style="text-align:center;font-size:18px">🥈</td><td><b>忽略</b></td><td style="text-align:center">10条</td><td style="text-align:center">3条</td><td style="text-align:center"><span class="growth-up">+-70%</span></td><td>何三涛：视频、图片或音频问题：查看云录的时候，不是从开始录制的时间播放，而是从快结束的时间播放！</td></tr>
+<tr><td style="text-align:center;font-size:18px">🥉</td><td><b>漏录/漏拍</b></td><td style="text-align:center">6条</td><td style="text-align:center">3条</td><td style="text-align:center"><span class="growth-up">+-50%</span></td><td>魏健伟：门铃只拍到我闺女回来按门铃，出门却未拍到，她出门就去楼下超市拿个东西，来回不会超过五分钟，而且她按门铃我手机似乎没有反应</td></tr>
+<tr><td style="text-align:center;font-size:18px">4️⃣</td><td><b>录制延迟</b></td><td style="text-align:center">2条</td><td style="text-align:center">3条</td><td style="text-align:center"><span class="growth-up">+50%</span></td><td>朱彤：上午8点到12点，发生的事件不显示或者延迟显示，目前进APP里面查看事件，只有8点前的，实际情况不是，我在摄像头前晃悠好</td></tr>
+<tr><td style="text-align:center;font-size:18px">5️⃣</td><td><b>耗电快</b></td><td style="text-align:center">3条</td><td style="text-align:center">2条</td><td style="text-align:center"><span class="growth-up">+-33%</span></td><td>周军：7月27日晚9点充电92%变蓝，停充安装，早上9点查看，还剩86%，一晚无人无任何报警，少了6%电量，望优化。</td></tr>
+      </tbody>
+    </table>
   </div>
 
-  <!-- 误报 -->
-  <div class="module">
-    <div class="module-header"><h2>🔴 误报</h2><span class="count">7人（10条）</span></div>
-    <div class="module-insight red">🔴 误报是最大痛点，AI人形检测准确率亟待优化，无人时频繁触发云录和消息通知</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">许军州</td><td class="voice-text negative">提示画面变化，实际是人员出现（分类标签不准）</td></tr>
-      <tr><td class="tag-name">朱君</td><td class="voice-text negative">又出现大量有人出现，全是误报</td></tr>
-      <tr><td class="tag-name">瑞子</td><td class="voice-text negative">没人老是提示有人，录制视频又没人</td></tr>
-      <tr><td class="tag-name">魏健伟</td><td class="voice-text negative">有误报，提示画面有变化，但实际没有</td></tr>
-      <tr><td class="tag-name">相杰</td><td class="voice-text negative">画面误报，没有看到任何干扰和光线变化，但是触发云录</td></tr>
-      <tr><td class="tag-name">朱彤</td><td class="voice-text negative">新房里有工人干活，声音异响全部报有人出现</td></tr>
-      <tr><td class="tag-name">孙晓明</td><td class="voice-text negative">app总是提醒画面变化，多次无效提醒导致真的有人出现的录像被顶下去</td></tr>
-      <tr><td class="tag-name">袁飞</td><td class="voice-text negative">存在有误触发云录情况，一共2次，间隔约1分钟</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>📊 累计重点问题 Top 10</h2>
+    <table class="rank-table">
+      <thead><tr><th style="width:50px">排名</th><th>问题</th><th style="width:80px">累计反馈</th><th style="width:60px">占比</th><th style="width:80px">人数</th><th>典型用户原声</th></tr></thead>
+      <tbody>
+<tr><td style="text-align:center;font-size:18px">🥇</td><td><b>云录|误报</b></td><td style="text-align:center">18条</td><td style="text-align:center">11.8%</td><td style="text-align:center">10人</td><td>瑞子：没人老是提示有人 录制视频又没人</td></tr>
+<tr><td style="text-align:center;font-size:18px">🥈</td><td><b>-|忽略</b></td><td style="text-align:center">13条</td><td style="text-align:center">8.6%</td><td style="text-align:center">7人</td><td>何三涛：为了避免门铃因为取下充电，而耽误访客按门铃，建议门铃电池改为可拆卸的方式，同时提供备用电池。</td></tr>
+<tr><td style="text-align:center;font-size:18px">🥉</td><td><b>开流|开流失败</b></td><td style="text-align:center">7条</td><td style="text-align:center">4.6%</td><td style="text-align:center">6人</td><td>陈俊：实时画面开溜失败</td></tr>
+<tr><td style="text-align:center;font-size:18px">4️⃣</td><td><b>云录|漏录/漏拍</b></td><td style="text-align:center">9条</td><td style="text-align:center">5.9%</td><td style="text-align:center">6人</td><td>陈俊：云录漏录，卡录及时些。
+还有app标注信号介绍时。建议加注表达直接点这是门铃信号，这是基站信号。容易让用户一目了然区别</td></tr>
+<tr><td style="text-align:center;font-size:18px">5️⃣</td><td><b>卡录|卡录加载慢</b></td><td style="text-align:center">5条</td><td style="text-align:center">3.3%</td><td style="text-align:center">5人</td><td>何三涛：4G联网方式下，远程查看卡录视频，不显示画面和语音</td></tr>
+<tr><td style="text-align:center;font-size:18px">6️⃣</td><td><b>APP功能/交互|设置项自动重置</b></td><td style="text-align:center">5条</td><td style="text-align:center">3.3%</td><td style="text-align:center">4人</td><td>美诺：之前设置的侦测录像是打开状态，灵敏度调的是中，强拆报警是打开，HDR打开，夜视模式自动，刚才突然发现回家时视频模糊，检查</td></tr>
+<tr><td style="text-align:center;font-size:18px">7️⃣</td><td><b>APP功能/交互|信号图标显示错误</b></td><td style="text-align:center">4条</td><td style="text-align:center">2.6%</td><td style="text-align:center">4人</td><td>魏健伟：门铃没有连接WIFI，却显示无线图标</td></tr>
+<tr><td style="text-align:center;font-size:18px">8️⃣</td><td><b>续航|耗电快</b></td><td style="text-align:center">5条</td><td style="text-align:center">3.3%</td><td style="text-align:center">4人</td><td>陈俊：21点25来看开溜画面，显示电量97%，满电19.38安装的，掉电有点快</td></tr>
+<tr><td style="text-align:center;font-size:18px">9️⃣</td><td><b>APP功能/交互|电量显示/命名问题</b></td><td style="text-align:center">4条</td><td style="text-align:center">2.6%</td><td style="text-align:center">4人</td><td>何三涛：电量与网络页面没有显示电量，与标题不相符合</td></tr>
+<tr><td style="text-align:center;font-size:18px">🔟</td><td><b>云录|录制延迟</b></td><td style="text-align:center">5条</td><td style="text-align:center">3.3%</td><td style="text-align:center">4人</td><td>美诺：录了13秒的视频，前4秒有用，后边9秒人已经离开没什么用，然后人从楼上下来没有录上，应该属于延迟录像吧，录制如果提前5-</td></tr>
+      </tbody>
+    </table>
   </div>
 
-  <!-- 卡录相关 -->
-  <div class="module">
-    <div class="module-header"><h2>🔴 卡录异常</h2><span class="count">6人（9条）</span></div>
-    <div class="module-insight red">🔴 卡录远程查看体验差，乱码/黑屏/无法读取等问题集中出现</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">徐婷婷</td><td class="voice-text negative">查看内存卡卡录信息，没办法读，内存卡显示正常</td></tr>
-      <tr><td class="tag-name">何三涛</td><td class="voice-text negative">远程调取卡录视频，视频显示乱码</td></tr>
-      <tr><td class="tag-name">于晨光</td><td class="voice-text negative">内存卡格式化失败</td></tr>
-      <tr><td class="tag-name">王瑷珲</td><td class="voice-text negative">卡录加载慢</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🏆 二级标签 TOP10（按反馈人数排序）</h2>
+    <div id="chart-top10" class="ct"></div>
+  </div>
+  <script>
+    var chart = echarts.init(document.getElementById('chart-top10'));
+    chart.setOption({
+      tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+      grid: { left: '15%', right: '8%', top: '5%', bottom: '10%' },
+      xAxis: { type: 'value', name: '人数' },
+      yAxis: { type: 'category', data: ["\u4e91\u5f55|\u5f55\u5236\u5ef6\u8fdf", "APP\u529f\u80fd/\u4ea4\u4e92|\u7535\u91cf\u663e\u793a/\u547d\u540d\u95ee\u9898", "\u7eed\u822a|\u8017\u7535\u5feb", "APP\u529f\u80fd/\u4ea4\u4e92|\u4fe1\u53f7\u56fe\u6807\u663e\u793a\u9519\u8bef", "APP\u529f\u80fd/\u4ea4\u4e92|\u8bbe\u7f6e\u9879\u81ea\u52a8\u91cd\u7f6e", "\u5361\u5f55|\u5361\u5f55\u52a0\u8f7d\u6162", "\u4e91\u5f55|\u6f0f\u5f55/\u6f0f\u62cd", "\u5f00\u6d41|\u5f00\u6d41\u5931\u8d25", "-|\u5ffd\u7565", "\u4e91\u5f55|\u8bef\u62a5"], axisLabel: { fontSize: 13 } },
+      series: [{ type: 'bar', data: [4, 4, 4, 4, 4, 5, 6, 6, 7, 10], itemStyle: { color: '#00B050', borderRadius: [0, 6, 6, 0] }, label: { show: true, position: 'right', formatter: function(p) { return p.value + '人'; } } }]
+    });
+  </script>
+
+  <div class="s">
+    <h2>🔴 云录 <span class="b br">P0</span> <span style="font-size:14px;color:#999;font-weight:normal">· 41 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b br">P0</span></td><td>误报</td><td style="text-align:center;font-weight:700">18</td><td><div class="quote-list"><div>• 瑞子：没人老是提示有人 录制视频又没人</div><div>• 孙晓明：app.总是推送画面变化，但是查看事件录像后没有任何变化。不清楚是设备故障还是啥问题。总是推送空事件信息会顶掉重要事件录像</div><div>• 魏健伟：有误报，提示画面有变化，但实际没有</div><div>• 相杰：画面误报，没有看到任何干扰和光线变化，但是触发云录</div><div>• 袁飞：存在有误触发云录情况，一共2次，间隔约1分钟左右</div><div style="color:#999">...还有 5 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b br">P0</span></td><td>漏录/漏拍</td><td style="text-align:center;font-weight:700">9</td><td><div class="quote-list"><div>• 陈俊：云录漏录，卡录及时些。
+还有app标注信号介绍时。建议加注表达直接点这是门铃信号，这是基站信号。容易让用户一目了然区别</div><div>• 瑞子：漏录视频</div><div style="color:#999">...还有 4 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bo">P1</span></td><td>录制延迟</td><td style="text-align:center;font-weight:700">5</td><td><div class="quote-list"><div>• 美诺：录了13秒的视频，前4秒有用，后边9秒人已经离开没什么用，然后人从楼上下来没有录上，应该属于延迟录像吧，录制如果提前5-8秒会比较好</div><div>• 张雷：云录像，和卡录像，动态视频太晚了，人是闪过去的，都走过去了录像没啥用了，看不到脸了，不如3606pro版本。</div><div style="color:#999">...还有 2 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bo">P1</span></td><td>事件分类不准</td><td style="text-align:center;font-weight:700">3</td><td><div class="quote-list"><div>• 何三涛：云录像中，明明是有人路过，它分类为有人逗留，请管理审核！</div><div style="color:#999">...还有 2 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>云录卡录时间不同步</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 相杰：这条不确定是不是bug,首先云录和卡录的时间节点对不上。如果说是有延迟是不是应该规律性延迟，比如云录是02秒06秒卡录是04秒08秒，这样规律性的，我不确定这个逻辑是否正确。当然，因为时间节点不一致，...</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>人脸识别不敏感</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 张雷：人脸识别，不敏感，</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>云录播放失败</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 张雷：云录像第一个无法打开，一直加载</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>云录缩略图不显示</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 袁飞：云录对应片段不显示画面缩略图</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>下载和APP播放显示不一致</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 徐婷婷：怎么下载的，跟画面变化的不一样，本来想说人出去了，但是只拍到衣角，但是下载视频里又有人了[破涕为笑]</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>优化AI人形检测算法降低误报；排查录制触发逻辑减少漏录；优化事件分类和录制延迟。</div>
   </div>
 
-  <!-- 漏录/漏拍 -->
-  <div class="module">
-    <div class="module-header"><h2>🔴 漏录/漏拍</h2><span class="count">5人（6条）</span></div>
-    <div class="module-insight red">🔴 录像触发延迟，人走过去才触发录像，消息显示有人但未拍到</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">张雷</td><td class="voice-text negative">云录像和卡录像动态视频太晚了，人是闪过去的，都走过去了录像没啥用了，看不到脸了</td></tr>
-      <tr><td class="tag-name">魏健伟</td><td class="voice-text negative">人出门没拍上，消息显示有人出现，但没有看到人，只看到一点人影，能听到声音</td></tr>
-      <tr><td class="tag-name">瑞子</td><td class="voice-text negative">动态提示有人出现，app也推送消息，打开app看录制的视频没有人</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🟠 APP功能/交互 <span class="b bo">P1</span> <span style="font-size:14px;color:#999;font-weight:normal">· 23 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bo">P1</span></td><td>设置项自动重置</td><td style="text-align:center;font-weight:700">5</td><td><div class="quote-list"><div>• 美诺：之前设置的侦测录像是打开状态，灵敏度调的是中，强拆报警是打开，HDR打开，夜视模式自动，刚才突然发现回家时视频模糊，检查设置时发现  侦测录像关闭，灵敏度低，强拆报警官，夜视模式始终关闭</div><div>• 许军州：侦测录像开关按纽打开后，过一会自己会关闭；还有灵敏度设置，几乎都不行</div><div style="color:#999">...还有 2 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bo">P1</span></td><td>信号图标显示错误</td><td style="text-align:center;font-weight:700">4</td><td><div class="quote-list"><div>• 魏健伟：门铃没有连接WIFI，却显示无线图标</div><div style="color:#999">...还有 3 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bo">P1</span></td><td>电量显示/命名问题</td><td style="text-align:center;font-weight:700">4</td><td><div class="quote-list"><div>• 何三涛：电量与网络页面没有显示电量，与标题不相符合</div><div style="color:#999">...还有 3 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bg">P2</span></td><td>电池管理命名/显示</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 相杰：APP 中电池管理始终显示“省电模式”，又不能修改成其它模式，只能显示电量，为什么不叫电池电量呢？或者是其它符合更能体现这个选项功能的名字</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bg">P2</span></td><td>显示异常/数据错误</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 黄军剑：实时画面播放时，页面上的时间有时候显示，有时候不显示。时间：7/25 13：06</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bg">P2</span></td><td>页面加载失败</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 黄军剑：网络较差时，打开页面上的一个页面时，一直转圈。没有超时的时候，造成了无法点击页面，也无法返回。只能关闭app，建议添加一个超时的时间。时间 7/25 12：46</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>功能描述与实际不符</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 陈俊：app里介绍的人物出现，识别人脸会已人物小脸呈现。但并没有那种小框框</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>联网方式切换不刷新</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 何三涛：APP中切换联网方式后，返回，点击实时页面，不自动更新，需要彻底退出再进入，才能显示最新的联网线路</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>水印/Logo不一致</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 朱君：云录和卡录的视频logo和实时画面的logo不一致，位置也不一致</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>灵敏度调节优化</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 张雷：灵敏度调节，打开是距离远近，需要语言理解力，我觉得就应该高灵敏，和低灵敏度，方便理解</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>设置项持久化排查；电量显示逻辑修复；信号图标显示逻辑修复。</div>
   </div>
 
-  <!-- 开流失败 -->
-  <div class="module">
-    <div class="module-header"><h2>🟡 开流失败</h2><span class="count">6人（6条）</span></div>
-    <div class="module-insight orange">🟡 4G网络下实时画面加载失败，穿墙后信号衰减明显</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">相杰</td><td class="voice-text negative">实时画面一直不显示，云录和卡录都有记载</td></tr>
-      <tr><td class="tag-name">周军</td><td class="voice-text negative">门铃和网关间隔5米，间隔一面墙，高清模式无法打开实时画面</td></tr>
-      <tr><td class="tag-name">何三涛</td><td class="voice-text negative">4G联网方式下，远程查看卡录视频，不显示画面和语音</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🟠 卡录 <span class="b bo">P1</span> <span style="font-size:14px;color:#999;font-weight:normal">· 15 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b br">P0</span></td><td>卡录加载慢</td><td style="text-align:center;font-weight:700">5</td><td><div class="quote-list"><div>• 何三涛：4G联网方式下，远程查看卡录视频，不显示画面和语音</div><div>• 王瑷珲：实时云录加载比较快，卡录太慢，约一分钟。</div><div style="color:#999">...还有 3 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bg">P2</span></td><td>回放卡顿/失帧</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 何三涛：卡录视频回放中2倍速播放，看起来一卡一卡的，感觉属于失帧播放！</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bg">P2</span></td><td>卡录画面空白</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 何三涛：远程调取卡录视频，出现截图这个问题后，所有的侦测视频都不能加载成功，始终是黑屏。</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bg">P2</span></td><td>卡录不录</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 于晨光：内存卡无法卡录</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>内存卡信息显示错误</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 美诺：群文件下载的APP内存显示异常 其他测试版App显示正常</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>卡录格式化失败</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 于晨光：内存卡格式化失败</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>卡录乱码</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 何三涛：远程调取卡录视频，视频显示乱码</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>卡录筛选/搜索功能</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 何三涛：为什么云录底部有筛选和搜索功能，而卡录底部没有筛选和搜索功能</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>优化卡录读取速度；排查卡录不录和画面空白问题；卡录格式化和乱码问题。</div>
   </div>
 
-  <!-- 事件分类不准 -->
-  <div class="module">
-    <div class="module-header"><h2>🟡 事件分类不准</h2><span class="count">3人（3条）</span></div>
-    <div class="module-insight orange">🟡 事件分类标签不准确，路过被标为逗留，声音被识别为有人</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">何三涛</td><td class="voice-text negative">云录像中明明有人路过，它分类为有人逗留</td></tr>
-      <tr><td class="tag-name">许军州</td><td class="voice-text negative">提示画面变化，实际是人员出现</td></tr>
-      <tr><td class="tag-name">朱彤</td><td class="voice-text negative">看事件记录应该是有声音异响，但是提示是有人出现，实际只是异响声音</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🔴 开流 <span class="b br">P0</span> <span style="font-size:14px;color:#999;font-weight:normal">· 13 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b br">P0</span></td><td>开流失败</td><td style="text-align:center;font-weight:700">7</td><td><div class="quote-list"><div>• 陈俊：实时画面开溜失败</div><div>• 王瑷珲：实时画面，云录，卡录，使用移动网络，wifi都无法观看，忘记上传日志。晚上充满电，重新绑定后可实时观看。</div><div style="color:#999">...还有 4 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bg">P2</span></td><td>开流速度慢</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 朱君：同样安装环境，可视门铃5pro4g和6pro4g开流速度快，6pro4g开流太慢，不像4g网速！</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>消息通知-快捷回复异常</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 何三涛：消息通知中快捷回复中第4个快捷回复的语音和汉字不一致</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>开流卡顿</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 相杰：实时画面超级卡顿</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>底噪异常</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 何三涛：实时页面中的背景音有类似杀猪的嚎叫声，实际楼道里里静悄悄的没有声音。我觉得应该是门铃的底噪没有处理好。</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>优化4G网络下的开流速度和成功率；排查开流卡顿问题。</div>
   </div>
 
-  <!-- 耗电快 -->
-  <div class="module">
-    <div class="module-header"><h2>🟡 耗电快</h2><span class="count">3人（3条）</span></div>
-    <div class="module-insight orange">🟡 续航表现待优化，多用户反馈耗电不正常</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">朱君</td><td class="voice-text negative">电量昨天充到100%，今天93%了</td></tr>
-      <tr><td class="tag-name">于晨光</td><td class="voice-text negative">耗电量不正常</td></tr>
-      <tr><td class="tag-name">陈俊</td><td class="voice-text negative">耗电比较快，一天掉很多</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🔵 功能需求 <span class="b bb">需求</span> <span style="font-size:14px;color:#999;font-weight:normal">· 8 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bg">P2</span></td><td>隐私遮挡模式建议</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 张雷：我觉得隐私遮挡，应当采用vr模式，不是全景</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>铃声变声功能</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 孙晓明：门铃自定义铃声录制功能，建议录制的时候可以选择变声，考虑到独居女性使用该功能不愿意透露性别，有变声功能能更好的保护个人隐私。截图中我的猴哥版本是我拿另一部手机用豆包给读的然后录制生成</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>铃声分时段设置</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 张雷：我一直觉得铃声自定义，不只是白天和晚上，应该是和闹钟一样，节假日，下班回家是同一种铃声，工作中人不在家是另一种声音</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>微信通话功能缺失</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 张雷：缺微信通话功能</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>休眠时间分段设置</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 瑞子：休眠时间能不能设置时段 比如晚上几点到早上几点……app里是按小时</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>镜头方向可调</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 吴汞：实时画面能够适当的控制镜头方向就好，方便大门是斜着的或者大部分画面对着墙体</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>运营商选择建议</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 何三涛：建议增加移动、联通等物联网卡，这样用户可以根据自己当地的网络情况，进行购买，提高可视门铃的使用满意度。</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>按用户反馈优先级排期：隐私遮挡 > 铃声设置 > 镜头方向 > 运营商选择。</div>
   </div>
 
-  <!-- 设置项自动重置 -->
-  <div class="module">
-    <div class="module-header"><h2>🟡 设置项自动重置</h2><span class="count">4人（4条）</span></div>
-    <div class="module-insight orange">🟡 插卡和低电量场景下设置被自动重置</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">于晨光</td><td class="voice-text negative">插上内存卡，侦测录像开关自动关闭</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🟠 配网/安装引导 <span class="b bo">P1</span> <span style="font-size:14px;color:#999;font-weight:normal">· 7 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bg">P2</span></td><td>配网提示文案错误</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 许军州：描述有误，4G信号强度，与门铃和基站的远近没关系吧，可以优化下描述，或者监测的是门铃信号，否则会误导用户；</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>安装引导遗漏</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 朱君：安装引导，从未提示水平仪的使用，被忽视了，水平仪很关键</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>配网方式切换失败</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 周军：从蓝牙配网改AP配网，AP配网不成功。</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>配网提示不够醒目</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 相杰：建议：在配网的步骤提示的第一步的画面，下方“长按基站侧面的reset键5秒”可以加粗/高亮/红色字体提示，我在多次重新配网的时候，虽然点击下测试删除设备一步，但是就有忘记按reset，导致配网不成功</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>图示/说明错误</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 朱君：开机键位置图示不对</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>网络切换失败</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 周军：从4G网切wifi，切换不成功。</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>配网提示文案和醒目度优化；网络切换和配网方式切换失败修复。</div>
   </div>
 
-  <!-- 回放卡顿/失帧 -->
-  <div class="module">
-    <div class="module-header"><h2>🟡 回放卡顿/失帧</h2><span class="count">3人（3条）</span></div>
-    <div class="module-insight orange">🟡 视频播放体验不连贯，掉帧和跳帧问题</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">张雷</td><td class="voice-text negative">视频掉帧严重（慢放0.5倍录制）</td></tr>
-      <tr><td class="tag-name">美诺</td><td class="voice-text negative">云录视频播放时跳帧，不连续</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🟠 IQ <span class="b bo">P1</span> <span style="font-size:14px;color:#999;font-weight:normal">· 7 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bg">P2</span></td><td>画质噪点/拖影</td><td style="text-align:center;font-weight:700">4</td><td><div class="quote-list"><div>• 许军州：实时画面，偶尔会有马赛克样的，时尔有拖影，慢慢由模糊到清晰</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bg">P2</span></td><td>画面模糊</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 许军州：录制的画面，画面变动时；都是由模糊逐渐到清晰</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>录制绿屏</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 许军州：点实时画面下的，录制，录出来的是绿屏；</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>画质噪点和拖影优化；画面模糊和录制绿屏排查。</div>
   </div>
 
-  <!-- 页面加载失败 -->
-  <div class="module">
-    <div class="module-header"><h2>🟡 页面加载失败</h2><span class="count">2人（2条）</span></div>
-    <div class="module-insight orange">🟡 APP页面加载异常，网络状态查询和弱网场景转圈</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">朱彤</td><td class="voice-text negative">实时画面能正常进去，但在设置里面查看网络却一直转圈显示不出来</td></tr>
-      <tr><td class="tag-name">许军州</td><td class="voice-text negative">网络差时页面一直转圈无法操作，需加超时返回机制</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🟠 续航 <span class="b bo">P1</span> <span style="font-size:14px;color:#999;font-weight:normal">· 5 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bo">P1</span></td><td>耗电快</td><td style="text-align:center;font-weight:700">5</td><td><div class="quote-list"><div>• 陈俊：21点25来看开溜画面，显示电量97%，满电19.38安装的，掉电有点快</div><div>• 于晨光：耗电量不正常</div><div style="color:#999">...还有 2 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>优化待机功耗管理，减少非必要耗电。</div>
   </div>
 
-  <!-- 云录卡录时间不同步 -->
-  <div class="module">
-    <div class="module-header"><h2>🟡 云录卡录时间不同步</h2><span class="count">1人（2条）</span></div>
-    <div class="module-insight orange">🟡 云录和卡录数据不同步，下拉刷新无效</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">相杰</td><td class="voice-text negative">卡录停留在旧时间，云录正常，下拉刷新无效</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🔵 其他 <span class="b bg">P2</span> <span style="font-size:14px;color:#999;font-weight:normal">· 4 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bb">需求</span></td><td>关机重挂背板导致异常</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 王瑷珲：我发现当门铃关机之后，再挂上背板门铃会自动开机，门铃关机后手动开机后再挂背板。以上这样操作的话实时画面，云录卡录都会有问题。最后只能删除设备重新绑定才能恢复正常。</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>强拆功能不稳定</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 周军：强拆功能启动不稳定，有时候启动后，隔一段时间又会关闭，有时候就启不来，提示网络错误。</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>设备联动画面异常</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 张雷：打开设备联动，实时画面有声音没有画面，加载不出来，关闭设备联动就可以，已经上传了日志，我家小度设备目前是关机状态，因此设备可能无法联动</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>设备异常</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 王瑷珲：门铃删除重新绑定后，实时云录卡录观看正常，重新绑定前都不可以用</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>关机重挂背板、强拆功能、设备联动等逐项排查。</div>
   </div>
 
-  <!-- 配网/安装引导 -->
-  <div class="module">
-    <div class="module-header"><h2>🟡 配网/网络切换失败</h2><span class="count">1人（3条）</span></div>
-    <div class="module-insight orange">🟡 网络切换和配网方式切换存在失败问题</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">周军</td><td class="voice-text negative">从4G网切WiFi，切换不成功</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🟠 按门铃 <span class="b bo">P1</span> <span style="font-size:14px;color:#999;font-weight:normal">· 3 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bg">P2</span></td><td>通话功能失败</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 周军：按门铃，网关正常接收并通知铃声，但是无法正常通话。</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>通话音量小</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 陈俊：按门铃，基站来电音量小。通话声音好小（音量调到最大了），建议增大音量</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>通话功能失败排查远程接听逻辑；通话音量小优化。</div>
   </div>
 
-  <!-- APP交互其他 -->
-  <div class="module">
-    <div class="module-header"><h2>🟡 APP交互其他</h2><span class="count">4人（4条）</span></div>
-    <div class="module-insight orange">🟡 联网方式切换不刷新、设备联动画面异常、门铃灯不亮等交互问题</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">何三涛</td><td class="voice-text negative">APP中切换联网方式后，返回点击实时页面，不自动更新，需要彻底退出再进入</td></tr>
-      <tr><td class="tag-name">张雷</td><td class="voice-text negative">打开设备联动，实时画面有声音没有画面，关闭设备联动就可以</td></tr>
-      <tr><td class="tag-name">于晨光</td><td class="voice-text negative">关闭门铃灯后按门铃灯不亮</td></tr>
-      <tr><td class="tag-name">许军州</td><td class="voice-text negative">实时画面播放时时间有时显示有时不显示</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🔵 开箱 <span class="b bg">P2</span> <span style="font-size:14px;color:#999;font-weight:normal">· 3 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bb">需求</span></td><td>外观瑕疵</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 朱君：门铃顶部有磨损和白点</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>外壳做工/缝隙</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 陈俊：门铃主机外壳模具交接处缝隙明显建议优化。哨兵板就没有这现象</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>文档/指南瑕疵</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 美诺：门铃开箱很满意，细节满满，然而打开快速添加指南发现左下角有一块黑色污渍，建议这些小细节做到位，</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>外观瑕疵和外壳做工需品控加强；文档指南完善。</div>
   </div>
 
-  <!-- 功能需求 -->
-  <div class="module">
-    <div class="module-header"><h2>🔵 功能需求</h2><span class="count">4人（5条）</span></div>
-    <div class="module-insight blue">🔵 用户关注续航和安全性，建议可拆卸电池和变声功能</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">孙晓明</td><td class="voice-text positive">门铃自定义铃声建议增加变声功能，保护独居女性隐私</td></tr>
-      <tr><td class="tag-name">何三涛</td><td class="voice-text positive">建议电池改为可拆卸方式，同时提供备用电池</td></tr>
-      <tr><td class="tag-name">许军州</td><td class="voice-text negative">APP介绍有人脸识别小框但实际没有，功能描述与实际不符</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🟠 硬件/信号 <span class="b bo">P1</span> <span style="font-size:14px;color:#999;font-weight:normal">· 2 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bg">P2</span></td><td>基站信号弱</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 陈俊：把基站拿到路由器旁边，信号也没显示满。建议信号接收加强，门铃现在与基站相距大约5-6米间隔墙角与防盗门门板</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>基站信号弱需关注信号覆盖。</div>
   </div>
 
-  <!-- 其他视频/流处理 -->
-  <div class="module">
-    <div class="module-header"><h2>🔵 其他视频问题</h2><span class="count">5人（7条）</span></div>
-    <div class="module-insight blue">🔵 录制绿屏、画质模糊、红外模式异常等零散问题</div>
-    <table><thead><tr><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
-      <tr><td class="tag-name">许军州</td><td class="voice-text negative">点实时画面下的录制，录出来的是绿屏</td></tr>
-      <tr><td class="tag-name">何三涛</td><td class="voice-text negative">画面转换红外模式时画质异常</td></tr>
-      <tr><td class="tag-name">袁飞</td><td class="voice-text negative">云录对应片段不显示画面缩略图</td></tr>
-      <tr><td class="tag-name">张雷</td><td class="voice-text negative">人脸识别不敏感</td></tr>
-      <tr><td class="tag-name">黄军剑</td><td class="voice-text negative">云录播放起点异常</td></tr>
-    </tbody></table>
+  <div class="s">
+    <h2>🔵 包装/配件 <span class="b bg">P2</span> <span style="font-size:14px;color:#999;font-weight:normal">· 2 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bg">P2</span></td><td>包装材料建议</td><td style="text-align:center;font-weight:700">2</td><td><div class="quote-list"><div>• 孙晓明：建议设备套可降解塑料袋，防止划痕。用户感受也会好些。用的360其他设备都带走可降解袋子，感受还是有差距的</div><div style="color:#999">...还有 1 位用户反馈</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>包装材料建议：增加填充物防护。</div>
   </div>
 
-  <!-- 改进建议 -->
-  <div class="chart-card">
-    <h2>🎯 改进建议汇总</h2>
-    <ul class="suggestion-list">
-      <li class="red"><span class="priority">P0</span><span><strong>优化AI人形检测算法</strong> — 误报7人/10条为最大痛点，需降低无人场景下的误触发率，提升人形识别准确度</span></li>
-      <li class="red"><span class="priority">P0</span><span><strong>修复视频流加载链路</strong> — 开流失败6人+漏录5人，4G网络下实时画面加载需专项优化</span></li>
-      <li class="red"><span class="priority">P0</span><span><strong>修复卡录远程查看异常</strong> — 乱码、黑屏、无法读取等问题集中出现，需排查远程调取卡录的编解码和传输逻辑</span></li>
-      <li class="orange"><span class="priority">P1</span><span><strong>优化录像触发响应速度</strong> — 人走过去才触发录像，需缩短检测到录像启动的延迟</span></li>
-      <li class="orange"><span class="priority">P1</span><span><strong>修复事件分类准确性</strong> — 路过被分类为逗留、声音被识别为有人，需优化分类模型</span></li>
-      <li class="orange"><span class="priority">P1</span><span><strong>修复APP状态同步问题</strong> — 切换联网方式后页面不刷新、设置项自动重置等需统一排查</span></li>
-      <li class="orange"><span class="priority">P1</span><span><strong>优化4G/WiFi切换可靠性</strong> — 4G切WiFi失败、强拆提示网络错误等</span></li>
-      <li class="green"><span class="priority">P2</span><span><strong>优化续航表现</strong> — 耗电快问题需排查待机功耗</span></li>
-      <li class="green"><span class="priority">P2</span><span><strong>评估用户功能需求</strong> — 变声功能、可拆卸电池等纳入产品迭代规划</span></li>
-      <li class="green"><span class="priority">P2</span><span><strong>增加网络请求超时机制</strong> — 弱网场景下页面一直转圈，需加超时返回</span></li>
-    </ul>
+  <div class="s">
+    <h2>🟠 消息通知 <span class="b bo">P1</span> <span style="font-size:14px;color:#999;font-weight:normal">· 2 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bb">需求</span></td><td>消息通知-弹窗跳转错误</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 美诺：App弹消息说有人出现，点击弹窗信息，直接进入实时画面而非人出现的画面，不仔细看都不明白还以为是误报，建议弹窗信息进入后直接是录到的人而不是实时画面。另外目测这个录像延迟3秒左右。</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+        <tr><td><span class="b bb">需求</span></td><td>消息通知未推送</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 许军州：逗留消息通知已经设置，实际中并没有推送</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>弹窗跳转错误和未推送问题排查。</div>
   </div>
 
-  <div class="footer">
-    <div class="signature">🦞 尹燕玲-报告分析专家</div>
-    <div>数据截至 2026-07-28 | 6pro 4G门铃公测专项</div>
+  <div class="s">
+    <h2>🔵 硬件设计 <span class="b bg">P2</span> <span style="font-size:14px;color:#999;font-weight:normal">· 1 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bb">需求</span></td><td>按键手感/品质感</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 相杰：门铃按键按下去咔嚓咔嚓响，没有缓冲，个人感觉不太好，感觉品质不高的样子，应该有按下去回弹的触感就好，不要咔嚓咔嚓响</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>按键手感/品质感优化。</div>
   </div>
 
+  <div class="s">
+    <h2>🟠 指示灯 <span class="b bo">P1</span> <span style="font-size:14px;color:#999;font-weight:normal">· 1 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bb">需求</span></td><td>门铃灯不亮</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 张雷：关闭门铃灯，按门铃，门铃灯不亮</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>门铃灯不亮排查。</div>
+  </div>
+
+  <div class="s">
+    <h2>🟠 稳定性 <span class="b bo">P1</span> <span style="font-size:14px;color:#999;font-weight:normal">· 1 条</span></h2>
+    <table>
+      <thead><tr><th style="width:50px">等级</th><th style="width:18%">问题点</th><th style="width:50px">反馈量</th><th style="width:37%">用户原声</th><th style="width:30%">解决方案</th></tr></thead>
+      <tbody>
+        <tr><td><span class="b bb">需求</span></td><td>设备离线</td><td style="text-align:center;font-weight:700">1</td><td><div class="quote-list"><div>• 相杰：第一次打开APP显示设备掉线，重新连接一次才成功</div></div></td><td style="font-size:12px;color:#666">待定</td></tr>
+      </tbody>
+    </table>
+    <div class="in"><strong>方案：</strong>设备离线问题排查网络连接逻辑。</div>
+  </div>
+
+  <div class="f"><p>🦞 6pro 4G门铃公测 — 日常问题反馈专项报告 | 数据来源：飞书表格 | 生成时间：2026-07-29</p></div>
 </div>
-
-<script>
-var tagChart = echarts.init(document.getElementById('chart-bar-tag'));
-tagChart.setOption({
-  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-  grid: { left: '3%', right: '6%', bottom: '3%', top: '10%', containLabel: true },
-  xAxis: { type: 'value', axisLine: { lineStyle: { color: '#ddd' } }, axisLabel: { color: '#999' }, splitLine: { lineStyle: { color: '#f0f0f0' } } },
-  yAxis: { type: 'category', data: ['耗电快','事件分类不准','回放卡顿/失帧','忽略','设置项自动重置','信号图标显示错误','漏录/漏拍','卡录异常','开流失败','误报'], axisLine: { lineStyle: { color: '#ddd' } }, axisLabel: { color: '#555', fontSize: 13 }, inverse: true },
-  series: [{ type: 'bar', data: [
-      { value: 3, itemStyle: { color: '#F39C12' } },
-      { value: 3, itemStyle: { color: '#F39C12' } },
-      { value: 3, itemStyle: { color: '#F39C12' } },
-      { value: 4, itemStyle: { color: '#F39C12' } },
-      { value: 4, itemStyle: { color: '#F39C12' } },
-      { value: 4, itemStyle: { color: '#F39C12' } },
-      { value: 5, itemStyle: { color: '#E74C3C' } },
-      { value: 6, itemStyle: { color: '#E74C3C' } },
-      { value: 6, itemStyle: { color: '#E74C3C' } },
-      { value: 7, itemStyle: { color: '#E74C3C' } }
-    ], barWidth: '55%', label: { show: true, position: 'right', formatter: '{c}人', color: '#666', fontSize: 13 }, itemStyle: { borderRadius: [0, 6, 6, 0] }
-  }]
-});
-window.addEventListener('resize', function() { tagChart.resize(); });
-</script>
 </body>
 </html>
