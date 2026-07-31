@@ -3,64 +3,289 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>6pro 4G门铃公测 - 20人作业完成情况</title>
+<title>6pro 4G门铃公测 - 作业完成情况</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; padding: 20px; }
-.container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-h1 { color: #00B050; font-size: 24px; margin-bottom: 8px; }
-.subtitle { color: #999; font-size: 14px; margin-bottom: 24px; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; padding: 20px; }
+.header { text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; border-radius: 16px; margin-bottom: 24px; }
+.header h1 { font-size: 24px; margin-bottom: 8px; }
+.header .subtitle { font-size: 14px; opacity: 0.9; }
+.header .date { font-size: 13px; opacity: 0.8; margin-top: 4px; }
 .kpi-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-.kpi { flex: 1; min-width: 140px; background: #f0faf4; border-radius: 8px; padding: 16px; text-align: center; border: 1px solid #d4ede0; }
-.kpi .num { font-size: 28px; font-weight: 700; color: #00B050; }
-.kpi .label { font-size: 13px; color: #666; margin-top: 4px; }
-table { width: 100%; border-collapse: collapse; }
-th { background: #00B050; color: #fff; padding: 12px 8px; text-align: center; font-size: 14px; }
-th:first-child { border-radius: 8px 0 0 8px; }
-th:last-child { border-radius: 0 8px 8px 0; }
-td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #eee; font-size: 14px; }
-tr.zero { background: #fff0f0; }
-tr.zero td { color: #c0392b; }
-tr:hover { background: #f9f9f9; }
-.update-time { text-align: right; color: #999; font-size: 12px; margin-top: 16px; }
+.kpi-card { flex: 1; min-width: 140px; background: #fff; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .num { font-size: 32px; font-weight: 700; color: #00B050; }
+.kpi-card .label { font-size: 13px; color: #999; margin-top: 4px; }
+.kpi-card.pending .num { color: #F39C12; }
+.kpi-card.total .num { color: #333; }
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+th { background: #00B050; color: #fff; padding: 14px 12px; text-align: center; font-size: 14px; font-weight: 600; }
+td { padding: 12px; text-align: center; font-size: 14px; border-bottom: 1px solid #f0f0f0; }
+tr:last-child td { border-bottom: none; }
+tr.pending { background: #FFF5F5; }
+tr.pending td { color: #E74C3C; }
+.done { color: #00B050; font-weight: 600; }
+.pending-text { color: #E74C3C; font-weight: 600; }
+.bar { display: inline-block; width: 100px; height: 8px; background: #f0f0f0; border-radius: 4px; vertical-align: middle; margin-right: 6px; }
+.bar-fill { height: 100%; background: #00B050; border-radius: 4px; }
+.footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+.update-time { text-align: right; color: #999; font-size: 12px; margin-bottom: 12px; }
 </style>
 </head>
 <body>
-<div class="container">
-<h1>📋 6pro 4G门铃公测 - 20人作业完成情况</h1>
-<p class="subtitle">开箱体验 | 配网安装 | 日常问题反馈</p>
-<div class="kpi-row">
-<div class="kpi"><div class="num">20/20</div><div class="label">开箱体验完成</div></div>
-<div class="kpi"><div class="num">20/20</div><div class="label">配网安装完成</div></div>
-<div class="kpi"><div class="num">204</div><div class="label">日常反馈总数</div></div>
-<div class="kpi"><div class="num">19/20</div><div class="label">日常反馈参与</div></div>
+<div class="header">
+  <h1>📋 6pro 4G门铃公测 - 作业完成情况</h1>
+  <div class="subtitle">20人公测团队 · 开箱体验 / 配网安装 / 日常反馈</div>
+  <div class="date">更新时间：2026-07-31 09:40</div>
 </div>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="num">20/20</div><div class="label">已完成作业人数</div></div>
+  <div class="kpi-card pending"><div class="num">0</div><div class="label">待完成人数</div></div>
+  <div class="kpi-card total"><div class="num">236</div><div class="label">日常反馈总条数</div></div>
+  <div class="kpi-card total"><div class="num">20</div><div class="label">开箱提交数</div></div>
+  <div class="kpi-card total"><div class="num">20</div><div class="label">配网提交数</div></div>
+</div>
+
+<div class="update-time">数据来源：飞书在线表格 · 自动统计</div>
+
 <table>
-<thead><tr><th>序号</th><th>姓名</th><th>开箱体验</th><th>配网安装</th><th>日常反馈条数</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>张雷</td><td>✅</td><td>✅</td><td>23</td></tr>
-<tr><td>2</td><td>何三涛</td><td>✅</td><td>✅</td><td>20</td></tr>
-<tr><td>3</td><td>相杰</td><td>✅</td><td>✅</td><td>19</td></tr>
-<tr><td>4</td><td>瑞子</td><td>✅</td><td>✅</td><td>15</td></tr>
-<tr><td>5</td><td>许军州</td><td>✅</td><td>✅</td><td>14</td></tr>
-<tr><td>6</td><td>朱君</td><td>✅</td><td>✅</td><td>13</td></tr>
-<tr><td>7</td><td>袁飞</td><td>✅</td><td>✅</td><td>13</td></tr>
-<tr><td>8</td><td>周军</td><td>✅</td><td>✅</td><td>12</td></tr>
-<tr><td>9</td><td>王瑷珲</td><td>✅</td><td>✅</td><td>12</td></tr>
-<tr><td>10</td><td>于晨光</td><td>✅</td><td>✅</td><td>9</td></tr>
-<tr><td>11</td><td>陈俊</td><td>✅</td><td>✅</td><td>9</td></tr>
-<tr><td>12</td><td>徐婷婷</td><td>✅</td><td>✅</td><td>8</td></tr>
-<tr><td>13</td><td>孙晓明</td><td>✅</td><td>✅</td><td>7</td></tr>
-<tr><td>14</td><td>黄军剑</td><td>✅</td><td>✅</td><td>7</td></tr>
-<tr><td>15</td><td>美诺</td><td>✅</td><td>✅</td><td>6</td></tr>
-<tr><td>16</td><td>魏健伟</td><td>✅</td><td>✅</td><td>6</td></tr>
-<tr><td>17</td><td>朱彤</td><td>✅</td><td>✅</td><td>5</td></tr>
-<tr><td>18</td><td>吴汞</td><td>✅</td><td>✅</td><td>4</td></tr>
-<tr><td>19</td><td>蔡坤城</td><td>✅</td><td>✅</td><td>2</td></tr>
-<tr class="zero"><td>20</td><td>夏君</td><td>✅</td><td>✅</td><td>0</td></tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="width:60px">排名</th>
+      <th style="width:100px">姓名</th>
+      <th style="width:100px">开箱体验</th>
+      <th style="width:100px">配网安装</th>
+      <th>日常反馈条数</th>
+      <th style="width:120px">作业完成情况</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="">
+      <td>1</td>
+      <td style="font-weight:600">张雷</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:100%"></span></span>
+        <strong>24</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>2</td>
+      <td style="font-weight:600">何三涛</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:96%"></span></span>
+        <strong>23</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>3</td>
+      <td style="font-weight:600">相杰</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:88%"></span></span>
+        <strong>21</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>4</td>
+      <td style="font-weight:600">袁飞</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:71%"></span></span>
+        <strong>17</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>5</td>
+      <td style="font-weight:600">许军州</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:62%"></span></span>
+        <strong>15</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>6</td>
+      <td style="font-weight:600">瑞子</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:62%"></span></span>
+        <strong>15</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>7</td>
+      <td style="font-weight:600">周军</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:62%"></span></span>
+        <strong>15</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>8</td>
+      <td style="font-weight:600">朱君</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:54%"></span></span>
+        <strong>13</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>9</td>
+      <td style="font-weight:600">于晨光</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:50%"></span></span>
+        <strong>12</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>10</td>
+      <td style="font-weight:600">王瑷珲</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:50%"></span></span>
+        <strong>12</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>11</td>
+      <td style="font-weight:600">徐婷婷</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:42%"></span></span>
+        <strong>10</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>12</td>
+      <td style="font-weight:600">陈俊</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:42%"></span></span>
+        <strong>10</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>13</td>
+      <td style="font-weight:600">美诺</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:38%"></span></span>
+        <strong>9</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>14</td>
+      <td style="font-weight:600">孙晓明</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:33%"></span></span>
+        <strong>8</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>15</td>
+      <td style="font-weight:600">魏健伟</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:29%"></span></span>
+        <strong>7</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>16</td>
+      <td style="font-weight:600">吴汞</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:29%"></span></span>
+        <strong>7</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>17</td>
+      <td style="font-weight:600">朱彤</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:29%"></span></span>
+        <strong>7</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>18</td>
+      <td style="font-weight:600">黄军剑</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:29%"></span></span>
+        <strong>7</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>19</td>
+      <td style="font-weight:600">蔡坤城</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:12%"></span></span>
+        <strong>3</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+    <tr class="">
+      <td>20</td>
+      <td style="font-weight:600">夏君</td>
+      <td>✅</td>
+      <td>✅</td>
+      <td style="text-align:left">
+        <span class="bar"><span class="bar-fill" style="width:4%"></span></span>
+        <strong>1</strong> 条
+      </td>
+      <td><span class="done">已完成</span></td>
+    </tr>
+  </tbody>
 </table>
-<p class="update-time">数据更新时间：2026-07-30 09:20 | 数据来源：飞书表格自动统计</p>
+
+<div class="footer">
+  数据更新时间：2026-07-31 09:40 · 由报告分析专家自动生成 🦞<br>
+  飞书表格：<a href="https://my.feishu.cn/wiki/JrCJwUfmOiOnpQk22TIcG6pVnje?sheet=1rqxnG">查看明细</a>
 </div>
 </body>
 </html>
