@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6pro 4G门铃 - 日常问题反馈专项报告 (8/3)</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; background: #fff; padding: 40px; }
+h1 { color: #00B050; font-size: 28px; margin-bottom: 8px; }
+h2 { color: #00B050; font-size: 22px; margin: 32px 0 16px; border-left: 4px solid #00B050; padding-left: 12px; }
+h3 { font-size: 18px; margin: 24px 0 12px; color: #333; }
+.subtitle { color: #999; font-size: 14px; margin-bottom: 24px; }
+.insight { background: #f0faf4; border-left: 4px solid #00B050; padding: 16px 20px; margin-bottom: 24px; border-radius: 0 8px 8px 0; font-size: 15px; }
+.insight.warn { background: #fff8f0; border-left-color: #F39C12; }
+.insight.danger { background: #fff0f0; border-left-color: #E74C3C; }
+.kpi-row { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+.kpi { flex: 1; min-width: 160px; background: #f0faf4; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #d4ede0; }
+.kpi .num { font-size: 32px; font-weight: 700; color: #00B050; }
+.kpi .label { font-size: 13px; color: #666; margin-top: 6px; }
+.kpi.danger .num { color: #E74C3C; }
+.kpi.danger { background: #fff0f0; border-color: #f5d0d0; }
+.kpi.warn .num { color: #F39C12; }
+.kpi.warn { background: #fff8f0; border-color: #f5e0b0; }
+.chart-container { margin: 24px 0; }
+.bar-row { display: flex; align-items: center; margin-bottom: 8px; }
+.bar-label { width: 200px; font-size: 13px; text-align: right; padding-right: 12px; color: #555; }
+.bar-wrap { flex: 1; background: #f0f0f0; border-radius: 4px; height: 28px; position: relative; }
+.bar { height: 100%; border-radius: 4px; background: #00B050; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: #fff; font-size: 12px; font-weight: 600; min-width: 30px; }
+.bar.orange { background: #F39C12; }
+.bar.red { background: #E74C3C; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+th { background: #00B050; color: #fff; padding: 10px 8px; text-align: left; font-size: 13px; }
+th:first-child { border-radius: 8px 0 0 8px; }
+th:last-child { border-radius: 0 8px 8px 0; }
+td { padding: 10px 8px; border-bottom: 1px solid #eee; font-size: 13px; }
+tr:hover { background: #f9f9f9; }
+.quote { color: #666; font-style: italic; }
+.module-summary { padding: 8px 16px; border-radius: 6px; margin-bottom: 12px; font-size: 14px; }
+.module-summary.danger { background: #fff0f0; color: #c0392b; }
+.module-summary.warn { background: #fff8f0; color: #e67e22; }
+.module-summary.info { background: #e3f2fd; color: #1565c0; }
+.update-time { text-align: right; color: #999; font-size: 12px; margin-top: 32px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>📊 6pro 4G门铃 - 日常问题反馈专项报告</h1>
+<p class="subtitle">数据周期：7/19-8/3 | 本次新增：23条（seq 236-258）| 自动生成</p>
+
+<div class="insight danger">
+<b>🔥 总体洞察</b><br>
+累计有效反馈 <b>245</b> 条（本轮新增 <b>23</b> 条），覆盖 <b>17</b> 个一级模块。<br>本轮新增集中在 7/31-8/3，<b>云录问题</b>仍为最大痛点（7条），<b>开流失败/卡顿</b>和<b>IQ画面异常</b>新增明显。<br>固件20260730升级后，<b>耗电快</b>、<b>录制延迟</b>、<b>误报</b>问题持续暴露，建议重点关注。
+</div>
+
+<div class="kpi-row">
+<div class="kpi"><div class="num">245</div><div class="label">累计有效反馈</div></div>
+<div class="kpi danger"><div class="num">23</div><div class="label">本轮新增</div></div>
+<div class="kpi"><div class="num">67</div><div class="label">二级标签数</div></div>
+<div class="kpi warn"><div class="num">14</div><div class="label">新增Bug问题</div></div>
+<div class="kpi"><div class="num">17</div><div class="label">一级模块数</div></div>
+</div>
+
+<h2>🆕 本轮新增 TOP5 问题</h2>
+<table><thead><tr><th>排名</th><th>二级标签</th><th>新增条数</th><th>反馈人数</th></tr></thead><tbody>
+<tr><td>1</td><td>误报</td><td>3条</td><td>2人</td></tr>
+<tr><td>2</td><td>漏录/漏拍</td><td>2条</td><td>2人</td></tr>
+<tr><td>3</td><td>录制绿屏</td><td>2条</td><td>2人</td></tr>
+<tr><td>4</td><td>卡录缩略图不显示</td><td>2条</td><td>2人</td></tr>
+<tr><td>5</td><td>录制延迟</td><td>2条</td><td>1人</td></tr>
+</tbody></table>
+<h2>📋 本轮新增明细</h2>
+<table><thead><tr><th style="width:50px">序号</th><th style="width:130px">时间</th><th style="width:70px">姓名</th><th style="width:100px">一级标签</th><th style="width:120px">二级标签</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>236</td><td>2026/7/31 16:34:02</td><td>朱彤</td><td>云录</td><td>漏录/漏拍</td><td class="quote">画面右边防火门关上，没有录制到怎么被关上，门关上应该是画面有变化的，13：25分画面显示防火门是开的，16：09分显示防火门关的，没有录制到画面变化。</td></tr>
+<tr><td>237</td><td>2026/7/31 20:49:26</td><td>袁飞</td><td>续航</td><td>耗电快</td><td class="quote">更新20260730固件后耗电快，昨天30号中午充电至54%开始到现在剩余电量38% 32小时合计消耗电量24%</td></tr>
+<tr><td>238</td><td>2026/7/31 21:35:18</td><td>瑞子</td><td>IQ</td><td>录制绿屏</td><td class="quote">走廊灯常亮。门口灯也常亮但是录制视频是黑白的 。实时画面正常。已经上传视频</td></tr>
+<tr><td>239</td><td>2026/8/1 7:16:42</td><td>王瑷珲</td><td>云录</td><td>录制延迟</td><td class="quote">录制应该要提前一些，否则就会发生漏录事件，每次画面变化都比较延迟，这样就没有意义，</td></tr>
+<tr><td>240</td><td>2026/8/1 8:17:28</td><td>周军</td><td>APP功能/交互</td><td>电量显示/命名问题</td><td class="quote">将电量与网络改成网络信号</td></tr>
+<tr><td>241</td><td>2026/8/1 8:36:44</td><td>王瑷珲</td><td>云录</td><td>录制延迟</td><td class="quote">360摄像机在光影发生变化时，云录会提前4秒从24秒开始录制。然而，门铃从24秒就开始感知，但直到8秒后才开始录制。我个人认为，由于小朋友是从左向右行走，门铃应该最先反应才是。因为360摄像机的视野存在遮挡，是不是门铃需要检测到人体移动才会触发录制功能，因此每次记录都是在人走过后才开始。</td></tr>
+<tr><td>242</td><td>2026/8/1 8:37:36</td><td>周军</td><td>消息通知</td><td>消息通知未推送</td><td class="quote">漏报信息。小米设备提醒，测试设备未报。</td></tr>
+<tr><td>243</td><td>2026/8/1 10:24:48</td><td>魏健伟</td><td>云录</td><td>漏录/漏拍</td><td class="quote">邻居家小孩出去遛狗画面没有拍到，视频中只听到了声音，回来画面拍到了</td></tr>
+<tr><td>244</td><td>2026/8/1 10:56:01</td><td>袁飞</td><td>APP功能/交互</td><td>显示异常/数据错误</td><td class="quote">之前提议在实时画面上角增加即时网速图标，团队改进了，但是原来电量图标不见了</td></tr>
+<tr><td>245</td><td>2026/8/1 10:56:43</td><td>魏健伟</td><td>功能需求</td><td>运营商选择建议</td><td class="quote">希望有一个4G和WIFI网络的一键切换的按钮，或是二者能同时在线连接，以保证网络连接的畅通</td></tr>
+<tr><td>246</td><td>2026/8/1 13:04:14</td><td>许军州</td><td>IQ</td><td>画面模糊</td><td class="quote">预览界面，画面是模糊的</td></tr>
+<tr><td>247</td><td>2026/8/1 13:05:30</td><td>许军州</td><td>开流</td><td>开流失败</td><td class="quote">实时画面，开流失败，杀死进程，重启app后，开流成功</td></tr>
+<tr><td>248</td><td>2026/8/1 16:41:26</td><td>瑞子</td><td>云录</td><td>误报</td><td class="quote">画面变化bug 没有任何人 结果提示画面变化。视频已提交app</td></tr>
+<tr><td>249</td><td>2026/8/1 19:03:52</td><td>袁飞</td><td>APP功能/交互</td><td>显示异常/数据错误</td><td class="quote">实时画面不显示时间</td></tr>
+<tr><td>250</td><td>2026/8/1 19:53:56</td><td>徐婷婷</td><td>卡录</td><td>卡录缩略图不显示</td><td class="quote">卡录里面视频，都是封面没有画面。都需要点进去</td></tr>
+<tr><td>251</td><td>2026/8/1 21:30:51</td><td>陈俊</td><td>其他</td><td>设备异常</td><td class="quote">建议改进一下</td></tr>
+<tr><td>252</td><td>2026/8/1 21:37:17</td><td>张雷</td><td>IQ</td><td>录制绿屏</td><td class="quote">画面绿光</td></tr>
+<tr><td>253</td><td>2026/8/1 21:44:48</td><td>何三涛</td><td>卡录</td><td>卡录缩略图不显示</td><td class="quote">云录像有略缩图，卡录像没有略缩图</td></tr>
+<tr><td>254</td><td>2026/8/1 22:01:29</td><td>孙晓明</td><td>云录</td><td>误报</td><td class="quote">连续画面变化提醒</td></tr>
+<tr><td>255</td><td>2026/8/2 8:54:15</td><td>许军州</td><td>开流</td><td>开流卡顿</td><td class="quote">8月2号，8点48分，查看实时画面时，画面出现闪烁，连续开流几次后才恢复正常；</td></tr>
+<tr><td>256</td><td>2026/8/2 10:48:47</td><td>周军</td><td>消息通知</td><td>消息通知未推送</td><td class="quote">漏报现象上报。</td></tr>
+<tr><td>257</td><td>2026/8/2 16:15:31</td><td>朱君</td><td>卡录</td><td>卡录画面空白</td><td class="quote">卡回放时，小画面封烟</td></tr>
+<tr><td>258</td><td>2026/8/3 8:20:08</td><td>孙晓明</td><td>云录</td><td>误报</td><td class="quote">错误提醒并记录有人出现，实际查看录像无人出现</td></tr>
+</tbody></table>
+<h2>📈 累计二级标签 TOP10（按反馈人数）</h2>
+<div class="chart-container">
+<div class="bar-row"><div class="bar-label">误报</div><div class="bar-wrap"><div class="bar red" style="width:100.0%">16人(34条)</div></div></div>
+<div class="bar-row"><div class="bar-label">漏录/漏拍</div><div class="bar-wrap"><div class="bar red" style="width:75.0%">12人(19条)</div></div></div>
+<div class="bar-row"><div class="bar-label">卡录加载慢</div><div class="bar-wrap"><div class="bar red" style="width:68.75%">11人(17条)</div></div></div>
+<div class="bar-row"><div class="bar-label">设备异常</div><div class="bar-wrap"><div class="bar orange" style="width:50.0%">8人(11条)</div></div></div>
+<div class="bar-row"><div class="bar-label">开流失败</div><div class="bar-wrap"><div class="bar orange" style="width:43.75%">7人(11条)</div></div></div>
+<div class="bar-row"><div class="bar-label">录制延迟</div><div class="bar-wrap"><div class="bar orange" style="width:37.5%">6人(10条)</div></div></div>
+<div class="bar-row"><div class="bar-label">显示异常/数据错误</div><div class="bar-wrap"><div class="bar orange" style="width:37.5%">6人(9条)</div></div></div>
+<div class="bar-row"><div class="bar-label">设置项自动重置</div><div class="bar-wrap"><div class="bar orange" style="width:37.5%">6人(7条)</div></div></div>
+<div class="bar-row"><div class="bar-label">耗电快</div><div class="bar-wrap"><div class="bar orange" style="width:31.25%">5人(7条)</div></div></div>
+<div class="bar-row"><div class="bar-label">电量显示/命名问题</div><div class="bar-wrap"><div class="bar orange" style="width:31.25%">5人(5条)</div></div></div>
+</div>
+<h2>🔴 云录（83条，19人）（本轮+7）</h2>
+<div class="module-summary danger">⚠️ 最大问题模块，误报和漏录最为突出，录制延迟在固件升级后集中爆发</div>
+<h3>误报 — 16人（34条） 🆕+3</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>70</td><td>瑞子</td><td class="quote">没人老是提示有人 录制视频又没人</td></tr>
+<tr><td>36</td><td>孙晓明</td><td class="quote">app.总是推送画面变化，但是查看事件录像后没有任何变化。不清楚是设备故障还是啥问题。总是推送空事件信息会顶掉重要事件录像</td></tr>
+<tr><td>62</td><td>魏健伟</td><td class="quote">有误报，提示画面有变化，但实际没有</td></tr>
+<tr><td>69</td><td>相杰</td><td class="quote">画面误报，没有看到任何干扰和光线变化，但是触发云录</td></tr>
+<tr><td>77</td><td>袁飞</td><td class="quote">存在有误触发云录情况，一共2次，间隔约1分钟左右</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 11 位用户反馈</td></tr>
+</tbody></table>
+<h3>漏录/漏拍 — 12人（19条） 🆕+2</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>52</td><td>陈俊</td><td class="quote">云录漏录，卡录及时些。
+还有app标注信号介绍时。建议加注表达直接点这是门铃信号，这是基站信号。容易让用户一目了然区别</td></tr>
+<tr><td>14</td><td>瑞子</td><td class="quote">漏录视频</td></tr>
+<tr><td>97</td><td>魏健伟</td><td class="quote">人出门没有拍上，消息显示有人出现，但没有看到人，人应该是走过去了，只看到一点人影，能听到声音</td></tr>
+<tr><td>99</td><td>许军州</td><td class="quote">提示：有人出现；实际没有；怀疑是漏录，没有录全导致的临近的时间确实是有人的</td></tr>
+<tr><td>11</td><td>徐婷婷</td><td class="quote">新款漏拍了好几条视频。大的声音，影响没有录进去。同一天晚上10点多。跟早上都没有。对比了之前的门铃</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 7 位用户反馈</td></tr>
+</tbody></table>
+<h3>录制延迟 — 6人（10条） 🆕+2</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>17</td><td>美诺</td><td class="quote">录了13秒的视频，前4秒有用，后边9秒人已经离开没什么用，然后人从楼上下来没有录上，应该属于延迟录像吧，录制如果提前5-8秒会比较好</td></tr>
+<tr><td>86</td><td>张雷</td><td class="quote">云录像，和卡录像，动态视频太晚了，人是闪过去的，都走过去了录像没啥用了，看不到脸了，不如3606pro版本。</td></tr>
+<tr><td>115</td><td>朱彤</td><td class="quote">上午8点到12点，发生的事件不显示或者延迟显示，目前进APP里面查看事件，只有8点前的，实际情况不是，我在摄像头前晃悠好几次了，云录和卡录没有显示。</td></tr>
+<tr><td>151</td><td>魏健伟</td><td class="quote">画面中实际是有人出现的，只是拍了个末尾，但显示是画面变化</td></tr>
+<tr><td>199</td><td>黄军剑</td><td class="quote">播放云录视频，默认好像是放大了视频。造成了视野变小了，详见视频。</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>事件分类不准 — 3人（5条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>89</td><td>何三涛</td><td class="quote">云录像中，明明是有人路过，它分类为有人逗留，请管理审核！</td></tr>
+<tr><td>95</td><td>许军州</td><td class="quote">提示：画面变化；其实是人员出现</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>云录缩略图不显示 — 4人（4条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>65</td><td>袁飞</td><td class="quote">云录对应片段不显示画面缩略图</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 3 位用户反馈</td></tr>
+</tbody></table>
+<h3>下载和APP播放显示不一致 — 3人（4条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>123</td><td>徐婷婷</td><td class="quote">怎么下载的，跟画面变化的不一样，本来想说人出去了，但是只拍到衣角，但是下载视频里又有人了[破涕为笑]</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 2 位用户反馈</td></tr>
+</tbody></table>
+<h3>云录卡录时间不同步 — 2人（3条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>31</td><td>相杰</td><td class="quote">这条不确定是不是bug,首先云录和卡录的时间节点对不上。如果说是有延迟是不是应该规律性延迟，比如云录是02秒06秒卡录是04秒08秒，这样规律性的，我不确定这个逻辑是否正确。当然，因为时间节点不一致，还会有另外一个怀疑，是不是有漏录？</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>云录播放失败 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>39</td><td>张雷</td><td class="quote">云录像第一个无法打开，一直加载</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>人脸识别不敏感 — 1人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>64</td><td>张雷</td><td class="quote">人脸识别，不敏感，</td></tr>
+</tbody></table>
+<h2>🔴 APP功能/交互（33条，13人）（本轮+3）</h2>
+<div class="module-summary danger">⚠️ 电量显示/命名问题持续，升级后显示异常新增</div>
+<h3>显示异常/数据错误 — 6人（9条） 🆕+2</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>106</td><td>黄军剑</td><td class="quote">实时画面播放时，页面上的时间有时候显示，有时候不显示。时间：7/25 13：06</td></tr>
+<tr><td>113</td><td>朱君</td><td class="quote">很奇怪，刚才开流不显示电量，画面还是流畅画质，杀了后台，再打开就显示电量和超清画质了</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 4 位用户反馈</td></tr>
+</tbody></table>
+<h3>设置项自动重置 — 6人（7条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>54</td><td>美诺</td><td class="quote">之前设置的侦测录像是打开状态，灵敏度调的是中，强拆报警是打开，HDR打开，夜视模式自动，刚才突然发现回家时视频模糊，检查设置时发现  侦测录像关闭，灵敏度低，强拆报警官，夜视模式始终关闭</td></tr>
+<tr><td>34</td><td>许军州</td><td class="quote">侦测录像开关按纽打开后，过一会自己会关闭；还有灵敏度设置，几乎都不行</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 4 位用户反馈</td></tr>
+</tbody></table>
+<h3>电量显示/命名问题 — 5人（5条） 🆕+1</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>27</td><td>何三涛</td><td class="quote">电量与网络页面没有显示电量，与标题不相符合</td></tr>
+<tr><td>10</td><td>相杰</td><td class="quote">电量与网络设置页面没有和电量相关的任何信息，只有网络信号强度和门铃信号强度，建议调整设置。</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 3 位用户反馈</td></tr>
+</tbody></table>
+<h3>信号图标显示错误 — 4人（4条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>38</td><td>魏健伟</td><td class="quote">门铃没有连接WIFI，却显示无线图标</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 3 位用户反馈</td></tr>
+</tbody></table>
+<h3>电池管理命名/显示 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>6</td><td>相杰</td><td class="quote">APP 中电池管理始终显示“省电模式”，又不能修改成其它模式，只能显示电量，为什么不叫电池电量呢？或者是其它符合更能体现这个选项功能的名字</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>页面加载失败 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>107</td><td>黄军剑</td><td class="quote">网络较差时，打开页面上的一个页面时，一直转圈。没有超时的时候，造成了无法点击页面，也无法返回。只能关闭app，建议添加一个超时的时间。时间 7/25 12：46</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>功能描述与实际不符 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>104</td><td>陈俊</td><td class="quote">app里介绍的人物出现，识别人脸会已人物小脸呈现。但并没有那种小框框</td></tr>
+</tbody></table>
+<h3>联网方式切换不刷新 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>61</td><td>何三涛</td><td class="quote">APP中切换联网方式后，返回，点击实时页面，不自动更新，需要彻底退出再进入，才能显示最新的联网线路</td></tr>
+</tbody></table>
+<h3>水印/Logo不一致 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>26</td><td>朱君</td><td class="quote">云录和卡录的视频logo和实时画面的logo不一致，位置也不一致</td></tr>
+</tbody></table>
+<h3>灵敏度调节优化 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>144</td><td>张雷</td><td class="quote">灵敏度调节，打开是距离远近，需要语言理解力，我觉得就应该高灵敏，和低灵敏度，方便理解</td></tr>
+</tbody></table>
+<h2>🔴 卡录（33条，15人）（本轮+3）</h2>
+<div class="module-summary danger">⚠️ 卡录缩略图不显示、卡录画面空白为主要痛点</div>
+<h3>卡录加载慢 — 11人（17条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>76</td><td>何三涛</td><td class="quote">4G联网方式下，远程查看卡录视频，不显示画面和语音</td></tr>
+<tr><td>35</td><td>王瑷珲</td><td class="quote">实时云录加载比较快，卡录太慢，约一分钟。</td></tr>
+<tr><td>100</td><td>袁飞</td><td class="quote">打开APP无法查看卡录数据</td></tr>
+<tr><td>68</td><td>徐婷婷</td><td class="quote">查看内存卡卡录信息。没办法读，内存卡显示正常</td></tr>
+<tr><td>116</td><td>相杰</td><td class="quote">同时间段卡录拉取失败，云录没问题</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 6 位用户反馈</td></tr>
+</tbody></table>
+<h3>卡录画面空白 — 4人（4条） 🆕+1</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>94</td><td>何三涛</td><td class="quote">远程调取卡录视频，出现截图这个问题后，所有的侦测视频都不能加载成功，始终是黑屏。</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 3 位用户反馈</td></tr>
+</tbody></table>
+<h3>回放卡顿/失帧 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>28</td><td>何三涛</td><td class="quote">卡录视频回放中2倍速播放，看起来一卡一卡的，感觉属于失帧播放！</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>卡录格式化失败 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>91</td><td>于晨光</td><td class="quote">内存卡格式化失败</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>卡录不录 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>92</td><td>于晨光</td><td class="quote">内存卡无法卡录</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>卡录缩略图不显示 — 2人（2条） 🆕+2</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>250</td><td>徐婷婷</td><td class="quote">卡录里面视频，都是封面没有画面。都需要点进去</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>内存卡信息显示错误 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>55</td><td>美诺</td><td class="quote">群文件下载的APP内存显示异常 其他测试版App显示正常</td></tr>
+</tbody></table>
+<h3>卡录乱码 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>96</td><td>何三涛</td><td class="quote">远程调取卡录视频，视频显示乱码</td></tr>
+</tbody></table>
+<h3>卡录筛选/搜索功能 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>132</td><td>何三涛</td><td class="quote">为什么云录底部有筛选和搜索功能，而卡录底部没有筛选和搜索功能</td></tr>
+</tbody></table>
+<h3>下载和APP播放显示不一致 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>177</td><td>周军</td><td class="quote">第二次更新失败，还是wifi模式。</td></tr>
+</tbody></table>
+<h2>🟡 开流（19条，11人）（本轮+2）</h2>
+<div class="module-summary warn">开流失败和卡顿，实时画面加载体验不稳定</div>
+<h3>开流失败 — 7人（11条） 🆕+1</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>9</td><td>陈俊</td><td class="quote">实时画面开溜失败</td></tr>
+<tr><td>7</td><td>王瑷珲</td><td class="quote">实时画面，云录，卡录，使用移动网络，wifi都无法观看，忘记上传日志。晚上充满电，重新绑定后可实时观看。</td></tr>
+<tr><td>59</td><td>相杰</td><td class="quote">实时画面一直不显示，云录和卡录都有记载</td></tr>
+<tr><td>41</td><td>张雷</td><td class="quote">无法打开，建议wifi和4g同时连接智能切换</td></tr>
+<tr><td>72</td><td>周军</td><td class="quote">门铃和网关间隔5米，间隔一面墙，高清模式无法打开实时画面。</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 2 位用户反馈</td></tr>
+</tbody></table>
+<h3>开流卡顿 — 2人（3条） 🆕+1</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>118</td><td>相杰</td><td class="quote">实时画面超级卡顿</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>开流速度慢 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>21</td><td>朱君</td><td class="quote">同样安装环境，可视门铃5pro4g和6pro4g开流速度快，6pro4g开流太慢，不像4g网速！</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>消息通知-快捷回复异常 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>3</td><td>何三涛</td><td class="quote">消息通知中快捷回复中第4个快捷回复的语音和汉字不一致</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>底噪异常 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>152</td><td>何三涛</td><td class="quote">实时页面中的背景音有类似杀猪的嚎叫声，实际楼道里里静悄悄的没有声音。我觉得应该是门铃的底噪没有处理好。</td></tr>
+</tbody></table>
+<h2>🟡 功能需求（15条，10人）（本轮+1）</h2>
+<div class="module-summary warn">用户期望4G/WiFi双待切换、运营商选择优化</div>
+<h3>隐私遮挡模式建议 — 5人（5条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>12</td><td>张雷</td><td class="quote">我觉得隐私遮挡，应当采用vr模式，不是全景</td></tr>
+<tr><td>119</td><td>王瑷珲</td><td class="quote">隐私设置建议不要使用黑色，感觉影响画面，周边同色马赛克也可以吧，</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 3 位用户反馈</td></tr>
+</tbody></table>
+<h3>微信通话功能缺失 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>15</td><td>张雷</td><td class="quote">缺微信通话功能</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>运营商选择建议 — 2人（2条） 🆕+1</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>130</td><td>何三涛</td><td class="quote">建议增加移动、联通等物联网卡，这样用户可以根据自己当地的网络情况，进行购买，提高可视门铃的使用满意度。</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>升级体验优化 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>160</td><td>张雷</td><td class="quote">升级问题，升级完成，应该显示升级完成，这里升级完成，直接啥也没有，只能看到升级检测</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>铃声变声功能 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>71</td><td>孙晓明</td><td class="quote">门铃自定义铃声录制功能，建议录制的时候可以选择变声，考虑到独居女性使用该功能不愿意透露性别，有变声功能能更好的保护个人隐私。截图中我的猴哥版本是我拿另一部手机用豆包给读的然后录制生成</td></tr>
+</tbody></table>
+<h3>铃声分时段设置 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>30</td><td>张雷</td><td class="quote">我一直觉得铃声自定义，不只是白天和晚上，应该是和闹钟一样，节假日，下班回家是同一种铃声，工作中人不在家是另一种声音</td></tr>
+</tbody></table>
+<h3>休眠时间分段设置 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>16</td><td>瑞子</td><td class="quote">休眠时间能不能设置时段 比如晚上几点到早上几点……app里是按小时</td></tr>
+</tbody></table>
+<h3>镜头方向可调 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>122</td><td>吴汞</td><td class="quote">实时画面能够适当的控制镜头方向就好，方便大门是斜着的或者大部分画面对着墙体</td></tr>
+</tbody></table>
+<h2>🔵 其他（14条，8人）（本轮+1）</h2>
+<div class="module-summary info">感应灯误触发等设备异常</div>
+<h3>设备异常 — 8人（11条） 🆕+1</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>8</td><td>王瑷珲</td><td class="quote">门铃删除重新绑定后，实时云录卡录观看正常，重新绑定前都不可以用</td></tr>
+<tr><td>162</td><td>徐婷婷</td><td class="quote">每次首页，跟点进去前几秒曝光严重</td></tr>
+<tr><td>165</td><td>相杰</td><td class="quote">1.升级过程比较慢，整个过程大约8分钟。2.建议升级过程中提醒是否可以离开升级画面，是否可以后台App,甚至升级过程中是否可以关闭App,关闭App是否会造成升级失败。</td></tr>
+<tr><td>176</td><td>张雷</td><td class="quote">更新后卡录像无法加载</td></tr>
+<tr><td>181</td><td>袁飞</td><td class="quote">云录数据丢失，参照同一时间卡录数据对比</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 3 位用户反馈</td></tr>
+</tbody></table>
+<h3>关机重挂背板导致异常 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>44</td><td>王瑷珲</td><td class="quote">我发现当门铃关机之后，再挂上背板门铃会自动开机，门铃关机后手动开机后再挂背板。以上这样操作的话实时画面，云录卡录都会有问题。最后只能删除设备重新绑定才能恢复正常。</td></tr>
+</tbody></table>
+<h3>强拆功能不稳定 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>78</td><td>周军</td><td class="quote">强拆功能启动不稳定，有时候启动后，隔一段时间又会关闭，有时候就启不来，提示网络错误。</td></tr>
+</tbody></table>
+<h3>设备联动画面异常 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>74</td><td>张雷</td><td class="quote">打开设备联动，实时画面有声音没有画面，加载不出来，关闭设备联动就可以，已经上传了日志，我家小度设备目前是关机状态，因此设备可能无法联动</td></tr>
+</tbody></table>
+<h2>🔵 IQ（14条，8人）（本轮+3）</h2>
+<div class="module-summary info">画质模糊、录制绿屏/黑白，固件升级后画面异常新增</div>
+<h3>画面模糊 — 4人（5条） 🆕+1</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>82</td><td>许军州</td><td class="quote">录制的画面，画面变动时；都是由模糊逐渐到清晰</td></tr>
+<tr><td>129</td><td>陈俊</td><td class="quote">右边视野有些模糊，画面清晰度不均匀。</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 2 位用户反馈</td></tr>
+</tbody></table>
+<h3>画质噪点/拖影 — 3人（5条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>81</td><td>许军州</td><td class="quote">实时画面，偶尔会有马赛克样的，时尔有拖影，慢慢由模糊到清晰</td></tr>
+<tr><td>112</td><td>张雷</td><td class="quote">门口感应灯灭，有人过来突然点亮，红外没有及时关闭可能，会持续闪烁，曝光一样，看不清楚画面</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>录制绿屏 — 4人（4条） 🆕+2</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>83</td><td>许军州</td><td class="quote">点实时画面下的，录制，录出来的是绿屏；</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 3 位用户反馈</td></tr>
+</tbody></table>
+<h2>🔵 续航（7条，5人）（本轮+1）</h2>
+<div class="module-summary info">固件升级后耗电快新增反馈</div>
+<h3>耗电快 — 5人（7条） 🆕+1</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>53</td><td>陈俊</td><td class="quote">21点25来看开溜画面，显示电量97%，满电19.38安装的，掉电有点快</td></tr>
+<tr><td>63</td><td>于晨光</td><td class="quote">耗电量不正常</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 3 位用户反馈</td></tr>
+</tbody></table>
+<h2>🔵 配网/安装引导（7条，5人）</h2>
+<h3>配网提示文案错误 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>45</td><td>许军州</td><td class="quote">描述有误，4G信号强度，与门铃和基站的远近没关系吧，可以优化下描述，或者监测的是门铃信号，否则会误导用户；</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>安装引导遗漏 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>23</td><td>朱君</td><td class="quote">安装引导，从未提示水平仪的使用，被忽视了，水平仪很关键</td></tr>
+</tbody></table>
+<h3>配网方式切换失败 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>80</td><td>周军</td><td class="quote">从蓝牙配网改AP配网，AP配网不成功。</td></tr>
+</tbody></table>
+<h3>配网提示不够醒目 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>4</td><td>相杰</td><td class="quote">建议：在配网的步骤提示的第一步的画面，下方“长按基站侧面的reset键5秒”可以加粗/高亮/红色字体提示，我在多次重新配网的时候，虽然点击下测试删除设备一步，但是就有忘记按reset，导致配网不成功</td></tr>
+</tbody></table>
+<h3>图示/说明错误 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>20</td><td>朱君</td><td class="quote">开机键位置图示不对</td></tr>
+</tbody></table>
+<h3>网络切换失败 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>79</td><td>周军</td><td class="quote">从4G网切wifi，切换不成功。</td></tr>
+</tbody></table>
+<h2>🔵 消息通知（6条，4人）（本轮+2）</h2>
+<div class="module-summary info">漏报/未推送问题持续，多人反馈消息通知不及时</div>
+<h3>消息通知未推送 — 3人（5条） 🆕+2</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>49</td><td>许军州</td><td class="quote">逗留消息通知已经设置，实际中并没有推送</td></tr>
+<tr><td>214</td><td>周军</td><td class="quote">两套设备，测试设备漏报18点45这次</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>消息通知-弹窗跳转错误 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>19</td><td>美诺</td><td class="quote">App弹消息说有人出现，点击弹窗信息，直接进入实时画面而非人出现的画面，不仔细看都不明白还以为是误报，建议弹窗信息进入后直接是录到的人而不是实时画面。另外目测这个录像延迟3秒左右。</td></tr>
+</tbody></table>
+<h2>🔵 按门铃（3条，3人）</h2>
+<h3>通话功能失败 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>56</td><td>周军</td><td class="quote">按门铃，网关正常接收并通知铃声，但是无法正常通话。</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h3>通话音量小 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>1</td><td>陈俊</td><td class="quote">按门铃，基站来电音量小。通话声音好小（音量调到最大了），建议增大音量</td></tr>
+</tbody></table>
+<h2>🔵 开箱（3条，3人）</h2>
+<h3>外观瑕疵 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>24</td><td>朱君</td><td class="quote">门铃顶部有磨损和白点</td></tr>
+</tbody></table>
+<h3>外壳做工/缝隙 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>2</td><td>陈俊</td><td class="quote">门铃主机外壳模具交接处缝隙明显建议优化。哨兵板就没有这现象</td></tr>
+</tbody></table>
+<h3>文档/指南瑕疵 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>48</td><td>美诺</td><td class="quote">门铃开箱很满意，细节满满，然而打开快速添加指南发现左下角有一块黑色污渍，建议这些小细节做到位，</td></tr>
+</tbody></table>
+<h2>🔵 硬件/信号（2条，2人）</h2>
+<h3>基站信号弱 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>51</td><td>陈俊</td><td class="quote">把基站拿到路由器旁边，信号也没显示满。建议信号接收加强，门铃现在与基站相距大约5-6米间隔墙角与防盗门门板</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h2>🔵 包装/配件（2条，2人）</h2>
+<h3>包装材料建议 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>22</td><td>孙晓明</td><td class="quote">建议设备套可降解塑料袋，防止划痕。用户感受也会好些。用的360其他设备都带走可降解袋子，感受还是有差距的</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h2>🔵 稳定性（2条，2人）</h2>
+<h3>设备离线 — 2人（2条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>146</td><td>相杰</td><td class="quote">第一次打开APP显示设备掉线，重新连接一次才成功</td></tr>
+<tr><td colspan="3" style="text-align:center;color:#999;">...还有 1 位用户反馈</td></tr>
+</tbody></table>
+<h2>🔵 硬件设计（1条，1人）</h2>
+<h3>按键手感/品质感 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>5</td><td>相杰</td><td class="quote">门铃按键按下去咔嚓咔嚓响，没有缓冲，个人感觉不太好，感觉品质不高的样子，应该有按下去回弹的触感就好，不要咔嚓咔嚓响</td></tr>
+</tbody></table>
+<h2>🔵 指示灯（1条，1人）</h2>
+<h3>门铃灯不亮 — 1人（1条）</h3>
+<table><thead><tr><th style="width:60px">序号</th><th style="width:80px">姓名</th><th>反馈内容</th></tr></thead><tbody>
+<tr><td>105</td><td>张雷</td><td class="quote">关闭门铃灯，按门铃，门铃灯不亮</td></tr>
+</tbody></table>
+
+<p class="update-time">报告生成时间：2026-08-03 09:10 | 数据来源：飞书表格「日常问题」自动统计 | 🦞 尹燕玲-报告分析专家</p>
+</div>
+</body>
+</html>
