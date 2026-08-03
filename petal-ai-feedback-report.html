@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petal AI 桌面宠物 · 内测反馈报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#00B050;--green-light:#2BBD6E;--green-pale:#E8F8EE;--green-dark:#007A3D;--red:#E74C3C;--red-pale:#FDECEA;--orange:#F39C12;--orange-pale:#FEF5E7;--gray-900:#1a1a1a;--gray-700:#333;--gray-500:#666;--gray-300:#CCC;--gray-100:#F5F5F5;--gray-50:#FAFAFA;--white:#FFF;--shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 12px rgba(0,0,0,.1)}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans SC',sans-serif;background:var(--gray-50);color:var(--gray-700);line-height:1.6}.container{max-width:1200px;margin:0 auto;padding:40px 24px}
+.header{background:linear-gradient(135deg,var(--green-dark),var(--green),var(--green-light));color:#fff;padding:48px 24px;border-radius:20px;margin-bottom:32px;position:relative;overflow:hidden}.header::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.08)}.header h1{font-family:'Noto Serif SC',serif;font-size:32px;font-weight:900;margin-bottom:8px;position:relative;z-index:1}.header .subtitle{font-size:15px;opacity:.9;position:relative;z-index:1}.header .meta{display:flex;gap:12px;margin-top:16px;position:relative;z-index:1;flex-wrap:wrap}.header .meta span{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:13px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}.kpi-card{background:#fff;border-radius:16px;padding:24px;text-align:center;box-shadow:var(--shadow-sm);border-top:4px solid var(--gray-300)}.kpi-card.pain{border-top-color:var(--red)}.kpi-card.joy{border-top-color:var(--green)}.kpi-card.suggest{border-top-color:var(--orange)}.kpi-card.version{border-top-color:var(--gray-700)}.kpi-number{font-family:'Noto Serif SC',serif;font-size:40px;font-weight:900;line-height:1;margin-bottom:4px}.kpi-card.pain .kpi-number{color:var(--red)}.kpi-card.joy .kpi-number{color:var(--green)}.kpi-card.suggest .kpi-number{color:var(--orange)}.kpi-card.version .kpi-number{color:var(--gray-700)}.kpi-label{font-size:13px;color:var(--gray-500);font-weight:500}
+.version-section{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:var(--shadow-sm)}.version-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--gray-100);flex-wrap:wrap}.version-badge{background:var(--gray-700);color:#fff;padding:6px 16px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700}.version-date{color:var(--gray-500);font-size:14px}.version-desc{font-size:13px;color:var(--gray-500);margin-left:auto}
+.category-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}.tab{padding:6px 16px;border-radius:20px;font-size:13px;font-weight:500;border:1.5px solid;display:inline-flex;align-items:center;gap:6px}.tab.pain{color:var(--red);border-color:var(--red);background:var(--red-pale)}.tab.joy{color:var(--green);border-color:var(--green);background:var(--green-pale)}.tab.suggest{color:var(--orange);border-color:var(--orange);background:var(--orange-pale)}.tab-count{background:#fff;border-radius:10px;padding:0 6px;font-size:12px;font-weight:700}
+.feedback-table{width:100%;border-collapse:collapse;margin-bottom:8px;font-size:14px}.feedback-table th{text-align:left;padding:10px 12px;font-weight:600;font-size:13px;color:var(--gray-500);border-bottom:2px solid var(--gray-100);white-space:nowrap}.feedback-table td{padding:12px;border-bottom:1px solid var(--gray-100);vertical-align:top}.feedback-table tr:hover{background:var(--gray-50)}.col-num{width:40px;text-align:center;color:var(--gray-300);font-family:'JetBrains Mono',monospace}.col-type{width:120px}.col-count{width:70px;text-align:center}.col-name{width:80px;white-space:nowrap}
+.type-badge{display:inline-block;padding:2px 10px;border-radius:6px;font-size:12px;font-weight:500;white-space:nowrap}.type-pain{background:var(--red-pale);color:var(--red)}.type-joy{background:var(--green-pale);color:var(--green-dark)}.type-suggest{background:var(--orange-pale);color:var(--orange)}.sub-cat{font-size:12px;color:var(--gray-500);margin-top:2px}
+.quote{background:var(--gray-50);border-left:3px solid var(--gray-300);padding:8px 12px;border-radius:0 6px 6px 0;font-size:13px;line-height:1.7;color:var(--gray-700)}.quote.pain{border-left-color:var(--red)}.quote.joy{border-left-color:var(--green)}.quote.suggest{border-left-color:var(--orange)}.name-tag{font-weight:600;color:var(--gray-700);font-size:13px}
+.count-badge{display:inline-block;background:var(--gray-100);color:var(--gray-700);border-radius:12px;padding:2px 8px;font-size:12px;font-weight:600}.count-badge.high{background:var(--red-pale);color:var(--red)}.count-badge.low{background:var(--green-pale);color:var(--green-dark)}
+.type-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px}.type-card{border-radius:16px;padding:20px;box-shadow:var(--shadow-sm)}.type-card.pain{background:var(--red-pale);border:1px solid #f5c6cb}.type-card.joy{background:var(--green-pale);border:1px solid #b8e6c8}.type-card.suggest{background:var(--orange-pale);border:1px solid #f5d9a8}.type-card h3{font-size:16px;margin-bottom:12px}.type-card.pain h3{color:var(--red)}.type-card.joy h3{color:var(--green-dark)}.type-card.suggest h3{color:var(--orange)}.type-card ul{list-style:none}.type-card li{font-size:13px;padding:4px 0;color:var(--gray-700)}.type-card li::before{content:'· ';font-weight:bold}
+.findings{background:linear-gradient(135deg,#1a1a1a,#2d2d2d);color:#fff;border-radius:16px;padding:28px;margin-bottom:24px}.findings h3{font-family:'Noto Serif SC',serif;font-size:20px;margin-bottom:16px;color:var(--green-light)}.findings ol{list-style:none;counter-reset:f}.findings li{counter-increment:f;padding:10px 0 10px 32px;position:relative;font-size:14px;line-height:1.7;border-bottom:1px solid rgba(255,255,255,.1)}.findings li:last-child{border-bottom:none}.findings li::before{content:counter(f);position:absolute;left:0;top:10px;width:24px;height:24px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.section-title{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:var(--gray-900);margin-bottom:16px;display:flex;align-items:center;gap:8px}.section-title::before{content:'';width:4px;height:24px;background:var(--green);border-radius:2px}
+.chart-section{background:#fff;border-radius:16px;padding:24px;margin-bottom:24px;box-shadow:var(--shadow-sm)}.chart-section h3{font-size:15px;margin-bottom:16px}.bar-chart{display:flex;flex-direction:column;gap:4px}.bar-row{display:flex;align-items:center;gap:12px}.bar-label{width:110px;font-size:13px;font-weight:500;text-align:right;flex-shrink:0}.bar-track{flex:1;height:26px;background:var(--gray-100);border-radius:13px;overflow:hidden}.bar-fill{height:100%;border-radius:13px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-size:12px;font-weight:700;color:#fff}.bar-fill.pain{background:linear-gradient(90deg,#ff6b6b,var(--red))}.bar-fill.joy{background:linear-gradient(90deg,var(--green-light),var(--green))}.bar-fill.suggest{background:linear-gradient(90deg,#ffd54f,var(--orange))}
+.participants{background:#fff;border-radius:16px;padding:24px;margin-bottom:24px;box-shadow:var(--shadow-sm)}.participants h3{font-size:15px;margin-bottom:12px;color:var(--gray-700)}.participant-grid{display:flex;flex-wrap:wrap;gap:8px}.participant-tag{background:var(--gray-100);padding:4px 12px;border-radius:20px;font-size:13px;color:var(--gray-700)}.participant-tag.dev{background:var(--green-pale);color:var(--green-dark);font-weight:500}
+.footer{text-align:center;padding:32px 0;color:var(--gray-500);font-size:13px}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.type-summary{grid-template-columns:1fr}.header h1{font-size:24px}.version-desc{margin-left:0;width:100%}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>🐾 Petal AI 桌面宠物 · 内测反馈报告</h1>
+<div class="subtitle">AI 宠物桌面动态视频生成产品 — 推推群聊反馈全量整理</div>
+<div class="meta"><span>📅 2026.07.27 — 2026.08.03</span><span>📦 4 个版本迭代</span><span>👥 17 人参与</span><span>💬 59 条有效反馈</span></div>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card pain"><div class="kpi-number">32</div><div class="kpi-label">🔴 痛点反馈</div></div>
+<div class="kpi-card joy"><div class="kpi-number">11</div><div class="kpi-label">🟢 爽点反馈</div></div>
+<div class="kpi-card suggest"><div class="kpi-number">16</div><div class="kpi-label">💡 建议反馈</div></div>
+<div class="kpi-card version"><div class="kpi-number">4</div><div class="kpi-label">📦 版本迭代</div></div>
+</div>
+
+<div class="chart-section">
+<h3>📊 各版本反馈量分布</h3>
+<div class="bar-chart">
+<div class="bar-row"><div class="bar-label">v1.1.0 痛点</div><div class="bar-track"><div class="bar-fill pain" style="width:100%">10</div></div></div>
+<div class="bar-row"><div class="bar-label">v1.1.0 爽点</div><div class="bar-track"><div class="bar-fill joy" style="width:2%;min-width:20px">0</div></div></div>
+<div class="bar-row"><div class="bar-label">v1.1.0 建议</div><div class="bar-track"><div class="bar-fill suggest" style="width:8%;min-width:28px">1</div></div></div>
+<div class="bar-row" style="margin-top:8px"><div class="bar-label">v1.1.1 痛点</div><div class="bar-track"><div class="bar-fill pain" style="width:77%">10</div></div></div>
+<div class="bar-row"><div class="bar-label">v1.1.1 爽点</div><div class="bar-track"><div class="bar-fill joy" style="width:23%">3</div></div></div>
+<div class="bar-row"><div class="bar-label">v1.1.1 建议</div><div class="bar-track"><div class="bar-fill suggest" style="width:8%;min-width:28px">1</div></div></div>
+<div class="bar-row" style="margin-top:8px"><div class="bar-label">v1.2.0 痛点</div><div class="bar-track"><div class="bar-fill pain" style="width:54%">7</div></div></div>
+<div class="bar-row"><div class="bar-label">v1.2.0 爽点</div><div class="bar-track"><div class="bar-fill joy" style="width:38%">5</div></div></div>
+<div class="bar-row"><div class="bar-label">v1.2.0 建议</div><div class="bar-track"><div class="bar-fill suggest" style="width:100%">13</div></div></div>
+<div class="bar-row" style="margin-top:8px"><div class="bar-label">v1.4.0 痛点</div><div class="bar-track"><div class="bar-fill pain" style="width:38%">5</div></div></div>
+<div class="bar-row"><div class="bar-label">v1.4.0 爽点</div><div class="bar-track"><div class="bar-fill joy" style="width:23%">3</div></div></div>
+<div class="bar-row"><div class="bar-label">v1.4.0 建议</div><div class="bar-track"><div class="bar-fill suggest" style="width:8%;min-width:28px">1</div></div></div>
+</div>
+</div>
+
+<div class="section-title">痛点 / 爽点 / 建议 分类汇总</div>
+<div class="type-summary">
+<div class="type-card pain"><h3>🔴 痛点 TOP 类别</h3><ul>
+<li>AI 生成失败/超时（10+条，v1.1.x 集中爆发）</li>
+<li>画面瑕疵：阴影框、白闪、丢帧（4条）</li>
+<li>生成结果异常：两个头/尾巴（2条）</li>
+<li>背景抠图不干净/虚化（2条）</li>
+<li>动作偏动漫风/慢动作（2条）</li>
+<li>安全拦截/Mac兼容性（2条）</li>
+<li>自定义动作太少，与默认差异大（1条）</li>
+<li>多宠物关闭一次全关（1条）</li>
+<li>图片大小限制不明确（1条）</li>
+<li>图标显示不全（1条）</li>
+</ul></div>
+<div class="type-card joy"><h3>🟢 爽点 TOP 类别</h3><ul>
+<li>动态还原度高，像真宠物（3条）</li>
+<li>生成成功，终于能用！（2条）</li>
+<li>陪伴感：有猫陪我上班（2条）</li>
+<li>趣味动作生动（1条）</li>
+<li>上传引导图清晰（1条）</li>
+<li>完成反馈明确（1条）</li>
+<li>默认小橘咬手动作好（1条）</li>
+</ul></div>
+<div class="type-card suggest"><h3>💡 建议 TOP 类别</h3><ul>
+<li>互动玩法：喂食/逗弄/光标追踪（5条）</li>
+<li>商业化：付费皮肤/动作解锁/会员（5条）</li>
+<li>换装系统：领结/帽子等（1条）</li>
+<li>支持生成人像（乙游方向）（1条）</li>
+<li>APP端规划（1条）</li>
+<li>自定义宠物设为默认（1条）</li>
+<li>单独关闭某只宠物（1条）</li>
+<li>保留动漫风皮肤可选（1条）</li>
+</ul></div>
+</div>
+
+<div class="findings">
+<h3>🎯 核心发现</h3>
+<ol>
+<li><strong>v1.1.x 阶段</strong>：AI 生成失败是最大痛点，几乎全员踩坑，体验极差</li>
+<li><strong>v1.2.0 阶段</strong>：生成成功后用户热情爆发，建议集中在互动玩法和商业化方向</li>
+<li><strong>v1.4.0 阶段</strong>：自定义宠物动作太少（仅5个）、与默认宠物动作差距大是主要不满</li>
+<li><strong>持续问题</strong>：背景虚化/阴影框从 v1.1.1 到 v1.4.0 一直未解决</li>
+<li><strong>商业化信号明确</strong>：多位用户主动表达付费意愿，月均一杯奶茶（~15元）、日均3-5元零食投喂、单动作9.9元解锁</li>
+</ol>
+</div>
+
+<!-- v1.1.0 -->
+<div class="version-section">
+<div class="version-header"><span class="version-badge">v1.1.0</span><span class="version-date">2026.07.27 首发</span><span class="version-desc">首次发布 · Windows + Mac 安装包</span></div>
+<div class="category-tabs"><span class="tab pain">🔴 痛点 <span class="tab-count">10</span></span><span class="tab joy">🟢 爽点 <span class="tab-count">0</span></span><span class="tab suggest">💡 建议 <span class="tab-count">1</span></span></div>
+<table class="feedback-table"><thead><tr><th class="col-num">#</th><th class="col-type">类型</th><th class="col-count">反馈量</th><th>用户原声</th><th class="col-name">姓名</th></tr></thead><tbody>
+<tr><td class="col-num">1</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成卡住</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">就1张照片，生成已经3-5分钟了，一点进度都没有[捂脸]</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">2</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">图片限制</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">实际只能传一张照片，而且因为照片过大，生成不了</div></td><td class="name-tag">岳金风</td></tr>
+<tr><td class="col-num">3</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成卡住</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">一直在进行</div></td><td class="name-tag">刘小瑜</td></tr>
+<tr><td class="col-num">4</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">大小限制</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">要多大才行啊，1m以上不行是吗？</div></td><td class="name-tag">李靖</td></tr>
+<tr><td class="col-num">5</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成卡住</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">我的157K，一直这个界面</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">6</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成卡住</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">我的也是（157K）这样</div></td><td class="name-tag">彭心雨</td></tr>
+<tr><td class="col-num">7</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成失败</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">失败</div></td><td class="name-tag">岳金风</td></tr>
+<tr><td class="col-num">8</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成失败</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">我也失败了（第1次）</div></td><td class="name-tag">卫珊</td></tr>
+<tr><td class="col-num">9</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成失败</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">emmm再来一次又失败了（第2次）</div></td><td class="name-tag">卫珊</td></tr>
+<tr><td class="col-num">10</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成失败</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">好吧，第三次又失败[裂开]</div></td><td class="name-tag">卫珊</td></tr>
+<tr><td class="col-num">11</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成失败</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">俺也失败了</div></td><td class="name-tag">郭雨萌</td></tr>
+<tr><td class="col-num">12</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成失败</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">我的狗也失败了</div></td><td class="name-tag">刘小瑜</td></tr>
+<tr><td class="col-num">13</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">安全拦截</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">有风险（Windows智能扫描拦截）</div></td><td class="name-tag">岳金风</td></tr>
+<tr><td class="col-num">14</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">上传即失败</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">现在上传，立即提示失败</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">15</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">UI显示</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">最上面和最下面的图标显示不全</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">16</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">光标互动</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">能让它的视线跟着我的光标移动吗</div></td><td class="name-tag">刘小瑜</td></tr>
+</tbody></table>
+</div>
+
+<!-- v1.1.1 -->
+<div class="version-section">
+<div class="version-header"><span class="version-badge">v1.1.1</span><span class="version-date">07.27晚 ~ 07.28</span><span class="version-desc">修复并发问题 · 减小AI生成并发数</span></div>
+<div class="category-tabs"><span class="tab pain">🔴 痛点 <span class="tab-count">10</span></span><span class="tab joy">🟢 爽点 <span class="tab-count">3</span></span><span class="tab suggest">💡 建议 <span class="tab-count">1</span></span></div>
+<table class="feedback-table"><thead><tr><th class="col-num">#</th><th class="col-type">类型</th><th class="col-count">反馈量</th><th>用户原声</th><th class="col-name">姓名</th></tr></thead><tbody>
+<tr><td class="col-num">1</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">新版仍卡住</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">下载了这个版本，目前还是上传不成功，图片大小169KB，目前一直卡在这个页面，已经卡半小时了</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">2</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">重试仍失败</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">提示失败了</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">3</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">另一台也失败</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">另外1台电脑直接下载最新的这个版本，也报失败了</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">4</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成失败</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">我也失败了</div></td><td class="name-tag">卫珊</td></tr>
+<tr><td class="col-num">5</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">新版失败</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">新版也失败啦</div></td><td class="name-tag">郭雨萌</td></tr>
+<tr><td class="col-num">6</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">重试无效</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">重试就这样啦~（502错误）</div></td><td class="name-tag">郭雨萌</td></tr>
+<tr><td class="col-num">7</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">阴影框</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">我的为啥有个阴影框啊？</div></td><td class="name-tag">李靖</td></tr>
+<tr><td class="col-num">8</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成异常</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">而且生成了两个尾巴哈哈哈</div></td><td class="name-tag">李靖</td></tr>
+<tr><td class="col-num">9</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">白色闪烁</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">我的也很逼真，就是有时候会有白色的一闪一闪的</div></td><td class="name-tag">李靖</td></tr>
+<tr><td class="col-num">10</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">丢帧闪烁</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">这种 丢帧吗？（截图）</div></td><td class="name-tag">李靖</td></tr>
+<tr><td class="col-num">11</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">品种特征丢失</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">我家是矮脚猫，但是生成出来变大长腿了。不过AI好像都有这个问题</div></td><td class="name-tag">彭心雨</td></tr>
+<tr><td class="col-num">12</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">背景抠图</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">感觉得背景干净一些才能抠好</div></td><td class="name-tag">马媛</td></tr>
+<tr><td class="col-num">13</td><td><span class="type-badge type-joy">爽点</span><div class="sub-cat">生成成功</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote joy">我的出来啦</div></td><td class="name-tag">卫珊</td></tr>
+<tr><td class="col-num">14</td><td><span class="type-badge type-joy">爽点</span><div class="sub-cat">还原逼真</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote joy">+1 有一个框，但是动态还原已经很逼真了</div></td><td class="name-tag">郭莎莎</td></tr>
+<tr><td class="col-num">15</td><td><span class="type-badge type-joy">爽点</span><div class="sub-cat">部分正常</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote joy">蹲坐休息是正常的</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">16</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">设为默认</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">不支持把自定义的宠物设为默认吗？每次关闭再打开都是那只小橘</div></td><td class="name-tag">郭莎莎</td></tr>
+</tbody></table>
+</div>
+
+<!-- v1.2.0 -->
+<div class="version-section">
+<div class="version-header"><span class="version-badge">v1.2.0</span><span class="version-date">07.29</span><span class="version-desc">优化网络日志/删除弹框/设置解绑/多宠物显示/失败任务清理</span></div>
+<div class="category-tabs"><span class="tab pain">🔴 痛点 <span class="tab-count">7</span></span><span class="tab joy">🟢 爽点 <span class="tab-count">5</span></span><span class="tab suggest">💡 建议 <span class="tab-count">13</span></span></div>
+<table class="feedback-table"><thead><tr><th class="col-num">#</th><th class="col-type">类型</th><th class="col-count">反馈量</th><th>用户原声</th><th class="col-name">姓名</th></tr></thead><tbody>
+<tr><td class="col-num">1</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">慢动作</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">这个伸手感觉是慢动作了好多倍[捂脸]</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">2</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成异常</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">重新上传生成，2个头[捂脸]</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">3</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">动漫风</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">走路的就和本猫不像，比较动漫，狗狗的更动漫了，迪斯尼狗狗眼</div></td><td class="name-tag">卫珊</td></tr>
+<tr><td class="col-num">4</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">保密单位</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">有一些干保密工作的朋友们说，他们电脑不让装</div></td><td class="name-tag">卫珊</td></tr>
+<tr><td class="col-num">5</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">Mac兼容</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">这是不支持？（Intel Mac 安装报错）</div></td><td class="name-tag">王二飞</td></tr>
+<tr><td class="col-num">6</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">动作闪烁</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">卧倒休息、站立休息、寻找、舔毛、伸手、挠地、走路 部分位置一闪一闪</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">7</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">睡觉异常</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">睡觉的这个异常</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">8</td><td><span class="type-badge type-joy">爽点</span><div class="sub-cat">动作有趣</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote joy">我的也出来了～ 这个雷霆玩耍太逗了</div></td><td class="name-tag">郭雨萌</td></tr>
+<tr><td class="col-num">9</td><td><span class="type-badge type-joy">爽点</span><div class="sub-cat">还原度高</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote joy">用起来了，还原度好高</div></td><td class="name-tag">刘小瑜</td></tr>
+<tr><td class="col-num">10</td><td><span class="type-badge type-joy">爽点</span><div class="sub-cat">陪伴感</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote joy">有的！真有我家猫陪我上班的感觉</div></td><td class="name-tag">郭莎莎</td></tr>
+<tr><td class="col-num">11</td><td><span class="type-badge type-joy">爽点</span><div class="sub-cat">动作还原</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote joy">这个躺倒的动作，简直是跟我家猫一毛一样</div></td><td class="name-tag">段凌懿</td></tr>
+<tr><td class="col-num">12</td><td><span class="type-badge type-joy">爽点</span><div class="sub-cat">咬手动作</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote joy">我觉得默认那个小橘有个咬手的动作就蛮好的</div></td><td class="name-tag">段凌懿</td></tr>
+<tr><td class="col-num">13</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">动漫皮肤</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">保留一个动漫风的整套模型，付费购买一下子皮肤（原皮/动漫皮）</div></td><td class="name-tag">卫珊</td></tr>
+<tr><td class="col-num">14</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">生成人像</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">能生成人嘛，像乙游一样，追星女也会买的</div></td><td class="name-tag">郭雨萌</td></tr>
+<tr><td class="col-num">15</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">喂食付费</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">可以喂羊奶棒 喂猫条 加钱 花钱买零食</div></td><td class="name-tag">郭雨萌</td></tr>
+<tr><td class="col-num">16</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">APP端</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">我们后面会有APP端吗</div></td><td class="name-tag">卫珊</td></tr>
+<tr><td class="col-num">17</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">会员周边</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">如果买年度会员能送个小石膏像什么的</div></td><td class="name-tag">刘小瑜</td></tr>
+<tr><td class="col-num">18</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">换装系统</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">换装 带个领结帽子啥的</div></td><td class="name-tag">刘小瑜</td></tr>
+<tr><td class="col-num">19</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">光标逗猫</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">可以把光标切换成逗猫棒；能追踪光标的话更好</div></td><td class="name-tag">刘小瑜</td></tr>
+<tr><td class="col-num">20</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">互动动作</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">如果互动性能更好一些的，花钱是可以的；小猫咪有用头蹭主人、舔舔毛这种真实生活中常见的动作</div></td><td class="name-tag">段凌懿</td></tr>
+<tr><td class="col-num">21</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">虚拟喂食</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">比如虚拟喂食、喂水、逗一逗、戳一戳？</div></td><td class="name-tag">李越</td></tr>
+<tr><td class="col-num">22</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">动作付费</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">可以设计解锁一个动作多少钱，9.9</div></td><td class="name-tag">王二飞</td></tr>
+<tr><td class="col-num">23</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">解锁零食</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">解锁喂羊奶棒，只吃狗粮有点单调</div></td><td class="name-tag">鲁杨</td></tr>
+<tr><td class="col-num">24</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">定价参考</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">每个月一杯奶茶钱可以</div></td><td class="name-tag">鲁杨</td></tr>
+<tr><td class="col-num">25</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">日均花费</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">平均每天花个三块五块的零食投喂可以呀</div></td><td class="name-tag">郭雨萌</td></tr>
+</tbody></table>
+</div>
+
+<!-- v1.4.0 -->
+<div class="version-section">
+<div class="version-header"><span class="version-badge">v1.4.0</span><span class="version-date">07.31 ~ 08.03</span><span class="version-desc">上传示例/图片大小优化/5个默认动作/趣味动作（敲键盘/敷面膜/刷手机）</span></div>
+<div class="category-tabs"><span class="tab pain">🔴 痛点 <span class="tab-count">5</span></span><span class="tab joy">🟢 爽点 <span class="tab-count">3</span></span><span class="tab suggest">💡 建议 <span class="tab-count">1</span></span></div>
+<table class="feedback-table"><thead><tr><th class="col-num">#</th><th class="col-type">类型</th><th class="col-count">反馈量</th><th>用户原声</th><th class="col-name">姓名</th></tr></thead><tbody>
+<tr><td class="col-num">1</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">动作太少</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">上传了一张图，目前只有5个动作，和默认的宠物动作差异比较大</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">2</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">动作不通用</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">不知道怎么把默认的动作选到自家宠物上，而且点击了默认宠物的按钮自家宠物不生效</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">3</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">背景虚化</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">宠物背景虚化依然有</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">4</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">关闭全关</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">多个宠物一起展示时，一下就关闭了所有</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">5</td><td><span class="type-badge type-pain">痛点</span><div class="sub-cat">生成异常</div></td><td><span class="count-badge high">1条</span></td><td><div class="quote pain">（截图显示生无可恋/异常效果）[笑哭]</div></td><td class="name-tag">贾卫星</td></tr>
+<tr><td class="col-num">6</td><td><span class="type-badge type-joy">爽点</span><div class="sub-cat">上传引导</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote joy">上传图片增加了参考图，知道应该怎么拍照片上传图片更好</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">7</td><td><span class="type-badge type-joy">爽点</span><div class="sub-cat">完成反馈</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote joy">上传完成后，有显示已完成反馈</div></td><td class="name-tag">尹燕玲</td></tr>
+<tr><td class="col-num">8</td><td><span class="type-badge type-joy">爽点</span><div class="sub-cat">趣味动作</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote joy">刷手机和工作状态区别还挺对</div></td><td class="name-tag">王二飞</td></tr>
+<tr><td class="col-num">9</td><td><span class="type-badge type-suggest">建议</span><div class="sub-cat">单独关闭</div></td><td><span class="count-badge low">1条</span></td><td><div class="quote suggest">多个宠物一起展示时，每个宠物边上都有一个关闭的按钮，期望能关闭哪个就只关闭那一只</div></td><td class="name-tag">尹燕玲</td></tr>
+</tbody></table>
+</div>
+
+<!-- 参与人员 -->
+<div class="participants">
+<h3>👥 参与反馈人员</h3>
+<div class="participant-grid">
+<span class="participant-tag dev">王朝阳（产品）</span>
+<span class="participant-tag dev">许小东（研发）</span>
+<span class="participant-tag dev">朱作义（研发）</span>
+<span class="participant-tag">尹燕玲</span>
+<span class="participant-tag">卫珊</span>
+<span class="participant-tag">郭雨萌</span>
+<span class="participant-tag">刘小瑜</span>
+<span class="participant-tag">李靖</span>
+<span class="participant-tag">彭心雨</span>
+<span class="participant-tag">郭莎莎</span>
+<span class="participant-tag">马媛</span>
+<span class="participant-tag">岳金风</span>
+<span class="participant-tag">段凌懿</span>
+<span class="participant-tag">李越</span>
+<span class="participant-tag">鲁杨</span>
+<span class="participant-tag dev">王二飞（管理层）</span>
+<span class="participant-tag">贾卫星</span>
+</div>
+</div>
+
+<div class="footer">
+<div>🦞 Petal AI 桌面宠物内测反馈报告 · 2026.08.03</div>
+<div style="margin-top:4px">数据来源：推推群 7653013246205760 · 59条有效反馈 · 17人参与</div>
+</div>
+
+</div>
+</body>
+</html>
