@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petal AI 桌面宠物 · 用户体验调研问卷</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#00B050;--green-light:#2BBD6E;--green-pale:#E8F8EE;--green-dark:#007A3D;--red:#E74C3C;--red-pale:#FDECEA;--orange:#F39C12;--orange-pale:#FEF5E7;--gray-700:#333;--gray-500:#666;--gray-300:#CCC;--gray-100:#F5F5F5;--gray-50:#FAFAFA}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans SC',sans-serif;background:var(--gray-50);color:var(--gray-700);line-height:1.8}
+.wrap{max-width:860px;margin:0 auto;padding:40px 20px}
+.header{background:linear-gradient(135deg,var(--green-dark),var(--green),var(--green-light));color:#fff;padding:40px 30px;border-radius:20px;margin-bottom:32px;position:relative;overflow:hidden}
+.header::after{content:'🐾';position:absolute;top:-10px;right:20px;font-size:80px;opacity:.15}
+.header h1{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:900;margin-bottom:8px;position:relative;z-index:1}
+.header p{font-size:14px;opacity:.9;position:relative;z-index:1}
+.header .meta{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;position:relative;z-index:1}
+.header .meta span{background:rgba(255,255,255,.15);padding:3px 12px;border-radius:16px;font-size:12px}
+
+.intro{background:#fff;border-radius:16px;padding:24px;margin-bottom:24px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.intro h2{font-family:'Noto Serif SC',serif;font-size:18px;color:var(--green-dark);margin-bottom:10px}
+.intro p{font-size:14px;color:var(--gray-500);line-height:1.8}
+.intro .tip{background:var(--green-pale);border-left:3px solid var(--green);padding:10px 14px;border-radius:0 8px 8px 0;margin-top:12px;font-size:13px;color:var(--green-dark)}
+
+.section{background:#fff;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.section-title{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:var(--gray-700);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.section-title .num{background:var(--green);color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-family:'Noto Serif SC',serif}
+.section-desc{font-size:13px;color:var(--gray-500);margin-bottom:20px;padding-left:36px}
+
+.q{margin-bottom:24px;padding-bottom:20px;border-bottom:1px dashed var(--gray-100)}
+.q:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.q-label{font-size:15px;font-weight:600;color:var(--gray-700);margin-bottom:4px;display:flex;gap:6px;align-items:flex-start}
+.q-label .req{color:var(--red);font-size:13px;flex-shrink:0}
+.q-label .opt{color:var(--gray-300);font-size:12px;font-weight:400}
+.q-hint{font-size:12px;color:var(--gray-500);margin-bottom:10px}
+
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts.inline{flex-direction:row;flex-wrap:wrap;gap:12px}
+.opt-item{display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;padding:6px 12px;border:1.5px solid var(--gray-100);border-radius:8px;transition:all .15s}
+.opt-item:hover{border-color:var(--green-light);background:var(--green-pale)}
+.opt-item input{accent-color:var(--green);width:16px;height:16px;flex-shrink:0}
+.opt-item label{cursor:pointer;flex:1}
+.opt-item.checked{border-color:var(--green);background:var(--green-pale)}
+
+.scale{display:flex;gap:4px;flex-wrap:wrap}
+.scale-btn{width:40px;height:40px;border:1.5px solid var(--gray-100);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s;background:#fff;color:var(--gray-500)}
+.scale-btn:hover{border-color:var(--green-light);background:var(--green-pale)}
+.scale-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
+.scale-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--gray-500);margin-top:6px}
+
+.text-input{width:100%;padding:10px 14px;border:1.5px solid var(--gray-100);border-radius:8px;font-size:14px;font-family:inherit;outline:none;transition:border .15s}
+.text-input:focus{border-color:var(--green-light)}
+textarea.text-input{min-height:80px;resize:vertical;line-height:1.6}
+
+.matrix{width:100%;border-collapse:collapse;font-size:13px}
+.matrix th{text-align:center;padding:8px 6px;font-weight:600;color:var(--gray-500);border-bottom:2px solid var(--gray-100);font-size:12px}
+.matrix td{padding:10px 6px;border-bottom:1px solid var(--gray-100);text-align:center}
+.matrix td:first-child{text-align:left;font-weight:500;color:var(--gray-700)}
+.matrix .radio-cell{cursor:pointer}
+.matrix .radio-cell:hover{background:var(--green-pale)}
+.matrix input[type=radio]{accent-color:var(--green);width:16px;height:16px;cursor:pointer}
+
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px}
+.tag{padding:6px 14px;border:1.5px solid var(--gray-100);border-radius:20px;font-size:13px;cursor:pointer;transition:all .15s;background:#fff}
+.tag:hover{border-color:var(--green-light)}
+.tag.selected{background:var(--green);color:#fff;border-color:var(--green)}
+
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}
+.price-card{border:1.5px solid var(--gray-100);border-radius:12px;padding:16px;text-align:center;cursor:pointer;transition:all .15s}
+.price-card:hover{border-color:var(--green-light)}
+.price-card.selected{border-color:var(--green);background:var(--green-pale)}
+.price-card .price{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:var(--green-dark)}
+.price-card .period{font-size:12px;color:var(--gray-500);margin-top:2px}
+
+.submit-box{text-align:center;padding:32px 0}
+.submit-btn{background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff;border:none;padding:14px 48px;border-radius:30px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;box-shadow:0 4px 12px rgba(0,176,80,.3);transition:transform .15s}
+.submit-btn:hover{transform:translateY(-1px)}
+
+.divider{height:1px;background:var(--gray-100);margin:20px 0}
+.note{font-size:12px;color:var(--gray-500);margin-top:8px;padding:8px 12px;background:var(--gray-50);border-radius:6px}
+.pain-quote{background:var(--red-pale);border-left:3px solid var(--red);padding:8px 12px;border-radius:0 6px 6px 0;font-size:12px;color:var(--gray-700);margin-top:8px}
+.pain-quote::before{content:'💬 群友原声：';font-weight:600;color:var(--red)}
+
+@media(max-width:600px){.price-grid{grid-template-columns:1fr}.scale-btn{width:34px;height:34px;font-size:12px}.matrix{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- Header -->
+<div class="header">
+<h1>🐾 Petal AI 桌面宠物</h1>
+<p>用户体验调研问卷</p>
+<div class="meta">
+<span>⏱ 约5分钟</span>
+<span>📋 6个模块</span>
+<span>🎯 共25题</span>
+<span>匿名填写</span>
+</div>
+</div>
+
+<!-- Intro -->
+<div class="intro">
+<h2>📝 问卷说明</h2>
+<p>感谢您体验 Petal AI 桌面宠物！本问卷旨在收集您对产品的真实使用感受，包括爽点、痛点及改进建议。您的反馈将直接影响下一版本的功能规划。</p>
+<div class="tip">问卷采用匿名方式，所有数据仅用于产品优化，不会泄露给第三方。请根据真实体验填写，无需顾虑负面反馈——我们更希望听到真实的声音。</div>
+</div>
+
+<!-- ============ Part 1: 基本信息 ============ -->
+<div class="section">
+<div class="section-title"><span class="num">1</span>基本信息</div>
+<div class="section-desc">先了解一下你和你的宠物</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>1.1 你的姓名（或昵称）</span></div>
+<input type="text" class="text-input" placeholder="请输入...">
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>1.2 你使用的操作系统是？</span></div>
+<div class="opts inline">
+<label class="opt-item"><input type="radio" name="os"><label>Windows</label></label>
+<label class="opt-item"><input type="radio" name="os"><label>Mac (Apple芯片)</label></label>
+<label class="opt-item"><input type="radio" name="os"><label>Mac (Intel芯片)</label></label>
+<label class="opt-item"><input type="radio" name="os"><label>其他</label></label>
+</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>1.3 你养了什么宠物？（可多选）</span></div>
+<div class="opts inline">
+<label class="opt-item"><input type="checkbox"><label>猫</label></label>
+<label class="opt-item"><input type="checkbox"><label>狗</label></label>
+<label class="opt-item"><input type="checkbox"><label>兔子</label></label>
+<label class="opt-item"><input type="checkbox"><label>仓鼠</label></label>
+<label class="opt-item"><input type="checkbox"><label>爬行类（蛇/蜥蜴等）</label></label>
+<label class="opt-item"><input type="checkbox"><label>鸟类</label></label>
+<label class="opt-item"><input type="checkbox"><label>其他</label></label>
+<label class="opt-item"><input type="checkbox"><label>暂无宠物</label></label>
+</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>1.4 你体验了哪些版本？（可多选）</span></div>
+<div class="opts inline">
+<label class="opt-item"><input type="checkbox"><label>v1.1.0</label></label>
+<label class="opt-item"><input type="checkbox"><label>v1.1.1</label></label>
+<label class="opt-item"><input type="checkbox"><label>v1.2.0</label></label>
+<label class="opt-item"><input type="checkbox"><label>v1.4.0</label></label>
+<label class="opt-item"><input type="checkbox"><label>不确定具体版本</label></label>
+</div>
+</div>
+</div>
+
+<!-- ============ Part 2: 生成体验 ============ -->
+<div class="section">
+<div class="section-title"><span class="num">2</span>AI生成体验</div>
+<div class="section-desc">关于上传照片→AI生成宠物动画的过程</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>2.1 AI生成宠物的过程中，你是否遇到以下问题？（可多选）</span></div>
+<div class="opts">
+<label class="opt-item"><input type="checkbox"><label>生成失败 / 报错</label></label>
+<label class="opt-item"><input type="checkbox"><label>生成卡住，长时间无进度</label></label>
+<label class="opt-item"><input type="checkbox"><label>上传图片后立即提示失败</label></label>
+<label class="opt-item"><input type="checkbox"><label>图片大小不符合要求，不知道限制是多少</label></label>
+<label class="opt-item"><input type="checkbox"><label>生成结果与照片不像</label></label>
+<label class="opt-item"><input type="checkbox"><label>生成结果异常（如两个头、两个尾巴等）</label></label>
+<label class="opt-item"><input type="checkbox"><label>重试后仍然失败</label></label>
+<label class="opt-item"><input type="checkbox"><label>没有遇到问题，生成顺利</label></label>
+</div>
+<div class="pain-quote">就1张照片，生成已经3-5分钟了，一点进度都没有 — 尹燕玲</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>2.2 你对AI生成宠物的整体满意度打分？</span></div>
+<div class="scale">
+<div class="scale-btn">1</div><div class="scale-btn">2</div><div class="scale-btn">3</div><div class="scale-btn">4</div><div class="scale-btn">5</div><div class="scale-btn">6</div><div class="scale-btn">7</div><div class="scale-btn">8</div><div class="scale-btn">9</div><div class="scale-btn">10</div>
+</div>
+<div class="scale-labels"><span>1 = 非常不满意</span><span>10 = 非常满意</span></div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>2.3 生成结果的画面质量，你遇到以下哪些问题？（可多选）</span></div>
+<div class="opts">
+<label class="opt-item"><input type="checkbox"><label>阴影框 / 暗色边框</label></label>
+<label class="opt-item"><input type="checkbox"><label>白色闪烁 / 画面一闪一闪</label></label>
+<label class="opt-item"><input type="checkbox"><label>丢帧 / 画面不连贯</label></label>
+<label class="opt-item"><input type="checkbox"><label>背景抠图不干净 / 背景虚化</label></label>
+<label class="opt-item"><input type="checkbox"><label>品种特征丢失（如矮脚猫变长腿）</label></label>
+<label class="opt-item"><input type="checkbox"><label>动作偏动漫风，不够真实</label></label>
+<label class="opt-item"><input type="checkbox"><label>动作速度异常（如慢动作）</label></label>
+<label class="opt-item"><input type="checkbox"><label>没有遇到画面质量问题</label></label>
+</div>
+<div class="pain-quote">我的为啥有个阴影框啊？而且生成了两个尾巴 — 李靖</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="opt">选填</span><span>2.4 关于AI生成体验，还有什么想说的？</span></div>
+<textarea class="text-input" placeholder="请描述你在生成过程中遇到的具体问题或惊喜..."></textarea>
+</div>
+</div>
+
+<!-- ============ Part 3: 动作与互动 ============ -->
+<div class="section">
+<div class="section-title"><span class="num">3</span>动作与互动体验</div>
+<div class="section-desc">宠物在桌面上表现出的动作和互动行为</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>3.1 你对当前宠物动作的真实感评价？</span></div>
+<div class="scale">
+<div class="scale-btn">1</div><div class="scale-btn">2</div><div class="scale-btn">3</div><div class="scale-btn">4</div><div class="scale-btn">5</div><div class="scale-btn">6</div><div class="scale-btn">7</div><div class="scale-btn">8</div><div class="scale-btn">9</div><div class="scale-btn">10</div>
+</div>
+<div class="scale-labels"><span>1 = 完全不像</span><span>10 = 跟真宠物一样</span></div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>3.2 你觉得哪些动作表现得好？（可多选）</span></div>
+<div class="opts inline">
+<label class="opt-item"><input type="checkbox"><label>蹲坐休息</label></label>
+<label class="opt-item"><input type="checkbox"><label>卧倒休息</label></label>
+<label class="opt-item"><input type="checkbox"><label>走路</label></label>
+<label class="opt-item"><input type="checkbox"><label>玩耍 / 雷霆玩耍</label></label>
+<label class="opt-item"><input type="checkbox"><label>伸手</label></label>
+<label class="opt-item"><input type="checkbox"><label>舔毛</label></label>
+<label class="opt-item"><input type="checkbox"><label>咬手</label></label>
+<label class="opt-item"><input type="checkbox"><label>躺倒</label></label>
+<label class="opt-item"><input type="checkbox"><label>敲键盘（趣味动作）</label></label>
+<label class="opt-item"><input type="checkbox"><label>刷手机（趣味动作）</label></label>
+<label class="opt-item"><input type="checkbox"><label>敷面膜（趣味动作）</label></label>
+<label class="opt-item"><input type="checkbox"><label>都不太好</label></label>
+</div>
+<div class="pain-quote">这个躺倒的动作，简直是跟我家猫一毛一样 — 段凌懿</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>3.3 你觉得哪些动作存在问题？（可多选）</span></div>
+<div class="opts inline">
+<label class="opt-item"><input type="checkbox"><label>睡觉（异常）</label></label>
+<label class="opt-item"><input type="checkbox"><label>卧倒休息（闪烁）</label></label>
+<label class="opt-item"><input type="checkbox"><label>站立休息（闪烁）</label></label>
+<label class="opt-item"><input type="checkbox"><label>寻找（闪烁）</label></label>
+<label class="opt-item"><input type="checkbox"><label>舔毛（闪烁）</label></label>
+<label class="opt-item"><input type="checkbox"><label>伸手（慢动作）</label></label>
+<label class="opt-item"><input type="checkbox"><label>挠地（闪烁）</label></label>
+<label class="opt-item"><input type="checkbox"><label>走路（动漫风/闪烁）</label></label>
+<label class="opt-item"><input type="checkbox"><label>没有问题</label></label>
+</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>3.4 自定义宠物目前只有5个动作，你觉得够吗？</span></div>
+<div class="opts inline">
+<label class="opt-item"><input type="radio" name="enough"><label>完全不够，至少需要10个以上</label></label>
+<label class="opt-item"><input type="radio" name="enough"><label>不太够，7-8个比较合适</label></label>
+<label class="opt-item"><input type="radio" name="enough"><label>勉强够用</label></label>
+<label class="opt-item"><input type="radio" name="enough"><label>5个刚好</label></label>
+<label class="opt-item"><input type="radio" name="enough"><label>用不上那么多</label></label>
+</div>
+<div class="pain-quote">只有5个动作，和默认的宠物动作差异比较大，不知道怎么把默认的动作选到自家宠物上 — 尹燕玲</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>3.5 你期望新增哪些互动方式？（可多选）</span></div>
+<div class="opts">
+<label class="opt-item"><input type="checkbox"><label>光标互动：宠物视线跟随鼠标移动</label></label>
+<label class="opt-item"><input type="checkbox"><label>光标变逗猫棒：鼠标变成逗猫棒造型</label></label>
+<label class="opt-item"><input type="checkbox"><label>点击互动：点击宠物有反馈（如咬手、蹭头）</label></label>
+<label class="opt-item"><input type="checkbox"><label>虚拟喂食：喂猫条/羊奶棒/狗粮等</label></label>
+<label class="opt-item"><input type="checkbox"><label>虚拟喂水</label></label>
+<label class="opt-item"><input type="checkbox"><label>戳一戳 / 逗一逗</label></label>
+<label class="opt-item"><input type="checkbox"><label>宠物用头蹭主人 / 舔毛</label></label>
+<label class="opt-item"><input type="checkbox"><label>换装：戴领结/帽子/围巾等配件</label></label>
+<label class="opt-item"><input type="checkbox"><label>暂时不需要互动，看着就好</label></label>
+</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>3.6 你期望新增哪些趣味动作？（可多选）</span></div>
+<div class="tag-cloud">
+<span class="tag">后空翻</span>
+<span class="tag">蹭主人</span>
+<span class="tag">打哈欠</span>
+<span class="tag">伸懒腰</span>
+<span class="tag">翻肚皮</span>
+<span class="tag">追尾巴</span>
+<span class="tag">舔爪子</span>
+<span class="tag">歪头杀</span>
+<span class="tag">打滚</span>
+<span class="tag">拆家</span>
+<span class="tag">偷吃</span>
+<span class="tag">发呆</span>
+<span class="tag">看窗外</span>
+<span class="tag">爬键盘</span>
+<span class="tag">睡觉打呼</span>
+</div>
+<div class="q-hint">点击选择你想要的动作，也可以在下方补充</div>
+<input type="text" class="text-input" style="margin-top:8px" placeholder="其他想看到的动作...">
+</div>
+</div>
+
+<!-- ============ Part 4: 功能需求 ============ -->
+<div class="section">
+<div class="section-title"><span class="num">4</span>功能需求与期望</div>
+<div class="section-desc">你希望产品未来有哪些功能</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>4.1 以下功能你期待程度如何？</span></div>
+<table class="matrix">
+<thead><tr><th></th><th>不需要</th><th>无所谓</th><th>有点想要</th><th>非常想要</th><th>必须要有</th></tr></thead>
+<tbody>
+<tr><td>多宠物同时展示</td><td><input type="radio" name="m1"></td><td><input type="radio" name="m1"></td><td><input type="radio" name="m1"></td><td><input type="radio" name="m1"></td><td><input type="radio" name="m1"></td></tr>
+<tr><td>自定义宠物设为默认</td><td><input type="radio" name="m2"></td><td><input type="radio" name="m2"></td><td><input type="radio" name="m2"></td><td><input type="radio" name="m2"></td><td><input type="radio" name="m2"></td></tr>
+<tr><td>默认动作可应用到自定义宠物</td><td><input type="radio" name="m3"></td><td><input type="radio" name="m3"></td><td><input type="radio" name="m3"></td><td><input type="radio" name="m3"></td><td><input type="radio" name="m3"></td></tr>
+<tr><td>保留动漫风皮肤可选</td><td><input type="radio" name="m4"></td><td><input type="radio" name="m4"></td><td><input type="radio" name="m4"></td><td><input type="radio" name="m4"></td><td><input type="radio" name="m4"></td></tr>
+<tr><td>支持生成人像（乙游方向）</td><td><input type="radio" name="m5"></td><td><input type="radio" name="m5"></td><td><input type="radio" name="m5"></td><td><input type="radio" name="m5"></td><td><input type="radio" name="m5"></td></tr>
+<tr><td>APP端（手机使用）</td><td><input type="radio" name="m6"></td><td><input type="radio" name="m6"></td><td><input type="radio" name="m6"></td><td><input type="radio" name="m6"></td><td><input type="radio" name="m6"></td></tr>
+<tr><td>宠物换装系统</td><td><input type="radio" name="m7"></td><td><input type="radio" name="m7"></td><td><input type="radio" name="m7"></td><td><input type="radio" name="m7"></td><td><input type="radio" name="m7"></td></tr>
+<tr><td>宠物音效（叫声/呼噜声）</td><td><input type="radio" name="m8"></td><td><input type="radio" name="m8"></td><td><input type="radio" name="m8"></td><td><input type="radio" name="m8"></td><td><input type="radio" name="m8"></td></tr>
+<tr><td>宠物成长系统（经验值/等级）</td><td><input type="radio" name="m9"></td><td><input type="radio" name="m9"></td><td><input type="radio" name="m9"></td><td><input type="radio" name="m9"></td><td><input type="radio" name="m9"></td></tr>
+<tr><td>社交分享（晒宠物/宠物社区）</td><td><input type="radio" name="m10"></td><td><input type="radio" name="m10"></td><td><input type="radio" name="m10"></td><td><input type="radio" name="m10"></td><td><input type="radio" name="m10"></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>4.2 关于背景/抠图问题，你更倾向于哪种方案？</span></div>
+<div class="opts inline">
+<label class="opt-item"><input type="radio" name="bg"><label>自动抠图（优化AI模型）</label></label>
+<label class="opt-item"><input type="radio" name="bg"><label>上传时提供拍照引导（纯背景）</label></label>
+<label class="opt-item"><input type="radio" name="bg"><label>提供手动抠图工具</label></label>
+<label class="opt-item"><input type="radio" name="bg"><label>提供多套桌面背景模板可选</label></label>
+</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>4.3 多宠物管理方面，你期望怎么操作？</span></div>
+<div class="opts">
+<label class="opt-item"><input type="checkbox"><label>每只宠物旁边有独立关闭按钮</label></label>
+<label class="opt-item"><input type="checkbox"><label>可以拖拽调整宠物位置</label></label>
+<label class="opt-item"><input type="checkbox"><label>可以调整宠物大小</label></label>
+<label class="opt-item"><input type="checkbox"><label>可以设置宠物显示层级（置顶/置底）</label></label>
+<label class="opt-item"><input type="checkbox"><label>可以设置宠物只在特定区域活动</label></label>
+</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="opt">选填</span><span>4.4 还有什么功能是你希望但上面没提到的？</span></div>
+<textarea class="text-input" placeholder="尽情描述你理想中的桌面宠物..."></textarea>
+</div>
+</div>
+
+<!-- ============ Part 5: 商业化 ============ -->
+<div class="section">
+<div class="section-title"><span class="num">5</span>付费意愿</div>
+<div class="section-desc">关于商业化方向的探讨（仅调研，不代表即将收费）</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>5.1 你是否愿意为桌面宠物付费？</span></div>
+<div class="opts inline">
+<label class="opt-item"><input type="radio" name="pay"><label>愿意付费</label></label>
+<label class="opt-item"><input type="radio" name="pay"><label>看情况，取决于功能</label></label>
+<label class="opt-item"><input type="radio" name="pay"><label>只愿意免费用</label></label>
+</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>5.2 如果推出会员，你更能接受哪种定价模式？</span></div>
+<div class="price-grid">
+<div class="price-card">
+<div class="price">¥9.9</div>
+<div class="period">/月</div>
+<div style="font-size:12px;color:var(--gray-500);margin-top:8px">基础会员<br>含3个动作+基础互动</div>
+</div>
+<div class="price-card">
+<div class="price">¥15-20</div>
+<div class="period">/月</div>
+<div style="font-size:12px;color:var(--gray-500);margin-top:8px">高级会员<br>含全部动作+喂食+换装</div>
+</div>
+<div class="price-card">
+<div class="price">¥99-128</div>
+<div class="period">/年</div>
+<div style="font-size:12px;color:var(--gray-500);margin-top:8px">年度会员<br>含所有功能+送周边</div>
+</div>
+</div>
+<div class="q-hint">也可以选择以下方式：</div>
+<div class="opts inline" style="margin-top:8px">
+<label class="opt-item"><input type="radio" name="price"><label>按动作单项付费（如9.9元/个）</label></label>
+<label class="opt-item"><input type="radio" name="price"><label>按皮肤付费（如6元/套）</label></label>
+<label class="opt-item"><input type="radio" name="price"><label>一次性买断（如68元永久）</label></label>
+<label class="opt-item"><input type="radio" name="price"><label>其他</label></label>
+</div>
+<div class="pain-quote">每个月一杯奶茶钱可以；平均每天花个三块五块的零食投喂可以呀 — 鲁杨 / 郭雨萌</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>5.3 以下哪些付费内容你会购买？（可多选）</span></div>
+<div class="opts">
+<label class="opt-item"><input type="checkbox"><label>更多动作包（如萌宠动作包、趣味动作包）</label></label>
+<label class="opt-item"><input type="checkbox"><label>皮肤系统（写实风/label></label>
+<label class="opt-item"><input type="checkbox"><label>换装配件（领结/帽子/围巾/衣服等）</label></label>
+<label class="opt-item"><input type="checkbox"><label>虚拟零食投喂（猫条/羊奶棒/冻干等）</label></label>
+<label class="opt-item"><input type="checkbox"><label>特殊节日限定动作（生日/新年/圣诞节等）</label></label>
+<label class="opt-item"><input type="checkbox"><label>宠物音效包（叫声/呼噜/脚步声）</label></label>
+<label class="opt-item"><input type="checkbox"><label>实体周边（宠物石膏像/贴纸/手办）</label></label>
+<label class="opt-item"><input type="checkbox"><label>AI生成人像（乙游方向，虚拟角色陪伴）</label></label>
+<label class="opt-item"><input type="checkbox"><label>以上都不感兴趣</label></label>
+</div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="opt">选填</span><span>5.4 你能接受的单月最高花费是多少？</span></div>
+<input type="text" class="text-input" placeholder="如：15元/月、30元/月...">
+</div>
+</div>
+
+<!-- ============ Part 6: 整体评价 ============ -->
+<div class="section">
+<div class="section-title"><span class="num">6</span>整体评价与建议</div>
+<div class="section-desc">最后几个问题，畅所欲言</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>6.1 你对 Petal AI 桌面宠物的整体满意度打分？</span></div>
+<div class="scale">
+<div class="scale-btn">1</div><div class="scale-btn">2</div><div class="scale-btn">3</div><div class="scale-btn">4</div><div class="scale-btn">5</div><div class="scale-btn">6</div><div class="scale-btn">7</div><div class="scale-btn">8</div><div class="scale-btn">9</div><div class="scale-btn">10</div>
+</div>
+<div class="scale-labels"><span>1 = 非常不满意</span><span>10 = 非常满意</span></div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>6.2 你向朋友推荐这款产品的可能性？</span></div>
+<div class="scale">
+<div class="scale-btn">0</div><div class="scale-btn">1</div><div class="scale-btn">2</div><div class="scale-btn">3</div><div class="scale-btn">4</div><div class="scale-btn">5</div><div class="scale-btn">6</div><div class="scale-btn">7</div><div class="scale-btn">8</div><div class="scale-btn">9</div><div class="scale-btn">10</div>
+</div>
+<div class="scale-labels"><span>0 = 绝不推荐</span><span>10 = 一定会推荐</span></div>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>6.3 体验过程中最让你开心的一点（爽点）是？</span></div>
+<textarea class="text-input" placeholder="描述一个让你觉得"哇，这个不错"的瞬间..."></textarea>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>6.4 体验过程中最让你困扰的一点（痛点）是？</span></div>
+<textarea class="text-input" placeholder="描述一个让你觉得"这不太行"的瞬间..."></textarea>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="req">*</span><span>6.5 如果只能改一件事，你最希望改进什么？</span></div>
+<textarea class="text-input" placeholder="只说一件最重要的事..."></textarea>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="opt">选填</span><span>6.6 你之前用过类似的桌面宠物产品吗？如果有，对比感受如何？</span></div>
+<textarea class="text-input" placeholder="如：没用过 / 用过XX，对比来看..."></textarea>
+</div>
+
+<div class="q">
+<div class="q-label"><span class="opt">选填</span><span>6.7 其他任何想说的</span></div>
+<textarea class="text-input" placeholder="不限内容，随便说..."></textarea>
+</div>
+</div>
+
+<!-- Submit -->
+<div class="submit-box">
+<button class="submit-btn">提交问卷</button>
+<div style="margin-top:12px;font-size:12px;color:var(--gray-500)">提交后不可修改，请确认填写完整</div>
+</div>
+
+<div style="text-align:center;padding:24px 0;color:var(--gray-300);font-size:12px">
+🦞 Petal AI 桌面宠物 · 用户体验调研 · 2026.08
+</div>
+
+<script>
+// 交互逻辑
+document.querySelectorAll('.scale-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const siblings = this.parentElement.querySelectorAll('.scale-btn');
+    siblings.forEach(s => s.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+document.querySelectorAll('.tag').forEach(tag => {
+  tag.addEventListener('click', function() {
+    this.classList.toggle('selected');
+  });
+});
+
+document.querySelectorAll('.opt-item').forEach(item => {
+  item.addEventListener('click', function(e) {
+    if (e.target.tagName !== 'INPUT') {
+      const input = this.querySelector('input');
+      if (input) {
+        input.checked = !input.checked;
+        this.classList.toggle('checked', input.checked);
+      }
+    } else {
+      this.classList.toggle('checked', e.target.checked);
+    }
+  });
+});
+
+document.querySelectorAll('.price-card').forEach(card => {
+  card.addEventListener('click', function() {
+    this.parentElement.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+</script>
+
+</body>
+</html>
