@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Window Camera 海外工单分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; }
+.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: white; padding: 40px 30px; text-align: center; }
+.header h1 { font-size: 28px; margin-bottom: 8px; }
+.header .subtitle { font-size: 14px; opacity: 0.9; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.section { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 20px; color: #333; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid #00B050; }
+.section h3 { font-size: 16px; color: #333; margin: 16px 0 10px; }
+.kpi-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+.kpi-card { flex: 1; min-width: 140px; background: white; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 3px solid #00B050; }
+.kpi-card .num { font-size: 32px; font-weight: 700; color: #00B050; }
+.kpi-card .label { font-size: 13px; color: #999; margin-top: 4px; }
+.kpi-card.warning { border-top-color: #F39C12; }
+.kpi-card.warning .num { color: #F39C12; }
+.kpi-card.danger { border-top-color: #E74C3C; }
+.kpi-card.danger .num { color: #E74C3C; }
+.kpi-card.info { border-top-color: #3498DB; }
+.kpi-card.info .num { color: #3498DB; }
+.chart { width: 100%; height: 350px; }
+.chart-lg { width: 100%; height: 420px; }
+.chart-sm { width: 100%; height: 300px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+th { background: #00B050; color: white; padding: 10px 12px; text-align: left; font-weight: 600; }
+td { padding: 8px 12px; border-bottom: 1px solid #eee; }
+tr:nth-child(even) { background: #fafafa; }
+tr:hover { background: #f0f9f4; }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+.tag-red { background: #fdecea; color: #E74C3C; }
+.tag-green { background: #e8f7ee; color: #00B050; }
+.tag-orange { background: #fef5e7; color: #F39C12; }
+.tag-gray { background: #f5f5f5; color: #999; }
+.insight { background: #f0f9f4; border-left: 4px solid #00B050; padding: 12px 16px; border-radius: 6px; margin: 10px 0; font-size: 14px; line-height: 1.6; }
+.insight.warning { background: #fef9f0; border-left-color: #F39C12; }
+.insight.danger { background: #fdf2f0; border-left-color: #E74C3C; }
+.footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+@media (max-width: 768px) { .two-col, .three-col { grid-template-columns: 1fr; } .kpi-row { flex-direction: column; } }
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>🪟 Window Camera 海外工单分析报告</h1>
+    <div class="subtitle">数据周期：2026-05-02 ~ 2026-08-03 ｜ 数据来源：海外重点品跟进表 ｜ 生成日期：2026-08-04</div>
+</div>
+<div class="container">
+
+    <div class="section">
+        <h2>📊 总览仪表盘</h2>
+        <div class="kpi-row">
+            <div class="kpi-card"><div class="num">176</div><div class="label">工单总量</div></div>
+            <div class="kpi-card info"><div class="num">83</div><div class="label">已解决</div></div>
+            <div class="kpi-card warning"><div class="num">72</div><div class="label">等待中</div></div>
+            <div class="kpi-card danger"><div class="num">21</div><div class="label">跟进中</div></div>
+            <div class="kpi-card danger"><div class="num">93</div><div class="label">未解决合计</div></div>
+        </div>
+        <div class="kpi-row">
+            <div class="kpi-card danger"><div class="num">35</div><div class="label">离线工单</div></div>
+            <div class="kpi-card warning"><div class="num">20</div><div class="label">换机工单</div></div>
+            <div class="kpi-card warning"><div class="num">7</div><div class="label">退款工单</div></div>
+            <div class="kpi-card info"><div class="num">21</div><div class="label">升级极库云</div></div>
+            <div class="kpi-card"><div class="num">47.2%</div><div class="label">解决率</div></div>
+        </div>
+        <div class="insight">📈 工单量逐月攀升：5月4条 → 6月49条 → 7月107条（峰值）→ 8月仍在持续。7月是问题集中爆发期，离线和绑定失败是核心痛点。未解决率高达 <b>53%</b>，需重点关注。</div>
+    </div>
+
+    <div class="section">
+        <h2>📅 月度工单趋势</h2>
+        <div id="chart_month" class="chart"></div>
+    </div>
+
+    <div class="section">
+        <h2>📆 7月工单周维度分析（最新1个月）</h2>
+        <div id="chart_july_week" class="chart"></div>
+        <h3>各周问题类型分布</h3>
+        <div id="chart_july_stack" class="chart-lg"></div>
+        <div class="insight warning">⚠️ 7月W1-W2离线问题集中爆发（17条），W3起离线问题下降，但产品使用咨询和解绑问题开始上升。W4工单量最高（31条），问题类型最分散。</div>
+    </div>
+
+    <div class="section">
+        <h2>📆 最近1周工单日维度分析（7/28 - 8/3）</h2>
+        <div id="chart_recent_day" class="chart"></div>
+        <div class="insight">📌 8月2日工单突增至13条，以产品使用咨询（5条）和云录问题（2条）为主。需关注是否有批量事件触发。</div>
+    </div>
+
+    <div class="section">
+        <h2>🔍 问题类型分析</h2>
+        <div class="two-col">
+            <div><h3>问题类型分布</h3><div id="chart_problem_pie" class="chart"></div></div>
+            <div><h3>问题类型排名</h3><div id="chart_problem_bar" class="chart"></div></div>
+        </div>
+        <table>
+            <tr><th>排名</th><th>问题类型</th><th>工单数</th><th>占比</th><th>严重程度</th></tr>
+<tr><td>1</td><td>产品使用咨询</td><td>53</td><td>30.1%</td><td><span class="tag tag-gray">低</span></td></tr><tr><td>2</td><td>离线</td><td>35</td><td>19.9%</td><td><span class="tag tag-red">高</span></td></tr><tr><td>3</td><td>绑定失败</td><td>31</td><td>17.6%</td><td><span class="tag tag-red">高</span></td></tr><tr><td>4</td><td>专属福利</td><td>7</td><td>4.0%</td><td><span class="tag tag-gray">低</span></td></tr><tr><td>5</td><td>解绑</td><td>7</td><td>4.0%</td><td><span class="tag tag-gray">低</span></td></tr><tr><td>6</td><td>云录问题</td><td>7</td><td>4.0%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>7</td><td>不录制视频</td><td>5</td><td>2.8%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>8</td><td>物流咨询</td><td>5</td><td>2.8%</td><td><span class="tag tag-gray">低</span></td></tr><tr><td>9</td><td>无法开流</td><td>4</td><td>2.3%</td><td><span class="tag tag-red">高</span></td></tr><tr><td>10</td><td>实时画面问题</td><td>3</td><td>1.7%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>11</td><td>功能建议</td><td>2</td><td>1.1%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>12</td><td>固件升级失败</td><td>2</td><td>1.1%</td><td><span class="tag tag-red">高</span></td></tr><tr><td>13</td><td>侦测不到人</td><td>2</td><td>1.1%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>14</td><td>App安装问题</td><td>2</td><td>1.1%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>15</td><td>漏录</td><td>2</td><td>1.1%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>16</td><td>录像播放异常</td><td>2</td><td>1.1%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>17</td><td>购买设备咨询</td><td>1</td><td>0.6%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>18</td><td>SD卡故障</td><td>1</td><td>0.6%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>19</td><td>消息通知异常</td><td>1</td><td>0.6%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>20</td><td>ai技能问题</td><td>1</td><td>0.6%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>21</td><td>APP画面不清晰</td><td>1</td><td>0.6%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>22</td><td>配件损坏</td><td>1</td><td>0.6%</td><td><span class="tag tag-orange">中</span></td></tr><tr><td>23</td><td>退货退款咨询</td><td>1</td><td>0.6%</td><td><span class="tag tag-orange">中</span></td></tr>
+        </table>
+        <div class="insight">🔥 Top3问题：<b>产品使用咨询（48条）</b>、<b>离线（32条）</b>、<b>绑定失败（31条）</b>。离线+绑定失败合计占35%，是核心质量痛点。产品使用咨询量大说明用户引导/FAQ仍有优化空间。</div>
+    </div>
+
+    <div class="section">
+        <h2>⚠️ 离线问题专项分析（32条）</h2>
+        <div class="two-col">
+            <div><h3>固件版本分布</h3><div id="chart_offline_fw" class="chart-sm"></div></div>
+            <div><h3>解决方案走向</h3><div id="chart_offline_sol" class="chart-sm"></div></div>
+        </div>
+        <div class="two-col">
+            <div><h3>工单状态</h3><div id="chart_offline_status" class="chart-sm"></div></div>
+            <div><h3>典型症状</h3>
+                <table><tr><th>症状</th><th>出现次数</th></tr>
+                <tr><td>升级后离线</td><td>15+</td></tr>
+                <tr><td>绿灯常亮</td><td>8</td></tr>
+                <tr><td>RESET无反应</td><td>3+</td></tr>
+                <tr><td>已换机处理</td><td>11</td></tr></table>
+            </div>
+        </div>
+        <div class="insight danger">🚨 <b>v1.7.21固件是离线重灾区（13条）</b>，v1.7.13次之（9条）。典型症状：升级后绿灯常亮、RESET无反应。换机率高达37.5%（12/32），退款2笔。<b>建议产研重点排查v1.7.21 OTA升级流程</b>，同时加快v1.7.22推送覆盖率。</div>
+    </div>
+
+    <div class="section">
+        <h2>📦 渠道分析</h2>
+        <div class="two-col">
+            <div><h3>出库渠道分布</h3><div id="chart_channel" class="chart-sm"></div></div>
+            <div><h3>各渠道问题类型对比</h3>
+                <table><tr><th>渠道</th><th>总量</th><th>Top问题</th></tr>
+<tr><td>亚马逊</td><td>24</td><td>产品使用咨询(7)、离线(6)、绑定失败(4)</td></tr><tr><td>Tiktok</td><td>22</td><td>离线(6)、产品使用咨询(5)、绑定失败(3)</td></tr><tr><td>独立站</td><td>63</td><td>产品使用咨询(20)、离线(14)、绑定失败(5)</td></tr><tr><td>无法定位</td><td>67</td><td>产品使用咨询(21)、绑定失败(19)、离线(9)</td></tr>
+                </table>
+            </div>
+        </div>
+        <div class="insight">📦 独立站（63条）和无法定位渠道（67条）是工单主要来源。Tiktok渠道虽然总量少（22条），但离线和换机比例较高，需关注Tiktok用户的设备质量。</div>
+    </div>
+
+    <div class="section">
+        <h2>🌍 地区分析</h2>
+        <div class="two-col">
+            <div><h3>用户地区分布</h3><div id="chart_region" class="chart-sm"></div></div>
+            <div><h3>各地区工单量</h3>
+                <table><tr><th>地区</th><th>工单数</th><th>占比</th></tr>
+<tr><td>英国</td><td>100</td><td>56.8%</td></tr><tr><td>美国</td><td>59</td><td>33.5%</td></tr><tr><td>未知</td><td>14</td><td>8.0%</td></tr><tr><td>波兰</td><td>1</td><td>0.6%</td></tr><tr><td>阿根廷</td><td>1</td><td>0.6%</td></tr><tr><td>加拿大</td><td>1</td><td>0.6%</td></tr>
+                </table>
+            </div>
+        </div>
+        <div class="insight">🌍 <b>英国（100条，56.8%）</b>是最大市场，其次是<b>美国（59条，33.5%）</b>。两国合计占90%+，产品改进应优先考虑英美用户的使用场景。</div>
+    </div>
+
+    <div class="section">
+        <h2>🔧 解决方案分析</h2>
+        <div id="chart_solution" class="chart"></div>
+        <div class="kpi-row" style="margin-top:16px">
+            <div class="kpi-card info"><div class="num">20</div><div class="label">换机（占比11%）</div></div>
+            <div class="kpi-card warning"><div class="num">7</div><div class="label">退款（占比4%）</div></div>
+            <div class="kpi-card"><div class="num">88</div><div class="label">FAQ指引</div></div>
+            <div class="kpi-card warning"><div class="num">42</div><div class="label">用户未回复</div></div>
+        </div>
+        <div class="insight">💡 FAQ指引是主要解决手段（88条，50%），但"用户未回复"高达42条说明大量用户中途失联。换机成本不低（20台），建议优化FAQ触达方式和跟进机制。</div>
+    </div>
+
+    <div class="section">
+        <h2>🔬 产研侧跟进</h2>
+        <div class="three-col">
+            <div class="kpi-card info"><div class="num">21</div><div class="label">升级极库云工单</div></div>
+            <div class="kpi-card warning"><div class="num">93</div><div class="label">未解决工单</div></div>
+            <div class="kpi-card"><div class="num">2</div><div class="label">产研有意见待跟进</div></div>
+        </div>
+        <h3>未解决工单问题分布</h3>
+        <table><tr><th>问题类型</th><th>未解决数</th><th>占该类型比重</th></tr>
+<tr><td>产品使用咨询</td><td>24</td><td>45%</td></tr><tr><td>离线</td><td>22</td><td>63%</td></tr><tr><td>绑定失败</td><td>16</td><td>52%</td></tr><tr><td>云录问题</td><td>5</td><td>71%</td></tr><tr><td>不录制视频</td><td>4</td><td>80%</td></tr><tr><td>无法开流</td><td>3</td><td>75%</td></tr><tr><td>解绑</td><td>3</td><td>43%</td></tr><tr><td>实时画面问题</td><td>3</td><td>100%</td></tr><tr><td>侦测不到人</td><td>2</td><td>100%</td></tr><tr><td>App安装问题</td><td>2</td><td>100%</td></tr>
+        </table>
+        <div class="insight warning">⏳ <b>93条工单未解决（52.8%）</b>，其中产品使用咨询28条、等待中状态72条。建议推动客服批量回访"等待中"工单，特别是离线（14条未解决）和绑定失败（16条未解决）的工单。</div>
+    </div>
+
+    <div class="section">
+        <h2>🚨 关键风险提示</h2>
+        <div class="insight danger">
+            <b>风险1：v1.7.21固件升级后大面积离线</b><br>
+            13条离线工单明确关联v1.7.21，典型症状为绿灯常亮+RESET无反应。换机率37.5%，已产生换机成本。建议：①排查OTA升级流程 ②加快v1.7.22推送 ③对已离线设备提供远程恢复方案。
+        </div>
+        <div class="insight danger">
+            <b>风险2：未解决率52.8%</b><br>
+            93条工单未解决，72条处于"等待中"（用户未回复）。大量用户失联可能导致差评和退货。建议：建立3天未回复自动跟进机制，对高频问题类型（离线/绑定失败）提供标准化解决方案模板。
+        </div>
+        <div class="insight warning">
+            <b>风险3：换机+退款成本持续增长</b><br>
+            已换机20台、退款7笔。按当前趋势，月均换机约7台。建议产研评估是否存在批次性硬件问题，针对性降低换机率。
+        </div>
+        <div class="insight warning">
+            <b>风险4：Tiktok渠道质量预警</b><br>
+            Tiktok渠道22条工单中离线问题占比较高，建议核查Tiktok渠道的库存批次和发货质量。
+        </div>
+    </div>
+
+</div>
+<div class="footer">🦞 Window Camera 海外工单分析报告 ｜ 数据截止 2026-08-03 ｜ 报告生成 2026-08-04</div>
+
+<script>
+const GREEN='#00B050', GRAY='#999', RED='#E74C3C', ORANGE='#F39C12', BLUE='#3498DB';
+const colors=[GREEN,BLUE,ORANGE,RED,'#9B59B6','#1ABC9C','#34495E','#E67E22','#95A5A6','#F1C40F','#FF6B6B','#4ECDC4','#45B7D1','#FFA07A','#98D8C8','#F7DC6F','#BB8FCE','#85C1E9','#F1948A','#52BE80','#ECF0F1','#AED6F1','#D7BDE2'];
+
+var d = {"month_keys": ["2026-05", "2026-06", "2026-07", "2026-08"], "month_vals": [4, 49, 107, 15], "jw_keys": ["W1 (7/1-7/5)", "W2 (7/6-7/12)", "W3 (7/13-7/19)", "W4 (7/20-7/26)", "W5 (7/27-7/31)"], "jw_vals": [15, 22, 26, 31, 13], "all_problems_july": ["APP\u753b\u9762\u4e0d\u6e05\u6670", "\u4e0d\u5f55\u5236\u89c6\u9891", "\u4e13\u5c5e\u798f\u5229", "\u4e91\u5f55\u95ee\u9898", "\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2", "\u4fa6\u6d4b\u4e0d\u5230\u4eba", "\u56fa\u4ef6\u5347\u7ea7\u5931\u8d25", "\u5b9e\u65f6\u753b\u9762\u95ee\u9898", "\u5f55\u50cf\u64ad\u653e\u5f02\u5e38", "\u65e0\u6cd5\u5f00\u6d41", "\u6f0f\u5f55", "\u7269\u6d41\u54a8\u8be2", "\u79bb\u7ebf", "\u7ed1\u5b9a\u5931\u8d25", "\u89e3\u7ed1", "\u914d\u4ef6\u635f\u574f"], "july_weeks_problems": {"W1 (7/1-7/5)": {"\u79bb\u7ebf": 7, "\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 5, "\u7ed1\u5b9a\u5931\u8d25": 2, "APP\u753b\u9762\u4e0d\u6e05\u6670": 1}, "W2 (7/6-7/12)": {"\u79bb\u7ebf": 10, "\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 4, "\u914d\u4ef6\u635f\u574f": 1, "\u56fa\u4ef6\u5347\u7ea7\u5931\u8d25": 1, "\u7269\u6d41\u54a8\u8be2": 1, "\u4e91\u5f55\u95ee\u9898": 1, "\u4e13\u5c5e\u798f\u5229": 1, "\u7ed1\u5b9a\u5931\u8d25": 1, "\u6f0f\u5f55": 1, "\u4fa6\u6d4b\u4e0d\u5230\u4eba": 1}, "W3 (7/13-7/19)": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 10, "\u79bb\u7ebf": 6, "\u7269\u6d41\u54a8\u8be2": 3, "\u4e13\u5c5e\u798f\u5229": 2, "\u7ed1\u5b9a\u5931\u8d25": 2, "\u4e91\u5f55\u95ee\u9898": 1, "\u4e0d\u5f55\u5236\u89c6\u9891": 1, "\u65e0\u6cd5\u5f00\u6d41": 1}, "W4 (7/20-7/26)": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 11, "\u7ed1\u5b9a\u5931\u8d25": 7, "\u89e3\u7ed1": 6, "\u79bb\u7ebf": 2, "\u4e91\u5f55\u95ee\u9898": 2, "\u4e13\u5c5e\u798f\u5229": 1, "\u4e0d\u5f55\u5236\u89c6\u9891": 1, "\u65e0\u6cd5\u5f00\u6d41": 1}, "W5 (7/27-7/31)": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 6, "\u5b9e\u65f6\u753b\u9762\u95ee\u9898": 2, "\u7ed1\u5b9a\u5931\u8d25": 2, "\u4e0d\u5f55\u5236\u89c6\u9891": 1, "\u5f55\u50cf\u64ad\u653e\u5f02\u5e38": 1, "\u65e0\u6cd5\u5f00\u6d41": 1}}, "rd_keys": ["2026-07-28", "2026-07-29", "2026-07-30", "2026-07-31", "2026-08-01", "2026-08-02", "2026-08-03"], "rd_vals": [3, 4, 1, 1, 1, 13, 1], "prob_pie_data": [{"name": "\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2", "value": 53}, {"name": "\u79bb\u7ebf", "value": 35}, {"name": "\u7ed1\u5b9a\u5931\u8d25", "value": 31}, {"name": "\u4e13\u5c5e\u798f\u5229", "value": 7}, {"name": "\u89e3\u7ed1", "value": 7}, {"name": "\u4e91\u5f55\u95ee\u9898", "value": 7}, {"name": "\u4e0d\u5f55\u5236\u89c6\u9891", "value": 5}, {"name": "\u7269\u6d41\u54a8\u8be2", "value": 5}, {"name": "\u65e0\u6cd5\u5f00\u6d41", "value": 4}, {"name": "\u5b9e\u65f6\u753b\u9762\u95ee\u9898", "value": 3}, {"name": "\u529f\u80fd\u5efa\u8bae", "value": 2}, {"name": "\u56fa\u4ef6\u5347\u7ea7\u5931\u8d25", "value": 2}, {"name": "\u4fa6\u6d4b\u4e0d\u5230\u4eba", "value": 2}, {"name": "App\u5b89\u88c5\u95ee\u9898", "value": 2}, {"name": "\u6f0f\u5f55", "value": 2}, {"name": "\u5f55\u50cf\u64ad\u653e\u5f02\u5e38", "value": 2}, {"name": "\u8d2d\u4e70\u8bbe\u5907\u54a8\u8be2", "value": 1}, {"name": "SD\u5361\u6545\u969c", "value": 1}, {"name": "\u6d88\u606f\u901a\u77e5\u5f02\u5e38", "value": 1}, {"name": "ai\u6280\u80fd\u95ee\u9898", "value": 1}, {"name": "APP\u753b\u9762\u4e0d\u6e05\u6670", "value": 1}, {"name": "\u914d\u4ef6\u635f\u574f", "value": 1}, {"name": "\u9000\u8d27\u9000\u6b3e\u54a8\u8be2", "value": 1}], "prob_bar_sorted": [["\u8d2d\u4e70\u8bbe\u5907\u54a8\u8be2", 1], ["SD\u5361\u6545\u969c", 1], ["\u6d88\u606f\u901a\u77e5\u5f02\u5e38", 1], ["ai\u6280\u80fd\u95ee\u9898", 1], ["APP\u753b\u9762\u4e0d\u6e05\u6670", 1], ["\u914d\u4ef6\u635f\u574f", 1], ["\u9000\u8d27\u9000\u6b3e\u54a8\u8be2", 1], ["\u529f\u80fd\u5efa\u8bae", 2], ["\u56fa\u4ef6\u5347\u7ea7\u5931\u8d25", 2], ["\u4fa6\u6d4b\u4e0d\u5230\u4eba", 2], ["App\u5b89\u88c5\u95ee\u9898", 2], ["\u6f0f\u5f55", 2], ["\u5f55\u50cf\u64ad\u653e\u5f02\u5e38", 2], ["\u5b9e\u65f6\u753b\u9762\u95ee\u9898", 3], ["\u65e0\u6cd5\u5f00\u6d41", 4], ["\u4e0d\u5f55\u5236\u89c6\u9891", 5], ["\u7269\u6d41\u54a8\u8be2", 5], ["\u4e13\u5c5e\u798f\u5229", 7], ["\u89e3\u7ed1", 7], ["\u4e91\u5f55\u95ee\u9898", 7], ["\u7ed1\u5b9a\u5931\u8d25", 31], ["\u79bb\u7ebf", 35], ["\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2", 53]], "offline_fw_data": [{"name": "v1.7.13", "value": 9}, {"name": "\u672a\u63d0\u53ca", "value": 9}, {"name": "v1.7.21", "value": 13}, {"name": "v1.7.22", "value": 4}], "offline_sol_data": [{"name": "\u5f85\u8ddf\u8fdb", "value": 10}, {"name": "\u6362\u673a", "value": 12}, {"name": "FAQ\u6307\u5f15", "value": 10}, {"name": "\u9000\u6b3e", "value": 3}], "offline_status_data": [{"name": "\u7b49\u5f85\u4e2d", "value": 14}, {"name": "\u5df2\u89e3\u51b3", "value": 13}, {"name": "\u8ddf\u8fdb\u4e2d", "value": 8}], "ch_pie_data": [{"name": "\u65e0\u6cd5\u5b9a\u4f4d", "value": 67}, {"name": "\u72ec\u7acb\u7ad9", "value": 63}, {"name": "\u4e9a\u9a6c\u900a", "value": 24}, {"name": "Tiktok", "value": 22}], "reg_sorted": [["\u6ce2\u5170", 1], ["\u963f\u6839\u5ef7", 1], ["\u52a0\u62ff\u5927", 1], ["\u672a\u77e5", 14], ["\u7f8e\u56fd", 59], ["\u82f1\u56fd", 100]], "sol_sorted": [["\u5ef6\u4fdd", 1], ["\u9000\u6b3e", 7], ["\u8d60\u9001\u914d\u4ef6/\u798f\u5229", 10], ["\u6362\u673a", 20], ["\u5176\u4ed6", 44], ["FAQ\u6307\u5f15", 94]], "status": {"\u5df2\u89e3\u51b3": 83, "\u7b49\u5f85\u4e2d": 72, "\u8ddf\u8fdb\u4e2d": 21}, "total": 176, "probs": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 53, "\u79bb\u7ebf": 35, "\u7ed1\u5b9a\u5931\u8d25": 31, "\u4e13\u5c5e\u798f\u5229": 7, "\u89e3\u7ed1": 7, "\u4e91\u5f55\u95ee\u9898": 7, "\u4e0d\u5f55\u5236\u89c6\u9891": 5, "\u7269\u6d41\u54a8\u8be2": 5, "\u65e0\u6cd5\u5f00\u6d41": 4, "\u5b9e\u65f6\u753b\u9762\u95ee\u9898": 3, "\u529f\u80fd\u5efa\u8bae": 2, "\u56fa\u4ef6\u5347\u7ea7\u5931\u8d25": 2, "\u4fa6\u6d4b\u4e0d\u5230\u4eba": 2, "App\u5b89\u88c5\u95ee\u9898": 2, "\u6f0f\u5f55": 2, "\u5f55\u50cf\u64ad\u653e\u5f02\u5e38": 2, "\u8d2d\u4e70\u8bbe\u5907\u54a8\u8be2": 1, "SD\u5361\u6545\u969c": 1, "\u6d88\u606f\u901a\u77e5\u5f02\u5e38": 1, "ai\u6280\u80fd\u95ee\u9898": 1, "APP\u753b\u9762\u4e0d\u6e05\u6670": 1, "\u914d\u4ef6\u635f\u574f": 1, "\u9000\u8d27\u9000\u6b3e\u54a8\u8be2": 1}, "regions": {"\u82f1\u56fd": 100, "\u7f8e\u56fd": 59, "\u672a\u77e5": 14, "\u6ce2\u5170": 1, "\u963f\u6839\u5ef7": 1, "\u52a0\u62ff\u5927": 1}, "channels": {"\u65e0\u6cd5\u5b9a\u4f4d": 67, "\u72ec\u7acb\u7ad9": 63, "\u4e9a\u9a6c\u900a": 24, "Tiktok": 22}, "channel_problems": {"\u4e9a\u9a6c\u900a": {"total": 24, "top": [["\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2", 7], ["\u79bb\u7ebf", 6], ["\u7ed1\u5b9a\u5931\u8d25", 4], ["\u4e13\u5c5e\u798f\u5229", 3], ["\u4fa6\u6d4b\u4e0d\u5230\u4eba", 1]]}, "Tiktok": {"total": 22, "top": [["\u79bb\u7ebf", 6], ["\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2", 5], ["\u7ed1\u5b9a\u5931\u8d25", 3], ["\u4e91\u5f55\u95ee\u9898", 2], ["\u4e0d\u5f55\u5236\u89c6\u9891", 2]]}, "\u72ec\u7acb\u7ad9": {"total": 63, "top": [["\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2", 20], ["\u79bb\u7ebf", 14], ["\u7ed1\u5b9a\u5931\u8d25", 5], ["\u4e91\u5f55\u95ee\u9898", 4], ["\u7269\u6d41\u54a8\u8be2", 3]]}, "\u65e0\u6cd5\u5b9a\u4f4d": {"total": 67, "top": [["\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2", 21], ["\u7ed1\u5b9a\u5931\u8d25", 19], ["\u79bb\u7ebf", 9], ["\u89e3\u7ed1", 6], ["App\u5b89\u88c5\u95ee\u9898", 2]]}}, "unresolved_problems": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 24, "\u79bb\u7ebf": 22, "\u7ed1\u5b9a\u5931\u8d25": 16, "\u4e91\u5f55\u95ee\u9898": 5, "\u4e0d\u5f55\u5236\u89c6\u9891": 4, "\u65e0\u6cd5\u5f00\u6d41": 3, "\u89e3\u7ed1": 3, "\u5b9e\u65f6\u753b\u9762\u95ee\u9898": 3, "\u4fa6\u6d4b\u4e0d\u5230\u4eba": 2, "App\u5b89\u88c5\u95ee\u9898": 2}, "stats": {"total": 176, "status": {"\u5df2\u89e3\u51b3": 83, "\u7b49\u5f85\u4e2d": 72, "\u8ddf\u8fdb\u4e2d": 21}, "problems": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 53, "\u79bb\u7ebf": 35, "\u7ed1\u5b9a\u5931\u8d25": 31, "\u4e13\u5c5e\u798f\u5229": 7, "\u89e3\u7ed1": 7, "\u4e91\u5f55\u95ee\u9898": 7, "\u4e0d\u5f55\u5236\u89c6\u9891": 5, "\u7269\u6d41\u54a8\u8be2": 5, "\u65e0\u6cd5\u5f00\u6d41": 4, "\u5b9e\u65f6\u753b\u9762\u95ee\u9898": 3, "\u529f\u80fd\u5efa\u8bae": 2, "\u56fa\u4ef6\u5347\u7ea7\u5931\u8d25": 2, "\u4fa6\u6d4b\u4e0d\u5230\u4eba": 2, "App\u5b89\u88c5\u95ee\u9898": 2, "\u6f0f\u5f55": 2, "\u5f55\u50cf\u64ad\u653e\u5f02\u5e38": 2, "\u8d2d\u4e70\u8bbe\u5907\u54a8\u8be2": 1, "SD\u5361\u6545\u969c": 1, "\u6d88\u606f\u901a\u77e5\u5f02\u5e38": 1, "ai\u6280\u80fd\u95ee\u9898": 1, "APP\u753b\u9762\u4e0d\u6e05\u6670": 1, "\u914d\u4ef6\u635f\u574f": 1, "\u9000\u8d27\u9000\u6b3e\u54a8\u8be2": 1}, "channels": {"\u65e0\u6cd5\u5b9a\u4f4d": 67, "\u72ec\u7acb\u7ad9": 63, "\u4e9a\u9a6c\u900a": 24, "Tiktok": 22}, "regions": {"\u82f1\u56fd": 100, "\u7f8e\u56fd": 59, "\u672a\u77e5": 14, "\u6ce2\u5170": 1, "\u963f\u6839\u5ef7": 1, "\u52a0\u62ff\u5927": 1}, "solutions": {"FAQ\u6307\u5f15": 94, "\u5176\u4ed6": 44, "\u9000\u6b3e": 7, "\u8d60\u9001\u914d\u4ef6/\u798f\u5229": 10, "\u6362\u673a": 20, "\u5ef6\u4fdd": 1}, "months": {"2026-05": 4, "2026-06": 49, "2026-07": 107, "2026-08": 15}, "july_weeks": {"W1 (7/1-7/5)": 15, "W2 (7/6-7/12)": 22, "W3 (7/13-7/19)": 26, "W4 (7/20-7/26)": 31, "W5 (7/27-7/31)": 13}, "july_weeks_problems": {"W1 (7/1-7/5)": {"\u79bb\u7ebf": 7, "\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 5, "\u7ed1\u5b9a\u5931\u8d25": 2, "APP\u753b\u9762\u4e0d\u6e05\u6670": 1}, "W2 (7/6-7/12)": {"\u79bb\u7ebf": 10, "\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 4, "\u914d\u4ef6\u635f\u574f": 1, "\u56fa\u4ef6\u5347\u7ea7\u5931\u8d25": 1, "\u7269\u6d41\u54a8\u8be2": 1, "\u4e91\u5f55\u95ee\u9898": 1, "\u4e13\u5c5e\u798f\u5229": 1, "\u7ed1\u5b9a\u5931\u8d25": 1, "\u6f0f\u5f55": 1, "\u4fa6\u6d4b\u4e0d\u5230\u4eba": 1}, "W3 (7/13-7/19)": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 10, "\u79bb\u7ebf": 6, "\u7269\u6d41\u54a8\u8be2": 3, "\u4e13\u5c5e\u798f\u5229": 2, "\u7ed1\u5b9a\u5931\u8d25": 2, "\u4e91\u5f55\u95ee\u9898": 1, "\u4e0d\u5f55\u5236\u89c6\u9891": 1, "\u65e0\u6cd5\u5f00\u6d41": 1}, "W4 (7/20-7/26)": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 11, "\u7ed1\u5b9a\u5931\u8d25": 7, "\u89e3\u7ed1": 6, "\u79bb\u7ebf": 2, "\u4e91\u5f55\u95ee\u9898": 2, "\u4e13\u5c5e\u798f\u5229": 1, "\u4e0d\u5f55\u5236\u89c6\u9891": 1, "\u65e0\u6cd5\u5f00\u6d41": 1}, "W5 (7/27-7/31)": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 6, "\u5b9e\u65f6\u753b\u9762\u95ee\u9898": 2, "\u7ed1\u5b9a\u5931\u8d25": 2, "\u4e0d\u5f55\u5236\u89c6\u9891": 1, "\u5f55\u50cf\u64ad\u653e\u5f02\u5e38": 1, "\u65e0\u6cd5\u5f00\u6d41": 1}}, "recent_days": {"2026-07-28": 3, "2026-07-29": 4, "2026-07-30": 1, "2026-07-31": 1, "2026-08-01": 1, "2026-08-02": 13, "2026-08-03": 1}, "recent_days_problems": {"2026-07-28": {"\u7ed1\u5b9a\u5931\u8d25": 1, "\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 1, "\u5f55\u50cf\u64ad\u653e\u5f02\u5e38": 1}, "2026-07-29": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 1, "\u5b9e\u65f6\u753b\u9762\u95ee\u9898": 1, "\u7ed1\u5b9a\u5931\u8d25": 1, "\u65e0\u6cd5\u5f00\u6d41": 1}, "2026-07-30": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 1}, "2026-07-31": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 1}, "2026-08-01": {"\u4e91\u5f55\u95ee\u9898": 1}, "2026-08-02": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 5, "\u4e91\u5f55\u95ee\u9898": 2, "\u4e0d\u5f55\u5236\u89c6\u9891": 1, "\u6f0f\u5f55": 1, "\u7ed1\u5b9a\u5931\u8d25": 1, "\u5b9e\u65f6\u753b\u9762\u95ee\u9898": 1, "\u529f\u80fd\u5efa\u8bae": 1, "\u9000\u8d27\u9000\u6b3e\u54a8\u8be2": 1}, "2026-08-03": {"\u5f55\u50cf\u64ad\u653e\u5f02\u5e38": 1}}, "offline_count": 35, "offline_fw": {"v1.7.13": 9, "\u672a\u63d0\u53ca": 9, "v1.7.21": 13, "v1.7.22": 4}, "offline_sol": {"\u5f85\u8ddf\u8fdb": 10, "\u6362\u673a": 12, "FAQ\u6307\u5f15": 10, "\u9000\u6b3e": 3}, "offline_status": {"\u7b49\u5f85\u4e2d": 14, "\u5df2\u89e3\u51b3": 13, "\u8ddf\u8fdb\u4e2d": 8}, "channel_problems": {"\u4e9a\u9a6c\u900a": {"total": 24, "top": [["\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2", 7], ["\u79bb\u7ebf", 6], ["\u7ed1\u5b9a\u5931\u8d25", 4], ["\u4e13\u5c5e\u798f\u5229", 3], ["\u4fa6\u6d4b\u4e0d\u5230\u4eba", 1]]}, "Tiktok": {"total": 22, "top": [["\u79bb\u7ebf", 6], ["\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2", 5], ["\u7ed1\u5b9a\u5931\u8d25", 3], ["\u4e91\u5f55\u95ee\u9898", 2], ["\u4e0d\u5f55\u5236\u89c6\u9891", 2]]}, "\u72ec\u7acb\u7ad9": {"total": 63, "top": [["\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2", 20], ["\u79bb\u7ebf", 14], ["\u7ed1\u5b9a\u5931\u8d25", 5], ["\u4e91\u5f55\u95ee\u9898", 4], ["\u7269\u6d41\u54a8\u8be2", 3]]}, "\u65e0\u6cd5\u5b9a\u4f4d": {"total": 67, "top": [["\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2", 21], ["\u7ed1\u5b9a\u5931\u8d25", 19], ["\u79bb\u7ebf", 9], ["\u89e3\u7ed1", 6], ["App\u5b89\u88c5\u95ee\u9898", 2]]}}, "unresolved_count": 93, "unresolved_problems": {"\u4ea7\u54c1\u4f7f\u7528\u54a8\u8be2": 24, "\u79bb\u7ebf": 22, "\u7ed1\u5b9a\u5931\u8d25": 16, "\u4e91\u5f55\u95ee\u9898": 5, "\u4e0d\u5f55\u5236\u89c6\u9891": 4, "\u65e0\u6cd5\u5f00\u6d41": 3, "\u89e3\u7ed1": 3, "\u5b9e\u65f6\u753b\u9762\u95ee\u9898": 3, "\u4fa6\u6d4b\u4e0d\u5230\u4eba": 2, "App\u5b89\u88c5\u95ee\u9898": 2}, "escalated_count": 21, "exchange_count": 20, "refund_count": 7}};
+
+// 月度趋势
+echarts.init(document.getElementById('chart_month')).setOption({
+    tooltip:{trigger:'axis'},
+    grid:{left:50,right:30,top:30,bottom:40},
+    xAxis:{type:'category',data:d.month_keys,axisLine:{lineStyle:{color:GRAY}}},
+    yAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}}},
+    series:[{type:'bar',data:d.month_vals,barWidth:'50%',
+        itemStyle:{color:function(p){return [GREEN,BLUE,ORANGE,RED][p.dataIndex%4];},borderRadius:[6,6,0,0]},
+        label:{show:true,position:'top',fontWeight:'bold'}}]
+});
+
+// 7月周趋势
+echarts.init(document.getElementById('chart_july_week')).setOption({
+    tooltip:{trigger:'axis'},
+    grid:{left:50,right:30,top:30,bottom:40},
+    xAxis:{type:'category',data:d.jw_keys,axisLine:{lineStyle:{color:GRAY}}},
+    yAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}}},
+    series:[{type:'bar',data:d.jw_vals,barWidth:'45%',
+        itemStyle:{color:GREEN,borderRadius:[6,6,0,0]},
+        label:{show:true,position:'top',fontWeight:'bold'}}]
+});
+
+// 7月各周问题堆叠
+var julyProblems=d.all_problems_july;
+var julyWeekData=d.july_weeks_problems;
+var julyStackSeries=julyProblems.map(function(p,idx){
+    return{name:p,type:'bar',stack:'total',
+        data:d.jw_keys.map(function(w){return julyWeekData[w]&&julyWeekData[w][p]||0;}),
+        itemStyle:{color:colors[idx%colors.length]}};
+});
+echarts.init(document.getElementById('chart_july_stack')).setOption({
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    legend:{top:0,type:'scroll',textStyle:{fontSize:11}},
+    grid:{left:50,right:30,top:60,bottom:40},
+    xAxis:{type:'category',data:d.jw_keys},
+    yAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}}},
+    series:julyStackSeries
+});
+
+// 最近1周日趋势
+echarts.init(document.getElementById('chart_recent_day')).setOption({
+    tooltip:{trigger:'axis'},
+    grid:{left:50,right:30,top:30,bottom:40},
+    xAxis:{type:'category',data:d.rd_keys,axisLine:{lineStyle:{color:GRAY}}},
+    yAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}}},
+    series:[{type:'bar',data:d.rd_vals,barWidth:'40%',
+        itemStyle:{color:function(p){return p.dataIndex===5?RED:GREEN;},borderRadius:[6,6,0,0]},
+        label:{show:true,position:'top',fontWeight:'bold'}}]
+});
+
+// 问题类型饼图
+echarts.init(document.getElementById('chart_problem_pie')).setOption({
+    tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
+    legend:{orient:'vertical',right:10,top:'center',textStyle:{fontSize:11}},
+    series:[{type:'pie',radius:['40%','70%'],center:['40%','50%'],
+        data:d.prob_pie_data,
+        itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
+        label:{show:false}}]
+});
+
+// 问题类型排名
+var pb=d.prob_bar_sorted;
+echarts.init(document.getElementById('chart_problem_bar')).setOption({
+    tooltip:{trigger:'axis'},
+    grid:{left:120,right:40,top:20,bottom:20},
+    xAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}}},
+    yAxis:{type:'category',data:pb.map(function(x){return x[0];})},
+    series:[{type:'bar',data:pb.map(function(x){return x[1];}),barWidth:'60%',
+        itemStyle:{color:function(p){var names=['离线','绑定失败','无法开流','固件升级失败'];var n=pb[p.dataIndex][0];return names.indexOf(n)>=0?RED:GREEN;},borderRadius:[0,6,6,0]},
+        label:{show:true,position:'right',fontWeight:'bold'}}]
+});
+
+// 离线固件版本
+echarts.init(document.getElementById('chart_offline_fw')).setOption({
+    tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
+    legend:{bottom:0,textStyle:{fontSize:11}},
+    series:[{type:'pie',radius:['35%','65%'],center:['50%','45%'],
+        data:d.offline_fw_data,
+        itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
+        label:{show:true,formatter:'{b}\n{c}条'}}]
+});
+
+// 离线解决方案
+echarts.init(document.getElementById('chart_offline_sol')).setOption({
+    tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
+    legend:{bottom:0,textStyle:{fontSize:11}},
+    series:[{type:'pie',radius:['35%','65%'],center:['50%','45%'],
+        data:d.offline_sol_data,
+        itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
+        label:{show:true,formatter:'{b}\n{c}条'}}]
+});
+
+// 离线状态
+echarts.init(document.getElementById('chart_offline_status')).setOption({
+    tooltip:{trigger:'item'},
+    legend:{bottom:0,textStyle:{fontSize:11}},
+    series:[{type:'pie',radius:['35%','65%'],center:['50%','45%'],
+        data:d.offline_status_data,
+        itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
+        label:{show:true,formatter:'{b}\n{c}条'},
+        color:[GREEN,ORANGE,RED]}]
+});
+
+// 渠道分布
+echarts.init(document.getElementById('chart_channel')).setOption({
+    tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
+    legend:{bottom:0,textStyle:{fontSize:11}},
+    series:[{type:'pie',radius:['35%','65%'],center:['50%','45%'],
+        data:d.ch_pie_data,
+        itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
+        label:{show:true,formatter:'{b}\n{c}条'},
+        color:[GRAY,GREEN,ORANGE,BLUE]}]
+});
+
+// 地区分布
+var rg=d.reg_sorted;
+echarts.init(document.getElementById('chart_region')).setOption({
+    tooltip:{trigger:'axis'},
+    grid:{left:80,right:40,top:20,bottom:20},
+    xAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}}},
+    yAxis:{type:'category',data:rg.map(function(x){return x[0];})},
+    series:[{type:'bar',data:rg.map(function(x){return x[1];}),barWidth:'60%',
+        itemStyle:{color:GREEN,borderRadius:[0,6,6,0]},
+        label:{show:true,position:'right',fontWeight:'bold'}}]
+});
+
+// 解决方案
+var sl=d.sol_sorted;
+echarts.init(document.getElementById('chart_solution')).setOption({
+    tooltip:{trigger:'axis'},
+    grid:{left:120,right:40,top:20,bottom:20},
+    xAxis:{type:'value',splitLine:{lineStyle:{color:'#eee'}}},
+    yAxis:{type:'category',data:sl.map(function(x){return x[0];})},
+    series:[{type:'bar',data:sl.map(function(x){return x[1];}),barWidth:'60%',
+        itemStyle:{color:GREEN,borderRadius:[0,6,6,0]},
+        label:{show:true,position:'right',fontWeight:'bold'}}]
+});
+
+window.addEventListener('resize',function(){
+    document.querySelectorAll('[id^="chart_"]').forEach(function(el){
+        var inst=echarts.getInstanceByDom(el);
+        if(inst) inst.resize();
+    });
+});
+</script>
+</body>
+</html>
