@@ -2,192 +2,114 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>门铃6pro 4G公测·报告汇总</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>门铃6pro 4G公测·报告汇总 | 尹燕玲-报告分析专家</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
-    background: #F7F9FB;
-    color: #333;
-    line-height: 1.6;
-  }
-  .header {
-    background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%);
-    color: #fff;
-    padding: 48px 32px 36px;
-    border-radius: 0 0 24px 24px;
-    box-shadow: 0 4px 24px rgba(0,176,80,0.18);
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
-  .header .sub { font-size: 15px; opacity: 0.9; }
-  .header .date { font-size: 13px; opacity: 0.75; margin-top: 8px; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 32px 20px 48px; }
-
-  .report-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-  .report-card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 28px 24px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    border-top: 4px solid #00B050;
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-  .report-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
-  }
-  .report-card .icon { font-size: 36px; margin-bottom: 12px; }
-  .report-card h2 { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 8px; }
-  .report-card .desc { font-size: 14px; color: #999; margin-bottom: 12px; }
-  .report-card .meta { font-size: 13px; color: #00B050; font-weight: 500; }
-  .report-card .stats {
-    display: flex;
-    gap: 16px;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #F0F0F0;
-  }
-  .stat { font-size: 13px; color: #666; }
-  .stat strong { color: #00B050; font-size: 16px; }
-
-  .report-card.full-width {
-    grid-column: 1 / -1;
-  }
-
-  .daily-section {
-    margin-top: 32px;
-  }
-  .daily-section h3 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 16px;
-    border-left: 4px solid #00B050;
-    padding-left: 12px;
-  }
-  .daily-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .daily-tag {
-    display: inline-block;
-    background: #fff;
-    border: 1px solid #E0E0E0;
-    border-radius: 20px;
-    padding: 8px 18px;
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .daily-tag:hover {
-    background: #00B050;
-    color: #fff;
-    border-color: #00B050;
-  }
-  .daily-tag .date-badge {
-    font-size: 12px;
-    color: #999;
-    margin-left: 6px;
-  }
-  .daily-tag:hover .date-badge {
-    color: #E8F8F0;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 32px 0 16px;
-    color: #999;
-    font-size: 13px;
-  }
-  .footer .lobster { font-size: 16px; }
-
-  @media (max-width: 768px) {
-    .report-grid { grid-template-columns: 1fr; }
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.header{text-align:center;padding:60px 20px;background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;border-radius:0 0 20px 20px;margin-bottom:40px}
+.header h1{font-size:32px;margin-bottom:10px;font-weight:800}
+.header p{font-size:16px;opacity:.9}
+.header .meta{font-size:13px;opacity:.7;margin-top:8px}
+.container{max-width:900px;margin:0 auto;padding:0 20px 40px}
+.report-card{background:#fff;border-radius:16px;margin-bottom:20px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:all .3s;text-decoration:none;display:block;color:inherit;border-top:4px solid #00B050}
+.report-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,176,80,.18)}
+.report-card .banner{padding:32px 28px;background:linear-gradient(135deg,#e8f7ee,#d1f0dc);position:relative;overflow:hidden}
+.report-card .banner::after{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;background:rgba(0,176,80,.06);border-radius:50%}
+.report-card .title-row{display:flex;align-items:center;gap:12px;position:relative;z-index:1;margin-bottom:6px}
+.report-card .icon{font-size:32px;position:relative;z-index:1}
+.report-card h2{font-size:22px;color:#1a1a1a;position:relative;z-index:1}
+.report-card .summary{font-size:14px;color:#666;position:relative;z-index:1}
+.report-card .body{padding:20px 28px;display:flex;align-items:center;justify-content:space-between}
+.report-card .tags{display:flex;gap:8px;flex-wrap:wrap}
+.report-card .tag{font-size:12px;padding:4px 12px;border-radius:20px;background:#f0f2f3;color:#666}
+.report-card .tag.green{background:#e8f7ee;color:#007a3c}
+.report-card .arrow{font-size:24px;color:#00B050;font-weight:700}
+.back-link{display:inline-block;margin-bottom:20px;color:#00B050;text-decoration:none;font-size:14px;font-weight:600}
+.back-link:hover{text-decoration:underline}
+.footer{text-align:center;padding:30px;color:#999;font-size:13px}
+.footer span{color:#00B050}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>🔔 门铃6pro 4G公测·报告汇总</h1>
-  <div class="sub">20人公测团队 · 开箱体验 / 配网安装 / 日常问题反馈</div>
-  <div class="date">数据截至 2026-07-29</div>
+<h1>🔔 门铃6pro 4G公测·报告汇总</h1>
+<p>20人公测团队 · 开箱体验 / 配网安装 / 日常问题反馈</p>
+<div class="meta">🦞 尹燕玲-报告分析专家</div>
 </div>
 
 <div class="container">
-  <div class="report-grid">
+<a class="back-link" href="https://yanlingyin001.github.io/reports/index.html">← 返回报告合集</a>
 
-    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-homework-status.html">
-      <div class="icon">📋</div>
-      <h2>20人作业完成情况</h2>
-      <div class="desc">公测团队各成员开箱、配网、日常反馈完成进度一览</div>
-      <div class="stats">
-        <div class="stat">开箱 <strong>20/20</strong></div>
-        <div class="stat">配网 <strong>20/20</strong></div>
-        <div class="stat">日常反馈 <strong>152条</strong></div>
-      </div>
-    </a>
+<a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-homework-status.html">
+<div class="banner">
+<div class="title-row"><div class="icon">📋</div><h2>20人作业完成情况</h2></div>
+<div class="summary">公测团队各成员开箱、配网、日常反馈完成进度一览</div>
+</div>
+<div class="body">
+<div class="tags">
+<span class="tag green">每日更新</span>
+<span class="tag">开箱 20/20</span>
+<span class="tag">配网 20/20</span>
+<span class="tag">日常反馈 152条</span>
+</div>
+<span class="arrow">→</span>
+</div>
+</a>
 
-    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-unboxing.html">
-      <div class="icon">📦</div>
-      <h2>开箱体验专项报告</h2>
-      <div class="desc">包装外观、配件完整性、开箱第一印象、用户满意度分析</div>
-      <div class="stats">
-        <div class="stat">样本量 <strong>20人</strong></div>
-        <div class="stat">满意度 <strong>9.5分</strong></div>
-      </div>
-    </a>
+<a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-unboxing.html">
+<div class="banner">
+<div class="title-row"><div class="icon">📦</div><h2>开箱体验专项报告</h2></div>
+<div class="summary">包装外观、配件完整性、开箱第一印象、用户满意度分析</div>
+</div>
+<div class="body">
+<div class="tags">
+<span class="tag green">专项报告</span>
+<span class="tag">样本量 20人</span>
+<span class="tag">满意度 9.5分</span>
+</div>
+<span class="arrow">→</span>
+</div>
+</a>
 
-    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-config.html">
-      <div class="icon">🔧</div>
-      <h2>配网安装专项报告</h2>
-      <div class="desc">首次绑定成功率、配网入口分布、各维度评分、信号强度、用户痛点与爽点</div>
-      <div class="stats">
-        <div class="stat">样本量 <strong>20人</strong></div>
-        <div class="stat">成功率 <strong>100%</strong></div>
-        <div class="stat">满意度 <strong>9.47分</strong></div>
-      </div>
-    </a>
+<a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-config.html">
+<div class="banner">
+<div class="title-row"><div class="icon">🔧</div><h2>配网安装专项报告</h2></div>
+<div class="summary">首次绑定成功率、配网入口分布、各维度评分、信号强度、用户痛点与爽点</div>
+</div>
+<div class="body">
+<div class="tags">
+<span class="tag green">专项报告</span>
+<span class="tag">样本量 20人</span>
+<span class="tag">成功率 100%</span>
+<span class="tag">满意度 9.47分</span>
+</div>
+<span class="arrow">→</span>
+</div>
+</a>
 
-    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-daily-20260729.html">
-      <div class="icon">📊</div>
-      <h2>日常问题反馈专项报告（最新）</h2>
-      <div class="desc">152条反馈按最新17个一级标签分类统计、问题分布、改进建议</div>
-      <div class="stats">
-        <div class="stat">有效反馈 <strong>138条</strong></div>
-        <div class="stat">参与人数 <strong>19人</strong></div>
-        <div class="stat">一级标签 <strong>17个</strong></div>
-      </div>
-    </a>
-
-  </div>
-
-  <div class="daily-section">
-    <h3>📅 每日日常问题报告归档</h3>
-    <div class="daily-list">
-      <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260729.html">
-        📊 2026-07-29 <span class="date-badge">152条 · +43新增</span>
-      </a>
-    </div>
-  </div>
+<a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-daily-20260729.html">
+<div class="banner">
+<div class="title-row"><div class="icon">📊</div><h2>日常问题反馈专项报告（最新）</h2></div>
+<div class="summary">152条反馈按最新17个一级标签分类统计、问题分布、改进建议</div>
+</div>
+<div class="body">
+<div class="tags">
+<span class="tag green">专项报告</span>
+<span class="tag">有效反馈 138条</span>
+<span class="tag">参与 19人</span>
+<span class="tag">17个一级标签</span>
+</div>
+<span class="arrow">→</span>
+</div>
+</a>
 
 </div>
 
 <div class="footer">
-  <div class="lobster">🦞 尹燕玲-报告分析专家</div>
-  <div>门铃6pro 4G公测 · 2026-07</div>
+<p>🦞 尹燕玲-报告分析专家 · <span>360绿色系</span> 主色调</p>
+<p style="margin-top:4px">所有报告链接永久有效 · 最后更新：2026-08-05</p>
 </div>
 
 </body>
