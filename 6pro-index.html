@@ -11,22 +11,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei
 .header h1{font-size:32px;margin-bottom:10px;font-weight:800}
 .header p{font-size:16px;opacity:.9}
 .header .meta{font-size:13px;opacity:.7;margin-top:8px}
-.container{max-width:900px;margin:0 auto;padding:0 20px 40px}
-.report-card{background:#fff;border-radius:16px;margin-bottom:20px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:all .3s;text-decoration:none;display:block;color:inherit;border-top:4px solid #00B050}
+.container{max-width:900px;margin:0 auto;padding:0 20px 60px}
+.back-link{display:inline-block;margin-bottom:20px;color:#00B050;text-decoration:none;font-size:14px;font-weight:600}
+.back-link:hover{text-decoration:underline}
+.section-title{font-size:20px;font-weight:700;color:#1a1a1a;margin:36px 0 16px;padding-left:12px;border-left:4px solid #00B050}
+.report-card{background:#fff;border-radius:16px;margin-bottom:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:all .3s;text-decoration:none;display:block;color:inherit;border-top:4px solid #00B050}
 .report-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,176,80,.18)}
-.report-card .banner{padding:32px 28px;background:linear-gradient(135deg,#e8f7ee,#d1f0dc);position:relative;overflow:hidden}
-.report-card .banner::after{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;background:rgba(0,176,80,.06);border-radius:50%}
+.report-card .banner{padding:28px 24px;background:linear-gradient(135deg,#e8f7ee,#d1f0dc);position:relative;overflow:hidden}
+.report-card .banner::after{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(0,176,80,.06);border-radius:50%}
 .report-card .title-row{display:flex;align-items:center;gap:12px;position:relative;z-index:1;margin-bottom:6px}
-.report-card .icon{font-size:32px;position:relative;z-index:1}
-.report-card h2{font-size:22px;color:#1a1a1a;position:relative;z-index:1}
+.report-card .icon{font-size:28px;position:relative;z-index:1}
+.report-card h2{font-size:20px;color:#1a1a1a;position:relative;z-index:1}
 .report-card .summary{font-size:14px;color:#666;position:relative;z-index:1}
-.report-card .body{padding:20px 28px;display:flex;align-items:center;justify-content:space-between}
+.report-card .body{padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
 .report-card .tags{display:flex;gap:8px;flex-wrap:wrap}
 .report-card .tag{font-size:12px;padding:4px 12px;border-radius:20px;background:#f0f2f3;color:#666}
 .report-card .tag.green{background:#e8f7ee;color:#007a3c}
-.report-card .arrow{font-size:24px;color:#00B050;font-weight:700}
-.back-link{display:inline-block;margin-bottom:20px;color:#00B050;text-decoration:none;font-size:14px;font-weight:600}
-.back-link:hover{text-decoration:underline}
+.report-card .tag.blue{background:#e3f2fd;color:#1565c0}
+.report-card .tag.orange{background:#fff3e0;color:#e65100}
+.report-card .arrow{font-size:22px;color:#00B050;font-weight:700}
+.daily-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:20px}
+.daily-card{background:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 1px 6px rgba(0,0,0,.05);transition:all .3s;text-decoration:none;display:block;color:inherit;border-left:3px solid #00B050}
+.daily-card:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(0,176,80,.12)}
+.daily-card .date{font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.daily-card .desc{font-size:13px;color:#888}
+.daily-card .badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:12px;background:#e8f7ee;color:#007a3c;margin-top:6px}
+.daily-card.latest{border-left-color:#E74C3C}
+.daily-card.latest .badge{background:#fdecea;color:#c62828}
 .footer{text-align:center;padding:30px;color:#999;font-size:13px}
 .footer span{color:#00B050}
 </style>
@@ -35,24 +46,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei
 
 <div class="header">
 <h1>🔔 门铃6pro 4G公测·报告汇总</h1>
-<p>20人公测团队 · 开箱体验 / 配网安装 / 日常问题反馈</p>
+<p>20人公测团队 · 开箱体验 · 配网安装 · 日常问题反馈 · 每日更新</p>
 <div class="meta">🦞 尹燕玲-报告分析专家</div>
 </div>
 
 <div class="container">
 <a class="back-link" href="https://yanlingyin001.github.io/reports/index.html">← 返回报告合集</a>
 
+<div class="section-title">📋 专项报告</div>
+
 <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-homework-status.html">
 <div class="banner">
 <div class="title-row"><div class="icon">📋</div><h2>20人作业完成情况</h2></div>
-<div class="summary">公测团队各成员开箱、配网、日常反馈完成进度一览</div>
+<div class="summary">公测团队各成员开箱、配网、日常反馈完成进度一览（每日自动更新）</div>
 </div>
 <div class="body">
 <div class="tags">
 <span class="tag green">每日更新</span>
 <span class="tag">开箱 20/20</span>
 <span class="tag">配网 20/20</span>
-<span class="tag">日常反馈 152条</span>
+<span class="tag">283条反馈</span>
 </div>
 <span class="arrow">→</span>
 </div>
@@ -89,21 +102,48 @@ body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei
 </div>
 </a>
 
-<a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-daily-20260729.html">
-<div class="banner">
-<div class="title-row"><div class="icon">📊</div><h2>日常问题反馈专项报告（最新）</h2></div>
-<div class="summary">152条反馈按最新17个一级标签分类统计、问题分布、改进建议</div>
-</div>
-<div class="body">
-<div class="tags">
-<span class="tag green">专项报告</span>
-<span class="tag">有效反馈 138条</span>
-<span class="tag">参与 19人</span>
-<span class="tag">17个一级标签</span>
-</div>
-<span class="arrow">→</span>
-</div>
+<div class="section-title">📊 日常问题日报</div>
+<p style="font-size:13px;color:#999;margin-bottom:16px">每天一份独立报告，记录当日新增问题及累计问题分析。以0730固件版本为主视角，含跨版本对比。</p>
+
+<div class="daily-grid">
+
+<a class="daily-card latest" href="https://yanlingyin001.github.io/reports/6pro-daily-20260805.html">
+<div class="date">8月5日</div>
+<div class="desc">新增16条 · 累计264条 · 误报7条最突出</div>
+<span class="badge">最新</span>
 </a>
+
+<a class="daily-card" href="https://yanlingyin001.github.io/reports/6pro-daily-20260804.html">
+<div class="date">8月4日</div>
+<div class="desc">新增9条 · 累计248条 · 0730固件版本对比</div>
+<span class="badge">含固件版本对比</span>
+</a>
+
+<a class="daily-card" href="https://yanlingyin001.github.io/reports/6pro-daily-20260803.html">
+<div class="date">8月3日</div>
+<div class="desc">新增23条 · 累计239条 · 标签体系更新19个一级标签</div>
+<span class="badge">标签体系更新</span>
+</a>
+
+<a class="daily-card" href="https://yanlingyin001.github.io/reports/6pro-daily-20260731.html">
+<div class="date">7月31日</div>
+<div class="desc">新增32条 · 累计236条 · 卡录加载慢暴增</div>
+<span class="badge">0730固件升级后</span>
+</a>
+
+<a class="daily-card" href="https://yanlingyin001.github.io/reports/6pro-daily-20260730.html">
+<div class="date">7月30日</div>
+<div class="desc">新增50条 · 累计189条 · 固件升级问题集中爆发</div>
+<span class="badge">首次固件升级</span>
+</a>
+
+<a class="daily-card" href="https://yanlingyin001.github.io/reports/6pro-daily-20260729.html">
+<div class="date">7月29日</div>
+<div class="desc">首份日报 · 累计152条 · 17个一级标签体系建立</div>
+<span class="badge">首份日报</span>
+</a>
+
+</div>
 
 </div>
 
