@@ -6,59 +6,65 @@
 <title>6pro 4G门铃公测 - 20人作业完成情况</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; }
-.container { max-width: 900px; margin: 0 auto; padding: 20px; }
-.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: white; padding: 30px 20px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
-.header h1 { font-size: 24px; margin-bottom: 8px; }
-.header .subtitle { font-size: 14px; opacity: 0.9; }
-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-th { background: #00B050; color: white; padding: 12px 16px; text-align: left; font-size: 14px; }
-th.fw-th { text-align: center; }
-td { padding: 11px 16px; border-bottom: 1px solid #eee; font-size: 14px; }
-td.fw-td { text-align: center; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; padding: 20px; }
+.container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+h1 { color: #00B050; font-size: 22px; margin-bottom: 8px; }
+.update-time { color: #999; font-size: 13px; margin-bottom: 20px; }
+.summary { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.kpi { flex: 1; min-width: 140px; background: #f0faf4; border-radius: 8px; padding: 16px; text-align: center; border: 1px solid #d4ead8; }
+.kpi .num { font-size: 28px; font-weight: 700; color: #00B050; }
+.kpi .label { font-size: 13px; color: #666; margin-top: 4px; }
+table { width: 100%; border-collapse: collapse; }
+th { background: #00B050; color: #fff; padding: 12px 8px; font-size: 14px; font-weight: 600; text-align: center; }
+th:first-child { text-align: left; padding-left: 16px; }
+td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #eee; font-size: 14px; }
+td:first-child { text-align: left; padding-left: 16px; font-weight: 500; }
 tr:hover { background: #f9f9f9; }
-tr.all-done { background: #f0fdf4; }
-tr.zero-feedback { background: #fef2f2; }
-tr.zero-feedback td { color: #E74C3C; }
-.fb-high { color: #00B050; font-weight: 600; }
-.fb-low { color: #E74C3C; font-weight: 600; }
-.footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
-.updated { text-align: right; color: #999; font-size: 12px; margin-bottom: 10px; }
+.highlight-green { color: #00B050; font-weight: 600; }
+.highlight-red { color: #E74C3C; font-weight: 600; }
+.row-zero { background: #fff5f5; }
+.row-zero:hover { background: #ffe8e8; }
+.legend { margin-top: 16px; font-size: 12px; color: #999; }
 </style>
 </head>
 <body>
 <div class="container">
-<div class="header">
 <h1>📋 6pro 4G门铃公测 - 20人作业完成情况</h1>
-<div class="subtitle">公测期间每日自动更新 | 数据来源：飞书问卷</div>
+<div class="update-time">更新时间：2026-08-05 09:19 | 数据来源：飞书表格自动同步</div>
+<div class="summary">
+<div class="kpi"><div class="num">20/20</div><div class="label">开箱体验完成</div></div>
+<div class="kpi"><div class="num">20/20</div><div class="label">配网安装完成</div></div>
+<div class="kpi"><div class="num">283</div><div class="label">日常反馈总条数</div></div>
+<div class="kpi"><div class="num">20/20</div><div class="label">有反馈人数</div></div>
 </div>
-<div class="updated">最后更新：2026-08-04 09:42 | 累计日常反馈248条</div>
 <table>
-<thead><tr><th>序号</th><th>姓名</th><th>开箱体验</th><th>配网安装</th><th>日常反馈总数</th><th class="fw-th">0710固件</th><th class="fw-th">0717固件</th><th class="fw-th">0730固件</th></tr></thead>
+<thead>
+<tr><th>姓名</th><th>开箱体验</th><th>配网安装</th><th>日常反馈条数</th></tr>
+</thead>
 <tbody>
-<tr class="all-done"><td>1</td><td>张雷</td><td>✅</td><td>✅</td><td><span class="fb-high">26</span></td><td class="fw-td">19</td><td class="fw-td">5</td><td class="fw-td">2</td></tr>
-<tr class="all-done"><td>2</td><td>何三涛</td><td>✅</td><td>✅</td><td><span class="fb-high">22</span></td><td class="fw-td">13</td><td class="fw-td">4</td><td class="fw-td">5</td></tr>
-<tr class="all-done"><td>3</td><td>相杰</td><td>✅</td><td>✅</td><td><span class="fb-high">21</span></td><td class="fw-td">14</td><td class="fw-td">5</td><td class="fw-td">2</td></tr>
-<tr class="all-done"><td>4</td><td>袁飞</td><td>✅</td><td>✅</td><td>19</td><td class="fw-td">6</td><td class="fw-td">8</td><td class="fw-td">5</td></tr>
-<tr class="all-done"><td>5</td><td>许军州</td><td>✅</td><td>✅</td><td>18</td><td class="fw-td">12</td><td class="fw-td">3</td><td class="fw-td">3</td></tr>
-<tr class="all-done"><td>6</td><td>周军</td><td>✅</td><td>✅</td><td>18</td><td class="fw-td">8</td><td class="fw-td">6</td><td class="fw-td">4</td></tr>
-<tr class="all-done"><td>7</td><td>瑞子</td><td>✅</td><td>✅</td><td>17</td><td class="fw-td">10</td><td class="fw-td">5</td><td class="fw-td">2</td></tr>
-<tr class="all-done"><td>8</td><td>朱君</td><td>✅</td><td>✅</td><td>14</td><td class="fw-td">11</td><td class="fw-td">2</td><td class="fw-td">1</td></tr>
-<tr class="all-done"><td>9</td><td>于晨光</td><td>✅</td><td>✅</td><td>13</td><td class="fw-td">8</td><td class="fw-td">2</td><td class="fw-td">3</td></tr>
-<tr class="all-done"><td>10</td><td>陈俊</td><td>✅</td><td>✅</td><td>12</td><td class="fw-td">9</td><td class="fw-td">0</td><td class="fw-td">3</td></tr>
-<tr class="all-done"><td>11</td><td>王瑷珲</td><td>✅</td><td>✅</td><td>10</td><td class="fw-td">8</td><td class="fw-td">0</td><td class="fw-td">2</td></tr>
-<tr class="all-done"><td>12</td><td>孙晓明</td><td>✅</td><td>✅</td><td>9</td><td class="fw-td">5</td><td class="fw-td">1</td><td class="fw-td">3</td></tr>
-<tr class="all-done"><td>13</td><td>魏健伟</td><td>✅</td><td>✅</td><td>9</td><td class="fw-td">6</td><td class="fw-td">0</td><td class="fw-td">3</td></tr>
-<tr class="all-done"><td>14</td><td>徐婷婷</td><td>✅</td><td>✅</td><td>8</td><td class="fw-td">4</td><td class="fw-td">3</td><td class="fw-td">1</td></tr>
-<tr class="all-done"><td>15</td><td>朱彤</td><td>✅</td><td>✅</td><td>8</td><td class="fw-td">4</td><td class="fw-td">2</td><td class="fw-td">2</td></tr>
-<tr class="all-done"><td>16</td><td>美诺</td><td>✅</td><td>✅</td><td>8</td><td class="fw-td">5</td><td class="fw-td">1</td><td class="fw-td">2</td></tr>
-<tr class="all-done"><td>17</td><td>吴汞</td><td>✅</td><td>✅</td><td>6</td><td class="fw-td">3</td><td class="fw-td">2</td><td class="fw-td">1</td></tr>
-<tr class="all-done"><td>18</td><td>黄军剑</td><td>✅</td><td>✅</td><td>6</td><td class="fw-td">3</td><td class="fw-td">2</td><td class="fw-td">1</td></tr>
-<tr class="all-done"><td>19</td><td>蔡坤城</td><td>✅</td><td>✅</td><td><span class="fb-low">3</span></td><td class="fw-td">2</td><td class="fw-td">1</td><td class="fw-td">0</td></tr>
-<tr class="all-done"><td>20</td><td>夏君</td><td>✅</td><td>✅</td><td><span class="fb-low">1</span></td><td class="fw-td">0</td><td class="fw-td">0</td><td class="fw-td">1</td></tr>
+<tr><td>何三涛</td><td>✅</td><td>✅</td><td><span class="highlight-green">27</span></td></tr>
+<tr><td>张雷</td><td>✅</td><td>✅</td><td><span class="highlight-green">26</span></td></tr>
+<tr><td>袁飞</td><td>✅</td><td>✅</td><td><span class="highlight-green">22</span></td></tr>
+<tr><td>瑞子</td><td>✅</td><td>✅</td><td><span class="highlight-green">21</span></td></tr>
+<tr><td>相杰</td><td>✅</td><td>✅</td><td><span class="highlight-green">21</span></td></tr>
+<tr><td>周军</td><td>✅</td><td>✅</td><td>18</td></tr>
+<tr><td>许军州</td><td>✅</td><td>✅</td><td>18</td></tr>
+<tr><td>于晨光</td><td>✅</td><td>✅</td><td>14</td></tr>
+<tr><td>朱君</td><td>✅</td><td>✅</td><td>14</td></tr>
+<tr><td>王瑷珲</td><td>✅</td><td>✅</td><td>14</td></tr>
+<tr><td>徐婷婷</td><td>✅</td><td>✅</td><td>12</td></tr>
+<tr><td>陈俊</td><td>✅</td><td>✅</td><td>12</td></tr>
+<tr><td>魏健伟</td><td>✅</td><td>✅</td><td>12</td></tr>
+<tr><td>美诺</td><td>✅</td><td>✅</td><td>11</td></tr>
+<tr><td>孙晓明</td><td>✅</td><td>✅</td><td>9</td></tr>
+<tr><td>朱彤</td><td>✅</td><td>✅</td><td>9</td></tr>
+<tr><td>黄军剑</td><td>✅</td><td>✅</td><td>8</td></tr>
+<tr><td>吴汞</td><td>✅</td><td>✅</td><td>7</td></tr>
+<tr><td>夏君</td><td>✅</td><td>✅</td><td>5</td></tr>
+<tr><td>蔡坤城</td><td>✅</td><td>✅</td><td><span class="highlight-red">3</span></td></tr>
 </tbody>
 </table>
-<div class="footer">📊 数据来源：飞书表格「门铃6pro 4G公测问题跟进表」| 🔄 每日自动更新 | 🟢 360公测项目</div>
+<div class="legend">📊 反馈量 &gt;20 绿色标注，&lt;5 红色标注，0条整行标红 | 数据自动从飞书表格同步</div>
 </div>
 </body>
 </html>
