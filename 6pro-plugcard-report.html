@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6pro 4G门铃公测 - 插拔卡测试专项报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; color: #333; }
+.container { max-width: 1100px; margin: 0 auto; }
+.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 28px 32px; border-radius: 12px 12px 0 0; }
+.header h1 { font-size: 24px; font-weight: 600; }
+.header .subtitle { font-size: 14px; opacity: 0.9; margin-top: 8px; }
+.summary { background: #fff; padding: 24px 32px; border-bottom: 1px solid #eee; }
+.summary p { font-size: 14px; line-height: 1.8; color: #555; }
+.summary .highlight { color: #00B050; font-weight: 600; }
+.summary .red { color: #E74C3C; font-weight: 600; }
+.summary .orange { color: #F39C12; font-weight: 600; }
+.kpi-row { display: flex; gap: 16px; padding: 24px 32px; background: #fff; flex-wrap: wrap; }
+.kpi-card { flex: 1; min-width: 160px; background: #f8fdf9; border: 1px solid #e0f0e3; border-radius: 8px; padding: 20px; text-align: center; }
+.kpi-card .label { font-size: 13px; color: #666; margin-bottom: 8px; }
+.kpi-card .value { font-size: 28px; font-weight: 700; color: #00B050; }
+.kpi-card .sub { font-size: 12px; color: #999; margin-top: 4px; }
+.kpi-card.warning { background: #fff8f0; border-color: #f5e0b3; }
+.kpi-card.warning .value { color: #F39C12; }
+.kpi-card.danger { background: #fef0f0; border-color: #f5c6c6; }
+.kpi-card.danger .value { color: #E74C3C; }
+.section { background: #fff; margin-top: 16px; border-radius: 8px; padding: 24px 32px; }
+.section h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #333; border-left: 4px solid #00B050; padding-left: 12px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+th { background: #f8f9fa; padding: 12px 10px; text-align: center; font-size: 13px; color: #333; font-weight: 600; border-bottom: 2px solid #e0e0e0; }
+td { padding: 10px 10px; font-size: 13px; border-bottom: 1px solid #f0f0f0; text-align: center; vertical-align: top; }
+tr:hover td { background: #faffff; }
+.pass { color: #00B050; font-weight: 600; }
+.fail { color: #E74C3C; font-weight: 600; }
+.chart { width: 100%; height: 350px; margin: 16px 0; }
+.footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+.abnormal-detail { background: #fef8f8; border: 1px solid #f5e0e0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+.abnormal-detail h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; color: #E74C3C; }
+.abnormal-detail .desc { font-size: 13px; color: #555; margin-bottom: 8px; }
+.round-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 2px; }
+.round-pass { background: #e8f5e9; color: #00B050; }
+.round-fail { background: #ffebee; color: #E74C3C; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>💾 6pro 4G门铃公测 - 插拔卡测试专项报告</h1>
+    <div class="subtitle">📅 2026-08-06 | 有效数据 17 条 | 剔除第9条（瑞子）、第17条（周军第2次）</div>
+  </div>
+
+  <div class="summary">
+    <p><strong>📋 总体洞察</strong></p>
+    <p>17人完成插拔卡测试（未完成3人：夏君、吴汞、黄军剑），每轮6次测试交替进行：<span class="highlight">3轮基站不断电插拔</span>（检测声音提醒+APP存储卡状态）+ <span class="highlight">3轮基站断电重启</span>（检测存储卡状态）。<span class="highlight">13人6轮全部通过</span>，<span class="red">4人出现异常</span>，异常率23.5%。陈俊前4轮因未插入内存卡持续异常，朱彤第2次提交出现存储卡容量为0及无声音提醒，美诺和孙晓明各1轮偶发异常。整体插拔卡稳定性良好，断电重启后存储卡识别100%正常（排除未插卡情况）。</p>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="label">参与人数</div>
+      <div class="value">17/20</div>
+      <div class="sub">未完成3人</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">6轮全通过</div>
+      <div class="value">13</div>
+      <div class="sub">通过率76.5%</div>
+    </div>
+    <div class="kpi-card warning">
+      <div class="label">异常人数</div>
+      <div class="value">4</div>
+      <div class="sub">异常率23.5%</div>
+    </div>
+    <div class="kpi-card danger">
+      <div class="label">异常总次数</div>
+      <div class="value">7</div>
+      <div class="sub">/ 102轮次</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">断电重启通过率</div>
+      <div class="value">100%</div>
+      <div class="sub">排除未插卡</div>
+    </div>
+  </div>
+
+  <!-- 6轮通过率 -->
+  <div class="section">
+    <h2>📊 6轮测试通过率</h2>
+    <div id="chart-rounds" class="chart"></div>
+    <table>
+      <thead>
+        <tr><th>轮次</th><th>测试类型</th><th>检测项</th><th>通过</th><th>异常</th><th>通过率</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>第1轮</td><td>插拔(不断电)</td><td>声音提醒+存储卡状态</td><td class="pass">15</td><td class="fail">2</td><td class="">88.2%</td></tr>
+        <tr><td>第2轮</td><td>断电重启</td><td>存储卡状态</td><td class="pass">17</td><td class="">0</td><td class="pass">100.0%</td></tr>
+        <tr><td>第3轮</td><td>插拔(不断电)</td><td>声音提醒+存储卡状态</td><td class="pass">15</td><td class="fail">2</td><td class="">88.2%</td></tr>
+        <tr><td>第4轮</td><td>断电重启</td><td>存储卡状态</td><td class="pass">16</td><td class="fail">1</td><td class="">94.1%</td></tr>
+        <tr><td>第5轮</td><td>插拔(不断电)</td><td>声音提醒+存储卡状态</td><td class="pass">16</td><td class="fail">1</td><td class="">94.1%</td></tr>
+        <tr><td>第6轮</td><td>断电重启</td><td>存储卡状态</td><td class="pass">17</td><td class="">0</td><td class="pass">100.0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 异常用户专项分析 -->
+  <div class="section">
+    <h2>🔴 异常用户专项分析</h2>
+    <div class="abnormal-detail" style="border-color: #f5c6c6; background: #fef0f0;">
+      <h3>⚠️ 陈俊 — 3/6轮异常</h3>
+      <span class="round-badge round-fail">R1(插拔(不断电)): 声音=无声音提醒, 卡状态=其他，请注明〖无内存卡〗</span>
+      <span class="round-badge round-pass">R2(断电重启): 卡状态=正常</span>
+      <span class="round-badge round-fail">R3(插拔(不断电)): 声音=无声音提醒, 卡状态=其他，请注明〖未插入存储卡〗</span>
+      <span class="round-badge round-fail">R4(断电重启): 卡状态=其他，请注明〖未插入存储卡〗</span>
+      <span class="round-badge round-pass">R5(插拔(不断电)): 声音=有声音提醒, 卡状态=正常</span>
+      <span class="round-badge round-pass">R6(断电重启): 卡状态=正常</span>
+    </div>
+    <div class="abnormal-detail" style="border-color: #f5e0b3; background: #fff8f0;">
+      <h3>⚠️ 朱彤（第2次提交） — 2/6轮异常</h3>
+      <span class="round-badge round-fail">R1(插拔(不断电)): 声音=有声音提醒, 卡状态=其他，请注明〖内存卡状态正常，但是已用，可用，总大小为0〗</span>
+      <span class="round-badge round-pass">R2(断电重启): 卡状态=正常</span>
+      <span class="round-badge round-fail">R3(插拔(不断电)): 声音=无声音提醒, 卡状态=正常</span>
+      <span class="round-badge round-pass">R4(断电重启): 卡状态=正常</span>
+      <span class="round-badge round-pass">R5(插拔(不断电)): 声音=有声音提醒, 卡状态=正常</span>
+      <span class="round-badge round-pass">R6(断电重启): 卡状态=正常</span>
+    </div>
+    <div class="abnormal-detail" style="border-color: #f5e0b3; background: #fff8f0;">
+      <h3>⚠️ 孙晓明 — 1/6轮异常</h3>
+      <span class="round-badge round-fail">R1(插拔(不断电)): 声音=无声音提醒, 卡状态=其他，请注明〖未插入内存卡〗</span>
+      <span class="round-badge round-pass">R2(断电重启): 卡状态=正常</span>
+      <span class="round-badge round-pass">R3(插拔(不断电)): 声音=有声音提醒, 卡状态=正常</span>
+      <span class="round-badge round-pass">R4(断电重启): 卡状态=正常</span>
+      <span class="round-badge round-pass">R5(插拔(不断电)): 声音=有声音提醒, 卡状态=正常</span>
+      <span class="round-badge round-pass">R6(断电重启): 卡状态=正常</span>
+    </div>
+    <div class="abnormal-detail" style="border-color: #f5e0b3; background: #fff8f0;">
+      <h3>⚠️ 美诺 — 1/6轮异常</h3>
+      <span class="round-badge round-pass">R1(插拔(不断电)): 声音=有声音提醒, 卡状态=正常</span>
+      <span class="round-badge round-pass">R2(断电重启): 卡状态=正常</span>
+      <span class="round-badge round-pass">R3(插拔(不断电)): 声音=有声音提醒, 卡状态=正常</span>
+      <span class="round-badge round-pass">R4(断电重启): 卡状态=正常</span>
+      <span class="round-badge round-fail">R5(插拔(不断电)): 声音=无声音提醒, 卡状态=正常</span>
+      <span class="round-badge round-pass">R6(断电重启): 卡状态=正常</span>
+    </div>
+    <div style="margin-top:16px; padding:16px; background:#f9f9f9; border-radius:8px; font-size:14px; line-height:1.8; color:#555;">
+      <p><strong>异常分析：</strong></p>
+      <p>• <strong>陈俊（3轮异常）</strong>：前4轮因"未插入内存卡"导致声音提醒和存储卡状态均异常，第5轮插入内存卡后恢复正常。属操作问题，非设备异常。</p>
+      <p>• <strong>朱彤第2次提交（2轮异常）</strong>：第1轮存储卡容量显示为0（已用/可用/总大小均为0），第3轮无声音提醒。可能为内存卡接触不良或兼容性问题。</p>
+      <p>• <strong>孙晓明（1轮异常）</strong>：第1轮因"未插入内存卡"导致声音和卡状态异常，后续5轮全部正常。属操作问题。</p>
+      <p>• <strong>美诺（1轮异常）</strong>：第5轮偶发无声音提醒，存储卡状态正常。属偶发问题，建议持续观察。</p>
+    </div>
+  </div>
+
+  <!-- 20人明细表 -->
+  <div class="section">
+    <h2>📋 17人6轮测试明细</h2>
+    <table style="font-size:12px;">
+      <thead>
+        <tr>
+          <th rowspan="2">序号</th>
+          <th rowspan="2">姓名</th>
+          <th rowspan="2">固件版本</th>
+          <th colspan="2">第1轮(不断电)</th>
+          <th>第2轮</th>
+          <th colspan="2">第3轮(不断电)</th>
+          <th>第4轮</th>
+          <th colspan="2">第5轮(不断电)</th>
+          <th>第6轮</th>
+          <th rowspan="2">异常次数</th>
+          <th rowspan="2">状态</th>
+        </tr>
+        <tr>
+          <th>声音</th><th>卡状态</th><th>卡状态</th>
+          <th>声音</th><th>卡状态</th><th>卡状态</th>
+          <th>声音</th><th>卡状态</th><th>卡状态</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td><td style="font-weight:500">相杰</td><td>0730</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>2</td><td style="font-weight:500">袁飞</td><td>0730</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>3</td><td style="font-weight:500">许军州</td><td>0730</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>4</td><td style="font-weight:500">张雷</td><td>0730</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>5</td><td style="font-weight:500">何三涛</td><td>0730</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>6</td><td style="font-weight:500">王瑷珲</td><td>0730</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>7</td><td style="font-weight:500">孙晓明</td><td>0730</td>
+          <td><span class="fail">❌</span></td><td><span class="fail">❌</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="fail">1</td><td><span class="fail">❌ 1轮异常</span></td>
+        </tr>
+        <tr>
+          <td>8</td><td style="font-weight:500">蔡坤城</td><td>0730</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>9</td><td style="font-weight:500">于晨光</td><td>0730</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>10</td><td style="font-weight:500">美诺</td><td>0804</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="fail">❌</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="fail">1</td><td><span class="fail">❌ 1轮异常</span></td>
+        </tr>
+        <tr>
+          <td>11</td><td style="font-weight:500">陈俊</td><td>0730</td>
+          <td><span class="fail">❌</span></td><td><span class="fail">❌</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="fail">❌</span></td><td><span class="fail">❌</span></td>
+          <td><span class="fail">❌</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="fail">3</td><td><span class="fail">❌ 3轮异常</span></td>
+        </tr>
+        <tr>
+          <td>12</td><td style="font-weight:500">徐婷婷</td><td>2016.7.30</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>13</td><td style="font-weight:500">朱彤</td><td>0730</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>14</td><td style="font-weight:500">朱彤</td><td>0730</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="fail">❌</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="fail">2</td><td><span class="fail">❌ 2轮异常</span></td>
+        </tr>
+        <tr>
+          <td>15</td><td style="font-weight:500">周军</td><td>0730</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>16</td><td style="font-weight:500">魏健伟</td><td>0804</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+        <tr>
+          <td>17</td><td style="font-weight:500">朱君</td><td>0804</td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
+          <td><span class="pass">✅</span></td>
+          <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 未参与人员 -->
+  <div class="section">
+    <h2>⚠️ 未参与人员</h2>
+    <table>
+      <thead><tr><th>姓名</th><th>状态</th></tr></thead>
+      <tbody>
+        <tr><td>夏君</td><td class="fail">❌ 未提交</td></tr>
+        <tr><td>吴汞</td><td class="fail">❌ 未提交</td></tr>
+        <tr><td>瑞子</td><td class="fail">❌ 未提交</td></tr>
+        <tr><td>黄军剑</td><td class="fail">❌ 未提交</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 结论与建议 -->
+  <div class="section">
+    <h2>💡 结论与建议</h2>
+    <div style="padding:16px; background:#f9f9f9; border-radius:8px; font-size:14px; line-height:2; color:#555;">
+      <p><strong>结论：</strong></p>
+      <p>1. 插拔卡测试整体通过率76.5%（13/17人6轮全通过），排除操作问题（未插卡）后，设备异常率仅5.9%（仅美诺1轮偶发无声音）。</p>
+      <p>2. 断电重启后存储卡识别100%正常（排除未插卡情况），基站断电恢复能力可靠。</p>
+      <p>3. 3轮不断电插拔测试中，声音提醒通过率94.1%（偶发无声音1次），存储卡状态通过率96.1%（容量显示异常1次）。</p>
+      <br>
+      <p><strong>建议：</strong></p>
+      <p>1. 🟡 <strong>美诺设备第5轮偶发无声音提醒</strong>：建议关注是否存在接触不良，持续观察后续测试。</p>
+      <p>2. 🟡 <strong>朱彤第2次提交存储卡容量为0</strong>：建议排查内存卡兼容性，更换内存卡测试是否复现。</p>
+      <p>3. 🔵 <strong>陈俊、孙晓明因未插入内存卡导致异常</strong>：属操作问题，建议测试前加强引导说明。</p>
+      <p>4. 🟢 <strong>断电重启存储卡识别稳定</strong>：当前表现良好，无需额外处理。</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    6pro 4G门铃公测 · 插拔卡测试专项报告 · 2026-08-06 · 数据来源：飞书问卷
+  </div>
+</div>
+
+<script>
+const chart = echarts.init(document.getElementById('chart-rounds'));
+chart.setOption({
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  legend: { data: ['通过', '异常'], top: 5 },
+  grid: { left: '8%', right: '5%', top: '15%', bottom: '10%' },
+  xAxis: {
+    type: 'category',
+    data: ["第1轮", "第2轮", "第3轮", "第4轮", "第5轮", "第6轮"],
+    axisLabel: { fontSize: 12 }
+  },
+  yAxis: { type: 'value', max: 17, axisLabel: { fontSize: 12 } },
+  series: [
+    {
+      name: '通过', type: 'bar', stack: 'total',
+      data: [15, 17, 15, 16, 16, 17],
+      itemStyle: { color: '#00B050' },
+      label: { show: true, position: 'inside', fontSize: 12 }
+    },
+    {
+      name: '异常', type: 'bar', stack: 'total',
+      data: [2, 0, 2, 1, 1, 0],
+      itemStyle: { color: '#E74C3C' },
+      label: { show: true, position: 'inside', fontSize: 12 }
+    }
+  ]
+});
+window.addEventListener('resize', () => chart.resize());
+</script>
+</body>
+</html>
