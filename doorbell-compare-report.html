@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>门铃 vs 猫眼 — 漏录 & 延迟专项对比</title>
+<title>门铃 vs 猫眼 — 漏录 & 延迟 & 误报专项对比</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
   :root {
@@ -41,7 +41,7 @@
   /* KPI Cards */
   .kpi-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     margin-bottom: 24px;
   }
@@ -52,7 +52,6 @@
     text-align: center;
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   }
-  /* KPI VS layout */
   .kpi-card .label { font-size: 14px; color: var(--gray); margin-bottom: 12px; font-weight: 600; }
   .kpi-card .value { font-size: 26px; font-weight: 700; }
   .kpi-card .sub { font-size: 12px; color: var(--gray); margin-top: 2px; }
@@ -64,6 +63,7 @@
   .vs-badge.catseye { background: #FFF3E0; color: #E65100; }
   .kpi-card.alert .value { color: var(--red); }
   .kpi-card.warn .value { color: var(--orange); }
+  .kpi-card.danger .value { color: var(--red); }
   .kpi-card.green .value { color: var(--green); }
   .kpi-card.dark .value { color: var(--dark); }
   
@@ -92,6 +92,7 @@
   }
   .section-title.red::before { background: var(--red); }
   .section-title.orange::before { background: var(--orange); }
+  .section-title.purple::before { background: #8B5CF6; }
   
   /* Chart */
   .chart { width: 100%; height: 360px; }
@@ -136,10 +137,13 @@
   }
   .summary-box.red { background: #FDECEA; border-color: var(--red); }
   .summary-box.orange { background: #FEF3E2; border-color: var(--orange); }
+  .summary-box.purple { background: #F3F0FF; border-color: #8B5CF6; }
   .summary-box strong { font-weight: 700; }
   
   /* Two-column */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  /* Three-column */
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
   
   /* Product badge */
   .product-badge {
@@ -161,8 +165,9 @@
   }
   
   @media (max-width: 768px) {
-    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-grid { grid-template-columns: 1fr; }
     .two-col { grid-template-columns: 1fr; }
+    .three-col { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -171,13 +176,13 @@
 
   <!-- Header -->
   <div class="header">
-    <h1>🎯 漏录 & 延迟录制专项对比</h1>
+    <h1>🎯 漏录 & 延迟录制 & 误报专项对比</h1>
     <div class="subtitle">360可视门铃6Pro全景版 vs 360智能猫眼6Pro全景版</div>
     <div class="meta">数据来源：用户反馈打标数据 · 时间范围：2026-06-20 至 2026-07-20 · 样本量：1,690条</div>
   </div>
 
-  <!-- KPI Cards: 2 cards, one per metric, product vs product -->
-  <div class="kpi-grid" style="grid-template-columns: 1fr 1fr;">
+  <!-- KPI Cards: 3 cards, one per metric -->
+  <div class="kpi-grid">
     <div class="kpi-card alert">
       <div class="label">漏录无提醒</div>
       <div class="vs-row">
@@ -210,20 +215,36 @@
         </div>
       </div>
     </div>
+    <div class="kpi-card danger">
+      <div class="label">误报/报警异常</div>
+      <div class="vs-row">
+        <div class="vs-item">
+          <div class="vs-badge doorbell">门铃6Pro</div>
+          <div class="value">0.5%</div>
+          <div class="sub">8 / 1,598 条</div>
+        </div>
+        <div class="vs-divider">VS</div>
+        <div class="vs-item">
+          <div class="vs-badge catseye">猫眼6Pro</div>
+          <div class="value" style="color:var(--red);">2.2%</div>
+          <div class="sub">2 / 92 条</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Summary -->
   <div class="summary-box red">
-    <strong>核心发现：</strong>门铃6Pro的漏录无提醒问题远比猫眼6Pro严重（13.3% vs 5.4%），是用户反馈量最高的问题类型之一。延迟卡顿两款产品占比接近（4.6% vs 5.4%），均属于高频痛点。
+    <strong>核心发现：</strong>门铃6Pro的漏录无提醒问题远比猫眼6Pro严重（13.3% vs 5.4%），是用户反馈量最高的问题类型之一。延迟卡顿两款产品占比接近（4.6% vs 5.4%），均属于高频痛点。误报/报警异常虽绝对量少（门铃8条/猫眼2条），但猫眼占比（2.2%）反超门铃（0.5%），且门铃存在"逗留警报自动关闭"和"门铃一直响"两类需重点排查的问题。
   </div>
 
   <!-- Chart 1: 占比对比柱状图 -->
   <div class="section">
-    <div class="section-title">各型号反馈中漏录 & 延迟占比对比</div>
+    <div class="section-title">各型号反馈中漏录 & 延迟 & 误报占比对比</div>
     <div id="chart1" class="chart"></div>
   </div>
 
-  <!-- Two column: samples -->
+  <!-- 漏录典型原声 -->
   <div class="two-col">
     <div class="section">
       <div class="section-title red">门铃6Pro · 漏录无提醒 典型原声</div>
@@ -264,7 +285,41 @@
     </div>
   </div>
 
-  <!-- Catseye samples -->
+  <!-- 误报典型原声 -->
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title red">门铃6Pro · 误报/报警异常 典型原声</div>
+      <table>
+        <thead>
+          <tr><th style="width:36px;">#</th><th>用户原声</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>逗留警报自己关闭</td></tr>
+          <tr><td>2</td><td>明明开启了逗留报警，但是过段时间，逗留报警就会自动关闭了</td></tr>
+          <tr><td>3</td><td>开门关门门铃一直响</td></tr>
+          <tr><td>4</td><td>门铃一直响，重新配置也不行</td></tr>
+          <tr><td>5</td><td>AI算法误报；到底是什么情况，一直这样提醒</td></tr>
+          <tr><td>6</td><td>门口来了几个人两个小时都不会报警提醒</td></tr>
+          <tr><td>7</td><td>投诉，差评，全是广告在，老年人误触</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title orange">猫眼6Pro · 误报/报警异常 典型原声</div>
+      <table>
+        <thead>
+          <tr><th style="width:36px;">#</th><th>用户原声</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>突然报警是怎么回事</td></tr>
+          <tr><td>2</td><td>AI算法误报；其他原因；没有人提示有人出现</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 猫眼漏录 & 延迟原声 -->
   <div class="two-col">
     <div class="section">
       <div class="section-title red">猫眼6Pro · 漏录无提醒 典型原声</div>
@@ -299,6 +354,12 @@
     </div>
   </div>
 
+  <!-- 误报问题分类 -->
+  <div class="section">
+    <div class="section-title purple">误报/报警异常 · 问题类型分布</div>
+    <div id="chart2" class="chart" style="height:320px;"></div>
+  </div>
+
   <!-- Data table -->
   <div class="section">
     <div class="section-title">数据明细</div>
@@ -311,6 +372,8 @@
           <th class="num">漏录占比</th>
           <th class="num">延迟卡顿</th>
           <th class="num">延迟占比</th>
+          <th class="num">误报/报警异常</th>
+          <th class="num">误报占比</th>
           <th class="num">合计</th>
           <th class="num">合计占比</th>
         </tr>
@@ -323,8 +386,10 @@
           <td class="num tag-red">13.3%</td>
           <td class="num tag-orange">73</td>
           <td class="num tag-orange">4.6%</td>
-          <td class="num">286</td>
-          <td class="num">17.9%</td>
+          <td class="num tag-red">8</td>
+          <td class="num tag-red">0.5%</td>
+          <td class="num">294</td>
+          <td class="num">18.4%</td>
         </tr>
         <tr>
           <td><span class="product-badge catseye">猫眼6Pro</span></td>
@@ -333,8 +398,10 @@
           <td class="num tag-red">5.4%</td>
           <td class="num tag-orange">5</td>
           <td class="num tag-orange">5.4%</td>
-          <td class="num">10</td>
-          <td class="num">10.9%</td>
+          <td class="num tag-red">2</td>
+          <td class="num tag-red">2.2%</td>
+          <td class="num">12</td>
+          <td class="num">13.0%</td>
         </tr>
         <tr style="font-weight:700; background:#F9F9F9;">
           <td>合计</td>
@@ -343,8 +410,10 @@
           <td class="num tag-red">12.9%</td>
           <td class="num tag-orange">78</td>
           <td class="num tag-orange">4.6%</td>
-          <td class="num">296</td>
-          <td class="num">17.5%</td>
+          <td class="num tag-red">10</td>
+          <td class="num tag-red">0.6%</td>
+          <td class="num">306</td>
+          <td class="num">18.1%</td>
         </tr>
       </tbody>
     </table>
@@ -362,7 +431,7 @@
   var chart = echarts.init(document.getElementById('chart1'));
   chart.setOption({
     tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-    legend: { data: ['漏录无提醒', '延迟卡顿'], top: 0 },
+    legend: { data: ['漏录无提醒', '延迟卡顿', '误报/报警异常'], top: 0 },
     grid: { left: '8%', right: '5%', bottom: '8%', top: '15%' },
     xAxis: {
       type: 'category',
@@ -380,22 +449,62 @@
         type: 'bar',
         data: [13.3, 5.4],
         itemStyle: { color: '#E74C3C' },
-        label: { show: true, position: 'top', formatter: '{c}%', fontSize: 14, fontWeight: 'bold' },
-        barWidth: '25%'
+        label: { show: true, position: 'top', formatter: '{c}%', fontSize: 13, fontWeight: 'bold' },
+        barWidth: '20%'
       },
       {
         name: '延迟卡顿',
         type: 'bar',
         data: [4.6, 5.4],
         itemStyle: { color: '#F39C12' },
-        label: { show: true, position: 'top', formatter: '{c}%', fontSize: 14, fontWeight: 'bold' },
-        barWidth: '25%'
+        label: { show: true, position: 'top', formatter: '{c}%', fontSize: 13, fontWeight: 'bold' },
+        barWidth: '20%'
+      },
+      {
+        name: '误报/报警异常',
+        type: 'bar',
+        data: [0.5, 2.2],
+        itemStyle: { color: '#8B5CF6' },
+        label: { show: true, position: 'top', formatter: '{c}%', fontSize: 13, fontWeight: 'bold' },
+        barWidth: '20%'
       }
     ]
   });
   window.addEventListener('resize', function(){ chart.resize(); });
 })();
-</script>
+
+// === Chart 2: 误报问题类型分布 ===
+(function(){
+  var chart = echarts.init(document.getElementById('chart2'));
+  chart.setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    legend: { data: ['可视门铃6Pro', '智能猫眼6Pro'], top: 0 },
+    grid: { left: 60, right: 20, top: 40, bottom: 60 },
+    xAxis: {
+      type: 'category',
+      data: ['逗留警报自动关闭', '门铃一直响', 'AI算法误报', '广告误触', '有人不报警', '重新配置仍响', '突然报警(猫眼)'],
+      axisLabel: { rotate: 30, fontSize: 11 }
+    },
+    yAxis: { type: 'value', name: '条数' },
+    series: [
+      {
+        name: '可视门铃6Pro',
+        type: 'bar',
+        data: [2, 2, 1, 1, 1, 1, 0],
+        itemStyle: { color: '#00B050', borderRadius: [3,3,0,0] },
+        label: { show: true, position: 'top', fontSize: 11 }
+      },
+      {
+        name: '智能猫眼6Pro',
+        type: 'bar',
+        data: [0, 0, 1, 0, 0, 0, 1],
+        itemStyle: { color: '#3B82F6', borderRadius: [3,3,0,0] },
+        label: { show: true, position: 'top', fontSize: 11 }
+      }
+    ]
+  });
+  window.addEventListener('resize', function(){ chart.resize(); });
+})();
 </script>
 </body>
 </html>
