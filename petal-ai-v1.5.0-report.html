@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petal AI 桌面宠物用户体验分析报告（v1.5.0）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;line-height:1.7;padding:20px}
+.container{max-width:1200px;margin:0 auto}
+.header{background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%);color:#fff;padding:40px 30px;border-radius:12px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,176,80,0.15)}
+.header h1{font-size:28px;font-weight:700;margin-bottom:8px}
+.header .subtitle{font-size:15px;opacity:.9}
+.header .meta{margin-top:16px;font-size:13px;opacity:.85;display:flex;gap:24px;flex-wrap:wrap}
+.section{background:#fff;border-radius:12px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.section h2{font-size:20px;font-weight:700;color:#00B050;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e8f5e9}
+.section h3{font-size:16px;font-weight:600;color:#333;margin:20px 0 10px}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:8px}
+.kpi-card{background:linear-gradient(135deg,#f0fdf4 0%,#e8f5e9 100%);border-left:4px solid #00B050;border-radius:8px;padding:20px;text-align:center}
+.kpi-card .label{font-size:13px;color:#666;margin-bottom:6px}
+.kpi-card .value{font-size:32px;font-weight:700;color:#00B050}
+.kpi-card .unit{font-size:14px;color:#999}
+.kpi-card .extra{font-size:12px;color:#999;margin-top:4px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:#00B050;color:#fff;padding:10px 12px;text-align:left;font-weight:600;font-size:13px}
+th:first-child{border-radius:6px 0 0 0}th:last-child{border-radius:0 6px 0 0}
+td{padding:10px 12px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+tr:nth-child(even) td{background:#fafafa}tr:hover td{background:#f0fdf4}
+.tag-green{display:inline-block;background:#e8f5e9;color:#00B050;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.tag-red{display:inline-block;background:#fdecea;color:#E74C3C;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.tag-orange{display:inline-block;background:#fef3e2;color:#F39C12;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.tag-gray{display:inline-block;background:#f5f5f5;color:#999;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.text-red{color:#E74C3C;font-weight:600}.text-green{color:#00B050;font-weight:600}.text-orange{color:#F39C12;font-weight:600}
+.module-summary{padding:10px 14px;border-radius:6px;margin:12px 0;font-size:14px;font-weight:500}
+.summary-green{background:#e8f5e9;border-left:3px solid #00B050;color:#2e7d32}
+.summary-red{background:#fdecea;border-left:3px solid #E74C3C;color:#c62828}
+.summary-orange{background:#fef3e2;border-left:3px solid #F39C12;color:#e65100}
+.voice-positive{color:#00B050}.voice-negative{color:#E74C3C}
+.timeline{position:relative;padding-left:24px}.timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:#e0e0e0}
+.timeline-item{position:relative;margin-bottom:16px}.timeline-item::before{content:'';position:absolute;left:-22px;top:6px;width:12px;height:12px;border-radius:50%;background:#00B050;border:2px solid #fff;box-shadow:0 0 0 2px #00B050}
+.timeline-item .version{font-weight:700;color:#00B050;font-size:15px}.timeline-item .date{font-size:12px;color:#999;margin-left:8px}.timeline-item .content{font-size:14px;color:#555;margin-top:4px}
+.need-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:12px 0}
+.need-card{border:1px solid #e0e0e0;border-radius:8px;padding:16px;background:#fff}
+.need-card h4{font-size:14px;font-weight:700;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f0f0f0}
+.need-card .need-item{font-size:13px;padding:6px 0;border-bottom:1px dashed #f5f5f5}.need-card .need-item:last-child{border-bottom:none}
+.need-card .need-item .who{color:#00B050;font-weight:600}.need-card .need-item .ver{font-size:11px;color:#999}
+.footer{text-align:center;padding:24px;color:#999;font-size:13px}
+.insight-box{background:linear-gradient(135deg,#f0fdf4 0%,#e8f5e9 100%);border:2px solid #00B050;border-radius:12px;padding:24px;margin-bottom:20px}
+.insight-box h2{color:#00B050;font-size:20px;font-weight:700;margin-bottom:14px;border-bottom:none;padding-bottom:0}
+.insight-box ul{list-style:none}.insight-box li{padding:8px 0 8px 24px;position:relative;font-size:14px;line-height:1.8}
+.insight-box li::before{content:'▸';position:absolute;left:6px;color:#00B050;font-weight:700}
+.version-badge{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:700;margin:2px}
+.version-old{background:#f5f5f5;color:#999}.version-current{background:#00B050;color:#fff}
+@media(max-width:768px){.header h1{font-size:22px}.kpi-card .value{font-size:26px}.section{padding:18px}table{font-size:12px}th,td{padding:6px 8px}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>🐾 Petal AI 桌面宠物用户体验分析报告</h1>
+<div class="subtitle">重点版本：v1.5.0 | 数据周期：2026.07.27 - 2026.08.06</div>
+<div class="meta">
+<span>📊 数据来源：推推群聊天记录（280+条）+ 飞书问卷（4份有效）</span>
+<span>👥 参与体验：约24人</span>
+<span>📅 报告生成：2026.08.06</span>
+</div>
+</div>
+
+<div class="insight-box">
+<h2>🎯 洞察总结</h2>
+<ul>
+<li><strong>核心价值已验证：</strong>陪伴感是最大卖点，用户愿意付费（月费/动作付费/零食投喂）。</li>
+<li><strong>v1.4.0满意度8.25/10：</strong>还原度8.25、动作自然度7.75，整体体验良好但未达优秀线（9分+）。</li>
+<li><strong>v1.5.0已发布（8/5）：</strong>优化照片上传逻辑、左键切换随机动作、新增趴冬瓜动作、支持旧版Intel Mac。<span class="text-green">动作切换交互改善</span>，但<span class="text-red">动作数量仍不足</span>。</li>
+<li><strong>最大痛点持续存在：</strong><span class="text-red">AI生成质量问题未改善</span>——抠图边缘粗糙、品种特征丢失（腊肠不够长/折耳猫变直耳）、性别识别错误（公狗变母狗）、生成异常（对眼/残缺/两个头）。</li>
+<li><strong>非猫狗宠物生成效果差：</strong>鱼、乌龟等非主流宠物生成结果离谱，AI模型训练数据覆盖不足。</li>
+<li><strong>动作问题仍是高频痛点：</strong>v1.5.0反馈"动作太少，玩两下就腻了"，动作切换"太突兀"不连贯，需优先解决。</li>
+<li><strong>最高频需求（持续）：</strong>互动功能（光标追踪/逗猫棒、虚拟喂食、多宠物互动），从v1.2.0到v1.5.0反复被提及。</li>
+<li><strong>安装兼容性问题：</strong>Windows安装拦截、Intel Mac不支持（v1.5.0已修复Intel Mac）。</li>
+<li><strong>10天5版迭代节奏快：</strong>从v1.1.0大面积生成失败到v1.5.0交互优化+旧Mac支持，响应速度快，但AI生成质量打磨仍需加强。</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>一、报告概述</h2>
+<p>Petal AI 是一款基于AI生成技术的桌面宠物应用，用户上传宠物照片即可生成专属桌面动态宠物。本报告基于推推群内测体验群的聊天记录（7/27-8/6，共280+条消息）和飞书问卷反馈（4份有效问卷，基于v1.4.0版本体验），结合v1.5.0发布后的最新群内反馈，对用户体验进行全面分析。</p>
+<div style="margin-top:12px;">
+<span class="version-badge version-old">v1.1.0</span> →
+<span class="version-badge version-old">v1.1.1</span> →
+<span class="version-badge version-old">v1.2.0</span> →
+<span class="version-badge version-old">v1.4.0</span> →
+<span class="version-badge version-current">v1.5.0（重点分析）</span>
+</div>
+</div>
+
+<div class="section">
+<h2>二、版本迭代时间线</h2>
+<div class="timeline">
+<div class="timeline-item"><span class="version">v1.1.0</span><span class="date">2026.07.27 17:25</span><div class="content">初始demo版，支持Windows和Mac（Apple Silicon），AI生成宠物桌面动态</div></div>
+<div class="timeline-item"><span class="version">v1.1.1</span><span class="date">2026.07.27 20:20</span><div class="content">减小AI生成并发数量，修复生成失败问题</div></div>
+<div class="timeline-item"><span class="version">v1.2.0</span><span class="date">2026.07.29 11:02</span><div class="content">优化网络日志输出、优化删除宠物弹框、设置窗口和宠物窗口解绑、支持显示多个宠物、优化任务下载自动清理失败任务</div></div>
+<div class="timeline-item"><span class="version">v1.4.0</span><span class="date">2026.07.31 10:55</span><div class="content">增加自定义照片上传示例、优化上传图片大小限制问题、自定义动作默认调整为5个、新增敲键盘/敷面膜/刷手机等趣味性动作</div></div>
+<div class="timeline-item"><span class="version">v1.5.0</span><span class="date">2026.08.05 19:36</span><div class="content">优化照片上传逻辑、左键默认切换随机动作（保留上一个/下一个按钮）、去除多余按钮、宠物设置页面去掉音量功能、标题改为"Petal AI设置"、默认动作新增趴冬瓜、<span class="text-green">增加对旧版本Intel Mac的支持</span></div></div>
+</div>
+</div>
+
+<div class="section">
+<h2>三、v1.4.0 满意度数据（问卷）</h2>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">总体满意度</div><div class="value">8.25<span class="unit">/10</span></div><div class="extra">4人评分：8/8/8/9</div></div>
+<div class="kpi-card"><div class="label">还原度评分</div><div class="value">8.25<span class="unit">/10</span></div><div class="extra">4人评分：6/8/10/9</div></div>
+<div class="kpi-card"><div class="label">动作自然度</div><div class="value">7.75<span class="unit">/10</span></div><div class="extra">4人评分：7/8/7/9</div></div>
+<div class="kpi-card"><div class="label">参与体验人数</div><div class="value">24<span class="unit">人</span></div><div class="extra">问卷反馈4人，群内24人活跃</div></div>
+</div>
+<h3>满意度明细</h3>
+<table>
+<thead><tr><th>姓名</th><th>宠物类型</th><th>操作系统</th><th>总体满意度</th><th>还原度</th><th>动作自然度</th><th>每日使用时长</th></tr></thead>
+<tbody>
+<tr><td>卫珊</td><td>猫+狗</td><td>Windows</td><td>8</td><td class="text-orange">6</td><td>7</td><td>10-30分钟</td></tr>
+<tr><td>尹燕玲</td><td>猫</td><td>Windows</td><td>8</td><td>8</td><td>8</td><td>开着就有陪伴感</td></tr>
+<tr><td>郭莎莎</td><td>猫</td><td>Windows</td><td>8</td><td class="text-green">10</td><td>7</td><td>10-30分钟</td></tr>
+<tr><td>郭雨萌</td><td>猫</td><td>Windows</td><td class="text-green">9</td><td class="text-green">9</td><td class="text-green">9</td><td>30分钟以上</td></tr>
+</tbody>
+</table>
+<p style="margin-top:8px;color:#999;font-size:13px;">⚠️ v1.5.0发布时间较短（8/5晚），暂无问卷数据，反馈以群聊为主。</p>
+</div>
+
+<div class="section">
+<h2>四、用户画像</h2>
+<table>
+<thead><tr><th>维度</th><th>详情</th></tr></thead>
+<tbody>
+<tr><td>问卷反馈人数</td><td>4人（卫珊、尹燕玲、郭莎莎、郭雨萌）</td></tr>
+<tr><td>宠物类型</td><td>以猫为主，部分养狗；新增鱼、乌龟等非主流宠物用户</td></tr>
+<tr><td>操作系统</td><td>以Windows为主，部分Mac（含Intel Mac）</td></tr>
+<tr><td>使用场景</td><td>办公陪伴，上班摸鱼</td></tr>
+<tr><td>群内活跃体验人数</td><td>约24人（8/5扩大范围后新增蔡恒江、汪桐宇、张天龙、王霞、杨国龙、乐海波、邢勇等）</td></tr>
+<tr><td>群内活跃用户</td><td>尹燕玲、王朝阳、卫珊、郭雨萌、李靖、刘小瑜、彭心雨、郭莎莎、马媛、岳金风、段凌懿、鲁杨、李越、王二飞、许小东、朱作义、贾卫星、蔡恒江、汪桐宇、张天龙、王霞、杨国龙、乐海波、邢勇</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h2>五、爽点分析</h2>
+<div class="module-summary summary-green">🟢 陪伴感是核心卖点，v1.4.0新增的趣味动作和上传引导优化获得用户好评，还原度和自定义能力是产品核心竞争力。v1.5.0左键切换动作交互更便捷。</div>
+<table>
+<thead><tr><th>序号</th><th>爽点</th><th>反馈人数</th><th>典型原声</th></tr></thead>
+<tbody>
+<tr><td rowspan="3">1</td><td rowspan="3">陪伴感强，宠物陪上班</td><td rowspan="3">3人</td><td class="voice-positive">卫珊："忙得焦头烂额的时候瞥一眼她在睡觉一下子就好了"</td></tr>
+<tr><td class="voice-positive">郭莎莎："有宠物陪我上班的感觉"</td></tr>
+<tr><td class="voice-positive">郭雨萌："成功生成和自己宠物很像的桌面宠物的那一刻"</td></tr>
+<tr><td rowspan="3">2</td><td rowspan="3">还原度高，像真宠物</td><td rowspan="3">3人</td><td class="voice-positive">郭莎莎：还原度10分，"非常满意"</td></tr>
+<tr><td class="voice-positive">郭雨萌：还原度9分</td></tr>
+<tr><td class="voice-positive">刘小瑜（群聊）："还原度好高"</td></tr>
+<tr><td rowspan="2">3</td><td rowspan="2">趣味动作好玩（敲键盘/敷面膜/刷手机）</td><td rowspan="2">2人</td><td class="voice-positive">郭莎莎："小猫吃饭的时候，有种打工人给哈吉米赚口粮的感觉"</td></tr>
+<tr><td class="voice-positive">尹燕玲：趣味动作好评</td></tr>
+<tr><td rowspan="2">4</td><td rowspan="2">多宠物同时展示</td><td rowspan="2">2人</td><td class="voice-positive">郭雨萌：可以同时养多只宠物</td></tr>
+<tr><td class="voice-positive">段凌懿（群聊）："这个躺倒的动作，简直是跟我家猫一毛一样"</td></tr>
+<tr><td>5</td><td>上传引导优化（v1.4.0新增）</td><td>1人</td><td class="voice-positive">尹燕玲："上传图片增加了参考图，知道应该怎么拍照片上传更好"</td></tr>
+<tr><td>6</td><td>v1.5.0左键切换动作更便捷</td><td>1人</td><td class="voice-positive">乐海波：左键默认切换随机动作，操作更方便</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h2>六、痛点分析（v1.4.0 + v1.5.0 新增）</h2>
+<div class="module-summary summary-red">🔴 AI生成质量问题贯穿所有版本未解决，动作数量不足持续被吐槽，非猫狗宠物生成效果极差，安装兼容性问题影响首次体验。</div>
+
+<h3>6.1 持续存在的痛点（v1.1.0 → v1.5.0 未解决）</h3>
+<table>
+<thead><tr><th>序号</th><th>痛点</th><th>反馈人数</th><th>严重程度</th><th>典型原声</th></tr></thead>
+<tbody>
+<tr><td rowspan="4">1</td><td rowspan="4">AI生成质量：抠图边缘粗糙/背景残留</td><td rowspan="4">5人</td><td rowspan="4"><span class="tag-red">严重</span></td><td class="voice-negative">卫珊（8/5）："扣边还是抠的不太好"</td></tr>
+<tr><td class="voice-negative">卫珊（8/5）："猫的大小比例后边还可以调整一下"</td></tr>
+<tr><td class="voice-negative">郭莎莎："会透光"</td></tr>
+<tr><td class="voice-negative">尹燕玲（8/3）："宠物背景虚化依然有"</td></tr>
+<tr><td rowspan="4">2</td><td rowspan="4">品种特征丢失/不像</td><td rowspan="4">5人</td><td rowspan="4"><span class="tag-red">严重</span></td><td class="voice-negative">蔡恒江（8/5）："我家腊肠看起来不够长啊"（腊肠犬体型丢失）</td></tr>
+<tr><td class="voice-negative">汪桐宇（8/5）："咋是个折耳"（品种特征错误）</td></tr>
+<tr><td class="voice-negative">彭心雨（7/28）："我家是矮脚猫，生成出来变大长腿了"</td></tr>
+<tr><td class="voice-negative">蔡恒江（8/5）："参考图能多点就好了 部分生成不太像~"</td></tr>
+<tr><td rowspan="2">3</td><td rowspan="2">性别识别错误</td><td rowspan="2">2人</td><td rowspan="2"><span class="tag-orange">中等</span></td><td class="voice-negative">蔡恒江（8/5）："公狗变母狗了"（狗也出现此问题）</td></tr>
+<tr><td class="voice-negative">卫珊："我的是母猫给我生成了公猫"</td></tr>
+<tr><td rowspan="2">4</td><td rowspan="2">动作数量不足</td><td rowspan="2">3人</td><td rowspan="2"><span class="tag-red">严重</span></td><td class="voice-negative">乐海波（8/5，v1.5.0）："动作太少，玩两下就腻了，希望增加"</td></tr>
+<tr><td class="voice-negative">郭雨萌（v1.4.0问卷）："宠物动作变少了，舔毛、玩耍没有了"</td></tr>
+<tr><td rowspan="3">5</td><td rowspan="3">生成异常/畸形</td><td rowspan="3">5人</td><td rowspan="3"><span class="tag-red">严重</span></td><td class="voice-negative">蔡恒江（8/6）："这个图生成的 我家狗是对眼"（眼睛异常）</td></tr>
+<tr><td class="voice-negative">卫珊（8/6）："这个瓜生成的不全"（生成残缺）</td></tr>
+<tr><td class="voice-negative">蔡恒江（8/6）："这个图是异常的"（生成异常）</td></tr>
+<tr><td rowspan="2">6</td><td rowspan="2">动作细节不到位（多手多尾）</td><td rowspan="2">2人</td><td rowspan="2"><span class="tag-orange">中等</span></td><td class="voice-negative">郭莎莎："摸鱼玩手机有两只手，侧卧有两只尾巴"</td></tr>
+<tr><td class="voice-negative">李靖（7/28）："生成了两个尾巴"</td></tr>
+</tbody>
+</table>
+
+<h3>6.2 v1.5.0 新增痛点</h3>
+<table>
+<thead><tr><th>序号</th><th>痛点</th><th>反馈人数</th><th>严重程度</th><th>典型原声</th></tr></thead>
+<tbody>
+<tr><td>7</td><td>动作切换不连贯，太突兀</td><td>1人</td><td><span class="tag-orange">中等</span></td><td class="voice-negative">乐海波（8/5，v1.5.0）："宠物动作切换要连贯，现在太突兀。比如从趴着到吃饭，希望有自然切换的动作（比如起身开始吃饭，躺下掏出手机等）"</td></tr>
+<tr><td>8</td><td>看不到宠物整体边框，经常挡住鼠标</td><td>1人</td><td><span class="tag-orange">中等</span></td><td class="voice-negative">乐海波（8/5，v1.5.0）："看不到宠物整体边框，经常挡住鼠标"</td></tr>
+<tr><td>9</td><td>不能将宠物拖到屏幕边缘</td><td>1人</td><td><span class="tag-gray">轻微</span></td><td class="voice-negative">乐海波（8/5，v1.5.0）："不能将宠物拉到屏幕边缘"</td></tr>
+<tr><td>10</td><td>宠物没有声音</td><td>1人</td><td><span class="tag-gray">轻微</span></td><td class="voice-negative">乐海波（8/5，v1.5.0）："打开电脑声音也没有听到宠物发出声音"（注：v1.5.0已去掉音量功能）</td></tr>
+</tbody>
+</table>
+
+<h3>6.3 非猫狗宠物生成问题（新增发现）</h3>
+<table>
+<thead><tr><th>序号</th><th>宠物类型</th><th>反馈人</th><th>问题</th><th>原声</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>鱼</td><td>蔡恒江</td><td><span class="tag-red">生成结果完全不像</span></td><td class="voice-negative">"我把鱼发过去了 生成了这玩意"（附截图，生成结果离谱）</td></tr>
+<tr><td>2</td><td>乌龟</td><td>张天龙</td><td><span class="tag-red">身体部位错误</span></td><td class="voice-negative">乐海波评价："你这个为什么是乌龟的身体王八的脑袋"</td></tr>
+<tr><td>3</td><td>多宠物合照</td><td>蔡恒江</td><td><span class="tag-orange">无法同时生成</span></td><td class="voice-negative">"看起来不能同时生成俩宠物"</td></tr>
+</tbody>
+</table>
+<div class="module-summary summary-orange">🟡 非猫狗宠物（鱼/乌龟）生成效果极差，AI模型训练数据可能仅覆盖猫狗，建议明确支持的宠物范围或扩充训练数据。</div>
+
+<h3>6.4 安装与兼容性问题</h3>
+<table>
+<thead><tr><th>序号</th><th>问题</th><th>反馈人</th><th>时间</th><th>状态</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Windows安装被拦截</td><td>王霞</td><td>8/5</td><td><span class="tag-orange">需引导</span></td></tr>
+<tr><td>2</td><td>Intel Mac不支持</td><td>杨国龙</td><td>8/5 10:52</td><td><span class="tag-green">v1.5.0已修复</span></td></tr>
+<tr><td>3</td><td>上传图片失败</td><td>张天龙</td><td>8/5</td><td><span class="tag-orange">待确认</span></td></tr>
+<tr><td>4</td><td>生成速度慢</td><td>张天龙</td><td>8/5</td><td><span class="tag-gray">已知</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h2>七、用户需求与建议汇总</h2>
+<div class="module-summary summary-orange">🟡 互动功能仍是最高频需求，v1.5.0新增"多宠物自动互动"和"动作连贯性"需求，商业化意愿明确。</div>
+<div class="need-grid">
+<div class="need-card">
+<h4 style="color:#00B050;">🎮 互动类（最高频）</h4>
+<div class="need-item">光标追踪/逗猫棒模式<br><span class="who">刘小瑜、段凌懿、李越、乐海波</span> <span class="ver">（v1.2.0→v1.5.0持续提及）</span></div>
+<div class="need-item">虚拟喂食/喂水/喂猫条<br><span class="who">李越、鲁杨、郭雨萌</span> <span class="ver">（v1.2.0→v1.4.0）</span></div>
+<div class="need-item">多宠物自动互动（舔毛/猫狗打架）<br><span class="who">乐海波、蔡恒江、郭雨萌</span> <span class="ver">（v1.5.0新增）</span></div>
+<div class="need-item">宠物挂在屏幕边缘，只露个头<br><span class="who">乐海波</span> <span class="ver">（v1.5.0新增）</span></div>
+</div>
+<div class="need-card">
+<h4 style="color:#00B050;">🎨 个性化类</h4>
+<div class="need-item">动作切换连贯性（起身→吃饭→躺下）<br><span class="who">乐海波</span> <span class="ver">（v1.5.0新增）</span></div>
+<div class="need-item">参考图能多几张<br><span class="who">蔡恒江</span> <span class="ver">（v1.5.0新增）</span></div>
+<div class="need-item">换装系统（领结、帽子等）<br><span class="who">刘小瑜</span> <span class="ver">（v1.2.0）</span></div>
+<div class="need-item">公母性别区分<br><span class="who">卫珊、蔡恒江</span> <span class="ver">（v1.4.0→v1.5.0）</span></div>
+<div class="need-item">解锁单个动作付费（9.9元/动作）<br><span class="who">王二飞</span> <span class="ver">（v1.2.0）</span></div>
+</div>
+<div class="need-card">
+<h4 style="color:#00B050;">📱 平台类</h4>
+<div class="need-item">APP端规划<br><span class="who">卫珊</span> <span class="ver">（v1.2.0）</span></div>
+<div class="need-item">Intel Mac支持<br><span class="who">王二飞、杨国龙</span> <span class="ver">（v1.4.0→v1.5.0，已修复）</span></div>
+</div>
+<div class="need-card">
+<h4 style="color:#00B050;">💰 商业化</h4>
+<div class="need-item">每月一杯奶茶钱可接受<br><span class="who">鲁杨</span> <span class="ver">（v1.2.0）</span></div>
+<div class="need-item">每天3-5元零食投喂可接受<br><span class="who">郭雨萌</span> <span class="ver">（v1.4.0问卷）</span></div>
+<div class="need-item">年度会员送周边（小石膏像）<br><span class="who">刘小瑜</span> <span class="ver">（v1.2.0）</span></div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>八、结论与建议</h2>
+<div class="module-summary summary-green">🟢 核心价值明确：陪伴感是最大卖点，用户愿意付费，产品方向正确。v1.5.0在交互和兼容性上有进步，但AI生成质量仍是最大瓶颈。</div>
+<table>
+<thead><tr><th>优先级</th><th>方向</th><th>具体建议</th><th>依据</th></tr></thead>
+<tbody>
+<tr><td><span class="tag-red">P0</span></td><td>AI生成质量</td><td>修复抠图边缘/背景残留、生成异常（对眼/残缺/两个头）、品种特征丢失（腊肠/折耳/矮脚）、性别识别错误</td><td>5个版本持续未解决，v1.5.0新增多起案例</td></tr>
+<tr><td><span class="tag-red">P0</span></td><td>动作数量恢复+连贯性</td><td>恢复v1.2.0趣味动作（玩耍/睡觉/舔毛），增加动作切换过渡动画，避免突兀</td><td>乐海波v1.5.0反馈动作太少+切换突兀</td></tr>
+<tr><td><span class="tag-orange">P1</span></td><td>互动功能</td><td>光标追踪/逗猫棒模式优先开发，多宠物自动互动</td><td>4人持续提及（v1.2.0→v1.5.0），最高频需求</td></tr>
+<tr><td><span class="tag-orange">P1</span></td><td>非猫狗宠物支持</td><td>明确支持的宠物范围，或扩充AI模型训练数据覆盖鱼/乌龟等</td><td>蔡恒江/张天龙反馈生成结果离谱</td></tr>
+<tr><td><span class="tag-orange">P1</span></td><td>多宠物管理</td><td>支持单独关闭某只宠物，多宠物合照生成</td><td>尹燕玲、蔡恒江反馈</td></tr>
+<tr><td><span class="tag-gray">P2</span></td><td>商业化探索</td><td>动作解锁付费（9.9元/个）、零食投喂（3-5元/天）、月费会员</td><td>用户付费意愿明确</td></tr>
+<tr><td><span class="tag-gray">P2</span></td><td>个性化</td><td>换装系统、动漫皮肤可选、参考图多张上传</td><td>差异化竞争点</td></tr>
+<tr><td><span class="tag-gray">P2</span></td><td>平台扩展</td><td>APP端规划</td><td>扩大用户覆盖</td></tr>
+</tbody>
+</table>
+<div style="margin-top:20px;padding:16px;background:#f0fdf4;border-radius:8px;border-left:4px solid #00B050;">
+<strong style="color:#00B050;">总结：</strong>
+Petal AI在10天内完成5个版本迭代，展现了高效的响应速度。v1.5.0在交互优化和Intel Mac兼容性上有明显进步。<span class="text-red">但AI生成质量问题贯穿5个版本仍未解决</span>，是目前最大的产品瓶颈——抠图、品种特征、性别识别、生成异常需要重点攻克。<span class="text-green">陪伴感和还原度是核心壁垒</span>，互动功能和商业化路径清晰。建议下阶段重点投入AI生成质量提升+动作丰富度，这是决定产品能否从内测走向大众市场的关键。
+</div>
+</div>
+
+<div class="footer">
+<p>报告由尹燕玲-报告分析专家 🦞 生成 | 数据截至 2026.08.06</p>
+<p style="margin-top:4px;">数据来源：推推群7653013246205760聊天记录 + 飞书问卷「宠物桌面体验」</p>
+<p style="margin-top:4px;">v1.5.0更新：新增8/5-8/6反馈数据，新增v1.5.0版本分析，新增非猫狗宠物问题、安装兼容性问题模块</p>
+</div>
+
+</div>
+</body>
+</html>
