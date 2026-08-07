@@ -7,7 +7,7 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
-.container { max-width: 1000px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
+.container { max-width: 1100px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; }
 .header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 24px 32px; }
 .header h1 { font-size: 22px; font-weight: 600; }
 .header .subtitle { font-size: 13px; opacity: 0.9; margin-top: 6px; }
@@ -33,10 +33,10 @@ tr:hover { background: #faffff; }
 <div class="container">
   <div class="header">
     <h1>📱 6pro 4G门铃公测 - 20人作业完成情况</h1>
-    <div class="subtitle">更新时间：2026-08-06 09:55 | 数据来源：飞书问卷</div>
+    <div class="subtitle">更新时间：2026-08-07 09:00 | 数据来源：飞书问卷</div>
   </div>
   <div class="update-info">
-    📊 日常反馈累计 <strong>316</strong> 条 | 开箱 <strong>20/20</strong> | 配网 <strong>20/20</strong> | 插拔卡 <strong>17/20</strong>
+    📊 日常反馈累计 <strong>316</strong> 条 | 开箱 <strong>20/20</strong> | 配网 <strong>20/20</strong> | 插拔卡 <strong>17/20</strong> | 按门铃通话 <strong>12/20</strong>
   </div>
   <table>
     <thead>
@@ -46,6 +46,7 @@ tr:hover { background: #faffff; }
         <th>开箱体验</th>
         <th>配网安装</th>
         <th>插拔卡测试</th>
+        <th>按门铃通话</th>
         <th>日常反馈条数</th>
         <th>0710固件</th>
         <th>0717固件</th>
@@ -57,6 +58,7 @@ tr:hover { background: #faffff; }
       <tr>
         <td>1</td>
         <td class="name">何三涛</td>
+        <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
@@ -72,6 +74,7 @@ tr:hover { background: #faffff; }
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
+        <td><span class="done">✅ 已完成</span></td>
         <td class="count-high">27</td>
         <td class="fw-num">19</td>
         <td class="fw-num">5</td>
@@ -81,6 +84,7 @@ tr:hover { background: #faffff; }
       <tr>
         <td>3</td>
         <td class="name">袁飞</td>
+        <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
@@ -96,6 +100,7 @@ tr:hover { background: #faffff; }
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
+        <td><span class="pending">⬜ 未完成</span></td>
         <td class="count-high">24</td>
         <td class="fw-num">10</td>
         <td class="fw-num">5</td>
@@ -108,6 +113,7 @@ tr:hover { background: #faffff; }
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
+        <td><span class="done">✅ 已完成</span></td>
         <td class="count-high">22</td>
         <td class="fw-num">14</td>
         <td class="fw-num">5</td>
@@ -116,19 +122,8 @@ tr:hover { background: #faffff; }
       </tr>
       <tr>
         <td>6</td>
-        <td class="name">许军州</td>
-        <td><span class="done">✅ 已完成</span></td>
-        <td><span class="done">✅ 已完成</span></td>
-        <td><span class="done">✅ 已完成</span></td>
-        <td class="count-high">20</td>
-        <td class="fw-num">12</td>
-        <td class="fw-num">3</td>
-        <td class="fw-num">3</td>
-        <td class="fw-0804">2</td>
-      </tr>
-      <tr>
-        <td>7</td>
         <td class="name">周军</td>
+        <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
@@ -139,14 +134,28 @@ tr:hover { background: #faffff; }
         <td class="fw-0804">2</td>
       </tr>
       <tr>
+        <td>7</td>
+        <td class="name">许军州</td>
+        <td><span class="done">✅ 已完成</span></td>
+        <td><span class="done">✅ 已完成</span></td>
+        <td><span class="done">✅ 已完成</span></td>
+        <td><span class="done">✅ 已完成</span></td>
+        <td class="count-high">20</td>
+        <td class="fw-num">12</td>
+        <td class="fw-num">3</td>
+        <td class="fw-num">3</td>
+        <td class="fw-0804">2</td>
+      </tr>
+      <tr>
         <td>8</td>
         <td class="name">魏健伟</td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
+        <td><span class="pending">⬜ 未完成</span></td>
         <td class="">17</td>
         <td class="fw-num">6</td>
-        <td class="fw-num">0</td>
+        <td class="fw-num">-</td>
         <td class="fw-num">6</td>
         <td class="fw-0804">5</td>
       </tr>
@@ -156,6 +165,7 @@ tr:hover { background: #faffff; }
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
+        <td><span class="pending">⬜ 未完成</span></td>
         <td class="">16</td>
         <td class="fw-num">9</td>
         <td class="fw-num">2</td>
@@ -164,19 +174,8 @@ tr:hover { background: #faffff; }
       </tr>
       <tr>
         <td>10</td>
-        <td class="name">徐婷婷</td>
-        <td><span class="done">✅ 已完成</span></td>
-        <td><span class="done">✅ 已完成</span></td>
-        <td><span class="done">✅ 已完成</span></td>
-        <td class="">15</td>
-        <td class="fw-num">5</td>
-        <td class="fw-num">5</td>
-        <td class="fw-num">1</td>
-        <td class="fw-0804">4</td>
-      </tr>
-      <tr>
-        <td>11</td>
         <td class="name">朱君</td>
+        <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
@@ -187,16 +186,30 @@ tr:hover { background: #faffff; }
         <td class="fw-0804">1</td>
       </tr>
       <tr>
+        <td>11</td>
+        <td class="name">徐婷婷</td>
+        <td><span class="done">✅ 已完成</span></td>
+        <td><span class="done">✅ 已完成</span></td>
+        <td><span class="done">✅ 已完成</span></td>
+        <td><span class="done">✅ 已完成</span></td>
+        <td class="">15</td>
+        <td class="fw-num">5</td>
+        <td class="fw-num">5</td>
+        <td class="fw-num">1</td>
+        <td class="fw-0804">4</td>
+      </tr>
+      <tr>
         <td>12</td>
         <td class="name">王瑷珲</td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
+        <td><span class="pending">⬜ 未完成</span></td>
         <td class="">14</td>
         <td class="fw-num">12</td>
-        <td class="fw-num">0</td>
+        <td class="fw-num">-</td>
         <td class="fw-num">2</td>
-        <td class="fw-0804">0</td>
+        <td class="fw-0804">-</td>
       </tr>
       <tr>
         <td>13</td>
@@ -204,15 +217,17 @@ tr:hover { background: #faffff; }
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
+        <td><span class="pending">⬜ 未完成</span></td>
         <td class="">12</td>
         <td class="fw-num">9</td>
-        <td class="fw-num">0</td>
+        <td class="fw-num">-</td>
         <td class="fw-num">3</td>
-        <td class="fw-0804">0</td>
+        <td class="fw-0804">-</td>
       </tr>
       <tr>
         <td>14</td>
         <td class="name">美诺</td>
+        <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
@@ -228,6 +243,7 @@ tr:hover { background: #faffff; }
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
+        <td><span class="pending">⬜ 未完成</span></td>
         <td class="">10</td>
         <td class="fw-num">5</td>
         <td class="fw-num">1</td>
@@ -240,6 +256,7 @@ tr:hover { background: #faffff; }
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
+        <td><span class="pending">⬜ 未完成</span></td>
         <td class="">10</td>
         <td class="fw-num">4</td>
         <td class="fw-num">2</td>
@@ -251,7 +268,8 @@ tr:hover { background: #faffff; }
         <td class="name">黄军剑</td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
-        <td><span class="pending">❌ 未完成</span></td>
+        <td><span class="pending">⬜ 未完成</span></td>
+        <td><span class="pending">⬜ 未完成</span></td>
         <td class="">9</td>
         <td class="fw-num">5</td>
         <td class="fw-num">2</td>
@@ -263,7 +281,8 @@ tr:hover { background: #faffff; }
         <td class="name">吴汞</td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
-        <td><span class="pending">❌ 未完成</span></td>
+        <td><span class="pending">⬜ 未完成</span></td>
+        <td><span class="done">✅ 已完成</span></td>
         <td class="">8</td>
         <td class="fw-num">3</td>
         <td class="fw-num">3</td>
@@ -272,27 +291,29 @@ tr:hover { background: #faffff; }
       </tr>
       <tr>
         <td>19</td>
-        <td class="name">夏君</td>
-        <td><span class="done">✅ 已完成</span></td>
-        <td><span class="done">✅ 已完成</span></td>
-        <td><span class="pending">❌ 未完成</span></td>
-        <td class="">5</td>
-        <td class="fw-num">0</td>
-        <td class="fw-num">0</td>
-        <td class="fw-num">5</td>
-        <td class="fw-0804">0</td>
-      </tr>
-      <tr>
-        <td>20</td>
         <td class="name">蔡坤城</td>
+        <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td><span class="done">✅ 已完成</span></td>
         <td class="">5</td>
         <td class="fw-num">2</td>
         <td class="fw-num">1</td>
-        <td class="fw-num">0</td>
+        <td class="fw-num">-</td>
         <td class="fw-0804">2</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td class="name">夏君</td>
+        <td><span class="done">✅ 已完成</span></td>
+        <td><span class="done">✅ 已完成</span></td>
+        <td><span class="pending">⬜ 未完成</span></td>
+        <td><span class="done">✅ 已完成</span></td>
+        <td class="">5</td>
+        <td class="fw-num">-</td>
+        <td class="fw-num">-</td>
+        <td class="fw-num">5</td>
+        <td class="fw-0804">-</td>
       </tr>
     </tbody>
   </table>
