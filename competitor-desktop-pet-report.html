@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>竞品桌宠分析报告 | 尹燕玲-报告分析专家</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;line-height:1.7;padding:20px}
+.container{max-width:1200px;margin:0 auto}
+.header{background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%);color:#fff;padding:40px 30px;border-radius:12px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,176,80,0.15)}
+.header h1{font-size:28px;font-weight:700;margin-bottom:8px}
+.header .subtitle{font-size:15px;opacity:.9}
+.header .meta{margin-top:16px;font-size:13px;opacity:.85;display:flex;gap:24px;flex-wrap:wrap}
+.section{background:#fff;border-radius:12px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.section h2{font-size:20px;font-weight:700;color:#00B050;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e8f5e9}
+.section h3{font-size:16px;font-weight:600;color:#333;margin:20px 0 10px}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:8px}
+.kpi-card{background:linear-gradient(135deg,#f0fdf4 0%,#e8f5e9 100%);border-left:4px solid #00B050;border-radius:8px;padding:20px;text-align:center}
+.kpi-card .label{font-size:13px;color:#666;margin-bottom:6px}
+.kpi-card .value{font-size:28px;font-weight:700;color:#00B050}
+.kpi-card .extra{font-size:12px;color:#999;margin-top:4px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:#00B050;color:#fff;padding:10px 12px;text-align:left;font-weight:600;font-size:13px}
+th:first-child{border-radius:6px 0 0 0}th:last-child{border-radius:0 6px 0 0}
+td{padding:10px 12px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+tr:nth-child(even) td{background:#fafafa}tr:hover td{background:#f0fdf4}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.tag-green{background:#e8f5e9;color:#00B050}.tag-orange{background:#fef3e2;color:#F39C12}.tag-red{background:#fdecea;color:#E74C3C}.tag-blue{background:#e3f2fd;color:#1976d2}
+.text-red{color:#E74C3C;font-weight:600}.text-green{color:#00B050;font-weight:600}
+.chart-box{width:100%;height:400px;margin:16px 0}
+.chart-box-tall{width:100%;height:500px;margin:16px 0}
+.product-card{border:1px solid #e0e0e0;border-radius:12px;padding:20px;margin-bottom:16px;transition:all .3s}
+.product-card:hover{box-shadow:0 4px 16px rgba(0,176,80,0.1);transform:translateY(-2px)}
+.product-card h3{font-size:18px;font-weight:700;color:#00B050;margin-bottom:8px}
+.product-card .type-badge{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:10px}
+.product-card .features{margin-top:10px}
+.product-card .features li{padding:4px 0 4px 20px;position:relative;font-size:14px;list-style:none}
+.product-card .features li::before{content:'✓';position:absolute;left:0;color:#00B050;font-weight:700}
+.product-card .pros{color:#00B050;font-weight:600;margin-top:8px;display:inline-block}
+.product-card .cons{color:#E74C3C;font-weight:600;margin-top:4px;display:inline-block}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr}.chart-box{height:300px}.chart-box-tall{height:400px}}
+.insight-box{background:linear-gradient(135deg,#f0fdf4 0%,#e8f5e9 100%);border:2px solid #00B050;border-radius:12px;padding:24px;margin-bottom:20px}
+.insight-box h2{color:#00B050;font-size:20px;font-weight:700;margin-bottom:14px;border-bottom:none;padding-bottom:0}
+.insight-box ul{list-style:none}.insight-box li{padding:8px 0 8px 24px;position:relative;font-size:14px;line-height:1.8}
+.insight-box li::before{content:'▸';position:absolute;left:6px;color:#00B050;font-weight:700}
+.footer{text-align:center;padding:24px;color:#999;font-size:13px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>🐾 竞品桌宠分析报告</h1>
+<div class="subtitle">桌面宠物市场竞争格局 · 产品形态对比 · 功能维度分析</div>
+<div class="meta">
+<span>📊 数据来源：飞书文档「竞品桌宠分析」</span>
+<span>📅 报告生成：2026.08.07</span>
+</div>
+</div>
+
+<div class="insight-box">
+<h2>🎯 核心洞察</h2>
+<ul>
+<li><strong>市场分化为两大阵营：</strong>纯软件类（4种产品形态）和软硬结合类（项圈+桌宠联动），纯软件是主流。</li>
+<li><strong>AI生成是当前热点：</strong>Codex代表AI生成式（立体感强、动态丝滑），Petal AI同属此赛道，但生成质量（抠图毛边、品种还原）是核心瓶颈。</li>
+<li><strong>真实视频驱动是差异化路线：</strong>RealPet用真实宠物视频生成，真实感最强，但限制于猫狗且需3-5分钟处理。</li>
+<li><strong>养成+工具型功能最丰富：</strong>养成系统+番茄钟+文件清理+系统状态可视化+任务进度同步，功能深度远超AI生成式。</li>
+<li><strong>AI虚拟陪伴型是技术前沿：</strong>能聊天、有记忆、可感知屏幕内容、能操控电脑，是未来演进方向。</li>
+<li><strong>软硬结合定价偏高：</strong>帕奇宠项圈68元，用户"很贵但无脑花了"，还原度和画质压缩是主要痛点。</li>
+<li><strong>Petal AI定位建议：</strong>当前在AI生成式赛道，需补齐生成质量短板，中期可借鉴养成+工具型的功能深度，长期向AI虚拟陪伴型演进。</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>一、市场格局总览</h2>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">产品形态</div><div class="value">5<span style="font-size:14px;color:#999">类</span></div><div class="extra">纯软件4类 + 软硬结合1类</div></div>
+<div class="kpi-card"><div class="label">纯软件类型</div><div class="value">4<span style="font-size:14px;color:#999">种</span></div><div class="extra">AI生成/视频驱动/养成工具/AI陪伴</div></div>
+<div class="kpi-card"><div class="label">软硬结合</div><div class="value">1<span style="font-size:14px;color:#999">种</span></div><div class="extra">帕奇宠项圈（68元）</div></div>
+<div class="kpi-card"><div class="label">技术前沿</div><div class="value">AI<span style="font-size:14px;color:#999">陪伴</span></div><div class="extra">对话+记忆+屏幕感知+操控电脑</div></div>
+</div>
+<div id="chart-overview" class="chart-box"></div>
+</div>
+
+<div class="section">
+<h2>二、产品形态对比</h2>
+<div id="chart-radar" class="chart-box-tall"></div>
+</div>
+
+<div class="section">
+<h2>三、功能维度对比矩阵</h2>
+<table>
+<thead>
+<tr><th>功能维度</th><th>AI生成式<br><small>(Codex/Petal AI)</small></th><th>真实视频驱动<br><small>(RealPet)</small></th><th>养成+工具型</th><th>AI虚拟陪伴型<br><small>(Sakura/Steam)</small></th><th>软硬结合<br><small>(帕奇宠项圈)</small></th></tr>
+</thead>
+<tbody>
+<tr><td><strong>形态真实感</strong></td><td><span class="tag tag-orange">中高</span> AI生成，有毛边</td><td><span class="tag tag-green">最高</span> 真实视频</td><td><span class="tag tag-orange">中</span> 2D动画</td><td><span class="tag tag-orange">中</span> 像素/2D Live</td><td><span class="tag tag-orange">中高</span> 动作捕捉</td></tr>
+<tr><td><strong>生成方式</strong></td><td>多角度图片AI生成</td><td>真实宠物视频导入</td><td>预设动画</td><td>照片生成像素/2D Live</td><td>硬件动作捕捉</td></tr>
+<tr><td><strong>交互深度</strong></td><td><span class="tag tag-orange">中</span> 光标靠近/拖动</td><td><span class="tag tag-red">低</span> 缩放/隐藏</td><td><span class="tag tag-green">高</span> 养成/番茄钟/文件清理</td><td><span class="tag tag-green">最高</span> 对话/屏幕感知/操控电脑</td><td><span class="tag tag-orange">中</span> 项圈数据联动</td></tr>
+<tr><td><strong>宠物品种覆盖</strong></td><td>猫狗为主，非主流差</td><td>猫狗</td><td>猫为主</td><td>自定义（真宠物/爱豆/原创）</td><td>猫狗</td></tr>
+<tr><td><strong>开源/开放</strong></td><td>否</td><td><span class="tag tag-green">开源</span></td><td>否</td><td>Sakura开源/Steam付费</td><td>否</td></tr>
+<tr><td><strong>定价</strong></td><td>待定</td><td>免费开源</td><td>待定</td><td>Steam付费</td><td><span class="tag tag-red">68元</span></td></tr>
+<tr><td><strong>技术壁垒</strong></td><td>AI生成模型</td><td>视频识别+抠图</td><td>养成系统设计</td><td>大模型集成+Agent</td><td>硬件+动作捕捉</td></tr>
+<tr><td><strong>陪伴感</strong></td><td><span class="tag tag-orange">中高</span></td><td><span class="tag tag-orange">中高</span></td><td><span class="tag tag-green">高</span> 养成羁绊</td><td><span class="tag tag-green">最高</span> 人格化</td><td><span class="tag tag-orange">中</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h2>四、各产品形态详解</h2>
+
+<div class="product-card" style="border-left:4px solid #00B050;">
+<span class="type-badge" style="background:#e8f5e9;color:#00B050;">类型1 · AI生成式</span>
+<h3>🤖 Codex（代表产品）</h3>
+<p><strong>形态感知：</strong>立体感强、动态丝滑、无毛边，宠物完整度高，支持多角度图片输入，生成效果接近真实。</p>
+<div class="features">
+<ul>
+<li>可调节宠物大小</li>
+<li>光标靠近时宠物会向你奔跑</li>
+<li>鼠标左右拖动呈现侧面奔跑效果</li>
+<li>可通过提示词设计更复杂交互（定时出现、文字互动）</li>
+</ul>
+</div>
+<p class="pros">优势：生成效果接近真实，交互可编程扩展</p>
+<p class="cons">风险：Petal AI在此赛道，抠图毛边/品种还原是核心瓶颈</p>
+</div>
+
+<div class="product-card" style="border-left:4px solid #1976d2;">
+<span class="type-badge" style="background:#e3f2fd;color:#1976d2;">类型2 · 真实视频驱动</span>
+<h3>📹 RealPet（代表产品）</h3>
+<p><strong>形态感知：</strong>直接用手机拍摄的真实宠物视频生成，真实感最强，不是AI凭空生成的虚拟形象。</p>
+<div class="features">
+<ul>
+<li>导入素材后AI自动识别宠物</li>
+<li>处理3-5分钟生成桌宠</li>
+<li>支持缩放、随时隐藏桌宠</li>
+<li>开源，目前支持猫和狗</li>
+<li>已有用户提出可接入实时监控+抠图算法的设想</li>
+</ul>
+</div>
+<p class="pros">优势：真实感最强，开源免费</p>
+<p class="cons">限制：仅猫狗，需3-5分钟处理，非实时</p>
+</div>
+
+<div class="product-card" style="border-left:4px solid #F39C12;">
+<span class="type-badge" style="background:#fef3e2;color:#F39C12;">类型3 · 综合养成+工具型</span>
+<h3>🎮 养成+工具型桌宠</h3>
+<p><strong>形态感知：</strong>兼具陪伴感和实用性，宠物会翻肚皮、蹲角落，给人"家里的猫陪我上班"的治愈感。</p>
+<div class="features">
+<ul>
+<li><strong>养成系统：</strong>喂食影响饱腹值，玩耍影响心情值，睡觉影响能量值</li>
+<li><strong>守护系统（番茄钟）：</strong>监督主人学习/工作</li>
+<li><strong>文件清理：</strong>拖拽文件投喂小猫，自动移至回收站</li>
+<li><strong>数据记录：</strong>陪伴天数、每日交互次数</li>
+<li><strong>主动提醒：</strong>提醒带伞、交方案、喝水、起身活动、播报天气和热搜</li>
+<li><strong>系统状态可视化：</strong>内存占用越高肚子越大，网速越快跑得越欢</li>
+<li><strong>任务状态同步：</strong>AI跑任务时它在工作，等待时挠头，完成后挥手提醒审核</li>
+</ul>
+</div>
+<p class="pros">优势：功能最丰富，陪伴羁绊最强，实用工具属性</p>
+<p class="cons">限制：非AI生成，形态预设，真实感有限</p>
+</div>
+
+<div class="product-card" style="border-left:4px solid #7B1FA2;">
+<span class="type-badge" style="background:#f3e5f5;color:#7B1FA2;">类型4 · AI虚拟陪伴型</span>
+<h3>💬 AI虚拟陪伴型桌宠（技术前沿）</h3>
+<p>人格化AI伙伴，能聊天、有记忆、可感知屏幕内容并主动互动，是当前技术前沿。</p>
+<div class="features">
+<ul>
+<li><strong>自定义形象：</strong>真宠物/爱豆/原创角色照片→像素风或2D Live桌宠</li>
+<li><strong>性格定制：</strong>傲娇/软萌/毒舌，深夜加班提醒睡觉</li>
+<li><strong>文字/语音对话：</strong>能看懂屏幕内容并主动评论</li>
+<li><strong>长期记忆：</strong>甚至能操控电脑帮你做事</li>
+</ul>
+</div>
+<h3 style="margin-top:12px;">代表产品：</h3>
+<p><strong>Sakura：</strong>AI Agent框架，桌宠会主动找你聊天，能感知屏幕内容（你打游戏死了会安慰你），能操控浏览器帮你查攻略。</p>
+<p><strong>AI桌面宠物 (Steam)：</strong>集成本地大模型，支持语音对话、音色克隆，内置人设卡和世界书，完整角色扮演体验。</p>
+<p class="pros">优势：交互最深，人格化，技术前沿</p>
+<p class="cons">限制：技术门槛高，本地大模型资源消耗大</p>
+</div>
+
+<div class="product-card" style="border-left:4px solid #E74C3C;">
+<span class="type-badge" style="background:#fdecea;color:#E74C3C;">类型5 · 软硬结合</span>
+<h3>🔗 帕奇宠宠物项圈</h3>
+<p><strong>定价：68元一次，无7天免费试用</strong></p>
+<p>用户态度："很贵，但无脑花了"——核心用户有较强购买意愿，但价格是明显决策阻力。</p>
+<div class="grid-2">
+<div>
+<p class="pros">优点：</p>
+<ul style="padding-left:20px;">
+<li>动作捕捉准</li>
+<li>整体效果"还可以"</li>
+</ul>
+</div>
+<div>
+<p class="cons">缺点：</p>
+<ul style="padding-left:20px;">
+<li>形象还原度不够：尾巴斑纹和真实宠物不一致</li>
+<li>PC端画质有压缩（生成清晰，显示变糊）</li>
+<li>手机端不支持高写实，仅限PC（芯片限制）</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>五、产品定位图</h2>
+<div id="chart-positioning" class="chart-box-tall"></div>
+</div>
+
+<div class="section">
+<h2>六、对Petal AI的启示</h2>
+<div id="chart-petal" class="chart-box"></div>
+<table>
+<thead><tr><th>阶段</th><th>方向</th><th>借鉴竞品</th><th>具体建议</th></tr></thead>
+<tbody>
+<tr><td><span class="tag tag-red">P0 短期</span></td><td>补齐生成质量</td><td>Codex</td><td>Codex"无毛边、立体感强"是标杆，Petal AI需解决抠图毛边/品种还原/生成异常</td></tr>
+<tr><td><span class="tag tag-orange">P1 中期</span></td><td>增加养成+工具功能</td><td>养成+工具型</td><td>引入养成系统（饱腹/心情/能量值）、番茄钟守护、主动提醒、系统状态可视化</td></tr>
+<tr><td><span class="tag tag-blue">P2 中期</span></td><td>增强交互深度</td><td>Codex + 养成型</td><td>光标靠近奔跑、多动作切换、多宠物互动、任务进度同步（与Codex联动）</td></tr>
+<tr><td><span class="tag" style="background:#f3e5f5;color:#7B1FA2;">P3 长期</span></td><td>向AI陪伴型演进</td><td>Sakura/Steam</td><td>接入大模型对话、屏幕感知、性格定制、长期记忆，从桌宠→AI伙伴</td></tr>
+<tr><td><span class="tag tag-green">参考</span></td><td>真实视频路线</td><td>RealPet</td><td>可探索视频导入生成作为差异化补充，真实感最强</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="footer">
+<p>报告由尹燕玲-报告分析专家 🦞 生成 | 数据来源：飞书文档「竞品桌宠分析」</p>
+<p style="margin-top:4px;">报告生成：2026-08-07</p>
+</div>
+
+</div>
+
+<script>
+// Chart 1: Overview - product types distribution
+var chart1 = echarts.init(document.getElementById('chart-overview'));
+chart1.setOption({
+  title: {text: '桌宠产品形态分布', left: 'center', textStyle: {fontSize: 16, color: '#333'}},
+  tooltip: {trigger: 'item'},
+  legend: {bottom: 0},
+  series: [{
+    type: 'pie',
+    radius: ['40%', '70%'],
+    center: ['50%', '45%'],
+    itemStyle: {borderRadius: 8, borderColor: '#fff', borderWidth: 2},
+    label: {fontSize: 13, formatter: '{b}\n{d}%'},
+    data: [
+      {value: 1, name: 'AI生成式\n(Codex/Petal AI)', itemStyle: {color: '#00B050'}},
+      {value: 1, name: '真实视频驱动\n(RealPet)', itemStyle: {color: '#1976d2'}},
+      {value: 1, name: '养成+工具型', itemStyle: {color: '#F39C12'}},
+      {value: 1, name: 'AI虚拟陪伴型\n(Sakura/Steam)', itemStyle: {color: '#7B1FA2'}},
+      {value: 1, name: '软硬结合\n(帕奇宠)', itemStyle: {color: '#E74C3C'}}
+    ]
+  }]
+});
+
+// Chart 2: Radar - feature comparison
+var chart2 = echarts.init(document.getElementById('chart-radar'));
+chart2.setOption({
+  title: {text: '各产品形态功能维度雷达图', left: 'center', textStyle: {fontSize: 16, color: '#333'}},
+  tooltip: {},
+  legend: {bottom: 0, data: ['AI生成式', '真实视频驱动', '养成+工具型', 'AI虚拟陪伴型', '软硬结合']},
+  radar: {
+    indicator: [
+      {name: '形态真实感', max: 10},
+      {name: '交互深度', max: 10},
+      {name: '陪伴感', max: 10},
+      {name: '功能丰富度', max: 10},
+      {name: '品种覆盖', max: 10},
+      {name: '技术壁垒', max: 10},
+      {name: '可扩展性', max: 10}
+    ],
+    radius: '65%'
+  },
+  series: [{
+    type: 'radar',
+    emphasis: {lineStyle: {width: 4}},
+    data: [
+      {value: [7, 5, 7, 4, 5, 7, 8], name: 'AI生成式', itemStyle: {color: '#00B050'}, areaStyle: {opacity: 0.15}},
+      {value: [9, 3, 7, 3, 4, 6, 5], name: '真实视频驱动', itemStyle: {color: '#1976d2'}, areaStyle: {opacity: 0.15}},
+      {value: [5, 8, 9, 9, 3, 5, 6], name: '养成+工具型', itemStyle: {color: '#F39C12'}, areaStyle: {opacity: 0.15}},
+      {value: [5, 10, 10, 8, 8, 9, 9], name: 'AI虚拟陪伴型', itemStyle: {color: '#7B1FA2'}, areaStyle: {opacity: 0.15}},
+      {value: [7, 5, 5, 4, 4, 7, 4], name: '软硬结合', itemStyle: {color: '#E74C3C'}, areaStyle: {opacity: 0.15}}
+    ]
+  }]
+});
+
+// Chart 3: Positioning map - scatter
+var chart3 = echarts.init(document.getElementById('chart-positioning'));
+chart3.setOption({
+  title: {text: '产品定位图：真实感 vs 交互深度', left: 'center', textStyle: {fontSize: 16, color: '#333'}},
+  tooltip: {
+    formatter: function(p) { return p.data.name + '<br/>真实感: ' + p.data[0] + '<br/>交互深度: ' + p.data[1]; }
+  },
+  xAxis: {name: '形态真实感 →', nameLocation: 'end', min: 0, max: 11, splitLine: {show: false}},
+  yAxis: {name: '交互深度 →', nameLocation: 'end', min: 0, max: 11, splitLine: {show: false}},
+  grid: {left: '8%', right: '8%', bottom: '12%', top: '12%'},
+  series: [{
+    type: 'scatter',
+    symbolSize: 30,
+    label: {show: true, formatter: function(p){return p.data.name;}, position: 'top', fontSize: 12, color: '#333'},
+    itemStyle: {opacity: 0.8},
+    data: [
+      {value: [7, 5], name: 'AI生成式\n(Codex/Petal AI)', itemStyle: {color: '#00B050'}},
+      {value: [9, 3], name: '真实视频驱动\n(RealPet)', itemStyle: {color: '#1976d2'}},
+      {value: [5, 8], name: '养成+工具型', itemStyle: {color: '#F39C12'}},
+      {value: [5, 10], name: 'AI虚拟陪伴型\n(Sakura)', itemStyle: {color: '#7B1FA2'}},
+      {value: [7, 5], name: '软硬结合\n(帕奇宠)', itemStyle: {color: '#E74C3C'}}
+    ],
+    markArea: {
+      itemStyle: {color: 'rgba(0,176,80,0.05)'},
+      data: [[{xAxis: 0, yAxis: 0}, {xAxis: 11, yAxis: 11}]]
+    }
+  }]
+});
+
+// Chart 4: Petal AI evolution path
+var chart4 = echarts.init(document.getElementById('chart-petal'));
+chart4.setOption({
+  title: {text: 'Petal AI 演进路径建议', left: 'center', textStyle: {fontSize: 16, color: '#333'}},
+  tooltip: {trigger: 'axis'},
+  xAxis: {type: 'category', data: ['当前\nAI生成式', 'P0\n补齐生成质量', 'P1\n养成+工具', 'P2\n增强交互', 'P3\nAI陪伴型']},
+  yAxis: [
+    {name: '真实感', min: 0, max: 10, position: 'left', axisLabel: {color: '#00B050'}},
+    {name: '交互深度', min: 0, max: 10, position: 'right', axisLabel: {color: '#F39C12'}}
+  ],
+  series: [
+    {name: '真实感', type: 'line', smooth: true, yAxisIndex: 0, itemStyle: {color: '#00B050'}, lineStyle: {width: 3}, data: [6, 8, 8, 8, 7], label: {show: true}},
+    {name: '交互深度', type: 'line', smooth: true, yAxisIndex: 1, itemStyle: {color: '#F39C12'}, lineStyle: {width: 3}, data: [4, 4, 7, 8, 10], label: {show: true}},
+    {name: '陪伴感', type: 'line', smooth: true, yAxisIndex: 0, itemStyle: {color: '#7B1FA2'}, lineStyle: {width: 3, type: 'dashed'}, data: [6, 6, 8, 8, 10], label: {show: true}}
+  ],
+  legend: {bottom: 0}
+});
+
+// Responsive
+window.addEventListener('resize', function() {
+  chart1.resize(); chart2.resize(); chart3.resize(); chart4.resize();
+});
+</script>
+
+</body>
+</html>
