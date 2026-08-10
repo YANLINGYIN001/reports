@@ -264,197 +264,116 @@ tr:hover td { background: #f9f9f9; }
   </div>
 
   <div class="section">
-    <div class="section-title">📱 固件版本问题分布对比</div>
+    <div class="section-title">📱 固件版本问题分布对比（二级标签TOP10）</div>
     <div class="insight warning">
-      <strong>0730→0804趋势：</strong>0804固件上线后，云录误报问题仍在持续，夜视切换和续航问题新增。0804版本需重点验证误报算法。
+      <strong>0804固件重点问题：</strong>画面变化误报在0804上爆发（13条，占该标签40%），远超0730的5条；误报在0804上新增5条（0730仅4条）；卡录加载异常0804新增7条为各版本最多。0804固件的误报算法和卡录稳定性需重点排查。
     </div>
     <table class="fw-table">
       <thead>
         <tr>
-          <th>一级标签</th>
+          <th>二级标签</th>
           <th>0710</th>
           <th>0717</th>
-          <th class="highlight">0730</th>
-          <th>0804</th>
-          <th>趋势</th>
+          <th>0730</th>
+          <th style="background:#00B050;font-weight:700;">0804</th>
+          <th>合计</th>
+          <th>0804占比</th>
         </tr>
       </thead>
       <tbody>
-
         <tr>
-          <td><strong>云录</strong></td>
-          <td>47</td>
-          <td>26</td>
-          <td class="highlight">24</td>
-          <td>38</td>
-          <td><span class="trend-new">↑ 恶化</span></td>
-        </tr>
-
-        <tr>
-          <td><strong>卡录</strong></td>
-          <td>16</td>
-          <td>8</td>
-          <td class="highlight">8</td>
-          <td>15</td>
-          <td><span class="trend-new">↑ 恶化</span></td>
-        </tr>
-
-        <tr>
-          <td><strong>APP功能/交互</strong></td>
-          <td>23</td>
-          <td>4</td>
-          <td class="highlight">5</td>
-          <td>4</td>
-          <td><span class="trend-improved">↓ 改善</span></td>
-        </tr>
-
-        <tr>
-          <td><strong>开流</strong></td>
-          <td>13</td>
-          <td>1</td>
-          <td class="highlight">5</td>
-          <td>1</td>
-          <td><span class="trend-improved">↓ 改善</span></td>
-        </tr>
-
-        <tr>
-          <td><strong>IQ</strong></td>
-          <td>8</td>
+          <td><strong>画面变化误报</strong></td>
+          <td>11</td>
           <td>3</td>
-          <td class="highlight">4</td>
-          <td>4</td>
-          <td><span class="trend-continued">→ 持续</span></td>
-        </tr>
-
-        <tr>
-          <td><strong>功能需求</strong></td>
-          <td>8</td>
-          <td>3</td>
-          <td class="highlight">4</td>
-          <td>1</td>
-          <td><span class="trend-improved">↓ 改善</span></td>
-        </tr>
-
-        <tr>
-          <td><strong>OTA</strong></td>
-          <td>2</td>
           <td>5</td>
-          <td class="highlight">2</td>
-          <td>3</td>
-          <td><span class="trend-new">↑ 恶化</span></td>
+          <td style="background:#f0fdf4;font-weight:700;color:#00B050;">13</td>
+          <td>32</td>
+          <td class="trend-new">41%</td>
         </tr>
-
         <tr>
-          <td><strong>按门铃</strong></td>
-          <td>3</td>
-          <td>1</td>
-          <td class="highlight">0</td>
-          <td>6</td>
-          <td><span class="trend-new">↑ 恶化</span></td>
+          <td><strong>漏录/漏拍</strong></td>
+          <td>9</td>
+          <td>9</td>
+          <td>5</td>
+          <td style="background:#f0fdf4;font-weight:700;color:#00B050;">6</td>
+          <td>29</td>
+          <td class="trend-continued">21%</td>
         </tr>
-
         <tr>
-          <td><strong>续航</strong></td>
-          <td>6</td>
-          <td>0</td>
-          <td class="highlight">2</td>
-          <td>1</td>
-          <td><span class="trend-improved">↓ 改善</span></td>
-        </tr>
-
-        <tr>
-          <td><strong>配网/安装引导</strong></td>
+          <td><strong>录制延迟</strong></td>
           <td>7</td>
-          <td>0</td>
-          <td class="highlight">0</td>
-          <td>0</td>
-          <td>-</td>
-        </tr>
-
-        <tr>
-          <td><strong>夜视切换</strong></td>
-          <td>0</td>
-          <td>1</td>
-          <td class="highlight">1</td>
-          <td>4</td>
-          <td><span class="trend-new">↑ 恶化</span></td>
-        </tr>
-
-        <tr>
-          <td><strong>其他</strong></td>
-          <td>5</td>
-          <td>0</td>
-          <td class="highlight">0</td>
-          <td>0</td>
-          <td>-</td>
-        </tr>
-
-        <tr>
-          <td><strong>稳定性</strong></td>
-          <td>1</td>
-          <td>0</td>
-          <td class="highlight">0</td>
-          <td>4</td>
-          <td><span class="trend-new">↑ 恶化</span></td>
-        </tr>
-
-        <tr>
-          <td><strong>硬件/信号</strong></td>
           <td>2</td>
-          <td>0</td>
-          <td class="highlight">0</td>
-          <td>1</td>
-          <td><span class="trend-new">↑ 恶化</span></td>
+          <td>4</td>
+          <td style="background:#f0fdf4;font-weight:700;color:#00B050;">6</td>
+          <td>19</td>
+          <td class="trend-continued">32%</td>
         </tr>
-
         <tr>
-          <td><strong>开箱</strong></td>
+          <td><strong>有人误报</strong></td>
+          <td>7</td>
           <td>3</td>
-          <td>0</td>
-          <td class="highlight">0</td>
-          <td>0</td>
-          <td>-</td>
+          <td>3</td>
+          <td style="background:#f0fdf4;font-weight:700;color:#00B050;">3</td>
+          <td>16</td>
+          <td class="trend-improved">19%</td>
         </tr>
-
         <tr>
-          <td><strong>消息通知</strong></td>
+          <td><strong>卡录加载异常</strong></td>
+          <td>0</td>
+          <td>5</td>
+          <td>4</td>
+          <td style="background:#f0fdf4;font-weight:700;color:#00B050;">7</td>
+          <td>16</td>
+          <td class="trend-new">44%</td>
+        </tr>
+        <tr>
+          <td><strong>开流失败</strong></td>
+          <td>7</td>
+          <td>1</td>
+          <td>3</td>
+          <td style="background:#f0fdf4;font-weight:700;color:#00B050;">0</td>
+          <td>11</td>
+          <td class="trend-improved">0%</td>
+        </tr>
+        <tr>
+          <td><strong>固件升级失败</strong></td>
+          <td>1</td>
+          <td>5</td>
+          <td>2</td>
+          <td style="background:#f0fdf4;font-weight:700;color:#00B050;">3</td>
+          <td>11</td>
+          <td class="trend-continued">27%</td>
+        </tr>
+        <tr>
+          <td><strong>设置项自动重置</strong></td>
+          <td>5</td>
           <td>2</td>
           <td>0</td>
-          <td class="highlight">1</td>
-          <td>0</td>
-          <td><span class="trend-fixed">✓ 已修复</span></td>
+          <td style="background:#f0fdf4;font-weight:700;color:#00B050;">2</td>
+          <td>9</td>
+          <td class="trend-continued">22%</td>
         </tr>
-
         <tr>
-          <td><strong>包装/配件</strong></td>
+          <td><strong>耗电快</strong></td>
+          <td>6</td>
+          <td>0</td>
           <td>2</td>
-          <td>0</td>
-          <td class="highlight">0</td>
-          <td>0</td>
-          <td>-</td>
+          <td style="background:#f0fdf4;font-weight:700;color:#00B050;">1</td>
+          <td>9</td>
+          <td class="trend-improved">11%</td>
         </tr>
-
         <tr>
-          <td><strong>硬件设计</strong></td>
-          <td>1</td>
+          <td><strong>误报</strong></td>
           <td>0</td>
-          <td class="highlight">0</td>
           <td>0</td>
-          <td>-</td>
+          <td>4</td>
+          <td style="background:#f0fdf4;font-weight:700;color:#00B050;">5</td>
+          <td>9</td>
+          <td class="trend-new">56%</td>
         </tr>
-
-        <tr>
-          <td><strong>指示灯</strong></td>
-          <td>1</td>
-          <td>0</td>
-          <td class="highlight">0</td>
-          <td>0</td>
-          <td>-</td>
-        </tr>
-
       </tbody>
     </table>
-    <div style="font-size:12px;color:#999;margin-top:8px;">0730列高亮为主对比基准，0804为最新固件版本</div>
+    <div style="font-size:12px;color:#999;margin-top:8px;">0804列高亮加粗为最新固件版本，0804占比≥40%红色标注</div>
   </div>
 
   <div class="section">
