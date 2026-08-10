@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6pro 4G门铃 - 按门铃通话专项报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+.container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; margin-bottom: 24px; }
+.header h1 { font-size: 24px; color: #00B050; margin-bottom: 8px; }
+.header .subtitle { font-size: 14px; color: #666; }
+.kpi-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.kpi-card { flex: 1; min-width: 140px; background: #fff; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size: 13px; color: #666; margin-bottom: 8px; }
+.kpi-card .value { font-size: 28px; font-weight: 700; color: #00B050; }
+.kpi-card .sub { font-size: 12px; color: #999; margin-top: 4px; }
+.kpi-card.warn .value { color: #F39C12; }
+.section { background: #fff; border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size: 18px; font-weight: 600; color: #333; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #00B050; }
+.insight { background: #f0fdf4; border-left: 4px solid #00B050; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; font-size: 14px; }
+.insight.warning { background: #fff7ed; border-left-color: #F39C12; }
+.insight.danger { background: #fef2f2; border-left-color: #E74C3C; }
+.chart-container { width: 100%; height: 350px; margin: 16px 0; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+th { background: #00B050; color: #fff; padding: 10px 8px; font-size: 13px; text-align: center; }
+td { padding: 8px; font-size: 13px; border-bottom: 1px solid #eee; text-align: center; }
+tr:hover td { background: #f9f9f9; }
+.tag-badge { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 10px; background: #e8f5e9; color: #00B050; }
+.score-high { color: #00B050; font-weight: 600; }
+.score-mid { color: #F39C12; font-weight: 600; }
+.score-low { color: #E74C3C; font-weight: 600; }
+.footer { text-align: center; padding: 20px; font-size: 12px; color: #999; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🔔 6pro 4G门铃 - 按门铃通话专项报告</h1>
+    <div class="subtitle">报告日期：2026-08-10 | 样本量：22份 | 数据来源：飞书问卷</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="label">总样本量</div>
+      <div class="value">22</div>
+      <div class="sub">20人参与(含重复)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">平均总分</div>
+      <div class="value">72.7</div>
+      <div class="sub">满分100</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">通话成功率</div>
+      <div class="value">100%</div>
+      <div class="sub">110/110次</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">整体表现均分</div>
+      <div class="value">8.73</div>
+      <div class="sub">满分10</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">💡 总体洞察</div>
+    <div class="insight">
+      <strong>按门铃通话整体表现优秀：</strong>22份样本平均总分72.7分，通话成功率100%。8个维度评分均在8.5分以上，门铃端音质和APP端音质评分最高（9.4分），基站响应速度快（9.3分）。
+    </div>
+    <div class="insight warning">
+      <strong>主要问题：</strong>APP响应（8.7分）相对较低。用户反馈集中在：通话延迟（徐婷婷、周军、于晨光）、APP后台无弹窗提醒（夏君、美诺）、基站声音偏小（陈俊、瑞子、袁飞）、门铃端偶有破音回音（王瑷珲）。
+    </div>
+    <div class="insight">
+      <strong>亮点：</strong>通话音质清晰、基站响应速度快，多数用户反馈通话体验良好。通知响应时间多在1-2秒以内，体验流畅。
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📊 各维度评分</div>
+    <div id="dim-chart" class="chart-container"></div>
+    <script>
+      var chart = echarts.init(document.getElementById('dim-chart'));
+      chart.setOption({
+        tooltip: { trigger: 'axis' },
+        grid: { left: '3%', right: '8%', bottom: '3%', containLabel: true },
+        xAxis: { type: 'value', max: 10, name: '分' },
+        yAxis: { type: 'category', data: ["APP\u7aef\u97f3\u91cf", "\u95e8\u94c3\u7aef\u97f3\u91cf", "APP\u7aef\u97f3\u8d28", "\u95e8\u94c3\u7aef\u97f3\u8d28", "APP\u54cd\u5e94", "\u57fa\u7ad9\u54cd\u5e94\u901f\u5ea6", "\u57fa\u7ad9\u58f0\u97f3", "\u6574\u4f53\u8868\u73b0"], axisLabel: { fontSize: 12 } },
+        series: [{
+          type: 'bar',
+          data: [9.41, 9.05, 9.36, 9.36, 8.68, 9.27, 8.86, 8.73],
+          itemStyle: { color: '#00B050' },
+          label: { show: true, position: 'right', formatter: '{c}' }
+        }]
+      });
+    </script>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📈 通知响应时间分布</div>
+    <table>
+      <thead>
+        <tr>
+          <th>响应时间</th>
+          <th>通知响应次数</th>
+          <th>占比</th>
+          <th>APP弹窗次数</th>
+          <th>占比</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1秒以内</strong></td>
+          <td>19</td>
+          <td>17%</td>
+          <td>52</td>
+          <td>47%</td>
+        </tr>
+        <tr>
+          <td><strong>1-2秒（含2秒）</strong></td>
+          <td>57</td>
+          <td>52%</td>
+          <td>33</td>
+          <td>30%</td>
+        </tr>
+        <tr>
+          <td><strong>2-4秒（含4秒）</strong></td>
+          <td>15</td>
+          <td>14%</td>
+          <td>14</td>
+          <td>13%</td>
+        </tr>
+        <tr>
+          <td><strong>4-6秒（含6秒）</strong></td>
+          <td>7</td>
+          <td>6%</td>
+          <td>2</td>
+          <td>2%</td>
+        </tr>
+        <tr>
+          <td><strong>APP端仅有通知栏消息，无弹窗</strong></td>
+          <td>0</td>
+          <td>0%</td>
+          <td>6</td>
+          <td>5%</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="font-size:12px;color:#999;margin-top:8px;">通知响应：从按下门铃到手机收到消息通知 | APP弹窗：APP前台运行时从按下到弹窗出现</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">⚠️ 用户反馈问题汇总</div>
+    <table>
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>维度</th>
+          <th>反馈内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>袁飞</strong></td>
+          <td><span class="tag-badge">整体表现</span></td>
+          <td style="text-align:left;">门铃初期与APP连通后声音较小，连通信号稳定后清晰</td>
+        </tr>
+        <tr>
+          <td><strong>袁飞</strong></td>
+          <td><span class="tag-badge">基站声音</span></td>
+          <td style="text-align:left;">声音偏小</td>
+        </tr>
+        <tr>
+          <td><strong>袁飞</strong></td>
+          <td><span class="tag-badge">APP端音质</span></td>
+          <td style="text-align:left;">音量有少许杂音</td>
+        </tr>
+        <tr>
+          <td><strong>袁飞</strong></td>
+          <td><span class="tag-badge">门铃端音量</span></td>
+          <td style="text-align:left;">偏小</td>
+        </tr>
+        <tr>
+          <td><strong>袁飞</strong></td>
+          <td><span class="tag-badge">APP端音量</span></td>
+          <td style="text-align:left;">正常偏大声</td>
+        </tr>
+        <tr>
+          <td><strong>张雷</strong></td>
+          <td><span class="tag-badge">整体表现</span></td>
+          <td style="text-align:left;">表现还可以，偶尔有延迟，最高5秒，挪进了基站位置延迟就小了</td>
+        </tr>
+        <tr>
+          <td><strong>张雷</strong></td>
+          <td><span class="tag-badge">基站声音</span></td>
+          <td style="text-align:left;">大小合适</td>
+        </tr>
+        <tr>
+          <td><strong>张雷</strong></td>
+          <td><span class="tag-badge">基站响应速度</span></td>
+          <td style="text-align:left;">几乎没啥延迟</td>
+        </tr>
+        <tr>
+          <td><strong>张雷</strong></td>
+          <td><span class="tag-badge">APP响应</span></td>
+          <td style="text-align:left;">几乎也没有延迟</td>
+        </tr>
+        <tr>
+          <td><strong>张雷</strong></td>
+          <td><span class="tag-badge">门铃端音量</span></td>
+          <td style="text-align:left;">还可以大小合适</td>
+        </tr>
+        <tr>
+          <td><strong>张雷</strong></td>
+          <td><span class="tag-badge">APP端音量</span></td>
+          <td style="text-align:left;">声音要稍微小一点但也还可以</td>
+        </tr>
+        <tr>
+          <td><strong>蔡坤城</strong></td>
+          <td><span class="tag-badge">门铃端音质</span></td>
+          <td style="text-align:left;">有点延迟</td>
+        </tr>
+        <tr>
+          <td><strong>何三涛</strong></td>
+          <td><span class="tag-badge">整体表现</span></td>
+          <td style="text-align:left;">门铃通话实际有1-2秒的延迟，不影响通话</td>
+        </tr>
+        <tr>
+          <td><strong>何三涛</strong></td>
+          <td><span class="tag-badge">APP响应</span></td>
+          <td style="text-align:left;">受信号强度影响，有1秒左右的延迟</td>
+        </tr>
+        <tr>
+          <td><strong>何三涛</strong></td>
+          <td><span class="tag-badge">门铃端音质</span></td>
+          <td style="text-align:left;">门铃的音质和人的实际声音有些不同，不过不影响通话</td>
+        </tr>
+        <tr>
+          <td><strong>何三涛</strong></td>
+          <td><span class="tag-badge">门铃端音量</span></td>
+          <td style="text-align:left;">声音大小正好</td>
+        </tr>
+        <tr>
+          <td><strong>何三涛</strong></td>
+          <td><span class="tag-badge">APP端音量</span></td>
+          <td style="text-align:left;">手机端的声音大小也正好</td>
+        </tr>
+        <tr>
+          <td><strong>周军</strong></td>
+          <td><span class="tag-badge">基站声音</span></td>
+          <td style="text-align:left;">还好，稍有偏小</td>
+        </tr>
+        <tr>
+          <td><strong>周军</strong></td>
+          <td><span class="tag-badge">APP响应</span></td>
+          <td style="text-align:left;">不打开app的情况下偏慢，但也算正常。</td>
+        </tr>
+        <tr>
+          <td><strong>许军州</strong></td>
+          <td><span class="tag-badge">整体表现</span></td>
+          <td style="text-align:left;">整体较好，无明显问题</td>
+        </tr>
+        <tr>
+          <td><strong>许军州</strong></td>
+          <td><span class="tag-badge">APP端音量</span></td>
+          <td style="text-align:left;">同正常电话声音差不多</td>
+        </tr>
+        <tr>
+          <td><strong>徐婷婷</strong></td>
+          <td><span class="tag-badge">整体表现</span></td>
+          <td style="text-align:left;">通话过程中有回声，杂音，画面声音延迟严重</td>
+        </tr>
+        <tr>
+          <td><strong>徐婷婷</strong></td>
+          <td><span class="tag-badge">门铃端音质</span></td>
+          <td style="text-align:left;">声音不同步，鸡同鸭讲</td>
+        </tr>
+        <tr>
+          <td><strong>夏君</strong></td>
+          <td><span class="tag-badge">APP响应</span></td>
+          <td style="text-align:left;">当app不在手机前端的时候，按门铃无任何提示</td>
+        </tr>
+        <tr>
+          <td><strong>相杰</strong></td>
+          <td><span class="tag-badge">整体表现</span></td>
+          <td style="text-align:left;">个人在测试过程中发现声音清晰、声音大小正常，但是会有延迟，所以打8分。</td>
+        </tr>
+        <tr>
+          <td><strong>相杰</strong></td>
+          <td><span class="tag-badge">APP响应</span></td>
+          <td style="text-align:left;">如果每次都杀掉APP,按门铃后APP通知大约会延迟1s左右，如果APP在前台，响应速度可以。</td>
+        </tr>
+        <tr>
+          <td><strong>相杰</strong></td>
+          <td><span class="tag-badge">门铃端音量</span></td>
+          <td style="text-align:left;">门铃声音大小正常</td>
+        </tr>
+        <tr>
+          <td><strong>相杰</strong></td>
+          <td><span class="tag-badge">APP端音量</span></td>
+          <td style="text-align:left;">手机端声音大小正常</td>
+        </tr>
+        <tr>
+          <td><strong>美诺</strong></td>
+          <td><span class="tag-badge">基站声音</span></td>
+          <td style="text-align:left;">大小合适</td>
+        </tr>
+        <tr>
+          <td><strong>美诺</strong></td>
+          <td><span class="tag-badge">APP响应</span></td>
+          <td style="text-align:left;">App端通知但必须要点击通知才可以弹出接听或者挂断，不能自主弹出接听或者挂断，希望优化</td>
+        </tr>
+        <tr>
+          <td><strong>美诺</strong></td>
+          <td><span class="tag-badge">门铃端音量</span></td>
+          <td style="text-align:left;">大小合适</td>
+        </tr>
+        <tr>
+          <td><strong>美诺</strong></td>
+          <td><span class="tag-badge">APP端音量</span></td>
+          <td style="text-align:left;">大小合适</td>
+        </tr>
+        <tr>
+          <td><strong>吴汞</strong></td>
+          <td><span class="tag-badge">基站响应速度</span></td>
+          <td style="text-align:left;">有点延迟</td>
+        </tr>
+        <tr>
+          <td><strong>朱君</strong></td>
+          <td><span class="tag-badge">门铃端音量</span></td>
+          <td style="text-align:left;">稍微小一点</td>
+        </tr>
+        <tr>
+          <td><strong>孙晓明</strong></td>
+          <td><span class="tag-badge">整体表现</span></td>
+          <td style="text-align:left;">消息通知挺及时，不会错过门铃</td>
+        </tr>
+        <tr>
+          <td><strong>孙晓明</strong></td>
+          <td><span class="tag-badge">门铃端音量</span></td>
+          <td style="text-align:left;">正常，能听清。可能也很门口环境有关系吧，同层就两户，杂声很少</td>
+        </tr>
+        <tr>
+          <td><strong>瑞子</strong></td>
+          <td><span class="tag-badge">整体表现</span></td>
+          <td style="text-align:left;">8分，测试门铃响应视频，录制的是黑白 绑定了微信小程序，门铃接听app正常接听 但是小程序还一直在提示有人按门铃需要接听，最后app已经结束 小程序还在响 只能挂断</td>
+        </tr>
+        <tr>
+          <td><strong>瑞子</strong></td>
+          <td><span class="tag-badge">基站声音</span></td>
+          <td style="text-align:left;">声音小点没有门铃声音大了</td>
+        </tr>
+        <tr>
+          <td><strong>瑞子</strong></td>
+          <td><span class="tag-badge">APP响应</span></td>
+          <td style="text-align:left;">第一次8秒左右 小程序关了以后正常在3秒左右接通</td>
+        </tr>
+        <tr>
+          <td><strong>瑞子</strong></td>
+          <td><span class="tag-badge">门铃端音质</span></td>
+          <td style="text-align:left;">清晰没有破音</td>
+        </tr>
+        <tr>
+          <td><strong>瑞子</strong></td>
+          <td><span class="tag-badge">APP端音质</span></td>
+          <td style="text-align:left;">清晰没有破音</td>
+        </tr>
+        <tr>
+          <td><strong>瑞子</strong></td>
+          <td><span class="tag-badge">门铃端音量</span></td>
+          <td style="text-align:left;">正常 但是基站声音很小</td>
+        </tr>
+        <tr>
+          <td><strong>朱彤</strong></td>
+          <td><span class="tag-badge">整体表现</span></td>
+          <td style="text-align:left;">响应速度还行，前台运行测试5次有一次通话界面响应慢了几秒</td>
+        </tr>
+        <tr>
+          <td><strong>朱彤</strong></td>
+          <td><span class="tag-badge">APP响应</span></td>
+          <td style="text-align:left;">响应速度正常，但是前台运行五次有一次通话界面弹窗界面出来慢了好几秒</td>
+        </tr>
+        <tr>
+          <td><strong>陈俊</strong></td>
+          <td><span class="tag-badge">基站声音</span></td>
+          <td style="text-align:left;">基站铃音小</td>
+        </tr>
+        <tr>
+          <td><strong>陈俊</strong></td>
+          <td><span class="tag-badge">门铃端音质</span></td>
+          <td style="text-align:left;">清楚，声音就是小点</td>
+        </tr>
+        <tr>
+          <td><strong>陈俊</strong></td>
+          <td><span class="tag-badge">门铃端音量</span></td>
+          <td style="text-align:left;">听者通话声音小</td>
+        </tr>
+        <tr>
+          <td><strong>于晨光</strong></td>
+          <td><span class="tag-badge">基站响应速度</span></td>
+          <td style="text-align:left;">有延迟</td>
+        </tr>
+        <tr>
+          <td><strong>于晨光</strong></td>
+          <td><span class="tag-badge">APP响应</span></td>
+          <td style="text-align:left;">延迟较高</td>
+        </tr>
+        <tr>
+          <td><strong>于晨光</strong></td>
+          <td><span class="tag-badge">APP端音量</span></td>
+          <td style="text-align:left;">声音大小正常</td>
+        </tr>
+        <tr>
+          <td><strong>王瑷珲</strong></td>
+          <td><span class="tag-badge">整体表现</span></td>
+          <td style="text-align:left;">基本上是满意的，门铃端音质效果稍微差点，交流通话也是没有什么问题。</td>
+        </tr>
+        <tr>
+          <td><strong>王瑷珲</strong></td>
+          <td><span class="tag-badge">门铃端音质</span></td>
+          <td style="text-align:left;">喇叭有点破音，回音</td>
+        </tr>
+        <tr>
+          <td><strong>黄军剑</strong></td>
+          <td><span class="tag-badge">整体表现</span></td>
+          <td style="text-align:left;">整体通话表现非常不错，声音音质很清晰，画面也很清晰</td>
+        </tr>
+        <tr>
+          <td><strong>黄军剑</strong></td>
+          <td><span class="tag-badge">门铃端音质</span></td>
+          <td style="text-align:left;">通话过程中门铃端的音质很清晰，没有杂音。</td>
+        </tr>
+        <tr>
+          <td><strong>黄军剑</strong></td>
+          <td><span class="tag-badge">APP端音质</span></td>
+          <td style="text-align:left;">手机APP端的音质也非常清晰，没有杂音。</td>
+        </tr>
+        <tr>
+          <td><strong>黄军剑</strong></td>
+          <td><span class="tag-badge">门铃端音量</span></td>
+          <td style="text-align:left;">使用默认音量，门铃端的声音大小足够。</td>
+        </tr>
+        <tr>
+          <td><strong>黄军剑</strong></td>
+          <td><span class="tag-badge">APP端音量</span></td>
+          <td style="text-align:left;">手机音量选择适中，APP端的音量大小也很适中，足够。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📋 各维度评分明细</div>
+    <table>
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>总分</th>
+          <th>整体表现</th>
+          <th>基站声音</th>
+          <th>基站响应</th>
+          <th>APP响应</th>
+          <th>门铃音质</th>
+          <th>APP音质</th>
+          <th>门铃音量</th>
+          <th>APP音量</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>孙晓明</strong></td>
+          <td class="score-high">80</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>朱君</strong></td>
+          <td class="score-high">79</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>相杰</strong></td>
+          <td class="score-high">78</td><td class="score-mid">8</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>朱彤</strong></td>
+          <td class="score-high">78</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>朱彤</strong></td>
+          <td class="score-high">78</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>黄军剑</strong></td>
+          <td class="score-high">78</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>张雷</strong></td>
+          <td class="score-high">77</td><td class="score-low">7</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>何三涛</strong></td>
+          <td class="score-high">77</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>王瑷珲</strong></td>
+          <td class="score-high">77</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>美诺</strong></td>
+          <td class="score-high">75</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-low">7</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>徐婷婷</strong></td>
+          <td class="score-mid">74</td><td class="score-low">6</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>蔡坤城</strong></td>
+          <td class="score-mid">73</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-mid">8</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">9</td>        </tr>
+        <tr>
+          <td><strong>袁飞</strong></td>
+          <td class="score-mid">71</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-mid">8</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">9</td>        </tr>
+        <tr>
+          <td><strong>魏健伟</strong></td>
+          <td class="score-mid">71</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-mid">8</td><td class="score-mid">8</td>        </tr>
+        <tr>
+          <td><strong>魏健伟</strong></td>
+          <td class="score-mid">71</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-mid">8</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-mid">8</td><td class="score-high">9</td>        </tr>
+        <tr>
+          <td><strong>周军</strong></td>
+          <td class="score-mid">70</td><td class="score-mid">8</td><td class="score-low">7</td><td class="score-high">9</td><td class="score-mid">8</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">10</td><td class="score-high">10</td>        </tr>
+        <tr>
+          <td><strong>陈俊</strong></td>
+          <td class="score-mid">70</td><td class="score-high">9</td><td class="score-low">7</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-low">6</td><td class="score-high">9</td>        </tr>
+        <tr>
+          <td><strong>吴汞</strong></td>
+          <td class="score-mid">69</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-low">6</td><td class="score-low">7</td><td class="score-high">10</td><td class="score-high">10</td><td class="score-high">9</td><td class="score-high">9</td>        </tr>
+        <tr>
+          <td><strong>夏君</strong></td>
+          <td class="score-mid">67</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-high">10</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-high">9</td>        </tr>
+        <tr>
+          <td><strong>许军州</strong></td>
+          <td class="score-mid">66</td><td class="score-mid">8</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td>        </tr>
+        <tr>
+          <td><strong>瑞子</strong></td>
+          <td class="score-low">61</td><td class="score-mid">8</td><td class="score-low">4</td><td class="score-high">9</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td>        </tr>
+        <tr>
+          <td><strong>于晨光</strong></td>
+          <td class="score-low">60</td><td class="score-mid">8</td><td class="score-low">6</td><td class="score-low">5</td><td class="score-low">5</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">9</td><td class="score-high">9</td>        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    数据来源：飞书问卷「按门铃通话」sheet(f9arKw) | 报告生成：报告分析专家 🦞 | 2026-08-10
+  </div>
+</div>
+</body>
+</html>
