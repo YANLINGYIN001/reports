@@ -9,7 +9,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; color: #333; }
 .container { max-width: 1100px; margin: 0 auto; }
-.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 28px 32px; border-radius: 12px 12px 0 0; }
+.header { background: linear-gradient(175deg, #00B050, #2BBD6E); color: #fff; padding: 28px 32px; border-radius: 12px 12px 0 0; }
 .header h1 { font-size: 24px; font-weight: 600; }
 .header .subtitle { font-size: 14px; opacity: 0.9; margin-top: 8px; }
 .summary { background: #fff; padding: 24px 32px; border-bottom: 1px solid #eee; }
@@ -19,7 +19,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .summary .orange { color: #F39C12; font-weight: 600; }
 .kpi-row { display: flex; gap: 16px; padding: 24px 32px; background: #fff; flex-wrap: wrap; }
 .kpi-card { flex: 1; min-width: 160px; background: #f8fdf9; border: 1px solid #e0f0e3; border-radius: 8px; padding: 20px; text-align: center; }
-.kpi-card .label { font-size: 13px; color: #666; margin-bottom: 8px; }
+.kpi-card .label { font-size: 17px; color: #666; margin-bottom: 8px; }
 .kpi-card .value { font-size: 28px; font-weight: 700; color: #00B050; }
 .kpi-card .sub { font-size: 12px; color: #999; margin-top: 4px; }
 .kpi-card.warning { background: #fff8f0; border-color: #f5e0b3; }
@@ -29,8 +29,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .section { background: #fff; margin-top: 16px; border-radius: 8px; padding: 24px 32px; }
 .section h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #333; border-left: 4px solid #00B050; padding-left: 12px; }
 table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
-th { background: #f8f9fa; padding: 12px 10px; text-align: center; font-size: 13px; color: #333; font-weight: 600; border-bottom: 2px solid #e0e0e0; }
-td { padding: 10px 10px; font-size: 13px; border-bottom: 1px solid #f0f0f0; text-align: center; vertical-align: top; }
+th { background: #f8f9fa; padding: 12px 10px; text-align: center; font-size: 17px; color: #333; font-weight: 600; border-bottom: 2px solid #e0e0e0; }
+td { padding: 10px 10px; font-size: 17px; border-bottom: 1px solid #f0f0f0; text-align: center; vertical-align: top; }
 tr:hover td { background: #faffff; }
 .pass { color: #00B050; font-weight: 600; }
 .fail { color: #E74C3C; font-weight: 600; }
@@ -38,7 +38,7 @@ tr:hover td { background: #faffff; }
 .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
 .abnormal-detail { background: #fef8f8; border: 1px solid #f5e0e0; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
 .abnormal-detail h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; color: #E74C3C; }
-.abnormal-detail .desc { font-size: 13px; color: #555; margin-bottom: 8px; }
+.abnormal-detail .desc { font-size: 17px; color: #555; margin-bottom: 8px; }
 .round-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 2px; }
 .round-pass { background: #e8f5e9; color: #00B050; }
 .round-fail { background: #ffebee; color: #E74C3C; }
@@ -48,29 +48,29 @@ tr:hover td { background: #faffff; }
 <div class="container">
   <div class="header">
     <h1>💾 6pro 4G门铃公测 - 插拔卡测试专项报告</h1>
-    <div class="subtitle">📅 2026-08-06 | 有效数据 17 条 | 剔除第9条（瑞子）、第17条（周军第2次）</div>
+    <div class="subtitle">📅 2026-08-10 | 有效数据 21 条 | 剔除第9条（瑞子）</div>
   </div>
 
   <div class="summary">
     <p><strong>📋 总体洞察</strong></p>
-    <p>17人完成插拔卡测试（未完成3人：夏君、吴汞、黄军剑），每轮6次测试交替进行：<span class="highlight">3轮基站不断电插拔</span>（检测声音提醒+APP存储卡状态）+ <span class="highlight">3轮基站断电重启</span>（检测存储卡状态）。<span class="highlight">13人6轮全部通过</span>，<span class="red">4人出现异常</span>，异常率23.5%。陈俊3轮异常（声音提醒及存储卡状态异常），朱彤第2次提交2轮异常（存储卡容量显示为0、无声音提醒），美诺和孙晓明各1轮偶发无声音提醒。整体插拔卡稳定性良好，断电重启后存储卡识别通过率98.0%（51轮中1轮异常）。</p>
+    <p>21人完成插拔卡测试（全部已完成），每轮6次测试交替进行：<span class="highlight">3轮基站不断电插拔</span>（检测声音提醒+APP存储卡状态）+ <span class="highlight">3轮基站断电重启</span>（检测存储卡状态）。<span class="highlight">17人6轮全部通过</span>，<span class="red">4人出现异常</span>，异常率19.0%。陈俊3轮异常（声音提醒及存储卡状态异常），朱彤第2次提交2轮异常（存储卡容量显示为0、无声音提醒），美诺和孙晓明各1轮偶发无声音提醒。整体插拔卡稳定性良好，断电重启后存储卡识别通过率95.2%（63轮中3轮异常）。</p>
   </div>
 
   <div class="kpi-row">
     <div class="kpi-card">
       <div class="label">参与人数</div>
-      <div class="value">17/20</div>
-      <div class="sub">未完成3人</div>
+      <div class="value">21</div>
+      <div class="sub">全部已完成</div>
     </div>
     <div class="kpi-card">
       <div class="label">6轮全通过</div>
-      <div class="value">13</div>
-      <div class="sub">通过率76.5%</div>
+      <div class="value">17</div>
+      <div class="sub">通过率81.0%</div>
     </div>
     <div class="kpi-card warning">
       <div class="label">异常人数</div>
       <div class="value">4</div>
-      <div class="sub">异常率23.5%</div>
+      <div class="sub">异常率19.0%</div>
     </div>
     <div class="kpi-card danger">
       <div class="label">异常总次数</div>
@@ -79,8 +79,8 @@ tr:hover td { background: #faffff; }
     </div>
     <div class="kpi-card">
       <div class="label">断电重启通过率</div>
-      <div class="value">98.0%</div>
-      <div class="sub">51轮中1轮异常</div>
+      <div class="value">95.2%</div>
+      <div class="sub">63轮中3轮异常</div>
     </div>
   </div>
 
@@ -93,12 +93,12 @@ tr:hover td { background: #faffff; }
         <tr><th>轮次</th><th>测试类型</th><th>检测项</th><th>通过</th><th>异常</th><th>通过率</th></tr>
       </thead>
       <tbody>
-        <tr><td>第1轮</td><td>插拔(不断电)</td><td>声音提醒+存储卡状态</td><td class="pass">15</td><td class="fail">2</td><td class="">88.2%</td></tr>
-        <tr><td>第2轮</td><td>断电重启</td><td>存储卡状态</td><td class="pass">17</td><td class="">0</td><td class="pass">100.0%</td></tr>
-        <tr><td>第3轮</td><td>插拔(不断电)</td><td>声音提醒+存储卡状态</td><td class="pass">15</td><td class="fail">2</td><td class="">88.2%</td></tr>
-        <tr><td>第4轮</td><td>断电重启</td><td>存储卡状态</td><td class="pass">16</td><td class="fail">1</td><td class="">94.1%</td></tr>
-        <tr><td>第5轮</td><td>插拔(不断电)</td><td>声音提醒+存储卡状态</td><td class="pass">16</td><td class="fail">1</td><td class="">94.1%</td></tr>
-        <tr><td>第6轮</td><td>断电重启</td><td>存储卡状态</td><td class="pass">17</td><td class="">0</td><td class="pass">100.0%</td></tr>
+        <tr><td>第1轮</td><td>插拔(不断电)</td><td>声音提醒+存储卡状态</td><td class="pass">37</td><td class="fail">5</td><td class="">88.1%</td></tr>
+        <tr><td>第2轮</td><td>断电重启</td><td>存储卡状态</td><td class="pass">21</td><td class="">0</td><td class="pass">100.0%</td></tr>
+        <tr><td>第3轮</td><td>插拔(不断电)</td><td>声音提醒+存储卡状态</td><td class="pass">41</td><td class="fail">1</td><td class="">97.6%</td></tr>
+        <tr><td>第4轮</td><td>断电重启</td><td>存储卡状态</td><td class="pass">20</td><td class="fail">1</td><td class="warn">95.2%</td></tr>
+        <tr><td>第5轮</td><td>插拔(不断电)</td><td>声音提醒+存储卡状态</td><td class="pass">41</td><td class="fail">1</td><td class="pass">97.6%</td></tr>
+        <tr><td>第6轮</td><td>断电重启</td><td>存储卡状态</td><td class="pass">21</td><td class="">0</td><td class="pass">100.0%</td></tr>
       </tbody>
     </table>
   </div>
@@ -147,7 +147,7 @@ tr:hover td { background: #faffff; }
 
   <!-- 20人明细表 -->
   <div class="section">
-    <h2>📋 17人6轮测试明细</h2>
+    <h2>📋 21人6轮测试明细</h2>
     <table style="font-size:12px;">
       <thead>
         <tr>
@@ -291,7 +291,7 @@ tr:hover td { background: #faffff; }
           <td class="pass">0</td><td><span class="pass">✅ 全通过</span></td>
         </tr>
         <tr>
-          <td>13</td><td style="font-weight:500">朱彤</td><td>0730</td>
+          <td>17</td><td style="font-weight:500">朱彤</td><td>0730</td>
           <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
           <td><span class="pass">✅</span></td>
           <td><span class="pass">✅</span></td><td><span class="pass">✅</span></td>
@@ -345,7 +345,7 @@ tr:hover td { background: #faffff; }
   </div>
 
   <div class="footer">
-    6pro 4G门铃公测 · 插拔卡测试专项报告 · 2026-08-06 · 数据来源：飞书问卷
+    6pro 4G门铃公测 · 插拔卡测试专项报告 · 2026-08-10（数据更新）· 数据来源：飞书问卷
   </div>
 </div>
 
@@ -364,13 +364,13 @@ chart.setOption({
   series: [
     {
       name: '通过', type: 'bar', stack: 'total',
-      data: [15, 17, 15, 16, 16, 17],
+      data: [37, 21, 41, 20, 41, 21],
       itemStyle: { color: '#00B050' },
       label: { show: true, position: 'inside', fontSize: 12 }
     },
     {
       name: '异常', type: 'bar', stack: 'total',
-      data: [2, 0, 2, 1, 1, 0],
+      data: [5, 0, 1, 1, 1, 0],
       itemStyle: { color: '#E74C3C' },
       label: { show: true, position: 'inside', fontSize: 12 }
     }
