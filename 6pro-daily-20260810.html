@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6pro 4G门铃公测 - 日常问题日报 (2026-08-10)</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; margin-bottom: 24px; }
+.header h1 { font-size: 24px; color: #00B050; margin-bottom: 8px; }
+.header .subtitle { font-size: 14px; color: #666; }
+.update-info { background: #fff; border-left: 4px solid #00B050; padding: 12px 16px; border-radius: 4px; margin-bottom: 20px; font-size: 14px; }
+.update-info strong { color: #00B050; }
+.kpi-row { display: flex; gap: 16px; margin-bottom: 24px; }
+.kpi-card { flex: 1; background: #fff; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size: 13px; color: #666; margin-bottom: 8px; }
+.kpi-card .value { font-size: 28px; font-weight: 700; color: #00B050; }
+.kpi-card .sub { font-size: 12px; color: #999; margin-top: 4px; }
+.section { background: #fff; border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size: 18px; font-weight: 600; color: #333; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #00B050; }
+.insight { background: #f0fdf4; border-left: 4px solid #00B050; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; font-size: 14px; color: #333; }
+.insight.warning { background: #fff7ed; border-left-color: #F39C12; }
+.insight.danger { background: #fef2f2; border-left-color: #E74C3C; }
+.module-title { font-size: 16px; font-weight: 600; margin: 20px 0 12px 0; padding: 8px 12px; border-radius: 4px; }
+.module-title.p0 { background: #fef2f2; color: #E74C3C; }
+.module-title.p1 { background: #fff7ed; color: #F39C12; }
+.module-title.p2 { background: #f0fdf4; color: #00B050; }
+.module-title .badge { font-size: 12px; padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+.module-title.p0 .badge { background: #E74C3C; color: #fff; }
+.module-title.p1 .badge { background: #F39C12; color: #fff; }
+.module-title.p2 .badge { background: #00B050; color: #fff; }
+.module-summary { font-size: 13px; color: #666; margin-bottom: 12px; padding: 8px 12px; background: #f9f9f9; border-radius: 4px; }
+.module-summary.danger { background: #fef2f2; color: #E74C3C; }
+.module-summary.warning { background: #fff7ed; color: #F39C12; }
+.module-summary.normal { background: #f0fdf4; color: #00B050; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+th { background: #00B050; color: #fff; padding: 10px 8px; font-size: 13px; text-align: left; }
+td { padding: 8px; font-size: 13px; border-bottom: 1px solid #eee; }
+tr:hover td { background: #f9f9f9; }
+.quote-name { color: #666; font-weight: 500; }
+.quote-text { color: #333; }
+.quote-bad { color: #E74C3C; }
+.quote-good { color: #00B050; }
+.tag-badge { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 10px; background: #e8f5e9; color: #00B050; margin-right: 4px; }
+.fw-table th { font-size: 12px; }
+.fw-table .highlight { background: #f0fdf4; }
+.fw-table .trend-new { color: #E74C3C; font-weight: 600; }
+.fw-table .trend-fixed { color: #00B050; font-weight: 600; }
+.fw-table .trend-improved { color: #00B050; }
+.fw-table .trend-continued { color: #F39C12; }
+.chart-container { width: 100%; height: 400px; margin: 16px 0; }
+.new-badge { display: inline-block; background: #E74C3C; color: #fff; font-size: 11px; padding: 1px 6px; border-radius: 8px; margin-left: 4px; }
+.footer { text-align: center; padding: 20px; font-size: 12px; color: #999; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📊 6pro 4G门铃公测 - 日常问题日报</h1>
+    <div class="subtitle">报告日期：2026-08-10 | 数据截止：2026/8/10 08:15 | 累计反馈：340条有效（361条总计）</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="label">累计有效反馈</div>
+      <div class="value">340</div>
+      <div class="sub">总计361条，忽略21条</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">本次新增</div>
+      <div class="value">14</div>
+      <div class="sub">8/7 ~ 8/10</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">参与用户</div>
+      <div class="value">20</div>
+      <div class="sub">全员参与</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">一级标签</div>
+      <div class="value">19</div>
+      <div class="sub">二级标签98个</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">💡 总体洞察</div>
+    <div class="insight danger">
+      <strong>云录误报问题持续恶化：</strong>本次14条新增中，云录相关占8条（57%），其中"画面变化误报"3条、"误报"2条、"有人误报"1条、"漏录/漏拍"1条、"云录加载失败"1条。误报类问题累计已达60条，涉及19人，是当前最突出问题。
+    </div>
+    <div class="insight warning">
+      <strong>0804固件版本反馈占比上升：</strong>新增14条中10条来自0804固件，误报和夜视切换问题在新固件上依然存在，需重点关注。
+    </div>
+    <div class="insight">
+      <strong>新问题类型出现：</strong>夜视切换不及时（有灯光下录制黑白色）、续航耗电快（基站停电后异常耗电）、云录筛选多选建议为新增反馈类型。
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🔥 本次新增 (14条)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>一级标签</th>
+          <th>二级标签</th>
+          <th>固件</th>
+          <th>问题描述</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>348</td>
+          <td>于晨光</td>
+          <td><span class="tag-badge">IQ</span></td>
+          <td>画面过曝</td>
+          <td>0804</td>
+          <td class="quote-text">光线没变化，曝光异常</td>
+        </tr>
+
+        <tr>
+          <td>349</td>
+          <td>蔡坤城</td>
+          <td><span class="tag-badge">云录</span></td>
+          <td>误报</td>
+          <td>20260804</td>
+          <td class="quote-text">没有人出现，但云录卡录录像了。这个应该是误报吧。</td>
+        </tr>
+
+        <tr>
+          <td>350</td>
+          <td>王瑷珲</td>
+          <td><span class="tag-badge">云录</span></td>
+          <td>画面变化误报</td>
+          <td>0804</td>
+          <td class="quote-text">发现7.51提示画面变化，实际有人经过，仔细看才知道有件放问口，但是下载视频显示不是这个人放的，那这...</td>
+        </tr>
+
+        <tr>
+          <td>351</td>
+          <td>许军州</td>
+          <td><span class="tag-badge">云录</span></td>
+          <td>画面变化误报</td>
+          <td>0804</td>
+          <td class="quote-text">8月7号，5：40这段时间有人在爬楼梯，实际是有人出现，但提示：画面变化；</td>
+        </tr>
+
+        <tr>
+          <td>352</td>
+          <td>朱彤</td>
+          <td><span class="tag-badge">云录</span></td>
+          <td>误报</td>
+          <td>R6PROV2-4G</td>
+          <td class="quote-text">红外夜视状态下，开流引起的误报依然存在。</td>
+        </tr>
+
+        <tr>
+          <td>353</td>
+          <td>陈俊</td>
+          <td><span class="tag-badge">卡录</span></td>
+          <td>卡录加载失败</td>
+          <td>20260804</td>
+          <td class="quote-text">卡录加载失败，退出app从新进入可以了。或许与app版本有关</td>
+        </tr>
+
+        <tr>
+          <td>354</td>
+          <td>何三涛</td>
+          <td><span class="tag-badge">续航</span></td>
+          <td>耗电快</td>
+          <td>0804</td>
+          <td class="quote-text">家停电12小时之前，门铃剩余电量为41%左右，停电12小时之后，门铃彻底0电量，耗电量极快，正常情况...</td>
+        </tr>
+
+        <tr>
+          <td>355</td>
+          <td>瑞子</td>
+          <td><span class="tag-badge">夜视切换</span></td>
+          <td>夜视切换不及时</td>
+          <td>1.0.13.201</td>
+          <td class="quote-text">;有灯光情况下 录制黑白色</td>
+        </tr>
+
+        <tr>
+          <td>356</td>
+          <td>美诺</td>
+          <td><span class="tag-badge">云录</span></td>
+          <td>漏录/漏拍</td>
+          <td>0804</td>
+          <td class="quote-text">孩子先出门没录到，记录到媳妇出门，查看云录卡录都没录到，查看卡录时只能查看12.30的记录，12.2...</td>
+        </tr>
+
+        <tr>
+          <td>357</td>
+          <td>黄军剑</td>
+          <td><span class="tag-badge">功能需求</span></td>
+          <td>云录筛选多选建议</td>
+          <td>20260804</td>
+          <td class="quote-text">云录像最下方的筛选，里面的消息内容，目前是单选。建议改为多选。</td>
+        </tr>
+
+        <tr>
+          <td>358</td>
+          <td>黄军剑</td>
+          <td><span class="tag-badge">云录</span></td>
+          <td>画面变化误报</td>
+          <td>20260730，d</td>
+          <td class="quote-text">云录像提示画面变化，查看实际无变化。时间8/9 10：53和10：54</td>
+        </tr>
+
+        <tr>
+          <td>359</td>
+          <td>相杰</td>
+          <td><span class="tag-badge">云录</span></td>
+          <td>误报</td>
+          <td>0804</td>
+          <td class="quote-text">疑似误报</td>
+        </tr>
+
+        <tr>
+          <td>360</td>
+          <td>朱彤</td>
+          <td><span class="tag-badge">云录</span></td>
+          <td>云录加载失败</td>
+          <td>R6PROV2-4G</td>
+          <td class="quote-text">云录加载不出来</td>
+        </tr>
+
+        <tr>
+          <td>361</td>
+          <td>魏健伟</td>
+          <td><span class="tag-badge">云录</span></td>
+          <td>有人误报</td>
+          <td>0804</td>
+          <td class="quote-text">出现多条误报，显示有人出现，但却没有人</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📈 累计二级标签 TOP10（按反馈人数）</div>
+    <div id="top10-chart" class="chart-container"></div>
+    <script>
+
+      var chart = echarts.init(document.getElementById('top10-chart'));
+      var data = [{"name": "画面变化误报", "user_count": 14, "msg_count": 34}, {"name": "漏录/漏拍", "user_count": 11, "msg_count": 29}, {"name": "录制延迟", "user_count": 11, "msg_count": 17}, {"name": "开流失败", "user_count": 9, "msg_count": 11}, {"name": "有人误报", "user_count": 8, "msg_count": 16}, {"name": "设置项自动重置", "user_count": 7, "msg_count": 9}, {"name": "误报", "user_count": 7, "msg_count": 10}, {"name": "耗电快", "user_count": 6, "msg_count": 9}, {"name": "固件升级失败", "user_count": 6, "msg_count": 11}, {"name": "卡录加载异常", "user_count": 6, "msg_count": 16}];
+      chart.setOption({
+        tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+        legend: { data: ['反馈人数', '反馈条数'], top: 0 },
+        grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+        xAxis: { type: 'value', name: '人/条' },
+        yAxis: { type: 'category', data: data.map(d => d.name).reverse(), axisLabel: { fontSize: 12 } },
+        series: [
+          { name: '反馈人数', type: 'bar', data: data.map(d => d.user_count).reverse(), itemStyle: { color: '#00B050' }, label: { show: true, position: 'right' } },
+          { name: '反馈条数', type: 'bar', data: data.map(d => d.msg_count).reverse(), itemStyle: { color: '#2BBD6E' }, label: { show: true, position: 'right' } }
+        ]
+      });
+    </script>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📱 固件版本问题分布对比</div>
+    <div class="insight warning">
+      <strong>0730→0804趋势：</strong>0804固件上线后，云录误报问题仍在持续，夜视切换和续航问题新增。0804版本需重点验证误报算法。
+    </div>
+    <table class="fw-table">
+      <thead>
+        <tr>
+          <th>一级标签</th>
+          <th>0710</th>
+          <th>0717</th>
+          <th class="highlight">0730</th>
+          <th>0804</th>
+          <th>趋势</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td><strong>云录</strong></td>
+          <td>47</td>
+          <td>26</td>
+          <td class="highlight">27</td>
+          <td>35</td>
+          <td><span class="trend-new">↑ 恶化</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>卡录</strong></td>
+          <td>16</td>
+          <td>8</td>
+          <td class="highlight">8</td>
+          <td>15</td>
+          <td><span class="trend-new">↑ 恶化</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>APP功能/交互</strong></td>
+          <td>23</td>
+          <td>4</td>
+          <td class="highlight">5</td>
+          <td>4</td>
+          <td><span class="trend-improved">↓ 改善</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>开流</strong></td>
+          <td>13</td>
+          <td>1</td>
+          <td class="highlight">5</td>
+          <td>1</td>
+          <td><span class="trend-improved">↓ 改善</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>IQ</strong></td>
+          <td>8</td>
+          <td>3</td>
+          <td class="highlight">4</td>
+          <td>4</td>
+          <td><span class="trend-continued">→ 持续</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>功能需求</strong></td>
+          <td>8</td>
+          <td>3</td>
+          <td class="highlight">4</td>
+          <td>1</td>
+          <td><span class="trend-improved">↓ 改善</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OTA</strong></td>
+          <td>2</td>
+          <td>5</td>
+          <td class="highlight">2</td>
+          <td>3</td>
+          <td><span class="trend-new">↑ 恶化</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>按门铃</strong></td>
+          <td>3</td>
+          <td>1</td>
+          <td class="highlight">0</td>
+          <td>6</td>
+          <td><span class="trend-new">↑ 恶化</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>续航</strong></td>
+          <td>6</td>
+          <td>0</td>
+          <td class="highlight">2</td>
+          <td>1</td>
+          <td><span class="trend-improved">↓ 改善</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>配网/安装引导</strong></td>
+          <td>7</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+
+        <tr>
+          <td><strong>夜视切换</strong></td>
+          <td>0</td>
+          <td>1</td>
+          <td class="highlight">1</td>
+          <td>4</td>
+          <td><span class="trend-new">↑ 恶化</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>其他</strong></td>
+          <td>5</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+
+        <tr>
+          <td><strong>稳定性</strong></td>
+          <td>1</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>4</td>
+          <td><span class="trend-new">↑ 恶化</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>硬件/信号</strong></td>
+          <td>2</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>1</td>
+          <td><span class="trend-new">↑ 恶化</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>开箱</strong></td>
+          <td>3</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+
+        <tr>
+          <td><strong>消息通知</strong></td>
+          <td>2</td>
+          <td>0</td>
+          <td class="highlight">1</td>
+          <td>0</td>
+          <td><span class="trend-fixed">✓ 已修复</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>包装/配件</strong></td>
+          <td>2</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+
+        <tr>
+          <td><strong>硬件设计</strong></td>
+          <td>1</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+
+        <tr>
+          <td><strong>指示灯</strong></td>
+          <td>1</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+
+      </tbody>
+    </table>
+    <div style="font-size:12px;color:#999;margin-top:8px;">0730列高亮为主对比基准，0804为最新固件版本</div>
+  </div>
+
+  <div class="section">
+    <div class="module-title p0">云录 <span class="badge">P0</span></div>
+    <div class="module-summary danger">累计135条/19人，本次新增9条。误报类问题（画面变化误报+有人误报+误报）持续高频，0804固件未改善。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">画面变化误报</span></td>
+          <td>14人（34条）<span class="new-badge">+3</span></td>
+          <td><div class="quote-text"><span class="quote-name">王瑷珲：</span>发现7.51提示画面变化，实际有人经过，仔细看才知道有件放问口，但是下载视频显示不是这个人放的，那这个件是谁放的，是否是漏录了啊，</div><div class="quote-text"><span class="quote-name">许军州：</span>8月7号，5：40这段时间有人在爬楼梯，实际是有人出现，但提示：画面变化；</div><div class="quote-text"><span class="quote-name">黄军剑：</span>云录像提示画面变化，查看实际无变化。时间8/9 10：53和10：54</div><div style="color:#999;font-size:12px;">...还有11位用户反馈</div></td>
+        </tr>
+
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">漏录/漏拍</span></td>
+          <td>11人（29条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">美诺：</span>孩子先出门没录到，记录到媳妇出门，查看云录卡录都没录到，查看卡录时只能查看12.30的记录，12.28或者之前几分钟无法播放只能看固定的几十秒？</div><div style="color:#999;font-size:12px;">...还有10位用户反馈</div></td>
+        </tr>
+
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">有人误报</span></td>
+          <td>8人（16条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">魏健伟：</span>出现多条误报，显示有人出现，但却没有人</div><div style="color:#999;font-size:12px;">...还有7位用户反馈</div></td>
+        </tr>
+
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">误报</span></td>
+          <td>7人（10条）<span class="new-badge">+3</span></td>
+          <td><div class="quote-text"><span class="quote-name">蔡坤城：</span>没有人出现，但云录卡录录像了。这个应该是误报吧。</div><div class="quote-text"><span class="quote-name">朱彤：</span>红外夜视状态下，开流引起的误报依然存在。</div><div class="quote-text"><span class="quote-name">相杰：</span>疑似误报</div><div style="color:#999;font-size:12px;">...还有4位用户反馈</div></td>
+        </tr>
+
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">云录加载失败</span></td>
+          <td>2人（2条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">朱彤：</span>云录加载不出来</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="module-title p1">卡录 <span class="badge">P1</span></div>
+    <div class="module-summary warning">累计47条/14人，本次新增1条。卡录加载失败在新固件仍有出现。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">卡录加载失败</span></td>
+          <td>2人（2条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">陈俊：</span>卡录加载失败，退出app从新进入可以了。或许与app版本有关</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="module-title p1">IQ <span class="badge">P1</span></div>
+    <div class="module-summary warning">累计19条/7人，本次新增1条。曝光异常为新反馈。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">画面过曝</span></td>
+          <td>2人（2条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">于晨光：</span>光线没变化，曝光异常</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="module-title p2">功能需求 <span class="badge">P2</span></div>
+    <div class="module-summary normal">累计16条/11人，本次新增1条。云录筛选多选建议为新需求。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>P2</td>
+          <td><span class="tag-badge">云录筛选多选建议</span></td>
+          <td>1人（1条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">黄军剑：</span>云录像最下方的筛选，里面的消息内容，目前是单选。建议改为多选。</div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="module-title p1">续航 <span class="badge">P1</span></div>
+    <div class="module-summary warning">累计9条/6人，本次新增1条。基站停电后异常耗电为新发现场景。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">耗电快</span></td>
+          <td>6人（9条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">何三涛：</span>家停电12小时之前，门铃剩余电量为41%左右，停电12小时之后，门铃彻底0电量，耗电量极快，正常情况下41%的剩余电量能用好多天，怀疑基站停电后，门铃一直试图连...</div><div style="color:#999;font-size:12px;">...还有5位用户反馈</div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="module-title p1">夜视切换 <span class="badge">P1</span></div>
+    <div class="module-summary warning">累计6条/3人，本次新增1条。有灯光下仍录制黑白色，夜视切换逻辑异常。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">夜视切换不及时</span></td>
+          <td>3人（6条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">瑞子：</span>;有灯光情况下 录制黑白色</div><div style="color:#999;font-size:12px;">...还有2位用户反馈</div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    数据来源：飞书问卷「6pro 4G门铃公测问题跟进表」| 报告生成：报告分析专家 🦞 | 2026-08-10
+  </div>
+</div>
+</body>
+</html>
