@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 4G记录仪 · 新品跟踪日报汇总</title>
+<style>
+  :root {
+    --green: #00B050; --green-light: #2BBD6E; --green-bg: #E8F8EE;
+    --dark: #1a1a1a; --gray: #666; --gray-light: #999; --gray-bg: #F5F7FA;
+    --red: #E74C3C; --orange: #F39C12; --blue: #3498DB; --border: #EAEAEA;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--gray-bg); color:var(--dark); line-height:1.6; padding:20px; }
+  .container { max-width:900px; margin:0 auto; }
+  .header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:36px 40px; margin-bottom:24px; box-shadow:0 4px 20px rgba(0,176,80,.15); }
+  .header h1 { font-size:28px; font-weight:700; margin-bottom:8px; }
+  .header .subtitle { font-size:15px; opacity:.9; }
+  .header .meta { display:flex; gap:24px; margin-top:16px; font-size:13px; opacity:.85; flex-wrap:wrap; }
+  .header .meta span::before { content:'●'; margin-right:6px; font-size:10px; }
+  .summary { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:24px; }
+  .summary-card { background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,.04); border:1px solid var(--border); }
+  .summary-num { font-size:28px; font-weight:700; color:var(--green); }
+  .summary-num.orange { color:var(--orange); } .summary-num.blue { color:var(--blue); } .summary-num.red { color:var(--red); }
+  .summary-label { font-size:12px; color:var(--gray); margin-top:4px; }
+  .section { background:#fff; border-radius:12px; padding:28px 32px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.04); border:1px solid var(--border); }
+  .section-title { font-size:18px; font-weight:700; margin-bottom:20px; padding-left:12px; border-left:4px solid var(--green); }
+  .report-list { list-style:none; }
+  .report-item { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border:1px solid var(--border); border-radius:12px; margin-bottom:12px; transition:all .2s; text-decoration:none; color:inherit; }
+  .report-item:hover { border-color:var(--green); box-shadow:0 2px 12px rgba(0,176,80,.1); transform:translateX(4px); }
+  .report-item.latest { border-color:var(--green); border-width:2px; background:var(--green-bg); }
+  .report-left { display:flex; align-items:center; gap:16px; }
+  .day-badge { width:48px; height:48px; border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; font-weight:700; color:#fff; flex-shrink:0; }
+  .day-badge .day-num { font-size:20px; line-height:1; }
+  .day-badge .day-text { font-size:9px; margin-top:2px; }
+  .report-info h3 { font-size:16px; font-weight:600; margin-bottom:4px; }
+  .report-info .report-meta { font-size:12px; color:var(--gray); }
+  .report-info .report-meta span { margin-right:12px; }
+  .report-stats { display:flex; gap:12px; font-size:12px; }
+  .stat-pill { padding:4px 12px; border-radius:10px; font-weight:600; }
+  .stat-green { background:var(--green-bg); color:var(--green); }
+  .stat-orange { background:#FFF3E0; color:var(--orange); }
+  .stat-gray { background:#F0F0F0; color:var(--gray); }
+  .stat-new { background:#FFF8E1; color:var(--orange); border:1px dashed var(--orange); }
+  .arrow { color:var(--gray-light); font-size:20px; }
+  .report-item:hover .arrow { color:var(--green); }
+  .footer { text-align:center; padding:24px; color:var(--gray-light); font-size:12px; }
+  .footer a { color:var(--green); text-decoration:none; }
+  .empty-day { display:flex; align-items:center; gap:16px; padding:16px 20px; border:1px dashed var(--border); border-radius:12px; margin-bottom:12px; opacity:.5; }
+  .empty-day .day-badge { background:var(--gray-light) !important; }
+  .empty-day .report-info h3 { color:var(--gray); }
+  @media(max-width:768px) { .summary { grid-template-columns:repeat(2,1fr); } .report-item { flex-direction:column; align-items:flex-start; gap:8px; } .report-stats { flex-wrap:wrap; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📊 T200 4G记录仪 · 新品跟踪日报汇总</h1>
+    <div class="subtitle">各渠道客服反馈跟踪 · 每工作日自动更新</div>
+    <div class="meta">
+      <span>数据来源：飞书《T200 4G记录仪新品跟踪表》</span>
+      <span>自动更新：每工作日 18:00</span>
+      <span>部署：GitHub Pages</span>
+    </div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-card"><div class="summary-num">25</div><div class="summary-label">累计反馈总数</div></div>
+    <div class="summary-card"><div class="summary-num orange">8</div><div class="summary-label">覆盖渠道数</div></div>
+    <div class="summary-card"><div class="summary-num blue">20</div><div class="summary-label">问题类型数</div></div>
+    <div class="summary-card"><div class="summary-num red">0</div><div class="summary-label">实质性缺陷</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📅 每日报告</div>
+    <div class="report-list">
+
+      <a class="report-item latest" href="t200-new-product-daily-day2.html">
+        <div class="report-left">
+          <div class="day-badge" style="background:linear-gradient(135deg,#00B050,#2BBD6E)"><div class="day-num">2</div><div class="day-text">DAY</div></div>
+          <div class="report-info">
+            <h3>Day 2 · 累计汇总报告</h3>
+            <div class="report-meta"><span>📅 2026.08.11</span><span>周期 8.3-8.10</span></div>
+          </div>
+        </div>
+        <div class="report-stats">
+          <span class="stat-green">25条</span>
+          <span class="stat-orange">+4</span>
+          <span class="stat-new">+京东自营</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a class="report-item" href="t200-new-product-daily-day1.html">
+        <div class="report-left">
+          <div class="day-badge" style="background:linear-gradient(135deg,#2BBD6E,#00B050)"><div class="day-num">1</div><div class="day-text">DAY</div></div>
+          <div class="report-info">
+            <h3>Day 1 · 首期汇总报告</h3>
+            <div class="report-meta"><span>📅 2026.08.10</span><span>周期 8.3-8.9</span></div>
+          </div>
+        </div>
+        <div class="report-stats">
+          <span class="stat-green">21条</span>
+          <span class="stat-gray">7渠道</span>
+          <span class="stat-gray">0缺陷</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>T200 4G记录仪新品跟踪日报 · 由尹燕玲-报告分析专家自动生成 🦞</p>
+    <p>每工作日 18:00 自动读取飞书最新数据并生成日报</p>
+  </div>
+</div>
+</body>
+</html>
