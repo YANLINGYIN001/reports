@@ -27,16 +27,6 @@
   .header .date { font-size: 13px; opacity: 0.75; margin-top: 8px; }
   .container { max-width: 1200px; margin: 0 auto; padding: 32px 20px 48px; }
 
-  .section-label {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-    margin: 32px 0 16px;
-    border-left: 4px solid #00B050;
-    padding-left: 12px;
-  }
-  .section-label:first-child { margin-top: 0; }
-
   .report-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -67,11 +57,30 @@
     margin-top: 12px;
     padding-top: 12px;
     border-top: 1px solid #F0F0F0;
-    flex-wrap: wrap;
   }
   .stat { font-size: 13px; color: #666; }
   .stat strong { color: #00B050; font-size: 16px; }
 
+  .report-card.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .report-card.simple {
+    border-top-color: #2BBD6E;
+  }
+  .report-card.simple .meta { color: #2BBD6E; }
+  .report-card.simple .stat strong { color: #2BBD6E; }
+
+  .daily-section {
+    margin-top: 32px;
+  }
+  .daily-section h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 16px;
+    border-left: 4px solid #00B050;
+    padding-left: 12px;
+  }
   .daily-list {
     display: flex;
     flex-wrap: wrap;
@@ -119,41 +128,37 @@
 
 <div class="header">
   <h1>🔔 门铃6pro 4G公测·报告汇总</h1>
-  <div class="sub">19人公测团队 · 开箱 / 配网 / 插拔卡 / 门铃通话 / 日常问题反馈</div>
-  <div class="date">数据截至 2026-08-10</div>
+  <div class="sub">20人公测团队 · 开箱体验 / 配网安装 / 日常问题反馈 / 插拔卡测试 / 按门铃通话</div>
+  <div class="date">数据截至 2026-08-11</div>
 </div>
 
 <div class="container">
-
-  <div class="section-label">📊 综合概况</div>
   <div class="report-grid">
+
     <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-homework-status.html">
       <div class="icon">📋</div>
       <h2>20人作业完成情况</h2>
       <div class="desc">公测团队各成员开箱、配网、插拔卡、门铃通话、日常反馈完成进度一览</div>
       <div class="stats">
-        <div class="stat">开箱 <strong>19/19</strong></div>
-        <div class="stat">配网 <strong>19/19</strong></div>
-        <div class="stat">插拔卡 <strong>19/19</strong></div>
-        <div class="stat">门铃通话 <strong>19/19</strong></div>
-        <div class="stat">日常反馈 <strong>351条</strong></div>
+        <div class="stat">开箱 <strong>20/20</strong></div>
+        <div class="stat">配网 <strong>20/20</strong></div>
+        <div class="stat">插拔卡 <strong>20/20</strong></div>
+        <div class="stat">门铃通话 <strong>20/20</strong></div>
+        <div class="stat">日常反馈 <strong>375条</strong></div>
       </div>
     </a>
-    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-daily-20260810.html">
+
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-daily-20260811.html">
       <div class="icon">📊</div>
       <h2>日常问题反馈专项报告（最新）</h2>
-      <div class="desc">340条有效反馈统计分析，二级标签TOP10，0804固件版本对比，重点问题模块</div>
+      <div class="desc">354条有效反馈统计分析，固件版本对比，各模块详细分析</div>
       <div class="stats">
-        <div class="stat">累计有效 <strong>340条</strong></div>
-        <div class="stat">本次新增 <strong>14条</strong></div>
+        <div class="stat">累计 <strong>354条</strong></div>
+        <div class="stat">本期新增 <strong>14条</strong></div>
         <div class="stat">一级标签 <strong>19个</strong></div>
-        <div class="stat">二级标签 <strong>99个</strong></div>
       </div>
     </a>
-  </div>
 
-  <div class="section-label">🔍 专项测试报告</div>
-  <div class="report-grid">
     <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-unboxing.html">
       <div class="icon">📦</div>
       <h2>开箱体验专项报告</h2>
@@ -163,6 +168,7 @@
         <div class="stat">满意度 <strong>9.5分</strong></div>
       </div>
     </a>
+
     <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-config.html">
       <div class="icon">🔧</div>
       <h2>配网安装专项报告</h2>
@@ -173,46 +179,64 @@
         <div class="stat">满意度 <strong>9.47分</strong></div>
       </div>
     </a>
+
     <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-plugcard-report.html">
       <div class="icon">💾</div>
       <h2>插拔卡测试专项报告</h2>
-      <div class="desc">3轮插拔卡测试（声音提醒、存储卡状态、断电恢复），22份样本全量明细</div>
+      <div class="desc">6轮插拔卡测试（3轮不断电+3轮断电重启），声音提醒、存储卡状态检测</div>
       <div class="stats">
-        <div class="stat">样本量 <strong>21份</strong></div>
-        <div class="stat">6轮全通过 <strong>17份(81%)</strong></div>
+        <div class="stat">参与 <strong>17人</strong></div>
+        <div class="stat">全通过 <strong>13人</strong></div>
         <div class="stat">异常 <strong>4人</strong></div>
       </div>
     </a>
+
     <a class="report-card" href="https://yanlingyin001.github.io/reports/6pro-doorbell-report.html">
       <div class="icon">🔔</div>
-      <h2>按门铃通话专项报告</h2>
-      <div class="desc">5次按门铃测试（通知响应、通话质量、APP弹窗），8维度评分，22份样本全量明细</div>
+      <h2>按门铃通话专项报告（完整版）</h2>
+      <div class="desc">21份有效样本，8维度评分明细，通知/通话响应及时性分析，用户原声，音质评估</div>
       <div class="stats">
-        <div class="stat">样本量 <strong>22份</strong></div>
-        <div class="stat">平均总分 <strong>72.7分</strong></div>
-        <div class="stat">通话成功率 <strong>100%</strong></div>
+        <div class="stat">样本量 <strong>21份</strong></div>
+        <div class="stat">满意度 <strong>8.7分</strong></div>
+        <div class="stat">通知成功率 <strong>90.5%</strong></div>
+      </div>
+    </a>
+
+    <a class="report-card simple" href="https://yanlingyin001.github.io/reports/6pro-doorbell-report-simple.html">
+      <div class="icon">📲</div>
+      <h2>按门铃通话专项报告（简版）</h2>
+      <div class="desc">核心指标速览，8维度评分柱形图，通知/通话响应分布，重点问题摘要</div>
+      <div class="stats">
+        <div class="stat">样本量 <strong>21份</strong></div>
+        <div class="stat">满意度 <strong>8.7分</strong></div>
+        <div class="stat">通话接通率 <strong>90.5%</strong></div>
       </div>
     </a>
 
   </div>
 
-  <div class="section-label">📅 每日日常问题报告归档</div>
-  <div class="daily-list">
-    <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260810.html">
-      📊 2026-08-10 <span class="date-badge">340条 · +14新增 · 0804固件对比</span>
-    </a>
-    <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260805.html">
-      📊 2026-08-05 <span class="date-badge">283条 · +16新增 · 0730版本对比</span>
-    </a>
-    <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260804.html">
-      📊 2026-08-04 <span class="date-badge">267条 · +9新增</span>
-    </a>
-    <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260803.html">
-      📊 2026-08-03 <span class="date-badge">258条 · +23新增</span>
-    </a>
-    <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260729.html">
-      📊 2026-07-29 <span class="date-badge">152条 · 首份日报</span>
-    </a>
+  <div class="daily-section">
+    <h3>📅 每日日常问题报告归档</h3>
+    <div class="daily-list">
+      <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260811.html">
+        📊 2026-08-11 <span class="date-badge">354条 · +14新增</span>
+      </a>
+      <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260806.html">
+        📊 2026-08-06 <span class="date-badge">316条 · +33新增 · 0804固件专项</span>
+      </a>
+      <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260805.html">
+        📊 2026-08-05 <span class="date-badge">283条 · +16新增 · 0730版本对比</span>
+      </a>
+      <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260804.html">
+        📊 2026-08-04 <span class="date-badge">267条 · +9新增</span>
+      </a>
+      <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260803.html">
+        📊 2026-08-03 <span class="date-badge">258条 · +23新增</span>
+      </a>
+      <a class="daily-tag" href="https://yanlingyin001.github.io/reports/6pro-daily-20260729.html">
+        📊 2026-07-29 <span class="date-badge">152条 · 首份日报</span>
+      </a>
+    </div>
   </div>
 
 </div>
