@@ -8,7 +8,7 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
-.container { max-width:960px; margin:0 auto; padding:20px; }
+.container { max-width:1000px; margin:0 auto; padding:20px; }
 .header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:30px; margin-bottom:24px; text-align:center; }
 .header h1 { font-size:24px; margin-bottom:8px; }
 .header .subtitle { font-size:14px; opacity:0.9; }
@@ -18,7 +18,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 .kpi-value { font-size:32px; font-weight:700; color:#00B050; }
 .kpi-label { font-size:13px; color:#666; margin-top:4px; }
 .kpi-sub { font-size:12px; color:#999; margin-top:2px; }
-.kpi-delta { display:inline-block; background:#00B050; color:#fff; border-radius:8px; padding:1px 8px; font-size:11px; font-weight:600; margin-left:4px; }
+.kpi-sub .delta { color:#E74C3C; font-weight:600; }
 .section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
 .section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
 .section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
@@ -28,14 +28,12 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 .insight-blue { background:#e3f2fd; border-left:4px solid #2196F3; }
 .insight-box p { font-size:14px; line-height:1.8; }
 .insight-box strong { color:#00B050; }
-.insight-orange strong { color:#E65100; }
-.insight-blue strong { color:#1565C0; }
 .channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
 .channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
 .channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
 .chart-container { width:100%; height:280px; }
 .cat-cards { display:flex; flex-wrap:wrap; gap:12px; }
-.cat-card { flex:1; min-width:140px; border-radius:10px; padding:16px; text-align:center; color:#fff; }
+.cat-card { flex:1; min-width:110px; border-radius:10px; padding:16px; text-align:center; color:#fff; }
 .cat-card .cat-icon { font-size:24px; }
 .cat-card .cat-name { font-size:13px; margin-top:4px; }
 .cat-card .cat-count { font-size:24px; font-weight:700; margin-top:4px; }
@@ -43,550 +41,446 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 .detail-table th { background:#f0f7f0; padding:10px 12px; text-align:left; font-weight:600; color:#333; border-bottom:2px solid #00B050; white-space:nowrap; }
 .detail-table td { padding:10px 12px; border-bottom:1px solid #eee; vertical-align:top; }
 .detail-table tr:hover { background:#fafafa; }
-.cat-group-header td { background:#f5f5f5; font-weight:600; color:#00B050; font-size:14px; }
 .type-badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:12px; font-weight:500; }
-.solution-text { color:#666; max-width:300px; }
-.problem-text { max-width:280px; }
+.solution-text { color:#666; max-width:280px; }
+.problem-text { max-width:260px; }
 .date-badge { color:#999; font-size:12px; white-space:nowrap; }
-.day-compare { display:flex; gap:16px; margin-bottom:20px; align-items:center; }
-.day-box { flex:1; border-radius:10px; padding:16px; text-align:center; }
-.day-old { background:#f5f5f5; }
-.day-new { background:#e8f5e9; border:2px solid #00B050; }
-.day-arrow { font-size:24px; color:#00B050; }
+.cross-table { width:100%; border-collapse:collapse; font-size:12px; margin-top:12px; }
+.cross-table th { background:#f0f7f0; padding:8px 6px; font-weight:600; border-bottom:2px solid #00B050; white-space:nowrap; }
+.cross-table td { padding:8px 6px; border-bottom:1px solid #eee; text-align:center; }
+.cross-table .ch-name { text-align:left; font-weight:500; white-space:nowrap; }
+.cross-table .ch-total { font-weight:700; color:#00B050; }
 .footer { text-align:center; padding:20px; color:#999; font-size:12px; }
 @media (max-width:768px) {
-.kpi-card { min-width:140px; }
-.cat-card { min-width:100px; }
-.detail-table { font-size:12px; }
-.detail-table th, .detail-table td { padding:8px 6px; }
-.solution-text, .problem-text { max-width:none; }
+  .kpi-card { min-width:140px; }
+  .cat-card { min-width:100px; }
+  .detail-table { font-size:12px; }
+  .detail-table th, .detail-table td { padding:8px 6px; }
+  .solution-text, .problem-text { max-width:none; }
+  .cross-table { font-size:10px; }
 }
 </style>
 </head>
 <body>
 <div class="container">
-
 <div class="header">
-<h1>🚗 T200 4G记录仪 · 新品跟踪反馈报告</h1>
-<div class="subtitle">Day 3 累计汇总 | 数据周期 2026.08.04 - 2026.08.12</div>
-<div class="date-range">数据来源：飞书表格「用户反馈问题汇总」 | 更新时间：2026-08-12 18:00</div>
+  <h1>🚗 T200 4G记录仪 · 新品跟踪反馈报告</h1>
+  <div class="subtitle">Day 3 累计汇总 | 数据周期 2026.08.04 - 2026.08.12</div>
+  <div class="date-range">数据来源：飞书表格「用户反馈问题汇总」 | 更新时间：2026-08-12 18:27</div>
 </div>
 
-<!-- Day对比 -->
-<div class="section">
-<div class="section-title">Day对比</div>
-<div style="display:flex;gap:16px;margin-bottom:20px;">
-<div style="flex:1;background:#f5f5f5;border-radius:10px;padding:16px;text-align:center;">
-<div style="font-size:14px;color:#666;margin-bottom:4px;">Day 2 (8.3-8.10)</div>
-<div style="font-size:28px;font-weight:700;color:#999;">25</div>
-<div style="font-size:12px;color:#999;">条反馈</div>
-</div>
-<div style="display:flex;align-items:center;font-size:24px;color:#00B050;">→</div>
-<div style="flex:1;background:#e8f5e9;border-radius:10px;padding:16px;text-align:center;border:2px solid #00B050;">
-<div style="font-size:14px;color:#00B050;margin-bottom:4px;">Day 3 (8.3-8.12) <span style="background:#00B050;color:#fff;padding:1px 6px;border-radius:8px;font-size:11px;">+20</span></div>
-<div style="font-size:28px;font-weight:700;color:#00B050;">45</div>
-<div style="font-size:12px;color:#666;">条反馈</div>
-</div>
-</div>
-</div>
-
-<!-- KPI -->
 <div class="kpi-row">
-<div class="kpi-card">
-<div class="kpi-value">45</div>
-<div class="kpi-label">反馈问题总数</div>
-<div class="kpi-sub">较Day2 <span class="kpi-delta">+20</span></div>
-</div>
-<div class="kpi-card">
-<div class="kpi-value">8</div>
-<div class="kpi-label">覆盖渠道数</div>
-<div class="kpi-sub">含3条渠道聚合数据</div>
-</div>
-<div class="kpi-card">
-<div class="kpi-value">24</div>
-<div class="kpi-label">问题类型数</div>
-<div class="kpi-sub">较Day2 <span class="kpi-delta">+3</span></div>
-</div>
-<div class="kpi-card">
-<div class="kpi-value" style="color:#E74C3C">1</div>
-<div class="kpi-label">实质性缺陷</div>
-<div class="kpi-sub">定位不显示-ACC off</div>
-</div>
+  <div class="kpi-card"><div class="kpi-value">45</div><div class="kpi-label">反馈问题总数</div><div class="kpi-sub">较Day2 <span class="delta">+20</span>条</div></div>
+  <div class="kpi-card"><div class="kpi-value">8</div><div class="kpi-label">覆盖渠道数</div><div class="kpi-sub">含3条渠道聚合数据</div></div>
+  <div class="kpi-card"><div class="kpi-value">25</div><div class="kpi-label">问题类型数</div><div class="kpi-sub">新增<span class="delta">+1</span>类（分辨率）</div></div>
+  <div class="kpi-card"><div class="kpi-value" style="color:#E74C3C">1</div><div class="kpi-label">实质性缺陷</div><div class="kpi-sub">定位不显示-ACC off</div></div>
 </div>
 
-<!-- 核心洞察 -->
 <div class="section">
-<div class="section-title">核心洞察</div>
-<div class="insight-box insight-green">
-<p><strong>安装相关占比持续攀升（15条/36%）</strong>：8/12单日新增20条反馈中有12条涉及安装问题（是否包安装7条、降压线安装2条、镜头调节2条、到店安装1条），<strong>有赞渠道独占11条</strong>。用户高频追问"包安装吗""好安装吗""怎么安装"，说明商品页安装信息不够醒目。<strong>建议有赞详情页首图增加"自装返40元"醒目标签+安装视频二维码</strong>。</p>
-</div>
-<div class="insight-box insight-orange">
-<p><strong>8/12有赞渠道爆发式增长（20条/日）</strong>：全天新增20条反馈全部来自8/12，其中有赞17条（85%），问题类型高度分散但以安装咨询为主导。<strong>推测有赞渠道进行了推广投放或直播带货</strong>，建议核实流量来源，并准备标准化客服话术（安装指引+流量说明+供电方式）应对后续咨询高峰。</p>
-</div>
-<div class="insight-box insight-blue">
-<p><strong>费用/套餐咨询升至6条（+2）</strong>：新增"终身免流量吗""月月交费吗"等问题，反映用户对4G流量收费模式普遍困惑。当前客服回复"首年免费次年30元/年"的信息未在商品页充分展示，<strong>建议在所有渠道商品详情页增加"4G流量说明"独立模块</strong>。</p>
-</div>
+  <div class="section-title">核心洞察</div>
+  <div class="insight-box insight-green">
+    <p><strong>安装咨询占比最高且高度集中在有赞渠道</strong>：安装类问题共15条（占33%），其中有赞14条、京东自营1条，天猫系（官旗/车旗/车品）和小红书<strong>零安装咨询</strong>。8/12单日新增20条中12条为安装类，全部来自有赞。"是否包安装"被问及11次，是出现频次最高的问题类型。客服统一话术为"不包安装，自行安装提供凭证返40元"。</p>
+  </div>
+  <div class="insight-box insight-orange">
+    <p><strong>8/12有赞渠道单日反馈激增至18条</strong>，占该渠道总量的67%（18/27）。问题类型集中在：是否包安装（9条）、4G流量收费咨询（3条）、供电方式（1条）、功能咨询（3条）、产品规格（2条）。此前单日最高仅6条，8/12出现明显峰值，建议核查有赞渠道当日是否有推广投放。</p>
+  </div>
+  <div class="insight-box insight-blue">
+    <p><strong>4G流量收费咨询新增3条，均来自8/12有赞渠道</strong>：用户分别问"要月月交费吗""是终身免流量的吗""终身免费流量是吗"，客服统一回复"流量终身免费不限量，没有套餐费"。该问题在8/12集中出现，建议关注是否有竞品或用户讨论引发了流量费用的疑虑。</p>
+  </div>
 </div>
 
-<!-- 渠道分布 -->
 <div class="section">
-<div class="section-title">渠道反馈分布</div>
-<div class="channel-tags">
-<span class="channel-tag" style="">有赞<span class="count">27</span></span>
-<span class="channel-tag" style="">天猫官旗<span class="count">5</span></span>
-<span class="channel-tag" style="">小红书<span class="count">4</span></span>
-<span class="channel-tag" style="border:2px dashed #F39C12;">京东自营<span class="count">4</span></span>
-<span class="channel-tag" style="">天猫车旗<span class="count">2</span></span>
-<span class="channel-tag" style="">京东23单<span class="count">1</span></span>
-<span class="channel-tag" style="">抖音 8个问题<span class="count">1</span></span>
-<span class="channel-tag" style="">天猫车品<span class="count">1</span></span>
-
+  <div class="section-title">渠道反馈分布</div>
+  <div class="channel-tags">
+    <span class="channel-tag">有赞<span class="count">27</span></span>
+    <span class="channel-tag">天猫官旗<span class="count">5</span></span>
+    <span class="channel-tag">小红书<span class="count">4</span></span>
+    <span class="channel-tag">京东自营<span class="count">4</span></span>
+    <span class="channel-tag">天猫车旗<span class="count">2</span></span>
+    <span class="channel-tag">京东23单<span class="count">1</span></span>
+    <span class="channel-tag">抖音 8个问题<span class="count">1</span></span>
+    <span class="channel-tag">天猫车品<span class="count">1</span></span>
+  </div>
+  <div id="chart-channel" class="chart-container"></div>
 </div>
-<div id="chart-channel" class="chart-container"></div>
-</div>
 
-<!-- 问题分类 -->
 <div class="section">
-<div class="section-title">问题主题分类</div>
-<div class="cat-cards">
-<div class="cat-card" style="background:#00B050"><div class="cat-icon">🔧</div><div class="cat-name">安装相关</div><div class="cat-count">15</div></div>
-<div class="cat-card" style="background:#2BBD6E"><div class="cat-icon">🔋</div><div class="cat-name">供电/电池</div><div class="cat-count">6</div></div>
-<div class="cat-card" style="background:#F39C12"><div class="cat-icon">🅿️</div><div class="cat-name">停车/监控</div><div class="cat-count">6</div></div>
-<div class="cat-card" style="background:#3498DB"><div class="cat-icon">💡</div><div class="cat-name">功能咨询</div><div class="cat-count">5</div></div>
-<div class="cat-card" style="background:#9B59B6"><div class="cat-icon">💰</div><div class="cat-name">费用/套餐</div><div class="cat-count">6</div></div>
-<div class="cat-card" style="background:#7F8C8D"><div class="cat-icon">📐</div><div class="cat-name">产品规格</div><div class="cat-count">4</div></div>
-
+  <div class="section-title">问题主题分类</div>
+  <div class="cat-cards">
+    <div class="cat-card" style="background:#00B050"><div class="cat-icon">🔧</div><div class="cat-name">安装相关</div><div class="cat-count">15</div></div>
+    <div class="cat-card" style="background:#2BBD6E"><div class="cat-icon">🔋</div><div class="cat-name">供电/电池</div><div class="cat-count">6</div></div>
+    <div class="cat-card" style="background:#F39C12"><div class="cat-icon">🅿️</div><div class="cat-name">停车/监控</div><div class="cat-count">6</div></div>
+    <div class="cat-card" style="background:#3498DB"><div class="cat-icon">💡</div><div class="cat-name">功能咨询</div><div class="cat-count">6</div></div>
+    <div class="cat-card" style="background:#9B59B6"><div class="cat-icon">💰</div><div class="cat-name">费用/套餐</div><div class="cat-count">6</div></div>
+    <div class="cat-card" style="background:#7F8C8D"><div class="cat-icon">📐</div><div class="cat-name">产品规格</div><div class="cat-count">2</div></div>
+    <div class="cat-card" style="background:#95A5A6"><div class="cat-icon">📊</div><div class="cat-name">渠道聚合</div><div class="cat-count">3</div></div>
+    <div class="cat-card" style="background:#BDC3C7"><div class="cat-icon">❓</div><div class="cat-name">其他</div><div class="cat-count">1</div></div>
+  </div>
+  <div id="chart-category" class="chart-container" style="margin-top:16px;"></div>
 </div>
-<div id="chart-category" class="chart-container" style="margin-top:16px;"></div>
-</div>
 
-<!-- 分类明细 -->
 <div class="section">
-<div class="section-title">分类反馈明细（累计42条明细 + 3条渠道聚合）</div>
-<table class="detail-table">
-<thead>
-<tr>
-<th>大类</th>
-<th>问题类型</th>
-<th>渠道</th>
-<th>日期</th>
-<th>用户问题</th>
-<th>客服方案</th>
-</tr>
-</thead>
-<tbody>
-<tr class="cat-group-header"><td style="">🔧 安装相关</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr style="">
-<td></td>
+  <div class="section-title">渠道 × 问题大类 交叉分析</div>
+  <table class="cross-table">
+    <thead><tr><th>渠道</th><th>合计</th><th>安装</th><th>供电</th><th>停车/监控</th><th>功能</th><th>费用</th><th>规格</th><th>聚合</th><th>其他</th></tr></thead>
+    <tbody><tr><td class="ch-name">有赞</td><td class="ch-total">27</td><td>14</td><td>3</td><td>2</td><td>4</td><td>3</td><td>1</td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td></tr><tr><td class="ch-name">天猫官旗</td><td class="ch-total">5</td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td>1</td><td>2</td><td>1</td><td><span style="color:#ddd">·</span></td><td>1</td></tr><tr><td class="ch-name">小红书</td><td class="ch-total">4</td><td><span style="color:#ddd">·</span></td><td>1</td><td>2</td><td><span style="color:#ddd">·</span></td><td>1</td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td></tr><tr><td class="ch-name">京东自营</td><td class="ch-total">4</td><td>1</td><td>1</td><td>1</td><td>1</td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td></tr><tr><td class="ch-name">天猫车旗</td><td class="ch-total">2</td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td>1</td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td>1</td><td><span style="color:#ddd">·</span></td></tr><tr><td class="ch-name">京东23单</td><td class="ch-total">1</td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td>1</td><td><span style="color:#ddd">·</span></td></tr><tr><td class="ch-name">抖音 8个问题</td><td class="ch-total">1</td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td>1</td><td><span style="color:#ddd">·</span></td></tr><tr><td class="ch-name">天猫车品</td><td class="ch-total">1</td><td><span style="color:#ddd">·</span></td><td>1</td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td><td><span style="color:#ddd">·</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">分类反馈明细（8/12新增行黄色高亮）</div>
+  <table class="detail-table">
+    <thead><tr><th>大类</th><th>问题类型</th><th>渠道</th><th>日期</th><th>用户问题</th><th>客服方案</th></tr></thead>
+    <tbody><tr>
+<td><td style="color:#00B050;font-weight:600">🔧 安装相关</td></td>
 <td><span class="type-badge" style="background:#00B05020;color:#00B050">镜头调节咨询</span></td>
 <td>有赞</td>
 <td><span class="date-badge">08/04</span></td>
 <td class="problem-text">你好，镜头能调节吗</td>
 <td class="solution-text">可以微调一下的</td>
-</tr>
-<tr style="">
-<td></td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#00B05020;color:#00B050">降压线安装咨询</span></td>
 <td>有赞</td>
 <td><span class="date-badge">08/05</span></td>
-<td class="problem-text">1、怎么安装
-2、24小时监控吗
-</td>
-<td class="solution-text">1、T2004G记录仪安装 https://weixin.qq.com/sph/AWZoSD7ugp
-2、搭配降压线设备支持24小时的停车监控的</td>
-</tr>
-<tr style="">
-<td></td>
+<td class="problem-text">1、怎么安装 2、24小时监控吗</td>
+<td class="solution-text">发送安装视频链接；搭配降压线支持24h停车监控</td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span></td>
 <td>有赞</td>
 <td><span class="date-badge">08/07</span></td>
 <td class="problem-text">买来有地方装吗</td>
-<td class="solution-text">亲亲目前下单T200 4G记录仪，自行安装后提供安装凭证可以原路返40元哟~</td>
-</tr>
-<tr style="">
-<td></td>
+<td class="solution-text">自行安装后提供安装凭证可原路返40元</td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span></td>
 <td>有赞</td>
 <td><span class="date-badge">08/07</span></td>
 <td class="problem-text">负责安装吗</td>
-<td class="solution-text">我们目前不提供安装服务
-等您签收安装后可以联系客服退40元作为安装费。</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span></td>
+<td class="solution-text">不提供安装服务，签收安装后联系客服退40元作为安装费</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">包安装？</td>
-<td class="solution-text">设备不包安装哦亲亲，您可以参考安装视频自行安装
-T2004G记录仪安装 https://weixin.qq.com/sph/AWZoSD7ugp
-如果无法自行安装的话 建议您可以到线下安装店铺安装呢  目前下单T200 4G记录仪，自行安装后提供安装支付凭证可以原路返40元哟</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span class="type-badge" style="background:#00B05020;color:#00B050">降压线安装咨询</span></td>
+<td class="solution-text">不包安装，可参考安装视频自行安装或到线下店铺安装</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#00B05020;color:#00B050">降压线安装咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>京东自营</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">降压线如何安装</td>
 <td class="solution-text">已发送安装视频</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span class="type-badge" style="background:#00B05020;color:#00B050">镜头调节咨询</span></td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#00B05020;color:#00B050">镜头调节咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">可以360度监控吗</td>
-<td class="solution-text">不支持哦，这款设备只有一个摄像头的</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span></td>
+<td class="solution-text">不支持，这款设备只有一个摄像头</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">自己安装吗</td>
-<td class="solution-text">设备是不包安装的，您自己安装可以参考一下安装视频   T2004G记录仪安装 https://weixin.qq.com/sph/AWZoSD7ugp
-如果无法自行安装的话 建议您可以到线下安装店铺安装呢  目前下单T200 4G记录仪，自行安装后提供安装支付凭证可以原路返40元哟</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span style="color:#ccc">未分类</span></td>
+<td class="solution-text">不包安装，可参考安装视频或到线下店铺安装</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">到哪里安装，怎么收费</td>
-<td class="solution-text">您可以自行安装，可以参考一下安装视频   T2004G记录仪安装 https://weixin.qq.com/sph/AWZoSD7ugp，也可以到线下店铺安装，安装后提供支付凭证可以原路返40元</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span style="color:#ccc">未分类</span></td>
+<td class="solution-text">可自行安装参考视频，也可到线下店铺安装，提供安装支付凭证可返40元</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">线下到店安装怎么操作</td>
-<td class="solution-text">您签收后安装了提供下安装支付的记录联系客服，直接退您40元安装费，自己找师傅装一样省心！</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span style="color:#ccc">未分类</span></td>
+<td class="solution-text">签收后提供安装支付记录联系客服，直接退40元安装费</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">这个安装是怎么弄？</td>
-<td class="solution-text">您可以自行安装，可以参考一下安装视频   T2004G记录仪安装 https://weixin.qq.com/sph/AWZoSD7ugp，也可以到线下店铺安装，安装后提供支付凭证可以原路返40元</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span style="color:#ccc">未分类</span></td>
+<td class="solution-text">可参考安装视频自行安装，也可到线下店铺安装</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">这个要专业人士安装吗</td>
-<td class="solution-text">设备标配是降压线，建议是到安装店铺安装的呢
-目前下单T200 4G记录仪，自行安装后提供安装支付凭证可以原路返40元哟，有需要可以下单呢~</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span style="color:#ccc">未分类</span></td>
+<td class="solution-text">建议到安装店铺安装，自行安装提供凭证可返40元</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">包安装么</td>
-<td class="solution-text">我们T200不提供安装服务哟，等您签收安装后可以联系客服退40元作为安装费</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span style="color:#ccc">未分类</span></td>
+<td class="solution-text">T200不提供安装服务，签收安装后联系客服退40元作为安装费</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">没有免费安装吗</td>
-<td class="solution-text">设备是不包安装的，您签收后安装了提供下安装支付的记录联系客服，直接退您40元安装费，自己找师傅装一样省心！</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span style="color:#ccc">未分类</span></td>
+<td class="solution-text">不包安装，签收后提供安装支付凭证可返40元安装费</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#00B05020;color:#00B050">是否包安装咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">好安装吗</td>
-<td class="solution-text">T2004G记录仪安装 https://weixin.qq.com/sph/AWZoSD7ugp，您可以参考一下安装视频哦</td>
-</tr>
-<tr class="cat-group-header"><td style="">🔋 供电/电池</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr style="">
-<td></td>
+<td class="solution-text">可参考安装视频</td>
+</tr><tr>
+<td><td style="color:#2BBD6E;font-weight:600">🔋 供电/电池</td></td>
+<td><span class="type-badge" style="background:#2BBD6E20;color:#2BBD6E">是否需要充电咨询</span></td>
+<td>小红书</td>
+<td><span class="date-badge">08/04</span></td>
+<td class="problem-text">用充电吗</td>
+<td class="solution-text">需要插电，有两种接线方式：点烟器/USB或降压线接保险盒</td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#2BBD6E20;color:#2BBD6E">是否支持车充供电</span></td>
 <td>天猫车品</td>
 <td><span class="date-badge"><span style="color:#ccc">—</span></span></td>
 <td class="problem-text">不能车充或者USB电源线取电吗</td>
 <td class="solution-text"><span style="color:#ccc">—</span></td>
-</tr>
-<tr style="">
-<td></td>
-<td><span class="type-badge" style="background:#2BBD6E20;color:#2BBD6E">是否需要充电咨询</span></td>
-<td>小红书</td>
-<td><span class="date-badge">08/04</span></td>
-<td class="problem-text">用充电吗</td>
-<td class="solution-text">需要插电的亲,我们记录仪有两种接线方式：
-①标配电源线接点烟器/USB接口，熄火后断电停止工作；
-②降压线接保险盒，熄火后也支持24h停车监控~
-您可以参考下哦~</td>
-</tr>
-<tr style="">
-<td></td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#2BBD6E20;color:#2BBD6E">是否自带电池</span></td>
 <td>有赞</td>
 <td><span class="date-badge">08/05</span></td>
 <td class="problem-text">这款是自带电池的</td>
 <td class="solution-text">机身不带电池</td>
-</tr>
-<tr style="">
-<td></td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#2BBD6E20;color:#2BBD6E">内置电池咨询</span></td>
 <td>有赞</td>
 <td><span class="date-badge">08/07</span></td>
 <td class="problem-text">有内置电池吗？</td>
-<td class="solution-text">此款设备是没有内置电池的</td>
-</tr>
-<tr style="">
-<td></td>
+<td class="solution-text">此款设备没有内置电池</td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#2BBD6E20;color:#2BBD6E">车充和降压线差异咨询</span></td>
 <td>京东自营</td>
 <td><span class="date-badge">08/10</span></td>
 <td class="problem-text">咨询车充模式和降压线模式的区别</td>
-<td class="solution-text">您好，如果您需要车辆停驶后使用停车录像、哨兵远程监控功能，建议搭配原装降压线接线使用。
-仅使用车充或其他USB供电，设备不带电池，车辆熄火后设备会断电关机，远程哨兵监控功能将无法使用。T200 机型标配降压线，可直接使用，保障该功能正常运行</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span class="type-badge" style="background:#2BBD6E20;color:#2BBD6E">电瓶供电咨询</span></td>
+<td class="solution-text">降压线支持停车录像/哨兵远程监控；车充/USB供电熄火后断电关机</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#2BBD6E20;color:#2BBD6E">电瓶供电咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">你好请问这个是插电瓶吗</td>
-<td class="solution-text">亲亲设备标配是降压线 是需要接在车辆保险盒上的呢</td>
-</tr>
-<tr class="cat-group-header"><td style="">🅿️ 停车/监控</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr style="">
-<td></td>
+<td class="solution-text">设备标配降压线，需接车辆保险盒</td>
+</tr><tr>
+<td><td style="color:#F39C12;font-weight:600">🅿️ 停车/监控</td></td>
 <td><span class="type-badge" style="background:#F39C1220;color:#F39C12">停车是否录像咨询</span></td>
 <td>小红书</td>
 <td><span class="date-badge">08/04</span></td>
-<td class="problem-text">这个车停着也能录像吗？
-降压线是什么？</td>
-<td class="solution-text">亲亲，记录仪支持24h停车监控呢，需要搭配降压线使用哦~
-降压线是从保险盒接线的，带有降压保护的，保护电瓶的功能，搭配降压线可实现24h停车监控哦~</td>
-</tr>
-<tr style="">
-<td></td>
+<td class="problem-text">这个车停着也能录像吗？降压线是什么？</td>
+<td class="solution-text">记录仪支持24h停车监控，需要搭配降压线使用，降压线从保险盒接线带降压保护</td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#F39C1220;color:#F39C12">地库信号弱对哨兵模式影响</span></td>
 <td>天猫车旗</td>
 <td><span class="date-badge">08/05</span></td>
-<td class="problem-text">你好  地库没信号 产品哨兵模式还好用吗</td>
+<td class="problem-text">地库没信号，产品哨兵模式还好用吗</td>
 <td class="solution-text"><span style="color:#ccc">—</span></td>
-</tr>
-<tr style="">
-<td></td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#F39C1220;color:#F39C12">停车监控咨询</span></td>
 <td>有赞</td>
 <td><span class="date-badge">08/07</span></td>
 <td class="problem-text">停车了怎么接电</td>
-<td class="solution-text">此款设备是接降压线的，通过您车辆的保险盒里面接电的</td>
-</tr>
-<tr style="">
-<td></td>
+<td class="solution-text">接降压线，通过车辆保险盒接电</td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#F39C1220;color:#F39C12">哨兵模式待机时长咨询</span></td>
 <td>小红书</td>
 <td><span class="date-badge">08/07</span></td>
 <td class="problem-text">哨兵模式待机多久</td>
-<td class="solution-text">设备哨兵功能需要搭配降压线，可以设置哨兵模式最长24小时</td>
-</tr>
-<tr style="">
-<td></td>
+<td class="solution-text">需要搭配降压线，可设置最长24小时</td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#F39C1220;color:#F39C12">定位不显示-ACC off</span></td>
 <td>京东自营</td>
 <td><span class="date-badge">08/10</span></td>
 <td class="problem-text">定位不显示</td>
-<td class="solution-text">小主，别着急～刚到手的T200定位没显示，通常和供电有关，您先试试这两步： 1、如果连接是点烟器，记得在APP里把供电模式改成“车充供电”哦； 2、麻烦再看一眼实时画面右下角的水印，显示“ACC ON”才算正常启动。 定位是自动获取的，需要有一定间隔时间上报更新定位数据～</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span class="type-badge" style="background:#F39C1220;color:#F39C12">停车监控咨询</span></td>
+<td class="solution-text">和供电有关，需在APP把供电模式改成车充供电，查看水印是否显示ACC ON</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#F39C1220;color:#F39C12">停车监控咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
-<td class="problem-text">这款记录仪停车也能监控啊，这个电从哪来呀？</td>
-<td class="solution-text">设备标配了降压线，支持降压线接保险盒供电的亲亲</td>
-</tr>
-<tr class="cat-group-header"><td style="">💡 功能咨询</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr style="">
-<td></td>
+<td><span class="date-badge">08/12</span></td>
+<td class="problem-text">停车也能监控，电从哪来？</td>
+<td class="solution-text">标配降压线，支持接保险盒供电</td>
+</tr><tr>
+<td><td style="color:#3498DB;font-weight:600">💡 功能咨询</td></td>
 <td><span class="type-badge" style="background:#3498DB20;color:#3498DB">以旧换新咨询</span></td>
 <td>有赞</td>
 <td><span class="date-badge">08/05</span></td>
 <td class="problem-text">以旧换新</td>
-<td class="solution-text">您好360 4G哨兵记录仪T200支持全品牌旧记录仪旧机换新！
-请您提供下旧记录仪照片或订单截图，审核后我将为您发放30元大额换新优惠券~</td>
-</tr>
-<tr style="">
-<td></td>
+<td class="solution-text">支持全品牌旧机换新，提供旧机照片或订单截图可发30元换新优惠券</td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#3498DB20;color:#3498DB">远程查看咨询</span></td>
 <td>有赞</td>
 <td><span class="date-badge">08/07</span></td>
 <td class="problem-text">T200好像有远程监控功能</td>
-<td class="solution-text">搭配降压线使用是可以实现的哟</td>
-</tr>
-<tr style="">
-<td></td>
+<td class="solution-text">搭配降压线使用是可以实现的</td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#3498DB20;color:#3498DB">国外使用咨询</span></td>
 <td>天猫官旗</td>
 <td><span class="date-badge">08/10</span></td>
-<td class="problem-text">那如果车子开到国外以后没有4G信号了，那机器还在正常录制吗？的内容我怎么能查看呢？</td>
-<td class="solution-text">亲亲，咱们家产品支持中国大陆地区使用，港澳台及海外地区因网络限制等原因无法使用哈，不建议购买哦</td>
-</tr>
-<tr style="">
-<td></td>
+<td class="problem-text">车子开到国外没有4G信号，机器还能录制吗？内容怎么查看？</td>
+<td class="solution-text">支持中国大陆地区使用，港澳台及海外因网络限制无法使用</td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#3498DB20;color:#3498DB">是否有后录咨询</span></td>
 <td>京东自营</td>
 <td><span class="date-badge">08/10</span></td>
-<td class="problem-text">咨询是是否是前后双录</td>
-<td class="solution-text">告知是单摄 没有后录</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span class="type-badge" style="background:#3498DB20;color:#3498DB">远程查看咨询</span></td>
+<td class="problem-text">咨询是否前后双录</td>
+<td class="solution-text">告知是单摄，没有后录</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#3498DB20;color:#3498DB">远程查看咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">这款可以远程操作吗？</td>
 <td class="solution-text">可以的</td>
-</tr>
-<tr class="cat-group-header"><td style="">💰 费用/套餐</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr style="">
-<td></td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#3498DB20;color:#3498DB">摄像头数量咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
+<td>有赞</td>
+<td><span class="date-badge">08/12</span></td>
+<td class="problem-text">这个有几个摄像头</td>
+<td class="solution-text">这款设备只有一个摄像头</td>
+</tr><tr>
+<td><td style="color:#9B59B6;font-weight:600">💰 费用/套餐</td></td>
 <td><span class="type-badge" style="background:#9B59B620;color:#9B59B6">4G流量是否收费咨询</span></td>
 <td>小红书</td>
 <td><span class="date-badge">08/04</span></td>
 <td class="problem-text">这个4g需要流量费用吗</td>
 <td class="solution-text">这款带终身免费不限流量的哦，无需额外购买流量呢~，没有套餐费的</td>
-</tr>
-<tr style="">
-<td></td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#9B59B620;color:#9B59B6">是否有其他费用咨询</span></td>
 <td>天猫官旗</td>
 <td><span class="date-badge">08/05</span></td>
 <td class="problem-text">记录仪如果买了还需要什么其他费用吗</td>
-<td class="solution-text">付费的内容有行车轨迹回放，远程视频回放以及下载，云存储，另外停车碰撞通知以及哨兵监测付费是视频</td>
-</tr>
-<tr style="">
-<td></td>
+<td class="solution-text">付费内容有行车轨迹回放、远程视频回放及下载、云存储，停车碰撞通知及哨兵监测付费是视频</td>
+</tr><tr>
+<td><td></td></td>
 <td><span class="type-badge" style="background:#9B59B620;color:#9B59B6">是否有512G套餐咨询</span></td>
 <td>天猫官旗</td>
 <td><span class="date-badge">08/05</span></td>
 <td class="problem-text">没有512g？</td>
 <td class="solution-text">暂时没有512套餐的呢</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span class="type-badge" style="background:#9B59B620;color:#9B59B6">流量付费咨询；镜头调节咨询</span></td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#9B59B620;color:#9B59B6">4G流量是否收费咨询；镜头调节咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">要月月交费吗？可以转动摄像头？</td>
-<td class="solution-text">流量是终身免费不限量的呢，设备支架位置可以手动微调转动的</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span style="color:#ccc">未分类</span></td>
+<td class="solution-text">流量终身免费不限量，设备支架位置可手动微调转动</td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#9B59B620;color:#9B59B6">4G流量是否收费咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">是终身免流量的吗</td>
 <td class="solution-text">流量是终身免费不限量的</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span style="color:#ccc">未分类</span></td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#9B59B620;color:#9B59B6">4G流量是否收费咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">终身免费流量是吗？</td>
-<td class="solution-text">是的，这款带终身免费不限流量的哦，无需额外购买流量呢~，没有套餐费的</td>
-</tr>
-<tr class="cat-group-header"><td style="border:2px dashed #F39C12;">📐 产品规格</td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr style="background:#fffde7;">
-<td></td>
+<td class="solution-text">是的，终身免费不限流量，无需额外购买流量，没有套餐费</td>
+</tr><tr>
+<td><td style="color:#7F8C8D;font-weight:600">📐 产品规格</td></td>
 <td><span class="type-badge" style="background:#7F8C8D20;color:#7F8C8D">产品尺寸咨询</span></td>
 <td>天猫官旗</td>
-<td><span class="date-badge">08/11 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/11</span></td>
 <td class="problem-text">咨询产品尺寸</td>
 <td class="solution-text">提供了产品图供参考</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span class="type-badge" style="background:#7F8C8D20;color:#7F8C8D">摄像头数量咨询</span></td>
+</tr><tr style="background:#fffde7">
+<td><td></td></td>
+<td><span class="type-badge" style="background:#7F8C8D20;color:#7F8C8D">分辨率大小咨询</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
-<td class="problem-text">这个有几个摄像头</td>
-<td class="solution-text">这款设备只有一个摄像头</td>
-</tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span style="color:#ccc">未分类</span></td>
+<td><span class="date-badge">08/12</span></td>
+<td class="problem-text">这款行车记录仪是4k的？还是2k的？</td>
+<td class="solution-text">分辨率是2K/1440P</td>
+</tr><tr>
+<td><td style="color:#95A5A6;font-weight:600">📊 渠道聚合</td></td>
+<td><span class="type-badge" style="background:#95A5A620;color:#95A5A6">-</span></td>
+<td>京东23单</td>
+<td><span class="date-badge"><span style="color:#ccc">—</span></span></td>
+<td class="problem-text">1.云录到期续费问题 2.前后双录/360全景 3.安装问题，降压线</td>
+<td class="solution-text"><span style="color:#ccc">—</span></td>
+</tr><tr>
+<td><td></td></td>
+<td><span class="type-badge" style="background:#95A5A620;color:#95A5A6">-</span></td>
+<td>抖音 8个问题</td>
+<td><span class="date-badge"><span style="color:#ccc">—</span></span></td>
+<td class="problem-text">1.角度（要求全景）2.双录 3.同时查看数量？待确认多账号绑定</td>
+<td class="solution-text"><span style="color:#ccc">—</span></td>
+</tr><tr>
+<td><td></td></td>
+<td><span class="type-badge" style="background:#95A5A620;color:#95A5A6">-</span></td>
+<td>天猫车旗</td>
+<td><span class="date-badge"><span style="color:#ccc">—</span></span></td>
+<td class="problem-text">1.发券价格问题 2.</td>
+<td class="solution-text"><span style="color:#ccc">—</span></td>
+</tr><tr style="background:#fffde7">
+<td><td style="color:#BDC3C7;font-weight:600">❓ 其他</td></td>
+<td><span class="type-badge" style="background:#BDC3C720;color:#BDC3C7">未分类</span> <span style="color:#E74C3C;font-size:10px">NEW</span></td>
 <td>天猫官旗</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
+<td><span class="date-badge">08/12</span></td>
 <td class="problem-text">传感器参数</td>
 <td class="solution-text"><span style="color:#ccc">—</span></td>
 </tr>
-<tr style="background:#fffde7;">
-<td></td>
-<td><span style="color:#ccc">未分类</span></td>
-<td>有赞</td>
-<td><span class="date-badge">08/12 <span style="color:#F39C12;font-size:10px;font-weight:700">NEW</span></span></td>
-<td class="problem-text">这款行车记录仪是4k的？还是2k的？</td>
-<td class="solution-text">分辨率是2K/1440P的哟</td>
-</tr>
-
-</tbody>
-</table>
+    </tbody>
+  </table>
 </div>
 
-<div class="footer">
-<p>T200 4G记录仪新品跟踪日报 · Day 3 · 由尹燕玲-报告分析专家自动生成 🦞</p>
-<p>数据来源：飞书表格「用户反馈问题汇总」 | 累计覆盖 2026.08.04-2026.08.12</p>
+<div class="section">
+  <div class="section-title">产品/研发洞察补充</div>
+  <table class="detail-table"><thead><tr><th>问题类型</th><th>渠道</th><th>用户问题</th><th>产品/研发洞察</th></tr></thead><tbody><tr><td>镜头调节咨询</td><td>有赞</td><td class="problem-text">你好，镜头能调节吗</td><td style="color:#00B050;font-weight:500">安装支架位置可小幅度上下调节</td></tr>
+<tr><td>远程查看咨询</td><td>有赞</td><td class="problem-text">T200好像有远程监控功能</td><td style="color:#00B050;font-weight:500">设备直接赠送降压线，降压线正常安装后可以实现</td></tr>
+<tr><td>内置电池咨询</td><td>有赞</td><td class="problem-text">有内置电池吗？</td><td style="color:#00B050;font-weight:500">设备没有内置电池，但赠送降压线，连接后可哨兵模式或缩时录影</td></tr>
+</tbody></table>
 </div>
 
+<div class="footer">T200 4G记录仪新品跟踪 · 数据来源飞书表格 · 报告由尹燕玲-报告分析专家 🦞 生成</div>
 </div>
 
 <script>
-// Channel chart
-var chChart = echarts.init(document.getElementById('chart-channel'));
-chChart.setOption({
-color: ['#00B050'],
-tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
-xAxis: { type: 'category', data: ["有赞", "天猫官旗", "小红书", "京东自营", "天猫车旗", "京东23单", "抖音 8个问题", "天猫车品"], axisLabel: { rotate: 30 } },
-yAxis: { type: 'value' },
-series: [{
-type: 'bar',
-data: [27, 5, 4, 4, 2, 1, 1, 1],
-itemStyle: { color: function(params) {
-var colors = ['#00B050','#2BBD6E','#F39C12','#3498DB','#9B59B6','#7F8C8D','#95A5A6','#E74C3C'];
-return colors[params.dataIndex % colors.length];
-} },
-barWidth: '50%',
-label: { show: true, position: 'top', fontSize: 12 }
-}]
+var chart1 = echarts.init(document.getElementById('chart-channel'));
+chart1.setOption({
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+  grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},
+  xAxis:{type:'category',data:["有赞", "天猫官旗", "小红书", "京东自营", "天猫车旗", "京东23单", "抖音 8个问题", "天猫车品"],axisLabel:{rotate:30,fontSize:12}},
+  yAxis:{type:'value'},
+  series:[{type:'bar',data:[27, 5, 4, 4, 2, 1, 1, 1],itemStyle:{color:function(p){var c=['#00B050','#2BBD6E','#3498DB','#F39C12','#9B59B6','#e74c3c','#1abc9c','#95a5a6'];return c[p.dataIndex%c.length]}},borderRadius:[4,4,0,0],barWidth:'50%',label:{show:true,position:'top',fontSize:12}}]
 });
 
-// Category pie chart
-var catChart = echarts.init(document.getElementById('chart-category'));
-catChart.setOption({
-tooltip: { trigger: 'item', formatter: '{b}: {c}条 ({d}%)' },
-legend: { bottom: 0, type: 'scroll' },
-series: [{
-type: 'pie',
-radius: ['40%', '70%'],
-avoidLabelOverlap: false,
-itemStyle: { borderRadius: 8, borderColor: '#fff', borderWidth: 2 },
-label: { show: true, formatter: '{b}\n{c}条' },
-data: [
-{value: 15, name: "安装相关", itemStyle: {color: "#00B050"}}, {value: 6, name: "供电/电池", itemStyle: {color: "#2BBD6E"}}, {value: 6, name: "停车/监控", itemStyle: {color: "#F39C12"}}, {value: 5, name: "功能咨询", itemStyle: {color: "#3498DB"}}, {value: 6, name: "费用/套餐", itemStyle: {color: "#9B59B6"}}, {value: 4, name: "产品规格", itemStyle: {color: "#7F8C8D"}}
-]
-}]
+var chart2 = echarts.init(document.getElementById('chart-category'));
+chart2.setOption({
+  tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
+  legend:{bottom:0,type:'scroll'},
+  series:[{type:'pie',radius:['40%','70%'],center:['50%','45%'],avoidLabelOverlap:true,itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},label:{show:true,formatter:'{b}\n{c}条',fontSize:12},data:[{"name": "安装相关", "value": 15, "itemStyle": {"color": "#00B050"}}, {"name": "供电/电池", "value": 6, "itemStyle": {"color": "#2BBD6E"}}, {"name": "停车/监控", "value": 6, "itemStyle": {"color": "#F39C12"}}, {"name": "功能咨询", "value": 6, "itemStyle": {"color": "#3498DB"}}, {"name": "费用/套餐", "value": 6, "itemStyle": {"color": "#9B59B6"}}, {"name": "产品规格", "value": 2, "itemStyle": {"color": "#7F8C8D"}}, {"name": "渠道聚合", "value": 3, "itemStyle": {"color": "#95A5A6"}}, {"name": "其他", "value": 1, "itemStyle": {"color": "#BDC3C7"}}]}]
 });
 
-// Responsive
-window.addEventListener('resize', function() {
-chChart.resize();
-catChart.resize();
-});
+window.addEventListener('resize',function(){chart1.resize();chart2.resize();});
 </script>
 </body>
 </html>
