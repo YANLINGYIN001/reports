@@ -3,121 +3,864 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>6pro 4G门铃公测 - 日常问题反馈报告 (8月11日)</title>
+<title>6pro 4G门铃公测 - 日常问题日报 (2026-08-11)</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5;color:#333;padding:20px}
-.container{max-width:1000px;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);overflow:hidden}
-.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:28px 32px}
-.header h1{font-size:24px;margin-bottom:8px}
-.header .subtitle{font-size:14px;opacity:0.9}
-.kpi-row{display:flex;gap:16px;padding:24px 32px;background:#fafafa;border-bottom:1px solid #eee;flex-wrap:wrap}
-.kpi-card{flex:1;min-width:140px;background:#fff;border-radius:8px;padding:16px;text-align:center;border:1px solid #e8e8e8}
-.kpi-card .num{font-size:28px;font-weight:700;color:#00B050}
-.kpi-card .label{font-size:13px;color:#666;margin-top:4px}
-.insight{padding:16px 32px;background:#f0faf3;border-bottom:1px solid #e0e0e0;font-size:14px;color:#00B050;font-weight:500}
-.section{padding:20px 32px;border-bottom:1px solid #f0f0f0}
-.section h2{font-size:18px;color:#333;margin-bottom:12px;padding-left:10px;border-left:3px solid #00B050}
-.module-insight{font-size:13px;padding:8px 12px;border-radius:4px;margin-bottom:12px}
-.module-insight.high{background:#fef0f0;color:#E74C3C}
-.module-insight.medium{background:#fff8e1;color:#F39C12}
-.module-insight.low{background:#f0faf3;color:#00B050}
-table{width:100%;border-collapse:collapse;margin-top:8px}
-th{background:#00B050;color:#fff;padding:10px 8px;font-size:13px;font-weight:600;text-align:left}
-td{padding:10px 8px;border-bottom:1px solid #eee;font-size:13px;text-align:left;vertical-align:top}
-tr:nth-child(even){background:#fafafa}
-.quote{color:#555;line-height:1.5}
-.quote .neg{color:#E74C3C;font-weight:500}
-.quote .pos{color:#00B050;font-weight:500}
-.fw-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:500;margin-left:4px}
-.fw-0804{background:#e3f2fd;color:#1565c0}
-.fw-0730{background:#f3e5f5;color:#7b1fa2}
-.fw-0717{background:#fff3e0;color:#e65100}
-.fw-0710{background:#e8f5e9;color:#2e7d32}
-.footer{padding:16px 32px;background:#fafafa;font-size:12px;color:#999;text-align:center}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; margin-bottom: 24px; }
+.header h1 { font-size: 24px; color: #00B050; margin-bottom: 8px; }
+.header .subtitle { font-size: 14px; color: #666; }
+.kpi-row { display: flex; gap: 16px; margin-bottom: 24px; }
+.kpi-card { flex: 1; background: #fff; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size: 13px; color: #666; margin-bottom: 8px; }
+.kpi-card .value { font-size: 28px; font-weight: 700; color: #00B050; }
+.kpi-card .sub { font-size: 12px; color: #999; margin-top: 4px; }
+.section { background: #fff; border-radius: 8px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size: 18px; font-weight: 600; color: #333; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #00B050; }
+.insight { background: #f0fdf4; border-left: 4px solid #00B050; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; font-size: 14px; color: #333; }
+.insight.warning { background: #fff7ed; border-left-color: #F39C12; }
+.insight.danger { background: #fef2f2; border-left-color: #E74C3C; }
+.module-title { font-size: 16px; font-weight: 600; margin: 20px 0 12px 0; padding: 8px 12px; border-radius: 4px; }
+.module-title.p0 { background: #fef2f2; color: #E74C3C; }
+.module-title.p1 { background: #fff7ed; color: #F39C12; }
+.module-title.p2 { background: #f0fdf4; color: #00B050; }
+.module-title .badge { font-size: 12px; padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+.module-title.p0 .badge { background: #E74C3C; color: #fff; }
+.module-title.p1 .badge { background: #F39C12; color: #fff; }
+.module-title.p2 .badge { background: #00B050; color: #fff; }
+.module-summary { font-size: 13px; color: #666; margin-bottom: 12px; padding: 8px 12px; background: #f9f9f9; border-radius: 4px; }
+.module-summary.danger { background: #fef2f2; color: #E74C3C; }
+.module-summary.warning { background: #fff7ed; color: #F39C12; }
+.module-summary.normal { background: #f0fdf4; color: #00B050; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+th { background: #00B050; color: #fff; padding: 10px 8px; font-size: 13px; text-align: left; }
+td { padding: 8px; font-size: 13px; border-bottom: 1px solid #eee; }
+tr:hover td { background: #f9f9f9; }
+.quote-name { color: #666; font-weight: 500; }
+.quote-text { color: #333; }
+.tag-badge { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 10px; background: #e8f5e9; color: #00B050; margin-right: 4px; }
+.fw-table th { font-size: 12px; }
+.fw-table .highlight { background: #f0fdf4; }
+.fw-table .trend-new { color: #E74C3C; font-weight: 600; }
+.fw-table .trend-fixed { color: #00B050; font-weight: 600; }
+.fw-table .trend-improved { color: #00B050; }
+.fw-table .trend-continued { color: #F39C12; }
+.chart-container { width: 100%; height: 400px; margin: 16px 0; }
+.new-badge { display: inline-block; background: #E74C3C; color: #fff; font-size: 11px; padding: 1px 6px; border-radius: 8px; margin-left: 4px; }
+.footer { text-align: center; padding: 20px; font-size: 12px; color: #999; }
 </style>
 </head>
 <body>
 <div class="container">
-<div class="header">
-<h1>6pro 4G门铃公测 · 日常问题反馈报告</h1>
-<div class="subtitle">统计日期：2026年8月11日 | 累计反馈：383条 | 新增：10条 | 报告生成：2026-08-12</div>
-</div>
-<div class="kpi-row">
-<div class="kpi-card"><div class="num">10</div><div class="label">本日新增反馈</div></div>
-<div class="kpi-card"><div class="num">8</div><div class="label">参与用户数</div></div>
-<div class="kpi-card"><div class="num">7</div><div class="label">问题标签数</div></div>
-<div class="kpi-card"><div class="num">383</div><div class="label">累计反馈总数</div></div>
-</div>
-<div class="insight">📋 核心洞察：APP功能/交互问题最突出（3条，显示异常类），云录漏录/误报持续出现，按门铃来电不停止为新问题需关注</div>
-<div class="section">
-<h2>APP功能/交互（3条）</h2>
-<div class="module-insight medium">⚠️ 3条显示异常问题，涉及微信小程序按钮显示不全、自定义门铃保存异常、网络模式显示错误</div>
-<table>
-<thead><tr><th style="width:180px">二级标签</th><th style="width:80px">反馈量</th><th>用户原声</th></tr></thead>
-<tbody>
-<tr><td><strong>显示异常/数据错误</strong></td><td>3人（3条）</td><td class="quote">【黄军剑】<span class="fw-badge fw-0804">0804</span> 微信小程序的视频通话页面，最下方的"关闭"按钮，显示<span class="neg">不全</span>。如图。<br><br>【徐婷婷】<span class="fw-badge fw-0804">0804</span> 自定义门铃，保存后第一次<span class="neg">不显示</span>，第二次保存成功，但是没有显示。需要到自定义里再去选，<span class="neg">不方便</span><br><br>【张雷】<span class="fw-badge fw-0710">0710</span> wifi网络，名字问题，应该是网络模式</td></tr>
-</tbody></table>
-</div>
-<div class="section">
-<h2>云录（2条）</h2>
-<div class="module-insight high">🔴 漏录和误报问题持续出现，0804固件仍有漏录情况</div>
-<table>
-<thead><tr><th style="width:180px">二级标签</th><th style="width:80px">反馈量</th><th>用户原声</th></tr></thead>
-<tbody>
-<tr><td><strong>有人误报</strong></td><td>1人（1条）</td><td class="quote">【美诺】<span class="fw-badge fw-0804">0804</span> 提示有人出现 但是没人  云录卡录都没人  查看时听到有人说话  一直提示有人 但又没人</td></tr>
-<tr><td><strong>漏录/漏拍</strong></td><td>1人（1条）</td><td class="quote">【王瑷珲】<span class="fw-badge fw-0804">0804</span> <span class="neg">漏录</span>，灵敏度设置为中，监控显示人经过门铃没有反应，监控长视屏放群里面了。</td></tr>
-</tbody></table>
-</div>
-<div class="section">
-<h2>稳定性（1条）</h2>
-<div class="module-insight medium">⚠️ 设备无故离线</div>
-<table>
-<thead><tr><th style="width:180px">二级标签</th><th style="width:80px">反馈量</th><th>用户原声</th></tr></thead>
-<tbody>
-<tr><td><strong>设备离线</strong></td><td>1人（1条）</td><td class="quote">【周军】<span class="fw-badge fw-0804">0804</span> 无故<span class="neg">离线</span>，不知道原因</td></tr>
-</tbody></table>
-</div>
-<div class="section">
-<h2>IQ（1条）</h2>
-<div class="module-insight medium">⚠️ 卡录画面过曝，云录画面正常</div>
-<table>
-<thead><tr><th style="width:180px">二级标签</th><th style="width:80px">反馈量</th><th>用户原声</th></tr></thead>
-<tbody>
-<tr><td><strong>画面过曝</strong></td><td>1人（1条）</td><td class="quote">【相杰】<span class="fw-badge fw-0804">0804</span> 云录画面正常，卡录画面曝光<span class="neg">异常</span></td></tr>
-</tbody></table>
-</div>
-<div class="section">
-<h2>按门铃（1条）</h2>
-<div class="module-insight high">🔴 来电不接通时门铃持续响铃超4分钟，影响体验</div>
-<table>
-<thead><tr><th style="width:180px">二级标签</th><th style="width:80px">反馈量</th><th>用户原声</th></tr></thead>
-<tbody>
-<tr><td><strong>来电不停止</strong></td><td>1人（1条）</td><td class="quote">【黄军剑】<span class="fw-badge fw-0804">0804</span> 打开微信视频通话设置，门铃来电有弹窗提醒。但是不接通就<span class="neg">一直响</span>。超过4分钟了。时间大约在9：17到9：21</td></tr>
-</tbody></table>
-</div>
-<div class="section">
-<h2>卡录（1条）</h2>
-<div class="module-insight medium">⚠️ TF卡读取异常需格式化恢复，非物理损坏</div>
-<table>
-<thead><tr><th style="width:180px">二级标签</th><th style="width:80px">反馈量</th><th>用户原声</th></tr></thead>
-<tbody>
-<tr><td><strong>内存卡读取错误</strong></td><td>1人（1条）</td><td class="quote">【袁飞】<span class="fw-badge fw-0804">0804</span> 卡录<span class="neg">无法</span>读取卡内数据，插拔TF卡及重启基站未见改善，APP格式化TF卡后恢复卡录，这张卡是全新的，测试前一连续使用一个月，状态良好，此故障属于假性（TF卡非物理损坏）</td></tr>
-</tbody></table>
-</div>
-<div class="section">
-<h2>功能需求（1条）</h2>
-<div class="module-insight low">💡 建议开流默认进入实时画面，而非记忆上次界面</div>
-<table>
-<thead><tr><th style="width:180px">二级标签</th><th style="width:80px">反馈量</th><th>用户原声</th></tr></thead>
-<tbody>
-<tr><td><strong>开流默认进入实时画面</strong></td><td>1人（1条）</td><td class="quote">【朱彤】<span class="fw-badge fw-0804">0804</span> 点播放按钮开流进去，感觉有记忆功能，前一次点的是云录像或者卡录像，点播放开流进去直接就是云录像或者卡录像界面，按我现在原来的360摄像头无论前一次是在云录或者卡录，点播放开流进去都是实时画面界面。</td></tr>
-</tbody></table>
-</div>
-<div class="footer">
-<p>6pro 4G门铃公测 · 日常问题反馈报告 · 2026-08-11 | 数据来源：飞书表格 gB7poo</p>
-<p>报告合集：<a href="https://yanlingyin001.github.io/reports/6pro-index.html">6pro报告汇总</a> | 作业完成情况：<a href="https://yanlingyin001.github.io/reports/6pro-homework-status.html">查看</a></p>
-</div>
+  <div class="header">
+    <h1>📊 6pro 4G门铃公测 - 日常问题日报</h1>
+    <div class="subtitle">报告日期：2026-08-11 | 数据截止：2026/8/11 22:16 | 累计反馈359条有效（383条总计）</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="label">累计有效反馈</div>
+      <div class="value">359</div>
+      <div class="sub">总计383条，忽略/重复24条</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">本次新增</div>
+      <div class="value">9</div>
+      <div class="sub">8/11 新增</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">参与用户</div>
+      <div class="value">19</div>
+      <div class="sub">全员参与</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">一级标签</div>
+      <div class="value">19</div>
+      <div class="sub">二级标签89+个</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">💡 总体洞察</div>
+    <div class="insight danger">
+      <strong>APP功能/交互问题本次最突出：</strong>本次9条新增中，APP功能/交互占3条（33%），均为"显示异常/数据错误"。涉及微信小程序关闭按钮显示不全、自定义门铃保存后不显示、网络模式名称错误，需重点排查UI适配问题。
+    </div>
+    <div class="insight warning">
+      <strong>云录核心问题持续：</strong>新增"有人误报"1条（美诺：提示有人但没人）、"漏录/漏拍"1条（王瑷珲：人经过无反应），0804固件仍未解决误报和漏录问题。
+    </div>
+    <div class="insight">
+      <strong>按门铃新问题需关注：</strong>黄军剑反馈门铃来电不接通时持续响铃超4分钟（"来电不停止"为新二级标签），影响体验。功能需求新增1条：开流默认进入实时画面。
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🔥 本次新增 (9条)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>一级标签</th>
+          <th>二级标签</th>
+          <th>固件</th>
+          <th>问题描述</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>374</td>
+          <td>周军</td>
+          <td><span class="tag-badge">稳定性</span></td>
+          <td>设备离线</td>
+          <td>0804</td>
+          <td class="quote-text">无故离线，不知道原因</td>
+        </tr>
+        <tr>
+          <td>375</td>
+          <td>相杰</td>
+          <td><span class="tag-badge">IQ</span></td>
+          <td>画面过曝</td>
+          <td>0804</td>
+          <td class="quote-text">云录画面正常，卡录画面曝光异常</td>
+        </tr>
+        <tr>
+          <td>376</td>
+          <td>黄军剑</td>
+          <td><span class="tag-badge">按门铃</span></td>
+          <td>来电不停止</td>
+          <td>0804</td>
+          <td class="quote-text">打开微信视频通话设置，门铃来电有弹窗提醒。但是不接通就一直响。超过4分钟了。时间大约在9：17到9：21</td>
+        </tr>
+        <tr>
+          <td>377</td>
+          <td>黄军剑</td>
+          <td><span class="tag-badge">APP功能/交互</span></td>
+          <td>显示异常/数据错误</td>
+          <td>0804</td>
+          <td class="quote-text">微信小程序的视频通话页面，最下方的"关闭"按钮，显示不全。如图。</td>
+        </tr>
+        <tr>
+          <td>378</td>
+          <td>美诺</td>
+          <td><span class="tag-badge">云录</span></td>
+          <td>有人误报</td>
+          <td>0804</td>
+          <td class="quote-text">提示有人出现 但是没人  云录卡录都没人  查看时听到有人说话  一直提示有人 但又没人</td>
+        </tr>
+        <tr>
+          <td>379</td>
+          <td>袁飞</td>
+          <td><span class="tag-badge">卡录</span></td>
+          <td>内存卡读取错误</td>
+          <td>0804</td>
+          <td class="quote-text">卡录无法读取卡内数据，插拔TF卡及重启基站未见改善，APP格式化TF卡后恢复卡录，这张卡是全新的，测试前一连续使用一个月，状态良好，此故障属于假性（TF卡非物理...</td>
+        </tr>
+        <tr>
+          <td>380</td>
+          <td>王瑷珲</td>
+          <td><span class="tag-badge">云录</span></td>
+          <td>漏录/漏拍</td>
+          <td>0804</td>
+          <td class="quote-text">漏录，灵敏度设置为中，监控显示人经过门铃没有反应，监控长视屏放群里面了。</td>
+        </tr>
+        <tr>
+          <td>381</td>
+          <td>徐婷婷</td>
+          <td><span class="tag-badge">APP功能/交互</span></td>
+          <td>显示异常/数据错误</td>
+          <td>0804</td>
+          <td class="quote-text">自定义门铃，保存后第一次不显示，第二次保存成功，但是没有显示。需要到自定义里再去选，不方便</td>
+        </tr>
+        <tr>
+          <td>382</td>
+          <td>张雷</td>
+          <td><span class="tag-badge">APP功能/交互</span></td>
+          <td>显示异常/数据错误</td>
+          <td>0804</td>
+          <td class="quote-text">wifi网络，名字问题，应该是网络模式</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📈 累计二级标签 TOP10（按反馈人数）</div>
+    <div id="top10-chart" class="chart-container"></div>
+    <script>
+      var chart = echarts.init(document.getElementById('top10-chart'));
+      var data = [{"name": "画面变化误报", "tag1": "云录", "user_count": 13, "msg_count": 32}, {"name": "漏录/漏拍", "tag1": "云录", "user_count": 12, "msg_count": 30}, {"name": "录制延迟", "tag1": "云录", "user_count": 10, "msg_count": 19}, {"name": "有人误报", "tag1": "云录", "user_count": 9, "msg_count": 19}, {"name": "开流失败", "tag1": "开流", "user_count": 9, "msg_count": 11}, {"name": "设置项自动重置", "tag1": "APP功能/交互", "user_count": 7, "msg_count": 10}, {"name": "误报", "tag1": "云录", "user_count": 7, "msg_count": 9}, {"name": "耗电快", "tag1": "续航", "user_count": 6, "msg_count": 10}, {"name": "显示异常/数据错误", "tag1": "APP功能/交互", "user_count": 6, "msg_count": 7}, {"name": "设备离线", "tag1": "稳定性", "user_count": 6, "msg_count": 6}];
+      chart.setOption({
+        tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+        legend: { data: ['反馈人数', '反馈条数'], top: 0 },
+        grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+        xAxis: { type: 'value', name: '人/条' },
+        yAxis: { type: 'category', data: data.map(d => d.name).reverse(), axisLabel: { fontSize: 12 } },
+        series: [
+          { name: '反馈人数', type: 'bar', data: data.map(d => d.user_count).reverse(), itemStyle: { color: '#00B050' }, label: { show: true, position: 'right' } },
+          { name: '反馈条数', type: 'bar', data: data.map(d => d.msg_count).reverse(), itemStyle: { color: '#2BBD6E' }, label: { show: true, position: 'right' } }
+        ]
+      });
+    </script>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📱 固件版本问题分布对比</div>
+    <div class="insight warning">
+      <strong>0730→0804趋势：</strong>0804固件上APP功能/交互问题新增3条，云录误报和漏录持续。按门铃"来电不停止"为新出现的0804固件问题。
+    </div>
+    <table class="fw-table">
+      <thead>
+        <tr>
+          <th>一级标签</th>
+          <th>0710</th>
+          <th>0717</th>
+          <th class="highlight">0730</th>
+          <th>0804</th>
+          <th>趋势</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>云录</strong></td>
+          <td>47</td>
+          <td>26</td>
+          <td class="highlight">24</td>
+          <td>44</td>
+          <td><span class="trend-new">↑ 恶化</span></td>
+        </tr>
+        <tr>
+          <td><strong>卡录</strong></td>
+          <td>16</td>
+          <td>8</td>
+          <td class="highlight">8</td>
+          <td>18</td>
+          <td><span class="trend-new">↑ 恶化</span></td>
+        </tr>
+        <tr>
+          <td><strong>APP功能/交互</strong></td>
+          <td>23</td>
+          <td>4</td>
+          <td class="highlight">5</td>
+          <td>9</td>
+          <td><span class="trend-new">↑ 恶化</span></td>
+        </tr>
+        <tr>
+          <td><strong>IQ</strong></td>
+          <td>8</td>
+          <td>3</td>
+          <td class="highlight">4</td>
+          <td>6</td>
+          <td><span class="trend-continued">→ 持续</span></td>
+        </tr>
+        <tr>
+          <td><strong>开流</strong></td>
+          <td>13</td>
+          <td>1</td>
+          <td class="highlight">5</td>
+          <td>1</td>
+          <td><span class="trend-improved">↓ 改善</span></td>
+        </tr>
+        <tr>
+          <td><strong>功能需求</strong></td>
+          <td>8</td>
+          <td>3</td>
+          <td class="highlight">4</td>
+          <td>3</td>
+          <td><span class="trend-continued">→ 持续</span></td>
+        </tr>
+        <tr>
+          <td><strong>按门铃</strong></td>
+          <td>3</td>
+          <td>1</td>
+          <td class="highlight">0</td>
+          <td>7</td>
+          <td><span class="trend-continued">→ 持续</span></td>
+        </tr>
+        <tr>
+          <td><strong>OTA</strong></td>
+          <td>1</td>
+          <td>5</td>
+          <td class="highlight">2</td>
+          <td>3</td>
+          <td><span class="trend-continued">→ 持续</span></td>
+        </tr>
+        <tr>
+          <td><strong>续航</strong></td>
+          <td>6</td>
+          <td>0</td>
+          <td class="highlight">2</td>
+          <td>2</td>
+          <td><span class="trend-continued">→ 持续</span></td>
+        </tr>
+        <tr>
+          <td><strong>配网/安装引导</strong></td>
+          <td>7</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td><strong>稳定性</strong></td>
+          <td>1</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>5</td>
+          <td><span class="trend-continued">→ 持续</span></td>
+        </tr>
+        <tr>
+          <td><strong>夜视切换</strong></td>
+          <td>0</td>
+          <td>1</td>
+          <td class="highlight">1</td>
+          <td>4</td>
+          <td><span class="trend-new">↑ 恶化</span></td>
+        </tr>
+        <tr>
+          <td><strong>其他</strong></td>
+          <td>4</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td><strong>硬件/信号</strong></td>
+          <td>2</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>1</td>
+          <td><span class="trend-continued">→ 持续</span></td>
+        </tr>
+        <tr>
+          <td><strong>开箱</strong></td>
+          <td>3</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td><strong>消息通知</strong></td>
+          <td>2</td>
+          <td>0</td>
+          <td class="highlight">1</td>
+          <td>0</td>
+          <td><span class="trend-fixed">✓ 已修复</span></td>
+        </tr>
+        <tr>
+          <td><strong>包装/配件</strong></td>
+          <td>2</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td><strong>硬件设计</strong></td>
+          <td>1</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td><strong>指示灯</strong></td>
+          <td>1</td>
+          <td>0</td>
+          <td class="highlight">0</td>
+          <td>0</td>
+          <td>-</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="font-size:12px;color:#999;margin-top:8px;">0730列高亮为主对比基准，0804为最新固件版本</div>
+  </div>
+  <div class="section">
+    <div class="module-title p1">APP功能/交互 <span class="badge">P1</span></div>
+    <div class="module-summary warning">累计41条/15人，本次新增3条。3条均为"显示异常/数据错误"，涉及微信小程序UI适配、自定义门铃保存异常、网络模式显示。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">设置项自动重置</span></td>
+          <td>7人（10条）</td>
+          <td><div class="quote-text"><span class="quote-name">许军州：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有6位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">显示异常/数据错误</span></td>
+          <td>6人（7条）<span class="new-badge">+3</span></td>
+          <td><div class="quote-text"><span class="quote-name">黄军剑（0804）：</span>微信小程序的视频通话页面，最下方的"关闭"按钮，显示不全。如图。</div><div class="quote-text"><span class="quote-name">徐婷婷（0804）：</span>自定义门铃，保存后第一次不显示，第二次保存成功，但是没有显示。需要到自定义里再去选，不方便</div><div class="quote-text"><span class="quote-name">张雷（0804）：</span>wifi网络，名字问题，应该是网络模式</div><div style="color:#999;font-size:12px;">...还有3位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">电量显示/命名问题</span></td>
+          <td>5人（6条）</td>
+          <td><div class="quote-text"><span class="quote-name">吴汞：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有4位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">信号图标显示错误</span></td>
+          <td>4人（4条）</td>
+          <td><div class="quote-text"><span class="quote-name">许军州：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有3位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">页面加载失败</span></td>
+          <td>3人（3条）</td>
+          <td><div class="quote-text"><span class="quote-name">于晨光：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有2位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">联网方式切换不刷新</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">何三涛：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">电池管理命名/显示</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">朱君：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">功能描述与实际不符</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">朱君：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">水印/Logo不一致</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">朱君：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">人脸小图数据丢失</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">袁飞：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">云录默认放大</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">黄军剑：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">灵敏度调节优化</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">张雷：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">开流不显示时间</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">袁飞：</span>（历史反馈）</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="module-title p0">云录 <span class="badge">P0</span></div>
+    <div class="module-summary danger">累计141条/19人，本次新增2条。"有人误报"和"漏录/漏拍"问题在0804固件持续存在。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">画面变化误报</span></td>
+          <td>13人（32条）</td>
+          <td><div class="quote-text"><span class="quote-name">孙晓明：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有12位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">漏录/漏拍</span></td>
+          <td>12人（30条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">王瑷珲（0804）：</span>漏录，灵敏度设置为中，监控显示人经过门铃没有反应，监控长视屏放群里面了。</div><div style="color:#999;font-size:12px;">...还有11位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">有人误报</span></td>
+          <td>9人（19条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">美诺（0804）：</span>提示有人出现 但是没人  云录卡录都没人  查看时听到有人说话  一直提示有人 但又没人</div><div style="color:#999;font-size:12px;">...还有8位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">录制延迟</span></td>
+          <td>10人（19条）</td>
+          <td><div class="quote-text"><span class="quote-name">张雷：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有9位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">误报</span></td>
+          <td>7人（9条）</td>
+          <td><div class="quote-text"><span class="quote-name">魏健伟：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有6位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">云录缩略图不显示</span></td>
+          <td>4人（6条）</td>
+          <td><div class="quote-text"><span class="quote-name">何三涛：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有3位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">云录卡录时间不同步</span></td>
+          <td>4人（5条）</td>
+          <td><div class="quote-text"><span class="quote-name">魏健伟：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有3位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">事件分类不准</span></td>
+          <td>4人（4条）</td>
+          <td><div class="quote-text"><span class="quote-name">何三涛：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有3位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">云录播放失败</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">袁飞：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">下载和APP播放显示不一致</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">张雷：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">云录加载失败</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">朱彤：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">绿屏</span></td>
+          <td>1人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">何三涛：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">人脸识别不敏感</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">张雷：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">同一人人脸不同</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">许军州：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">算法错误</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">何三涛：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">云录间隔不生效</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">许军州：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">AI智见搜索太乱</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">许军州：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">开流触发云录</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">于晨光：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">云录列表加载慢</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">张雷：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">PIR异常亮</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">陈俊：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P0</td>
+          <td><span class="tag-badge">开流误报</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">朱彤：</span>（历史反馈）</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="module-title p1">稳定性 <span class="badge">P1</span></div>
+    <div class="module-summary warning">累计6条/6人，本次新增1条。设备无故离线。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">设备离线</span></td>
+          <td>6人（6条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">周军（0804）：</span>无故离线，不知道原因</div><div style="color:#999;font-size:12px;">...还有5位用户反馈</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="module-title p1">IQ <span class="badge">P1</span></div>
+    <div class="module-summary warning">累计21条/7人，本次新增1条。卡录画面过曝但云录正常，疑似编码差异。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">画质噪点/拖影</span></td>
+          <td>5人（8条）</td>
+          <td><div class="quote-text"><span class="quote-name">张雷：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有4位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">画面模糊</span></td>
+          <td>4人（5条）</td>
+          <td><div class="quote-text"><span class="quote-name">许军州：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有3位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">画面过曝</span></td>
+          <td>3人（3条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">相杰（0804）：</span>云录画面正常，卡录画面曝光异常</div><div style="color:#999;font-size:12px;">...还有2位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">录制绿屏</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">许军州：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">绿屏</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">张雷：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">画面缺失一角</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">张雷：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">花屏</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">张雷：</span>（历史反馈）</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="module-title p1">按门铃 <span class="badge">P1</span></div>
+    <div class="module-summary warning">累计11条/8人，本次新增1条。"来电不停止"为新二级标签，门铃来电不接通持续响铃超4分钟。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">按门铃通话延迟</span></td>
+          <td>2人（4条）</td>
+          <td><div class="quote-text"><span class="quote-name">朱彤：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">通话功能失败</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">王瑷珲：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">按门铃无通知</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">夏君：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">通话音量小</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">陈俊：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">多端通话未联通</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">瑞子：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">来电不停止</span></td>
+          <td>1人（1条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">黄军剑（0804）：</span>打开微信视频通话设置，门铃来电有弹窗提醒。但是不接通就一直响。超过4分钟了。时间大约在9：17到9：21</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="module-title p1">卡录 <span class="badge">P1</span></div>
+    <div class="module-summary warning">累计50条/14人，本次新增1条。TF卡读取异常需格式化恢复，非物理损坏。</div>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">卡录加载异常</span></td>
+          <td>6人（16条）</td>
+          <td><div class="quote-text"><span class="quote-name">张雷：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有5位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">卡录加载慢</span></td>
+          <td>5人（5条）</td>
+          <td><div class="quote-text"><span class="quote-name">徐婷婷：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有4位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">卡录不录</span></td>
+          <td>5人（5条）</td>
+          <td><div class="quote-text"><span class="quote-name">美诺：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有4位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">卡录缩略图不显示</span></td>
+          <td>5人（5条）</td>
+          <td><div class="quote-text"><span class="quote-name">徐婷婷：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有4位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">回放卡顿/失帧</span></td>
+          <td>2人（3条）</td>
+          <td><div class="quote-text"><span class="quote-name">何三涛：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">内存卡读取错误</span></td>
+          <td>3人（3条）<span class="new-badge">+1</span></td>
+          <td><div class="quote-text"><span class="quote-name">袁飞（0804）：</span>卡录无法读取卡内数据，插拔TF卡及重启基站未见改善，APP格式化TF卡后恢复卡录，这张卡是全新的，测试前一连续使用一个月，状态良好，此故障属于假性（TF卡非物理损坏）</div><div style="color:#999;font-size:12px;">...还有2位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">卡录画面空白</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">何三涛：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">卡录格式化失败</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">于晨光：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">卡录加载失败</span></td>
+          <td>2人（2条）</td>
+          <td><div class="quote-text"><span class="quote-name">陈俊：</span>（历史反馈）</div><div style="color:#999;font-size:12px;">...还有1位用户反馈</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">内存卡信息显示错误</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">美诺：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">卡录乱码</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">何三涛：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">内存卡损坏</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">瑞子：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">下载和APP播放显示不一致</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">朱君：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">卡录筛选/搜索功能</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">何三涛：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">录制延迟</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">吴汞：</span>（历史反馈）</div></td>
+        </tr>
+        <tr>
+          <td>P1</td>
+          <td><span class="tag-badge">内存卡读取提示音延迟</span></td>
+          <td>1人（1条）</td>
+          <td><div class="quote-text"><span class="quote-name">蔡坤城：</span>（历史反馈）</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="footer">
+    数据来源：飞书问卷「6pro 4G门铃公测问题跟进表」| 报告生成：报告分析专家 🦞 | 2026-08-12
+  </div>
 </div>
 </body>
 </html>
