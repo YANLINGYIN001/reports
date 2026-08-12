@@ -42,7 +42,7 @@ tr:hover td { background: #f9f9f9; }
 .quote-text { color: #333; }
 .tag-badge { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 10px; background: #e8f5e9; color: #00B050; margin-right: 4px; }
 .fw-table th { font-size: 12px; }
-.fw-table .highlight { background: #f0fdf4; }
+.fw-table .highlight { background: #e3f2fd; color: #1565c0; }
 .fw-table .trend-new { color: #E74C3C; font-weight: 600; }
 .fw-table .trend-fixed { color: #00B050; font-weight: 600; }
 .fw-table .trend-improved { color: #00B050; }
@@ -206,9 +206,9 @@ tr:hover td { background: #f9f9f9; }
   </div>
 
   <div class="section">
-    <div class="section-title">📱 固件版本问题分布对比</div>
+    <div class="section-title">📱 固件版本问题分布对比（以0804为最新主视角）</div>
     <div class="insight warning">
-      <strong>0730→0804趋势：</strong>0804固件上APP功能/交互问题新增3条，云录误报和漏录持续。按门铃"来电不停止"为新出现的0804固件问题。
+      <strong>0804固件当前状态：</strong>0804固件累计反馈104条，APP功能/交互新增3条（显示异常），云录误报/漏录持续（18条），按门铃新增"来电不停止"问题。相比0730，0804在APP交互和按门铃方面有新增问题，云录核心问题未见改善。
     </div>
     <table class="fw-table">
       <thead>
@@ -216,9 +216,9 @@ tr:hover td { background: #f9f9f9; }
           <th>一级标签</th>
           <th>0710</th>
           <th>0717</th>
-          <th class="highlight">0730</th>
-          <th>0804</th>
-          <th>趋势</th>
+          <th>0730</th>
+          <th class="highlight">0804（最新）</th>
+          <th>0730→0804趋势</th>
         </tr>
       </thead>
       <tbody>
@@ -226,157 +226,157 @@ tr:hover td { background: #f9f9f9; }
           <td><strong>云录</strong></td>
           <td>47</td>
           <td>26</td>
-          <td class="highlight">24</td>
-          <td>44</td>
+          <td>24</td>
+          <td class="highlight">44</td>
           <td><span class="trend-new">↑ 恶化</span></td>
         </tr>
         <tr>
           <td><strong>卡录</strong></td>
           <td>16</td>
           <td>8</td>
-          <td class="highlight">8</td>
-          <td>18</td>
+          <td>8</td>
+          <td class="highlight">18</td>
           <td><span class="trend-new">↑ 恶化</span></td>
         </tr>
         <tr>
           <td><strong>APP功能/交互</strong></td>
           <td>23</td>
           <td>4</td>
-          <td class="highlight">5</td>
-          <td>9</td>
+          <td>5</td>
+          <td class="highlight">9</td>
           <td><span class="trend-new">↑ 恶化</span></td>
         </tr>
         <tr>
           <td><strong>IQ</strong></td>
           <td>8</td>
           <td>3</td>
-          <td class="highlight">4</td>
-          <td>6</td>
+          <td>4</td>
+          <td class="highlight">6</td>
           <td><span class="trend-continued">→ 持续</span></td>
         </tr>
         <tr>
           <td><strong>开流</strong></td>
           <td>13</td>
           <td>1</td>
-          <td class="highlight">5</td>
-          <td>1</td>
+          <td>5</td>
+          <td class="highlight">1</td>
           <td><span class="trend-improved">↓ 改善</span></td>
         </tr>
         <tr>
           <td><strong>功能需求</strong></td>
           <td>8</td>
           <td>3</td>
-          <td class="highlight">4</td>
-          <td>3</td>
+          <td>4</td>
+          <td class="highlight">3</td>
           <td><span class="trend-continued">→ 持续</span></td>
         </tr>
         <tr>
           <td><strong>按门铃</strong></td>
           <td>3</td>
           <td>1</td>
-          <td class="highlight">0</td>
-          <td>7</td>
-          <td><span class="trend-continued">→ 持续</span></td>
+          <td>0</td>
+          <td class="highlight">7</td>
+          <td><span class="trend-new">⬆ 新增</span></td>
         </tr>
         <tr>
           <td><strong>OTA</strong></td>
           <td>1</td>
           <td>5</td>
-          <td class="highlight">2</td>
-          <td>3</td>
+          <td>2</td>
+          <td class="highlight">3</td>
           <td><span class="trend-continued">→ 持续</span></td>
         </tr>
         <tr>
           <td><strong>续航</strong></td>
           <td>6</td>
           <td>0</td>
-          <td class="highlight">2</td>
           <td>2</td>
+          <td class="highlight">2</td>
           <td><span class="trend-continued">→ 持续</span></td>
         </tr>
         <tr>
           <td><strong>配网/安装引导</strong></td>
           <td>7</td>
           <td>0</td>
-          <td class="highlight">0</td>
           <td>0</td>
+          <td class="highlight">0</td>
           <td>-</td>
         </tr>
         <tr>
           <td><strong>稳定性</strong></td>
           <td>1</td>
           <td>0</td>
-          <td class="highlight">0</td>
-          <td>5</td>
-          <td><span class="trend-continued">→ 持续</span></td>
+          <td>0</td>
+          <td class="highlight">5</td>
+          <td><span class="trend-new">⬆ 新增</span></td>
         </tr>
         <tr>
           <td><strong>夜视切换</strong></td>
           <td>0</td>
           <td>1</td>
-          <td class="highlight">1</td>
-          <td>4</td>
+          <td>1</td>
+          <td class="highlight">4</td>
           <td><span class="trend-new">↑ 恶化</span></td>
         </tr>
         <tr>
           <td><strong>其他</strong></td>
           <td>4</td>
           <td>0</td>
-          <td class="highlight">0</td>
           <td>0</td>
+          <td class="highlight">0</td>
           <td>-</td>
         </tr>
         <tr>
           <td><strong>硬件/信号</strong></td>
           <td>2</td>
           <td>0</td>
-          <td class="highlight">0</td>
-          <td>1</td>
-          <td><span class="trend-continued">→ 持续</span></td>
+          <td>0</td>
+          <td class="highlight">1</td>
+          <td><span class="trend-new">⬆ 新增</span></td>
         </tr>
         <tr>
           <td><strong>开箱</strong></td>
           <td>3</td>
           <td>0</td>
-          <td class="highlight">0</td>
           <td>0</td>
+          <td class="highlight">0</td>
           <td>-</td>
         </tr>
         <tr>
           <td><strong>消息通知</strong></td>
           <td>2</td>
           <td>0</td>
-          <td class="highlight">1</td>
-          <td>0</td>
+          <td>1</td>
+          <td class="highlight">0</td>
           <td><span class="trend-fixed">✓ 已修复</span></td>
         </tr>
         <tr>
           <td><strong>包装/配件</strong></td>
           <td>2</td>
           <td>0</td>
-          <td class="highlight">0</td>
           <td>0</td>
+          <td class="highlight">0</td>
           <td>-</td>
         </tr>
         <tr>
           <td><strong>硬件设计</strong></td>
           <td>1</td>
           <td>0</td>
-          <td class="highlight">0</td>
           <td>0</td>
+          <td class="highlight">0</td>
           <td>-</td>
         </tr>
         <tr>
           <td><strong>指示灯</strong></td>
           <td>1</td>
           <td>0</td>
-          <td class="highlight">0</td>
           <td>0</td>
+          <td class="highlight">0</td>
           <td>-</td>
         </tr>
       </tbody>
     </table>
-    <div style="font-size:12px;color:#999;margin-top:8px;">0730列高亮为主对比基准，0804为最新固件版本</div>
+    <div style="font-size:12px;color:#999;margin-top:8px;">0804列高亮为最新固件版本，趋势列对比0730→0804变化</div>
   </div>
   <div class="section">
     <div class="module-title p1">APP功能/交互 <span class="badge">P1</span></div>
