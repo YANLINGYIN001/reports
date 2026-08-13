@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G980HMC 4G记录仪 公测招募</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.poster {
+  width: 750px;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.hero {
+  position: relative;
+  height: 500px;
+  background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+.hero-content {
+  text-align: center;
+  z-index: 1;
+  color: white;
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.hero-title {
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.hero-subtitle {
+  font-size: 28px;
+  font-weight: 400;
+  opacity: 0.95;
+  margin-bottom: 25px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FF4444;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 40px;
+  font-size: 24px;
+  font-weight: 700;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.product-display {
+  padding: 40px 40px 20px;
+  text-align: center;
+}
+.product-display img {
+  max-width: 100%;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+.features {
+  padding: 30px 40px;
+}
+.features-title {
+  color: #00B050;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 25px;
+  text-align: center;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.feature-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+.feature-card:hover {
+  transform: translateY(-3px);
+  background: rgba(0,176,80,0.1);
+  border-color: rgba(0,176,80,0.3);
+}
+.feature-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+.feature-name {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.feature-desc {
+  color: rgba(255,255,255,0.6);
+  font-size: 15px;
+  line-height: 1.4;
+}
+.benefits {
+  padding: 20px 40px 40px;
+}
+.benefits-title {
+  color: #00B050;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.benefit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.05);
+  padding: 16px 20px;
+  border-radius: 12px;
+  border-left: 4px solid #00B050;
+}
+.benefit-check {
+  font-size: 22px;
+  color: #00B050;
+  flex-shrink: 0;
+}
+.benefit-text {
+  color: white;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.requirements {
+  padding: 0 40px 30px;
+}
+.requirements-title {
+  color: #FF9500;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.req-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.req-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.8);
+  font-size: 17px;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+}
+.req-dot {
+  width: 6px;
+  height: 6px;
+  background: #00B050;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.deadline {
+  margin: 0 40px 30px;
+  background: linear-gradient(135deg, #FF4444 0%, #FF6B6B 100%);
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  color: white;
+}
+.deadline-label {
+  font-size: 18px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+.deadline-date {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.cta {
+  padding: 0 40px 50px;
+  text-align: center;
+}
+.cta-box {
+  background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%);
+  border-radius: 20px;
+  padding: 30px;
+  color: white;
+}
+.cta-text {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.cta-sub {
+  font-size: 18px;
+  opacity: 0.9;
+}
+.tags {
+  padding: 0 40px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.tag {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+.brand {
+  text-align: center;
+  padding: 0 40px 40px;
+  color: rgba(255,255,255,0.3);
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">🚗 360内部公测</div>
+      <div class="hero-title">G980HMC<br>4G记录仪</div>
+      <div class="hero-subtitle">人不在车，也能看车</div>
+      <div class="hero-badge">🔥 免费体验 名额有限</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="features-title">✨ 6大核心亮点</div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <div class="feature-name">远程实时看车</div>
+        <div class="feature-desc">手机随时查看车内车外<br>停车也不慌</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💥</div>
+        <div class="feature-name">停车被刮秒知道</div>
+        <div class="feature-desc">碰撞自动检测<br>16秒视频推送手机</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👤</div>
+        <div class="feature-name">AOV哨兵模式</div>
+        <div class="feature-desc">低功耗人形检测<br>有人靠近就录像通知</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <div class="feature-name">GPS定位追踪</div>
+        <div class="feature-desc">车在哪一目了然<br>借给家人也放心</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📞</div>
+        <div class="feature-name">单向通话</div>
+        <div class="feature-desc">远程直接对讲<br>外卖挪车都能沟通</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⬆️</div>
+        <div class="feature-name">OTA静默升级</div>
+        <div class="feature-desc">固件自动更新<br>永远最新版本</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="benefits">
+    <div class="benefits-title">🎁 公测福利</div>
+    <div class="benefit-list">
+      <div class="benefit-item">
+        <span class="benefit-check">✅</span>
+        <span class="benefit-text">免费获得G980HMC 4G记录仪一套（记录仪+4G云盒+OBD降压线）</span>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-check">✅</span>
+        <span class="benefit-text">内置4G SIM卡，开机即用</span>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-check">✅</span>
+        <span class="benefit-text">专属客服群，问题直达产品经理</span>
+      </div>
+      <div class="benefit-item">
+        <span class="benefit-check">✅</span>
+        <span class="benefit-text">你的反馈直接影响产品迭代</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="requirements">
+    <div class="requirements-title">📋 招募要求</div>
+    <div class="req-list">
+      <div class="req-item"><span class="req-dot"></span>360内部员工</div>
+      <div class="req-item"><span class="req-dot"></span>有车一族（私家车）</div>
+      <div class="req-item"><span class="req-dot"></span>愿意按要求完成体验作业（开箱/配网/日常使用反馈）</div>
+      <div class="req-item"><span class="req-dot"></span>每周至少提交1次使用反馈</div>
+    </div>
+  </div>
+
+  <div class="deadline">
+    <div class="deadline-label">⏰ 报名截止日期</div>
+    <div class="deadline-date">2026.08.30</div>
+  </div>
+
+  <div class="cta">
+    <div class="cta-box">
+      <div class="cta-text">💬 评论区扣「1」或私信报名</div>
+      <div class="cta-sub">名额有限，报满即止！</div>
+    </div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">#360</span>
+    <span class="tag">#行车记录仪</span>
+    <span class="tag">#4G记录仪</span>
+    <span class="tag">#公测招募</span>
+    <span class="tag">#免费体验</span>
+    <span class="tag">#停车监控</span>
+    <span class="tag">#用车好物</span>
+    <span class="tag">#内部福利</span>
+    <span class="tag">#G980HMC</span>
+  </div>
+
+  <div class="brand">360 IoT · G980HMC 4G记录仪</div>
+</div>
+</body>
+</html>
