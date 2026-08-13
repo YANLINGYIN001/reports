@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G980H 4G记录仪 公测项目报告汇总</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.header {
+  background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%);
+  border-radius: 20px;
+  padding: 50px 40px;
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 40px rgba(0,176,80,0.2);
+}
+.header h1 {
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.header p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+.header .meta {
+  margin-top: 15px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+.section {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.section-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #00B050;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.report-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  background: #f8f9fa;
+  transition: all 0.3s;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid transparent;
+}
+.report-item:hover {
+  background: #e8f5e9;
+  border-color: #00B050;
+  transform: translateX(4px);
+}
+.report-item.new {
+  background: #fff3e0;
+  border-color: #FF9800;
+}
+.report-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.report-icon {
+  font-size: 28px;
+}
+.report-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+.report-date {
+  font-size: 13px;
+  color: #999;
+  margin-top: 2px;
+}
+.report-arrow {
+  color: #00B050;
+  font-size: 20px;
+}
+.report-badge {
+  background: #FF9800;
+  color: white;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-size: 15px;
+}
+.empty-state .icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+  opacity: 0.3;
+}
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: #999;
+  font-size: 14px;
+}
+.footer a {
+  color: #00B050;
+  text-decoration: none;
+}
+.stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.stat-card {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.stat-number {
+  font-size: 32px;
+  font-weight: 900;
+  color: #00B050;
+}
+.stat-label {
+  font-size: 13px;
+  color: #999;
+  margin-top: 4px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🚗 G980H 4G记录仪 公测项目报告汇总</h1>
+    <p>人不在车，也能看车 — 公测项目全过程报告合集</p>
+    <div class="meta">最后更新：2026-08-13 · 持续更新中</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-number" id="total-reports">3</div>
+      <div class="stat-label">报告总数</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">1</div>
+      <div class="stat-label">招募阶段</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">项目文档</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">0</div>
+      <div class="stat-label">体验报告</div>
+    </div>
+  </div>
+
+  <!-- 项目文档 -->
+  <div class="section">
+    <div class="section-title">📄 项目文档</div>
+    <a class="report-item" href="https://360iot-uxc.feishu.cn/wiki/QVAxw4bOyilhAdkRw0acFjennqd" target="_blank">
+      <div class="report-info">
+        <span class="report-icon">📑</span>
+        <div>
+          <div class="report-name">G980HMC 4G记录仪产品培训</div>
+          <div class="report-date">飞书文档 · 产品资料</div>
+        </div>
+      </div>
+      <span class="report-arrow">→</span>
+    </a>
+    <a class="report-item" href="https://my.feishu.cn/base/BEIKbbOd6a88XqshYVIc8AQlnbe" target="_blank">
+      <div class="report-info">
+        <span class="report-icon">📊</span>
+        <div>
+          <div class="report-name">公测指标标准（多维表格）</div>
+          <div class="report-date">飞书多维表格 · KPI/问卷/分级/采集/报告 5个维度</div>
+        </div>
+      </div>
+      <span class="report-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- 招募阶段 -->
+  <div class="section">
+    <div class="section-title">🎯 招募阶段</div>
+    <a class="report-item" href="https://yanlingyin001.github.io/reports/g980h-recruit-poster.html" target="_blank">
+      <div class="report-info">
+        <span class="report-icon">📣</span>
+        <div>
+          <div class="report-name">小红书招募海报</div>
+          <div class="report-date">2026-08-13 · 报名截止8.30 · 押金500元</div>
+        </div>
+      </div>
+      <span class="report-arrow">→</span>
+    </a>
+    <a class="report-item" href="https://v.wjx.cn/vm/hS1auXR.aspx" target="_blank">
+      <div class="report-info">
+        <span class="report-icon">📝</span>
+        <div>
+          <div class="report-name">报名链接（问卷星）</div>
+          <div class="report-date">2026-08-13 · 招募中</div>
+        </div>
+      </div>
+      <span class="report-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- 开箱体验 -->
+  <div class="section">
+    <div class="section-title">📦 开箱体验</div>
+    <div class="empty-state">
+      <div class="icon">📦</div>
+      <div>待公测启动后生成报告</div>
+    </div>
+  </div>
+
+  <!-- 安装配网 -->
+  <div class="section">
+    <div class="section-title">⚙️ 安装配网</div>
+    <div class="empty-state">
+      <div class="icon">⚙️</div>
+      <div>待公测启动后生成报告</div>
+    </div>
+  </div>
+
+  <!-- 4G核心功能 -->
+  <div class="section">
+    <div class="section-title">📶 4G核心功能</div>
+    <div class="empty-state">
+      <div class="icon">📶</div>
+      <div>待公测启动后生成报告</div>
+    </div>
+  </div>
+
+  <!-- 日常使用反馈 -->
+  <div class="section">
+    <div class="section-title">📊 日常使用反馈</div>
+    <div class="empty-state">
+      <div class="icon">📊</div>
+      <div>待公测启动后生成报告</div>
+    </div>
+  </div>
+
+  <!-- 作业完成情况 -->
+  <div class="section">
+    <div class="section-title">✅ 作业完成情况</div>
+    <div class="empty-state">
+      <div class="icon">✅</div>
+      <div>待公测启动后生成报告</div>
+    </div>
+  </div>
+
+  <!-- 公测总结 -->
+  <div class="section">
+    <div class="section-title">📋 公测总结</div>
+    <div class="empty-state">
+      <div class="icon">📋</div>
+      <div>待公测结束后生成报告</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>📍 G980H 4G记录仪公测项目 · 报告合集</p>
+    <p style="margin-top:8px;">由 🦞 尹燕玲-报告分析专家 自动维护 · <a href="https://yanlingyin001.github.io/reports/">← 返回报告总首页</a></p>
+  </div>
+</div>
+</body>
+</html>
