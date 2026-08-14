@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夏朝历代帝王可视化报告</title>
+<style>
+@page { size: A4; margin: 12mm; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#333; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.container { max-width:100%; margin:0 auto; padding:0; }
+.header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:24px 20px; border-radius:8px; margin-bottom:16px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:4px; letter-spacing:2px; }
+.header p { font-size:13px; opacity:0.9; }
+.header .meta { font-size:11px; opacity:0.75; margin-top:4px; }
+.kpi-row { display:flex; gap:8px; margin-bottom:16px; }
+.kpi-card { flex:1; background:#fff; border:1px solid #e0e0e0; border-radius:6px; padding:10px 6px; text-align:center; border-top:3px solid #00B050; }
+.kpi-card .num { font-size:22px; font-weight:700; color:#00B050; }
+.kpi-card .label { font-size:10px; color:#888; margin-top:2px; }
+.kpi-card.warn { border-top-color:#E74C3C; } .kpi-card.warn .num { color:#E74C3C; }
+.kpi-card.info { border-top-color:#F39C12; } .kpi-card.info .num { color:#F39C12; }
+.section { margin-bottom:16px; page-break-inside:avoid; }
+.section-title { font-size:15px; font-weight:700; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:10px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:11px; }
+thead { background:#00B050; color:#fff; }
+th { padding:6px 4px; text-align:center; font-weight:600; white-space:nowrap; border:1px solid #009040; }
+td { padding:5px 4px; text-align:center; border:1px solid #ddd; }
+tr:nth-child(even) { background:#f7fff7; }
+.ruler-name { font-weight:600; color:#00B050; }
+.tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600; }
+.tag-great { background:#d4edda; color:#155724; }
+.tag-good { background:#d1ecf1; color:#0c5460; }
+.tag-mid { background:#fff3cd; color:#856404; }
+.tag-bad { background:#f8d7da; color:#721c24; }
+.tag-tragic { background:#e2d6f3; color:#4a148c; }
+.ruler-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.ruler-card { background:#fafafa; border:1px solid #e8e8e8; border-radius:6px; padding:10px; border-left:3px solid #00B050; break-inside:avoid; }
+.ruler-card.warn { border-left-color:#E74C3C; }
+.ruler-card.info { border-left-color:#F39C12; }
+.ruler-card.purple { border-left-color:#6f42c1; }
+.rc-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.rc-name { font-size:13px; font-weight:700; color:#333; }
+.rc-pinyin { font-size:10px; color:#999; font-weight:400; }
+.rc-row { font-size:11px; color:#555; margin-bottom:2px; }
+.rc-row strong { color:#333; }
+.rc-highlight { font-size:10px; color:#777; margin-top:4px; padding-top:4px; border-top:1px dashed #ddd; line-height:1.5; }
+.card-break { page-break-before:always; }
+.page-break { page-break-before:always; }
+.footer { text-align:center; padding:12px; color:#999; font-size:11px; margin-top:8px; }
+.footer span { color:#00B050; font-weight:600; }
+@media screen { body { background:#f0f2f5; } .container { max-width:210mm; margin:20px auto; padding:20px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.1); } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🏛️ 夏朝历代帝王可视化报告</h1>
+    <p>约2070—1600 BC · 共17位帝王 · 约470年</p>
+    <div class="meta">阳城（今河南登封） · 🦞 尹燕玲报告分析专家 · 2026年8月14日</div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">17</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">约470年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">—</div><div class="label">平均寿命（岁）</div></div>
+    <div class="kpi-card warn"><div class="num">世袭制开端</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 夏朝帝王总览表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>序号</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>禹</td><td>约45年</td><td>约前2070—约前2025</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>启</td><td>约40年</td><td>约前2025—约前2010</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>太康</td><td>约29年</td><td>约前2010—约前1985</td><td>不明</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>4</td><td class='ruler-name'>仲康</td><td>约13年</td><td>约前1985—约前1972</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>5</td><td class='ruler-name'>相</td><td>约28年</td><td>约前1972—约前1944</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>6</td><td class='ruler-name'>少康</td><td>约21年</td><td>约前1944—约前1923</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>7</td><td class='ruler-name'>予</td><td>约17年</td><td>约前1923—约前1906</td><td>不明</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>8</td><td class='ruler-name'>槐</td><td>约26年</td><td>约前1906—约前1880</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>9</td><td class='ruler-name'>芒</td><td>约18年</td><td>约前1880—约前1862</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>10</td><td class='ruler-name'>泄</td><td>约16年</td><td>约前1862—约前1846</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>11</td><td class='ruler-name'>不降</td><td>约59年</td><td>约前1846—约前1787</td><td>不明</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>12</td><td class='ruler-name'>扃</td><td>约21年</td><td>约前1787—约前1766</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>13</td><td class='ruler-name'>廑</td><td>约21年</td><td>约前1766—约前1745</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>14</td><td class='ruler-name'>孔甲</td><td>约31年</td><td>约前1745—约前1714</td><td>不明</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>15</td><td class='ruler-name'>皋</td><td>约11年</td><td>约前1714—约前1703</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>16</td><td class='ruler-name'>发</td><td>约11年</td><td>约前1703—约前1692</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>17</td><td class='ruler-name'>桀</td><td>约52年</td><td>约前1692—约前1640</td><td>不明</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="section page-break">
+    <div class="section-title">👑 帝王详情卡片</div>
+    <div class="ruler-grid"><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">1. 禹 <span class="rc-pinyin">(yǔ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>约前2070年 — 约前2025年</div>
+  <div class="rc-row"><strong>在位：</strong>约前2070—约前2025（约45年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">大禹治水，建立夏朝，传位于启开创世袭制</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">2. 启 <span class="rc-pinyin">(qǐ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>约前2050年 — 约前2010年</div>
+  <div class="rc-row"><strong>在位：</strong>约前2025—约前2010（约40年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">继承父位，确立世袭制，开创"家天下"</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">3. 太康 <span class="rc-pinyin">(tàikāng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前2010—约前1985（约29年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">失国于后羿，史称"太康失国"</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">4. 仲康 <span class="rc-pinyin">(zhòngkāng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1985—约前1972（约13年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">后羿立为傀儡，有名无实</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">5. 相 <span class="rc-pinyin">(xiàng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1972—约前1944（约28年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">被寒浞之子浇所杀，夏朝中断</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">6. 少康 <span class="rc-pinyin">(shàokāng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1944—约前1923（约21年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">少康中兴，恢复夏朝统治</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">7. 予 <span class="rc-pinyin">(yǔ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1923—约前1906（约17年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">巩固王权，发展经济</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">8. 槐 <span class="rc-pinyin">(huái)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1906—约前1880（约26年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">夏朝继续维持稳定</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">9. 芒 <span class="rc-pinyin">(máng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1880—约前1862（约18年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">举行沉祭典礼</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">10. 泄 <span class="rc-pinyin">(xiè)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1862—约前1846（约16年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">加封诸侯，加强对各部控制</div>
+</div>
+<div class="card-break"></div><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">11. 不降 <span class="rc-pinyin">(bùjiàng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1846—约前1787（约59年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">夏朝鼎盛时期，国力强盛</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">12. 扃 <span class="rc-pinyin">(jiōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1787—约前1766（约21年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">禅让弟廑，平稳过渡</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">13. 廑 <span class="rc-pinyin">(jǐn)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1766—约前1745（约21年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">迁都西河，夏朝开始衰落</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">14. 孔甲 <span class="rc-pinyin">(kǒngjiǎ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1745—约前1714（约31年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">信奉鬼神，夏朝衰落</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">15. 皋 <span class="rc-pinyin">(gāo)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1714—约前1703（约11年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">夏朝继续衰落</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">16. 发 <span class="rc-pinyin">(fā)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1703—约前1692（约11年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">诸侯叛离，王权衰落</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">17. 桀 <span class="rc-pinyin">(jié)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1692—约前1640（约52年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">暴君，被商汤所灭，夏朝灭亡</div>
+</div>
+</div>
+  </div>
+  <div class="section page-break" style="display:block">
+    <div class="section-title">⚠️ 夏朝重大事件年表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">涉及帝王</th><th style="width:22%">影响等级</th></tr></thead>
+      <tbody><tr><td>约前2070</td><td style='text-align:left'>大禹治水成功，建立夏朝</td><td>禹</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>约前2025</td><td style='text-align:left'>启继位，确立世袭制</td><td>启</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>约前2010</td><td style='text-align:left'>太康失国，后羿夺权</td><td>太康</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>约前1944</td><td style='text-align:left'>少康中兴，恢复夏朝</td><td>少康</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>约前1846</td><td style='text-align:left'>不降即位，夏朝鼎盛</td><td>不降</td><td><span class='tag tag-good'>善政</span></td></tr>
+<tr><td>约前1745</td><td style='text-align:left'>孔甲乱政，夏朝衰落</td><td>孔甲</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>约前1640</td><td style='text-align:left'>商汤伐桀，夏朝灭亡</td><td>桀</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="footer">
+    <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+    <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
+  </div>
+</div>
+</body>
+</html>
