@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宋朝历代帝王可视化报告</title>
+<style>
+@page { size: A4; margin: 12mm; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#333; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.container { max-width:100%; margin:0 auto; padding:0; }
+.header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:24px 20px; border-radius:8px; margin-bottom:16px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:4px; letter-spacing:2px; }
+.header p { font-size:13px; opacity:0.9; }
+.header .meta { font-size:11px; opacity:0.75; margin-top:4px; }
+.kpi-row { display:flex; gap:8px; margin-bottom:16px; }
+.kpi-card { flex:1; background:#fff; border:1px solid #e0e0e0; border-radius:6px; padding:10px 6px; text-align:center; border-top:3px solid #00B050; }
+.kpi-card .num { font-size:22px; font-weight:700; color:#00B050; }
+.kpi-card .label { font-size:10px; color:#888; margin-top:2px; }
+.kpi-card.warn { border-top-color:#E74C3C; } .kpi-card.warn .num { color:#E74C3C; }
+.kpi-card.info { border-top-color:#F39C12; } .kpi-card.info .num { color:#F39C12; }
+.section { margin-bottom:16px; page-break-inside:avoid; }
+.section-title { font-size:15px; font-weight:700; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:10px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:11px; }
+thead { background:#00B050; color:#fff; }
+th { padding:6px 4px; text-align:center; font-weight:600; white-space:nowrap; border:1px solid #009040; }
+td { padding:5px 4px; text-align:center; border:1px solid #ddd; }
+tr:nth-child(even) { background:#f7fff7; }
+.ruler-name { font-weight:600; color:#00B050; }
+.tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600; }
+.tag-great { background:#d4edda; color:#155724; }
+.tag-good { background:#d1ecf1; color:#0c5460; }
+.tag-mid { background:#fff3cd; color:#856404; }
+.tag-bad { background:#f8d7da; color:#721c24; }
+.tag-tragic { background:#e2d6f3; color:#4a148c; }
+.ruler-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.ruler-card { background:#fafafa; border:1px solid #e8e8e8; border-radius:6px; padding:10px; border-left:3px solid #00B050; break-inside:avoid; }
+.ruler-card.warn { border-left-color:#E74C3C; }
+.ruler-card.info { border-left-color:#F39C12; }
+.ruler-card.purple { border-left-color:#6f42c1; }
+.rc-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.rc-name { font-size:13px; font-weight:700; color:#333; }
+.rc-pinyin { font-size:10px; color:#999; font-weight:400; }
+.rc-row { font-size:11px; color:#555; margin-bottom:2px; }
+.rc-row strong { color:#333; }
+.rc-highlight { font-size:10px; color:#777; margin-top:4px; padding-top:4px; border-top:1px dashed #ddd; line-height:1.5; }
+.card-break { page-break-before:always; }
+.page-break { page-break-before:always; }
+.footer { text-align:center; padding:12px; color:#999; font-size:11px; margin-top:8px; }
+.footer span { color:#00B050; font-weight:600; }
+@media screen { body { background:#f0f2f5; } .container { max-width:210mm; margin:20px auto; padding:20px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.1); } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📜 宋朝历代帝王可视化报告</h1>
+    <p>960—1279 AD · 共18位帝王 · 319年</p>
+    <div class="meta">开封/临安 · 🦞 尹燕玲报告分析专家 · 2026年8月14日</div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">18</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">319年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">46.6</div><div class="label">平均寿命（岁）</div></div>
+    <div class="kpi-card warn"><div class="num">文化经济巅峰</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 宋朝帝王总览表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>序号</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>宋太祖</td><td>16年</td><td>960年2月—976年11月</td><td>49</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>宋太宗</td><td>21年</td><td>976年11月—997年5月</td><td>57</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>宋真宗</td><td>25年</td><td>997年5月—1022年3月</td><td>54</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>4</td><td class='ruler-name'>宋仁宗</td><td>41年</td><td>1022年3月—1063年4月</td><td>53</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>5</td><td class='ruler-name'>宋英宗</td><td>4年</td><td>1063年4月—1067年1月</td><td>34</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>6</td><td class='ruler-name'>宋神宗</td><td>18年</td><td>1067年1月—1085年4月</td><td>37</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>7</td><td class='ruler-name'>宋哲宗</td><td>15年</td><td>1085年4月—1100年2月</td><td>23</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>8</td><td class='ruler-name'>宋徽宗</td><td>26年</td><td>1100年2月—1126年1月</td><td>53</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>9</td><td class='ruler-name'>宋钦宗</td><td>2年</td><td>1126年1月—1127年3月</td><td>61</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>10</td><td class='ruler-name'>宋高宗</td><td>36年</td><td>1127年5月—1162年7月</td><td>80</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>11</td><td class='ruler-name'>宋孝宗</td><td>27年</td><td>1162年7月—1189年2月</td><td>67</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>12</td><td class='ruler-name'>宋光宗</td><td>5年</td><td>1189年2月—1194年7月</td><td>53</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>13</td><td class='ruler-name'>宋宁宗</td><td>30年</td><td>1194年7月—1224年9月</td><td>56</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>14</td><td class='ruler-name'>宋理宗</td><td>40年</td><td>1224年9月—1264年11月</td><td>59</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>15</td><td class='ruler-name'>宋度宗</td><td>10年</td><td>1264年11月—1274年8月</td><td>34</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>16</td><td class='ruler-name'>宋恭帝</td><td>2年</td><td>1274年8月—1276年2月</td><td>52</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>17</td><td class='ruler-name'>宋端宗</td><td>2年</td><td>1276年6月—1278年5月</td><td>9</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>18</td><td class='ruler-name'>宋帝昺</td><td>1年</td><td>1278年5月—1279年3月</td><td>7</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="section page-break">
+    <div class="section-title">👑 帝王详情卡片</div>
+    <div class="ruler-grid"><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">1. 宋太祖 <span class="rc-pinyin">(sòngtàizǔ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>927年3月21日 — 976年11月14日</div>
+  <div class="rc-row"><strong>在位：</strong>960年2月—976年11月（16年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">赵匡胤，陈桥兵变，杯酒释兵权</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">2. 宋太宗 <span class="rc-pinyin">(sòngtàizōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>939年11月20日 — 997年5月8日</div>
+  <div class="rc-row"><strong>在位：</strong>976年11月—997年5月（21年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">灭北汉统一，雍熙北伐失败</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">3. 宋真宗 <span class="rc-pinyin">(sòngzhēnzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>968年12月23日 — 1022年3月23日</div>
+  <div class="rc-row"><strong>在位：</strong>997年5月—1022年3月（25年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">澶渊之盟，咸平之治</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">4. 宋仁宗 <span class="rc-pinyin">(sòngrénzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1010年5月30日 — 1063年4月30日</div>
+  <div class="rc-row"><strong>在位：</strong>1022年3月—1063年4月（41年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">仁宗盛治，庆历新政，在位最长</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">5. 宋英宗 <span class="rc-pinyin">(sòngyīngzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1032年2月16日 — 1067年1月25日</div>
+  <div class="rc-row"><strong>在位：</strong>1063年4月—1067年1月（4年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">濮议之争</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">6. 宋神宗 <span class="rc-pinyin">(sòngshénzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1048年5月25日 — 1085年4月1日</div>
+  <div class="rc-row"><strong>在位：</strong>1067年1月—1085年4月（18年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">熙宁变法，王安石变法</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">7. 宋哲宗 <span class="rc-pinyin">(sòngzhézōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1077年1月4日 — 1100年2月23日</div>
+  <div class="rc-row"><strong>在位：</strong>1085年4月—1100年2月（15年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">元祐更化，绍圣绍述</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">8. 宋徽宗 <span class="rc-pinyin">(sònghuīzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1082年11月2日 — 1135年6月4日</div>
+  <div class="rc-row"><strong>在位：</strong>1100年2月—1126年1月（26年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">艺术天才，政治昏庸，靖康之变</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">9. 宋钦宗 <span class="rc-pinyin">(sòngqīnzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1100年5月23日 — 1161年6月14日</div>
+  <div class="rc-row"><strong>在位：</strong>1126年1月—1127年3月（2年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">靖康之变，被金所俘</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">10. 宋高宗 <span class="rc-pinyin">(sònggāozōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1107年6月12日 — 1187年11月9日</div>
+  <div class="rc-row"><strong>在位：</strong>1127年5月—1162年7月（36年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">赵构，建立南宋，杀岳飞</div>
+</div>
+<div class="card-break"></div><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">11. 宋孝宗 <span class="rc-pinyin">(sòngxiàozōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1127年11月27日 — 1194年6月28日</div>
+  <div class="rc-row"><strong>在位：</strong>1162年7月—1189年2月（27年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">隆兴和议，乾淳之治</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">12. 宋光宗 <span class="rc-pinyin">(sòngguāngzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1147年9月30日 — 1200年9月17日</div>
+  <div class="rc-row"><strong>在位：</strong>1189年2月—1194年7月（5年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">精神失常，被逼退位</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">13. 宋宁宗 <span class="rc-pinyin">(sòngníngzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1168年11月19日 — 1224年9月18日</div>
+  <div class="rc-row"><strong>在位：</strong>1194年7月—1224年9月（30年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">庆元党禁，开禧北伐失败</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">14. 宋理宗 <span class="rc-pinyin">(sònglǐzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1205年1月26日 — 1264年11月16日</div>
+  <div class="rc-row"><strong>在位：</strong>1224年9月—1264年11月（40年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">联蒙灭金，端平更化</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">15. 宋度宗 <span class="rc-pinyin">(sòngdùzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1240年5月2日 — 1274年8月12日</div>
+  <div class="rc-row"><strong>在位：</strong>1264年11月—1274年8月（10年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">贾似道专权，蒙古南侵</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">16. 宋恭帝 <span class="rc-pinyin">(sònggōngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1271年11月2日 — 1323年5月31日</div>
+  <div class="rc-row"><strong>在位：</strong>1274年8月—1276年2月（2年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">降元，后被赐死</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">17. 宋端宗 <span class="rc-pinyin">(sòngduānzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1269年7月10日 — 1278年5月8日</div>
+  <div class="rc-row"><strong>在位：</strong>1276年6月—1278年5月（2年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">海上流亡，病死于碙洲</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">18. 宋帝昺 <span class="rc-pinyin">(sòngdìbǐng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1272年 — 1279年3月19日</div>
+  <div class="rc-row"><strong>在位：</strong>1278年5月—1279年3月（1年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">崖山海战，南宋灭亡</div>
+</div>
+</div>
+  </div>
+  <div class="section page-break" style="display:block">
+    <div class="section-title">⚠️ 宋朝重大事件年表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">涉及帝王</th><th style="width:22%">影响等级</th></tr></thead>
+      <tbody><tr><td>960年2月</td><td style='text-align:left'>陈桥兵变，赵匡胤建宋</td><td>宋太祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>976年11月</td><td style='text-align:left'>烛影斧声，太宗即位</td><td>宋太宗</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>1004年</td><td style='text-align:left'>澶渊之盟，宋辽议和</td><td>宋真宗</td><td><span class='tag tag-good'>善政</span></td></tr>
+<tr><td>1043年</td><td style='text-align:left'>庆历新政</td><td>宋仁宗</td><td><span class='tag tag-good'>善政</span></td></tr>
+<tr><td>1069年</td><td style='text-align:left'>王安石变法开始</td><td>宋神宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>1127年3月</td><td style='text-align:left'>靖康之变，北宋灭亡</td><td>宋钦宗</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+<tr><td>1127年5月</td><td style='text-align:left'>赵构建南宋</td><td>宋高宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>1141年</td><td style='text-align:left'>绍兴和议，岳飞遇害</td><td>宋高宗</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>1162年7月</td><td style='text-align:left'>孝宗即位，乾淳之治</td><td>宋孝宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>1234年</td><td style='text-align:left'>宋蒙联军灭金</td><td>宋理宗</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>1279年3月</td><td style='text-align:left'>崖山海战，南宋灭亡</td><td>宋帝昺</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="footer">
+    <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+    <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
+  </div>
+</div>
+</body>
+</html>
