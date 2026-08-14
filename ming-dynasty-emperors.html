@@ -134,22 +134,22 @@
 
 <script>
 const emperors = [
-  { seq:1, temple:'太祖', name:'朱元璋', pinyin:'', era:'洪武', reign:31, start:1368, end:1398, age:71, rating:'great', detail:'出身贫农，曾为和尚乞丐，参加红巾军起义。废丞相制，颁布《大明律》，设锦衣卫。胡惟庸案、蓝玉案大杀功臣。勤政多疑，晚年大兴文字狱。' },
-  { seq:2, temple:'惠宗', name:'朱允炆', pinyin:'yǔn wén', era:'建文', reign:4, start:1399, end:1402, age:null, rating:'tragic', detail:'朱标之子，朱元璋之孙。推行建文改制，宽刑省狱。削藩政策引发靖难之役。性情温文儒雅但政治经验不足。南京城破后下落不明。' },
-  { seq:3, temple:'成祖', name:'朱棣', pinyin:'dì', era:'永乐', reign:22, start:1403, end:1424, age:65, rating:'great', detail:'朱元璋第四子，初封燕王。靖难之役夺位。迁都北京营建紫禁城，五征漠北，郑和七下西洋，编纂《永乐大典》。设东厂。雄才大略但夺位残酷。' },
-  { seq:4, temple:'仁宗', name:'朱高炽', pinyin:'chì', era:'洪熙', reign:0.83, start:1424, end:1425, age:48, rating:'good', detail:'朱棣长子，体胖多病。平反建文旧臣冤案，停止大规模用兵，修养生息。在位仅十个月猝死，但开仁宣之治之端。' },
-  { seq:5, temple:'宣宗', name:'朱瞻基', pinyin:'zhān', era:'宣德', reign:10, start:1426, end:1435, age:37, rating:'great', detail:'朱高炽长子。仁宣之治达到鼎盛。撤交趾布政司，整顿吏治。亲征平定汉王叛乱。善书画精骑射。设内书堂教宦官读书，为后世宦官专权埋下隐患。' },
-  { seq:6, temple:'英宗', name:'朱祁镇', pinyin:'qí', era:'正统/天顺', reign:22, start:1436, end:1464, age:38, rating:'bad', detail:'朱瞻基长子。宠信宦官王振导致土木堡之变被瓦剌俘虏。于谦主导北京保卫战。夺门之变复辟后杀于谦。复位后废除殉葬制度。两度称帝，一生坎坷。' },
-  { seq:7, temple:'代宗', name:'朱祁钰', pinyin:'qí yù', era:'景泰', reign:8, start:1450, end:1457, age:30, rating:'good', detail:'英宗之弟，英宗被俘后临危受命。任用于谦打赢北京保卫战。稳定朝局，治理水患。夺门之变后被废，不久病逝（一说被害），以亲王礼葬。' },
-  { seq:8, temple:'宪宗', name:'朱见深', pinyin:'jiàn shēn', era:'成化', reign:23, start:1465, end:1487, age:41, rating:'mid', detail:'英宗长子，幼年因土木堡之变被废太子后复位。平反于谦冤案，恢复叔父帝号。设西厂任用汪直。宠幸万贵妃（大17岁）。皇庄制度开土地兼并之风。口吃内向。' },
-  { seq:9, temple:'孝宗', name:'朱祐樘', pinyin:'yòu chéng', era:'弘治', reign:18, start:1488, end:1505, age:36, rating:'great', detail:'宪宗第三子，幼年被宫女太监秘密养大避万贵妃迫害，六岁才与父亲相认。弘治中兴，勤政爱民。历史上罕见的一夫一妻皇帝（仅张皇后一人）。仁慈宽厚。' },
-  { seq:10, temple:'武宗', name:'朱厚照', pinyin:'', era:'正德', reign:16, start:1506, end:1521, age:31, rating:'bad', detail:'孝宗独子。建豹房纵乐，刘瑾专权。宁王叛乱被王阳明平定。多次私自出巡，自封威武大将军朱寿。应州大捷亲征击败蒙古。叛逆顽劣荒唐任性。南巡落水后病逝。' },
-  { seq:11, temple:'世宗', name:'朱厚熜', pinyin:'cōng', era:'嘉靖', reign:45, start:1522, end:1566, age:60, rating:'mid', detail:'武宗堂弟，以大礼议入继大统。前期嘉靖中兴，戚继光抗倭。大礼议事件与朝臣争生父尊号。壬寅宫变宫女谋杀未遂。严嵩专权20年。20余年不上朝躲西苑修道炼丹。服丹药中毒而亡。' },
-  { seq:12, temple:'穆宗', name:'朱载坖', pinyin:'zǎi jī', era:'隆庆', reign:6, start:1567, end:1572, age:36, rating:'good', detail:'世宗第三子。隆庆开关解除海禁允许民间海外贸易。俺答封贡与蒙古达成和平。任用高拱、张居正等能臣。性格宽仁，好色纵欲，纵欲过度早逝。' },
-  { seq:13, temple:'神宗', name:'朱翊钧', pinyin:'yì jūn', era:'万历', reign:48, start:1573, end:1620, age:58, rating:'bad', detail:'穆宗第三子，明朝在位最久。前期万历中兴赖张居正改革（一条鞭法、考成法）。万历三大征（平宁夏、抗倭援朝、平播州）。国本之争与群臣对立，28年不上朝。萨尔浒之战败于后金。明朝衰亡实始于万历。' },
-  { seq:14, temple:'光宗', name:'朱常洛', pinyin:'', era:'泰昌', reign:0.08, start:1620, end:1620, age:39, rating:'tragic', detail:'神宗长子，国本之争焦点。当了20年太子。即位后发内帑犒劳边防，罢免矿税。明末三大案：梃击案、红丸案（服红丸暴毙）、移宫案。在位仅29天。命运坎坷。' },
-  { seq:15, temple:'熹宗', name:'朱由校', pinyin:'', era:'天启', reign:7, start:1621, end:1627, age:23, rating:'bad', detail:'光宗长子。著名木匠皇帝，沉迷木工手艺精湛，几乎不识字。朝政全交魏忠贤（九千岁），迫害东林党。后金崛起辽东危急。服仙露后病逝。' },
-  { seq:16, temple:'思宗', name:'朱由检', pinyin:'jiǎn', era:'崇祯', reign:17, start:1628, end:1644, age:34, rating:'tragic', detail:'熹宗之弟。铲除魏忠贤，勤政自律，六下罪己诏，生活节俭。但多疑刚愎急躁善变，17年换50个内阁大学士。李自成攻入北京，煤山自缢以身殉国。遗言：任贼分裂朕尸，勿伤百姓一人。' },
+  { seq:1, temple:'太祖', name:'朱元璋', pinyin:'', born:'1328年10月21日', died:'1398年6月24日', era:'洪武', reign:31, start:1368, end:1398, age:71, rating:'great', detail:'出身贫农，曾为和尚乞丐，参加红巾军起义。废丞相制，颁布《大明律》，设锦衣卫。胡惟庸案、蓝玉案大杀功臣。勤政多疑，晚年大兴文字狱。' },
+  { seq:2, temple:'惠宗', name:'朱允炆', pinyin:'yǔn wén', born:'1377年12月5日', died:'1402年（下落不明）', era:'建文', reign:4, start:1399, end:1402, age:null, rating:'tragic', detail:'朱标之子，朱元璋之孙。推行建文改制，宽刑省狱。削藩政策引发靖难之役。性情温文儒雅但政治经验不足。南京城破后下落不明。' },
+  { seq:3, temple:'成祖', name:'朱棣', pinyin:'dì', born:'1360年5月2日', died:'1424年8月12日', era:'永乐', reign:22, start:1403, end:1424, age:65, rating:'great', detail:'朱元璋第四子，初封燕王。靖难之役夺位。迁都北京营建紫禁城，五征漠北，郑和七下西洋，编纂《永乐大典》。设东厂。雄才大略但夺位残酷。' },
+  { seq:4, temple:'仁宗', name:'朱高炽', pinyin:'chì', born:'1378年8月16日', died:'1425年5月29日', era:'洪熙', reign:0.83, start:1424, end:1425, age:48, rating:'good', detail:'朱棣长子，体胖多病。平反建文旧臣冤案，停止大规模用兵，修养生息。在位仅十个月猝死，但开仁宣之治之端。' },
+  { seq:5, temple:'宣宗', name:'朱瞻基', pinyin:'zhān', born:'1399年3月16日', died:'1435年1月31日', era:'宣德', reign:10, start:1426, end:1435, age:37, rating:'great', detail:'朱高炽长子。仁宣之治达到鼎盛。撤交趾布政司，整顿吏治。亲征平定汉王叛乱。善书画精骑射。设内书堂教宦官读书，为后世宦官专权埋下隐患。' },
+  { seq:6, temple:'英宗', name:'朱祁镇', pinyin:'qí', born:'1427年11月29日', died:'1464年2月23日', era:'正统/天顺', reign:22, start:1436, end:1464, age:38, rating:'bad', detail:'朱瞻基长子。宠信宦官王振导致土木堡之变被瓦剌俘虏。于谦主导北京保卫战。夺门之变复辟后杀于谦。复位后废除殉葬制度。两度称帝，一生坎坷。' },
+  { seq:7, temple:'代宗', name:'朱祁钰', pinyin:'qí yù', born:'1428年9月21日', died:'1457年3月14日', era:'景泰', reign:8, start:1450, end:1457, age:30, rating:'good', detail:'英宗之弟，英宗被俘后临危受命。任用于谦打赢北京保卫战。稳定朝局，治理水患。夺门之变后被废，不久病逝（一说被害），以亲王礼葬。' },
+  { seq:8, temple:'宪宗', name:'朱见深', pinyin:'jiàn shēn', born:'1447年12月9日', died:'1487年9月9日', era:'成化', reign:23, start:1465, end:1487, age:41, rating:'mid', detail:'英宗长子，幼年因土木堡之变被废太子后复位。平反于谦冤案，恢复叔父帝号。设西厂任用汪直。宠幸万贵妃（大17岁）。皇庄制度开土地兼并之风。口吃内向。' },
+  { seq:9, temple:'孝宗', name:'朱祐樘', pinyin:'yòu chéng', born:'1470年7月30日', died:'1505年6月8日', era:'弘治', reign:18, start:1488, end:1505, age:36, rating:'great', detail:'宪宗第三子，幼年被宫女太监秘密养大避万贵妃迫害，六岁才与父亲相认。弘治中兴，勤政爱民。历史上罕见的一夫一妻皇帝（仅张皇后一人）。仁慈宽厚。' },
+  { seq:10, temple:'武宗', name:'朱厚照', pinyin:'', born:'1491年10月26日', died:'1521年3月16日', era:'正德', reign:16, start:1506, end:1521, age:31, rating:'bad', detail:'孝宗独子。建豹房纵乐，刘瑾专权。宁王叛乱被王阳明平定。多次私自出巡，自封威武大将军朱寿。应州大捷亲征击败蒙古。叛逆顽劣荒唐任性。南巡落水后病逝。' },
+  { seq:11, temple:'世宗', name:'朱厚熜', pinyin:'cōng', born:'1507年9月16日', died:'1567年1月23日', era:'嘉靖', reign:45, start:1522, end:1566, age:60, rating:'mid', detail:'武宗堂弟，以大礼议入继大统。前期嘉靖中兴，戚继光抗倭。大礼议事件与朝臣争生父尊号。壬寅宫变宫女谋杀未遂。严嵩专权20年。20余年不上朝躲西苑修道炼丹。服丹药中毒而亡。' },
+  { seq:12, temple:'穆宗', name:'朱载坖', pinyin:'zǎi jī', born:'1537年3月4日', died:'1572年7月5日', era:'隆庆', reign:6, start:1567, end:1572, age:36, rating:'good', detail:'世宗第三子。隆庆开关解除海禁允许民间海外贸易。俺答封贡与蒙古达成和平。任用高拱、张居正等能臣。性格宽仁，好色纵欲，纵欲过度早逝。' },
+  { seq:13, temple:'神宗', name:'朱翊钧', pinyin:'yì jūn', born:'1563年9月4日', died:'1620年8月18日', era:'万历', reign:48, start:1573, end:1620, age:58, rating:'bad', detail:'穆宗第三子，明朝在位最久。前期万历中兴赖张居正改革（一条鞭法、考成法）。万历三大征（平宁夏、抗倭援朝、平播州）。国本之争与群臣对立，28年不上朝。萨尔浒之战败于后金。明朝衰亡实始于万历。' },
+  { seq:14, temple:'光宗', name:'朱常洛', pinyin:'', born:'1582年8月28日', died:'1620年9月26日', era:'泰昌', reign:0.08, start:1620, end:1620, age:39, rating:'tragic', detail:'神宗长子，国本之争焦点。当了20年太子。即位后发内帑犒劳边防，罢免矿税。明末三大案：梃击案、红丸案（服红丸暴毙）、移宫案。在位仅29天。命运坎坷。' },
+  { seq:15, temple:'熹宗', name:'朱由校', pinyin:'', born:'1605年12月15日', died:'1627年9月30日', era:'天启', reign:7, start:1621, end:1627, age:23, rating:'bad', detail:'光宗长子。著名木匠皇帝，沉迷木工手艺精湛，几乎不识字。朝政全交魏忠贤（九千岁），迫害东林党。后金崛起辽东危急。服仙露后病逝。' },
+  { seq:16, temple:'思宗', name:'朱由检', pinyin:'jiǎn', born:'1611年2月6日', died:'1644年4月25日', era:'崇祯', reign:17, start:1628, end:1644, age:34, rating:'tragic', detail:'熹宗之弟。铲除魏忠贤，勤政自律，六下罪己诏，生活节俭。但多疑刚愎急躁善变，17年换50个内阁大学士。李自成攻入北京，煤山自缢以身殉国。遗言：任贼分裂朕尸，勿伤百姓一人。' },
 ];
 
 const ratingMap = { great:{label:'治世明君',cls:'tag-great'}, good:{label:'守成之主',cls:'tag-good'}, mid:{label:'功过参半',cls:'tag-mid'}, bad:{label:'怠政误国',cls:'tag-bad'}, tragic:{label:'悲剧帝王',cls:'tag-tragic'} };
@@ -171,6 +171,7 @@ emperors.forEach(e=>{
   const div=document.createElement('div');
   div.className='emperor-card '+cls;
   div.innerHTML='<div class="ec-header"><span class="ec-name">'+e.seq+'. '+e.temple+' '+e.name+(e.pinyin?' <span class="ec-pinyin">('+e.pinyin+')</span>':'')+'</span><span class="ec-era">'+e.era+'</span></div>'+
+    '<div class="ec-row"><strong>生卒：</strong>'+e.born+' — '+e.died+'</div>'+
     '<div class="ec-row"><strong>在位：</strong>'+e.start+'—'+e.end+'（'+(e.reign<1?Math.round(e.reign*365)+'天':e.reign+'年')+'）</div>'+
     '<div class="ec-row"><strong>享年：</strong>'+(e.age?e.age+'岁':'下落不明')+'</div>'+
     '<div class="ec-row"><strong>评价：</strong><span class="tag '+r.cls+'">'+r.label+'</span></div>'+
