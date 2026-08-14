@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6pro 4G门铃公测 - 日常问题报告 2026-08-14</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+h1 { color: #00B050; margin-bottom: 8px; font-size: 26px; }
+h2 { color: #00B050; margin: 32px 0 16px; font-size: 20px; border-left: 4px solid #00B050; padding-left: 12px; }
+h3 { color: #333; margin: 20px 0 12px; font-size: 16px; }
+.update-time { color: #999; font-size: 13px; margin-bottom: 24px; }
+.insight-box { background: #fff; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #00B050; }
+.insight-box p { margin-bottom: 8px; }
+.kpi-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.kpi-card { flex: 1; min-width: 180px; background: #fff; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi-num { font-size: 36px; font-weight: bold; color: #00B050; }
+.kpi-label { font-size: 13px; color: #999; margin-top: 4px; }
+.kpi-sub { font-size: 12px; color: #999; margin-top: 4px; }
+.kpi-new { font-size: 14px; color: #E74C3C; font-weight: bold; }
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 16px; }
+th { background: #00B050; color: #fff; padding: 10px 8px; text-align: center; font-size: 13px; white-space: nowrap; }
+td { padding: 10px 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
+.tag-p0 { color: #E74C3C; font-weight: bold; }
+.tag-p1 { color: #F39C12; font-weight: bold; }
+.tag-p2 { color: #3498db; font-weight: bold; }
+.tag-p3 { color: #999; font-weight: bold; }
+.module-card { background: #fff; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.module-title { font-size: 16px; font-weight: bold; margin-bottom: 12px; }
+.module-insight { font-size: 13px; padding: 8px 12px; border-radius: 4px; margin-bottom: 12px; }
+.insight-red { background: #fdeaea; color: #E74C3C; }
+.insight-orange { background: #fef5e7; color: #F39C12; }
+.insight-blue { background: #ebf5fb; color: #3498db; }
+.voice-text { text-align: left; font-size: 12px; color: #555; }
+.voice-name { color: #333; font-weight: 600; }
+.highlight-bad { color: #E74C3C; }
+.highlight-good { color: #00B050; }
+.fw-table th { background: #333; }
+.fw-latest { background: #e8f5e9; font-weight: bold; }
+.chart-bar { display: inline-block; background: #00B050; height: 24px; border-radius: 3px; vertical-align: middle; transition: width 0.5s; }
+.chart-container { margin: 16px 0; }
+.chart-row { display: flex; align-items: center; margin-bottom: 6px; }
+.chart-label { width: 140px; font-size: 13px; text-align: right; padding-right: 8px; }
+.chart-bar-wrap { flex: 1; }
+.chart-value { font-size: 13px; margin-left: 8px; color: #666; }
+.legend { font-size: 12px; color: #999; text-align: center; margin-top: 16px; }
+a { color: #00B050; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>📊 6pro 4G门铃公测 - 日常问题报告</h1>
+<div class="update-time">报告日期：2026-08-14 | 数据截止：8/14 09:00 | 累计399条 | 本次新增10条</div>
+
+<div class="insight-box">
+<p>📌 <strong>总体洞察</strong></p>
+<p>本次新增10条反馈（8/13-8/14），集中在<strong>云录</strong>（5条）和<strong>卡录</strong>（2条），另涉及续航、OTA、稳定性各1条。⚠️ <strong>0812新固件首次出现</strong>，6条反馈来自该版本，主要问题为OTA升级失败、误报、卡录异常、设备自动离线——建议重点关注0812固件稳定性。</p>
+<p>累计399条中，<strong>云录148条</strong>仍居首位（占比37%），画面变化误报（13人）和漏录/漏拍（12人）是用户覆盖最广的痛点。卡录53条紧随其后，卡录加载异常/失败问题持续累积。</p>
+</div>
+
+<div class="kpi-row">
+<div class="kpi-card">
+<div class="kpi-num">399</div>
+<div class="kpi-label">累计有效反馈</div>
+<div class="kpi-sub">19人参与</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-num">10</div>
+<div class="kpi-label">本次新增</div>
+<div class="kpi-new">+8/13~8/14</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-num">19</div>
+<div class="kpi-label">累计二级标签数</div>
+<div class="kpi-sub">一级标签19个</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-num">5</div>
+<div class="kpi-label">新增覆盖一级标签</div>
+<div class="kpi-sub">云录/卡录/续航/OTA/稳定性</div>
+</div>
+</div>
+
+<h2>🔥 本次新增重点</h2>
+<table>
+<thead><tr><th>序号</th><th>时间</th><th>姓名</th><th>固件</th><th>一级标签</th><th>二级标签</th><th>问题描述</th></tr></thead>
+<tbody>
+<tr><td>390</td><td>2026/8/13 </td><td>黄军剑</td><td>0804</td><td>云录</td><td>云录缩略图不显示</td><td class="voice-text">在云录视频中出现视频没有封面图问题，时间为8/13 07：17</td></tr>
+<tr><td>391</td><td>2026/8/13 </td><td>黄军剑</td><td>0804</td><td>云录</td><td>录制延迟</td><td class="voice-text">在云录里出现一个画面变化的视频，有人正在弯腰，可以预见到肯定有画面变化。但是实际视频内容仅有1秒不到。视频时长太短。时间...</td></tr>
+<tr><td>392</td><td>2026/8/13 </td><td>夏君</td><td>0804</td><td>云录</td><td>云录播放失败</td><td class="voice-text">云录视频播放画面一开始有马赛克，在我上传的视频里09:18的两段视频开头尤为明显</td></tr>
+<tr><td>393</td><td>2026/8/13 </td><td>夏君</td><td>0804</td><td>续航</td><td>耗电快</td><td class="voice-text">在前几天我把两个360品牌的门铃同时充了一晚上电，几乎间隔几秒钟同时安装在同一位置（有几厘米的高度差）我发现公测的门铃耗...</td></tr>
+<tr><td>394</td><td>2026/8/13 </td><td>张雷</td><td>0804</td><td>云录</td><td>云录加载失败</td><td class="voice-text">云录刷新不出来，卡录正常</td></tr>
+<tr><td>395</td><td>2026/8/13 </td><td>徐婷婷</td><td>0812</td><td>OTA</td><td>固件升级失败</td><td class="voice-text">升级进度一直0，重新升级，一直重试，显示加载中。没反应</td></tr>
+<tr><td>396</td><td>2026/8/13 </td><td>美诺</td><td>0812</td><td>云录</td><td>误报</td><td class="voice-text">刚升级完 打开 提示有人出现或者是有变化 没有看清楚 ，查看发现什么都没有</td></tr>
+<tr><td>397</td><td>2026/8/13 </td><td>朱君</td><td>0812</td><td>卡录</td><td>卡录加载失败</td><td class="voice-text">卡录无法回放也无法下载，且卡录比云录少两个事件</td></tr>
+<tr><td>398</td><td>2026/8/13 </td><td>朱君</td><td>0812</td><td>卡录</td><td>卡录加载异常</td><td class="voice-text">卡录保存错误，云录事件正常，卡录无法播放，且下载后也和云录事件对不起来</td></tr>
+<tr><td>399</td><td>2026/8/14 </td><td>徐婷婷</td><td>0812</td><td>稳定性</td><td>设备离线</td><td class="voice-text">更新8.12版本过程中发现每天7.30左右都会自动离线，并且8.13离线过程中电量77降到65，第二天查看电量没变，但是...</td></tr>
+</tbody></table>
+<h2>📈 累计二级标签 TOP10（按反馈人数）</h2>
+<div class="chart-container">
+<div class="chart-row"><div class="chart-label">画面变化误报</div><div class="chart-bar-wrap"><span class="chart-bar" style="width:300px"></span><span class="chart-value">13人(33条)</span></div></div>
+<div class="chart-row"><div class="chart-label">漏录/漏拍</div><div class="chart-bar-wrap"><span class="chart-bar" style="width:276px"></span><span class="chart-value">12人(30条)</span></div></div>
+<div class="chart-row"><div class="chart-label">录制延迟</div><div class="chart-bar-wrap"><span class="chart-bar" style="width:276px"></span><span class="chart-value">12人(21条)</span></div></div>
+<div class="chart-row"><div class="chart-label">有人误报</div><div class="chart-bar-wrap"><span class="chart-bar" style="width:207px"></span><span class="chart-value">9人(19条)</span></div></div>
+<div class="chart-row"><div class="chart-label">开流失败</div><div class="chart-bar-wrap"><span class="chart-bar" style="width:207px"></span><span class="chart-value">9人(11条)</span></div></div>
+<div class="chart-row"><div class="chart-label">设置项自动重置</div><div class="chart-bar-wrap"><span class="chart-bar" style="width:161px"></span><span class="chart-value">7人(10条)</span></div></div>
+<div class="chart-row"><div class="chart-label">耗电快</div><div class="chart-bar-wrap"><span class="chart-bar" style="width:161px"></span><span class="chart-value">7人(11条)</span></div></div>
+<div class="chart-row"><div class="chart-label">固件升级失败</div><div class="chart-bar-wrap"><span class="chart-bar" style="width:161px"></span><span class="chart-value">7人(13条)</span></div></div>
+<div class="chart-row"><div class="chart-label">卡录加载异常</div><div class="chart-bar-wrap"><span class="chart-bar" style="width:161px"></span><span class="chart-value">7人(17条)</span></div></div>
+<div class="chart-row"><div class="chart-label">误报</div><div class="chart-bar-wrap"><span class="chart-bar" style="width:161px"></span><span class="chart-value">7人(10条)</span></div></div>
+</div>
+<h2>🔄 固件版本对比（以0812为主视角）</h2>
+<div class="insight-box"><p>⚠️ <strong>0812固件首次出现</strong>，6条反馈中暴露4个问题：OTA升级失败、误报、卡录加载失败/异常、设备自动离线。其中"设备自动离线+异常耗电"为0812新问题，需重点跟踪。</p></div>
+<table class="fw-table"><thead><tr><th>二级标签</th><th>0710</th><th>0717</th><th>0730</th><th>0804</th><th class="fw-latest">0812</th><th>趋势</th></tr></thead><tbody>
+<tr><td>画面变化误报</td><td>11</td><td>3</td><td>5</td><td>13</td><td class="fw-latest">1</td><td><span style="color:#00B050">📉改善</span></td></tr>
+<tr><td>设备离线</td><td>1</td><td>0</td><td>0</td><td>5</td><td class="fw-latest">1</td><td><span style="color:#00B050">📉改善</span></td></tr>
+<tr><td>卡录加载异常</td><td>0</td><td>5</td><td>4</td><td>7</td><td class="fw-latest">1</td><td><span style="color:#00B050">📉改善</span></td></tr>
+<tr><td>误报</td><td>0</td><td>0</td><td>4</td><td>5</td><td class="fw-latest">1</td><td><span style="color:#00B050">📉改善</span></td></tr>
+<tr><td>卡录加载失败</td><td>0</td><td>1</td><td>0</td><td>1</td><td class="fw-latest">1</td><td><span style="color:#F39C12">➡️持续</span></td></tr>
+<tr><td>固件升级失败</td><td>1</td><td>5</td><td>2</td><td>4</td><td class="fw-latest">1</td><td><span style="color:#00B050">📉改善</span></td></tr>
+<tr><td>录制延迟</td><td>7</td><td>2</td><td>4</td><td>8</td><td class="fw-latest">0</td><td><span style="color:#00B050">✅已修复</span></td></tr>
+<tr><td>开流失败</td><td>7</td><td>1</td><td>3</td><td>0</td><td class="fw-latest">0</td><td>—</td></tr>
+<tr><td>有人误报</td><td>7</td><td>3</td><td>3</td><td>6</td><td class="fw-latest">0</td><td><span style="color:#00B050">✅已修复</span></td></tr>
+<tr><td>漏录/漏拍</td><td>9</td><td>9</td><td>5</td><td>7</td><td class="fw-latest">0</td><td><span style="color:#00B050">✅已修复</span></td></tr>
+</tbody></table>
+<h2>📋 分模块详情（本次有新增）</h2>
+<div class="module-card">
+<div class="module-title"><span class="tag-p0">P0</span> 云录 <span style="font-size:13px;color:#999">（累计148条，本次+5）</span></div>
+<div class="module-insight insight-red">⚠️ 云录持续高发，本次新增5条（缩略图不显示、录制延迟、播放马赛克、加载失败、误报），0812固件误报问题需关注</div><table><thead><tr><th>等级</th><th>问题点</th><th>反馈量</th><th>用户原声</th><th>解决方案</th></tr></thead><tbody>
+<tr><td><span class="tag-p0">P0</span></td><td>录制延迟</td><td>12人(21条)<br><span style="color:#E74C3C;font-size:11px">+1新增</span></td><td class="voice-text"><div class="voice-text"><span class="voice-name">黄军剑</span>（0804）: 在云录里出现一个画面变化的视频，有人正在弯腰，可以预见到肯定有画面变化。但是实际视频内容仅有1秒不到。视频时长太短。时间08/13 07：17</div><div class="voice-text"><span class="voice-name">魏健伟</span>（0804）: 延迟录制;画面确实变了，左边邻居的门开了，邻居走出来了，但是没有录上邻居走出来的画面</div><div class="voice-text"><span class="voice-name">许军州</span>（0804）: 8月7号，5：40这段时间有人在爬楼梯，实际是有人出现，但提示：画面变化；</div><div class="voice-text" style="color:#999">...还有9位用户反馈</div></td><td style="font-size:12px;color:#666">待跟进</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>误报</td><td>7人(10条)<br><span style="color:#E74C3C;font-size:11px">+1新增</span></td><td class="voice-text"><div class="voice-text"><span class="voice-name">美诺</span>（0812）: 刚升级完 打开 提示有人出现或者是有变化 没有看清楚 ，查看发现什么都没有</div><div class="voice-text"><span class="voice-name">相杰</span>（0804）: 疑似误报</div><div class="voice-text"><span class="voice-name">蔡坤城</span>（0804）: 没有人出现，但云录卡录录像了。这个应该是误报吧。</div><div class="voice-text" style="color:#999">...还有4位用户反馈</div></td><td style="font-size:12px;color:#666">优化0812算法误报</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>云录缩略图不显示</td><td>4人(7条)<br><span style="color:#E74C3C;font-size:11px">+1新增</span></td><td class="voice-text"><div class="voice-text"><span class="voice-name">黄军剑</span>（0804）: 在云录视频中出现视频没有封面图问题，时间为8/13 07：17</div><div class="voice-text"><span class="voice-name">魏健伟</span>（0804）: 云录视频中有一个没有缩略图</div><div class="voice-text" style="color:#999">...还有2位用户反馈</div></td><td style="font-size:12px;color:#666">排查云录封面/加载/播放</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>云录加载失败</td><td>2人(3条)<br><span style="color:#E74C3C;font-size:11px">+1新增</span></td><td class="voice-text"><div class="voice-text"><span class="voice-name">张雷</span>（0804）: 云录刷新不出来，卡录正常</div><div class="voice-text" style="color:#999">...还有1位用户反馈</div></td><td style="font-size:12px;color:#666">排查云录封面/加载/播放</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>云录播放失败</td><td>3人(3条)<br><span style="color:#E74C3C;font-size:11px">+1新增</span></td><td class="voice-text"><div class="voice-text"><span class="voice-name">夏君</span>（0804）: 云录视频播放画面一开始有马赛克，在我上传的视频里09:18的两段视频开头尤为明显</div><div class="voice-text" style="color:#999">...还有2位用户反馈</div></td><td style="font-size:12px;color:#666">排查云录封面/加载/播放</td></tr>
+</tbody></table>
+<div style="font-size:12px;color:#999;margin-top:8px;padding:8px;background:#f9f9f9;border-radius:4px">💡 方案说明：云录模块本次新增5条，累计148条。重点关注0812固件相关问题。</div>
+</div>
+<div class="module-card">
+<div class="module-title"><span class="tag-p0">P0</span> 卡录 <span style="font-size:13px;color:#999">（累计53条，本次+2）</span></div>
+<div class="module-insight insight-red">⚠️ 卡录问题集中在0812固件，加载失败/异常各1条，卡录与云录事件不一致问题持续</div><table><thead><tr><th>等级</th><th>问题点</th><th>反馈量</th><th>用户原声</th><th>解决方案</th></tr></thead><tbody>
+<tr><td><span class="tag-p0">P0</span></td><td>卡录加载异常</td><td>7人(17条)<br><span style="color:#E74C3C;font-size:11px">+1新增</span></td><td class="voice-text"><div class="voice-text"><span class="voice-name">朱君</span>（0812）: 卡录保存错误，云录事件正常，卡录无法播放，且下载后也和云录事件对不起来</div><div class="voice-text"><span class="voice-name">何三涛</span>（0804）: 卡录还是不能打开</div><div class="voice-text"><span class="voice-name">吴汞</span>（0804）: 卡录播放的事件不是最新的，云录播放的时间就是最新的。</div><div class="voice-text" style="color:#999">...还有4位用户反馈</div></td><td style="font-size:12px;color:#666">排查0812卡录读写</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>卡录加载失败</td><td>3人(3条)<br><span style="color:#E74C3C;font-size:11px">+1新增</span></td><td class="voice-text"><div class="voice-text"><span class="voice-name">朱君</span>（0812）: 卡录无法回放也无法下载，且卡录比云录少两个事件</div><div class="voice-text" style="color:#999">...还有2位用户反馈</div></td><td style="font-size:12px;color:#666">排查0812卡录读写</td></tr>
+</tbody></table>
+<div style="font-size:12px;color:#999;margin-top:8px;padding:8px;background:#f9f9f9;border-radius:4px">💡 方案说明：卡录模块本次新增2条，累计53条。重点关注0812固件相关问题。</div>
+</div>
+<div class="module-card">
+<div class="module-title"><span class="tag-p1">P1</span> OTA <span style="font-size:13px;color:#999">（累计14条，本次+1）</span></div>
+<div class="module-insight insight-red">⚠️ 0812固件升级失败，进度卡0%反复重试无反应</div><table><thead><tr><th>等级</th><th>问题点</th><th>反馈量</th><th>用户原声</th><th>解决方案</th></tr></thead><tbody>
+<tr><td><span class="tag-p1">P1</span></td><td>固件升级失败</td><td>7人(13条)<br><span style="color:#E74C3C;font-size:11px">+1新增</span></td><td class="voice-text"><div class="voice-text"><span class="voice-name">徐婷婷</span>（0812）: 升级进度一直0，重新升级，一直重试，显示加载中。没反应</div><div class="voice-text"><span class="voice-name">朱彤</span>（0804）: 无法升级固件无法开流</div><div class="voice-text"><span class="voice-name">于晨光</span>（0804）: 更新时提示设备离线 但实际设备在线</div><div class="voice-text" style="color:#999">...还有4位用户反馈</div></td><td style="font-size:12px;color:#666">排查0812升级流程</td></tr>
+</tbody></table>
+<div style="font-size:12px;color:#999;margin-top:8px;padding:8px;background:#f9f9f9;border-radius:4px">💡 方案说明：OTA模块本次新增1条，累计14条。重点关注0812固件相关问题。</div>
+</div>
+<div class="module-card">
+<div class="module-title"><span class="tag-p1">P1</span> 续航 <span style="font-size:13px;color:#999">（累计11条，本次+1）</span></div>
+<div class="module-insight insight-orange">⚠️ 耗电快问题新增1条，用户对比旧款门铃发现公测版耗电更大</div><table><thead><tr><th>等级</th><th>问题点</th><th>反馈量</th><th>用户原声</th><th>解决方案</th></tr></thead><tbody>
+<tr><td><span class="tag-p1">P1</span></td><td>耗电快</td><td>7人(11条)<br><span style="color:#E74C3C;font-size:11px">+1新增</span></td><td class="voice-text"><div class="voice-text"><span class="voice-name">夏君</span>（0804）: 在前几天我把两个360品牌的门铃同时充了一晚上电，几乎间隔几秒钟同时安装在同一位置（有几厘米的高度差）我发现公测的门铃耗电量要大，第一张截图为旧门铃，非4G版，...</div><div class="voice-text"><span class="voice-name">何三涛</span>（0804）: 短短2个小时的时间，门铃的剩余电量从61%直降到30%，这正常吗？</div><div class="voice-text"><span class="voice-name">袁飞</span>（0730）: 更新20260730固件后耗电快，昨天30号中午充电至54%开始到现在剩余电量38% 32小时合计消耗电量24%</div><div class="voice-text" style="color:#999">...还有4位用户反馈</div></td><td style="font-size:12px;color:#666">对比旧款排查功耗</td></tr>
+</tbody></table>
+<div style="font-size:12px;color:#999;margin-top:8px;padding:8px;background:#f9f9f9;border-radius:4px">💡 方案说明：续航模块本次新增1条，累计11条。重点关注0812固件相关问题。</div>
+</div>
+<div class="module-card">
+<div class="module-title"><span class="tag-p0">P0</span> 稳定性 <span style="font-size:13px;color:#999">（累计7条，本次+1）</span></div>
+<div class="module-insight insight-red">🆕 0812固件新增设备自动离线问题，每天7:30左右离线+异常耗电</div><table><thead><tr><th>等级</th><th>问题点</th><th>反馈量</th><th>用户原声</th><th>解决方案</th></tr></thead><tbody>
+<tr><td><span class="tag-p0">P0</span></td><td>设备离线</td><td>6人(7条)<br><span style="color:#E74C3C;font-size:11px">+1新增</span></td><td class="voice-text"><div class="voice-text"><span class="voice-name">徐婷婷</span>（0812）: 更新8.12版本过程中发现每天7.30左右都会自动离线，并且8.13离线过程中电量77降到65，第二天查看电量没变，但是又离线了，还是差不多的时间点</div><div class="voice-text"><span class="voice-name">周军</span>（0804）: 无故离线，不知道原因</div><div class="voice-text" style="color:#999">...还有4位用户反馈</div></td><td style="font-size:12px;color:#666">排查0812定时离线+耗电</td></tr>
+</tbody></table>
+<div style="font-size:12px;color:#999;margin-top:8px;padding:8px;background:#f9f9f9;border-radius:4px">💡 方案说明：稳定性模块本次新增1条，累计7条。重点关注0812固件相关问题。</div>
+</div>
+
+<div class="legend">
+📊 报告由报告分析专家自动生成 | 数据来源：飞书日常问题表 | 部署：GitHub Pages<br>
+反馈量按用户去重统计（同一用户同一标签只算1次）| 用户原声优先展示最新固件版本
+</div>
+</div>
+</body>
+</html>
