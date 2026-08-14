@@ -3,139 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>中国历代帝王可视化报告（全17朝代）</title>
+<title>中国历代帝王可视化报告（全19朝代打印版）</title>
 <style>
-@page { size: A4; margin: 12mm; }
+@page { size: A4; margin: 10mm; }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#333; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-.container { max-width:100%; margin:0 auto; padding:0; }
-.main-header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:30px 20px; border-radius:8px; margin-bottom:20px; text-align:center; }
-.main-header h1 { font-size:28px; margin-bottom:6px; letter-spacing:3px; }
-.main-header p { font-size:14px; opacity:0.9; }
-.main-header .meta { font-size:12px; opacity:0.75; margin-top:6px; }
-.kpi-row { display:flex; gap:8px; margin-bottom:12px; }
-.kpi-card { flex:1; background:#fff; border:1px solid #e0e0e0; border-radius:6px; padding:8px 6px; text-align:center; border-top:3px solid #00B050; }
-.kpi-card .num { font-size:20px; font-weight:700; color:#00B050; }
-.kpi-card .label { font-size:10px; color:#888; margin-top:2px; }
-.kpi-card.warn { border-top-color:#E74C3C; } .kpi-card.warn .num { color:#E74C3C; }
+body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#333; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; font-size:11px; }
+.container { max-width:100%; margin:0; padding:0; }
+/* Cover page */
+.cover { min-height:270mm; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; page-break-after:always; }
+.cover h1 { font-size:32px; color:#00B050; letter-spacing:4px; margin-bottom:8px; }
+.cover .subtitle { font-size:16px; color:#666; margin-bottom:20px; }
+.cover .kpi-row { display:flex; gap:16px; margin:20px 0; }
+.cover .kpi-card { background:#fff; border:2px solid #00B050; border-radius:8px; padding:16px 24px; text-align:center; }
+.cover .kpi-card .num { font-size:28px; font-weight:700; color:#00B050; }
+.cover .kpi-card .label { font-size:12px; color:#888; margin-top:4px; }
+.cover-table { width:80%; margin:20px auto; }
+.cover-table th { background:#00B050; color:#fff; padding:8px; font-size:12px; }
+.cover-table td { padding:6px 8px; border:1px solid #ddd; font-size:11px; text-align:center; }
+.cover-table tr:nth-child(even) { background:#f7fff7; }
+.cover-footer { margin-top:auto; padding:20px; color:#999; font-size:11px; }
+.cover-footer span { color:#00B050; font-weight:600; }
+/* Dynasty pages */
+.dynasty-page { page-break-before:always; padding:0; }
+.dynasty-header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:14px 16px; border-radius:6px; margin-bottom:10px; }
+.dynasty-header h2 { font-size:18px; margin-bottom:2px; }
+.dynasty-header p { font-size:11px; opacity:0.9; }
+.kpi-row { display:flex; gap:6px; margin-bottom:10px; }
+.kpi-card { flex:1; background:#fff; border:1px solid #e0e0e0; border-radius:5px; padding:6px 4px; text-align:center; border-top:3px solid #00B050; }
+.kpi-card .num { font-size:16px; font-weight:700; color:#00B050; }
+.kpi-card .label { font-size:9px; color:#888; margin-top:1px; }
+.kpi-card.warn { border-top-color:#E74C3C; } .kpi-card.warn .num { color:#E74C3C; font-size:12px; }
 .kpi-card.info { border-top-color:#F39C12; } .kpi-card.info .num { color:#F39C12; }
-.dynasty-section { margin-bottom:24px; page-break-inside:avoid; }
-.dynasty-header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:16px 16px; border-radius:6px; margin-bottom:12px; }
-.dynasty-header h2 { font-size:20px; margin-bottom:2px; }
-.dynasty-header p { font-size:12px; opacity:0.9; }
-.section { margin-bottom:12px; page-break-inside:avoid; }
-.section-title { font-size:14px; font-weight:700; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:8px; }
-table { width:100%; border-collapse:collapse; font-size:11px; }
+.section { margin-bottom:10px; }
+.section-title { font-size:13px; font-weight:700; color:#00B050; border-left:4px solid #00B050; padding-left:8px; margin-bottom:6px; }
+table { width:100%; border-collapse:collapse; font-size:10px; }
 thead { background:#00B050; color:#fff; }
-th { padding:6px 4px; text-align:center; font-weight:600; white-space:nowrap; border:1px solid #009040; }
-td { padding:5px 4px; text-align:center; border:1px solid #ddd; }
+th { padding:5px 3px; text-align:center; font-weight:600; border:1px solid #009040; }
+td { padding:4px 3px; text-align:center; border:1px solid #ddd; }
 tr:nth-child(even) { background:#f7fff7; }
 .ruler-name { font-weight:600; color:#00B050; }
-.tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600; }
+.tag { display:inline-block; padding:1px 5px; border-radius:3px; font-size:9px; font-weight:600; }
 .tag-great { background:#d4edda; color:#155724; }
 .tag-good { background:#d1ecf1; color:#0c5460; }
 .tag-mid { background:#fff3cd; color:#856404; }
 .tag-bad { background:#f8d7da; color:#721c24; }
 .tag-tragic { background:#e2d6f3; color:#4a148c; }
-.ruler-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
-.ruler-card { background:#fafafa; border:1px solid #e8e8e8; border-radius:6px; padding:10px; border-left:3px solid #00B050; break-inside:avoid; }
+.ruler-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:6px; }
+.ruler-card { background:#fafafa; border:1px solid #e8e8e8; border-radius:5px; padding:8px; border-left:3px solid #00B050; break-inside:avoid; }
 .ruler-card.warn { border-left-color:#E74C3C; }
 .ruler-card.info { border-left-color:#F39C12; }
 .ruler-card.purple { border-left-color:#6f42c1; }
-.rc-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
-.rc-name { font-size:13px; font-weight:700; color:#333; }
-.rc-row { font-size:11px; color:#555; margin-bottom:2px; }
+.rc-header { margin-bottom:3px; }
+.rc-name { font-size:12px; font-weight:700; color:#333; }
+.rc-row { font-size:10px; color:#555; margin-bottom:1px; }
 .rc-row strong { color:#333; }
-.rc-highlight { font-size:10px; color:#777; margin-top:4px; padding-top:4px; border-top:1px dashed #ddd; line-height:1.5; }
-.dynasty-break { page-break-before:always; }
-.footer { text-align:center; padding:16px; color:#999; font-size:11px; margin-top:12px; }
+.rc-highlight { font-size:9px; color:#777; margin-top:3px; padding-top:3px; border-top:1px dashed #ddd; line-height:1.4; }
+.footer { text-align:center; padding:10px; color:#999; font-size:10px; }
 .footer span { color:#00B050; font-weight:600; }
-@media screen { body { background:#f0f2f5; } .container { max-width:210mm; margin:20px auto; padding:20px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.1); } }
-@media print { .dynasty-section { page-break-before:always; } .dynasty-section:first-of-type { page-break-before:auto; } }
+@media screen { body { background:#f0f2f5; } .container { max-width:210mm; margin:20px auto; padding:20px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.1); } .cover { min-height:250mm; } }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="main-header">
-    <h1>🏛️ 中国历代帝王可视化报告</h1>
-    <p>全17个朝代 · 287位帝王 · 从夏朝到清朝</p>
-    <div class="meta">🦞 尹燕玲报告分析专家 · 2026年8月14日 · 数据来源：史记、资治通鉴、维基百科</div>
+<!-- Cover / Index Page -->
+<div class="cover">
+  <h1>🏛️ 中国历代帝王</h1>
+  <div class="subtitle">可视化报告 · 全19个朝代 · 287位帝王</div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">19</div><div class="label">朝代总数</div></div>
+    <div class="kpi-card"><div class="num">287</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">41.8</div><div class="label">平均寿命（岁）</div></div>
+    <div class="kpi-card"><div class="num">3900年</div><div class="label">总跨度</div></div>
+  </div>
+  <table class="cover-table">
+    <thead><tr><th>序</th><th>朝代</th><th>时间</th><th>帝王数</th><th>国祚</th><th>都城</th></tr></thead>
+    <tbody><tr><td>1</td><td class='ruler-name'>夏朝</td><td>约2070—1600 BC</td><td>17</td><td>约470年</td><td>阳城（今河南登封）</td></tr>
+<tr><td>2</td><td class='ruler-name'>商朝</td><td>约1600—1046 BC</td><td>31</td><td>约554年</td><td>亳/殷（今河南安阳）</td></tr>
+<tr><td>3</td><td class='ruler-name'>西周</td><td>1046—771 BC</td><td>13</td><td>275年</td><td>镐京（今西安）</td></tr>
+<tr><td>4</td><td class='ruler-name'>东周</td><td>770—256 BC</td><td>25</td><td>515年</td><td>洛邑（今洛阳）</td></tr>
+<tr><td>5</td><td class='ruler-name'>秦朝</td><td>221—206 BC</td><td>3</td><td>15年</td><td>咸阳（今陕西咸阳）</td></tr>
+<tr><td>6</td><td class='ruler-name'>西汉</td><td>202 BC—9 AD</td><td>16</td><td>211年</td><td>长安</td></tr>
+<tr><td>7</td><td class='ruler-name'>东汉</td><td>25—220 AD</td><td>12</td><td>195年</td><td>洛阳</td></tr>
+<tr><td>8</td><td class='ruler-name'>三国</td><td>220—280 AD</td><td>11</td><td>60年</td><td>洛阳/成都/建业</td></tr>
+<tr><td>9</td><td class='ruler-name'>晋朝</td><td>266—420 AD</td><td>15</td><td>154年</td><td>洛阳/建康</td></tr>
+<tr><td>10</td><td class='ruler-name'>南北朝</td><td>420—589 AD</td><td>29</td><td>169年</td><td>建康/平城/洛阳/邺</td></tr>
+<tr><td>11</td><td class='ruler-name'>隋朝</td><td>581—618 AD</td><td>3</td><td>37年</td><td>大兴/洛阳</td></tr>
+<tr><td>12</td><td class='ruler-name'>唐朝</td><td>618—907 AD</td><td>21</td><td>289年</td><td>长安/洛阳</td></tr>
+<tr><td>13</td><td class='ruler-name'>五代十国</td><td>907—979 AD</td><td>15</td><td>72年</td><td>开封/洛阳等</td></tr>
+<tr><td>14</td><td class='ruler-name'>宋朝</td><td>960—1279 AD</td><td>18</td><td>319年</td><td>开封/临安</td></tr>
+<tr><td>15</td><td class='ruler-name'>辽朝</td><td>916—1125 AD</td><td>9</td><td>209年</td><td>上京临潢府</td></tr>
+<tr><td>16</td><td class='ruler-name'>金朝</td><td>1115—1234 AD</td><td>10</td><td>119年</td><td>会宁/中都/汴京</td></tr>
+<tr><td>17</td><td class='ruler-name'>元朝</td><td>1271—1368 AD</td><td>11</td><td>97年</td><td>大都（今北京）</td></tr>
+<tr><td>18</td><td class='ruler-name'>清朝</td><td>1636—1912 AD</td><td>12</td><td>276年</td><td>北京</td></tr>
+<tr><td>19</td><td class='ruler-name'>明朝</td><td>1368—1644 AD</td><td>16</td><td>276年</td><td>北京</td></tr>
+</tbody>
+  </table>
+  <div class="cover-footer">
+    <p>🦞 <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+    <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
+  </div>
+</div>
+<!-- Dynasty Pages -->
+
+<!-- 夏朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>🏛️ 夏朝历代帝王</h2>
+    <p>约2070—1600 BC · 共17位帝王 · 约470年 · 阳城（今河南登封）</p>
   </div>
   <div class="kpi-row">
-    <div class="kpi-card"><div class="num">17</div><div class="label">朝代总数</div></div>
-    <div class="kpi-card"><div class="num">287</div><div class="label">帝王总数</div></div>
-    <div class="kpi-card info"><div class="num">41.8</div><div class="label">平均寿命（岁）</div></div>
-    <div class="kpi-card warn"><div class="num">约3900年</div><div class="label">总跨度</div></div>
+    <div class="kpi-card"><div class="num">17</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">约470年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">—</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">世袭制开端</div><div class="label">特点</div></div>
   </div>
-  
-    <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>📋 17个朝代索引</h2>
-      <p>点击查看各朝代独立报告 · 从夏朝到清朝</p>
-    </div>
-    <div class="section">
-      <div class="section-title">📑 朝代总览</div>
-      <table>
-        <thead><tr><th>序</th><th>朝代</th><th>时间</th><th>帝王数</th><th>国祚</th><th>都城</th></tr></thead>
-        <tbody><tr><td>1</td><td class="ruler-name">夏朝</td><td>约2070—1600 BC</td><td>17</td><td>约470年</td><td>阳城（今河南登封）</td></tr>
-<tr><td>2</td><td class="ruler-name">商朝</td><td>约1600—1046 BC</td><td>31</td><td>约554年</td><td>亳/殷（今河南安阳）</td></tr>
-<tr><td>3</td><td class="ruler-name">周朝</td><td>1046—256 BC</td><td>38</td><td>790年</td><td>镐京/洛邑（今西安/洛阳）</td></tr>
-<tr><td>4</td><td class="ruler-name">秦朝</td><td>221—206 BC</td><td>3</td><td>15年</td><td>咸阳（今陕西咸阳）</td></tr>
-<tr><td>5</td><td class="ruler-name">汉朝</td><td>202 BC—220 AD</td><td>28</td><td>405年</td><td>长安/洛阳</td></tr>
-<tr><td>6</td><td class="ruler-name">三国</td><td>220—280 AD</td><td>11</td><td>60年</td><td>洛阳/成都/建业</td></tr>
-<tr><td>7</td><td class="ruler-name">晋朝</td><td>266—420 AD</td><td>15</td><td>154年</td><td>洛阳/建康</td></tr>
-<tr><td>8</td><td class="ruler-name">南北朝</td><td>420—589 AD</td><td>29</td><td>169年</td><td>建康/平城/洛阳/邺</td></tr>
-<tr><td>9</td><td class="ruler-name">隋朝</td><td>581—618 AD</td><td>3</td><td>37年</td><td>大兴/洛阳</td></tr>
-<tr><td>10</td><td class="ruler-name">唐朝</td><td>618—907 AD</td><td>21</td><td>289年</td><td>长安/洛阳</td></tr>
-<tr><td>11</td><td class="ruler-name">五代十国</td><td>907—979 AD</td><td>15</td><td>72年</td><td>开封/洛阳等</td></tr>
-<tr><td>12</td><td class="ruler-name">宋朝</td><td>960—1279 AD</td><td>18</td><td>319年</td><td>开封/临安</td></tr>
-<tr><td>13</td><td class="ruler-name">辽朝</td><td>916—1125 AD</td><td>9</td><td>209年</td><td>上京临潢府</td></tr>
-<tr><td>14</td><td class="ruler-name">金朝</td><td>1115—1234 AD</td><td>10</td><td>119年</td><td>会宁/中都/汴京</td></tr>
-<tr><td>15</td><td class="ruler-name">元朝</td><td>1271—1368 AD</td><td>11</td><td>97年</td><td>大都（今北京）</td></tr>
-<tr><td>16</td><td class="ruler-name">清朝</td><td>1636—1912 AD</td><td>12</td><td>276年</td><td>北京</td></tr>
-<tr><td>17</td><td class="ruler-name">明朝</td><td>1368—1644 AD</td><td>16</td><td>276年</td><td>北京</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="section">
-      <div class="section-title">🔗 各朝代独立报告链接</div>
-      <table>
-        <thead><tr><th>朝代</th><th>报告链接</th></tr></thead>
-        <tbody><tr><td class="ruler-name">夏朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-xia-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-xia-emperors.html</a></td></tr>
-<tr><td class="ruler-name">商朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-shang-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-shang-emperors.html</a></td></tr>
-<tr><td class="ruler-name">周朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-zhou-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-zhou-emperors.html</a></td></tr>
-<tr><td class="ruler-name">秦朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-qin-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-qin-emperors.html</a></td></tr>
-<tr><td class="ruler-name">汉朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-han-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-han-emperors.html</a></td></tr>
-<tr><td class="ruler-name">三国</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-sanguo-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-sanguo-emperors.html</a></td></tr>
-<tr><td class="ruler-name">晋朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-jin-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-jin-emperors.html</a></td></tr>
-<tr><td class="ruler-name">南北朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-nanbeichao-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-nanbeichao-emperors.html</a></td></tr>
-<tr><td class="ruler-name">隋朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-sui-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-sui-emperors.html</a></td></tr>
-<tr><td class="ruler-name">唐朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-tang-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-tang-emperors.html</a></td></tr>
-<tr><td class="ruler-name">五代十国</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-wudai-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-wudai-emperors.html</a></td></tr>
-<tr><td class="ruler-name">宋朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-song-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-song-emperors.html</a></td></tr>
-<tr><td class="ruler-name">辽朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-liao-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-liao-emperors.html</a></td></tr>
-<tr><td class="ruler-name">金朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-jin2-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-jin2-emperors.html</a></td></tr>
-<tr><td class="ruler-name">元朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-yuan-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-yuan-emperors.html</a></td></tr>
-<tr><td class="ruler-name">清朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/dynasty-qing-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/dynasty-qing-emperors.html</a></td></tr>
-<tr><td class="ruler-name">明朝</td><td style="text-align:left"><a href="https://yanlingyin001.github.io/reports/ming-dynasty-emperors.html" style="color:#00B050">https://yanlingyin001.github.io/reports/ming-dynasty-emperors.html</a></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-<div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>🏛️ 夏朝</h2>
-      <p>约2070—1600 BC · 17位帝王 · 约470年 · 阳城（今河南登封）</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">17</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">—</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">世袭制开端</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 夏朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+  <div class="section">
+    <div class="section-title">📋 夏朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>禹</td><td>约45年</td><td>约前2070—约前2025</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>启</td><td>约40年</td><td>约前2025—约前2010</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>太康</td><td>约29年</td><td>约前2010—约前1985</td><td>不明</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
@@ -153,11 +138,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>15</td><td class='ruler-name'>皋</td><td>约11年</td><td>约前1714—约前1703</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>16</td><td class='ruler-name'>发</td><td>约11年</td><td>约前1703—约前1692</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>17</td><td class='ruler-name'>桀</td><td>约52年</td><td>约前1692—约前1640</td><td>不明</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 禹</span></div>
   <div class="rc-row"><strong>生卒：</strong>约前2070年 — 约前2025年</div>
   <div class="rc-row"><strong>在位：</strong>约前2070—约前2025（约45年）</div>
@@ -173,114 +159,115 @@ tr:nth-child(even) { background:#f7fff7; }
 </div>
 <div class="ruler-card warn">
   <div class="rc-header"><span class="rc-name">3. 太康</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前2010—约前1985（约29年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
   <div class="rc-highlight">沉溺游猎荒废政事，在洛水打猎时被后羿夺权，史称太康失国，反映早期王朝统治之脆弱</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">4. 仲康</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1985—约前1972（约13年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">后羿擅权所立傀儡，暗中积蓄力量试图复位，虽有抗争之心终因实力不足未能恢复王权</div>
 </div>
 <div class="ruler-card purple">
   <div class="rc-header"><span class="rc-name">5. 相</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1972—约前1944（约28年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
   <div class="rc-highlight">被寒浞之子浇攻杀，夏朝统治一度中断四十余年，作为亡国之君折射出权力更迭的残酷</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">6. 少康</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1944—约前1923（约21年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
   <div class="rc-highlight">依托旧臣势力历经艰险恢复夏朝，史称少康中兴，在位期间励精图治使夏朝重现盛世，被誉为中兴之主</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">7. 予</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1923—约前1906（约17年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
   <div class="rc-highlight">少康之子继承中兴基业，发明甲铠加强军备，征伐东夷扩大疆域，巩固王权推动经济发展</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">8. 槐</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1906—约前1880（约26年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">承袭父祖之业维持稳定统治，在位期间夏朝政局平稳，虽无大功亦无大过，属守成之君</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">9. 芒</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1880—约前1862（约18年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">举行沉祭典礼祭祀河神，反映早期宗教礼仪制度，在位期间夏朝保持相对安定</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">10. 泄</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1862—约前1846（约16年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">加封诸侯爵位加强对各部族控制，完善朝贡体系，在位期间王权稳固四方宾服</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">11. 不降</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1846—约前1787（约59年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
   <div class="rc-highlight">在位长达五十九年正值夏朝鼎盛，国力强盛疆域辽阔，传说曾征伐九苑，被视为夏朝最强盛之君主</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">12. 扃</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1787—约前1766（约21年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">不降之弟继承兄位，在位期间政治清明，晚年禅让于弟廑，实现权力平稳过渡</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">13. 廑</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1766—约前1745（约21年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">迁都西河试图重振朝纲，然而夏朝已显颓势，在位期间天灾频发国运渐衰</div>
 </div>
 <div class="ruler-card warn">
   <div class="rc-header"><span class="rc-name">14. 孔甲</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1745—约前1714（约31年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
   <div class="rc-highlight">信奉鬼神沉溺祭祀，改变夏朝祭祀传统，史载其好方术鬼神，夏朝国势自此急转直下</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">15. 皋</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1714—约前1703（约11年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">孔甲之子在位短暂，面对衰落的国势无力回天，诸侯渐有离心之势</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">16. 发</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1703—约前1692（约11年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位期间诸侯叛离王权进一步衰落，朝贡体系瓦解，夏朝已显末世之兆</div>
 </div>
 <div class="ruler-card warn">
   <div class="rc-header"><span class="rc-name">17. 桀</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1692—约前1640（约52年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
   <div class="rc-highlight">夏朝末代君主，才力过人却暴虐无道，宠信妹喜大兴土木，鸣条之战败于商汤，夏朝四百余年终亡于其手</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>约前2070</td><td style='text-align:left'>大禹治水成功，建立夏朝</td><td>禹</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>约前2025</td><td style='text-align:left'>启继位，确立世袭制</td><td>启</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>约前2010</td><td style='text-align:left'>太康失国，后羿夺权</td><td>太康</td><td><span class='tag tag-bad'>危机</span></td></tr>
@@ -288,23 +275,27 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>约前1846</td><td style='text-align:left'>不降即位，夏朝鼎盛</td><td>不降</td><td><span class='tag tag-good'>善政</span></td></tr>
 <tr><td>约前1745</td><td style='text-align:left'>孔甲乱政，夏朝衰落</td><td>孔甲</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>约前1640</td><td style='text-align:left'>商汤伐桀，夏朝灭亡</td><td>桀</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>青铜 商朝</h2>
-      <p>约1600—1046 BC · 31位帝王 · 约554年 · 亳/殷（今河南安阳）</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">31</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">—</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">青铜文明鼎盛</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 商朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 商朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>青铜 商朝历代帝王</h2>
+    <p>约1600—1046 BC · 共31位帝王 · 约554年 · 亳/殷（今河南安阳）</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">31</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">约554年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">—</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">青铜文明鼎盛</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 商朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>汤</td><td>约30年</td><td>约前1600—约前1570</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>太丁</td><td>约3年</td><td>约前1570—约前1567</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>外丙</td><td>约3年</td><td>约前1567—约前1564</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
@@ -336,232 +327,234 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>29</td><td class='ruler-name'>文丁</td><td>约11年</td><td>约前1019—约前1008</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>30</td><td class='ruler-name'>帝乙</td><td>约26年</td><td>约前1008—约前982</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>31</td><td class='ruler-name'>帝辛</td><td>约33年</td><td>约前1075—约前1046</td><td>不明</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 汤</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1600—约前1570（约30年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
   <div class="rc-highlight">商族首领积德行义深得民心，鸣条之战灭夏建立商朝，在位期间广施仁政解民疾苦，被誉为开国圣王</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">2. 太丁</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1570—约前1567（约3年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">汤之太子早逝未及大展宏图，在位仅三年便病故，虽无显赫功绩但未有过失</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">3. 外丙</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1567—约前1564（约3年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">汤之子继兄位承父业，在位短暂仅三年，守成而已无特殊建树</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">4. 中壬</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1564—约前1560（约4年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">汤之幼子继兄位，在位四年维持稳定，为太甲即位过渡铺路</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">5. 太甲</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1560—约前1537（约23年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">初即位不明君道被伊尹放逐桐宫三年，反躬自省后改过自新重掌政权，成为勤政爱民之君，伊尹还政传为佳话</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">6. 沃丁</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1537—约前1508（约29年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
   <div class="rc-highlight">遵循伊尹治国方略，在位期间政治清明百姓安居，商朝根基愈发稳固，国泰民安</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">7. 太庚</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1508—约前1483（约25年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">守成之主承袭祖制，在位二十五年维持商朝稳定发展，无大功亦无大过</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">8. 小甲</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1483—约前1466（约17年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位期间商朝处于平稳发展阶段，维持祖先基业未有大变，属过渡性君主</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">9. 雍己</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1466—约前1454（约12年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位时商朝国力开始出现衰微迹象，诸侯渐有离心之势，为太戊中兴埋下伏笔</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">10. 太戊</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1454—约前1379（约75年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
   <div class="rc-highlight">在位长达七十五年任用伊陟巫贤辅政，商朝国力大幅提升重现盛世，史称太戊复兴，被誉为中兴之主</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">11. 中丁</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1379—约前1368（约11年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">迁都于隞试图摆脱旧势力，然而诸子争位引发九世之乱，商朝进入长期动荡期</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">12. 外壬</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1368—约前1353（约15年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">继兄位后九世之乱持续不断，商朝内部权力斗争激烈，国力进一步消耗</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">13. 河亶甲</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1353—约前1344（约9年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">迁都于相试图扭转颓势，然而商朝已陷入九世之乱泥潭，在位期间国势衰弱</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">14. 祖乙</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1344—约前1325（约19年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
   <div class="rc-highlight">迁都于邢任用巫贤辅政，商朝再度复兴国力恢复，史称祖乙中兴，为商朝中期重要君主</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">15. 祖辛</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1325—约前1309（约16年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">承袭父业守成为主，在位期间商朝保持相对稳定，无显著事件记载</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">16. 沃甲</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1309—约前1289（约20年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位二十年商朝政局平稳，维持祖乙以来的稳定局面，属守成之君</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">17. 祖丁</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1289—约前1257（约32年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位三十二年商朝保持平稳，延续祖乙中兴余势，无重大事件发生</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">18. 南庚</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1257—约前1228（约29年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">迁都于奄试图寻求新发展，在位期间商朝国势平平，无显著建树</div>
 </div>
 <div class="ruler-card warn">
   <div class="rc-header"><span class="rc-name">19. 阳甲</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1228—约前1221（约7年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
   <div class="rc-highlight">在位期间商朝持续衰微，诸侯不来朝贡，王室权威下降，为盘庚迁殷埋下伏笔</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">20. 盘庚</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1221—约前1193（约28年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
   <div class="rc-highlight">力排众议迁都至殷，扭转商朝颓势实现复兴，在位期间政令修明国力恢复，史称盘庚迁殷为商朝后期繁荣奠基</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">21. 小辛</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1193—约前1190（约3年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">盘庚之弟继位后未能延续复兴势头，商朝再度走向衰弱，在位仅三年</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">22. 小乙</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1190—约前1180（约10年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位期间着力培养太子武丁，令其深入民间了解疾苦，为武丁中兴储备人才</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">23. 武丁</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1180—约前1121（约59年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
   <div class="rc-highlight">少年流落民间知民间疾苦，即位后任用傅说甘盘等贤臣，南征北战使商朝达到鼎盛，史称武丁中兴，妇好为其配偶曾率军出征</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">24. 祖庚</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1121—约前1114（约7年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">武丁之子守成为主，在位七年维持商朝强盛局面，无重大事件记载</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">25. 祖甲</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1114—约前1081（约33年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
   <div class="rc-highlight">在位三十三年推行制度改革修订历法，商朝政治有所发展，但晚年渐趋奢靡</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">26. 廪辛</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1081—约前1075（约6年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位六年商朝开始显露衰落迹象，东方部族渐有异动，国势已过巅峰</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">27. 庚丁</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1075—约前1054（约21年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位二十一年商朝继续衰落，国力日减王室权威下降，为商朝晚期衰退之始</div>
 </div>
 <div class="ruler-card warn">
   <div class="rc-header"><span class="rc-name">28. 武乙</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1054—约前1019（约35年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
   <div class="rc-highlight">狂妄自大射天辱神蔑视传统信仰，传说被雷震死，其行为反映商朝末期礼崩乐坏之状</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">29. 文丁</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1019—约前1008（约11年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位期间杀周族首领季历，商周由此结下深仇，为日后商朝灭亡埋下祸根</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">30. 帝乙</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1008—约前982（约26年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位期间东夷大规模叛乱商朝腹背受敌，迁都于沬试图稳定局势，国势日衰</div>
 </div>
 <div class="ruler-card warn">
   <div class="rc-header"><span class="rc-name">31. 帝辛</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>约前1075—约前1046（约33年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
   <div class="rc-highlight">即纣王才力过人能手格猛兽，然沉溺酒色宠信妲己，设炮烙之刑残害忠良，牧野之战兵败自焚，商朝六百年基业终亡</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>约前1600</td><td style='text-align:left'>商汤灭夏，建立商朝</td><td>汤</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>约前1560</td><td style='text-align:left'>伊尹放逐太甲又迎回</td><td>太甲</td><td><span class='tag tag-mid'>争议</span></td></tr>
 <tr><td>约前1454</td><td style='text-align:left'>太戊复兴商朝</td><td>太戊</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
@@ -569,23 +562,27 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>约前1221</td><td style='text-align:left'>盘庚迁殷，商朝稳定</td><td>盘庚</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>约前1180</td><td style='text-align:left'>武丁中兴，商朝鼎盛</td><td>武丁</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>约前1046</td><td style='text-align:left'>牧野之战，商朝灭亡</td><td>帝辛</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>礼器 周朝</h2>
-      <p>1046—256 BC · 38位帝王 · 790年 · 镐京/洛邑（今西安/洛阳）</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">38</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">55.0</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">最长久王朝</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 周朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 西周 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>礼器 西周历代帝王</h2>
+    <p>1046—771 BC · 共13位帝王 · 275年 · 镐京（今西安）</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">13</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">275年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">55.0</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">礼乐文明</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 西周帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>周武王</td><td>3年</td><td>前1046—前1043</td><td>54</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>周成王</td><td>22年</td><td>前1043—前1021</td><td>35</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>周康王</td><td>25年</td><td>前1021—前996</td><td>57</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
@@ -599,115 +596,91 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>11</td><td class='ruler-name'>共和</td><td>14年</td><td>前841—前828</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>12</td><td class='ruler-name'>周宣王</td><td>46年</td><td>前828—前782</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>13</td><td class='ruler-name'>周幽王</td><td>11年</td><td>前781—前771</td><td>24</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-<tr><td>14</td><td class='ruler-name'>周平王</td><td>51年</td><td>前770—前720</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>15</td><td class='ruler-name'>周桓王</td><td>23年</td><td>前720—前697</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>16</td><td class='ruler-name'>周庄王</td><td>15年</td><td>前697—前682</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>17</td><td class='ruler-name'>周釐王</td><td>5年</td><td>前682—前677</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>18</td><td class='ruler-name'>周惠王</td><td>25年</td><td>前677—前652</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>19</td><td class='ruler-name'>周襄王</td><td>33年</td><td>前652—前619</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>20</td><td class='ruler-name'>周顷王</td><td>6年</td><td>前619—前613</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>21</td><td class='ruler-name'>周匡王</td><td>6年</td><td>前613—前607</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>22</td><td class='ruler-name'>周定王</td><td>21年</td><td>前607—前586</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>23</td><td class='ruler-name'>周简王</td><td>14年</td><td>前586—前572</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>24</td><td class='ruler-name'>周灵王</td><td>27年</td><td>前572—前545</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>25</td><td class='ruler-name'>周景王</td><td>25年</td><td>前545—前520</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>26</td><td class='ruler-name'>周悼王</td><td>1年</td><td>前520—前520</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-<tr><td>27</td><td class='ruler-name'>周敬王</td><td>44年</td><td>前520—前476</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>28</td><td class='ruler-name'>周元王</td><td>7年</td><td>前476—前469</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>29</td><td class='ruler-name'>周贞定王</td><td>28年</td><td>前469—前441</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>30</td><td class='ruler-name'>周哀王</td><td>3个月</td><td>前441—前441</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-<tr><td>31</td><td class='ruler-name'>周思王</td><td>5个月</td><td>前441—前441</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-<tr><td>32</td><td class='ruler-name'>周考王</td><td>15年</td><td>前441—前426</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>33</td><td class='ruler-name'>周威烈王</td><td>24年</td><td>前426—前402</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>34</td><td class='ruler-name'>周安王</td><td>26年</td><td>前402—前376</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>35</td><td class='ruler-name'>周烈王</td><td>7年</td><td>前376—前369</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>36</td><td class='ruler-name'>周显王</td><td>48年</td><td>前369—前321</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>37</td><td class='ruler-name'>周慎靓王</td><td>6年</td><td>前321—前315</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>38</td><td class='ruler-name'>周赧王</td><td>59年</td><td>前315—前256</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 周武王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 约前1043年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 约前1043年</div>
   <div class="rc-row"><strong>在位：</strong>前1046—前1043（3年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
   <div class="rc-highlight">继承父志联合诸侯牧野之战灭商，建立周朝开创八百年基业，推行分封制巩固统治，功业彪炳史册</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">2. 周成王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 约前1021年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 约前1021年</div>
   <div class="rc-row"><strong>在位：</strong>前1043—前1021（22年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
   <div class="rc-highlight">幼年即位由周公旦辅政，平定三监之乱制礼作乐，营建成周洛邑，奠定周朝礼制基础，开创成康之治</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">3. 周康王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 约前996年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 约前996年</div>
   <div class="rc-row"><strong>在位：</strong>前1021—前996（25年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
   <div class="rc-highlight">继承父祖基业勤理朝政，在位期间天下安宁刑罚不用四十余年，史称成康之治，被誉为西周鼎盛之君</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">4. 周昭王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 约前977年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 约前977年</div>
   <div class="rc-row"><strong>在位：</strong>前996—前977（19年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">南征荆楚扩大疆域，传说汉水之畔溺亡，在位期间周朝开始由盛转衰，南征失利暴露王室隐忧</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">5. 周穆王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 约前922年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 约前922年</div>
   <div class="rc-row"><strong>在位：</strong>前977—前922（55年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
   <div class="rc-highlight">在位长达五十五年传说寿逾百岁，西巡昆仑会西王母传说流传千古，周朝版图空前扩大，然巡游过度耗费国力</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">6. 周共王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 约前900年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 约前900年</div>
   <div class="rc-row"><strong>在位：</strong>前922—前900（23年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">迁都犬丘应对戎狄压力，在位期间维持周朝统治，虽无大功但保持国家稳定</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">7. 周懿王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 约前892年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 约前892年</div>
   <div class="rc-row"><strong>在位：</strong>前900—前892（8年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位期间戎狄不断侵扰，王室衰微被迫迁都，周朝统治力下降，已显颓势</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">8. 周孝王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 约前886年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 约前886年</div>
   <div class="rc-row"><strong>在位：</strong>前892—前886（6年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">非子封秦使赢姓一族获封秦地，秦国由此起源日后统一天下，在位期间政治相对平稳</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">9. 周夷王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 约前878年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 约前878年</div>
   <div class="rc-row"><strong>在位：</strong>前886—前878（8年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">在位期间诸侯势力渐强王室日益微弱，朝贡体系开始松动，周朝权威下降</div>
 </div>
 <div class="ruler-card warn">
   <div class="rc-header"><span class="rc-name">10. 周厉王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 约前828年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 约前828年</div>
   <div class="rc-row"><strong>在位：</strong>前878—前841（37年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
   <div class="rc-highlight">暴虐无道垄断山泽之利，禁止国人议论朝政，引发国人暴动出奔彘地，共和行政自此开始，西周由盛转衰</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">11. 共和</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>前841—前828（14年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
   <div class="rc-highlight">周公召公共同执政十四年，中国历史由此进入确切纪年，政治相对稳定为宣王中兴创造条件</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">12. 周宣王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前782年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前782年</div>
   <div class="rc-row"><strong>在位：</strong>前828—前782（46年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
   <div class="rc-highlight">即位后励精图治南征北伐，一度恢复周朝权威史称宣王中兴，然晚年丧南国之师，中兴未能持久</div>
@@ -719,222 +692,285 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
   <div class="rc-highlight">宠信褒姒烽火戏诸侯失信天下，废嫡立庶引发内乱，犬戎攻破镐京身死国亡，西周三百余年至此终结</div>
 </div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">14. 周平王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前720年</div>
-  <div class="rc-row"><strong>在位：</strong>前770—前720（51年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">东迁洛邑建立东周，王室权威一落千丈，诸侯不再尊王，春秋乱世由此开启，在位五十一年苟延残喘</div>
 </div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">15. 周桓王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前697年</div>
-  <div class="rc-row"><strong>在位：</strong>前720—前697（23年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">繻葛之战被郑将祝聃射中肩膀，天子威严扫地，从此诸侯不再尊奉周天子，王室沦为摆设</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">16. 周庄王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前682年</div>
-  <div class="rc-row"><strong>在位：</strong>前697—前682（15年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间诸侯争霸加剧，齐楚晋等大国崛起，周天子完全沦为名义共主</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">17. 周釐王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前677年</div>
-  <div class="rc-row"><strong>在位：</strong>前682—前677（5年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间齐桓公开始称霸诸侯，周天子需仰霸主鼻息，王室地位进一步下降</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">18. 周惠王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前652年</div>
-  <div class="rc-row"><strong>在位：</strong>前677—前652（25年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间发生王子颓之乱，得齐桓公助力方才平定，王室权威更加衰微</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">19. 周襄王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前619年</div>
-  <div class="rc-row"><strong>在位：</strong>前652—前619（33年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间晋文公称霸诸侯，城濮之战后襄王倚重晋国，王室愈依附霸主</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">20. 周顷王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前613年</div>
-  <div class="rc-row"><strong>在位：</strong>前619—前613（6年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间王室财政困难向鲁国求金，周天子地位之窘迫可见一斑</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">21. 周匡王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前607年</div>
-  <div class="rc-row"><strong>在位：</strong>前613—前607（6年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间楚庄王问鼎中原，楚强晋衰格局形成，周室名存实亡</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">22. 周定王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前586年</div>
-  <div class="rc-row"><strong>在位：</strong>前607—前586（21年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间楚强晋衰格局大变，晋国霸权渐失楚国崛起，周天子愈发无力维系秩序</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">23. 周简王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前572年</div>
-  <div class="rc-row"><strong>在位：</strong>前586—前572（14年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间弭兵之会召开诸侯休战，晋楚平分霸权暂得安宁，周天子虽为名义共主却无实权</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">24. 周灵王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前545年</div>
-  <div class="rc-row"><strong>在位：</strong>前572—前545（27年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间诸侯争霸持续不断，晋楚拉锯战争不断，周室仅存虚名</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">25. 周景王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前520年</div>
-  <div class="rc-row"><strong>在位：</strong>前545—前520（25年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间铸大钱改革币制，王子朝之乱争夺王位，王室内部纷争不断</div>
-</div>
-<div class="ruler-card purple">
-  <div class="rc-header"><span class="rc-name">26. 周悼王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前520年</div>
-  <div class="rc-row"><strong>在位：</strong>前520—前520（1年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
-  <div class="rc-highlight">在位仅数月即去世，王位争夺引发长期内乱，为东周王室之悲剧</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">27. 周敬王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前476年</div>
-  <div class="rc-row"><strong>在位：</strong>前520—前476（44年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位四十四年历经吴越争霸，孔子在这一时期周游列国，春秋时代走向尾声</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">28. 周元王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前469年</div>
-  <div class="rc-row"><strong>在位：</strong>前476—前469（7年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位七年战国时代正式开始，越国称霸一时，周天子已完全无关天下大局</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">29. 周贞定王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前441年</div>
-  <div class="rc-row"><strong>在位：</strong>前469—前441（28年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位二十八年处于三家分晋前夜，晋国六卿专权，周天子无力干预</div>
-</div>
-<div class="ruler-card purple">
-  <div class="rc-header"><span class="rc-name">30. 周哀王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前441年</div>
-  <div class="rc-row"><strong>在位：</strong>前441—前441（3个月）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
-  <div class="rc-highlight">在位仅三个月被弟所杀，兄弟阋墙王室内乱不止，折射东周王室之衰败</div>
-</div>
-<div class="ruler-card purple">
-  <div class="rc-header"><span class="rc-name">31. 周思王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前441年</div>
-  <div class="rc-row"><strong>在位：</strong>前441—前441（5个月）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
-  <div class="rc-highlight">杀兄自立仅五个月又被弟所杀，王室骨肉相残不断，周室已毫无权威可言</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">32. 周考王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前426年</div>
-  <div class="rc-row"><strong>在位：</strong>前441—前426（15年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">封弟于河南建立西周公国，王室领地进一步缩小，在位十五年间勉强维持</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">33. 周威烈王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前402年</div>
-  <div class="rc-row"><strong>在位：</strong>前426—前402（24年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">正式册封韩赵魏三家为诸侯，三家分晋获得法理承认，战国格局正式形成</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">34. 周安王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前376年</div>
-  <div class="rc-row"><strong>在位：</strong>前402—前376（26年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间田氏代齐，姜姓齐国变为田姓齐国，周天子无力阻止，宗法制度彻底崩坏</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">35. 周烈王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前369年</div>
-  <div class="rc-row"><strong>在位：</strong>前376—前369（7年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间诸侯纷纷称王与周天子分庭抗礼，周室仅剩一城之地，权威荡然无存</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">36. 周显王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前321年</div>
-  <div class="rc-row"><strong>在位：</strong>前369—前321（48年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位长达四十八年，商鞅变法秦国崛起，合纵连横日趋激烈，周天子彻底沦为旁观者</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">37. 周慎靓王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前315年</div>
-  <div class="rc-row"><strong>在位：</strong>前321—前315（6年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位六年正值合纵连横高潮，战国纵横之士往来于列国，周室已无足轻重</div>
-</div>
-<div class="ruler-card purple">
-  <div class="rc-header"><span class="rc-name">38. 周赧王</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前256年</div>
-  <div class="rc-row"><strong>在位：</strong>前315—前256（59年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
-  <div class="rc-highlight">在位五十九年为周朝末代天子，债台高筑无力偿还，秦昭襄王灭周，八百年周朝至此终结</div>
-</div>
-</div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>前1046</td><td style='text-align:left'>牧野之战，武王灭商</td><td>周武王</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>前1043</td><td style='text-align:left'>周公辅政，制礼作乐</td><td>周成王</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>前1021</td><td style='text-align:left'>成康之治</td><td>周康王</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>前841</td><td style='text-align:left'>国人暴动，共和行政</td><td>周厉王</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>前828</td><td style='text-align:left'>宣王中兴</td><td>周宣王</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>前771</td><td style='text-align:left'>犬戎攻破镐京，西周灭亡</td><td>周幽王</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-<tr><td>前770</td><td style='text-align:left'>平王东迁，东周开始</td><td>周平王</td><td><span class='tag tag-mid'>争议</span></td></tr>
+</tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 东周 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>礼器 东周历代帝王</h2>
+    <p>770—256 BC · 共25位帝王 · 515年 · 洛邑（今洛阳）</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">25</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">515年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">—</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">春秋战国</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 东周帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>周平王</td><td>51年</td><td>前770—前720</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>周桓王</td><td>23年</td><td>前720—前697</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>周庄王</td><td>15年</td><td>前697—前682</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>4</td><td class='ruler-name'>周釐王</td><td>5年</td><td>前682—前677</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>5</td><td class='ruler-name'>周惠王</td><td>25年</td><td>前677—前652</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>6</td><td class='ruler-name'>周襄王</td><td>33年</td><td>前652—前619</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>7</td><td class='ruler-name'>周顷王</td><td>6年</td><td>前619—前613</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>8</td><td class='ruler-name'>周匡王</td><td>6年</td><td>前613—前607</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>9</td><td class='ruler-name'>周定王</td><td>21年</td><td>前607—前586</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>10</td><td class='ruler-name'>周简王</td><td>14年</td><td>前586—前572</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>11</td><td class='ruler-name'>周灵王</td><td>27年</td><td>前572—前545</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>12</td><td class='ruler-name'>周景王</td><td>25年</td><td>前545—前520</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>13</td><td class='ruler-name'>周悼王</td><td>1年</td><td>前520—前520</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>14</td><td class='ruler-name'>周敬王</td><td>44年</td><td>前520—前476</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>15</td><td class='ruler-name'>周元王</td><td>7年</td><td>前476—前469</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>16</td><td class='ruler-name'>周贞定王</td><td>28年</td><td>前469—前441</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>17</td><td class='ruler-name'>周哀王</td><td>3个月</td><td>前441—前441</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>18</td><td class='ruler-name'>周思王</td><td>5个月</td><td>前441—前441</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>19</td><td class='ruler-name'>周考王</td><td>15年</td><td>前441—前426</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>20</td><td class='ruler-name'>周威烈王</td><td>24年</td><td>前426—前402</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>21</td><td class='ruler-name'>周安王</td><td>26年</td><td>前402—前376</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>22</td><td class='ruler-name'>周烈王</td><td>7年</td><td>前376—前369</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>23</td><td class='ruler-name'>周显王</td><td>48年</td><td>前369—前321</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>24</td><td class='ruler-name'>周慎靓王</td><td>6年</td><td>前321—前315</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>25</td><td class='ruler-name'>周赧王</td><td>59年</td><td>前315—前256</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">1. 周平王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前720年</div>
+  <div class="rc-row"><strong>在位：</strong>前770—前720（51年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">东迁洛邑建立东周，王室权威一落千丈，诸侯不再尊王，春秋乱世由此开启，在位五十一年苟延残喘</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">2. 周桓王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前697年</div>
+  <div class="rc-row"><strong>在位：</strong>前720—前697（23年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">繻葛之战被郑将祝聃射中肩膀，天子威严扫地，从此诸侯不再尊奉周天子，王室沦为摆设</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">3. 周庄王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前682年</div>
+  <div class="rc-row"><strong>在位：</strong>前697—前682（15年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间诸侯争霸加剧，齐楚晋等大国崛起，周天子完全沦为名义共主</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">4. 周釐王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前677年</div>
+  <div class="rc-row"><strong>在位：</strong>前682—前677（5年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间齐桓公开始称霸诸侯，周天子需仰霸主鼻息，王室地位进一步下降</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">5. 周惠王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前652年</div>
+  <div class="rc-row"><strong>在位：</strong>前677—前652（25年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间发生王子颓之乱，得齐桓公助力方才平定，王室权威更加衰微</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">6. 周襄王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前619年</div>
+  <div class="rc-row"><strong>在位：</strong>前652—前619（33年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间晋文公称霸诸侯，城濮之战后襄王倚重晋国，王室愈依附霸主</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">7. 周顷王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前613年</div>
+  <div class="rc-row"><strong>在位：</strong>前619—前613（6年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间王室财政困难向鲁国求金，周天子地位之窘迫可见一斑</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">8. 周匡王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前607年</div>
+  <div class="rc-row"><strong>在位：</strong>前613—前607（6年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间楚庄王问鼎中原，楚强晋衰格局形成，周室名存实亡</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">9. 周定王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前586年</div>
+  <div class="rc-row"><strong>在位：</strong>前607—前586（21年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间楚强晋衰格局大变，晋国霸权渐失楚国崛起，周天子愈发无力维系秩序</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">10. 周简王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前572年</div>
+  <div class="rc-row"><strong>在位：</strong>前586—前572（14年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间弭兵之会召开诸侯休战，晋楚平分霸权暂得安宁，周天子虽为名义共主却无实权</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">11. 周灵王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前545年</div>
+  <div class="rc-row"><strong>在位：</strong>前572—前545（27年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间诸侯争霸持续不断，晋楚拉锯战争不断，周室仅存虚名</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">12. 周景王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前520年</div>
+  <div class="rc-row"><strong>在位：</strong>前545—前520（25年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间铸大钱改革币制，王子朝之乱争夺王位，王室内部纷争不断</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">13. 周悼王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前520年</div>
+  <div class="rc-row"><strong>在位：</strong>前520—前520（1年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">在位仅数月即去世，王位争夺引发长期内乱，为东周王室之悲剧</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">14. 周敬王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前476年</div>
+  <div class="rc-row"><strong>在位：</strong>前520—前476（44年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位四十四年历经吴越争霸，孔子在这一时期周游列国，春秋时代走向尾声</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">15. 周元王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前469年</div>
+  <div class="rc-row"><strong>在位：</strong>前476—前469（7年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位七年战国时代正式开始，越国称霸一时，周天子已完全无关天下大局</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">16. 周贞定王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前441年</div>
+  <div class="rc-row"><strong>在位：</strong>前469—前441（28年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位二十八年处于三家分晋前夜，晋国六卿专权，周天子无力干预</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">17. 周哀王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前441年</div>
+  <div class="rc-row"><strong>在位：</strong>前441—前441（3个月）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">在位仅三个月被弟所杀，兄弟阋墙王室内乱不止，折射东周王室之衰败</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">18. 周思王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前441年</div>
+  <div class="rc-row"><strong>在位：</strong>前441—前441（5个月）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">杀兄自立仅五个月又被弟所杀，王室骨肉相残不断，周室已毫无权威可言</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">19. 周考王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前426年</div>
+  <div class="rc-row"><strong>在位：</strong>前441—前426（15年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">封弟于河南建立西周公国，王室领地进一步缩小，在位十五年间勉强维持</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">20. 周威烈王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前402年</div>
+  <div class="rc-row"><strong>在位：</strong>前426—前402（24年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">正式册封韩赵魏三家为诸侯，三家分晋获得法理承认，战国格局正式形成</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">21. 周安王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前376年</div>
+  <div class="rc-row"><strong>在位：</strong>前402—前376（26年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间田氏代齐，姜姓齐国变为田姓齐国，周天子无力阻止，宗法制度彻底崩坏</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">22. 周烈王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前369年</div>
+  <div class="rc-row"><strong>在位：</strong>前376—前369（7年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间诸侯纷纷称王与周天子分庭抗礼，周室仅剩一城之地，权威荡然无存</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">23. 周显王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前321年</div>
+  <div class="rc-row"><strong>在位：</strong>前369—前321（48年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位长达四十八年，商鞅变法秦国崛起，合纵连横日趋激烈，周天子彻底沦为旁观者</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">24. 周慎靓王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前315年</div>
+  <div class="rc-row"><strong>在位：</strong>前321—前315（6年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位六年正值合纵连横高潮，战国纵横之士往来于列国，周室已无足轻重</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">25. 周赧王</span></div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前256年</div>
+  <div class="rc-row"><strong>在位：</strong>前315—前256（59年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">在位五十九年为周朝末代天子，债台高筑无力偿还，秦昭襄王灭周，八百年周朝至此终结</div>
+</div>
+</div>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+      <tbody><tr><td>前770</td><td style='text-align:left'>平王东迁，东周开始</td><td>周平王</td><td><span class='tag tag-mid'>争议</span></td></tr>
 <tr><td>前679</td><td style='text-align:left'>齐桓公称霸</td><td>周釐王</td><td><span class='tag tag-mid'>争议</span></td></tr>
 <tr><td>前453</td><td style='text-align:left'>三家分晋</td><td>周贞定王</td><td><span class='tag tag-mid'>争议</span></td></tr>
 <tr><td>前403</td><td style='text-align:left'>周威烈王正式封三家为侯</td><td>周威烈王</td><td><span class='tag tag-mid'>争议</span></td></tr>
 <tr><td>前256</td><td style='text-align:left'>秦灭周，周朝灭亡</td><td>周赧王</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>⚔️ 秦朝</h2>
-      <p>221—206 BC · 3位帝王 · 15年 · 咸阳（今陕西咸阳）</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">3</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">36.0</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">首个大一统帝国</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 秦朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 秦朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>⚔️ 秦朝历代帝王</h2>
+    <p>221—206 BC · 共3位帝王 · 15年 · 咸阳（今陕西咸阳）</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">3</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">15年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">36.0</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">首个大一统帝国</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 秦朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>秦始皇</td><td>37年（含秦王时期）</td><td>前246—前210</td><td>49</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>秦二世</td><td>3年</td><td>前210—前207</td><td>23</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>秦王子婴</td><td>46天</td><td>前207—前206</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 秦始皇</span></div>
   <div class="rc-row"><strong>生卒：</strong>前259年 — 前210年</div>
   <div class="rc-row"><strong>在位：</strong>前246—前210（37年（含秦王时期））</div>
@@ -950,16 +986,17 @@ tr:nth-child(even) { background:#f7fff7; }
 </div>
 <div class="ruler-card purple">
   <div class="rc-header"><span class="rc-name">3. 秦王子婴</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 前206年</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 前206年</div>
   <div class="rc-row"><strong>在位：</strong>前207—前206（46天）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
   <div class="rc-highlight">诛杀权臣赵高试图挽救危局，然秦朝已积重难返，即位仅四十六日即降刘邦，秦朝六百年基业至此终结，国祚仅十五年</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>前221</td><td style='text-align:left'>秦统一六国，建立大一统帝国</td><td>秦始皇</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>前214</td><td style='text-align:left'>修筑万里长城</td><td>秦始皇</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>前213</td><td style='text-align:left'>焚书坑儒</td><td>秦始皇</td><td><span class='tag tag-bad'>危机</span></td></tr>
@@ -967,23 +1004,27 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>前209</td><td style='text-align:left'>陈胜吴广起义</td><td>秦二世</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>前207</td><td style='text-align:left'>巨鹿之战，秦军主力覆灭</td><td>秦二世</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>前206</td><td style='text-align:left'>子婴投降，秦朝灭亡</td><td>秦王子婴</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>🐉 汉朝</h2>
-      <p>202 BC—220 AD · 28位帝王 · 405年 · 长安/洛阳</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">28</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">35.1</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">汉民族奠基</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 汉朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 西汉 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>🐉 西汉历代帝王</h2>
+    <p>202 BC—9 AD · 共16位帝王 · 211年 · 长安</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">16</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">211年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">39.5</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">汉武盛世</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 西汉帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>汉高祖</td><td>7年</td><td>前202—前195</td><td>61</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>汉惠帝</td><td>7年</td><td>前195—前188</td><td>22</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>前少帝</td><td>4年</td><td>前188—前184</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
@@ -1000,23 +1041,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>14</td><td class='ruler-name'>汉平帝</td><td>5年</td><td>前1—6</td><td>14</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>15</td><td class='ruler-name'>孺子婴</td><td>3年</td><td>6—9</td><td>20</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>16</td><td class='ruler-name'>王莽</td><td>15年</td><td>9—23</td><td>68</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-<tr><td>17</td><td class='ruler-name'>汉光武帝</td><td>33年</td><td>25—57</td><td>62</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
-<tr><td>18</td><td class='ruler-name'>汉明帝</td><td>18年</td><td>57—75</td><td>47</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
-<tr><td>19</td><td class='ruler-name'>汉章帝</td><td>13年</td><td>75—88</td><td>31</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
-<tr><td>20</td><td class='ruler-name'>汉和帝</td><td>17年</td><td>88—105</td><td>26</td><td><span class='tag tag-good'>守成之主</span></td></tr>
-<tr><td>21</td><td class='ruler-name'>汉殇帝</td><td>8个月</td><td>105—106</td><td>1</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-<tr><td>22</td><td class='ruler-name'>汉安帝</td><td>19年</td><td>106—125</td><td>31</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>23</td><td class='ruler-name'>汉顺帝</td><td>19年</td><td>125—144</td><td>29</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>24</td><td class='ruler-name'>汉冲帝</td><td>5个月</td><td>144—145</td><td>2</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-<tr><td>25</td><td class='ruler-name'>汉质帝</td><td>1年</td><td>145—146</td><td>8</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-<tr><td>26</td><td class='ruler-name'>汉桓帝</td><td>21年</td><td>146—168</td><td>36</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-<tr><td>27</td><td class='ruler-name'>汉灵帝</td><td>21年</td><td>168—189</td><td>33</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-<tr><td>28</td><td class='ruler-name'>汉献帝</td><td>31年</td><td>189—220</td><td>53</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 汉高祖</span></div>
   <div class="rc-row"><strong>生卒：</strong>前256年 — 前195年</div>
   <div class="rc-row"><strong>在位：</strong>前202—前195（7年）</div>
@@ -1032,14 +1062,14 @@ tr:nth-child(even) { background:#f7fff7; }
 </div>
 <div class="ruler-card purple">
   <div class="rc-header"><span class="rc-name">3. 前少帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>前188—前184（4年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
   <div class="rc-highlight">吕后所立幼帝，因非惠帝亲生被废杀，在位四年沦为吕氏专权之工具</div>
 </div>
 <div class="ruler-card purple">
   <div class="rc-header"><span class="rc-name">4. 后少帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 不明</div>
   <div class="rc-row"><strong>在位：</strong>前184—前180（4年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
   <div class="rc-highlight">吕后所立幼帝，吕后死后被大臣废杀，在位四年亦为政治牺牲品</div>
@@ -1128,95 +1158,12 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
   <div class="rc-highlight">外戚出身以禅让之名篡汉建新，推行托古改制引发天下大乱，王田私属致经济崩溃，绿林赤眉起义四起，终死于乱军之中</div>
 </div>
-<div class="ruler-card ">
-  <div class="rc-header"><span class="rc-name">17. 汉光武帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>前5年 — 57年</div>
-  <div class="rc-row"><strong>在位：</strong>25—57（33年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
-  <div class="rc-highlight">南阳宗室起兵反莽，昆阳之战以少胜多大败新莽军，重建汉室史称光武中兴，柔道治天下善始善终，被誉为中兴之主典范</div>
 </div>
-<div class="ruler-card ">
-  <div class="rc-header"><span class="rc-name">18. 汉明帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>28年 — 75年</div>
-  <div class="rc-row"><strong>在位：</strong>57—75（18年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
-  <div class="rc-highlight">光武之子继承父业，引入佛教兴建白马寺，严明外戚禁令政治清明，在位十八年明章之治比肩文景</div>
-</div>
-<div class="ruler-card ">
-  <div class="rc-header"><span class="rc-name">19. 汉章帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>57年 — 88年</div>
-  <div class="rc-row"><strong>在位：</strong>75—88（13年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
-  <div class="rc-highlight">继承明帝之业继续与民休息，班超出使西域重通丝路，在位期间国力强盛社会安定，明章之治达到顶峰</div>
-</div>
-<div class="ruler-card ">
-  <div class="rc-header"><span class="rc-name">20. 汉和帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>79年 — 105年</div>
-  <div class="rc-row"><strong>在位：</strong>88—105（17年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
-  <div class="rc-highlight">幼年即位由窦太后临朝，灭北匈奴于金微山使北匈奴西迁，永元之隆国力强盛，然外戚窦氏坐大为后世留下隐患</div>
-</div>
-<div class="ruler-card purple">
-  <div class="rc-header"><span class="rc-name">21. 汉殇帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>105年 — 106年</div>
-  <div class="rc-row"><strong>在位：</strong>105—106（8个月）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
-  <div class="rc-highlight">襒褓即位八个月即夭折，为东汉最短命之皇帝，反映出皇族子嗣凋零之困</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">22. 汉安帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>94年 — 125年</div>
-  <div class="rc-row"><strong>在位：</strong>106—125（19年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">在位期间外戚邓氏专权，羌人持续叛乱耗费巨大，东汉国力开始由盛转衰</div>
-</div>
-<div class="ruler-card info">
-  <div class="rc-header"><span class="rc-name">23. 汉顺帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>115年 — 144年</div>
-  <div class="rc-row"><strong>在位：</strong>125—144（19年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">由宦官拥立即位，在位期间宦官势力崛起与外戚争权，朝政日趋腐败东汉渐入衰途</div>
-</div>
-<div class="ruler-card purple">
-  <div class="rc-header"><span class="rc-name">24. 汉冲帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>143年 — 145年</div>
-  <div class="rc-row"><strong>在位：</strong>144—145（5个月）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
-  <div class="rc-highlight">两岁即位五个月即夭折，幼儿皇帝接连早夭折射东汉皇族之衰</div>
-</div>
-<div class="ruler-card purple">
-  <div class="rc-header"><span class="rc-name">25. 汉质帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>138年 — 146年</div>
-  <div class="rc-row"><strong>在位：</strong>145—146（1年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
-  <div class="rc-highlight">八岁即位聪明过人却因当面斥责梁冀被毒杀，在位仅一年，成为外戚专权最惨烈的牺牲品</div>
-</div>
-<div class="ruler-card warn">
-  <div class="rc-header"><span class="rc-name">26. 汉桓帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>132年 — 168年</div>
-  <div class="rc-row"><strong>在位：</strong>146—168（21年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
-  <div class="rc-highlight">依靠宦官诛杀外戚梁冀，却令宦官势力坐大引发党锢之祸，镇压士大夫使朝政更加黑暗，东汉加速走向灭亡</div>
-</div>
-<div class="ruler-card warn">
-  <div class="rc-header"><span class="rc-name">27. 汉灵帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>156年 — 189年</div>
-  <div class="rc-row"><strong>在位：</strong>168—189（21年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
-  <div class="rc-highlight">卖官鬻爵公开标价，重用宦官十常侍把持朝政，黄巾起义席卷天下，东汉名存实亡群雄并起</div>
-</div>
-<div class="ruler-card purple">
-  <div class="rc-header"><span class="rc-name">28. 汉献帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong>181年 — 234年</div>
-  <div class="rc-row"><strong>在位：</strong>189—220（31年）</div>
-  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
-  <div class="rc-highlight">少时被董卓拥立为傀儡，此后辗转于军阀之手，衣带诏求援却无力回天，终禅位于曹丕东汉灭亡，一生悲凉为末代天子之缩影</div>
-</div>
-</div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>前202</td><td style='text-align:left'>刘邦称帝，建立汉朝</td><td>汉高祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>前180</td><td style='text-align:left'>文帝即位，文景之治开始</td><td>汉文帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>前141</td><td style='text-align:left'>武帝即位，汉武盛世</td><td>汉武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
@@ -1224,27 +1171,159 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>前119</td><td style='text-align:left'>卫青霍去病大破匈奴</td><td>汉武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>前60</td><td style='text-align:left'>设立西域都护府</td><td>汉宣帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>9</td><td style='text-align:left'>王莽篡汉，建立新朝</td><td>王莽</td><td><span class='tag tag-bad'>危机</span></td></tr>
-<tr><td>25</td><td style='text-align:left'>刘秀称帝，光武中兴</td><td>汉光武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+</tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 东汉 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>🐉 东汉历代帝王</h2>
+    <p>25—220 AD · 共12位帝王 · 195年 · 洛阳</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">12</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">195年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">29.9</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">光武中兴</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 东汉帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>汉光武帝</td><td>33年</td><td>25—57</td><td>62</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>汉明帝</td><td>18年</td><td>57—75</td><td>47</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>汉章帝</td><td>13年</td><td>75—88</td><td>31</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>4</td><td class='ruler-name'>汉和帝</td><td>17年</td><td>88—105</td><td>26</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>5</td><td class='ruler-name'>汉殇帝</td><td>8个月</td><td>105—106</td><td>1</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>6</td><td class='ruler-name'>汉安帝</td><td>19年</td><td>106—125</td><td>31</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>7</td><td class='ruler-name'>汉顺帝</td><td>19年</td><td>125—144</td><td>29</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>8</td><td class='ruler-name'>汉冲帝</td><td>5个月</td><td>144—145</td><td>2</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>9</td><td class='ruler-name'>汉质帝</td><td>1年</td><td>145—146</td><td>8</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>10</td><td class='ruler-name'>汉桓帝</td><td>21年</td><td>146—168</td><td>36</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>11</td><td class='ruler-name'>汉灵帝</td><td>21年</td><td>168—189</td><td>33</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>12</td><td class='ruler-name'>汉献帝</td><td>31年</td><td>189—220</td><td>53</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">1. 汉光武帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>前5年 — 57年</div>
+  <div class="rc-row"><strong>在位：</strong>25—57（33年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">南阳宗室起兵反莽，昆阳之战以少胜多大败新莽军，重建汉室史称光武中兴，柔道治天下善始善终，被誉为中兴之主典范</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">2. 汉明帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>28年 — 75年</div>
+  <div class="rc-row"><strong>在位：</strong>57—75（18年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">光武之子继承父业，引入佛教兴建白马寺，严明外戚禁令政治清明，在位十八年明章之治比肩文景</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">3. 汉章帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>57年 — 88年</div>
+  <div class="rc-row"><strong>在位：</strong>75—88（13年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">继承明帝之业继续与民休息，班超出使西域重通丝路，在位期间国力强盛社会安定，明章之治达到顶峰</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">4. 汉和帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>79年 — 105年</div>
+  <div class="rc-row"><strong>在位：</strong>88—105（17年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">幼年即位由窦太后临朝，灭北匈奴于金微山使北匈奴西迁，永元之隆国力强盛，然外戚窦氏坐大为后世留下隐患</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">5. 汉殇帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>105年 — 106年</div>
+  <div class="rc-row"><strong>在位：</strong>105—106（8个月）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">襒褓即位八个月即夭折，为东汉最短命之皇帝，反映出皇族子嗣凋零之困</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">6. 汉安帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>94年 — 125年</div>
+  <div class="rc-row"><strong>在位：</strong>106—125（19年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">在位期间外戚邓氏专权，羌人持续叛乱耗费巨大，东汉国力开始由盛转衰</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">7. 汉顺帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>115年 — 144年</div>
+  <div class="rc-row"><strong>在位：</strong>125—144（19年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">由宦官拥立即位，在位期间宦官势力崛起与外戚争权，朝政日趋腐败东汉渐入衰途</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">8. 汉冲帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>143年 — 145年</div>
+  <div class="rc-row"><strong>在位：</strong>144—145（5个月）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">两岁即位五个月即夭折，幼儿皇帝接连早夭折射东汉皇族之衰</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">9. 汉质帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>138年 — 146年</div>
+  <div class="rc-row"><strong>在位：</strong>145—146（1年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">八岁即位聪明过人却因当面斥责梁冀被毒杀，在位仅一年，成为外戚专权最惨烈的牺牲品</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">10. 汉桓帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>132年 — 168年</div>
+  <div class="rc-row"><strong>在位：</strong>146—168（21年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">依靠宦官诛杀外戚梁冀，却令宦官势力坐大引发党锢之祸，镇压士大夫使朝政更加黑暗，东汉加速走向灭亡</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">11. 汉灵帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>156年 — 189年</div>
+  <div class="rc-row"><strong>在位：</strong>168—189（21年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">卖官鬻爵公开标价，重用宦官十常侍把持朝政，黄巾起义席卷天下，东汉名存实亡群雄并起</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">12. 汉献帝</span></div>
+  <div class="rc-row"><strong>生卒：</strong>181年 — 234年</div>
+  <div class="rc-row"><strong>在位：</strong>189—220（31年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">少时被董卓拥立为傀儡，此后辗转于军阀之手，衣带诏求援却无力回天，终禅位于曹丕东汉灭亡，一生悲凉为末代天子之缩影</div>
+</div>
+</div>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+      <tbody><tr><td>25</td><td style='text-align:left'>刘秀称帝，光武中兴</td><td>汉光武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>57</td><td style='text-align:left'>明章之治开始</td><td>汉明帝</td><td><span class='tag tag-good'>善政</span></td></tr>
 <tr><td>184</td><td style='text-align:left'>黄巾起义</td><td>汉灵帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>220</td><td style='text-align:left'>曹丕篡汉，汉朝灭亡</td><td>汉献帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>⚔️ 三国</h2>
-      <p>220—280 AD · 11位帝王 · 60年 · 洛阳/成都/建业</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">11</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">43.0</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">三分天下</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 三国帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 三国 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>⚔️ 三国历代帝王</h2>
+    <p>220—280 AD · 共11位帝王 · 60年 · 洛阳/成都/建业</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">11</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">60年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">43.0</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">三分天下</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 三国帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>【魏】魏文帝</td><td>7年</td><td>220年12月—226年6月</td><td>39</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>【魏】魏明帝</td><td>13年</td><td>226年6月—239年1月</td><td>34</td><td><span class='tag tag-good'>守成之主</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>【魏】齐王芳</td><td>16年</td><td>239年1月—254年10月</td><td>42</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
@@ -1256,11 +1335,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>9</td><td class='ruler-name'>【吴】吴废帝</td><td>7年</td><td>252年5月—258年11月</td><td>17</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
 <tr><td>10</td><td class='ruler-name'>【吴】吴景帝</td><td>6年</td><td>258年11月—264年9月</td><td>29</td><td><span class='tag tag-good'>守成之主</span></td></tr>
 <tr><td>11</td><td class='ruler-name'>【吴】吴末帝</td><td>16年</td><td>264年9月—280年5月</td><td>42</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 【魏】魏文帝</span></div>
   <div class="rc-row"><strong>生卒：</strong>187年冬 — 226年6月29日</div>
   <div class="rc-row"><strong>在位：</strong>220年12月—226年6月（7年）</div>
@@ -1338,10 +1418,11 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-highlight">孙和之子，暴虐无道，残害忠良。降晋后封归命侯，东吴灭亡。三国最后一位亡国之君，42岁病逝。</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>220年12月</td><td style='text-align:left'>曹丕称帝，魏国建立</td><td>【魏】魏文帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>221年4月</td><td style='text-align:left'>刘备称帝，蜀汉建立</td><td>【蜀】汉昭烈帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>222年</td><td style='text-align:left'>夷陵之战，刘备大败</td><td>【蜀】汉昭烈帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
@@ -1349,23 +1430,27 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>249年</td><td style='text-align:left'>高平陵之变，司马氏专权</td><td>【魏】齐王芳</td><td><span class='tag tag-mid'>争议</span></td></tr>
 <tr><td>263年11月</td><td style='text-align:left'>魏灭蜀汉</td><td>【蜀】汉怀帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
 <tr><td>280年5月</td><td style='text-align:left'>晋灭吴，三国统一</td><td>【吴】吴末帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>📜 晋朝</h2>
-      <p>266—420 AD · 15位帝王 · 154年 · 洛阳/建康</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">15</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">33.9</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">门阀士族</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 晋朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 晋朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>📜 晋朝历代帝王</h2>
+    <p>266—420 AD · 共15位帝王 · 154年 · 洛阳/建康</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">15</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">154年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">33.9</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">门阀士族</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 晋朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>晋武帝</td><td>25年（含晋王时期）</td><td>266年2月—290年5月</td><td>54</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>晋惠帝</td><td>16年</td><td>290年5月—306年11月</td><td>47</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>晋怀帝</td><td>6年</td><td>306年11月—313年3月</td><td>29</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
@@ -1381,11 +1466,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>13</td><td class='ruler-name'>晋孝武帝</td><td>24年</td><td>372年9月—396年11月</td><td>34</td><td><span class='tag tag-good'>守成之主</span></td></tr>
 <tr><td>14</td><td class='ruler-name'>晋安帝</td><td>22年</td><td>396年11月—419年1月</td><td>37</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>15</td><td class='ruler-name'>晋恭帝</td><td>2年</td><td>419年1月—420年7月</td><td>35</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 晋武帝</span></div>
   <div class="rc-row"><strong>生卒：</strong>236年 — 290年5月16日</div>
   <div class="rc-row"><strong>在位：</strong>266年2月—290年5月（25年（含晋王时期））</div>
@@ -1491,10 +1577,11 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-highlight">司马德文，禅位于刘裕，东晋灭亡。被棉被闷死，35岁。东晋最后一位皇帝，下场凄惨。</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>266年2月</td><td style='text-align:left'>司马炎代魏建晋</td><td>晋武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>280年5月</td><td style='text-align:left'>晋灭吴，统一全国</td><td>晋武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>291年</td><td style='text-align:left'>八王之乱开始</td><td>晋惠帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
@@ -1502,23 +1589,27 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>317年</td><td style='text-align:left'>司马睿建立东晋</td><td>晋元帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>383年</td><td style='text-align:left'>淝水之战，东晋大败前秦</td><td>晋孝武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>420年7月</td><td style='text-align:left'>刘裕代晋，东晋灭亡</td><td>晋恭帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>🏯 南北朝</h2>
-      <p>420—589 AD · 29位帝王 · 169年 · 建康/平城/洛阳/邺</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">29</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">37.8</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">民族大融合</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 南北朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 南北朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>🏯 南北朝历代帝王</h2>
+    <p>420—589 AD · 共29位帝王 · 169年 · 建康/平城/洛阳/邺</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">29</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">169年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">37.8</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">民族大融合</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 南北朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>【南朝·宋】宋武帝</td><td>3年</td><td>420年7月—422年6月</td><td>59</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>【南朝·宋】宋文帝</td><td>30年</td><td>424年8月—453年3月</td><td>46</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>【南朝·宋】宋孝武帝</td><td>11年</td><td>453年5月—464年7月</td><td>34</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
@@ -1548,11 +1639,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>27</td><td class='ruler-name'>【北朝·北周】周武帝</td><td>18年</td><td>560年4月—578年6月</td><td>35</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>28</td><td class='ruler-name'>【北朝·北周】周宣帝</td><td>2年</td><td>578年6月—580年6月</td><td>21</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
 <tr><td>29</td><td class='ruler-name'>【北朝·北周】周静帝</td><td>2年</td><td>579年4月—581年3月</td><td>8</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 【南朝·宋】宋武帝</span></div>
   <div class="rc-row"><strong>生卒：</strong>363年4月 — 422年6月26日</div>
   <div class="rc-row"><strong>在位：</strong>420年7月—422年6月（3年）</div>
@@ -1756,10 +1848,11 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-highlight">宇文阐，六岁即位。禅位于杨坚，581年被杀，8岁。北周灭亡。</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>420年7月</td><td style='text-align:left'>刘裕代晋建宋，南朝开始</td><td>【南朝·宋】宋武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>439年</td><td style='text-align:left'>北魏统一北方</td><td>【北朝·北魏】魏太武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>471年</td><td style='text-align:left'>孝文帝即位，推行汉化</td><td>【北朝·北魏】魏孝文帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
@@ -1772,31 +1865,36 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>577年</td><td style='text-align:left'>北周灭北齐，统一北方</td><td>【北朝·北周】周武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>581年3月</td><td style='text-align:left'>杨坚代周建隋</td><td>【北朝·北周】周静帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
 <tr><td>589年2月</td><td style='text-align:left'>隋灭陈，南北朝结束</td><td>【南朝·陈】陈后主</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>🌉 隋朝</h2>
-      <p>581—618 AD · 3位帝王 · 37年 · 大兴/洛阳</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">3</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">42.0</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">开皇之治</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 隋朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 隋朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>🌉 隋朝历代帝王</h2>
+    <p>581—618 AD · 共3位帝王 · 37年 · 大兴/洛阳</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">3</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">37年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">42.0</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">开皇之治</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 隋朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>隋文帝</td><td>23年（含隋王）</td><td>581年3月—604年8月</td><td>63</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>隋炀帝</td><td>14年</td><td>604年8月—618年4月</td><td>49</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>隋恭帝</td><td>1年</td><td>617年12月—618年6月</td><td>14</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 隋文帝</span></div>
   <div class="rc-row"><strong>生卒：</strong>541年7月21日 — 604年8月13日</div>
   <div class="rc-row"><strong>在位：</strong>581年3月—604年8月（23年（含隋王））</div>
@@ -1818,10 +1916,11 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-highlight">杨侑，李渊入长安后所立傀儡，在位一年禅位。隋朝灭亡。14岁病逝，隋朝悲剧末帝。</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>581年3月</td><td style='text-align:left'>杨坚代周建隋</td><td>隋文帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>589年2月</td><td style='text-align:left'>隋灭陈，统一全国</td><td>隋文帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>604年8月</td><td style='text-align:left'>隋文帝驾崩，杨广即位</td><td>隋炀帝</td><td><span class='tag tag-mid'>争议</span></td></tr>
@@ -1829,23 +1928,27 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>611年</td><td style='text-align:left'>隋炀帝三征高句丽</td><td>隋炀帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>611年</td><td style='text-align:left'>各地农民起义爆发</td><td>隋炀帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>618年4月</td><td style='text-align:left'>隋炀帝被杀，隋朝灭亡</td><td>隋炀帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>🏮 唐朝</h2>
-      <p>618—907 AD · 21位帝王 · 289年 · 长安/洛阳</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">21</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">45.7</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">大唐盛世</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 唐朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 唐朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>🏮 唐朝历代帝王</h2>
+    <p>618—907 AD · 共21位帝王 · 289年 · 长安/洛阳</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">21</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">289年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">45.7</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">大唐盛世</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 唐朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>唐高祖</td><td>9年</td><td>618年6月—626年9月</td><td>69</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>唐太宗</td><td>23年</td><td>626年9月—649年7月</td><td>50</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>唐高宗</td><td>34年</td><td>649年7月—683年12月</td><td>55</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
@@ -1867,11 +1970,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>19</td><td class='ruler-name'>唐僖宗</td><td>15年</td><td>873年8月—888年4月</td><td>25</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
 <tr><td>20</td><td class='ruler-name'>唐昭宗</td><td>16年</td><td>888年4月—904年9月</td><td>37</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>21</td><td class='ruler-name'>唐哀帝</td><td>3年</td><td>904年9月—907年5月</td><td>15</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 唐高祖</span></div>
   <div class="rc-row"><strong>生卒：</strong>566年4月7日 — 635年6月25日</div>
   <div class="rc-row"><strong>在位：</strong>618年6月—626年9月（9年）</div>
@@ -2019,10 +2123,11 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-highlight">李柷，哀帝。禅位于朱温，唐朝灭亡。被毒杀，15岁。290年大唐终结，最后一位皇帝。</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>618年6月</td><td style='text-align:left'>李渊称帝，建立唐朝</td><td>唐高祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>626年9月</td><td style='text-align:left'>玄武门之变，李世民即位</td><td>唐太宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>627年</td><td style='text-align:left'>贞观之治开始</td><td>唐太宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
@@ -2035,23 +2140,27 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>820年</td><td style='text-align:left'>元和中兴</td><td>唐宪宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>875年</td><td style='text-align:left'>黄巢起义</td><td>唐僖宗</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>907年5月</td><td style='text-align:left'>朱温代唐，唐朝灭亡</td><td>唐哀帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>🏰 五代十国</h2>
-      <p>907—979 AD · 15位帝王 · 72年 · 开封/洛阳等</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">15</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">45.2</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">军阀混战</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 五代十国帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 五代十国 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>🏰 五代十国历代帝王</h2>
+    <p>907—979 AD · 共15位帝王 · 72年 · 开封/洛阳等</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">15</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">72年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">45.2</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">军阀混战</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 五代十国帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>【后梁】梁太祖</td><td>5年</td><td>907年5月—912年7月</td><td>59</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>【后梁】梁末帝</td><td>11年</td><td>913年3月—923年11月</td><td>35</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>【后唐】唐庄宗</td><td>3年</td><td>923年4月—926年5月</td><td>40</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
@@ -2067,11 +2176,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>13</td><td class='ruler-name'>【前蜀】蜀王建</td><td>12年</td><td>907年9月—918年7月</td><td>71</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>14</td><td class='ruler-name'>【南唐】唐烈祖</td><td>7年</td><td>937年10月—943年3月</td><td>55</td><td><span class='tag tag-good'>守成之主</span></td></tr>
 <tr><td>15</td><td class='ruler-name'>【南唐】唐后主</td><td>15年</td><td>961年6月—975年11月</td><td>40</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card info">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">1. 【后梁】梁太祖</span></div>
   <div class="rc-row"><strong>生卒：</strong>852年12月5日 — 912年7月18日</div>
   <div class="rc-row"><strong>在位：</strong>907年5月—912年7月（5年）</div>
@@ -2177,10 +2287,11 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-highlight">李煜，文学天才政治庸才，词作千古流芳，面对宋朝铁骑无力抵抗，肉袒出降，后被宋太宗毒杀，亡国之悲</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>907年5月</td><td style='text-align:left'>朱温代唐建后梁</td><td>【后梁】梁太祖</td><td><span class='tag tag-mid'>争议</span></td></tr>
 <tr><td>923年4月</td><td style='text-align:left'>李存勖建后唐</td><td>【后唐】唐庄宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>936年11月</td><td style='text-align:left'>石敬瑭建后晋，割燕云十六州</td><td>【后晋】晋高祖</td><td><span class='tag tag-bad'>危机</span></td></tr>
@@ -2190,23 +2301,27 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>960年2月</td><td style='text-align:left'>陈桥兵变，赵匡胤建宋</td><td>【后周】周恭帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
 <tr><td>975年11月</td><td style='text-align:left'>宋灭南唐</td><td>【南唐】唐后主</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
 <tr><td>979年</td><td style='text-align:left'>宋灭北汉，五代十国结束</td><td>【北汉】</td><td><span class='tag tag-mid'>争议</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>📜 宋朝</h2>
-      <p>960—1279 AD · 18位帝王 · 319年 · 开封/临安</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">18</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">46.1</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">文化经济巅峰</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 宋朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 宋朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>📜 宋朝历代帝王</h2>
+    <p>960—1279 AD · 共18位帝王 · 319年 · 开封/临安</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">18</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">319年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">46.1</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">文化经济巅峰</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 宋朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>宋太祖</td><td>16年</td><td>960年2月—976年11月</td><td>49</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>宋太宗</td><td>21年</td><td>976年11月—997年5月</td><td>57</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>宋真宗</td><td>25年</td><td>997年5月—1022年3月</td><td>53</td><td><span class='tag tag-good'>守成之主</span></td></tr>
@@ -2225,11 +2340,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>16</td><td class='ruler-name'>宋恭帝</td><td>2年</td><td>1274年8月—1276年2月</td><td>51</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>17</td><td class='ruler-name'>宋端宗</td><td>2年</td><td>1276年6月—1278年5月</td><td>8</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>18</td><td class='ruler-name'>宋帝昺</td><td>1年</td><td>1278年5月—1279年3月</td><td>7</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 宋太祖</span></div>
   <div class="rc-row"><strong>生卒：</strong>927年3月21日 — 976年11月14日</div>
   <div class="rc-row"><strong>在位：</strong>960年2月—976年11月（16年）</div>
@@ -2356,10 +2472,11 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-highlight">赵昺，崖山海战宋军全军覆没，陆秀夫负帝投海，十万军民殉国，南宋灭亡，中华第一次完全沦于异族</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>960年2月</td><td style='text-align:left'>陈桥兵变，赵匡胤建宋</td><td>宋太祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>976年11月</td><td style='text-align:left'>烛影斧声，太宗即位</td><td>宋太宗</td><td><span class='tag tag-mid'>争议</span></td></tr>
 <tr><td>1004年</td><td style='text-align:left'>澶渊之盟，宋辽议和</td><td>宋真宗</td><td><span class='tag tag-good'>善政</span></td></tr>
@@ -2371,23 +2488,27 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>1162年7月</td><td style='text-align:left'>孝宗即位，乾淳之治</td><td>宋孝宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>1234年</td><td style='text-align:left'>宋蒙联军灭金</td><td>宋理宗</td><td><span class='tag tag-mid'>争议</span></td></tr>
 <tr><td>1279年3月</td><td style='text-align:left'>崖山海战，南宋灭亡</td><td>宋帝昺</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>🏹 辽朝</h2>
-      <p>916—1125 AD · 9位帝王 · 209年 · 上京临潢府</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">9</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">47.1</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">契丹帝国</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 辽朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 辽朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>🏹 辽朝历代帝王</h2>
+    <p>916—1125 AD · 共9位帝王 · 209年 · 上京临潢府</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">9</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">209年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">47.1</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">契丹帝国</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 辽朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>辽太祖</td><td>20年（含契丹可汗）</td><td>916年3月—926年9月</td><td>54</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>辽太宗</td><td>21年</td><td>926年11月—947年5月</td><td>45</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>辽世宗</td><td>4年</td><td>947年5月—951年10月</td><td>34</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
@@ -2397,11 +2518,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>7</td><td class='ruler-name'>辽兴宗</td><td>24年</td><td>1031年6月—1055年8月</td><td>39</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>8</td><td class='ruler-name'>辽道宗</td><td>46年</td><td>1055年8月—1101年2月</td><td>68</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>9</td><td class='ruler-name'>天祚帝</td><td>24年</td><td>1101年2月—1125年3月</td><td>53</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 辽太祖</span></div>
   <div class="rc-row"><strong>生卒：</strong>872年 — 926年9月6日</div>
   <div class="rc-row"><strong>在位：</strong>916年3月—926年9月（20年（含契丹可汗））</div>
@@ -2465,33 +2587,38 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-highlight">耶律延禧，天祚帝，骄奢淫逸不理朝政，面对金朝崛起节节败退，被俘后降封海滨王，辽朝灭亡</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>916年3月</td><td style='text-align:left'>耶律阿保机称帝，建契丹国</td><td>辽太祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>947年</td><td style='text-align:left'>辽太宗灭后晋，改国号辽</td><td>辽太宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>1004年</td><td style='text-align:left'>澶渊之盟</td><td>辽圣宗</td><td><span class='tag tag-good'>善政</span></td></tr>
 <tr><td>1031年</td><td style='text-align:left'>辽圣宗去世，辽朝由盛转衰</td><td>辽兴宗</td><td><span class='tag tag-mid'>争议</span></td></tr>
 <tr><td>1114年</td><td style='text-align:left'>女真完颜阿骨打起兵反辽</td><td>天祚帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>1125年3月</td><td style='text-align:left'>金灭辽</td><td>天祚帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>⚔️ 金朝</h2>
-      <p>1115—1234 AD · 10位帝王 · 119年 · 会宁/中都/汴京</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">10</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">49.3</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">女真崛起</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 金朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 金朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>⚔️ 金朝历代帝王</h2>
+    <p>1115—1234 AD · 共10位帝王 · 119年 · 会宁/中都/汴京</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">10</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">119年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">49.3</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">女真崛起</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 金朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>金太祖</td><td>8年</td><td>1115年1月—1123年9月</td><td>55</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>金太宗</td><td>12年</td><td>1123年9月—1135年2月</td><td>59</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>金熙宗</td><td>15年</td><td>1135年2月—1150年1月</td><td>30</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
@@ -2502,11 +2629,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>8</td><td class='ruler-name'>金宣宗</td><td>11年</td><td>1213年9月—1224年1月</td><td>60</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>9</td><td class='ruler-name'>金哀宗</td><td>11年</td><td>1224年1月—1234年2月</td><td>36</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>10</td><td class='ruler-name'>金末帝</td><td>不足1日</td><td>1234年2月—1234年2月</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 金太祖</span></div>
   <div class="rc-row"><strong>生卒：</strong>1068年8月1日 — 1123年9月19日</div>
   <div class="rc-row"><strong>在位：</strong>1115年1月—1123年9月（8年）</div>
@@ -2571,16 +2699,17 @@ tr:nth-child(even) { background:#f7fff7; }
 </div>
 <div class="ruler-card purple">
   <div class="rc-header"><span class="rc-name">10. 金末帝</span></div>
-  <div class="rc-row"><strong>生卒：</strong> — 1234年2月9日</div>
+  <div class="rc-row"><strong>生卒：</strong>不明 — 1234年2月9日</div>
   <div class="rc-row"><strong>在位：</strong>1234年2月—1234年2月（不足1日）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
   <div class="rc-highlight">完颜承麟，金末帝，蔡州城破之际仓促即位，在位不足一个时辰便死于巷战，中国历史上在位时间最短的皇帝</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>1115年1月</td><td style='text-align:left'>完颜阿骨打建金</td><td>金太祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>1125年</td><td style='text-align:left'>金灭辽</td><td>金太宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>1127年</td><td style='text-align:left'>靖康之变，金灭北宋</td><td>金太宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
@@ -2590,23 +2719,27 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>1196年</td><td style='text-align:left'>金章宗时期，文化鼎盛</td><td>金章宗</td><td><span class='tag tag-good'>善政</span></td></tr>
 <tr><td>1211年</td><td style='text-align:left'>蒙古入侵金朝</td><td>卫绍王</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>1234年2月</td><td style='text-align:left'>蔡州之战，金朝灭亡</td><td>金哀宗</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>🐎 元朝</h2>
-      <p>1271—1368 AD · 11位帝王 · 97年 · 大都（今北京）</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">11</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">32.5</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">疆域最广</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 元朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 元朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>🐎 元朝历代帝王</h2>
+    <p>1271—1368 AD · 共11位帝王 · 97年 · 大都（今北京）</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">11</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">97年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">32.5</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">疆域最广</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 元朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>元世祖</td><td>35年（含可汗）</td><td>1271年12月—1294年2月</td><td>78</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>元成宗</td><td>13年</td><td>1294年5月—1307年2月</td><td>42</td><td><span class='tag tag-good'>守成之主</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>元武宗</td><td>4年</td><td>1307年6月—1311年1月</td><td>29</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
@@ -2618,11 +2751,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>9</td><td class='ruler-name'>元明宗</td><td>8个月（第一次在位）</td><td>1329年2月—1329年8月</td><td>28</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>10</td><td class='ruler-name'>元宁宗</td><td>2个月</td><td>1332年10月—1332年12月</td><td>6</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>11</td><td class='ruler-name'>元惠宗</td><td>37年</td><td>1333年7月—1368年9月</td><td>49</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 元世祖</span></div>
   <div class="rc-row"><strong>生卒：</strong>1215年9月23日 — 1294年2月18日</div>
   <div class="rc-row"><strong>在位：</strong>1271年12月—1294年2月（35年（含可汗））</div>
@@ -2700,10 +2834,11 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-highlight">妥懽帖睦尔，元惠宗（顺帝），前期脱脱辅政推行至正更化，后期怠政沉溺密宗，红巾军起义席卷天下，北逃草原，元朝在中原统治终结</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>1271年12月</td><td style='text-align:left'>忽必烈定国号元</td><td>元世祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>1279年3月</td><td style='text-align:left'>崖山海战，元灭南宋</td><td>元世祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>1294年2月</td><td style='text-align:left'>忽必烈去世</td><td>元成宗</td><td><span class='tag tag-mid'>争议</span></td></tr>
@@ -2711,23 +2846,27 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>1323年9月</td><td style='text-align:left'>南坡之变，英宗被杀</td><td>元英宗</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>1351年</td><td style='text-align:left'>红巾军起义</td><td>元惠宗</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>1368年9月</td><td style='text-align:left'>明军攻入大都，元朝灭亡</td><td>元惠宗</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>🐉 清朝</h2>
-      <p>1636—1912 AD · 12位帝王 · 276年 · 北京</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">12</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">51.8</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">末代王朝</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 清朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+<!-- 清朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>🐉 清朝历代帝王</h2>
+    <p>1636—1912 AD · 共12位帝王 · 276年 · 北京</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">12</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">276年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">51.8</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">末代王朝</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 清朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
       <tbody><tr><td>1</td><td class='ruler-name'>清太祖</td><td>11年（含后金）</td><td>1616年2月—1626年9月</td><td>67</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>2</td><td class='ruler-name'>清太宗</td><td>17年</td><td>1626年10月—1643年9月</td><td>50</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
 <tr><td>3</td><td class='ruler-name'>顺治帝</td><td>18年</td><td>1643年10月—1661年2月</td><td>22</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
@@ -2740,11 +2879,12 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>10</td><td class='ruler-name'>同治帝</td><td>14年</td><td>1861年11月—1875年1月</td><td>18</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
 <tr><td>11</td><td class='ruler-name'>光绪帝</td><td>34年</td><td>1875年2月—1908年11月</td><td>37</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
 <tr><td>12</td><td class='ruler-name'>宣统帝</td><td>3年</td><td>1908年12月—1912年2月</td><td>61</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 清太祖</span></div>
   <div class="rc-row"><strong>生卒：</strong>1559年 — 1626年9月30日</div>
   <div class="rc-row"><strong>在位：</strong>1616年2月—1626年9月（11年（含后金））</div>
@@ -2829,10 +2969,11 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-highlight">溥仪，末代皇帝，辛亥革命退位</div>
 </div>
 </div>
-    </div>
-    <div class="section" style="display:block">
-      <div class="section-title">⚠️ 重大事件</div>
-      <table><thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+  </div>
+  <div class="section" style="display:block">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
       <tbody><tr><td>1616年</td><td style='text-align:left'>努尔哈赤建立后金</td><td>清太祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>1636年</td><td style='text-align:left'>皇太极改国号清</td><td>清太宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
 <tr><td>1644年</td><td style='text-align:left'>清军入关，定都北京</td><td>顺治帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
@@ -2844,44 +2985,49 @@ tr:nth-child(even) { background:#f7fff7; }
 <tr><td>1898年</td><td style='text-align:left'>戊戌变法失败</td><td>光绪帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>1900年</td><td style='text-align:left'>八国联军侵华</td><td>光绪帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
 <tr><td>1912年2月</td><td style='text-align:left'>溥仪退位，清朝灭亡</td><td>宣统帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
-</tbody></table>
-    </div>
+</tbody>
+    </table>
   </div>
+</div>
 
-  <div class="dynasty-section">
-    <div class="dynasty-header">
-      <h2>🐉 明朝</h2>
-      <p>1368—1644 AD · 16位帝王 · 276年 · 北京</p>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-card"><div class="num">16</div><div class="label">帝王数</div></div>
-      <div class="kpi-card info"><div class="num">41.5</div><div class="label">平均寿命</div></div>
-      <div class="kpi-card warn"><div class="num">天子守国门</div><div class="label">特点</div></div>
-    </div>
-    <div class="section">
-      <div class="section-title">📋 明朝帝王总览</div>
-      <table><thead><tr><th>序</th><th>庙号·姓名</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
-      <tbody><tr><td>1</td><td class='ruler-name'>太祖·朱元璋</td><td>31年</td><td>1368—1398</td><td>69</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
-<tr><td>2</td><td class='ruler-name'>惠宗·朱允炆</td><td>4年</td><td>1399—1402</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-<tr><td>3</td><td class='ruler-name'>成祖·朱棣</td><td>22年</td><td>1403—1424</td><td>64</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
-<tr><td>4</td><td class='ruler-name'>仁宗·朱高炽</td><td>1年</td><td>1424—1425</td><td>46</td><td><span class='tag tag-good'>守成之主</span></td></tr>
-<tr><td>5</td><td class='ruler-name'>宣宗·朱瞻基</td><td>10年</td><td>1426—1435</td><td>35</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
-<tr><td>6</td><td class='ruler-name'>英宗·朱祁镇</td><td>22年</td><td>1436—1464</td><td>36</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-<tr><td>7</td><td class='ruler-name'>代宗·朱祁钰</td><td>8年</td><td>1450—1457</td><td>28</td><td><span class='tag tag-good'>守成之主</span></td></tr>
-<tr><td>8</td><td class='ruler-name'>宪宗·朱见深</td><td>23年</td><td>1465—1487</td><td>39</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>9</td><td class='ruler-name'>孝宗·朱祐樘</td><td>18年</td><td>1488—1505</td><td>34</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
-<tr><td>10</td><td class='ruler-name'>武宗·朱厚照</td><td>16年</td><td>1506—1521</td><td>29</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-<tr><td>11</td><td class='ruler-name'>世宗·朱厚熜</td><td>45年</td><td>1522—1566</td><td>59</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
-<tr><td>12</td><td class='ruler-name'>穆宗·朱载坖</td><td>6年</td><td>1567—1572</td><td>35</td><td><span class='tag tag-good'>守成之主</span></td></tr>
-<tr><td>13</td><td class='ruler-name'>神宗·朱翊钧</td><td>48年</td><td>1573—1620</td><td>56</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-<tr><td>14</td><td class='ruler-name'>光宗·朱常洛</td><td>1年</td><td>1620—1620</td><td>38</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-<tr><td>15</td><td class='ruler-name'>熹宗·朱由校</td><td>7年</td><td>1621—1627</td><td>21</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
-<tr><td>16</td><td class='ruler-name'>思宗·朱由检</td><td>17年</td><td>1628—1644</td><td>33</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
-</tbody></table>
-    </div>
-    <div class="section">
-      <div class="section-title">👑 帝王详情</div>
-      <div class="ruler-grid"><div class="ruler-card ">
+<!-- 明朝 - A4 page -->
+<div class="dynasty-page">
+  <div class="dynasty-header">
+    <h2>🐉 明朝历代帝王</h2>
+    <p>1368—1644 AD · 共16位帝王 · 276年 · 北京</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">16</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">276年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">—</div><div class="label">平均寿命</div></div>
+    <div class="kpi-card warn"><div class="num">天子守国门</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 明朝帝王总览</div>
+    <table>
+      <thead><tr><th>序</th><th>庙号·姓名</th><th>年号</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>太祖·朱元璋</td><td>洪武</td><td>31年</td><td>1368—1398</td><td>69</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>惠宗·朱允炆</td><td>建文</td><td>4年</td><td>1399—1402</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>成祖·朱棣</td><td>永乐</td><td>22年</td><td>1403—1424</td><td>64</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>4</td><td class='ruler-name'>仁宗·朱高炽</td><td>洪熙</td><td>1年</td><td>1424—1425</td><td>46</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>5</td><td class='ruler-name'>宣宗·朱瞻基</td><td>宣德</td><td>10年</td><td>1426—1435</td><td>35</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>6</td><td class='ruler-name'>英宗·朱祁镇</td><td>正统/天顺</td><td>22年</td><td>1436—1464</td><td>36</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>7</td><td class='ruler-name'>代宗·朱祁钰</td><td>景泰</td><td>8年</td><td>1450—1457</td><td>28</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>8</td><td class='ruler-name'>宪宗·朱见深</td><td>成化</td><td>23年</td><td>1465—1487</td><td>39</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>9</td><td class='ruler-name'>孝宗·朱祐樘</td><td>弘治</td><td>18年</td><td>1488—1505</td><td>34</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>10</td><td class='ruler-name'>武宗·朱厚照</td><td>正德</td><td>16年</td><td>1506—1521</td><td>29</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>11</td><td class='ruler-name'>世宗·朱厚熜</td><td>嘉靖</td><td>45年</td><td>1522—1566</td><td>59</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>12</td><td class='ruler-name'>穆宗·朱载坖</td><td>隆庆</td><td>6年</td><td>1567—1572</td><td>35</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>13</td><td class='ruler-name'>神宗·朱翊钧</td><td>万历</td><td>48年</td><td>1573—1620</td><td>56</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>14</td><td class='ruler-name'>光宗·朱常洛</td><td>泰昌</td><td>1年</td><td>1620—1620</td><td>38</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>15</td><td class='ruler-name'>熹宗·朱由校</td><td>天启</td><td>7年</td><td>1621—1627</td><td>21</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>16</td><td class='ruler-name'>思宗·朱由检</td><td>崇祯</td><td>17年</td><td>1628—1644</td><td>33</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+</tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-title">👑 帝王详情</div>
+    <div class="ruler-grid"><div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">1. 太祖·朱元璋</span></div>
   <div class="rc-row"><strong>生卒：</strong>1328年10月21日 — 1398年6月24日</div>
   <div class="rc-row"><strong>年号：</strong>洪武（1368—1398，31年）</div>
@@ -2928,79 +3074,86 @@ tr:nth-child(even) { background:#f7fff7; }
   <div class="rc-row"><strong>生卒：</strong>1428年9月21日 — 1457年3月14日</div>
   <div class="rc-row"><strong>年号：</strong>景泰（1450—1457，8年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
-  <div class="rc-highlight">英宗之弟，英宗被俘后临危受命。任用于谦打赢北京保卫战。稳定朝局，治理水患。夺门之变后被废，不久病逝（一说被害），以亲王礼葬。</div>
+  <div class="rc-highlight">英宗之弟，英宗被俘后临危受命。任用于谦打赢北京保卫战。稳定朝局，治理水患。夺门之变后被废，不久病逝，以亲王礼葬。</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">8. 宪宗·朱见深</span></div>
   <div class="rc-row"><strong>生卒：</strong>1447年12月9日 — 1487年9月9日</div>
   <div class="rc-row"><strong>年号：</strong>成化（1465—1487，23年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">英宗长子，幼年因土木堡之变被废太子后复位。平反于谦冤案，恢复叔父帝号。设西厂任用汪直。宠幸万贵妃（大17岁）。皇庄制度开土地兼并之风。口吃内向。</div>
+  <div class="rc-highlight">英宗长子，幼年因土木堡之变被废太子后复位。平反于谦冤案。设西厂任用汪直。宠幸万贵妃。皇庄制度开土地兼并之风。</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">9. 孝宗·朱祐樘</span></div>
   <div class="rc-row"><strong>生卒：</strong>1470年7月30日 — 1505年6月8日</div>
   <div class="rc-row"><strong>年号：</strong>弘治（1488—1505，18年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
-  <div class="rc-highlight">宪宗第三子，幼年被宫女太监秘密养大避万贵妃迫害，六岁才与父亲相认。弘治中兴，勤政爱民。历史上罕见的一夫一妻皇帝（仅张皇后一人）。仁慈宽厚。</div>
+  <div class="rc-highlight">宪宗第三子，幼年被秘密养大避万贵妃迫害。弘治中兴，勤政爱民。历史上罕见的一夫一妻皇帝。仁慈宽厚。</div>
 </div>
 <div class="ruler-card warn">
   <div class="rc-header"><span class="rc-name">10. 武宗·朱厚照</span></div>
   <div class="rc-row"><strong>生卒：</strong>1491年10月26日 — 1521年4月20日</div>
   <div class="rc-row"><strong>年号：</strong>正德（1506—1521，16年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
-  <div class="rc-highlight">孝宗独子。建豹房纵乐，刘瑾专权。宁王叛乱被王阳明平定。多次私自出巡，自封威武大将军朱寿。应州大捷亲征击败蒙古。叛逆顽劣荒唐任性。南巡落水后病逝。</div>
+  <div class="rc-highlight">孝宗独子。建豹房纵乐，刘瑾专权。宁王叛乱被王阳明平定。自封威武大将军朱寿。叛逆顽劣荒唐任性。</div>
 </div>
 <div class="ruler-card info">
   <div class="rc-header"><span class="rc-name">11. 世宗·朱厚熜</span></div>
   <div class="rc-row"><strong>生卒：</strong>1507年9月16日 — 1567年1月23日</div>
   <div class="rc-row"><strong>年号：</strong>嘉靖（1522—1566，45年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
-  <div class="rc-highlight">武宗堂弟，以大礼议入继大统。前期嘉靖中兴，戚继光抗倭。大礼议事件与朝臣争生父尊号。壬寅宫变宫女谋杀未遂。严嵩专权20年。20余年不上朝躲西苑修道炼丹。服丹药中毒而亡。</div>
+  <div class="rc-highlight">武宗堂弟，以大礼议入继大统。前期嘉靖中兴，戚继光抗倭。严嵩专权20年。20余年不上朝躲西苑修道。服丹药中毒而亡。</div>
 </div>
 <div class="ruler-card ">
   <div class="rc-header"><span class="rc-name">12. 穆宗·朱载坖</span></div>
   <div class="rc-row"><strong>生卒：</strong>1537年3月4日 — 1572年7月5日</div>
   <div class="rc-row"><strong>年号：</strong>隆庆（1567—1572，6年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
-  <div class="rc-highlight">世宗第三子。隆庆开关解除海禁允许民间海外贸易。俺答封贡与蒙古达成和平。任用高拱、张居正等能臣。性格宽仁，好色纵欲，纵欲过度早逝。</div>
+  <div class="rc-highlight">世宗第三子。隆庆开关解除海禁。俺答封贡与蒙古达成和平。任用高拱、张居正等能臣。好色纵欲过度早逝。</div>
 </div>
 <div class="ruler-card warn">
   <div class="rc-header"><span class="rc-name">13. 神宗·朱翊钧</span></div>
   <div class="rc-row"><strong>生卒：</strong>1563年9月4日 — 1620年8月18日</div>
   <div class="rc-row"><strong>年号：</strong>万历（1573—1620，48年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
-  <div class="rc-highlight">穆宗第三子，明朝在位最久。前期万历中兴赖张居正改革（一条鞭法、考成法）。万历三大征（平宁夏、抗倭援朝、平播州）。国本之争与群臣对立，28年不上朝。萨尔浒之战败于后金。明朝衰亡实始于万历。</div>
+  <div class="rc-highlight">明朝在位最久。前期万历中兴赖张居正改革。万历三大征。28年不上朝。萨尔浒之战败于后金。明朝衰亡实始于万历。</div>
 </div>
 <div class="ruler-card purple">
   <div class="rc-header"><span class="rc-name">14. 光宗·朱常洛</span></div>
   <div class="rc-row"><strong>生卒：</strong>1582年8月28日 — 1620年9月26日</div>
   <div class="rc-row"><strong>年号：</strong>泰昌（1620—1620，1年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
-  <div class="rc-highlight">神宗长子，国本之争焦点。当了20年太子。即位后发内帑犒劳边防，罢免矿税。明末三大案：梃击案、红丸案（服红丸暴毙）、移宫案。在位仅29天。命运坎坷。</div>
+  <div class="rc-highlight">神宗长子，当了20年太子。即位后发内帑犒劳边防。红丸案暴毙。在位仅29天。命运坎坷。</div>
 </div>
 <div class="ruler-card warn">
   <div class="rc-header"><span class="rc-name">15. 熹宗·朱由校</span></div>
   <div class="rc-row"><strong>生卒：</strong>1605年12月15日 — 1627年9月30日</div>
   <div class="rc-row"><strong>年号：</strong>天启（1621—1627，7年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
-  <div class="rc-highlight">光宗长子。著名木匠皇帝，沉迷木工手艺精湛，几乎不识字。朝政全交魏忠贤（九千岁），迫害东林党。后金崛起辽东危急。服仙露后病逝。</div>
+  <div class="rc-highlight">著名木匠皇帝，沉迷木工几乎不识字。朝政全交魏忠贤，迫害东林党。后金崛起辽东危急。</div>
 </div>
 <div class="ruler-card purple">
   <div class="rc-header"><span class="rc-name">16. 思宗·朱由检</span></div>
   <div class="rc-row"><strong>生卒：</strong>1611年2月6日 — 1644年4月25日</div>
   <div class="rc-row"><strong>年号：</strong>崇祯（1628—1644，17年）</div>
   <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
-  <div class="rc-highlight">熹宗之弟。铲除魏忠贤，勤政自律，六下罪己诏，生活节俭。但多疑刚愎急躁善变，17年换50个内阁大学士。李自成攻入北京，煤山自缢以身殉国。遗言：任贼分裂朕尸，勿伤百姓一人。</div>
+  <div class="rc-highlight">熹宗之弟。铲除魏忠贤，勤政自律，六下罪己诏。但多疑刚愎，17年换50个内阁大学士。李自成攻入北京，煤山自缢。遗言：任贼分裂朕尸，勿伤百姓一人。</div>
 </div>
 </div>
-    </div>
   </div>
+  <div class="section" style="display:none">
+    <div class="section-title">⚠️ 重大事件年表</div>
+    <table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">帝王</th><th style="width:22%">影响</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
 
-  <div class="footer">
-    <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
-    <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
-  </div>
+<div class="footer">
+  <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+  <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
+</div>
 </div>
 </body>
 </html>
