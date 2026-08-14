@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>隋朝历代帝王可视化报告</title>
+<style>
+@page { size: A4; margin: 12mm; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#333; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.container { max-width:100%; margin:0 auto; padding:0; }
+.header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:24px 20px; border-radius:8px; margin-bottom:16px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:4px; letter-spacing:2px; }
+.header p { font-size:13px; opacity:0.9; }
+.header .meta { font-size:11px; opacity:0.75; margin-top:4px; }
+.kpi-row { display:flex; gap:8px; margin-bottom:16px; }
+.kpi-card { flex:1; background:#fff; border:1px solid #e0e0e0; border-radius:6px; padding:10px 6px; text-align:center; border-top:3px solid #00B050; }
+.kpi-card .num { font-size:22px; font-weight:700; color:#00B050; }
+.kpi-card .label { font-size:10px; color:#888; margin-top:2px; }
+.kpi-card.warn { border-top-color:#E74C3C; } .kpi-card.warn .num { color:#E74C3C; }
+.kpi-card.info { border-top-color:#F39C12; } .kpi-card.info .num { color:#F39C12; }
+.section { margin-bottom:16px; page-break-inside:avoid; }
+.section-title { font-size:15px; font-weight:700; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:10px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:11px; }
+thead { background:#00B050; color:#fff; }
+th { padding:6px 4px; text-align:center; font-weight:600; white-space:nowrap; border:1px solid #009040; }
+td { padding:5px 4px; text-align:center; border:1px solid #ddd; }
+tr:nth-child(even) { background:#f7fff7; }
+.ruler-name { font-weight:600; color:#00B050; }
+.tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600; }
+.tag-great { background:#d4edda; color:#155724; }
+.tag-good { background:#d1ecf1; color:#0c5460; }
+.tag-mid { background:#fff3cd; color:#856404; }
+.tag-bad { background:#f8d7da; color:#721c24; }
+.tag-tragic { background:#e2d6f3; color:#4a148c; }
+.ruler-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.ruler-card { background:#fafafa; border:1px solid #e8e8e8; border-radius:6px; padding:10px; border-left:3px solid #00B050; break-inside:avoid; }
+.ruler-card.warn { border-left-color:#E74C3C; }
+.ruler-card.info { border-left-color:#F39C12; }
+.ruler-card.purple { border-left-color:#6f42c1; }
+.rc-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.rc-name { font-size:13px; font-weight:700; color:#333; }
+.rc-pinyin { font-size:10px; color:#999; font-weight:400; }
+.rc-row { font-size:11px; color:#555; margin-bottom:2px; }
+.rc-row strong { color:#333; }
+.rc-highlight { font-size:10px; color:#777; margin-top:4px; padding-top:4px; border-top:1px dashed #ddd; line-height:1.5; }
+.card-break { page-break-before:always; }
+.page-break { page-break-before:always; }
+.footer { text-align:center; padding:12px; color:#999; font-size:11px; margin-top:8px; }
+.footer span { color:#00B050; font-weight:600; }
+@media screen { body { background:#f0f2f5; } .container { max-width:210mm; margin:20px auto; padding:20px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.1); } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🌉 隋朝历代帝王可视化报告</h1>
+    <p>581—618 AD · 共3位帝王 · 37年</p>
+    <div class="meta">大兴/洛阳 · 🦞 尹燕玲报告分析专家 · 2026年8月14日</div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">3</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">37年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">42.0</div><div class="label">平均寿命（岁）</div></div>
+    <div class="kpi-card warn"><div class="num">开皇之治</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 隋朝帝王总览表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>序号</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>隋文帝</td><td>23年（含隋王）</td><td>581年3月—604年8月</td><td>63</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>隋炀帝</td><td>14年</td><td>604年8月—618年4月</td><td>49</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>隋恭帝</td><td>1年</td><td>617年12月—618年6月</td><td>14</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="section ">
+    <div class="section-title">👑 帝王详情卡片</div>
+    <div class="ruler-grid"><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">1. 隋文帝 <span class="rc-pinyin">(suíwéndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>541年7月21日 — 604年8月13日</div>
+  <div class="rc-row"><strong>在位：</strong>581年3月—604年8月（23年（含隋王））</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">杨坚，统一南北，开皇之治，创立科举雏形</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">2. 隋炀帝 <span class="rc-pinyin">(suíyángdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>569年 — 618年4月11日</div>
+  <div class="rc-row"><strong>在位：</strong>604年8月—618年4月（14年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">杨广，开凿大运河，三征高句丽，暴政亡国</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">3. 隋恭帝 <span class="rc-pinyin">(suígōngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>605年 — 619年</div>
+  <div class="rc-row"><strong>在位：</strong>617年12月—618年6月（1年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">杨侑，禅位于李渊</div>
+</div>
+</div>
+  </div>
+  <div class="section page-break" style="display:block">
+    <div class="section-title">⚠️ 隋朝重大事件年表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">涉及帝王</th><th style="width:22%">影响等级</th></tr></thead>
+      <tbody><tr><td>581年3月</td><td style='text-align:left'>杨坚代周建隋</td><td>隋文帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>589年2月</td><td style='text-align:left'>隋灭陈，统一全国</td><td>隋文帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>604年8月</td><td style='text-align:left'>隋文帝驾崩，杨广即位</td><td>隋炀帝</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>605年</td><td style='text-align:left'>开凿大运河</td><td>隋炀帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>611年</td><td style='text-align:left'>隋炀帝三征高句丽</td><td>隋炀帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>611年</td><td style='text-align:left'>各地农民起义爆发</td><td>隋炀帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>618年4月</td><td style='text-align:left'>隋炀帝被杀，隋朝灭亡</td><td>隋炀帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="footer">
+    <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+    <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
+  </div>
+</div>
+</body>
+</html>
