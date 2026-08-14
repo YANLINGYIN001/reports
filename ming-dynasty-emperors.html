@@ -71,31 +71,7 @@
     <div class="kpi-card warn"><div class="num">29</div><div class="label">最短在位·泰昌（天）</div></div>
   </div>
 
-  <div class="section">
-    <div class="section-title">📅 皇帝在位时间轴</div>
-    <div class="section-subtitle">按即位顺序排列，色块宽度等比于在位时长</div>
-    <div id="timelineChart" class="chart-box" style="height: 560px;"></div>
-  </div>
 
-  <div class="section">
-    <div class="section-title">📊 在位时长排名</div>
-    <div class="section-subtitle">含实际掌权时间，正统/天顺合并计算</div>
-    <div id="reignChart" class="chart-box" style="height: 500px;"></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">💪 皇帝寿命对比</div>
-    <div class="section-subtitle">建文帝下落不明未计入；绿色虚线为平均寿命</div>
-    <div id="lifespanChart" class="chart-box" style="height: 480px;"></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🔮 在位时长 × 寿命 散点图</div>
-    <div class="section-subtitle">横轴=在位时长（年），纵轴=寿命（岁），气泡大小=朝代影响力指数</div>
-    <div id="scatterChart" class="chart-box" style="height: 500px;"></div>
-  </div>
-
-  <div class="section">
     <div class="section-title">📋 明朝十六帝总览表</div>
     <div class="table-wrap">
       <table>
@@ -110,12 +86,6 @@
   <div class="section">
     <div class="section-title">👑 十六帝详情卡片</div>
     <div class="emperor-grid" id="emperorCards"></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🛡️ 明朝治乱分期</div>
-    <div class="section-subtitle">按历史评价划分：治世明君 / 守成之主 / 功过参半 / 怠政误国 / 悲剧帝王</div>
-    <div id="phaseChart" class="chart-box" style="height: 420px;"></div>
   </div>
 
   <div class="section">
@@ -174,96 +144,6 @@ const emperors = [
 
 const ratingMap = { great:{label:'治世明君',cls:'tag-great'}, good:{label:'守成之主',cls:'tag-good'}, mid:{label:'功过参半',cls:'tag-mid'}, bad:{label:'怠政误国',cls:'tag-bad'}, tragic:{label:'悲剧帝王',cls:'tag-tragic'} };
 
-// Timeline
-const timelineChart = echarts.init(document.getElementById('timelineChart'));
-timelineChart.setOption({
-  tooltip: { formatter: function(p) { const d=p.data.value; return '<b>'+p.data.name+'</b><br/>在位：'+d[1]+'—'+d[2]+'年<br/>时长：'+(d[3]<1?Math.round(d[3]*365)+'天':d[3]+'年'); } },
-  grid: { left: 80, right: 30, top: 10, bottom: 40 },
-  xAxis: { type:'value', min:1365, max:1650, name:'年份', nameLocation:'middle', nameGap:28, axisLabel:{formatter:'{value}'}, splitLine:{show:true,lineStyle:{color:'#f0f0f0'}} },
-  yAxis: { type:'category', data:emperors.map(e=>e.seq+'. '+e.temple), axisLabel:{fontSize:12}, axisTick:{show:false} },
-  series: [{
-    type:'custom',
-    renderItem: function(params, api) {
-      const cat=api.value(0); const start=api.coord([api.value(1),cat]); const end=api.coord([api.value(2),cat]);
-      const h=api.size([0,1])[1]*0.6;
-      return { type:'rect', shape:{x:start[0],y:start[1]-h/2,width:end[0]-start[0],height:h,r:3},
-        style:{ fill:api.visual('color'), text: api.value(3)>=4? api.value(4)+' '+api.value(3)+'年':'', textFill:'#fff', textFont:'11px sans-serif', textPosition:'insideLeft', textPadding:[0,0,0,6] } };
-    },
-    encode:{ x:[1,2], y:0 },
-    data: emperors.map((e,i)=>({ name:e.temple+'·'+e.era, value:[i,e.start,e.end,e.reign,e.era], itemStyle:{color:e.color} }))
-  }],
-  color: emperors.map(e=>e.color)
-});
-
-// Reign Bar
-const reignSorted=[...emperors].sort((a,b)=>b.reign-a.reign);
-const reignChart=echarts.init(document.getElementById('reignChart'));
-reignChart.setOption({
-  tooltip:{ trigger:'axis', axisPointer:{type:'shadow'}, formatter:function(p){ const e=reignSorted[p[0].dataIndex]; return '<b>'+e.temple+'·'+e.era+'</b>（'+e.name+'）<br/>在位：'+(e.reign<1?Math.round(e.reign*365)+'天':e.reign+'年')+'<br/>时间：'+e.start+'—'+e.end; } },
-  grid:{left:130,right:50,top:10,bottom:30},
-  xAxis:{type:'value',name:'在位时长（年）',splitLine:{lineStyle:{color:'#f0f0f0'}}},
-  yAxis:{type:'category',data:reignSorted.map(e=>e.temple+'·'+e.era),axisLabel:{fontSize:12},axisTick:{show:false}},
-  series:[{
-    type:'bar',
-    data:reignSorted.map(e=>({value:e.reign,itemStyle:{color:e.reign>=20?'#00B050':e.reign>=10?'#2BBD6E':e.reign>=4?'#F39C12':'#E74C3C',borderRadius:[0,4,4,0]}})),
-    barWidth:'60%',
-    label:{show:true,position:'right',formatter:function(p){return p.value<1?Math.round(p.value*365)+'天':p.value+'年';},fontSize:12,color:'#555'}
-  }]
-});
-
-// Lifespan
-const lifespanData=emperors.filter(e=>e.age!==null);
-const lifespanSorted=[...lifespanData].sort((a,b)=>b.age-a.age);
-const avgAge=(lifespanData.reduce((s,e)=>s+e.age,0)/lifespanData.length).toFixed(1);
-const lifespanChart=echarts.init(document.getElementById('lifespanChart'));
-lifespanChart.setOption({
-  tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){const e=lifespanSorted[p[0].dataIndex];return '<b>'+e.temple+'·'+e.era+'</b>（'+e.name+'）<br/>享年：'+e.age+'岁<br/>在位：'+(e.reign<1?Math.round(e.reign*365)+'天':e.reign+'年');}},
-  grid:{left:130,right:50,top:30,bottom:30},
-  xAxis:{type:'value',name:'享年（岁）',splitLine:{lineStyle:{color:'#f0f0f0'}}},
-  yAxis:{type:'category',data:lifespanSorted.map(e=>e.temple+'·'+e.era),axisLabel:{fontSize:12},axisTick:{show:false}},
-  series:[{
-    type:'bar',
-    data:lifespanSorted.map(e=>({value:e.age,itemStyle:{color:e.age>=60?'#00B050':e.age>=40?'#2BBD6E':e.age>=30?'#F39C12':'#E74C3C',borderRadius:[0,4,4,0]}})),
-    barWidth:'60%',
-    markLine:{data:[{xAxis:parseFloat(avgAge)}],label:{formatter:'平均寿命 '+avgAge+'岁',color:'#00B050',fontSize:12},lineStyle:{color:'#00B050',width:2,type:'dashed'}},
-    label:{show:true,position:'right',formatter:'{c}岁',fontSize:12,color:'#555'}
-  }]
-});
-
-// Scatter
-const scatterChart=echarts.init(document.getElementById('scatterChart'));
-scatterChart.setOption({
-  tooltip:{formatter:function(p){return '<b>'+p.data.name+'</b><br/>在位：'+(p.data.value[0]<1?Math.round(p.data.value[0]*365)+'天':p.data.value[0]+'年')+'<br/>寿命：'+p.data.value[1]+'岁<br/>影响力指数：'+p.data.value[2];}},
-  grid:{left:60,right:40,top:30,bottom:50},
-  xAxis:{type:'value',name:'在位时长（年）',nameLocation:'middle',nameGap:30,splitLine:{lineStyle:{color:'#f0f0f0'}}},
-  yAxis:{type:'value',name:'寿命（岁）',splitLine:{lineStyle:{color:'#f0f0f0'}}},
-  series:[{
-    type:'scatter',
-    data:emperors.filter(e=>e.age!==null).map(e=>({name:e.temple+'·'+e.era,value:[e.reign,e.age,e.influence],itemStyle:{color:e.color},symbolSize:e.influence*0.7+10})),
-    label:{show:true,position:'top',formatter:function(p){return p.data.name;},fontSize:10,color:'#666'},
-    labelLayout:{hideOverlap:true}
-  }]
-});
-
-// Phase Pie
-const phaseChart=echarts.init(document.getElementById('phaseChart'));
-phaseChart.setOption({
-  tooltip:{formatter:function(p){return '<b>'+p.name+'</b><br/>'+p.data.emperors+'<br/>占比：'+p.percent+'%';}},
-  legend:{bottom:10,left:'center',fontSize:13},
-  series:[{
-    type:'pie',radius:['35%','65%'],center:['50%','45%'],
-    itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
-    label:{formatter:'{b}\n{d}%',fontSize:13},
-    data:[
-      {name:'治世明君',value:4,emperors:'洪武·永乐·宣德·弘治',itemStyle:{color:'#00B050'}},
-      {name:'守成之主',value:3,emperors:'洪熙·景泰·隆庆',itemStyle:{color:'#17a2b8'}},
-      {name:'功过参半',value:2,emperors:'成化·嘉靖',itemStyle:{color:'#F39C12'}},
-      {name:'怠政误国',value:4,emperors:'正统·正德·万历·天启',itemStyle:{color:'#E74C3C'}},
-      {name:'悲剧帝王',value:3,emperors:'建文·泰昌·崇祯',itemStyle:{color:'#6f42c1'}},
-    ]
-  }]
-});
-
 // Table
 const tbody=document.getElementById('emperorTable');
 emperors.forEach(e=>{
@@ -289,10 +169,7 @@ emperors.forEach(e=>{
   cardContainer.appendChild(div);
 });
 
-// Responsive
-window.addEventListener('resize', function(){
-  [timelineChart,reignChart,lifespanChart,scatterChart,phaseChart].forEach(c=>c.resize());
-});
+
 </script>
 </body>
 </html>
