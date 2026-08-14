@@ -4,54 +4,64 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>明朝历代皇帝可视化报告</title>
-
 <style>
+  @page { size: A4; margin: 12mm; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif; background: #f0f2f5; color: #333; line-height: 1.7; }
-  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-  .header { background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%); color: #fff; padding: 40px 30px; border-radius: 12px; margin-bottom: 24px; text-align: center; }
-  .header h1 { font-size: 32px; margin-bottom: 8px; letter-spacing: 2px; }
-  .header p { font-size: 15px; opacity: 0.9; }
-  .header .meta { font-size: 13px; opacity: 0.75; margin-top: 8px; }
-  .kpi-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-  .kpi-card { flex: 1; min-width: 160px; background: #fff; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 3px solid #00B050; }
-  .kpi-card .num { font-size: 36px; font-weight: 700; color: #00B050; }
-  .kpi-card .label { font-size: 13px; color: #888; margin-top: 4px; }
+  body { font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif; background: #fff; color: #333; line-height: 1.6; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .container { max-width: 100%; margin: 0 auto; padding: 0; }
+
+  .header { background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%); color: #fff; padding: 24px 20px; border-radius: 8px; margin-bottom: 16px; text-align: center; }
+  .header h1 { font-size: 24px; margin-bottom: 4px; letter-spacing: 2px; }
+  .header p { font-size: 13px; opacity: 0.9; }
+  .header .meta { font-size: 11px; opacity: 0.75; margin-top: 4px; }
+
+  .kpi-row { display: flex; gap: 8px; margin-bottom: 16px; }
+  .kpi-card { flex: 1; background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 10px 6px; text-align: center; border-top: 3px solid #00B050; }
+  .kpi-card .num { font-size: 22px; font-weight: 700; color: #00B050; }
+  .kpi-card .label { font-size: 10px; color: #888; margin-top: 2px; }
   .kpi-card.warn { border-top-color: #E74C3C; }
   .kpi-card.warn .num { color: #E74C3C; }
   .kpi-card.info { border-top-color: #F39C12; }
   .kpi-card.info .num { color: #F39C12; }
-  .section { background: #fff; border-radius: 10px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-  .section-title { font-size: 18px; font-weight: 700; color: #00B050; border-left: 4px solid #00B050; padding-left: 12px; margin-bottom: 16px; }
-  .section-subtitle { font-size: 14px; color: #666; margin-bottom: 12px; }
-  .chart-box { width: 100%; }
+
+  .section { margin-bottom: 16px; page-break-inside: avoid; }
+  .section-title { font-size: 15px; font-weight: 700; color: #00B050; border-left: 4px solid #00B050; padding-left: 10px; margin-bottom: 10px; }
+  .section-subtitle { font-size: 12px; color: #666; margin-bottom: 8px; }
+
   .table-wrap { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  thead { background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%); color: #fff; }
-  th { padding: 12px 10px; text-align: center; font-weight: 600; white-space: nowrap; }
-  td { padding: 10px; text-align: center; border-bottom: 1px solid #eee; }
-  tr:hover { background: #f7fff7; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  thead { background: #00B050; color: #fff; }
+  th { padding: 6px 4px; text-align: center; font-weight: 600; white-space: nowrap; border: 1px solid #009040; }
+  td { padding: 5px 4px; text-align: center; border: 1px solid #ddd; }
+  tr:nth-child(even) { background: #f7fff7; }
   .emperor-name { font-weight: 600; color: #00B050; }
-  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  .tag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 600; }
   .tag-great { background: #d4edda; color: #155724; }
   .tag-good { background: #d1ecf1; color: #0c5460; }
   .tag-mid { background: #fff3cd; color: #856404; }
   .tag-bad { background: #f8d7da; color: #721c24; }
   .tag-tragic { background: #e2d6f3; color: #4a148c; }
-  .emperor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
-  .emperor-card { background: #fafafa; border-radius: 8px; padding: 16px; border-left: 4px solid #00B050; transition: box-shadow 0.2s; }
-  .emperor-card:hover { box-shadow: 0 4px 16px rgba(0,176,80,0.15); }
+
+  .emperor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .emperor-card { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 6px; padding: 10px; border-left: 3px solid #00B050; }
   .emperor-card.warn { border-left-color: #E74C3C; }
   .emperor-card.info { border-left-color: #F39C12; }
   .emperor-card.purple { border-left-color: #6f42c1; }
-  .ec-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .ec-name { font-size: 16px; font-weight: 700; color: #333; }
-  .ec-era { font-size: 13px; color: #00B050; font-weight: 600; }
-  .ec-row { font-size: 13px; color: #555; margin-bottom: 3px; }
+  .ec-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .ec-name { font-size: 13px; font-weight: 700; color: #333; }
+  .ec-pinyin { font-size: 10px; color: #999; font-weight: 400; }
+  .ec-era { font-size: 11px; color: #00B050; font-weight: 600; }
+  .ec-row { font-size: 11px; color: #555; margin-bottom: 2px; }
   .ec-row strong { color: #333; }
-  .ec-highlight { font-size: 12px; color: #888; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #ddd; }
-  .footer { text-align: center; padding: 20px; color: #999; font-size: 13px; }
+  .ec-highlight { font-size: 10px; color: #777; margin-top: 4px; padding-top: 4px; border-top: 1px dashed #ddd; line-height: 1.5; }
+
+  .page-break { page-break-before: always; }
+
+  .footer { text-align: center; padding: 12px; color: #999; font-size: 11px; margin-top: 8px; }
   .footer span { color: #00B050; font-weight: 600; }
+
+  @media screen { body { background: #f0f2f5; } .container { max-width: 210mm; margin: 20px auto; padding: 20px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.1); } }
 </style>
 </head>
 <body>
@@ -67,9 +77,10 @@
     <div class="kpi-card"><div class="num">276</div><div class="label">国祚（年）</div></div>
     <div class="kpi-card info"><div class="num">42.1</div><div class="label">平均寿命（岁）</div></div>
     <div class="kpi-card"><div class="num">17.3</div><div class="label">平均在位（年）</div></div>
-    <div class="kpi-card warn"><div class="num">48</div><div class="label">最长在位·万历（年）</div></div>
+    <div class="kpi-card warn"><div class="num">48</div><div class="label">最长在位·万历</div></div>
     <div class="kpi-card warn"><div class="num">29</div><div class="label">最短在位·泰昌（天）</div></div>
   </div>
+
   <div class="section">
     <div class="section-title">📋 明朝十六帝总览表</div>
     <div class="table-wrap">
@@ -82,34 +93,34 @@
     </div>
   </div>
 
-  <div class="section">
+  <div class="section page-break">
     <div class="section-title">👑 十六帝详情卡片</div>
     <div class="emperor-grid" id="emperorCards"></div>
   </div>
 
-  <div class="section">
+  <div class="section page-break">
     <div class="section-title">⚠️ 明朝重大事件年表</div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>年份</th><th>事件</th><th>涉及皇帝</th><th>影响等级</th></tr></thead>
+        <thead><tr><th style="width:12%">年份</th><th style="width:48%">事件</th><th style="width:18%">涉及皇帝</th><th style="width:22%">影响等级</th></tr></thead>
         <tbody>
-          <tr><td>1368</td><td>朱元璋称帝，建立明朝，定都南京</td><td>洪武</td><td><span class="tag tag-great">开国</span></td></tr>
-          <tr><td>1399-1402</td><td>靖难之役，朱棣夺位</td><td>建文→永乐</td><td><span class="tag tag-bad">政权更迭</span></td></tr>
-          <tr><td>1405-1433</td><td>郑和七下西洋</td><td>永乐-宣德</td><td><span class="tag tag-good">盛世</span></td></tr>
-          <tr><td>1421</td><td>迁都北京，营建紫禁城</td><td>永乐</td><td><span class="tag tag-great">奠基</span></td></tr>
-          <tr><td>1449</td><td>土木堡之变，英宗被俘</td><td>正统</td><td><span class="tag tag-bad">国耻</span></td></tr>
-          <tr><td>1449</td><td>北京保卫战，于谦力挽狂澜</td><td>景泰</td><td><span class="tag tag-good">救国</span></td></tr>
-          <tr><td>1457</td><td>夺门之变，英宗复辟，杀于谦</td><td>天顺</td><td><span class="tag tag-bad">冤案</span></td></tr>
-          <tr><td>1488-1505</td><td>弘治中兴</td><td>弘治</td><td><span class="tag tag-great">治世</span></td></tr>
-          <tr><td>1521</td><td>大礼议事件，世宗与朝臣对立</td><td>嘉靖</td><td><span class="tag tag-mid">争议</span></td></tr>
-          <tr><td>1567</td><td>隆庆开关，解除海禁</td><td>隆庆</td><td><span class="tag tag-good">开放</span></td></tr>
-          <tr><td>1573-1582</td><td>张居正改革（一条鞭法、考成法）</td><td>万历</td><td><span class="tag tag-great">改革</span></td></tr>
-          <tr><td>1592-1598</td><td>万历三大征（宁夏/朝鲜/播州）</td><td>万历</td><td><span class="tag tag-mid">武功</span></td></tr>
-          <tr><td>1616</td><td>努尔哈赤建立后金</td><td>万历</td><td><span class="tag tag-bad">外患</span></td></tr>
-          <tr><td>1619</td><td>萨尔浒之战，明军惨败</td><td>万历</td><td><span class="tag tag-bad">转折</span></td></tr>
-          <tr><td>1620</td><td>红丸案，光宗即位一月暴毙</td><td>泰昌</td><td><span class="tag tag-tragic">悬案</span></td></tr>
-          <tr><td>1624-1627</td><td>魏忠贤专权，迫害东林党</td><td>天启</td><td><span class="tag tag-bad">乱政</span></td></tr>
-          <tr><td>1644.3.19</td><td>李自成攻入北京，崇祯煤山自缢</td><td>崇祯</td><td><span class="tag tag-bad">亡国</span></td></tr>
+          <tr><td>1368</td><td style="text-align:left">朱元璋称帝，建立明朝，定都南京</td><td>洪武</td><td><span class="tag tag-great">开国</span></td></tr>
+          <tr><td>1399-1402</td><td style="text-align:left">靖难之役，朱棣夺位</td><td>建文→永乐</td><td><span class="tag tag-bad">政权更迭</span></td></tr>
+          <tr><td>1405-1433</td><td style="text-align:left">郑和七下西洋</td><td>永乐-宣德</td><td><span class="tag tag-good">盛世</span></td></tr>
+          <tr><td>1421</td><td style="text-align:left">迁都北京，营建紫禁城</td><td>永乐</td><td><span class="tag tag-great">奠基</span></td></tr>
+          <tr><td>1449</td><td style="text-align:left">土木堡之变，英宗被俘</td><td>正统</td><td><span class="tag tag-bad">国耻</span></td></tr>
+          <tr><td>1449</td><td style="text-align:left">北京保卫战，于谦力挽狂澜</td><td>景泰</td><td><span class="tag tag-good">救国</span></td></tr>
+          <tr><td>1457</td><td style="text-align:left">夺门之变，英宗复辟，杀于谦</td><td>天顺</td><td><span class="tag tag-bad">冤案</span></td></tr>
+          <tr><td>1488-1505</td><td style="text-align:left">弘治中兴</td><td>弘治</td><td><span class="tag tag-great">治世</span></td></tr>
+          <tr><td>1521</td><td style="text-align:left">大礼议事件，世宗与朝臣对立</td><td>嘉靖</td><td><span class="tag tag-mid">争议</span></td></tr>
+          <tr><td>1567</td><td style="text-align:left">隆庆开关，解除海禁</td><td>隆庆</td><td><span class="tag tag-good">开放</span></td></tr>
+          <tr><td>1573-1582</td><td style="text-align:left">张居正改革（一条鞭法、考成法）</td><td>万历</td><td><span class="tag tag-great">改革</span></td></tr>
+          <tr><td>1592-1598</td><td style="text-align:left">万历三大征（宁夏/朝鲜/播州）</td><td>万历</td><td><span class="tag tag-mid">武功</span></td></tr>
+          <tr><td>1616</td><td style="text-align:left">努尔哈赤建立后金</td><td>万历</td><td><span class="tag tag-bad">外患</span></td></tr>
+          <tr><td>1619</td><td style="text-align:left">萨尔浒之战，明军惨败</td><td>万历</td><td><span class="tag tag-bad">转折</span></td></tr>
+          <tr><td>1620</td><td style="text-align:left">红丸案，光宗即位一月暴毙</td><td>泰昌</td><td><span class="tag tag-tragic">悬案</span></td></tr>
+          <tr><td>1624-1627</td><td style="text-align:left">魏忠贤专权，迫害东林党</td><td>天启</td><td><span class="tag tag-bad">乱政</span></td></tr>
+          <tr><td>1644.3.19</td><td style="text-align:left">李自成攻入北京，崇祯煤山自缢</td><td>崇祯</td><td><span class="tag tag-bad">亡国</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -123,22 +134,22 @@
 
 <script>
 const emperors = [
-  { seq:1, temple:'太祖', name:'朱元璋', pinyin:'', era:'洪武', reign:31, start:1368, end:1398, age:71, rating:'great', color:'#00B050', influence:100, desc:'开国皇帝，推翻元朝，强化皇权', detail:'出身贫农，曾为和尚乞丐，参加红巾军起义。废丞相制，颁布《大明律》，设锦衣卫。胡惟庸案、蓝玉案大杀功臣。勤政多疑，晚年大兴文字狱。' },
-  { seq:2, temple:'惠宗', name:'朱允炆', pinyin:'yǔn wén', era:'建文', reign:4, start:1399, end:1402, age:null, rating:'tragic', color:'#6f42c1', influence:30, desc:'削藩引发靖难之役，下落不明', detail:'朱标之子，朱元璋之孙。推行建文改制，宽刑省狱。削藩政策引发靖难之役。性情温文儒雅但政治经验不足。南京城破后下落不明。' },
-  { seq:3, temple:'成祖', name:'朱棣', pinyin:'dì', era:'永乐', reign:22, start:1403, end:1424, age:65, rating:'great', color:'#00B050', influence:95, desc:'迁都北京，郑和下西洋，永乐大典', detail:'朱元璋第四子，初封燕王。靖难之役夺位。迁都北京营建紫禁城，五征漠北，郑和七下西洋，编纂《永乐大典》。设东厂。雄才大略但夺位残酷。' },
-  { seq:4, temple:'仁宗', name:'朱高炽', pinyin:'chì', era:'洪熙', reign:0.83, start:1424, end:1425, age:48, rating:'good', color:'#17a2b8', influence:40, desc:'仁厚宽和，开仁宣之治之端', detail:'朱棣长子，体胖多病。平反建文旧臣冤案，停止大规模用兵，修养生息。在位仅十个月猝死，但开仁宣之治之端。' },
-  { seq:5, temple:'宣宗', name:'朱瞻基', pinyin:'zhān', era:'宣德', reign:10, start:1426, end:1435, age:37, rating:'great', color:'#00B050', influence:65, desc:'仁宣之治鼎盛，太平天子', detail:'朱高炽长子。仁宣之治达到鼎盛。撤交趾布政司，整顿吏治。亲征平定汉王叛乱。善书画精骑射。设内书堂教宦官读书，为后世宦官专权埋下隐患。' },
-  { seq:6, temple:'英宗', name:'朱祁镇', pinyin:'qí', era:'正统/天顺', reign:22, start:1436, end:1464, age:38, rating:'bad', color:'#E74C3C', influence:45, desc:'土木堡之变被俘，夺门之变复辟', detail:'朱瞻基长子。宠信宦官王振导致土木堡之变被瓦剌俘虏。于谦主导北京保卫战。夺门之变复辟后杀于谦。复位后废除殉葬制度。两度称帝，一生坎坷。' },
-  { seq:7, temple:'代宗', name:'朱祁钰', pinyin:'qí yù', era:'景泰', reign:8, start:1450, end:1457, age:30, rating:'good', color:'#17a2b8', influence:45, desc:'北京保卫战保住大明江山', detail:'英宗之弟，英宗被俘后临危受命。任用于谦打赢北京保卫战。稳定朝局，治理水患。夺门之变后被废，不久病逝（一说被害），以亲王礼葬。' },
-  { seq:8, temple:'宪宗', name:'朱见深', pinyin:'jiàn shēn', era:'成化', reign:23, start:1465, end:1487, age:41, rating:'mid', color:'#F39C12', influence:50, desc:'平反于谦，设西厂，宠万贵妃', detail:'英宗长子，幼年因土木堡之变被废太子后复位。平反于谦冤案，恢复叔父帝号。设西厂任用汪直。宠幸万贵妃（大17岁）。皇庄制度开土地兼并之风。口吃内向。' },
-  { seq:9, temple:'孝宗', name:'朱祐樘', pinyin:'yòu chéng', era:'弘治', reign:18, start:1488, end:1505, age:36, rating:'great', color:'#00B050', influence:65, desc:'弘治中兴，唯一一夫一妻皇帝', detail:'宪宗第三子，幼年被宫女太监秘密养大避万贵妃迫害，六岁才与父亲相认。弘治中兴，勤政爱民。历史上罕见的一夫一妻皇帝（仅张皇后一人）。仁慈宽厚。' },
-  { seq:10, temple:'武宗', name:'朱厚照', pinyin:'', era:'正德', reign:16, start:1506, end:1521, age:31, rating:'bad', color:'#E74C3C', influence:40, desc:'豹房纵乐，叛逆顽劣，但有武勇', detail:'孝宗独子。建豹房纵乐，刘瑾专权。宁王叛乱被王阳明平定。多次私自出巡，自封威武大将军朱寿。应州大捷亲征击败蒙古。叛逆顽劣荒唐任性。南巡落水后病逝。' },
-  { seq:11, temple:'世宗', name:'朱厚熜', pinyin:'cōng', era:'嘉靖', reign:45, start:1522, end:1566, age:60, rating:'mid', color:'#F39C12', influence:75, desc:'20年不上朝，修道炼丹，严嵩专权', detail:'武宗堂弟，以大礼议入继大统。前期嘉靖中兴，戚继光抗倭。大礼议事件与朝臣争生父尊号。壬寅宫变宫女谋杀未遂。严嵩专权20年。20余年不上朝躲西苑修道炼丹。服丹药中毒而亡。' },
-  { seq:12, temple:'穆宗', name:'朱载坖', pinyin:'zǎi jī', era:'隆庆', reign:6, start:1567, end:1572, age:36, rating:'good', color:'#17a2b8', influence:55, desc:'隆庆开关，俺答封贡', detail:'世宗第三子。隆庆开关解除海禁允许民间海外贸易。俺答封贡与蒙古达成和平。任用高拱、张居正等能臣。性格宽仁，好色纵欲，纵欲过度早逝。' },
-  { seq:13, temple:'神宗', name:'朱翊钧', pinyin:'yì jūn', era:'万历', reign:48, start:1573, end:1620, age:58, rating:'bad', color:'#E74C3C', influence:85, desc:'28年不上朝，萨尔浒惨败，明亡始于此', detail:'穆宗第三子，明朝在位最久。前期万历中兴赖张居正改革（一条鞭法、考成法）。万历三大征（平宁夏、抗倭援朝、平播州）。国本之争与群臣对立，28年不上朝。萨尔浒之战败于后金。明朝衰亡实始于万历。' },
-  { seq:14, temple:'光宗', name:'朱常洛', pinyin:'', era:'泰昌', reign:0.08, start:1620, end:1620, age:39, rating:'tragic', color:'#6f42c1', influence:20, desc:'一月天子，红丸案暴毙', detail:'神宗长子，国本之争焦点。当了20年太子。即位后发内帑犒劳边防，罢免矿税。明末三大案：梃击案、红丸案（服红丸暴毙）、移宫案。在位仅29天。命运坎坷。' },
-  { seq:15, temple:'熹宗', name:'朱由校', pinyin:'', era:'天启', reign:7, start:1621, end:1627, age:23, rating:'bad', color:'#E74C3C', influence:35, desc:'木匠皇帝，魏忠贤专权', detail:'光宗长子。著名木匠皇帝，沉迷木工手艺精湛，几乎不识字。朝政全交魏忠贤（九千岁），迫害东林党。后金崛起辽东危急。服仙露后病逝。' },
-  { seq:16, temple:'思宗', name:'朱由检', pinyin:'jiǎn', era:'崇祯', reign:17, start:1628, end:1644, age:34, rating:'tragic', color:'#6f42c1', influence:70, desc:'勤政多疑，煤山自缢，以身殉国', detail:'熹宗之弟。铲除魏忠贤，勤政自律，六下罪己诏，生活节俭。但多疑刚愎急躁善变，17年换50个内阁大学士。李自成攻入北京，煤山自缢以身殉国。遗言：任贼分裂朕尸，勿伤百姓一人。' },
+  { seq:1, temple:'太祖', name:'朱元璋', pinyin:'', era:'洪武', reign:31, start:1368, end:1398, age:71, rating:'great', detail:'出身贫农，曾为和尚乞丐，参加红巾军起义。废丞相制，颁布《大明律》，设锦衣卫。胡惟庸案、蓝玉案大杀功臣。勤政多疑，晚年大兴文字狱。' },
+  { seq:2, temple:'惠宗', name:'朱允炆', pinyin:'yǔn wén', era:'建文', reign:4, start:1399, end:1402, age:null, rating:'tragic', detail:'朱标之子，朱元璋之孙。推行建文改制，宽刑省狱。削藩政策引发靖难之役。性情温文儒雅但政治经验不足。南京城破后下落不明。' },
+  { seq:3, temple:'成祖', name:'朱棣', pinyin:'dì', era:'永乐', reign:22, start:1403, end:1424, age:65, rating:'great', detail:'朱元璋第四子，初封燕王。靖难之役夺位。迁都北京营建紫禁城，五征漠北，郑和七下西洋，编纂《永乐大典》。设东厂。雄才大略但夺位残酷。' },
+  { seq:4, temple:'仁宗', name:'朱高炽', pinyin:'chì', era:'洪熙', reign:0.83, start:1424, end:1425, age:48, rating:'good', detail:'朱棣长子，体胖多病。平反建文旧臣冤案，停止大规模用兵，修养生息。在位仅十个月猝死，但开仁宣之治之端。' },
+  { seq:5, temple:'宣宗', name:'朱瞻基', pinyin:'zhān', era:'宣德', reign:10, start:1426, end:1435, age:37, rating:'great', detail:'朱高炽长子。仁宣之治达到鼎盛。撤交趾布政司，整顿吏治。亲征平定汉王叛乱。善书画精骑射。设内书堂教宦官读书，为后世宦官专权埋下隐患。' },
+  { seq:6, temple:'英宗', name:'朱祁镇', pinyin:'qí', era:'正统/天顺', reign:22, start:1436, end:1464, age:38, rating:'bad', detail:'朱瞻基长子。宠信宦官王振导致土木堡之变被瓦剌俘虏。于谦主导北京保卫战。夺门之变复辟后杀于谦。复位后废除殉葬制度。两度称帝，一生坎坷。' },
+  { seq:7, temple:'代宗', name:'朱祁钰', pinyin:'qí yù', era:'景泰', reign:8, start:1450, end:1457, age:30, rating:'good', detail:'英宗之弟，英宗被俘后临危受命。任用于谦打赢北京保卫战。稳定朝局，治理水患。夺门之变后被废，不久病逝（一说被害），以亲王礼葬。' },
+  { seq:8, temple:'宪宗', name:'朱见深', pinyin:'jiàn shēn', era:'成化', reign:23, start:1465, end:1487, age:41, rating:'mid', detail:'英宗长子，幼年因土木堡之变被废太子后复位。平反于谦冤案，恢复叔父帝号。设西厂任用汪直。宠幸万贵妃（大17岁）。皇庄制度开土地兼并之风。口吃内向。' },
+  { seq:9, temple:'孝宗', name:'朱祐樘', pinyin:'yòu chéng', era:'弘治', reign:18, start:1488, end:1505, age:36, rating:'great', detail:'宪宗第三子，幼年被宫女太监秘密养大避万贵妃迫害，六岁才与父亲相认。弘治中兴，勤政爱民。历史上罕见的一夫一妻皇帝（仅张皇后一人）。仁慈宽厚。' },
+  { seq:10, temple:'武宗', name:'朱厚照', pinyin:'', era:'正德', reign:16, start:1506, end:1521, age:31, rating:'bad', detail:'孝宗独子。建豹房纵乐，刘瑾专权。宁王叛乱被王阳明平定。多次私自出巡，自封威武大将军朱寿。应州大捷亲征击败蒙古。叛逆顽劣荒唐任性。南巡落水后病逝。' },
+  { seq:11, temple:'世宗', name:'朱厚熜', pinyin:'cōng', era:'嘉靖', reign:45, start:1522, end:1566, age:60, rating:'mid', detail:'武宗堂弟，以大礼议入继大统。前期嘉靖中兴，戚继光抗倭。大礼议事件与朝臣争生父尊号。壬寅宫变宫女谋杀未遂。严嵩专权20年。20余年不上朝躲西苑修道炼丹。服丹药中毒而亡。' },
+  { seq:12, temple:'穆宗', name:'朱载坖', pinyin:'zǎi jī', era:'隆庆', reign:6, start:1567, end:1572, age:36, rating:'good', detail:'世宗第三子。隆庆开关解除海禁允许民间海外贸易。俺答封贡与蒙古达成和平。任用高拱、张居正等能臣。性格宽仁，好色纵欲，纵欲过度早逝。' },
+  { seq:13, temple:'神宗', name:'朱翊钧', pinyin:'yì jūn', era:'万历', reign:48, start:1573, end:1620, age:58, rating:'bad', detail:'穆宗第三子，明朝在位最久。前期万历中兴赖张居正改革（一条鞭法、考成法）。万历三大征（平宁夏、抗倭援朝、平播州）。国本之争与群臣对立，28年不上朝。萨尔浒之战败于后金。明朝衰亡实始于万历。' },
+  { seq:14, temple:'光宗', name:'朱常洛', pinyin:'', era:'泰昌', reign:0.08, start:1620, end:1620, age:39, rating:'tragic', detail:'神宗长子，国本之争焦点。当了20年太子。即位后发内帑犒劳边防，罢免矿税。明末三大案：梃击案、红丸案（服红丸暴毙）、移宫案。在位仅29天。命运坎坷。' },
+  { seq:15, temple:'熹宗', name:'朱由校', pinyin:'', era:'天启', reign:7, start:1621, end:1627, age:23, rating:'bad', detail:'光宗长子。著名木匠皇帝，沉迷木工手艺精湛，几乎不识字。朝政全交魏忠贤（九千岁），迫害东林党。后金崛起辽东危急。服仙露后病逝。' },
+  { seq:16, temple:'思宗', name:'朱由检', pinyin:'jiǎn', era:'崇祯', reign:17, start:1628, end:1644, age:34, rating:'tragic', detail:'熹宗之弟。铲除魏忠贤，勤政自律，六下罪己诏，生活节俭。但多疑刚愎急躁善变，17年换50个内阁大学士。李自成攻入北京，煤山自缢以身殉国。遗言：任贼分裂朕尸，勿伤百姓一人。' },
 ];
 
 const ratingMap = { great:{label:'治世明君',cls:'tag-great'}, good:{label:'守成之主',cls:'tag-good'}, mid:{label:'功过参半',cls:'tag-mid'}, bad:{label:'怠政误国',cls:'tag-bad'}, tragic:{label:'悲剧帝王',cls:'tag-tragic'} };
@@ -147,7 +158,6 @@ const ratingMap = { great:{label:'治世明君',cls:'tag-great'}, good:{label:'�
 const tbody=document.getElementById('emperorTable');
 emperors.forEach(e=>{
   const r=ratingMap[e.rating];
-  const cardCls = e.rating==='bad'?'warn':e.rating==='mid'?'info':e.rating==='tragic'?'purple':'';
   const tr=document.createElement('tr');
   tr.innerHTML='<td>'+e.seq+'</td><td>'+e.temple+'</td><td class="emperor-name">'+e.name+'</td><td>'+e.era+'</td><td>'+(e.reign<1?Math.round(e.reign*365)+'天':e.reign+'年')+'</td><td>'+e.start+'—'+e.end+'</td><td>'+(e.age?e.age+'岁':'不明')+'</td><td><span class="tag '+r.cls+'">'+r.label+'</span></td>';
   tbody.appendChild(tr);
@@ -160,15 +170,13 @@ emperors.forEach(e=>{
   const cls=e.rating==='bad'?'warn':e.rating==='mid'?'info':e.rating==='tragic'?'purple':'';
   const div=document.createElement('div');
   div.className='emperor-card '+cls;
-  div.innerHTML='<div class="ec-header"><span class="ec-name">'+e.seq+'. '+e.temple+' '+e.name+(e.pinyin?' <span style="font-size:12px;color:#999;font-weight:400">('+e.pinyin+')</span>':'')+'</span><span class="ec-era">'+e.era+'</span></div>'+
+  div.innerHTML='<div class="ec-header"><span class="ec-name">'+e.seq+'. '+e.temple+' '+e.name+(e.pinyin?' <span class="ec-pinyin">('+e.pinyin+')</span>':'')+'</span><span class="ec-era">'+e.era+'</span></div>'+
     '<div class="ec-row"><strong>在位：</strong>'+e.start+'—'+e.end+'（'+(e.reign<1?Math.round(e.reign*365)+'天':e.reign+'年')+'）</div>'+
     '<div class="ec-row"><strong>享年：</strong>'+(e.age?e.age+'岁':'下落不明')+'</div>'+
     '<div class="ec-row"><strong>评价：</strong><span class="tag '+r.cls+'">'+r.label+'</span></div>'+
     '<div class="ec-highlight">'+e.detail+'</div>';
   cardContainer.appendChild(div);
 });
-
-
 </script>
 </body>
 </html>
