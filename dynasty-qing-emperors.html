@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>清朝历代帝王可视化报告</title>
+<style>
+@page { size: A4; margin: 12mm; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#333; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.container { max-width:100%; margin:0 auto; padding:0; }
+.header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:24px 20px; border-radius:8px; margin-bottom:16px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:4px; letter-spacing:2px; }
+.header p { font-size:13px; opacity:0.9; }
+.header .meta { font-size:11px; opacity:0.75; margin-top:4px; }
+.kpi-row { display:flex; gap:8px; margin-bottom:16px; }
+.kpi-card { flex:1; background:#fff; border:1px solid #e0e0e0; border-radius:6px; padding:10px 6px; text-align:center; border-top:3px solid #00B050; }
+.kpi-card .num { font-size:22px; font-weight:700; color:#00B050; }
+.kpi-card .label { font-size:10px; color:#888; margin-top:2px; }
+.kpi-card.warn { border-top-color:#E74C3C; } .kpi-card.warn .num { color:#E74C3C; }
+.kpi-card.info { border-top-color:#F39C12; } .kpi-card.info .num { color:#F39C12; }
+.section { margin-bottom:16px; page-break-inside:avoid; }
+.section-title { font-size:15px; font-weight:700; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:10px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:11px; }
+thead { background:#00B050; color:#fff; }
+th { padding:6px 4px; text-align:center; font-weight:600; white-space:nowrap; border:1px solid #009040; }
+td { padding:5px 4px; text-align:center; border:1px solid #ddd; }
+tr:nth-child(even) { background:#f7fff7; }
+.ruler-name { font-weight:600; color:#00B050; }
+.tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600; }
+.tag-great { background:#d4edda; color:#155724; }
+.tag-good { background:#d1ecf1; color:#0c5460; }
+.tag-mid { background:#fff3cd; color:#856404; }
+.tag-bad { background:#f8d7da; color:#721c24; }
+.tag-tragic { background:#e2d6f3; color:#4a148c; }
+.ruler-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.ruler-card { background:#fafafa; border:1px solid #e8e8e8; border-radius:6px; padding:10px; border-left:3px solid #00B050; break-inside:avoid; }
+.ruler-card.warn { border-left-color:#E74C3C; }
+.ruler-card.info { border-left-color:#F39C12; }
+.ruler-card.purple { border-left-color:#6f42c1; }
+.rc-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.rc-name { font-size:13px; font-weight:700; color:#333; }
+.rc-pinyin { font-size:10px; color:#999; font-weight:400; }
+.rc-row { font-size:11px; color:#555; margin-bottom:2px; }
+.rc-row strong { color:#333; }
+.rc-highlight { font-size:10px; color:#777; margin-top:4px; padding-top:4px; border-top:1px dashed #ddd; line-height:1.5; }
+.card-break { page-break-before:always; }
+.page-break { page-break-before:always; }
+.footer { text-align:center; padding:12px; color:#999; font-size:11px; margin-top:8px; }
+.footer span { color:#00B050; font-weight:600; }
+@media screen { body { background:#f0f2f5; } .container { max-width:210mm; margin:20px auto; padding:20px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.1); } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🐉 清朝历代帝王可视化报告</h1>
+    <p>1636—1912 AD · 共12位帝王 · 276年</p>
+    <div class="meta">北京 · 🦞 尹燕玲报告分析专家 · 2026年8月14日</div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">12</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">276年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">52.1</div><div class="label">平均寿命（岁）</div></div>
+    <div class="kpi-card warn"><div class="num">末代王朝</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 清朝帝王总览表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>序号</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>清太祖</td><td>11年（含后金）</td><td>1616年2月—1626年9月</td><td>67</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>清太宗</td><td>17年</td><td>1626年10月—1643年9月</td><td>51</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>顺治帝</td><td>18年</td><td>1643年10月—1661年2月</td><td>22</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>4</td><td class='ruler-name'>康熙帝</td><td>61年</td><td>1661年2月—1722年12月</td><td>68</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>5</td><td class='ruler-name'>雍正帝</td><td>13年</td><td>1722年12月—1735年10月</td><td>57</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>6</td><td class='ruler-name'>乾隆帝</td><td>60年（含太上皇3年）</td><td>1735年10月—1799年2月</td><td>88</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>7</td><td class='ruler-name'>嘉庆帝</td><td>25年</td><td>1796年1月—1820年9月</td><td>59</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>8</td><td class='ruler-name'>道光帝</td><td>30年</td><td>1820年9月—1850年2月</td><td>67</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>9</td><td class='ruler-name'>咸丰帝</td><td>11年</td><td>1850年3月—1861年8月</td><td>30</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>10</td><td class='ruler-name'>同治帝</td><td>14年</td><td>1861年11月—1875年1月</td><td>18</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>11</td><td class='ruler-name'>光绪帝</td><td>34年</td><td>1875年2月—1908年11月</td><td>37</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>12</td><td class='ruler-name'>宣统帝</td><td>3年</td><td>1908年12月—1912年2月</td><td>61</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="section page-break">
+    <div class="section-title">👑 帝王详情卡片</div>
+    <div class="ruler-grid"><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">1. 清太祖 <span class="rc-pinyin">(qīngtàizǔ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1559年 — 1626年9月30日</div>
+  <div class="rc-row"><strong>在位：</strong>1616年2月—1626年9月（11年（含后金））</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">努尔哈赤，建立后金，统一女真</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">2. 清太宗 <span class="rc-pinyin">(qīngtàizōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1592年11月28日 — 1643年9月21日</div>
+  <div class="rc-row"><strong>在位：</strong>1626年10月—1643年9月（17年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">皇太极，改国号清，松锦之战</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">3. 顺治帝 <span class="rc-pinyin">(shùnzhìdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1638年3月15日 — 1661年2月5日</div>
+  <div class="rc-row"><strong>在位：</strong>1643年10月—1661年2月（18年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">福临，清军入关，英年早逝</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">4. 康熙帝 <span class="rc-pinyin">(kāngxīdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1654年5月4日 — 1722年12月20日</div>
+  <div class="rc-row"><strong>在位：</strong>1661年2月—1722年12月（61年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">玄烨，在位最久，平三藩收台湾</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">5. 雍正帝 <span class="rc-pinyin">(yōngzhèngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1678年12月13日 — 1735年10月8日</div>
+  <div class="rc-row"><strong>在位：</strong>1722年12月—1735年10月（13年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">胤禛，勤政改革，设立军机处</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">6. 乾隆帝 <span class="rc-pinyin">(qiánlóngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1711年9月25日 — 1799年2月7日</div>
+  <div class="rc-row"><strong>在位：</strong>1735年10月—1799年2月（60年（含太上皇3年））</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">弘历，十全武功，康乾盛世</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">7. 嘉庆帝 <span class="rc-pinyin">(jiāqìngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1760年11月13日 — 1820年9月2日</div>
+  <div class="rc-row"><strong>在位：</strong>1796年1月—1820年9月（25年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">颙琰，抄和珅，白莲教起义</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">8. 道光帝 <span class="rc-pinyin">(dàoguāngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1782年9月16日 — 1850年2月25日</div>
+  <div class="rc-row"><strong>在位：</strong>1820年9月—1850年2月（30年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">旻宁，鸦片战争，南京条约</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">9. 咸丰帝 <span class="rc-pinyin">(xiánfēngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1831年7月17日 — 1861年8月22日</div>
+  <div class="rc-row"><strong>在位：</strong>1850年3月—1861年8月（11年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">奕詝，太平天国，英法联军</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">10. 同治帝 <span class="rc-pinyin">(tóngzhìdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1856年4月27日 — 1875年1月12日</div>
+  <div class="rc-row"><strong>在位：</strong>1861年11月—1875年1月（14年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">载淳，同治中兴，英年早逝</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">11. 光绪帝 <span class="rc-pinyin">(guāngxùdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1871年8月14日 — 1908年11月14日</div>
+  <div class="rc-row"><strong>在位：</strong>1875年2月—1908年11月（34年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">载湉，戊戌变法，被囚瀛台</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">12. 宣统帝 <span class="rc-pinyin">(xuāntǒngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>1906年2月7日 — 1967年10月17日</div>
+  <div class="rc-row"><strong>在位：</strong>1908年12月—1912年2月（3年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">溥仪，末代皇帝，辛亥革命退位</div>
+</div>
+</div>
+  </div>
+  <div class="section page-break" style="display:block">
+    <div class="section-title">⚠️ 清朝重大事件年表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">涉及帝王</th><th style="width:22%">影响等级</th></tr></thead>
+      <tbody><tr><td>1616年</td><td style='text-align:left'>努尔哈赤建立后金</td><td>清太祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>1636年</td><td style='text-align:left'>皇太极改国号清</td><td>清太宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>1644年</td><td style='text-align:left'>清军入关，定都北京</td><td>顺治帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>1661年</td><td style='text-align:left'>康熙即位，平三藩收台湾</td><td>康熙帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>1722年</td><td style='text-align:left'>雍正即位，改革吏治</td><td>雍正帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>1735年</td><td style='text-align:left'>乾隆即位，康乾盛世</td><td>乾隆帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>1840年</td><td style='text-align:left'>鸦片战争</td><td>道光帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>1851年</td><td style='text-align:left'>太平天国起义</td><td>咸丰帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>1898年</td><td style='text-align:left'>戊戌变法失败</td><td>光绪帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>1900年</td><td style='text-align:left'>八国联军侵华</td><td>光绪帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>1912年2月</td><td style='text-align:left'>溥仪退位，清朝灭亡</td><td>宣统帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="footer">
+    <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+    <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
+  </div>
+</div>
+</body>
+</html>
