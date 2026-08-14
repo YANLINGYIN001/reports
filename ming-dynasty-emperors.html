@@ -44,7 +44,8 @@
   .tag-tragic { background: #e2d6f3; color: #4a148c; }
 
   .emperor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .emperor-card { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 6px; padding: 10px; border-left: 3px solid #00B050; }
+  .emperor-card { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 6px; padding: 10px; border-left: 3px solid #00B050; break-inside: avoid; }
+  .card-break { page-break-before: always; }
   .emperor-card.warn { border-left-color: #E74C3C; }
   .emperor-card.info { border-left-color: #F39C12; }
   .emperor-card.purple { border-left-color: #6f42c1; }
@@ -93,8 +94,8 @@
     </div>
   </div>
 
-  <div class="section page-break">
-    <div class="section-title">👑 十六帝详情卡片</div>
+  <div class="section">
+    <div class="section-title">👑 十六帝详情卡片（1-10）</div>
     <div class="emperor-grid" id="emperorCards"></div>
   </div>
 
@@ -176,6 +177,7 @@ emperors.forEach(e=>{
     '<div class="ec-row"><strong>享年：</strong>'+(e.age?e.age+'岁':'下落不明')+'</div>'+
     '<div class="ec-row"><strong>评价：</strong><span class="tag '+r.cls+'">'+r.label+'</span></div>'+
     '<div class="ec-highlight">'+e.detail+'</div>';
+  if (e.seq === 11) { const pb = document.createElement('div'); pb.className = 'card-break'; cardContainer.appendChild(pb); }
   cardContainer.appendChild(div);
 });
 </script>
