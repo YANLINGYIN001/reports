@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汉朝历代帝王可视化报告</title>
+<style>
+@page { size: A4; margin: 12mm; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#333; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.container { max-width:100%; margin:0 auto; padding:0; }
+.header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:24px 20px; border-radius:8px; margin-bottom:16px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:4px; letter-spacing:2px; }
+.header p { font-size:13px; opacity:0.9; }
+.header .meta { font-size:11px; opacity:0.75; margin-top:4px; }
+.kpi-row { display:flex; gap:8px; margin-bottom:16px; }
+.kpi-card { flex:1; background:#fff; border:1px solid #e0e0e0; border-radius:6px; padding:10px 6px; text-align:center; border-top:3px solid #00B050; }
+.kpi-card .num { font-size:22px; font-weight:700; color:#00B050; }
+.kpi-card .label { font-size:10px; color:#888; margin-top:2px; }
+.kpi-card.warn { border-top-color:#E74C3C; } .kpi-card.warn .num { color:#E74C3C; }
+.kpi-card.info { border-top-color:#F39C12; } .kpi-card.info .num { color:#F39C12; }
+.section { margin-bottom:16px; page-break-inside:avoid; }
+.section-title { font-size:15px; font-weight:700; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:10px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:11px; }
+thead { background:#00B050; color:#fff; }
+th { padding:6px 4px; text-align:center; font-weight:600; white-space:nowrap; border:1px solid #009040; }
+td { padding:5px 4px; text-align:center; border:1px solid #ddd; }
+tr:nth-child(even) { background:#f7fff7; }
+.ruler-name { font-weight:600; color:#00B050; }
+.tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600; }
+.tag-great { background:#d4edda; color:#155724; }
+.tag-good { background:#d1ecf1; color:#0c5460; }
+.tag-mid { background:#fff3cd; color:#856404; }
+.tag-bad { background:#f8d7da; color:#721c24; }
+.tag-tragic { background:#e2d6f3; color:#4a148c; }
+.ruler-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.ruler-card { background:#fafafa; border:1px solid #e8e8e8; border-radius:6px; padding:10px; border-left:3px solid #00B050; break-inside:avoid; }
+.ruler-card.warn { border-left-color:#E74C3C; }
+.ruler-card.info { border-left-color:#F39C12; }
+.ruler-card.purple { border-left-color:#6f42c1; }
+.rc-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.rc-name { font-size:13px; font-weight:700; color:#333; }
+.rc-pinyin { font-size:10px; color:#999; font-weight:400; }
+.rc-row { font-size:11px; color:#555; margin-bottom:2px; }
+.rc-row strong { color:#333; }
+.rc-highlight { font-size:10px; color:#777; margin-top:4px; padding-top:4px; border-top:1px dashed #ddd; line-height:1.5; }
+.card-break { page-break-before:always; }
+.page-break { page-break-before:always; }
+.footer { text-align:center; padding:12px; color:#999; font-size:11px; margin-top:8px; }
+.footer span { color:#00B050; font-weight:600; }
+@media screen { body { background:#f0f2f5; } .container { max-width:210mm; margin:20px auto; padding:20px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.1); } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🐉 汉朝历代帝王可视化报告</h1>
+    <p>202 BC—220 AD · 共28位帝王 · 405年</p>
+    <div class="meta">长安/洛阳 · 🦞 尹燕玲报告分析专家 · 2026年8月14日</div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">28</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">405年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">35.1</div><div class="label">平均寿命（岁）</div></div>
+    <div class="kpi-card warn"><div class="num">汉民族奠基</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 汉朝帝王总览表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>序号</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>汉高祖</td><td>7年</td><td>前202—前195</td><td>61</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>汉惠帝</td><td>7年</td><td>前195—前188</td><td>22</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>前少帝</td><td>4年</td><td>前188—前184</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>4</td><td class='ruler-name'>后少帝</td><td>4年</td><td>前184—前180</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>5</td><td class='ruler-name'>汉文帝</td><td>23年</td><td>前180—前157</td><td>46</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>6</td><td class='ruler-name'>汉景帝</td><td>16年</td><td>前157—前141</td><td>47</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>7</td><td class='ruler-name'>汉武帝</td><td>54年</td><td>前141—前87</td><td>69</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>8</td><td class='ruler-name'>汉昭帝</td><td>13年</td><td>前87—前74</td><td>20</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>9</td><td class='ruler-name'>汉废帝</td><td>27天</td><td>前74—前74</td><td>33</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>10</td><td class='ruler-name'>汉宣帝</td><td>25年</td><td>前74—前49</td><td>42</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>11</td><td class='ruler-name'>汉元帝</td><td>16年</td><td>前49—前33</td><td>42</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>12</td><td class='ruler-name'>汉成帝</td><td>26年</td><td>前33—前7</td><td>44</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>13</td><td class='ruler-name'>汉哀帝</td><td>6年</td><td>前7—前1</td><td>25</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>14</td><td class='ruler-name'>汉平帝</td><td>5年</td><td>前1—6</td><td>14</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>15</td><td class='ruler-name'>孺子婴</td><td>3年</td><td>6—9</td><td>20</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>16</td><td class='ruler-name'>王莽</td><td>15年</td><td>9—23</td><td>68</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>17</td><td class='ruler-name'>汉光武帝</td><td>33年</td><td>25—57</td><td>62</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>18</td><td class='ruler-name'>汉明帝</td><td>18年</td><td>57—75</td><td>47</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>19</td><td class='ruler-name'>汉章帝</td><td>13年</td><td>75—88</td><td>31</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>20</td><td class='ruler-name'>汉和帝</td><td>17年</td><td>88—105</td><td>26</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>21</td><td class='ruler-name'>汉殇帝</td><td>8个月</td><td>105—106</td><td>1</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>22</td><td class='ruler-name'>汉安帝</td><td>19年</td><td>106—125</td><td>31</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>23</td><td class='ruler-name'>汉顺帝</td><td>19年</td><td>125—144</td><td>29</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>24</td><td class='ruler-name'>汉冲帝</td><td>5个月</td><td>144—145</td><td>2</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>25</td><td class='ruler-name'>汉质帝</td><td>1年</td><td>145—146</td><td>8</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>26</td><td class='ruler-name'>汉桓帝</td><td>21年</td><td>146—168</td><td>36</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>27</td><td class='ruler-name'>汉灵帝</td><td>21年</td><td>168—189</td><td>33</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>28</td><td class='ruler-name'>汉献帝</td><td>31年</td><td>189—220</td><td>53</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="section page-break">
+    <div class="section-title">👑 帝王详情卡片</div>
+    <div class="ruler-grid"><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">1. 汉高祖 <span class="rc-pinyin">(hàngāozǔ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前256年 — 前195年</div>
+  <div class="rc-row"><strong>在位：</strong>前202—前195（7年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">刘邦，灭项羽建汉，休养生息</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">2. 汉惠帝 <span class="rc-pinyin">(hànhuìdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前210年 — 前188年</div>
+  <div class="rc-row"><strong>在位：</strong>前195—前188（7年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">仁弱之君，吕后专权</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">3. 前少帝 <span class="rc-pinyin">(qiánshǎodì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>前188—前184（4年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">吕后所立废杀</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">4. 后少帝 <span class="rc-pinyin">(hòushǎodì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>前184—前180（4年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">吕后死后被大臣所废杀</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">5. 汉文帝 <span class="rc-pinyin">(hànwéndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前203年 — 前157年</div>
+  <div class="rc-row"><strong>在位：</strong>前180—前157（23年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">文景之治，轻徭薄赋</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">6. 汉景帝 <span class="rc-pinyin">(hànjǐngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前188年 — 前141年</div>
+  <div class="rc-row"><strong>在位：</strong>前157—前141（16年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">平定七国之乱，文景之治</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">7. 汉武帝 <span class="rc-pinyin">(hànwǔdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前156年 — 前87年</div>
+  <div class="rc-row"><strong>在位：</strong>前141—前87（54年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">北击匈奴，独尊儒术，开丝绸之路</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">8. 汉昭帝 <span class="rc-pinyin">(hànzhāodì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前94年 — 前74年</div>
+  <div class="rc-row"><strong>在位：</strong>前87—前74（13年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">霍光辅政，与民休息</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">9. 汉废帝 <span class="rc-pinyin">(hànfèidì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前92年 — 前59年</div>
+  <div class="rc-row"><strong>在位：</strong>前74—前74（27天）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">昌邑王刘贺，荒淫被废</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">10. 汉宣帝 <span class="rc-pinyin">(hànxuāndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前91年 — 前49年</div>
+  <div class="rc-row"><strong>在位：</strong>前74—前49（25年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">中兴之主，西域都护府设立</div>
+</div>
+<div class="card-break"></div><div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">11. 汉元帝 <span class="rc-pinyin">(hànyuándì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前75年 — 前33年</div>
+  <div class="rc-row"><strong>在位：</strong>前49—前33（16年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">昭君出塞，柔仁好儒</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">12. 汉成帝 <span class="rc-pinyin">(hànchéngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前51年 — 前7年</div>
+  <div class="rc-row"><strong>在位：</strong>前33—前7（26年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">宠赵飞燕姐妹，外戚王氏专权</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">13. 汉哀帝 <span class="rc-pinyin">(hànāidì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前27年 — 前1年</div>
+  <div class="rc-row"><strong>在位：</strong>前7—前1（6年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">断袖之癖，限田令失败</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">14. 汉平帝 <span class="rc-pinyin">(hànpíngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前9年 — 6年</div>
+  <div class="rc-row"><strong>在位：</strong>前1—6（5年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">王莽毒杀，西汉衰亡</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">15. 孺子婴 <span class="rc-pinyin">(rúzǐyīng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>5年 — 25年</div>
+  <div class="rc-row"><strong>在位：</strong>6—9（3年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">王莽摄政，西汉实际灭亡</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">16. 王莽 <span class="rc-pinyin">(wángmǎng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前45年 — 23年</div>
+  <div class="rc-row"><strong>在位：</strong>9—23（15年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">新朝建立者，改制失败，天下大乱</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">17. 汉光武帝 <span class="rc-pinyin">(hànguāngwǔdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前5年 — 57年</div>
+  <div class="rc-row"><strong>在位：</strong>25—57（33年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">刘秀，重建汉朝，光武中兴</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">18. 汉明帝 <span class="rc-pinyin">(hànmíngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>28年 — 75年</div>
+  <div class="rc-row"><strong>在位：</strong>57—75（18年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">引入佛教，明章之治</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">19. 汉章帝 <span class="rc-pinyin">(hànzhāngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>57年 — 88年</div>
+  <div class="rc-row"><strong>在位：</strong>75—88（13年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">明章之治，班超通西域</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">20. 汉和帝 <span class="rc-pinyin">(hànhédì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>79年 — 105年</div>
+  <div class="rc-row"><strong>在位：</strong>88—105（17年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">永元之隆，灭北匈奴</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">21. 汉殇帝 <span class="rc-pinyin">(hànshāngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>105年 — 106年</div>
+  <div class="rc-row"><strong>在位：</strong>105—106（8个月）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">婴儿皇帝，夭折</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">22. 汉安帝 <span class="rc-pinyin">(hànāndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>94年 — 125年</div>
+  <div class="rc-row"><strong>在位：</strong>106—125（19年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">外戚专权，羌人叛乱</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">23. 汉顺帝 <span class="rc-pinyin">(hànshùndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>115年 — 144年</div>
+  <div class="rc-row"><strong>在位：</strong>125—144（19年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">宦官夺权，朝政腐败</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">24. 汉冲帝 <span class="rc-pinyin">(hànchōngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>143年 — 145年</div>
+  <div class="rc-row"><strong>在位：</strong>144—145（5个月）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">幼儿皇帝，夭折</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">25. 汉质帝 <span class="rc-pinyin">(hànzhìdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>138年 — 146年</div>
+  <div class="rc-row"><strong>在位：</strong>145—146（1年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">被梁冀毒杀</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">26. 汉桓帝 <span class="rc-pinyin">(hànhuándì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>132年 — 168年</div>
+  <div class="rc-row"><strong>在位：</strong>146—168（21年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">党锢之祸，宦官专权</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">27. 汉灵帝 <span class="rc-pinyin">(hànlíngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>156年 — 189年</div>
+  <div class="rc-row"><strong>在位：</strong>168—189（21年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">卖官鬻爵，黄巾起义</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">28. 汉献帝 <span class="rc-pinyin">(hànxiàndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>181年 — 234年</div>
+  <div class="rc-row"><strong>在位：</strong>189—220（31年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">傀儡皇帝，禅位于曹丕，东汉灭亡</div>
+</div>
+</div>
+  </div>
+  <div class="section page-break" style="display:block">
+    <div class="section-title">⚠️ 汉朝重大事件年表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">涉及帝王</th><th style="width:22%">影响等级</th></tr></thead>
+      <tbody><tr><td>前202</td><td style='text-align:left'>刘邦称帝，建立汉朝</td><td>汉高祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>前180</td><td style='text-align:left'>文帝即位，文景之治开始</td><td>汉文帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>前141</td><td style='text-align:left'>武帝即位，汉武盛世</td><td>汉武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>前134</td><td style='text-align:left'>罢黜百家，独尊儒术</td><td>汉武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>前119</td><td style='text-align:left'>卫青霍去病大破匈奴</td><td>汉武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>前60</td><td style='text-align:left'>设立西域都护府</td><td>汉宣帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>9</td><td style='text-align:left'>王莽篡汉，建立新朝</td><td>王莽</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>25</td><td style='text-align:left'>刘秀称帝，光武中兴</td><td>汉光武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>57</td><td style='text-align:left'>明章之治开始</td><td>汉明帝</td><td><span class='tag tag-good'>善政</span></td></tr>
+<tr><td>184</td><td style='text-align:left'>黄巾起义</td><td>汉灵帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>220</td><td style='text-align:left'>曹丕篡汉，汉朝灭亡</td><td>汉献帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="footer">
+    <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+    <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
+  </div>
+</div>
+</body>
+</html>
