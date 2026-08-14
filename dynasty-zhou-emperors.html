@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周朝历代帝王可视化报告</title>
+<style>
+@page { size: A4; margin: 12mm; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#333; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.container { max-width:100%; margin:0 auto; padding:0; }
+.header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:24px 20px; border-radius:8px; margin-bottom:16px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:4px; letter-spacing:2px; }
+.header p { font-size:13px; opacity:0.9; }
+.header .meta { font-size:11px; opacity:0.75; margin-top:4px; }
+.kpi-row { display:flex; gap:8px; margin-bottom:16px; }
+.kpi-card { flex:1; background:#fff; border:1px solid #e0e0e0; border-radius:6px; padding:10px 6px; text-align:center; border-top:3px solid #00B050; }
+.kpi-card .num { font-size:22px; font-weight:700; color:#00B050; }
+.kpi-card .label { font-size:10px; color:#888; margin-top:2px; }
+.kpi-card.warn { border-top-color:#E74C3C; } .kpi-card.warn .num { color:#E74C3C; }
+.kpi-card.info { border-top-color:#F39C12; } .kpi-card.info .num { color:#F39C12; }
+.section { margin-bottom:16px; page-break-inside:avoid; }
+.section-title { font-size:15px; font-weight:700; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:10px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:11px; }
+thead { background:#00B050; color:#fff; }
+th { padding:6px 4px; text-align:center; font-weight:600; white-space:nowrap; border:1px solid #009040; }
+td { padding:5px 4px; text-align:center; border:1px solid #ddd; }
+tr:nth-child(even) { background:#f7fff7; }
+.ruler-name { font-weight:600; color:#00B050; }
+.tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600; }
+.tag-great { background:#d4edda; color:#155724; }
+.tag-good { background:#d1ecf1; color:#0c5460; }
+.tag-mid { background:#fff3cd; color:#856404; }
+.tag-bad { background:#f8d7da; color:#721c24; }
+.tag-tragic { background:#e2d6f3; color:#4a148c; }
+.ruler-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.ruler-card { background:#fafafa; border:1px solid #e8e8e8; border-radius:6px; padding:10px; border-left:3px solid #00B050; break-inside:avoid; }
+.ruler-card.warn { border-left-color:#E74C3C; }
+.ruler-card.info { border-left-color:#F39C12; }
+.ruler-card.purple { border-left-color:#6f42c1; }
+.rc-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.rc-name { font-size:13px; font-weight:700; color:#333; }
+.rc-pinyin { font-size:10px; color:#999; font-weight:400; }
+.rc-row { font-size:11px; color:#555; margin-bottom:2px; }
+.rc-row strong { color:#333; }
+.rc-highlight { font-size:10px; color:#777; margin-top:4px; padding-top:4px; border-top:1px dashed #ddd; line-height:1.5; }
+.card-break { page-break-before:always; }
+.page-break { page-break-before:always; }
+.footer { text-align:center; padding:12px; color:#999; font-size:11px; margin-top:8px; }
+.footer span { color:#00B050; font-weight:600; }
+@media screen { body { background:#f0f2f5; } .container { max-width:210mm; margin:20px auto; padding:20px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.1); } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>礼器 周朝历代帝王可视化报告</h1>
+    <p>1046—256 BC · 共38位帝王 · 790年</p>
+    <div class="meta">镐京/洛邑（今西安/洛阳） · 🦞 尹燕玲报告分析专家 · 2026年8月14日</div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">38</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">790年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">55.0</div><div class="label">平均寿命（岁）</div></div>
+    <div class="kpi-card warn"><div class="num">最长久王朝</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 周朝帝王总览表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>序号</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>周武王</td><td>3年</td><td>前1046—前1043</td><td>54</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>周成王</td><td>22年</td><td>前1043—前1021</td><td>35</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>周康王</td><td>25年</td><td>前1021—前996</td><td>57</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>4</td><td class='ruler-name'>周昭王</td><td>19年</td><td>前996—前977</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>5</td><td class='ruler-name'>周穆王</td><td>55年</td><td>前977—前922</td><td>105</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>6</td><td class='ruler-name'>周共王</td><td>23年</td><td>前922—前900</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>7</td><td class='ruler-name'>周懿王</td><td>8年</td><td>前900—前892</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>8</td><td class='ruler-name'>周孝王</td><td>6年</td><td>前892—前886</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>9</td><td class='ruler-name'>周夷王</td><td>8年</td><td>前886—前878</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>10</td><td class='ruler-name'>周厉王</td><td>37年</td><td>前878—前841</td><td>不明</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>11</td><td class='ruler-name'>共和</td><td>14年</td><td>前841—前828</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>12</td><td class='ruler-name'>周宣王</td><td>46年</td><td>前828—前782</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>13</td><td class='ruler-name'>周幽王</td><td>11年</td><td>前781—前771</td><td>24</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>14</td><td class='ruler-name'>周平王</td><td>51年</td><td>前770—前720</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>15</td><td class='ruler-name'>周桓王</td><td>23年</td><td>前720—前697</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>16</td><td class='ruler-name'>周庄王</td><td>15年</td><td>前697—前682</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>17</td><td class='ruler-name'>周釐王</td><td>5年</td><td>前682—前677</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>18</td><td class='ruler-name'>周惠王</td><td>25年</td><td>前677—前652</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>19</td><td class='ruler-name'>周襄王</td><td>33年</td><td>前652—前619</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>20</td><td class='ruler-name'>周顷王</td><td>6年</td><td>前619—前613</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>21</td><td class='ruler-name'>周匡王</td><td>6年</td><td>前613—前607</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>22</td><td class='ruler-name'>周定王</td><td>21年</td><td>前607—前586</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>23</td><td class='ruler-name'>周简王</td><td>14年</td><td>前586—前572</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>24</td><td class='ruler-name'>周灵王</td><td>27年</td><td>前572—前545</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>25</td><td class='ruler-name'>周景王</td><td>25年</td><td>前545—前520</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>26</td><td class='ruler-name'>周悼王</td><td>1年</td><td>前520—前520</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>27</td><td class='ruler-name'>周敬王</td><td>44年</td><td>前520—前476</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>28</td><td class='ruler-name'>周元王</td><td>7年</td><td>前476—前469</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>29</td><td class='ruler-name'>周贞定王</td><td>28年</td><td>前469—前441</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>30</td><td class='ruler-name'>周哀王</td><td>3个月</td><td>前441—前441</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>31</td><td class='ruler-name'>周思王</td><td>5个月</td><td>前441—前441</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>32</td><td class='ruler-name'>周考王</td><td>15年</td><td>前441—前426</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>33</td><td class='ruler-name'>周威烈王</td><td>24年</td><td>前426—前402</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>34</td><td class='ruler-name'>周安王</td><td>26年</td><td>前402—前376</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>35</td><td class='ruler-name'>周烈王</td><td>7年</td><td>前376—前369</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>36</td><td class='ruler-name'>周显王</td><td>48年</td><td>前369—前321</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>37</td><td class='ruler-name'>周慎靓王</td><td>6年</td><td>前321—前315</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>38</td><td class='ruler-name'>周赧王</td><td>59年</td><td>前315—前256</td><td>不明</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="section page-break">
+    <div class="section-title">👑 帝王详情卡片</div>
+    <div class="ruler-grid"><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">1. 周武王 <span class="rc-pinyin">(zhōuwǔwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 约前1043年</div>
+  <div class="rc-row"><strong>在位：</strong>前1046—前1043（3年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">灭商建周，开创八百年基业</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">2. 周成王 <span class="rc-pinyin">(zhōuchéngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 约前1021年</div>
+  <div class="rc-row"><strong>在位：</strong>前1043—前1021（22年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">周公辅政，制礼作乐</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">3. 周康王 <span class="rc-pinyin">(zhōukāngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 约前996年</div>
+  <div class="rc-row"><strong>在位：</strong>前1021—前996（25年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">成康之治，天下安宁</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">4. 周昭王 <span class="rc-pinyin">(zhōuzhāowáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 约前977年</div>
+  <div class="rc-row"><strong>在位：</strong>前996—前977（19年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">南征楚国，溺于汉水</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">5. 周穆王 <span class="rc-pinyin">(zhōumùwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 约前922年</div>
+  <div class="rc-row"><strong>在位：</strong>前977—前922（55年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">西巡昆仑，周朝版图扩大</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">6. 周共王 <span class="rc-pinyin">(zhōugòngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 约前900年</div>
+  <div class="rc-row"><strong>在位：</strong>前922—前900（23年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">迁都犬丘</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">7. 周懿王 <span class="rc-pinyin">(zhōuyìwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 约前892年</div>
+  <div class="rc-row"><strong>在位：</strong>前900—前892（8年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">戎狄侵扰，王室衰微</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">8. 周孝王 <span class="rc-pinyin">(zhōuxiàowáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 约前886年</div>
+  <div class="rc-row"><strong>在位：</strong>前892—前886（6年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">非子封秦，秦国始封</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">9. 周夷王 <span class="rc-pinyin">(zhōuyíwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 约前878年</div>
+  <div class="rc-row"><strong>在位：</strong>前886—前878（8年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">诸侯渐强，王室微弱</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">10. 周厉王 <span class="rc-pinyin">(zhōulìwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 约前828年</div>
+  <div class="rc-row"><strong>在位：</strong>前878—前841（37年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">暴虐无道，国人暴动</div>
+</div>
+<div class="card-break"></div><div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">11. 共和 <span class="rc-pinyin">(gònghé)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>前841—前828（14年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">周召共和，中国确切纪年开始</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">12. 周宣王 <span class="rc-pinyin">(zhōuxuānwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前782年</div>
+  <div class="rc-row"><strong>在位：</strong>前828—前782（46年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">宣王中兴，征伐四方</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">13. 周幽王 <span class="rc-pinyin">(zhōuyōuwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>前795年 — 前771年</div>
+  <div class="rc-row"><strong>在位：</strong>前781—前771（11年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">烽火戏诸侯，西周灭亡</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">14. 周平王 <span class="rc-pinyin">(zhōupíngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前720年</div>
+  <div class="rc-row"><strong>在位：</strong>前770—前720（51年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">东迁洛邑，东周开始</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">15. 周桓王 <span class="rc-pinyin">(zhōuhuánwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前697年</div>
+  <div class="rc-row"><strong>在位：</strong>前720—前697（23年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">繻葛之战，王室权威丧失</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">16. 周庄王 <span class="rc-pinyin">(zhōuzhuāngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前682年</div>
+  <div class="rc-row"><strong>在位：</strong>前697—前682（15年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">诸侯争霸加剧</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">17. 周釐王 <span class="rc-pinyin">(zhōuxīwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前677年</div>
+  <div class="rc-row"><strong>在位：</strong>前682—前677（5年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">齐桓公开始称霸</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">18. 周惠王 <span class="rc-pinyin">(zhōuhuìwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前652年</div>
+  <div class="rc-row"><strong>在位：</strong>前677—前652（25年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">王子颓之乱</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">19. 周襄王 <span class="rc-pinyin">(zhōuxiāngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前619年</div>
+  <div class="rc-row"><strong>在位：</strong>前652—前619（33年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">晋文公称霸</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">20. 周顷王 <span class="rc-pinyin">(zhōuqǐngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前613年</div>
+  <div class="rc-row"><strong>在位：</strong>前619—前613（6年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">王室财政困难</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">21. 周匡王 <span class="rc-pinyin">(zhōukuāngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前607年</div>
+  <div class="rc-row"><strong>在位：</strong>前613—前607（6年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">楚庄王问鼎中原</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">22. 周定王 <span class="rc-pinyin">(zhōudìngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前586年</div>
+  <div class="rc-row"><strong>在位：</strong>前607—前586（21年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">楚强晋衰</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">23. 周简王 <span class="rc-pinyin">(zhōujiǎnwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前572年</div>
+  <div class="rc-row"><strong>在位：</strong>前586—前572（14年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">弭兵之会</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">24. 周灵王 <span class="rc-pinyin">(zhōulíngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前545年</div>
+  <div class="rc-row"><strong>在位：</strong>前572—前545（27年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">诸侯争霸持续</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">25. 周景王 <span class="rc-pinyin">(zhōujǐngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前520年</div>
+  <div class="rc-row"><strong>在位：</strong>前545—前520（25年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">铸大钱，王子朝之乱</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">26. 周悼王 <span class="rc-pinyin">(zhōudàowáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前520年</div>
+  <div class="rc-row"><strong>在位：</strong>前520—前520（1年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">在位仅数月即去世</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">27. 周敬王 <span class="rc-pinyin">(zhōujìngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前476年</div>
+  <div class="rc-row"><strong>在位：</strong>前520—前476（44年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">吴越争霸，孔子在世</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">28. 周元王 <span class="rc-pinyin">(zhōuyuánwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前469年</div>
+  <div class="rc-row"><strong>在位：</strong>前476—前469（7年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">战国时代开始</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">29. 周贞定王 <span class="rc-pinyin">(zhōuzhēndìngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前441年</div>
+  <div class="rc-row"><strong>在位：</strong>前469—前441（28年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">三家分晋前夜</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">30. 周哀王 <span class="rc-pinyin">(zhōuāiwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前441年</div>
+  <div class="rc-row"><strong>在位：</strong>前441—前441（3个月）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">被弟所杀</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">31. 周思王 <span class="rc-pinyin">(zhōusīwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前441年</div>
+  <div class="rc-row"><strong>在位：</strong>前441—前441（5个月）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">杀兄自立，又被弟所杀</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">32. 周考王 <span class="rc-pinyin">(zhōukǎowáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前426年</div>
+  <div class="rc-row"><strong>在位：</strong>前441—前426（15年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">封弟于河南，建立西周</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">33. 周威烈王 <span class="rc-pinyin">(zhōuwēilièwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前402年</div>
+  <div class="rc-row"><strong>在位：</strong>前426—前402（24年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">三家分晋，正式封侯</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">34. 周安王 <span class="rc-pinyin">(zhōuānwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前376年</div>
+  <div class="rc-row"><strong>在位：</strong>前402—前376（26年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">田氏代齐</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">35. 周烈王 <span class="rc-pinyin">(zhōulièwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前369年</div>
+  <div class="rc-row"><strong>在位：</strong>前376—前369（7年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">诸侯称王</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">36. 周显王 <span class="rc-pinyin">(zhōuxiǎnwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前321年</div>
+  <div class="rc-row"><strong>在位：</strong>前369—前321（48年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">商鞅变法，秦国崛起</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">37. 周慎靓王 <span class="rc-pinyin">(zhōushènliàngwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前315年</div>
+  <div class="rc-row"><strong>在位：</strong>前321—前315（6年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">合纵连横</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">38. 周赧王 <span class="rc-pinyin">(zhōunǎnwáng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — 前256年</div>
+  <div class="rc-row"><strong>在位：</strong>前315—前256（59年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">债台高筑，周朝灭亡</div>
+</div>
+</div>
+  </div>
+  <div class="section page-break" style="display:block">
+    <div class="section-title">⚠️ 周朝重大事件年表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">涉及帝王</th><th style="width:22%">影响等级</th></tr></thead>
+      <tbody><tr><td>前1046</td><td style='text-align:left'>牧野之战，武王灭商</td><td>周武王</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>前1043</td><td style='text-align:left'>周公辅政，制礼作乐</td><td>周成王</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>前1021</td><td style='text-align:left'>成康之治</td><td>周康王</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>前841</td><td style='text-align:left'>国人暴动，共和行政</td><td>周厉王</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>前828</td><td style='text-align:left'>宣王中兴</td><td>周宣王</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>前771</td><td style='text-align:left'>犬戎攻破镐京，西周灭亡</td><td>周幽王</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+<tr><td>前770</td><td style='text-align:left'>平王东迁，东周开始</td><td>周平王</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>前679</td><td style='text-align:left'>齐桓公称霸</td><td>周釐王</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>前453</td><td style='text-align:left'>三家分晋</td><td>周贞定王</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>前403</td><td style='text-align:left'>周威烈王正式封三家为侯</td><td>周威烈王</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>前256</td><td style='text-align:left'>秦灭周，周朝灭亡</td><td>周赧王</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="footer">
+    <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+    <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
+  </div>
+</div>
+</body>
+</html>
