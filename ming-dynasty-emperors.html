@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>明朝历代皇帝可视化报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif; background: #f0f2f5; color: #333; line-height: 1.7; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .header { background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%); color: #fff; padding: 40px 30px; border-radius: 12px; margin-bottom: 24px; text-align: center; }
+  .header h1 { font-size: 32px; margin-bottom: 8px; letter-spacing: 2px; }
+  .header p { font-size: 15px; opacity: 0.9; }
+  .header .meta { font-size: 13px; opacity: 0.75; margin-top: 8px; }
+  .kpi-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .kpi-card { flex: 1; min-width: 160px; background: #fff; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 3px solid #00B050; }
+  .kpi-card .num { font-size: 36px; font-weight: 700; color: #00B050; }
+  .kpi-card .label { font-size: 13px; color: #888; margin-top: 4px; }
+  .kpi-card.warn { border-top-color: #E74C3C; }
+  .kpi-card.warn .num { color: #E74C3C; }
+  .kpi-card.info { border-top-color: #F39C12; }
+  .kpi-card.info .num { color: #F39C12; }
+  .section { background: #fff; border-radius: 10px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .section-title { font-size: 18px; font-weight: 700; color: #00B050; border-left: 4px solid #00B050; padding-left: 12px; margin-bottom: 16px; }
+  .section-subtitle { font-size: 14px; color: #666; margin-bottom: 12px; }
+  .chart-box { width: 100%; }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead { background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%); color: #fff; }
+  th { padding: 12px 10px; text-align: center; font-weight: 600; white-space: nowrap; }
+  td { padding: 10px; text-align: center; border-bottom: 1px solid #eee; }
+  tr:hover { background: #f7fff7; }
+  .emperor-name { font-weight: 600; color: #00B050; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-great { background: #d4edda; color: #155724; }
+  .tag-good { background: #d1ecf1; color: #0c5460; }
+  .tag-mid { background: #fff3cd; color: #856404; }
+  .tag-bad { background: #f8d7da; color: #721c24; }
+  .tag-tragic { background: #e2d6f3; color: #4a148c; }
+  .emperor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  .emperor-card { background: #fafafa; border-radius: 8px; padding: 16px; border-left: 4px solid #00B050; transition: box-shadow 0.2s; }
+  .emperor-card:hover { box-shadow: 0 4px 16px rgba(0,176,80,0.15); }
+  .emperor-card.warn { border-left-color: #E74C3C; }
+  .emperor-card.info { border-left-color: #F39C12; }
+  .emperor-card.purple { border-left-color: #6f42c1; }
+  .ec-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .ec-name { font-size: 16px; font-weight: 700; color: #333; }
+  .ec-era { font-size: 13px; color: #00B050; font-weight: 600; }
+  .ec-row { font-size: 13px; color: #555; margin-bottom: 3px; }
+  .ec-row strong { color: #333; }
+  .ec-highlight { font-size: 12px; color: #888; margin-top: 6px; padding-top: 6px; border-top: 1px dashed #ddd; }
+  .footer { text-align: center; padding: 20px; color: #999; font-size: 13px; }
+  .footer span { color: #00B050; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🐉 明朝历代皇帝可视化报告</h1>
+    <p>1368年 — 1644年 · 共传16帝 · 享国276年</p>
+    <div class="meta">数据可视化 · 🦞 尹燕玲报告分析专家 · 2026年8月14日</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">16</div><div class="label">皇帝总数</div></div>
+    <div class="kpi-card"><div class="num">276</div><div class="label">国祚（年）</div></div>
+    <div class="kpi-card info"><div class="num">42.1</div><div class="label">平均寿命（岁）</div></div>
+    <div class="kpi-card"><div class="num">17.3</div><div class="label">平均在位（年）</div></div>
+    <div class="kpi-card warn"><div class="num">48</div><div class="label">最长在位·万历（年）</div></div>
+    <div class="kpi-card warn"><div class="num">29</div><div class="label">最短在位·泰昌（天）</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📅 皇帝在位时间轴</div>
+    <div class="section-subtitle">按即位顺序排列，色块宽度等比于在位时长</div>
+    <div id="timelineChart" class="chart-box" style="height: 560px;"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📊 在位时长排名</div>
+    <div class="section-subtitle">含实际掌权时间，正统/天顺合并计算</div>
+    <div id="reignChart" class="chart-box" style="height: 500px;"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">💪 皇帝寿命对比</div>
+    <div class="section-subtitle">建文帝下落不明未计入；绿色虚线为平均寿命</div>
+    <div id="lifespanChart" class="chart-box" style="height: 480px;"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🔮 在位时长 × 寿命 散点图</div>
+    <div class="section-subtitle">横轴=在位时长（年），纵轴=寿命（岁），气泡大小=朝代影响力指数</div>
+    <div id="scatterChart" class="chart-box" style="height: 500px;"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📋 明朝十六帝总览表</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>序号</th><th>庙号</th><th>姓名</th><th>年号</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>治理评价</th></tr>
+        </thead>
+        <tbody id="emperorTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">👑 十六帝详情卡片</div>
+    <div class="emperor-grid" id="emperorCards"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🛡️ 明朝治乱分期</div>
+    <div class="section-subtitle">按历史评价划分：治世明君 / 守成之主 / 功过参半 / 怠政误国 / 悲剧帝王</div>
+    <div id="phaseChart" class="chart-box" style="height: 420px;"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">⚠️ 明朝重大事件年表</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>年份</th><th>事件</th><th>涉及皇帝</th><th>影响等级</th></tr></thead>
+        <tbody>
+          <tr><td>1368</td><td>朱元璋称帝，建立明朝，定都南京</td><td>洪武</td><td><span class="tag tag-great">开国</span></td></tr>
+          <tr><td>1399-1402</td><td>靖难之役，朱棣夺位</td><td>建文→永乐</td><td><span class="tag tag-bad">政权更迭</span></td></tr>
+          <tr><td>1405-1433</td><td>郑和七下西洋</td><td>永乐-宣德</td><td><span class="tag tag-good">盛世</span></td></tr>
+          <tr><td>1421</td><td>迁都北京，营建紫禁城</td><td>永乐</td><td><span class="tag tag-great">奠基</span></td></tr>
+          <tr><td>1449</td><td>土木堡之变，英宗被俘</td><td>正统</td><td><span class="tag tag-bad">国耻</span></td></tr>
+          <tr><td>1449</td><td>北京保卫战，于谦力挽狂澜</td><td>景泰</td><td><span class="tag tag-good">救国</span></td></tr>
+          <tr><td>1457</td><td>夺门之变，英宗复辟，杀于谦</td><td>天顺</td><td><span class="tag tag-bad">冤案</span></td></tr>
+          <tr><td>1488-1505</td><td>弘治中兴</td><td>弘治</td><td><span class="tag tag-great">治世</span></td></tr>
+          <tr><td>1521</td><td>大礼议事件，世宗与朝臣对立</td><td>嘉靖</td><td><span class="tag tag-mid">争议</span></td></tr>
+          <tr><td>1567</td><td>隆庆开关，解除海禁</td><td>隆庆</td><td><span class="tag tag-good">开放</span></td></tr>
+          <tr><td>1573-1582</td><td>张居正改革（一条鞭法、考成法）</td><td>万历</td><td><span class="tag tag-great">改革</span></td></tr>
+          <tr><td>1592-1598</td><td>万历三大征（宁夏/朝鲜/播州）</td><td>万历</td><td><span class="tag tag-mid">武功</span></td></tr>
+          <tr><td>1616</td><td>努尔哈赤建立后金</td><td>万历</td><td><span class="tag tag-bad">外患</span></td></tr>
+          <tr><td>1619</td><td>萨尔浒之战，明军惨败</td><td>万历</td><td><span class="tag tag-bad">转折</span></td></tr>
+          <tr><td>1620</td><td>红丸案，光宗即位一月暴毙</td><td>泰昌</td><td><span class="tag tag-tragic">悬案</span></td></tr>
+          <tr><td>1624-1627</td><td>魏忠贤专权，迫害东林党</td><td>天启</td><td><span class="tag tag-bad">乱政</span></td></tr>
+          <tr><td>1644.3.19</td><td>李自成攻入北京，崇祯煤山自缢</td><td>崇祯</td><td><span class="tag tag-bad">亡国</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+    <p>数据来源：明史、维基百科 · 仅供学习参考</p>
+  </div>
+</div>
+
+<script>
+const emperors = [
+  { seq:1, temple:'太祖', name:'朱元璋', era:'洪武', reign:31, start:1368, end:1398, age:71, rating:'great', color:'#00B050', influence:100, desc:'开国皇帝，推翻元朝，强化皇权', detail:'出身贫农，曾为和尚乞丐，参加红巾军起义。废丞相制，颁布《大明律》，设锦衣卫。胡惟庸案、蓝玉案大杀功臣。勤政多疑，晚年大兴文字狱。' },
+  { seq:2, temple:'惠宗', name:'朱允炆', era:'建文', reign:4, start:1399, end:1402, age:null, rating:'tragic', color:'#6f42c1', influence:30, desc:'削藩引发靖难之役，下落不明', detail:'朱标之子，朱元璋之孙。推行建文改制，宽刑省狱。削藩政策引发靖难之役。性情温文儒雅但政治经验不足。南京城破后下落不明。' },
+  { seq:3, temple:'成祖', name:'朱棣', era:'永乐', reign:22, start:1403, end:1424, age:65, rating:'great', color:'#00B050', influence:95, desc:'迁都北京，郑和下西洋，永乐大典', detail:'朱元璋第四子，初封燕王。靖难之役夺位。迁都北京营建紫禁城，五征漠北，郑和七下西洋，编纂《永乐大典》。设东厂。雄才大略但夺位残酷。' },
+  { seq:4, temple:'仁宗', name:'朱高炽', era:'洪熙', reign:0.83, start:1424, end:1425, age:48, rating:'good', color:'#17a2b8', influence:40, desc:'仁厚宽和，开仁宣之治之端', detail:'朱棣长子，体胖多病。平反建文旧臣冤案，停止大规模用兵，修养生息。在位仅十个月猝死，但开仁宣之治之端。' },
+  { seq:5, temple:'宣宗', name:'朱瞻基', era:'宣德', reign:10, start:1426, end:1435, age:37, rating:'great', color:'#00B050', influence:65, desc:'仁宣之治鼎盛，太平天子', detail:'朱高炽长子。仁宣之治达到鼎盛。撤交趾布政司，整顿吏治。亲征平定汉王叛乱。善书画精骑射。设内书堂教宦官读书，为后世宦官专权埋下隐患。' },
+  { seq:6, temple:'英宗', name:'朱祁镇', era:'正统/天顺', reign:22, start:1436, end:1464, age:38, rating:'bad', color:'#E74C3C', influence:45, desc:'土木堡之变被俘，夺门之变复辟', detail:'朱瞻基长子。宠信宦官王振导致土木堡之变被瓦剌俘虏。于谦主导北京保卫战。夺门之变复辟后杀于谦。复位后废除殉葬制度。两度称帝，一生坎坷。' },
+  { seq:7, temple:'代宗', name:'朱祁钰', era:'景泰', reign:8, start:1450, end:1457, age:30, rating:'good', color:'#17a2b8', influence:45, desc:'北京保卫战保住大明江山', detail:'英宗之弟，英宗被俘后临危受命。任用于谦打赢北京保卫战。稳定朝局，治理水患。夺门之变后被废，不久病逝（一说被害），以亲王礼葬。' },
+  { seq:8, temple:'宪宗', name:'朱见深', era:'成化', reign:23, start:1465, end:1487, age:41, rating:'mid', color:'#F39C12', influence:50, desc:'平反于谦，设西厂，宠万贵妃', detail:'英宗长子，幼年因土木堡之变被废太子后复位。平反于谦冤案，恢复叔父帝号。设西厂任用汪直。宠幸万贵妃（大17岁）。皇庄制度开土地兼并之风。口吃内向。' },
+  { seq:9, temple:'孝宗', name:'朱祐樘', era:'弘治', reign:18, start:1488, end:1505, age:36, rating:'great', color:'#00B050', influence:65, desc:'弘治中兴，唯一一夫一妻皇帝', detail:'宪宗第三子，幼年被宫女太监秘密养大避万贵妃迫害，六岁才与父亲相认。弘治中兴，勤政爱民。历史上罕见的一夫一妻皇帝（仅张皇后一人）。仁慈宽厚。' },
+  { seq:10, temple:'武宗', name:'朱厚照', era:'正德', reign:16, start:1506, end:1521, age:31, rating:'bad', color:'#E74C3C', influence:40, desc:'豹房纵乐，叛逆顽劣，但有武勇', detail:'孝宗独子。建豹房纵乐，刘瑾专权。宁王叛乱被王阳明平定。多次私自出巡，自封威武大将军朱寿。应州大捷亲征击败蒙古。叛逆顽劣荒唐任性。南巡落水后病逝。' },
+  { seq:11, temple:'世宗', name:'朱厚熜', era:'嘉靖', reign:45, start:1522, end:1566, age:60, rating:'mid', color:'#F39C12', influence:75, desc:'20年不上朝，修道炼丹，严嵩专权', detail:'武宗堂弟，以大礼议入继大统。前期嘉靖中兴，戚继光抗倭。大礼议事件与朝臣争生父尊号。壬寅宫变宫女谋杀未遂。严嵩专权20年。20余年不上朝躲西苑修道炼丹。服丹药中毒而亡。' },
+  { seq:12, temple:'穆宗', name:'朱载坖', era:'隆庆', reign:6, start:1567, end:1572, age:36, rating:'good', color:'#17a2b8', influence:55, desc:'隆庆开关，俺答封贡', detail:'世宗第三子。隆庆开关解除海禁允许民间海外贸易。俺答封贡与蒙古达成和平。任用高拱、张居正等能臣。性格宽仁，好色纵欲，纵欲过度早逝。' },
+  { seq:13, temple:'神宗', name:'朱翊钧', era:'万历', reign:48, start:1573, end:1620, age:58, rating:'bad', color:'#E74C3C', influence:85, desc:'28年不上朝，萨尔浒惨败，明亡始于此', detail:'穆宗第三子，明朝在位最久。前期万历中兴赖张居正改革（一条鞭法、考成法）。万历三大征（平宁夏、抗倭援朝、平播州）。国本之争与群臣对立，28年不上朝。萨尔浒之战败于后金。明朝衰亡实始于万历。' },
+  { seq:14, temple:'光宗', name:'朱常洛', era:'泰昌', reign:0.08, start:1620, end:1620, age:39, rating:'tragic', color:'#6f42c1', influence:20, desc:'一月天子，红丸案暴毙', detail:'神宗长子，国本之争焦点。当了20年太子。即位后发内帑犒劳边防，罢免矿税。明末三大案：梃击案、红丸案（服红丸暴毙）、移宫案。在位仅29天。命运坎坷。' },
+  { seq:15, temple:'熹宗', name:'朱由校', era:'天启', reign:7, start:1621, end:1627, age:23, rating:'bad', color:'#E74C3C', influence:35, desc:'木匠皇帝，魏忠贤专权', detail:'光宗长子。著名木匠皇帝，沉迷木工手艺精湛，几乎不识字。朝政全交魏忠贤（九千岁），迫害东林党。后金崛起辽东危急。服仙露后病逝。' },
+  { seq:16, temple:'思宗', name:'朱由检', era:'崇祯', reign:17, start:1628, end:1644, age:34, rating:'tragic', color:'#6f42c1', influence:70, desc:'勤政多疑，煤山自缢，以身殉国', detail:'熹宗之弟。铲除魏忠贤，勤政自律，六下罪己诏，生活节俭。但多疑刚愎急躁善变，17年换50个内阁大学士。李自成攻入北京，煤山自缢以身殉国。遗言：任贼分裂朕尸，勿伤百姓一人。' },
+];
+
+const ratingMap = { great:{label:'治世明君',cls:'tag-great'}, good:{label:'守成之主',cls:'tag-good'}, mid:{label:'功过参半',cls:'tag-mid'}, bad:{label:'怠政误国',cls:'tag-bad'}, tragic:{label:'悲剧帝王',cls:'tag-tragic'} };
+
+// Timeline
+const timelineChart = echarts.init(document.getElementById('timelineChart'));
+timelineChart.setOption({
+  tooltip: { formatter: function(p) { const d=p.data.value; return '<b>'+p.data.name+'</b><br/>在位：'+d[1]+'—'+d[2]+'年<br/>时长：'+(d[3]<1?Math.round(d[3]*365)+'天':d[3]+'年'); } },
+  grid: { left: 80, right: 30, top: 10, bottom: 40 },
+  xAxis: { type:'value', min:1365, max:1650, name:'年份', nameLocation:'middle', nameGap:28, axisLabel:{formatter:'{value}'}, splitLine:{show:true,lineStyle:{color:'#f0f0f0'}} },
+  yAxis: { type:'category', data:emperors.map(e=>e.seq+'. '+e.temple), axisLabel:{fontSize:12}, axisTick:{show:false} },
+  series: [{
+    type:'custom',
+    renderItem: function(params, api) {
+      const cat=api.value(0); const start=api.coord([api.value(1),cat]); const end=api.coord([api.value(2),cat]);
+      const h=api.size([0,1])[1]*0.6;
+      return { type:'rect', shape:{x:start[0],y:start[1]-h/2,width:end[0]-start[0],height:h,r:3},
+        style:{ fill:api.visual('color'), text: api.value(3)>=4? api.value(4)+' '+api.value(3)+'年':'', textFill:'#fff', textFont:'11px sans-serif', textPosition:'insideLeft', textPadding:[0,0,0,6] } };
+    },
+    encode:{ x:[1,2], y:0 },
+    data: emperors.map((e,i)=>({ name:e.temple+'·'+e.era, value:[i,e.start,e.end,e.reign,e.era], itemStyle:{color:e.color} }))
+  }],
+  color: emperors.map(e=>e.color)
+});
+
+// Reign Bar
+const reignSorted=[...emperors].sort((a,b)=>b.reign-a.reign);
+const reignChart=echarts.init(document.getElementById('reignChart'));
+reignChart.setOption({
+  tooltip:{ trigger:'axis', axisPointer:{type:'shadow'}, formatter:function(p){ const e=reignSorted[p[0].dataIndex]; return '<b>'+e.temple+'·'+e.era+'</b>（'+e.name+'）<br/>在位：'+(e.reign<1?Math.round(e.reign*365)+'天':e.reign+'年')+'<br/>时间：'+e.start+'—'+e.end; } },
+  grid:{left:130,right:50,top:10,bottom:30},
+  xAxis:{type:'value',name:'在位时长（年）',splitLine:{lineStyle:{color:'#f0f0f0'}}},
+  yAxis:{type:'category',data:reignSorted.map(e=>e.temple+'·'+e.era),axisLabel:{fontSize:12},axisTick:{show:false}},
+  series:[{
+    type:'bar',
+    data:reignSorted.map(e=>({value:e.reign,itemStyle:{color:e.reign>=20?'#00B050':e.reign>=10?'#2BBD6E':e.reign>=4?'#F39C12':'#E74C3C',borderRadius:[0,4,4,0]}})),
+    barWidth:'60%',
+    label:{show:true,position:'right',formatter:function(p){return p.value<1?Math.round(p.value*365)+'天':p.value+'年';},fontSize:12,color:'#555'}
+  }]
+});
+
+// Lifespan
+const lifespanData=emperors.filter(e=>e.age!==null);
+const lifespanSorted=[...lifespanData].sort((a,b)=>b.age-a.age);
+const avgAge=(lifespanData.reduce((s,e)=>s+e.age,0)/lifespanData.length).toFixed(1);
+const lifespanChart=echarts.init(document.getElementById('lifespanChart'));
+lifespanChart.setOption({
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(p){const e=lifespanSorted[p[0].dataIndex];return '<b>'+e.temple+'·'+e.era+'</b>（'+e.name+'）<br/>享年：'+e.age+'岁<br/>在位：'+(e.reign<1?Math.round(e.reign*365)+'天':e.reign+'年');}},
+  grid:{left:130,right:50,top:30,bottom:30},
+  xAxis:{type:'value',name:'享年（岁）',splitLine:{lineStyle:{color:'#f0f0f0'}}},
+  yAxis:{type:'category',data:lifespanSorted.map(e=>e.temple+'·'+e.era),axisLabel:{fontSize:12},axisTick:{show:false}},
+  series:[{
+    type:'bar',
+    data:lifespanSorted.map(e=>({value:e.age,itemStyle:{color:e.age>=60?'#00B050':e.age>=40?'#2BBD6E':e.age>=30?'#F39C12':'#E74C3C',borderRadius:[0,4,4,0]}})),
+    barWidth:'60%',
+    markLine:{data:[{xAxis:parseFloat(avgAge)}],label:{formatter:'平均寿命 '+avgAge+'岁',color:'#00B050',fontSize:12},lineStyle:{color:'#00B050',width:2,type:'dashed'}},
+    label:{show:true,position:'right',formatter:'{c}岁',fontSize:12,color:'#555'}
+  }]
+});
+
+// Scatter
+const scatterChart=echarts.init(document.getElementById('scatterChart'));
+scatterChart.setOption({
+  tooltip:{formatter:function(p){return '<b>'+p.data.name+'</b><br/>在位：'+(p.data.value[0]<1?Math.round(p.data.value[0]*365)+'天':p.data.value[0]+'年')+'<br/>寿命：'+p.data.value[1]+'岁<br/>影响力指数：'+p.data.value[2];}},
+  grid:{left:60,right:40,top:30,bottom:50},
+  xAxis:{type:'value',name:'在位时长（年）',nameLocation:'middle',nameGap:30,splitLine:{lineStyle:{color:'#f0f0f0'}}},
+  yAxis:{type:'value',name:'寿命（岁）',splitLine:{lineStyle:{color:'#f0f0f0'}}},
+  series:[{
+    type:'scatter',
+    data:emperors.filter(e=>e.age!==null).map(e=>({name:e.temple+'·'+e.era,value:[e.reign,e.age,e.influence],itemStyle:{color:e.color},symbolSize:e.influence*0.7+10})),
+    label:{show:true,position:'top',formatter:function(p){return p.data.name;},fontSize:10,color:'#666'},
+    labelLayout:{hideOverlap:true}
+  }]
+});
+
+// Phase Pie
+const phaseChart=echarts.init(document.getElementById('phaseChart'));
+phaseChart.setOption({
+  tooltip:{formatter:function(p){return '<b>'+p.name+'</b><br/>'+p.data.emperors+'<br/>占比：'+p.percent+'%';}},
+  legend:{bottom:10,left:'center',fontSize:13},
+  series:[{
+    type:'pie',radius:['35%','65%'],center:['50%','45%'],
+    itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},
+    label:{formatter:'{b}\n{d}%',fontSize:13},
+    data:[
+      {name:'治世明君',value:4,emperors:'洪武·永乐·宣德·弘治',itemStyle:{color:'#00B050'}},
+      {name:'守成之主',value:3,emperors:'洪熙·景泰·隆庆',itemStyle:{color:'#17a2b8'}},
+      {name:'功过参半',value:2,emperors:'成化·嘉靖',itemStyle:{color:'#F39C12'}},
+      {name:'怠政误国',value:4,emperors:'正统·正德·万历·天启',itemStyle:{color:'#E74C3C'}},
+      {name:'悲剧帝王',value:3,emperors:'建文·泰昌·崇祯',itemStyle:{color:'#6f42c1'}},
+    ]
+  }]
+});
+
+// Table
+const tbody=document.getElementById('emperorTable');
+emperors.forEach(e=>{
+  const r=ratingMap[e.rating];
+  const cardCls = e.rating==='bad'?'warn':e.rating==='mid'?'info':e.rating==='tragic'?'purple':'';
+  const tr=document.createElement('tr');
+  tr.innerHTML='<td>'+e.seq+'</td><td>'+e.temple+'</td><td class="emperor-name">'+e.name+'</td><td>'+e.era+'</td><td>'+(e.reign<1?Math.round(e.reign*365)+'天':e.reign+'年')+'</td><td>'+e.start+'—'+e.end+'</td><td>'+(e.age?e.age+'岁':'不明')+'</td><td><span class="tag '+r.cls+'">'+r.label+'</span></td>';
+  tbody.appendChild(tr);
+});
+
+// Emperor Cards
+const cardContainer=document.getElementById('emperorCards');
+emperors.forEach(e=>{
+  const r=ratingMap[e.rating];
+  const cls=e.rating==='bad'?'warn':e.rating==='mid'?'info':e.rating==='tragic'?'purple':'';
+  const div=document.createElement('div');
+  div.className='emperor-card '+cls;
+  div.innerHTML='<div class="ec-header"><span class="ec-name">'+e.seq+'. '+e.temple+' '+e.name+'</span><span class="ec-era">'+e.era+'</span></div>'+
+    '<div class="ec-row"><strong>在位：</strong>'+e.start+'—'+e.end+'（'+(e.reign<1?Math.round(e.reign*365)+'天':e.reign+'年')+'）</div>'+
+    '<div class="ec-row"><strong>享年：</strong>'+(e.age?e.age+'岁':'下落不明')+'</div>'+
+    '<div class="ec-row"><strong>评价：</strong><span class="tag '+r.cls+'">'+r.label+'</span></div>'+
+    '<div class="ec-highlight">'+e.detail+'</div>';
+  cardContainer.appendChild(div);
+});
+
+// Responsive
+window.addEventListener('resize', function(){
+  [timelineChart,reignChart,lifespanChart,scatterChart,phaseChart].forEach(c=>c.resize());
+});
+</script>
+</body>
+</html>
