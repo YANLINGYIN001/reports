@@ -46,9 +46,6 @@
   .report-item:hover .arrow { color:var(--green); }
   .footer { text-align:center; padding:24px; color:var(--gray-light); font-size:12px; }
   .footer a { color:var(--green); text-decoration:none; }
-  .empty-day { display:flex; align-items:center; gap:16px; padding:16px 20px; border:1px dashed var(--border); border-radius:12px; margin-bottom:12px; opacity:.5; }
-  .empty-day .day-badge { background:var(--gray-light) !important; }
-  .empty-day .report-info h3 { color:var(--gray); }
   @media(max-width:768px) { .summary { grid-template-columns:repeat(2,1fr); } .report-item { flex-direction:column; align-items:flex-start; gap:8px; } .report-stats { flex-wrap:wrap; } }
 </style>
 </head>
@@ -65,17 +62,33 @@
   </div>
 
   <div class="summary">
-    <div class="summary-card"><div class="summary-num">51</div><div class="summary-label">累计反馈总数</div></div>
-    <div class="summary-card"><div class="summary-num orange">8</div><div class="summary-label">覆盖渠道数</div></div>
-    <div class="summary-card"><div class="summary-num blue">29</div><div class="summary-label">问题类型数</div></div>
-    <div class="summary-card"><div class="summary-num red">4</div><div class="summary-label">实质性缺陷</div></div>
+    <div class="summary-card"><div class="summary-num">74</div><div class="summary-label">累计反馈总数</div></div>
+    <div class="summary-card"><div class="summary-num orange">7</div><div class="summary-label">覆盖渠道数</div></div>
+    <div class="summary-card"><div class="summary-num blue">43</div><div class="summary-label">问题类型数</div></div>
+    <div class="summary-card"><div class="summary-num red">7</div><div class="summary-label">实质性缺陷</div></div>
   </div>
 
   <div class="section">
-    <div class="section-title">📅 每日报告</div>
+    <div class="section-title">📅 日报列表</div>
     <div class="report-list">
 
-      <a class="report-item latest" href="t200-new-product-daily-day4.html">
+      <a class="report-item latest" href="t200-new-product-daily-day5.html">
+        <div class="report-left">
+          <div class="day-badge" style="background:linear-gradient(135deg,#00B050,#2BBD6E)"><div class="day-num">5</div><div class="day-text">DAY</div></div>
+          <div class="report-info">
+            <h3>Day 5 · 累计汇总报告</h3>
+            <div class="report-meta"><span>📅 2026.08.14</span><span>周期 8.4-8.14</span></div>
+          </div>
+        </div>
+        <div class="report-stats">
+          <span class="stat-green">74条</span>
+          <span class="stat-orange">+21</span>
+          <span class="stat-new">+抖音渠道</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a class="report-item" href="t200-new-product-daily-day4.html">
         <div class="report-left">
           <div class="day-badge" style="background:linear-gradient(135deg,#00B050,#2BBD6E)"><div class="day-num">4</div><div class="day-text">DAY</div></div>
           <div class="report-info">
@@ -84,8 +97,8 @@
           </div>
         </div>
         <div class="report-stats">
-          <span class="stat-green">51条</span>
-          <span class="stat-orange">+6</span>
+          <span class="stat-green">53条</span>
+          <span class="stat-orange">+8</span>
           <span class="stat-new">+京东缺陷3条</span>
           <span class="arrow">→</span>
         </div>
