@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>唐朝历代帝王可视化报告</title>
+<style>
+@page { size: A4; margin: 12mm; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#333; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.container { max-width:100%; margin:0 auto; padding:0; }
+.header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:24px 20px; border-radius:8px; margin-bottom:16px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:4px; letter-spacing:2px; }
+.header p { font-size:13px; opacity:0.9; }
+.header .meta { font-size:11px; opacity:0.75; margin-top:4px; }
+.kpi-row { display:flex; gap:8px; margin-bottom:16px; }
+.kpi-card { flex:1; background:#fff; border:1px solid #e0e0e0; border-radius:6px; padding:10px 6px; text-align:center; border-top:3px solid #00B050; }
+.kpi-card .num { font-size:22px; font-weight:700; color:#00B050; }
+.kpi-card .label { font-size:10px; color:#888; margin-top:2px; }
+.kpi-card.warn { border-top-color:#E74C3C; } .kpi-card.warn .num { color:#E74C3C; }
+.kpi-card.info { border-top-color:#F39C12; } .kpi-card.info .num { color:#F39C12; }
+.section { margin-bottom:16px; page-break-inside:avoid; }
+.section-title { font-size:15px; font-weight:700; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:10px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:11px; }
+thead { background:#00B050; color:#fff; }
+th { padding:6px 4px; text-align:center; font-weight:600; white-space:nowrap; border:1px solid #009040; }
+td { padding:5px 4px; text-align:center; border:1px solid #ddd; }
+tr:nth-child(even) { background:#f7fff7; }
+.ruler-name { font-weight:600; color:#00B050; }
+.tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600; }
+.tag-great { background:#d4edda; color:#155724; }
+.tag-good { background:#d1ecf1; color:#0c5460; }
+.tag-mid { background:#fff3cd; color:#856404; }
+.tag-bad { background:#f8d7da; color:#721c24; }
+.tag-tragic { background:#e2d6f3; color:#4a148c; }
+.ruler-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.ruler-card { background:#fafafa; border:1px solid #e8e8e8; border-radius:6px; padding:10px; border-left:3px solid #00B050; break-inside:avoid; }
+.ruler-card.warn { border-left-color:#E74C3C; }
+.ruler-card.info { border-left-color:#F39C12; }
+.ruler-card.purple { border-left-color:#6f42c1; }
+.rc-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.rc-name { font-size:13px; font-weight:700; color:#333; }
+.rc-pinyin { font-size:10px; color:#999; font-weight:400; }
+.rc-row { font-size:11px; color:#555; margin-bottom:2px; }
+.rc-row strong { color:#333; }
+.rc-highlight { font-size:10px; color:#777; margin-top:4px; padding-top:4px; border-top:1px dashed #ddd; line-height:1.5; }
+.card-break { page-break-before:always; }
+.page-break { page-break-before:always; }
+.footer { text-align:center; padding:12px; color:#999; font-size:11px; margin-top:8px; }
+.footer span { color:#00B050; font-weight:600; }
+@media screen { body { background:#f0f2f5; } .container { max-width:210mm; margin:20px auto; padding:20px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.1); } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🏮 唐朝历代帝王可视化报告</h1>
+    <p>618—907 AD · 共21位帝王 · 289年</p>
+    <div class="meta">长安/洛阳 · 🦞 尹燕玲报告分析专家 · 2026年8月14日</div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">21</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">289年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">46.1</div><div class="label">平均寿命（岁）</div></div>
+    <div class="kpi-card warn"><div class="num">大唐盛世</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 唐朝帝王总览表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>序号</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>唐高祖</td><td>9年</td><td>618年6月—626年9月</td><td>69</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>唐太宗</td><td>23年</td><td>626年9月—649年7月</td><td>50</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>唐高宗</td><td>34年</td><td>649年7月—683年12月</td><td>55</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>4</td><td class='ruler-name'>唐中宗</td><td>共8年</td><td>684年1月—710年7月</td><td>53</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>5</td><td class='ruler-name'>唐睿宗</td><td>共7年</td><td>684年2月—716年7月</td><td>54</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>6</td><td class='ruler-name'>武则天</td><td>16年（含临朝）</td><td>690年10月—705年2月</td><td>81</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>7</td><td class='ruler-name'>唐玄宗</td><td>44年</td><td>712年9月—756年8月</td><td>77</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>8</td><td class='ruler-name'>唐肃宗</td><td>6年</td><td>756年8月—762年5月</td><td>51</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>9</td><td class='ruler-name'>唐代宗</td><td>17年</td><td>762年5月—779年6月</td><td>52</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>10</td><td class='ruler-name'>唐德宗</td><td>26年</td><td>779年6月—805年2月</td><td>63</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>11</td><td class='ruler-name'>唐顺宗</td><td>1年</td><td>805年2月—805年8月</td><td>45</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>12</td><td class='ruler-name'>唐宪宗</td><td>15年</td><td>805年8月—820年2月</td><td>42</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>13</td><td class='ruler-name'>唐穆宗</td><td>4年</td><td>820年2月—824年2月</td><td>29</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>14</td><td class='ruler-name'>唐敬宗</td><td>3年</td><td>824年2月—827年1月</td><td>17</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>15</td><td class='ruler-name'>唐文宗</td><td>14年</td><td>827年1月—840年2月</td><td>31</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>16</td><td class='ruler-name'>唐武宗</td><td>6年</td><td>840年2月—846年4月</td><td>32</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>17</td><td class='ruler-name'>唐宣宗</td><td>13年</td><td>846年4月—859年9月</td><td>49</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>18</td><td class='ruler-name'>唐懿宗</td><td>14年</td><td>859年9月—873年8月</td><td>40</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>19</td><td class='ruler-name'>唐僖宗</td><td>15年</td><td>873年8月—888年4月</td><td>26</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>20</td><td class='ruler-name'>唐昭宗</td><td>16年</td><td>888年4月—904年9月</td><td>37</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>21</td><td class='ruler-name'>唐哀帝</td><td>3年</td><td>904年9月—907年5月</td><td>15</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="section page-break">
+    <div class="section-title">👑 帝王详情卡片</div>
+    <div class="ruler-grid"><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">1. 唐高祖 <span class="rc-pinyin">(tánggāozǔ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>566年4月7日 — 635年6月25日</div>
+  <div class="rc-row"><strong>在位：</strong>618年6月—626年9月（9年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">李渊，建立唐朝，统一天下</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">2. 唐太宗 <span class="rc-pinyin">(tángtàizōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>599年1月28日 — 649年7月10日</div>
+  <div class="rc-row"><strong>在位：</strong>626年9月—649年7月（23年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">李世民，贞观之治，天可汗</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">3. 唐高宗 <span class="rc-pinyin">(tánggāozōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>628年7月21日 — 683年12月27日</div>
+  <div class="rc-row"><strong>在位：</strong>649年7月—683年12月（34年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">灭百济高句丽，永徽之治</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">4. 唐中宗 <span class="rc-pinyin">(tángzhōngzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>656年11月26日 — 710年7月3日</div>
+  <div class="rc-row"><strong>在位：</strong>684年1月—710年7月（共8年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">两度即位，韦后专权</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">5. 唐睿宗 <span class="rc-pinyin">(tángruìzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>662年6月22日 — 716年7月13日</div>
+  <div class="rc-row"><strong>在位：</strong>684年2月—716年7月（共7年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">两度即位，禅位于玄宗</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">6. 武则天 <span class="rc-pinyin">(wǔzétiān)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>624年2月17日 — 705年12月16日</div>
+  <div class="rc-row"><strong>在位：</strong>690年10月—705年2月（16年（含临朝））</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">唯一女皇帝，武周代唐，政启开元</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">7. 唐玄宗 <span class="rc-pinyin">(tángxuánzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>685年9月8日 — 762年5月3日</div>
+  <div class="rc-row"><strong>在位：</strong>712年9月—756年8月（44年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">开元盛世，安史之乱</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">8. 唐肃宗 <span class="rc-pinyin">(tángsùzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>711年2月21日 — 762年5月16日</div>
+  <div class="rc-row"><strong>在位：</strong>756年8月—762年5月（6年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">平定安史之乱，宦官专权</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">9. 唐代宗 <span class="rc-pinyin">(tángdàizōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>727年1月9日 — 779年6月23日</div>
+  <div class="rc-row"><strong>在位：</strong>762年5月—779年6月（17年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">收复两京，藩镇割据</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">10. 唐德宗 <span class="rc-pinyin">(tángdézōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>742年5月27日 — 805年2月25日</div>
+  <div class="rc-row"><strong>在位：</strong>779年6月—805年2月（26年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">两税法改革，泾原兵变</div>
+</div>
+<div class="card-break"></div><div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">11. 唐顺宗 <span class="rc-pinyin">(tángshùnzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>761年3月12日 — 806年2月11日</div>
+  <div class="rc-row"><strong>在位：</strong>805年2月—805年8月（1年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">永贞革新，被迫禅位</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">12. 唐宪宗 <span class="rc-pinyin">(tángxiànzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>778年3月17日 — 820年2月14日</div>
+  <div class="rc-row"><strong>在位：</strong>805年8月—820年2月（15年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">元和中兴，削平藩镇</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">13. 唐穆宗 <span class="rc-pinyin">(tángmùzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>795年7月15日 — 824年2月25日</div>
+  <div class="rc-row"><strong>在位：</strong>820年2月—824年2月（4年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">荒于朝政，服丹药</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">14. 唐敬宗 <span class="rc-pinyin">(tángjìngzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>809年7月22日 — 827年1月9日</div>
+  <div class="rc-row"><strong>在位：</strong>824年2月—827年1月（3年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">少年天子，被宦官杀</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">15. 唐文宗 <span class="rc-pinyin">(tángwénzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>809年11月20日 — 840年2月10日</div>
+  <div class="rc-row"><strong>在位：</strong>827年1月—840年2月（14年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">甘露之变，被宦官挟制</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">16. 唐武宗 <span class="rc-pinyin">(tángwǔzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>814年7月11日 — 846年4月22日</div>
+  <div class="rc-row"><strong>在位：</strong>840年2月—846年4月（6年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">会昌中兴，会昌灭佛</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">17. 唐宣宗 <span class="rc-pinyin">(tángxuānzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>810年 — 859年9月7日</div>
+  <div class="rc-row"><strong>在位：</strong>846年4月—859年9月（13年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">大中之治，小太宗</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">18. 唐懿宗 <span class="rc-pinyin">(tángyìzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>833年12月28日 — 873年8月15日</div>
+  <div class="rc-row"><strong>在位：</strong>859年9月—873年8月（14年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">奢靡无度，藩镇复起</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">19. 唐僖宗 <span class="rc-pinyin">(tángxīzōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>862年6月8日 — 888年4月20日</div>
+  <div class="rc-row"><strong>在位：</strong>873年8月—888年4月（15年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">黄巢起义，逃奔蜀中</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">20. 唐昭宗 <span class="rc-pinyin">(tángzhāozōng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>867年3月31日 — 904年9月22日</div>
+  <div class="rc-row"><strong>在位：</strong>888年4月—904年9月（16年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">被朱温挟持弑杀</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">21. 唐哀帝 <span class="rc-pinyin">(tángāidì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>892年10月27日 — 908年3月26日</div>
+  <div class="rc-row"><strong>在位：</strong>904年9月—907年5月（3年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">禅位于朱温，唐朝灭亡</div>
+</div>
+</div>
+  </div>
+  <div class="section page-break" style="display:block">
+    <div class="section-title">⚠️ 唐朝重大事件年表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">涉及帝王</th><th style="width:22%">影响等级</th></tr></thead>
+      <tbody><tr><td>618年6月</td><td style='text-align:left'>李渊称帝，建立唐朝</td><td>唐高祖</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>626年9月</td><td style='text-align:left'>玄武门之变，李世民即位</td><td>唐太宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>627年</td><td style='text-align:left'>贞观之治开始</td><td>唐太宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>649年7月</td><td style='text-align:left'>高宗即位，永徽之治</td><td>唐高宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>690年10月</td><td style='text-align:left'>武则天称帝，建立武周</td><td>武则天</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>712年9月</td><td style='text-align:left'>玄宗即位，开元盛世</td><td>唐玄宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>755年12月</td><td style='text-align:left'>安史之乱爆发</td><td>唐玄宗</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>763年</td><td style='text-align:left'>安史之乱平定</td><td>唐代宗</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>805年</td><td style='text-align:left'>永贞革新</td><td>唐顺宗</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>820年</td><td style='text-align:left'>元和中兴</td><td>唐宪宗</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>875年</td><td style='text-align:left'>黄巢起义</td><td>唐僖宗</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>907年5月</td><td style='text-align:left'>朱温代唐，唐朝灭亡</td><td>唐哀帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="footer">
+    <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+    <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
+  </div>
+</div>
+</body>
+</html>
