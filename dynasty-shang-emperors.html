@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>商朝历代帝王可视化报告</title>
+<style>
+@page { size: A4; margin: 12mm; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#333; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.container { max-width:100%; margin:0 auto; padding:0; }
+.header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:24px 20px; border-radius:8px; margin-bottom:16px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:4px; letter-spacing:2px; }
+.header p { font-size:13px; opacity:0.9; }
+.header .meta { font-size:11px; opacity:0.75; margin-top:4px; }
+.kpi-row { display:flex; gap:8px; margin-bottom:16px; }
+.kpi-card { flex:1; background:#fff; border:1px solid #e0e0e0; border-radius:6px; padding:10px 6px; text-align:center; border-top:3px solid #00B050; }
+.kpi-card .num { font-size:22px; font-weight:700; color:#00B050; }
+.kpi-card .label { font-size:10px; color:#888; margin-top:2px; }
+.kpi-card.warn { border-top-color:#E74C3C; } .kpi-card.warn .num { color:#E74C3C; }
+.kpi-card.info { border-top-color:#F39C12; } .kpi-card.info .num { color:#F39C12; }
+.section { margin-bottom:16px; page-break-inside:avoid; }
+.section-title { font-size:15px; font-weight:700; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:10px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:11px; }
+thead { background:#00B050; color:#fff; }
+th { padding:6px 4px; text-align:center; font-weight:600; white-space:nowrap; border:1px solid #009040; }
+td { padding:5px 4px; text-align:center; border:1px solid #ddd; }
+tr:nth-child(even) { background:#f7fff7; }
+.ruler-name { font-weight:600; color:#00B050; }
+.tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600; }
+.tag-great { background:#d4edda; color:#155724; }
+.tag-good { background:#d1ecf1; color:#0c5460; }
+.tag-mid { background:#fff3cd; color:#856404; }
+.tag-bad { background:#f8d7da; color:#721c24; }
+.tag-tragic { background:#e2d6f3; color:#4a148c; }
+.ruler-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.ruler-card { background:#fafafa; border:1px solid #e8e8e8; border-radius:6px; padding:10px; border-left:3px solid #00B050; break-inside:avoid; }
+.ruler-card.warn { border-left-color:#E74C3C; }
+.ruler-card.info { border-left-color:#F39C12; }
+.ruler-card.purple { border-left-color:#6f42c1; }
+.rc-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.rc-name { font-size:13px; font-weight:700; color:#333; }
+.rc-pinyin { font-size:10px; color:#999; font-weight:400; }
+.rc-row { font-size:11px; color:#555; margin-bottom:2px; }
+.rc-row strong { color:#333; }
+.rc-highlight { font-size:10px; color:#777; margin-top:4px; padding-top:4px; border-top:1px dashed #ddd; line-height:1.5; }
+.card-break { page-break-before:always; }
+.page-break { page-break-before:always; }
+.footer { text-align:center; padding:12px; color:#999; font-size:11px; margin-top:8px; }
+.footer span { color:#00B050; font-weight:600; }
+@media screen { body { background:#f0f2f5; } .container { max-width:210mm; margin:20px auto; padding:20px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.1); } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>青铜 商朝历代帝王可视化报告</h1>
+    <p>约1600—1046 BC · 共31位帝王 · 约554年</p>
+    <div class="meta">亳/殷（今河南安阳） · 🦞 尹燕玲报告分析专家 · 2026年8月14日</div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">31</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">约554年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">—</div><div class="label">平均寿命（岁）</div></div>
+    <div class="kpi-card warn"><div class="num">青铜文明鼎盛</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 商朝帝王总览表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>序号</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>汤</td><td>约30年</td><td>约前1600—约前1570</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>太丁</td><td>约3年</td><td>约前1570—约前1567</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>外丙</td><td>约3年</td><td>约前1567—约前1564</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>4</td><td class='ruler-name'>中壬</td><td>约4年</td><td>约前1564—约前1560</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>5</td><td class='ruler-name'>太甲</td><td>约23年</td><td>约前1560—约前1537</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>6</td><td class='ruler-name'>沃丁</td><td>约29年</td><td>约前1537—约前1508</td><td>不明</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>7</td><td class='ruler-name'>太庚</td><td>约25年</td><td>约前1508—约前1483</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>8</td><td class='ruler-name'>小甲</td><td>约17年</td><td>约前1483—约前1466</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>9</td><td class='ruler-name'>雍己</td><td>约12年</td><td>约前1466—约前1454</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>10</td><td class='ruler-name'>太戊</td><td>约75年</td><td>约前1454—约前1379</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>11</td><td class='ruler-name'>中丁</td><td>约11年</td><td>约前1379—约前1368</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>12</td><td class='ruler-name'>外壬</td><td>约15年</td><td>约前1368—约前1353</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>13</td><td class='ruler-name'>河亶甲</td><td>约9年</td><td>约前1353—约前1344</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>14</td><td class='ruler-name'>祖乙</td><td>约19年</td><td>约前1344—约前1325</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>15</td><td class='ruler-name'>祖辛</td><td>约16年</td><td>约前1325—约前1309</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>16</td><td class='ruler-name'>沃甲</td><td>约20年</td><td>约前1309—约前1289</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>17</td><td class='ruler-name'>祖丁</td><td>约32年</td><td>约前1289—约前1257</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>18</td><td class='ruler-name'>南庚</td><td>约29年</td><td>约前1257—约前1228</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>19</td><td class='ruler-name'>阳甲</td><td>约7年</td><td>约前1228—约前1221</td><td>不明</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>20</td><td class='ruler-name'>盘庚</td><td>约28年</td><td>约前1221—约前1193</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>21</td><td class='ruler-name'>小辛</td><td>约3年</td><td>约前1193—约前1190</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>22</td><td class='ruler-name'>小乙</td><td>约10年</td><td>约前1190—约前1180</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>23</td><td class='ruler-name'>武丁</td><td>约59年</td><td>约前1180—约前1121</td><td>不明</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>24</td><td class='ruler-name'>祖庚</td><td>约7年</td><td>约前1121—约前1114</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>25</td><td class='ruler-name'>祖甲</td><td>约33年</td><td>约前1114—约前1081</td><td>不明</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>26</td><td class='ruler-name'>廪辛</td><td>约6年</td><td>约前1081—约前1075</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>27</td><td class='ruler-name'>庚丁</td><td>约21年</td><td>约前1075—约前1054</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>28</td><td class='ruler-name'>武乙</td><td>约35年</td><td>约前1054—约前1019</td><td>不明</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>29</td><td class='ruler-name'>文丁</td><td>约11年</td><td>约前1019—约前1008</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>30</td><td class='ruler-name'>帝乙</td><td>约26年</td><td>约前1008—约前982</td><td>不明</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>31</td><td class='ruler-name'>帝辛</td><td>约33年</td><td>约前1075—约前1046</td><td>不明</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="section page-break">
+    <div class="section-title">👑 帝王详情卡片</div>
+    <div class="ruler-grid"><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">1. 汤 <span class="rc-pinyin">(tāng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1600—约前1570（约30年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">灭夏建商，仁德之君</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">2. 太丁 <span class="rc-pinyin">(tàidīng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1570—约前1567（约3年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">早逝，在位短暂</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">3. 外丙 <span class="rc-pinyin">(wàibǐng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1567—约前1564（约3年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">汤之子，在位短暂</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">4. 中壬 <span class="rc-pinyin">(zhōngrén)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1564—约前1560（约4年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">汤之子，在位短暂</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">5. 太甲 <span class="rc-pinyin">(tàijiǎ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1560—约前1537（约23年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">初被伊尹放逐，后改过自新</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">6. 沃丁 <span class="rc-pinyin">(wòdīng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1537—约前1508（约29年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">遵伊尹之政，国泰民安</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">7. 太庚 <span class="rc-pinyin">(tàigēng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1508—约前1483（约25年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">守成之主</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">8. 小甲 <span class="rc-pinyin">(xiǎojiǎ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1483—约前1466（约17年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">商朝平稳期</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">9. 雍己 <span class="rc-pinyin">(yōngjǐ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1466—约前1454（约12年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">商朝开始衰微</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">10. 太戊 <span class="rc-pinyin">(tàiwù)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1454—约前1379（约75年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">任用伊陟，商朝复兴</div>
+</div>
+<div class="card-break"></div><div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">11. 中丁 <span class="rc-pinyin">(zhōngdīng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1379—约前1368（约11年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">迁都于隞，九世之乱开始</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">12. 外壬 <span class="rc-pinyin">(wàirén)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1368—约前1353（约15年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">九世之乱持续</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">13. 河亶甲 <span class="rc-pinyin">(hédǎnjiǎ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1353—约前1344（约9年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">迁都于相，商朝衰弱</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">14. 祖乙 <span class="rc-pinyin">(zǔyǐ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1344—约前1325（约19年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">迁都于邢，任用巫贤，商朝复兴</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">15. 祖辛 <span class="rc-pinyin">(zǔxīn)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1325—约前1309（约16年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">守成之主</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">16. 沃甲 <span class="rc-pinyin">(wòjiǎ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1309—约前1289（约20年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">商朝平稳</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">17. 祖丁 <span class="rc-pinyin">(zǔdīng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1289—约前1257（约32年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">商朝平稳</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">18. 南庚 <span class="rc-pinyin">(nángēng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1257—约前1228（约29年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">迁都于奄</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">19. 阳甲 <span class="rc-pinyin">(yángjiǎ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1228—约前1221（约7年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">商朝衰微，诸侯不朝</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">20. 盘庚 <span class="rc-pinyin">(pángēng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1221—约前1193（约28年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">迁都于殷，商朝复兴</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">21. 小辛 <span class="rc-pinyin">(xiǎoxīn)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1193—约前1190（约3年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">商朝再度衰弱</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">22. 小乙 <span class="rc-pinyin">(xiǎoyǐ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1190—约前1180（约10年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">为武丁培养接班人</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">23. 武丁 <span class="rc-pinyin">(wǔdīng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1180—约前1121（约59年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">武丁中兴，商朝最强盛时期</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">24. 祖庚 <span class="rc-pinyin">(zǔgēng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1121—约前1114（约7年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">守成之主</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">25. 祖甲 <span class="rc-pinyin">(zǔjiǎ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1114—约前1081（约33年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">改革制度，修订历法</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">26. 廪辛 <span class="rc-pinyin">(lǐnxīn)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1081—约前1075（约6年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">商朝开始衰落</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">27. 庚丁 <span class="rc-pinyin">(gēngdīng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1075—约前1054（约21年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">商朝继续衰落</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">28. 武乙 <span class="rc-pinyin">(wǔyǐ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1054—约前1019（约35年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">射天辱神，被雷震死</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">29. 文丁 <span class="rc-pinyin">(wéndīng)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1019—约前1008（约11年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">杀周季历，商周结怨</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">30. 帝乙 <span class="rc-pinyin">(dìyǐ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1008—约前982（约26年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">东夷叛乱，商朝衰落</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">31. 帝辛 <span class="rc-pinyin">(dìxīn)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong> — </div>
+  <div class="rc-row"><strong>在位：</strong>约前1075—约前1046（约33年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">即纣王，暴君，被周武王所灭</div>
+</div>
+</div>
+  </div>
+  <div class="section page-break" style="display:block">
+    <div class="section-title">⚠️ 商朝重大事件年表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">涉及帝王</th><th style="width:22%">影响等级</th></tr></thead>
+      <tbody><tr><td>约前1600</td><td style='text-align:left'>商汤灭夏，建立商朝</td><td>汤</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>约前1560</td><td style='text-align:left'>伊尹放逐太甲又迎回</td><td>太甲</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>约前1454</td><td style='text-align:left'>太戊复兴商朝</td><td>太戊</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>约前1344</td><td style='text-align:left'>祖乙迁都复兴</td><td>祖乙</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>约前1221</td><td style='text-align:left'>盘庚迁殷，商朝稳定</td><td>盘庚</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>约前1180</td><td style='text-align:left'>武丁中兴，商朝鼎盛</td><td>武丁</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>约前1046</td><td style='text-align:left'>牧野之战，商朝灭亡</td><td>帝辛</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="footer">
+    <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+    <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
+  </div>
+</div>
+</body>
+</html>
