@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200新品跟踪反馈报告 | Day 5</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:30px; margin-bottom:24px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .subtitle { font-size:14px; opacity:0.9; }
+.header .date-range { font-size:13px; opacity:0.8; margin-top:6px; }
+.summary-box { background:#fff; border-radius:12px; padding:16px 24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); border-left:4px solid #00B050; }
+.summary-box p { font-size:15px; color:#333; line-height:1.8; }
+.summary-box strong { color:#00B050; }
+
+/* Day comparison */
+.day-compare { display:flex; gap:16px; margin-bottom:20px; align-items:stretch; }
+.day-card { flex:1; background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); text-align:center; }
+.day-card .day-label { font-size:13px; color:#999; margin-bottom:8px; }
+.day-card .day-num { font-size:28px; font-weight:700; }
+.day-card .day-total { font-size:36px; font-weight:700; color:#333; }
+.day-card .day-sub { font-size:12px; color:#999; margin-top:4px; }
+.day-card.prev .day-num { color:#999; }
+.day-card.curr { border:2px solid #00B050; }
+.day-card.curr .day-num { color:#00B050; }
+.day-card.curr .day-total { color:#00B050; }
+.day-arrow { display:flex; align-items:center; font-size:24px; color:#00B050; font-weight:700; }
+.day-delta { background:#E8F8EE; color:#00B050; padding:4px 12px; border-radius:8px; font-size:13px; font-weight:600; margin-top:6px; display:inline-block; }
+
+/* KPI */
+.kpi-row { display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap; }
+.kpi-card { flex:1; min-width:200px; background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-value { font-size:32px; font-weight:700; color:#00B050; }
+.kpi-label { font-size:13px; color:#666; margin-top:4px; }
+.kpi-sub { font-size:12px; color:#999; margin-top:2px; }
+.kpi-sub .delta { color:#00B050; font-weight:600; }
+
+/* Sections */
+.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
+
+/* Insights */
+.insight-box { border-radius:10px; padding:16px; margin-bottom:12px; }
+.insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
+.insight-orange { background:#fff3e0; border-left:4px solid #F39C12; }
+.insight-blue { background:#e3f2fd; border-left:4px solid #2196F3; }
+.insight-box p { font-size:14px; line-height:1.8; }
+.insight-box strong { color:#00B050; }
+.insight-orange strong { color:#F39C12; }
+.insight-blue strong { color:#2196F3; }
+
+/* Channel tags */
+.channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
+.channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
+.chart-container { width:100%; height:280px; }
+
+/* Category cards */
+.cat-cards { display:flex; flex-wrap:wrap; gap:12px; }
+.cat-card { flex:1; min-width:110px; border-radius:10px; padding:16px; text-align:center; color:#fff; }
+.cat-card .cat-name { font-size:13px; margin-top:4px; }
+.cat-card .cat-count { font-size:24px; font-weight:700; }
+
+/* Table */
+.detail-table { width:100%; border-collapse:collapse; font-size:13px; margin-top:12px; }
+.detail-table th { background:#f8f9fa; padding:10px 12px; text-align:left; font-weight:600; color:#666; border-bottom:2px solid #eaeaea; font-size:12px; }
+.detail-table td { padding:10px 12px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+.detail-table .cat-cell { font-weight:600; text-align:center; white-space:nowrap; }
+.detail-table tr:hover td { background:#f8fff8; }
+
+/* Pie + bar row */
+.charts-row { display:flex; gap:20px; flex-wrap:wrap; }
+.chart-box { flex:1; min-width:300px; }
+.chart-box h4 { font-size:14px; color:#666; margin-bottom:8px; }
+
+@media(max-width:768px) {
+  .kpi-row { flex-direction:column; }
+  .day-compare { flex-direction:column; }
+  .day-arrow { transform:rotate(90deg); justify-content:center; }
+  .charts-row { flex-direction:column; }
+  .container { padding:12px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>T200 4G记录仪 · 新品跟踪反馈报告 Day 5</h1>
+    <div class="subtitle">各渠道客服反馈累计汇总 · 数据周期 2026.08.04 - 2026.08.14</div>
+    <div class="date-range">数据来源：飞书表格「用户反馈问题汇总」 | 更新时间：2026-08-14 18:00</div>
+  </div>
+
+  <!-- 今日概览 -->
+  <div class="summary-box">
+    <p>📌 <strong>今日概览：</strong>新增<strong>8条</strong>反馈（累计74条），有赞渠道贡献7条，以"是否包安装"和"降压线/镜头调节"咨询为主，安装相关占比维持在39%高位。抖音渠道首次出现实质性多问题复合咨询（亏电+远程下载+卡录时长），京东自营8/13新增3条实质性缺陷（熄火不通电/外观瑕疵/门店安装问题），建议持续跟进线下安装服务能力与产品质量稳定性。</p>
+  </div>
+
+  <!-- Day 对比卡片 -->
+  <div class="day-compare">
+    <div class="day-card prev">
+      <div class="day-label">Day 4 · 8.13</div>
+      <div class="day-total">53</div>
+      <div class="day-sub">累计反馈条数</div>
+    </div>
+    <div class="day-arrow">→</div>
+    <div class="day-card curr">
+      <div class="day-label">Day 5 · 8.14</div>
+      <div class="day-total">74</div>
+      <div class="day-sub">累计反馈条数</div>
+      <div class="day-delta">+21 条</div>
+    </div>
+  </div>
+
+  <!-- KPI 卡片 -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-value">74</div>
+      <div class="kpi-label">反馈问题总数</div>
+      <div class="kpi-sub"><span class="delta">+21</span> 较上期</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">7</div>
+      <div class="kpi-label">覆盖渠道数</div>
+      <div class="kpi-sub"><span class="delta">+1</span> 较上期</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">43</div>
+      <div class="kpi-label">问题类型数</div>
+      <div class="kpi-sub"><span class="delta">+11</span> 较上期</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" style="color:#E74C3C;">7</div>
+      <div class="kpi-label">实质性缺陷数</div>
+      <div class="kpi-sub"><span style="color:#E74C3C;font-weight:600;">+3</span> 较上期</div>
+    </div>
+  </div>
+
+  <!-- 核心洞察 -->
+  <div class="section">
+    <div class="section-title">核心洞察</div>
+    <div class="insight-box insight-green">
+      <p><strong>安装咨询持续爆发：</strong>安装相关问题累计29条占比39%，"是否包安装"单类12条为最高频问题。8/14新增8条中4条涉及安装，用户对安装服务的关注远超其他维度，建议在商详页显著位置明确安装政策。</p>
+    </div>
+    <div class="insight-box insight-orange">
+      <p><strong>京东自营缺陷集中爆发：</strong>8/12-8/13京东自营连续出现7条实质性缺陷（降压线安装错误/门店不会装/熄火不通电/外观瑕疵/下载慢等），占全部缺陷的100%。门店安装能力不足是核心痛点，已导致1起退货，建议紧急联动京东养车线下培训。</p>
+    </div>
+    <div class="insight-box insight-blue">
+      <p><strong>抖音渠道首次出现多问题复合咨询：</strong>1条咨询涵盖亏电、远程下载、卡录时长、后录、差异化卖点5个维度，反映抖音用户决策链路更复杂，商详页/直播间需补充对比说明。</p>
+    </div>
+  </div>
+
+  <!-- 渠道反馈分布 -->
+  <div class="section">
+    <div class="section-title">渠道反馈分布</div>
+    <div class="channel-tags">
+<span class="channel-tag" style="">有赞<span class="count">37</span></span>
+<span class="channel-tag" style="">京东自营<span class="count">19</span></span>
+<span class="channel-tag" style="">天猫官旗<span class="count">5</span></span>
+<span class="channel-tag" style="">小红书<span class="count">4</span></span>
+<span class="channel-tag" style="">天猫车品<span class="count">4</span></span>
+<span class="channel-tag" style="">天猫车旗<span class="count">1</span></span>
+<span class="channel-tag" style="border:2px dashed #F39C12;">抖音 🆕<span class="count">1</span></span>
+
+    </div>
+    <div class="chart-container" id="chart-channel"></div>
+  </div>
+
+  <!-- 问题主题分类 -->
+  <div class="section">
+    <div class="section-title">问题主题分类</div>
+    <div class="charts-row">
+      <div class="chart-box">
+        <div class="cat-cards">
+          <div class="cat-card" style="background:#00B050;"><div class="cat-count">29</div><div class="cat-name">🔧 安装相关</div></div>
+          <div class="cat-card" style="background:#FF9800;"><div class="cat-count">15</div><div class="cat-name">💡 功能咨询</div></div>
+          <div class="cat-card" style="background:#3498DB;"><div class="cat-count">10</div><div class="cat-name">🔋 供电/电池</div></div>
+          <div class="cat-card" style="background:#9C27B0;"><div class="cat-count">9</div><div class="cat-name">🅿️ 停车/监控</div></div>
+          <div class="cat-card" style="background:#E74C3C;"><div class="cat-count">8</div><div class="cat-name">💰 费用/套餐</div></div>
+        </div>
+      </div>
+      <div class="chart-box">
+        <h4>分类占比</h4>
+        <div class="chart-container" id="chart-pie" style="height:240px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 今日新增分类反馈明细 -->
+  <div class="section">
+    <div class="section-title">今日新增分类反馈明细（8/14 新增 8 条）</div>
+    <table class="detail-table">
+      <thead>
+        <tr>
+          <th>问题大类</th>
+          <th>渠道</th>
+          <th>日期</th>
+          <th>问题类型</th>
+          <th>用户问题</th>
+          <th>客服解决方案</th>
+        </tr>
+      </thead>
+      <tbody>
+
+            <tr>
+              <td class="cat-cell" style="background:#E8F8EE;color:#00B050;" rowspan="4">🔧 安装相关<br><span style="font-size:11px;">(29条累计)</span></td>
+              <td style="background:#FFFDE7;">天猫车品</td>
+              <td style="background:#FFFDE7;">2026-08-14</td>
+              <td style="background:#FFFDE7;">镜头调节咨询</td>
+              <td style="background:#FFFDE7;">T200的是跟K380的一样可以360度调节的吗</td>
+              <td style="background:#FFFDE7;">t200与k380一样都是无屏幕款的 但可调节角度为45度 不是360度可旋转的哦</td>
+            </tr>
+            <tr>
+              <td style="background:#FFFDE7;">有赞</td>
+              <td style="background:#FFFDE7;">2026-08-14</td>
+              <td style="background:#FFFDE7;"><span style="color:#999;">未分类</span></td>
+              <td style="background:#FFFDE7;">包安装么</td>
+              <td style="background:#FFFDE7;">下单T200记录仪，自行安装后可以提供支付凭证，原订单退差40元哦</td>
+            </tr>
+            <tr>
+              <td style="background:#FFFDE7;">有赞</td>
+              <td style="background:#FFFDE7;">2026-08-14</td>
+              <td style="background:#FFFDE7;"><span style="color:#999;">未分类</span></td>
+              <td style="background:#FFFDE7;">这个包安装吗</td>
+              <td style="background:#FFFDE7;">下单T200记录仪，自行安装后可以提供支付凭证，原订单退差40元哦</td>
+            </tr>
+            <tr>
+              <td style="background:#FFFDE7;">有赞</td>
+              <td style="background:#FFFDE7;">2026-08-14</td>
+              <td style="background:#FFFDE7;"><span style="color:#999;">未分类</span></td>
+              <td style="background:#FFFDE7;">能转吗？360度</td>
+              <td style="background:#FFFDE7;">不能360°旋转哦，但是支架可以微调的</td>
+            </tr>
+            <tr>
+              <td class="cat-cell" style="background:#E3F2FD;color:#3498DB;" rowspan="2">🔋 供电/电池<br><span style="font-size:11px;">(10条累计)</span></td>
+              <td style="background:#FFFDE7;">有赞</td>
+              <td style="background:#FFFDE7;">2026-08-14</td>
+              <td style="background:#FFFDE7;"><span style="color:#999;">未分类</span></td>
+              <td style="background:#FFFDE7;">降压线么</td>
+              <td style="background:#FFFDE7;">设备标配降压线的</td>
+            </tr>
+            <tr>
+              <td style="background:#FFFDE7;">有赞</td>
+              <td style="background:#FFFDE7;">2026-08-14</td>
+              <td style="background:#FFFDE7;"><span style="color:#999;">未分类</span></td>
+              <td style="background:#FFFDE7;">要买降压线？</td>
+              <td style="background:#FFFDE7;">t200设备是自带降压线的</td>
+            </tr>
+            <tr>
+              <td class="cat-cell" style="background:#FFF3E0;color:#FF9800;" rowspan="1">💡 功能咨询<br><span style="font-size:11px;">(15条累计)</span></td>
+              <td style="background:#FFFDE7;">有赞</td>
+              <td style="background:#FFFDE7;">2026-08-14</td>
+              <td style="background:#FFFDE7;"><span style="color:#999;">未分类</span></td>
+              <td style="background:#FFFDE7;">你们最新的行车记录仪有什么新功能？</td>
+              <td style="background:#FFFDE7;">【360 T200 4G免流量哨兵记录仪】<br>✦4G远程看车，24小时智能守护，给爱车多一份安全保障<br>✦ 4G远程在线：手机随时查看车辆状态，远程掌握爱车动态<br>✦ 智能提醒：异常情况主动推送，车辆动态尽在掌握<br>✦ 远程回看：随时查看历史视频，出行停车更放心</td>
+            </tr>
+            <tr>
+              <td class="cat-cell" style="background:#FDEDEC;color:#E74C3C;" rowspan="1">💰 费用/套餐<br><span style="font-size:11px;">(8条累计)</span></td>
+              <td style="background:#FFFDE7;">有赞</td>
+              <td style="background:#FFFDE7;">2026-08-14</td>
+              <td style="background:#FFFDE7;"><span style="color:#999;">未分类</span></td>
+              <td style="background:#FFFDE7;">你这是联通还是移动啊？还是电信4G</td>
+              <td style="background:#FFFDE7;">电信的</td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="text-align:center;padding:24px;color:#999;font-size:12px;">
+    <p>T200 4G记录仪新品跟踪日报 · Day 5 | 由尹燕玲-报告分析专家自动生成 🦞</p>
+    <p>每工作日 18:00 自动读取飞书最新数据并生成日报</p>
+  </div>
+</div>
+
+<script>
+// Channel bar chart
+var chChart = echarts.init(document.getElementById('chart-channel'));
+chChart.setOption({
+  tooltip: { trigger:'axis', axisPointer:{type:'shadow'} },
+  grid: { left:'3%', right:'4%', bottom:'3%', top:'10px', containLabel:true },
+  xAxis: { type:'category', data:["有赞", "京东自营", "天猫官旗", "小红书", "天猫车品", "天猫车旗", "抖音"], axisLabel:{rotate:30, fontSize:12} },
+  yAxis: { type:'value' },
+  series: [{
+    type:'bar',
+    data:[37, 19, 5, 4, 4, 1, 1],
+    itemStyle:{ color:'#00B050', borderRadius:[4,4,0,0] },
+    barWidth:'50%',
+    label:{ show:true, position:'top', fontSize:12 }
+  }]
+});
+
+// Pie chart
+var pieChart = echarts.init(document.getElementById('chart-pie'));
+pieChart.setOption({
+  tooltip: { trigger:'item', formatter:'{b}: {c}条 ({d}%)' },
+  legend: { bottom:0, fontSize:11 },
+  series: [{
+    type:'pie',
+    radius:['35%','65%'],
+    center:['50%','45%'],
+    data:[{"name": "安装相关", "value": 29}, {"name": "供电/电池", "value": 10}, {"name": "停车/监控", "value": 9}, {"name": "功能咨询", "value": 15}, {"name": "费用/套餐", "value": 8}],
+    color:["#00B050", "#3498DB", "#9C27B0", "#FF9800", "#E74C3C"],
+    label:{ formatter:'{b}\n{c}条', fontSize:11 },
+    itemStyle:{ borderColor:'#fff', borderWidth:2 }
+  }]
+});
+
+// Responsive
+window.addEventListener('resize', function() {
+  chChart.resize();
+  pieChart.resize();
+});
+</script>
+</body>
+</html>
