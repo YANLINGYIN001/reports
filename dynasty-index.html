@@ -15,6 +15,7 @@ body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#f0f2f
 .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; }
 .card { background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:16px; text-decoration:none; color:#333; transition:all 0.2s; border-top:3px solid #00B050; }
 .card:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,176,80,0.15); border-color:#2BBD6E; }
+.card.highlight { background:linear-gradient(135deg,#f0fff4,#e8f5e9); border-top:3px solid #00B050; border:2px solid #00B050; }
 .card .emoji { font-size:24px; margin-bottom:6px; }
 .card .name { font-size:16px; font-weight:700; color:#00B050; margin-bottom:2px; }
 .card .period { font-size:11px; color:#888; }
@@ -27,7 +28,7 @@ body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#f0f2f
 <div class="container">
   <div class="header">
     <h1>🏛️ 中国历代帝王可视化报告</h1>
-    <p>从夏朝到清朝 · 16个朝代 · 300+位帝王</p>
+    <p>从夏朝到清朝 · 17个朝代 · 287位帝王</p>
     <div class="meta">🦞 尹燕玲报告分析专家 · 2026年8月14日</div>
   </div>
   <div class="grid">
@@ -126,6 +127,18 @@ body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#f0f2f
       <div class="name">清朝</div>
       <div class="period">1636—1912 AD</div>
       <div class="info">12位帝王 · 276年</div>
+    </a>
+    <a class="card" href="https://yanlingyin001.github.io/reports/ming-dynasty-emperors.html" target="_blank">
+      <div class="emoji">🐉</div>
+      <div class="name">明朝</div>
+      <div class="period">1368—1644 AD</div>
+      <div class="info">16位帝王 · 276年</div>
+    </a>
+    <a class="card highlight" href="https://yanlingyin001.github.io/reports/dynasty-all-emperors.html" target="_blank">
+      <div class="emoji">📋</div>
+      <div class="name">全17朝代合并版（打印）</div>
+      <div class="period">夏朝→清朝</div>
+      <div class="info">287位帝王 · 约3900年</div>
     </a>
   </div>
   <div class="footer">
