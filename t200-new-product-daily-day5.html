@@ -26,16 +26,18 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 .section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
 .section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
 .section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
-.insight-box { border-radius:10px; padding:16px; margin-bottom:12px; }
+.insight-box { border-radius:10px; padding:20px 24px; margin-bottom:16px; }
 .insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
 .insight-orange { background:#fff3e0; border-left:4px solid #F39C12; }
 .insight-red { background:#fce4ec; border-left:4px solid #E74C3C; }
 .insight-blue { background:#e3f2fd; border-left:4px solid #2196F3; }
-.insight-box p { font-size:14px; line-height:1.8; }
+.insight-box p { font-size:14px; line-height:2; margin-bottom:8px; }
+.insight-box p:last-child { margin-bottom:0; }
 .insight-box strong { color:#00B050; }
 .insight-orange strong { color:#F39C12; }
 .insight-red strong { color:#E74C3C; }
 .insight-blue strong { color:#2196F3; }
+.insight-box .insight-detail { font-size:13px; color:#555; line-height:1.9; display:block; margin-top:6px; padding-left:0; }
 .channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
 .channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
 .channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
@@ -118,16 +120,23 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 <div class="section">
   <div class="section-title">核心洞察</div>
   <div class="insight-red">
-    <p><strong>京东自营渠道单日爆发12条反馈，含2条新增实质性缺陷</strong>：8/14京东自营集中出现12条反馈，其中"熄火后记录仪不通电"（降压线接线问题）和"外观瑕疵"（公模壳体卡扣合盖问题）为新增实质性缺陷。"门店降压线安装问题"再增1起投诉（累计2起），用户情绪激烈（"就三条线都整不明白"）。京东自营占比从13%升至26%，线下安装服务能力仍是最大短板。</p>
+    <p><strong>京东自营渠道单日爆发12条反馈，含2条新增实质性缺陷</strong></p>
+    <span class="insight-detail">8/14京东自营集中出现12条反馈，其中"熄火后记录仪不通电"（降压线接线问题）和"外观瑕疵"（公模壳体卡扣合盖问题）为新增实质性缺陷。"门店降压线安装问题"再增1起投诉（累计2起），用户情绪激烈（"就三条线都整不明白"）。京东自营占比从13%升至26%，线下安装服务能力仍是最大短板。</span>
   </div>
+
   <div class="insight-orange">
-    <p><strong>前后双录/全景需求累计4条，为最高频功能诉求</strong>：来自京东23单汇总、抖音汇总、京东自营、抖音4个渠道，用户明确表达对前后双录或360全景的期望。当前产品仅单摄，无硬件方案，建议关注对购买转化的影响。</p>
+    <p><strong>前后双录/全景需求累计4条，为最高频功能诉求</strong></p>
+    <span class="insight-detail">来自京东23单汇总、抖音汇总、京东自营、抖音4个渠道，用户明确表达对前后双录或360全景的期望。当前产品仅单摄，无硬件方案，建议关注对购买转化的影响。</span>
   </div>
+
   <div class="insight-blue">
-    <p><strong>抖音渠道首次出现单独反馈</strong>：8/14抖音新增1条复合咨询，涵盖亏电、远程下载、卡录时长、后录、差异化卖点5个维度，反映出抖音渠道用户关注点更多元，对产品差异化的信息需求更强。</p>
+    <p><strong>抖音渠道首次出现单独反馈</strong></p>
+    <span class="insight-detail">8/14抖音新增1条复合咨询，涵盖亏电、远程下载、卡录时长、后录、差异化卖点5个维度，反映出抖音渠道用户关注点更多元，对产品差异化的信息需求更强。</span>
   </div>
+
   <div class="insight-green">
-    <p><strong>云录续费咨询累计3条，用户预期与实际存在落差</strong>：用户多次询问"云存储是否终身免费"，实际仅赠送1个月。未续费影响范围较大（不支持远程查看卡录视频、不支持查看行驶轨迹），建议优化商详页说明及续费引导话术。</p>
+    <p><strong>云录续费咨询累计3条，用户预期与实际存在落差</strong></p>
+    <span class="insight-detail">用户多次询问"云存储是否终身免费"，实际仅赠送1个月。未续费影响范围较大（不支持远程查看卡录视频、不支持查看行驶轨迹），建议优化商详页说明及续费引导话术。</span>
   </div>
 </div>
 
