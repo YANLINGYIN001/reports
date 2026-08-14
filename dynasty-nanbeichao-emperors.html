@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>南北朝历代帝王可视化报告</title>
+<style>
+@page { size: A4; margin: 12mm; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#fff; color:#333; line-height:1.6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.container { max-width:100%; margin:0 auto; padding:0; }
+.header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; padding:24px 20px; border-radius:8px; margin-bottom:16px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:4px; letter-spacing:2px; }
+.header p { font-size:13px; opacity:0.9; }
+.header .meta { font-size:11px; opacity:0.75; margin-top:4px; }
+.kpi-row { display:flex; gap:8px; margin-bottom:16px; }
+.kpi-card { flex:1; background:#fff; border:1px solid #e0e0e0; border-radius:6px; padding:10px 6px; text-align:center; border-top:3px solid #00B050; }
+.kpi-card .num { font-size:22px; font-weight:700; color:#00B050; }
+.kpi-card .label { font-size:10px; color:#888; margin-top:2px; }
+.kpi-card.warn { border-top-color:#E74C3C; } .kpi-card.warn .num { color:#E74C3C; }
+.kpi-card.info { border-top-color:#F39C12; } .kpi-card.info .num { color:#F39C12; }
+.section { margin-bottom:16px; page-break-inside:avoid; }
+.section-title { font-size:15px; font-weight:700; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:10px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:11px; }
+thead { background:#00B050; color:#fff; }
+th { padding:6px 4px; text-align:center; font-weight:600; white-space:nowrap; border:1px solid #009040; }
+td { padding:5px 4px; text-align:center; border:1px solid #ddd; }
+tr:nth-child(even) { background:#f7fff7; }
+.ruler-name { font-weight:600; color:#00B050; }
+.tag { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; font-weight:600; }
+.tag-great { background:#d4edda; color:#155724; }
+.tag-good { background:#d1ecf1; color:#0c5460; }
+.tag-mid { background:#fff3cd; color:#856404; }
+.tag-bad { background:#f8d7da; color:#721c24; }
+.tag-tragic { background:#e2d6f3; color:#4a148c; }
+.ruler-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.ruler-card { background:#fafafa; border:1px solid #e8e8e8; border-radius:6px; padding:10px; border-left:3px solid #00B050; break-inside:avoid; }
+.ruler-card.warn { border-left-color:#E74C3C; }
+.ruler-card.info { border-left-color:#F39C12; }
+.ruler-card.purple { border-left-color:#6f42c1; }
+.rc-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+.rc-name { font-size:13px; font-weight:700; color:#333; }
+.rc-pinyin { font-size:10px; color:#999; font-weight:400; }
+.rc-row { font-size:11px; color:#555; margin-bottom:2px; }
+.rc-row strong { color:#333; }
+.rc-highlight { font-size:10px; color:#777; margin-top:4px; padding-top:4px; border-top:1px dashed #ddd; line-height:1.5; }
+.card-break { page-break-before:always; }
+.page-break { page-break-before:always; }
+.footer { text-align:center; padding:12px; color:#999; font-size:11px; margin-top:8px; }
+.footer span { color:#00B050; font-weight:600; }
+@media screen { body { background:#f0f2f5; } .container { max-width:210mm; margin:20px auto; padding:20px; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,0.1); } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🏯 南北朝历代帝王可视化报告</h1>
+    <p>420—589 AD · 共29位帝王 · 169年</p>
+    <div class="meta">建康/平城/洛阳/邺 · 🦞 尹燕玲报告分析专家 · 2026年8月14日</div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">29</div><div class="label">帝王总数</div></div>
+    <div class="kpi-card"><div class="num">169年</div><div class="label">国祚</div></div>
+    <div class="kpi-card info"><div class="num">37.9</div><div class="label">平均寿命（岁）</div></div>
+    <div class="kpi-card warn"><div class="num">民族大融合</div><div class="label">特点</div></div>
+  </div>
+  <div class="section">
+    <div class="section-title">📋 南北朝帝王总览表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>序号</th><th>帝王</th><th>在位时长</th><th>在位时间</th><th>享年</th><th>评价</th></tr></thead>
+      <tbody><tr><td>1</td><td class='ruler-name'>【南朝·宋】宋武帝</td><td>3年</td><td>420年7月—422年6月</td><td>59</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>2</td><td class='ruler-name'>【南朝·宋】宋文帝</td><td>30年</td><td>424年8月—453年3月</td><td>46</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>3</td><td class='ruler-name'>【南朝·宋】宋孝武帝</td><td>11年</td><td>453年5月—464年7月</td><td>34</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>4</td><td class='ruler-name'>【南朝·宋】宋明帝</td><td>8年</td><td>465年12月—472年5月</td><td>33</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>5</td><td class='ruler-name'>【南朝·宋】宋后废帝</td><td>5年</td><td>472年5月—477年8月</td><td>14</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>6</td><td class='ruler-name'>【南朝·宋】宋顺帝</td><td>2年</td><td>477年8月—479年6月</td><td>10</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>7</td><td class='ruler-name'>【南朝·齐】齐高帝</td><td>4年</td><td>479年5月—482年4月</td><td>55</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>8</td><td class='ruler-name'>【南朝·齐】齐武帝</td><td>11年</td><td>482年4月—493年8月</td><td>53</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>9</td><td class='ruler-name'>【南朝·齐】齐明帝</td><td>5年</td><td>494年12月—498年8月</td><td>46</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>10</td><td class='ruler-name'>【南朝·齐】齐和帝</td><td>1年</td><td>501年4月—502年4月</td><td>14</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>11</td><td class='ruler-name'>【南朝·梁】梁武帝</td><td>48年</td><td>502年4月—549年6月</td><td>85</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>12</td><td class='ruler-name'>【南朝·梁】梁简文帝</td><td>2年</td><td>549年6月—551年</td><td>48</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>13</td><td class='ruler-name'>【南朝·梁】梁元帝</td><td>3年</td><td>552年11月—554年12月</td><td>46</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>14</td><td class='ruler-name'>【南朝·陈】陈武帝</td><td>3年</td><td>557年10月—559年8月</td><td>56</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>15</td><td class='ruler-name'>【南朝·陈】陈文帝</td><td>8年</td><td>559年8月—566年</td><td>44</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>16</td><td class='ruler-name'>【南朝·陈】陈宣帝</td><td>15年</td><td>568年—582年</td><td>52</td><td><span class='tag tag-good'>守成之主</span></td></tr>
+<tr><td>17</td><td class='ruler-name'>【南朝·陈】陈后主</td><td>7年</td><td>582年—589年2月</td><td>51</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>18</td><td class='ruler-name'>【北朝·北魏】魏道武帝</td><td>24年（含代王）</td><td>386年2月—409年11月</td><td>38</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>19</td><td class='ruler-name'>【北朝·北魏】魏太武帝</td><td>29年</td><td>423年12月—452年3月</td><td>44</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>20</td><td class='ruler-name'>【北朝·北魏】魏孝文帝</td><td>29年</td><td>471年9月—499年4月</td><td>32</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>21</td><td class='ruler-name'>【北朝·北魏】魏宣武帝</td><td>16年</td><td>499年4月—515年2月</td><td>32</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>22</td><td class='ruler-name'>【北朝·北魏】魏孝明帝</td><td>13年</td><td>515年2月—528年2月</td><td>18</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>23</td><td class='ruler-name'>【北朝·东魏】魏孝静帝</td><td>17年</td><td>534年10月—550年5月</td><td>26</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+<tr><td>24</td><td class='ruler-name'>【北朝·西魏】魏文帝</td><td>17年</td><td>535年2月—551年3月</td><td>44</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>25</td><td class='ruler-name'>【北朝·北齐】齐文宣帝</td><td>10年</td><td>550年5月—559年11月</td><td>33</td><td><span class='tag tag-mid'>功过参半</span></td></tr>
+<tr><td>26</td><td class='ruler-name'>【北朝·北齐】齐后主</td><td>12年</td><td>565年6月—577年2月</td><td>21</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>27</td><td class='ruler-name'>【北朝·北周】周武帝</td><td>18年</td><td>560年4月—578年6月</td><td>35</td><td><span class='tag tag-great'>明君/雄主</span></td></tr>
+<tr><td>28</td><td class='ruler-name'>【北朝·北周】周宣帝</td><td>2年</td><td>578年6月—580年6月</td><td>21</td><td><span class='tag tag-bad'>昏庸/暴君</span></td></tr>
+<tr><td>29</td><td class='ruler-name'>【北朝·北周】周静帝</td><td>2年</td><td>579年4月—581年3月</td><td>8</td><td><span class='tag tag-tragic'>悲剧帝王</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="section page-break">
+    <div class="section-title">👑 帝王详情卡片</div>
+    <div class="ruler-grid"><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">1. 【南朝·宋】宋武帝 <span class="rc-pinyin">(sòngwǔdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>363年4月 — 422年6月26日</div>
+  <div class="rc-row"><strong>在位：</strong>420年7月—422年6月（3年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">刘裕，寒门出身，代晋建宋</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">2. 【南朝·宋】宋文帝 <span class="rc-pinyin">(sòngwéndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>407年 — 453年3月16日</div>
+  <div class="rc-row"><strong>在位：</strong>424年8月—453年3月（30年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">元嘉之治，北伐失败</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">3. 【南朝·宋】宋孝武帝 <span class="rc-pinyin">(sòngxiàowǔdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>430年 — 464年7月12日</div>
+  <div class="rc-row"><strong>在位：</strong>453年5月—464年7月（11年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">加强皇权，奢靡无度</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">4. 【南朝·宋】宋明帝 <span class="rc-pinyin">(sòngmíngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>439年 — 472年5月10日</div>
+  <div class="rc-row"><strong>在位：</strong>465年12月—472年5月（8年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">残杀宗室</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">5. 【南朝·宋】宋后废帝 <span class="rc-pinyin">(sònghòufèidì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>463年 — 477年8月1日</div>
+  <div class="rc-row"><strong>在位：</strong>472年5月—477年8月（5年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">刘昱，残暴被杀</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">6. 【南朝·宋】宋顺帝 <span class="rc-pinyin">(sòngshùndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>469年 — 479年6月23日</div>
+  <div class="rc-row"><strong>在位：</strong>477年8月—479年6月（2年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">禅位于萧道成</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">7. 【南朝·齐】齐高帝 <span class="rc-pinyin">(qígāodì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>427年 — 482年4月11日</div>
+  <div class="rc-row"><strong>在位：</strong>479年5月—482年4月（4年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">萧道成，代宋建齐，提倡节俭</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">8. 【南朝·齐】齐武帝 <span class="rc-pinyin">(qíwǔdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>440年 — 493年8月27日</div>
+  <div class="rc-row"><strong>在位：</strong>482年4月—493年8月（11年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">永明之治，社会安定</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">9. 【南朝·齐】齐明帝 <span class="rc-pinyin">(qímíngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>452年 — 498年8月3日</div>
+  <div class="rc-row"><strong>在位：</strong>494年12月—498年8月（5年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">残杀宗室</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">10. 【南朝·齐】齐和帝 <span class="rc-pinyin">(qíhédì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>488年 — 502年</div>
+  <div class="rc-row"><strong>在位：</strong>501年4月—502年4月（1年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">禅位于萧衍</div>
+</div>
+<div class="card-break"></div><div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">11. 【南朝·梁】梁武帝 <span class="rc-pinyin">(liángwǔdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>464年 — 549年6月12日</div>
+  <div class="rc-row"><strong>在位：</strong>502年4月—549年6月（48年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">萧衍，在位最长的南朝皇帝，后饿死台城</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">12. 【南朝·梁】梁简文帝 <span class="rc-pinyin">(liángjiǎnwéndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>503年 — 551年</div>
+  <div class="rc-row"><strong>在位：</strong>549年6月—551年（2年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">侯景之乱，被废杀</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">13. 【南朝·梁】梁元帝 <span class="rc-pinyin">(liángyuándì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>508年9月16日 — 555年1月27日</div>
+  <div class="rc-row"><strong>在位：</strong>552年11月—554年12月（3年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">平定侯景，后被西魏所杀</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">14. 【南朝·陈】陈武帝 <span class="rc-pinyin">(chénwǔdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>503年 — 559年8月9日</div>
+  <div class="rc-row"><strong>在位：</strong>557年10月—559年8月（3年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">陈霸先，建立陈朝</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">15. 【南朝·陈】陈文帝 <span class="rc-pinyin">(chénwéndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>522年 — 566年</div>
+  <div class="rc-row"><strong>在位：</strong>559年8月—566年（8年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">天嘉之治</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">16. 【南朝·陈】陈宣帝 <span class="rc-pinyin">(chénxuāndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>530年 — 582年</div>
+  <div class="rc-row"><strong>在位：</strong>568年—582年（15年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-good">守成之主</span></div>
+  <div class="rc-highlight">太建北伐</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">17. 【南朝·陈】陈后主 <span class="rc-pinyin">(chénhòuzhǔ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>553年 — 604年</div>
+  <div class="rc-row"><strong>在位：</strong>582年—589年2月（7年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">陈叔宝，亡国之君，作《玉树后庭花》</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">18. 【北朝·北魏】魏道武帝 <span class="rc-pinyin">(wèidàowǔdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>371年8月4日 — 409年11月6日</div>
+  <div class="rc-row"><strong>在位：</strong>386年2月—409年11月（24年（含代王））</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">拓跋珪，建立北魏</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">19. 【北朝·北魏】魏太武帝 <span class="rc-pinyin">(wèitàiwǔdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>408年 — 452年3月11日</div>
+  <div class="rc-row"><strong>在位：</strong>423年12月—452年3月（29年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">拓跋焘，统一北方</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">20. 【北朝·北魏】魏孝文帝 <span class="rc-pinyin">(wèixiàowéndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>467年10月13日 — 499年4月26日</div>
+  <div class="rc-row"><strong>在位：</strong>471年9月—499年4月（29年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">拓跋宏，迁都洛阳，汉化改革</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">21. 【北朝·北魏】魏宣武帝 <span class="rc-pinyin">(wèixuānwǔdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>483年 — 515年2月12日</div>
+  <div class="rc-row"><strong>在位：</strong>499年4月—515年2月（16年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">洛阳伽蓝盛景</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">22. 【北朝·北魏】魏孝明帝 <span class="rc-pinyin">(wèixiàomíngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>510年4月8日 — 528年2月12日</div>
+  <div class="rc-row"><strong>在位：</strong>515年2月—528年2月（13年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">胡太后专权，被毒杀</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">23. 【北朝·东魏】魏孝静帝 <span class="rc-pinyin">(wèixiàojìngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>524年 — 552年1月21日</div>
+  <div class="rc-row"><strong>在位：</strong>534年10月—550年5月（17年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">元善见，禅位于高洋</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">24. 【北朝·西魏】魏文帝 <span class="rc-pinyin">(wèiwéndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>507年 — 551年3月28日</div>
+  <div class="rc-row"><strong>在位：</strong>535年2月—551年3月（17年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">元宝炬，宇文泰辅政</div>
+</div>
+<div class="ruler-card info">
+  <div class="rc-header"><span class="rc-name">25. 【北朝·北齐】齐文宣帝 <span class="rc-pinyin">(qíwénxuāndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>526年 — 559年11月25日</div>
+  <div class="rc-row"><strong>在位：</strong>550年5月—559年11月（10年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-mid">功过参半</span></div>
+  <div class="rc-highlight">高洋，建立北齐，后期暴虐</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">26. 【北朝·北齐】齐后主 <span class="rc-pinyin">(qíhòuzhǔ)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>556年 — 577年</div>
+  <div class="rc-row"><strong>在位：</strong>565年6月—577年2月（12年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">高纬，诛杀斛律光、高长恭</div>
+</div>
+<div class="ruler-card ">
+  <div class="rc-header"><span class="rc-name">27. 【北朝·北周】周武帝 <span class="rc-pinyin">(zhōuwǔdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>543年 — 578年6月21日</div>
+  <div class="rc-row"><strong>在位：</strong>560年4月—578年6月（18年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-great">明君/雄主</span></div>
+  <div class="rc-highlight">宇文邕，灭北齐，灭佛</div>
+</div>
+<div class="ruler-card warn">
+  <div class="rc-header"><span class="rc-name">28. 【北朝·北周】周宣帝 <span class="rc-pinyin">(zhōuxuāndì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>559年 — 580年6月22日</div>
+  <div class="rc-row"><strong>在位：</strong>578年6月—580年6月（2年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-bad">昏庸/暴君</span></div>
+  <div class="rc-highlight">荒淫无道，禅位于幼子</div>
+</div>
+<div class="ruler-card purple">
+  <div class="rc-header"><span class="rc-name">29. 【北朝·北周】周静帝 <span class="rc-pinyin">(zhōujìngdì)</span></span></div>
+  <div class="rc-row"><strong>生卒：</strong>573年 — 581年</div>
+  <div class="rc-row"><strong>在位：</strong>579年4月—581年3月（2年）</div>
+  <div class="rc-row"><strong>评价：</strong><span class="tag tag-tragic">悲剧帝王</span></div>
+  <div class="rc-highlight">宇文阐，禅位于杨坚</div>
+</div>
+</div>
+  </div>
+  <div class="section page-break" style="display:block">
+    <div class="section-title">⚠️ 南北朝重大事件年表</div>
+    <div class="table-wrap"><table>
+      <thead><tr><th style="width:15%">年份</th><th style="width:45%">事件</th><th style="width:18%">涉及帝王</th><th style="width:22%">影响等级</th></tr></thead>
+      <tbody><tr><td>420年7月</td><td style='text-align:left'>刘裕代晋建宋，南朝开始</td><td>【南朝·宋】宋武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>439年</td><td style='text-align:left'>北魏统一北方</td><td>【北朝·北魏】魏太武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>471年</td><td style='text-align:left'>孝文帝即位，推行汉化</td><td>【北朝·北魏】魏孝文帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>494年</td><td style='text-align:left'>孝文帝迁都洛阳</td><td>【北朝·北魏】魏孝文帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>502年4月</td><td style='text-align:left'>萧衍代齐建梁</td><td>【南朝·梁】梁武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>534年</td><td style='text-align:left'>北魏分裂为东魏西魏</td><td>【北朝·东魏】魏孝静帝</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>548年</td><td style='text-align:left'>侯景之乱</td><td>【南朝·梁】梁武帝</td><td><span class='tag tag-bad'>危机</span></td></tr>
+<tr><td>550年5月</td><td style='text-align:left'>高洋代东魏建北齐</td><td>【北朝·北齐】齐文宣帝</td><td><span class='tag tag-mid'>争议</span></td></tr>
+<tr><td>557年10月</td><td style='text-align:left'>陈霸先代梁建陈</td><td>【南朝·陈】陈武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>577年</td><td style='text-align:left'>北周灭北齐，统一北方</td><td>【北朝·北周】周武帝</td><td><span class='tag tag-great'>开国/盛世</span></td></tr>
+<tr><td>581年3月</td><td style='text-align:left'>杨坚代周建隋</td><td>【北朝·北周】周静帝</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+<tr><td>589年2月</td><td style='text-align:left'>隋灭陈，南北朝结束</td><td>【南朝·陈】陈后主</td><td><span class='tag tag-tragic'>悲剧</span></td></tr>
+</tbody>
+    </table></div>
+  </div>
+  <div class="footer">
+    <p>🦞 数据可视化报告 · <span>尹燕玲报告分析专家</span> · 2026年8月14日</p>
+    <p>数据来源：史记、资治通鉴、维基百科 · 仅供学习参考</p>
+  </div>
+</div>
+</body>
+</html>
