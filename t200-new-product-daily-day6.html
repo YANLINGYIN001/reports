@@ -3,226 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>T200新品跟踪反馈报告 | Day 6</title>
+<title>T200 4G记录仪新品跟踪日报 · Day 6</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
-.container { max-width:1000px; margin:0 auto; padding:20px; }
-.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:30px; margin-bottom:24px; text-align:center; }
-.header h1 { font-size:24px; margin-bottom:8px; }
-.header .subtitle { font-size:14px; opacity:0.9; }
-.header .date-range { font-size:13px; opacity:0.8; margin-top:6px; }
-.summary-box { background:#fff; border-radius:12px; padding:16px 24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); border-left:4px solid #00B050; }
-.summary-box p { font-size:15px; color:#333; line-height:1.8; }
-.summary-box strong { color:#00B050; }
-.kpi-row { display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap; }
-.kpi-card { flex:1; min-width:200px; background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
-.kpi-value { font-size:32px; font-weight:700; color:#00B050; }
-.kpi-label { font-size:13px; color:#666; margin-top:4px; }
-.kpi-sub { font-size:12px; color:#999; margin-top:2px; }
-.kpi-sub .delta { color:#00B050; font-weight:600; }
-.kpi-sub .delta-red { color:#E74C3C; font-weight:600; }
-.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
-.section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
-.section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
-.insight-box { border-radius:10px; padding:16px 20px; margin-bottom:12px; }
-.insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
-.insight-orange { background:#fff3e0; border-left:4px solid #F39C12; }
-.insight-red { background:#fce4ec; border-left:4px solid #E74C3C; }
-.insight-blue { background:#e3f2fd; border-left:4px solid #2196F3; }
-.insight-box p { font-size:14px; line-height:1.8; }
-.insight-box strong { color:#00B050; }
-.insight-orange strong { color:#F39C12; }
-.insight-red strong { color:#E74C3C; }
-.insight-blue strong { color:#2196F3; }
-.channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; align-items:center; }
-.channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
-.channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
-.channel-tag .delta { color:#00B050; font-size:11px; margin-left:2px; }
-.channel-tag.new { background:#fff3e0; color:#F39C12; }
-.channel-tag.new .count { background:#F39C12; }
-.chart-container { width:100%; height:300px; }
-.cat-cards { display:flex; flex-wrap:wrap; gap:12px; }
-.cat-card { flex:1; min-width:110px; border-radius:10px; padding:16px; text-align:center; color:#fff; }
-.cat-card .cat-name { font-size:13px; margin-top:4px; }
-.cat-card .cat-count { font-size:24px; font-weight:700; margin-top:4px; }
-.detail-table { width:100%; border-collapse:collapse; font-size:13px; }
-.detail-table th { background:#00B050; color:#fff; padding:10px 12px; text-align:left; font-weight:500; }
-.detail-table th:first-child { border-radius:8px 0 0 0; }
-.detail-table th:last-child { border-radius:0 8px 0 0; }
-.detail-table td { padding:10px 12px; border-bottom:1px solid #eee; vertical-align:top; }
-.detail-table tr:hover { background:#f9f9f9; }
-.detail-table tr.new-row { background:#fffde7; }
-.detail-table tr.new-row:hover { background:#fff9c4; }
-.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:500; }
-.tag-install { background:#e8f5e9; color:#00B050; }
-.tag-fee { background:#fff3e0; color:#F39C12; }
-.tag-function { background:#e3f2fd; color:#1976D2; }
-.tag-defect { background:#fce4ec; color:#E74C3C; }
-.tag-parking { background:#f3e5f5; color:#7B1FA2; }
-.tag-power { background:#e0f7fa; color:#00838F; }
-.tag-quality { background:#ffebee; color:#C62828; }
-.tag-other { background:#f5f5f5; color:#666; }
-.key-table { width:100%; border-collapse:collapse; font-size:13px; }
-.key-table th { background:#00B050; color:#fff; padding:10px 12px; text-align:left; font-weight:500; font-size:12px; }
-.key-table th:first-child { border-radius:8px 0 0 0; }
-.key-table th:last-child { border-radius:0 8px 0 0; }
-.key-table td { padding:10px 12px; border-bottom:1px solid #eee; vertical-align:top; line-height:1.5; }
-.key-table tr:hover { background:#f9f9f9; }
-.key-table .cat-badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
-.cat-func-req { background:#e3f2fd; color:#1976D2; }
-.cat-install { background:#e8f5e9; color:#00B050; }
-.cat-exp { background:#fff3e0; color:#F39C12; }
-.cat-func-issue { background:#fce4ec; color:#E74C3C; }
-.cat-func-miss { background:#f3e5f5; color:#7B1FA2; }
-.cat-quality { background:#ffebee; color:#C62828; }
-.footer { text-align:center; padding:20px; color:#999; font-size:13px; }
-.footer .lobster { font-size:16px; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%);color:#fff;padding:30px;border-radius:12px;margin-bottom:20px}
+.header h1{font-size:24px;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:.9}
+.overview{background:#fff;border-left:4px solid #00B050;padding:16px 20px;border-radius:8px;margin-bottom:20px;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;padding:24px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi-value{font-size:36px;font-weight:700;color:#00B050;margin-bottom:4px}
+.kpi-label{font-size:13px;color:#666}
+.kpi-delta{display:inline-block;background:#e8f5e9;color:#00B050;font-size:12px;padding:2px 8px;border-radius:10px;margin-left:4px;font-weight:600}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{font-size:18px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #f0f0f0}
+.insight-box{padding:14px 18px;border-radius:8px;margin-bottom:12px;font-size:14px}
+.insight-box.danger{background:#fff5f5;border-left:4px solid #E74C3C}
+.insight-box.warning{background:#fff8e1;border-left:4px solid #F39C12}
+.insight-box.info{background:#e8f5e9;border-left:4px solid #00B050}
+.insight-box .title{font-weight:700;margin-bottom:4px}
+.insight-box.danger .title{color:#E74C3C}
+.insight-box.warning .title{color:#F39C12}
+.insight-box.info .title{color:#00B050}
+.ch-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ch-tag{background:#f0f7f0;border:1px solid #c8e6c9;color:#2e7d32;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500}
+.ch-tag.new{border:2px dashed #F39C12;color:#F39C12}
+.ch-tag .count{color:#00B050;font-weight:700;margin-left:4px}
+.chart-container{width:100%;height:350px}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:16px}
+.cat-card{background:#f8f9fa;border-radius:8px;padding:16px;text-align:center;border:1px solid #e9ecef}
+.cat-card .cat-name{font-size:13px;color:#666;margin-bottom:6px}
+.cat-card .cat-count{font-size:28px;font-weight:700;color:#00B050}
+.table-wrapper{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#00B050;color:#fff;padding:10px 8px;text-align:left;font-weight:600}
+td{padding:10px 8px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+tr:hover td{background:#f8fff8}
+tr.new-row td{background:#fffde7}
+.cat-group{background:#e8f5e9;font-weight:700;color:#1b5e20}
+.footer{text-align:center;padding:20px;color:#999;font-size:12px}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.cat-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 <div class="container">
-
 <div class="header">
-  <h1>🚗 T200 4G记录仪 · 新品跟踪反馈报告 Day 6</h1>
-  <div class="subtitle">累计汇总 | 数据周期 2026.08.04 - 2026.08.17</div>
-  <div class="date-range">数据来源：飞书表格「用户反馈问题汇总」 | 更新时间：2026-08-17 18:00</div>
+<h1>T200 4G记录仪新品跟踪日报 · Day 6</h1>
+<div class="subtitle">数据周期：2026.8.3 - 2026.8.16 ｜ 累计91条反馈 ｜ 生成时间：2026.8.17 18:00</div>
+</div>
+<div class="overview">新增17条反馈，累计91条。新增3条实质性缺陷，降压线安装问题持续升级。</div>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">91<span class="kpi-delta">+17</span></div><div class="kpi-label">反馈问题总数</div></div>
+<div class="kpi-card"><div class="kpi-value">7<span class="kpi-delta">+0</span></div><div class="kpi-label">覆盖渠道数</div></div>
+<div class="kpi-card"><div class="kpi-value">54<span class="kpi-delta">+11</span></div><div class="kpi-label">问题类型数</div></div>
+<div class="kpi-card"><div class="kpi-value">12<span class="kpi-delta">+5</span></div><div class="kpi-label">实质性缺陷数</div></div>
 </div>
 
-<div class="summary-box">
-  <p>📌 <strong>今日概览：</strong>新增 <strong>17条</strong>反馈（累计91条），京东自营持续高发 <strong>6条</strong>（含 <strong>4条新增缺陷</strong>：降压线断裂、接线错误、宝马故障灯亮、远程查看卡顿），降压线安装问题已从"门店不会装"升级为"装坏车辆"。天猫渠道集中爆发 <strong>8条</strong>（天猫官旗+天猫车品），以流量/云录费用咨询为主。抖音新增 <strong>2条</strong>含1条安装故障。安装相关累计占比 <strong>41%</strong> 仍居首位。</p>
+<div class="section"><div class="section-title">核心洞察</div>
+<div class="insight-box danger"><div class="title">⚠️ 降压线安装问题升级</div>新增3起降压线相关问题（故障灯亮、线材断裂、接线错误），累计安装相关缺陷已达16起。宝马车安装导致故障灯亮属于严重安全关注点。</div>
+<div class="insight-box warning"><div class="title">🔍 天猫渠道集中爆发</div>天猫官旗+天猫车品新增8条反馈，占新增47%。需关注天猫渠道用户反馈趋势。</div>
+<div class="insight-box warning"><div class="title">💡 远程查看体验问题首次出现</div>远程查看卡顿首次出现，4G网络下视频加载体验需持续关注。</div>
+<div class="insight-box info"><div class="title">📊 安装相关占比最高</div>安装相关问题38条，占比41%，是最大反馈类别。其中'是否包安装咨询'占比最高(15条)。</div>
 </div>
+<div class="section"><div class="section-title">渠道反馈分布</div><div class="ch-tags">
+<span class="ch-tag">京东自营 <span class="count">25</span></span>
+<span class="ch-tag">天猫官旗 <span class="count">9</span></span>
+<span class="ch-tag">天猫车品 <span class="count">8</span></span>
+<span class="ch-tag">天猫车旗 <span class="count">2</span></span>
+<span class="ch-tag">小红书 <span class="count">4</span></span>
+<span class="ch-tag new">抖音 (新增) <span class="count">3</span></span>
+<span class="ch-tag">有赞 <span class="count">38</span></span>
+</div><div id="channelChart" class="chart-container"></div></div>
+<div class="section"><div class="section-title">问题主题分类</div><div class="cat-grid">
+<div class="cat-card"><div class="cat-name">安装相关</div><div class="cat-count">38</div></div>
+<div class="cat-card"><div class="cat-name">功能咨询</div><div class="cat-count">20</div></div>
+<div class="cat-card"><div class="cat-name">停车/监控</div><div class="cat-count">11</div></div>
+<div class="cat-card"><div class="cat-name">费用/套餐</div><div class="cat-count">11</div></div>
+<div class="cat-card"><div class="cat-name">供电/电池</div><div class="cat-count">10</div></div>
+<div class="cat-card"><div class="cat-name">外观/品质</div><div class="cat-count">1</div></div>
+</div><div id="categoryChart" class="chart-container"></div></div>
+<div class="section"><div class="section-title">分类反馈明细表（本次新增）</div><div class="table-wrapper"><table><thead><tr><th>分类</th><th>渠道</th><th>日期</th><th>问题类型</th><th>用户问题</th><th>客服方案</th></tr></thead><tbody>
+<tr class="new-row"><td class="cat-group" rowspan="7">安装相关</td><td>天猫官旗</td><td>8/15</td><td>降压线安装咨询</td><td>不用保险盒取电能否使用，哪些功能是必须要保险盒取电才能使用的</td><td></td></tr>
+<tr class="new-row"><td>抖音</td><td>8/16</td><td>降压线安装故障</td><td>宝马车安装导致故障灯亮</td><td>宝马车部分车型低电压12.6伏，我们降压线低于该车型低电压保护，已联系更换降压线</td></tr>
+<tr class="new-row"><td>京东自营</td><td>8/15</td><td>降压线断裂</td><td>安装时候线断了</td><td>告知可以补发降压线，客户不接受要退货</td></tr>
+<tr class="new-row"><td>京东自营</td><td>8/16</td><td>是否需要使用降压线咨询</td><td>是否必须使用配套降压线</td><td>您好，如果您需要车辆停驶后使用停车录像、哨兵远程监控功能，建议搭配原装降压线接线使用。
+仅使用车充或其他USB供电，设备不带电池，车辆熄火后设备会断电关机，远程...</td></tr>
+<tr class="new-row"><td>京东自营</td><td>8/16</td><td>降压线接线错误</td><td>反馈安装门店接线错误</td><td>帮客户反馈京东养车</td></tr>
+<tr class="new-row"><td>京东自营</td><td>8/16</td><td>安装门店更换咨询</td><td>更换安装门店</td><td>您好客官，若是市内更换门店的话，您这边在手机地图搜索“京东养车”任意选择一家门店进行预约安装就可以的哦~</td></tr>
+<tr class="new-row"><td>有赞</td><td>8/17</td><td>是否包安装咨询</td><td>自己安装，给安装费吗</td><td></td></tr>
+<tr class="new-row"><td class="cat-group" rowspan="6">功能咨询</td><td>天猫车品</td><td>8/14</td><td>4G流量是否收费</td><td>需要额外买流量卡吗</td><td>亲，记录仪内置流量卡，远程查看不需要付费，设备自带终身免费流量，可免费使用实时画面、GPS定位轨迹、异动图文告警、双向语音对讲呢
 
-<div class="kpi-row">
-  <div class="kpi-card">
-    <div class="kpi-value">91</div>
-    <div class="kpi-label">反馈问题总数</div>
-    <div class="kpi-sub">较Day5 <span class="delta">+17 条</span></div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-value">7</div>
-    <div class="kpi-label">覆盖渠道数</div>
-    <div class="kpi-sub">较Day5 <span class="delta">+0</span></div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-value">54</div>
-    <div class="kpi-label">问题类型数</div>
-    <div class="kpi-sub">较Day5 <span class="delta">+11 类</span></div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-value">11</div>
-    <div class="kpi-label">实质性缺陷</div>
-    <div class="kpi-sub">较Day5 <span class="delta-red">+5（降压线断裂/接线错误/宝马故障灯/远程卡顿/门店更换）</span></div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title">核心洞察</div>
-  <div class="insight-box insight-red">
-    <p><strong>降压线安装问题持续恶化，已从"不会装"升级为"装坏车"</strong>：8/15-8/16京东自营集中爆发4起降压线相关缺陷——降压线断裂（安装时线断了）、接线错误（门店接错线）、安装故障（抖音渠道宝马车安装导致故障灯亮）、门店更换（用户要求换店）。加上此前"门店不会装降压线"2起投诉，降压线安装问题累计已达 <strong>6起</strong>，覆盖京东自营和抖音两个渠道，已成为T200新品上市最严重的服务短板。</p>
-  </div>
-  <div class="insight-box insight-orange">
-    <p><strong>天猫渠道反馈量集中上升，费用咨询占比突出</strong>：天猫官旗（+4）和天猫车品（+4）合计新增8条，占本轮新增47%。费用/套餐咨询新增3条（4G流量是否收费、云录收费、流量上限），反映商详页对流量和云录收费说明不充分，用户购买前存在决策犹豫。</p>
-  </div>
-  <div class="insight-box insight-blue">
-    <p><strong>远程查看卡顿首次出现，4G网络体验问题开始暴露</strong>：京东自营用户反馈"查看设备录制视频卡顿"，这是继"远程下载慢"之后第2条4G网络体验类缺陷。随着用户基数增长，4G带宽限制下的远程体验问题可能进一步显现。</p>
-  </div>
-</div>
-
-<div class="section">
-  <div class="section-title">渠道反馈分布</div>
-  <div class="channel-tags">
-    <span class="channel-tag">有赞 <span class="count">38</span> <span class="delta">+1</span></span>
-<span class="channel-tag">京东自营 <span class="count">25</span> <span class="delta">+6</span></span>
-<span class="channel-tag">天猫官旗 <span class="count">9</span> <span class="delta">+4</span></span>
-<span class="channel-tag">天猫车品 <span class="count">8</span> <span class="delta">+4</span></span>
-<span class="channel-tag">小红书 <span class="count">4</span></span>
-<span class="channel-tag">抖音 <span class="count">3</span> <span class="delta">+2</span></span>
-<span class="channel-tag">天猫车旗 <span class="count">1</span></span>
-
-    <span style="font-size:11px;color:#999;">（「京东23单」「抖音8个问题」为汇总行，未计入渠道分布）</span>
-  </div>
-  <div id="chart-channel" class="chart-container"></div>
-</div>
-
-<div class="section">
-  <div class="section-title">问题主题分类</div>
-  <div class="cat-cards">
-    <div class="cat-card" style="background:linear-gradient(135deg,#00B050,#2BBD6E);"><div class="cat-count">34</div><div class="cat-name">安装相关</div></div>
-<div class="cat-card" style="background:linear-gradient(135deg,#1976D2,#42A5F5);"><div class="cat-count">17</div><div class="cat-name">功能咨询</div></div>
-<div class="cat-card" style="background:linear-gradient(135deg,#F39C12,#FFB74D);"><div class="cat-count">9</div><div class="cat-name">费用/套餐</div></div>
-<div class="cat-card" style="background:linear-gradient(135deg,#7B1FA2,#AB47BC);"><div class="cat-count">9</div><div class="cat-name">停车/监控</div></div>
-<div class="cat-card" style="background:linear-gradient(135deg,#E74C3C,#EF5350);"><div class="cat-count">10</div><div class="cat-name">功能问题/缺陷</div></div>
-<div class="cat-card" style="background:linear-gradient(135deg,#00838F,#00ACC1);"><div class="cat-count">8</div><div class="cat-name">供电/电池</div></div>
-<div class="cat-card" style="background:linear-gradient(135deg,#C62828,#E57373);"><div class="cat-count">1</div><div class="cat-name">品质问题</div></div>
-
-  </div>
-  <div style="margin-top:16px;"><div id="chart-category" class="chart-container"></div></div>
-</div>
-
-<div class="section">
-  <div class="section-title">Day 6 新增反馈明细（+17条）</div>
-  <p style="font-size:12px;color:#999;margin-bottom:12px;">注：「京东23单」「抖音8个问题」为渠道汇总行，不展示在明细中</p>
-  <table class="detail-table">
-    <thead><tr><th style="width:8%">分类</th><th style="width:9%">渠道</th><th style="width:7%">日期</th><th style="width:18%">问题类型</th><th style="width:29%">用户问题</th><th style="width:29%">客服解决方案</th></tr></thead>
-    <tbody>
-<tr><td><span class="tag tag-fee">费用</span></td><td>天猫车品</td><td>8/14</td><td>4G流量是否收费</td><td>需要额外买流量卡吗</td><td>亲，记录仪内置流量卡，远程查看不需要付费，设备自带终身免费流量，可免费使用实时画面、GPS定位轨迹、异动图文告警、双向语音对讲呢
-
-新机还能免费体验30天基础版云服务（激活后自动领取）</td></tr>
-<tr><td><span class="tag tag-fee">费用</span></td><td>天猫车品</td><td>8/14</td><td>云录收费咨询</td><td>云服务你们有链接买吗</td><td>记录仪连接app后，在app界面开通云服务，没有单独的开通链接
+新机还能免费体验30天基础版...</td></tr>
+<tr class="new-row"><td>天猫车品</td><td>8/14</td><td>4G流量是否收费</td><td>终身免流量每个月定向流量上限多少G?超了会怎样</td><td>终身基础流量免费就是设备内置SIM卡永久免收流量费（仅记录仪可以用）；可以免费使用远程实时查看、GPS 定位轨迹、碰撞告警、双向语音对讲功能哦~目前没有使用每月...</td></tr>
+<tr class="new-row"><td>天猫官旗</td><td>8/15</td><td>是否有后录咨询</td><td>能否看到后面</td><td>这款产品是单摄，无法看到后面的亲亲~</td></tr>
+<tr class="new-row"><td>天猫官旗</td><td>8/15</td><td>是否有后录咨询</td><td>能否加配后置摄像头</td><td>亲亲实在抱歉，这款目前是无法加装摄像头的，非常抱歉给您带来不便</td></tr>
+<tr class="new-row"><td>京东自营</td><td>8/15</td><td>是否有后录咨询</td><td>这款有后视摄像吗</td><td>没有后摄</td></tr>
+<tr class="new-row"><td>京东自营</td><td>8/16</td><td>远程查看卡顿</td><td>客户查看设备录制视频卡顿</td><td>小主~4G 网络环境下1~3秒延迟是正常的哦～ 麻烦您看看手机信号是不是满格，或者换个位置试试哈</td></tr>
+<tr class="new-row"><td class="cat-group" rowspan="2">停车/监控</td><td>天猫车品</td><td>8/14</td><td>停车监控咨询</td><td>熄火后，有碰撞不是可以手机提醒吗？</td><td>T200支持远程查看，停车熄火期间感应到碰撞，APP会推送图文消息通知</td></tr>
+<tr class="new-row"><td>抖音</td><td>8/16</td><td>停车监控通知咨询</td><td>停车后车辆异常APP端是否可以提醒</td><td>停车熄火期间感应到碰撞，APP会推送图文消息通知，可以实现提醒</td></tr>
+<tr class="new-row"><td class="cat-group" rowspan="1">费用/套餐</td><td>天猫车品</td><td>8/14</td><td>云录收费咨询</td><td>云服务你们有链接买吗</td><td>记录仪连接app后，在app界面开通云服务，没有单独的开通链接
 基础版99 元/年（7天循环云端存储）
 高级版149 元/年（30天循环存储+哨兵视频备份）</td></tr>
-<tr><td><span class="tag tag-parking">停车</span></td><td>天猫车品</td><td>8/14</td><td>停车监控咨询</td><td>熄火后，有碰撞不是可以手机提醒吗？</td><td>T200支持远程查看，停车熄火期间感应到碰撞，APP会推送图文消息通知</td></tr>
-<tr><td><span class="tag tag-fee">费用</span></td><td>天猫车品</td><td>8/14</td><td>4G流量是否收费</td><td>终身免流量每个月定向流量上限多少G?超了会怎样</td><td>终身基础流量免费就是设备内置SIM卡永久免收流量费（仅记录仪可以用）；可以免费使用远程实时查看、GPS 定位轨迹、碰撞告警、双向语音对讲功能哦~目前没有使用每月使用上限哦</td></tr>
-<tr><td><span class="tag tag-power">供电</span></td><td>天猫官旗</td><td>8/15</td><td>电瓶供电咨询</td><td>连接电车常电接口能否使用</td><td>—</td></tr>
-<tr><td><span class="tag tag-install">安装</span></td><td>天猫官旗</td><td>8/15</td><td>降压线安装咨询</td><td>不用保险盒取电能否使用，哪些功能是必须要保险盒取电才能使用的</td><td>—</td></tr>
-<tr><td><span class="tag tag-function">功能</span></td><td>天猫官旗</td><td>8/15</td><td>是否有后录咨询</td><td>能否看到后面</td><td>这款产品是单摄，无法看到后面的亲亲~</td></tr>
-<tr><td><span class="tag tag-function">功能</span></td><td>天猫官旗</td><td>8/15</td><td>是否有后录咨询</td><td>能否加配后置摄像头</td><td>亲亲实在抱歉，这款目前是无法加装摄像头的，非常抱歉给您带来不便</td></tr>
-<tr><td><span class="tag tag-defect">缺陷</span></td><td>抖音</td><td>8/16</td><td>降压线安装故障</td><td>宝马车安装导致故障灯亮</td><td>宝马车部分车型低电压12.6伏，我们降压线低于该车型低电压保护，已联系更换降压线</td></tr>
-<tr><td><span class="tag tag-parking">停车</span></td><td>抖音</td><td>8/16</td><td>停车监控通知咨询</td><td>停车后车辆异常APP端是否可以提醒</td><td>停车熄火期间感应到碰撞，APP会推送图文消息通知，可以实现提醒</td></tr>
-<tr><td><span class="tag tag-defect">缺陷</span></td><td>京东自营</td><td>8/15</td><td>降压线断裂</td><td>安装时候线断了</td><td>告知可以补发降压线，客户不接受要退货</td></tr>
-<tr><td><span class="tag tag-function">功能</span></td><td>京东自营</td><td>8/15</td><td>是否有后录咨询</td><td>这款有后视摄像吗</td><td>没有后摄</td></tr>
-<tr><td><span class="tag tag-defect">缺陷</span></td><td>京东自营</td><td>8/16</td><td>远程查看卡顿</td><td>客户查看设备录制视频卡顿</td><td>小主~4G 网络环境下1~3秒延迟是正常的哦～ 麻烦您看看手机信号是不是满格，或者换个位置试试哈</td></tr>
-<tr><td><span class="tag tag-install">安装</span></td><td>京东自营</td><td>8/16</td><td>是否需要使用降压线咨询</td><td>是否必须使用配套降压线</td><td>您好，如果您需要车辆停驶后使用停车录像、哨兵远程监控功能，建议搭配原装降压线接线使用。
-仅使用车充或其他USB供电，设备不带电池，车辆熄火后设备会断电关机，远程哨兵监控功能将无法使用。T200 机型标配降压线，可直接使用，保障该功能正常运行</td></tr>
-<tr><td><span class="tag tag-defect">缺陷</span></td><td>京东自营</td><td>8/16</td><td>降压线接线错误</td><td>反馈安装门店接线错误</td><td>帮客户反馈京东养车</td></tr>
-<tr><td><span class="tag tag-defect">缺陷</span></td><td>京东自营</td><td>8/16</td><td>安装门店更换咨询</td><td>更换安装门店</td><td>您好客官，若是市内更换门店的话，您这边在手机地图搜索“京东养车”任意选择一家门店进行预约安装就可以的哦~</td></tr>
-<tr><td><span class="tag tag-install">安装</span></td><td>有赞</td><td>8/17</td><td>—</td><td>自己安装，给安装费吗</td><td>—</td></tr>
-
-    </tbody>
-  </table>
-</div>
-
-<div class="footer">
-  <p class="lobster">🦞 T200 4G记录仪新品跟踪 · Day 6 · 2026-08-17 18:00</p>
-  <p>数据来源：飞书表格「用户反馈问题汇总」 | 累计91条反馈 · 11项实质性缺陷</p>
-</div>
-
-</div>
+<tr class="new-row"><td class="cat-group" rowspan="1">供电/电池</td><td>天猫官旗</td><td>8/15</td><td>电瓶供电咨询</td><td>连接电车常电接口能否使用</td><td></td></tr>
+</tbody></table></div></div>
 
 <script>
-var chart1 = echarts.init(document.getElementById('chart-channel'));
-chart1.setOption({
-  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-  grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
-  xAxis: { type: 'category', data: ["有赞", "京东自营", "天猫官旗", "天猫车品", "小红书", "抖音", "天猫车旗"], axisLabel: { fontSize: 11, rotate: 15 } },
-  yAxis: { type: 'value' },
-  series: [{ type: 'bar', data: [
-    {value:38,itemStyle:{color:"#00B050"}}, {value:25,itemStyle:{color:"#E74C3C"}}, {value:9,itemStyle:{color:"#E74C3C"}}, {value:8,itemStyle:{color:"#E74C3C"}}, {value:4,itemStyle:{color:"#00B050"}}, {value:3,itemStyle:{color:"#00B050"}}, {value:1,itemStyle:{color:"#00B050"}}
-  ], label: { show: true, position: 'top', fontSize: 12 }, barWidth: '50%' }]
-});
-
-var chart2 = echarts.init(document.getElementById('chart-category'));
-chart2.setOption({
-  tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
-  legend: { orient: 'vertical', right: '5%', top: 'center', fontSize: 12 },
-  series: [{ type: 'pie', radius: ['40%', '70%'], center: ['40%', '50%'], data: [
-    {value:34,name:"安装相关",itemStyle:{color:"linear-gradient(135deg"}}, {value:17,name:"功能咨询",itemStyle:{color:"linear-gradient(135deg"}}, {value:9,name:"费用/套餐",itemStyle:{color:"linear-gradient(135deg"}}, {value:9,name:"停车/监控",itemStyle:{color:"linear-gradient(135deg"}}, {value:10,name:"功能问题/缺陷",itemStyle:{color:"linear-gradient(135deg"}}, {value:8,name:"供电/电池",itemStyle:{color:"linear-gradient(135deg"}}, {value:1,name:"品质问题",itemStyle:{color:"linear-gradient(135deg"}}
-  ], label: { fontSize: 11, formatter: '{b}\n{c}条' } }]
-});
-
-window.addEventListener('resize', function() { chart1.resize(); chart2.resize(); });
+var cc=document.getElementById('channelChart');
+if(cc){var c1=echarts.init(cc);
+c1.setOption({title:{text:'各渠道反馈数量',left:'center',textStyle:{fontSize:14}},tooltip:{trigger:'axis'},grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},xAxis:{type:'category',data:["有赞", "京东自营", "天猫官旗", "天猫车品", "小红书", "抖音", "天猫车旗"],axisLabel:{rotate:30}},yAxis:{type:'value'},series:[{type:'bar',data:[38, 25, 9, 8, 4, 3, 2],itemStyle:{color:'#00B050'}}]});}
+var cd=document.getElementById('categoryChart');
+if(cd){var c2=echarts.init(cd);
+c2.setOption({title:{text:'问题主题分类分布',left:'center',textStyle:{fontSize:14}},tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},legend:{bottom:0},series:[{type:'pie',radius:['40%','70%'],data:[{"name": "安装相关", "value": 38}, {"name": "功能咨询", "value": 20}, {"name": "停车/监控", "value": 11}, {"name": "费用/套餐", "value": 11}, {"name": "供电/电池", "value": 10}, {"name": "外观/品质", "value": 1}],itemStyle:{borderRadius:6,borderColor:'#fff',borderWidth:2},label:{formatter:'{b}\n{c} ({d}%)'}}]});}
 </script>
-</body>
-</html>
+
+<div class="footer">T200 4G记录仪新品跟踪日报 · Day 6 · 数据来源：各渠道客服反馈汇总 · 2026.8.17</div>
+</div></body></html>
