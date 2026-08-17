@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6pro 4G门铃公测 - 日常问题报告 (8.13-8.17)</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5;color:#333;padding:20px}
+.container{max-width:1100px;margin:0 auto}
+header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:24px 32px;border-radius:12px 12px 0 0}
+header h1{font-size:22px;font-weight:600}
+header p{font-size:13px;opacity:0.9;margin-top:4px}
+.kpi-row{display:flex;gap:16px;padding:24px 32px;background:#fff;flex-wrap:wrap}
+.kpi{flex:1;min-width:140px;text-align:center;padding:16px;background:#f0f9f3;border-radius:10px;border:1px solid #d4edd8}
+.kpi .num{font-size:32px;font-weight:700;color:#00B050}
+.kpi .label{font-size:13px;color:#666;margin-top:4px}
+.kpi .sub{font-size:12px;color:#999}
+.insight-box{padding:20px 32px;background:#fff;border-top:1px solid #eee}
+.insight-box h2{font-size:16px;color:#00B050;margin-bottom:10px;font-weight:600}
+.insight-box p{font-size:14px;line-height:1.7;color:#333}
+.insight-box p strong{color:#333}
+.section{padding:20px 32px;background:#fff;border-top:1px solid #eee}
+.section h3{font-size:15px;color:#00B050;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f0f9f3;color:#00B050;font-weight:600;padding:10px 8px;text-align:left;border-bottom:2px solid #00B050;white-space:nowrap}
+td{padding:8px;border-bottom:1px solid #eee}
+tr:hover td{background:#fafdfa}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.tag{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;font-weight:500}
+.tag1{background:#e8f5e9;color:#2BBD6E}
+.tag2{background:#e3f2fd;color:#1976d2}
+.tag3{background:#fff3e0;color:#e65100}
+.tag4{background:#fce4ec;color:#c62828}
+.bar-wrap{height:20px;background:#eee;border-radius:10px;overflow:hidden;margin:4px 0}
+.bar-fill{height:100%;background:linear-gradient(90deg,#00B050,#2BBD6E);border-radius:10px;transition:width .3s}
+.bar-row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:13px}
+.bar-label{min-width:120px;color:#333}
+.bar-num{width:40px;text-align:right;font-weight:600;color:#00B050}
+.neg{color:#E74C3C;font-weight:600}
+.pos{color:#00B050}
+.warn-tag{background:#fff3cd;color:#856404;border:1px solid #ffc107;padding:8px 12px;border-radius:6px;font-size:13px;margin:8px 0}
+footer{padding:16px 32px;background:#f9f9f9;border-top:1px solid #eee;font-size:12px;color:#999;border-radius:0 0 12px 12px}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>🔍 6pro 4G门铃公测 - 日常问题反馈报告</h1>
+<p>统计周期：2026.08.13 - 08.17 | 数据来源：飞书问卷（seq 376-399）| 更新时间：08.17 15:00</p>
+</header>
+
+<div class="kpi-row">
+<div class="kpi"><div class="num">24</div><div class="label">本期新增反馈</div><div class="sub">涉及12位测试人员</div></div>
+<div class="kpi"><div class="num">389</div><div class="label">累计反馈总量</div><div class="sub">19人公测至今全部反馈</div></div>
+<div class="kpi"><div class="num">9</div><div class="label">云录问题最多</div><div class="sub">新增9条，占比37.5%</div></div>
+<div class="kpi"><div class="num">12</div><div class="label">问题类型数</div><div class="sub">涵盖10个一级标签</div></div>
+</div>
+
+<div class="insight-box">
+<h2>📌 核心洞察</h2>
+<p><strong>云录问题持续高位，0812固件首次引入新问题。</strong>本周期新增24条反馈中云录9条（37.5%）居首，卡录4条（16.7%）次之。云录问题集中在误报、漏录、加载失败和播放异常4个方向，覆盖面广。朱君一人贡献4条（卡录3+云录1），黄军剑4条（云录3+APP1+按门铃1），两位是本期反馈主力。</p>
+<p><strong>⚠️ 0812新固件需关注：</strong>升级0812后出现OTA升级失败（徐婷婷seq395）、设备定时离线（徐婷婷seq399，每天7:30自动离线且电量异常掉12%）、卡录加载失败/异常（朱君seq397-398）。虽仅6条，但问题集中在稳定性/卡录/OTA三个关键模块，需研发重点关注。</p>
+<p><strong>卡录问题加剧：</strong>本期4条卡录反馈全部为播放/读取/加载异常，朱君升级0812后卡录比云录少事件且无法回放下载，问题较严重。</p>
+</div>
+
+<div class="section">
+<h3>📊 新增反馈标签分布</h3>
+<div class="tag-cloud">
+<span class="tag tag1">云录 9条</span><span class="tag tag2">卡录 4条</span><span class="tag tag1">APP交互 3条</span><span class="tag tag3">OTA 2条</span><span class="tag tag2">按门铃 1条</span><span class="tag tag4">续航 1条</span><span class="tag tag1">IQ 1条</span><span class="tag tag2">夜视切换 1条</span><span class="tag tag4">稳定性 1条</span><span class="tag tag3">功能需求 1条</span>
+</div>
+<div style="max-width:500px;margin-top:8px">
+<div class="bar-row"><span class="bar-label">云录</span><span class="bar-num">9</span><div class="bar-wrap" style="flex:1"><div class="bar-fill" style="width:75%"></div></div></div>
+<div class="bar-row"><span class="bar-label">卡录</span><span class="bar-num">4</span><div class="bar-wrap" style="flex:1"><div class="bar-fill" style="width:33%"></div></div></div>
+<div class="bar-row"><span class="bar-label">APP功能/交互</span><span class="bar-num">3</span><div class="bar-wrap" style="flex:1"><div class="bar-fill" style="width:25%"></div></div></div>
+<div class="bar-row"><span class="bar-label">OTA</span><span class="bar-num">2</span><div class="bar-wrap" style="flex:1"><div class="bar-fill" style="width:17%"></div></div></div>
+<div class="bar-row"><span class="bar-label">其他（6类各1条）</span><span class="bar-num">6</span><div class="bar-wrap" style="flex:1"><div class="bar-fill" style="width:50%;background:#999"></div></div></div>
+</div>
+</div>
+
+<div class="section">
+<h3>📋 新增反馈明细表</h3>
+<p style="font-size:12px;color:#999;margin-bottom:8px">按一级标签分组，反馈量降序 | <span class="neg">红色</span> = 与0812固件相关的问题</p>
+<table>
+<thead><tr><th>序号</th><th>姓名</th><th>标签</th><th>二级标签</th><th>固件</th><th>问题简述</th></tr></thead>
+<tbody>
+<tr style="background:#f0f9f3"><td colspan="6" style="font-weight:700;color:#00B050">云录（9条）</td></tr>
+<tr><td>378</td><td>美诺</td><td>云录</td><td>有人误报</td><td>0804</td><td>提示有人出现但无人，云录卡录都无人像</td></tr>
+<tr><td>380</td><td>王瑷珲</td><td>云录</td><td>漏录/漏拍</td><td>0804</td><td>灵敏度中，人经过门铃无反应漏录</td></tr>
+<tr><td>388</td><td>周军</td><td>云录</td><td>画面变化误报</td><td class="neg">0812</td><td>画面异动有声音也录像，建议仅画面变化录</td></tr>
+<tr><td>389</td><td>相杰</td><td>云录</td><td>画面模糊</td><td>0804</td><td>云录封面画质模糊</td></tr>
+<tr><td>390</td><td>黄军剑</td><td>云录</td><td>缩略图不显示</td><td>0804</td><td>云录视频封面图不显示（8/13 07:17）</td></tr>
+<tr><td>391</td><td>黄军剑</td><td>云录</td><td>录制延迟</td><td>0804</td><td>画面变化已发生但视频仅1秒，时长太短</td></tr>
+<tr><td>392</td><td>夏君</td><td>云录</td><td>云录播放失败</td><td>0804</td><td>云录视频开头有马赛克，两段视频尤为明显</td></tr>
+<tr><td>394</td><td>张雷</td><td>云录</td><td>云录加载失败</td><td>0804</td><td>云录刷新不出来，卡录正常</td></tr>
+<tr><td>396</td><td>美诺</td><td>云录</td><td>误报</td><td class="neg">0812</td><td>升级0812后提示有人出现但查看无内容</td></tr>
+<tr style="background:#f0f9f3"><td colspan="6" style="font-weight:700;color:#00B050">卡录（4条）</td></tr>
+<tr><td>379</td><td>袁飞</td><td>卡录</td><td>内存卡读取错误</td><td>0804</td><td>卡录无法读取，插拔重启无效，格式化恢复</td></tr>
+<tr><td>385</td><td>朱君</td><td>卡录</td><td>卡录不录</td><td>0804</td><td>云录有事件但卡录无，提示当日有记录</td></tr>
+<tr><td>397</td><td>朱君</td><td>卡录</td><td>卡录加载失败</td><td class="neg">0812</td><td>卡录无法回放下载，比云录少2个事件</td></tr>
+<tr><td>398</td><td>朱君</td><td>卡录</td><td>卡录加载异常</td><td class="neg">0812</td><td>卡录保存错误，下载后与云录事件不匹配</td></tr>
+<tr style="background:#f0f9f3"><td colspan="6" style="font-weight:700;color:#00B050">APP功能/交互（3条）</td></tr>
+<tr><td>377</td><td>黄军剑</td><td>APP交互</td><td>显示异常</td><td>0804</td><td>微信小程序通话页「关闭」按钮显示不全</td></tr>
+<tr><td>381</td><td>徐婷婷</td><td>APP交互</td><td>显示异常</td><td>0804</td><td>自定义门铃保存后不显示，需二次操作</td></tr>
+<tr><td>382</td><td>张雷</td><td>APP交互</td><td>显示异常</td><td>0804</td><td>WiFi网络名字问题，应为网络模式</td></tr>
+<tr style="background:#fff3e0"><td colspan="6" style="font-weight:700;color:#e65100">0812固件相关问题（需重点关注）</td></tr>
+<tr><td>395</td><td>徐婷婷</td><td>OTA</td><td>固件升级失败</td><td class="neg">0812</td><td>升级进度一直0%，反复重试无反应</td></tr>
+<tr><td>399</td><td>徐婷婷</td><td>稳定性</td><td>设备离线</td><td class="neg">0812</td><td>每天7:30自动离线，电量77→65（12%）</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h3>🗣️ 用户关键原声</h3>
+<table>
+<thead><tr><th>姓名</th><th>标签</th><th>用户原声（摘要）</th></tr></thead>
+<tbody>
+<tr><td class="neg">朱君</td><td>卡录/加载异常</td><td>卡录无法回放也无法下载，且卡录比云录少两个事件。卡录保存错误，云录事件正常但卡录无法播放，下载后也和云录事件对不起来</td></tr>
+<tr><td class="neg">徐婷婷</td><td>稳定性/设备离线</td><td>更新8.12版本过程中发现每天7:30左右都会自动离线，并且8.13离线过程中电量77降到65，第二天查看电量没变但又离线了，还是差不多的时间点</td></tr>
+<tr><td class="neg">徐婷婷</td><td>OTA/升级失败</td><td>升级进度一直0，重新升级一直重试显示加载中，没反应</td></tr>
+<tr><td>夏君</td><td>续航/耗电快</td><td>我把两个360品牌门铃同时充一晚电，几乎间隔几秒同时安装在同一位置（有几厘米高度差），公测门铃耗电量要大</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h3>📊 累计标签分布（截至8.17，共389条）</h3>
+<div class="bar-row"><span class="bar-label">云录 (157)</span><span class="bar-num">157</span><div class="bar-wrap" style="flex:1"><div class="bar-fill" style="width:100%"></div></div></div>
+<div class="bar-row"><span class="bar-label">卡录 (57)</span><span class="bar-num">57</span><div class="bar-wrap" style="flex:1"><div class="bar-fill" style="width:36%"></div></div></div>
+<div class="bar-row"><span class="bar-label">APP功能/交互 (44)</span><span class="bar-num">44</span><div class="bar-wrap" style="flex:1"><div class="bar-fill" style="width:28%"></div></div></div>
+<div class="bar-row"><span class="bar-label">IQ (23)</span><span class="bar-num">23</span><div class="bar-wrap" style="flex:1"><div class="bar-fill" style="width:15%"></div></div></div>
+<div class="bar-row"><span class="bar-label">开流 (20)</span><span class="bar-num">20</span><div class="bar-wrap" style="flex:1"><div class="bar-fill" style="width:13%"></div></div></div>
+<div class="bar-row"><span class="bar-label">其他 (88)</span><span class="bar-num">88</span><div class="bar-wrap" style="flex:1"><div class="bar-fill" style="width:56%;background:#999"></div></div></div>
+<p style="margin-top:10px;font-size:12px;color:#999">※ 累计数据基于打标结果，云录+卡录=214条占总量55%</p>
+</div>
+
+<footer>
+<p>📊 数据来源：飞书「门铃6pro 4G公测问题跟进表」| <a href="https://yanlingyin001.github.io/reports/6pro-homework-status.html">查看作业完成情况</a></p>
+</footer>
+</div>
+</body>
+</html>
