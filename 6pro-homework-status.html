@@ -6,59 +6,331 @@
 <title>6pro 4G门铃公测 - 作业完成情况</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; padding: 20px; }
-.container { max-width: 1200px; margin: 0 auto; }
-h1 { text-align: center; color: #00B050; margin-bottom: 8px; font-size: 24px; }
-.update-time { text-align: center; color: #999; font-size: 13px; margin-bottom: 20px; }
-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-th { background: #00B050; color: #fff; padding: 12px 8px; text-align: center; font-size: 14px; white-space: nowrap; }
-td { padding: 10px 8px; text-align: center; font-size: 14px; border-bottom: 1px solid #f0f0f0; }
-tr:hover { background: #f9fff5; }
-.row-zero { background: #fff0f0; }
-.row-zero:hover { background: #ffe8e8; }
-.done { color: #00B050; font-weight: bold; }
-.not-done { color: #ccc; }
-.count-high { color: #00B050; font-weight: bold; }
-.count-low { color: #E74C3C; font-weight: bold; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; padding: 20px; }
+.container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 24px 32px; }
+header h1 { font-size: 22px; font-weight: 600; }
+header p { font-size: 13px; opacity: 0.9; margin-top: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { background: #f0f9f3; color: #00B050; font-weight: 600; padding: 12px 8px; text-align: center; border-bottom: 2px solid #00B050; white-space: nowrap; }
+td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #eee; }
+tr:hover td { background: #fafdfa; }
+.name-cell { font-weight: 600; color: #333; }
+.done { color: #00B050; font-weight: 600; }
+.not-done { color: #E74C3C; }
+.count-high { color: #00B050; font-weight: 600; }
+.count-low { color: #E74C3C; font-weight: 600; }
 .fw-col { color: #333; }
-.legend { margin-top: 16px; font-size: 12px; color: #999; text-align: center; }
+.fw-new { color: #333; background: #eafaf1; font-weight: 700; }
+.row-zero { background: #fdecea; }
+.summary { padding: 16px 32px; background: #f9f9f9; border-top: 1px solid #eee; font-size: 13px; color: #666; }
+.summary span { color: #00B050; font-weight: 600; }
 </style>
 </head>
 <body>
 <div class="container">
-<h1>📱 6pro 4G门铃公测 - 作业完成情况</h1>
-<div class="update-time">更新时间：2026-08-14 09:15 | 日常反馈累计399条</div>
+<header>
+<h1>📊 6pro 4G门铃公测 - 作业完成情况</h1>
+<p>更新时间：2026-08-17 11:15 | 数据来源：飞书问卷 | 按日常反馈条数排序 | 🆕 新增0812固件列</p>
+</header>
 <table>
 <thead>
 <tr>
-<th>序号</th><th>姓名</th><th>开箱</th><th>配网</th><th>插拔卡</th><th>门铃通话</th>
-<th>日常反馈条数</th><th>0710固件</th><th>0717固件</th><th>0730固件</th><th>0804固件</th><th>0812固件</th>
+<th>序号</th>
+<th>姓名</th>
+<th>开箱体验</th>
+<th>配网安装</th>
+<th>插拔卡</th>
+<th>门铃通话</th>
+<th>日常反馈条数</th>
+<th>0710固件</th>
+<th>0717固件</th>
+<th>0730固件</th>
+<th>0804固件</th>
+<th>0812固件</th>
 </tr>
 </thead>
 <tbody>
-<tr><td>1</td><td>何三涛</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="count-high">38</span></td><td><span class="fw-col">17</span></td><td><span class="fw-col">4</span></td><td><span class="fw-col">5</span></td><td><span class="fw-col">12</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>2</td><td>张雷</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="count-high">30</span></td><td><span class="fw-col">19</span></td><td><span class="fw-col">5</span></td><td><span class="fw-col">2</span></td><td><span class="fw-col">4</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>3</td><td>袁飞</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="count-high">28</span></td><td><span class="fw-col">7</span></td><td><span class="fw-col">9</span></td><td><span class="fw-col">6</span></td><td><span class="fw-col">6</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>4</td><td>相杰</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="count-high">27</span></td><td><span class="fw-col">14</span></td><td><span class="fw-col">5</span></td><td><span class="fw-col">2</span></td><td><span class="fw-col">6</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>5</td><td>瑞子</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="count-high">26</span></td><td><span class="fw-col">10</span></td><td><span class="fw-col">5</span></td><td><span class="fw-col">3</span></td><td><span class="fw-col">8</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>6</td><td>周军</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="count-high">25</span></td><td><span class="fw-col">8</span></td><td><span class="fw-col">6</span></td><td><span class="fw-col">4</span></td><td><span class="fw-col">6</span></td><td><span class="fw-col">1</span></td></tr>
-<tr><td>7</td><td>许军州</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="count-high">22</span></td><td><span class="fw-col">12</span></td><td><span class="fw-col">3</span></td><td><span class="fw-col">3</span></td><td><span class="fw-col">4</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>8</td><td>魏健伟</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="count-high">21</span></td><td><span class="fw-col">6</span></td><td><span class="fw-col">0</span></td><td><span class="fw-col">6</span></td><td><span class="fw-col">9</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>9</td><td>朱君</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td>20</td><td><span class="fw-col">11</span></td><td><span class="fw-col">2</span></td><td><span class="fw-col">1</span></td><td><span class="fw-col">4</span></td><td><span class="fw-col">2</span></td></tr>
-<tr><td>10</td><td>美诺</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td>20</td><td><span class="fw-col">6</span></td><td><span class="fw-col">1</span></td><td><span class="fw-col">4</span></td><td><span class="fw-col">8</span></td><td><span class="fw-col">1</span></td></tr>
-<tr><td>11</td><td>徐婷婷</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td>19</td><td><span class="fw-col">5</span></td><td><span class="fw-col">5</span></td><td><span class="fw-col">1</span></td><td><span class="fw-col">6</span></td><td><span class="fw-col">2</span></td></tr>
-<tr><td>12</td><td>王瑷珲</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td>19</td><td><span class="fw-col">12</span></td><td><span class="fw-col">0</span></td><td><span class="fw-col">2</span></td><td><span class="fw-col">5</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>13</td><td>陈俊</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td>18</td><td><span class="fw-col">9</span></td><td><span class="fw-col">0</span></td><td><span class="fw-col">3</span></td><td><span class="fw-col">6</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>14</td><td>于晨光</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td>18</td><td><span class="fw-col">9</span></td><td><span class="fw-col">2</span></td><td><span class="fw-col">3</span></td><td><span class="fw-col">4</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>15</td><td>黄军剑</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td>17</td><td><span class="fw-col">5</span></td><td><span class="fw-col">2</span></td><td><span class="fw-col">3</span></td><td><span class="fw-col">7</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>16</td><td>朱彤</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td>16</td><td><span class="fw-col">4</span></td><td><span class="fw-col">2</span></td><td><span class="fw-col">2</span></td><td><span class="fw-col">8</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>17</td><td>孙晓明</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td>10</td><td><span class="fw-col">5</span></td><td><span class="fw-col">1</span></td><td><span class="fw-col">3</span></td><td><span class="fw-col">1</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>18</td><td>夏君</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td>9</td><td><span class="fw-col">0</span></td><td><span class="fw-col">0</span></td><td><span class="fw-col">5</span></td><td><span class="fw-col">4</span></td><td><span class="fw-col">0</span></td></tr>
-<tr><td>19</td><td>蔡坤城</td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td><span class="done">✓</span></td><td>6</td><td><span class="fw-col">2</span></td><td><span class="fw-col">1</span></td><td><span class="fw-col">0</span></td><td><span class="fw-col">3</span></td><td><span class="fw-col">0</span></td></tr>
+<tr>
+<td>1</td>
+<td class="name-cell">何三涛</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="count-high">38</td>
+<td class="fw-col">17</td>
+<td class="fw-col">4</td>
+<td class="fw-col">5</td>
+<td class="fw-col">12</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>2</td>
+<td class="name-cell">张雷</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="count-high">30</td>
+<td class="fw-col">19</td>
+<td class="fw-col">5</td>
+<td class="fw-col">2</td>
+<td class="fw-col">4</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>3</td>
+<td class="name-cell">袁飞</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="count-high">28</td>
+<td class="fw-col">7</td>
+<td class="fw-col">9</td>
+<td class="fw-col">6</td>
+<td class="fw-col">6</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>4</td>
+<td class="name-cell">相杰</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="count-high">27</td>
+<td class="fw-col">14</td>
+<td class="fw-col">5</td>
+<td class="fw-col">2</td>
+<td class="fw-col">6</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>5</td>
+<td class="name-cell">瑞子</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="count-high">26</td>
+<td class="fw-col">10</td>
+<td class="fw-col">5</td>
+<td class="fw-col">3</td>
+<td class="fw-col">8</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>6</td>
+<td class="name-cell">周军</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="count-high">25</td>
+<td class="fw-col">8</td>
+<td class="fw-col">6</td>
+<td class="fw-col">4</td>
+<td class="fw-col">6</td>
+<td class="fw-col">1</td>
+</tr>
+<tr>
+<td>7</td>
+<td class="name-cell">许军州</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="count-high">22</td>
+<td class="fw-col">12</td>
+<td class="fw-col">3</td>
+<td class="fw-col">3</td>
+<td class="fw-col">4</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>8</td>
+<td class="name-cell">魏健伟</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="count-high">21</td>
+<td class="fw-col">6</td>
+<td class="fw-col">0</td>
+<td class="fw-col">6</td>
+<td class="fw-col">9</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>9</td>
+<td class="name-cell">朱君</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="">20</td>
+<td class="fw-col">11</td>
+<td class="fw-col">2</td>
+<td class="fw-col">1</td>
+<td class="fw-col">4</td>
+<td class="fw-col">2</td>
+</tr>
+<tr>
+<td>10</td>
+<td class="name-cell">美诺</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="">20</td>
+<td class="fw-col">6</td>
+<td class="fw-col">1</td>
+<td class="fw-col">4</td>
+<td class="fw-col">8</td>
+<td class="fw-col">1</td>
+</tr>
+<tr>
+<td>11</td>
+<td class="name-cell">王瑷珲</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="">19</td>
+<td class="fw-col">12</td>
+<td class="fw-col">0</td>
+<td class="fw-col">2</td>
+<td class="fw-col">5</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>12</td>
+<td class="name-cell">徐婷婷</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="">19</td>
+<td class="fw-col">5</td>
+<td class="fw-col">5</td>
+<td class="fw-col">1</td>
+<td class="fw-col">6</td>
+<td class="fw-col">2</td>
+</tr>
+<tr>
+<td>13</td>
+<td class="name-cell">陈俊</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="">18</td>
+<td class="fw-col">9</td>
+<td class="fw-col">0</td>
+<td class="fw-col">3</td>
+<td class="fw-col">6</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>14</td>
+<td class="name-cell">于晨光</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="">18</td>
+<td class="fw-col">9</td>
+<td class="fw-col">2</td>
+<td class="fw-col">3</td>
+<td class="fw-col">4</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>15</td>
+<td class="name-cell">黄军剑</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="">17</td>
+<td class="fw-col">5</td>
+<td class="fw-col">2</td>
+<td class="fw-col">1</td>
+<td class="fw-col">9</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>16</td>
+<td class="name-cell">朱彤</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="">16</td>
+<td class="fw-col">4</td>
+<td class="fw-col">2</td>
+<td class="fw-col">2</td>
+<td class="fw-col">8</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>17</td>
+<td class="name-cell">孙晓明</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="">10</td>
+<td class="fw-col">5</td>
+<td class="fw-col">1</td>
+<td class="fw-col">3</td>
+<td class="fw-col">1</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>18</td>
+<td class="name-cell">夏君</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="">9</td>
+<td class="fw-col">0</td>
+<td class="fw-col">0</td>
+<td class="fw-col">5</td>
+<td class="fw-col">4</td>
+<td class="fw-col">0</td>
+</tr>
+<tr>
+<td>19</td>
+<td class="name-cell">蔡坤城</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="done">✅</td>
+<td class="">6</td>
+<td class="fw-col">2</td>
+<td class="fw-col">1</td>
+<td class="fw-col">0</td>
+<td class="fw-col">3</td>
+<td class="fw-col">0</td>
+</tr>
+<tr style="background:#f0f9f3;font-weight:600;">
+<td colspan="6">合计</td>
+<td>389</td>
+<td>161</td>
+<td>53</td>
+<td>56</td>
+<td>113</td>
+<td>6</td>
+</tr>
 </tbody>
 </table>
-<div class="legend">
-✓ = 已完成 | — = 未完成 | 反馈量&gt;20绿色，&lt;5红色，0条整行标红 | 固件版本列数字全黑色
+<div class="summary">
+<p>📝 <span>19</span> 人参与公测 | 开箱完成 <span>19</span> 人 | 配网完成 <span>19</span> 人 | 插拔卡完成 <span>19</span> 人 | 门铃通话完成 <span>19</span> 人</p>
+<p>📊 日常反馈累计 <span>389</span> 条 | 反馈量＞20绿色，＜5红色，0条整行标红 | 🆕 0812固件已上线(6条)</p>
 </div>
 </div>
 </body>
