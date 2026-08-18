@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>T200新品跟踪反馈报告 | Day 9</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB",sans-serif;background:#f5f6fa;color:#333;line-height:1.6}
+.container{max-width:1080px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;border-radius:16px;padding:30px;margin-bottom:24px;text-align:center}
+.header h1{font-size:24px;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:0.9}
+.summary-box{background:#fff;border-radius:12px;padding:16px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-left:4px solid #00B050}
+.summary-box p{font-size:15px;color:#333;line-height:1.8}
+.summary-box strong{color:#00B050}
+.kpi-row{display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.kpi-card{flex:1;min-width:220px;background:#fff;border-radius:12px;padding:22px 18px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.kpi-value{font-size:34px;font-weight:700;color:#00B050}
+.kpi-label{font-size:13px;color:#666;margin-top:4px}
+.kpi-sub{font-size:12px;color:#999;margin-top:4px}
+.kpi-sub .delta{color:#00B050;font-weight:600}
+.kpi-sub .delta-red{color:#E74C3C;font-weight:600}
+.day-compare{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.day-card{flex:1;min-width:140px;background:#fff;border-radius:12px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.day-card .day-label{font-size:12px;color:#999;margin-bottom:4px}
+.day-card .day-val{font-size:20px;font-weight:700}
+.day-card.prev .day-val{color:#999}
+.day-card.curr .day-val{color:#00B050}
+.day-card .day-arrow{font-size:14px;color:#F39C12;margin-top:4px}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.section-title{font-size:18px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.section-title::before{content:"";width:4px;height:20px;background:#00B050;border-radius:2px}
+.insight-box{border-radius:10px;padding:14px 18px;margin-bottom:12px}
+.insight-green{background:#e8f5e9;border-left:4px solid #00B050}
+.insight-orange{background:#fff3e0;border-left:4px solid #F39C12}
+.insight-blue{background:#e3f2fd;border-left:4px solid #2196F3}
+.insight-box p{font-size:14px;line-height:1.8}
+.insight-box strong{color:#00B050}
+.insight-orange strong{color:#F39C12}
+.insight-blue strong{color:#2196F3}
+.channel-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.channel-tag{background:#e8f5e9;color:#00B050;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500}
+.channel-tag .count{background:#00B050;color:#fff;border-radius:10px;padding:1px 8px;margin-left:4px;font-size:12px}
+.chart-wrap{display:flex;gap:20px;flex-wrap:wrap}
+.chart-half{flex:1;min-width:340px}
+.chart-container{width:100%;height:310px}
+.cat-cards{display:flex;flex-wrap:wrap;gap:12px}
+.cat-card{flex:1;min-width:120px;border-radius:10px;padding:18px 14px;text-align:center;color:#fff}
+.cat-card .cat-name{font-size:13px;opacity:0.95}
+.cat-card .cat-count{font-size:26px;font-weight:700;margin-top:6px}
+.detail-table{width:100%;border-collapse:collapse;font-size:13px}
+.detail-table th{background:#f8f9fa;padding:10px 8px;text-align:left;font-weight:600;color:#666;border-bottom:2px solid #00B050;font-size:12px}
+.detail-table td{padding:10px 8px;border-bottom:1px solid #eee;vertical-align:top}
+.detail-table tr.new-row td{background:#FFF8E1}
+.footer{text-align:center;padding:24px;color:#999;font-size:12px}
+@media(max-width:768px){.kpi-row{flex-direction:column}.chart-wrap{flex-direction:column}.cat-cards{flex-direction:column}.chart-half{min-width:100%}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>🚗 T200新品跟踪反馈报告 · Day 9</h1>
+<div class="subtitle">各渠道用户客服反馈汇总分析 | 2026.08.18 | 数据周期 8.4-8.18</div>
+</div>
+
+<div class="summary-box">
+<p>新增6条反馈，来自有赞(4)和京东自营(2)渠道。新增实质性缺陷2条：熄火不录制、没有循环视频。咨询类4条，集中在停车/监控、功能咨询、供电/电池。有赞渠道咨询持续活跃，用户关注功能使用和供电方式。</p>
+</div>
+
+
+<div class="kpi-row">
+<div class="kpi-card"><div class="kpi-value">103</div><div class="kpi-label">📝 反馈问题总数</div><div class="kpi-sub"><span class="delta">+6</span> vs Day 8</div></div>
+<div class="kpi-card"><div class="kpi-value">7</div><div class="kpi-label">📡 覆盖渠道数</div><div class="kpi-sub"><span class="delta">±0</span></div></div>
+<div class="kpi-card"><div class="kpi-value">58</div><div class="kpi-label">🏷 问题类型数</div><div class="kpi-sub"><span class="delta">±0</span></div></div>
+<div class="kpi-card"><div class="kpi-value">14</div><div class="kpi-label">⚠️ 实质性缺陷数</div><div class="kpi-sub"><span class="delta">+2</span></div></div>
+</div>
+
+
+<div class="day-compare">
+<div class="day-card prev"><div class="day-label">Day 8 (2026.08.17)</div><div class="day-val">97条</div><div class="day-label">7渠道 · 58类型</div></div>
+<div class="day-card curr"><div class="day-label">Day 9 (2026.08.18)</div><div class="day-val">103条</div><div class="day-label">7渠道 · 58类型</div></div>
+<div class="day-card"><div class="day-label">新增</div><div class="day-val" style="color:#F39C12">+6条</div><div class="day-arrow">有赞+4 京东自营+2</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">🔍 核心洞察</div>
+<div class="insight-box insight-green"><p><strong>📊 数据趋势：</strong>累计103条反馈（+6），有赞渠道本周持续活跃，新增4条咨询，主要关注功能使用和供电方式。</p></div>
+<div class="insight-box insight-orange"><p><strong>⚠️ 新增缺陷：</strong>熄火不录制（京东自营 2026-08-17）；没有循环视频（京东自营 2026-08-17）</p></div>
+<div class="insight-box insight-blue"><p><strong>💡 洞察：</strong>"熄火不录制"和"没有循环视频"两条缺陷来自京东自营8/17反馈，反映用户对停车监控和循环录制功能理解不足或产品表现未达预期。有赞渠道连续3日新增咨询，用户从安装转向深度功能询问（哨兵模式、远程查看、循环录制），说明用户进入实际使用阶段。</p></div>
+</div>
+
+<div class="section">
+<div class="section-title">📡 渠道反馈分布</div>
+<div class="channel-tags">
+<span class="channel-tag">有赞<span class="count">47</span></span>
+<span class="channel-tag">京东自营<span class="count">28</span></span>
+<span class="channel-tag">天猫官旗<span class="count">9</span></span>
+<span class="channel-tag">天猫车品<span class="count">8</span></span>
+<span class="channel-tag">小红书<span class="count">4</span></span>
+<span class="channel-tag">抖音<span class="count">3</span></span>
+<span class="channel-tag">天猫车旗<span class="count">2</span></span>
+<span class="channel-tag">京东23单<span class="count">1</span></span>
+<span class="channel-tag">抖音 8个问题<span class="count">1</span></span>
+</div>
+<div class="chart-wrap">
+<div class="chart-half"><div id="chart-channel" class="chart-container"></div></div>
+<div class="chart-half"><div id="chart-category" class="chart-container"></div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">🏷 问题主题分类</div>
+<div class="cat-cards">
+<div class="cat-card" style="background:#00B050;"><div class="cat-name">安装相关</div><div class="cat-count">29</div></div>
+<div class="cat-card" style="background:#2196F3;border:2px dashed #F39C12;"><div class="cat-name">供电/电池</div><div class="cat-count">15</div></div>
+<div class="cat-card" style="background:#9C27B0;border:2px dashed #F39C12;"><div class="cat-name">停车/监控</div><div class="cat-count">8</div></div>
+<div class="cat-card" style="background:#FF9800;border:2px dashed #F39C12;"><div class="cat-name">功能咨询</div><div class="cat-count">39</div></div>
+<div class="cat-card" style="background:#607D8B;"><div class="cat-name">费用/套餐</div><div class="cat-count">9</div></div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">📋 新增反馈明细（Day 9）</div>
+<table class="detail-table">
+<thead><tr><th>分类</th><th>渠道</th><th>日期</th><th>问题类型</th><th>用户问题</th><th>客服方案</th></tr></thead>
+<tbody>
+<tr class="new-row"><td rowspan="2" style="background:#2196F322;font-weight:600;color:#2196F3;text-align:center;border-right:2px solid #2196F3">供电/电池</td><td>有赞</td><td>2026-08-18</td><td>供电方式咨询</td><td>车辆熄火的话，降压线接在电瓶上，记录仪会进入待机模式吗</td><td>APP端设置供电模式为【降压线模式】 使用降压线可以实现哨兵模式、停车监控、缩时录影功能，其中缩时录</td></tr>
+<tr class="new-row"><td>有赞</td><td>2026-08-18</td><td>是否需要使用降压线咨询</td><td>1、哨兵模式下也是循环录制吗 2、哨兵模式必须使用降压线吗</td><td>1、非循环录制：哨兵模式下检测到异常（如行人靠近或车辆震动）时，会单独录制20秒紧急视频并保存至「停</td></tr>
+<tr class="new-row"><td rowspan="1" style="background:#9C27B022;font-weight:600;color:#9C27B0;text-align:center;border-right:2px solid #9C27B0">停车/监控</td><td>京东自营</td><td>2026-08-17</td><td>熄火不录制</td><td>熄火不录制</td><td>安装师傅安装有问题 已解决</td></tr>
+<tr class="new-row"><td rowspan="3" style="background:#FF980022;font-weight:600;color:#FF9800;text-align:center;border-right:2px solid #FF9800">功能咨询</td><td>京东自营</td><td>2026-08-17</td><td>没有循环视频</td><td>没有循环视频</td><td>排障没有插入内存卡</td></tr>
+<tr class="new-row"><td>有赞</td><td>2026-08-18</td><td>功能咨询</td><td>1、这个机子是可以不用手机连接记录仪就可以看视频的吧？ 2、有云存功能吗？云存多久的？</td><td>1、记录仪本身是没有显示屏的，无法通过设备端直接看，需要连接手机APP后才能查看，同时也支持远程查看</td></tr>
+<tr class="new-row"><td>有赞</td><td>2026-08-18</td><td>远程查看咨询</td><td>远程查看是怎么个远程</td><td>远程查看需要使用降压线，连接设备后人不在设备旁边也可以手机远程查车的哦</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="footer">
+<p>T200 4G记录仪新品跟踪日报 · Day 9 · 由尹燕玲-报告分析专家 🦞 自动生成</p>
+<p>数据来源：飞书《T200 4G记录仪新品跟踪表》 | 每工作日 18:00 自动更新</p>
+</div>
+</div>
+
+<script>
+var chart1 = echarts.init(document.getElementById('chart-channel'));
+chart1.setOption({
+  title:{text:'渠道反馈分布',left:'center',textStyle:{fontSize:14}},
+  tooltip:{trigger:'axis'},
+  grid:{left:'8%',right:'5%',bottom:'10%'},
+  xAxis:{type:'category',data:["有赞", "京东自营", "天猫官旗", "天猫车品", "小红书", "抖音", "天猫车旗", "京东23单", "抖音 8个问题"],axisLabel:{rotate:30,fontSize:11}},
+  yAxis:{type:'value'},
+  series:[{type:'bar',data:[47, 28, 9, 8, 4, 3, 2, 1, 1],itemStyle:{color:'#00B050'},label:{show:true,position:'top',fontSize:11}}]
+});
+
+var chart2 = echarts.init(document.getElementById('chart-category'));
+chart2.setOption({
+  title:{text:'问题主题分类',left:'center',textStyle:{fontSize:14}},
+  tooltip:{trigger:'item'},
+  legend:{bottom:0,type:'scroll'},
+  series:[{
+    type:'pie',radius:['35%','65%'],
+    data:[{"name": "安装相关", "value": 29}, {"name": "供电/电池", "value": 15}, {"name": "停车/监控", "value": 8}, {"name": "功能咨询", "value": 39}, {"name": "费用/套餐", "value": 9}],
+    color:["#00B050", "#2196F3", "#9C27B0", "#FF9800", "#607D8B"],
+    label:{formatter:'{b}: {c}',fontSize:11}
+  }]
+});
+
+window.addEventListener('resize',function(){chart1.resize();chart2.resize();});
+</script>
+</body>
+</html>
