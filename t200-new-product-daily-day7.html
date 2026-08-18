@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200新品跟踪日报 · Day 7</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: white; padding: 30px; border-radius: 12px; margin-bottom: 24px; }
+header h1 { font-size: 28px; margin-bottom: 8px; }
+header .subtitle { font-size: 14px; opacity: 0.9; }
+.overview { background: #fff; border-left: 4px solid #00B050; padding: 16px 20px; border-radius: 8px; margin-bottom: 24px; font-size: 15px; }
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.kpi-card { background: #fff; border-radius: 12px; padding: 24px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size: 13px; color: #888; margin-bottom: 8px; }
+.kpi-card .value { font-size: 36px; font-weight: 700; color: #00B050; }
+.kpi-card .delta { font-size: 13px; margin-top: 4px; }
+.kpi-card .delta.up { color: #00B050; }
+.kpi-card .delta.flat { color: #999; }
+.section { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 20px; margin-bottom: 16px; color: #333; border-bottom: 2px solid #00B050; padding-bottom: 8px; }
+.insight { padding: 12px 16px; border-radius: 8px; margin-bottom: 12px; font-size: 14px; }
+.insight.green { background: #e8f5e9; border-left: 4px solid #00B050; }
+.insight.orange { background: #fff3e0; border-left: 4px solid #F39C12; }
+.insight.red { background: #fdecea; border-left: 4px solid #E74C3C; }
+.chart { width: 100%; height: 350px; margin: 16px 0; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+th { background: #00B050; color: white; padding: 10px 12px; text-align: left; }
+td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+tr:hover td { background: #f9f9f9; }
+.new-badge { display: inline-block; background: #E74C3C; color: white; font-size: 11px; padding: 2px 6px; border-radius: 4px; margin-left: 6px; }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; margin: 2px; }
+.tag.green { background: #e8f5e9; color: #00B050; }
+.tag.orange { background: #fff3e0; color: #F39C12; }
+.tag.blue { background: #e3f2fd; color: #1976D2; }
+.tag.gray { background: #f5f5f5; color: #666; }
+.channel-tags { margin-bottom: 16px; }
+.day-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.day-card { background: #f9f9f9; border-radius: 8px; padding: 16px; }
+.day-card .day-title { font-size: 14px; color: #666; margin-bottom: 8px; }
+.day-card .day-stats { font-size: 13px; }
+.day-card .day-stats span { margin-right: 12px; }
+.highlight-row td { background: #fffde7 !important; }
+footer { text-align: center; padding: 20px; color: #999; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>📊 T200 4G记录仪新品跟踪日报 · Day 7</h1>
+<div class="subtitle">数据周期：2026-08-04 ~ 2026-08-18 | 累计反馈103条 | 7个渠道 | 60种问题类型</div>
+</header>
+
+<div class="overview">
+📌 <strong>今日概览：</strong>新增12条反馈（累计103条），有赞渠道持续活跃贡献8条，京东自营新增2条缺陷（熄火不录制、循环录制异常）。用户进入实际使用阶段，功能理解类咨询占比上升，哨兵模式误报首次出现。
+</div>
+
+<div class="kpi-row">
+<div class="kpi-card">
+<div class="label">反馈问题总数</div>
+<div class="value">103</div>
+<div class="delta up">+12 较昨日</div>
+</div>
+<div class="kpi-card">
+<div class="label">覆盖渠道数</div>
+<div class="value">7</div>
+<div class="delta flat">— 与昨日持平</div>
+</div>
+<div class="kpi-card">
+<div class="label">问题类型数</div>
+<div class="value">60</div>
+<div class="delta up">+6 较昨日</div>
+</div>
+<div class="kpi-card">
+<div class="label">实质性缺陷数</div>
+<div class="value">15</div>
+<div class="delta up">+4 较昨日</div>
+</div>
+</div>
+
+<div class="day-compare">
+<div class="day-card">
+<div class="day-title">📊 Day 6 (8.4-8.17)</div>
+<div class="day-stats">
+<span>📊 91条反馈</span>
+<span>📍 7个渠道</span>
+<span>🏷 54种类型</span>
+<span>⚠️ 11个缺陷</span>
+</div>
+</div>
+<div class="day-card">
+<div class="day-title">📊 Day 7 (8.4-8.18)</div>
+<div class="day-stats">
+<span>📊 103条反馈 (+12)</span>
+<span>📍 7个渠道 (+0)</span>
+<span>🏷 60种类型 (+6)</span>
+<span>⚠️ 15个缺陷 (+4)</span>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>🔍 核心洞察</h2>
+<div class="insight green"><strong>✅ 有赞渠道持续活跃：</strong>今日新增10条明细中8条来自有赞，用户从购买前咨询（安装、流量）转向使用中功能询问（哨兵模式、远程查看、停车监控），说明用户已进入实际使用阶段。</div>
+<div class="insight orange"><strong>⚠️ 缺陷+4，安装类问题持续暴露：</strong>新增熄火不录制（安装师傅安装问题）、循环录制异常（未插内存卡）、哨兵误报、降压线接线错误。安装相关缺陷累计8条，占比53%，门店安装培训仍是核心痛点。</div>
+<div class="insight red"><strong>🔴 哨兵模式误报首次出现：</strong>京东自营用户反馈车辆静止状态下频繁误报异常活动，建议关注哨兵灵敏度算法优化。</div>
+</div>
+
+<div class="section">
+<h2>📈 渠道反馈分布</h2>
+<div class="channel-tags">
+<span class="tag green">有赞 47</span>
+<span class="tag green">京东自营 28</span>
+<span class="tag blue">天猫官旗 9</span>
+<span class="tag blue">天猫车品 8</span>
+<span class="tag gray">小红书 4</span>
+<span class="tag gray">抖音 3</span>
+<span class="tag gray">天猫车旗 2</span>
+<span class="tag gray">京东23单(汇总) 1</span>
+<span class="tag gray">抖音(汇总) 1</span>
+</div>
+<div id="chart-channel" class="chart"></div>
+</div>
+
+<div class="section">
+<h2>🗂 问题主题分类</h2>
+<div id="chart-category" class="chart"></div>
+<table>
+<thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>典型问题</th></tr></thead>
+<tbody>
+<tr><td>安装相关</td><td>34</td><td>34.0%</td><td>是否包安装(15)、安装咨询(8)、门店不会装降压线(2)、定位不显示(2)</td></tr>
+<tr><td>功能咨询</td><td>33</td><td>33.0%</td><td>产品规格(5)、远程查看(4)、其他功能(5)、前后双录(5)</td></tr>
+<tr><td>费用/套餐</td><td>12</td><td>12.0%</td><td>4G流量收费(9)、云录续费(3)、其他费用(2)</td></tr>
+<tr><td>停车/监控</td><td>11</td><td>11.0%</td><td>停车监控(7)、哨兵模式(2)、地库信号弱(1)</td></tr>
+<tr><td>供电/电池</td><td>10</td><td>10.0%</td><td>电池/供电咨询(9)、是否支持车充(1)</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h2>📋 今日新增反馈明细</h2>
+<table>
+<thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr></thead>
+<tbody>
+<tr class="highlight-row"><td>京东自营</td><td>哨兵误报 <span class="new-badge">新缺陷</span></td><td>车辆在车位一直停着，车辆周围也没有发生什么变动，设备频繁消息提醒车辆异常活动</td></tr>
+<tr class="highlight-row"><td>京东自营</td><td>熄火后不通电</td><td>熄火不录制（安装师傅安装有问题，已解决）</td></tr>
+<tr class="highlight-row"><td>京东自营</td><td>循环录制异常 <span class="new-badge">新缺陷</span></td><td>没有循环视频（排障没有插入内存卡）</td></tr>
+<tr class="highlight-row"><td>有赞</td><td>供电方式咨询</td><td>供电方式？</td></tr>
+<tr class="highlight-row"><td>有赞</td><td>4G流量是否收费咨询</td><td>流量费要钱吗</td></tr>
+<tr class="highlight-row"><td>有赞</td><td>4G流量是否收费咨询；云录费用咨询</td><td>1、流量费多少钱一个月？2、云端储存费多少钱一个月</td></tr>
+<tr class="highlight-row"><td>有赞</td><td>远程查看咨询；云录收费咨询</td><td>1、这个机子是可以不用手机连接记录仪就可以看视频的吧？2、有云存功能吗？云存多久的？</td></tr>
+<tr class="highlight-row"><td>有赞</td><td>电瓶供电咨询</td><td>车辆熄火的话，降压线接在电瓶上，记录仪会进入待机模式吗</td></tr>
+<tr class="highlight-row"><td>有赞</td><td>停车监控咨询；降压线安装咨询</td><td>1、哨兵模式下也是循环录制吗 2、哨兵模式必须使用降压线吗</td></tr>
+<tr class="highlight-row"><td>有赞</td><td>远程查看咨询</td><td>远程查看是怎么个远程</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h2>⚠️ 累计缺陷追踪（15条）</h2>
+<table>
+<thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr></thead>
+<tbody>
+<tr><td>京东自营</td><td>定位不显示-ACC off</td><td>定位不显示</td></tr>
+<tr><td>京东自营</td><td>定位不显示-降压线安装错误</td><td>定位不显示</td></tr>
+<tr><td>京东自营</td><td>安装门店不会装降压线</td><td>车子太大 安装门店反馈不会装降压线</td></tr>
+<tr><td>京东自营</td><td>门店降压线安装问题</td><td>就三条线都整不明白，你们这合作这个京东的这个养车什么水平呢？</td></tr>
+<tr><td>京东自营</td><td>熄火后记录仪不通电</td><td>熄火后记录仪不通电</td></tr>
+<tr class="highlight-row"><td>京东自营</td><td>熄火后不通电</td><td>熄火不录制（安装师傅安装问题，已解决）</td></tr>
+<tr><td>京东自营</td><td>外观瑕疵</td><td>边缘有瑕疵</td></tr>
+<tr><td>京东自营</td><td>降压线断裂</td><td>安装时候线断了</td></tr>
+<tr><td>京东自营</td><td>降压线接线错误</td><td>反馈安装门店接线错误</td></tr>
+<tr><td>京东自营</td><td>远程查看卡顿</td><td>客户查看设备录制视频卡顿</td></tr>
+<tr><td>京东自营</td><td>远程下载慢</td><td>下载速率慢</td></tr>
+<tr class="highlight-row"><td>京东自营</td><td>哨兵误报</td><td>车辆静止状态下频繁误报异常活动</td></tr>
+<tr class="highlight-row"><td>京东自营</td><td>循环录制异常</td><td>没有循环视频（未插内存卡）</td></tr>
+<tr><td>抖音</td><td>降压线安装故障</td><td>宝马车安装导致故障灯亮</td></tr>
+<tr><td>天猫车旗</td><td>地库信号弱对哨兵模式影响</td><td>地库没信号 产品哨兵模式还好用吗</td></tr>
+</tbody>
+</table>
+</div>
+
+<footer>
+<p>📊 T200新品跟踪日报 · Day 7 | 数据来源：飞书表格「用户反馈问题汇总」</p>
+<p>🦞 由尹燕玲-报告分析专家自动生成 | <a href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">报告合集</a></p>
+</footer>
+</div>
+
+<script>
+const chartChannel = echarts.init(document.getElementById('chart-channel'));
+chartChannel.setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+    xAxis: { type: 'category', data: ['有赞','京东自营','天猫官旗','天猫车品','小红书','抖音','天猫车旗'], axisLabel: { fontSize: 12 } },
+    yAxis: { type: 'value' },
+    series: [{
+        type: 'bar',
+        data: [47,28,9,8,4,3,2],
+        itemStyle: { color: '#00B050', borderRadius: [4,4,0,0] },
+        label: { show: true, position: 'top', fontSize: 13, fontWeight: 'bold' }
+    }]
+});
+
+const chartCategory = echarts.init(document.getElementById('chart-category'));
+chartCategory.setOption({
+    tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+    legend: { bottom: 0, left: 'center' },
+    series: [{
+        type: 'pie',
+        radius: ['40%','70%'],
+        avoidLabelOverlap: false,
+        label: { show: true, formatter: '{b}\n{c}条', fontSize: 13 },
+        data: [
+            { value: 34, name: '安装相关', itemStyle: { color: '#00B050' } },
+            { value: 33, name: '功能咨询', itemStyle: { color: '#2BBD6E' } },
+            { value: 12, name: '费用/套餐', itemStyle: { color: '#F39C12' } },
+            { value: 11, name: '停车/监控', itemStyle: { color: '#1976D2' } },
+            { value: 10, name: '供电/电池', itemStyle: { color: '#9C27B0' } }
+        ]
+    }]
+});
+
+window.addEventListener('resize', () => {
+    chartChannel.resize();
+    chartCategory.resize();
+});
+</script>
+</body>
+</html>
