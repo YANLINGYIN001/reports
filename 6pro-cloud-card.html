@@ -1,43 +1,116 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>☁️ 6pro 4G门铃 - 云录卡录专项报告</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5;color:#333;padding:20px}
-.container{max-width:1000px;margin:0 auto}
-header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:24px 32px;border-radius:12px 12px 0 0}
-header h1{font-size:22px;font-weight:600}
-header p{font-size:13px;opacity:.9;margin-top:4px}
-.kpi-row{display:flex;gap:14px;padding:22px 30px;background:#fff;flex-wrap:wrap}
-.kpi{flex:1;min-width:130px;text-align:center;padding:16px;background:#f0f9f3;border-radius:10px;border:1px solid #d4edd8}
-.kpi .num{font-size:30px;font-weight:700;color:#00B050}
-.kpi .label{font-size:13px;color:#666;margin-top:4px}
-.kpi .sub{font-size:11px;color:#999}
-.insight{padding:20px 30px;background:#fff;border-top:1px solid #eee}
-.insight h2{font-size:16px;color:#00B050;margin-bottom:10px}
-.insight p{font-size:14px;line-height:1.7}
-.sec{padding:20px 30px;background:#fff;border-top:1px solid #eee}
-.sec h3{font-size:15px;color:#00B050;margin-bottom:12px}
-.bar-row{display:flex;align-items:center;gap:8px;margin:7px 0;font-size:13px}
-.bar-label{min-width:130px;color:#333}
-.bar-num{width:42px;text-align:right;font-weight:600;color:#00B050}
-.bar-wrap{height:18px;background:#eee;border-radius:9px;overflow:hidden;flex:1}
-.bar-fill{height:100%;background:linear-gradient(90deg,#00B050,#2BBD6E);border-radius:9px}
-.bar-fill.low{background:linear-gradient(90deg,#F39C12,#E74C3C)}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{background:#f0f9f3;color:#00B050;font-weight:600;padding:9px 7px;text-align:center;border-bottom:2px solid #00B050;white-space:nowrap}
-td{padding:7px;border-bottom:1px solid #eee;text-align:center}
-tr:hover td{background:#fafdfa}
-.neg{color:#E74C3C;font-weight:600}
-footer{padding:14px 30px;background:#f9f9f9;font-size:12px;color:#999;border-radius:0 0 12px 12px;border-top:1px solid #eee}
-</style></head><body><div class="container"><header><h1>☁️ 6pro 4G门铃 - 云录卡录专项报告</h1><p>统计周期：8.13-8.17 | 18人评分 | 更新时间 08.17 15:20</p></header>
-<div class="kpi-row">
-<div class="kpi"><div class="num">9.00</div><div class="label">云录总体评分</div><div class="sub">18人评分</div></div>
-<div class="kpi"><div class="num">8.56</div><div class="label">卡录总体评分</div><div class="sub">低于云录0.44分</div></div>
-<div class="kpi"><div class="num">8.50</div><div class="label">云录完整性最低</div><div class="sub">云录短板</div></div>
-<div class="kpi"><div class="num">9.61</div><div class="label">列表清晰度最高</div><div class="sub">云录亮点</div></div>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6Pro 4G 云录卡录专题报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; padding: 20px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.report-header { text-align: center; padding: 30px 0 20px; border-bottom: 2px solid #00B050; margin-bottom: 30px; }
+.report-header h1 { font-size: 28px; color: #00B050; margin-bottom: 8px; }
+.report-header .subtitle { font-size: 14px; color: #999; }
+.section { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size: 20px; font-weight: 700; color: #333; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid #00B050; }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.kpi-card { background: linear-gradient(135deg, #00B050 0%, #2BBD6E 100%); color: #fff; border-radius: 12px; padding: 20px; text-align: center; }
+.kpi-card .label { font-size: 14px; opacity: 0.9; margin-bottom: 6px; }
+.kpi-card .value { font-size: 36px; font-weight: 700; }
+.kpi-card.alt { background: linear-gradient(135deg, #333 0%, #555 100%); }
+.kpi-card.warn { background: linear-gradient(135deg, #E74C3C 0%, #FF6B6B 100%); }
+.kpi-card.orange { background: linear-gradient(135deg, #F39C12 0%, #FFB74D 100%); }
+.insight { padding: 14px 18px; border-radius: 8px; margin-bottom: 12px; font-size: 14px; line-height: 1.8; }
+.insight.red { background: #fdf2f2; border-left: 4px solid #E74C3C; }
+.insight.orange { background: #fff8f0; border-left: 4px solid #F39C12; }
+.insight.blue { background: #f0f7ff; border-left: 4px solid #3498db; }
+.insight.green { background: #f0fff4; border-left: 4px solid #00B050; }
+.insight .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-right: 6px; color: #fff; }
+.insight.red .tag { background: #E74C3C; }
+.insight.orange .tag { background: #F39C12; }
+.insight.blue .tag { background: #3498db; }
+.insight.green .tag { background: #00B050; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 14px; }
+th { background: #00B050; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; white-space: nowrap; }
+td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+tr:hover td { background: #f9f9f9; }
+tr.total-row td { font-weight: 700; background: #e8f5e9; border-top: 2px solid #00B050; }
+.chart-container { width: 100%; height: 400px; margin: 16px 0; }
+.tag-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin: 2px; }
+.tag-green { background: #e8f5e9; color: #00B050; }
+.user-eval { background: #f9f9f9; border-radius: 8px; padding: 16px; margin-bottom: 12px; border-left: 3px solid #2BBD6E; }
+.user-eval .user-name { font-weight: 700; color: #00B050; margin-bottom: 6px; font-size: 15px; }
+.user-eval .eval-text { font-size: 14px; color: #555; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="report-header"><h1>6Pro 4G 云录卡录专题报告</h1><div class="subtitle">固件版本：0812 | 参与人数：4人 | 报告日期：2026.08.18</div></div>
+<div class="section"><div class="section-title">📊 核心指标</div><div class="kpi-grid">
+<div class="kpi-card "><div class="label">云录平均评分</div><div class="value">8.7</div></div>
+<div class="kpi-card alt"><div class="label">卡录平均评分</div><div class="value">8.7</div></div>
+<div class="kpi-card alt"><div class="label">云录维度</div><div class="value">11</div></div>
+<div class="kpi-card alt"><div class="label">卡录维度</div><div class="value">9</div></div>
+</div></div>
+<div class="section"><div class="section-title">🔍 核心洞察</div>
+<div class="insight red"><span class="tag">问题</span><strong>花屏卡顿问题：美诺反馈云录8月14号出现花屏，卡录也有花屏、卡顿、跳播问题，建议优化云录和卡录的播放稳定性。</strong></div>
+<div class="insight orange"><span class="tag">关注</span><strong>卡录加载耗时长：美诺卡录加载出现10秒以上的情况，其他用户多为3-5秒，体验差异较大。</strong></div>
+<div class="insight blue"><span class="tag">亮点</span><strong>云录评分整体较高：相杰和美诺对云录多数维度评分9-10分，周军和许军州评分7-9分，整体表现尚可。</strong></div>
+<div class="insight green"><span class="tag">建议</span><strong>清晰度和流畅性优化：许军州建议提升清晰度，相杰建议优化光线明暗切换流畅性和人像清晰度。</strong></div>
 </div>
-<div class="insight"><h2>📌 核心洞察</h2>
-<p><strong>云录体验优秀、卡录相对偏弱，两者差距明显。</strong>云录11个维度平均9分上下，<span class="neg">唯独完整性8.50</span>偏低（漏录/事件时长不完整）。卡录总体8.56比云录低0.44分，卡录的<span class="neg">流畅性8.61</span>、<span class="neg">下载8.61</span>、<span class="neg">清晰度8.83</span>三处是短板——与日常反馈中「卡录加载失败/无法回放下载」高度吻合。袁飞的卡录兼容性仅5.0、格式化仅4.0分，是卡录问题最大的个例。</p></div>
-<div class="sec"><h3>☁️ 云录各维度评分（降序）</h3><div class="bar-row"><span class="bar-label">列表清晰</span><span class="bar-num" style="color:#00B050">9.61</span><div class="bar-wrap"><div class="bar-fill" style="width:96.1%"></div></div></div><div class="bar-row"><span class="bar-label">音量</span><span class="bar-num" style="color:#00B050">9.33</span><div class="bar-wrap"><div class="bar-fill" style="width:93.30000000000001%"></div></div></div><div class="bar-row"><span class="bar-label">漏录</span><span class="bar-num" style="color:#00B050">9.22</span><div class="bar-wrap"><div class="bar-fill" style="width:92.2%"></div></div></div><div class="bar-row"><span class="bar-label">分类准确</span><span class="bar-num" style="color:#00B050">9.22</span><div class="bar-wrap"><div class="bar-fill" style="width:92.2%"></div></div></div><div class="bar-row"><span class="bar-label">音质</span><span class="bar-num" style="color:#00B050">9.17</span><div class="bar-wrap"><div class="bar-fill" style="width:91.7%"></div></div></div><div class="bar-row"><span class="bar-label">下载</span><span class="bar-num" style="color:#00B050">9.06</span><div class="bar-wrap"><div class="bar-fill" style="width:90.60000000000001%"></div></div></div><div class="bar-row"><span class="bar-label">云录总体</span><span class="bar-num" style="color:#00B050">9.0</span><div class="bar-wrap"><div class="bar-fill" style="width:90.0%"></div></div></div><div class="bar-row"><span class="bar-label">清晰度</span><span class="bar-num" style="color:#00B050">9.0</span><div class="bar-wrap"><div class="bar-fill" style="width:90.0%"></div></div></div><div class="bar-row"><span class="bar-label">准确性</span><span class="bar-num" style="color:#00B050">8.89</span><div class="bar-wrap"><div class="bar-fill" style="width:88.9%"></div></div></div><div class="bar-row"><span class="bar-label">流畅性</span><span class="bar-num" style="color:#00B050">8.67</span><div class="bar-wrap"><div class="bar-fill" style="width:86.7%"></div></div></div><div class="bar-row"><span class="bar-label">完整性</span><span class="bar-num" style="color:#00B050">8.5</span><div class="bar-wrap"><div class="bar-fill" style="width:85.0%"></div></div></div></div>
-<div class="sec"><h3>💾 卡录各维度评分（降序）</h3><div class="bar-row"><span class="bar-label">格式化成功率</span><span class="bar-num" style="color:#00B050">9.44</span><div class="bar-wrap"><div class="bar-fill" style="width:94.39999999999999%"></div></div></div><div class="bar-row"><span class="bar-label">卡录完整性</span><span class="bar-num" style="color:#00B050">9.22</span><div class="bar-wrap"><div class="bar-fill" style="width:92.2%"></div></div></div><div class="bar-row"><span class="bar-label">卡录音量</span><span class="bar-num" style="color:#00B050">9.22</span><div class="bar-wrap"><div class="bar-fill" style="width:92.2%"></div></div></div><div class="bar-row"><span class="bar-label">卡录音质</span><span class="bar-num" style="color:#00B050">9.17</span><div class="bar-wrap"><div class="bar-fill" style="width:91.7%"></div></div></div><div class="bar-row"><span class="bar-label">存储卡兼容性</span><span class="bar-num" style="color:#00B050">9.0</span><div class="bar-wrap"><div class="bar-fill" style="width:90.0%"></div></div></div><div class="bar-row"><span class="bar-label">卡录清晰度</span><span class="bar-num" style="color:#00B050">8.83</span><div class="bar-wrap"><div class="bar-fill" style="width:88.3%"></div></div></div><div class="bar-row"><span class="bar-label">卡录流畅性</span><span class="bar-num" style="color:#00B050">8.61</span><div class="bar-wrap"><div class="bar-fill" style="width:86.1%"></div></div></div><div class="bar-row"><span class="bar-label">卡录下载</span><span class="bar-num" style="color:#00B050">8.61</span><div class="bar-wrap"><div class="bar-fill" style="width:86.1%"></div></div></div><div class="bar-row"><span class="bar-label">卡录总体</span><span class="bar-num" style="color:#00B050">8.56</span><div class="bar-wrap"><div class="bar-fill" style="width:85.60000000000001%"></div></div></div></div>
-<div class="sec"><h3>⚠️ 待优化方向</h3>
-<p style="font-size:14px;line-height:1.7">① <span class="neg">云录完整性（8.50）</span>：事件时长不完整、存在漏录；② <span class="neg">卡录流畅性/下载（8.61）</span>：卡录回放卡顿、下载异常、事件与云录对不上，是本期最高频投诉点。</p></div>
-<footer><p>📊 数据来源：飞书「门铃6pro 4G公测问题跟进表」| 报告合集 <a href="https://yanlingyin001.github.io/reports/6pro-index.html">6pro-index</a></p></footer></div></body></html>
+<div class="section"><div class="section-title">☁️ 云录评分（11维度）</div>
+<table><thead><tr><th>姓名</th><th>云录总体评价</th><th>云录准确性</th><th>云录事件完整性</th><th>云录完整性是否漏录</th><th>云录画面清晰度</th><th>云录画面流畅性</th><th>云录音质清晰</th><th>云录音量大小</th><th>云录视频下载</th><th>云录消息列表清晰性</th><th>云录消息分类准确度</th></tr></thead><tbody>
+<tr><td>许军州</td><td>8.0</td><td>7.0</td><td>7.0</td><td>8.0</td><td>7.0</td><td>8.0</td><td>8.0</td><td>8.0</td><td>8.0</td><td>8.0</td><td>8.0</td></tr>
+<tr><td>美诺</td><td>9.0</td><td>9.0</td><td>10.0</td><td>10.0</td><td>8.0</td><td>9.0</td><td>9.0</td><td>10.0</td><td>10.0</td><td>10.0</td><td>10.0</td></tr>
+<tr><td>周军</td><td>9.0</td><td>6.0</td><td>7.0</td><td>7.0</td><td>9.0</td><td>9.0</td><td>9.0</td><td>9.0</td><td>8.0</td><td>9.0</td><td>7.0</td></tr>
+<tr><td>相杰</td><td>8.0</td><td>10.0</td><td>8.0</td><td>10.0</td><td>9.0</td><td>10.0</td><td>10.0</td><td>10.0</td><td>10.0</td><td>10.0</td><td>10.0</td></tr>
+</tbody></table>
+<div id="chart-cloud" class="chart-container"></div></div>
+<div class="section"><div class="section-title">💾 卡录评分（9维度）</div>
+<table><thead><tr><th>姓名</th><th>卡录总体评价</th><th>存储卡兼容性</th><th>TF卡格式化成功率</th><th>卡录完整性</th><th>卡录画面清晰度</th><th>卡录画面流畅性</th><th>卡录音质清晰性</th><th>卡录音量大小</th><th>卡录视频下载</th></tr></thead><tbody>
+<tr><td>许军州</td><td>8.0</td><td>8.0</td><td>8.0</td><td>8.0</td><td>8.0</td><td>8.0</td><td>8.0</td><td>9.0</td><td>8.0</td></tr>
+<tr><td>美诺</td><td>8.0</td><td>10.0</td><td>9.0</td><td>10.0</td><td>7.0</td><td>7.0</td><td>8.0</td><td>10.0</td><td>10.0</td></tr>
+<tr><td>周军</td><td>8.0</td><td>9.0</td><td>10.0</td><td>9.0</td><td>7.0</td><td>7.0</td><td>8.0</td><td>8.0</td><td>9.0</td></tr>
+<tr><td>相杰</td><td>8.0</td><td>10.0</td><td>10.0</td><td>9.0</td><td>9.0</td><td>10.0</td><td>10.0</td><td>10.0</td><td>10.0</td></tr>
+</tbody></table>
+<div id="chart-card" class="chart-container"></div></div>
+<div class="section"><div class="section-title">⏱️ 卡录加载耗时（5次）</div>
+<table><thead><tr><th>姓名</th><th>第1次</th><th>第2次</th><th>第3次</th><th>第4次</th><th>第5次</th></tr></thead><tbody>
+<tr><td>许军州</td><td>3-5秒</td><td>3-5秒</td><td>3秒以内</td><td>3-5秒</td><td>3秒以内</td></tr>
+<tr><td>美诺</td><td>5-6秒</td><td>5-6秒</td><td>10秒以上</td><td>10秒以上</td><td>5-6秒</td></tr>
+<tr><td>周军</td><td>3秒以内</td><td>3秒以内</td><td>3-5秒</td><td>3秒以内</td><td>3秒以内</td></tr>
+<tr><td>相杰</td><td>5-6秒</td><td>3-5秒</td><td>5-6秒</td><td>3-5秒</td><td>3-5秒</td></tr>
+</tbody></table></div>
+<div class="section"><div class="section-title">💬 用户评价与建议</div>
+<div class="user-eval"><div class="user-name">许军州</div><div class="eval-text"><strong>云录评价：</strong>总体能接受</div><div class="eval-text"><strong>云录建议：</strong>暂无</div><div class="eval-text"><strong>卡录评价：</strong>总体可以接受</div><div class="eval-text"><strong>卡录建议：</strong>暂无</div></div>
+<div class="user-eval"><div class="user-name">美诺</div><div class="eval-text"><strong>云录评价：</strong>云录8月14号19.47花屏</div><div class="eval-text"><strong>云录建议：</strong>建议解决花屏，播放时跳着播的问题。</div><div class="eval-text"><strong>卡录评价：</strong>卡录比云录差一些，花屏，卡顿，查看时跳播</div><div class="eval-text"><strong>卡录建议：</strong>录制度不清晰，有花屏，卡顿，云录花屏卡顿是不是和卡录有关我不懂，建议优化</div></div>
+<div class="user-eval"><div class="user-name">周军</div><div class="eval-text"><strong>云录评价：</strong>好</div><div class="eval-text"><strong>云录建议：</strong>无</div><div class="eval-text"><strong>卡录评价：</strong>好</div><div class="eval-text"><strong>卡录建议：</strong>看视频回放，有些眩晕</div></div>
+<div class="user-eval"><div class="user-name">相杰</div><div class="eval-text"><strong>云录评价：</strong>—</div><div class="eval-text"><strong>云录建议：</strong>清晰度希望能够在优化</div><div class="eval-text"><strong>卡录评价：</strong>一般</div><div class="eval-text"><strong>卡录建议：</strong>光线明暗切换不流畅，画面人像清晰度建议优化</div></div>
+</div>
+<script>
+var chartCloud = echarts.init(document.getElementById('chart-cloud'));
+chartCloud.setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    grid: { left: '3%', right: '4%', bottom: '20%', containLabel: true },
+    xAxis: { type: 'category', data: ["云录总体评价","云录准确性","云录事件完整性","云录完整性是否漏录","云录画面清晰度","云录画面流畅性","云录音质清晰","云录音量大小","云录视频下载","云录消息列表清晰性","云录消息分类准确度"], axisLabel: { rotate: 35, fontSize: 10 } },
+    yAxis: { type: 'value', name: '平均分', min: 0, max: 10 },
+    series: [{ type: 'bar', data: [8.5,8.0,8.0,8.8,8.2,9.0,9.0,9.2,9.0,9.2,8.8],
+        itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#00B050' }, { offset: 1, color: '#2BBD6E' }]), borderRadius: [4, 4, 0, 0] },
+        label: { show: true, position: 'top', fontSize: 12 } }]
+});
+var chartCard = echarts.init(document.getElementById('chart-card'));
+chartCard.setOption({
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    grid: { left: '3%', right: '4%', bottom: '20%', containLabel: true },
+    xAxis: { type: 'category', data: ["卡录总体评价","存储卡兼容性","TF卡格式化成功率","卡录完整性","卡录画面清晰度","卡录画面流畅性","卡录音质清晰性","卡录音量大小","卡录视频下载"], axisLabel: { rotate: 35, fontSize: 10 } },
+    yAxis: { type: 'value', name: '平均分', min: 0, max: 10 },
+    series: [{ type: 'bar', data: [8.0,9.2,9.2,9.0,7.8,8.0,8.5,9.2,9.2],
+        itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#F39C12' }, { offset: 1, color: '#FFB74D' }]), borderRadius: [4, 4, 0, 0] },
+        label: { show: true, position: 'top', fontSize: 12 } }]
+});
+window.addEventListener('resize', function() { chartCloud.resize(); chartCard.resize(); });
+</script>
+</div>
+</body>
+</html>
