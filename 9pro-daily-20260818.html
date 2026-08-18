@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9pro 400万4G云台公测 - 日常问题反馈报告</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 30px 20px; text-align: center; }
+.header h1 { font-size: 24px; margin-bottom: 8px; }
+.header p { font-size: 14px; opacity: 0.9; }
+.update-time { font-size: 12px; opacity: 0.8; margin-top: 8px; }
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+.kpi-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.kpi-card { flex: 1; min-width: 130px; background: #fff; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .num { font-size: 32px; font-weight: 700; color: #00B050; }
+.kpi-card .label { font-size: 13px; color: #888; margin-top: 4px; }
+.section { margin-bottom: 32px; }
+.section-title { font-size: 20px; font-weight: 700; color: #00B050; border-bottom: 2px solid #00B050; padding-bottom: 8px; margin-bottom: 16px; }
+.module { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.module-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.module-insight { font-size: 13px; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; }
+.insight-high { background: #fef2f2; color: #E74C3C; border-left: 4px solid #E74C3C; }
+.insight-mid { background: #fff7ed; color: #F39C12; border-left: 4px solid #F39C12; }
+.insight-low { background: #f0fdf4; color: #00B050; border-left: 4px solid #00B050; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: #f8faf8; padding: 8px; text-align: left; font-weight: 600; color: #666; border-bottom: 2px solid #e0e0e0; }
+td { padding: 8px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+.tag-bar { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
+.tag-high { background: #fef2f2; color: #E74C3C; }
+.tag-mid { background: #fff7ed; color: #F39C12; }
+.tag-low { background: #f0fdf4; color: #00B050; }
+.voice-text { color: #555; line-height: 1.5; }
+.voice-name { color: #666; font-size: 12px; }
+.footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+.chart-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.bar-track { flex: 1; background: #f0f0f0; border-radius: 4px; height: 24px; position: relative; }
+.bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #00B050, #2BBD6E); display: flex; align-items: center; padding-left: 8px; color: #fff; font-size: 12px; font-weight: 600; min-width: 30px; }
+.bar-label { width: 120px; font-size: 13px; text-align: right; }
+.bar-count { width: 40px; font-size: 13px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📡 9pro 400万4G云台公测</h1>
+  <p>日常问题反馈报告</p>
+  <div class="update-time">数据截止：2026-08-18 09:24 · 累计54条反馈</div>
+</div>
+<div class="container">
+
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">54</div><div class="label">反馈总条数</div></div>
+    <div class="kpi-card"><div class="num">15</div><div class="label">反馈人数</div></div>
+    <div class="kpi-card"><div class="num">12</div><div class="label">一级标签数</div></div>
+    <div class="kpi-card"><div class="num">21</div><div class="label">二级标签数</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">💡 核心洞察</div>
+    <div class="module">
+      <div class="module-insight insight-mid"><strong>功能需求</strong>是反馈最多的类别（16条），用户对产品功能有较高期待</div>
+      <div class="module-insight insight-mid"><strong>配网/安装引导</strong>问题突出（7条），需关注用户首次体验</div>
+      <div class="module-insight insight-mid"><strong>APP功能/交互</strong>问题集中（6条），"网络异常"提示反复出现</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📊 问题主题分类</div>
+    <div class="module">
+      <div class="chart-bar"><div class="bar-label">功能需求</div><div class="bar-track"><div class="bar-fill" style="width:100%">16</div></div></div>
+      <div class="chart-bar"><div class="bar-label">配网/安装引导</div><div class="bar-track"><div class="bar-fill" style="width:43%">7</div></div></div>
+      <div class="chart-bar"><div class="bar-label">APP功能/交互</div><div class="bar-track"><div class="bar-fill" style="width:37%">6</div></div></div>
+      <div class="chart-bar"><div class="bar-label">包装/配件</div><div class="bar-track"><div class="bar-fill" style="width:31%">5</div></div></div>
+      <div class="chart-bar"><div class="bar-label">卡录</div><div class="bar-track"><div class="bar-fill" style="width:31%">5</div></div></div>
+      <div class="chart-bar"><div class="bar-label">IQ</div><div class="bar-track"><div class="bar-fill" style="width:25%">4</div></div></div>
+      <div class="chart-bar"><div class="bar-label">硬件设计</div><div class="bar-track"><div class="bar-fill" style="width:25%">4</div></div></div>
+      <div class="chart-bar"><div class="bar-label">硬件/信号</div><div class="bar-track"><div class="bar-fill" style="width:12%">2</div></div></div>
+      <div class="chart-bar"><div class="bar-label">开流</div><div class="bar-track"><div class="bar-fill" style="width:12%">2</div></div></div>
+      <div class="chart-bar"><div class="bar-label">其他</div><div class="bar-track"><div class="bar-fill" style="width:6%">1</div></div></div>
+      <div class="chart-bar"><div class="bar-label">云录</div><div class="bar-track"><div class="bar-fill" style="width:6%">1</div></div></div>
+      <div class="chart-bar"><div class="bar-label">稳定性</div><div class="bar-track"><div class="bar-fill" style="width:6%">1</div></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📋 分类反馈明细</div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-low">功能需求</span> 16条（7人）</div>
+        <div class="module-insight insight-low">用户对产品功能有较高期待，建议收集整理需求池</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>功能建议</td>
+              <td>16条</td>
+              <td class="voice-text">插TF卡的时候说明书以及产品上面没有明显标识TF卡是朝上插还是朝下插，我首次插的时候就是朝下插，然后插不进去换个方向，希望说明书上面有明显提示以及产品上面有小字...<br><span class="voice-name">— 闫贺</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-high">配网/安装引导</span> 7条（5人）</div>
+        <div class="module-insight insight-high">配网和说明书问题影响首次体验，建议优化引导流程</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>配网问题</td>
+              <td>3条</td>
+              <td class="voice-text">配件里面缺少《配网卡》<br><span class="voice-name">— 林志澄</span></td>
+            </tr>
+            <tr>
+              <td>说明书问题</td>
+              <td>2条</td>
+              <td class="voice-text">在线电子说明书未更新。<br><span class="voice-name">— 林志澄</span></td>
+            </tr>
+            <tr>
+              <td>安装问题</td>
+              <td>1条</td>
+              <td class="voice-text">底座和摄像头的连接太松了，没有一点阻尼的感觉，我甚至感觉有上墙安装云台转动时有跌落的风险。<br><span class="voice-name">— 王亚兵</span></td>
+            </tr>
+            <tr>
+              <td>配网建议</td>
+              <td>1条</td>
+              <td class="voice-text">刚刚绑定成功的摄像头，不可以默认无分组，必须要强制选一个组，感觉这个不合理。<br><span class="voice-name">— 方家欢</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-high">APP功能/交互</span> 6条（4人）</div>
+        <div class="module-insight insight-high">网络异常提示反复出现，需排查APP与设备通信逻辑</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>网络异常提示</td>
+              <td>4条</td>
+              <td class="voice-text">上电扫码绑定好摄像头以后，摄像头可以正常实时正常回看，但是如果点设备图标进去会显示:当前网络异常。<br><span class="voice-name">— 王亚兵</span></td>
+            </tr>
+            <tr>
+              <td>截图功能异常</td>
+              <td>1条</td>
+              <td class="voice-text">准备app截图时出现一下截图的空白的没用生成截图的情况。<br><span class="voice-name">— 王亚兵</span></td>
+            </tr>
+            <tr>
+              <td>APP功能建议</td>
+              <td>1条</td>
+              <td class="voice-text">发现app上安装方向的图用的是小水滴的外观，虽然小水滴是咱们的经典机型，很多老用户都会有亲切感，但是终究不符眼见为实的原则，希望这个图能改成咱们现在摄像头的外观...<br><span class="voice-name">— 王亚兵</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-mid">包装/配件</span> 5条（5人）</div>
+        <div class="module-insight insight-mid">包装建议和配件缺失，需检查出厂配件清单</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>包装问题</td>
+              <td>4条</td>
+              <td class="voice-text">外包装用的原来的包装没有刻意体现出来4g的特性。只是多了一个贴纸。现在等于只是在贴纸上表明了一下摄像头的4g特性和功能。不过从减能增效的角度也可以理解。技术看看...<br><span class="voice-name">— 王亚兵</span></td>
+            </tr>
+            <tr>
+              <td>包装建议</td>
+              <td>1条</td>
+              <td class="voice-text">外包装建议在显眼的地方超时“4G终身免流”“支持远程绑定”，突出产品特点。<br><span class="voice-name">— 林志澄</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-mid">卡录</span> 5条（3人）</div>
+        <div class="module-insight insight-mid">卡录加载慢是主要痛点，需优化存储读取性能</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>卡录问题</td>
+              <td>3条</td>
+              <td class="voice-text">做了查看设备卡录操作，遇到卡录回放只有一个小时左右的回放，其他回放视频丢失(由于该内存卡之前在其他摄像头内使用，视频已占满，按道理应该会覆盖存储，怀疑未覆盖，正...<br><span class="voice-name">— 高瑞</span></td>
+            </tr>
+            <tr>
+              <td>卡录加载慢</td>
+              <td>1条</td>
+              <td class="voice-text">卡录加载很慢。差不多20秒才出来。<br><span class="voice-name">— 林志澄</span></td>
+            </tr>
+            <tr>
+              <td>卡录功能建议</td>
+              <td>1条</td>
+              <td class="voice-text">有群友反馈:发现卡录回放只有一个小时左右的回放，其他回放视频丢失(由于该内存卡之前在其他摄像头内使用，视频已占满，按道理应该会覆盖存储，怀疑未覆盖)，其实这种是...<br><span class="voice-name">— 王亚兵</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-high">IQ</span> 4条（3人）</div>
+        <div class="module-insight insight-high">人形误报问题集中，需优化检测算法</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>人形误报</td>
+              <td>4条</td>
+              <td class="voice-text">提示有人出现，反复查看视频确实无人出现<br><span class="voice-name">— 陈建建</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-high">硬件设计</span> 4条（2人）</div>
+        <div class="module-insight insight-high">做工问题（缝隙大/脚垫脱落），需反馈给硬件团队</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>做工问题</td>
+              <td>4条</td>
+              <td class="voice-text">摄像头顶部缝隙大<br><span class="voice-name">— 龚粒宇</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-mid">硬件/信号</span> 2条（2人）</div>
+        <div class="module-insight insight-mid">信号问题影响使用体验，需关注4G/WiFi信号强度</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>信号问题</td>
+              <td>2条</td>
+              <td class="voice-text">16，51分，做了查看设备操作，遇到缩略图的信号显示与实际的信号显示不符的问题。<br><span class="voice-name">— 高瑞</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-high">开流</span> 2条（2人）</div>
+        <div class="module-insight insight-high">开流速度和画面异常，需优化视频流加载</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>画面异常</td>
+              <td>1条</td>
+              <td class="voice-text">做了设备断电更换内存卡后上电操作，遇到设备上线后画面显示异常问题。(显示紫红色)<br><span class="voice-name">— 高瑞</span></td>
+            </tr>
+            <tr>
+              <td>开流问题</td>
+              <td>1条</td>
+              <td class="voice-text">怎么现在app设备主页面的4g信号条是2格蓝色的，但是进入设备正常实时以后4g信号条确实黄色的2格，这给人表里不一的感觉。而且让用户产生怀疑这到底是信号一般还是...<br><span class="voice-name">— 王亚兵</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-low">其他</span> 1条（1人）</div>
+        <div class="module-insight insight-low">其他零散问题</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>其他</td>
+              <td>1条</td>
+              <td class="voice-text">查看存储卡是，很慢才能进去看到存储卡上的视频<br><span class="voice-name">— 龚粒宇</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-mid">云录</span> 1条（1人）</div>
+        <div class="module-insight insight-mid">云录加载慢，需优化云端视频加载性能</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>云录问题</td>
+              <td>1条</td>
+              <td class="voice-text">摄像机清配置清用户信息方式解绑，然后再重新绑定。点云录，再点旁边的历史消息，里面还能看到解绑前的信息。如果摄像机送给别人，这隐私上有很大问题。<br><span class="voice-name">— 王刚红</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="module">
+        <div class="module-title"><span class="tag-bar tag-high">稳定性</span> 1条（1人）</div>
+        <div class="module-insight insight-high">设备重启问题，需排查固件稳定性</div>
+        <table>
+          <thead>
+            <tr><th>二级标签</th><th>反馈量</th><th>典型原声</th></tr>
+          </thead>
+          <tbody">
+            <tr>
+              <td>设备重启</td>
+              <td>1条</td>
+              <td class="voice-text">咱们设备刚刚拿到手，看到底部发现有一个小槽和小孔，一开始没在意还以为是死机重启孔，但是突然发现原来是出厂少装配一个垫子，这个品控希望加强一下，不能出现这种低级错...<br><span class="voice-name">— 王亚兵</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">👥 用户反馈活跃度</div>
+    <div class="module">
+      <table>
+        <thead>
+          <tr><th>排名</th><th>姓名</th><th>反馈条数</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>王亚兵</td><td>13</td></tr>
+          <tr><td>2</td><td>高瑞</td><td>9</td></tr>
+          <tr><td>3</td><td>陶双</td><td>9</td></tr>
+          <tr><td>4</td><td>林志澄</td><td>5</td></tr>
+          <tr><td>5</td><td>闫贺</td><td>3</td></tr>
+          <tr><td>6</td><td>方家欢</td><td>3</td></tr>
+          <tr><td>7</td><td>王刚红</td><td>3</td></tr>
+          <tr><td>8</td><td>龚粒宇</td><td>2</td></tr>
+          <tr><td>9</td><td>张宁</td><td>1</td></tr>
+          <tr><td>10</td><td>陈建建</td><td>1</td></tr>
+          <tr><td>11</td><td>苗欣丽</td><td>1</td></tr>
+          <tr><td>12</td><td>张鹏鑫</td><td>1</td></tr>
+          <tr><td>13</td><td>张一明</td><td>1</td></tr>
+          <tr><td>14</td><td>黄显森</td><td>1</td></tr>
+          <tr><td>15</td><td>孙洪士</td><td>1</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>🦞 尹燕玲-报告分析专家 · 数据来源：飞书表格「9pro 400万4G云台公测问题跟进表」</p>
+    <p>报告链接永久有效 · GitHub Pages 托管</p>
+  </div>
+</div>
+</body>
+</html>
