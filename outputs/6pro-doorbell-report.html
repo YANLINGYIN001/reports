@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6 Pro 按门铃通话专项报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif; background:#f5f7fa; color:#333; line-height:1.6; }
+.container { max-width:1200px; margin:0 auto; padding:24px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; padding:40px 32px; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,176,80,0.15); }
+.header h1 { font-size:28px; margin-bottom:8px; }
+.header .subtitle { font-size:14px; opacity:0.9; }
+.header .meta { font-size:13px; opacity:0.8; margin-top:12px; }
+.section { background:#fff; border-radius:12px; padding:28px; margin-bottom:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+.section-title { font-size:20px; font-weight:700; color:#00B050; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid #00B050; display:flex; align-items:center; gap:8px; }
+.section-title::before { content:''; display:inline-block; width:4px; height:20px; background:#00B050; border-radius:2px; }
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:24px; }
+.kpi-card { background:#fff; border-radius:12px; padding:24px; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.06); border-top:4px solid #00B050; transition:transform 0.2s; }
+.kpi-card:hover { transform:translateY(-2px); }
+.kpi-card.warn { border-top-color:#F39C12; }
+.kpi-card.danger { border-top-color:#E74C3C; }
+.kpi-value { font-size:36px; font-weight:700; color:#00B050; }
+.kpi-card.warn .kpi-value { color:#F39C12; }
+.kpi-card.danger .kpi-value { color:#E74C3C; }
+.kpi-label { font-size:14px; color:#666; margin-top:8px; }
+.kpi-sub { font-size:12px; color:#999; margin-top:4px; }
+.insight-box { background:linear-gradient(135deg,#f0fbf4,#e8f9f0); border-left:4px solid #00B050; padding:20px 24px; border-radius:8px; margin-bottom:16px; }
+.insight-box p { margin-bottom:8px; }
+.insight-box strong { color:#00B050; }
+table { width:100%; border-collapse:collapse; margin-bottom:16px; font-size:14px; }
+th { background:#00B050; color:#fff; padding:10px 12px; text-align:center; font-weight:600; white-space:nowrap; }
+td { padding:8px 12px; text-align:center; border-bottom:1px solid #eee; }
+tr:nth-child(even) { background:#fafafa; }
+tr:hover { background:#f0f7f4; }
+.fail td { color:#E74C3C; font-weight:600; }
+.good td { color:#00B050; }
+.warn td { color:#F39C12; }
+.score-good { background:#e8f9f0; color:#00B050; font-weight:700; }
+.score-mid { background:#fff8e1; color:#F39C12; }
+.score-fail { background:#fde8e8; color:#E74C3C; font-weight:700; }
+.bar { height:20px; border-radius:4px; min-width:2px; }
+#scoreChart { width:100%; height:400px; }
+.quote-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.quote-item { padding:12px 16px; border-radius:8px; margin-bottom:10px; display:flex; gap:12px; align-items:start; }
+.quote-neg { background:#fde8e8; border-left:3px solid #E74C3C; }
+.quote-pos { background:#e8f9f0; border-left:3px solid #00B050; }
+.quote-name { font-weight:700; white-space:nowrap; min-width:60px; }
+.quote-neg .quote-name { color:#E74C3C; }
+.quote-pos .quote-name { color:#00B050; }
+.quote-text { font-size:13px; color:#555; }
+.priority-P0 { background:#fde8e8; }
+.priority-P1 { background:#fff3e0; }
+.priority-P2 { background:#e8f4fd; }
+.priority-badge { display:inline-block; padding:2px 10px; border-radius:12px; font-size:12px; font-weight:700; }
+.priority-P0 .priority-badge { background:#E74C3C; color:#fff; }
+.priority-P1 .priority-badge { background:#F39C12; color:#fff; }
+.priority-P2 .priority-badge { background:#2196F3; color:#fff; }
+.summary-row { display:flex; gap:24px; margin-bottom:16px; flex-wrap:wrap; }
+.summary-stat { background:#f5f7fa; padding:12px 20px; border-radius:8px; }
+.summary-stat .label { font-size:12px; color:#999; }
+.summary-stat .value { font-size:20px; font-weight:700; color:#333; }
+@media (max-width:768px) { .kpi-grid { grid-template-columns:repeat(2,1fr); } .quote-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🔔 6 Pro 按门铃通话专项测试报告</h1>
+    <div class="subtitle">门铃通知响应 · 通话接通 · APP弹窗 · 音质评价</div>
+    <div class="meta">测试时间：2026年8月5日-8月7日 | 有效样本：21条（19人） | 报告生成：2026年8月7日</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">总体洞察</div>
+    <div class="insight-box">
+      <p>📊 <strong>测试概况：</strong>共回收22份问卷，排除1份造假数据（吴汞），有效样本21条，来自19名测试人员（朱彤、魏健伟各提交2次不同设备数据）。</p>
+      <p>✅ <strong>核心优势：</strong>APP前台弹窗响应速度优秀，94.3%的弹窗在2秒内弹出；通话音质整体清晰，17人评价门铃端音质良好，19人评价APP端音质良好。</p>
+      <p>⚠️ <strong>主要问题：</strong>10次通知未送达（9.5%），10次通话无法接通（9.5%）；部分用户反映门铃端有破音/回音，基站声音偏小。</p>
+      <p>🎯 <strong>改进方向：</strong>后台通知送达率是P0优先级问题，需排查推送通道；APP弹窗自主弹出机制需优化；门铃端音质需改善破音/回音问题。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">核心指标</div>
+    <div class="kpi-grid">
+      <div class="kpi-card ">
+        <div class="kpi-value">87%</div>
+        <div class="kpi-label">用户满意度</div>
+        <div class="kpi-sub">平均评分 8.7/10</div>
+      </div>
+      <div class="kpi-card ">
+        <div class="kpi-value">90%</div>
+        <div class="kpi-label">通知成功率</div>
+        <div class="kpi-sub">95/105次</div>
+      </div>
+      <div class="kpi-card ">
+        <div class="kpi-value">90%</div>
+        <div class="kpi-label">通话接通率</div>
+        <div class="kpi-sub">95/105次</div>
+      </div>
+      <div class="kpi-card ">
+        <div class="kpi-value">94%</div>
+        <div class="kpi-label">弹窗弹出率</div>
+        <div class="kpi-sub">99/105次</div>
+      </div>
+    </div>
+    <div class="summary-row">
+      <div class="summary-stat"><div class="label">APP通话接通率</div><div class="value">100%</div></div>
+      <div class="summary-stat"><div class="label">门铃端音质好评率</div><div class="value">81%</div></div>
+      <div class="summary-stat"><div class="label">APP端音质好评率</div><div class="value">90%</div></div>
+      <div class="summary-stat"><div class="label">8维度平均分</div><div class="value">9.1/10</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">8维度评分柱形图</div>
+    <div id="scoreChart"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">各用户评分明细</div>
+    <table>
+      <thead><tr>
+        <th>序号</th><th>姓名</th><th>手机型号</th><th>APP版本</th>
+        <th>整体表现</th><th>基站声音</th><th>基站响应</th><th>APP响应</th>
+        <th>门铃音质</th><th>APP音质</th><th>门铃音量</th><th>APP音量</th><th>均分</th>
+      </tr></thead>
+      <tbody><tr><td>1</td><td><strong>袁飞</strong></td><td>华为mate70 鸿蒙4</td><td>2.30.0</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-mid">8</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">9</td><td><strong>8.9</strong></td></tr>
+<tr><td>2</td><td><strong>张雷</strong></td><td>一加ace3</td><td>测试</td><td class="score-mid">7</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td><strong>9.6</strong></td></tr>
+<tr><td>3</td><td><strong>蔡坤城</strong></td><td>苹果14pro</td><td>26072402</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-mid">8</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">9</td><td><strong>9.1</strong></td></tr>
+<tr><td>4</td><td><strong>何三涛</strong></td><td>华为P40 Pro</td><td>2.30.0</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td><strong>9.6</strong></td></tr>
+<tr><td>5</td><td><strong>周军</strong></td><td>小米13Ultra</td><td>2.30.0</td><td class="score-mid">8</td><td class="score-mid">7</td><td class="score-good">9</td><td class="score-mid">8</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td><strong>8.8</strong></td></tr>
+<tr><td>6</td><td><strong>许军州</strong></td><td>红米note130pro+</td><td>2.30.0</td><td class="score-mid">8</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td><strong>8.2</strong></td></tr>
+<tr><td>7</td><td><strong>徐婷婷</strong></td><td>oppo find</td><td>2.30.2</td><td class="score-fail">6</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td><strong>9.2</strong></td></tr>
+<tr><td>8</td><td><strong>夏君</strong></td><td>红米k70</td><td>2.30.0</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-good">10</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-good">9</td><td><strong>8.4</strong></td></tr>
+<tr><td>9</td><td><strong>相杰</strong></td><td>Nova. 15 ultra</td><td>2.30.0</td><td class="score-mid">8</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td><strong>9.8</strong></td></tr>
+<tr><td>10</td><td><strong>美诺</strong></td><td>华为mate60Pro</td><td>2.30.0</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-mid">7</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td><strong>9.4</strong></td></tr>
+<tr><td>12</td><td><strong>朱君</strong></td><td>荣耀magic6</td><td>2.30.0</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-good">10</td><td><strong>9.9</strong></td></tr>
+<tr><td>13</td><td><strong>孙晓明</strong></td><td>小米13</td><td>2.30.0</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td><strong>10.0</strong></td></tr>
+<tr><td>14</td><td><strong>瑞子</strong></td><td>小米17pro</td><td>2.30.0</td><td class="score-mid">8</td><td class="score-fail">4</td><td class="score-good">9</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td class="score-mid">8</td><td><strong>7.6</strong></td></tr>
+<tr><td>15</td><td><strong>朱彤</strong></td><td>荣耀power</td><td>2.30.0</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-good">10</td><td><strong>9.8</strong></td></tr>
+<tr><td>16</td><td><strong>朱彤</strong></td><td>荣耀power</td><td>2.30.0</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-good">10</td><td><strong>9.8</strong></td></tr>
+<tr><td>17</td><td><strong>陈俊</strong></td><td>红米k80pro</td><td>2310</td><td class="score-good">9</td><td class="score-mid">7</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-fail">6</td><td class="score-good">9</td><td><strong>8.8</strong></td></tr>
+<tr><td>18</td><td><strong>于晨光</strong></td><td>一加13</td><td>2.31</td><td class="score-mid">8</td><td class="score-fail">6</td><td class="score-fail">5</td><td class="score-fail">5</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">9</td><td><strong>7.5</strong></td></tr>
+<tr><td>19</td><td><strong>王瑷珲</strong></td><td>MEIZU 21 Pro</td><td>2.31</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td><strong>9.6</strong></td></tr>
+<tr><td>20</td><td><strong>魏健伟</strong></td><td>一加ACE2（安卓14）</td><td>2.31.0</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-mid">8</td><td class="score-mid">8</td><td><strong>8.9</strong></td></tr>
+<tr><td>21</td><td><strong>魏健伟</strong></td><td>荣耀V20（鸿蒙4.0）</td><td>2.31.0</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-mid">8</td><td class="score-good">9</td><td class="score-good">9</td><td class="score-mid">8</td><td class="score-good">9</td><td><strong>8.9</strong></td></tr>
+<tr><td>22</td><td><strong>黄军剑</strong></td><td>REDMI Turbo 5 Max</td><td>2.31.0</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">9</td><td class="score-good">10</td><td class="score-good">10</td><td class="score-good">10</td><td><strong>9.8</strong></td></tr>
+</tbody>
+    </table>
+    <p style="font-size:12px;color:#999;margin-top:8px;">🟢 ≥9分优秀 | 🟡 7-8分中等 | 🔴 ≤6分需改进</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">通知响应分析（5次按门铃→手机通知）</div>
+    <table>
+      <thead><tr><th>响应时长</th><th>次数</th><th>占比</th><th>分布</th></tr></thead>
+      <tbody><tr ><td>1秒以内</td><td>19</td><td>18.1%</td><td><div class="bar" style="width:18.095238095238095%;background:#00B050"></div></td></tr>
+<tr ><td>1-2秒（含2秒）</td><td>57</td><td>54.3%</td><td><div class="bar" style="width:54.285714285714285%;background:#00B050"></div></td></tr>
+<tr ><td>2-4秒（含4秒）</td><td>13</td><td>12.4%</td><td><div class="bar" style="width:12.380952380952381%;background:#00B050"></div></td></tr>
+<tr ><td>4-6秒（含6秒）</td><td>4</td><td>3.8%</td><td><div class="bar" style="width:3.8095238095238098%;background:#F39C12"></div></td></tr>
+<tr ><td>6-9秒（含9秒）</td><td>2</td><td>1.9%</td><td><div class="bar" style="width:1.9047619047619049%;background:#F39C12"></div></td></tr>
+<tr ><td>9-12秒（含12秒）</td><td>0</td><td>0.0%</td><td><div class="bar" style="width:0.0%;background:#F39C12"></div></td></tr>
+<tr ><td>6秒以上</td><td>0</td><td>0.0%</td><td><div class="bar" style="width:0.0%;background:#F39C12"></div></td></tr>
+<tr class="fail"><td>未收到消息通知</td><td>10</td><td>9.5%</td><td><div class="bar" style="width:9.523809523809524%;background:#E74C3C"></div></td></tr>
+</tbody>
+    </table>
+    <p style="font-size:13px;color:#666;margin-top:8px;">💡 共105次测试，10次未收到通知（9.5%），主要集中于2名用户（夏君、美诺），APP后台被系统杀死导致推送不可达。</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">通话接通分析（5次按门铃→接听通话）</div>
+    <table>
+      <thead><tr><th>接通时长</th><th>次数</th><th>占比</th><th>分布</th></tr></thead>
+      <tbody><tr ><td>1秒以内可进行正常通话</td><td>12</td><td>11.4%</td><td><div class="bar" style="width:11.428571428571429%;background:#00B050"></div></td></tr>
+<tr ><td>1-2秒（含2秒）可进行正常通话</td><td>35</td><td>33.3%</td><td><div class="bar" style="width:33.33333333333333%;background:#00B050"></div></td></tr>
+<tr ><td>2-4秒（含4秒）可进行正常通话</td><td>28</td><td>26.7%</td><td><div class="bar" style="width:26.666666666666668%;background:#00B050"></div></td></tr>
+<tr ><td>4-6秒（含6秒）可进行正常通话</td><td>10</td><td>9.5%</td><td><div class="bar" style="width:9.523809523809524%;background:#F39C12"></div></td></tr>
+<tr ><td>6秒以上可进行正常通话</td><td>10</td><td>9.5%</td><td><div class="bar" style="width:9.523809523809524%;background:#F39C12"></div></td></tr>
+<tr class="fail"><td>不能进行正常通话</td><td>10</td><td>9.5%</td><td><div class="bar" style="width:9.523809523809524%;background:#E74C3C"></div></td></tr>
+</tbody>
+    </table>
+    <p style="font-size:13px;color:#666;margin-top:8px;">💡 共105次测试，10次无法通话（9.5%），与通知未送达用户高度重合。多数用户1-2秒内可接通。</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">APP弹窗分析（APP前台→弹窗弹出）</div>
+    <table>
+      <thead><tr><th>弹窗时长</th><th>次数</th><th>占比</th><th>分布</th></tr></thead>
+      <tbody><tr ><td>1秒以内</td><td>52</td><td>49.5%</td><td><div class="bar" style="width:49.523809523809526%;background:#00B050"></div></td></tr>
+<tr ><td>1-2秒（含2秒）</td><td>31</td><td>29.5%</td><td><div class="bar" style="width:29.523809523809526%;background:#00B050"></div></td></tr>
+<tr ><td>2-4秒（含4秒）</td><td>11</td><td>10.5%</td><td><div class="bar" style="width:10.476190476190476%;background:#00B050"></div></td></tr>
+<tr ><td>4-6秒（含6秒）</td><td>2</td><td>1.9%</td><td><div class="bar" style="width:1.9047619047619049%;background:#F39C12"></div></td></tr>
+<tr ><td>6-9秒（含9秒）</td><td>2</td><td>1.9%</td><td><div class="bar" style="width:1.9047619047619049%;background:#F39C12"></div></td></tr>
+<tr ><td>9-12秒（含12秒）</td><td>1</td><td>1.0%</td><td><div class="bar" style="width:0.9523809523809524%;background:#F39C12"></div></td></tr>
+<tr class="fail"><td>APP端仅有通知栏消息，无弹窗</td><td>6</td><td>5.7%</td><td><div class="bar" style="width:5.714285714285714%;background:#E74C3C"></div></td></tr>
+</tbody>
+    </table>
+    <p style="font-size:13px;color:#666;margin-top:8px;">💡 共105次测试，APP前台弹窗响应整体优秀。1名用户（美诺）仅通知栏消息无弹窗，1名用户（瑞子）首次延迟9-12秒。</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">音质评价分析</div>
+    <table>
+      <thead><tr><th>音质评价</th><th>门铃端人数</th><th>门铃端占比</th><th>APP端人数</th><th>APP端占比</th></tr></thead>
+      <tbody><tr class="fail"><td>音质较好，无破音；声音清晰</td><td>17</td><td>81.0%</td><td>19</td><td>90.5%</td></tr>
+<tr class="fail"><td>有破音/回音</td><td>3</td><td>14.3%</td><td>2</td><td>9.5%</td></tr>
+<tr class="fail"><td>声音小听不清</td><td>1</td><td>4.8%</td><td>0</td><td>0.0%</td></tr>
+</tbody>
+    </table>
+    <p style="font-size:13px;color:#666;margin-top:8px;">💡 门铃端17/21人评价音质良好，3人反映有破音/回音；APP端音质表现更优，19/21人评价良好。</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">用户原声</div>
+    <div class="quote-grid">
+      <div>
+        <h3 style="color:#E74C3C;margin-bottom:12px;">⚠️ 问题反馈</h3>
+        <div class="quote-item quote-neg"><span class="quote-name">袁飞</span><span class="quote-text">门铃初期与APP连通后声音较小，连通信号稳定后清晰</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">张雷</span><span class="quote-text">表现还可以，偶尔有延迟，最高5秒，挪进了基站位置延迟就小了</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">张雷</span><span class="quote-text">[基站响应] 几乎没啥延迟</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">张雷</span><span class="quote-text">[APP响应] 几乎也没有延迟</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">何三涛</span><span class="quote-text">门铃通话实际有1-2秒的延迟，不影响通话</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">何三涛</span><span class="quote-text">[APP响应] 受信号强度影响，有1秒左右的延迟</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">周军</span><span class="quote-text">[基站声音] 还好，稍有偏小</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">周军</span><span class="quote-text">[APP响应] 不打开app的情况下偏慢，但也算正常。</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">许军州</span><span class="quote-text">整体较好，无明显问题</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">徐婷婷</span><span class="quote-text">通话过程中有回声，杂音，画面声音延迟严重</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">夏君</span><span class="quote-text">[APP响应] 当app不在手机前端的时候，按门铃无任何提示</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">相杰</span><span class="quote-text">个人在测试过程中发现声音清晰、声音大小正常，但是会有延迟，所以打8分。</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">相杰</span><span class="quote-text">[基站声音] 基站声音正常，清晰无卡顿</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">相杰</span><span class="quote-text">[APP响应] 如果每次都杀掉APP,按门铃后APP通知大约会延迟1s左右，如果APP在前台，响应速度可以。</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">美诺</span><span class="quote-text">[APP响应] App端通知但必须要点击通知才可以弹出接听或者挂断，不能自主弹出接听或者挂断，希望优化</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">瑞子</span><span class="quote-text">8分，测试门铃响应视频，录制的是黑白 绑定了微信小程序，门铃接听app正常接听 但是小程序还一直在提示有人按门铃需要接听，最后app已经结束 小程序还在响 只能挂断</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">瑞子</span><span class="quote-text">[基站声音] 声音小点没有门铃声音大了</span></div>
+<div class="quote-item quote-neg"><span class="quote-name">瑞子</span><span class="quote-text">[APP响应] 第一次8秒左右 小程序关了以后正常在3秒左右接通</span></div>
+
+      </div>
+      <div>
+        <h3 style="color:#00B050;margin-bottom:12px;">✅ 正面评价</h3>
+        <div class="quote-item quote-pos"><span class="quote-name">何三涛</span><span class="quote-text">[基站声音] 基站的声音好听，并及时播报</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">周军</span><span class="quote-text">良好，通话还是有延时，但算还正常。</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">许军州</span><span class="quote-text">[APP响应] 几乎同步就出现提醒</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">徐婷婷</span><span class="quote-text">[基站声音] 反应很快，1到3秒就会响</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">徐婷婷</span><span class="quote-text">[基站响应] 反应很快，可以接受</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">夏君</span><span class="quote-text">门铃通话效果还行</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">相杰</span><span class="quote-text">[基站响应] 基站响应基本都在1s左右</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">美诺</span><span class="quote-text">通话清晰</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">孙晓明</span><span class="quote-text">消息通知挺及时，不会错过门铃</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">孙晓明</span><span class="quote-text">[基站声音] 声音很大，卧室也能听的很清楚</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">孙晓明</span><span class="quote-text">[基站响应] 间隔时间挺短的，几乎是同时吧</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">孙晓明</span><span class="quote-text">[APP响应] 速度还可以，能接受，测试期间没有错过门铃的情况</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">王瑷珲</span><span class="quote-text">[基站声音] 声音响亮，每个房间都清晰听到</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">王瑷珲</span><span class="quote-text">[APP响应] 有时会冒出广告，响应还是非常棒。</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">黄军剑</span><span class="quote-text">整体通话表现非常不错，声音音质很清晰，画面也很清晰</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">黄军剑</span><span class="quote-text">[基站声音] 按门铃后，基站门铃的声音很大。</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">黄军剑</span><span class="quote-text">[基站响应] 按门铃后，基站的响应速度非常的快。</span></div>
+<div class="quote-item quote-pos"><span class="quote-name">黄军剑</span><span class="quote-text">[APP响应] 按门铃后，APP端的响应速度很快，弹窗很快就显示出来了。</span></div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">改进建议汇总</div>
+    <table>
+      <thead><tr><th style="width:60px;">优先级</th><th style="width:160px;">问题</th><th>详情与建议</th><th style="width:140px;">责任方向</th></tr></thead>
+      <tbody><tr class="priority-P0"><td><span class="priority-badge">P0</span></td><td><strong>后台通知送达失败</strong></td><td>2名用户（夏君、美诺）5次按门铃均未收到消息通知，通知成功率仅90%。需排查APP后台保活机制及推送通道配置，确保护眼模式/省电模式下通知可正常送达。</td><td>推送通道/保活策略</td></tr>
+<tr class="priority-P0"><td><span class="priority-badge">P0</span></td><td><strong>通话无法接通</strong></td><td>2名用户5次通话均无法接通（10/105次失败）。需排查APP后台被系统杀死后无法接听的问题，建议增加系统级保活白名单引导。</td><td>通话接通/保活</td></tr>
+<tr class="priority-P1"><td><span class="priority-badge">P1</span></td><td><strong>APP弹窗不自主弹出</strong></td><td>美诺用户反映APP端仅有通知栏消息无弹窗，需点击通知才能接听。建议优化弹窗机制，前台运行时自主弹出接听/挂断界面。</td><td>UI弹窗机制</td></tr>
+<tr class="priority-P1"><td><span class="priority-badge">P1</span></td><td><strong>门铃端破音/回音</strong></td><td>3人反映门铃端有破音或回音。需优化门铃端音频编解码算法，增加回声消除（AEC）处理。</td><td>音频算法</td></tr>
+<tr class="priority-P1"><td><span class="priority-badge">P1</span></td><td><strong>基站声音偏小</strong></td><td>多名用户反映基站声音偏小（瑞子评4分、陈俊评7分）。建议提升基站默认音量或增加音量调节选项。</td><td>基站音量</td></tr>
+<tr class="priority-P1"><td><span class="priority-badge">P1</span></td><td><strong>通话延迟波动大</strong></td><td>部分用户通话接通时间波动大（4-6秒甚至6秒以上），需优化网络传输延迟和P2P连接建立速度。</td><td>网络/连接优化</td></tr>
+<tr class="priority-P2"><td><span class="priority-badge">P2</span></td><td><strong>微信小程序与APP冲突</strong></td><td>瑞子反映绑定微信小程序后，APP已结束通话但小程序仍在响铃。需处理多端消息同步问题。</td><td>多端同步</td></tr>
+<tr class="priority-P2"><td><span class="priority-badge">P2</span></td><td><strong>APP弹窗偶发延迟</strong></td><td>朱彤反映前台运行时5次有1次弹窗响应慢了好几秒。需排查偶发延迟根因。</td><td>弹窗稳定性</td></tr>
+<tr class="priority-P2"><td><span class="priority-badge">P2</span></td><td><strong>门铃端声音偏小</strong></td><td>袁飞、陈俊反映门铃端声音偏小。建议评估默认音量设置是否合理，考虑增加音量档位。</td><td>音量设置</td></tr>
+</tbody>
+    </table>
+  </div>
+
+  <div style="text-align:center;padding:24px;color:#999;font-size:13px;">
+    <p>🦞 6 Pro 按门铃通话专项报告 | 数据来源：飞书问卷 | 生成时间：2026年8月7日</p>
+  </div>
+</div>
+
+<script>
+var chartData = [{"name": "\u6574\u4f53\u8868\u73b0", "value": 8.71}, {"name": "\u57fa\u7ad9\u58f0\u97f3", "value": 8.86}, {"name": "\u57fa\u7ad9\u54cd\u5e94", "value": 9.43}, {"name": "APP\u54cd\u5e94", "value": 8.76}, {"name": "\u95e8\u94c3\u97f3\u8d28", "value": 9.33}, {"name": "APP\u97f3\u8d28", "value": 9.33}, {"name": "\u95e8\u94c3\u97f3\u91cf", "value": 9.05}, {"name": "APP\u97f3\u91cf", "value": 9.43}];
+var chart = echarts.init(document.getElementById('scoreChart'));
+chart.setOption({
+  tooltip: { trigger: 'axis', formatter: function(params) { return params[0].name + ': ' + params[0].value + '分'; } },
+  xAxis: {
+    type: 'category',
+    data: chartData.map(d => d.name),
+    axisLabel: { fontSize: 13, color: '#333' },
+    axisLine: { lineStyle: { color: '#ddd' } }
+  },
+  yAxis: {
+    type: 'value',
+    min: 0, max: 10,
+    axisLabel: { fontSize: 12, color: '#999' },
+    splitLine: { lineStyle: { color: '#f0f0f0' } }
+  },
+  series: [{
+    type: 'bar',
+    data: chartData.map(d => ({
+      value: d.value,
+      itemStyle: {
+        color: d.value >= 9 ? '#00B050' : (d.value >= 7 ? '#F39C12' : '#E74C3C'),
+        borderRadius: [6, 6, 0, 0]
+      }
+    })),
+    barWidth: '50%',
+    label: {
+      show: true, position: 'top',
+      formatter: function(params) { return params.value + '分'; },
+      fontSize: 13, fontWeight: 'bold',
+      color: function(v) { return v >= 9 ? '#00B050' : (v >= 7 ? '#F39C12' : '#E74C3C'); }
+    }
+  }],
+  grid: { left: '5%', right: '5%', bottom: '10%', top: '15%', containLabel: true }
+});
+window.addEventListener('resize', function() { chart.resize(); });
+</script>
+</body>
+</html>
