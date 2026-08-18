@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9pro 400万4G云台公测 · 报告合集</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 40px 20px; text-align: center; }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header p { font-size: 14px; opacity: 0.9; }
+  .container { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 20px; font-weight: 700; color: #00B050; border-bottom: 2px solid #00B050; padding-bottom: 8px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .section-title::before { content: ''; width: 4px; height: 20px; background: #00B050; border-radius: 2px; }
+  .report-card { display: block; background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; text-decoration: none; color: #333; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.2s; border-left: 4px solid #00B050; }
+  .report-card:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(0,176,80,0.15); }
+  .report-card .card-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .report-card .card-desc { font-size: 13px; color: #888; }
+  .report-card .card-badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #e8f5e9; color: #00B050; margin-left: 8px; vertical-align: middle; }
+  .report-card .card-badge.new { background: #fff3e0; color: #F39C12; }
+  .empty { text-align: center; padding: 40px 20px; color: #999; font-size: 14px; }
+  .empty .icon { font-size: 48px; margin-bottom: 12px; opacity: 0.3; }
+  .footer { text-align: center; padding: 30px 20px; color: #999; font-size: 12px; }
+  .stats { display: flex; gap: 16px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+  .stat-item { background: rgba(255,255,255,0.15); border-radius: 8px; padding: 8px 20px; text-align: center; }
+  .stat-item .num { font-size: 22px; font-weight: 700; }
+  .stat-item .label { font-size: 12px; opacity: 0.85; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📡 9pro 400万4G云台公测</h1>
+  <p>报告合集 · 持续更新中</p>
+  <div class="stats">
+    <div class="stat-item"><div class="num" id="totalReports">0</div><div class="label">报告总数</div></div>
+    <div class="stat-item"><div class="num">30</div><div class="label">公测人数</div></div>
+    <div class="stat-item"><div class="num">3</div><div class="label">回收问卷</div></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section" id="daily-section">
+    <div class="section-title">📊 日常问题反馈报告</div>
+    <div class="empty" id="daily-empty">
+      <div class="icon">📋</div>
+      <div>暂无报告，待数据积累后生成</div>
+    </div>
+  </div>
+
+  <div class="section" id="special-section">
+    <div class="section-title">🔍 专项体验报告</div>
+    <div class="empty" id="special-empty">
+      <div class="icon">🔬</div>
+      <div>暂无报告</div>
+    </div>
+  </div>
+
+  <div class="section" id="summary-section">
+    <div class="section-title">📈 汇总报告</div>
+    <div class="empty" id="summary-empty">
+      <div class="icon">📊</div>
+      <div>暂无报告</div>
+    </div>
+  </div>
+
+  <div class="section" id="homework-section">
+    <div class="section-title">✅ 作业完成情况</div>
+    <div class="empty" id="homework-empty">
+      <div class="icon">📝</div>
+      <div>暂无报告</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>🦞 尹燕玲-报告分析专家 · 数据驱动决策</p>
+  <p>报告链接永久有效 · GitHub Pages 托管</p>
+</div>
+
+<script>
+// 报告注册表 - 新增报告在这里添加
+const reports = {
+  daily: [],
+  special: [],
+  summary: [],
+  homework: []
+};
+
+function renderReports() {
+  let total = 0;
+  for (const [section, items] of Object.entries(reports)) {
+    const container = document.getElementById(section + '-section');
+    const empty = document.getElementById(section + '-empty');
+    // 清除旧卡片
+    container.querySelectorAll('.report-card').forEach(c => c.remove());
+    if (items.length === 0) {
+      empty.style.display = 'block';
+    } else {
+      empty.style.display = 'none';
+      items.forEach(r => {
+        total++;
+        const card = document.createElement('a');
+        card.className = 'report-card';
+        card.href = r.url;
+        card.target = '_blank';
+        card.innerHTML = `<span class="card-title">${r.title}${r.badge ? '<span class="card-badge '+r.badgeClass+'">'+r.badge+'</span>' : ''}</span><br><span class="card-desc">${r.desc}</span>`;
+        container.appendChild(card);
+      });
+    }
+  }
+  document.getElementById('totalReports').textContent = total;
+}
+
+renderReports();
+</script>
+</body>
+</html>
