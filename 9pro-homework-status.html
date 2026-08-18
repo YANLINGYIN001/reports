@@ -20,11 +20,11 @@ tr:hover { background: #f9fff9; }
 .name { font-weight: 600; }
 .done { color: #00B050; font-weight: 600; }
 .not-done { color: #ccc; }
+.not-done-yellow { color: #F39C12; font-weight: 600; background: #fff7ed; }
 .daily-high { color: #00B050; font-weight: 600; }
-.daily-low { color: #E74C3C; }
+.daily-zero { color: #999; }
 .status-signed { color: #00B050; font-size: 12px; }
 .status-transit { color: #F39C12; font-size: 12px; }
-.status-delivery { color: #F39C12; font-size: 12px; }
 .summary { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
 .summary-card { flex: 1; min-width: 140px; background: #fff; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .summary-card .num { font-size: 28px; font-weight: 700; color: #00B050; }
@@ -36,11 +36,12 @@ tr:hover { background: #f9fff9; }
 <div class="header">
   <h1>📡 9pro 400万4G云台公测</h1>
   <p>作业完成情况</p>
-  <div class="update-time">更新时间：2026-08-18 09:24</div>
+  <div class="update-time">更新时间：2026-08-18 10:04</div>
 </div>
 <div class="container">
   <div class="summary">
     <div class="summary-card"><div class="num">30</div><div class="label">公测总人数</div></div>
+    <div class="summary-card"><div class="num">28</div><div class="label">已签收</div></div>
     <div class="summary-card"><div class="num">19</div><div class="label">开箱完成</div></div>
     <div class="summary-card"><div class="num">17</div><div class="label">配网完成</div></div>
     <div class="summary-card"><div class="num">54</div><div class="label">日常反馈条数</div></div>
@@ -79,15 +80,15 @@ tr:hover { background: #f9fff9; }
         <td class="name">孙洪士</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="daily-low">1</td>
+        <td class="">1</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>4</td>
         <td class="name">郭智育</td>
-        <td class="not-done">—</td>
-        <td class="not-done">—</td>
-        <td class="">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="daily-zero">0</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
@@ -103,7 +104,7 @@ tr:hover { background: #f9fff9; }
         <td class="name">曾文彬</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="">—</td>
+        <td class="daily-zero">0</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
@@ -111,7 +112,7 @@ tr:hover { background: #f9fff9; }
         <td class="name">黄显森</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="daily-low">1</td>
+        <td class="">1</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
@@ -119,15 +120,15 @@ tr:hover { background: #f9fff9; }
         <td class="name">张鹏鑫</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="daily-low">1</td>
-        <td class="status-transit">🚚 派送中</td>
+        <td class="">1</td>
+        <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>9</td>
         <td class="name">李玉佳</td>
         <td class="not-done">—</td>
         <td class="not-done">—</td>
-        <td class="">—</td>
+        <td class="daily-zero">0</td>
         <td class="status-transit">🚚 派送中</td>
       </tr>
       <tr>
@@ -135,23 +136,23 @@ tr:hover { background: #f9fff9; }
         <td class="name">朱文虎</td>
         <td class="not-done">—</td>
         <td class="not-done">—</td>
-        <td class="">—</td>
-        <td class="status-transit">📦 中转中</td>
+        <td class="daily-zero">0</td>
+        <td class="status-transit">🚚 派送中</td>
       </tr>
       <tr>
         <td>11</td>
         <td class="name">邱天顺</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="">—</td>
+        <td class="daily-zero">0</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>12</td>
         <td class="name">任孝鹏</td>
         <td class="done">✅</td>
-        <td class="not-done">—</td>
-        <td class="">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="daily-zero">0</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
@@ -159,46 +160,46 @@ tr:hover { background: #f9fff9; }
         <td class="name">赖峰</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="">—</td>
+        <td class="daily-zero">0</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>14</td>
         <td class="name">程永权</td>
-        <td class="not-done">—</td>
-        <td class="not-done">—</td>
-        <td class="">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="daily-zero">0</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>15</td>
         <td class="name">张宁</td>
-        <td class="not-done">—</td>
-        <td class="not-done">—</td>
-        <td class="daily-low">1</td>
+        <td class="not-done-yellow">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="">1</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>16</td>
         <td class="name">蒋牧吟</td>
-        <td class="not-done">—</td>
-        <td class="not-done">—</td>
-        <td class="">—</td>
-        <td class="status-transit">📦 中转中</td>
+        <td class="not-done-yellow">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="daily-zero">0</td>
+        <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>17</td>
         <td class="name">张一明</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="daily-low">1</td>
+        <td class="">1</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>18</td>
         <td class="name">陶双</td>
-        <td class="not-done">—</td>
-        <td class="not-done">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="not-done-yellow">—</td>
         <td class="daily-high">9</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
@@ -215,15 +216,15 @@ tr:hover { background: #f9fff9; }
         <td class="name">苗欣丽</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="daily-low">1</td>
+        <td class="">1</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>21</td>
         <td class="name">朱秀澍</td>
-        <td class="not-done">—</td>
-        <td class="not-done">—</td>
-        <td class="">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="daily-zero">0</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
@@ -231,30 +232,30 @@ tr:hover { background: #f9fff9; }
         <td class="name">龚粒宇</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="daily-low">2</td>
-        <td class="status-transit">🚚 派送中</td>
+        <td class="">2</td>
+        <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>23</td>
         <td class="name">杜劲</td>
-        <td class="not-done">—</td>
-        <td class="not-done">—</td>
-        <td class="">—</td>
-        <td class="status-transit">📦 中转中</td>
+        <td class="not-done-yellow">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="daily-zero">0</td>
+        <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>24</td>
         <td class="name">汤远鹏</td>
-        <td class="not-done">—</td>
-        <td class="not-done">—</td>
-        <td class="">—</td>
-        <td class="status-transit">📦 中转中</td>
+        <td class="not-done-yellow">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="daily-zero">0</td>
+        <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>25</td>
         <td class="name">方家欢</td>
         <td class="done">✅</td>
-        <td class="not-done">—</td>
+        <td class="not-done-yellow">—</td>
         <td class="">3</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
@@ -264,22 +265,22 @@ tr:hover { background: #f9fff9; }
         <td class="done">✅</td>
         <td class="done">✅</td>
         <td class="">3</td>
-        <td class="status-transit">🚚 派送中</td>
+        <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>27</td>
         <td class="name">陈建建</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="daily-low">1</td>
-        <td class="status-transit">📦 中转中</td>
+        <td class="">1</td>
+        <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>28</td>
         <td class="name">厚晓霞</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="">—</td>
+        <td class="daily-zero">0</td>
         <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
@@ -287,22 +288,22 @@ tr:hover { background: #f9fff9; }
         <td class="name">齐彩英</td>
         <td class="done">✅</td>
         <td class="done">✅</td>
-        <td class="">—</td>
-        <td class="status-transit">📦 中转中</td>
+        <td class="daily-zero">0</td>
+        <td class="status-signed">✅ 已签收</td>
       </tr>
       <tr>
         <td>30</td>
         <td class="name">谢光位</td>
-        <td class="not-done">—</td>
-        <td class="not-done">—</td>
-        <td class="">—</td>
-        <td class="status-transit">🚚 派送中</td>
+        <td class="not-done-yellow">—</td>
+        <td class="not-done-yellow">—</td>
+        <td class="daily-zero">0</td>
+        <td class="status-signed">✅ 已签收</td>
       </tr>
     </tbody>
   </table>
   <div class="footer">
     <p>🦞 尹燕玲-报告分析专家 · 数据来源：飞书表格「9pro 400万4G云台公测问题跟进表」</p>
-    <p>数据截止：2026-08-18 09:24</p>
+    <p>数据截止：2026-08-18 10:04 · 🟡黄色=已签收但专项未完成</p>
   </div>
 </div>
 </body>
