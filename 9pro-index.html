@@ -34,7 +34,7 @@
   <h1>📡 9pro 400万4G云台公测</h1>
   <p>报告合集 · 持续更新中</p>
   <div class="stats">
-    <div class="stat-item"><div class="num" id="totalReports">0</div><div class="label">报告总数</div></div>
+    <div class="stat-item"><div class="num">4</div><div class="label">报告总数</div></div>
     <div class="stat-item"><div class="num">30</div><div class="label">公测人数</div></div>
     <div class="stat-item"><div class="num">3</div><div class="label">回收问卷</div></div>
   </div>
@@ -43,33 +43,37 @@
 <div class="container">
   <div class="section" id="daily-section">
     <div class="section-title">📊 日常问题反馈报告</div>
-    <div class="empty" id="daily-empty">
-      <div class="icon">📋</div>
-      <div>暂无报告，待数据积累后生成</div>
-    </div>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-daily-20260818.html" target="_blank">
+      <span class="card-title">日常问题反馈日报（8/18）<span class="card-badge new">NEW</span></span><br>
+      <span class="card-desc">54条反馈 · 15人参与 · 12个一级标签 · 打标已同步飞书</span>
+    </a>
   </div>
 
   <div class="section" id="special-section">
     <div class="section-title">🔍 专项体验报告</div>
-    <div class="empty" id="special-empty">
-      <div class="icon">🔬</div>
-      <div>暂无报告</div>
-    </div>
-  </div>
-
-  <div class="section" id="summary-section">
-    <div class="section-title">📈 汇总报告</div>
-    <div class="empty" id="summary-empty">
-      <div class="icon">📊</div>
-      <div>暂无报告</div>
-    </div>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-unboxing.html" target="_blank">
+      <span class="card-title">开箱体验报告<span class="card-badge new">NEW</span></span><br>
+      <span class="card-desc">20份样本 · 外包装/内包装/外观/说明书四维度 · 平均9.0+分</span>
+    </a>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-config.html" target="_blank">
+      <span class="card-title">配网安装报告<span class="card-badge new">NEW</span></span><br>
+      <span class="card-desc">17份样本 · 一次绑定成功率88% · 远程绑定/安装底座反馈</span>
+    </a>
   </div>
 
   <div class="section" id="homework-section">
     <div class="section-title">✅ 作业完成情况</div>
-    <div class="empty" id="homework-empty">
-      <div class="icon">📝</div>
-      <div>暂无报告</div>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-homework-status.html" target="_blank">
+      <span class="card-title">30人作业完成情况<span class="card-badge new">NEW</span></span><br>
+      <span class="card-desc">开箱19/30 · 配网17/30 · 日常54条/15人 · 签收20/30</span>
+    </a>
+  </div>
+
+  <div class="section" id="summary-section">
+    <div class="section-title">📈 汇总报告</div>
+    <div class="empty">
+      <div class="icon">📊</div>
+      <div>暂无报告，待公测结束后生成</div>
     </div>
   </div>
 </div>
@@ -78,42 +82,5 @@
   <p>🦞 尹燕玲-报告分析专家 · 数据驱动决策</p>
   <p>报告链接永久有效 · GitHub Pages 托管</p>
 </div>
-
-<script>
-// 报告注册表 - 新增报告在这里添加
-const reports = {
-  daily: [],
-  special: [],
-  summary: [],
-  homework: []
-};
-
-function renderReports() {
-  let total = 0;
-  for (const [section, items] of Object.entries(reports)) {
-    const container = document.getElementById(section + '-section');
-    const empty = document.getElementById(section + '-empty');
-    // 清除旧卡片
-    container.querySelectorAll('.report-card').forEach(c => c.remove());
-    if (items.length === 0) {
-      empty.style.display = 'block';
-    } else {
-      empty.style.display = 'none';
-      items.forEach(r => {
-        total++;
-        const card = document.createElement('a');
-        card.className = 'report-card';
-        card.href = r.url;
-        card.target = '_blank';
-        card.innerHTML = `<span class="card-title">${r.title}${r.badge ? '<span class="card-badge '+r.badgeClass+'">'+r.badge+'</span>' : ''}</span><br><span class="card-desc">${r.desc}</span>`;
-        container.appendChild(card);
-      });
-    }
-  }
-  document.getElementById('totalReports').textContent = total;
-}
-
-renderReports();
-</script>
 </body>
 </html>
