@@ -2,243 +2,195 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>9pro 400万4G云台公测 - 配网安装报告</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
-.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 30px 20px; text-align: center; }
-.header h1 { font-size: 24px; margin-bottom: 8px; }
-.header p { font-size: 14px; opacity: 0.9; }
-.update-time { font-size: 12px; opacity: 0.8; margin-top: 8px; }
-.container { max-width: 900px; margin: 0 auto; padding: 20px; }
-.kpi-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
-.kpi-card { flex: 1; min-width: 130px; background: #fff; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-.kpi-card .num { font-size: 32px; font-weight: 700; color: #00B050; }
-.kpi-card .label { font-size: 13px; color: #888; margin-top: 4px; }
-.section { margin-bottom: 32px; }
-.section-title { font-size: 20px; font-weight: 700; color: #00B050; border-bottom: 2px solid #00B050; padding-bottom: 8px; margin-bottom: 16px; }
-.module { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-.module-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
-.module-insight { font-size: 13px; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; }
-.insight-good { background: #f0fdf4; color: #00B050; border-left: 4px solid #00B050; }
-.insight-warn { background: #fff7ed; color: #F39C12; border-left: 4px solid #F39C12; }
-.insight-bad { background: #fef2f2; color: #E74C3C; border-left: 4px solid #E74C3C; }
-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-th { background: #f8faf8; padding: 8px; text-align: left; font-weight: 600; color: #666; border-bottom: 2px solid #e0e0e0; }
-td { padding: 8px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
-.chart-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-.bar-track { flex: 1; background: #f0f0f0; border-radius: 4px; height: 24px; position: relative; }
-.bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #00B050, #2BBD6E); display: flex; align-items: center; padding-left: 8px; color: #fff; font-size: 12px; font-weight: 600; min-width: 30px; }
-.bar-label { width: 100px; font-size: 13px; text-align: right; }
-.voice-text { color: #555; line-height: 1.5; }
-.voice-name { color: #666; font-size: 12px; }
-.voice-positive { color: #00B050; }
-.voice-negative { color: #E74C3C; }
-.pie-simple { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-.pie-item { display: flex; align-items: center; gap: 6px; }
-.pie-dot { width: 12px; height: 12px; border-radius: 50%; }
-.footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
-</style>
+<style>* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:#f5f7fa; color:#333; line-height:1.6; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; padding:30px 20px; text-align:center; border-radius:12px 12px 0 0; }
+.header h1 { font-size:22px; margin-bottom:6px; }
+.header p { font-size:13px; opacity:0.9; }
+.update-time { font-size:11px; opacity:0.8; margin-top:6px; }
+.container { max-width:920px; margin:0 auto; padding:0; }
+.kpi-row { display:flex; gap:12px; margin-bottom:20px; padding:0 20px; flex-wrap:wrap; }
+.kpi-card { flex:1; min-width:120px; background:#fff; border-radius:12px; padding:16px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .num { font-size:28px; font-weight:700; color:#00B050; }
+.kpi-card .label { font-size:12px; color:#888; margin-top:4px; }
+.section { margin-bottom:28px; padding:0 20px; }
+.section-title { font-size:18px; font-weight:700; color:#00B050; border-bottom:2px solid #00B050; padding-bottom:6px; margin-bottom:14px; }
+.module { background:#fff; border-radius:12px; padding:18px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.06); overflow-x:auto; }
+.module-title { font-size:15px; font-weight:700; margin-bottom:10px; }
+.insight { font-size:13px; padding:8px 12px; border-radius:8px; margin-bottom:8px; }
+.insight-good { background:#f0fdf4; color:#00B050; border-left:4px solid #00B050; }
+.insight-warn { background:#fff7ed; color:#F39C12; border-left:4px solid #F39C12; }
+.insight-bad { background:#fef2f2; color:#E74C3C; border-left:4px solid #E74C3C; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#f8faf8; padding:10px 8px; text-align:left; font-weight:600; color:#666; border-bottom:2px solid #e0e0e0; white-space:nowrap; }
+td { padding:10px 8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+.chart-bar { display:flex; align-items:center; gap:8px; margin-bottom:5px; }
+.bar-track { flex:1; background:#f0f0f0; border-radius:4px; height:22px; }
+.bar-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,#00B050,#2BBD6E); display:flex; align-items:center; padding-left:8px; color:#fff; font-size:11px; font-weight:600; min-width:28px; }
+.bar-label { width:110px; font-size:12px; text-align:right; }
+.voice-pos { color:#00B050; }
+.voice-neg { color:#E74C3C; }
+.cat-tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; }
+.count-badge { display:inline-block; background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; font-size:12px; font-weight:600; margin-left:4px; }
+.voice-cell { line-height:1.8; }
+.voice-line { margin-bottom:4px; }
+.voice-name { color:#888; font-weight:600; }
+.pie-item { display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:13px; }
+.pie-dot { width:12px; height:12px; border-radius:2px; }
+.footer { text-align:center; padding:16px 20px; color:#999; font-size:12px; }
+.case-box { border:1px solid #e0e0e0; border-radius:8px; padding:12px; margin-top:8px; background:#fafafa; }
+.case-title { font-weight:700; font-size:13px; margin-bottom:6px; }</style>
 </head>
 <body>
-<div class="header">
-  <h1>📡 9pro 400万4G云台公测</h1>
-  <p>配网安装体验报告</p>
-  <div class="update-time">数据截止：2026-08-18 · 样本量：17份</div>
-</div>
 <div class="container">
-
-  <div class="kpi-row">
-    <div class="kpi-card"><div class="num">9.7</div><div class="label">配网总体评分</div></div>
-    <div class="kpi-card"><div class="num">88%</div><div class="label">一次绑定成功率</div></div>
-    <div class="kpi-card"><div class="num">9.8</div><div class="label">配置指导评分</div></div>
-    <div class="kpi-card"><div class="num">17</div><div class="label">有效样本</div></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">💡 核心洞察</div>
-    <div class="module">
-      <div class="module-insight insight-good"><strong>配网体验优秀</strong>，总体评分9.71，一次绑定成功率88%（15/17），扫一扫是主流配网方式（53%）。</div>
-      <div class="module-insight insight-good"><strong>远程绑定表现亮眼</strong>，17人中使用远程绑定的4人全部一次成功，用户反馈"比WiFi版省事"。</div>
-      <div class="module-insight insight-warn"><strong>配网入口复杂</strong>：添加设备有3个入口（扫一扫/按分类/远程绑定），用户建议合并简化。</div>
-      <div class="module-insight insight-warn"><strong>无网络状态提示不足</strong>：设备无4G网络时无明确提示，用户卡在添加流程中不知原因。</div>
-      <div class="module-insight insight-bad"><strong>安装底座问题</strong>：底座与摄像头连接松动，用户担忧上墙/吊装跌落风险；底座改全塑料后廉价感明显。</div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">📊 各维度评分</div>
-    <div class="module">
-      <div class="chart-bar"><div class="bar-label">配网总体</div><div class="bar-track"><div class="bar-fill" style="width:97%">9.71</div></div></div>
-      <div class="chart-bar"><div class="bar-label">配置指导</div><div class="bar-track"><div class="bar-fill" style="width:98%">9.82</div></div></div>
-      <div class="chart-bar"><div class="bar-label">提示音</div><div class="bar-track"><div class="bar-fill" style="width:98%">9.88</div></div></div>
-      <div class="chart-bar"><div class="bar-label">绑定时长</div><div class="bar-track"><div class="bar-fill" style="width:95%">9.59</div></div></div>
-      <div class="chart-bar"><div class="bar-label">安装便捷性</div><div class="bar-track"><div class="bar-fill" style="width:80%">8.00</div></div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">📱 配网方式分布</div>
-    <div class="module">
-      <table>
-        <thead><tr><th>配网方式</th><th>人数</th><th>占比</th></tr></thead>
-        <tbody>
-          <tr><td>扫一扫</td><td>9</td><td>52.9%</td></tr>
-          <tr><td>添加设备--按分类添加设备</td><td>4</td><td>23.5%</td></tr>
-          <tr><td>远程绑定</td><td>4</td><td>23.5%</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">✅ 绑定成功率</div>
-    <div class="module">
-      <table>
-        <thead><tr><th>结果</th><th>人数</th><th>占比</th></tr></thead>
-        <tbody>
-          <tr><td class="voice-positive">一次成功</td><td>15</td><td>88.2%</td></tr>
-          <tr><td class="voice-negative">一直不成功</td><td>1</td><td>5.9%</td></tr>
-          <tr><td class="voice-negative">失败过一次，其他成功</td><td>1</td><td>5.9%</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">💬 配网体验用户原声</div>
-    <div class="module">
-      <table>
-        <thead><tr><th>姓名</th><th>维度</th><th>原声</th></tr></thead>
-        <tbody>
-          <tr><td>闫贺</td><td>配网总体</td><td class="voice-text voice-positive">非常简单，扫底部二维码然后就绑定成功了</td></tr>
-          <tr><td>闫贺</td><td>配置指导</td><td class="voice-text voice-negative">插上电就会有提示音，按照操作就行</td></tr>
-          <tr><td>闫贺</td><td>提示音</td><td class="voice-text voice-positive">很清晰</td></tr>
-          <tr><td>闫贺</td><td>绑定时长</td><td class="voice-text voice-positive">很满意</td></tr>
-          <tr><td>苗欣丽</td><td>配网总体</td><td class="voice-text voice-negative">非常好，扫一扫就添加成功了，非常便捷</td></tr>
-          <tr><td>苗欣丽</td><td>配置指导</td><td class="voice-text voice-positive">很清晰</td></tr>
-          <tr><td>苗欣丽</td><td>提示音</td><td class="voice-text voice-positive">很清晰</td></tr>
-          <tr><td>苗欣丽</td><td>绑定时长</td><td class="voice-text voice-positive">非常满意，很便捷</td></tr>
-          <tr><td>王亚兵</td><td>配网总体</td><td class="voice-text voice-positive">相对来说添加绑定配网简单多了</td></tr>
-          <tr><td>王亚兵</td><td>配置指导</td><td class="voice-text voice-negative">但是配网指导还是沿用wifi机器的流程，整体下来略感繁琐，没有体现出4g设备配网的便捷性。</td></tr>
-          <tr><td>王亚兵</td><td>提示音</td><td class="voice-text voice-positive">还是很清晰的</td></tr>
-          <tr><td>王亚兵</td><td>绑定时长</td><td class="voice-text voice-positive">不太满意，应该还有优化的空间。</td></tr>
-          <tr><td>曾文彬</td><td>配网总体</td><td class="voice-text voice-negative">设备自身没网络的状态没有特别提醒，自身没网络如果用红灯闪烁就合理多了。</td></tr>
-          <tr><td>曾文彬</td><td>绑定时长</td><td class="voice-text voice-negative">设备自身没网络，就一直卡在添加设备中…然后等了很久弹出失败</td></tr>
-          <tr><td>陈建建</td><td>配网总体</td><td class="voice-text voice-positive">方便速度快</td></tr>
-          <tr><td>陈建建</td><td>配置指导</td><td class="voice-text voice-positive">非常清晰</td></tr>
-          <tr><td>陈建建</td><td>提示音</td><td class="voice-text voice-positive">清晰</td></tr>
-          <tr><td>陈建建</td><td>绑定时长</td><td class="voice-text voice-negative">用时不到1分钟</td></tr>
-          <tr><td>邱天顺</td><td>配网总体</td><td class="voice-text voice-negative">配网简洁</td></tr>
-          <tr><td>邱天顺</td><td>配置指导</td><td class="voice-text voice-positive">清晰</td></tr>
-          <tr><td>邱天顺</td><td>提示音</td><td class="voice-text voice-positive">清晰</td></tr>
-          <tr><td>邱天顺</td><td>绑定时长</td><td class="voice-text voice-positive">非常满意</td></tr>
-          <tr><td>张鹏鑫</td><td>配网总体</td><td class="voice-text voice-positive">很简单</td></tr>
-          <tr><td>张鹏鑫</td><td>配置指导</td><td class="voice-text voice-positive">很清晰</td></tr>
-          <tr><td>张鹏鑫</td><td>提示音</td><td class="voice-text voice-negative">很好</td></tr>
-          <tr><td>张鹏鑫</td><td>绑定时长</td><td class="voice-text voice-negative">几十秒完成</td></tr>
-          <tr><td>赖峰</td><td>配置指导</td><td class="voice-text voice-positive">清晰</td></tr>
-          <tr><td>赖峰</td><td>提示音</td><td class="voice-text voice-positive">声音清晰</td></tr>
-          <tr><td>赖峰</td><td>绑定时长</td><td class="voice-text voice-positive">满意</td></tr>
-          <tr><td>张一明</td><td>配网总体</td><td class="voice-text voice-positive">速度快</td></tr>
-          <tr><td>张一明</td><td>配置指导</td><td class="voice-text voice-positive">清晰</td></tr>
-          <tr><td>张一明</td><td>提示音</td><td class="voice-text voice-positive">清晰</td></tr>
-          <tr><td>张一明</td><td>绑定时长</td><td class="voice-text voice-positive">非常满意</td></tr>
-          <tr><td>王刚红</td><td>配网总体</td><td class="voice-text voice-negative">一次成功，配网很顺利。</td></tr>
-          <tr><td>高瑞</td><td>配网总体</td><td class="voice-text voice-positive">优秀</td></tr>
-          <tr><td>高瑞</td><td>配置指导</td><td class="voice-text voice-positive">优秀</td></tr>
-          <tr><td>高瑞</td><td>提示音</td><td class="voice-text voice-positive">优秀</td></tr>
-          <tr><td>高瑞</td><td>绑定时长</td><td class="voice-text voice-positive">优秀</td></tr>
-          <tr><td>齐彩英</td><td>绑定时长</td><td class="voice-text voice-positive">很满意，很方便</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">💡 配网改进建议</div>
-    <div class="module">
-      <table>
-        <thead><tr><th>姓名</th><th>建议</th></tr></thead>
-        <tbody>
-          <tr><td>闫贺</td><td class="voice-text voice-negative">添加的时候自动搜索附近设备然后直接显示设备名称直接添加</td></tr>
-          <tr><td>王亚兵</td><td class="voice-text voice-negative">个人感觉应该把添加设备—按分类添加设备，扫一扫，远程绑定，3个窗口直接合三为一没必要搞这么多添加菜单，原本很简单的上电扫码流程反而复杂化了。</td></tr>
-          <tr><td>黄显森</td><td class="voice-text voice-negative">建议第一次开机，语音提示下怎么配网</td></tr>
-          <tr><td>曾文彬</td><td class="voice-text voice-negative">增加一个摄像机无网络环境下的提示</td></tr>
-          <tr><td>龚粒宇</td><td class="voice-text voice-negative">建议在进行优化，在家里面配置还是比用wifi配置慢。</td></tr>
-          <tr><td>邱天顺</td><td class="voice-text voice-negative">无</td></tr>
-          <tr><td>张鹏鑫</td><td class="voice-text voice-negative">目前没有</td></tr>
-          <tr><td>张一明</td><td class="voice-text voice-negative">可以语音提醒。</td></tr>
-          <tr><td>高瑞</td><td class="voice-text voice-negative">1.可以对远程配网增加个标识为4G设备专用，这样不容易引起误会，不然有些用户可能会在设备无网络的状态下使用该功能，最后导致无法正常配网。2.目前该设备无法通过添加设备进行配网，建议说明书内增加相关说明。</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🔧 安装体验</div>
-    <div class="module">
-      <div class="module-title">安装评价</div>
-      <table>
-        <thead><tr><th>姓名</th><th>评价</th></tr></thead>
-        <tbody>
-          <tr><td>闫贺</td><td class="voice-text">我就放电视机下面，平时电视机也不看主要对着对面的猫吃饭的地方</td></tr>
-          <tr><td>苗欣丽</td><td class="voice-positive">配网过程非常简单省时</td></tr>
-          <tr><td>王亚兵</td><td class="voice-text">底座和摄像头的连接太松了，有上墙或者吊装安装有摄像头跌落的担忧</td></tr>
-          <tr><td>陈建建</td><td class="voice-positive">配网提示清晰可见，非常顺利</td></tr>
-          <tr><td>邱天顺</td><td class="voice-positive">很简洁</td></tr>
-          <tr><td>张一明</td><td class="voice-positive">步骤简单一步到位</td></tr>
-          <tr><td>王刚红</td><td class="voice-positive">平放就行，方便！</td></tr>
-          <tr><td>高瑞</td><td class="voice-text">暂无</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="module">
-      <div class="module-title">安装建议</div>
-      <table>
-        <thead><tr><th>姓名</th><th>建议</th></tr></thead>
-        <tbody>
-          <tr><td>林志澄</td><td class="voice-text voice-negative">底座螺丝孔建议使用原来金属的，比较耐用。</td></tr>
-          <tr><td>闫贺</td><td class="voice-text voice-negative">有没有那种强力胶不用打螺丝固定，粘上就掉不下来那种，适合那些喜欢吊顶安装的人</td></tr>
-          <tr><td>王亚兵</td><td class="voice-text voice-negative">希望加强底座和支架连接的牢固性。</td></tr>
-          <tr><td>张一明</td><td class="voice-text voice-negative">如果放在桌面上的还是比较喜欢磁吸。</td></tr>
-          <tr><td>高瑞</td><td class="voice-text voice-negative">底座目前更改为全塑料，更容易给人感觉廉价感，建议换回原来的状态，还能增加其稳定性。</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">📡 远程绑定</div>
-    <div class="module">
-      <div class="module-insight insight-good">远程绑定使用率17/17人，一次成功率15/17人</div>
-      <table>
-        <thead><tr><th>姓名</th><th>远程绑定建议</th></tr></thead>
-        <tbody>
-        <tr><td>闫贺</td><td class="voice-text">这个也非常方便，比WiFi版省事，保存二维码然后他自动就配网成功了</td></tr>
-        <tr><td>苗欣丽</td><td class="voice-text">感觉很便捷，可以的</td></tr>
-        <tr><td>王亚兵</td><td class="voice-text">个人感觉应该把添加设备—按分类添加设备，扫一扫，远程绑定，3个窗口直接合三为一没必要搞这么多添加菜单，现在通道太多原本很简单的上电扫码流程反而复杂化了。</td></tr>
-        <tr><td>黄显森</td><td class="voice-text">设备端也提示下扫码步骤</td></tr>
-        <tr><td>曾文彬</td><td class="voice-text">状态给定不明确，应当首先确认设备自身有无连接上网络并展示，这一个信号弱或者无网状态我觉得是可以直接给展示出来的</td></tr>
-        <tr><td>孙洪士</td><td class="voice-text">特别好</td></tr>
-        <tr><td>陈建建</td><td class="voice-text">配网非常不错测试了几次均一次成功</td></tr>
-        <tr><td>龚粒宇</td><td class="voice-text">无，在空旷的室外配置比室内配置快的多。</td></tr>
-        <tr><td>邱天顺</td><td class="voice-text">希望远程绑定时有更多提示</td></tr>
-        <tr><td>张鹏鑫</td><td class="voice-text">很方便</td></tr>
-        <tr><td>赖峰</td><td class="voice-text">没有意见</td></tr>
-        <tr><td>王刚红</td><td class="voice-text">暂无问题</td></tr>
-        <tr><td>高瑞</td><td class="voice-text">建议包装内增加一个该设备的配网卡片二维码，这样可以防止年龄过大的人，由于手机像素一般，或者拍照技术一般，容易晃的人。拍照导致二维码模糊，无法准确快速的进行远程配网。</td></tr>
-        <tr><td>厚晓霞</td><td class="voice-text">远程还没有试过，是扫一扫绑定的</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="footer">
-    <p>🦞 尹燕玲-报告分析专家 · 数据来源：飞书表格「9pro 400万4G云台公测问题跟进表」</p>
-    <p>报告链接永久有效 · GitHub Pages 托管</p>
-  </div>
+<div class="header"><h1>📡 9pro 400万4G云台公测 · 配网安装报告</h1><p>17份样本 · 4项评分维度 · 2026-08-18</p><div class="update-time">数据截止：2026-08-18 12:51</div></div>
+<div class="kpi-row" style="padding-top:20px"><div class="kpi-card"><div class="num">17</div><div class="label">有效样本</div></div><div class="kpi-card"><div class="num">9.71</div><div class="label">配网均分</div></div><div class="kpi-card"><div class="num">88%</div><div class="label">一次成功率</div></div><div class="kpi-card"><div class="num">4/4</div><div class="label">远程绑定成功</div></div></div>
+<div class="section"><div class="section-title">💡 核心洞察</div><div class="module">
+<div class="insight insight-good"><strong>配网体验整体优秀</strong>：配网总体9.71分，提示音清晰性9.88分，88%用户一次成功。4人远程绑定全部成功，4G免流是核心卖点。</div>
+<div class="insight insight-bad"><strong>底座松动/材质降级是突出问题</strong>：3人反馈底座与摄像头连接松动，王亚兵明确表示“上墙或吊装有跌落风险”。高瑞反馈底座改为全塑料“廉价感明显”，建议换回金属增加稳定性。</div>
+<div class="insight insight-warn"><strong>配网入口过多应精简</strong>：王亚兵建议将“添加设备-按分类”、“扫一扫”、“远程绑定”三个入口合并为一，“本来很简单的上电扫码流程反而复杂化了”。</div>
+<div class="insight insight-warn"><strong>无网络环境缺提示</strong>：曾文彬（一直不成功）反馈“状态给定不明确，应当首先确认设备自身有无连接上网络”，高瑞也建议远程配网增加4G设备专用标识。</div>
+<div class="insight insight-good"><strong>安装极简</strong>：16人评价“非常满意”，平放即可使用，无需复杂安装。但用户建议增加磁吸底座、强力胶免打孔等选项。</div>
+</div></div>
+<div class="section"><div class="section-title">📊 配网方式分布</div><div class="module">
+<div class="pie-item"><div class="pie-dot" style="background:#00B050"></div>扫一扫：9人（53%）</div>
+<div class="pie-item"><div class="pie-dot" style="background:#2BBD6E"></div>添加设备--按分类添加设备：4人（24%）</div>
+<div class="pie-item"><div class="pie-dot" style="background:#F39C12"></div>远程绑定：4人（24%）</div>
+<table style="margin-top:12px"><thead><tr><th>配网方式</th><th>人数</th><th>占比</th></tr></thead><tbody>
+<tr><td>扫一扫</td><td>9</td><td>53%</td></tr>
+<tr><td>添加设备--按分类添加设备</td><td>4</td><td>24%</td></tr>
+<tr><td>远程绑定</td><td>4</td><td>24%</td></tr>
+</tbody></table></div></div>
+<div class="section"><div class="section-title">📊 评分总览（4项维度）</div><div class="module">
+<div class="chart-bar"><div class="bar-label">配网总体</div><div class="bar-track"><div class="bar-fill" style="width:97%">9.71</div></div></div>
+<div class="chart-bar"><div class="bar-label">配置指导清晰性</div><div class="bar-track"><div class="bar-fill" style="width:98%">9.82</div></div></div>
+<div class="chart-bar"><div class="bar-label">提示音清晰性</div><div class="bar-track"><div class="bar-fill" style="width:98%">9.88</div></div></div>
+<div class="chart-bar"><div class="bar-label">绑定时长满意度</div><div class="bar-track"><div class="bar-fill" style="width:95%">9.59</div></div></div>
+</div></div>
+<div class="section"><div class="section-title">✅ 绑定成功率分析</div><div class="module"><table><thead><tr><th>绑定结果</th><th>人数</th><th>占比</th></tr></thead><tbody>
+<tr><td class="voice-pos">一次成功</td><td>15</td><td>88%</td></tr>
+<tr><td class="voice-neg">一直不成功</td><td>1</td><td>6%</td></tr>
+<tr><td class="voice-neg">失败过一次，其他成功</td><td>1</td><td>6%</td></tr>
+</tbody></table>
+<div class="case-box">
+<div class="case-title" style="color:#E74C3C">⚠️ 失败案例：曾文彬（配缇总体7分）</div>
+<p style="font-size:13px;color:#666">配网方式：扫一扫 | 绑定结果：一直不成功</p>
+<p style="font-size:13px;margin-top:4px"><strong>反馈原声：</strong>“状态给定不明确，应当首先确认设备自身有无连接上网络并展示，这一个信号弱或者无网状态我觉得是可以直接给展示出来的”</p>
+</div></div></div>
+<div class="section"><div class="section-title">🏠 安装便捷性</div><div class="module"><table><thead><tr><th>安装评价</th><th>人数</th><th>占比</th></tr></thead><tbody>
+<tr><td class="voice-pos">非常满意</td><td>16</td><td>94%</td></tr>
+<tr><td class="voice-neg">8</td><td>1</td><td>6%</td></tr>
+</tbody></table></div>
+<div class="module"><div class="module-title">安装环境（金属/大功率电器）</div><table><thead><tr><th>环境情况</th><th>人数</th></tr></thead><tbody>
+<tr><td>都没有</td><td>10</td></tr>
+<tr><td>有金属</td><td>4</td></tr>
+<tr><td>有大功率电器</td><td>3</td></tr>
+</tbody></table></div>
+<div class="case-box" style="margin:0 20px">
+<div class="case-title" style="color:#F39C12">⚠️ 低分案例：王亚兵（安装评价8分）</div>
+<p style="font-size:13px;color:#666">安装评价：8分</p>
+<p style="font-size:13px;margin-top:4px"><strong>反馈原声：</strong>“底座和摄像头的连接太松了，有上墙或者吊装安装有摄像头跌落的担心”</p>
+<p style="font-size:13px;margin-top:4px"><strong>建议：</strong>加强底座和支架连接的牢固性</p>
 </div>
-</body>
-</html>
+</div>
+<div class="section"><div class="section-title">💬 用户原声分析（标签分类 · 多标签拆分）</div><div class="module"><table><thead><tr><th style="width:80px">问题分类</th><th style="width:100px">问题标签</th><th style="width:60px">反馈数量</th><th>用户原声（典型3-4条）</th></tr></thead><tbody>
+<tr><td><span class="cat-tag">配网流程</span></td><td><strong>配网入口精简</strong></td><td><span class="count-badge">3</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">曾文彬</span><span class="voice-pos">：设备自身没网络，就一直卡在添加设备中…然后等了很久弹出失败</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：个人感觉应该把添加设备—按分类添加设备，扫一扫，远程绑定，3个窗口直接合三为一没必要搞这么多添加菜单，原本很简单的上电扫码流程反而复杂化了。</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：1.可以对远程配网增加个标识为4G设备专用，这样不容易引起误会，不然有些用户可能会在设备无网络的状态下使用该功能，最后导致无法正常配网。2.目前该设备无法通过添加设备进行配网，建议说明书内增加相关说明。</span></div></div></td></tr>
+<tr><td><span class="cat-tag">配网流程</span></td><td><strong>配网方式建议</strong></td><td><span class="count-badge">12</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：非常简单，扫底部二维码然后就绑定成功了</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：插上电就会有提示音，按照操作就行</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：添加的时候自动搜索附近设备然后直接显示设备名称直接添加</span></div><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-pos">：可以语音提醒。</span></div></div></td></tr>
+<tr><td><span class="cat-tag">配网流程</span></td><td><strong>配网速度</strong></td><td><span class="count-badge">7</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：方便速度快</span></div><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-pos">：速度快</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：这个也非常方便，比WiFi版省事，保存二维码然后他自动就配网成功了</span></div><div class="voice-line"><span class="voice-name">龚粒宇</span><span class="voice-pos">：无，在空旷的室外配置比室内配置快的多。</span></div></div></td></tr>
+<tr><td><span class="cat-tag">配网流程</span></td><td><strong>一次成功体验</strong></td><td><span class="count-badge">16</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：非常简单，扫底部二维码然后就绑定成功了</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-pos">：相对来说添加绑定配网简单多了</span></div><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：方便速度快</span></div><div class="voice-line"><span class="voice-name">邱天顺</span><span class="voice-pos">：配网简洁</span></div></div></td></tr>
+<tr><td><span class="cat-tag">安装</span></td><td><strong>底座松动/连接</strong></td><td><span class="count-badge">6</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：底座和摄像头的连接太松了，有上墙或者吊装安装有摄像头跌落的担忧</span></div><div class="voice-line"><span class="voice-name">林志澄</span><span class="voice-neg">：底座螺丝孔建议使用原来金属的，比较耐用。</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：有没有那种强力胶不用打螺丝固定，粘上就掉不下来那种，适合那些喜欢吊顶安装的人</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：希望加强底座和支架连接的牢固性。</span></div></div></td></tr>
+<tr><td><span class="cat-tag">安装</span></td><td><strong>底座材质降级</strong></td><td><span class="count-badge">2</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">林志澄</span><span class="voice-neg">：底座螺丝孔建议使用原来金属的，比较耐用。</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：底座目前更改为全塑料，更容易给人感觉廉价感，建议换回原来的状态，还能增加其稳定性。</span></div></div></td></tr>
+<tr><td><span class="cat-tag">安装</span></td><td><strong>磁吸建议</strong></td><td><span class="count-badge">1</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-pos">：如果放在桌面上的还是比较喜欢磁吸。</span></div></div></td></tr>
+<tr><td><span class="cat-tag">安装</span></td><td><strong>安装简便</strong></td><td><span class="count-badge">15</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：非常简单，扫底部二维码然后就绑定成功了</span></div><div class="voice-line"><span class="voice-name">苗欣丽</span><span class="voice-pos">：非常好，扫一扫就添加成功了，非常便捷</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-pos">：相对来说添加绑定配网简单多了</span></div><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：方便速度快</span></div></div></td></tr>
+<tr><td><span class="cat-tag">安装</span></td><td><strong>粘胶建议</strong></td><td><span class="count-badge">1</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：有没有那种强力胶不用打螺丝固定，粘上就掉不下来那种，适合那些喜欢吊顶安装的人</span></div></div></td></tr>
+<tr><td><span class="cat-tag">远程绑定</span></td><td><strong>远程绑定体验</strong></td><td><span class="count-badge">12</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：方便速度快</span></div><div class="voice-line"><span class="voice-name">齐彩英</span><span class="voice-pos">：很满意，很方便</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：添加的时候自动搜索附近设备然后直接显示设备名称直接添加</span></div><div class="voice-line"><span class="voice-name">王刚红</span><span class="voice-pos">：平放就行，方便！</span></div></div></td></tr>
+<tr><td><span class="cat-tag">远程绑定</span></td><td><strong>远程绑定提示不足</strong></td><td><span class="count-badge">13</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：插上电就会有提示音，按照操作就行</span></div><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：配网提示清晰可见，非常顺利</span></div><div class="voice-line"><span class="voice-name">黄显森</span><span class="voice-pos">：设备端也提示下扫码步骤</span></div><div class="voice-line"><span class="voice-name">龚粒宇</span><span class="voice-pos">：无，在空旷的室外配置比室内配置快的多。</span></div></div></td></tr>
+<tr><td><span class="cat-tag">远程绑定</span></td><td><strong>远程绑定操作引导</strong></td><td><span class="count-badge">4</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：插上电就会有提示音，按照操作就行</span></div><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-pos">：步骤简单一步到位</span></div><div class="voice-line"><span class="voice-name">黄显森</span><span class="voice-pos">：设备端也提示下扫码步骤</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：建议包装内增加一个该设备的配网卡片二维码，这样可以防止年龄过大的人，由于手机像素一般，或者拍照技术一般，容易晃的人。拍照导致二维码模糊，无法准确快速的进行远程配网。</span></div></div></td></tr>
+<tr><td><span class="cat-tag">网络环境</span></td><td><strong>无网络提示缺失</strong></td><td><span class="count-badge">5</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">曾文彬</span><span class="voice-pos">：设备自身没网络的状态没有特别提醒，自身没网络如果用红灯闪烁就合理多了。</span></div><div class="voice-line"><span class="voice-name">曾文彬</span><span class="voice-neg">：增加一个摄像机无网络环境下的提示</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：1.可以对远程配网增加个标识为4G设备专用，这样不容易引起误会，不然有些用户可能会在设备无网络的状态下使用该功能，最后导致无法正常配网。2.目前该设备无法通过添加设备进行配网，建议说明书内增加相关说明。</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：底座目前更改为全塑料，更容易给人感觉廉价感，建议换回原来的状态，还能增加其稳定性。</span></div></div></td></tr>
+<tr><td><span class="cat-tag">网络环境</span></td><td><strong>信号强度</strong></td><td><span class="count-badge">4</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">龚粒宇</span><span class="voice-pos">：无，在空旷的室外配置比室内配置快的多。</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：有没有那种强力胶不用打螺丝固定，粘上就掉不下来那种，适合那些喜欢吊顶安装的人</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：希望加强底座和支架连接的牢固性。</span></div><div class="voice-line"><span class="voice-name">曾文彬</span><span class="voice-neg">：状态给定不明确，应当首先确认设备自身有无连接上网络并展示，这一个信号弱或者无网状态我觉得是可以直接给展示出来的</span></div></div></td></tr>
+<tr><td><span class="cat-tag">提示音</span></td><td><strong>提示音好评</strong></td><td><span class="count-badge">14</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：插上电就会有提示音，按照操作就行</span></div><div class="voice-line"><span class="voice-name">苗欣丽</span><span class="voice-pos">：很清晰</span></div><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：非常清晰</span></div><div class="voice-line"><span class="voice-name">邱天顺</span><span class="voice-pos">：清晰</span></div></div></td></tr>
+<tr><td><span class="cat-tag">配置指导</span></td><td><strong>指导清晰好评</strong></td><td><span class="count-badge">19</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：非常简单，扫底部二维码然后就绑定成功了</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-pos">：相对来说添加绑定配网简单多了</span></div><div class="voice-line"><span class="voice-name">张鹏鑫</span><span class="voice-pos">：很简单</span></div><div class="voice-line"><span class="voice-name">苗欣丽</span><span class="voice-pos">：很清晰</span></div></div></td></tr>
+<tr><td><span class="cat-tag">亮点</span></td><td><strong>4G免流/远程</strong></td><td><span class="count-badge">6</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-pos">：但是配网指导还是沿用wifi机器的流程，整体下来略感繁琐，没有体现出4g设备配网的便捷性。</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：个人感觉应该把添加设备—按分类添加设备，扫一扫，远程绑定，3个窗口直接合三为一没必要搞这么多添加菜单，原本很简单的上电扫码流程反而复杂化了。</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：1.可以对远程配网增加个标识为4G设备专用，这样不容易引起误会，不然有些用户可能会在设备无网络的状态下使用该功能，最后导致无法正常配网。2.目前该设备无法通过添加设备进行配网，建议说明书内增加相关说明。</span></div><div class="voice-line"><span class="voice-name">邱天顺</span><span class="voice-neg">：希望远程绑定时有更多提示</span></div></div></td></tr>
+<tr><td><span class="cat-tag">亮点</span></td><td><strong>配网便捷</strong></td><td><span class="count-badge">17</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：非常简单，扫底部二维码然后就绑定成功了</span></div><div class="voice-line"><span class="voice-name">苗欣丽</span><span class="voice-pos">：非常好，扫一扫就添加成功了，非常便捷</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-pos">：相对来说添加绑定配网简单多了</span></div><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：方便速度快</span></div></div></td></tr>
+<tr><td><span class="cat-tag">亮点</span></td><td><strong>安装简便</strong></td><td><span class="count-badge">15</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：非常简单，扫底部二维码然后就绑定成功了</span></div><div class="voice-line"><span class="voice-name">苗欣丽</span><span class="voice-pos">：非常好，扫一扫就添加成功了，非常便捷</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-pos">：相对来说添加绑定配网简单多了</span></div><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：方便速度快</span></div></div></td></tr>
+<tr><td><span class="cat-tag">亮点</span></td><td><strong>提示清晰</strong></td><td><span class="count-badge">17</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：插上电就会有提示音，按照操作就行</span></div><div class="voice-line"><span class="voice-name">苗欣丽</span><span class="voice-pos">：很清晰</span></div><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：非常清晰</span></div><div class="voice-line"><span class="voice-name">邱天顺</span><span class="voice-pos">：清晰</span></div></div></td></tr>
+<tr><td><span class="cat-tag">其他</span></td><td><strong>其他</strong></td><td><span class="count-badge">12</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-pos">：优秀</span></div><div class="voice-line"><span class="voice-name">张鹏鑫</span><span class="voice-pos">：很好</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：很满意</span></div><div class="voice-line"><span class="voice-name">邱天顺</span><span class="voice-pos">：非常满意</span></div></div></td></tr>
+</tbody></table></div></div>
+<div class="section"><div class="section-title">✨ 用户亮点汇总</div><div class="module"><table><thead><tr><th>姓名</th><th>亮点评价</th><th>来源</th></tr></thead><tbody>
+<tr><td>闫贺</td><td class="voice-pos">非常简单，扫底部二维码然后就绑定成功了</td><td style="color:#aaa;font-size:11px">配网总体</td></tr>
+<tr><td>苗欣丽</td><td class="voice-pos">非常好，扫一扫就添加成功了，非常便捷</td><td style="color:#aaa;font-size:11px">配网总体</td></tr>
+<tr><td>王亚兵</td><td class="voice-pos">相对来说添加绑定配网简单多了</td><td style="color:#aaa;font-size:11px">配网总体</td></tr>
+<tr><td>陈建建</td><td class="voice-pos">方便速度快</td><td style="color:#aaa;font-size:11px">配网总体</td></tr>
+<tr><td>邱天顺</td><td class="voice-pos">配网简洁</td><td style="color:#aaa;font-size:11px">配网总体</td></tr>
+<tr><td>张鹏鑫</td><td class="voice-pos">很简单</td><td style="color:#aaa;font-size:11px">配网总体</td></tr>
+<tr><td>张一明</td><td class="voice-pos">速度快</td><td style="color:#aaa;font-size:11px">配网总体</td></tr>
+<tr><td>王刚红</td><td class="voice-pos">一次成功，配网很顺利。</td><td style="color:#aaa;font-size:11px">配网总体</td></tr>
+<tr><td>高瑞</td><td class="voice-pos">优秀</td><td style="color:#aaa;font-size:11px">配网总体</td></tr>
+<tr><td>闫贺</td><td class="voice-pos">插上电就会有提示音，按照操作就行</td><td style="color:#aaa;font-size:11px">配置指导</td></tr>
+<tr><td>苗欣丽</td><td class="voice-pos">很清晰</td><td style="color:#aaa;font-size:11px">配置指导</td></tr>
+<tr><td>陈建建</td><td class="voice-pos">非常清晰</td><td style="color:#aaa;font-size:11px">配置指导</td></tr>
+<tr><td>邱天顺</td><td class="voice-pos">清晰</td><td style="color:#aaa;font-size:11px">配置指导</td></tr>
+<tr><td>张鹏鑫</td><td class="voice-pos">很清晰</td><td style="color:#aaa;font-size:11px">配置指导</td></tr>
+<tr><td>赖峰</td><td class="voice-pos">清晰</td><td style="color:#aaa;font-size:11px">配置指导</td></tr>
+<tr><td>张一明</td><td class="voice-pos">清晰</td><td style="color:#aaa;font-size:11px">配置指导</td></tr>
+<tr><td>高瑞</td><td class="voice-pos">优秀</td><td style="color:#aaa;font-size:11px">配置指导</td></tr>
+<tr><td>闫贺</td><td class="voice-pos">很清晰</td><td style="color:#aaa;font-size:11px">提示音</td></tr>
+<tr><td>苗欣丽</td><td class="voice-pos">很清晰</td><td style="color:#aaa;font-size:11px">提示音</td></tr>
+<tr><td>王亚兵</td><td class="voice-pos">还是很清晰的</td><td style="color:#aaa;font-size:11px">提示音</td></tr>
+<tr><td>陈建建</td><td class="voice-pos">清晰</td><td style="color:#aaa;font-size:11px">提示音</td></tr>
+<tr><td>邱天顺</td><td class="voice-pos">清晰</td><td style="color:#aaa;font-size:11px">提示音</td></tr>
+<tr><td>张鹏鑫</td><td class="voice-pos">很好</td><td style="color:#aaa;font-size:11px">提示音</td></tr>
+<tr><td>赖峰</td><td class="voice-pos">声音清晰</td><td style="color:#aaa;font-size:11px">提示音</td></tr>
+<tr><td>张一明</td><td class="voice-pos">清晰</td><td style="color:#aaa;font-size:11px">提示音</td></tr>
+<tr><td>高瑞</td><td class="voice-pos">优秀</td><td style="color:#aaa;font-size:11px">提示音</td></tr>
+<tr><td>闫贺</td><td class="voice-pos">很满意</td><td style="color:#aaa;font-size:11px">时长</td></tr>
+<tr><td>苗欣丽</td><td class="voice-pos">非常满意，很便捷</td><td style="color:#aaa;font-size:11px">时长</td></tr>
+<tr><td>曾文彬</td><td class="voice-pos">设备自身没网络，就一直卡在添加设备中…然后等了很久弹出失败</td><td style="color:#aaa;font-size:11px">时长</td></tr>
+<tr><td>邱天顺</td><td class="voice-pos">非常满意</td><td style="color:#aaa;font-size:11px">时长</td></tr>
+<tr><td>张鹏鑫</td><td class="voice-pos">几十秒完成</td><td style="color:#aaa;font-size:11px">时长</td></tr>
+<tr><td>赖峰</td><td class="voice-pos">满意</td><td style="color:#aaa;font-size:11px">时长</td></tr>
+<tr><td>张一明</td><td class="voice-pos">非常满意</td><td style="color:#aaa;font-size:11px">时长</td></tr>
+<tr><td>高瑞</td><td class="voice-pos">优秀</td><td style="color:#aaa;font-size:11px">时长</td></tr>
+<tr><td>齐彩英</td><td class="voice-pos">很满意，很方便</td><td style="color:#aaa;font-size:11px">时长</td></tr>
+<tr><td>闫贺</td><td class="voice-pos">添加的时候自动搜索附近设备然后直接显示设备名称直接添加</td><td style="color:#aaa;font-size:11px">配网建议</td></tr>
+<tr><td>张一明</td><td class="voice-pos">可以语音提醒。</td><td style="color:#aaa;font-size:11px">配网建议</td></tr>
+<tr><td>苗欣丽</td><td class="voice-pos">配网过程非常简单省时</td><td style="color:#aaa;font-size:11px">安装</td></tr>
+<tr><td>王亚兵</td><td class="voice-pos">底座和摄像头的连接太松了，有上墙或者吊装安装有摄像头跌落的担忧</td><td style="color:#aaa;font-size:11px">安装</td></tr>
+<tr><td>陈建建</td><td class="voice-pos">配网提示清晰可见，非常顺利</td><td style="color:#aaa;font-size:11px">安装</td></tr>
+<tr><td>邱天顺</td><td class="voice-pos">很简洁</td><td style="color:#aaa;font-size:11px">安装</td></tr>
+<tr><td>张一明</td><td class="voice-pos">步骤简单一步到位</td><td style="color:#aaa;font-size:11px">安装</td></tr>
+<tr><td>王刚红</td><td class="voice-pos">平放就行，方便！</td><td style="color:#aaa;font-size:11px">安装</td></tr>
+<tr><td>张一明</td><td class="voice-pos">如果放在桌面上的还是比较喜欢磁吸。</td><td style="color:#aaa;font-size:11px">安装建议</td></tr>
+<tr><td>闫贺</td><td class="voice-pos">这个也非常方便，比WiFi版省事，保存二维码然后他自动就配网成功了</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+<tr><td>苗欣丽</td><td class="voice-pos">感觉很便捷，可以的</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+<tr><td>黄显森</td><td class="voice-pos">设备端也提示下扫码步骤</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+<tr><td>孙洪士</td><td class="voice-pos">特别好</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+<tr><td>龚粒宇</td><td class="voice-pos">无，在空旷的室外配置比室内配置快的多。</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+<tr><td>张鹏鑫</td><td class="voice-pos">很方便</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+</tbody></table></div></div>
+<div class="section"><div class="section-title">⚠️ 问题与建议汇总</div><div class="module"><table><thead><tr><th>姓名</th><th>问题/建议</th><th>来源</th></tr></thead><tbody>
+<tr><td>曾文彬</td><td class="voice-neg">设备自身没网络的状态没有特别提醒，自身没网络如果用红灯闪烁就合理多了。</td><td style="color:#aaa;font-size:11px">配网总体</td></tr>
+<tr><td>王亚兵</td><td class="voice-neg">但是配网指导还是沿用wifi机器的流程，整体下来略感繁琐，没有体现出4g设备配网的便捷性。</td><td style="color:#aaa;font-size:11px">配置指导</td></tr>
+<tr><td>王亚兵</td><td class="voice-neg">不太满意，应该还有优化的空间。</td><td style="color:#aaa;font-size:11px">时长</td></tr>
+<tr><td>陈建建</td><td class="voice-neg">用时不到1分钟</td><td style="color:#aaa;font-size:11px">时长</td></tr>
+<tr><td>王亚兵</td><td class="voice-neg">个人感觉应该把添加设备—按分类添加设备，扫一扫，远程绑定，3个窗口直接合三为一没必要搞这么多添加菜单，原本很简单的上电扫码流程反而复杂化了。</td><td style="color:#aaa;font-size:11px">配网建议</td></tr>
+<tr><td>黄显森</td><td class="voice-neg">建议第一次开机，语音提示下怎么配网</td><td style="color:#aaa;font-size:11px">配网建议</td></tr>
+<tr><td>曾文彬</td><td class="voice-neg">增加一个摄像机无网络环境下的提示</td><td style="color:#aaa;font-size:11px">配网建议</td></tr>
+<tr><td>龚粒宇</td><td class="voice-neg">建议在进行优化，在家里面配置还是比用wifi配置慢。</td><td style="color:#aaa;font-size:11px">配网建议</td></tr>
+<tr><td>张鹏鑫</td><td class="voice-neg">目前没有</td><td style="color:#aaa;font-size:11px">配网建议</td></tr>
+<tr><td>高瑞</td><td class="voice-neg">1.可以对远程配网增加个标识为4G设备专用，这样不容易引起误会，不然有些用户可能会在设备无网络的状态下使用该功能，最后导致无法正常配网。2.目前该设备无法通过添加设备进行配网，建议说明书内增加相关说明。</td><td style="color:#aaa;font-size:11px">配网建议</td></tr>
+<tr><td>闫贺</td><td class="voice-neg">我就放电视机下面，平时电视机也不看主要对着对面的猫吃饭的地方</td><td style="color:#aaa;font-size:11px">安装</td></tr>
+<tr><td>林志澄</td><td class="voice-neg">底座螺丝孔建议使用原来金属的，比较耐用。</td><td style="color:#aaa;font-size:11px">安装建议</td></tr>
+<tr><td>闫贺</td><td class="voice-neg">有没有那种强力胶不用打螺丝固定，粘上就掉不下来那种，适合那些喜欢吊顶安装的人</td><td style="color:#aaa;font-size:11px">安装建议</td></tr>
+<tr><td>王亚兵</td><td class="voice-neg">希望加强底座和支架连接的牢固性。</td><td style="color:#aaa;font-size:11px">安装建议</td></tr>
+<tr><td>高瑞</td><td class="voice-neg">底座目前更改为全塑料，更容易给人感觉廉价感，建议换回原来的状态，还能增加其稳定性。</td><td style="color:#aaa;font-size:11px">安装建议</td></tr>
+<tr><td>王亚兵</td><td class="voice-neg">个人感觉应该把添加设备—按分类添加设备，扫一扫，远程绑定，3个窗口直接合三为一没必要搞这么多添加菜单，现在通道太多原本很简单的上电扫码流程反而复杂化了。</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+<tr><td>曾文彬</td><td class="voice-neg">状态给定不明确，应当首先确认设备自身有无连接上网络并展示，这一个信号弱或者无网状态我觉得是可以直接给展示出来的</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+<tr><td>陈建建</td><td class="voice-neg">配网非常不错测试了几次均一次成功</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+<tr><td>邱天顺</td><td class="voice-neg">希望远程绑定时有更多提示</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+<tr><td>高瑞</td><td class="voice-neg">建议包装内增加一个该设备的配网卡片二维码，这样可以防止年龄过大的人，由于手机像素一般，或者拍照技术一般，容易晃的人。拍照导致二维码模糊，无法准确快速的进行远程配网。</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+<tr><td>厚晓霞</td><td class="voice-neg">远程还没有试过，是扫一扫绑定的</td><td style="color:#aaa;font-size:11px">远程绑定</td></tr>
+</tbody></table></div></div>
+<div class="footer"><p>🦞 尤燕玲-报告分析专家 · 数据来源：飞书表格 9pro 400万4G云台公测问题跟进表</p><p>报告链接永久有效 · GitHub Pages 托管</p></div></div></body></html>
