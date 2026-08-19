@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9pro 400万4G云台公测 - 日常问题反馈报告</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; padding: 20px; }
+.container { max-width: 1000px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+h1 { text-align: center; color: #00B050; margin-bottom: 8px; font-size: 24px; }
+.subtitle { text-align: center; color: #999; font-size: 14px; margin-bottom: 25px; }
+.section { margin-bottom: 30px; }
+.section-title { font-size: 18px; font-weight: 600; color: #333; margin-bottom: 15px; padding-left: 12px; border-left: 4px solid #00B050; }
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 25px; }
+.kpi-card { background: #f8f8f8; border-radius: 10px; padding: 20px; text-align: center; }
+.kpi-value { font-size: 32px; font-weight: 700; color: #00B050; }
+.kpi-label { font-size: 13px; color: #999; margin-top: 5px; }
+.insight { background: #f0fdf4; border-left: 4px solid #00B050; padding: 15px 20px; border-radius: 0 8px 8px 0; margin-bottom: 20px; font-size: 14px; line-height: 1.8; }
+.insight.warning { background: #fef3f2; border-left-color: #E74C3C; }
+.insight.info { background: #f0f7ff; border-left-color: #3498db; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 15px; }
+th { background: #00B050; color: #fff; padding: 10px 8px; text-align: center; font-weight: 600; }
+td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #eee; }
+tr:hover { background: #f9f9f9; }
+.tag1 { font-weight: 600; color: #333; }
+.tag2 { color: #666; }
+.count { font-weight: 600; color: #00B050; }
+.count-high { color: #E74C3C; }
+.bar-container { display: inline-block; width: 80px; height: 16px; background: #eee; border-radius: 8px; vertical-align: middle; margin-right: 5px; }
+.bar-fill { height: 100%; background: #00B050; border-radius: 8px; }
+.footer { text-align: center; color: #999; font-size: 12px; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; }
+.person-table td:nth-child(1) { text-align: left; padding-left: 15px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>9pro 400万4G云台公测 - 日常问题反馈报告</h1>
+<p class="subtitle">数据统计周期：2026-08-16 至 2026-08-19 | 更新时间：2026-08-19 10:06</p>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="kpi-value">94</div><div class="kpi-label">日常反馈总数</div></div>
+<div class="kpi-card"><div class="kpi-value">21</div><div class="kpi-label">反馈人数</div></div>
+<div class="kpi-card"><div class="kpi-value">15</div><div class="kpi-label">一级标签数</div></div>
+<div class="kpi-card"><div class="kpi-value">27</div><div class="kpi-label">二级标签数</div></div>
+</div>
+
+<div class="insight">
+<strong>核心洞察：</strong>9pro公测日常反馈共94条，21人参与反馈。功能需求(20条)是最多的一级标签，主要集中在4G专属功能适配（说明书/图标/逻辑沿用WiFi版）和用户体验优化建议。APP功能/交互(17条)紧随其后，网络异常误报(9条)是核心痛点——4G设备显示WiFi图标、网络正常却弹"网络异常"提示。IQ问题(10条)中，人形误报(7条)和夜视问题(3条)需重点关注。
+</div>
+
+<div class="section">
+<div class="section-title">📊 一级标签分布</div>
+<table>
+<thead><tr><th>一级标签</th><th>反馈量</th><th>占比</th><th>分布</th></tr></thead>
+<tbody>
+<tr><td class="tag1">功能需求</td><td class="count" style="color:#E74C3C">20</td><td>21.3%</td><td><div class="bar-container"><div class="bar-fill" style="width:100%"></div></div></td></tr>
+<tr><td class="tag1">APP功能/交互</td><td class="count" style="color:#E74C3C">17</td><td>18.1%</td><td><div class="bar-container"><div class="bar-fill" style="width:85%"></div></div></td></tr>
+<tr><td class="tag1">配网/安装引导</td><td class="count" style="color:#00B050">10</td><td>10.6%</td><td><div class="bar-container"><div class="bar-fill" style="width:50%"></div></div></td></tr>
+<tr><td class="tag1">IQ</td><td class="count" style="color:#00B050">10</td><td>10.6%</td><td><div class="bar-container"><div class="bar-fill" style="width:50%"></div></div></td></tr>
+<tr><td class="tag1">卡录</td><td class="count" style="color:#00B050">8</td><td>8.5%</td><td><div class="bar-container"><div class="bar-fill" style="width:40%"></div></div></td></tr>
+<tr><td class="tag1">开流</td><td class="count" style="color:#00B050">7</td><td>7.4%</td><td><div class="bar-container"><div class="bar-fill" style="width:35%"></div></div></td></tr>
+<tr><td class="tag1">包装/配件</td><td class="count" style="color:#00B050">6</td><td>6.4%</td><td><div class="bar-container"><div class="bar-fill" style="width:30%"></div></div></td></tr>
+<tr><td class="tag1">硬件设计</td><td class="count" style="color:#00B050">5</td><td>5.3%</td><td><div class="bar-container"><div class="bar-fill" style="width:25%"></div></div></td></tr>
+<tr><td class="tag1">云录</td><td class="count" style="color:#00B050">3</td><td>3.2%</td><td><div class="bar-container"><div class="bar-fill" style="width:15%"></div></div></td></tr>
+<tr><td class="tag1">硬件/信号</td><td class="count" style="color:#00B050">2</td><td>2.1%</td><td><div class="bar-container"><div class="bar-fill" style="width:10%"></div></div></td></tr>
+<tr><td class="tag1">稳定性</td><td class="count" style="color:#00B050">2</td><td>2.1%</td><td><div class="bar-container"><div class="bar-fill" style="width:10%"></div></div></td></tr>
+<tr><td class="tag1">开箱</td><td class="count" style="color:#00B050">1</td><td>1.1%</td><td><div class="bar-container"><div class="bar-fill" style="width:5%"></div></div></td></tr>
+<tr><td class="tag1">外包装</td><td class="count" style="color:#00B050">1</td><td>1.1%</td><td><div class="bar-container"><div class="bar-fill" style="width:5%"></div></div></td></tr>
+<tr><td class="tag1">配网</td><td class="count" style="color:#00B050">1</td><td>1.1%</td><td><div class="bar-container"><div class="bar-fill" style="width:5%"></div></div></td></tr>
+<tr><td class="tag1">其他</td><td class="count" style="color:#00B050">1</td><td>1.1%</td><td><div class="bar-container"><div class="bar-fill" style="width:5%"></div></div></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<div class="section-title">🔍 二级标签详情</div>
+<table>
+<thead><tr><th>一级标签</th><th>二级标签</th><th>反馈量</th><th>占比</th></tr></thead>
+<tbody>
+<tr><td class="tag1">功能需求</td><td class="tag2">功能建议</td><td class="count" style="color:#E74C3C">20</td><td>21.3%</td></tr>
+<tr><td class="tag1">APP功能/交互</td><td class="tag2">网络异常提示</td><td class="count" style="color:#E74C3C">9</td><td>9.6%</td></tr>
+<tr><td class="tag1">IQ</td><td class="tag2">人形误报</td><td class="count" style="color:#333">7</td><td>7.4%</td></tr>
+<tr><td class="tag1">包装/配件</td><td class="tag2">包装问题</td><td class="count" style="color:#333">6</td><td>6.4%</td></tr>
+<tr><td class="tag1">APP功能/交互</td><td class="tag2">APP功能建议</td><td class="count" style="color:#333">6</td><td>6.4%</td></tr>
+<tr><td class="tag1">配网/安装引导</td><td class="tag2">说明书问题</td><td class="count" style="color:#333">5</td><td>5.3%</td></tr>
+<tr><td class="tag1">开流</td><td class="tag2">画面异常</td><td class="count" style="color:#333">5</td><td>5.3%</td></tr>
+<tr><td class="tag1">卡录</td><td class="tag2">卡录问题</td><td class="count" style="color:#333">5</td><td>5.3%</td></tr>
+<tr><td class="tag1">硬件设计</td><td class="tag2">做工问题</td><td class="count" style="color:#333">4</td><td>4.3%</td></tr>
+<tr><td class="tag1">云录</td><td class="tag2">云录问题</td><td class="count" style="color:#333">3</td><td>3.2%</td></tr>
+<tr><td class="tag1">IQ</td><td class="tag2">夜视问题</td><td class="count" style="color:#333">3</td><td>3.2%</td></tr>
+<tr><td class="tag1">硬件/信号</td><td class="tag2">信号问题</td><td class="count" style="color:#333">2</td><td>2.1%</td></tr>
+<tr><td class="tag1">配网/安装引导</td><td class="tag2">配网建议</td><td class="count" style="color:#333">2</td><td>2.1%</td></tr>
+<tr><td class="tag1">配网/安装引导</td><td class="tag2">配网问题</td><td class="count" style="color:#333">2</td><td>2.1%</td></tr>
+<tr><td class="tag1">APP功能/交互</td><td class="tag2">截图功能异常</td><td class="count" style="color:#333">2</td><td>2.1%</td></tr>
+<tr><td class="tag1">开流</td><td class="tag2">开流问题</td><td class="count" style="color:#333">2</td><td>2.1%</td></tr>
+<tr><td class="tag1">开箱</td><td class="tag2">缺少配网卡</td><td class="count" style="color:#333">1</td><td>1.1%</td></tr>
+<tr><td class="tag1">外包装</td><td class="tag2">4G标识缺失</td><td class="count" style="color:#333">1</td><td>1.1%</td></tr>
+<tr><td class="tag1">卡录</td><td class="tag2">卡录加载慢</td><td class="count" style="color:#333">1</td><td>1.1%</td></tr>
+<tr><td class="tag1">卡录</td><td class="tag2">内存卡插卡标识需求</td><td class="count" style="color:#333">1</td><td>1.1%</td></tr>
+<tr><td class="tag1">配网</td><td class="tag2">配网慢</td><td class="count" style="color:#333">1</td><td>1.1%</td></tr>
+<tr><td class="tag1">配网/安装引导</td><td class="tag2">安装问题</td><td class="count" style="color:#333">1</td><td>1.1%</td></tr>
+<tr><td class="tag1">其他</td><td class="tag2">其他</td><td class="count" style="color:#333">1</td><td>1.1%</td></tr>
+<tr><td class="tag1">稳定性</td><td class="tag2">设备重启</td><td class="count" style="color:#333">1</td><td>1.1%</td></tr>
+<tr><td class="tag1">卡录</td><td class="tag2">卡录功能建议</td><td class="count" style="color:#333">1</td><td>1.1%</td></tr>
+<tr><td class="tag1">稳定性</td><td class="tag2">设备异常</td><td class="count" style="color:#333">1</td><td>1.1%</td></tr>
+<tr><td class="tag1">硬件设计</td><td class="tag2">散热问题</td><td class="count" style="color:#333">1</td><td>1.1%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<div class="section-title">👥 反馈人员分布</div>
+<table class="person-table">
+<thead><tr><th>姓名</th><th>反馈条数</th><th>占比</th></tr></thead>
+<tbody>
+<tr><td style="text-align:left;padding-left:15px">王亚兵</td><td class="count" style="color:#00B050">25</td><td>26.6%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">高瑞</td><td class="count" style="color:#00B050">14</td><td>14.9%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">陶双</td><td class="count" style="color:#333">9</td><td>9.6%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">林志澄</td><td class="count" style="color:#333">8</td><td>8.5%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">王刚红</td><td class="count" style="color:#333">5</td><td>5.3%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">汤远鹏</td><td class="count" style="color:#333">5</td><td>5.3%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">闫贺</td><td class="count" style="color:#333">3</td><td>3.2%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">陈建建</td><td class="count" style="color:#333">3</td><td>3.2%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">张鹏鑫</td><td class="count" style="color:#333">3</td><td>3.2%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">黄显森</td><td class="count" style="color:#333">3</td><td>3.2%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">张宁</td><td class="count" style="color:#E74C3C">2</td><td>2.1%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">苗欣丽</td><td class="count" style="color:#E74C3C">2</td><td>2.1%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">龚粒宇</td><td class="count" style="color:#E74C3C">2</td><td>2.1%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">方家欢</td><td class="count" style="color:#E74C3C">2</td><td>2.1%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">孙洪士</td><td class="count" style="color:#E74C3C">2</td><td>2.1%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">张一明</td><td class="count" style="color:#E74C3C">1</td><td>1.1%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">齐彩英</td><td class="count" style="color:#E74C3C">1</td><td>1.1%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">邱天顺</td><td class="count" style="color:#E74C3C">1</td><td>1.1%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">朱秀澍</td><td class="count" style="color:#E74C3C">1</td><td>1.1%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">李玉佳</td><td class="count" style="color:#E74C3C">1</td><td>1.1%</td></tr>
+<tr><td style="text-align:left;padding-left:15px">郭智育</td><td class="count" style="color:#E74C3C">1</td><td>1.1%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="insight warning">
+<strong>⚠️ 重点关注：</strong>
+<br>1. <strong>4G适配问题（说明书+图标+逻辑）</strong>：配网/安装引导>说明书问题(5条) + APP功能/交互>网络异常提示(9条) —— 4G设备多处沿用WiFi版设计，用户感知明显
+<br>2. <strong>IQ检测精度</strong>：人形误报(7条，衣服/沙发/云台转动误触发) + 夜视问题(3条，黑暗处不清晰/切换后色差)
+<br>3. <strong>开流体验</strong>：画面异常(5条，卡顿/闪现/停滞) + 开流问题(2条)
+<br>4. <strong>云录异常</strong>：超长云录(3条) + 起始时间偏差(0条)
+</div>
+
+<div class="footer">
+<p>9pro 400万4G云台公测 | 报告分析专家 🦞 | 2026-08-19</p>
+</div>
+</div>
+</body>
+</html>
