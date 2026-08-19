@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>6pro 4G门铃日常问题报告 2026-08-19</title><script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333;padding:20px}
+.container{max-width:1200px;margin:0 auto}
+.header{text-align:center;padding:30px 20px;background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;border-radius:12px;margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:8px}
+.header p{font-size:14px;opacity:.9}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;border-radius:10px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.kpi-card .num{font-size:32px;font-weight:700;color:#00B050}
+.kpi-card .label{font-size:13px;color:#999;margin-top:6px}
+.kpi-card.alert .num{color:#E74C3C}
+.kpi-card.warn .num{color:#F39C12}
+.section{background:#fff;border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section h2{font-size:18px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #00B050}
+.insight{padding:12px 16px;border-radius:8px;margin-bottom:12px;font-size:14px;line-height:1.6}
+.insight.red{background:#fdf2f2;border-left:4px solid #E74C3C;color:#c0392b}
+.insight.orange{background:#fef9f0;border-left:4px solid #F39C12;color:#d68910}
+.insight.blue{background:#eaf2f8;border-left:4px solid #3498DB;color:#2471a3}
+.insight.green{background:#eafaf1;border-left:4px solid #00B050;color:#1e8449}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px}
+th{background:#00B050;color:#fff;padding:10px 12px;text-align:left}
+td{padding:8px 12px;border-bottom:1px solid #eee;vertical-align:top}
+.bad{color:#E74C3C;font-weight:600}
+.good{color:#00B050;font-weight:600}
+.chart-box{width:100%;height:400px;margin:16px 0}
+.footer{text-align:center;padding:20px;color:#999;font-size:12px}
+.quote-cell{max-width:400px;line-height:1.5}
+.quote-name{font-weight:600;color:#00B050}
+.quote-sep{color:#ccc;margin:0 4px}
+.fw-highlight{background:#e8f5e9;font-weight:600}
+.l1-section{margin-bottom:16px}
+.l1-section h3{font-size:15px;color:#00B050;margin-bottom:8px;padding:6px 10px;background:#f0f9f4;border-radius:6px}
+</style></head><body><div class="container">
+<div class="header"><h1>📊 6pro 4G门铃 日常问题反馈报告</h1><p>数据截止：2026-08-19 09:00 | 报告生成：2026-08-19 | 参与人数：19人 | 累计反馈：482条 | 今日新增：23条</p></div>
+<div class="kpi-row"><div class="kpi-card"><div class="num">461</div><div class="label">累计有效反馈</div></div><div class="kpi-card alert"><div class="num">+23</div><div class="label">今日新增</div></div><div class="kpi-card warn"><div class="num">19</div><div class="label">一级标签数</div></div><div class="kpi-card"><div class="num">19</div><div class="label">参与人数</div></div></div>
+<div class="section"><div class="insight red"><b>🔥 0817固件首批反馈到来：</b>6条0817固件反馈中，3条为云录封面不显示（何三涛/周军×2），与0812固件同一问题延续；2条为电量显示问题（朱彤"电量与网络项里没有电量项"、于晨光"电量标识动画异常"），系0817新增UI问题。陈俊反馈画面斑影依旧明显，跨版本未修复。</div><div class="insight orange"><b>⚠️ 0812固件云录问题持续：</b>瑞子连续反馈4次录制灰屏（首帧过曝）+4次"人还在但云录结束"（录制延迟），何三涛反馈有人事件封面无人/画面变化封面有人，0812固件云录问题仍未修复。</div><div class="insight blue"><b>📌 新增问题类型：</b>夏君反馈"APP杀死后按门铃无提示"（按门铃无通知首条0812反馈）、美诺反馈"查看云录花屏"（IQ花屏首次出现）、徐婷婷反馈设备离线（稳定性问题持续）。</div><div class="insight green"><b>✅ 跨版本关注：</b>陈俊0817反馈"画面斑影依旧明显"，与此前0810/0804版本相同反馈一致，说明画面噪点/拖影问题跨版本未修复。电量显示问题为0817固件新引入，需重点关注。</div></div>
+<div class="section"><h2>📈 累计TOP10 二级标签反馈分布</h2><div id="chart-top" class="chart-box"></div></div>
+<div class="section"><h2>📊 不同固件版本重点问题对比</h2><table><tr><th>二级标签</th><th>0710</th><th>0717</th><th>0730</th><th>0804</th><th>0812</th><th class="fw-highlight">0817</th><th>0812→0817趋势</th></tr>
+<tr><td>画面变化误报</td><td>11</td><td>3</td><td>5</td><td>13</td><td>18</td><td class="fw-highlight">0</td><td><span style="color:#00B050">↓-18</span></td></tr>
+<tr><td>漏录/漏拍</td><td>9</td><td>9</td><td>5</td><td>7</td><td>2</td><td class="fw-highlight">0</td><td><span style="color:#00B050">↓-2</span></td></tr>
+<tr><td>录制延迟</td><td>7</td><td>2</td><td>4</td><td>8</td><td>9</td><td class="fw-highlight">0</td><td><span style="color:#00B050">↓-9</span></td></tr>
+<tr><td>有人误报</td><td>7</td><td>3</td><td>3</td><td>6</td><td>7</td><td class="fw-highlight">0</td><td><span style="color:#00B050">↓-7</span></td></tr>
+<tr><td>云录缩略图不显示</td><td>1</td><td>3</td><td>0</td><td>3</td><td>7</td><td class="fw-highlight">3</td><td><span style="color:#00B050">↓-4</span></td></tr>
+<tr><td>卡录加载异常</td><td>0</td><td>5</td><td>4</td><td>7</td><td>2</td><td class="fw-highlight">0</td><td><span style="color:#00B050">↓-2</span></td></tr>
+<tr><td>固件升级失败</td><td>1</td><td>5</td><td>2</td><td>4</td><td>1</td><td class="fw-highlight">0</td><td><span style="color:#00B050">↓-1</span></td></tr>
+<tr><td>开流失败</td><td>7</td><td>1</td><td>3</td><td>0</td><td>1</td><td class="fw-highlight">0</td><td><span style="color:#00B050">↓-1</span></td></tr>
+<tr><td>画质噪点/拖影</td><td>4</td><td>0</td><td>2</td><td>2</td><td>1</td><td class="fw-highlight">1</td><td><span style="color:#999">→</span></td></tr>
+<tr><td>电量显示/命名问题</td><td>4</td><td>0</td><td>1</td><td>1</td><td>0</td><td class="fw-highlight">2</td><td><span style="color:#E74C3C">↑+2</span></td></tr>
+<tr><td>首帧过曝</td><td>0</td><td>0</td><td>0</td><td>0</td><td>7</td><td class="fw-highlight">0</td><td><span style="color:#00B050">↓-7</span></td></tr>
+<tr><td>设备离线</td><td>1</td><td>0</td><td>0</td><td>5</td><td>2</td><td class="fw-highlight">0</td><td><span style="color:#00B050">↓-2</span></td></tr>
+<tr><td>花屏</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td class="fw-highlight">1</td><td><span style="color:#E74C3C">↑+1</span></td></tr>
+</table></div>
+<div class="section"><h2>📋 今日新增问题明细（23条）</h2>
+<div class="l1-section"><h3>云录（新增17条）</h3>
+<table><tr><th>等级</th><th>问题点</th><th>反馈量</th><th>用户原声</th><th>解决方案</th></tr>
+<tr><td><span style="color:#F39C12;font-weight:600">中等</span></td><td><b>云录</b><br>云录缩略图不显示</td><td>10人（18条）<br><span style="color:#E74C3C;font-size:12px">新增4人（5条）</span></td><td class="quote-cell"><span class="quote-name">何三涛</span><span class="quote-sep">|</span>今天升级到0817版本后，云录封面图不显示，但是能打开<br><span class="quote-name">周军</span><span class="quote-sep">|</span>云录提醒封面丢失<br><span class="quote-name">周军</span><span class="quote-sep">|</span>云提醒通知无封面提醒<br><span class="quote-name">朱彤</span><span class="quote-sep">|</span>云录事件点开第一秒会闪屏，之前以为是感应灯的缘故，但是早上天亮了感应灯没有亮，但是实际第一秒还是会闪。<br><span style="color:#999">...还有 14 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td><span class="good">一般</span></td><td><b>云录</b><br>首帧过曝</td><td>1人（5条）<br><span style="color:#E74C3C;font-size:12px">新增1人（4条）</span></td><td class="quote-cell"><span class="quote-name">瑞子</span><span class="quote-sep">|</span>录制灰屏<br><span class="quote-name">瑞子</span><span class="quote-sep">|</span>录制hui ping<br><span style="color:#999">...还有 3 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td><span style="color:#F39C12;font-weight:600">中等</span></td><td><b>云录</b><br>录制延迟</td><td>12人（29条）<br><span style="color:#E74C3C;font-size:12px">新增1人（4条）</span></td><td class="quote-cell"><span class="quote-name">瑞子</span><span class="quote-sep">|</span>人还在云录结束<br><span class="quote-name">许军州</span><span class="quote-sep">|</span>8月14到8月15号，人还没离开，但录制已经结束<br><span class="quote-name">朱君</span><span class="quote-sep">|</span>人还在云录结束<br><span class="quote-name">魏健伟</span><span class="quote-sep">|</span>人还在云录结束<br><span style="color:#999">...还有 25 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td><span class="good">一般</span></td><td><b>云录</b><br>有人事件封面无人</td><td>1人（2条）<br><span style="color:#E74C3C;font-size:12px">新增1人（1条）</span></td><td class="quote-cell"><span class="quote-name">何三涛</span><span class="quote-sep">|</span>【有人出现】事件封面无人情况<br><span style="color:#999">...还有 1 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td><span class="good">一般</span></td><td><b>云录</b><br>画面变化封面有人</td><td>2人（3条）<br><span style="color:#E74C3C;font-size:12px">新增1人（1条）</span></td><td class="quote-cell"><span class="quote-name">何三涛</span><span class="quote-sep">|</span>【画面变化】封面有人情况截图<br><span style="color:#999">...还有 2 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td><span class="good">一般</span></td><td><b>云录</b><br>画面变化事件有人</td><td>2人（3条）<br><span style="color:#E74C3C;font-size:12px">新增1人（1条）</span></td><td class="quote-cell"><span class="quote-name">何三涛</span><span class="quote-sep">|</span>【画面变化】事件里实际有人情况视频<br><span style="color:#999">...还有 2 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td><span class="good">一般</span></td><td><b>云录</b><br>有人出现封面无人</td><td>1人（2条）<br><span style="color:#E74C3C;font-size:12px">新增1人（1条）</span></td><td class="quote-cell"><span class="quote-name">瑞子</span><span class="quote-sep">|</span>有人出现封面没人<br><span style="color:#999">...还有 1 条反馈</span></td><td style="color:#999">待定位</td></tr>
+</table></div>
+<div class="l1-section"><h3>APP功能/交互（新增2条）</h3>
+<table><tr><th>等级</th><th>问题点</th><th>反馈量</th><th>用户原声</th><th>解决方案</th></tr>
+<tr><td><span class="good">一般</span></td><td><b>APP功能/交互</b><br>电量显示/命名问题</td><td>7人（8条）<br><span style="color:#E74C3C;font-size:12px">新增2人（2条）</span></td><td class="quote-cell"><span class="quote-name">朱彤</span><span class="quote-sep">|</span>电量与网络项里面，没有电量项，要么不要叫电量与网络，直接叫网络。<br><span class="quote-name">于晨光</span><span class="quote-sep">|</span>升级到0817，点击实时画面，左上角电量标识动画是不是有问题<br><span style="color:#999">...还有 6 条反馈</span></td><td style="color:#999">待定位</td></tr>
+</table></div>
+<div class="l1-section"><h3>IQ（新增2条）</h3>
+<table><tr><th>等级</th><th>问题点</th><th>反馈量</th><th>用户原声</th><th>解决方案</th></tr>
+<tr><td><span class="good">一般</span></td><td><b>IQ</b><br>花屏</td><td>2人（2条）<br><span style="color:#E74C3C;font-size:12px">新增1人（1条）</span></td><td class="quote-cell"><span class="quote-name">美诺</span><span class="quote-sep">|</span>查看云录时 感觉花屏<br><span style="color:#999">...还有 1 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td><span class="good">一般</span></td><td><b>IQ</b><br>画质噪点/拖影</td><td>6人（10条）<br><span style="color:#E74C3C;font-size:12px">新增1人（1条）</span></td><td class="quote-cell"><span class="quote-name">陈俊</span><span class="quote-sep">|</span>开启，与切换画面斑影依旧明显<br><span class="quote-name">王瑷珲</span><span class="quote-sep">|</span>问卷1，卡录云录有马赛克，夜间光线明亮无彩色，画面偏暗。2通话端有点破音。<br><span class="quote-name">瑞子</span><span class="quote-sep">|</span>走廊有灯光 录制黑白色<br><span class="quote-name">陈俊</span><span class="quote-sep">|</span>画面再光线差点的情况下，噪点明显。还有噪点飘忽不定，哨兵版画面明显好点，明亮<br><span style="color:#999">...还有 6 条反馈</span></td><td style="color:#999">待定位</td></tr>
+</table></div>
+<div class="l1-section"><h3>稳定性（新增1条）</h3>
+<table><tr><th>等级</th><th>问题点</th><th>反馈量</th><th>用户原声</th><th>解决方案</th></tr>
+<tr><td><span class="good">一般</span></td><td><b>稳定性</b><br>设备离线</td><td>6人（8条）<br><span style="color:#E74C3C;font-size:12px">新增1人（1条）</span></td><td class="quote-cell"><span class="quote-name">徐婷婷</span><span class="quote-sep">|</span>更新8.12版本过程中发现每天7.30左右都会自动离线，并且8.13离线过程中电量77降到65，第二天查看电量没变，但是又离线了，还是差不多的时间点<br><span class="quote-name">徐婷婷</span><span class="quote-sep">|</span>16.38.32离线，16.38.31最后一个视频通知查看后离线，一会又恢复，当时信号，门铃强度都是70<br><span style="color:#999">...还有 6 条反馈</span></td><td style="color:#999">待定位</td></tr>
+</table></div>
+<div class="l1-section"><h3>按门铃（新增1条）</h3>
+<table><tr><th>等级</th><th>问题点</th><th>反馈量</th><th>用户原声</th><th>解决方案</th></tr>
+<tr><td><span class="good">一般</span></td><td><b>按门铃</b><br>按门铃无通知</td><td>2人（3条）<br><span style="color:#E74C3C;font-size:12px">新增1人（1条）</span></td><td class="quote-cell"><span class="quote-name">夏君</span><span class="quote-sep">|</span>今天发现app杀死的前提下，摁门铃，手机app毫无提示<br><span style="color:#999">...还有 2 条反馈</span></td><td style="color:#999">待定位</td></tr>
+</table></div>
+</div>
+<div class="section"><h2>📌 云录（本次新增17条）</h2>
+<div class="insight red"><b>云录问题持续恶化：</b>本次新增17条云录问题。0817固件云录封面不显示3条（何三涛/周军×2），0812固件首帧过曝4条（瑞子）、录制延迟4条（瑞子）、画面变化/封面问题5条。云录缩略图不显示累计达18条10人，成为云录类第三大问题。</div>
+<table><tr><th>问题点</th><th>累计反馈量</th><th>本次新增</th><th>用户原声</th><th>解决方案</th></tr>
+<tr><td>录制延迟</td><td>12人（29条）</td><td><span style="color:#E74C3C">1人（4条）</span></td><td class="quote-cell"><span class="quote-name">瑞子</span><span class="quote-sep">|</span>人还在云录结束<br><span class="quote-name">许军州</span><span class="quote-sep">|</span>8月14到8月15号，人还没离开，但录制已经结束<br><span class="quote-name">朱君</span><span class="quote-sep">|</span>人还在云录结束<br><span class="quote-name">魏健伟</span><span class="quote-sep">|</span>人还在云录结束<br><span style="color:#999">...还有 25 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td>云录缩略图不显示</td><td>10人（18条）</td><td><span style="color:#E74C3C">4人（5条）</span></td><td class="quote-cell"><span class="quote-name">何三涛</span><span class="quote-sep">|</span>今天升级到0817版本后，云录封面图不显示，但是能打开<br><span class="quote-name">周军</span><span class="quote-sep">|</span>云录提醒封面丢失<br><span class="quote-name">周军</span><span class="quote-sep">|</span>云提醒通知无封面提醒<br><span class="quote-name">朱彤</span><span class="quote-sep">|</span>云录事件点开第一秒会闪屏，之前以为是感应灯的缘故，但是早上天亮了感应灯没有亮，但是实际第一秒还是会闪。<br><span style="color:#999">...还有 14 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td>首帧过曝</td><td>1人（5条）</td><td><span style="color:#E74C3C">1人（4条）</span></td><td class="quote-cell"><span class="quote-name">瑞子</span><span class="quote-sep">|</span>录制灰屏<br><span class="quote-name">瑞子</span><span class="quote-sep">|</span>录制hui ping<br><span style="color:#999">...还有 3 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td>画面变化封面有人</td><td>2人（3条）</td><td><span style="color:#E74C3C">1人（1条）</span></td><td class="quote-cell"><span class="quote-name">何三涛</span><span class="quote-sep">|</span>【画面变化】封面有人情况截图<br><span style="color:#999">...还有 2 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td>画面变化事件有人</td><td>2人（3条）</td><td><span style="color:#E74C3C">1人（1条）</span></td><td class="quote-cell"><span class="quote-name">何三涛</span><span class="quote-sep">|</span>【画面变化】事件里实际有人情况视频<br><span style="color:#999">...还有 2 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td>有人事件封面无人</td><td>1人（2条）</td><td><span style="color:#E74C3C">1人（1条）</span></td><td class="quote-cell"><span class="quote-name">何三涛</span><span class="quote-sep">|</span>【有人出现】事件封面无人情况<br><span style="color:#999">...还有 1 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td>有人出现封面无人</td><td>1人（2条）</td><td><span style="color:#E74C3C">1人（1条）</span></td><td class="quote-cell"><span class="quote-name">瑞子</span><span class="quote-sep">|</span>有人出现封面没人<br><span style="color:#999">...还有 1 条反馈</span></td><td style="color:#999">待定位</td></tr>
+</table></div>
+<div class="section"><h2>📌 APP功能/交互（本次新增2条）</h2>
+<div class="insight orange"><b>0817固件引入电量显示问题：</b>朱彤反馈"电量与网络项里没有电量项"，于晨光反馈"左上角电量标识动画异常"。电量显示/命名问题累计8条7人，0817固件UI改动可能引入新bug。</div>
+<table><tr><th>问题点</th><th>累计反馈量</th><th>本次新增</th><th>用户原声</th><th>解决方案</th></tr>
+<tr><td>电量显示/命名问题</td><td>7人（8条）</td><td><span style="color:#E74C3C">2人（2条）</span></td><td class="quote-cell"><span class="quote-name">朱彤</span><span class="quote-sep">|</span>电量与网络项里面，没有电量项，要么不要叫电量与网络，直接叫网络。<br><span class="quote-name">于晨光</span><span class="quote-sep">|</span>升级到0817，点击实时画面，左上角电量标识动画是不是有问题<br><span style="color:#999">...还有 6 条反馈</span></td><td style="color:#999">待定位</td></tr>
+</table></div>
+<div class="section"><h2>📌 稳定性（本次新增1条）</h2>
+<div class="insight orange"><b>设备离线问题持续：</b>徐婷婷反馈0812固件设备离线，累计设备离线8条6人。此前徐婷婷多次反馈固定时间点离线问题。</div>
+<table><tr><th>问题点</th><th>累计反馈量</th><th>本次新增</th><th>用户原声</th><th>解决方案</th></tr>
+<tr><td>设备离线</td><td>6人（8条）</td><td><span style="color:#E74C3C">1人（1条）</span></td><td class="quote-cell"><span class="quote-name">徐婷婷</span><span class="quote-sep">|</span>更新8.12版本过程中发现每天7.30左右都会自动离线，并且8.13离线过程中电量77降到65，第二天查看电量没变，但是又离线了，还是差不多的时间点<br><span class="quote-name">徐婷婷</span><span class="quote-sep">|</span>16.38.32离线，16.38.31最后一个视频通知查看后离线，一会又恢复，当时信号，门铃强度都是70<br><span style="color:#999">...还有 6 条反馈</span></td><td style="color:#999">待定位</td></tr>
+</table></div>
+<div class="section"><h2>📌 IQ（本次新增2条）</h2>
+<div class="insight orange"><b>画质问题跨版本存在：</b>陈俊0817反馈画面斑影依旧明显（累计画质噪点/拖影10条6人），美诺0817反馈云录花屏（花屏首次出现）。IQ问题在0810→0812→0817各版本均未改善。</div>
+<table><tr><th>问题点</th><th>累计反馈量</th><th>本次新增</th><th>用户原声</th><th>解决方案</th></tr>
+<tr><td>画质噪点/拖影</td><td>6人（10条）</td><td><span style="color:#E74C3C">1人（1条）</span></td><td class="quote-cell"><span class="quote-name">陈俊</span><span class="quote-sep">|</span>开启，与切换画面斑影依旧明显<br><span class="quote-name">王瑷珲</span><span class="quote-sep">|</span>问卷1，卡录云录有马赛克，夜间光线明亮无彩色，画面偏暗。2通话端有点破音。<br><span class="quote-name">瑞子</span><span class="quote-sep">|</span>走廊有灯光 录制黑白色<br><span class="quote-name">陈俊</span><span class="quote-sep">|</span>画面再光线差点的情况下，噪点明显。还有噪点飘忽不定，哨兵版画面明显好点，明亮<br><span style="color:#999">...还有 6 条反馈</span></td><td style="color:#999">待定位</td></tr>
+<tr><td>花屏</td><td>2人（2条）</td><td><span style="color:#E74C3C">1人（1条）</span></td><td class="quote-cell"><span class="quote-name">美诺</span><span class="quote-sep">|</span>查看云录时 感觉花屏<br><span style="color:#999">...还有 1 条反馈</span></td><td style="color:#999">待定位</td></tr>
+</table></div>
+<div class="section"><h2>📌 按门铃（本次新增1条）</h2>
+<div class="insight orange"><b>按门铃无通知首次出现：</b>夏君反馈APP杀死状态下按门铃无提示，累计3条2人。此问题与APP后台保活机制相关，需排查推送服务。</div>
+<table><tr><th>问题点</th><th>累计反馈量</th><th>本次新增</th><th>用户原声</th><th>解决方案</th></tr>
+<tr><td>按门铃无通知</td><td>2人（3条）</td><td><span style="color:#E74C3C">1人（1条）</span></td><td class="quote-cell"><span class="quote-name">夏君</span><span class="quote-sep">|</span>今天发现app杀死的前提下，摁门铃，手机app毫无提示<br><span style="color:#999">...还有 2 条反馈</span></td><td style="color:#999">待定位</td></tr>
+</table></div>
+
+<script>
+const c1=echarts.init(document.getElementById('chart-top'));
+const chartData = {
+    labels: ["\u8bef\u62a5", "\u8017\u7535\u5feb", "\u5f00\u6d41\u5931\u8d25", "\u56fa\u4ef6\u5347\u7ea7\u5931\u8d25", "\u5361\u5f55\u52a0\u8f7d\u5f02\u5e38", "\u4e91\u5f55\u7f29\u7565\u56fe\u4e0d\u663e\u793a", "\u6709\u4eba\u8bef\u62a5", "\u5f55\u5236\u5ef6\u8fdf", "\u6f0f\u5f55/\u6f0f\u62cd", "\u753b\u9762\u53d8\u5316\u8bef\u62a5"],
+    values: [10, 11, 12, 13, 18, 18, 26, 29, 32, 50],
+    users: [7, 7, 9, 7, 8, 10, 12, 12, 13, 16]
+};
+c1.setOption({
+    title:{text:'累计TOP10二级标签（按反馈条数）',left:'center',textStyle:{fontSize:14}},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},
+        formatter:function(params){
+            var p=params[0];
+            return p.name+'<br/>反馈条数: '+p.value+'<br/>反馈人数: '+chartData.users[params[0].dataIndex]+'人';
+        }
+    },
+    grid:{left:'28%',right:'12%',top:'40px',bottom:'20px'},
+    xAxis:{type:'value'},
+    yAxis:{type:'category',data:chartData.labels,axisLabel:{fontSize:11}},
+    series:[{
+        type:'bar',
+        data:chartData.values,
+        itemStyle:{color:'#00B050'},
+        label:{show:true,position:'right',fontSize:11,formatter:function(p){return p.value+'条 ('+chartData.users[p.dataIndex]+'人)'}}
+    }]
+});
+window.addEventListener('resize',function(){c1.resize()});
+</script>
+<div class="footer">6pro 4G门铃公测 · 日常问题报告 · 2026-08-19 · 🦞</div>
+</body></html>
