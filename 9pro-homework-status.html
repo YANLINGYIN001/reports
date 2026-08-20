@@ -23,11 +23,12 @@
   td:nth-child(2) { text-align: left; padding-left: 16px; font-weight: 500; }
   tr:hover { background: #f9f9f9; }
   .check { color: #00B050; font-size: 16px; }
-  .cross { color: #ccc; font-size: 16px; }
+  .cross { color: #E74C3C; font-size: 16px; font-weight: 700; }
   .green { color: #00B050; font-weight: 600; }
   .red { color: #E74C3C; font-weight: 600; }
-  .yellow-row { background: #FFF9E6; }
-  .gray-row { background: #F5F5F5; color: #999; }
+  .red-cell { color: #E74C3C; font-weight: 700; background: #FDEDEC; }
+  .red-row { background: #FDEDEC; }
+  .red-row td:nth-child(2) { color: #E74C3C; }
   .footer { text-align: center; padding: 16px 0; font-size: 12px; color: #999; }
 </style>
 </head>
@@ -35,7 +36,7 @@
 <div class="container">
   <div class="header">
     <h1>9pro 400万4G云台公测 - 作业完成情况</h1>
-    <div class="meta">更新时间：2026-08-20 09:30 · 共30人</div>
+    <div class="meta">更新时间：2026-08-20 09:40 · 共30人</div>
   </div>
   <div class="summary">
     <div class="summary-item"><div class="num">30</div><div class="label">已签收</div></div>
@@ -80,17 +81,16 @@
       <tr><td>24</td><td>谢光位</td><td class="check">✓</td><td class="check">✓</td><td class="red">3</td></tr>
       <tr><td>25</td><td>曾文彬</td><td class="check">✓</td><td class="check">✓</td><td class="red">2</td></tr>
       <tr><td>26</td><td>赖峰</td><td class="check">✓</td><td class="check">✓</td><td class="red">2</td></tr>
-      <tr><td>27</td><td>郭智育</td><td class="check">✓</td><td class="cross">✗</td><td class="red">1</td></tr>
-      <tr class="yellow-row"><td>28</td><td>程永权</td><td class="check">✓</td><td class="check">✓</td><td class="red">1</td></tr>
-      <tr class="yellow-row"><td>29</td><td>厚晓霞</td><td class="check">✓</td><td class="check">✓</td><td class="red">0</td></tr>
-      <tr class="yellow-row"><td>30</td><td>朱文虎</td><td class="cross">✗</td><td class="cross">✗</td><td>0</td></tr>
+      <tr class="red-row"><td>27</td><td>郭智育</td><td class="check">✓</td><td class="red-cell">✗</td><td class="red">1</td></tr>
+      <tr><td>28</td><td>程永权</td><td class="check">✓</td><td class="check">✓</td><td class="red">1</td></tr>
+      <tr><td>29</td><td>厚晓霞</td><td class="check">✓</td><td class="check">✓</td><td class="red">0</td></tr>
+      <tr class="red-row"><td>30</td><td>朱文虎</td><td class="red-cell">✗</td><td class="red-cell">✗</td><td class="red">0</td></tr>
     </tbody>
   </table>
   <div class="footer">
     <span style="color:#00B050">绿色</span>=反馈量≥20 · 
     <span style="color:#E74C3C">红色</span>=反馈量&lt;5 · 
-    <span style="background:#FFF9E6; padding:2px 6px;">黄色</span>=已签收未完成 · 
-    <span style="background:#F5F5F5; padding:2px 6px;">灰色</span>=未签收
+    <span style="background:#FDEDEC; padding:2px 6px; color:#E74C3C">红色行</span>=专项作业未完成
   </div>
 </div>
 </body>
