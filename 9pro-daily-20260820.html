@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9pro 400万4G云台公测 - 日常问题反馈报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .header { text-align: center; padding: 24px 0 16px; }
+  .header h1 { font-size: 24px; color: #00B050; margin-bottom: 6px; }
+  .header .meta { font-size: 13px; color: #999; }
+  .kpi-row { display: flex; justify-content: center; gap: 24px; padding: 16px 0 24px; flex-wrap: wrap; }
+  .kpi-card { background: #fff; border-radius: 10px; padding: 20px 32px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); min-width: 140px; }
+  .kpi-card .num { font-size: 32px; font-weight: 700; color: #00B050; }
+  .kpi-card .label { font-size: 13px; color: #888; margin-top: 4px; }
+  .section { background: #fff; border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .section h2 { font-size: 18px; color: #333; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #00B050; }
+  .chart { width: 100%; height: 400px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #00B050; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; }
+  th:first-child { border-radius: 6px 0 0 0; }
+  th:last-child { border-radius: 0 6px 0 0; }
+  td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+  tr:hover { background: #f9f9f9; }
+  .tag1 { display: inline-block; background: #e8f5e9; color: #00B050; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 6px; }
+  .count { font-weight: 700; color: #00B050; }
+  .quote { color: #666; font-size: 12px; line-height: 1.6; margin-top: 4px; }
+  .quote .name { color: #333; font-weight: 600; }
+  .negative { color: #E74C3C; }
+  .positive { color: #00B050; }
+  .footer { text-align: center; padding: 20px 0; font-size: 12px; color: #999; }
+  .insight { background: #f0f7f0; border-left: 4px solid #00B050; padding: 12px 16px; margin-bottom: 16px; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .insight strong { color: #00B050; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>9pro 400万4G云台公测 · 日常问题反馈报告</h1>
+    <div class="meta">更新时间：2026-08-20 09:30 · 数据来源：飞书问卷「日常问题反馈」</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">191</div><div class="label">有效反馈条数</div></div>
+    <div class="kpi-card"><div class="num">28</div><div class="label">参与反馈人数</div></div>
+    <div class="kpi-card"><div class="num">22</div><div class="label">一级标签数</div></div>
+    <div class="kpi-card"><div class="num">113</div><div class="label">二级标签数</div></div>
+  </div>
+
+  <div class="section">
+    <h2>核心洞察</h2>
+    <div class="insight">
+      <strong>TOP1 痛点：</strong>AI算法人形误报（10条/6人）—— 衣服、水瓶、红外灯均触发误报，是当前最高频问题。<br>
+      <strong>TOP2 痛点：</strong>APP电子说明书未更新（7条/6人）—— 仍延用WiFi版说明书，4G版配网指引缺失。<br>
+      <strong>TOP3 痛点：</strong>APP信号显示不一致（5条/5人）—— 列表页与实时页信号条不统一，用户困惑。<br>
+      <strong>新增关注：</strong>配网流程复杂（3条/3人）—— 远程配网需按reset键，老人操作困难；流量管理显示异常（2条）—— 日期36141天等异常显示。
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>一级标签分布</h2>
+    <div id="chart1" class="chart"></div>
+  </div>
+
+  <div class="section">
+    <h2>问题明细（按反馈量排序）</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:60px">排名</th>
+          <th style="width:100px">一级标签</th>
+          <th style="width:160px">二级标签</th>
+          <th style="width:70px">反馈量</th>
+          <th style="width:60px">人数</th>
+          <th>典型用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>1</td>
+          <td><span class="tag1">AI算法</span></td>
+          <td><strong>人形误报</strong></td>
+          <td class="count">10</td>
+          <td>6</td>
+          <td><div class="quote"><span class="name">陈建建：</span>提示有人出现，反复查看视频确实无人出现</div><div class="quote"><span class="name">黄显森：</span>把悬挂的衣服识别成人</div><div class="quote"><span class="name">王亚兵：</span>发现晚上室内灯熄灭以后，左侧圆桌上的水瓶容易误触发有人出现的误报，这个技术优化优化哦。</div></td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td><span class="tag1">产品</span></td>
+          <td><strong>4G标识缺失</strong></td>
+          <td class="count">9</td>
+          <td>7</td>
+          <td><div class="quote"><span class="name">陶双：</span>产品无4g流量相关关键标识，建议增加明显的4g免流量标志来表明产品卖点</div><div class="quote"><span class="name">王亚兵：</span>个人觉得是不是设备logo里面相应位置直接加上4g的标识，是不是用户更能区分4g设备和非4g设备，也突出4g设备独有的便利性让用户更加加深印象。</div><div class="quote"><span class="name">方家欢：</span>1.包装及设备外观没有突出4G无限流量</div></td>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td><span class="tag1">硬件</span></td>
+          <td><strong>缝隙不均匀</strong></td>
+          <td class="count">8</td>
+          <td>8</td>
+          <td><div class="quote"><span class="name">龚粒宇：</span>摄像头顶部缝隙大</div><div class="quote"><span class="name">苗欣丽：</span>刚收到货，拆开包装了，检查外观之后发现摄像头头顶的地方有一条缝</div><div class="quote"><span class="name">齐彩英：</span>不贴合，缝隙太大</div></td>
+        </tr>
+
+        <tr>
+          <td>4</td>
+          <td><span class="tag1">APP</span></td>
+          <td><strong>电子说明书未更新</strong></td>
+          <td class="count">7</td>
+          <td>6</td>
+          <td><div class="quote"><span class="name">高瑞：</span>做了开箱操作，遇到在线版说明书与实际纸质版说明书不符(电子版说明书依旧是老款设备说明)的问题</div><div class="quote"><span class="name">林志澄：</span>在线电子说明书未更新。</div><div class="quote"><span class="name">汤远鹏：</span>APP里面的电子说明书仍然是用的WiFi版的摄像头电子说明书</div></td>
+        </tr>
+
+        <tr>
+          <td>5</td>
+          <td><span class="tag1">配网流程</span></td>
+          <td><strong>配网简单</strong></td>
+          <td class="count">7</td>
+          <td>7</td>
+          <td><div class="quote"><span class="name">苗欣丽：</span>非常好，扫一扫就添加成功了，非常便捷</div><div class="quote"><span class="name">邱天顺：</span>配网简洁</div><div class="quote"><span class="name">齐彩英：</span>很满意，很方便</div></td>
+        </tr>
+
+        <tr>
+          <td>6</td>
+          <td><span class="tag1">外包装</span></td>
+          <td><strong>包装美观</strong></td>
+          <td class="count">7</td>
+          <td>7</td>
+          <td><div class="quote"><span class="name">高瑞：</span>外观上，整体设计样式比较美观，可观赏性较强。</div><div class="quote"><span class="name">黄显森：</span>简洁美观</div><div class="quote"><span class="name">赖峰：</span>很漂亮</div></td>
+        </tr>
+
+        <tr>
+          <td>7</td>
+          <td><span class="tag1">APP</span></td>
+          <td><strong>信号显示不一致</strong></td>
+          <td class="count">5</td>
+          <td>5</td>
+          <td><div class="quote"><span class="name">高瑞：</span>16，51分，做了查看设备操作，遇到缩略图的信号显示与实际的信号显示不符的问题。</div><div class="quote"><span class="name">王亚兵：</span>怎么现在app设备主页面的4g信号条是2格蓝色的，但是进入设备正常实时以后4g信号条确实黄色的2格，这给人表里不一的感觉。而且让用户产生怀疑这到底是信号一般还是很弱，现实实际是这个网络环境下开流回看操控摄像头任何功能和设置摄像头都正常。</div><div class="quote"><span class="name">蒋牧吟：</span>已多次发现信号条显示不一致:进入app时显示的信号条经常比进入实时监控时显示的信号条多一条线。</div></td>
+        </tr>
+
+        <tr>
+          <td>8</td>
+          <td><span class="tag1">安装</span></td>
+          <td><strong>底座材质降级</strong></td>
+          <td class="count">4</td>
+          <td>4</td>
+          <td><div class="quote"><span class="name">高瑞：</span>整体配件不错，但是这次的底座为全塑料的，不知道后续如果使用底座螺口的时候，耐不耐用，容不容易晃。</div><div class="quote"><span class="name">林志澄：</span>底座螺丝孔建议使用原来金属的，比较耐用。</div><div class="quote"><span class="name">陶双：</span>底座中间固定孔全部为塑料螺纹，原来是金属螺纹，从耐久性考虑联系更换为金属的</div></td>
+        </tr>
+
+        <tr>
+          <td>9</td>
+          <td><span class="tag1">配网流程</span></td>
+          <td><strong>配网指导清晰</strong></td>
+          <td class="count">4</td>
+          <td>4</td>
+          <td><div class="quote"><span class="name">陈建建：</span>非常清晰</div><div class="quote"><span class="name">赖峰：</span>清晰</div><div class="quote"><span class="name">苗欣丽：</span>很清晰</div></td>
+        </tr>
+
+        <tr>
+          <td>10</td>
+          <td><span class="tag1">IQ</span></td>
+          <td><strong>画面紫红</strong></td>
+          <td class="count">3</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">高瑞：</span>做了设备断电更换内存卡后上电操作，遇到设备上线后画面显示异常问题。(显示紫红色)</div><div class="quote"><span class="name">陈建建：</span>查看实时预览时发现，画面变紫，</div></td>
+        </tr>
+
+        <tr>
+          <td>11</td>
+          <td><span class="tag1">配网流程</span></td>
+          <td><strong>配网速度快</strong></td>
+          <td class="count">3</td>
+          <td>3</td>
+          <td><div class="quote"><span class="name">陈建建：</span>方便速度快，用时不到1分钟</div><div class="quote"><span class="name">任孝鹏：</span>很快</div><div class="quote"><span class="name">张一明：</span>速度快</div></td>
+        </tr>
+
+        <tr>
+          <td>12</td>
+          <td><span class="tag1">配网流程</span></td>
+          <td><strong>远程绑定方便</strong></td>
+          <td class="count">3</td>
+          <td>3</td>
+          <td><div class="quote"><span class="name">杜劲：</span>挺方便的，暂时没有建议</div><div class="quote"><span class="name">任孝鹏：</span>很简单，很好操作</div><div class="quote"><span class="name">陶双：</span>远程绑定非常方便</div></td>
+        </tr>
+
+        <tr>
+          <td>13</td>
+          <td><span class="tag1">配网</span></td>
+          <td><strong>配网流程复杂</strong></td>
+          <td class="count">3</td>
+          <td>3</td>
+          <td><div class="quote"><span class="name">方家欢：</span>远程配网稍显复杂，直接提示摄像头上电1分，或者2分钟，就可以发起远程配网，新机配网也不用按rest键，搞得那么复杂，老人反倒搞不懂。</div><div class="quote"><span class="name">蒋牧吟：</span>远程配网步骤引导需要对方配合按reset按钮，觉得非常麻烦，在群里了解到可以忽略这一步，但是大多数人肯定是跟着配网步骤引导去执行，那么久非常麻烦非常繁冗，希望改进配网引导，去掉需要对方配合按reset按钮这一步骤。</div><div class="quote"><span class="name">王亚兵：</span>市面上不管其他大的品牌还是杂牌的4g，确实扫码一下就直接配网添加app成功了。咱们4g摄像头的添加配网逻辑确实有点啰嗦。其实不需要这么多引导和添加通道的(又是扫码添加又是远程绑定)。</div></td>
+        </tr>
+
+        <tr>
+          <td>14</td>
+          <td><span class="tag1">AI算法</span></td>
+          <td><strong>云台转动误触发</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">王亚兵：</span>发现如果我app转动云台时或者点回到我需要的收藏点时大概率会触发:画面变化，不知道这个逻辑是不是bug请产品和技术研判 。</div><div class="quote"><span class="name">陈建建：</span>人小幅度动的前提下，云台也在转动</div></td>
+        </tr>
+
+        <tr>
+          <td>15</td>
+          <td><span class="tag1">APP</span></td>
+          <td><strong>定时开关机难用</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">王刚红：</span>摄像机定时开关机很难用，提过好几次。如果我要星期五晚上22点关机，到星期一早上8点开机。就是想双休日关摄像头，这如何设置？普通用户设置这个像要做数学推理题似的。</div><div class="quote"><span class="name">张鹏鑫：</span>定时开关机不便捷，周一之周五，周六周日分组不合理，因为中国绝大多数人不是双休，我觉得应该整合到一起，更方便。</div></td>
+        </tr>
+
+        <tr>
+          <td>16</td>
+          <td><span class="tag1">APP</span></td>
+          <td><strong>开流首帧WiFi图标</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">高瑞：</span>做了查看实时画面操作，遇到进入实时画面一瞬间，左上角信号图标还是WiFi图标，然后再转换流量图标问题。</div><div class="quote"><span class="name">汤远鹏：</span>打开摄像头 页面左上角网络图标显示为WiFi</div></td>
+        </tr>
+
+        <tr>
+          <td>17</td>
+          <td><span class="tag1">安装</span></td>
+          <td><strong>底座松动/连接</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">孙洪士：</span>底座和主体卡扣不如以往，没有小水滴那样的紧，有松动感</div><div class="quote"><span class="name">王亚兵：</span>底座和摄像头的连接太松了，没有一点阻尼的感觉，我甚至感觉有上墙安装云台转动时有跌落的风险。</div></td>
+        </tr>
+
+        <tr>
+          <td>18</td>
+          <td><span class="tag1">功能需求</span></td>
+          <td><strong>三网可选需求</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">高瑞：</span>做了流量管理查看，遇到只能使用电信网络，无法切换其他网络问题，建议增加四大运营商或者三大运营商的网络信号，多种选择，使用场景可以覆盖更多。</div><div class="quote"><span class="name">张宁：</span>如果本产品主打农村或者不方便使用wifi的场所（比如地下车库等），建议量产品三网可选，因为农村和地库有的地方电信没网。</div></td>
+        </tr>
+
+        <tr>
+          <td>19</td>
+          <td><span class="tag1">内包装</span></td>
+          <td><strong>配件包有挤压</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">高瑞：</span>正常状态(由于底部是放置的摄像头，配件包装存在挤压有凹陷)</div><div class="quote"><span class="name">陶双：</span>配件盒子挤压变形，边角有破损，需要加强保护</div></td>
+        </tr>
+
+        <tr>
+          <td>20</td>
+          <td><span class="tag1">内包装</span></td>
+          <td><strong>主机包装需求</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">孙洪士：</span>设备没有内包装，容易摩擦出痕迹，建议有内塑料袋包装</div><div class="quote"><span class="name">王刚红：</span>摄像机主机应该要用塑料袋装起来保护。连电源适配器配角都有塑料袋保护，主角却没有！摄像机主机是裸包装的。</div></td>
+        </tr>
+
+        <tr>
+          <td>21</td>
+          <td><span class="tag1">配网</span></td>
+          <td><strong>配网后云台不回正</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">张宁：</span>配网时需要手动拨动主机球体向上露出隐藏的reset键，如果不手动还原的话。通过app控制摄像头无法默认调回最低视角，必须先控制摄像头抬到最高视角之后（或者重启摄像头），才能恢复正常调节最低视角。这个问题没经验的人可能会以为是摄像头坏了，建议再配网提示文字或者说明书上提示一下。</div><div class="quote"><span class="name">李玉佳：</span>配网成功后，为什么摄像头不能自己回正呢？</div></td>
+        </tr>
+
+        <tr>
+          <td>22</td>
+          <td><span class="tag1">配网流程</span></td>
+          <td><strong>配网建议</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">李玉佳：</span>如果可以把按滴的那一声取消，远程绑定会更方便</div><div class="quote"><span class="name">张宁：</span>如果能取消按reset键这步能更方便老人使用</div></td>
+        </tr>
+
+        <tr>
+          <td>23</td>
+          <td><span class="tag1">卡录</span></td>
+          <td><strong>卡录加载慢</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">龚粒宇：</span>查看存储卡是，很慢才能进去看到存储卡上的视频</div><div class="quote"><span class="name">林志澄：</span>卡录加载很慢。差不多20秒才出来。</div></td>
+        </tr>
+
+        <tr>
+          <td>24</td>
+          <td><span class="tag1">卡录</span></td>
+          <td><strong>卡录启动延迟</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">高瑞：</span>做了查看卡录回放操作，遇到在有人事件中，都是在已经发生的状态中开始问题，能否调整一下在检测到人物后前1秒或者2秒开始？这样能大概率有效的查看完整的事件。</div><div class="quote"><span class="name">张宁：</span>有人出现这个记录的截图能看到拍到了车尾巴，而对应的录像里却没有录到车尾，建议调整录像开始时间，提前一两秒录像，让截图和实际录像能够同步。</div></td>
+        </tr>
+
+        <tr>
+          <td>25</td>
+          <td><span class="tag1">外包装</span></td>
+          <td><strong>保护膜不好拆</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">高瑞：</span>便捷，但是塑封膜较厚，最好需要使用刀片割个口，保障性较好。</div><div class="quote"><span class="name">曾文彬：</span>没有保护膜快撕设计，撕膜不方便只能硬抠</div></td>
+        </tr>
+
+        <tr>
+          <td>26</td>
+          <td><span class="tag1">外包装</span></td>
+          <td><strong>包装质量好</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">陈建建：</span>外包装纸盒坚固。</div><div class="quote"><span class="name">朱秀澍：</span>包装厚实，但不环保。外观圆润，适合大众选择。</div></td>
+        </tr>
+
+        <tr>
+          <td>27</td>
+          <td><span class="tag1">IQ</span></td>
+          <td><strong>夜视切换异常</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">杜劲：</span>同一位置、同样设置，9pro400万or7max图像为彩色，（本机）9pro4G图像是黑白（夜视）。</div><div class="quote"><span class="name">张宁：</span>夜视算法好像有bug，夜色设置为自动时，环境光线应该是够的，并不会启动夜视，但是手动旋转到暗光方向启动夜视后转回光源方向不会自动切回彩色模式。</div></td>
+        </tr>
+
+        <tr>
+          <td>28</td>
+          <td><span class="tag1">APP</span></td>
+          <td><strong>流量管理显示异常</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">王亚兵：</span>手机流量不好的时候点流量管理菜单时会出现显示剩余详细日期36141天，套餐有效期2026年8月11日到2125年7月31日，我的套餐:又是终身套餐，这样的异常画面，请技术排查一下。</div><div class="quote"><span class="name">杜劲：</span>本来应该显示无限流量，偶尔会显示流量卡起止时间倒置</div></td>
+        </tr>
+
+        <tr>
+          <td>29</td>
+          <td><span class="tag1">APP</span></td>
+          <td><strong>消息通知频率</strong></td>
+          <td class="count">2</td>
+          <td>2</td>
+          <td><div class="quote"><span class="name">蒋牧吟：</span>消息通知一分钟一次，实在是太频繁了，建议改成每种类型消息通知可以按照个人需求分别设置提示间隔时间。</div><div class="quote"><span class="name">苗欣丽：</span>事件录像提示太频繁，感觉很打扰人的老是弹出来有人出现或者画面变化，建议可以设置一下，譬如设置一下30分钟不再弹出，或者1个小时不再弹出，让用户有个选择。</div></td>
+        </tr>
+
+        <tr>
+          <td>30</td>
+          <td><span class="tag1">卡录</span></td>
+          <td><strong>内存卡兼容性</strong></td>
+          <td class="count">2</td>
+          <td>1</td>
+          <td><div class="quote"><span class="name">张宁：</span>好像不兼容小米的固速牌监控专用tf卡，插入卡后app显示无tf卡。</div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    9pro 400万4G云台公测 · 日常问题反馈报告 · 2026-08-20
+  </div>
+</div>
+
+<script>
+const chart1 = echarts.init(document.getElementById('chart1'));
+const tag1Data = [{"name": "APP", "value": 44}, {"name": "配网流程", "value": 25}, {"name": "AI算法", "value": 20}, {"name": "外包装", "value": 18}, {"name": "卡录", "value": 15}, {"name": "配网", "value": 12}, {"name": "硬件", "value": 12}, {"name": "安装", "value": 9}, {"name": "IQ", "value": 8}, {"name": "内包装", "value": 5}, {"name": "开流", "value": 4}, {"name": "功能需求", "value": 3}, {"name": "说明书", "value": 3}, {"name": "云录", "value": 3}, {"name": "稳定性", "value": 2}, {"name": "巡航", "value": 2}, {"name": "产品", "value": 1}, {"name": "开箱", "value": 1}, {"name": "设备", "value": 1}, {"name": "微信小程序", "value": 1}, {"name": "硬件设计", "value": 1}, {"name": "云录卡录", "value": 1}];
+chart1.setOption({
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+  xAxis: { type: 'value', axisLabel: { fontSize: 12 } },
+  yAxis: { type: 'category', data: tag1Data.map(d => d.name).reverse(), axisLabel: { fontSize: 12 } },
+  series: [{
+    type: 'bar',
+    data: tag1Data.map(d => d.value).reverse(),
+    itemStyle: {
+      color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+        { offset: 0, color: '#00B050' },
+        { offset: 1, color: '#2BBD6E' }
+      ]),
+      borderRadius: [0, 4, 4, 0]
+    },
+    label: { show: true, position: 'right', fontSize: 12, color: '#333' }
+  }]
+});
+</script>
+</body>
+</html>
