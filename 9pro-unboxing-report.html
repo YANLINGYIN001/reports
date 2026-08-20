@@ -4,59 +4,292 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>9pro 400万4G云台公测 - 开箱体验报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
-.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 30px 20px; text-align: center; border-radius: 12px 12px 0 0; }
-.header h1 { font-size: 22px; margin-bottom: 6px; }
-.header p { font-size: 13px; opacity: 0.9; }
-.update-time { font-size: 11px; opacity: 0.8; margin-top: 6px; }
-.container { max-width: 920px; margin: 0 auto; padding: 0; }
-.kpi-row { display: flex; gap: 12px; margin-bottom: 20px; padding: 0 20px; flex-wrap: wrap; }
-.kpi-card { flex: 1; min-width: 120px; background: #fff; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-.kpi-card .num { font-size: 28px; font-weight: 700; color: #00B050; }
-.kpi-card .label { font-size: 12px; color: #888; margin-top: 4px; }
-.section { margin-bottom: 28px; padding: 0 20px; }
-.section-title { font-size: 18px; font-weight: 700; color: #00B050; border-bottom: 2px solid #00B050; padding-bottom: 6px; margin-bottom: 14px; }
-.module { background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow-x: auto; }
-.module-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
-.insight { font-size: 13px; padding: 8px 12px; border-radius: 8px; margin-bottom: 8px; }
-.insight-good { background: #f0fdf4; color: #00B050; border-left: 4px solid #00B050; }
-.insight-warn { background: #fff7ed; color: #F39C12; border-left: 4px solid #F39C12; }
-.insight-bad { background: #fef2f2; color: #E74C3C; border-left: 4px solid #E74C3C; }
-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-th { background: #f8faf8; padding: 10px 8px; text-align: left; font-weight: 600; color: #666; border-bottom: 2px solid #e0e0e0; white-space: nowrap; }
-td { padding: 10px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
-.chart-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
-.bar-track { flex: 1; background: #f0f0f0; border-radius: 4px; height: 22px; }
-.bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #00B050, #2BBD6E); display: flex; align-items: center; padding-left: 8px; color: #fff; font-size: 11px; font-weight: 600; min-width: 28px; }
-.bar-label { width: 90px; font-size: 12px; text-align: right; }
-.voice-pos { color: #00B050; }
-.voice-neg { color: #E74C3C; }
-.cat-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
-.cat-外包装 { background: #e8f5e9; color: #2E7D32; }
-.cat-内包装 { background: #e3f2fd; color: #1565C0; }
-.cat-外观设计 { background: #f3e5f5; color: #7B1FA2; }
-.cat-说明书 { background: #fff3e0; color: #E65100; }
-.cat-功能建议 { background: #fce4ec; color: #C62828; }
-.cat-亮点 { background: #e0f7fa; color: #00838F; }
-.cat-其他 { background: #f5f5f5; color: #999; }
-.exp-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-.count-badge { display: inline-block; background: #00B050; color: #fff; border-radius: 10px; padding: 1px 8px; font-size: 12px; font-weight: 600; margin-left: 4px; }
-.voice-cell { line-height: 1.8; }
-.voice-line { margin-bottom: 4px; }
-.voice-name { color: #888; font-weight: 600; }
-.footer { text-align: center; padding: 16px 20px; color: #999; font-size: 12px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .header { text-align: center; padding: 24px 0 16px; }
+  .header h1 { font-size: 24px; color: #00B050; margin-bottom: 6px; }
+  .header .meta { font-size: 13px; color: #999; }
+  .kpi-row { display: flex; justify-content: center; gap: 24px; padding: 16px 0 24px; flex-wrap: wrap; }
+  .kpi-card { background: #fff; border-radius: 10px; padding: 20px 32px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); min-width: 140px; }
+  .kpi-card .num { font-size: 32px; font-weight: 700; color: #00B050; }
+  .kpi-card .label { font-size: 13px; color: #888; margin-top: 4px; }
+  .section { background: #fff; border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .section h2 { font-size: 18px; color: #333; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #00B050; }
+  .chart { width: 100%; height: 400px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #00B050; color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; }
+  th:first-child { border-radius: 6px 0 0 0; }
+  th:last-child { border-radius: 0 6px 0 0; }
+  td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+  tr:hover { background: #f9f9f9; }
+  .tag1 { display: inline-block; background: #e8f5e9; color: #00B050; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 6px; }
+  .count { font-weight: 700; color: #00B050; }
+  .quote { color: #666; font-size: 12px; line-height: 1.6; margin-top: 4px; }
+  .quote .name { color: #333; font-weight: 600; }
+  .red { color: #E74C3C; }
+  .green { color: #00B050; }
+  .insight { background: #f0f7f0; border-left: 4px solid #00B050; padding: 12px 16px; margin-bottom: 16px; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.8; }
+  .insight strong { color: #00B050; }
+  .footer { text-align: center; padding: 20px 0; font-size: 12px; color: #999; }
+  .module-summary { background: #f8f9fa; border-left: 3px solid #00B050; padding: 8px 12px; margin: 8px 0; font-size: 13px; color: #555; }
 </style>
 </head>
 <body>
 <div class="container">
-<div class="header"><h1>📡 9pro 400万4G云台公测 · 开箱体验报告</h1><p>20份样本 · 4大维度21项评分 · 2026-08-18</p><div class="update-time">数据截止：2026-08-18 12:37</div></div>
-<div class="kpi-row" style="padding-top:20px"><div class="kpi-card"><div class="num">20</div><div class="label">有效样本</div></div><div class="kpi-card"><div class="num">9.2</div><div class="label">四维度均分</div></div><div class="kpi-card"><div class="num">85%</div><div class="label">期望满足率</div></div><div class="kpi-card"><div class="num">2</div><div class="label">划痕异常(人)</div></div></div>
-<div class="section"><div class="section-title">💡 核心洞察</div><div class="module"><div class="insight insight-warn"><strong>外包装总体最弱（均分8.75）</strong>：4G版与普通版区分不明显，缺少4G标识，包装盒被反馈看上去廉价。闫贺仅打3分。</div><div class="insight insight-bad"><strong>做工细节问题突出</strong>：手感/做工均分最低（9.00），缝隙不一致、摄像头胶圈不平整、底座松动被多人提及。</div><div class="insight insight-warn"><strong>4G标识缺失+说明书在线版未更新</strong>：3人反馈外包装缺少4G标识，说明书在线版仍为旧设备内容。</div><div class="insight insight-good"><strong>说明书表现最佳</strong>：清晰易懂均分9.75，准确性9.65。布局合理性(9.70)和大小尺寸(9.70)也获高分。</div><div class="insight insight-good"><strong>用户亮点共识</strong>：4G终身免流、远程配网是用户最认可的核心卖点。</div></div></div>
-<div class="section"><div class="section-title">📊 评分总览（4大维度 x 21项）</div><div class="module"><div class="module-title">外包装</div><div class="chart-bar"><div class="bar-label">外包装总体</div><div class="bar-track"><div class="bar-fill" style="width:87%">8.75</div></div></div><div class="chart-bar"><div class="bar-label">美观性</div><div class="bar-track"><div class="bar-fill" style="width:90%">9.05</div></div></div><div class="chart-bar"><div class="bar-label">包装质量</div><div class="bar-track"><div class="bar-fill" style="width:94%">9.40</div></div></div><div class="chart-bar"><div class="bar-label">异味</div><div class="bar-track"><div class="bar-fill" style="width:92%">9.25</div></div></div><div class="chart-bar"><div class="bar-label">拆取便捷</div><div class="bar-track"><div class="bar-fill" style="width:94%">9.45</div></div></div></div><div class="module"><div class="module-title">内包装</div><div class="chart-bar"><div class="bar-label">内包装总体</div><div class="bar-track"><div class="bar-fill" style="width:91%">9.15</div></div></div><div class="chart-bar"><div class="bar-label">布局合理</div><div class="bar-track"><div class="bar-fill" style="width:97%">9.70</div></div></div><div class="chart-bar"><div class="bar-label">配件完整</div><div class="bar-track"><div class="bar-fill" style="width:95%">9.55</div></div></div><div class="chart-bar"><div class="bar-label">配件包装美观</div><div class="bar-track"><div class="bar-fill" style="width:94%">9.40</div></div></div></div><div class="module"><div class="module-title">外观设计</div><div class="chart-bar"><div class="bar-label">外观总体</div><div class="bar-track"><div class="bar-fill" style="width:95%">9.50</div></div></div><div class="chart-bar"><div class="bar-label">外观设计</div><div class="bar-track"><div class="bar-fill" style="width:93%">9.30</div></div></div><div class="chart-bar"><div class="bar-label">颜色</div><div class="bar-track"><div class="bar-fill" style="width:94%">9.40</div></div></div><div class="chart-bar"><div class="bar-label">造型</div><div class="bar-track"><div class="bar-fill" style="width:93%">9.30</div></div></div><div class="chart-bar"><div class="bar-label">大小</div><div class="bar-track"><div class="bar-fill" style="width:97%">9.70</div></div></div><div class="chart-bar"><div class="bar-label">材质</div><div class="bar-track"><div class="bar-fill" style="width:95%">9.50</div></div></div><div class="chart-bar"><div class="bar-label">手感</div><div class="bar-track"><div class="bar-fill" style="width:90%">9.00</div></div></div><div class="chart-bar"><div class="bar-label">配件材质</div><div class="bar-track"><div class="bar-fill" style="width:93%">9.35</div></div></div></div><div class="module"><div class="module-title">说明书</div><div class="chart-bar"><div class="bar-label">说明书总体</div><div class="bar-track"><div class="bar-fill" style="width:94%">9.40</div></div></div><div class="chart-bar"><div class="bar-label">内容完整性</div><div class="bar-track"><div class="bar-fill" style="width:94%">9.45</div></div></div><div class="chart-bar"><div class="bar-label">清晰易懂</div><div class="bar-track"><div class="bar-fill" style="width:97%">9.75</div></div></div><div class="chart-bar"><div class="bar-label">准确性</div><div class="bar-track"><div class="bar-fill" style="width:96%">9.65</div></div></div></div></div>
-<div class="section"><div class="section-title">🎯 用户期望分布</div><div class="module"><div class="exp-bar"><div class="bar-label" style="width:80px">完全超出期望</div><div class="bar-track" style="flex:1"><div class="bar-fill" style="width:15%;background:#00B050">3人</div></div></div><div class="exp-bar"><div class="bar-label" style="width:80px">略超期望</div><div class="bar-track" style="flex:1"><div class="bar-fill" style="width:15%;background:#2BBD6E">3人</div></div></div><div class="exp-bar"><div class="bar-label" style="width:80px">符合期望</div><div class="bar-track" style="flex:1"><div class="bar-fill" style="width:55%;background:#999">11人</div></div></div><div class="exp-bar"><div class="bar-label" style="width:80px">略低于期望</div><div class="bar-track" style="flex:1"><div class="bar-fill" style="width:15%;background:#F39C12">3人</div></div></div></div></div>
-<div class="section"><div class="section-title">💬 用户原声分析（标签分类 · 多标签拆分）</div><div class="module"><table><thead><tr><th style="width:80px">问题分类</th><th style="width:100px">问题标签</th><th style="width:60px">反馈数量</th><th>用户原声（典型3-4条）</th></tr></thead><tbody><tr><td><span class="cat-tag cat-外包装">外包装</span></td><td><strong>4G标识缺失</strong></td><td><span class="count-badge">11</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">张鹏鑫</span><span class="voice-neg">：很好看，但是正面没有4g标识，跟普通9pro区分不开</span></div><div class="voice-line"><span class="voice-name">林志澄</span><span class="voice-neg">：缺少4G终身免流的介绍和远程配网的介绍。</span></div><div class="voice-line"><span class="voice-name">黄显森</span><span class="voice-neg">：外包装4G版和普通版区别不明显</span></div><div class="voice-line"><span class="voice-name">张鹏鑫</span><span class="voice-neg">：外包装缺少标识，配件盒有点大，容易卡主，拿不出来</span></div></div></td></tr><tr><td><span class="cat-tag cat-外包装">外包装</span></td><td><strong>包装美观性</strong></td><td><span class="count-badge">28</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">张鹏鑫</span><span class="voice-neg">：很好看，但是正面没有4g标识，跟普通9pro区分不开</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：就一个白色的包装盒，谈不上美观</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：还是那句话感觉很廉价不高级，可能你们定价就100多或者99，反正不是很好看</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：总体比较美观，但是做工略微粗糙，可以改进。</span></div></div></td></tr><tr><td><span class="cat-tag cat-外包装">外包装</span></td><td><strong>包装质量</strong></td><td><span class="count-badge">9</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：这个包装盒看上去很廉价，没有质感</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：材质看着不是很好，在做工粗糙的地方能感觉材质有点不太如意的感觉，有一点点劣质感。</span></div><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-neg">：缝隙不一致。摄像头黑胶有压痕。</span></div><div class="voice-line"><span class="voice-name">苗欣丽</span><span class="voice-neg">：材质感觉不错</span></div></div></td></tr><tr><td><span class="cat-tag cat-外包装">外包装</span></td><td><strong>包装异味</strong></td><td><span class="count-badge">6</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">赖峰</span><span class="voice-pos">：没有异味</span></div><div class="voice-line"><span class="voice-name">任孝鹏</span><span class="voice-pos">：无异味</span></div><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：无异味</span></div><div class="voice-line"><span class="voice-name">邱天顺</span><span class="voice-pos">：无异味</span></div></div></td></tr><tr><td><span class="cat-tag cat-外包装">外包装</span></td><td><strong>拆取便捷性</strong></td><td><span class="count-badge">27</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">孙洪士</span><span class="voice-neg">：设备没有内包装，容易摩擦出痕迹，建议有内塑料袋包装</span></div><div class="voice-line"><span class="voice-name">曾文彬</span><span class="voice-neg">：没有保护膜快撕设计，撕膜不方便只能硬抠</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：白色符合大众审美，简洁简约，百搭，但是时间久了容易变黄，希望能改善</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：手感不是特别高端，做工也不是特别的精美，缝隙处有点不均匀，底座和摄像头卡的不紧很松的感觉。摆放的话很容易倒掉装上墙的话有可能会坠落的感觉。</span></div></div></td></tr><tr><td><span class="cat-tag cat-外包装">外包装</span></td><td><strong>包装廉价感</strong></td><td><span class="count-badge">4</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：这个包装盒看上去很廉价，没有质感</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：还是那句话感觉很廉价不高级，可能你们定价就100多或者99，反正不是很好看</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：白色我感觉就是最廉价的颜色，时间长了还发黄，所以我一般室内的都买黑色的</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：如果可以内置电池，个人感觉对用具户来说更方便。增加一点配重有可能整体的轻飘飘的有点廉价的感觉就会上来了甚至荡然无存。</span></div></div></td></tr><tr><td><span class="cat-tag cat-外包装">外包装</span></td><td><strong>环保</strong></td><td><span class="count-badge">1</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">曾文彬</span><span class="voice-pos">：没有过度包装，简易包装为环保助力</span></div></div></td></tr><tr><td><span class="cat-tag cat-内包装">内包装</span></td><td><strong>布局合理性</strong></td><td><span class="count-badge">14</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：手感不是特别高端，做工也不是特别的精美，缝隙处有点不均匀，底座和摄像头卡的不紧很松的感觉。摆放的话很容易倒掉装上墙的话有可能会坠落的感觉。</span></div><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：盒子小巧，分布合理</span></div><div class="voice-line"><span class="voice-name">黄显森</span><span class="voice-pos">：配件布局合理</span></div><div class="voice-line"><span class="voice-name">苗欣丽</span><span class="voice-pos">：布局挺合理</span></div></div></td></tr><tr><td><span class="cat-tag cat-内包装">内包装</span></td><td><strong>配件完整性</strong></td><td><span class="count-badge">22</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">孙洪士</span><span class="voice-neg">：设备没有内包装，容易摩擦出痕迹，建议有内塑料袋包装</span></div><div class="voice-line"><span class="voice-name">曾文彬</span><span class="voice-neg">：没有保护膜快撕设计，撕膜不方便只能硬抠</span></div><div class="voice-line"><span class="voice-name">林志澄</span><span class="voice-neg">：缺少4G终身免流的介绍和远程配网的介绍。</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：整体纸质版比较完整，但是扫描二维码查看在线版时，发现在线版说明书未更新，还是使用旧设备说明，需要修改。</span></div></div></td></tr><tr><td><span class="cat-tag cat-内包装">内包装</span></td><td><strong>配件包装美观</strong></td><td><span class="count-badge">4</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">孙洪士</span><span class="voice-neg">：设备没有内包装，容易摩擦出痕迹，建议有内塑料袋包装</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：正常状态(由于底部是放置的摄像头，配件包装存在挤压有凹陷)</span></div><div class="voice-line"><span class="voice-name">张鹏鑫</span><span class="voice-neg">：外包装缺少标识，配件盒有点大，容易卡主，拿不出来</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-pos">：很便捷，配件盒上方特意设计了手提的地方，方便拿出来配件盒。</span></div></div></td></tr><tr><td><span class="cat-tag cat-外观设计">外观设计</span></td><td><strong>外观总体评价</strong></td><td><span class="count-badge">39</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-neg">：建议在摄像头包装外围使用泡沫垫。用普通的zhiban板感觉质量差。</span></div><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-neg">：包装整体中规中矩，如果可以改善的话希望采用苹果手机盒子。这样第一印象会感觉大品牌连包装都这么硬核。</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：其实和以前的包装纸张比起来感觉不如以前呢，然后导致印刷效果也大打折扣。</span></div><div class="voice-line"><span class="voice-name">苗欣丽</span><span class="voice-neg">：还好吧，感觉有点朴素</span></div></div></td></tr><tr><td><span class="cat-tag cat-外观设计">外观设计</span></td><td><strong>设计创新性</strong></td><td><span class="count-badge">10</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-neg">：包装整体中规中矩，如果可以改善的话希望采用苹果手机盒子。这样第一印象会感觉大品牌连包装都这么硬核。</span></div><div class="voice-line"><span class="voice-name">孙洪士</span><span class="voice-neg">：外观没有什么变化，还是老样子</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：中规中矩吧，谈不上特别精致和高端，也明显比牌的设计的有自己的360品牌特色。</span></div><div class="voice-line"><span class="voice-name">齐彩英</span><span class="voice-neg">：因为我家用的都是该品牌，基本都一样的视觉疲劳，希望有所改观</span></div></div></td></tr><tr><td><span class="cat-tag cat-外观设计">外观设计</span></td><td><strong>颜色造型</strong></td><td><span class="count-badge">10</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：就一个白色的包装盒，谈不上美观</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：白色我感觉就是最廉价的颜色，时间长了还发黄，所以我一般室内的都买黑色的</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：白色符合大众审美，简洁简约，百搭，但是时间久了容易变黄，希望能改善</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：设计高大上一些，颜色不要一成不变的白色</span></div></div></td></tr><tr><td><span class="cat-tag cat-外观设计">外观设计</span></td><td><strong>尺寸大小</strong></td><td><span class="count-badge">5</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：设计观感较好，可以略微再小一点更好，目前整体设计外观好看，瘦长合适(不再是小胖墩了)</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：大小合适，符合预期要求。不过长度最好能在稍微短一下，可能更好看。</span></div><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-pos">：轻巧合适</span></div><div class="voice-line"><span class="voice-name">张鹏鑫</span><span class="voice-pos">：合适</span></div></div></td></tr><tr><td><span class="cat-tag cat-外观设计">外观设计</span></td><td><strong>材质质感</strong></td><td><span class="count-badge">11</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：这个包装盒看上去很廉价，没有质感</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：太朴素无华了，甚至材质有明显偷工减料的感觉。</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：材质看着不是很好，在做工粗糙的地方能感觉材质有点不太如意的感觉，有一点点劣质感。</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：材质有点不是很好的感觉，整体感觉摄像头还是有点轻飘飘的。</span></div></div></td></tr><tr><td><span class="cat-tag cat-外观设计">外观设计</span></td><td><strong>做工质量</strong></td><td><span class="count-badge">11</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">齐彩英</span><span class="voice-neg">：不贴合，缝隙太大</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：总体比较美观，但是做工略微粗糙，可以改进。</span></div><div class="voice-line"><span class="voice-name">张鹏鑫</span><span class="voice-neg">：挺好看的，就是品控不行</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：材质看着不是很好，在做工粗糙的地方能感觉材质有点不太如意的感觉，有一点点劣质感。</span></div></div></td></tr><tr><td><span class="cat-tag cat-外观设计">外观设计</span></td><td><strong>底座/支架</strong></td><td><span class="count-badge">7</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：手感不是特别高端，做工也不是特别的精美，缝隙处有点不均匀，底座和摄像头卡的不紧很松的感觉。摆放的话很容易倒掉装上墙的话有可能会坠落的感觉。</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：整体配件不错，但是这次的底座为全塑料的，不知道后续如果使用底座螺口的时候，耐不耐用，容不容易晃。</span></div><div class="voice-line"><span class="voice-name">龚粒宇</span><span class="voice-neg">：可以不用再连接网线，直接通电后，进行远程或者扫码配置就可以直接使用。</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：底座上支架支持了标准通用的螺母，方便用户安装的扩展性能。这个非常的不错。</span></div></div></td></tr><tr><td><span class="cat-tag cat-说明书">说明书</span></td><td><strong>说明书清晰度</strong></td><td><span class="count-badge">16</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：说明书上面都有，我就不一一注明了吧，和我之前的比就是变轻了</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-pos">：简洁大气一目了然</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：做了什么多代产品了，该有的都有一目了然</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-pos">：纸质版准确，在线版需要调整。</span></div></div></td></tr><tr><td><span class="cat-tag cat-说明书">说明书</span></td><td><strong>说明书完整性</strong></td><td><span class="count-badge">14</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">林志澄</span><span class="voice-neg">：缺少4G终身免流的介绍和远程配网的介绍。</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：整体纸质版比较完整，但是扫描二维码查看在线版时，发现在线版说明书未更新，还是使用旧设备说明，需要修改。</span></div><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-neg">：考虑老年人使用的话缺少视频说明二维码</span></div><div class="voice-line"><span class="voice-name">张鹏鑫</span><span class="voice-neg">：外包装缺少标识，配件盒有点大，容易卡主，拿不出来</span></div></div></td></tr><tr><td><span class="cat-tag cat-说明书">说明书</span></td><td><strong>在线版/二维码</strong></td><td><span class="count-badge">5</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">曾文彬</span><span class="voice-neg">：机身和球有色差 机身全白 这个球有点灰 像旧的一样</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：整体纸质版比较完整，但是扫描二维码查看在线版时，发现在线版说明书未更新，还是使用旧设备说明，需要修改。</span></div><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-neg">：考虑老年人使用的话缺少视频说明二维码</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：1.外观来看，做工需要再把控，包括拼接缝隙，摄像头处的胶条等位置。2.如果可以增加一下照明灯光，就更好了，可以放个小夜灯，而且摄像头为4G版，多用于无网或者地下室等位置，更需要一个小夜灯。3.增加一个这款设备的二维码卡片放在包装盒里，一防时间过长，设备二维码损坏，二防设备底部二维码过小，年级较大者不容易拍照，会造成照片模糊，一时间无法快速远程绑定。</span></div></div></td></tr><tr><td><span class="cat-tag cat-功能建议">功能建议</span></td><td><strong>硬件建议</strong></td><td><span class="count-badge">4</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：如果可以内置电池，个人感觉对用具户来说更方便。增加一点配重有可能整体的轻飘飘的有点廉价的感觉就会上来了甚至荡然无存。</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：1.外观来看，做工需要再把控，包括拼接缝隙，摄像头处的胶条等位置。2.如果可以增加一下照明灯光，就更好了，可以放个小夜灯，而且摄像头为4G版，多用于无网或者地下室等位置，更需要一个小夜灯。3.增加一个这款设备的二维码卡片放在包装盒里，一防时间过长，设备二维码损坏，二防设备底部二维码过小，年级较大者不容易拍照，会造成照片模糊，一时间无法快速远程绑定。</span></div><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-pos">：可以试着创新，比如增加一些卡通图案。或者加一些灯光。晚上如果有人的话也可以照明起夜，增加适用性。</span></div><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-pos">：定位是家用的话，可以增加感应灯光。这样晚上老人起夜给老人增加安全性。</span></div></div></td></tr><tr><td><span class="cat-tag cat-功能建议">功能建议</span></td><td><strong>其他建议</strong></td><td><span class="count-badge">29</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">陈建建</span><span class="voice-neg">：建议在摄像头包装外围使用泡沫垫。用普通的zhiban板感觉质量差。</span></div><div class="voice-line"><span class="voice-name">张一明</span><span class="voice-neg">：包装整体中规中矩，如果可以改善的话希望采用苹果手机盒子。这样第一印象会感觉大品牌连包装都这么硬核。</span></div><div class="voice-line"><span class="voice-name">孙洪士</span><span class="voice-neg">：设备没有内包装，容易摩擦出痕迹，建议有内塑料袋包装</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：总体比较美观，但是做工略微粗糙，可以改进。</span></div></div></td></tr><tr><td><span class="cat-tag cat-亮点">亮点</span></td><td><strong>4G免流/远程</strong></td><td><span class="count-badge">15</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">张鹏鑫</span><span class="voice-neg">：很好看，但是正面没有4g标识，跟普通9pro区分不开</span></div><div class="voice-line"><span class="voice-name">林志澄</span><span class="voice-neg">：缺少4G终身免流的介绍和远程配网的介绍。</span></div><div class="voice-line"><span class="voice-name">龚粒宇</span><span class="voice-neg">：可以不用再连接网线，直接通电后，进行远程或者扫码配置就可以直接使用。</span></div><div class="voice-line"><span class="voice-name">黄显森</span><span class="voice-neg">：外包装4G版和普通版区别不明显</span></div></div></td></tr><tr><td><span class="cat-tag cat-亮点">亮点</span></td><td><strong>包装简洁</strong></td><td><span class="count-badge">21</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">曾文彬</span><span class="voice-neg">：没有保护膜快撕设计，撕膜不方便只能硬抠</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：白色符合大众审美，简洁简约，百搭，但是时间久了容易变黄，希望能改善</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：简洁关键不用连WiFi</span></div><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：底座上支架支持了标准通用的螺母，方便用户安装的扩展性能。这个非常的不错。</span></div></div></td></tr><tr><td><span class="cat-tag cat-亮点">亮点</span></td><td><strong>外观好评</strong></td><td><span class="count-badge">34</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">张鹏鑫</span><span class="voice-neg">：很好看，但是正面没有4g标识，跟普通9pro区分不开</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：就一个白色的包装盒，谈不上美观</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：还是那句话感觉很廉价不高级，可能你们定价就100多或者99，反正不是很好看</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：总体比较美观，但是做工略微粗糙，可以改进。</span></div></div></td></tr><tr><td><span class="cat-tag cat-亮点">亮点</span></td><td><strong>配件齐全</strong></td><td><span class="count-badge">13</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：说明书上面都有，我就不一一注明了吧，和我之前的比就是变轻了</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：整体纸质版比较完整，但是扫描二维码查看在线版时，发现在线版说明书未更新，还是使用旧设备说明，需要修改。</span></div><div class="voice-line"><span class="voice-name">黄显森</span><span class="voice-pos">：充电器数据线都有，齐全完整</span></div><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-pos">：做了什么多代产品了，该有的都有一目了然</span></div></div></td></tr><tr><td><span class="cat-tag cat-亮点">亮点</span></td><td><strong>说明书好评</strong></td><td><span class="count-badge">14</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：说明书上面都有，我就不一一注明了吧，和我之前的比就是变轻了</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-neg">：整体纸质版比较完整，但是扫描二维码查看在线版时，发现在线版说明书未更新，还是使用旧设备说明，需要修改。</span></div><div class="voice-line"><span class="voice-name">龚粒宇</span><span class="voice-pos">：无说明书。无法评价，在线说明书未及时根据新版本更新。</span></div><div class="voice-line"><span class="voice-name">高瑞</span><span class="voice-pos">：纸质版准确，在线版需要调整。</span></div></div></td></tr><tr><td><span class="cat-tag cat-亮点">亮点</span></td><td><strong>做工好评</strong></td><td><span class="count-badge">3</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">王亚兵</span><span class="voice-neg">：中规中矩吧，谈不上特别精致和高端，也明显比牌的设计的有自己的360品牌特色。</span></div><div class="voice-line"><span class="voice-name">黄显森</span><span class="voice-pos">：完好结实</span></div><div class="voice-line"><span class="voice-name">黄显森</span><span class="voice-pos">：包装结实，耐造</span></div></div></td></tr><tr><td><span class="cat-tag cat-其他">其他</span></td><td><strong>其他</strong></td><td><span class="count-badge">30</span></td><td><div class="voice-cell"><div class="voice-line"><span class="voice-name">闫贺</span><span class="voice-neg">：还行，一般的都这样吧</span></div><div class="voice-line"><span class="voice-name">齐彩英</span><span class="voice-neg">：毕竟是易碎品，是不是考虑用外形泡沫箱</span></div><div class="voice-line"><span class="voice-name">王刚红</span><span class="voice-neg">：很普通，与以往产品一样，没有特色。</span></div><div class="voice-line"><span class="voice-name">齐彩英</span><span class="voice-neg">：一般般</span></div></div></td></tr></tbody></table></div></div>
-<div class="section"><div class="section-title">✨ 用户亮点汇总</div><div class="module"><table><thead><tr><th>姓名</th><th>亮点评价</th></tr></thead><tbody><tr><td>林志澄</td><td class="voice-pos">4G终身免流，远程配网，这两个功能是最大亮点。特别适用于老人老家无WIFI情况。</td></tr><tr><td>赖峰</td><td class="voice-pos">包装美观，拆箱方便</td></tr><tr><td>闫贺</td><td class="voice-pos">简洁关键不用连WiFi</td></tr><tr><td>黄显森</td><td class="voice-pos">包装结实，耐造</td></tr><tr><td>苗欣丽</td><td class="voice-pos">有一张孩子和玩偶玩的照片，感觉很温馨，很友爱</td></tr><tr><td>赖峰</td><td class="voice-pos">拆箱方便快捷</td></tr><tr><td>孙洪士</td><td class="voice-pos">材质还是一如既往的好</td></tr><tr><td>曾文彬</td><td class="voice-pos">没有过度包装，简易包装为环保助力</td></tr><tr><td>齐彩英</td><td class="voice-pos">感觉老样子</td></tr><tr><td>陈建建</td><td class="voice-pos">盒子小巧，分布合理</td></tr><tr><td>邱天顺</td><td class="voice-pos">简洁</td></tr><tr><td>高瑞</td><td class="voice-pos">外观上，整体设计样式比较美观，可观赏性较强。</td></tr><tr><td>龚粒宇</td><td class="voice-pos">可以不用再连接网线，直接通电后，进行远程或者扫码配置就可以直接使用。</td></tr><tr><td>张鹏鑫</td><td class="voice-pos">简单大方，简单时尚，但是确少4g标识</td></tr><tr><td>张一明</td><td class="voice-pos">操作简单容易上手</td></tr><tr><td>王亚兵</td><td class="voice-pos">底座上支架支持了标准通用的螺母，方便用户安装的扩展性能。这个非常的不错。</td></tr><tr><td>王刚红</td><td class="voice-pos">开箱，外观上没亮点，很普通，与以前的360摄像机一样。</td></tr><tr><td>方家欢</td><td class="voice-pos">包装简洁美观</td></tr></tbody></table></div></div>
-<div class="section"><div class="section-title">⚠️ 问题与建议汇总</div><div class="module"><table><thead><tr><th>姓名</th><th>问题/建议</th></tr></thead><tbody><tr><td>林志澄</td><td class="voice-neg">外包装应该突出4g终身免流和远程配网特色功能。</td></tr><tr><td>闫贺</td><td class="voice-neg">设计高大上一些，颜色不要一成不变的白色</td></tr><tr><td>黄显森</td><td class="voice-neg">外包装4G版和普通版区别不明显</td></tr><tr><td>苗欣丽</td><td class="voice-neg">摄像头主机材质可以再升级一下</td></tr><tr><td>孙洪士</td><td class="voice-neg">底座和主体卡扣不如以往，没有小水滴那样的紧，有松动感</td></tr><tr><td>齐彩英</td><td class="voice-neg">起码外观有点改观吧</td></tr><tr><td>陈建建</td><td class="voice-neg">镜头保护膜感觉材料不行，像个保鲜袋一样</td></tr><tr><td>邱天顺</td><td class="voice-neg">希望云台电源线更长一点</td></tr><tr><td>高瑞</td><td class="voice-neg">1.外观来看，做工需要再把控，包括拼接缝隙，摄像头处的胶条等位置。2.如果可以增加一下照明灯光，就更好了，可以放个小夜灯，而且摄像头为4G版，多用于无网或者地下室等位置，更需要一个小夜灯。3.增加一个这款设备的二维码卡片放在包装盒里，一防时间过长，设备二维码损坏，二防设备底部二维码过小，年级较大者不容易拍照，会造成照片模糊，一时间无法快速远程绑定。</td></tr><tr><td>龚粒宇</td><td class="voice-neg">希望正式发售时，对细节进行再打磨，防止小问题，引发其他不开心？</td></tr><tr><td>张鹏鑫</td><td class="voice-neg">外包装缺少标识，配件盒有点大，容易卡主，拿不出来</td></tr><tr><td>张一明</td><td class="voice-neg">定位是家用的话，可以增加感应灯光。这样晚上老人起夜给老人增加安全性。</td></tr><tr><td>王亚兵</td><td class="voice-neg">如果可以内置电池，个人感觉对用具户来说更方便。增加一点配重有可能整体的轻飘飘的有点廉价的感觉就会上来了甚至荡然无存。</td></tr><tr><td>王刚红</td><td class="voice-neg">摄像机主机应该要用塑料袋装起来保护。连电源适配器配角都有塑料袋保护，主角却没有！摄像机主机是裸包装的。</td></tr><tr><td>方家欢</td><td class="voice-neg">1.包装及设备外观没有突出4G无限流量2.云台间隙大，松动的厉害。</td></tr></tbody></table></div></div>
-<div class="footer"><p>🦞 尤燕玲-报告分析专家 · 数据来源：飞书表格 9pro 400万4G云台公测问题跟进表</p><p>报告链接永久有效 · GitHub Pages 托管</p></div></div></body></html>
+  <div class="header">
+    <h1>9pro 400万4G云台公测 · 开箱体验报告</h1>
+    <div class="meta">更新时间：2026-08-20 · 样本量：29份 · 数据来源：飞书问卷</div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">194.1</div><div class="label">平均总分(/210)</div></div>
+    <div class="kpi-card"><div class="num">29</div><div class="label">有效样本</div></div>
+    <div class="kpi-card"><div class="num">8</div><div class="label">超期望人数</div></div>
+    <div class="kpi-card"><div class="num">18</div><div class="label">符合期望人数</div></div>
+    <div class="kpi-card"><div class="num">3</div><div class="label">低于期望人数</div></div>
+  </div>
+
+  <div class="section">
+    <h2>核心洞察</h2>
+    <div class="insight">
+      <strong>总体评价：</strong>开箱平均总分194.1分（满分210），18人认为符合期望，8人认为超预期，整体开箱体验良好。<br>
+      <strong>核心痛点：</strong>4G标识缺失（7人）——外包装未突出4G终身免流卖点，与普通版区分不明显；缝隙不均匀（8人）——摄像头顶部缝隙大，做工需加强。<br>
+      <strong>正面评价：</strong>包装美观（7人好评）、配网简单便捷、4G终身免流+远程配网是核心亮点。
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>各维度评分（平均分）</h2>
+    <div id="chart1" class="chart"></div>
+  </div>
+
+  <div class="section">
+    <h2>期望对比</h2>
+    <div id="chart2" style="width:100%;height:300px;"></div>
+  </div>
+
+  <div class="section">
+    <h2>核心问题分析（专项用户原声）</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:80px">一级标签</th>
+          <th style="width:140px">二级标签</th>
+          <th style="width:60px">反馈量</th>
+          <th>用户原声（姓名|原声）</th>
+          <th style="width:100px">问题原因</th>
+          <th style="width:100px">责任人</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td><span class="tag1">硬件</span></td>
+          <td class="red"><strong>缝隙不均匀</strong></td>
+          <td class="count">8</td>
+          <td><span class="quote"><span class="name">龚粒宇</span>|摄像头顶部缝隙大</span><br><span class="quote"><span class="name">苗欣丽</span>|刚收到货，拆开包装了，检查外观之后发现摄像头头顶的地方有一条缝</span><br><span class="quote"><span class="name">齐彩英</span>|不贴合，缝隙太大</span><br><span class="quote"><span class="name">陶双</span>|摄像头镜头缝隙有点大，做工需要加强</span><br><span class="quote"><span class="name">王亚兵</span>|手感不是特别高端，做工也不是特别的精美，缝隙处有点不均匀</span><br><span class="quote"><span class="name">闫贺</span>|品控差点，这样更显廉价质感了</span><br><span class="quote"><span class="name">张鹏鑫</span>|品控有问题，打开包装都有一条缝</span><br><span class="quote"><span class="name">张一明</span>|缝隙不一致。摄像头黑胶有压痕。</span></td>
+          <td style="font-size:12px;color:#888">量产加螺丝，已经发邮件了</td>
+          <td style="font-size:12px;color:#888"></td>
+        </tr>
+
+        <tr>
+          <td><span class="tag1">外包装</span></td>
+          <td class="red"><strong>4G标识缺失</strong></td>
+          <td class="count">7</td>
+          <td><span class="quote"><span class="name">方家欢</span>|1.包装及设备外观没有突出4G无限流量</span><br><span class="quote"><span class="name">黄显森</span>|外包装4G版和普通版区别不明显</span><br><span class="quote"><span class="name">林志澄</span>|外包装建议在显眼的地方超时“4G终身免流”“支持远程绑定”，突出产品特点。</span><br><span class="quote"><span class="name">陶双</span>|整个机器外观设计少点4g标识，可以增加点4g元素设计在侧面</span><br><span class="quote"><span class="name">王刚红</span>|4G摄像机，但外包装上关于4G元素一个都没有。</span><br><span class="quote"><span class="name">王亚兵</span>|外包装用的原来的包装没有刻意体现出来4g的特性。只是多了一个贴纸。现在等于只是在贴纸上表明了一下摄像头的4g特性和功能。不过从减能增效的角度也可以理解。技术看看这包装需不需要优化优化。</span><br><span class="quote"><span class="name">张鹏鑫</span>|很好看，但是正面没有4g标识，跟普通9pro区分不开</span></td>
+          <td style="font-size:12px;color:#888">待评估</td>
+          <td style="font-size:12px;color:#888"></td>
+        </tr>
+
+        <tr>
+          <td><span class="tag1">开箱</span></td>
+          <td class="red"><strong>缺少配网卡</strong></td>
+          <td class="count">5</td>
+          <td><span class="quote"><span class="name">林志澄</span>|配件里面缺少《配网卡》</span></td>
+          <td style="font-size:12px;color:#888">量产已增加</td>
+          <td style="font-size:12px;color:#888"></td>
+        </tr>
+
+        <tr>
+          <td><span class="tag1">内包装</span></td>
+          <td class="red"><strong>主机包装需求</strong></td>
+          <td class="count">2</td>
+          <td><span class="quote"><span class="name">孙洪士</span>|设备没有内包装，容易摩擦出痕迹，建议有内塑料袋包装</span><br><span class="quote"><span class="name">王刚红</span>|摄像机主机应该要用塑料袋装起来保护。连电源适配器配角都有塑料袋保护，主角却没有！摄像机主机是裸包装的。</span></td>
+          <td style="font-size:12px;color:#888">先不采纳</td>
+          <td style="font-size:12px;color:#888"></td>
+        </tr>
+
+        <tr>
+          <td><span class="tag1">内包装</span></td>
+          <td class="red"><strong>配件包有挤压</strong></td>
+          <td class="count">2</td>
+          <td><span class="quote"><span class="name">高瑞</span>|正常状态(由于底部是放置的摄像头，配件包装存在挤压有凹陷)</span><br><span class="quote"><span class="name">陶双</span>|配件盒子挤压变形，边角有破损，需要加强保护</span></td>
+          <td style="font-size:12px;color:#888">先忽略</td>
+          <td style="font-size:12px;color:#888"></td>
+        </tr>
+
+        <tr>
+          <td><span class="tag1">外包装</span></td>
+          <td class="red"><strong>保护膜不好拆</strong></td>
+          <td class="count">2</td>
+          <td><span class="quote"><span class="name">高瑞</span>|便捷，但是塑封膜较厚，最好需要使用刀片割个口，保障性较好。</span><br><span class="quote"><span class="name">曾文彬</span>|没有保护膜快撕设计，撕膜不方便只能硬抠</span></td>
+          <td style="font-size:12px;color:#888">不考虑</td>
+          <td style="font-size:12px;color:#888"></td>
+        </tr>
+
+        <tr>
+          <td><span class="tag1">硬件</span></td>
+          <td class="red"><strong>镜头胶圈不平整</strong></td>
+          <td class="count">1</td>
+          <td><span class="quote"><span class="name">陶双</span>|镜头胶圈不平整，有毛刺，做工不精细</span></td>
+          <td style="font-size:12px;color:#888">已知问题；工厂限度样管控</td>
+          <td style="font-size:12px;color:#888"></td>
+        </tr>
+
+        <tr>
+          <td><span class="tag1">说明书</span></td>
+          <td class="red"><strong>4G优点介绍缺失</strong></td>
+          <td class="count">1</td>
+          <td><span class="quote"><span class="name">林志澄</span>|缺少4G终身免流的介绍和远程配网的介绍。</span></td>
+          <td style="font-size:12px;color:#888">不考虑</td>
+          <td style="font-size:12px;color:#888"></td>
+        </tr>
+
+        <tr>
+          <td><span class="tag1">说明书</span></td>
+          <td class="red"><strong>视频二维码需求</strong></td>
+          <td class="count">1</td>
+          <td><span class="quote"><span class="name">张一明</span>|考虑老年人使用的话缺少视频说明二维码</span></td>
+          <td style="font-size:12px;color:#888">不考虑</td>
+          <td style="font-size:12px;color:#888"></td>
+        </tr>
+
+        <tr>
+          <td><span class="tag1">说明书</span></td>
+          <td class="red"><strong>说明书清晰度</strong></td>
+          <td class="count">1</td>
+          <td><span class="quote"><span class="name">龚粒宇</span>|无说明书。无法评价，在线说明书未及时根据新版本更新。</span></td>
+          <td style="font-size:12px;color:#888">产线管控</td>
+          <td style="font-size:12px;color:#888"></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>用户亮点评价</h2>
+    <table>
+      <thead><tr><th style="width:80px">姓名</th><th>亮点/优点</th></tr></thead>
+      <tbody>
+        <tr><td><strong>林志澄</strong></td><td class="green">4G终身免流，远程配网，这两个功能是最大亮点。特别适用于老人老家无WIFI情况。</td></tr>
+        <tr><td><strong>闫贺</strong></td><td class="green">简洁关键不用连WiFi</td></tr>
+        <tr><td><strong>黄显森</strong></td><td class="green">包装结实，耐造</td></tr>
+        <tr><td><strong>苗欣丽</strong></td><td class="green">有一张孩子和玩偶玩的照片，感觉很温馨，很友爱</td></tr>
+        <tr><td><strong>赖峰</strong></td><td class="green">拆箱方便快捷</td></tr>
+        <tr><td><strong>孙洪士</strong></td><td class="green">材质还是一如既往的好</td></tr>
+        <tr><td><strong>曾文彬</strong></td><td class="green">没有过度包装，简易包装为环保助力</td></tr>
+        <tr><td><strong>齐彩英</strong></td><td class="green">感觉老样子</td></tr>
+        <tr><td><strong>陈建建</strong></td><td class="green">盒子小巧，分布合理</td></tr>
+        <tr><td><strong>邱天顺</strong></td><td class="green">简洁</td></tr>
+        <tr><td><strong>高瑞</strong></td><td class="green">外观上，整体设计样式比较美观，可观赏性较强。</td></tr>
+        <tr><td><strong>龚粒宇</strong></td><td class="green">可以不用再连接网线，直接通电后，进行远程或者扫码配置就可以直接使用。</td></tr>
+        <tr><td><strong>张鹏鑫</strong></td><td class="green">简单大方，简单时尚，但是确少4g标识</td></tr>
+        <tr><td><strong>张一明</strong></td><td class="green">操作简单容易上手</td></tr>
+        <tr><td><strong>王亚兵</strong></td><td class="green">底座上支架支持了标准通用的螺母，方便用户安装的扩展性能。这个非常的不错。</td></tr>
+        <tr><td><strong>王刚红</strong></td><td class="green">开箱，外观上没亮点，很普通，与以前的360摄像机一样。</td></tr>
+        <tr><td><strong>方家欢</strong></td><td class="green">包装简洁美观</td></tr>
+        <tr><td><strong>陶双</strong></td><td class="green">产品外观的话颜色搭配可以，整体体积不大，安装比较方便。缺点是外包装自己机器本身没提现4g相关信息，没有提现这个4g卖点，内包装的配件盒压坏，需要完善一下包装</td></tr>
+        <tr><td><strong>朱秀澍</strong></td><td class="green">包装厚实，但不环保。外观圆润，适合大众选择。</td></tr>
+        <tr><td><strong>李玉佳</strong></td><td class="green">有彩色图案</td></tr>
+        <tr><td><strong>张宁</strong></td><td class="green">包装用料结实，配件包收纳合理单独包装不会在运输中互相摩擦导致磨损。</td></tr>
+        <tr><td><strong>谢光位</strong></td><td class="green">风格一如既往结实耐用，</td></tr>
+        <tr><td><strong>汤远鹏</strong></td><td class="green">没有亮点，和以前的一样</td></tr>
+        <tr><td><strong>蒋牧吟</strong></td><td class="green">1.彩盒用材好，比较硬实，彩色图案印刷有少许磨砂感，很有质感，给人比较高级的感觉；2.拆取设备便携性比以往的包装大大增加了。(我家还有3个360摄像头，遇到过拆取不方便的包装)</td></tr>
+        <tr><td><strong>郭智育</strong></td><td class="green">最大的优点是主机体积比较小巧，不笨重</td></tr>
+        <tr><td><strong>程永权</strong></td><td class="green">无，很普遍，很常规</td></tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>改进建议汇总</h2>
+    <table>
+      <thead><tr><th style="width:80px">姓名</th><th>建议</th></tr></thead>
+      <tbody>
+        <tr><td><strong>林志澄</strong></td><td class="">外包装应该突出4g终身免流和远程配网特色功能。</td></tr>
+        <tr><td><strong>闫贺</strong></td><td class="">设计高大上一些，颜色不要一成不变的白色</td></tr>
+        <tr><td><strong>黄显森</strong></td><td class="">外包装4G版和普通版区别不明显</td></tr>
+        <tr><td><strong>苗欣丽</strong></td><td class="">摄像头主机材质可以再升级一下</td></tr>
+        <tr><td><strong>孙洪士</strong></td><td class="">底座和主体卡扣不如以往，没有小水滴那样的紧，有松动感</td></tr>
+        <tr><td><strong>曾文彬</strong></td><td class="red">无</td></tr>
+        <tr><td><strong>齐彩英</strong></td><td class="">起码外观有点改观吧</td></tr>
+        <tr><td><strong>陈建建</strong></td><td class="">镜头保护膜感觉材料不行，像个保鲜袋一样</td></tr>
+        <tr><td><strong>邱天顺</strong></td><td class="red">希望云台电源线更长一点</td></tr>
+        <tr><td><strong>高瑞</strong></td><td class="red">1.外观来看，做工需要再把控，包括拼接缝隙，摄像头处的胶条等位置。2.如果可以增加一下照明灯光，就更好了，可以放个小夜灯，而且摄像头为4G版，多用于无网或者地下室等位置，更需要一个小夜灯。3.增加一个这款设备的二维码卡片放在包装盒里，一防时间过长，设备二维码损坏，二防设备底部二维码过小，年级较大者不容易拍照，会造成照片模糊，一时间无法快速远程绑定。</td></tr>
+        <tr><td><strong>龚粒宇</strong></td><td class="red">希望正式发售时，对细节进行再打磨，防止小问题，引发其他不开心？</td></tr>
+        <tr><td><strong>张鹏鑫</strong></td><td class="red">外包装缺少标识，配件盒有点大，容易卡主，拿不出来</td></tr>
+        <tr><td><strong>张一明</strong></td><td class="">定位是家用的话，可以增加感应灯光。这样晚上老人起夜给老人增加安全性。</td></tr>
+        <tr><td><strong>王亚兵</strong></td><td class="red">如果可以内置电池，个人感觉对用具户来说更方便。增加一点配重有可能整体的轻飘飘的有点廉价的感觉就会上来了甚至荡然无存。</td></tr>
+        <tr><td><strong>王刚红</strong></td><td class="">摄像机主机应该要用塑料袋装起来保护。连电源适配器配角都有塑料袋保护，主角却没有！摄像机主机是裸包装的。</td></tr>
+        <tr><td><strong>方家欢</strong></td><td class="red">1.包装及设备外观没有突出4G无限流量2.云台间隙大，松动的厉害。</td></tr>
+        <tr><td><strong>陶双</strong></td><td class="red">目前室内安装信号不是很好，只有48左右，看看后期能否优化</td></tr>
+        <tr><td><strong>朱秀澍</strong></td><td class="">我喜欢双摄，一个枪机固定机位。</td></tr>
+        <tr><td><strong>李玉佳</strong></td><td class="">做工有点粗糙</td></tr>
+        <tr><td><strong>张宁</strong></td><td class="">做工再精致一些，颜色统一，接缝平整紧密。</td></tr>
+        <tr><td><strong>谢光位</strong></td><td class="">缺乏个性化设计，特别针对年轻群体和有小宝的家庭缺乏吸睛力</td></tr>
+        <tr><td><strong>汤远鹏</strong></td><td class="red">建议突出4G标识以及无限流量的特点</td></tr>
+        <tr><td><strong>蒋牧吟</strong></td><td class="red">1.考虑到有些乡村电信网络普及不够，建议再内置增加移动内置卡；2.建议充电线增长至2米，现在的线还是短了一点。</td></tr>
+        <tr><td><strong>郭智育</strong></td><td class="red">云台的底座太淡薄，只是薄薄的一层塑料，感觉弱不禁风，抵挡不住长期的日晒雨淋，很容易变质损毁，且与主机的卡扣方式是前后推进式，容易滑出，建议改旋转式卡扣加安全锁止装置，另外摄像机可以考虑外观上加一个固定的穿孔，以便用户放置于户外，用绳子固定后，不会掉落</td></tr>
+        <tr><td><strong>程永权</strong></td><td class="">镜头膜较差，外观有瑕疵</td></tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">9pro 400万4G云台公测 · 开箱体验报告 · 2026-08-20</div>
+</div>
+
+<script>
+const chart1 = echarts.init(document.getElementById('chart1'));
+const dimData = {"names": ["外包装总体", "外包装美观性", "包装质量", "拆取便捷性", "内包装总体", "配件完整性", "外观总体", "外观设计", "颜色", "材质", "手感/做工", "说明书总体", "说明书完整性", "说明书清晰性"], "values": [8.8, 9.0, 9.3, 9.5, 9.1, 9.6, 9.2, 9.2, 9.4, 9.2, 8.7, 9.0, 9.0, 9.6]};
+chart1.setOption({
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  grid: { left: '3%', right: '5%', bottom: '3%', containLabel: true },
+  xAxis: { type: 'value', max: 10, axisLabel: { fontSize: 12 } },
+  yAxis: { type: 'category', data: dimData.names.reverse(), axisLabel: { fontSize: 12 } },
+  series: [{
+    type: 'bar',
+    data: dimData.values.reverse(),
+    itemStyle: {
+      color: function(params) {
+        const val = params.value;
+        if (val >= 9) return '#00B050';
+        if (val >= 8) return '#2BBD6E';
+        if (val >= 7) return '#F39C12';
+        return '#E74C3C';
+      },
+      borderRadius: [0, 4, 4, 0]
+    },
+    label: { show: true, position: 'right', fontSize: 12, formatter: '{c}' }
+  }]
+});
+
+const chart2 = echarts.init(document.getElementById('chart2'));
+chart2.setOption({
+  tooltip: { trigger: 'item' },
+  legend: { bottom: 0, fontSize: 12 },
+  series: [{
+    type: 'pie', radius: ['40%', '70%'],
+    data: [{ value: 18, name: "符合期望", itemStyle: { color: "#999999" } },{ value: 3, name: "略低于期望", itemStyle: { color: "#F39C12" } },{ value: 5, name: "略超期望", itemStyle: { color: "#2BBD6E" } },{ value: 3, name: "完全超出期望", itemStyle: { color: "#00B050" } },
+    ],
+    label: { formatter: '{b}: {c}人 ({d}%)', fontSize: 12 }
+  }]
+});
+</script>
+</body>
+</html>
