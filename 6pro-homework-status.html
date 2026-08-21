@@ -7,39 +7,31 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; padding: 20px; }
-.container { max-width: 1100px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-h1 { text-align: center; color: #00B050; margin-bottom: 8px; font-size: 22px; }
-.subtitle { text-align: center; color: #999; font-size: 13px; margin-bottom: 25px; }
+.container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+h1 { text-align: center; color: #00B050; font-size: 22px; margin-bottom: 8px; }
+.subtitle { text-align: center; color: #999; font-size: 13px; margin-bottom: 24px; }
 table { width: 100%; border-collapse: collapse; font-size: 14px; }
 th { background: #00B050; color: #fff; padding: 10px 8px; text-align: center; font-weight: 500; white-space: nowrap; }
-td { padding: 9px 8px; text-align: center; border-bottom: 1px solid #eee; }
+th:first-child { border-radius: 8px 0 0 8px; }
+th:last-child { border-radius: 0 8px 8px 0; }
+td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #eee; }
 tr:hover { background: #f9f9f9; }
-.zero-row { background: #fff0f0; }
-.zero-row:hover { background: #ffe8e8; }
-.fb-high { color: #00B050; font-weight: 600; }
-.fb-low { color: #E74C3C; font-weight: 600; }
-.fw-col { color: #333; }
-.name-col { font-weight: 500; }
-.summary { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
-.summary-item { flex: 1; min-width: 140px; background: #f0f9f0; border-radius: 8px; padding: 12px; text-align: center; }
-.summary-item .num { font-size: 24px; font-weight: 700; color: #00B050; }
-.summary-item .label { font-size: 12px; color: #666; margin-top: 4px; }
-.footer { text-align: center; color: #999; font-size: 12px; margin-top: 20px; }
+.done { color: #00B050; font-weight: bold; }
+.not-done { color: #ccc; }
+.count-high { color: #00B050; font-weight: bold; }
+.count-low { color: #E74C3C; font-weight: bold; }
+.count-zero { color: #E74C3C; }
+.row-zero { background: #FFF0F0; }
+.fw-cell { color: #333; }
+.name-cell { font-weight: 500; text-align: left; padding-left: 16px; }
+.footer { text-align: center; color: #999; font-size: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid #eee; }
+.update-time { color: #00B050; font-weight: 500; }
 </style>
 </head>
 <body>
 <div class="container">
-<h1>6pro 4G门铃公测 · 作业完成情况</h1>
-<div class="subtitle">更新时间：2026-08-20 09:00 | 共19人</div>
-
-<div class="summary">
-<div class="summary-item"><div class="num">19/19</div><div class="label">开箱体验</div></div>
-<div class="summary-item"><div class="num">19/19</div><div class="label">配网安装</div></div>
-<div class="summary-item"><div class="num">19/19</div><div class="label">插拔卡</div></div>
-<div class="summary-item"><div class="num">19/19</div><div class="label">门铃通话</div></div>
-<div class="summary-item"><div class="num">474</div><div class="label">日常反馈总数</div></div>
-</div>
-
+<h1>6pro 4G门铃公测 - 作业完成情况</h1>
+<div class="subtitle">数据更新时间：<span class="update-time">2026-08-21 09:00</span> ｜ 共19人（不含吴汞）</div>
 <table>
 <thead>
 <tr>
@@ -59,274 +51,277 @@ tr:hover { background: #f9f9f9; }
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td class="name-col">何三涛</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">46</td>
-<td class="fw-col">17</td>
-<td class="fw-col">4</td>
-<td class="fw-col">5</td>
-<td class="fw-col">12</td>
-<td class="fw-col">1</td>
+  <td>1</td>
+  <td class="name-cell">何三涛</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">46</td>
+  <td class="fw-cell">17</td>
+  <td class="fw-cell">4</td>
+  <td class="fw-cell">5</td>
+  <td class="fw-cell">19</td>
+  <td class="fw-cell">1</td>
 </tr>
 <tr>
-<td>2</td>
-<td class="name-col">张雷</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">39</td>
-<td class="fw-col">19</td>
-<td class="fw-col">5</td>
-<td class="fw-col">2</td>
-<td class="fw-col">4</td>
-<td class="fw-col">0</td>
+  <td>2</td>
+  <td class="name-cell">瑞子</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">40</td>
+  <td class="fw-cell">10</td>
+  <td class="fw-cell">5</td>
+  <td class="fw-cell">3</td>
+  <td class="fw-cell">22</td>
+  <td class="fw-cell">0</td>
 </tr>
 <tr>
-<td>3</td>
-<td class="name-col">瑞子</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">34</td>
-<td class="fw-col">10</td>
-<td class="fw-col">5</td>
-<td class="fw-col">3</td>
-<td class="fw-col">8</td>
-<td class="fw-col">0</td>
+  <td>3</td>
+  <td class="name-cell">张雷</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">40</td>
+  <td class="fw-cell">19</td>
+  <td class="fw-cell">5</td>
+  <td class="fw-cell">2</td>
+  <td class="fw-cell">13</td>
+  <td class="fw-cell">0</td>
 </tr>
 <tr>
-<td>4</td>
-<td class="name-col">许军州</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">32</td>
-<td class="fw-col">12</td>
-<td class="fw-col">3</td>
-<td class="fw-col">3</td>
-<td class="fw-col">4</td>
-<td class="fw-col">0</td>
+  <td>4</td>
+  <td class="name-cell">许军州</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">32</td>
+  <td class="fw-cell">12</td>
+  <td class="fw-cell">3</td>
+  <td class="fw-cell">3</td>
+  <td class="fw-cell">14</td>
+  <td class="fw-cell">0</td>
 </tr>
 <tr>
-<td>5</td>
-<td class="name-col">相杰</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">30</td>
-<td class="fw-col">14</td>
-<td class="fw-col">5</td>
-<td class="fw-col">2</td>
-<td class="fw-col">6</td>
-<td class="fw-col">0</td>
+  <td>5</td>
+  <td class="name-cell">相杰</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">30</td>
+  <td class="fw-cell">14</td>
+  <td class="fw-cell">5</td>
+  <td class="fw-cell">2</td>
+  <td class="fw-cell">9</td>
+  <td class="fw-cell">0</td>
 </tr>
 <tr>
-<td>6</td>
-<td class="name-col">袁飞</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">29</td>
-<td class="fw-col">7</td>
-<td class="fw-col">9</td>
-<td class="fw-col">6</td>
-<td class="fw-col">6</td>
-<td class="fw-col">1</td>
+  <td>6</td>
+  <td class="name-cell">周军</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">30</td>
+  <td class="fw-cell">8</td>
+  <td class="fw-cell">6</td>
+  <td class="fw-cell">4</td>
+  <td class="fw-cell">8</td>
+  <td class="fw-cell">4</td>
 </tr>
 <tr>
-<td>7</td>
-<td class="name-col">魏健伟</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">28</td>
-<td class="fw-col">6</td>
-<td class="fw-col">0</td>
-<td class="fw-col">6</td>
-<td class="fw-col">9</td>
-<td class="fw-col">0</td>
+  <td>7</td>
+  <td class="name-cell">袁飞</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">29</td>
+  <td class="fw-cell">7</td>
+  <td class="fw-cell">9</td>
+  <td class="fw-cell">6</td>
+  <td class="fw-cell">6</td>
+  <td class="fw-cell">1</td>
 </tr>
 <tr>
-<td>8</td>
-<td class="name-col">周军</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">28</td>
-<td class="fw-col">8</td>
-<td class="fw-col">6</td>
-<td class="fw-col">4</td>
-<td class="fw-col">6</td>
-<td class="fw-col">2</td>
+  <td>8</td>
+  <td class="name-cell">魏健伟</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">28</td>
+  <td class="fw-cell">6</td>
+  <td class="fw-cell">0</td>
+  <td class="fw-cell">6</td>
+  <td class="fw-cell">16</td>
+  <td class="fw-cell">0</td>
 </tr>
 <tr>
-<td>9</td>
-<td class="name-col">朱君</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">27</td>
-<td class="fw-col">11</td>
-<td class="fw-col">2</td>
-<td class="fw-col">1</td>
-<td class="fw-col">4</td>
-<td class="fw-col">2</td>
+  <td>9</td>
+  <td class="name-cell">朱君</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">27</td>
+  <td class="fw-cell">11</td>
+  <td class="fw-cell">2</td>
+  <td class="fw-cell">1</td>
+  <td class="fw-cell">11</td>
+  <td class="fw-cell">2</td>
 </tr>
 <tr>
-<td>10</td>
-<td class="name-col">美诺</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">24</td>
-<td class="fw-col">6</td>
-<td class="fw-col">1</td>
-<td class="fw-col">4</td>
-<td class="fw-col">8</td>
-<td class="fw-col">1</td>
+  <td>10</td>
+  <td class="name-cell">美诺</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">24</td>
+  <td class="fw-cell">6</td>
+  <td class="fw-cell">1</td>
+  <td class="fw-cell">4</td>
+  <td class="fw-cell">12</td>
+  <td class="fw-cell">1</td>
 </tr>
 <tr>
-<td>11</td>
-<td class="name-col">陈俊</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">23</td>
-<td class="fw-col">9</td>
-<td class="fw-col">0</td>
-<td class="fw-col">3</td>
-<td class="fw-col">6</td>
-<td class="fw-col">1</td>
+  <td>11</td>
+  <td class="name-cell">陈俊</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">23</td>
+  <td class="fw-cell">9</td>
+  <td class="fw-cell">0</td>
+  <td class="fw-cell">3</td>
+  <td class="fw-cell">10</td>
+  <td class="fw-cell">1</td>
 </tr>
 <tr>
-<td>12</td>
-<td class="name-col">王瑷珲</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">23</td>
-<td class="fw-col">12</td>
-<td class="fw-col">0</td>
-<td class="fw-col">2</td>
-<td class="fw-col">5</td>
-<td class="fw-col">0</td>
+  <td>12</td>
+  <td class="name-cell">王瑷珲</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">23</td>
+  <td class="fw-cell">12</td>
+  <td class="fw-cell">0</td>
+  <td class="fw-cell">2</td>
+  <td class="fw-cell">9</td>
+  <td class="fw-cell">0</td>
 </tr>
 <tr>
-<td>13</td>
-<td class="name-col">朱彤</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td class="fb-high">21</td>
-<td class="fw-col">4</td>
-<td class="fw-col">2</td>
-<td class="fw-col">2</td>
-<td class="fw-col">8</td>
-<td class="fw-col">1</td>
+  <td>13</td>
+  <td class="name-cell">朱彤</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">21</td>
+  <td class="fw-cell">4</td>
+  <td class="fw-cell">2</td>
+  <td class="fw-cell">2</td>
+  <td class="fw-cell">12</td>
+  <td class="fw-cell">1</td>
 </tr>
 <tr>
-<td>14</td>
-<td class="name-col">徐婷婷</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>20</td>
-<td class="fw-col">5</td>
-<td class="fw-col">5</td>
-<td class="fw-col">1</td>
-<td class="fw-col">6</td>
-<td class="fw-col">0</td>
+  <td>14</td>
+  <td class="name-cell">黄军剑</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="count-high">21</td>
+  <td class="fw-cell">5</td>
+  <td class="fw-cell">2</td>
+  <td class="fw-cell">1</td>
+  <td class="fw-cell">10</td>
+  <td class="fw-cell">3</td>
 </tr>
 <tr>
-<td>15</td>
-<td class="name-col">黄军剑</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>20</td>
-<td class="fw-col">5</td>
-<td class="fw-col">2</td>
-<td class="fw-col">1</td>
-<td class="fw-col">9</td>
-<td class="fw-col">2</td>
+  <td>15</td>
+  <td class="name-cell">徐婷婷</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="">20</td>
+  <td class="fw-cell">5</td>
+  <td class="fw-cell">5</td>
+  <td class="fw-cell">1</td>
+  <td class="fw-cell">9</td>
+  <td class="fw-cell">0</td>
 </tr>
 <tr>
-<td>16</td>
-<td class="name-col">于晨光</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>19</td>
-<td class="fw-col">9</td>
-<td class="fw-col">2</td>
-<td class="fw-col">3</td>
-<td class="fw-col">4</td>
-<td class="fw-col">1</td>
+  <td>16</td>
+  <td class="name-cell">于晨光</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="">19</td>
+  <td class="fw-cell">9</td>
+  <td class="fw-cell">2</td>
+  <td class="fw-cell">3</td>
+  <td class="fw-cell">4</td>
+  <td class="fw-cell">1</td>
 </tr>
 <tr>
-<td>17</td>
-<td class="name-col">孙晓明</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>12</td>
-<td class="fw-col">5</td>
-<td class="fw-col">1</td>
-<td class="fw-col">3</td>
-<td class="fw-col">1</td>
-<td class="fw-col">1</td>
+  <td>17</td>
+  <td class="name-cell">孙晓明</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="">12</td>
+  <td class="fw-cell">5</td>
+  <td class="fw-cell">1</td>
+  <td class="fw-cell">3</td>
+  <td class="fw-cell">2</td>
+  <td class="fw-cell">1</td>
 </tr>
 <tr>
-<td>18</td>
-<td class="name-col">夏君</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>12</td>
-<td class="fw-col">0</td>
-<td class="fw-col">0</td>
-<td class="fw-col">5</td>
-<td class="fw-col">4</td>
-<td class="fw-col">3</td>
+  <td>18</td>
+  <td class="name-cell">夏君</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="">12</td>
+  <td class="fw-cell">0</td>
+  <td class="fw-cell">0</td>
+  <td class="fw-cell">5</td>
+  <td class="fw-cell">4</td>
+  <td class="fw-cell">3</td>
 </tr>
 <tr>
-<td>19</td>
-<td class="name-col">蔡坤城</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>7</td>
-<td class="fw-col">2</td>
-<td class="fw-col">1</td>
-<td class="fw-col">0</td>
-<td class="fw-col">3</td>
-<td class="fw-col">0</td>
+  <td>19</td>
+  <td class="name-cell">蔡坤城</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="done">✓</td>
+  <td class="">7</td>
+  <td class="fw-cell">2</td>
+  <td class="fw-cell">1</td>
+  <td class="fw-cell">0</td>
+  <td class="fw-cell">4</td>
+  <td class="fw-cell">0</td>
 </tr>
 </tbody>
 </table>
-<div class="footer">6pro 4G门铃公测 · 数据来源：飞书表格 · 0条反馈整行标红 · 反馈量>20绿色 &lt;5红色</div>
+<div class="footer">
+数据来源：飞书表格「门铃6pro 4G公测问题跟进表」｜ 反馈量&gt;20绿色，&lt;5红色，0条整行标红<br>
+报告合集：<a href="https://yanlingyin001.github.io/reports/6pro-index.html" style="color:#00B050;">6pro公测报告汇总</a>
+</div>
 </div>
 </body>
 </html>
