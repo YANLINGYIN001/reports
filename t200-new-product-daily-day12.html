@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 4G记录仪新品跟踪日报 · Day 12</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%);color:white;padding:30px 40px;border-radius:12px;margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:0.9}
+.overview{background:white;border-left:4px solid #00B050;padding:16px 20px;border-radius:8px;margin-bottom:24px;font-size:15px;color:#333}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:white;padding:24px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:32px;font-weight:700;color:#00B050}
+.kpi-card .delta{font-size:12px;margin-top:4px}
+.delta-up{color:#E74C3C}
+.delta-zero{color:#999}
+.insight-grid{display:grid;gap:12px;margin-bottom:24px}
+.insight{padding:16px 20px;border-radius:8px;font-size:14px}
+.insight-green{background:#e8f5e9;border-left:4px solid #00B050}
+.insight-orange{background:#fff3e0;border-left:4px solid #F39C12}
+.insight-red{background:#ffebee;border-left:4px solid #E74C3C}
+.section{background:white;border-radius:12px;padding:24px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.section h2{font-size:18px;color:#333;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #f0f0f0}
+.chart{width:100%;height:350px}
+.chart-row{display:flex;gap:24px;flex-wrap:wrap}
+.chart-row>div{flex:1;min-width:300px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f8f9fa;padding:10px 12px;text-align:left;font-weight:600;color:#555;border-bottom:2px solid #e0e0e0}
+td{padding:10px 12px;border-bottom:1px solid #f0f0f0}
+tr:hover td{background:#fafafa}
+.new-row td{background:#fff9e6}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;margin:2px}
+.tag-green{background:#e8f5e9;color:#00B050}
+.ch-tags{margin-bottom:16px}
+.footer{text-align:center;padding:20px;color:#999;font-size:12px;margin-top:24px}
+.footer a{color:#00B050;text-decoration:none}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.chart-row{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>T200 4G记录仪 · 新品跟踪日报</h1>
+  <div class="subtitle">Day 12 | 数据周期 8.4 - 8.21 | 累计反馈 119 条 | 7 个渠道 | 68 种问题类型</div>
+</div>
+<div class="overview">
+  📊 <strong>今日概览：</strong>新增 12 条反馈（有赞 7 条 + 天猫官旗 5 条），累计 119 条。天猫官旗渠道新增 5 条哨兵模式相关咨询，用户关注点从基础安装向哨兵模式、云录套餐、保修政策等深度功能延伸。
+</div>
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">119</div><div class="delta delta-up">+12 vs Day 10</div></div>
+  <div class="kpi-card"><div class="label">覆盖渠道数</div><div class="value">7</div><div class="delta delta-zero">持平</div></div>
+  <div class="kpi-card"><div class="label">问题类型数</div><div class="value">68</div><div class="delta delta-up">+8 vs Day 10</div></div>
+  <div class="kpi-card"><div class="label">实质性缺陷数</div><div class="value">15</div><div class="delta delta-zero">持平</div></div>
+</div>
+<div class="insight-grid">
+<div class="insight insight-green"><strong>安装咨询持续高发：</strong>新增 12 条反馈（天猫官旗、小红书、有赞），其中安装相关 2 条、功能咨询 4 条、费用/套餐 3 条、停车/监控 3 条。天猫官旗渠道新增 5 条，哨兵模式相关咨询集中出现，值得重点关注。</div>
+<div class="insight insight-orange"><strong>新问题类型出现：</strong>"哨兵通知咨询"、"哨兵模式咨询"、"保修时长咨询"、"赠送云录时长咨询"、"是否必须购买云录咨询" 为新增问题类型，反映用户关注点正在从基础安装向功能细节和售后保障延伸。</div>
+<div class="insight insight-red"><strong>缺陷数连续 3 日零增长：</strong>Day 10-12 无新增缺陷，累计 15 条。</div>
+
+</div>
+<div class="section">
+  <h2>渠道反馈分布</h2>
+  <div class="ch-tags"><span class="tag tag-green">有赞（56）</span><span class="tag tag-green">京东自营（28）</span><span class="tag tag-green">天猫官旗（14）</span><span class="tag tag-green">天猫车品（8）</span><span class="tag tag-green">小红书（6）</span><span class="tag tag-green">抖音（3）</span><span class="tag tag-green">天猫车旗（2）</span><span class="tag tag-green">京东23单（1）</span><span class="tag tag-green">抖音 8个问题（1）</span></div>
+  <div class="chart" id="chart-channel"></div>
+</div>
+<div class="section">
+  <h2>问题主题分类</h2>
+  <div class="chart-row">
+    <div class="chart" id="chart-category"></div>
+    <div><table>
+      <thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>典型问题</th></tr></thead>
+      <tbody>
+<tr><td style="color:#00B050;font-weight:600">安装相关</td><td>33</td><td>27.7%</td><td style="font-size:12px;color:#666">是否包安装咨询(17)、安装咨询(6)、镜头调节咨询(4)</td></tr>
+<tr><td style="color:#9C27B0;font-weight:600">功能咨询</td><td>20</td><td>16.8%</td><td style="font-size:12px;color:#666">是否有后录咨询(6)、远程查看咨询(4)、以旧换新咨询(1)</td></tr>
+<tr><td style="color:#1976D2;font-weight:600">供电/电池</td><td>11</td><td>9.2%</td><td style="font-size:12px;color:#666">电瓶供电咨询(3)、是否带降压线咨询(3)、是否需要充电咨询(1)</td></tr>
+<tr><td style="color:#F39C12;font-weight:600">停车/监控</td><td>10</td><td>8.4%</td><td style="font-size:12px;color:#666">停车监控咨询(4)、哨兵通知咨询(2)、停车是否录像咨询(1)</td></tr>
+<tr><td style="color:#FF5722;font-weight:600">费用/套餐</td><td>14</td><td>11.8%</td><td style="font-size:12px;color:#666">4G流量是否收费咨询(7)、云录收费咨询(2)、是否有其他费用咨询(1)</td></tr>
+<tr><td style="color:#607D8B;font-weight:600">渠道聚合</td><td>3</td><td>2.5%</td><td style="font-size:12px;color:#666">-</td></tr>
+
+      </tbody>
+    </table></div>
+  </div>
+</div>
+<div class="section">
+  <h2>今日新增反馈明细（12 条）</h2>
+  <table>
+    <thead><tr><th>渠道</th><th>日期</th><th>问题类型</th><th>用户问题</th></tr></thead>
+    <tbody>
+<tr class="new-row"><td>小红书</td><td>8.20</td><td>是否包安装咨询</td><td style="font-size:12px">这个要自己安装的吗</td></tr>
+<tr class="new-row"><td>有赞</td><td>8.20</td><td>是否包安装咨询</td><td style="font-size:12px">免费安装吗？</td></tr>
+<tr class="new-row"><td>有赞</td><td>8.20</td><td>是否有后录咨询</td><td style="font-size:12px">只有一个摄影头，没有后面的？</td></tr>
+<tr class="new-row"><td>有赞</td><td>8.21</td><td>4G流量是否收费咨询</td><td style="font-size:12px">需要流量的吗</td></tr>
+<tr class="new-row"><td>有赞</td><td>8.21</td><td>赠送云录时长咨询</td><td style="font-size:12px">这款记录仪送的7天包月存储时长多久？</td></tr>
+<tr class="new-row"><td>有赞</td><td>8.21</td><td>是否有后录咨询</td><td style="font-size:12px">这个有倒车影像吗？</td></tr>
+<tr class="new-row"><td>有赞</td><td>8.21</td><td>是否必须购买云录咨询</td><td style="font-size:12px">要购买云视频的吧？</td></tr>
+<tr class="new-row"><td>天猫官旗</td><td>8.21</td><td>哨兵通知咨询</td><td style="font-size:12px">哨兵模式会有通知到手机上吗</td></tr>
+<tr class="new-row"><td>天猫官旗</td><td>8.21</td><td>哨兵模式咨询</td><td style="font-size:12px">哨兵模式是怎么运行的</td></tr>
+<tr class="new-row"><td>天猫官旗</td><td>8.21</td><td>保修时长咨询</td><td style="font-size:12px">这个记录仪保修几年啊</td></tr>
+<tr class="new-row"><td>天猫官旗</td><td>8.21</td><td>远程查看咨询</td><td style="font-size:12px">可以在家里看实时画面吗</td></tr>
+<tr class="new-row"><td>天猫官旗</td><td>8.21</td><td>哨兵通知咨询</td><td style="font-size:12px">这是什么情况下的提示</td></tr>
+
+    </tbody>
+  </table>
+</div>
+<div class="footer">
+  <p>数据来源：<a href="https://my.feishu.cn/wiki/PhO1w1hrii3HlzkVuV5cW3zPnvd">飞书表格 · T200各渠道问题汇总</a></p>
+  <p>报告合集：<a href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">T200新品跟踪日报合集</a></p>
+  <p>生成时间：2026-08-21 18:00 · Day 12</p>
+</div>
+</div>
+<script>
+var chChart=echarts.init(document.getElementById('chart-channel'));
+chChart.setOption({tooltip:{trigger:'axis'},grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},xAxis:{type:'category',data:["有赞", "京东自营", "天猫官旗", "天猫车品", "小红书", "抖音", "天猫车旗", "京东23单", "抖音 8个问题"],axisLabel:{rotate:30}},yAxis:{type:'value'},series:[{type:'bar',data:[56, 28, 14, 8, 6, 3, 2, 1, 1],itemStyle:{color:'#00B050',borderRadius:[4,4,0,0]},label:{show:true,position:'top'}}]});
+var catChart=echarts.init(document.getElementById('chart-category'));
+catChart.setOption({tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},legend:{orient:'vertical',right:10,top:'center'},series:[{type:'pie',radius:['40%','70%'],center:['40%','50%'],data:[{"value": 33, "name": "安装相关", "itemStyle": {"color": "#00B050"}}, {"value": 20, "name": "功能咨询", "itemStyle": {"color": "#9C27B0"}}, {"value": 11, "name": "供电/电池", "itemStyle": {"color": "#1976D2"}}, {"value": 10, "name": "停车/监控", "itemStyle": {"color": "#F39C12"}}, {"value": 14, "name": "费用/套餐", "itemStyle": {"color": "#FF5722"}}, {"value": 3, "name": "渠道聚合", "itemStyle": {"color": "#607D8B"}}],label:{formatter:'{b}\n{d}%'}}]});
+window.addEventListener('resize',function(){chChart.resize();catChart.resize()});
+</script>
+</body>
+</html>
