@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9pro 400万4G云台 - 日常问题反馈报告 (8/21更新)</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: white; padding: 30px; border-radius: 12px; margin-bottom: 20px; }
+.header h1 { font-size: 24px; margin-bottom: 8px; }
+.header .meta { font-size: 14px; opacity: 0.9; }
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.kpi-card { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .number { font-size: 32px; font-weight: 700; color: #00B050; }
+.kpi-card .label { font-size: 13px; color: #666; margin-top: 4px; }
+.kpi-card .sub { font-size: 12px; color: #999; margin-top: 2px; }
+.kpi-card.alert .number { color: #E74C3C; }
+.section { background: white; border-radius: 10px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 18px; color: #333; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #00B050; }
+.insight { background: #f0fdf4; border-left: 4px solid #00B050; padding: 12px 16px; border-radius: 4px; margin-bottom: 16px; font-size: 14px; }
+.insight.warning { background: #fef3cd; border-left-color: #F39C12; }
+.insight.danger { background: #fce4e4; border-left-color: #E74C3C; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 14px; }
+th { background: #00B050; color: white; padding: 10px 12px; text-align: left; font-weight: 500; }
+th:first-child { border-radius: 6px 0 0 6px; }
+th:last-child { border-radius: 0 6px 6px 0; }
+td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+tr:hover td { background: #f9f9f9; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: 500; }
+.badge-new { background: #E74C3C; color: white; }
+.badge-hot { background: #F39C12; color: white; }
+.quote-table td { vertical-align: top; }
+.quote { font-size: 13px; color: #555; line-height: 1.5; }
+.quote .name { color: #00B050; font-weight: 500; }
+.quote-negative .name { color: #E74C3C; }
+.count { font-weight: 600; color: #00B050; }
+.count-high { color: #E74C3C; }
+.footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+.bar-chart { margin: 8px 0; }
+.bar-container { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.bar-label { width: 120px; font-size: 13px; text-align: right; }
+.bar-fill { height: 24px; background: #00B050; border-radius: 4px; min-width: 2px; transition: width 0.3s; }
+.bar-fill.warning { background: #F39C12; }
+.bar-fill.danger { background: #E74C3C; }
+.bar-value { font-size: 13px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>9pro 400万4G云台 — 日常问题反馈报告</h1>
+<div class="meta">更新时间：2026-08-21 | 数据范围：全量252条（新增54条） | 参与用户：28人</div>
+</div>
+
+<div class="kpi-row">
+<div class="kpi-card"><div class="number">252</div><div class="label">总反馈条数</div><div class="sub">+54新增</div></div>
+<div class="kpi-card"><div class="number">234</div><div class="label">有效反馈</div><div class="sub">18条忽略</div></div>
+<div class="kpi-card"><div class="number">28</div><div class="label">参与用户</div><div class="sub">+17人本轮</div></div>
+<div class="kpi-card alert"><div class="number">15</div><div class="label">新增人形误报</div><div class="sub">占比27.8%</div></div>
+</div>
+
+<div class="section">
+<h2>核心洞察</h2>
+<div class="insight danger"><b>人形误报仍是最大痛点：</b>本轮新增15条人形误报（占总新增27.8%），累计23条。误报对象涵盖猫、衣服、椅子、柱子、电风扇、裤子、鸡、树影等，AI算法识别能力亟待优化。</div>
+<div class="insight danger"><b>画面紫红问题集中爆发：</b>本轮新增4条画面偏紫/紫红反馈（累计8条），涉及蒋牧吟、齐彩英、杜劲、孙洪士4位用户，与灯光变化/磨砂玻璃/夜视切换相关，疑为滤光片或白平衡算法问题。</div>
+<div class="insight warning"><b>云台问题多维爆发：</b>本轮新增7条云台相关问题（限位3条+转动重启1条+转动无响应1条+校准偏移1条+校准后离线1条），云台可靠性需重点关注。</div>
+<div class="insight warning"><b>云录功能问题增多：</b>本轮新增5条云录相关问题（进度条/列表/播放/时长/卡录不同步），云录体验需系统性优化。</div>
+<div class="insight"><b>APP问题分布广：</b>本轮新增15条APP问题，涉及12个不同子问题，覆盖云录、离线状态、信号显示、智慧通知、设备信息等多个模块。</div>
+</div>
+
+<div class="section">
+<h2>问题主题分类（全量）</h2>
+<table>
+<tr><th>一级标签</th><th>累计条数</th><th>新增条数</th><th>占比</th></tr>
+<tr><td>APP</td><td class="count-high">54</td><td>+15</td><td>23.1%</td></tr><tr><td>配网</td><td class="count-high">36</td><td>+1</td><td>15.4%</td></tr><tr><td>AI算法</td><td class="count-high">33</td><td>+16</td><td>14.1%</td></tr><tr><td>IQ</td><td class="count">21</td><td>+13</td><td>9.0%</td></tr><tr><td>卡录</td><td class="count">18</td><td>+6</td><td>7.7%</td></tr><tr><td>外包装</td><td class="count">18</td><td>+0</td><td>7.7%</td></tr><tr><td>硬件</td><td class="count">12</td><td>+0</td><td>5.1%</td></tr><tr><td>安装</td><td class="count">9</td><td>+0</td><td>3.8%</td></tr><tr><td>开流</td><td class="count">6</td><td>+1</td><td>2.6%</td></tr><tr><td>功能需求</td><td class="count">5</td><td>+2</td><td>2.1%</td></tr><tr><td>内包装</td><td class="count">5</td><td>+0</td><td>2.1%</td></tr><tr><td>说明书</td><td class="count">3</td><td>+0</td><td>1.3%</td></tr><tr><td>稳定性</td><td class="count">3</td><td>+0</td><td>1.3%</td></tr><tr><td>云录</td><td class="count">3</td><td>+0</td><td>1.3%</td></tr><tr><td>巡航</td><td class="count">2</td><td>+0</td><td>0.9%</td></tr><tr><td>产品</td><td class="count">1</td><td>+0</td><td>0.4%</td></tr><tr><td>开箱</td><td class="count">1</td><td>+0</td><td>0.4%</td></tr><tr><td>设备</td><td class="count">1</td><td>+0</td><td>0.4%</td></tr><tr><td>微信小程序</td><td class="count">1</td><td>+0</td><td>0.4%</td></tr><tr><td>硬件设计</td><td class="count">1</td><td>+0</td><td>0.4%</td></tr><tr><td>云录卡录</td><td class="count">1</td><td>+0</td><td>0.4%</td></tr></table><div style="margin-top:16px;"><div class="bar-container"><div class="bar-label">APP</div><div class="bar-fill danger" style="width:300.0px"></div><div class="bar-value">54 (+15)</div></div><div class="bar-container"><div class="bar-label">配网</div><div class="bar-fill danger" style="width:200.0px"></div><div class="bar-value">36 (+1)</div></div><div class="bar-container"><div class="bar-label">AI算法</div><div class="bar-fill danger" style="width:183.33333333333334px"></div><div class="bar-value">33 (+16)</div></div><div class="bar-container"><div class="bar-label">IQ</div><div class="bar-fill warning" style="width:116.66666666666667px"></div><div class="bar-value">21 (+13)</div></div><div class="bar-container"><div class="bar-label">卡录</div><div class="bar-fill warning" style="width:100.0px"></div><div class="bar-value">18 (+6)</div></div><div class="bar-container"><div class="bar-label">外包装</div><div class="bar-fill warning" style="width:100.0px"></div><div class="bar-value">18</div></div><div class="bar-container"><div class="bar-label">硬件</div><div class="bar-fill " style="width:66.66666666666666px"></div><div class="bar-value">12</div></div><div class="bar-container"><div class="bar-label">安装</div><div class="bar-fill " style="width:50.0px"></div><div class="bar-value">9</div></div><div class="bar-container"><div class="bar-label">开流</div><div class="bar-fill " style="width:33.33333333333333px"></div><div class="bar-value">6 (+1)</div></div><div class="bar-container"><div class="bar-label">功能需求</div><div class="bar-fill " style="width:27.777777777777775px"></div><div class="bar-value">5 (+2)</div></div><div class="bar-container"><div class="bar-label">内包装</div><div class="bar-fill " style="width:27.777777777777775px"></div><div class="bar-value">5</div></div><div class="bar-container"><div class="bar-label">说明书</div><div class="bar-fill " style="width:16.666666666666664px"></div><div class="bar-value">3</div></div><div class="bar-container"><div class="bar-label">稳定性</div><div class="bar-fill " style="width:16.666666666666664px"></div><div class="bar-value">3</div></div><div class="bar-container"><div class="bar-label">云录</div><div class="bar-fill " style="width:16.666666666666664px"></div><div class="bar-value">3</div></div><div class="bar-container"><div class="bar-label">巡航</div><div class="bar-fill " style="width:11.11111111111111px"></div><div class="bar-value">2</div></div><div class="bar-container"><div class="bar-label">产品</div><div class="bar-fill " style="width:5.555555555555555px"></div><div class="bar-value">1</div></div><div class="bar-container"><div class="bar-label">开箱</div><div class="bar-fill " style="width:5.555555555555555px"></div><div class="bar-value">1</div></div><div class="bar-container"><div class="bar-label">设备</div><div class="bar-fill " style="width:5.555555555555555px"></div><div class="bar-value">1</div></div><div class="bar-container"><div class="bar-label">微信小程序</div><div class="bar-fill " style="width:5.555555555555555px"></div><div class="bar-value">1</div></div><div class="bar-container"><div class="bar-label">硬件设计</div><div class="bar-fill " style="width:5.555555555555555px"></div><div class="bar-value">1</div></div><div class="bar-container"><div class="bar-label">云录卡录</div><div class="bar-fill " style="width:5.555555555555555px"></div><div class="bar-value">1</div></div></div></div>
+<div class="section">
+<h2>本轮新增明细（54条）</h2>
+<table>
+<tr><th>二级标签</th><th>新增条数</th><th>典型用户原声</th></tr>
+<tr><td>AI算法 > 人形误报</td><td class="count">15</td><td><span class="quote"><span class="name">张宁</span>: 仍然是人形检测把小猫识别为人形，这次猫在另一个位置。</span><br><span class="quote"><span class="name">闫贺</span>: 猫跑过来吃饭喝水路过，都会提示有人出现</span><br><span class="quote"><span class="name">朱秀澍</span>: AI算法误报;这4个画面没有动的东西，报有人。</span></td></tr><tr><td>IQ > 画面紫红</td><td class="count">4</td><td><span class="quote"><span class="name">蒋牧吟</span>: 室内灯光正常亮度，无变化，画面颜色一直在正常与紫色来回切换。最终是我开了远处的灯，才一直保持在正常状态。</span><br><span class="quote"><span class="name">齐彩英</span>: 刚回看原有截图才意识到曾经画面变成紫色，回忆当初是窗帘拉上突然房间变暗画质出现紫色，过了几分钟画面变回正常颜色</span><br><span class="quote"><span class="name">杜劲</span>: 当窗户推打开一点，亮部画面偏紫明显，完全关闭窗户，画面偏色情况好转（注：窗玻璃是磨砂玻璃）。</span></td></tr><tr><td>IQ > 云台限位异常</td><td class="count">3</td><td><span class="quote"><span class="name">朱秀澍</span>: 下边缘未到底，需要先到上边缘再到下边缘才是真的下边缘。</span><br><span class="quote"><span class="name">黄显森</span>: 偶发下移底部只到平时最底部偏上位置，只有把摄像头移到顶部边缘，后面下移才可以到底部边缘，摄像头没有手动挪过</span><br><span class="quote"><span class="name">王亚兵</span>: 如果我点了云台的关机然后开机以后，如果去调整云台的向下位置是不能达到云台的最下方位置的，这时候只能校准云台，然后校准云台以后才能云台可以转到最下方的位置，这是几...</span></td></tr><tr><td>APP > 离线状态显示异常</td><td class="count">2</td><td><span class="quote"><span class="name">王亚兵</span>: 明明摄像头主页上设备离线了但是点进去居然还可以看到一些卡录列表但是昨天的列表没有，有的卡录列表也不能正常回看，当然肯定回看不了因为摄像头不是已经离线了嘛，但是应...</span><br><span class="quote"><span class="name">王亚兵</span>: 还会出现假离线，就是打开app是“离线”闪现一下。然后消失。</span></td></tr><tr><td>功能需求 > 视频通话接入</td><td class="count">1</td><td><span class="quote"><span class="name">高瑞</span>: 咱的微信小程序有微信视频通话功能，为什么新设备不接入呢？多好用的功能，在APP后台或者没打开的情况，微信视频通话依旧可以接听电话，很方便啊(目前采用预警通知，也...</span></td></tr><tr><td>功能需求 > 卡录筛选</td><td class="count">1</td><td><span class="quote"><span class="name">黄显森</span>: 建议增加个卡录筛选功能和灵敏度 功能，现在随便一下就是画面 变化，很难翻到有人出现的情况</span></td></tr><tr><td>APP > 配网提示误导</td><td class="count">1</td><td><span class="quote"><span class="name">杜劲</span>: 移除设备并清除全部用户信息后，选择远程绑定摄像机，从相册选择二维码后一路下一步就会顺利绑定摄像机。但是在点击第一步后会提示按重置键，其实根本不需要这一步，这个提...</span></td></tr><tr><td>卡录 > 缩略图加载失败</td><td class="count">1</td><td><span class="quote"><span class="name">杜劲</span>: 卡录像有事件录像，但查看时未能加载出缩略图，之前是可以加载的，在删除设备重新绑定后出现。</span></td></tr><tr><td>卡录 > 回放卡顿</td><td class="count">1</td><td><span class="quote"><span class="name">高瑞</span>: 做了查看卡录回放操作，遇到卡录回放存在卡顿问题，但是下载下来的视频观看是很流畅的。</span></td></tr><tr><td>APP > 人形检测框不稳定</td><td class="count">1</td><td><span class="quote"><span class="name">蒋牧吟</span>: 人物保持一个动作不动，但是人物框一直在闪动，有点闪眼睛、影响观看，建议设置人物框不要一直闪动。</span></td></tr><tr><td>卡录 > 卡录加载慢</td><td class="count">1</td><td><span class="quote"><span class="name">高瑞</span>: 做了查看卡录回放操作，遇到有时候查看卡录，需要等待的时间过长，甚至达到8秒以上的问题。</span></td></tr><tr><td>IQ > 云台转动无响应</td><td class="count">1</td><td><span class="quote"><span class="name">朱秀澍</span>: 按转动后画面无反应。退出再进画面位置已变，转动正常。</span></td></tr><tr><td>卡录 > 存储卡识别异常</td><td class="count">1</td><td><span class="quote"><span class="name">黄显森</span>: 断电后，存储卡丢失</span></td></tr><tr><td>APP > 云录进度条难用</td><td class="count">1</td><td><span class="quote"><span class="name">高瑞</span>: 做了查看云录操作，遇到拖动云录进度条，无法进行选定特定时间位置查看，只能通过云录回放界面的进度条拖动查看的问题。建议可以拖动云录时间条进行查看，因为时间条有具体...</span></td></tr><tr><td>APP > 全景图生成异常</td><td class="count">1</td><td><span class="quote"><span class="name">郭智育</span>: 生成的全景图和实际监控巡视拍摄的画面不一致，也就是存在非全景画面的情况</span></td></tr><tr><td>APP > 云录列表显示异常</td><td class="count">1</td><td><span class="quote"><span class="name">张宁</span>: 点击app的云录像后，列表里显示没有录像，需要点击“查看过往录像”才能查看到录像</span></td></tr><tr><td>APP > 云录播放异常</td><td class="count">1</td><td><span class="quote"><span class="name">张宁</span>: 云录像列表里的录像点击不能播放，是静态截图。</span></td></tr><tr><td>APP > 云录时长异常</td><td class="count">1</td><td><span class="quote"><span class="name">方家欢</span>: 8月20日，12时15分49秒，超长云录10分22秒。</span></td></tr><tr><td>开流 > 开流离线</td><td class="count">1</td><td><span class="quote"><span class="name">蒋牧吟</span>: 进入实时监控，一直刷新不出新的界面，再退出，显示离线，最后界面时间是14时33分。</span></td></tr><tr><td>APP > 信号显示不一致</td><td class="count">1</td><td><span class="quote"><span class="name">林志澄</span>: app图标信号和开流页面的型号不一致。如附件。</span></td></tr><tr><td>APP > 智慧通知异常</td><td class="count">1</td><td><span class="quote"><span class="name">林志澄</span>: 智慧通知技能，个别事件不改写描述。</span></td></tr><tr><td>APP > 设备信息缺失</td><td class="count">1</td><td><span class="quote"><span class="name">林志澄</span>: 设备信息里面的IMEI没有显示信息也无法点击。</span></td></tr><tr><td>IQ > 夜视切换色差</td><td class="count">1</td><td><span class="quote"><span class="name">林志澄</span>: 设备偶尔夜视异常，紫红色。滤光片动作异常。见附件</span></td></tr><tr><td>卡录 > 插卡格式化提示需求</td><td class="count">1</td><td><span class="quote"><span class="name">方家欢</span>: 提个建议∶建议插卡后APP提示格式化，我装的就卡，没空间，就能一点点，就开始循化，设备，和APP都没任何提示，插卡就一个人加载声音，然后就正常循环录制了，感觉提...</span></td></tr><tr><td>APP > 云录卡录不同步</td><td class="count">1</td><td><span class="quote"><span class="name">陶双</span>: 云录卡录事件不同步，卡录17.55分有卡录事件，云录没有已提交日志</span></td></tr><tr><td>IQ > 云台校准偏移</td><td class="count">1</td><td><span class="quote"><span class="name">方家欢</span>: 8月20日16时32分，云台校准后，调好角度，第一次手动巡航后，位置便宜大，镜头上抬明显（吊装），复测也是一样。</span></td></tr><tr><td>IQ > 夜视切换异常</td><td class="count">1</td><td><span class="quote"><span class="name">郭智育</span>: 时间进入夜晚，外围光线变暗后，摄像机未自动开启红外模式，或者说切换红外模式出现问题，导致监控视频和实时画面出现花屏和异常颜色</span></td></tr><tr><td>APP > 开机卡住</td><td class="count">1</td><td><span class="quote"><span class="name">王亚兵</span>: 如果我点了摄像头关机以后再去摄像头主封面上点开机，有概率出现一直在开机的过程中，实质上这时候已经是开机成功了的，这时候退出上级菜单再进肯定已经是开机状态，如果什...</span></td></tr><tr><td>IQ > 云台校准后设备离线</td><td class="count">1</td><td><span class="quote"><span class="name">王亚兵</span>: 我在校准云台以后，也是在这个校准云台的云录视频以后都没有产生云录卡录了，而且摄像头封面上直接，出现离线的字样。但是没有去管他他自己又恢复了网络大概率是卡死重启了...</span></td></tr><tr><td>AI算法 > 画面变化误触发</td><td class="count">1</td><td><span class="quote"><span class="name">王亚兵</span>: 发现如果摄像头前面有其他是摄像头的aov模式工作是的红外灯有规律的闪烁会频繁触发画面变化，技术看看这个怎么着规避一下。</span></td></tr><tr><td>IQ > 云台转动重启</td><td class="count">1</td><td><span class="quote"><span class="name">王亚兵</span>: 发现了云台转动是大概率会发生设备重启的情况。这时候会明显出现卡录断录，回看卡录这个断录都出现在云台转动之后，如果不动云台没事，摄像头会一直稳定在线稳定工作。请技...</span></td></tr><tr><td>APP > 巡航不回位</td><td class="count">1</td><td><span class="quote"><span class="name">高瑞</span>: 做了开启定时巡航操作，遇到定时巡航完成后，不会恢复到原位置，而且默认的位置(图一原位置默认位置，图二默认位置)</span></td></tr><tr><td>卡录 > 卡录加载失败</td><td class="count">1</td><td><span class="quote"><span class="name">高瑞</span>: 做了查看卡录回放操作，遇到卡录加载失败的问题，(查看卡录时，一直显示正在加载，然后拖动了下时间条，依旧显示正在加载，过一段时间显示加载失败)</span></td></tr><tr><td>配网 > 重新配网菜单优化</td><td class="count">1</td><td><span class="quote"><span class="name">王亚兵</span>: 现在app上的重新配网菜单点进去还是沿用的普通wifi摄像头的流程，总觉得哪里不太多又说不上来，其实这和脱离app，直接摄像头上重置一下网络有什么区别，甚至直接...</span></td></tr></table></div>
+<div class="section">
+<h2>反馈活跃用户 TOP10</h2>
+<table>
+<tr><th>排名</th><th>姓名</th><th>累计条数</th><th>本轮新增</th></tr>
+<tr><td>1</td><td>王亚兵</td><td class="count">38</td><td>+9</td></tr><tr><td>2</td><td>高瑞</td><td class="count">36</td><td>+6</td></tr><tr><td>3</td><td>张宁</td><td class="count">13</td><td>+4</td></tr><tr><td>4</td><td>林志澄</td><td class="count">12</td><td>+4</td></tr><tr><td>5</td><td>陶双</td><td class="count">12</td><td>+2</td></tr><tr><td>6</td><td>陈建建</td><td class="count">11</td><td>+0</td></tr><tr><td>7</td><td>朱秀澍</td><td class="count">10</td><td>+6</td></tr><tr><td>8</td><td>黄显森</td><td class="count">9</td><td>+4</td></tr><tr><td>9</td><td>方家欢</td><td class="count">9</td><td>+3</td></tr><tr><td>10</td><td>蒋牧吟</td><td class="count">8</td><td>+3</td></tr></table></div>
+<div class="section">
+<h2>二级标签全量分布（Top20）</h2>
+<table>
+<tr><th>二级标签</th><th>累计条数</th><th>本轮新增</th></tr>
+<tr><td>AI算法 > 人形误报</td><td class="count">23</td><td>+15</td></tr><tr><td>IQ > 画面紫红</td><td class="count">8</td><td>+4</td></tr><tr><td>硬件 > 缝隙不均匀</td><td class="count">8</td><td>+0</td></tr><tr><td>APP > 电子说明书未更新</td><td class="count">7</td><td>+0</td></tr><tr><td>配网 > 配网简单</td><td class="count">7</td><td>+0</td></tr><tr><td>外包装 > 4G标识缺失</td><td class="count">7</td><td>+0</td></tr><tr><td>外包装 > 包装美观</td><td class="count">7</td><td>+0</td></tr><tr><td>APP > 信号显示不一致</td><td class="count">6</td><td>+1</td></tr><tr><td>配网 > 配网引导嘀声误导</td><td class="count">5</td><td>+0</td></tr><tr><td>安装 > 底座材质降级</td><td class="count">4</td><td>+0</td></tr><tr><td>配网 > 配网指导清晰</td><td class="count">4</td><td>+0</td></tr><tr><td>配网 > 配网速度快</td><td class="count">3</td><td>+0</td></tr><tr><td>配网 > 远程绑定方便</td><td class="count">3</td><td>+0</td></tr><tr><td>卡录 > 卡录加载慢</td><td class="count">3</td><td>+1</td></tr><tr><td>IQ > 夜视切换异常</td><td class="count">3</td><td>+1</td></tr><tr><td>APP > 流量管理显示异常</td><td class="count">3</td><td>+0</td></tr><tr><td>IQ > 云台限位异常</td><td class="count">3</td><td>+3</td></tr><tr><td>APP > 定时开关机难用</td><td class="count">2</td><td>+0</td></tr><tr><td>APP > 开流首帧WiFi图标</td><td class="count">2</td><td>+0</td></tr><tr><td>安装 > 底座松动/连接</td><td class="count">2</td><td>+0</td></tr></table></div>
+<div class="footer">
+<p>9pro 400万4G云台公测 · 日常问题反馈报告 · 2026-08-21</p>
+<p>数据来源：飞书表格「日常问题反馈」sheet | 打标：报告分析专家</p>
+</div>
+</div>
+</body>
+</html>
