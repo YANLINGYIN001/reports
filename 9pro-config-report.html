@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>9pro 400万4G云台 - 配网安装报告 (8/21更新)</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
@@ -25,24 +26,19 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 14px; }
 th { background: #00B050; color: white; padding: 10px 12px; text-align: left; font-weight: 500; }
 td { padding: 10px 12px; border-bottom: 1px solid #eee; }
-tr:hover td { background: #f9f9f9; }
 .bar-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
 .bar-label { width: 110px; font-size: 13px; text-align: right; }
 .bar-bg { flex: 1; background: #eee; height: 24px; border-radius: 4px; overflow: hidden; }
 .bar-fill { height: 100%; border-radius: 4px; }
-.bar-fill.high { background: #27AE60; }
-.bar-fill.mid { background: #F39C12; }
-.bar-fill.low { background: #E74C3C; }
+.bar-fill.high { background: #27AE60; } .bar-fill.mid { background: #F39C12; } .bar-fill.low { background: #E74C3C; }
 .bar-val { width: 50px; font-size: 13px; font-weight: 600; }
+.chart { width: 100%; height: 300px; margin: 12px 0; }
+.chart-small { width: 100%; height: 250px; margin: 12px 0; }
+.chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .quote { font-size: 13px; color: #555; line-height: 1.6; }
 .quote .name { color: #00B050; font-weight: 500; }
-.pain-title { color: #E74C3C; font-weight: 600; font-size: 15px; }
-.solution-box { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 10px 14px; margin: 8px 0; font-size: 13px; }
-.solution-box strong { color: #333; }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; margin-right: 4px; }
-.tag-done { background: #27AE60; color: white; }
-.tag-progress { background: #F39C12; color: white; }
-.tag-reject { background: #999; color: white; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; }
+.tag-done { background: #27AE60; color: white; } .tag-progress { background: #F39C12; color: white; } .tag-reject { background: #999; color: white; }
 .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
 </style>
 </head>
@@ -56,8 +52,8 @@ tr:hover td { background: #f9f9f9; }
 <div class="kpi-row">
 <div class="kpi-card"><div class="number">29</div><div class="label">完成配网</div><div class="sub">30人中29人</div></div>
 <div class="kpi-card"><div class="number">9.6</div><div class="label">配网总体满意度</div><div class="sub">满分10分</div></div>
-<div class="kpi-card"><div class="number">9.9</div><div class="label">最高分-提示音清晰</div><div class="sub">表现优异</div></div>
-<div class="kpi-card"><div class="number">10</div><div class="label">问题主题数</div><div class="sub">专项跟进</div></div>
+<div class="kpi-card"><div class="number">26/29</div><div class="label">一次成功率</div><div class="sub">90%</div></div>
+<div class="kpi-card"><div class="number">9.9</div><div class="label">最高-提示音清晰</div><div class="sub">表现优异</div></div>
 </div>
 
 <div class="section">
@@ -69,21 +65,21 @@ tr:hover td { background: #f9f9f9; }
 </div>
 
 <div class="section">
-<h2>满意度评分（横向柱形图）</h2>
+<h2>配网各维度满意度评分</h2>
 <div class="bar-row"><div class="bar-label">配网总体</div><div class="bar-bg"><div class="bar-fill high" style="width:95.51724137931033%"></div></div><div class="bar-val">9.6</div></div><div class="bar-row"><div class="bar-label">指导清晰性</div><div class="bar-bg"><div class="bar-fill high" style="width:96.55172413793103%"></div></div><div class="bar-val">9.7</div></div><div class="bar-row"><div class="bar-label">提示音清晰性</div><div class="bar-bg"><div class="bar-fill high" style="width:98.62068965517243%"></div></div><div class="bar-val">9.9</div></div><div class="bar-row"><div class="bar-label">时长满意度</div><div class="bar-bg"><div class="bar-fill high" style="width:93.79310344827584%"></div></div><div class="bar-val">9.4</div></div><div class="bar-row"><div class="bar-label">安装便捷性</div><div class="bar-bg"><div class="bar-fill mid" style="width:86.0%"></div></div><div class="bar-val">8.6</div></div></div>
 <div class="section">
-<h2>问题汇总（专项跟进表）</h2>
+<h2>配网方式分布 & 绑定成功率</h2>
+<div class="chart-row">
+<div><h3>配网方式分布</h3><div id="chart-method" class="chart-small"></div></div>
+<div><h3>绑定成功率</h3><div id="chart-success" class="chart-small"></div></div>
+</div>
+</div>
+
+<div class="section">
+<h2>核心问题分析（专项跟进表，按反馈量排序）</h2>
 <table>
-<tr><th style="width:12%">问题分类</th><th style="width:15%">问题标签</th><th style="width:8%">反馈人数</th><th>用户原声</th><th style="width:12%">状态</th></tr>
-<tr><td><strong>配网</strong></td><td>配网引导嘀声误导</td><td style="text-align:center;font-weight:600;color:#E74C3C">5</td><td><table style="margin:0"><tr><td class="quote"><span class="name">李玉佳</span></td><td class="quote">如果可以把按滴的那一声取消，远程绑定会更方便</td></tr>
-<tr><td class="quote"><span class="name">张宁</span></td><td class="quote">如果能取消按reset键这步能更方便老人使用</td></tr>
-<tr><td class="quote"><span class="name">谢光位</span></td><td class="quote">异地绑定，老人找不到按钮，用户需要2部手机，一边视频一边绑定设备，极不方便。建议 开通过sn码绑定</td></tr></table></td><td><span class="tag tag-progress">跟进中</span></td></tr><tr><td><strong>安装</strong></td><td>底座材质降级</td><td style="text-align:center;font-weight:600;color:#E74C3C">4</td><td><table style="margin:0"><tr><td class="quote"><span class="name">高瑞</span></td><td class="quote">整体配件不错，但是这次的底座为全塑料的，不知道后续如果使用底座螺口的时候，耐不耐用，容不容易晃。</td></tr>
-<tr><td class="quote"><span class="name">林志澄</span></td><td class="quote">底座螺丝孔建议使用原来金属的，比较耐用。</td></tr>
-<tr><td class="quote"><span class="name">陶双</span></td><td class="quote">底座中间固定孔全部为塑料螺纹，原来是金属螺纹，从耐久性考虑联系更换为金属的</td></tr></table></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>配网</strong></td><td>配网后云台不回正</td><td style="text-align:center;font-weight:600;color:#E74C3C">3</td><td><table style="margin:0"><tr><td class="quote"><span class="name">张宁</span></td><td class="quote">配网时需要手动拨动主机球体向上露出隐藏的reset键，如果不手动还原的话。通过app控制摄像头无法默认调回最低视角，必须先控制摄像头抬到最高视角之后（或者重启摄像头），才能恢复正常调节最低视角。这个问题没经验的人可能会以为是摄像头坏了，建议再配网提示文字或者说明书上提示一下。</td></tr>
-<tr><td class="quote"><span class="name">李玉佳</span></td><td class="quote">配网成功后，为什么摄像头不能自己回正呢？</td></tr>
-<tr><td class="quote"><span class="name">谢光位</span></td><td class="quote">首次绑定后向下移动视角，提示已到达边缘。实际并未到达底部边缘。向上移动到顶后再向下，底部边缘正常位置。建议：上次绑定时自动执行一次校准。</td></tr></table></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>安装</strong></td><td>底座松动/连接</td><td style="text-align:center;font-weight:600;color:#E74C3C">2</td><td><table style="margin:0"><tr><td class="quote"><span class="name">孙洪士</span></td><td class="quote">底座和主体卡扣不如以往，没有小水滴那样的紧，有松动感</td></tr>
-<tr><td class="quote"><span class="name">王亚兵</span></td><td class="quote">底座和摄像头的连接太松了，没有一点阻尼的感觉，我甚至感觉有上墙安装云台转动时有跌落的风险。</td></tr></table></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>安装</strong></td><td>底座磁吸需求</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><table style="margin:0"><tr><td class="quote"><span class="name">张一明</span></td><td class="quote">如果放在桌面上的还是比较喜欢磁吸。</td></tr></table></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>安装</strong></td><td>粘胶建议</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><table style="margin:0"><tr><td class="quote"><span class="name">闫贺</span></td><td class="quote">有没有那种强力胶不用打螺丝固定，粘上就掉不下来那种，适合那些喜欢吊顶安装的人</td></tr></table></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>配网</strong></td><td>不支持蓝牙配网说明需求</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><table style="margin:0"><tr><td class="quote"><span class="name">高瑞</span></td><td class="quote">2.目前该设备无法通过添加设备直接进行配网，建议说明书内增加相关说明。</td></tr></table></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>配网</strong></td><td>无网络提示缺失</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><table style="margin:0"><tr><td class="quote"><span class="name">曾文彬</span></td><td class="quote">设备自身没网络，就一直卡在添加设备中…然后等了很久弹出失败</td></tr>
-<tr><td colspan="2" class="quote">设备自身没网络的状态没有特别提醒，自身没网络如果用红灯闪烁就合理多了。</td></tr></table></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>配网</strong></td><td>远程配网4G专用标识需求</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><table style="margin:0"><tr><td class="quote"><span class="name">高瑞</span></td><td class="quote">1.可以对远程配网增加个标识为4G设备专用，这样不容易引起误会，不然有些用户可能会在设备无网络的状态下使用该功能，最后导致无法正常配网。</td></tr></table></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>配网</strong></td><td>重新配网隐私问题</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><table style="margin:0"><tr><td class="quote"><span class="name">王刚红</span></td><td class="quote">摄像机清配置清用户信息方式解绑，然后再重新绑定。开流页默认显示页面是解绑前的画面。如果摄像机送给别人，这隐私上有很大问题。</td></tr></table></td><td><span class="tag tag-progress">跟进中</span></td></tr></table></div>
+<tr><th style="width:10%">一级标签</th><th style="width:15%">二级标签</th><th style="width:8%">反馈人数</th><th>用户原声</th><th style="width:10%">状态</th></tr>
+<tr><td><strong>配网</strong></td><td>配网引导嘀声误导</td><td style="text-align:center;font-weight:600;color:#E74C3C">5</td><td><span class="quote"><span class="name">李玉佳</span>：如果可以把按滴的那一声取消，远程绑定会更方便</span><br><span class="quote"><span class="name">张宁</span>：如果能取消按reset键这步能更方便老人使用</span><br><span class="quote"><span class="name">谢光位</span>：异地绑定，老人找不到按钮，用户需要2部手机，一边视频一边绑定设备，极不方便。建议 开通过sn码绑定</span></td><td><span class="tag tag-progress">跟进中</span></td></tr><tr><td><strong>安装</strong></td><td>底座材质降级</td><td style="text-align:center;font-weight:600;color:#E74C3C">4</td><td><span class="quote"><span class="name">高瑞</span>：整体配件不错，但是这次的底座为全塑料的，不知道后续如果使用底座螺口的时候，耐不耐用，容不容易晃。</span><br><span class="quote"><span class="name">林志澄</span>：底座螺丝孔建议使用原来金属的，比较耐用。</span><br><span class="quote"><span class="name">陶双</span>：底座中间固定孔全部为塑料螺纹，原来是金属螺纹，从耐久性考虑联系更换为金属的</span></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>配网</strong></td><td>配网后云台不回正</td><td style="text-align:center;font-weight:600;color:#E74C3C">3</td><td><span class="quote"><span class="name">张宁</span>：配网时需要手动拨动主机球体向上露出隐藏的reset键，如果不手动还原的话。通过app控制摄像头无法默认调回最低视角，必须先控制摄像头抬到最高视角之后（或者重启摄像头），才能恢复正常调节最低视角。这个问题没经验的人可能会以为是摄像头坏了，建议再配网提示文字或者说明书上提示一下。</span><br><span class="quote"><span class="name">李玉佳</span>：配网成功后，为什么摄像头不能自己回正呢？</span><br><span class="quote"><span class="name">谢光位</span>：首次绑定后向下移动视角，提示已到达边缘。实际并未到达底部边缘。向上移动到顶后再向下，底部边缘正常位置。建议：上次绑定时自动执行一次校准。</span></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>安装</strong></td><td>底座松动/连接</td><td style="text-align:center;font-weight:600;color:#E74C3C">2</td><td><span class="quote"><span class="name">孙洪士</span>：底座和主体卡扣不如以往，没有小水滴那样的紧，有松动感</span><br><span class="quote"><span class="name">王亚兵</span>：底座和摄像头的连接太松了，没有一点阻尼的感觉，我甚至感觉有上墙安装云台转动时有跌落的风险。</span></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>安装</strong></td><td>底座磁吸需求</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><span class="quote"><span class="name">张一明</span>：如果放在桌面上的还是比较喜欢磁吸。</span></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>安装</strong></td><td>粘胶建议</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><span class="quote"><span class="name">闫贺</span>：有没有那种强力胶不用打螺丝固定，粘上就掉不下来那种，适合那些喜欢吊顶安装的人</span></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>配网</strong></td><td>不支持蓝牙配网说明需求</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><span class="quote"><span class="name">高瑞</span>：2.目前该设备无法通过添加设备直接进行配网，建议说明书内增加相关说明。</span></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>配网</strong></td><td>无网络提示缺失</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><span class="quote"><span class="name">曾文彬</span>：设备自身没网络，就一直卡在添加设备中…然后等了很久弹出失败</span><br><span class="quote"><span class="name">设备自身没网络的状态没有特别提醒，自身没网络如果用红灯闪烁就合理多了。</span>：设备自身没网络的状态没有特别提醒，自身没网络如果用红灯闪烁就合理多了。</span></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>配网</strong></td><td>远程配网4G专用标识需求</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><span class="quote"><span class="name">高瑞</span>：1.可以对远程配网增加个标识为4G设备专用，这样不容易引起误会，不然有些用户可能会在设备无网络的状态下使用该功能，最后导致无法正常配网。</span></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>配网</strong></td><td>重新配网隐私问题</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><span class="quote"><span class="name">王刚红</span>：摄像机清配置清用户信息方式解绑，然后再重新绑定。开流页默认显示页面是解绑前的画面。如果摄像机送给别人，这隐私上有很大问题。</span></td><td><span class="tag tag-progress">跟进中</span></td></tr></table></div>
 <div class="section">
 <h2>改进建议汇总</h2>
 <table>
@@ -96,5 +92,38 @@ tr:hover td { background: #f9f9f9; }
 <p>数据来源：配网安装问卷(29人) + 专项跟进表 | 满意度评分：问卷评分</p>
 </div>
 </div>
+<script>
+// 配网方式分布饼图
+var chartMethod = echarts.init(document.getElementById('chart-method'));
+chartMethod.setOption({
+    tooltip: { trigger: 'item', formatter: '{b}: {c}人 ({d}%)' },
+    legend: { bottom: 0, left: 'center', fontSize: 11 },
+    color: ['#00B050', '#2BBD6E', '#F39C12'],
+    series: [{
+        type: 'pie', radius: ['35%', '65%'], center: ['50%', '42%'],
+        label: { formatter: '{b}\n{c}人', fontSize: 11 },
+        data: [
+            { value: 16, name: '扫一扫' },
+            { value: 9, name: '远程绑定' },
+            { value: 4, name: '分类添加' }
+        ]
+    }]
+});
+
+// 绑定成功率柱状图
+var chartSuccess = echarts.init(document.getElementById('chart-success'));
+chartSuccess.setOption({
+    tooltip: { trigger: 'axis' },
+    xAxis: { type: 'category', data: ['一次成功', '失败一次后成功', '一直不成功'], axisLabel: { fontSize: 11 } },
+    yAxis: { type: 'value', name: '人数' },
+    grid: { left: '10%', right: '10%', bottom: '15%' },
+    series: [{
+        type: 'bar', barWidth: '40%',
+        itemStyle: { color: function(params) { return ['#27AE60', '#F39C12', '#E74C3C'][params.dataIndex]; } },
+        label: { show: true, position: 'top', formatter: '{c}人' },
+        data: [26, 2, 1]
+    }]
+});
+</script>
 </body>
 </html>
