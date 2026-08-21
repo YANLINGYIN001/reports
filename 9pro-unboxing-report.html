@@ -11,29 +11,42 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: white; padding: 30px; border-radius: 12px; margin-bottom: 20px; }
 .header h1 { font-size: 22px; margin-bottom: 8px; }
 .header .meta { font-size: 14px; opacity: 0.9; }
-.kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
 .kpi-card { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .kpi-card .number { font-size: 28px; font-weight: 700; color: #00B050; }
 .kpi-card .label { font-size: 13px; color: #666; margin-top: 4px; }
+.kpi-card .sub { font-size: 11px; color: #999; margin-top: 2px; }
 .section { background: white; border-radius: 10px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .section h2 { font-size: 18px; color: #333; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #00B050; }
 .section h3 { font-size: 15px; color: #555; margin: 16px 0 10px 0; }
 .insight { background: #f0fdf4; border-left: 4px solid #00B050; padding: 12px 16px; border-radius: 4px; margin-bottom: 12px; font-size: 14px; }
 .insight.warning { background: #fef3cd; border-left-color: #F39C12; }
 .insight.danger { background: #fce4e4; border-left-color: #E74C3C; }
+.module-summary { padding: 10px 16px; border-radius: 6px; margin-bottom: 16px; font-size: 14px; font-weight: 500; }
+.module-summary.ok { background: #f0fdf4; color: #00B050; }
+.module-summary.warn { background: #fef3cd; color: #F39C12; }
+.module-summary.bad { background: #fce4e4; color: #E74C3C; }
 table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 14px; }
 th { background: #00B050; color: white; padding: 10px 12px; text-align: left; font-weight: 500; }
 td { padding: 10px 12px; border-bottom: 1px solid #eee; }
 tr:hover td { background: #f9f9f9; }
-.score-row td:first-child { font-weight: 500; }
-.score-value { font-weight: 600; color: #00B050; }
-.score-low { color: #E74C3C; }
-.score-high { color: #27AE60; }
-.quote { font-size: 13px; color: #555; line-height: 1.8; padding: 4px 0; }
+.bar-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.bar-label { width: 110px; font-size: 13px; text-align: right; }
+.bar-bg { flex: 1; background: #eee; height: 24px; border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; }
+.bar-fill.high { background: #27AE60; }
+.bar-fill.mid { background: #F39C12; }
+.bar-fill.low { background: #E74C3C; }
+.bar-val { width: 50px; font-size: 13px; font-weight: 600; }
+.quote { font-size: 13px; color: #555; line-height: 1.6; }
 .quote .name { color: #00B050; font-weight: 500; }
-.pain-title { color: #E74C3C; font-weight: 600; }
-.solution { font-size: 13px; color: #666; margin-top: 4px; }
-.solution strong { color: #333; }
+.pain-title { color: #E74C3C; font-weight: 600; font-size: 15px; }
+.solution-box { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 10px 14px; margin: 8px 0; font-size: 13px; }
+.solution-box strong { color: #333; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; margin-right: 4px; }
+.tag-done { background: #27AE60; color: white; }
+.tag-progress { background: #F39C12; color: white; }
+.tag-reject { background: #999; color: white; }
 .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
 </style>
 </head>
@@ -46,40 +59,39 @@ tr:hover td { background: #f9f9f9; }
 
 <div class="kpi-row">
 <div class="kpi-card"><div class="number">30</div><div class="label">样本量</div><div class="sub">30人完成</div></div>
-<div class="kpi-card"><div class="number">9.0</div><div class="label">平均满意度</div><div class="sub">满分10分</div></div>
-<div class="kpi-card"><div class="number">10</div><div class="label">问题主题</div><div class="sub">4项需改进</div></div>
+<div class="kpi-card"><div class="number">9.1</div><div class="label">四维度均分</div><div class="sub">满分10分</div></div>
+<div class="kpi-card"><div class="number">8.7</div><div class="label">最低分-手感</div><div class="sub">需重点关注</div></div>
+<div class="kpi-card"><div class="number">9.7</div><div class="label">最高分-配件完整性</div><div class="sub">表现优异</div></div>
 </div>
 
 <div class="section">
-<h2>满意度评分</h2>
-<h3>外包装</h3>
-<table><tr><th>维度</th><th>平均分</th><th>参与人数</th></tr>
-<tr class="score-row"><td>外包装总体</td><td class="score-value">8.8</td><td>30人参与</td></tr><tr class="score-row"><td>美观性</td><td class="score-high">9.0</td><td>30人参与</td></tr><tr class="score-row"><td>包装质量</td><td class="score-high">9.3</td><td>30人参与</td></tr><tr class="score-row"><td>异味</td><td class="score-high">9.4</td><td>30人参与</td></tr><tr class="score-row"><td>拆取便捷</td><td class="score-high">9.5</td><td>30人参与</td></tr></table><h3>内包装</h3>
-<table><tr><th>维度</th><th>平均分</th><th>参与人数</th></tr>
-<tr class="score-row"><td>内包装总体</td><td class="score-high">9.1</td><td>30人参与</td></tr><tr class="score-row"><td>布局合理性</td><td class="score-high">9.6</td><td>30人参与</td></tr><tr class="score-row"><td>配件完整性</td><td class="score-high">9.7</td><td>30人参与</td></tr><tr class="score-row"><td>配件包装美观</td><td class="score-high">9.3</td><td>30人参与</td></tr></table><h3>外观</h3>
-<table><tr><th>维度</th><th>平均分</th><th>参与人数</th></tr>
-<tr class="score-row"><td>外观总体</td><td class="score-high">9.3</td><td>30人参与</td></tr><tr class="score-row"><td>外观设计</td><td class="score-high">9.2</td><td>30人参与</td></tr><tr class="score-row"><td>颜色</td><td class="score-high">9.4</td><td>30人参与</td></tr><tr class="score-row"><td>造型</td><td class="score-high">9.3</td><td>30人参与</td></tr><tr class="score-row"><td>大小</td><td class="score-high">9.5</td><td>30人参与</td></tr><tr class="score-row"><td>材质</td><td class="score-high">9.2</td><td>30人参与</td></tr><tr class="score-row"><td>手感</td><td class="score-value">8.7</td><td>30人参与</td></tr><tr class="score-row"><td>配件材质</td><td class="score-high">9.1</td><td>30人参与</td></tr></table><h3>说明书</h3>
-<table><tr><th>维度</th><th>平均分</th><th>参与人数</th></tr>
-<tr class="score-row"><td>说明书总体</td><td class="score-high">9.1</td><td>30人参与</td></tr><tr class="score-row"><td>内容完整性</td><td class="score-high">9.1</td><td>30人参与</td></tr><tr class="score-row"><td>清晰易懂</td><td class="score-high">9.6</td><td>30人参与</td></tr><tr class="score-row"><td>准确性</td><td class="score-high">9.5</td><td>30人参与</td></tr></table></div>
+<h2>核心洞察</h2>
+<div class="insight danger"><b>做工品控是最大短板：</b>缝隙不均匀8人反馈（手感8.7为全维度最低），镜头胶圈不平整1人，量产已加螺丝改进中。</div>
+<div class="insight warning"><b>4G标识缺失突出：</b>7人反馈外包装缺少4G元素，与普通版区分不开，已在更新图档第二批导入。</div>
+<div class="insight"><b>内包装&配件保护待优化：</b>主机裸包装2人、配件包挤压2人、保护膜不好拆2人，但当前方案暂不调整。</div>
+<div class="insight"><b>说明书表现优异：</b>清晰易懂9.6分、准确性9.5分，仅个别4G优点介绍和视频二维码需求。</div>
+</div>
+
 <div class="section">
-<h2>核心痛点（专项跟进表）</h2>
-<div style="margin:16px 0; padding:16px; background:#fff5f5; border-radius:8px;"><h3 class="pain-title">①硬件>缝隙不均匀 (8人)</h3><div class="quote"><div class="quote"><span class="name">龚粒宇</span>：摄像头顶部缝隙大</div>
-<div class="quote"><span class="name">苗欣丽</span>：刚收到货，拆开包装了，检查外观之后发现摄像头头顶的地方有一条缝</div>
-<div class="quote"><span class="name">齐彩英</span>：不贴合，缝隙太大</div>
-<div class="quote"><span class="name">陶双</span>：摄像头镜头缝隙有点大，做工需要加强</div>
-<div class="quote"><span class="name">王亚兵</span>：手感不是特别高端，做工也不是特别的精美，缝隙处有点不均匀</div>
-<div class="quote"><span class="name">闫贺</span>：品控差点，这样更显廉价质感了</div>
-<div class="quote"><span class="name">张鹏鑫</span>：品控有问题，打开包装都有一条缝</div>
-<div class="quote"><span class="name">张一明</span>：缝隙不一致。摄像头黑胶有压痕。</div></div><div class="solution"><b>解决方案：</b>量产加螺丝，已经发邮件了</div><div class="solution"><b>责任人：</b>夏锐贤</div></div><div style="margin:16px 0; padding:16px; background:#fff5f5; border-radius:8px;"><h3 class="pain-title">①外包装>4G标识缺失 (7人)</h3><div class="quote"><div class="quote"><span class="name">方家欢</span>：1.包装及设备外观没有突出4G无限流量</div>
-<div class="quote"><span class="name">黄显森</span>：外包装4G版和普通版区别不明显</div>
-<div class="quote"><span class="name">林志澄</span>：外包装建议在显眼的地方显示“4G终身免流”“支持远程绑定”，突出产品特点。</div>
-<div class="quote"><span class="name">陶双</span>：整个机器外观设计少点4g标识，可以增加点4g元素设计在侧面</div>
-<div class="quote"><span class="name">王刚红</span>：4G摄像机，但外包装上关于4G元素一个都没有。</div>
-<div class="quote"><span class="name">王亚兵</span>：外包装用的原来的包装没有刻意体现出来4g的特性。只是多了一个贴纸。</div>
-<div class="quote"><span class="name">张鹏鑫</span>：很好看，但是正面没有4g标识，跟普通9pro区分不开</div></div><div class="solution"><b>解决方案：</b>已在更新图档，第二批导入</div><div class="solution"><b>责任人：</b>孙青根</div></div><div style="margin:16px 0; padding:16px; background:#fff5f5; border-radius:8px;"><h3 class="pain-title">①开箱>缺少配网卡 (5人)</h3><div class="quote"><div class="quote"><span class="name">林志澄</span>：配件里面缺少《配网卡》</div></div><div class="solution"><b>解决方案：</b>量产已增加</div><div class="solution"><b>责任人：</b>孙青根</div></div><div style="margin:16px 0; padding:16px; background:#fff5f5; border-radius:8px;"><h3 class="pain-title">①内包装>主机包装需求 (2人)</h3><div class="quote"><div class="quote"><span class="name">孙洪士</span>：设备没有内包装，容易摩擦出痕迹，建议有内塑料袋包装</div>
-<div class="quote"><span class="name">王刚红</span>：摄像机主机应该要用塑料袋装起来保护。连电源适配器配角都有塑料袋保护，主角却没有！摄像机主机是裸包装的。</div></div><div class="solution"><b>解决方案：</b>先不采纳</div><div class="solution"><b>责任人：</b>孙青根</div></div><div style="margin:16px 0; padding:16px; background:#fff5f5; border-radius:8px;"><h3 class="pain-title">①内包装>配件包有挤压 (2人)</h3><div class="quote"><div class="quote"><span class="name">高瑞</span>：正常状态(由于底部是放置的摄像头，配件包装存在挤压有凹陷)</div>
-<div class="quote"><span class="name">陶双</span>：配件盒子挤压变形，边角有破损，需要加强保护</div></div><div class="solution"><b>解决方案：</b>先忽略</div><div class="solution"><b>责任人：</b>夏锐贤</div></div><div style="margin:16px 0; padding:16px; background:#fff5f5; border-radius:8px;"><h3 class="pain-title">①外包装>保护膜不好拆 (2人)</h3><div class="quote"><div class="quote"><span class="name">高瑞</span>：便捷，但是塑封膜较厚，最好需要使用刀片割个口，保障性较好。</div>
-<div class="quote"><span class="name">曾文彬</span>：没有保护膜快撕设计，撕膜不方便只能硬抠</div></div><div class="solution"><b>解决方案：</b>不考虑</div><div class="solution"><b>责任人：</b>孙青根</div></div><div style="margin:8px 0; padding:12px; background:#fafafa; border-radius:8px;"><strong>硬件>镜头胶圈不平整</strong> (1人)<div class="solution"><b>方案：</b>已知问题；工厂限度样管控 | 责任人：夏锐贤</div></div><div style="margin:8px 0; padding:12px; background:#fafafa; border-radius:8px;"><strong>说明书>4G优点介绍缺失</strong> (1人)<div class="solution"><b>方案：</b>不考虑 | 责任人：夏锐贤</div></div><div style="margin:8px 0; padding:12px; background:#fafafa; border-radius:8px;"><strong>说明书>视频二维码需求</strong> (1人)<div class="solution"><b>方案：</b>不考虑 | 责任人：夏锐贤</div></div><div style="margin:8px 0; padding:12px; background:#fafafa; border-radius:8px;"><strong>说明书>说明书清晰度</strong> (1人)<div class="solution"><b>方案：</b>产线管控 | 责任人：夏锐贤</div></div></div>
+<h2>满意度评分（横向柱形图）</h2>
+<h3>外包装</h3><div class="bar-row"><div class="bar-label">外包装总体</div><div class="bar-bg"><div class="bar-fill mid" style="width:88.00000000000001%"></div></div><div class="bar-val">8.8</div></div><div class="bar-row"><div class="bar-label">美观性</div><div class="bar-bg"><div class="bar-fill high" style="width:90.0%"></div></div><div class="bar-val">9.0</div></div><div class="bar-row"><div class="bar-label">包装质量</div><div class="bar-bg"><div class="bar-fill high" style="width:93.33333333333333%"></div></div><div class="bar-val">9.3</div></div><div class="bar-row"><div class="bar-label">异味</div><div class="bar-bg"><div class="bar-fill high" style="width:94.33333333333334%"></div></div><div class="bar-val">9.4</div></div><div class="bar-row"><div class="bar-label">拆取便捷</div><div class="bar-bg"><div class="bar-fill high" style="width:95.33333333333334%"></div></div><div class="bar-val">9.5</div></div><h3>内包装</h3><div class="bar-row"><div class="bar-label">内包装总体</div><div class="bar-bg"><div class="bar-fill high" style="width:90.99999999999999%"></div></div><div class="bar-val">9.1</div></div><div class="bar-row"><div class="bar-label">布局合理性</div><div class="bar-bg"><div class="bar-fill high" style="width:96.0%"></div></div><div class="bar-val">9.6</div></div><div class="bar-row"><div class="bar-label">配件完整性</div><div class="bar-bg"><div class="bar-fill high" style="width:96.66666666666666%"></div></div><div class="bar-val">9.7</div></div><div class="bar-row"><div class="bar-label">配件包装美观</div><div class="bar-bg"><div class="bar-fill high" style="width:93.33333333333333%"></div></div><div class="bar-val">9.3</div></div><h3>外观</h3><div class="bar-row"><div class="bar-label">外观总体</div><div class="bar-bg"><div class="bar-fill high" style="width:92.66666666666667%"></div></div><div class="bar-val">9.3</div></div><div class="bar-row"><div class="bar-label">外观设计</div><div class="bar-bg"><div class="bar-fill high" style="width:92.0%"></div></div><div class="bar-val">9.2</div></div><div class="bar-row"><div class="bar-label">颜色</div><div class="bar-bg"><div class="bar-fill high" style="width:94.33333333333334%"></div></div><div class="bar-val">9.4</div></div><div class="bar-row"><div class="bar-label">造型</div><div class="bar-bg"><div class="bar-fill high" style="width:92.66666666666667%"></div></div><div class="bar-val">9.3</div></div><div class="bar-row"><div class="bar-label">大小</div><div class="bar-bg"><div class="bar-fill high" style="width:95.0%"></div></div><div class="bar-val">9.5</div></div><div class="bar-row"><div class="bar-label">材质</div><div class="bar-bg"><div class="bar-fill high" style="width:92.0%"></div></div><div class="bar-val">9.2</div></div><div class="bar-row"><div class="bar-label">手感</div><div class="bar-bg"><div class="bar-fill mid" style="width:86.99999999999999%"></div></div><div class="bar-val">8.7</div></div><div class="bar-row"><div class="bar-label">配件材质</div><div class="bar-bg"><div class="bar-fill high" style="width:90.99999999999999%"></div></div><div class="bar-val">9.1</div></div><h3>说明书</h3><div class="bar-row"><div class="bar-label">说明书总体</div><div class="bar-bg"><div class="bar-fill high" style="width:90.66666666666666%"></div></div><div class="bar-val">9.1</div></div><div class="bar-row"><div class="bar-label">内容完整性</div><div class="bar-bg"><div class="bar-fill high" style="width:90.66666666666666%"></div></div><div class="bar-val">9.1</div></div><div class="bar-row"><div class="bar-label">清晰易懂</div><div class="bar-bg"><div class="bar-fill high" style="width:95.66666666666667%"></div></div><div class="bar-val">9.6</div></div><div class="bar-row"><div class="bar-label">准确性</div><div class="bar-bg"><div class="bar-fill high" style="width:94.66666666666667%"></div></div><div class="bar-val">9.5</div></div></div>
+<div class="section">
+<h2>问题汇总（专项跟进表）</h2>
+<table>
+<tr><th style="width:15%">问题分类</th><th style="width:15%">问题标签</th><th style="width:8%">反馈人数</th><th>用户原声</th><th style="width:12%">状态</th></tr>
+<tr><td><strong>硬件</strong></td><td>缝隙不均匀</td><td style="text-align:center;font-weight:600;color:#E74C3C">8</td><td><table style="margin:0"><tr><td class="quote"><span class="name">龚粒宇</span></td><td class="quote">摄像头顶部缝隙大</td></tr>
+<tr><td class="quote"><span class="name">苗欣丽</span></td><td class="quote">刚收到货，拆开包装了，检查外观之后发现摄像头头顶的地方有一条缝</td></tr>
+<tr><td class="quote"><span class="name">齐彩英</span></td><td class="quote">不贴合，缝隙太大</td></tr></table></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>外包装</strong></td><td>4G标识缺失</td><td style="text-align:center;font-weight:600;color:#E74C3C">7</td><td><table style="margin:0"><tr><td class="quote"><span class="name">方家欢</span></td><td class="quote">1.包装及设备外观没有突出4G无限流量</td></tr>
+<tr><td class="quote"><span class="name">黄显森</span></td><td class="quote">外包装4G版和普通版区别不明显</td></tr>
+<tr><td class="quote"><span class="name">林志澄</span></td><td class="quote">外包装建议在显眼的地方显示“4G终身免流”“支持远程绑定”，突出产品特点。</td></tr></table></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>开箱</strong></td><td>缺少配网卡</td><td style="text-align:center;font-weight:600;color:#E74C3C">5</td><td><table style="margin:0"><tr><td class="quote"><span class="name">林志澄</span></td><td class="quote">配件里面缺少《配网卡》</td></tr></table></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>内包装</strong></td><td>主机包装需求</td><td style="text-align:center;font-weight:600;color:#E74C3C">2</td><td><table style="margin:0"><tr><td class="quote"><span class="name">孙洪士</span></td><td class="quote">设备没有内包装，容易摩擦出痕迹，建议有内塑料袋包装</td></tr>
+<tr><td class="quote"><span class="name">王刚红</span></td><td class="quote">摄像机主机应该要用塑料袋装起来保护。连电源适配器配角都有塑料袋保护，主角却没有！摄像机主机是裸包装的。</td></tr></table></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>内包装</strong></td><td>配件包有挤压</td><td style="text-align:center;font-weight:600;color:#E74C3C">2</td><td><table style="margin:0"><tr><td class="quote"><span class="name">高瑞</span></td><td class="quote">正常状态(由于底部是放置的摄像头，配件包装存在挤压有凹陷)</td></tr>
+<tr><td class="quote"><span class="name">陶双</span></td><td class="quote">配件盒子挤压变形，边角有破损，需要加强保护</td></tr></table></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>外包装</strong></td><td>保护膜不好拆</td><td style="text-align:center;font-weight:600;color:#E74C3C">2</td><td><table style="margin:0"><tr><td class="quote"><span class="name">高瑞</span></td><td class="quote">便捷，但是塑封膜较厚，最好需要使用刀片割个口，保障性较好。</td></tr>
+<tr><td class="quote"><span class="name">曾文彬</span></td><td class="quote">没有保护膜快撕设计，撕膜不方便只能硬抠</td></tr></table></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>硬件</strong></td><td>镜头胶圈不平整</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><table style="margin:0"><tr><td class="quote"><span class="name">陶双</span></td><td class="quote">镜头胶圈不平整，有毛刺，做工不精细</td></tr></table></td><td><span class="tag tag-done">已解决</span></td></tr><tr><td><strong>说明书</strong></td><td>4G优点介绍缺失</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><table style="margin:0"><tr><td class="quote"><span class="name">林志澄</span></td><td class="quote">缺少4G终身免流的介绍和远程配网的介绍。</td></tr></table></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>说明书</strong></td><td>视频二维码需求</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><table style="margin:0"><tr><td class="quote"><span class="name">张一明</span></td><td class="quote">考虑老年人使用的话缺少视频说明二维码</td></tr></table></td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td><strong>说明书</strong></td><td>说明书清晰度</td><td style="text-align:center;font-weight:600;color:#E74C3C">1</td><td><table style="margin:0"><tr><td class="quote"><span class="name">龚粒宇</span></td><td class="quote">无说明书。无法评价，在线说明书未及时根据新版本更新。</td></tr></table></td><td><span class="tag tag-progress">跟进中</span></td></tr></table></div>
+<div class="section">
+<h2>改进建议汇总</h2>
+<table>
+<tr><th>问题标签</th><th>反馈人数</th><th>解决方案</th><th>责任人</th><th>状态</th></tr>
+<tr><td>硬件>缝隙不均匀</td><td style="text-align:center;font-weight:600">8</td><td>量产加螺丝，已经发邮件了</td><td>夏锐贤</td><td><span class="tag tag-done">已解决</span></td></tr><tr><td>外包装>4G标识缺失</td><td style="text-align:center;font-weight:600">7</td><td>已在更新图档，第二批导入</td><td>孙青根</td><td><span class="tag tag-done">已解决</span></td></tr><tr><td>开箱>缺少配网卡</td><td style="text-align:center;font-weight:600">5</td><td>量产已增加</td><td>孙青根</td><td><span class="tag tag-done">已解决</span></td></tr><tr><td>内包装>主机包装需求</td><td style="text-align:center;font-weight:600">2</td><td>先不采纳</td><td>孙青根</td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td>内包装>配件包有挤压</td><td style="text-align:center;font-weight:600">2</td><td>先忽略</td><td>夏锐贤</td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td>外包装>保护膜不好拆</td><td style="text-align:center;font-weight:600">2</td><td>不考虑</td><td>孙青根</td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td>硬件>镜头胶圈不平整</td><td style="text-align:center;font-weight:600">1</td><td>已知问题；工厂限度样管控</td><td>夏锐贤</td><td><span class="tag tag-done">已解决</span></td></tr><tr><td>说明书>4G优点介绍缺失</td><td style="text-align:center;font-weight:600">1</td><td>不考虑</td><td>夏锐贤</td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td>说明书>视频二维码需求</td><td style="text-align:center;font-weight:600">1</td><td>不考虑</td><td>夏锐贤</td><td><span class="tag tag-reject">暂不处理</span></td></tr><tr><td>说明书>说明书清晰度</td><td style="text-align:center;font-weight:600">1</td><td>产线管控</td><td>夏锐贤</td><td><span class="tag tag-progress">跟进中</span></td></tr></table></div>
 <div class="footer">
 <p>9pro 400万4G云台公测 · 开箱体验报告 · 2026-08-21</p>
 <p>数据来源：开箱体验问卷(30人) + 专项跟进表 | 满意度评分：问卷评分</p>
