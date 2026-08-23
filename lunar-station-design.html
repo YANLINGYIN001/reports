@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>未来月球空间站设计 · 生存系统蓝图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{
+    --bg-deep:#0a0e27;--bg-panel:rgba(20,30,60,.85);
+    --cyan:#00f0ff;--green:#10d96a;--orange:#ff8c42;--purple:#8b5cf6;
+    --text:#e8f0ff;--sub:#94a3b8;--glow:rgba(0,240,255,.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg-deep);color:var(--text);overflow-x:hidden;
+    background-image:radial-gradient(ellipse at 20% 10%,rgba(139,92,246,.15) 0%,transparent 50%),
+      radial-gradient(ellipse at 80% 80%,rgba(59,130,246,.12) 0%,transparent 50%),
+      radial-gradient(ellipse at 50% 50%,rgba(0,240,255,.05) 0%,transparent 70%),linear-gradient(180deg,#0a0e27,#0d1130)}
+  .stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+  .star{position:absolute;background:#fff;border-radius:50%;animation:tw 3s infinite}
+  @keyframes tw{0%,100%{opacity:.3}50%{opacity:1}}
+  .container{max-width:1200px;margin:0 auto;padding:40px 24px 60px;position:relative;z-index:1}
+  .header{text-align:center;margin-bottom:48px;position:relative}
+  .header .tag{display:inline-block;font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:4px;
+    color:var(--cyan);border:1px solid var(--cyan);padding:4px 16px;border-radius:20px;margin-bottom:16px;text-transform:uppercase}
+  .header h1{font-family:'Orbitron',sans-serif;font-size:42px;font-weight:900;letter-spacing:2px;
+    background:linear-gradient(135deg,#00f0ff,#8b5cf6,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+  .header .sub{font-size:16px;color:var(--sub);letter-spacing:1px}
+  .header .moon{position:absolute;top:-20px;right:10%;width:80px;height:80px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%,#e8e8e8,#b0b0b0 40%,#707070 80%,#404040);
+    box-shadow:0 0 40px rgba(200,200,200,.15),inset -10px -10px 30px rgba(0,0,0,.5);opacity:.6}
+  .diagram{background:var(--bg-panel);border:1px solid var(--glow);border-radius:20px;padding:40px;margin-bottom:48px;
+    position:relative;backdrop-filter:blur(10px);box-shadow:0 0 60px rgba(0,240,255,.08)}
+  .grid-bg{position:absolute;top:0;left:0;right:0;bottom:0;border-radius:20px;
+    background-image:linear-gradient(rgba(0,240,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,240,255,.06) 1px,transparent 1px);
+    background-size:40px 40px;pointer-events:none;opacity:.5}
+  .svg-wrap{position:relative;z-index:1;display:flex;justify-content:center}
+  .svg-wrap svg{max-width:100%;height:auto}
+  .cap{text-align:center;font-family:'Orbitron',sans-serif;font-size:13px;color:var(--cyan);letter-spacing:3px;margin-top:16px;text-transform:uppercase}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:48px}
+  .card{background:var(--bg-panel);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;
+    position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;backdrop-filter:blur(10px)}
+  .card:hover{transform:translateY(-4px);box-shadow:0 8px 40px rgba(0,240,255,.1)}
+  .card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
+  .card.water::before{background:var(--cyan)}.card.oxygen::before{background:var(--green)}
+  .card.food::before{background:var(--orange)}.card.energy::before{background:var(--purple)}
+  .ch{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .ci{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+  .water .ci{background:rgba(0,240,255,.15)}.oxygen .ci{background:rgba(16,217,106,.15)}
+  .food .ci{background:rgba(255,140,66,.15)}.energy .ci{background:rgba(139,92,246,.15)}
+  .ct{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700}
+  .water .ct{color:var(--cyan)}.oxygen .ct{color:var(--green)}.food .ct{color:var(--orange)}.energy .ct{color:var(--purple)}
+  .cs{font-size:12px;color:var(--sub);letter-spacing:1px;margin-top:2px}
+  .slist{list-style:none;margin-top:12px}
+  .slist li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.7}
+  .slist li:last-child{border-bottom:none}
+  .b{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:2px}
+  .water .b{background:rgba(0,240,255,.2);color:var(--cyan)}.oxygen .b{background:rgba(16,217,106,.2);color:var(--green)}
+  .food .b{background:rgba(255,140,66,.2);color:var(--orange)}.energy .b{background:rgba(139,92,246,.2);color:var(--purple)}
+  .tag{display:inline-block;font-family:'Orbitron',sans-serif;font-size:10px;padding:1px 6px;border-radius:4px;margin-right:4px;vertical-align:middle}
+  .water .tag{background:rgba(0,240,255,.15);color:var(--cyan)}.oxygen .tag{background:rgba(16,217,106,.15);color:var(--green)}
+  .food .tag{background:rgba(255,140,66,.15);color:var(--orange)}.energy .tag{background:rgba(139,92,246,.15);color:var(--purple)}
+  .loop{background:var(--bg-panel);border:1px solid var(--glow);border-radius:20px;padding:36px;margin-bottom:40px;text-align:center;backdrop-filter:blur(10px)}
+  .loop h2{font-family:'Orbitron',sans-serif;font-size:24px;margin-bottom:8px;background:linear-gradient(90deg,#00f0ff,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .loop p{color:var(--sub);font-size:14px;margin-bottom:24px}
+  .flow{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
+  .fn{padding:12px 20px;border-radius:12px;font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;border:1px solid}
+  .fa{font-size:20px;color:var(--sub)}
+  .fn.e{border-color:var(--purple);color:var(--purple);background:rgba(139,92,246,.1)}
+  .fn.w{border-color:var(--cyan);color:var(--cyan);background:rgba(0,240,255,.1)}
+  .fn.f{border-color:var(--orange);color:var(--orange);background:rgba(255,140,66,.1)}
+  .fn.o{border-color:var(--green);color:var(--green);background:rgba(16,217,106,.1)}
+  .fn.h{border-color:#fbbf24;color:#fbbf24;background:rgba(251,191,36,.1)}
+  .footer{text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,.05)}
+  .footer p{font-size:12px;color:var(--sub);letter-spacing:1px}
+  .footer .cr{font-family:'Orbitron',sans-serif;color:var(--cyan);margin-top:8px}
+  @media(max-width:768px){.grid{grid-template-columns:1fr}.header h1{font-size:28px}.header .moon{display:none}}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="container">
+
+  <div class="header">
+    <div class="moon"></div>
+    <span class="tag">PROJECT ARTEMIS · 2089</span>
+    <h1>LUNAR STATION</h1>
+    <p class="sub">未来月球空间站设计 · 人类生存系统蓝图</p>
+  </div>
+
+  <!-- SVG 空间站示意图 -->
+  <div class="diagram">
+    <div class="grid-bg"></div>
+    <div class="svg-wrap">
+      <svg width="900" height="320" viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="domeG" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#00f0ff" stop-opacity=".25"/>
+            <stop offset="100%" stop-color="#00f0ff" stop-opacity=".03"/>
+          </radialGradient>
+          <radialGradient id="domeO" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ff8c42" stop-opacity=".25"/>
+            <stop offset="100%" stop-color="#ff8c42" stop-opacity=".03"/>
+          </radialGradient>
+          <radialGradient id="domeP" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#8b5cf6" stop-opacity=".25"/>
+            <stop offset="100%" stop-color="#8b5cf6" stop-opacity=".03"/>
+          </radialGradient>
+          <linearGradient id="solarG" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#3b82f6" stop-opacity=".5"/>
+            <stop offset="100%" stop-color="#1e40af" stop-opacity=".7"/>
+          </linearGradient>
+          <filter id="glo"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+
+        <!-- 月球地平线 -->
+        <ellipse cx="450" cy="305" rx="500" ry="35" fill="#2a2a3a" opacity=".4"/>
+        <path d="M0 292 Q200 272 400 287 Q600 277 900 290 L900 320 L0 320 Z" fill="#15152a" opacity=".7"/>
+        <ellipse cx="120" cy="296" rx="25" ry="5" fill="#0d0d1a" opacity=".5"/>
+        <ellipse cx="580" cy="299" rx="35" ry="6" fill="#0d0d1a" opacity=".5"/>
+        <ellipse cx="770" cy="294" rx="18" ry="4" fill="#0d0d1a" opacity=".5"/>
+
+        <!-- 连接通道 -->
+        <line x1="340" y1="260" x2="380" y2="260" stroke="#00f0ff" stroke-width="3" opacity=".5"/>
+        <line x1="520" y1="260" x2="560" y2="260" stroke="#00f0ff" stroke-width="3" opacity=".5"/>
+
+        <!-- 农业穹顶（左） -->
+        <path d="M180 280 Q180 170 260 170 Q340 170 340 280 Z" fill="url(#domeO)" stroke="#ff8c42" stroke-width="1.5" filter="url(#glo)"/>
+        <line x1="260" y1="170" x2="260" y2="280" stroke="#ff8c42" stroke-width=".5" opacity=".3"/>
+        <line x1="200" y1="210" x2="320" y2="210" stroke="#ff8c42" stroke-width=".4" opacity=".25"/>
+        <text x="260" y="225" text-anchor="middle" fill="#ff8c42" font-family="Orbitron" font-size="10" opacity=".7">农业舱</text>
+
+        <!-- 主穹顶-居住区（中） -->
+        <path d="M350 280 Q350 130 450 130 Q550 130 550 280 Z" fill="url(#domeG)" stroke="#00f0ff" stroke-width="1.5" filter="url(#glo)"/>
+        <line x1="450" y1="130" x2="450" y2="280" stroke="#00f0ff" stroke-width=".5" opacity=".3"/>
+        <line x1="375" y1="175" x2="525" y2="175" stroke="#00f0ff" stroke-width=".4" opacity=".25"/>
+        <line x1="365" y1="220" x2="535" y2="220" stroke="#00f0ff" stroke-width=".4" opacity=".25"/>
+        <text x="450" y="250" text-anchor="middle" fill="#00f0ff" font-family="Orbitron" font-size="10" opacity=".7">居住舱</text>
+
+        <!-- 能源舱（右） -->
+        <rect x="560" y="195" width="75" height="85" rx="8" fill="url(#domeP)" stroke="#8b5cf6" stroke-width="1.5" filter="url(#glo)"/>
+        <rect x="570" y="205" width="22" height="22" rx="3" fill="none" stroke="#8b5cf6" stroke-width=".5" opacity=".4"/>
+        <rect x="598" y="205" width="22" height="22" rx="3" fill="none" stroke="#8b5cf6" stroke-width=".5" opacity=".4"/>
+        <rect x="570" y="233" width="22" height="22" rx="3" fill="none" stroke="#8b5cf6" stroke-width=".5" opacity=".4"/>
+        <rect x="598" y="233" width="22" height="22" rx="3" fill="none" stroke="#8b5cf6" stroke-width=".5" opacity=".4"/>
+        <text x="597" y="260" text-anchor="middle" fill="#8b5cf6" font-family="Orbitron" font-size="9" opacity=".7">核聚变</text>
+
+        <!-- 太阳能板阵列（右远） -->
+        <g transform="translate(680,180)">
+          <line x1="0" y1="0" x2="0" y2="100" stroke="#555" stroke-width="1.5"/>
+          <rect x="-40" y="-5" width="80" height="50" fill="url(#solarG)" stroke="#3b82f6" stroke-width="1" opacity=".7"/>
+          <line x1="-40" y1="20" x2="40" y2="20" stroke="#3b82f6" stroke-width=".3"/>
+          <line x1="0" y1="-5" x2="0" y2="45" stroke="#3b82f6" stroke-width=".3"/>
+          <line x1="-20" y1="-5" x2="-20" y2="45" stroke="#3b82f6" stroke-width=".3"/>
+          <line x1="20" y1="-5" x2="20" y2="45" stroke="#3b82f6" stroke-width=".3"/>
+        </g>
+        <g transform="translate(770,195)">
+          <line x1="0" y1="0" x2="0" y2="85" stroke="#555" stroke-width="1.5"/>
+          <rect x="-35" y="-5" width="70" height="42" fill="url(#solarG)" stroke="#3b82f6" stroke-width="1" opacity=".7"/>
+          <line x1="-35" y1="16" x2="35" y2="16" stroke="#3b82f6" stroke-width=".3"/>
+          <line x1="0" y1="-5" x2="0" y2="37" stroke="#3b82f6" stroke-width=".3"/>
+        </g>
+        <text x="725" y="155" text-anchor="middle" fill="#3b82f6" font-family="Orbitron" font-size="9" opacity=".6">太阳能阵列</text>
+
+        <!-- 通讯塔 -->
+        <g transform="translate(450,130)">
+          <line x1="0" y1="0" x2="0" y2="-30" stroke="#888" stroke-width="2"/>
+          <circle cx="0" cy="-32" r="4" fill="#ec4899" opacity=".8" filter="url(#glo)"/>
+          <line x1="-8" y1="-22" x2="8" y2="-22" stroke="#888" stroke-width="1.5"/>
+        </g>
+
+        <!-- 标注引线 -->
+        <line x1="260" y1="170" x2="260" y2="100" stroke="#ff8c42" stroke-width=".5" opacity=".4" stroke-dasharray="3,3"/>
+        <text x="260" y="92" text-anchor="middle" fill="#ff8c42" font-size="10" opacity=".6">①食物</text>
+        <line x1="450" y1="130" x2="450" y2="75" stroke="#00f0ff" stroke-width=".5" opacity=".4" stroke-dasharray="3,3"/>
+        <text x="450" y="68" text-anchor="middle" fill="#00f0ff" font-size="10" opacity=".6">②水/氧</text>
+        <line x1="597" y1="195" x2="597" y2="120" stroke="#8b5cf6" stroke-width=".5" opacity=".4" stroke-dasharray="3,3"/>
+        <text x="597" y="112" text-anchor="middle" fill="#8b5cf6" font-size="10" opacity=".6">④能源</text>
+        <line x1="725" y1="175" x2="725" y2="110" stroke="#3b82f6" stroke-width=".5" opacity=".4" stroke-dasharray="3,3"/>
+        <text x="725" y="102" text-anchor="middle" fill="#3b82f6" font-size="10" opacity=".6">④太阳能</text>
+
+        <!-- 地下冰层开采 -->
+        <g transform="translate(200,295)">
+          <rect x="0" y="0" width="60" height="20" fill="#0a1520" stroke="#00f0ff" stroke-width=".5" opacity=".6"/>
+          <line x1="10" y1="0" x2="10" y2="20" stroke="#00f0ff" stroke-width=".3" opacity=".3"/>
+          <line x1="30" y1="0" x2="30" y2="20" stroke="#00f0ff" stroke-width=".3" opacity=".3"/>
+          <line x1="50" y1="0" x2="50" y2="20" stroke="#00f0ff" stroke-width=".3" opacity=".3"/>
+        </g>
+        <text x="230" y="312" text-anchor="middle" fill="#00f0ff" font-size="9" opacity=".5">③地下冰层</text>
+      </svg>
+    </div>
+    <div class="cap">LUNAR STATION · CROSS SECTION DIAGRAM</div>
+  </div>
+
+  <!-- 四大生存系统 -->
+  <div class="grid">
+    <!-- 水 -->
+    <div class="card water">
+      <div class="ch">
+        <div class="ci">💧</div>
+        <div>
+          <div class="ct">水 / WATER</div>
+          <div class="cs">闭环水循环系统 · 98% 回收率</div>
+        </div>
+      </div>
+      <ul class="slist">
+        <li><span class="b">1</span><span><span class="tag">冰矿开采</span><strong>月球极地永久阴影区冰矿开采。</strong>南极沙克尔顿撞击坑已探明储量超6亿吨水冰，通过钻探机器人采集，微波加热升华分离水蒸气。</span></li>
+        <li><span class="b">2</span><span><span class="tag">冷凝回收</span><strong>舱内湿气冷凝回收。</strong>空气中的呼吸蒸汽、出汗蒸发通过冷凝器收集，经多级过滤（活性炭+反渗透膜+UV杀菌）后回用。</span></li>
+        <li><span class="b">3</span><span><span class="tag">尿液净化</span><strong>尿液真空蒸馏 + 电渗析纯化。</strong>借鉴ISS的ECLSS系统升级版，将人体废水处理为超纯饮用水，回收率从93%提升至98%。</span></li>
+        <li><span class="b">4</span><span><span class="tag">电解备用</span><strong>电解水副产。</strong>氧气回收系统电解水产生H₂和O₂，H₂与CO₂通过萨巴蒂尔反应再生成水，形成化学闭环。</span></li>
+      </ul>
+    </div>
+
+    <!-- 氧气 -->
+    <div class="card oxygen">
+      <div class="ch">
+        <div class="ci">🫧</div>
+        <div>
+          <div class="ct">氧气 / OXYGEN</div>
+          <div class="cs">多重产氧 + 闭环循环</div>
+        </div>
+      </div>
+      <ul class="slist">
+        <li><span class="b">1</span><span><span class="tag">电解产氧</span><strong>水电解主供氧。</strong>利用太阳能/核能电解水，1kg水可产0.89kg O₂，满足5人/日耗氧需求（每人约0.84kg/天）。</span></li>
+        <li><span class="b">2</span><span><span class="tag">微藻生物</span><strong>螺旋藻光生物反应器。</strong>占地仅20㎡的藻类培养舱可满足6人供氧，同时吸收CO₂、产出可食用蛋白，一举三得。</span></li>
+        <li><span class="b">3</span><span><span class="tag">月壤释氧</span><strong>月壤熔融电解提取O₂。</strong>月壤含40%+氧元素（以氧化物形式），1700°C熔融电解可就地取材，副产硅铁金属。</span></li>
+        <li><span class="b">4</span><span><span class="tag">CO₂还原</span><strong>萨巴蒂尔反应器。</strong>CO₂ + 4H₂ → CH₄ + 2H₂O，甲烷裂解回收碳和氢气，水再电解产氧，实现氧元素零损耗。</span></li>
+      </ul>
+    </div>
+
+    <!-- 食物 -->
+    <div class="card food">
+      <div class="ch">
+        <div class="ci">🌱</div>
+        <div>
+          <div class="ct">食物 / FOOD</div>
+          <div class="cs">受控生态农业 + 蛋白合成</div>
+        </div>
+      </div>
+      <ul class="slist">
+        <li><span class="b">1</span><span><span class="tag">LED农业</span><strong>多层立体LED植物工厂。</strong>种植生菜、番茄、土豆、小麦等，红蓝光谱LED促进光合作用，光效达传统10倍，周期45天/茬，200㎡可养活6人。</span></li>
+        <li><span class="b">2</span><span><span class="tag">藻类蛋白</span><strong>螺旋藻培养池。</strong>蛋白质含量60%+，日产量高，兼顾供氧与营养，可制能量棒和营养补充剂。</span></li>
+        <li><span class="b">3</span><span><span class="tag">细胞培养</span><strong>体外培养肉技术。</strong>从地球携带动物细胞系，在生物反应器中增殖培养，无需养殖活体动物即可获得动物蛋白。</span></li>
+        <li><span class="b">4</span><span><span class="tag">昆虫蛋白</span><strong>黄粉虫养殖系统。</span>饲料转化率极高（2:1），富含优质蛋白和微量元素，虫粪可作为植物肥料，形成微型生态循环。</span></li>
+      </ul>
+    </div>
+
+    <!-- 能源 -->
+    <div class="card energy">
+      <div class="ch">
+        <div class="ci">⚡</div>
+        <div>
+          <div class="ct">能源 / ENERGY</div>
+          <div class="cs">太阳能 + 核聚变双保险</div>
+        </div>
+      </div>
+      <ul class="slist">
+        <li><span class="b">1</span><span><span class="tag">太阳能</span><strong>赤道带柔性太阳能阵列。</strong>月昼约14地球天，铺设万平米薄膜太阳能板，峰值功率5MW。月球无大气衰减，光电效率比地球高30%。</span></li>
+        <li><span class="b">2</span><span><span class="tag">核聚变</span><strong>He-3聚变反应堆。</strong>月球土壤富含He-3（百万吨级储量），D-He-3聚变清洁无中子辐射，10kg He-3年发电量相当于千万吨煤。</span></li>
+        <li><span class="b">3</span><span><span class="tag">储能系统</span><strong>月夜储能方案。</strong>14天月夜期间，钠硫电池+飞轮储能组合供电。月球南极峰永光区（永昼峰）可建太阳能站实现持续供电。</span></li>
+        <li><span class="b">4</span><span><span class="tag">同位素</span><strong>RTG放射性同位素发电机。</strong>钚-238温差发电作为应急备份，无活动部件、免维护，设计寿命50年，保障关键生命维持系统不断电。</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 闭环系统 -->
+  <div class="loop">
+    <h2>闭环生命保障系统 · ECLSS</h2>
+    <p>四大系统协同运作，物质在舱内循环流转，外部仅补充月壤和阳光</p>
+    <div class="flow">
+      <div class="fn e">能源 ⚡</div>
+      <span class="fa">→</span>
+      <div class="fn w">电解水 💧</div>
+      <span class="fa">→</span>
+      <div class="fn o">产氧 🫧</div>
+      <span class="fa">→</span>
+      <div class="fn h">乘员呼吸 👤</div>
+      <span class="fa">→</span>
+      <div class="fn o">CO₂回收 🫧</div>
+      <span class="fa">→</span>
+      <div class="fn w">萨巴蒂尔产水 💧</div>
+      <span class="fa">→</span>
+      <div class="fn f">农业灌溉 🌱</div>
+      <span class="fa">→</span>
+      <div class="fn h">食物供给 👤</div>
+      <span class="fa">↺</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>PROJECT ARTEMIS · LUNAR STATION DESIGN BLUEPRINT · 2089</p>
+    <p class="cr">🦞 尹燕玲-报告分析专家</p>
+  </div>
+
+</div>
+
+<script>
+  // 生成星空
+  const s = document.getElementById('stars');
+  for(let i=0;i<120;i++){
+    const st = document.createElement('div');
+    st.className='star';
+    const sz = Math.random()*2+0.5;
+    st.style.width=sz+'px';st.style.height=sz+'px';
+    st.style.left=Math.random()*100+'%';st.style.top=Math.random()*100+'%';
+    st.style.animationDelay=Math.random()*3+'s';
+    s.appendChild(st);
+  }
+</script>
+</body>
+</html>
