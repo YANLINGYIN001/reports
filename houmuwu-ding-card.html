@@ -12,60 +12,62 @@
     --red:#a0392e;--line:rgba(201,169,110,.25);
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  @page{size:A4 portrait;margin:0}
   body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);
-    min-height:100vh;display:flex;justify-content:center;align-items:center;padding:30px 16px;
+    min-height:100vh;display:flex;justify-content:center;align-items:center;padding:0;
     background-image:radial-gradient(ellipse at 30% 20%,rgba(139,111,71,.12) 0%,transparent 60%),
       radial-gradient(ellipse at 70% 80%,rgba(201,169,110,.08) 0%,transparent 50%),
       linear-gradient(180deg,#1a1510,#15110c)}
   .card{
-    width:480px;max-width:100%;background:var(--card);
+    width:210mm;min-height:297mm;background:var(--card);
     border:2px solid var(--gold);border-radius:16px;
-    overflow:hidden;position:relative;
+    overflow:hidden;position:relative;page-break-after:avoid;
     box-shadow:0 0 60px rgba(201,169,110,.1),0 20px 60px rgba(0,0,0,.5);
   }
+  @media print{body{background:#fff;padding:0}.card{box-shadow:none;width:210mm;min-height:297mm;height:auto}}
   /* 顶部装饰条 */
   .card-top{height:6px;background:linear-gradient(90deg,var(--bronze-dark),var(--gold),var(--bronze-dark))}
   /* 卡片内边框 */
-  .card-inner{border:1px solid var(--line);margin:12px;border-radius:10px;overflow:hidden}
+  .card-inner{border:1px solid var(--line);margin:10mm;margin-top:6px;border-radius:10px;overflow:hidden}
 
   /* 图片区 */
-  .img-section{position:relative;background:#0d0a07;text-align:center;padding:24px 20px 16px}
-  .img-section img{width:100%;max-width:360px;border-radius:8px;
+  .img-section{position:relative;background:#0d0a07;text-align:center;padding:14mm 20px 10px}
+  .img-section img{width:100%;max-width:280px;border-radius:8px;
     box-shadow:0 8px 32px rgba(0,0,0,.6);border:1px solid var(--line)}
   .img-caption{font-size:11px;color:var(--sub);margin-top:8px;letter-spacing:1px}
 
   /* 标题区 */
-  .title-section{text-align:center;padding:16px 20px 20px;border-top:1px solid var(--line)}
-  .title-section h1{font-family:'Noto Serif SC',serif;font-size:32px;font-weight:900;
-    color:var(--gold-light);letter-spacing:6px;margin-bottom:4px;
+  .title-section{text-align:center;padding:10px 20px 14px;border-top:1px solid var(--line)}
+  .title-section h1{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:900;
+    color:var(--gold-light);letter-spacing:6px;margin-bottom:3px;
     text-shadow:0 2px 8px rgba(201,169,110,.2)}
   .title-section .alias{font-size:13px;color:var(--sub);letter-spacing:2px}
   .title-section .alias span{color:var(--bronze)}
 
   /* 信息区 */
-  .info-section{padding:0 24px 24px}
-  .info-row{display:flex;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .info-section{padding:0 20px 16px}
+  .info-row{display:flex;padding:8px 0;border-bottom:1px dashed var(--line)}
   .info-row:last-child{border-bottom:none}
-  .info-label{flex-shrink:0;width:80px;font-size:13px;color:var(--bronze);
+  .info-label{flex-shrink:0;width:72px;font-size:12px;color:var(--bronze);
     font-weight:700;letter-spacing:2px;padding-top:1px}
-  .info-value{font-size:14px;line-height:1.8;color:var(--text)}
+  .info-value{font-size:13px;line-height:1.7;color:var(--text)}
 
   /* 特点区 */
-  .feature-section{padding:16px 24px;background:rgba(139,111,71,.06);border-top:1px solid var(--line)}
+  .feature-section{padding:12px 20px;background:rgba(139,111,71,.06);border-top:1px solid var(--line)}
   .feature-section h2,.significance-section h2{
-    font-family:'Noto Serif SC',serif;font-size:16px;color:var(--gold);
-    margin-bottom:10px;letter-spacing:3px;display:flex;align-items:center;gap:8px}
+    font-family:'Noto Serif SC',serif;font-size:15px;color:var(--gold);
+    margin-bottom:8px;letter-spacing:3px;display:flex;align-items:center;gap:8px}
   .feature-section h2::before,.significance-section h2::before{
     content:'';width:3px;height:16px;background:var(--gold);border-radius:2px}
-  .feature-section p{font-size:14px;line-height:1.9;color:#d8ccb0;text-indent:2em}
+  .feature-section p{font-size:13px;line-height:1.8;color:#d8ccb0;text-indent:2em}
 
   /* 意义区 */
-  .significance-section{padding:16px 24px 20px}
-  .significance-section p{font-size:14px;line-height:1.9;color:#d8ccb0;text-indent:2em}
+  .significance-section{padding:12px 20px 16px}
+  .significance-section p{font-size:13px;line-height:1.8;color:#d8ccb0;text-indent:2em}
 
   /* 底部 */
   .card-bottom{height:4px;background:linear-gradient(90deg,var(--bronze-dark),var(--gold),var(--bronze-dark))}
-  .footer{text-align:center;padding:12px;font-size:11px;color:var(--bronze);letter-spacing:2px}
+  .footer{text-align:center;padding:8px;font-size:10px;color:var(--bronze);letter-spacing:2px}
   .footer span{color:var(--gold)}
 
   /* 纹饰装饰 */
