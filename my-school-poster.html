@@ -31,11 +31,11 @@
   .header .info-bar{display:flex;justify-content:space-between;font-size:11px;
     color:var(--red-deep);margin-top:8px;padding:0 10px}
 
-  /* 主布局：左中右三栏 */
-  .main-layout{display:grid;grid-template-columns:300px 1fr 280px;gap:14px;margin-bottom:14px}
+  /* 主布局：左中右三等栏 */
+  .main-layout{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;align-items:start}
 
   /* 板块通用 */
-  .block{border:2.5px solid;border-radius:0;padding:12px 14px;position:relative;background:rgba(255,255,255,.6)}
+  .block{border:2.5px solid;border-radius:0;padding:12px 14px;position:relative;background:rgba(255,255,255,.6);margin-top:10px}
   .block.red{border-color:var(--red)}
   .block.blue{border-color:var(--blue)}
   .block.green{border-color:var(--green)}
@@ -43,8 +43,8 @@
   .block.purple{border-color:var(--purple)}
   .block.orange{border-color:var(--orange)}
 
-  .block-title{font-family:'ZCOOL KuaiLe',sans-serif;font-size:17px;
-    text-align:center;margin:-22px auto 10px;background:var(--cream);display:block;
+  .block-title{font-family:'ZCOOL KuaiLe',sans-serif;font-size:16px;
+    text-align:center;margin:-22px auto 8px;background:var(--cream);display:block;
     width:fit-content;padding:2px 14px;font-weight:700}
   .red .block-title{color:var(--red)}
   .blue .block-title{color:var(--blue)}
@@ -53,7 +53,7 @@
   .purple .block-title{color:var(--purple)}
   .orange .block-title{color:var(--orange)}
 
-  .content{font-size:12.5px;line-height:1.85;color:var(--ink)}
+  .content{font-size:12px;line-height:1.8;color:var(--ink)}
   .content p{text-indent:2em;margin-bottom:6px}
   .content p:last-child{margin-bottom:0}
   .content strong{color:var(--red-deep)}
@@ -63,12 +63,8 @@
   .purple .content strong{color:var(--purple)}
   .orange .content strong{color:var(--orange)}
 
-  /* 左栏 */
-  .left-col{display:flex;flex-direction:column;gap:14px}
-  /* 中栏 */
-  .center-col{display:flex;flex-direction:column;gap:14px}
-  /* 右栏 */
-  .right-col{display:flex;flex-direction:column;gap:14px}
+  /* 三栏统一 */
+  .left-col,.center-col,.right-col{display:flex;flex-direction:column;gap:18px}
 
   /* 插画框 */
   .illustration{border:2.5px solid var(--gold);border-radius:8px;padding:10px;
@@ -154,13 +150,13 @@
         <span class="block-title">🏫 我的学校</span>
         <div class="content">
           <p>北京市第八十中学温榆河分校，位于<strong>朝阳区崔各庄乡容慧路</strong>，2012年正式挂牌成立，是一所公办九年一贯制学校。</p>
-          <p>校园虽不华丽，却温暖如家。教学楼里书声琅琅，田径场上活力飞扬，风雨操场上挥洒汗水，食堂里飘着饭菜香——这里就是我要度过三年青春的地方。</p>
+          <p>校园虽不华丽，却温暖如家。教学楼里书声琅琅，田径场上活力飞扬，风雨操场上挥洒汗水——这里就是我要度过三年青春的地方。</p>
         </div>
       </div>
 
       <!-- 校园插画 -->
       <div class="illustration">
-        <svg width="260" height="160" viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+        <svg width="240" height="145" viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
           <!-- 天空 -->
           <rect width="260" height="100" fill="#e8f4fd"/>
           <!-- 太阳 -->
@@ -210,6 +206,18 @@
           <div class="quote-text">"青春不是年华，而是心境。"<br>即使跌倒，也要面向前方。</div>
           <div class="quote-author">—— 致初一的你</div>
         </div>
+      </div>
+
+      <!-- 初中小贴士（从右栏移过来） -->
+      <div class="block green">
+        <span class="block-title">📌 初中小贴士</span>
+        <ul class="item-list" style="font-size:12px">
+          <li>科目从3门增加到7门，做好预习复习</li>
+          <li>学会做笔记，用不同颜色的笔标记重点</li>
+          <li>每天锻炼身体，体育成绩也计入中考</li>
+          <li>积极参加社团，发展一项兴趣爱好</li>
+          <li>遇到困难找老师，温分的老师都很暖</li>
+        </ul>
       </div>
     </div>
 
@@ -291,18 +299,6 @@
           <p>还记得初一入学时写下的心愿吗？愿你<strong>褶褶生辉</strong>，不负韶华。</p>
           <p style="text-align:right;text-indent:0">—— 2026年9月的你</p>
         </div>
-      </div>
-
-      <!-- 知识小卡 -->
-      <div class="block gold">
-        <span class="block-title">📌 初中小贴士</span>
-        <ul class="item-list" style="font-size:12px">
-          <li>科目从3门增加到7门，做好预习复习</li>
-          <li>学会做笔记，用不同颜色的笔标记重点</li>
-          <li>每天锻炼身体，体育成绩也计入中考</li>
-          <li>积极参加社团，发展一项兴趣爱好</li>
-          <li>遇到困难找老师，温分的老师都很暖</li>
-        </ul>
       </div>
     </div>
 
