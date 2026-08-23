@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>后母戊鼎 · 文物介绍卡</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root{
+    --bg:#1a1510;--card:#2a2018;--gold:#c9a96e;--gold-light:#e0c896;
+    --bronze:#8b6f47;--bronze-dark:#5c4a30;--text:#f0e8d8;--sub:#b8a888;
+    --red:#a0392e;--line:rgba(201,169,110,.25);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);
+    min-height:100vh;display:flex;justify-content:center;align-items:center;padding:30px 16px;
+    background-image:radial-gradient(ellipse at 30% 20%,rgba(139,111,71,.12) 0%,transparent 60%),
+      radial-gradient(ellipse at 70% 80%,rgba(201,169,110,.08) 0%,transparent 50%),
+      linear-gradient(180deg,#1a1510,#15110c)}
+  .card{
+    width:480px;max-width:100%;background:var(--card);
+    border:2px solid var(--gold);border-radius:16px;
+    overflow:hidden;position:relative;
+    box-shadow:0 0 60px rgba(201,169,110,.1),0 20px 60px rgba(0,0,0,.5);
+  }
+  /* 顶部装饰条 */
+  .card-top{height:6px;background:linear-gradient(90deg,var(--bronze-dark),var(--gold),var(--bronze-dark))}
+  /* 卡片内边框 */
+  .card-inner{border:1px solid var(--line);margin:12px;border-radius:10px;overflow:hidden}
+
+  /* 图片区 */
+  .img-section{position:relative;background:#0d0a07;text-align:center;padding:24px 20px 16px}
+  .img-section img{width:100%;max-width:360px;border-radius:8px;
+    box-shadow:0 8px 32px rgba(0,0,0,.6);border:1px solid var(--line)}
+  .img-caption{font-size:11px;color:var(--sub);margin-top:8px;letter-spacing:1px}
+
+  /* 标题区 */
+  .title-section{text-align:center;padding:16px 20px 20px;border-top:1px solid var(--line)}
+  .title-section h1{font-family:'Noto Serif SC',serif;font-size:32px;font-weight:900;
+    color:var(--gold-light);letter-spacing:6px;margin-bottom:4px;
+    text-shadow:0 2px 8px rgba(201,169,110,.2)}
+  .title-section .alias{font-size:13px;color:var(--sub);letter-spacing:2px}
+  .title-section .alias span{color:var(--bronze)}
+
+  /* 信息区 */
+  .info-section{padding:0 24px 24px}
+  .info-row{display:flex;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .info-row:last-child{border-bottom:none}
+  .info-label{flex-shrink:0;width:80px;font-size:13px;color:var(--bronze);
+    font-weight:700;letter-spacing:2px;padding-top:1px}
+  .info-value{font-size:14px;line-height:1.8;color:var(--text)}
+
+  /* 特点区 */
+  .feature-section{padding:16px 24px;background:rgba(139,111,71,.06);border-top:1px solid var(--line)}
+  .feature-section h2,.significance-section h2{
+    font-family:'Noto Serif SC',serif;font-size:16px;color:var(--gold);
+    margin-bottom:10px;letter-spacing:3px;display:flex;align-items:center;gap:8px}
+  .feature-section h2::before,.significance-section h2::before{
+    content:'';width:3px;height:16px;background:var(--gold);border-radius:2px}
+  .feature-section p{font-size:14px;line-height:1.9;color:#d8ccb0;text-indent:2em}
+
+  /* 意义区 */
+  .significance-section{padding:16px 24px 20px}
+  .significance-section p{font-size:14px;line-height:1.9;color:#d8ccb0;text-indent:2em}
+
+  /* 底部 */
+  .card-bottom{height:4px;background:linear-gradient(90deg,var(--bronze-dark),var(--gold),var(--bronze-dark))}
+  .footer{text-align:center;padding:12px;font-size:11px;color:var(--bronze);letter-spacing:2px}
+  .footer span{color:var(--gold)}
+
+  /* 纹饰装饰 */
+  .ornament{text-align:center;font-size:16px;color:var(--bronze-dark);letter-spacing:8px;padding:4px 0}
+
+  @media(max-width:520px){
+    .card{width:100%}
+    .title-section h1{font-size:26px;letter-spacing:4px}
+    .info-label{width:68px;font-size:12px}
+    .info-value{font-size:13px}
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-top"></div>
+  <div class="card-inner">
+
+    <!-- 图片 -->
+    <div class="img-section">
+      <img src="https://www.neac.gov.cn/seac/c103391/202307/1166479/images/923917ba87e14d26b5fb4fd114497481.jpg" alt="后母戊鼎">
+      <div class="img-caption">▾ 后母戊鼎 · 中国国家博物馆藏 ▾</div>
+    </div>
+
+    <!-- 标题 -->
+    <div class="title-section">
+      <h1>后母戊鼎</h1>
+      <div class="alias">原称 <span>"司母戊鼎"</span> · 青铜时代巅峰之作</div>
+    </div>
+
+    <!-- 基本信息 -->
+    <div class="info-section">
+      <div class="info-row">
+        <div class="info-label">文物名称</div>
+        <div class="info-value">后母戊鼎（Houmuwu Ding）</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">所属朝代</div>
+        <div class="info-value">商代晚期 · 约公元前1200年<br><span style="font-size:12px;color:var(--sub)">商王武丁时期，距今约3200年</span></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">材质</div>
+        <div class="info-value">青铜（铜 84.77% · 锡 11.64% · 铅 2.79%）</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">尺寸重量</div>
+        <div class="info-value">高 133cm · 长 116cm · 宽 79cm · 重 832.84kg</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">出土地点</div>
+        <div class="info-value">河南省安阳市殷墟武官村<br><span style="font-size:12px;color:var(--sub)">1939年出土 · 现藏中国国家博物馆</span></div>
+      </div>
+    </div>
+
+    <!-- 外观特点 -->
+    <div class="feature-section">
+      <h2>外观特点</h2>
+      <p>
+        器形为长方形方鼎，厚立耳，折沿，下承四根圆柱形足。腹部四角及上下缘饰有扉棱，通体以云雷纹为地。鼎耳上部浮雕鱼纹，外侧浮雕双虎食人首纹；腹部周身饰饕餮纹（兽面纹），柱足上部亦饰饕餮纹，下部饰两道凸弦纹。腹内壁铸有"后母戊"三字铭文。整体造型雄伟庄严，纹饰繁复精美。
+      </p>
+    </div>
+
+    <!-- 历史意义 -->
+    <div class="significance-section">
+      <h2>历史意义</h2>
+      <p>
+        后母戊鼎是<b style="color:var(--gold-light)">目前已知中国古代最重的青铜器</b>，代表商代青铜铸造技术的最高成就。其铸造需超1000公斤原料，采用"先铸器身、后铸鼎耳"的分铸工艺，组织严密、分工细致，充分体现了商代后期高度发达的青铜文明。鼎内铭文"后母戊"为商王母亲的庙号，是研究商代祭祀制度与王室世系的重要实物资料。1939年出土后为防日军掠夺而重新掩埋，其传奇经历亦赋予这件国宝特殊的历史价值。
+      </p>
+    </div>
+
+    <div class="ornament">◈ ◆ ◈</div>
+
+  </div>
+  <div class="footer">中国国家博物馆 · <span>镇馆之宝</span> · 禁止出境展览文物</div>
+  <div class="card-bottom"></div>
+</div>
+
+</body>
+</html>
