@@ -1,2 +1,3 @@
-# reports
-数据分析报告合集 - 尹燕玲-报告分析专家
+# Reports
+
+Auto-deployed reports.
