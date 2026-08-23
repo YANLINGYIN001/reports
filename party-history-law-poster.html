@@ -25,42 +25,42 @@
   }
   @media print{body{background:#fff;padding:0}.报纸{box-shadow:none}}
   .border-outer{border:3px solid var(--red);padding:4px}
-  .border-inner{border:2px dashed var(--gold);padding:10mm 10mm;position:relative}
+  .border-inner{border:2px dashed var(--gold);padding:6mm 7mm;position:relative}
 
   /* 报头 */
-  .header{text-align:center;padding:4px 0 8px;position:relative;
-    border-bottom:3px double var(--red);margin-bottom:8px}
-  .header::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);
-    width:60px;height:3px;background:var(--red)}
-  .header .top-deco{font-size:14px;letter-spacing:8px;margin-bottom:1px}
-  .header h1{font-family:'ZCOOL KuaiLe','Noto Serif SC',serif;font-size:26px;
-    color:var(--red);letter-spacing:5px;text-shadow:1px 1px 0 var(--gold-light);
+  .header{text-align:center;padding:2px 0 6px;position:relative;
+    border-bottom:2px double var(--red);margin-bottom:6px}
+  .header::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);
+    width:50px;height:2px;background:var(--red)}
+  .header .top-deco{font-size:12px;letter-spacing:6px;margin-bottom:0}
+  .header h1{font-family:'ZCOOL KuaiLe','Noto Serif SC',serif;font-size:22px;
+    color:var(--red);letter-spacing:4px;text-shadow:1px 1px 0 var(--gold-light);
     margin:1px 0}
-  .header .sub{font-size:11px;color:var(--ink);letter-spacing:2px;margin-top:1px}
-  .header .info{display:flex;justify-content:space-between;font-size:9px;
-    color:var(--red-deep);margin-top:4px;padding:0 8px}
+  .header .sub{font-size:10px;color:var(--ink);letter-spacing:1px;margin-top:1px}
+  .header .info{display:flex;justify-content:space-between;font-size:8px;
+    color:var(--red-deep);margin-top:3px;padding:0 8px}
   .header .flag{position:absolute;top:0;right:0;font-size:28px;opacity:.3}
 
   /* 布局 */
-  .layout{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+  .layout{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:4px}
   .full-row{grid-column:1/-1}
 
   /* 板块 */
-  .section{border:2px solid;border-radius:0;padding:8px 10px;position:relative;background:rgba(255,255,255,.5)}
+  .section{border:1.5px solid;border-radius:0;padding:6px 8px;position:relative;background:rgba(255,255,255,.5)}
   .section.red{border-color:var(--red)}
   .section.blue{border-color:var(--blue)}
   .section.green{border-color:var(--green)}
   .section.gold{border-color:var(--gold)}
 
-  .sec-title{text-align:center;margin:-16px 8px 5px;background:var(--paper);display:inline-block;
-    padding:1px 10px;font-family:'ZCOOL KuaiLe',sans-serif;font-size:13px;position:relative;left:50%;transform:translateX(-50%)}
+  .sec-title{text-align:center;margin:-14px 6px 4px;background:var(--paper);display:inline-block;
+    padding:1px 8px;font-family:'ZCOOL KuaiLe',sans-serif;font-size:12px;position:relative;left:50%;transform:translateX(-50%)}
   .red .sec-title{color:var(--red)}
   .blue .sec-title{color:var(--blue)}
   .green .sec-title{color:var(--green)}
   .gold .sec-title{color:var(--gold)}
 
-  .sec-content{font-size:10.5px;line-height:1.6;color:var(--ink);padding:2px}
-  .sec-content p{margin-bottom:4px;text-indent:2em}
+  .sec-content{font-size:9.5px;line-height:1.5;color:var(--ink);padding:1px}
+  .sec-content p{margin-bottom:3px;text-indent:2em}
   .sec-content p:last-child{margin-bottom:0}
   .sec-content strong{color:var(--red-deep)}
   .red .sec-content strong{color:var(--red)}
@@ -68,12 +68,12 @@
   .green .sec-content strong{color:var(--green)}
 
   /* 故事卡片 */
-  .story{background:rgba(196,30,58,.04);border-left:3px solid var(--red);
-    padding:4px 8px;margin-bottom:4px;border-radius:0 6px 6px 0}
+  .story{background:rgba(196,30,58,.04);border-left:2px solid var(--red);
+    padding:3px 6px;margin-bottom:3px;border-radius:0 4px 4px 0}
   .story:last-child{margin-bottom:0}
-  .story-title{font-weight:700;font-size:11px;color:var(--red);margin-bottom:2px;
-    display:flex;align-items:center;gap:4px}
-  .story-body{font-size:10px;line-height:1.55;color:var(--ink);text-indent:2em}
+  .story-title{font-weight:700;font-size:10px;color:var(--red);margin-bottom:1px;
+    display:flex;align-items:center;gap:3px}
+  .story-body{font-size:9px;line-height:1.45;color:var(--ink);text-indent:2em}
 
   .story.blue{background:rgba(30,77,139,.04);border-color:var(--blue)}
   .story.blue .story-title{color:var(--blue)}
@@ -81,32 +81,32 @@
   .story.green .story-title{color:var(--green)}
 
   /* 时间轴 */
-  .timeline{position:relative;padding-left:16px}
-  .timeline::before{content:'';position:absolute;left:5px;top:0;bottom:0;width:2px;background:var(--red);opacity:.3}
-  .tl-item{position:relative;padding-bottom:5px}
+  .timeline{position:relative;padding-left:14px}
+  .timeline::before{content:'';position:absolute;left:4px;top:0;bottom:0;width:1.5px;background:var(--red);opacity:.3}
+  .tl-item{position:relative;padding-bottom:3px}
   .tl-item:last-child{padding-bottom:0}
-  .tl-item::before{content:'';position:absolute;left:-14px;top:3px;width:7px;height:7px;
-    border-radius:50%;background:var(--red);border:1.5px solid var(--paper)}
-  .tl-date{font-weight:700;font-size:10.5px;color:var(--red)}
-  .tl-text{font-size:9.5px;line-height:1.5;color:var(--ink)}
+  .tl-item::before{content:'';position:absolute;left:-12px;top:2px;width:6px;height:6px;
+    border-radius:50%;background:var(--red);border:1px solid var(--paper)}
+  .tl-date{font-weight:700;font-size:9.5px;color:var(--red)}
+  .tl-text{font-size:8.5px;line-height:1.4;color:var(--ink)}
 
   /* 名言框 */
   .quote-box{background:linear-gradient(135deg,rgba(196,30,58,.06),rgba(212,168,67,.06));
-    border:2px solid var(--gold);border-radius:6px;padding:6px;text-align:center;margin:4px 0}
-  .quote-text{font-family:'Noto Serif SC',serif;font-size:12px;color:var(--red-deep);
-    font-weight:700;line-height:1.5;letter-spacing:1px}
-  .quote-author{font-size:10px;color:var(--sub);margin-top:4px}
+    border:1.5px solid var(--gold);border-radius:5px;padding:4px;text-align:center;margin:2px 0}
+  .quote-text{font-family:'Noto Serif SC',serif;font-size:11px;color:var(--red-deep);
+    font-weight:700;line-height:1.4;letter-spacing:1px}
+  .quote-author{font-size:9px;color:var(--sub);margin-top:2px}
 
   /* 知识小卡片 */
-  .tips-box{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:4px}
+  .tips-box{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:3px}
   .tip{background:rgba(212,168,67,.08);border:1px dashed var(--gold);
-    border-radius:5px;padding:4px;font-size:9.5px;line-height:1.4;text-align:center}
+    border-radius:4px;padding:3px;font-size:8.5px;line-height:1.3;text-align:center}
   .tip strong{color:var(--red-deep)}
 
   /* 底部 */
-  .footer{text-align:center;padding:4px 0 2px;border-top:2px double var(--red);margin-top:4px}
-  .footer-deco{font-size:11px;letter-spacing:6px;color:var(--gold)}
-  .footer-info{font-size:9px;color:var(--red-deep);margin-top:1px;letter-spacing:2px}
+  .footer{text-align:center;padding:3px 0 1px;border-top:2px double var(--red);margin-top:3px}
+  .footer-deco{font-size:10px;letter-spacing:4px;color:var(--gold)}
+  .footer-info{font-size:8px;color:var(--red-deep);margin-top:1px;letter-spacing:1px}
 
   /* 装饰图标 */
   .deco{position:absolute;font-size:20px;opacity:.15}
@@ -114,8 +114,8 @@
   .deco.bl{bottom:8px;left:8px}.deco.br{bottom:8px;right:8px}
 
   /* 长征法治小故事特殊样式 */
-  .march-box{background:rgba(196,30,58,.06);border-radius:5px;padding:5px;margin-top:3px}
-  .march-box .march-title{font-size:10.5px;font-weight:700;color:var(--red);margin-bottom:2px}
+  .march-box{background:rgba(196,30,58,.06);border-radius:4px;padding:3px;margin-top:2px}
+  .march-box .march-title{font-size:9.5px;font-weight:700;color:var(--red);margin-bottom:1px}
 
   @media(max-width:820px){
     .报纸{width:100%}
@@ -143,170 +143,95 @@
     </div>
   </div>
 
-  <!-- 第一行：名言 + 时间轴 -->
+  <!-- 第一行：名言 -->
   <div class="layout">
-    <!-- 名言 -->
     <div class="section red full-row">
       <div class="sec-title">★ 法治名言 ★</div>
       <div class="sec-content">
         <div class="quote-box">
-          <div class="quote-text">"法者，治之端也。<br>法治兴则国兴，法治强则国强。"</div>
-          <div class="quote-author">—— 习近平《在中央全面依法治国工作会议上的讲话》（2020年）</div>
+          <div class="quote-text">"法者，治之端也。法治兴则国兴，法治强则国强。"</div>
+          <div class="quote-author">—— 习近平（2020年）</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 第二行：苏维埃宪法大纲 + 马锡五审判 -->
+  <!-- 第二行：故事一 + 故事二 -->
   <div class="layout">
-    <!-- 故事一 -->
     <div class="section red">
       <div class="sec-title">📜 故事一：第一部红色宪法</div>
       <div class="sec-content">
         <div class="story">
-          <div class="story-title">🏛️ 中华苏维埃共和国宪法大纲</div>
+          <div class="story-title">🏛️ 中华苏维埃共和国宪法大纲（1931年）</div>
           <div class="story-body">
-            <strong>1931年</strong>，在江西瑞金，中华苏维埃第一次全国代表大会召开，通过了《中华苏维埃共和国宪法大纲》。这是中国共产党领导制定的<strong>第一部宪法性文件</strong>，规定了劳动人民享有的各项权利，宣告了"建设革命的工农民主专政"。
-          </div>
-        </div>
-        <div class="story">
-          <div class="story-title">💡 小知识</div>
-          <div class="story-body">
-            宪法大纲虽然只有16条，但第一次在法律上确认了<strong>人民当家作主</strong>的原则，为新中国的宪法制度奠定了根基。
+            在江西瑞金，通过了中国共产党领导制定的<strong>第一部宪法性文件</strong>，第一次在法律上确认了<strong>人民当家作主</strong>的原则，为新中国的宪法制度奠定了根基。
           </div>
         </div>
       </div>
     </div>
-
-    <!-- 故事二 -->
     <div class="section blue">
       <div class="sec-title">⚖️ 故事二：马锡五审判方式</div>
       <div class="sec-content">
         <div class="story blue">
           <div class="story-title">👨‍⚖️ 走群众路线的"马青天"</div>
           <div class="story-body">
-            <strong>延安时期</strong>，陕甘宁边区法官<strong>马锡五</strong>深入田间地头，就地办案、巡回审判。他审理案件不坐堂问案，而是到群众中调查走访，把法律知识和群众智慧结合起来，被称为"马青天"。
-          </div>
-        </div>
-        <div class="story blue">
-          <div class="story-title">💡 启示</div>
-          <div class="story-body">
-            马锡五审判方式体现了<strong>"司法为民"</strong>的理念，成为人民司法的优良传统，至今仍影响着中国的法治建设。
+            延安时期，法官<strong>马锡五</strong>深入田间地头、就地办案、巡回审判，不坐堂问案而是到群众中调查走访，体现了<strong>"司法为民"</strong>的理念，成为人民司法的优良传统。
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 第三行：土地法大纲 + 长征中的纪律 -->
+  <!-- 第三行：故事三 + 故事四 -->
   <div class="layout">
-    <!-- 故事三 -->
     <div class="section green">
       <div class="sec-title">🌾 故事三：中国土地法大纲</div>
       <div class="sec-content">
         <div class="story green">
-          <div class="story-title">📖 耕者有其田</div>
+          <div class="story-title">📖 耕者有其田（1947年）</div>
           <div class="story-body">
-            <strong>1947年</strong>，中共中央在西柏坡召开全国土地会议，通过了《中国土地法大纲》。大纲明确规定<strong>"废除封建剥削的土地制度，实行耕者有其田"</strong>，让亿万农民第一次拥有了自己的土地。
-          </div>
-        </div>
-        <div class="story green">
-          <div class="story-title">💡 意义</div>
-          <div class="story-body">
-            这部法律让农民翻身做主人，激发了广大农民支持革命的积极性，为解放战争的胜利提供了坚实保障。
+            西柏坡会议通过《中国土地法大纲》，明确规定<strong>"废除封建剥削的土地制度，实行耕者有其田"</strong>，让亿万农民第一次拥有自己的土地，为解放战争胜利提供坚实保障。
           </div>
         </div>
       </div>
     </div>
-
-    <!-- 故事四 -->
     <div class="section gold">
-      <div class="sec-title">🚩 故事四：长征中的纪律法治</div>
+      <div class="sec-title">🏛️ 故事四：新中国第一部宪法</div>
       <div class="sec-content">
-        <div class="march-box">
-          <div class="march-title">📋 三大纪律八项注意</div>
+        <div class="story">
+          <div class="story-title">📅 五四宪法（1954年）</div>
           <div class="story-body">
-            红军长征途中，严格执行"三大纪律八项注意"。其中"不拿群众一针一线""买卖公平""借东西要还"等规定，就是<strong>早期的军事法规</strong>。红军每到一处，秋毫无犯，用实际行动赢得了人民的信任。
-          </div>
-        </div>
-        <div class="march-box">
-          <div class="march-title">⚖️ 军法如山</div>
-          <div class="story-body">
-            长征中，红军设有<strong>军事裁判所</strong>，处理违纪行为。无论职务高低，违纪必究，体现了"法律面前人人平等"的原则。
+            第一届全国人大全票通过《中华人民共和国宪法》，新中国第一部社会主义宪法。<strong>1.5亿人参与讨论</strong>，是全世界参与人数最多的宪法制定过程！
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 第四行：1954宪法 + 法治时间轴 -->
+  <!-- 第四行：时间轴 + 小知识 -->
   <div class="layout">
-    <!-- 1954宪法 -->
-    <div class="section red">
-      <div class="sec-title">🏛️ 故事五：新中国第一部宪法</div>
-      <div class="sec-content">
-        <div class="story">
-          <div class="story-title">📅 1954年9月20日</div>
-          <div class="story-body">
-            第一届全国人民代表大会第一次会议在北京召开，<strong>全票通过《中华人民共和国宪法》</strong>，史称"五四宪法"。这是新中国第一部社会主义宪法，确立了人民民主专政的国体和社会主义的政体。
-          </div>
-        </div>
-        <div class="story">
-          <div class="story-title">💡 你知道吗</div>
-          <div class="story-body">
-            "五四宪法"的起草经过了<strong>1.5亿人参与讨论</strong>，是全世界参与人数最多的宪法制定过程！北京初一学生也可以学习宪法、维护宪法尊严。
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 时间轴 -->
     <div class="section blue">
       <div class="sec-title">⏳ 法治发展时间轴</div>
       <div class="sec-content">
         <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-date">1931年</div>
-            <div class="tl-text">《中华苏维埃共和国宪法大纲》——第一部红色宪法文件</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-date">1941年</div>
-            <div class="tl-text">《陕甘宁边区施政纲领》——"三三制"民主政权</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-date">1947年</div>
-            <div class="tl-text">《中国土地法大纲》——耕者有其田</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-date">1954年</div>
-            <div class="tl-text">新中国第一部宪法诞生——"五四宪法"</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-date">1982年</div>
-            <div class="tl-text">现行宪法颁布——改革开放的法治基石</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-date">2014年</div>
-            <div class="tl-text">设立国家宪法日（12月4日）</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-date">2020年</div>
-            <div class="tl-text">《民法典》颁布——社会生活的百科全书</div>
-          </div>
+          <div class="tl-item"><div class="tl-date">1931年</div><div class="tl-text">宪法大纲——第一部红色宪法文件</div></div>
+          <div class="tl-item"><div class="tl-date">1947年</div><div class="tl-text">土地法大纲——耕者有其田</div></div>
+          <div class="tl-item"><div class="tl-date">1954年</div><div class="tl-text">五四宪法——新中国第一部宪法</div></div>
+          <div class="tl-item"><div class="tl-date">1982年</div><div class="tl-text">现行宪法颁布——改革开放法治基石</div></div>
+          <div class="tl-item"><div class="tl-date">2014年</div><div class="tl-text">设立国家宪法日（12月4日）</div></div>
+          <div class="tl-item"><div class="tl-date">2020年</div><div class="tl-text">《民法典》颁布——社会生活百科全书</div></div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- 第五行：知识小卡片 -->
-  <div class="section gold full-row">
-    <div class="sec-title">🧠 法治小知识</div>
-    <div class="sec-content">
-      <div class="tips-box">
-        <div class="tip"><strong>🔒 国家宪法日</strong><br>每年12月4日<br>2014年设立</div>
-        <div class="tip"><strong>📖 《民法典》</strong><br>2021年1月1日施行<br>新中国第一部法典</div>
-        <div class="tip"><strong>⚖️ 法治十六字方针</strong><br>科学立法·严格执法<br>公正司法·全民守法</div>
-        <div class="tip"><strong>🎓 中学生怎么做</strong><br>学法·懂法·守法·用法<br>做宪法小卫士</div>
+    <div class="section gold">
+      <div class="sec-title">🧠 法治小知识</div>
+      <div class="sec-content">
+        <div class="tips-box">
+          <div class="tip"><strong>🔒 国家宪法日</strong><br>每年12月4日</div>
+          <div class="tip"><strong>📖 《民法典》</strong><br>2021年施行</div>
+          <div class="tip"><strong>⚖️ 法治十六字</strong><br>科学立法·严格执法<br>公正司法·全民守法</div>
+          <div class="tip"><strong>🎓 中学生怎么做</strong><br>学法·懂法·守法·用法</div>
+        </div>
       </div>
     </div>
   </div>
