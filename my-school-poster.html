@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我心中的八十中温分 · 手抄报</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap');
+  :root{
+    --red:#d63031;--red-deep:#a02020;--orange:#e17055;
+    --gold:#e2b33d;--gold-light:#f4d06f;--green:#27ae60;--green-light:#a8e6cf;
+    --blue:#2980b9;--blue-light:#74b9ff;--purple:#8e44ad;
+    --pink:#fd79a8;--cream:#fffbf0;--ink:#2d3436;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Noto Sans SC',sans-serif;background:#e8dcc5;display:flex;
+    justify-content:center;padding:16px;min-height:100vh}
+  .报纸{
+    width:1120px;max-width:100%;background:var(--cream);
+    position:relative;box-shadow:0 4px 40px rgba(0,0,0,.15);
+    border:3px solid var(--red);
+  }
+  .border-deco{border:2px dashed var(--gold);margin:5px}
+  .inner{padding:20px 24px}
+  /* 报头 */
+  .header{text-align:center;padding:8px 0 16px;border-bottom:3px double var(--red);margin-bottom:16px;position:relative}
+  .header .stars{font-size:16px;letter-spacing:10px;color:var(--gold);margin-bottom:2px}
+  .header h1{font-family:'Ma Shan Zheng','ZCOOL KuaiLe',serif;font-size:46px;
+    color:var(--red);letter-spacing:10px;text-shadow:3px 3px 0 var(--gold-light);margin:4px 0}
+  .header .sub{font-size:14px;color:var(--ink);letter-spacing:3px}
+  .header .info-bar{display:flex;justify-content:space-between;font-size:11px;
+    color:var(--red-deep);margin-top:8px;padding:0 10px}
+
+  /* 主布局：左中右三栏 */
+  .main-layout{display:grid;grid-template-columns:300px 1fr 280px;gap:14px;margin-bottom:14px}
+
+  /* 板块通用 */
+  .block{border:2.5px solid;border-radius:0;padding:12px 14px;position:relative;background:rgba(255,255,255,.6)}
+  .block.red{border-color:var(--red)}
+  .block.blue{border-color:var(--blue)}
+  .block.green{border-color:var(--green)}
+  .block.gold{border-color:var(--gold)}
+  .block.purple{border-color:var(--purple)}
+  .block.orange{border-color:var(--orange)}
+
+  .block-title{font-family:'ZCOOL KuaiLe',sans-serif;font-size:17px;
+    text-align:center;margin:-22px auto 10px;background:var(--cream);display:block;
+    width:fit-content;padding:2px 14px;font-weight:700}
+  .red .block-title{color:var(--red)}
+  .blue .block-title{color:var(--blue)}
+  .green .block-title{color:var(--green)}
+  .gold .block-title{color:var(--gold-dark,#b8860b)}
+  .purple .block-title{color:var(--purple)}
+  .orange .block-title{color:var(--orange)}
+
+  .content{font-size:12.5px;line-height:1.85;color:var(--ink)}
+  .content p{text-indent:2em;margin-bottom:6px}
+  .content p:last-child{margin-bottom:0}
+  .content strong{color:var(--red-deep)}
+  .red .content strong{color:var(--red)}
+  .blue .content strong{color:var(--blue)}
+  .green .content strong{color:var(--green)}
+  .purple .content strong{color:var(--purple)}
+  .orange .content strong{color:var(--orange)}
+
+  /* 左栏 */
+  .left-col{display:flex;flex-direction:column;gap:14px}
+  /* 中栏 */
+  .center-col{display:flex;flex-direction:column;gap:14px}
+  /* 右栏 */
+  .right-col{display:flex;flex-direction:column;gap:14px}
+
+  /* 插画框 */
+  .illustration{border:2.5px solid var(--gold);border-radius:8px;padding:10px;
+    text-align:center;background:linear-gradient(135deg,#fffbf0,#fff5e0);margin-bottom:10px}
+  .illustration svg{max-width:100%;height:auto}
+  .illustration .cap{font-size:11px;color:var(--gold-dark,#b8860b);margin-top:4px;font-style:italic}
+
+  /* 名言框 */
+  .quote-box{background:linear-gradient(135deg,rgba(214,48,49,.06),rgba(226,179,61,.08));
+    border:2px solid var(--gold);border-radius:10px;padding:12px;text-align:center;margin:6px 0}
+  .quote-text{font-family:'Noto Serif SC',serif;font-size:15px;color:var(--red-deep);
+    font-weight:700;line-height:1.8;letter-spacing:1px}
+  .quote-author{font-size:11px;color:var(--ink);margin-top:6px;opacity:.7}
+
+  /* 列表样式 */
+  .item-list{list-style:none;padding:0}
+  .item-list li{padding:6px 0 6px 20px;position:relative;font-size:12.5px;line-height:1.7;border-bottom:1px dashed rgba(0,0,0,.08)}
+  .item-list li:last-child{border-bottom:none}
+  .item-list li::before{content:'★';position:absolute;left:2px;top:6px;font-size:10px}
+  .red .item-list li::before{color:var(--red)}
+  .blue .item-list li::before{color:var(--blue)}
+  .green .item-list li::before{color:var(--green)}
+  .purple .item-list li::before{color:var(--purple)}
+  .orange .item-list li::before{color:var(--orange)}
+
+  /* 诗歌框 */
+  .poem-box{text-align:center;padding:10px;background:rgba(142,68,173,.05);
+    border-left:4px solid var(--purple);border-radius:0 8px 8px 0;margin:6px 0}
+  .poem-box p{font-family:'Noto Serif SC',serif;font-size:14px;line-height:2.2;
+    color:var(--purple);font-weight:600;text-indent:0;letter-spacing:2px}
+  .poem-box p:last-child{margin-bottom:0}
+
+  /* 底部 */
+  .footer{margin-top:8px;padding:10px 0 4px;border-top:3px double var(--red);text-align:center}
+  .footer-deco{font-size:14px;letter-spacing:8px;color:var(--gold)}
+  .footer-info{font-size:12px;color:var(--red-deep);margin-top:4px;letter-spacing:2px}
+
+  /* 寄语条 */
+  .message-bar{background:linear-gradient(90deg,rgba(214,48,49,.08),rgba(226,179,61,.08),rgba(39,174,96,.08));
+    border:2px solid var(--gold);border-radius:10px;padding:12px 20px;text-align:center;margin:10px 0}
+  .message-bar p{font-family:'Noto Serif SC',serif;font-size:14px;color:var(--ink);
+    line-height:1.9;text-indent:0;letter-spacing:1px}
+  .message-bar .highlight{color:var(--red);font-weight:700}
+
+  @media(max-width:1140px){
+    .报纸{width:100%}
+    .main-layout{grid-template-columns:1fr}
+    .header h1{font-size:34px;letter-spacing:6px}
+  }
+</style>
+</head>
+<body>
+
+<div class="报纸">
+<div class="border-deco">
+<div class="inner">
+
+  <!-- ============ 报头 ============ -->
+  <div class="header">
+    <div class="stars">★ ★ ★ ★ ★ ★ ★</div>
+    <h1>我心中的八十中温分</h1>
+    <div class="sub">—— 走入初中 · 走进青春的绚烂 ——</div>
+    <div class="info-bar">
+      <span>班级：初一（　）班</span>
+      <span>姓名：　　　　　</span>
+      <span>日期：2026年　月　日</span>
+    </div>
+  </div>
+
+  <!-- ============ 寄语横条 ============ -->
+  <div class="message-bar">
+    <p>走入初中，走进青春的绚烂。在八十中温分，愿你<span class="highlight">追求更高的理想阶梯</span>，有坚定的目标和清晰的方向。即便途中绊倒，生了忧愁，也是<span class="highlight">褶褶生辉</span>。</p>
+  </div>
+
+  <!-- ============ 主布局 ============ -->
+  <div class="main-layout">
+
+    <!-- ===== 左栏 ===== -->
+    <div class="left-col">
+
+      <!-- 学校介绍 -->
+      <div class="block red">
+        <span class="block-title">🏫 我的学校</span>
+        <div class="content">
+          <p>北京市第八十中学温榆河分校，位于<strong>朝阳区崔各庄乡容慧路</strong>，2012年正式挂牌成立，是一所公办九年一贯制学校。</p>
+          <p>校园虽不华丽，却温暖如家。教学楼里书声琅琅，田径场上活力飞扬，风雨操场上挥洒汗水，食堂里飘着饭菜香——这里就是我要度过三年青春的地方。</p>
+        </div>
+      </div>
+
+      <!-- 校园插画 -->
+      <div class="illustration">
+        <svg width="260" height="160" viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- 天空 -->
+          <rect width="260" height="100" fill="#e8f4fd"/>
+          <!-- 太阳 -->
+          <circle cx="220" cy="30" r="16" fill="#f4d06f" opacity=".7"/>
+          <circle cx="220" cy="30" r="10" fill="#e2b33d" opacity=".5"/>
+          <!-- 云 -->
+          <ellipse cx="50" cy="25" rx="20" ry="8" fill="#fff" opacity=".7"/>
+          <ellipse cx="120" cy="35" rx="15" ry="6" fill="#fff" opacity=".6"/>
+          <!-- 地面 -->
+          <rect y="100" width="260" height="60" fill="#a8e6cf"/>
+          <!-- 教学楼 -->
+          <rect x="40" y="40" width="120" height="65" fill="#b8cce4" stroke="#2980b9" stroke-width="2"/>
+          <rect x="50" y="50" width="20" height="15" fill="#74b9ff" stroke="#2980b9" stroke-width="1"/>
+          <rect x="78" y="50" width="20" height="15" fill="#74b9ff" stroke="#2980b9" stroke-width="1"/>
+          <rect x="106" y="50" width="20" height="15" fill="#74b9ff" stroke="#2980b9" stroke-width="1"/>
+          <rect x="134" y="50" width="20" height="15" fill="#74b9ff" stroke="#2980b9" stroke-width="1"/>
+          <rect x="50" y="72" width="20" height="15" fill="#74b9ff" stroke="#2980b9" stroke-width="1"/>
+          <rect x="78" y="72" width="20" height="15" fill="#74b9ff" stroke="#2980b9" stroke-width="1"/>
+          <rect x="106" y="72" width="20" height="15" fill="#74b9ff" stroke="#2980b9" stroke-width="1"/>
+          <rect x="134" y="72" width="20" height="15" fill="#74b9ff" stroke="#2980b9" stroke-width="1"/>
+          <!-- 校门 -->
+          <rect x="86" y="92" width="28" height="13" fill="#d63031"/>
+          <!-- 旗杆 -->
+          <line x1="195" y1="35" x2="195" y2="105" stroke="#333" stroke-width="2"/>
+          <path d="M 195 35 L 215 40 L 195 45 Z" fill="#d63031"/>
+          <!-- 树 -->
+          <rect x="18" y="75" width="6" height="30" fill="#8b4513"/>
+          <circle cx="21" cy="70" r="14" fill="#27ae60" opacity=".7"/>
+          <rect x="232" y="75" width="6" height="30" fill="#8b4513"/>
+          <circle cx="235" cy="70" r="12" fill="#27ae60" opacity=".7"/>
+          <!-- 小路 -->
+          <path d="M 86 105 Q 100 120 86 155" fill="none" stroke="#d4c5a0" stroke-width="8"/>
+          <path d="M 114 105 Q 100 120 114 155" fill="none" stroke="#d4c5a0" stroke-width="8"/>
+          <!-- 花朵 -->
+          <circle cx="15" cy="130" r="3" fill="#fd79a8"/>
+          <circle cx="25" cy="140" r="3" fill="#e2b33d"/>
+          <circle cx="240" cy="130" r="3" fill="#fd79a8"/>
+          <circle cx="230" cy="145" r="3" fill="#e2b33d"/>
+        </svg>
+        <div class="cap">▾ 我心中的校园 ▾</div>
+      </div>
+
+      <!-- 名言 -->
+      <div class="block gold">
+        <span class="block-title">💡 青春寄语</span>
+        <div class="quote-box">
+          <div class="quote-text">"青春不是年华，而是心境。"<br>即使跌倒，也要面向前方。</div>
+          <div class="quote-author">—— 致初一的你</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 中栏 ===== -->
+    <div class="center-col">
+
+      <!-- 我的第一印象 -->
+      <div class="block orange">
+        <span class="block-title">🌱 初见温分 · 第一印象</span>
+        <div class="content">
+          <p>九月一日，阳光正好。我背着新书包，站在校门口，抬头看见"<strong>北京市第八十中学温榆河分校</strong>"几个大字，心中满是期待与紧张。</p>
+          <p>走进校园，教学楼安静地矗立着，窗明几净。教室里桌椅整齐，黑板上写着"欢迎新同学"。老师微笑着让我们做自我介绍，同学们来自不同的小学，却因为同样的缘分聚在了一起。</p>
+          <p>那一刻我突然觉得——这里就是我<strong>新征程的起点</strong>。</p>
+        </div>
+      </div>
+
+      <!-- 三年规划 -->
+      <div class="block blue">
+        <span class="block-title">🎯 我的三年目标</span>
+        <ul class="item-list">
+          <li><strong>初一 · 适应与探索</strong>：养成良好的学习习惯，适应初中节奏，结交新朋友，找到自己的兴趣方向。</li>
+          <li><strong>初二 · 积累与成长</strong>：夯实各科基础，参加社团活动，培养独立思考能力，做时间的主人。</li>
+          <li><strong>初三 · 冲刺与收获</strong>：全力以赴备战中考，不让青春留遗憾，带着温分的力量走向更大的舞台。</li>
+        </ul>
+      </div>
+
+      <!-- 我的校园生活 -->
+      <div class="block green">
+        <span class="block-title">📖 温分的一天</span>
+        <div class="content">
+          <p>清晨7:20，走进校门，梧桐树在晨光中摇曳。早读课上，语文老师带我们读古诗，朗朗书声回荡走廊。数学课挑战思维，英语课趣味十足，体育课在田径场上尽情奔跑。</p>
+          <p>中午在食堂和同学们一边吃饭一边聊天，下午的课程结束后，社团活动时间到了——<strong>风雨操场</strong>里打球的呐喊声此起彼伏。放学时夕阳洒在校园，一天虽然忙碌，但充实而快乐。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 右栏 ===== -->
+    <div class="right-col">
+
+      <!-- 小诗 -->
+      <div class="block purple">
+        <span class="block-title">✨ 少年说</span>
+        <div class="poem-box">
+          <p>走入初中，</p>
+          <p>走进青春的绚烂。</p>
+          <p>温分校园，</p>
+          <p>是我梦想的起点。</p>
+          <p>纵有绊倒忧愁，</p>
+          <p>也是褶褶生辉。</p>
+          <p>坚定方向，</p>
+          <p>勇敢向前。</p>
+        </div>
+      </div>
+
+      <!-- 校园关键词 -->
+      <div class="block red">
+        <span class="block-title">🏷️ 温分关键词</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;padding:4px 0">
+          <span style="background:rgba(214,48,49,.1);color:var(--red);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700">教学楼</span>
+          <span style="background:rgba(41,128,185,.1);color:var(--blue);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700">田径场</span>
+          <span style="background:rgba(39,174,96,.1);color:var(--green);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700">风雨操场</span>
+          <span style="background:rgba(226,179,61,.15);color:#b8860b;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700">食堂</span>
+          <span style="background:rgba(142,68,173,.1);color:var(--purple);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700">宿舍楼</span>
+          <span style="background:rgba(253,121,168,.12);color:var(--pink);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700">新同学</span>
+          <span style="background:rgba(225,112,85,.12);color:var(--orange);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700">新起点</span>
+          <span style="background:rgba(214,48,49,.1);color:var(--red);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700">青春</span>
+          <span style="background:rgba(41,128,185,.1);color:var(--blue);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700">理想</span>
+          <span style="background:rgba(39,174,96,.1);color:var(--green);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700">奋斗</span>
+        </div>
+      </div>
+
+      <!-- 心声 -->
+      <div class="block green">
+        <span class="block-title">💚 写给三年后的自己</span>
+        <div class="content">
+          <p>三年后的你：</p>
+          <p>你好！希望此刻的你已经长高了许多，交到了最好的朋友，学到了很多知识。</p>
+          <p>不管成绩如何，希望你<strong>依然热爱学习</strong>；不管遇到什么困难，希望你<strong>没有放弃梦想</strong>。</p>
+          <p>还记得初一入学时写下的心愿吗？愿你<strong>褶褶生辉</strong>，不负韶华。</p>
+          <p style="text-align:right;text-indent:0">—— 2026年9月的你</p>
+        </div>
+      </div>
+
+      <!-- 知识小卡 -->
+      <div class="block gold">
+        <span class="block-title">📌 初中小贴士</span>
+        <ul class="item-list" style="font-size:12px">
+          <li>科目从3门增加到7门，做好预习复习</li>
+          <li>学会做笔记，用不同颜色的笔标记重点</li>
+          <li>每天锻炼身体，体育成绩也计入中考</li>
+          <li>积极参加社团，发展一项兴趣爱好</li>
+          <li>遇到困难找老师，温分的老师都很暖</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ 底部 ============ -->
+  <div class="footer">
+    <div class="footer-deco">★ ◆ ★ ◆ ★ ◆ ★</div>
+    <div class="footer-info">走入初中 · 走进青春的绚烂 · 八十中温分 · 褶褶生辉</div>
+  </div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>
