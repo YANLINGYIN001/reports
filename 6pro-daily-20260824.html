@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6pro 4G门铃公测 - 日常问题日报 2026-08-24</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; padding: 20px; color: #333; }
+.container { max-width: 1100px; margin: 0 auto; }
+h1 { text-align: center; font-size: 22px; margin-bottom: 5px; }
+.subtitle { text-align: center; color: #999; font-size: 13px; margin-bottom: 25px; }
+.kpi-row { display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
+.kpi { flex: 1; min-width: 140px; background: #fff; border-radius: 10px; padding: 18px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi .num { font-size: 28px; font-weight: 700; color: #00B050; }
+.kpi .label { font-size: 12px; color: #999; margin-top: 5px; }
+.kpi.red .num { color: #E74C3C; }
+.kpi.orange .num { color: #F39C12; }
+.kpi.blue .num { color: #3498db; }
+.section { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 17px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #00B050; }
+.insight { padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; line-height: 1.6; }
+.insight.red { background: #FFF5F5; border-left: 4px solid #E74C3C; }
+.insight.orange { background: #FFF8F0; border-left: 4px solid #F39C12; }
+.insight.blue { background: #F0F7FF; border-left: 4px solid #3498db; }
+.insight.green { background: #F0FBF5; border-left: 4px solid #00B050; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: #f8f8f8; padding: 10px 8px; text-align: left; font-weight: 600; color: #555; border-bottom: 2px solid #e0e0e0; }
+td { padding: 10px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+tr:hover { background: #fafafa; }
+.tag1 { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+.bar-container { position: relative; width: 100%; height: 24px; background: #f0f0f0; border-radius: 4px; overflow: hidden; }
+.bar { height: 100%; background: #00B050; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; color: #fff; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.bar.red { background: #E74C3C; }
+.bar.orange { background: #F39C12; }
+.new-badge { display: inline-block; background: #E74C3C; color: #fff; font-size: 10px; padding: 1px 5px; border-radius: 3px; margin-left: 5px; }
+.user-quote { background: #f9f9f9; padding: 8px 12px; border-radius: 6px; margin: 5px 0; font-size: 13px; line-height: 1.5; }
+.user-quote .name { font-weight: 600; color: #555; }
+.user-quote .fw { font-size: 11px; color: #999; margin-left: 8px; }
+.module-title { font-size: 15px; font-weight: 700; margin: 20px 0 10px; padding: 8px 12px; border-radius: 6px; }
+.module-title.p0 { background: #FFF5F5; color: #E74C3C; }
+.module-title.p1 { background: #FFF8F0; color: #F39C12; }
+.module-title.p2 { background: #F0F7FF; color: #3498db; }
+.solution-box { background: #f0f7ff; padding: 10px 15px; border-radius: 6px; margin-top: 10px; font-size: 13px; color: #555; }
+.footer { text-align: center; color: #999; font-size: 12px; padding: 20px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>6pro 4G门铃公测 - 日常问题反馈报告</h1>
+<p class="subtitle">数据截至 2026-08-24 | 累计 491 条反馈 | 19 位用户参与</p>
+
+<!-- KPI Cards -->
+<div class="kpi-row">
+<div class="kpi"><div class="num">491</div><div class="label">累计有效反馈</div></div>
+<div class="kpi"><div class="num">19</div><div class="label">参与用户数</div></div>
+<div class="kpi"><div class="num">471</div><div class="label">已打标反馈</div></div>
+<div class="kpi orange"><div class="num">6</div><div class="label">本次新增</div></div>
+<div class="kpi blue"><div class="num">19</div><div class="label">一级标签数</div></div>
+<div class="kpi blue"><div class="num">115</div><div class="label">二级标签数</div></div>
+</div>
+
+<!-- Core Insight -->
+<div class="section">
+<h2>📊 核心洞察</h2>
+<div class="insight red"><strong>本次新增 6 条反馈（8/21-8/23），全部为云录问题。</strong> 0817固件版本下云录问题持续集中爆发，涵盖画面变化误报、有人误报、漏录/漏拍、绿屏、录制延迟、缩略图不显示6个维度。云录误报视频采集已累计132条（新增50条），说明误报问题已成核心痛点。</div>
+<div class="insight orange"><strong>累计TOP3问题：画面变化误报（53条/16人）> 漏录/漏拍（38条/14人）> 有人误报（27条/13人）。</strong> 云录误报类问题（画面变化误报+有人误报+误报）合计90条，占云录标签的39%，是当前最大痛点。</div>
+<div class="insight blue"><strong>云录标签累计229条，占全部反馈的48%，</strong>远超第二名卡录（51条）。0817固件上线后云录问题未明显改善，需重点关注。</div>
+</div>
+
+<!-- New Entries -->
+<div class="section">
+<h2>🆕 本次新增明细（6条）</h2>
+<table>
+<thead><tr><th>序号</th><th>姓名</th><th>固件</th><th>一级标签</th><th>二级标签</th><th>问题描述</th></tr></thead>
+<tbody>
+<tr>
+<td>495</td>
+<td style="font-weight:600">美诺</td>
+<td>0817</td>
+<td><span class="tag1" style="background:#e8f5e9;color:#00B050">云录</span></td>
+<td style="font-weight:600">录制延迟</td>
+<td style="max-width:300px">查看时发现云录画面模糊不清，画面截图人物都快离开了才拍到，建议优化</td>
+</tr><tr>
+<td>496</td>
+<td style="font-weight:600">魏健伟</td>
+<td>0817</td>
+<td><span class="tag1" style="background:#e8f5e9;color:#00B050">云录</span></td>
+<td style="font-weight:600">云录缩略图不显示</td>
+<td style="max-width:300px">没有封面图画</td>
+</tr><tr>
+<td>497</td>
+<td style="font-weight:600">周军</td>
+<td>0817</td>
+<td><span class="tag1" style="background:#e8f5e9;color:#00B050">云录</span></td>
+<td style="font-weight:600">有人误报</td>
+<td style="max-width:300px">无人逗留，信息提醒有人逗留字样提醒</td>
+</tr><tr>
+<td>498</td>
+<td style="font-weight:600">王瑷珲</td>
+<td>0817</td>
+<td><span class="tag1" style="background:#e8f5e9;color:#00B050">云录</span></td>
+<td style="font-weight:600">绿屏</td>
+<td style="max-width:300px">有人出现  画面变化，云录列表灰屏，从19日到22日16点就这2例。</td>
+</tr><tr>
+<td>499</td>
+<td style="font-weight:600">孙晓明</td>
+<td>0817</td>
+<td><span class="tag1" style="background:#e8f5e9;color:#00B050">云录</span></td>
+<td style="font-weight:600">画面变化误报</td>
+<td style="max-width:300px">错录，画面没有变化录像</td>
+</tr><tr>
+<td>500</td>
+<td style="font-weight:600">黄军剑</td>
+<td>0817</td>
+<td><span class="tag1" style="background:#e8f5e9;color:#00B050">云录</span></td>
+<td style="font-weight:600">漏录/漏拍</td>
+<td style="max-width:300px">设备在线，可以切换4g和wifi。但是没有录像。</td>
+</tr></tbody></table></div>
+<div class="section">
+<h2>📈 累计TOP15问题分布（按反馈人数排序）</h2>
+<table>
+<thead><tr><th>排名</th><th>二级标签</th><th>反馈人数</th><th>反馈条数</th><th>占比</th><th>分布</th></tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="font-weight:600">画面变化误报</td>
+<td>16人</td>
+<td>53</td>
+<td>11.3%</td>
+<td><div class="bar-container"><div class="bar red" style="width:100%">53</div></div></td>
+</tr><tr>
+<td>2</td>
+<td style="font-weight:600">漏录/漏拍</td>
+<td>14人</td>
+<td>38</td>
+<td>8.1%</td>
+<td><div class="bar-container"><div class="bar red" style="width:71%">38</div></div></td>
+</tr><tr>
+<td>3</td>
+<td style="font-weight:600">有人误报</td>
+<td>13人</td>
+<td>27</td>
+<td>5.7%</td>
+<td><div class="bar-container"><div class="bar red" style="width:50%">27</div></div></td>
+</tr><tr>
+<td>4</td>
+<td style="font-weight:600">录制延迟</td>
+<td>12人</td>
+<td>26</td>
+<td>5.5%</td>
+<td><div class="bar-container"><div class="bar orange" style="width:49%">26</div></div></td>
+</tr><tr>
+<td>5</td>
+<td style="font-weight:600">云录缩略图不显示</td>
+<td>11人</td>
+<td>20</td>
+<td>4.2%</td>
+<td><div class="bar-container"><div class="bar orange" style="width:37%">20</div></div></td>
+</tr><tr>
+<td>6</td>
+<td style="font-weight:600">开流失败</td>
+<td>9人</td>
+<td>12</td>
+<td>2.5%</td>
+<td><div class="bar-container"><div class="bar orange" style="width:22%">12</div></div></td>
+</tr><tr>
+<td>7</td>
+<td style="font-weight:600">卡录加载异常</td>
+<td>7人</td>
+<td>15</td>
+<td>3.2%</td>
+<td><div class="bar-container"><div class="bar " style="width:28%">15</div></div></td>
+</tr><tr>
+<td>8</td>
+<td style="font-weight:600">固件升级失败</td>
+<td>7人</td>
+<td>13</td>
+<td>2.8%</td>
+<td><div class="bar-container"><div class="bar " style="width:24%">13</div></div></td>
+</tr><tr>
+<td>9</td>
+<td style="font-weight:600">耗电快</td>
+<td>7人</td>
+<td>11</td>
+<td>2.3%</td>
+<td><div class="bar-container"><div class="bar " style="width:20%">11</div></div></td>
+</tr><tr>
+<td>10</td>
+<td style="font-weight:600">设置项自动重置</td>
+<td>7人</td>
+<td>10</td>
+<td>2.1%</td>
+<td><div class="bar-container"><div class="bar " style="width:18%">10</div></div></td>
+</tr><tr>
+<td>11</td>
+<td style="font-weight:600">误报</td>
+<td>7人</td>
+<td>10</td>
+<td>2.1%</td>
+<td><div class="bar-container"><div class="bar " style="width:18%">10</div></div></td>
+</tr><tr>
+<td>12</td>
+<td style="font-weight:600">显示异常/数据错误</td>
+<td>6人</td>
+<td>9</td>
+<td>1.9%</td>
+<td><div class="bar-container"><div class="bar " style="width:16%">9</div></div></td>
+</tr><tr>
+<td>13</td>
+<td style="font-weight:600">画质噪点/拖影</td>
+<td>6人</td>
+<td>9</td>
+<td>1.9%</td>
+<td><div class="bar-container"><div class="bar " style="width:16%">9</div></div></td>
+</tr><tr>
+<td>14</td>
+<td style="font-weight:600">设备离线</td>
+<td>6人</td>
+<td>8</td>
+<td>1.7%</td>
+<td><div class="bar-container"><div class="bar " style="width:15%">8</div></div></td>
+</tr><tr>
+<td>15</td>
+<td style="font-weight:600">卡录不录</td>
+<td>6人</td>
+<td>6</td>
+<td>1.3%</td>
+<td><div class="bar-container"><div class="bar " style="width:11%">6</div></div></td>
+</tr></tbody></table></div>
+<div class="section">
+<h2>📋 一级标签分布</h2>
+<table>
+<thead><tr><th>一级标签</th><th>反馈条数</th><th>占比</th><th>分布</th></tr></thead>
+<tbody>
+<tr>
+<td style="font-weight:600">云录</td>
+<td>229</td>
+<td>48.6%</td>
+<td><div class="bar-container"><div class="bar" style="width:100%">229</div></div></td>
+</tr><tr>
+<td style="font-weight:600">卡录</td>
+<td>51</td>
+<td>10.8%</td>
+<td><div class="bar-container"><div class="bar" style="width:22%">51</div></div></td>
+</tr><tr>
+<td style="font-weight:600">APP功能/交互</td>
+<td>46</td>
+<td>9.8%</td>
+<td><div class="bar-container"><div class="bar" style="width:20%">46</div></div></td>
+</tr><tr>
+<td style="font-weight:600">IQ</td>
+<td>27</td>
+<td>5.7%</td>
+<td><div class="bar-container"><div class="bar" style="width:11%">27</div></div></td>
+</tr><tr>
+<td style="font-weight:600">开流</td>
+<td>21</td>
+<td>4.5%</td>
+<td><div class="bar-container"><div class="bar" style="width:9%">21</div></div></td>
+</tr><tr>
+<td style="font-weight:600">功能需求</td>
+<td>19</td>
+<td>4.0%</td>
+<td><div class="bar-container"><div class="bar" style="width:8%">19</div></div></td>
+</tr><tr>
+<td style="font-weight:600">OTA</td>
+<td>14</td>
+<td>3.0%</td>
+<td><div class="bar-container"><div class="bar" style="width:6%">14</div></div></td>
+</tr><tr>
+<td style="font-weight:600">按门铃</td>
+<td>12</td>
+<td>2.5%</td>
+<td><div class="bar-container"><div class="bar" style="width:5%">12</div></div></td>
+</tr><tr>
+<td style="font-weight:600">续航</td>
+<td>11</td>
+<td>2.3%</td>
+<td><div class="bar-container"><div class="bar" style="width:4%">11</div></div></td>
+</tr><tr>
+<td style="font-weight:600">夜视切换</td>
+<td>9</td>
+<td>1.9%</td>
+<td><div class="bar-container"><div class="bar" style="width:3%">9</div></div></td>
+</tr><tr>
+<td style="font-weight:600">稳定性</td>
+<td>8</td>
+<td>1.7%</td>
+<td><div class="bar-container"><div class="bar" style="width:3%">8</div></div></td>
+</tr><tr>
+<td style="font-weight:600">配网/安装引导</td>
+<td>7</td>
+<td>1.5%</td>
+<td><div class="bar-container"><div class="bar" style="width:3%">7</div></div></td>
+</tr><tr>
+<td style="font-weight:600">其他</td>
+<td>5</td>
+<td>1.1%</td>
+<td><div class="bar-container"><div class="bar" style="width:2%">5</div></div></td>
+</tr><tr>
+<td style="font-weight:600">硬件/信号</td>
+<td>3</td>
+<td>0.6%</td>
+<td><div class="bar-container"><div class="bar" style="width:1%">3</div></div></td>
+</tr><tr>
+<td style="font-weight:600">开箱</td>
+<td>3</td>
+<td>0.6%</td>
+<td><div class="bar-container"><div class="bar" style="width:1%">3</div></div></td>
+</tr><tr>
+<td style="font-weight:600">消息通知</td>
+<td>3</td>
+<td>0.6%</td>
+<td><div class="bar-container"><div class="bar" style="width:1%">3</div></div></td>
+</tr><tr>
+<td style="font-weight:600">硬件设计</td>
+<td>1</td>
+<td>0.2%</td>
+<td><div class="bar-container"><div class="bar" style="width:0%">1</div></div></td>
+</tr><tr>
+<td style="font-weight:600">包装/配件</td>
+<td>1</td>
+<td>0.2%</td>
+<td><div class="bar-container"><div class="bar" style="width:0%">1</div></div></td>
+</tr><tr>
+<td style="font-weight:600">指示灯</td>
+<td>1</td>
+<td>0.2%</td>
+<td><div class="bar-container"><div class="bar" style="width:0%">1</div></div></td>
+</tr></tbody></table></div><div class="section"><h2>🔍 各模块详情</h2><div class="module-title p0">🔴 P0 云录（229条）</div><table>
+<thead><tr><th>二级标签</th><th>反馈人数</th><th>反馈条数</th><th>典型用户原声</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">画面变化误报</td>
+<td>16人</td>
+<td>53</td>
+<td><div class="user-quote"><span class="name">黄军剑</span><span class="fw">2026</span>：云录提示画面变化，实际没有变化。时间8/19 10:57</div><div class="user-quote"><span class="name">孙晓明</span><span class="fw">0817</span>：画面变化，无人出现</div><div class="user-quote"><span class="name">孙晓明</span><span class="fw">0817</span>：错录，画面没有变化录像</div><div style="color:#999;font-size:12px;margin-top:4px">...还有14位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">漏录/漏拍</td>
+<td>14人</td>
+<td>38</td>
+<td><div class="user-quote"><span class="name">周军</span><span class="fw">0817</span>：人离开才开始录像</div><div class="user-quote"><span class="name">周军</span><span class="fw">0817</span>：有人但是灰度图提醒</div><div class="user-quote"><span class="name">黄军剑</span><span class="fw">2026</span>：设备在线，可以切换4g和wifi。但是没有录像。</div><div style="color:#999;font-size:12px;margin-top:4px">...还有12位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">有人误报</td>
+<td>13人</td>
+<td>27</td>
+<td><div class="user-quote"><span class="name">周军</span><span class="fw">0817</span>：无人逗留，信息提醒有人逗留字样提醒</div><div class="user-quote"><span class="name">蔡坤城</span><span class="fw">0812</span>：没有人经过，但是卡录和云录都已经录像了，这个是误报吧。</div><div class="user-quote"><span class="name">相杰</span><span class="fw">0812</span>：提交问卷作业中封面无人相关图片（8/15）</div><div style="color:#999;font-size:12px;margin-top:4px">...还有10位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">录制延迟</td>
+<td>12人</td>
+<td>26</td>
+<td><div class="user-quote"><span class="name">美诺</span><span class="fw">0817</span>：查看时发现云录画面模糊不清，画面截图人物都快离开了才拍到，建议优化</div><div class="user-quote"><span class="name">瑞子</span><span class="fw">0812</span>：人还在云录结束</div><div class="user-quote"><span class="name">许军州</span><span class="fw">0812</span>：8月14到8月15号，人还没离开，但录制已经结束</div><div style="color:#999;font-size:12px;margin-top:4px">...还有9位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">云录缩略图不显示</td>
+<td>11人</td>
+<td>20</td>
+<td><div class="user-quote"><span class="name">何三涛</span><span class="fw">0817</span>：今天升级到0817版本后，云录封面图不显示，但是能打开</div><div class="user-quote"><span class="name">周军</span><span class="fw">0817</span>：云录提醒封面丢失</div><div class="user-quote"><span class="name">周军</span><span class="fw">0817</span>：云提醒通知无封面提醒</div><div style="color:#999;font-size:12px;margin-top:4px">...还有9位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">误报</td>
+<td>7人</td>
+<td>10</td>
+<td><div class="user-quote"><span class="name">美诺</span><span class="fw">0812</span>：刚升级完 打开 提示有人出现或者是有变化 没有看清楚 ，查看发现什么都没有</div><div class="user-quote"><span class="name">瑞子</span><span class="fw">0804</span>：没有人 报画面变化</div><div class="user-quote"><span class="name">瑞子</span><span class="fw">0804</span>：升级完 反而更频繁的画面变化。而且内存卡还是漏</div><div style="color:#999;font-size:12px;margin-top:4px">...还有5位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">绿屏</td>
+<td>5人</td>
+<td>6</td>
+<td><div class="user-quote"><span class="name">陈俊</span><span class="fw">0817</span>：开启，与切换画面斑影依旧明显</div><div class="user-quote"><span class="name">王瑷珲</span><span class="fw">0817</span>：有人出现  画面变化，云录列表灰屏，从19日到22日16点就这2例。</div><div class="user-quote"><span class="name">瑞子</span><span class="fw">1.0.</span>：录制hui ping</div><div style="color:#999;font-size:12px;margin-top:4px">...还有2位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">云录卡录时间不同步</td>
+<td>4人</td>
+<td>5</td>
+<td><div class="user-quote"><span class="name">魏健伟</span><span class="fw">0804</span>：卡录视频比云录少一个</div><div class="user-quote"><span class="name">袁飞</span><span class="fw">0804</span>：云录与卡录内容不同步，时间差异为2-3秒</div><div class="user-quote"><span class="name">相杰</span><span class="fw">0710</span>：这条不确定是不是bug,首先云录和卡录的时间节点对不上。如果说是有延迟是不是应该规律性延迟，比如云录是02秒06秒卡录是04秒08秒，这样规律性的，我不确定这个</div><div style="color:#999;font-size:12px;margin-top:4px">...还有1位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">事件分类不准</td>
+<td>4人</td>
+<td>4</td>
+<td><div class="user-quote"><span class="name">夏君</span><span class="fw">'073</span>：云录中的人物在门口停留了30秒，门铃云录应标记为“有人逗留”而不是有人出现。反而</div><div class="user-quote"><span class="name">何三涛</span><span class="fw">0710</span>：云录像中，明明是有人路过，它分类为有人逗留，请管理审核！</div><div class="user-quote"><span class="name">许军州</span><span class="fw">0710</span>：提示：画面变化；其实是人员出现</div><div style="color:#999;font-size:12px;margin-top:4px">...还有1位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">云录播放失败</td>
+<td>3人</td>
+<td>4</td>
+<td><div class="user-quote"><span class="name">夏君</span><span class="fw">0804</span>：云录视频播放画面一开始有马赛克，在我上传的视频里09:18的两段视频开头尤为明显</div><div class="user-quote"><span class="name">袁飞</span><span class="fw">'073</span>：无法播放云录最早时段部分数据</div><div class="user-quote"><span class="name">张雷</span><span class="fw">0710</span>：云录像第一个无法打开，一直加载</div></td>
+</tr></tbody></table><div class="module-title p1">🟡 P1 卡录（51条）</div><table>
+<thead><tr><th>二级标签</th><th>反馈人数</th><th>反馈条数</th><th>典型用户原声</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">卡录加载异常</td>
+<td>7人</td>
+<td>15</td>
+<td><div class="user-quote"><span class="name">朱君</span><span class="fw">0812</span>：卡录保存错误，云录事件正常，卡录无法播放，且下载后也和云录事件对不起来</div><div class="user-quote"><span class="name">王瑷珲</span><span class="fw">0812</span>：就这一个事件卡录无法在线观看，下载可观看，可分享。云录没问题</div><div class="user-quote"><span class="name">魏健伟</span><span class="fw">0804</span>：22点56之前的卡录视频都无法播放，之前能播放，而且有些还没有了缩略图，可能是做了插拔tf卡的测试的原因，杀后台重新进入也不行</div><div style="color:#999;font-size:12px;margin-top:4px">...还有4位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">卡录不录</td>
+<td>6人</td>
+<td>6</td>
+<td><div class="user-quote"><span class="name">相杰</span><span class="fw">0804</span>：刚更新完成最新固件，云录记录一条事件，对应时间卡录没有记录事件（17点29分58秒）</div><div class="user-quote"><span class="name">美诺</span><span class="fw">0804</span>：10.05之后没有云录卡录 ，内存显示正常，但下边已用和剩余，总大小全部是0mb</div><div class="user-quote"><span class="name">何三涛</span><span class="fw">0804</span>：换了新卡后，还是不能卡录</div><div style="color:#999;font-size:12px;margin-top:4px">...还有3位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">卡录加载慢</td>
+<td>5人</td>
+<td>5</td>
+<td><div class="user-quote"><span class="name">何三涛</span><span class="fw">0710</span>：4G联网方式下，远程查看卡录视频，不显示画面和语音</div><div class="user-quote"><span class="name">王瑷珲</span><span class="fw">0710</span>：实时云录加载比较快，卡录太慢，约一分钟。</div><div class="user-quote"><span class="name">袁飞</span><span class="fw">0710</span>：打开APP无法查看卡录数据</div><div style="color:#999;font-size:12px;margin-top:4px">...还有2位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">卡录缩略图不显示</td>
+<td>5人</td>
+<td>5</td>
+<td><div class="user-quote"><span class="name">陈俊</span><span class="fw">0804</span>：卡录缩略图加载不出来，云录可以</div><div class="user-quote"><span class="name">于晨光</span><span class="fw">0804</span>：卡录不加载封面</div><div class="user-quote"><span class="name">徐婷婷</span><span class="fw">'073</span>：卡录里面视频，都是封面没有画面。都需要点进去</div><div style="color:#999;font-size:12px;margin-top:4px">...还有2位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">回放卡顿/失帧</td>
+<td>2人</td>
+<td>3</td>
+<td><div class="user-quote"><span class="name">何三涛</span><span class="fw">0804</span>：卡录的人影突然消失，是什么情况</div><div class="user-quote"><span class="name">何三涛</span><span class="fw">0710</span>：卡录视频回放中2倍速播放，看起来一卡一卡的，感觉属于失帧播放！</div><div class="user-quote"><span class="name">张雷</span><span class="fw">0710</span>：视频掉帧，这个视频是我慢放0.5倍的</div></td>
+</tr><tr>
+<td style="font-weight:600">卡录加载失败</td>
+<td>3人</td>
+<td>3</td>
+<td><div class="user-quote"><span class="name">朱君</span><span class="fw">0812</span>：卡录无法回放也无法下载，且卡录比云录少两个事件</div><div class="user-quote"><span class="name">陈俊</span><span class="fw">0804</span>：卡录加载失败，退出app从新进入可以了。或许与app版本有关</div><div class="user-quote"><span class="name">相杰</span><span class="fw">'071</span>：切换卡录时候瞬间掉线</div></td>
+</tr><tr>
+<td style="font-weight:600">内存卡读取错误</td>
+<td>3人</td>
+<td>3</td>
+<td><div class="user-quote"><span class="name">美诺</span><span class="fw">0804</span>：内存显示正常，已用和剩余以及全部大小均为0，无法格式化，</div><div class="user-quote"><span class="name">袁飞</span><span class="fw">0804</span>：卡录无法读取卡内数据，插拔TF卡及重启基站未见改善，APP格式化TF卡后恢复卡录，这张卡是全新的，测试前一连续使用一个月，状态良好，此故障属于假性（TF卡非物理</div><div class="user-quote"><span class="name">陈俊</span><span class="fw">'073</span>：卡录缩略恢复。修复内存显示信息</div></td>
+</tr><tr>
+<td style="font-weight:600">卡录画面空白</td>
+<td>2人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">何三涛</span><span class="fw">0710</span>：远程调取卡录视频，出现截图这个问题后，所有的侦测视频都不能加载成功，始终是黑屏。</div><div class="user-quote"><span class="name">相杰</span><span class="fw">0710</span>：卡录文字提示有画面变化，实际显示空白</div></td>
+</tr><tr>
+<td style="font-weight:600">卡录格式化失败</td>
+<td>2人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">袁飞</span><span class="fw">'071</span>：APP储存信息打开 无法操作格式化</div><div class="user-quote"><span class="name">于晨光</span><span class="fw">0710</span>：内存卡格式化失败</div></td>
+</tr><tr>
+<td style="font-weight:600">内存卡信息显示错误</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">美诺</span><span class="fw">0710</span>：群文件下载的APP内存显示异常 其他测试版App显示正常</div></td>
+</tr></tbody></table><div class="module-title p1">🟡 P1 APP功能/交互（46条）</div><table>
+<thead><tr><th>二级标签</th><th>反馈人数</th><th>反馈条数</th><th>典型用户原声</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">设置项自动重置</td>
+<td>7人</td>
+<td>10</td>
+<td><div class="user-quote"><span class="name">黄军剑</span><span class="fw">0804</span>：系统升级前，打开了强拆报警。但是现在显示是关闭的。</div><div class="user-quote"><span class="name">美诺</span><span class="fw">0804</span>：不确定什么时候里边的设置自己变了，</div><div class="user-quote"><span class="name">朱彤</span><span class="fw">0804</span>：设备设置自动混乱，不是我实际设置的，日志也提交不上去。</div><div style="color:#999;font-size:12px;margin-top:4px">...还有4位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">显示异常/数据错误</td>
+<td>6人</td>
+<td>9</td>
+<td><div class="user-quote"><span class="name">袁飞</span><span class="fw">2026</span>：云录当天记录被清空，无事件，实为数据被收纳到查看过往录像里</div><div class="user-quote"><span class="name">黄军剑</span><span class="fw">2026</span>：会员服务协议中，有文字重复。如图。</div><div class="user-quote"><span class="name">何三涛</span><span class="fw">0804</span>：图中的%2s。是不是bug</div><div style="color:#999;font-size:12px;margin-top:4px">...还有3位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">电量显示/命名问题</td>
+<td>5人</td>
+<td>6</td>
+<td><div class="user-quote"><span class="name">朱彤</span><span class="fw">0817</span>：电量与网络项里面，没有电量项，要么不要叫电量与网络，直接叫网络。</div><div class="user-quote"><span class="name">周军</span><span class="fw">0804</span>：app上这个表述我认为不妥，这个栏目里没有电量显示。</div><div class="user-quote"><span class="name">周军</span><span class="fw">'073</span>：将电量与网络改成网络信号</div><div style="color:#999;font-size:12px;margin-top:4px">...还有3位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">信号图标显示错误</td>
+<td>4人</td>
+<td>4</td>
+<td><div class="user-quote"><span class="name">魏健伟</span><span class="fw">0710</span>：门铃没有连接WIFI，却显示无线图标</div><div class="user-quote"><span class="name">许军州</span><span class="fw">0710</span>：4G与wifi联网时，区分不了，都显示是wifi图标</div><div class="user-quote"><span class="name">于晨光</span><span class="fw">0710</span>：切换到4G网络，还是显示WiFi</div><div style="color:#999;font-size:12px;margin-top:4px">...还有1位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">页面加载失败</td>
+<td>3人</td>
+<td>3</td>
+<td><div class="user-quote"><span class="name">袁飞</span><span class="fw">'073</span>：服务器握手失败，无法调取设置</div><div class="user-quote"><span class="name">黄军剑</span><span class="fw">0710</span>：网络较差时，打开页面上的一个页面时，一直转圈。没有超时的时候，造成了无法点击页面，也无法返回。只能关闭app，建议添加一个超时的时间。时间 7/25 12：46</div><div class="user-quote"><span class="name">于晨光</span><span class="fw">0710</span>：点击电量与网络一直加载</div></td>
+</tr><tr>
+<td style="font-weight:600">功能描述与实际不符</td>
+<td>3人</td>
+<td>3</td>
+<td><div class="user-quote"><span class="name">黄军剑</span><span class="fw">2026</span>：云录商城里的云录像服务说明，这个里面的sd卡是大卡，无法使用，应该是tf卡。</div><div class="user-quote"><span class="name">朱君</span><span class="fw">0804</span>：免打扰和免打扰时间段从字面上存在功能重合，但是却没法做到联动，建议优化一下</div><div class="user-quote"><span class="name">陈俊</span><span class="fw">0710</span>：app里介绍的人物出现，识别人脸会已人物小脸呈现。但并没有那种小框框</div></td>
+</tr><tr>
+<td style="font-weight:600">联网方式切换不刷新</td>
+<td>2人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">魏健伟</span><span class="fw">'073</span>：门铃连接由WiFi连接切换回4G网络连接时，实时画面那还是显示WiFi信号，转换较慢，大约2分钟才显示正确</div><div class="user-quote"><span class="name">何三涛</span><span class="fw">0710</span>：APP中切换联网方式后，返回，点击实时页面，不自动更新，需要彻底退出再进入，才能显示最新的联网线路</div></td>
+</tr><tr>
+<td style="font-weight:600">电池管理命名/显示</td>
+<td>2人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">相杰</span><span class="fw">0710</span>：APP 中电池管理始终显示“省电模式”，又不能修改成其它模式，只能显示电量，为什么不叫电池电量呢？或者是其它符合更能体现这个选项功能的名字</div><div class="user-quote"><span class="name">朱君</span><span class="fw">0710</span>：点开后除了设置时长，没有任何模式可以切换，建议去掉省电模式四个字</div></td>
+</tr><tr>
+<td style="font-weight:600">水印/Logo不一致</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">朱君</span><span class="fw">0710</span>：云录和卡录的视频logo和实时画面的logo不一致，位置也不一致</div></td>
+</tr><tr>
+<td style="font-weight:600">人脸小图数据丢失</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">袁飞</span><span class="fw">'071</span>：人脸采集数据丢失，已采集5人</div></td>
+</tr></tbody></table><div class="module-title p2">🔵 P2 IQ（27条）</div><table>
+<thead><tr><th>二级标签</th><th>反馈人数</th><th>反馈条数</th><th>典型用户原声</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">画质噪点/拖影</td>
+<td>6人</td>
+<td>9</td>
+<td><div class="user-quote"><span class="name">王瑷珲</span><span class="fw">0812</span>：问卷1，卡录云录有马赛克，夜间光线明亮无彩色，画面偏暗。2通话端有点破音。</div><div class="user-quote"><span class="name">瑞子</span><span class="fw">0804</span>：走廊有灯光 录制黑白色</div><div class="user-quote"><span class="name">陈俊</span><span class="fw">0804</span>：画面再光线差点的情况下，噪点明显。还有噪点飘忽不定，哨兵版画面明显好点，明亮</div><div style="color:#999;font-size:12px;margin-top:4px">...还有3位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">画面模糊</td>
+<td>5人</td>
+<td>7</td>
+<td><div class="user-quote"><span class="name">陈俊</span><span class="fw">0812</span>：门铃对话音小，音量建议增大。画面噪点多，同等光照，哨兵版夜视效果比4g版亮，建议增加红外灯珠。</div><div class="user-quote"><span class="name">朱君</span><span class="fw">0804</span>：有时候打开app画面是模糊的</div><div class="user-quote"><span class="name">相杰</span><span class="fw">0804</span>：云录封面画质模糊</div><div style="color:#999;font-size:12px;margin-top:4px">...还有2位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">画面过曝</td>
+<td>3人</td>
+<td>3</td>
+<td><div class="user-quote"><span class="name">于晨光</span><span class="fw">0804</span>：光线没变化，曝光异常</div><div class="user-quote"><span class="name">相杰</span><span class="fw">0804</span>：云录画面正常，卡录画面曝光异常</div><div class="user-quote"><span class="name">徐婷婷</span><span class="fw">0710</span>：每次首页，跟点进去前几秒曝光严重</div></td>
+</tr><tr>
+<td style="font-weight:600">录制绿屏</td>
+<td>2人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">相杰</span><span class="fw">'071</span>：切换卡录掉线，退出重进自动上线，但是卡录的视频颜色曝光不对，绿绿的，同一时间段云录画面正常</div><div class="user-quote"><span class="name">许军州</span><span class="fw">0710</span>：点实时画面下的，录制，录出来的是绿屏；</div></td>
+</tr><tr>
+<td style="font-weight:600">绿屏</td>
+<td>5人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">陈俊</span><span class="fw">0817</span>：开启，与切换画面斑影依旧明显</div><div class="user-quote"><span class="name">王瑷珲</span><span class="fw">0817</span>：有人出现  画面变化，云录列表灰屏，从19日到22日16点就这2例。</div><div class="user-quote"><span class="name">瑞子</span><span class="fw">1.0.</span>：录制hui ping</div><div style="color:#999;font-size:12px;margin-top:4px">...还有2位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">首帧过曝</td>
+<td>4人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">美诺</span><span class="fw">0817</span>：查看云录时 感觉花屏</div><div class="user-quote"><span class="name">夏君</span><span class="fw">R6PR</span>：云录像列表里，封面图过曝</div><div class="user-quote"><span class="name">许军州</span><span class="fw">0812</span>：8月14号，16：08，云录掉帧；并且模糊</div><div style="color:#999;font-size:12px;margin-top:4px">...还有1位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">画面缺失一角</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">张雷</span><span class="fw">0804</span>：画面缺失</div></td>
+</tr><tr>
+<td style="font-weight:600">花屏</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">张雷</span><span class="fw">0804</span>：出现花屏一秒钟</div></td>
+</tr></tbody></table><div class="module-title p1">🟡 P1 开流（21条）</div><table>
+<thead><tr><th>二级标签</th><th>反馈人数</th><th>反馈条数</th><th>典型用户原声</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">开流失败</td>
+<td>9人</td>
+<td>12</td>
+<td><div class="user-quote"><span class="name">朱彤</span><span class="fw">0812</span>：开流失败</div><div class="user-quote"><span class="name">相杰</span><span class="fw">'073</span>：早晨第一次打开实时画面加载失败</div><div class="user-quote"><span class="name">许军州</span><span class="fw">'073</span>：实时画面，开流失败，杀死进程，重启app后，开流成功</div><div style="color:#999;font-size:12px;margin-top:4px">...还有6位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">开流卡顿</td>
+<td>3人</td>
+<td>4</td>
+<td><div class="user-quote"><span class="name">陈俊</span><span class="fw">0812</span>：感觉812版低信号时，开溜有点不稳定。提建议提升使用感</div><div class="user-quote"><span class="name">许军州</span><span class="fw">'073</span>：8月2号，8点48分，查看实时画面时，画面出现闪烁，连续开流几次后才恢复正常；</div><div class="user-quote"><span class="name">相杰</span><span class="fw">0710</span>：实时画面超级卡顿</div></td>
+</tr><tr>
+<td style="font-weight:600">消息通知-快捷回复异常</td>
+<td>1人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">何三涛</span><span class="fw">0804</span>：第四条快捷回复的汉字和语音不一致</div><div class="user-quote"><span class="name">何三涛</span><span class="fw">0710</span>：消息通知中快捷回复中第4个快捷回复的语音和汉字不一致</div></td>
+</tr><tr>
+<td style="font-weight:600">开流速度慢</td>
+<td>2人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">朱君</span><span class="fw">0710</span>：同样安装环境，可视门铃5pro4g和6pro4g开流速度快，6pro4g开流太慢，不像4g网速！</div><div class="user-quote"><span class="name">于晨光</span><span class="fw">0710</span>：开流非常慢</div></td>
+</tr><tr>
+<td style="font-weight:600">底噪异常</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">何三涛</span><span class="fw">0710</span>：实时页面中的背景音有类似杀猪的嚎叫声，实际楼道里里静悄悄的没有声音。我觉得应该是门铃的底噪没有处理好。</div></td>
+</tr></tbody></table><div class="module-title p2">🔵 P2 功能需求（19条）</div><table>
+<thead><tr><th>二级标签</th><th>反馈人数</th><th>反馈条数</th><th>典型用户原声</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">微信通话功能缺失</td>
+<td>2人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">瑞子</span><span class="fw">'071</span>：想要微信推送 和有人按门铃微信电话提醒</div><div class="user-quote"><span class="name">张雷</span><span class="fw">0710</span>：缺微信通话功能</div></td>
+</tr><tr>
+<td style="font-weight:600">休眠时间分段设置</td>
+<td>2人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">何三涛</span><span class="fw">'073</span>：我的上班时间是上午和下午，中午在家，建议将自定义时间段修改为上午和下午</div><div class="user-quote"><span class="name">瑞子</span><span class="fw">0710</span>：休眠时间能不能设置时段 比如晚上几点到早上几点……app里是按小时</div></td>
+</tr><tr>
+<td style="font-weight:600">隐私遮挡模式建议</td>
+<td>2人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">张雷</span><span class="fw">0710</span>：我觉得隐私遮挡，应当采用vr模式，不是全景</div><div class="user-quote"><span class="name">王瑷珲</span><span class="fw">0710</span>：隐私设置建议不要使用黑色，感觉影响画面，周边同色马赛克也可以吧，</div></td>
+</tr><tr>
+<td style="font-weight:600">4G和WiFi一键切换需求</td>
+<td>1人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">魏健伟</span><span class="fw">'073</span>：希望有一个4G和WIFI网络的一键切换的按钮，或是二者能同时在线连接，以保证网络连接的畅通</div><div class="user-quote"><span class="name">魏健伟</span><span class="fw">'073</span>：在手机APP上远程切换4G网络和WiFi连接时，不知道能不能实现显示的WiFi是基站也就是家里的无线，而不是手机附近的无线，这样才能远程切换，还有就是如果连接过</div></td>
+</tr><tr>
+<td style="font-weight:600">铃声变声功能</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">孙晓明</span><span class="fw">0710</span>：门铃自定义铃声录制功能，建议录制的时候可以选择变声，考虑到独居女性使用该功能不愿意透露性别，有变声功能能更好的保护个人隐私。截图中我的猴哥版本是我拿另一部手机用</div></td>
+</tr><tr>
+<td style="font-weight:600">铃声分时段设置</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">张雷</span><span class="fw">0710</span>：我一直觉得铃声自定义，不只是白天和晚上，应该是和闹钟一样，节假日，下班回家是同一种铃声，工作中人不在家是另一种声音</div></td>
+</tr><tr>
+<td style="font-weight:600">运营商选择建议</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">何三涛</span><span class="fw">0710</span>：建议增加移动、联通等物联网卡，这样用户可以根据自己当地的网络情况，进行购买，提高可视门铃的使用满意度。</div></td>
+</tr><tr>
+<td style="font-weight:600">升级体验优化</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">相杰</span><span class="fw">'071</span>：1.升级过程比较慢，整个过程大约8分钟。2.建议升级过程中提醒是否可以离开升级画面，是否可以后台App,甚至升级过程中是否可以关闭App,关闭App是否会造成升</div></td>
+</tr><tr>
+<td style="font-weight:600">云录封面图建议</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">美诺</span><span class="fw">'071</span>：有人逗留画面显示的是人即将离开的页面，建议提前几秒能看到谁逗留，而不是人即将离开的截图</div></td>
+</tr><tr>
+<td style="font-weight:600">电量显示命名问题</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">于晨光</span><span class="fw">'073</span>：侦测间隔无论是0秒还是60秒，显示的都是省电模式</div></td>
+</tr></tbody></table><div class="module-title p1">🟡 P1 OTA（14条）</div><table>
+<thead><tr><th>二级标签</th><th>反馈人数</th><th>反馈条数</th><th>典型用户原声</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">固件升级失败</td>
+<td>7人</td>
+<td>13</td>
+<td><div class="user-quote"><span class="name">徐婷婷</span><span class="fw">0812</span>：升级进度一直0，重新升级，一直重试，显示加载中。没反应</div><div class="user-quote"><span class="name">何三涛</span><span class="fw">0804</span>：升级失败</div><div class="user-quote"><span class="name">于晨光</span><span class="fw">0804</span>：升级失败</div><div style="color:#999;font-size:12px;margin-top:4px">...还有4位用户反馈</div></td>
+</tr><tr>
+<td style="font-weight:600">忽略</td>
+<td>4人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">于晨光</span><span class="fw">0817</span>：升级到0817，点击实时画面，左上角电量标识动画是不是有问题</div><div class="user-quote"><span class="name">朱彤</span><span class="fw">0804</span>：点播放按钮开流进去，感觉有记忆功能，前一次点的是云录像或者卡录像，点播放开流进去直接就是云录像或者卡录像界面，按我现在原来的360摄像头无论前一次是在云录或者卡</div><div class="user-quote"><span class="name">张雷</span><span class="fw">0710</span>：升级问题，升级完成，应该显示升级完成，这里升级完成，直接啥也没有，只能看到升级检测</div><div style="color:#999;font-size:12px;margin-top:4px">...还有1位用户反馈</div></td>
+</tr></tbody></table><div class="module-title p1">🟡 P1 按门铃（12条）</div><table>
+<thead><tr><th>二级标签</th><th>反馈人数</th><th>反馈条数</th><th>典型用户原声</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">按门铃通话延迟</td>
+<td>2人</td>
+<td>4</td>
+<td><div class="user-quote"><span class="name">周军</span><span class="fw">0804</span>：基站，门铃66%信号时通话表现。</div><div class="user-quote"><span class="name">周军</span><span class="fw">0804</span>：基站，门铃100%信号表现。接听反映时间慢，通话视频均有延时。</div><div class="user-quote"><span class="name">朱彤</span><span class="fw">0804</span>：APP前端打开状态下，按门铃5次测试，第四次等了差不多18秒才出现弹窗。</div></td>
+</tr><tr>
+<td style="font-weight:600">通话功能失败</td>
+<td>2人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">周军</span><span class="fw">0710</span>：按门铃，网关正常接收并通知铃声，但是无法正常通话。</div><div class="user-quote"><span class="name">王瑷珲</span><span class="fw">0710</span>：其他原因;快递员按门铃，手机响应很及时。但是远程打开接听无法跟快递员对话。画面一直停留在这个界面。</div></td>
+</tr><tr>
+<td style="font-weight:600">按门铃无通知</td>
+<td>2人</td>
+<td>2</td>
+<td><div class="user-quote"><span class="name">美诺</span><span class="fw">0804</span>：群内作业测试，多次都没有App通知，App前台在线，刚开始还可以视频通话清晰，后边加载失败，</div><div class="user-quote"><span class="name">夏君</span><span class="fw">0804</span>：手机没点开app情况下（第一个视频）/app在后台情况下（第二段视频），按门铃没有任何提示</div></td>
+</tr><tr>
+<td style="font-weight:600">通话音量小</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">陈俊</span><span class="fw">0710</span>：按门铃，基站来电音量小。通话声音好小（音量调到最大了），建议增大音量</div></td>
+</tr><tr>
+<td style="font-weight:600">多端通话未联通</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">瑞子</span><span class="fw">0804</span>：测试门铃响应视频，录制的是黑白 绑定了微信小程序，门铃接听app正常接听 但是小程序还一直在提示有人按门铃需要接听，最后app已经结束 小程序还在响 只能挂断</div></td>
+</tr><tr>
+<td style="font-weight:600">来电不停止</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">黄军剑</span><span class="fw">0804</span>：打开微信视频通话设置，门铃来电有弹窗提醒。但是不接通就一直响。超过4分钟了。时间大约在9：17到9：21</div></td>
+</tr><tr>
+<td style="font-weight:600">APP后台按门铃无通知</td>
+<td>1人</td>
+<td>1</td>
+<td><div class="user-quote"><span class="name">夏君</span><span class="fw">0817</span>：今天发现app杀死的前提下，摁门铃，手机app毫无提示</div></td>
+</tr></tbody></table><div class="module-title p1">🟡 P1 续航（11条）</div><table>
+<thead><tr><th>二级标签</th><th>反馈人数</th><th>反馈条数</th><th>典型用户原声</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">耗电快</td>
+<td>7人</td>
+<td>11</td>
+<td><div class="user-quote"><span class="name">何三涛</span><span class="fw">0804</span>：家停电12小时之前，门铃剩余电量为41%左右，停电12小时之后，门铃彻底0电量，耗电量极快，正常情况下41%的剩余电量能用好多天，怀疑基站停电后，门铃一直试图连</div><div class="user-quote"><span class="name">何三涛</span><span class="fw">0804</span>：短短2个小时的时间，门铃的剩余电量从61%直降到30%，这正常吗？</div><div class="user-quote"><span class="name">夏君</span><span class="fw">0804</span>：在前几天我把两个360品牌的门铃同时充了一晚上电，几乎间隔几秒钟同时安装在同一位置（有几厘米的高度差）我发现公测的门铃耗电量要大，第一张截图为旧门铃，非4G版，</div><div style="color:#999;font-size:12px;margin-top:4px">...还有5位用户反馈</div></td>
+</tr></tbody></table></div>
+<div class="footer">
+<p>6pro 4G门铃公测 · 日常问题反馈报告 · 2026-08-24</p>
+<p>数据来源：飞书问卷 · 共491条反馈（不含吴汞）· 已打标471条</p>
+</div>
+</div>
+</body>
+</html>
