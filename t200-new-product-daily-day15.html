@@ -49,6 +49,8 @@ tr:hover td { background: #fafafa; }
 .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
 .footer a { color: #00B050; text-decoration: none; }
 .date-tag { display: inline-block; background: #e8f5e9; color: #00B050; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.problem-group { background: #f8fbf8; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px; }
+.problem-group-header { font-weight: 700; color: #00B050; font-size: 14px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #d0e8d0; }
 </style>
 </head>
 <body>
@@ -138,75 +140,135 @@ tr:hover td { background: #fafafa; }
 </div>
 <div class="section">
   <h2>今日新增反馈明细（8.22-8.24）</h2>
-  <table>
-    <thead>
-      <tr><th>日期</th><th>渠道</th><th>问题类型</th><th>用户问题</th><th>客服解决方案</th><th>分类</th></tr>
-    </thead>
-    <tbody>
-      <tr class=""><td><span class="date-tag">08-22</span></td><td>京东自营</td><td>4G流量是否收费咨询</td><td>流量是永久的吗</td><td>是的</td><td>功能咨询</td></tr>
-      <tr class="defect-row"><td><span class="date-tag">08-22</span></td><td>京东自营</td><td>内存卡不识别</td><td>内存卡不识别</td><td>建议格式化内存卡再观察下</td><td>功能咨询</td></tr>
-      <tr class="defect-row"><td><span class="date-tag">08-22</span></td><td>京东自营</td><td>定位失败</td><td>看不到定位</td><td>别着急，首次定位需要点时间～ 麻烦您在开阔地带稍等1~3分钟</td><td>安装相关</td></tr>
-      <tr class=""><td><span class="date-tag">08-22</span></td><td>京东自营</td><td>左右视野咨询</td><td>左右拍不到吗</td><td>仪T200是单镜头设计，主要拍摄前方视野哦~</td><td>安装相关</td></tr>
-      <tr class="defect-row"><td><span class="date-tag">08-22</span></td><td>京东自营</td><td>熄火后离线-未安装降压线</td><td>安装后，熄火后是不是就离线了？
-不能录制视频了吗</td><td>建议使用降压线安装实现停车监控功能</td><td>停车/监控</td></tr>
-      <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>亏电赔付激活咨询</td><td>亏电赔付如何激活</td><td>App绑定激活后，自动领取</td><td>供电/电池</td></tr>
-      <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>云录内容咨询</td><td>免费赠送30天云录咨询</td><td>告知30天后功能区别及后续资费</td><td>功能咨询</td></tr>
-      <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>云录是否需要内存卡咨询</td><td>云录是否需要内存卡</td><td>告知必须使用内存卡</td><td>功能咨询</td></tr>
-      <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>云录领取咨询</td><td>软件绑定自动领取是吗</td><td>您好，绑定APP后自动领取的哈，您这边已经领取成功了哦~</td><td>功能咨询</td></tr>
-      <tr class="defect-row"><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>开流卡顿</td><td>实时画面查看卡顿有延迟</td><td>您这边如果是使用的4g网络查看的话，由于流量及信号影响确实会有您反馈的这个情况哈，如果在设备旁查看的话可以连接设备热点查看更清晰的原画质哈</td><td>功能咨询</td></tr>
-      <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>是否内置电池咨询</td><td>是否有电池或者超级电容</td><td>无</td><td>供电/电池</td></tr>
-      <tr class="defect-row"><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>画面清晰度低</td><td>需要清晰度高的设备</td><td>已退货重新下单</td><td>功能咨询</td></tr>
-      <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>车充供电定位咨询</td><td>点烟器取电，如何调整查看定位</td><td>进入APP设置内将供电方式修改为“车充供电”的呢</td><td>供电/电池</td></tr>
-      <tr class=""><td><span class="date-tag">08-24</span></td><td>京东自营</td><td>是否有后录咨询</td><td>是否有后录，能否录制调整后方</td><td>没有后录哦</td><td>功能咨询</td></tr>
-      <tr class="defect-row"><td><span class="date-tag">08-24</span></td><td>京东自营</td><td>画面清晰度低</td><td>画面清晰度较低</td><td>建议查看原视频</td><td>功能咨询</td></tr>
-    </tbody>
-  </table>
-  <p style="margin-top:8px;font-size:12px;color:#999;">共 15 条新增明细，其中 6 条实质性缺陷（红色标注）</p>
-</div>
-<div class="section">
-  <h2>重点问题跟踪</h2>
-  <p style="font-size:13px;color:#666;margin-bottom:12px;">数据来源：飞书「重点问题」sheet | 对比基准：8/18快照 → 当前全量数据</p>
-  <table>
-    <thead>
-      <tr><th>状态</th><th>问题分类</th><th>问题名称</th><th>反馈总量</th><th>渠道分布</th><th>用户原声</th><th>原因</th><th>解决方案</th><th>责任人</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>安装</td><td>是否包安装咨询</td><td class="highlight-red">18条（+4）</td><td style="font-size:12px;">有赞×16、小红书×2</td><td style="font-size:12px;">买来有地方装吗；负责安装吗；包安装？；自己安装吗；到哪里安装，怎么收费等13条</td><td style="font-size:12px;">用户关注是否包安装服务，T200不提供安装服务，自行安装可返40元</td><td style="font-size:12px;">客服告知不包安装，自行安装可返40元安装费，提供安装视频</td><td style="font-size:12px;">渠道销售</td></tr>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>停车监控</td><td>停车监控咨询</td><td class="highlight-red">16条（+9）</td><td style="font-size:12px;">京东自营×5、有赞×3、天猫官旗×3、小红书×2、天猫车旗×1、天猫车品×1、抖音×1</td><td style="font-size:12px;">这个车停着也能录像吗？ 降压线是什么？；停车了怎么接电；这款记录仪停车也能监控啊，这个电从哪来呀？；</td><td style="font-size:12px;">用户关注停车监控功能及供电方式，需搭配降压线实现</td><td style="font-size:12px;">客服告知需搭配降压线实现停车监控/哨兵功能</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>供电</td><td>电池/供电咨询</td><td class="highlight-red">12条（+3）</td><td style="font-size:12px;">有赞×5、京东自营×4、小红书×1、抖音×1、天猫官旗×1</td><td style="font-size:12px;">用充电吗；不能车充或者USB电源线取电吗；这款是自带电池的；有内置电池吗？；你好请问这个是插电瓶吗等</td><td style="font-size:12px;">设备无内置电池，需通过降压线接保险盒供电或车充供电</td><td style="font-size:12px;">客服告知无内置电池，标配降压线接保险盒供电</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>费用</td><td>4G流量收费咨询</td><td class="highlight-red">12条（+3）</td><td style="font-size:12px;">有赞×7、天猫车品×2、京东自营×2、小红书×1</td><td style="font-size:12px;">这个4g需要流量费用吗；是终身免流量的吗；终身免费流量是吗？；你这是联通还是移动啊？还是电信4G；需</td><td style="font-size:12px;">用户关注流量是否收费，设备自带终身免费不限流量</td><td style="font-size:12px;">客服告知终身免费不限流量</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>费用</td><td>云录续费/收费咨询</td><td class="highlight-red">11条（+6）</td><td style="font-size:12px;">京东自营×7、有赞×3、天猫车品×1</td><td style="font-size:12px;">云存储终生免费吗？；后续没有云服务哪些功能用不了；云服务你们有链接买吗；1、这个机子是可以不用手机连</td><td style="font-size:12px;">赠送1个月云服务，到期需购买套餐</td><td style="font-size:12px;">结合用户反馈评估是否需要调整云服务套餐</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>安装</td><td>安装咨询</td><td class="highlight-red">10条（+2）</td><td style="font-size:12px;">京东自营×5、有赞×4、天猫官旗×1</td><td style="font-size:12px;">1、怎么安装 2、24小时监控吗；降压线如何安装；咨询门店安装问题；安装地址在哪；不用保险盒取电能否</td><td style="font-size:12px;">用户咨询门店安装流程、走线方式等</td><td style="font-size:12px;">提供京东养车门店预约指引及安装视频</td><td style="font-size:12px;">渠道销售</td></tr>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>视野</td><td>前后双录/全景需求</td><td class="highlight-red">8条（+1）</td><td style="font-size:12px;">京东自营×3、有赞×3、天猫官旗×2</td><td style="font-size:12px;">咨询是是否是前后双录；能否看到后面；能否加配后置摄像头；这款有后视摄像吗</td><td style="font-size:12px;">产品硬件仅单摄，不满足部分用户对全景/后录的期望</td><td style="font-size:12px;">暂无硬件方案，客服话术引导</td><td style="font-size:12px;">吴琼</td></tr>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>功能</td><td>远程查看咨询</td><td class="highlight-red">7条（+3）</td><td style="font-size:12px;">有赞×4、京东自营×2、天猫官旗×1</td><td style="font-size:12px;">T200好像有远程监控功能；这款可以远程操作吗？；客户查看设备录制视频卡顿；远程查看是怎么个远程</td><td style="font-size:12px;">用户关注远程查看功能，部分反馈卡顿</td><td style="font-size:12px;">告知支持远程查看，卡顿引导检查信号</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>功能</td><td>其他功能咨询</td><td class="highlight-red">6条（+1）</td><td style="font-size:12px;">有赞×2、天猫官旗×2、天猫车品×2</td><td style="font-size:12px;">以旧换新；那如果车子开到国外以后没有4G信号了，那机器还在正常录制吗？；上汽大拿V1纯电可以用吗；奔</td><td style="font-size:12px;">涵盖以旧换新、国外使用、车型适配等多种咨询</td><td style="font-size:12px;">客服逐一解答</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>参数</td><td>产品规格咨询</td><td class="highlight-red">6条（+1）</td><td style="font-size:12px;">天猫官旗×2、有赞×2、京东自营×2</td><td style="font-size:12px;">咨询产品尺寸；这个有几个摄像头；传感器参数；这款行车记录仪是4k的？还是2k的？；有红外吗</td><td style="font-size:12px;">用户关注摄像头数量、分辨率、传感器参数等规格</td><td style="font-size:12px;">客服提供产品参数/图片</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>配件</td><td>是否带降压线咨询</td><td class="highlight-red">5条（+1）</td><td style="font-size:12px;">有赞×3、京东自营×2</td><td style="font-size:12px;">1、包安装吗 2、有年费吗 3、带降压线吗；降压线么；要买降压线？；这里面有降压线没，要不要自己重新</td><td style="font-size:12px;">设备标配降压线，用户不了解</td><td style="font-size:12px;">客服告知设备标配降压线</td><td style="font-size:12px;">渠道销售</td></tr>
-      <tr><td><span class="badge badge-up">📈持续新增</span></td><td>视野</td><td>镜头调节咨询</td><td class="highlight-red">5条（+1）</td><td style="font-size:12px;">有赞×3、天猫车品×1、京东自营×1</td><td style="font-size:12px;">你好，镜头能调节吗；可以360度监控吗；T200的是跟K380的一样可以360度调节的吗；能转吗？3</td><td style="font-size:12px;">支架可微调约45度，不支持360度旋转</td><td style="font-size:12px;">客服告知支架可微调约45度，不支持360度</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-same">➖无新增</span></td><td>费用</td><td>其他费用咨询</td><td>2条（无新增）</td><td style="font-size:12px;">天猫官旗×2</td><td style="font-size:12px;">记录仪如果买了还需要什么其他费用吗；没有512g？</td><td style="font-size:12px;">用户关注是否有其他费用及存储容量选项</td><td style="font-size:12px;">客服告知付费功能内容及存储选项</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-same">➖无新增</span></td><td>功能</td><td>产品功能咨询</td><td>1条（无新增）</td><td style="font-size:12px;">有赞×1</td><td style="font-size:12px;">你们最新的行车记录仪有什么新功能？</td><td style="font-size:12px;">用户咨询产品功能</td><td style="font-size:12px;">客服介绍产品功能</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-same">➖无新增</span></td><td>功能</td><td>远程下载慢</td><td>1条（无新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">下载速率慢</td><td style="font-size:12px;">4G网络带宽限制，远程200-400Kb/s</td><td style="font-size:12px;">引导用户WiFi下载（2-4M/s），4G为网络限制</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-same">➖无新增</span></td><td>功能</td><td>车充和降压线差异咨询</td><td>1条（无新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">咨询车充模式和降压线模式的区别</td><td style="font-size:12px;">用户不了解车充和降压线的功能差异</td><td style="font-size:12px;">客服告知车充熄火断电，降压线支持停车监控</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-same">➖无新增</span></td><td>功能</td><td>循环录制异常</td><td>1条（无新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">没有循环视频</td><td style="font-size:12px;">排障没有插入内存卡</td><td style="font-size:12px;">引导用户正确插入内存卡</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-same">➖无新增</span></td><td>配件</td><td>其他降压线适配咨询</td><td>1条（无新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">70迈的降压线可以用吗</td><td style="font-size:12px;">用户咨询是否可使用其他品牌降压线</td><td style="font-size:12px;">建议使用原装降压线</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr><td><span class="badge badge-same">➖无新增</span></td><td>品控</td><td>降压线断裂</td><td>1条（无新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">安装时候线断了</td><td style="font-size:12px;">降压线材质/安装问题导致断裂</td><td style="font-size:12px;">用户已退货，待到分拣中心后发给研发排查定位原因</td><td style="font-size:12px;">田玉森</td></tr>
-      <tr><td><span class="badge badge-same">➖无新增</span></td><td>品控</td><td>外观瑕疵</td><td>1条（无新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">边缘有瑕疵</td><td style="font-size:12px;">公模壳体卡扣合盖问题导致边缘瑕疵</td><td style="font-size:12px;">补偿10元或换货；质量端沟通模厂优化</td><td style="font-size:12px;">田玉森</td></tr>
-      <tr><td><span class="badge badge-same">➖无新增</span></td><td>功能</td><td>循环视频不能删除</td><td>1条（无新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">循环视频能否手动删除</td><td style="font-size:12px;">当前版本不支持删除存储卡中的视频</td><td style="font-size:12px;">已加入需求池，后续版本支持-9月</td><td style="font-size:12px;">徐凯来</td></tr>
-      <tr style="background:#fff5f5;"><td><span class="badge badge-new">🆕新增</span></td><td>安装</td><td>定位不显示/门店不会装/熄火后不通电/安装故障灯亮</td><td class="highlight-red">13条（新增）</td><td style="font-size:12px;">京东自营×12、抖音×1</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td></tr>
-      <tr style="background:#fff5f5;"><td><span class="badge badge-new">🆕新增</span></td><td>品控</td><td>内存卡问题</td><td class="highlight-red">2条（新增）</td><td style="font-size:12px;">京东自营×2</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td></tr>
-      <tr style="background:#fff5f5;"><td><span class="badge badge-new">🆕新增</span></td><td>功能</td><td>画面清晰度低</td><td class="highlight-red">2条（新增）</td><td style="font-size:12px;">京东自营×2</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td></tr>
-      <tr style="background:#fff5f5;"><td><span class="badge badge-new">🆕新增</span></td><td>费用</td><td>亏电赔付咨询</td><td class="highlight-red">1条（新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td></tr>
-      <tr style="background:#fff5f5;"><td><span class="badge badge-new">🆕新增</span></td><td>功能</td><td>分享咨询</td><td class="highlight-red">1条（新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td></tr>
-      <tr style="background:#fff5f5;"><td><span class="badge badge-new">🆕新增</span></td><td>功能</td><td>无法查看回放</td><td class="highlight-red">1条（新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td></tr>
-      <tr style="background:#fff5f5;"><td><span class="badge badge-new">🆕新增</span></td><td>功能</td><td>内存卡格式咨询</td><td class="highlight-red">1条（新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td></tr>
-      <tr style="background:#fff5f5;"><td><span class="badge badge-new">🆕新增</span></td><td>功能</td><td>开流卡顿</td><td class="highlight-red">1条（新增）</td><td style="font-size:12px;">京东自营×1</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td><td style="font-size:12px;">—</td></tr>
-    </tbody>
-  </table>
-  <div style="margin-top:12px;display:flex;gap:24px;font-size:13px;">
-    <div><span class="badge badge-up">📈持续新增</span> 共12项</div>
-    <div><span class="badge badge-same">➖无新增</span> 共9项</div>
-    <div><span class="badge badge-new">🆕新增</span> 共8项</div>
+  <div class="problem-group" style="border-left:3px solid #E74C3C;">
+    <div class="problem-group-header">画面清晰度低（2条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class="defect-row"><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>需要清晰度高的设备</td><td>已退货重新下单</td></tr>
+        <tr class="defect-row"><td><span class="date-tag">08-24</span></td><td>京东自营</td><td>画面清晰度较低</td><td>建议查看原视频</td></tr>
+      </tbody>
+    </table>
   </div>
+  <div class="problem-group" style="border-left:3px solid #E74C3C;">
+    <div class="problem-group-header">熄火后离线-未安装降压线（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class="defect-row"><td><span class="date-tag">08-22</span></td><td>京东自营</td><td>安装后，熄火后是不是就离线了？
+不能录制视频了吗</td><td>建议使用降压线安装实现停车监控功能</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #E74C3C;">
+    <div class="problem-group-header">内存卡不识别（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class="defect-row"><td><span class="date-tag">08-22</span></td><td>京东自营</td><td>内存卡不识别</td><td>建议格式化内存卡再观察下</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #00B050;">
+    <div class="problem-group-header">左右视野咨询（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class=""><td><span class="date-tag">08-22</span></td><td>京东自营</td><td>左右拍不到吗</td><td>仪T200是单镜头设计，主要拍摄前方视野哦~</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #E74C3C;">
+    <div class="problem-group-header">定位失败（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class="defect-row"><td><span class="date-tag">08-22</span></td><td>京东自营</td><td>看不到定位</td><td>别着急，首次定位需要点时间～ 麻烦您在开阔地带稍等1~3分钟</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #00B050;">
+    <div class="problem-group-header">4G流量是否收费咨询（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class=""><td><span class="date-tag">08-22</span></td><td>京东自营</td><td>流量是永久的吗</td><td>是的</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #00B050;">
+    <div class="problem-group-header">云录领取咨询（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>软件绑定自动领取是吗</td><td>您好，绑定APP后自动领取的哈，您这边已经领取成功了哦~</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #00B050;">
+    <div class="problem-group-header">亏电赔付激活咨询（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>亏电赔付如何激活</td><td>App绑定激活后，自动领取</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #00B050;">
+    <div class="problem-group-header">云录内容咨询（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>免费赠送30天云录咨询</td><td>告知30天后功能区别及后续资费</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #E74C3C;">
+    <div class="problem-group-header">开流卡顿（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class="defect-row"><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>实时画面查看卡顿有延迟</td><td>您这边如果是使用的4g网络查看的话，由于流量及信号影响确实会有您反馈的这个情况哈，如果在设备旁查看的话可以连接设备热点查看更清晰的原画质哈</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #00B050;">
+    <div class="problem-group-header">云录是否需要内存卡咨询（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>云录是否需要内存卡</td><td>告知必须使用内存卡</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #00B050;">
+    <div class="problem-group-header">车充供电定位咨询（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>点烟器取电，如何调整查看定位</td><td>进入APP设置内将供电方式修改为“车充供电”的呢</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #00B050;">
+    <div class="problem-group-header">是否内置电池咨询（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class=""><td><span class="date-tag">08-23</span></td><td>京东自营</td><td>是否有电池或者超级电容</td><td>无</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="problem-group" style="border-left:3px solid #00B050;">
+    <div class="problem-group-header">是否有后录咨询（1条）</div>
+    <table>
+      <thead><tr><th>日期</th><th>渠道</th><th>用户问题</th><th>客服解决方案</th></tr></thead>
+      <tbody>
+        <tr class=""><td><span class="date-tag">08-24</span></td><td>京东自营</td><td>是否有后录，能否录制调整后方</td><td>没有后录哦</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:8px;font-size:12px;color:#999;">共 15 条新增明细（14 种问题类型），其中 6 条实质性缺陷（红色标注）</p>
 </div>
 <div class="footer">
   <p>数据来源：飞书表格「用户反馈问题汇总」+「重点问题」sheet · 报告合集：<a href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">T200新品跟踪日报合集</a></p>
