@@ -20,49 +20,79 @@
   .report-card .card-desc { font-size: 13px; color: #888; }
   .report-card .card-badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #e8f5e9; color: #00B050; margin-left: 8px; vertical-align: middle; }
   .report-card .card-badge.new { background: #fff3e0; color: #F39C12; }
+  .report-card .card-badge.full { background: #fce4ec; color: #E74C3C; }
   .footer { text-align: center; padding: 30px 20px; color: #999; font-size: 12px; }
+  .stats { display: flex; gap: 16px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+  .stat-item { background: rgba(255,255,255,0.15); border-radius: 8px; padding: 8px 20px; text-align: center; }
+  .stat-item .num { font-size: 22px; font-weight: 700; }
+  .stat-item .label { font-size: 12px; opacity: 0.85; }
 </style>
 </head>
 <body>
 <div class="header">
-  <h1>9pro 400万4G云台公测 · 报告合集</h1>
-  <p>更新时间：2026-08-20 · 30人公测 · 飞书问卷 + 专项用户原声表</p>
+  <h1>📡 9pro 400万4G云台公测</h1>
+  <p>报告合集 · 持续更新中</p>
+  <div class="stats">
+    <div class="stat-item"><div class="num">8</div><div class="label">报告总数</div></div>
+    <div class="stat-item"><div class="num">30</div><div class="label">公测人数</div></div>
+    <div class="stat-item"><div class="num">331</div><div class="label">日常反馈</div></div>
+  </div>
 </div>
+
 <div class="container">
-
-  <div class="section">
-    <div class="section-title">作业完成情况</div>
-    <a class="report-card" href="9pro-homework-status.html">
-      <div class="card-title">作业完成情况 <span class="card-badge">每日更新</span></div>
-      <div class="card-desc">30人公测名单 · 开箱/配网/日常反馈条数 · 含PNG长图</div>
+  <div class="section" id="daily-section">
+    <div class="section-title">📊 日常问题反馈报告</div>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-daily-20260825-full.html" target="_blank">
+      <span class="card-title">日常问题分析完整报告（8/25 汇报版）<span class="card-badge full">完整版</span><span class="card-badge new">NEW</span></span><br>
+      <span class="card-desc">234条反馈 · 27人参与 · 113个标签全展示 · 含解决方案</span>
     </a>
-    <a class="report-card" href="9pro-homework-status.png">
-      <div class="card-title">作业完成情况（长图）</div>
-      <div class="card-desc">PNG截图 · 便于发微信群</div>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-daily-20260825.html" target="_blank">
+      <span class="card-title">日常问题反馈日报（8/25）<span class="card-badge new">NEW</span></span><br>
+      <span class="card-desc">234条反馈 · 27人参与 · TOP25核心问题分析</span>
     </a>
-  </div>
-
-  <div class="section">
-    <div class="section-title">专项体验报告</div>
-    <a class="report-card" href="9pro-unboxing-report.html">
-      <div class="card-title">开箱体验报告 <span class="card-badge new">8.21更新</span></div>
-      <div class="card-desc">29份样本 · 平均总分194.1/210 · KPI卡片+核心洞察+各维度评分+核心问题分析+用户亮点评价</div>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-daily-20260824-v2.html" target="_blank">
+      <span class="card-title">日常问题反馈日报（8/24）</span><br>
+      <span class="card-desc">249条反馈 · 25人参与 · 新增APP 3.0.0 bug分析</span>
     </a>
-    <a class="report-card" href="9pro-config-report.html">
-      <div class="card-title">配网&安装报告 <span class="card-badge new">8.21更新</span></div>
-      <div class="card-desc">29份样本 · KPI卡片+核心洞察+配网评分+配网方式+绑定成功率+核心问题分析+用户亮点评价</div>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-daily-20260821.html" target="_blank">
+      <span class="card-title">日常问题反馈日报（8/21）</span><br>
+      <span class="card-desc">96条反馈 · 21人参与 · 功能需求>APP交互>配网>IQ>卡录</span>
     </a>
-  </div>
-
-  <div class="section">
-    <div class="section-title">日常问题日报</div>
-    <a class="report-card" href="9pro-daily-20260821.html">
-      <div class="card-title">日常问题分析报告（8.21） <span class="card-badge new">最新</span></div>
-      <div class="card-desc">191条有效反馈/28人 · 12个一级标签 · 标签体系统计+模块详情+用户原声</div>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-daily-20260819.html" target="_blank">
+      <span class="card-title">日常问题反馈日报（8/19）</span><br>
+      <span class="card-desc">54条反馈 · 15人参与 · 12个一级标签 · 打标已同步飞书</span>
     </a>
   </div>
 
+  <div class="section" id="special-section">
+    <div class="section-title">🔍 专项体验报告</div>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-unboxing-report.html" target="_blank">
+      <span class="card-title">开箱体验报告</span><br>
+      <span class="card-desc">30份样本 · 外包装/内包装/外观/说明书四维度 · 平均9.0+分</span>
+    </a>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-config-report.html" target="_blank">
+      <span class="card-title">配网安装报告</span><br>
+      <span class="card-desc">30份样本 · 一次绑定成功率 · 远程绑定/安装底座反馈</span>
+    </a>
+  </div>
+
+  <div class="section" id="homework-section">
+    <div class="section-title">✅ 作业完成情况</div>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-homework-status.html" target="_blank">
+      <span class="card-title">30人作业完成情况<span class="card-badge new">NEW</span></span><br>
+      <span class="card-desc">反馈总量331条 · 有效反馈量247条 · 按有效反馈量排序 · 含PNG长图</span>
+    </a>
+    <a class="report-card" href="https://yanlingyin001.github.io/reports/9pro-homework-status.png" target="_blank">
+      <span class="card-title">作业完成情况长图（PNG）</span><br>
+      <span class="card-desc">便于发微信群 · 800px宽 · 2x高清</span>
+    </a>
+  </div>
 </div>
-<div class="footer">9pro 400万4G云台公测 · 报告合集 · 2026-08-20</div>
+
+<div class="footer">
+  <p>🦞 尹燕玲-报告分析专家 · 数据驱动决策</p>
+  <p>报告链接永久有效 · GitHub Pages 托管</p>
+  <p>最后更新：2026-08-25</p>
+</div>
 </body>
 </html>
