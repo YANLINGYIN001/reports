@@ -44,6 +44,8 @@ tr.new-row td { background: #fffde6; }
 .new-badge { color: #E74C3C; font-weight: 700; font-size: 12px; }
 .delta-positive { color: #E74C3C; font-weight: 600; }
 .delta-zero { color: #999; }
+.cat-group-header { background: #f8f8f8; font-weight: 700; color: #333; padding: 8px 12px; border-radius: 4px; margin: 12px 0 6px 0; font-size: 14px; }
+.cat-group-header span { font-size: 12px; color: #999; font-weight: 400; }
 .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
 .footer a { color: #00B050; text-decoration: none; }
 @media (max-width: 768px) {
@@ -81,7 +83,7 @@ tr.new-row td { background: #fffde6; }
   <div class="kpi-card">
     <div class="label">覆盖渠道数</div>
     <div class="value">8</div>
-    <div class="delta delta-zero">0 较昨日</div>
+    <div class="delta delta-zero">较昨日无变化</div>
   </div>
   <div class="kpi-card">
     <div class="label">问题类型数</div>
@@ -109,33 +111,63 @@ tr.new-row td { background: #fffde6; }
 </div>
 
 <div class="chart-section">
-  <h2>渠道反馈分布（较昨日对比）</h2>
+  <h2>渠道反馈分布</h2>
   <div id="chart-channel" class="chart"></div>
 </div>
 
 <div class="chart-section">
-  <h2>问题主题分类（较昨日对比）</h2>
+  <h2>问题主题分类</h2>
   <div id="chart-category" class="chart"></div>
   <table style="margin-top: 16px;">
     <thead>
       <tr><th>分类</th><th>反馈量</th><th>占比</th><th>较昨日</th><th>典型问题</th></tr>
     </thead>
-    <tbody><tr><td style="color:#00B050;font-weight:600">安装相关</td><td>55</td><td>32.2%</td><td><span class="delta-positive">+2</span></td><td style="font-size:12px;color:#666">是否包安装咨询(24)、安装咨询(13)、定位不显示(11)</td></tr><tr><td style="color:#2BBD6E;font-weight:600">功能咨询</td><td>47</td><td>27.5%</td><td><span class="delta-positive">+3</span></td><td style="font-size:12px;color:#666">远程查看(9)、其他功能(8)、前后双录(9)、镜头调节(6)</td></tr><tr><td style="color:#F39C12;font-weight:600">费用/套餐</td><td>32</td><td>18.7%</td><td><span class="delta-positive">+1</span></td><td style="font-size:12px;color:#666">4G流量收费(14)、云录续费(13)、其他费用(4)</td></tr><tr><td style="color:#3498db;font-weight:600">停车/监控</td><td>17</td><td>9.9%</td><td><span class="delta-zero">0</span></td><td style="font-size:12px;color:#666">停车监控(10)、哨兵模式(6)</td></tr><tr><td style="color:#9b59b6;font-weight:600">供电/电池</td><td>16</td><td>9.4%</td><td><span class="delta-zero">0</span></td><td style="font-size:12px;color:#666">电池/供电(16)</td></tr><tr><td style="color:#E74C3C;font-weight:600">品控问题</td><td>4</td><td>2.3%</td><td><span class="delta-zero">0</span></td><td style="font-size:12px;color:#666">外观瑕疵(1)、降压线断裂(1)、内存卡(2)</td></tr>
+    <tbody>
+<tr><td style="color:#00B050;font-weight:600">安装相关</td><td>55</td><td>32.2%</td><td><span class="delta-positive">+2</span></td><td style="font-size:12px;color:#666">是否包安装咨询(24)、安装咨询(13)、定位不显示(11)</td></tr>
+<tr><td style="color:#2BBD6E;font-weight:600">功能咨询</td><td>47</td><td>27.5%</td><td><span class="delta-positive">+3</span></td><td style="font-size:12px;color:#666">远程查看(9)、其他功能(8)、前后双录(9)、镜头调节(6)</td></tr>
+<tr><td style="color:#F39C12;font-weight:600">费用/套餐</td><td>32</td><td>18.7%</td><td><span class="delta-positive">+1</span></td><td style="font-size:12px;color:#666">4G流量收费(14)、云录续费(13)、其他费用(4)</td></tr>
+<tr><td style="color:#3498db;font-weight:600">停车/监控</td><td>17</td><td>9.9%</td><td><span class="delta-zero">0</span></td><td style="font-size:12px;color:#666">停车监控(10)、哨兵模式(6)</td></tr>
+<tr><td style="color:#9b59b6;font-weight:600">供电/电池</td><td>16</td><td>9.4%</td><td><span class="delta-zero">0</span></td><td style="font-size:12px;color:#666">电池/供电(16)</td></tr>
+<tr><td style="color:#E74C3C;font-weight:600">品控问题</td><td>4</td><td>2.3%</td><td><span class="delta-zero">0</span></td><td style="font-size:12px;color:#666">外观瑕疵(1)、降压线断裂(1)、内存卡(2)</td></tr>
+
     </tbody>
   </table>
 </div>
 
 <div class="table-section">
   <h2>今日新增反馈明细（8月26日，共6条）</h2>
+
+  <div class="cat-group-header" style="border-left:3px solid #00B050">安装相关 <span>（2条）</span></div>
   <table>
     <thead>
-      <tr><th>渠道</th><th>问题分类</th><th>问题类型</th><th>用户问题</th></tr>
+      <tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr>
     </thead>
-    <tbody><tr class="new-row"><td>小红书</td><td>安装相关</td><td>是否包安装咨询</td><td style="max-width:400px">你好，这个不包安装哦</td></tr><tr class="new-row"><td>私域</td><td>功能咨询</td><td>左右视野咨询</td><td style="max-width:400px">这个侧面也能排上吗</td></tr><tr class="new-row"><td>私域</td><td>安装相关</td><td>是否带降压线咨询</td><td style="max-width:400px">请问这款带降压线啵？</td></tr><tr class="new-row"><td>私域</td><td>功能咨询</td><td>左右及后录咨询 <span class="new-badge">NEW</span></td><td style="max-width:400px">商详介绍人在车前5米范围内可触发，如果人在车后或者左右能够触发哨兵模式吗？</td></tr><tr class="new-row"><td>私域</td><td>功能咨询</td><td>是否接降压线咨询 <span class="new-badge">NEW</span></td><td style="max-width:400px">车里需要接什么线吗</td></tr><tr class="new-row"><td>私域</td><td>费用/套餐</td><td>4G流量是否收费咨询</td><td style="max-width:400px">1、能看行驶时间吗
+    <tbody>
+      <tr class="new-row"><td>小红书</td><td>是否包安装咨询</td><td style="max-width:500px">你好，这个不包安装哦</td></tr>
+      <tr class="new-row"><td>私域</td><td>是否带降压线咨询</td><td style="max-width:500px">请问这款带降压线啵？</td></tr>
+    </tbody>
+  </table>
+  <div class="cat-group-header" style="border-left:3px solid #2BBD6E">功能咨询 <span>（3条）</span></div>
+  <table>
+    <thead>
+      <tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr>
+    </thead>
+    <tbody>
+      <tr class="new-row"><td>私域</td><td>左右视野咨询</td><td style="max-width:500px">这个侧面也能排上吗</td></tr>
+      <tr class="new-row"><td>私域</td><td>左右及后录咨询 <span class="new-badge">NEW</span></td><td style="max-width:500px">商详介绍人在车前5米范围内可触发，如果人在车后或者左右能够触发哨兵模式吗？</td></tr>
+      <tr class="new-row"><td>私域</td><td>是否接降压线咨询 <span class="new-badge">NEW</span></td><td style="max-width:500px">车里需要接什么线吗</td></tr>
+    </tbody>
+  </table>
+  <div class="cat-group-header" style="border-left:3px solid #F39C12">费用/套餐 <span>（1条）</span></div>
+  <table>
+    <thead>
+      <tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr>
+    </thead>
+    <tbody>
+      <tr class="new-row"><td>私域</td><td>4G流量是否收费咨询</td><td style="max-width:500px">1、能看行驶时间吗
 2、流量收费吗</td></tr>
     </tbody>
   </table>
-</div>
 
 <div class="table-section">
   <h2>重点问题跟踪（仅展示持续新增 & 新增问题）</h2>
@@ -143,11 +175,66 @@ tr.new-row td { background: #fffde6; }
     <thead>
       <tr>
         <th>问题分类</th><th>问题名称</th><th>反馈总量</th><th>渠道分布</th>
-        <th>用户原声</th><th>原因</th><th>解决方案</th><th>责任人</th>
+        <th style="min-width:300px">用户原声</th><th style="max-width:120px">解决方案</th><th>责任人</th>
       </tr>
     </thead>
-    <tbody><tr><td style="font-weight:600;color:#333">安装</td><td>是否包安装咨询</td><td style="white-space:nowrap">24条（持续新增）</td><td style="font-size:12px">有赞×16, 私域×5, 小红书×3</td><td style="font-size:12px;max-width:200px">买来有地方装吗; 负责安装吗; 包安装？; 自己安装吗; 到哪里安装，怎么收费等24条</td><td style="font-size:12px">用户关注是否包安装服务，T200不提供安装服务，自行安装可返40元</td><td style="font-size:12px">客服告知不包安装，自行安装可返40元安装费，提供安装视频
-8.25开始规划对新购买用户赠送OBD降压线，同时在私域商详头图增加买即赠OBD降压线，减少用户安装费力度</td><td style="font-size:12px;white-space:nowrap">渠道销售</td></tr><tr><td style="font-weight:600;color:#333">安装</td><td>安装咨询</td><td style="white-space:nowrap">13条（持续新增）</td><td style="font-size:12px">京东自营×7, 有赞×4, 天猫官旗×1, 私域×1</td><td style="font-size:12px;max-width:200px">1、怎么安装 2、24小时监控吗; 降压线如何安装; 咨询门店安装问题; 安装地址在哪; 不用保险盒取电能否使用，哪些功能是必须要保险盒取电才能使用的等13条</td><td style="font-size:12px">用户咨询门店安装流程、走线方式等</td><td style="font-size:12px">提供京东养车门店预约指引及安装视频</td><td style="font-size:12px;white-space:nowrap">渠道销售</td></tr><tr><td style="font-weight:600;color:#333">费用</td><td>4G流量收费咨询</td><td style="white-space:nowrap">14条（持续新增）</td><td style="font-size:12px">有赞×7, 天猫车品×2, 京东自营×2, 私域×2, 小红书×1</td><td style="font-size:12px;max-width:200px">这个4g需要流量费用吗; 要月月交费吗？可以转动摄像头？; 是终身免流量的吗; 终身免费流量是吗？; 你这是联通还是移动啊？还是电信4G等14条</td><td style="font-size:12px">用户关注流量是否收费，设备自带终身免费不限流量</td><td style="font-size:12px">客服告知终身免费不限流量</td><td style="font-size:12px;white-space:nowrap">徐凯来</td></tr><tr><td style="font-weight:600;color:#333">费用</td><td>云录续费/收费咨询</td><td style="white-space:nowrap">13条（持续新增）</td><td style="font-size:12px">京东自营×7, 有赞×3, 私域×2, 天猫车品×1</td><td style="font-size:12px;max-width:200px">云存储终生免费吗？; 后续没有云服务哪些功能用不了; 云服务你们有链接买吗; 这款记录仪送的7天包月存储时长多久？; 要购买云视频的吧？等13条</td><td style="font-size:12px">赠送1个月云服务，到期需购买套餐</td><td style="font-size:12px">结合用户反馈评估是否需要调整云服务套餐</td><td style="font-size:12px;white-space:nowrap">徐凯来</td></tr><tr><td style="font-weight:600;color:#333">供电</td><td>电池/供电咨询</td><td style="white-space:nowrap">16条（持续新增）</td><td style="font-size:12px">有赞×5, 京东自营×5, 私域×2, 小红书×1, 天猫车品×1, 抖音×1, 天猫官旗×1</td><td style="font-size:12px;max-width:200px">用充电吗; 不能车充或者USB电源线取电吗; 这款是自带电池的; 有内置电池吗？; 你好请问这个是插电瓶吗等16条</td><td style="font-size:12px">设备无内置电池，需通过降压线接保险盒供电或车充供电</td><td style="font-size:12px">客服告知无内置电池，标配降压线接保险盒供电</td><td style="font-size:12px;white-space:nowrap">徐凯来</td></tr><tr><td style="font-weight:600;color:#333">参数</td><td>产品规格咨询</td><td style="white-space:nowrap">9条（持续新增）</td><td style="font-size:12px">天猫官旗×2, 有赞×2, 天猫车品×2, 私域×2, 京东自营×1</td><td style="font-size:12px;max-width:200px">咨询产品尺寸; 这个有几个摄像头; 传感器参数; 这款行车记录仪是4k的？还是2k的？; 上汽大拿V1纯电可以用吗等9条</td><td style="font-size:12px">用户关注摄像头数量、分辨率、传感器参数等规格</td><td style="font-size:12px">客服提供产品参数/图片</td><td style="font-size:12px;white-space:nowrap">徐凯来</td></tr>
+    <tbody>
+<tr>
+<td style="font-weight:600;color:#333">安装</td>
+<td>是否包安装咨询</td>
+<td style="white-space:nowrap">24条（持续新增）</td>
+<td style="font-size:12px">有赞×16, 私域×5, 小红书×3</td>
+<td style="font-size:12px;min-width:300px">买来有地方装吗; 负责安装吗; 包安装？; 自己安装吗; 到哪里安装，怎么收费等24条</td>
+<td style="font-size:12px;max-width:120px">客服告知不包安装，自行安装可返40元安装费，提供安装视频
+8.25开始规划对新购买用户赠送OBD降压线，同时在私域商详头图增加买即赠OBD降压线，减少用户安装费...</td>
+<td style="font-size:12px;white-space:nowrap">渠道销售</td>
+</tr>
+<tr>
+<td style="font-weight:600;color:#333">安装</td>
+<td>安装咨询</td>
+<td style="white-space:nowrap">13条（持续新增）</td>
+<td style="font-size:12px">京东自营×7, 有赞×4, 天猫官旗×1, 私域×1</td>
+<td style="font-size:12px;min-width:300px">1、怎么安装 2、24小时监控吗; 降压线如何安装; 咨询门店安装问题; 安装地址在哪; 不用保险盒取电能否使用，哪些功能是必须要保险盒取电才能使用的等13条</td>
+<td style="font-size:12px;max-width:120px">提供京东养车门店预约指引及安装视频</td>
+<td style="font-size:12px;white-space:nowrap">渠道销售</td>
+</tr>
+<tr>
+<td style="font-weight:600;color:#333">费用</td>
+<td>4G流量收费咨询</td>
+<td style="white-space:nowrap">14条（持续新增）</td>
+<td style="font-size:12px">有赞×7, 天猫车品×2, 京东自营×2, 私域×2, 小红书×1</td>
+<td style="font-size:12px;min-width:300px">这个4g需要流量费用吗; 要月月交费吗？可以转动摄像头？; 是终身免流量的吗; 终身免费流量是吗？; 你这是联通还是移动啊？还是电信4G等14条</td>
+<td style="font-size:12px;max-width:120px">客服告知终身免费不限流量</td>
+<td style="font-size:12px;white-space:nowrap">徐凯来</td>
+</tr>
+<tr>
+<td style="font-weight:600;color:#333">费用</td>
+<td>云录续费/收费咨询</td>
+<td style="white-space:nowrap">13条（持续新增）</td>
+<td style="font-size:12px">京东自营×7, 有赞×3, 私域×2, 天猫车品×1</td>
+<td style="font-size:12px;min-width:300px">云存储终生免费吗？; 后续没有云服务哪些功能用不了; 云服务你们有链接买吗; 这款记录仪送的7天包月存储时长多久？; 要购买云视频的吧？等13条</td>
+<td style="font-size:12px;max-width:120px">结合用户反馈评估是否需要调整云服务套餐</td>
+<td style="font-size:12px;white-space:nowrap">徐凯来</td>
+</tr>
+<tr>
+<td style="font-weight:600;color:#333">供电</td>
+<td>电池/供电咨询</td>
+<td style="white-space:nowrap">16条（持续新增）</td>
+<td style="font-size:12px">有赞×5, 京东自营×5, 私域×2, 小红书×1, 天猫车品×1, 抖音×1, 天猫官旗×1</td>
+<td style="font-size:12px;min-width:300px">用充电吗; 不能车充或者USB电源线取电吗; 这款是自带电池的; 有内置电池吗？; 你好请问这个是插电瓶吗等16条</td>
+<td style="font-size:12px;max-width:120px">客服告知无内置电池，标配降压线接保险盒供电</td>
+<td style="font-size:12px;white-space:nowrap">徐凯来</td>
+</tr>
+<tr>
+<td style="font-weight:600;color:#333">参数</td>
+<td>产品规格咨询</td>
+<td style="white-space:nowrap">9条（持续新增）</td>
+<td style="font-size:12px">天猫官旗×2, 有赞×2, 天猫车品×2, 私域×2, 京东自营×1</td>
+<td style="font-size:12px;min-width:300px">咨询产品尺寸; 这个有几个摄像头; 传感器参数; 这款行车记录仪是4k的？还是2k的？; 上汽大拿V1纯电可以用吗等9条</td>
+<td style="font-size:12px;max-width:120px">客服提供产品参数/图片</td>
+<td style="font-size:12px;white-space:nowrap">徐凯来</td>
+</tr>
+
     </tbody>
   </table>
   <div style="margin-top:12px;font-size:13px;color:#666;padding:10px;background:#fafafa;border-radius:6px">
@@ -156,7 +243,7 @@ tr.new-row td { background: #fffde6; }
 </div>
 
 <div class="footer">
-  <p>数据来源：飞书表格「T200新品跟踪-用户反馈问题汇总」| 自动生成时间：2026-08-26 18:17</p>
+  <p>数据来源：飞书表格「T200新品跟踪-用户反馈问题汇总」| 自动生成时间：2026-08-26 18:23</p>
   <p><a href="https://yanlingyin001.github.io/reports/t200-new-product-daily-day17.html">报告永久链接</a> · <a href="https://yanlingyin001.github.io/reports/">报告合集</a></p>
 </div>
 
@@ -164,31 +251,23 @@ tr.new-row td { background: #fffde6; }
 
 <script>
 var chart1 = echarts.init(document.getElementById('chart-channel'));
-chart1.setOption({
-  tooltip: { trigger: 'axis' },
-  legend: { data: ['今日(8.26)', '昨日(8.25)'], bottom: 0 },
-  grid: { left: '3%', right: '4%', bottom: '10%', containLabel: true },
-  xAxis: { type: 'category', data: ["京东自营", "有赞", "私域", "天猫官旗", "小红书", "天猫车品", "抖音", "天猫车旗"], axisLabel: { rotate: 30, fontSize: 12 } },
-  yAxis: { type: 'value' },
-  series: [
-    {
-      name: '今日(8.26)',
-      type: 'bar',
-      data: [61, 56, 22, 14, 7, 7, 3, 1],
-      itemStyle: { color: '#00B050' },
-      label: { show: true, position: 'top', fontSize: 11 }
-    },
-    {
-      name: '昨日(8.25)',
-      type: 'bar',
-      data: [61, 56, 17, 14, 6, 7, 3, 1],
-      itemStyle: { color: '#cccccc' },
-      label: { show: true, position: 'top', fontSize: 11, color: '#999' }
-    }
-  ]
-});
 
-var chart2 = echarts.init(document.getElementById('chart-category'));
+chart1.setOption({
+  tooltip: { trigger: "axis" },
+  grid: { left: "3%", right: "4%", bottom: "3%", containLabel: true },
+  xAxis: { type: "category", data: ["京东自营", "有赞", "私域", "天猫官旗", "小红书", "天猫车品", "抖音", "天猫车旗"], axisLabel: { rotate: 30, fontSize: 12 } },
+  yAxis: { type: "value" },
+  series: [{
+    type: "bar",
+    data: [61, 56, 22, 14, 7, 7, 3, 1],
+    itemStyle: { color: function(params) {
+      var colors = ["#00B050","#2BBD6E","#F39C12","#3498db","#9b59b6","#E74C3C","#95a5a6","#e67e22","#1abc9c","#34495e"];
+      return colors[params.dataIndex % colors.length];
+    } },
+    label: { show: true, position: "top", fontSize: 12 }
+  }]
+});
+var chart2 = echarts.init(document.getElementById("chart-category"));
 var catData = [
   { value: 55, name: "安装相关", itemStyle: { color: "#00B050" } },
   { value: 47, name: "功能咨询", itemStyle: { color: "#2BBD6E" } },
@@ -198,13 +277,13 @@ var catData = [
   { value: 4, name: "品控问题", itemStyle: { color: "#E74C3C" } },
 ];
 chart2.setOption({
-  tooltip: { trigger: 'item', formatter: '{b}: {c}条 ({d}%)' },
-  legend: { bottom: 0, type: 'scroll' },
+  tooltip: { trigger: "item", formatter: "{b}: {c}条 ({d}%)" },
+  legend: { bottom: 0, type: "scroll" },
   series: [{
-    type: 'pie',
-    radius: ['40%', '70%'],
-    center: ['50%', '45%'],
-    label: { formatter: '{b}\n{c}条 ({d}%)', fontSize: 12 },
+    type: "pie",
+    radius: ["40%", "70%"],
+    center: ["50%", "45%"],
+    label: { formatter: "{b}\n{c}条 ({d}%)", fontSize: 12 },
     data: catData
   }]
 });
