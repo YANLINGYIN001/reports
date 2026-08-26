@@ -117,7 +117,6 @@ tr.new-row td { background: #fffde6; }
 
 <div class="chart-section">
   <h2>问题主题分类</h2>
-  <div id="chart-category" class="chart"></div>
   <table style="margin-top: 16px;">
     <thead>
       <tr><th>分类</th><th>反馈量</th><th>占比</th><th>较昨日</th><th>典型问题</th></tr>
@@ -216,30 +215,7 @@ chart1.setOption({
     label: { show: true, position: "top", fontSize: 12 }
   }]
 });
-var chart2 = echarts.init(document.getElementById("chart-category"));
-var catData = [
-  { value: 55, name: "安装相关", itemStyle: { color: "#00B050" } },
-  { value: 47, name: "功能咨询", itemStyle: { color: "#2BBD6E" } },
-  { value: 32, name: "费用/套餐", itemStyle: { color: "#F39C12" } },
-  { value: 17, name: "停车/监控", itemStyle: { color: "#3498db" } },
-  { value: 16, name: "供电/电池", itemStyle: { color: "#9b59b6" } },
-  { value: 4, name: "品控问题", itemStyle: { color: "#E74C3C" } },
-];
-chart2.setOption({
-  tooltip: { trigger: "item", formatter: "{b}: {c}条 ({d}%)" },
-  legend: { bottom: 0, type: "scroll" },
-  series: [{
-    type: "pie",
-    radius: ["40%", "70%"],
-    center: ["50%", "45%"],
-    label: { formatter: "{b}\n{c}条 ({d}%)", fontSize: 12 },
-    data: catData
-  }]
-});
 
-window.addEventListener('resize', function() {
-  chart1.resize();
-  chart2.resize();
 });
 </script>
 </body>
