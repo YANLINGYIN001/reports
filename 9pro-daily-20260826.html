@@ -41,12 +41,12 @@ td.level-p2 { background: #f0fbf3; color: #00B050; font-weight: 700; }
 <div class="container">
 <div class="header">
 <h1>9pro 400万4G云台公测 - 日常问题日报</h1>
-<div class="sub">数据周期：8/19 ~ 8/26 | 累计日常反馈 243条 | 参与人数 27人 | 新增 10条</div>
+<div class="sub">数据周期：8/19 ~ 8/26 | 累计日常反馈 242条 | 参与人数 27人 | 新增 10条 | 最新固件：0825</div>
 </div>
 
 <div class="kpi-row">
 <div class="kpi-card">
-<div class="num">243</div>
+<div class="num">242</div>
 <div class="label">日常反馈总量</div>
 <div class="detail">新增 +10</div>
 </div>
@@ -75,15 +75,32 @@ td.level-p2 { background: #f0fbf3; color: #00B050; font-weight: 700; }
 <div class="section">
 <h2>核心洞察</h2>
 <div class="insight red">
-<strong>长时间开流后开流失败成为新焦点（3条，王亚兵2条+陈建建1条）。</strong>王亚兵反馈长时间开流后设备再次开流<span style="color:#E74C3C;font-weight:600">必现</span><span style="color:#E74C3C;font-weight:600">失败</span>或<span style="color:#E74C3C;font-weight:600">卡顿</span>，返回设备主页4G信号条消失，等待后信号条从3格绿变2格黄。陈建建反馈查看实时预览和卡录均<span style="color:#E74C3C;font-weight:600">失败</span>。0825固件版本，涉及开流稳定性和信号显示，影响核心使用体验，需优先排查。
+<strong>0825固件开流问题集中爆发（3条，王亚兵2条+陈建建1条）。</strong>0825固件昨晚推送后首批4人升级，开流相关问题占0825反馈的50%。王亚兵反馈长时间开流后<span style="color:#E74C3C;font-weight:600">必现</span>开流<span style="color:#E74C3C;font-weight:600">失败</span>或<span style="color:#E74C3C;font-weight:600">卡顿</span>，信号条消失后变黄；陈建建反馈预览和卡录均<span style="color:#E74C3C;font-weight:600">失败</span>。"长时间开流后失败"和"断流续播机制缺失"是0825固件独有的新问题，0729固件未出现，需优先排查。
 </div>
 <div class="insight orange">
 <strong>AI智慧通知描述准确性问题持续暴露（2条，谢光位+陈建建）。</strong>谢光位反馈AI描述画面过爆、无法辨识人物，但实际画面正常。陈建建反馈消息提示"室内空无一人"但实际有人刚要进来，图片分析正确但视频不符。AI算法在极端场景下的描述准确性需要优化。
 </div>
 <div class="insight green">
-<strong>4G断流续播机制缺失引发流量焦虑（王亚兵1条）。</strong>用户反馈4G常电设备没有断流续播机制，会一直消耗流量，担心模拟器或无意识长时间开流场景下流量空耗，建议增加断流续播机制。这是功能需求层面的建议，需产品评估。
+<strong>0825固件推送首批4人升级，开流稳定性是核心关注点。</strong>0825固件8条反馈中开流占4条（50%），0729固件234条中开流仅7条（3%）。开流问题占比从3%飙升至50%，需重点关注0825固件开流相关改动。
 </div>
 </div>
+
+
+<div class="section">
+<h2>固件版本对比（0825 vs 0729）</h2>
+<table style="min-width:700px">
+<thead>
+<tr><th style="width:80px">固件版本</th><th style="width:80px">反馈条数</th><th style="width:80px">参与人数</th><th style="width:100px">涉及问题数</th><th>主要问题</th></tr>
+</thead>
+<tbody>
+<tr class=""><td style="font-weight:700;">0729</td><td>234</td><td>27</td><td>113</td><td class="left" style="font-size:12px">AI算法>人形误报(45); IQ>画面紫红(12); APP>信号显示不一致(11)</td></tr>
+<tr class="new-row"><td style="font-weight:700;color:#E74C3C">0825</td><td>8</td><td>4</td><td>6</td><td class="left" style="font-size:12px">AI算法>智慧通知描述错误(2); 开流>长时间开流后失败(2); AI算法>人形误报(1)</td></tr>
+</tbody>
+</table>
+<div style="margin-top:16px;padding:12px;background:#fef5f5;border-left:4px solid #E74C3C;border-radius:6px;font-size:14px;"><strong style="color:#E74C3C">⚠️ 0825固件新增问题（仅出现在0825固件，0729未出现）：</strong><br>• 开流 > 长时间开流后失败：1人(2条)<br>• 开流 > 断流续播机制缺失：1人(1条)<br></div>
+<div style="margin-top:12px;padding:12px;background:#fff9f0;border-left:4px solid #F39C12;border-radius:6px;font-size:14px;"><strong style="color:#F39C12">0825固件反馈明细（8条/4人）：</strong><br>• AI算法 > 智慧通知描述错误：0825=2条，3人，存量(0729:1条)<br>• 开流 > 长时间开流后失败：0825=2条，1人，新增<br>• AI算法 > 人形误报：0825=1条，17人，存量(0729:45条)<br>• 开流 > 开流失败：0825=1条，3人，存量(0729:2条)<br>• 卡录 > 卡录加载慢：0825=1条，5人，存量(0729:5条)<br>• 开流 > 断流续播机制缺失：0825=1条，1人，新增<br></div>
+</div>
+
 
 <div class="section">
 <h2>核心问题分析（按反馈人数排序 TOP15）</h2>
@@ -125,7 +142,6 @@ td.level-p2 { background: #f0fbf3; color: #00B050; font-weight: 700; }
 <tr class="new-row"><td class="tag-p">AI算法</td><td class="tag-q">智慧通知描述错误</td><td>3人(3条)</td><td class="left"><span style="font-weight:600">谢光位</span>: AI描述问题: 画面过爆，<span style="color:#E74C3C;font-weight:600">无法</span>辨识人物及具体动作。实际画面正常，人物画面可正常识别。瞬间过曝可以忽略<br><span style="font-weight:600">陈建建</span>: 有消息提示，点进去一看提示与图片相符，但与视频不符。提示室内空无一人，实际有人刚要进来。根据图片分析确实，但结合视频就不对了</td></tr>
 <tr class="new-row"><td class="tag-p">开流</td><td class="tag-q">长时间开流后失败</td><td>1人(2条)</td><td class="left"><span style="font-weight:600">王亚兵</span>: 长时间开流以后设备再次开流会<span style="color:#E74C3C;font-weight:600">失败</span>或者开流<span style="color:#E74C3C;font-weight:600">卡顿</span>这个也是必现的，而且这时候返回设备主页，右上角连4g信号条也没有了。提交的视频里我已经离开沙发很久了，实时视频还在我坐在沙发的画面，一直加载，尝试开流。就是...<br><span style="font-weight:600">王亚兵</span>: 长时间开流以后，再次开流<span style="color:#E74C3C;font-weight:600">不成功</span>，此时设备主页上原本信号条的位置都是<span style="color:#E74C3C;font-weight:600">空白</span>，等等时间以后，原本新固件出现的一直稳定3格绿色的信号条都变成2格黄色的了。而且这时候大概率还是开流困难，不去管他等等会自行恢复。...</td></tr>
 <tr class="new-row"><td class="tag-p">云录</td><td class="tag-q">云录列表未更新</td><td>1人(1条)</td><td class="left"><span style="font-weight:600">谢光位</span>: 早上首次打开，云录视频列表未正常更新，需要手动点击刷新才能同步完视频列表。卡录正常。发现问题时未能录屏。明天继续观察</td></tr>
-<tr class="new-row"><td class="tag-p">APP</td><td class="tag-q">AI通知文案冗长</td><td>1人(1条)</td><td class="left"><span style="font-weight:600">王亚兵</span>: 在AI智慧通知功能中，当画面未检测到人员时，建议直接推送极简提示：画面里没有出现人。当前该场景下的通知文案表述较为繁琐，尤其夜间夜深人静查看告警消息时，冗长文字阅读效率低且雷同重复性太大，视觉上久而久...</td></tr>
 <tr class="new-row"><td class="tag-p">AI算法</td><td class="tag-q">人形误报</td><td>17人(46条)</td><td class="left"><span style="font-weight:600">高瑞</span>: 做了进行巡航后查看回放操作，遇到误识别人物的问题。（但实际没看到人形识别框，只有在事件通知里有提示）</td></tr>
 <tr class="new-row"><td class="tag-p">卡录</td><td class="tag-q">卡录加载慢</td><td>5人(6条)</td><td class="left"><span style="font-weight:600">谢光位</span>: 卡录列表更新不及时，需要手动下拉更新。</td></tr>
 <tr class="new-row"><td class="tag-p">开流</td><td class="tag-q">断流续播机制缺失</td><td>1人(1条)</td><td class="left"><span style="font-weight:600">王亚兵</span>: 貌似现在咱们4g的常电设备没有加断流续播机制和普通常电一样可以一直实时了。这样的话不会有流量空耗的情况出现。当然对用户来说虽然是利大于弊，但是一直流量一直消耗，如果碰到很多这样的有一直开流需求用户装个...</td></tr>
@@ -136,7 +152,7 @@ td.level-p2 { background: #f0fbf3; color: #00B050; font-weight: 700; }
 </div>
 
 <div class="footer">
-<p>9pro 400万4G云台公测 · 数据来源：飞书问卷 · 自动生成 2026-08-26 10:05</p>
+<p>9pro 400万4G云台公测 · 数据来源：飞书问卷 · 自动生成 2026-08-26 10:20</p>
 <p>报告合集：<a href="https://yanlingyin001.github.io/reports/9pro-index.html">https://yanlingyin001.github.io/reports/9pro-index.html</a></p>
 </div>
 </div>
