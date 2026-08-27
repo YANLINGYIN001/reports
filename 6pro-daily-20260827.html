@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6pro 4G门铃公测 - 日常问题反馈报告</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 20px; }
+.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: white; padding: 24px 32px; }
+.header h1 { font-size: 22px; margin-bottom: 6px; }
+.header .subtitle { font-size: 14px; opacity: 0.9; }
+.section { padding: 20px 32px; }
+.section h2 { font-size: 18px; color: #00B050; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #00B050; }
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+.kpi-card { background: #f8fdf9; border: 1px solid #e0f0e0; border-radius: 8px; padding: 16px; text-align: center; }
+.kpi-label { font-size: 12px; color: #666; margin-bottom: 6px; }
+.kpi-value { font-size: 24px; font-weight: 700; color: #00B050; }
+.kpi-sub { font-size: 14px; color: #999; font-weight: 400; }
+.insights { background: #fffde7; border-left: 4px solid #ffc107; padding: 16px 20px; margin-bottom: 20px; border-radius: 4px; }
+.insights p { margin-bottom: 10px; line-height: 1.8; }
+.insights b { color: #333; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 16px; }
+thead th { background: #00B050; color: white; padding: 10px 8px; text-align: center; font-weight: 600; }
+tbody td { padding: 10px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+tbody tr:hover { background: #f9f9f9; }
+.level { display: inline-block; padding: 2px 8px; border-radius: 4px; color: white; font-size: 12px; font-weight: 600; }
+.voice { display: block; margin-bottom: 4px; font-size: 13px; }
+.voice-more { font-size: 12px; color: #999; font-style: italic; }
+.group-header td { background: #e8f5e9; font-weight: 600; color: #00B050; }
+.new-row { background: #fffde7; }
+.highlight-row { background: #e3f2fd; }
+.fw-highlight { font-weight: 600; color: #1565c0; }
+.footer { padding: 16px 32px; text-align: center; font-size: 12px; color: #999; border-top: 1px solid #eee; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>6pro 4G门铃公测 — 日常问题反馈报告</h1>
+    <div class="subtitle">数据周期：2026-07-27 ~ 2026-08-27 | 累计有效反馈：583条 | 参与人数：21人 | 本次新增：345条</div>
+  </div>
+  
+  <div class="section">
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">累计有效反馈</div>
+        <div class="kpi-value">583<span class="kpi-sub">条</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">参与人数</div>
+        <div class="kpi-value">21<span class="kpi-sub">人</span></div>
+      </div>
+      
+    <div class="kpi-card">
+      <div class="kpi-label">TOP1 云录 - 漏录/漏拍</div>
+      <div class="kpi-value">17人<span class="kpi-sub">(51条)</span></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">TOP2 云录 - 画面变化误报</div>
+      <div class="kpi-value">16人<span class="kpi-sub">(77条)</span></div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">TOP3 云录 - 有人误报</div>
+      <div class="kpi-value">13人<span class="kpi-sub">(33条)</span></div>
+    </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📊 核心洞察</h2>
+    <div class="insights">
+      <p><b>云录漏录/漏拍问题最为普遍</b>，共51条反馈来自17位用户，占总用户的80%。用户反映门铃未能录制到实际发生的事件（如有人经过、门锁开启等），严重影响安防核心功能。</p><p><b>云录画面变化误报是反馈量最高的问题</b>，共77条来自16位用户。用户普遍反映在无明显画面变化的情况下收到"画面变化"通知，甚至小虫、灰尘、光影变化都会触发误报，0804固件升级后误报频率有增加趋势。</p><p><b>卡录加载异常</b>在9位用户中集中爆发，共27条反馈。主要表现为卡录视频无法播放、缩略图不显示、插拔TF卡后读取异常等，0804固件版本尤为突出。</p><p><b>固件升级失败</b>影响7位用户共16条反馈，多发生在0730→0804升级过程中，部分用户升级失败后设备显示离线。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🎯 核心问题分析（按反馈人数排序）</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>等级</th>
+          <th>一级标签</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><span class="level" style="background:#e74c3c">P0</span></td>
+          <td>云录</td>
+          <td>漏录/漏拍</td>
+          <td>17人(51条)</td>
+          <td><span class="voice">周军: 人离开才开始录像</span><br><span class="voice">黄军剑: 设备在线，可以切换4g和wifi。但是没有录像。</span><br><span class="voice">朱君: 卡录有<span style="color:#e74c3c">漏录</span>，且<span style="color:#e74c3c">无法</span>回放</span><br><span class="voice-more">...还有14位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#e74c3c">P0</span></td>
+          <td>云录</td>
+          <td>画面变化误报</td>
+          <td>16人(77条)</td>
+          <td><span class="voice">黄军剑: 云录提示画面变化，实际没有变化。时间8/19 10:57</span><br><span class="voice">孙晓明: 画面变化，无人出现</span><br><span class="voice">周军: 发现一个问题，好像画面异动，有声音也会录像，能不能调整有画面异动才录音。</span><br><span class="voice-more">...还有13位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#e74c3c">P0</span></td>
+          <td>云录</td>
+          <td>有人误报</td>
+          <td>13人(33条)</td>
+          <td><span class="voice">周军: 无人逗留，信息提醒有人逗留字样提醒</span><br><span class="voice">蔡坤城: 没有人经过，但是卡录和云录都已经录像了，这个是<span style="color:#e74c3c">误报</span>吧。</span><br><span class="voice">相杰: 提交问卷作业中封面无人相关图片（8/15）</span><br><span class="voice-more">...还有10位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#e74c3c">P0</span></td>
+          <td>云录</td>
+          <td>录制延迟</td>
+          <td>12人(28条)</td>
+          <td><span class="voice">美诺: 查看时发现云录画面模糊不清，画面截图人物都快离开了才拍到，建议优化</span><br><span class="voice">瑞子: 人还在云录结束</span><br><span class="voice">许军州: 8月14到8月15号，人还没离开，但录制已经结束</span><br><span class="voice-more">...还有9位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#e74c3c">P0</span></td>
+          <td>云录</td>
+          <td>云录缩略图不显示</td>
+          <td>11人(21条)</td>
+          <td><span class="voice">何三涛: 今天升级到0817版本后，云录封面图<span style="color:#e74c3c">不显示</span>，但是能打开</span><br><span class="voice">周军: 云录提醒封面<span style="color:#e74c3c">丢失</span></span><br><span class="voice">夏君: 在云录列表里，没有画面，但视频可以播放</span><br><span class="voice-more">...还有8位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#f39c12">P1</span></td>
+          <td>卡录</td>
+          <td>卡录加载异常</td>
+          <td>9人(27条)</td>
+          <td><span class="voice">朱君: 卡录保存<span style="color:#e74c3c">错误</span>，云录事件正常，卡录<span style="color:#e74c3c">无法</span>播放，且下载后也和云录事件对不起来</span><br><span class="voice">王瑷珲: 就这一个事件卡录<span style="color:#e74c3c">无法</span>在线观看，下载可观看，可分享。云录没问题</span><br><span class="voice">魏健伟: 22点56之前的卡录视频都<span style="color:#e74c3c">无法</span>播放，之前能播放，而且有些还没有了缩略图，可能是做了插拔tf卡的测试的原因，杀后台重新进入也不行</span><br><span class="voice-more">...还有6位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#f39c12">P1</span></td>
+          <td>开流</td>
+          <td>开流失败</td>
+          <td>9人(14条)</td>
+          <td><span class="voice">相杰: 门铃基站信号正常的情况下，出现一次开流<span style="color:#e74c3c">失败</span></span><br><span class="voice">朱彤: 开流<span style="color:#e74c3c">失败</span></span><br><span class="voice">许军州: 实时画面，开流<span style="color:#e74c3c">失败</span>，杀死进程，重启app后，开流成功</span><br><span class="voice-more">...还有6位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#f39c12">P1</span></td>
+          <td>OTA</td>
+          <td>固件升级失败</td>
+          <td>7人(16条)</td>
+          <td><span class="voice">徐婷婷: 升级进度一直0，重新升级，一直重试，显示加载中。没反应</span><br><span class="voice">何三涛: 升级<span style="color:#e74c3c">失败</span></span><br><span class="voice">于晨光: 升级<span style="color:#e74c3c">失败</span></span><br><span class="voice-more">...还有4位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#e74c3c">P0</span></td>
+          <td>稳定性</td>
+          <td>设备离线</td>
+          <td>7人(13条)</td>
+          <td><span class="voice">徐婷婷: 更新8.12版本过程中发现每天7.30左右都会自动<span style="color:#e74c3c">离线</span>，并且8.13<span style="color:#e74c3c">离线</span>过程中电量77降到65，第二天查看电量没变，但是又<span style="color:#e74c3c">离线</span>了，还是差不多的时间点</span><br><span class="voice">瑞子: 只要查询内存卡前几天视频就会掉线……</span><br><span class="voice">袁飞: 基站与服务器握手<span style="color:#e74c3c">失败</span>，稳定性差，已多次连续出现</span><br><span class="voice-more">...还有4位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#f39c12">P1</span></td>
+          <td>APP功能/交互</td>
+          <td>设置项自动重置</td>
+          <td>7人(12条)</td>
+          <td><span class="voice">黄军剑: 系统升级前，打开了强拆报警。但是现在显示是关闭的。</span><br><span class="voice">美诺: 不确定什么时候里边的设置自己变了，</span><br><span class="voice">朱彤: 设备设置自动混乱，不是我实际设置的，日志也提交不上去。</span><br><span class="voice-more">...还有4位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#f39c12">P1</span></td>
+          <td>续航</td>
+          <td>耗电快</td>
+          <td>7人(12条)</td>
+          <td><span class="voice">何三涛: 家停电12小时之前，门铃剩余电量为41%左右，停电12小时之后，门铃彻底0电量，<span style="color:#e74c3c">耗电</span>量极快，正常情况下41%的剩余电量能用好多天，怀疑基站停电后，门铃一直试图连</span><br><span class="voice">夏君: 在前几天我把两个360品牌的门铃同时充了一晚上电，几乎间隔几秒钟同时安装在同一位置（有几厘米的高度差）我发现公测的门铃<span style="color:#e74c3c">耗电</span>量要大，第一张截图为旧门铃，非4G版，</span><br><span class="voice">周军: 一晚时间，从66%，直接报警关机。</span><br><span class="voice-more">...还有4位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#f39c12">P1</span></td>
+          <td>云录</td>
+          <td>误报</td>
+          <td>7人(11条)</td>
+          <td><span class="voice">美诺: 刚升级完 打开 提示有人出现或者是有变化 没有看清楚 ，查看发现什么都没有</span><br><span class="voice">瑞子: 没有人 报画面变化</span><br><span class="voice">朱彤: 升级最新版后，还是<span style="color:#e74c3c">误报</span>有人出现，而且云录事件时间比卡录事件时间要<span style="color:#e74c3c">慢</span>几秒钟，而且日志反馈<span style="color:#e74c3c">无法</span>提交，试了很多遍依然提交<span style="color:#e74c3c">失败</span>。</span><br><span class="voice-more">...还有4位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#f39c12">P1</span></td>
+          <td>IQ</td>
+          <td>画质噪点/拖影</td>
+          <td>6人(10条)</td>
+          <td><span class="voice">王瑷珲: 问卷1，卡录云录有马赛克，夜间光线明亮无彩色，画面偏暗。2通话端有点破音。</span><br><span class="voice">瑞子: 走廊有灯光 录制黑白色</span><br><span class="voice">陈俊: 画面再光线差点的情况下，噪点明显。还有噪点飘忽不定，哨兵版画面明显好点，明亮</span><br><span class="voice-more">...还有3位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#f39c12">P1</span></td>
+          <td>APP功能/交互</td>
+          <td>显示异常/数据错误</td>
+          <td>6人(9条)</td>
+          <td><span class="voice">袁飞: 云录当天记录被清空，无事件，实为数据被收纳到查看过往录像里</span><br><span class="voice">黄军剑: 会员服务协议中，有文字重复。如图。</span><br><span class="voice">何三涛: 图中的%2s。是不是bug</span><br><span class="voice-more">...还有3位用户反馈</span></td>
+        </tr>
+        <tr>
+          <td><span class="level" style="background:#f39c12">P1</span></td>
+          <td>APP功能/交互</td>
+          <td>电量显示/命名问题</td>
+          <td>6人(8条)</td>
+          <td><span class="voice">朱彤: 电量与网络项里面，没有电量项，要么不要叫电量与网络，直接叫网络。</span><br><span class="voice">周军: app上这个表述我认为不妥，这个栏目里没有电量显示。</span><br><span class="voice">何三涛: 电量与网络页面没有显示电量，与标题不相符合</span><br><span class="voice-more">...还有3位用户反馈</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>📱 固件版本反馈分布</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>固件版本</th>
+          <th>反馈条数</th>
+          <th>反馈人数</th>
+          <th>TOP问题</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>0710</td>
+          <td>150</td>
+          <td>19</td>
+          <td>云录&gt;画面变化误报 (11条)</td>
+        </tr>
+        <tr>
+          <td>0717</td>
+          <td>52</td>
+          <td>16</td>
+          <td>云录&gt;漏录/漏拍 (9条)</td>
+        </tr>
+        <tr>
+          <td>0730</td>
+          <td>91</td>
+          <td>21</td>
+          <td>云录&gt;画面变化误报 (13条)</td>
+        </tr>
+        <tr>
+          <td>0804</td>
+          <td>171</td>
+          <td>20</td>
+          <td>云录&gt;画面变化误报 (26条)</td>
+        </tr>
+        <tr>
+          <td>0812</td>
+          <td>81</td>
+          <td>16</td>
+          <td>云录&gt;画面变化误报 (18条)</td>
+        </tr>
+        <tr class='highlight-row'>
+          <td>0817</td>
+          <td>28</td>
+          <td>15</td>
+          <td>云录&gt;云录缩略图不显示 (5条)</td>
+        </tr>
+        <tr>
+          <td>其他</td>
+          <td>10</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:#666;">注：0817为最新固件版本，高亮显示。趋势分析以最新固件为主视角。</p>
+  </div>
+
+  <div class="section">
+    <h2>🆕 本次新增反馈明细（345条）</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>一级标签</th>
+          <th>二级标签</th>
+          <th>反馈量</th>
+          <th>用户原声</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-header"><td colspan="4">云录</td></tr>
+        <tr class="new-row">
+          <td>云录</td>
+          <td>画面变化误报</td>
+          <td>15人(59条)</td>
+          <td>黄军剑: 云录提示画面变化，实际没有变化。时间8/19 10:57<br>孙晓明: 画面变化，无人出现</td>
+        </tr>
+        <tr class="new-row">
+          <td>云录</td>
+          <td>漏录/漏拍</td>
+          <td>15人(30条)</td>
+          <td>周军: 人离开才开始录像<br>黄军剑: 设备在线，可以切换4g和wifi。但是没有录像。</td>
+        </tr>
+        <tr class="new-row">
+          <td>云录</td>
+          <td>有人误报</td>
+          <td>10人(22条)</td>
+          <td>周军: 无人逗留，信息提醒有人逗留字样提醒<br>蔡坤城: 没有人经过，但是卡录和云录都已经录像了，这个是<span style="color:#e74c3c">误报</span>吧。</td>
+        </tr>
+        <tr class="new-row">
+          <td>云录</td>
+          <td>云录缩略图不显示</td>
+          <td>10人(17条)</td>
+          <td>何三涛: 今天升级到0817版本后，云录封面图<span style="color:#e74c3c">不显示</span>，但是能打开<br>周军: 云录提醒封面<span style="color:#e74c3c">丢失</span></td>
+        </tr>
+        <tr class="new-row">
+          <td>云录</td>
+          <td>录制延迟</td>
+          <td>9人(16条)</td>
+          <td>美诺: 查看时发现云录画面模糊不清，画面截图人物都快离开了才拍到，建议优化<br>瑞子: 人还在云录结束</td>
+        </tr><tr class="group-header"><td colspan="4">卡录</td></tr>
+        <tr class="new-row">
+          <td>卡录</td>
+          <td>卡录加载异常</td>
+          <td>8人(19条)</td>
+          <td>朱君: 卡录保存<span style="color:#e74c3c">错误</span>，云录事件正常，卡录<span style="color:#e74c3c">无法</span>播放，且下载后也和云录事件对不起来<br>王瑷珲: 就这一个事件卡录<span style="color:#e74c3c">无法</span>在线观看，下载可观看，可分享。云录没问题</td>
+        </tr><tr class="group-header"><td colspan="4">云录</td></tr>
+        <tr class="new-row">
+          <td>云录</td>
+          <td>误报</td>
+          <td>7人(11条)</td>
+          <td>美诺: 刚升级完 打开 提示有人出现或者是有变化 没有看清楚 ，查看发现什么都没有<br>瑞子: 没有人 报画面变化</td>
+        </tr><tr class="group-header"><td colspan="4">稳定性</td></tr>
+        <tr class="new-row">
+          <td>稳定性</td>
+          <td>设备离线</td>
+          <td>6人(12条)</td>
+          <td>徐婷婷: 更新8.12版本过程中发现每天7.30左右都会自动<span style="color:#e74c3c">离线</span>，并且8.13<span style="color:#e74c3c">离线</span>过程中电量77降到65，第二天查看电量没变，但是<br>瑞子: 只要查询内存卡前几天视频就会掉线……</td>
+        </tr><tr class="group-header"><td colspan="4">夜视切换</td></tr>
+        <tr class="new-row">
+          <td>夜视切换</td>
+          <td>夜视切换不及时</td>
+          <td>5人(12条)</td>
+          <td>许军州: 夜视切换时，连续闪烁<br>瑞子: 录制视频黑白色</td>
+        </tr><tr class="group-header"><td colspan="4">OTA</td></tr>
+        <tr class="new-row">
+          <td>OTA</td>
+          <td>固件升级失败</td>
+          <td>5人(9条)</td>
+          <td>徐婷婷: 升级进度一直0，重新升级，一直重试，显示加载中。没反应<br>何三涛: 升级<span style="color:#e74c3c">失败</span></td>
+        </tr><tr class="group-header"><td colspan="4">IQ</td></tr>
+        <tr class="new-row">
+          <td>IQ</td>
+          <td>画质噪点/拖影</td>
+          <td>5人(6条)</td>
+          <td>王瑷珲: 问卷1，卡录云录有马赛克，夜间光线明亮无彩色，画面偏暗。2通话端有点破音。<br>瑞子: 走廊有灯光 录制黑白色</td>
+        </tr><tr class="group-header"><td colspan="4">APP功能/交互</td></tr>
+        <tr class="new-row">
+          <td>APP功能/交互</td>
+          <td>显示异常/数据错误</td>
+          <td>5人(6条)</td>
+          <td>袁飞: 云录当天记录被清空，无事件，实为数据被收纳到查看过往录像里<br>黄军剑: 会员服务协议中，有文字重复。如图。</td>
+        </tr><tr class="group-header"><td colspan="4">卡录</td></tr>
+        <tr class="new-row">
+          <td>卡录</td>
+          <td>卡录不录</td>
+          <td>4人(4条)</td>
+          <td>相杰: 刚更新完成最新固件，云录记录一条事件，对应时间卡录没有记录事件（17点29分58秒）<br>美诺: 10.05之后没有云录卡录 ，内存显示正常，但下边已用和剩余，总大小全部是0mb</td>
+        </tr><tr class="group-header"><td colspan="4">云录</td></tr>
+        <tr class="new-row">
+          <td>云录</td>
+          <td>绿屏</td>
+          <td>3人(6条)</td>
+          <td>王瑷珲: 有人出现  画面变化，云录列表<span style="color:#e74c3c">灰屏</span>，从19日到22日16点就这2例。<br>瑞子: 录制hui ping</td>
+        </tr><tr class="group-header"><td colspan="4">APP功能/交互</td></tr>
+        <tr class="new-row">
+          <td>APP功能/交互</td>
+          <td>设置项自动重置</td>
+          <td>3人(5条)</td>
+          <td>黄军剑: 系统升级前，打开了强拆报警。但是现在显示是关闭的。<br>美诺: 不确定什么时候里边的设置自己变了，</td>
+        </tr><tr class="group-header"><td colspan="4">开流</td></tr>
+        <tr class="new-row">
+          <td>开流</td>
+          <td>开流失败</td>
+          <td>3人(4条)</td>
+          <td>相杰: 门铃基站信号正常的情况下，出现一次开流<span style="color:#e74c3c">失败</span><br>朱彤: 开流<span style="color:#e74c3c">失败</span></td>
+        </tr><tr class="group-header"><td colspan="4">按门铃</td></tr>
+        <tr class="new-row">
+          <td>按门铃</td>
+          <td>按门铃通话延迟</td>
+          <td>2人(6条)</td>
+          <td>周军: 基站，门铃66%信号时通话表现。<br>朱彤: APP前端打开状态下，按门铃5次测试，第四次等了差不多18秒才出现弹窗。</td>
+        </tr><tr class="group-header"><td colspan="4">IQ</td></tr>
+        <tr class="new-row">
+          <td>IQ</td>
+          <td>画面过曝</td>
+          <td>2人(4条)</td>
+          <td>于晨光: 光线没变化，曝光<span style="color:#e74c3c">异常</span><br>相杰: 云录画面正常，卡录画面曝光<span style="color:#e74c3c">异常</span></td>
+        </tr><tr class="group-header"><td colspan="4">卡录</td></tr>
+        <tr class="new-row">
+          <td>卡录</td>
+          <td>卡录加载失败</td>
+          <td>2人(4条)</td>
+          <td>朱君: 卡录<span style="color:#e74c3c">无法</span>回放也<span style="color:#e74c3c">无法</span>下载，且卡录比云录少两个事件<br>陈俊: 卡录加载<span style="color:#e74c3c">失败</span>，退出app从新进入可以了。或许与app版本有关</td>
+        </tr><tr class="group-header"><td colspan="4">续航</td></tr>
+        <tr class="new-row">
+          <td>续航</td>
+          <td>耗电快</td>
+          <td>2人(4条)</td>
+          <td>何三涛: 家停电12小时之前，门铃剩余电量为41%左右，停电12小时之后，门铃彻底0电量，<span style="color:#e74c3c">耗电</span>量极快，正常情况下41%的剩余电量能<br>夏君: 在前几天我把两个360品牌的门铃同时充了一晚上电，几乎间隔几秒钟同时安装在同一位置（有几厘米的高度差）我发现公测的门铃耗</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    数据来源：飞书表格「门铃6pro 4G公测问题跟进表」- 日常问题sheet | 报告合集：https://yanlingyin001.github.io/reports/6pro-index.html<br>
+    生成时间：2026-08-27 09:28 | 有效反馈=排除"忽略"标签的数据 | 反馈量按用户×标签去重统计
+  </div>
+</div>
+</body>
+</html>
