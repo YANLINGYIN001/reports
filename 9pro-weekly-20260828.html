@@ -83,9 +83,34 @@ tr:hover { background:#f9f9f9; }
   </div>
 </div>
 
-<!-- Section 1: 0825固件优化效果 -->
+<!-- Section 1: 核心洞察 (moved to front) -->
 <div class="section">
-  <h2>一、0825固件优化效果</h2>
+  <h2>一、核心洞察</h2>
+
+  <div class="insight">
+    <strong>0825固件整体优化效果显著。</strong>人均反馈量从10.1条/人降至2.6条/人（↓74%），0729固件中反馈的120+个问题标签在0825中零反馈，覆盖APP信号显示、电子说明书、定时开关机、云台限位、夜视切换、设备离线、巡航等多个模块。说明0825固件在这轮公测反馈的问题上响应迅速，大部分已修复或优化。
+  </div>
+
+  <div class="insight">
+    <strong>人形误报大幅改善但未完全根除。</strong>AI算法人形误报从52条/19人降至4条/4人（↓92%），改善幅度最大。但0825仍有树影空隙误识别、宠物误识别等残留场景，且出现1条飞虫触发画面变化的新问题，建议下一版继续优化AI识别模型边界场景。
+  </div>
+
+  <div class="insight">
+    <strong style="color:#E74C3C">开流问题成为0825新焦点。</strong>0825固件开流类反馈6条/5人，占0825总反馈的14%。核心问题是长时间开流后再次开流失败（信号条消失、画面卡住）、断流续播机制缺失或异常（3.0.0版本未触发、提示语不适用常电设备）、开流加载失败（-604错误）。这组问题在0729中未出现，疑似0825引入的回归问题，建议优先排查。
+  </div>
+
+  <div class="insight">
+    <strong style="color:#E74C3C">通话体验问题首次暴露。</strong>0825固件出现4条通话相关反馈（回声、音量不可调、人形框不消失、通话键无反应），0729固件中无此类反馈。可能是新固件通话模块改动引入的副作用，建议做通话功能专项回归测试。
+  </div>
+
+  <div class="insight">
+    <strong>IQ画面紫红基本解决，花屏问题仍存。</strong>画面紫红从14条/11人降至1条，改善93%。但花屏问题仍存在（0729=3→0825=2），且出现新场景：云台校准过程中花屏、小图模式预览绿色花屏，建议持续跟进。
+  </div>
+</div>
+
+<!-- Section 2: 0825固件优化效果 -->
+<div class="section">
+  <h2>二、0825固件优化效果</h2>
   <p style="margin-bottom:16px;color:#666">对比0729固件（274条/27人）与0825固件（42条/16人）反馈数据，以下问题在0825固件中已消失或显著减少：</p>
 
   <h3>✅ 已优化消失的问题（0729有反馈 → 0825零反馈）</h3>
@@ -138,9 +163,9 @@ tr:hover { background:#f9f9f9; }
   </div>
 </div>
 
-<!-- Section 2: 0825新增问题 -->
+<!-- Section 3: 0825新增问题 -->
 <div class="section">
-  <h2>二、0825固件新增问题（需关注）</h2>
+  <h2>三、0825固件新增问题（需关注）</h2>
   <p style="margin-bottom:16px;color:#666">以下问题在0729固件中未出现，0825固件升级后首次暴露：</p>
 
   <table>
@@ -212,9 +237,9 @@ tr:hover { background:#f9f9f9; }
   </div>
 </div>
 
-<!-- Section 3: 核心问题分析表 -->
+<!-- Section 4: 核心问题分析表 -->
 <div class="section">
-  <h2>三、核心问题分析（全量TOP15）</h2>
+  <h2>四、核心问题分析（全量TOP15）</h2>
   <table>
     <thead>
       <tr><th>等级</th><th>一级标签</th><th>二级标签</th><th>反馈量</th><th>用户原声</th><th>固件对比状态</th></tr>
@@ -226,7 +251,7 @@ tr:hover { background:#f9f9f9; }
         <td>人形误报</td>
         <td>56条<br><span style="color:#999">19人</span></td>
         <td style="font-size:12px;line-height:1.8"><span style="color:#666">陈建建</span>: 提示有人出现，反复查看视频确实无人出现<br><span style="color:#666">黄显森</span>: 把悬挂的衣服识别成人<br><span style="color:#666">王亚兵</span>: 发现晚上室内灯熄灭以后，左侧圆桌上的水瓶容易误触发有人出现的<span style="color:#E74C3C;font-weight:600">误报</span>，这个技术优化优化哦。</td>
-        <td style="font-size:12px"><span style="color:#F39C12;font-weight:600">📉 改善中 0729=52→0825=4</span></td>
+        <td style="font-size:12px"><span style="color:#00B050;font-weight:600">📉 显著优化 0729=52→0825=4</span></td>
       </tr>
       <tr>
         <td><span style="background:#E74C3C;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">P0</span></td>
@@ -234,7 +259,7 @@ tr:hover { background:#f9f9f9; }
         <td>画面紫红</td>
         <td>15条<br><span style="color:#999">11人</span></td>
         <td style="font-size:12px;line-height:1.8"><span style="color:#666">高瑞</span>: 做了设备断电更换内存卡后上电操作，遇到设备上线后画面显示<span style="color:#E74C3C;font-weight:600">异常</span>问题。(显示<span style="color:#E74C3C;font-weight:600"><span style="color:#E74C3C;font-weight:600">紫</span>红</span>色)<br><span style="color:#666">蒋牧吟</span>: 监控画面颜色在正常与不正常中来回切换。<br><span style="color:#666">高瑞</span>: 做了开启摄像头操作，遇到画面切换到红外，但是颜色为<span style="color:#E74C3C;font-weight:600"><span style="color:#E74C3C;font-weight:600">紫</span>红</span>色，画面颜色切换<span style="color:#E74C3C;font-weight:600">失败</span>问题。关机重启后，恢复正常。</td>
-        <td style="font-size:12px"><span style="color:#F39C12;font-weight:600">📉 改善中 0729=14→0825=1</span></td>
+        <td style="font-size:12px"><span style="color:#00B050;font-weight:600">📉 显著优化 0729=14→0825=1</span></td>
       </tr>
       <tr>
         <td><span style="background:#E74C3C;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">P0</span></td>
@@ -342,75 +367,6 @@ tr:hover { background:#f9f9f9; }
       </tr>
     </tbody>
   </table>
-</div>
-
-<!-- Section 4: 固件版本对比 -->
-<div class="section">
-  <h2>四、固件版本对比</h2>
-
-  <div class="fw-compare">
-    <div class="fw-box fw-0729">
-      <div class="fw-title">0729固件</div>
-      <div class="fw-stat">274条</div>
-      <div class="fw-detail">27人参与<br>人均 10.1 条/人</div>
-    </div>
-    <div class="fw-box fw-0825">
-      <div class="fw-title">0825固件</div>
-      <div class="fw-stat">42条</div>
-      <div class="fw-detail">16人已升级<br>人均 2.6 条/人 ↓74%</div>
-    </div>
-  </div>
-
-  <h3>0825固件问题分布</h3>
-  <div class="bar-chart">
-    <div class="bar-row"><div class="bar-label">APP</div><div class="bar-wrap"><div class="bar-fill bar-08" style="width:100%">11条</div></div></div>
-    <div class="bar-row"><div class="bar-label">开流</div><div class="bar-wrap"><div class="bar-fill bar-08" style="width:81%">9条</div></div></div>
-    <div class="bar-row"><div class="bar-label">AI算法</div><div class="bar-wrap"><div class="bar-fill bar-08" style="width:63%">7条</div></div></div>
-    <div class="bar-row"><div class="bar-label">卡录</div><div class="bar-wrap"><div class="bar-fill bar-08" style="width:63%">7条</div></div></div>
-    <div class="bar-row"><div class="bar-label">IQ</div><div class="bar-wrap"><div class="bar-fill bar-08" style="width:27%">3条</div></div></div>
-    <div class="bar-row"><div class="bar-label">云台</div><div class="bar-wrap"><div class="bar-fill bar-08" style="width:18%">2条</div></div></div>
-    <div class="bar-row"><div class="bar-label">云录</div><div class="bar-wrap"><div class="bar-fill bar-08" style="width:18%">2条</div></div></div>
-    <div class="bar-row"><div class="bar-label">产品</div><div class="bar-wrap"><div class="bar-fill bar-08" style="width:9%">1条</div></div></div>
-  </div>
-
-  <h3>0729固件问题分布（TOP10）</h3>
-  <div class="bar-chart">
-    <div class="bar-row"><div class="bar-label">APP</div><div class="bar-wrap"><div class="bar-fill bar-07" style="width:100%">83条</div></div></div>
-    <div class="bar-row"><div class="bar-label">AI算法</div><div class="bar-wrap"><div class="bar-fill bar-07" style="width:86%">72条</div></div></div>
-    <div class="bar-row"><div class="bar-label">IQ</div><div class="bar-wrap"><div class="bar-fill bar-07" style="width:32%">27条</div></div></div>
-    <div class="bar-row"><div class="bar-label">卡录</div><div class="bar-wrap"><div class="bar-fill bar-07" style="width:32%">27条</div></div></div>
-    <div class="bar-row"><div class="bar-label">云台</div><div class="bar-wrap"><div class="bar-fill bar-07" style="width:18%">15条</div></div></div>
-    <div class="bar-row"><div class="bar-label">功能需求</div><div class="bar-wrap"><div class="bar-fill bar-07" style="width:16%">14条</div></div></div>
-    <div class="bar-row"><div class="bar-label">巡航</div><div class="bar-wrap"><div class="bar-fill bar-07" style="width:12%">10条</div></div></div>
-    <div class="bar-row"><div class="bar-label">开流</div><div class="bar-wrap"><div class="bar-fill bar-07" style="width:9%">8条</div></div></div>
-    <div class="bar-row"><div class="bar-label">稳定性</div><div class="bar-wrap"><div class="bar-fill bar-07" style="width:8%">7条</div></div></div>
-    <div class="bar-row"><div class="bar-label">云录</div><div class="bar-wrap"><div class="bar-fill bar-07" style="width:8%">7条</div></div></div>
-  </div>
-</div>
-
-<!-- Section 5: 核心洞察 -->
-<div class="section">
-  <h2>五、核心洞察</h2>
-
-  <div class="insight">
-    <strong>0825固件整体优化效果显著。</strong>人均反馈量从10.1条/人降至2.6条/人（↓74%），0729固件中反馈的120+个问题标签在0825中零反馈，覆盖APP信号显示、电子说明书、定时开关机、云台限位、夜视切换、设备离线、巡航等多个模块。说明0825固件在这轮公测反馈的问题上响应迅速，大部分已修复或优化。
-  </div>
-
-  <div class="insight">
-    <strong>人形误报大幅改善但未完全根除。</strong>AI算法人形误报从52条/19人降至4条/4人（↓92%），改善幅度最大。但0825仍有树影空隙误识别、宠物误识别等残留场景，且出现1条飞虫触发画面变化的新问题，建议下一版继续优化AI识别模型边界场景。
-  </div>
-
-  <div class="insight">
-    <strong style="color:#E74C3C">开流问题成为0825新焦点。</strong>0825固件开流类反馈6条/5人，占0825总反馈的14%。核心问题是长时间开流后再次开流失败（信号条消失、画面卡住）、断流续播机制缺失或异常（3.0.0版本未触发、提示语不适用常电设备）、开流加载失败（-604错误）。这组问题在0729中未出现，疑似0825引入的回归问题，建议优先排查。
-  </div>
-
-  <div class="insight">
-    <strong style="color:#E74C3C">通话体验问题首次暴露。</strong>0825固件出现4条通话相关反馈（回声、音量不可调、人形框不消失、通话键无反应），0729固件中无此类反馈。可能是新固件通话模块改动引入的副作用，建议做通话功能专项回归测试。
-  </div>
-
-  <div class="insight">
-    <strong>IQ画面紫红基本解决，花屏问题仍存。</strong>画面紫红从14条/11人降至1条，改善93%。但花屏问题仍存在（0729=3→0825=2），且出现新场景：云台校准过程中花屏、小图模式预览绿色花屏，建议持续跟进。
-  </div>
 </div>
 
 <!-- Footer -->
