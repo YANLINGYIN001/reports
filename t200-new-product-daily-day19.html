@@ -34,30 +34,27 @@ tr:hover td { background: #f9fff9; }
 .tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; margin: 2px; }
 .tag-new { background: #FFEBEE; color: #C62828; font-weight: 600; }
 .tag-ongoing { background: #FFFDE7; color: #F57F17; font-weight: 600; }
-.tag-increased { background: #FFF3E0; color: #E65100; font-weight: 600; }
 .footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
 .footer a { color: #00B050; text-decoration: none; }
 .group-header { background: #f5f9f5; font-weight: 600; color: #00B050; padding: 8px 12px; border-radius: 6px; margin: 12px 0 6px; font-size: 14px; }
 .new-row td { background: #FFFDE7; }
-.defect { color: #E74C3C; font-weight: 500; }
+.delta-pos { color: #E74C3C; font-weight: 600; }
+.delta-zero { color: #999; }
 @media (max-width: 768px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } .chart-box { min-width: 100%; } }
 </style>
 </head>
 <body>
 <div class="container">
 
-<!-- Header -->
 <div class="header">
   <h1>T200 4G记录仪新品跟踪日报 · Day 19</h1>
   <div class="subtitle">数据周期：2026.8.4 - 8.28 | 累计反馈 198条 | 覆盖渠道 8个 | 问题类型 100种</div>
 </div>
 
-<!-- Overview -->
 <div class="overview">
   累计反馈198条（较上次日报+95），覆盖8个渠道。8月26日后新增13条反馈，主要来自京东自营渠道。新增3个问题：设备发烫、定位偏差大、配网咨询。安装类问题持续高位运行，云录续费咨询增速明显。
 </div>
 
-<!-- KPI Cards -->
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="value">198</div>
@@ -80,7 +77,6 @@ tr:hover td { background: #f9fff9; }
   </div>
 </div>
 
-<!-- Core Insights -->
 <div class="section">
   <div class="section-title">核心洞察</div>
   <div class="insight green">
@@ -94,7 +90,6 @@ tr:hover td { background: #f9fff9; }
   </div>
 </div>
 
-<!-- Channel Distribution -->
 <div class="section">
   <div class="section-title">渠道反馈分布</div>
   <div class="chart-row">
@@ -114,7 +109,6 @@ tr:hover td { background: #f9fff9; }
   </div>
 </div>
 
-<!-- Problem Classification -->
 <div class="section">
   <div class="section-title">问题主题分类</div>
   <div class="chart-row">
@@ -124,91 +118,94 @@ tr:hover td { background: #f9fff9; }
     <div class="chart-box">
       <table>
         <thead>
-          <tr><th>分类</th><th>反馈量</th><th>占比</th><th>典型问题</th></tr>
+          <tr><th>分类</th><th>反馈量</th><th>占比</th><th>较昨日</th><th>典型问题</th></tr>
         </thead>
         <tbody>
-          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4FC3F7;margin-right:6px;"></span>配件</td><td>8</td><td>4%</td><td style="color:#666;font-size:12px;">是否带降压线咨询、其他降压线适配</td></tr>
-          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FFB74D;margin-right:6px;"></span>安装</td><td>55</td><td>27%</td><td style="color:#666;font-size:12px;">是否包安装、安装咨询、定位不显示、门店不会装</td></tr>
-          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#E57373;margin-right:6px;"></span>品控</td><td>7</td><td>3%</td><td style="color:#666;font-size:12px;">外观瑕疵、降压线断裂、内存卡损坏/不识别、设备发烫</td></tr>
-          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#BA68C8;margin-right:6px;"></span>费用</td><td>38</td><td>19%</td><td style="color:#666;font-size:12px;">4G流量收费、云录续费/收费、其他费用</td></tr>
-          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FFD54F;margin-right:6px;"></span>供电</td><td>18</td><td>9%</td><td style="color:#666;font-size:12px;">电池/供电咨询、电瓶损耗顾虑</td></tr>
-          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4DD0E1;margin-right:6px;"></span>停车监控</td><td>16</td><td>8%</td><td style="color:#666;font-size:12px;">停车监控咨询、哨兵模式咨询</td></tr>
-          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#81C784;margin-right:6px;"></span>视野</td><td>19</td><td>9%</td><td style="color:#666;font-size:12px;">前后双录/全景需求、镜头调节</td></tr>
-          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#A1887F;margin-right:6px;"></span>参数</td><td>9</td><td>4%</td><td style="color:#666;font-size:12px;">产品规格咨询</td></tr>
-          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#90A4AE;margin-right:6px;"></span>功能</td><td>38</td><td>19%</td><td style="color:#666;font-size:12px;">远程查看、其他功能咨询、画面清晰度、定位偏差</td></tr>
+          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4FC3F7;margin-right:6px;"></span>配件</td><td>8</td><td>4%</td><td><span class="delta-zero">—</span></td><td style="color:#666;font-size:12px;">是否带降压线咨询、其他降压线适配</td></tr>
+          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FFB74D;margin-right:6px;"></span>安装</td><td>55</td><td>27%</td><td><span class="delta-pos">+4</span></td><td style="color:#666;font-size:12px;">是否包安装、安装咨询、定位不显示、门店不会装</td></tr>
+          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#E57373;margin-right:6px;"></span>品控</td><td>7</td><td>3%</td><td><span class="delta-pos">+1</span></td><td style="color:#666;font-size:12px;">外观瑕疵、降压线断裂、内存卡损坏/不识别、设备发烫</td></tr>
+          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#BA68C8;margin-right:6px;"></span>费用</td><td>38</td><td>19%</td><td><span class="delta-pos">+2</span></td><td style="color:#666;font-size:12px;">4G流量收费、云录续费/收费、其他费用</td></tr>
+          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FFD54F;margin-right:6px;"></span>供电</td><td>18</td><td>9%</td><td><span class="delta-pos">+1</span></td><td style="color:#666;font-size:12px;">电池/供电咨询、电瓶损耗顾虑</td></tr>
+          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#4DD0E1;margin-right:6px;"></span>停车监控</td><td>16</td><td>8%</td><td><span class="delta-pos">+1</span></td><td style="color:#666;font-size:12px;">停车监控咨询、哨兵模式咨询</td></tr>
+          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#81C784;margin-right:6px;"></span>视野</td><td>19</td><td>9%</td><td><span class="delta-zero">—</span></td><td style="color:#666;font-size:12px;">前后双录/全景需求、镜头调节</td></tr>
+          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#A1887F;margin-right:6px;"></span>参数</td><td>9</td><td>4%</td><td><span class="delta-zero">—</span></td><td style="color:#666;font-size:12px;">产品规格咨询</td></tr>
+          <tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#90A4AE;margin-right:6px;"></span>功能</td><td>38</td><td>19%</td><td><span class="delta-pos">+4</span></td><td style="color:#666;font-size:12px;">远程查看、其他功能咨询、画面清晰度、定位偏差</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
 
-<!-- Today's New Feedback -->
 <div class="section">
   <div class="section-title">新增反馈明细（8.27-8.28）</div>
   <div class="group-header">安装（4条）</div>
   <table>
     <thead>
-      <tr><th>渠道</th><th>问题类型</th><th>用户问题</th><th>日期</th></tr>
+      <tr><th>渠道</th><th>问题类型</th><th>用户原声</th><th>客服解决方案</th></tr>
     </thead>
     <tbody>
-      <tr class="new-row"><td>京东自营</td><td>设备离线</td><td>设备离线</td><td>2026-08-28</td></tr>
-      <tr class="new-row"><td>京东自营</td><td>降压线安装咨询</td><td>咨询设备取电位置</td><td>2026-08-28</td></tr>
-      <tr class="new-row"><td>京东自营</td><td>定位不显示</td><td>无法定位</td><td>2026-08-28</td></tr>
-      <tr class="new-row"><td>京东自营</td><td>熄火后离线</td><td>停车几分钟后离线</td><td>2026-08-28</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>设备离线</td><td style="max-width:250px;">设备离线</td><td style="max-width:300px;color:#666;">安装师傅重新调试后恢复</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>降压线安装咨询</td><td style="max-width:250px;">咨询设备取电位置</td><td style="max-width:300px;color:#666;">安装降压线后电瓶取电</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>定位不显示</td><td style="max-width:250px;">无法定位</td><td style="max-width:300px;color:#666;">建议将设备移至车外空旷处测试定位是否恢复</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>熄火后离线</td><td style="max-width:250px;">停车几分钟后离线</td><td style="max-width:300px;color:#666;">红色接ACC，黄色接B+
+正常使用这两个线是这样装的，您方便让师傅换一个acc和常电接口看一下吗</td></tr>
     </tbody>
   </table>
   <div class="group-header">品控（1条）</div>
   <table>
     <thead>
-      <tr><th>渠道</th><th>问题类型</th><th>用户问题</th><th>日期</th></tr>
+      <tr><th>渠道</th><th>问题类型</th><th>用户原声</th><th>客服解决方案</th></tr>
     </thead>
     <tbody>
-      <tr class="new-row"><td>京东自营</td><td>设备发烫</td><td>设备发烫</td><td>2026-08-28</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>设备发烫</td><td style="max-width:250px;">设备发烫</td><td style="max-width:300px;color:#666;">记录仪在-20~70°C的环境温度中均可正常使用，且每个人对温度的感知有高有低，在这一范围内都属于正常现象，并无安全隐患，请放心使用！</td></tr>
     </tbody>
   </table>
   <div class="group-header">费用（2条）</div>
   <table>
     <thead>
-      <tr><th>渠道</th><th>问题类型</th><th>用户问题</th><th>日期</th></tr>
+      <tr><th>渠道</th><th>问题类型</th><th>用户原声</th><th>客服解决方案</th></tr>
     </thead>
     <tbody>
-      <tr class="new-row"><td>京东自营</td><td>云录收费咨询</td><td>咨询后期是否收费</td><td>2026-08-27</td></tr>
-      <tr class="new-row"><td>京东自营</td><td>云录收费咨询</td><td>客户认为强制收费云录</td><td>2026-08-27</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>云录收费咨询</td><td style="max-width:250px;">咨询后期是否收费</td><td style="max-width:300px;color:#666;">小主~购买云存用户支持使用付费功能，新用户支持免费体验30天付费功能(30天基础版云服务)，首次绑定设备成功后会弹框提示领取哦~
+不开通云服务可以看实时画面并进行抓拍～紧急录像、停车碰撞和哨兵模式的视频都会保存在设备的存储卡里。您通过本地 Wi-Fi 连接记录仪后，就能在APP里直接看了，只是没法远...</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>云录收费咨询</td><td style="max-width:250px;">客户认为强制收费云录</td><td style="max-width:300px;color:#666;">小主~购买云存用户支持使用付费功能，新用户支持免费体验30天付费功能(30天基础版云服务)，可以根据日常使用选择是否续费云录哦</td></tr>
     </tbody>
   </table>
   <div class="group-header">供电（1条）</div>
   <table>
     <thead>
-      <tr><th>渠道</th><th>问题类型</th><th>用户问题</th><th>日期</th></tr>
+      <tr><th>渠道</th><th>问题类型</th><th>用户原声</th><th>客服解决方案</th></tr>
     </thead>
     <tbody>
-      <tr class="new-row"><td>京东自营</td><td>电瓶损耗影响顾虑</td><td>接保险盒担心亏电</td><td>2026-08-27</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>电瓶损耗影响顾虑</td><td style="max-width:250px;">接保险盒担心亏电</td><td style="max-width:300px;color:#666;">小主～特别懂您担心长时间停车电瓶亏电的顾虑
+咱们这款记录仪没有实体关机键，也没法远程手动关闭，但完全不用焦虑哦！配套降压线自带低压保护，一旦车辆电瓶电压降到11.7V 左右，设备就会自动断电，优先预留足够电量保证车子正常打火启动。
+全程自动守护电瓶，不用您手动操作，安心停放车辆就好啦～🥰</td></tr>
     </tbody>
   </table>
   <div class="group-header">停车监控（1条）</div>
   <table>
     <thead>
-      <tr><th>渠道</th><th>问题类型</th><th>用户问题</th><th>日期</th></tr>
+      <tr><th>渠道</th><th>问题类型</th><th>用户原声</th><th>客服解决方案</th></tr>
     </thead>
     <tbody>
-      <tr class="new-row"><td>京东自营</td><td>哨兵模式咨询</td><td>哨兵模式是什么样的</td><td>2026-08-27</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>哨兵模式咨询</td><td style="max-width:250px;">哨兵模式是什么样的</td><td style="max-width:300px;color:#666;">哨兵抓拍：检测到车前区域出现画面变化时触发20秒“哨兵抓拍”视频，保存至存储卡（在APP“紧急视频”中查看），同时APP消息通知（在APP“车辆动态”中查看，开云录上报文字+10秒视频，未开云录上报图文）</td></tr>
     </tbody>
   </table>
   <div class="group-header">功能（4条）</div>
   <table>
     <thead>
-      <tr><th>渠道</th><th>问题类型</th><th>用户问题</th><th>日期</th></tr>
+      <tr><th>渠道</th><th>问题类型</th><th>用户原声</th><th>客服解决方案</th></tr>
     </thead>
     <tbody>
-      <tr class="new-row"><td>京东自营</td><td>内存卡格式化咨询</td><td>如何格式化内存卡</td><td>2026-08-27</td></tr>
-      <tr class="new-row"><td>京东自营</td><td>夜晚看不清车牌</td><td>咨询夜晚看不清车牌</td><td>2026-08-27</td></tr>
-      <tr class="new-row"><td>京东自营</td><td>定位偏差大</td><td>定位不准，行车记录仪的定位在东莞，但是我现在在哈尔滨</td><td>2026-08-28</td></tr>
-      <tr class="new-row"><td>京东自营</td><td>配网咨询</td><td>联网配网视频</td><td>2026-08-28</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>内存卡格式化咨询</td><td style="max-width:250px;">如何格式化内存卡</td><td style="max-width:300px;color:#666;">连接手机APP后，进入记录仪设置下滑到底部就可以看到格式化内存卡</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>夜晚看不清车牌</td><td style="max-width:250px;">咨询夜晚看不清车牌</td><td style="max-width:300px;color:#666;">^小主，从视频看是可以看清车牌的，行驶过程中看清车牌受车速，环境影响，如您车速过快，相对车速差距大和前车距离较远，都会影响您看清前车车牌的；在风雪天气，背光，晚上光线不好，灯光反光的情况下也会影响您看清前车车牌的呢</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>定位偏差大</td><td style="max-width:250px;">定位不准，行车记录仪的定位在东莞，但是我现在在哈尔滨</td><td style="max-width:300px;color:#666;">金属膜或车辆前挡风玻璃材质可能屏蔽GPS信号，建议将设备移至车外空旷处测试定位是否恢复。
+停车位置附近有高楼、隧道或山区等遮挡物时，GPS信号较弱，定位偏差可能达100-3000米</td></tr>
+      <tr class="new-row"><td>京东自营</td><td>配网咨询</td><td style="max-width:250px;">联网配网视频</td><td style="max-width:300px;color:#666;">发送配网视频</td></tr>
     </tbody>
   </table>
 </div>
 
-<!-- Key Issues Tracking -->
 <div class="section">
   <div class="section-title">重点问题跟踪（持续新增 & 新增问题）</div>
   <table>
@@ -285,7 +282,6 @@ tr:hover td { background: #f9fff9; }
   </table>
 </div>
 
-<!-- Footer -->
 <div class="footer">
   <p>数据来源：飞书表格「T200新品跟踪-用户反馈问题汇总」 | 报告合集：<a href="https://yanlingyin001.github.io/reports/">GitHub Pages</a></p>
   <p>Generated by 尹燕玲-报告分析专家 🦞 | 2026-08-28</p>
@@ -294,7 +290,6 @@ tr:hover td { background: #f9fff9; }
 </div>
 
 <script>
-// Channel Chart
 var chData = [{"name": "京东自营", "value": 84}, {"name": "有赞", "value": 56}, {"name": "私域", "value": 22}, {"name": "天猫官旗", "value": 14}, {"name": "天猫车品", "value": 8}, {"name": "小红书", "value": 7}, {"name": "抖音", "value": 3}, {"name": "天猫车旗", "value": 1}];
 var chChart = echarts.init(document.getElementById('channelChart'));
 chChart.setOption({
@@ -310,7 +305,6 @@ chChart.setOption({
   }]
 });
 
-// Category Pie Chart
 var catData = [{"name": "配件", "value": 8, "itemStyle": {"color": "#4FC3F7"}}, {"name": "安装", "value": 55, "itemStyle": {"color": "#FFB74D"}}, {"name": "品控", "value": 7, "itemStyle": {"color": "#E57373"}}, {"name": "费用", "value": 38, "itemStyle": {"color": "#BA68C8"}}, {"name": "供电", "value": 18, "itemStyle": {"color": "#FFD54F"}}, {"name": "停车监控", "value": 16, "itemStyle": {"color": "#4DD0E1"}}, {"name": "视野", "value": 19, "itemStyle": {"color": "#81C784"}}, {"name": "参数", "value": 9, "itemStyle": {"color": "#A1887F"}}, {"name": "功能", "value": 38, "itemStyle": {"color": "#90A4AE"}}];
 var catChart = echarts.init(document.getElementById('categoryChart'));
 catChart.setOption({
@@ -327,7 +321,6 @@ catChart.setOption({
   }]
 });
 
-// Responsive
 window.addEventListener('resize', function() {
   chChart.resize();
   catChart.resize();
