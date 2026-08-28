@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 公测报告总首页 · 尹燕玲</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 50px 20px; text-align: center; }
+  .header h1 { font-size: 32px; margin-bottom: 8px; }
+  .header p { font-size: 15px; opacity: 0.9; }
+  .header .stats { display: flex; gap: 20px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+  .header .stat { background: rgba(255,255,255,0.15); border-radius: 10px; padding: 10px 24px; text-align: center; }
+  .header .stat .num { font-size: 24px; font-weight: 700; }
+  .header .stat .label { font-size: 12px; opacity: 0.85; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
+  .project-card { background: #fff; border-radius: 16px; padding: 28px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.3s; border-top: 4px solid #00B050; }
+  .project-card:hover { box-shadow: 0 4px 20px rgba(0,176,80,0.12); }
+  .project-card.done { border-top-color: #999; opacity: 0.85; }
+  .project-card.prep { border-top-color: #F39C12; }
+  .project-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .project-title { font-size: 22px; font-weight: 700; color: #333; }
+  .project-status { font-size: 12px; padding: 4px 12px; border-radius: 12px; font-weight: 600; }
+  .project-status.active { background: #e8f5e9; color: #00B050; }
+  .project-status.done { background: #f0f0f0; color: #999; }
+  .project-status.prep { background: #fff3e0; color: #F39C12; }
+  .project-desc { font-size: 14px; color: #666; margin-bottom: 16px; }
+  .project-meta { display: flex; gap: 16px; font-size: 13px; color: #888; margin-bottom: 16px; flex-wrap: wrap; }
+  .project-meta span { background: #f5f7fa; padding: 4px 12px; border-radius: 6px; }
+  .project-link { display: inline-block; background: #00B050; color: #fff; text-decoration: none; padding: 10px 28px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: all 0.2s; }
+  .project-link:hover { background: #009040; transform: translateY(-1px); }
+  .project-link.done { background: #999; }
+  .project-link.prep { background: #F39C12; }
+  .section-title { font-size: 18px; font-weight: 700; color: #333; margin: 30px 0 16px; padding-left: 12px; border-left: 4px solid #00B050; }
+  .misc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .misc-card { display: block; background: #fff; border-radius: 10px; padding: 16px 20px; text-decoration: none; color: #333; box-shadow: 0 2px 6px rgba(0,0,0,0.04); transition: all 0.2s; }
+  .misc-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .misc-card .title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .misc-card .desc { font-size: 12px; color: #999; }
+  .footer { text-align: center; padding: 40px 20px; color: #999; font-size: 13px; }
+  .footer a { color: #00B050; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📊 公测报告总首页</h1>
+  <p>尹燕玲 · 数据分析专家 · 公测项目报告合集</p>
+  <div class="stats">
+    <div class="stat"><div class="num">9</div><div class="label">项目总数</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">活跃项目</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">已完成项目</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section-title">🔴 活跃项目</div>
+
+  <!-- 9pro -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">📡 9pro 400万4G云台公测</span>
+      <span class="project-status active">进行中</span>
+    </div>
+    <div class="project-desc">30人公测 · 事件驱动日报 · 日常反馈打标分析</div>
+    <div class="project-meta">
+      <span>👥 30人</span>
+      <span>📋 8份报告</span>
+      <span>💬 331条反馈</span>
+    </div>
+    <a class="project-link" href="https://yanlingyin001.github.io/reports/9pro-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- 6pro -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">🔔 6pro 4G门铃公测</span>
+      <span class="project-status active">进行中</span>
+    </div>
+    <div class="project-desc">20人公测 · 每天10:00更新作业 · 日常问题打标</div>
+    <div class="project-meta">
+      <span>👥 20人</span>
+      <span>📋 17份报告</span>
+      <span>💬 505条反馈</span>
+    </div>
+    <a class="project-link" href="https://yanlingyin001.github.io/reports/6pro-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- T200新品跟踪 -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">📱 T200 4G记录仪新品跟踪</span>
+      <span class="project-status active">进行中</span>
+    </div>
+    <div class="project-desc">多渠道反馈跟踪 · Day 1~19 日报 · 重点问题sheet</div>
+    <div class="project-meta">
+      <span>📋 10份日报</span>
+      <span>💬 198条反馈</span>
+      <span>🔗 8渠道</span>
+      <span>🐞 37缺陷</span>
+    </div>
+    <a class="project-link" href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- G980H -->
+  <div class="project-card prep">
+    <div class="project-header">
+      <span class="project-title">🚗 G980H 4G记录仪公测</span>
+      <span class="project-status prep">筹备中</span>
+    </div>
+    <div class="project-desc">报名中(159人/初筛9人) · 预计9-11月公测 · KPI指标+测试问题+功能限制已梳理</div>
+    <div class="project-meta">
+      <span>📝 159人报名</span>
+      <span>✅ 9人初筛入选</span>
+      <span>📅 9-11月公测</span>
+    </div>
+    <a class="project-link prep" href="https://yanlingyin001.github.io/reports/g980h-index.html">查看项目资料 →</a>
+  </div>
+
+  <!-- 海外评价周报 -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">🌍 海外评价周报</span>
+      <span class="project-status active">每周一更新</span>
+    </div>
+    <div class="project-desc">飞书文档 · 差评Callout · 评分表格 · 车品+安防全系列</div>
+    <div class="project-meta">
+      <span>📅 每周一16:00</span>
+      <span>📦 车品7系列 + 安防4系列</span>
+      <span>🌐 Amazon + Tiktok</span>
+    </div>
+    <a class="project-link" href="https://360iot-uxc.feishu.cn/wiki/O29dwirj2ig8v5kCOhXcsTbZnzg">查看飞书文档 →</a>
+  </div>
+
+  <!-- 公测用户清单 -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">📋 公测用户清单管理</span>
+      <span class="project-status active">长期维护</span>
+    </div>
+    <div class="project-desc">51个项目 · 1225人次 · 打分表+黑名单+邮寄信息</div>
+    <div class="project-meta">
+      <span>👥 1225人次</span>
+      <span>📁 51个项目</span>
+      <span>🚫 65黑名单</span>
+    </div>
+    <a class="project-link" href="https://360iot-uxc.feishu.cn/sheets/shtcnS1LklAuci0FLUc7BwCb08T">查看飞书表格 →</a>
+  </div>
+
+  <div class="section-title">✅ 已完成项目</div>
+
+  <!-- T200公测 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">📱 T200 4G记录仪公测</span>
+      <span class="project-status done">已结项</span>
+    </div>
+    <div class="project-desc">15+份报告 · 开箱/安装/日常/专项/终测/价格/营销全流程</div>
+    <div class="project-meta">
+      <span>📋 15+份报告</span>
+      <span>👥 65人公测</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/t200-public-test-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- 智能猫眼 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">👁️ 智能猫眼新品公测</span>
+      <span class="project-status done">已结项</span>
+    </div>
+    <div class="project-desc">重点问题sheet参考模板 · 18段快照格式</div>
+    <div class="project-meta">
+      <span>📋 重点问题sheet</span>
+    </div>
+  </div>
+
+  <!-- Petal AI -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">🐾 Petal AI桌面宠物内测</span>
+      <span class="project-status done">已出报告</span>
+    </div>
+    <div class="project-desc">5个版本迭代 · 6份有效问卷 · 满意度7.33/10</div>
+    <div class="project-meta">
+      <span>📋 3份报告</span>
+      <span>👥 6人内测</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/petal-ai-index.html">查看报告合集 →</a>
+  </div>
+
+  <div class="section-title">📎 其他报告</div>
+  <div class="misc-grid">
+    <a class="misc-card" href="https://yanlingyin001.github.io/reports/doorbell-compare-report-final.html">
+      <div class="title">门铃对比报告</div>
+      <div class="desc">6pro与竞品对比分析</div>
+    </a>
+    <a class="misc-card" href="https://yanlingyin001.github.io/reports/window-camera-report.html">
+      <div class="title">Windows Camera报告</div>
+      <div class="desc">Windows摄像头产品分析</div>
+    </a>
+    <a class="misc-card" href="https://yanlingyin001.github.io/reports/xhs-camera-dashboard-report.html">
+      <div class="title">小红书摄像头看板</div>
+      <div class="desc">小红书渠道数据看板</div>
+    </a>
+    <a class="misc-card" href="https://yanlingyin001.github.io/reports/user-insight-course-notes.html">
+      <div class="title">用户洞察精品课笔记</div>
+      <div class="desc">7模块交互式学习笔记</div>
+    </a>
+    <a class="misc-card" href="https://yanlingyin001.github.io/reports/v6-rider-profile.html">
+      <div class="title">V6骑行版用户画像</div>
+      <div class="desc">用户画像分析报告</div>
+    </a>
+  </div>
+
+</div>
+<div class="footer">
+  <p>📊 公测报告总首页 · 尹燕玲 · 数据分析专家 🦞</p>
+  <p>最后更新: 2026-08-28 · <a href="https://github.com/YANLINGYIN001/reports">GitHub仓库</a></p>
+</div>
+</body>
+</html>
