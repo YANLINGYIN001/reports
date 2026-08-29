@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9pro 400万4G云台公测 - 日常日报 (2026-08-29)</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; border-radius: 12px; padding: 30px; margin-bottom: 20px; }
+.header h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+.header .subtitle { font-size: 14px; opacity: 0.9; display: flex; gap: 20px; flex-wrap: wrap; }
+.header .subtitle span { display: inline-flex; align-items: center; gap: 4px; }
+.section { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 18px; color: #00B050; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #f0f9f3; }
+.kpi-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.kpi-card { background: #f0f9f3; border-radius: 8px; padding: 20px; text-align: center; }
+.kpi-card .value { font-size: 32px; font-weight: 700; color: #00B050; }
+.kpi-card .label { font-size: 13px; color: #666; margin-top: 4px; }
+.kpi-card .detail { font-size: 12px; color: #999; margin-top: 8px; }
+.insight { margin-bottom: 16px; }
+.insight p { font-size: 14px; line-height: 1.8; }
+.insight strong { color: #00B050; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: #f0f9f3; color: #333; font-weight: 600; padding: 10px 12px; text-align: left; border-bottom: 2px solid #e0e0e0; white-space: nowrap; }
+td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+tr:hover { background: #fafafa; }
+.level-p0 { background: #fef2f2; color: #e74c3c; font-weight: 600; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+.level-p1 { background: #fff7ed; color: #f39c12; font-weight: 600; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+.level-p2 { background: #f0f9f3; color: #00B050; font-weight: 600; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+.new-row { background: #fffde7; }
+.quote { font-size: 12px; color: #666; margin-top: 4px; }
+.quote .name { color: #333; font-weight: 500; }
+.fw-compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+.fw-card { background: #f9f9f9; border-radius: 8px; padding: 16px; }
+.fw-card .fw-name { font-size: 14px; font-weight: 600; color: #00B050; margin-bottom: 8px; }
+.fw-card .fw-stat { font-size: 13px; color: #666; }
+.footer { text-align: center; padding: 20px; font-size: 12px; color: #999; }
+.footer a { color: #00B050; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>📊 9pro 400万4G云台公测 - 日常问题日报</h1>
+<div class="subtitle">
+<span>📅 数据周期：8/16 - 8/28</span>
+<span>📝 累计反馈：320条</span>
+<span>👥 参与人数：28人</span>
+<span>🆕 今日新增：5条</span>
+</div>
+</div>
+<div class="section">
+<h2>📈 核心指标</h2>
+<div class="kpi-cards">
+<div class="kpi-card"><div class="value">320</div><div class="label">总反馈量</div></div>
+<div class="kpi-card"><div class="value">28</div><div class="label">参与人数</div></div>
+<div class="kpi-card"><div class="value" style="font-size:16px;line-height:1.4;">人形误报 (20人)<br>画面紫红 (11人)<br>电子说明书未更新 (7人)</div><div class="label">TOP3 问题点</div></div>
+</div>
+</div>
+<div class="section">
+<h2>💡 核心洞察</h2>
+<div class="insight"><p><strong>AI人形误报仍是第一大问题</strong>，累计58条反馈、20人遇到。本次新增中林志澄反馈"塑料袋误报人形"、张一明反馈"晚上没人的时候提示有人"，说明夜视场景下的误报问题仍未解决，需持续优化算法。</p></div>
+<div class="insight"><p><strong>设备离线问题新增1例</strong>，邱天顺反馈"摄像头自动离线，重启电源才上线"，累计5条、4人。4G设备稳定性问题影响用户基本使用体验，需重点关注。</p></div>
+<div class="insight"><p><strong>重启后内存卡识别异常新增1例</strong>，邱天顺反馈"离线重启后不能识别存储卡"。该问题累计2条，虽频次不高但影响录像功能核心体验，建议排查固件逻辑。</p></div>
+<div class="insight"><p><strong>夜视切换异常新增1例</strong>，谢光位反馈"黑切白异常：阀值过高，未及时切换（对比9Ultra）"，累计6条、5人。切换阈值设置直接影响夜视体验，建议参考9Ultra优化。</p></div>
+</div>
+<div class="section">
+<h2>🔍 核心问题分析</h2>
+<table>
+<thead>
+<tr>
+<th>等级</th><th>一级标签</th><th>二级标签</th><th>反馈量</th><th>用户原声</th></tr>
+</thead>
+<tbody>
+<tr><td><span class="level-p0">P0</span></td><td>AI算法</td><td>人形误报</td><td>58条/20人</td><td><div class="quote"><span class="name">陈建建：</span>提示有人出现，反复查看视频确实无人出现</div><div class="quote"><span class="name">黄显森：</span>把悬挂的衣服识别成人</div><div class="quote"><span class="name">王亚兵：</span>发现晚上室内灯熄灭以后，左侧圆桌上的水瓶容易误触发有人出现的误报，这个技术优化优化哦。</div></td></tr>
+<tr><td><span class="level-p0">P0</span></td><td>IQ</td><td>画面紫红</td><td>15条/11人</td><td><div class="quote"><span class="name">高瑞：</span>做了设备断电更换内存卡后上电操作，遇到设备上线后画面显示异常问题。(显示紫红色)</div><div class="quote"><span class="name">蒋牧吟：</span>监控画面颜色在正常与不正常中来回切换。</div><div class="quote"><span class="name">陈建建：</span>查看实时预览时发现，画面变紫，</div></td></tr>
+<tr><td><span class="level-p0">P0</span></td><td>APP</td><td>电子说明书未更新</td><td>9条/7人</td><td><div class="quote"><span class="name">高瑞：</span>做了开箱操作，遇到在线版说明书与实际纸质版说明书不符(电子版说明书依旧是老款设备说明)的问题</div><div class="quote"><span class="name">林志澄：</span>在线电子说明书未更新。</div><div class="quote"><span class="name">汤远鹏：</span>APP里面的电子说明书仍然是用的WiFi版的摄像头电子说明书</div></td></tr>
+<tr><td><span class="level-p0">P0</span></td><td>APP</td><td>信号显示不一致</td><td>13条/7人</td><td><div class="quote"><span class="name">高瑞：</span>16，51分，做了查看设备操作，遇到缩略图的信号显示与实际的信号显示不符的问题。</div><div class="quote"><span class="name">王亚兵：</span>怎么现在app设备主页面的4g信号条是2格蓝色的，但是进入设备正常实时以后4g信号条确实黄色的2格，这给人表里不一的感觉。而且让用户产生怀疑这到底是信号一般还是...</div><div class="quote"><span class="name">蒋牧吟：</span>已多次发现信号条显示不一致:进入app时显示的信号条经常比进入实时监控时显示的信号条多一条线。</div></td></tr>
+<tr><td><span class="level-p0">P0</span></td><td>卡录</td><td>卡录加载慢</td><td>8条/7人</td><td><div class="quote"><span class="name">龚粒宇：</span>查看存储卡是，很慢才能进去看到存储卡上的视频</div><div class="quote"><span class="name">林志澄：</span>卡录加载很慢。差不多20秒才出来。</div><div class="quote"><span class="name">高瑞：</span>做了查看卡录回放操作，遇到有时候查看卡录，需要等待的时间过长，甚至达到8秒以上的问题。</div></td></tr>
+<tr><td><span class="level-p0">P0</span></td><td>AI算法</td><td>画面变化误触发</td><td>6条/5人</td><td><div class="quote"><span class="name">高瑞：</span>8月19日，16时36分，做了查看卡录操作，遇到发现在15时，59分的画面变化，实际无画面变化问题，但是前几秒有声音，是因为声音才有的画面变化吗？</div><div class="quote"><span class="name">王亚兵：</span>发现如果摄像头前面有其他是摄像头的aov模式工作是的红外灯有规律的闪烁会频繁触发画面变化，技术看看这个怎么着规避一下。</div><div class="quote"><span class="name">程永权：</span>画面变化误识别</div></td></tr>
+<tr><td><span class="level-p0">P0</span></td><td>APP</td><td>定时开关机难用</td><td>8条/5人</td><td><div class="quote"><span class="name">王刚红：</span>摄像机定时开关机很难用，提过好几次。如果我要星期五晚上22点关机，到星期一早上8点开机。就是想双休日关摄像头，这如何设置？普通用户设置这个像要做数学推理题似的。</div><div class="quote"><span class="name">张鹏鑫：</span>定时开关机不便捷，周一之周五，周六周日分组不合理，因为中国绝大多数人不是双休，我觉得应该整合到一起，更方便。</div><div class="quote"><span class="name">杜劲：</span>设置的周一至周五自动开机时间是上午9:00，但是现在（周一）近10:00了还没开机。</div></td></tr>
+<tr><td><span class="level-p0">P0</span></td><td>IQ</td><td>夜视切换异常</td><td>6条/5人</td><td><div class="quote"><span class="name">杜劲：</span>同一位置、同样设置，9pro400万or7max图像为彩色，（本机）9pro4G图像是黑白（夜视）。</div><div class="quote"><span class="name">张宁：</span>夜视算法好像有bug，夜色设置为自动时，环境光线应该是够的，并不会启动夜视，但是手动旋转到暗光方向启动夜视后转回光源方向不会自动切回彩色模式。</div><div class="quote"><span class="name">郭智育：</span>时间进入夜晚，外围光线变暗后，摄像机未自动开启红外模式，或者说切换红外模式出现问题，导致监控视频和实时画面出现花屏和异常颜色</div></td></tr>
+<tr><td><span class="level-p0">P0</span></td><td>云台</td><td>云台限位异常</td><td>5条/5人</td><td><div class="quote"><span class="name">谢光位：</span>首次绑定后向下移动视角，提示已到达边缘。实际并未到达底部边缘。向上移动到顶后再向下，底部边缘正常位置。建议：上次绑定时自动执行一次校准。</div><div class="quote"><span class="name">朱秀澍：</span>下边缘未到底，需要先到上边缘再到下边缘才是真的下边缘。</div><div class="quote"><span class="name">黄显森：</span>偶发下移底部只到平时最底部偏上位置，只有把摄像头移到顶部边缘，后面下移才可以到底部边缘，摄像头没有手动挪过</div></td></tr>
+<tr><td><span class="level-p1">P1</span></td><td>IQ</td><td>花屏</td><td>5条/4人</td><td><div class="quote"><span class="name">朱秀澍：</span>花屏</div><div class="quote"><span class="name">王亚兵：</span>第一次发现早上切换白天时会出现各种花屏的交替出现而且花屏里局部还有一些马赛克，还会出现黑屏，会这样反复一下，请技术排查修复。</div><div class="quote"><span class="name">龚粒宇：</span>进行全景扫描时，出现花屏。</div></td></tr>
+<tr><td><span class="level-p1">P1</span></td><td>卡录</td><td>插卡格式化提示需求</td><td>4条/4人</td><td><div class="quote"><span class="name">高瑞：</span>做了查看设备卡录操作，遇到卡录回放只有一个小时左右的回放，其他回放视频丢失(由于该内存卡之前在其他摄像头内使用，视频已占满，按道理应该会覆盖存储，怀疑未覆盖，正...</div><div class="quote"><span class="name">方家欢：</span>提个建议∶建议插卡后APP提示格式化，我装的就卡，没空间，就能一点点，就开始循化，设备，和APP都没任何提示，插卡就一个人加载声音，然后就正常循环录制了，感觉提...</div><div class="quote"><span class="name">王亚兵：</span>有群友反馈:发现卡录回放只有一个小时左右的回放，其他回放视频丢失(由于该内存卡之前在其他摄像头内使用，视频已占满，按道理应该会覆盖存储，怀疑未覆盖)，其实这种是...</div></td></tr>
+<tr><td><span class="level-p0">P0</span></td><td>稳定性</td><td>设备离线</td><td>5条/4人</td><td><div class="quote"><span class="name">王亚兵：</span>昨天15点多准备打开摄像头看看，发现摄像头封面上原本有点信号条标识没有了，点进去也不能实时，然后等了一下显示摄像头离线。就去看卡录发现15点28分07秒卡录开始...</div><div class="quote"><span class="name">蒋牧吟：</span>进入实时监控，一直刷新不出新的界面，再退出，显示离线，最后界面时间是14时33分。</div><div class="quote"><span class="name">赖峰：</span>上半夜正常，凌晨突然离线</div></td></tr>
+<tr><td><span class="level-p1">P1</span></td><td>AI算法</td><td>智慧通知描述错误</td><td>3条/3人</td><td><div class="quote"><span class="name">王亚兵：</span>这智慧通知描述有点离谱，明明一个女子开门进来，智慧通知描述:男子赤裸上身站在客厅门口。</div><div class="quote"><span class="name">谢光位：</span>AI描述问题: 画面过爆，无法辨识人物及具体动作。实际画面正常，人物画面可正常识别。瞬间过曝可以忽略</div><div class="quote"><span class="name">陈建建：</span>有消息提示，点进去一看提示与图片相符，但与视频不符。提示室内空无一人，实际有人刚要进来。根据图片分析确实，但结合视频就不对了</div></td></tr>
+<tr><td><span class="level-p1">P1</span></td><td>APP</td><td>流量管理显示异常</td><td>3条/3人</td><td><div class="quote"><span class="name">高瑞：</span>做了查看实时画面，发现网络不稳定，在手机端切换为数据流量操作，遇到切换流量后紧接着点击云台的流量图标(预览界面右上角)，卡出图片中的画面问题。</div><div class="quote"><span class="name">王亚兵：</span>手机流量不好的时候点流量管理菜单时会出现显示剩余详细日期36141天，套餐有效期2026年8月11日到2125年7月31日，我的套餐:又是终身套餐，这样的异常画...</div><div class="quote"><span class="name">杜劲：</span>本来应该显示无限流量，偶尔会显示流量卡起止时间倒置</div></td></tr>
+<tr><td><span class="level-p1">P1</span></td><td>开流</td><td>开流失败</td><td>3条/3人</td><td><div class="quote"><span class="name">谢光位：</span>首次绑定成功后，5min内多次查看提示加载失败</div><div class="quote"><span class="name">孙洪士：</span>多次开流失败，然后出了一个这个</div><div class="quote"><span class="name">陈建建：</span>查看实时预览和卡录均失败</div></td></tr>
+<tr><td><span class="level-p1">P1</span></td><td>巡航</td><td>巡航速度过快</td><td>3条/3人</td><td><div class="quote"><span class="name">高瑞：</span>8月18日，7时3分，做了巡航测试操作，遇到巡航速度过快，导致画面不清晰的问题(建议调节一下能否稍微再慢一点呢？但是真喜欢这个速度，转的是真快，真有效率，能优化...</div><div class="quote"><span class="name">杜劲：</span>巡航转动速度太快，建议适当降低续航是的转动速度。</div><div class="quote"><span class="name">王刚红：</span>摄像机巡航速度太快了，根本看不了。</div></td></tr>
+<tr><td><span class="level-p2">P2</span></td><td>AI算法</td><td>人形漏报</td><td>3条/2人</td><td><div class="quote"><span class="name">王亚兵：</span>目前如果人躺在沙发上活动会被识别成画面变化，这个明显不多啊，请技术优化优化。</div><div class="quote"><span class="name">蒋牧吟：</span>监控画面中有两人，但只识别到一个人。</div></td></tr>
+<tr><td><span class="level-p2">P2</span></td><td>AI算法</td><td>性别识别错误</td><td>2条/2人</td><td><div class="quote"><span class="name">程永权：</span>性别识别错误</div><div class="quote"><span class="name">陶双：</span>智慧通知识别有错误，性别为男孩被识别为女子，需要优化算法，提高识别精确度</div></td></tr>
+<tr><td><span class="level-p2">P2</span></td><td>APP</td><td>开流首帧WiFi图标</td><td>2条/2人</td><td><div class="quote"><span class="name">高瑞：</span>做了查看实时画面操作，遇到进入实时画面一瞬间，左上角信号图标还是WiFi图标，然后再转换流量图标问题。</div><div class="quote"><span class="name">汤远鹏：</span>打开摄像头 页面左上角网络图标显示为WiFi</div></td></tr>
+<tr><td><span class="level-p2">P2</span></td><td>APP</td><td>使用帮助文档错误</td><td>2条/2人</td><td><div class="quote"><span class="name">王刚红：</span>app摄像机设置-使用帮助-如何查看设备ID，进去后，配的图，这么明显的，当前网络异常的bug提示就不应该出现在说明文档中。这种小细节错误不应该出现！</div><div class="quote"><span class="name">陶双：</span>id查询指引网络异常提示，后期这个bug解决后不要忘了更换一下图片</div></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section">
+<h2>📱 固件版本分布</h2>
+<div class="fw-compare">
+<div class="fw-card"><div class="fw-name">0729</div><div class="fw-stat">反馈：274条 | 人数：27人</div></div>
+<div class="fw-card"><div class="fw-name">0825</div><div class="fw-stat">反馈：43条 | 人数：17人</div></div>
+<div class="fw-card"><div class="fw-name">P9PRO—4MP—4G_V1.0.4.1572_20260825</div><div class="fw-stat">反馈：2条 | 人数：1人</div></div>
+<div class="fw-card"><div class="fw-name">p9pro-4mp-4g_v1.0.4.1572_20260825</div><div class="fw-stat">反馈：1条 | 人数：1人</div></div>
+</div>
+</div>
+<div class="section">
+<h2>🆕 今日新增反馈明细（8/28数据）</h2>
+<table>
+<thead>
+<tr>
+<th>一级标签</th><th>二级标签</th><th>反馈人</th><th>问题详情</th></tr>
+</thead>
+<tbody>
+<tr class="new-row"><td>IQ</td><td>夜视切换异常</td><td>谢光位</td><td>黑切白异常： 阀值过高，未及时切换（对比9Ultra）</td></tr>
+<tr class="new-row"><td>AI算法</td><td>人形误报</td><td>张一明</td><td>1、晚上没人的时候提示有人，2、手机放打音量录音声音有低噪，3、旋转声音很大</td></tr>
+<tr class="new-row"><td>卡录</td><td>内存卡识别异常</td><td>邱天顺</td><td>离线重启后，不能识别存储卡</td></tr>
+<tr class="new-row"><td>稳定性</td><td>设备离线</td><td>邱天顺</td><td>摄像头自动离线，重启电源才上线。</td></tr>
+<tr class="new-row"><td>AI算法</td><td>人形误报</td><td>林志澄</td><td>塑料袋误报人形，实际上并无人形特征。附件为云录。</td></tr>
+</tbody>
+</table>
+</div>
+<div class="footer">
+<p>数据来源：飞书表格「9pro 400万4G云台公测问题跟进表」 | 统计范围：日常使用问题（不含开箱/配网/包装/安装等专项）</p>
+<p><a href="https://yanlingyin001.github.io/reports/9pro-index.html">📊 查看报告合集</a></p>
+</div>
+</div>
+</body>
+</html>
