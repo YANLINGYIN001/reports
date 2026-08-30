@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9pro 400万4G云台公测 - 日常反馈日报 20260830</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f5f5; padding: 30px 20px; color: #333; }
+  .container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden; }
+  .header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 30px; text-align: center; }
+  .header h1 { font-size: 22px; margin-bottom: 8px; }
+  .header .subtitle { font-size: 13px; opacity: 0.9; margin-top: 5px; }
+  .kpi-row { display: flex; padding: 20px; gap: 15px; }
+  .kpi-card { flex: 1; background: #f0faf3; border-radius: 8px; padding: 20px; text-align: center; }
+  .kpi-card .num { font-size: 28px; font-weight: 700; color: #00B050; }
+  .kpi-card .label { font-size: 12px; color: #999; margin-top: 5px; }
+  .kpi-card .detail { font-size: 11px; color: #666; margin-top: 3px; }
+  .section { padding: 20px 30px; }
+  .section h2 { font-size: 16px; color: #333; border-left: 4px solid #00B050; padding-left: 10px; margin-bottom: 15px; }
+  .insight-box { background: #f9fff9; border-left: 4px solid #00B050; padding: 15px 20px; margin: 10px 0; border-radius: 0 8px 8px 0; line-height: 1.8; font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #00B050; color: #fff; padding: 10px 8px; text-align: center; font-weight: 600; }
+  td { padding: 8px; border-bottom: 1px solid #f0f0f0; text-align: center; }
+  td:first-child, td:nth-child(5) { text-align: left; }
+  .chart { width: 100%; height: 350px; margin: 15px 0; }
+  .footer { padding: 20px 30px; text-align: center; color: #999; font-size: 12px; border-top: 1px solid #f0f0f0; }
+  .fw-compare { padding: 10px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>9pro 400万4G云台公测 - 日常反馈日报</h1>
+    <div class="subtitle">数据周期：8/17 - 8/30 | 累计反馈 322条 | 参与人数 28人 | 新增 7条</div>
+  </div>
+  
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="num">322</div>
+      <div class="label">累计反馈量</div>
+    </div>
+    <div class="kpi-card">
+      <div class="num">28</div>
+      <div class="label">参与人数</div>
+    </div>
+    <div class="kpi-card">
+      <div class="num" style="font-size:13px;line-height:1.6">AI算法>人形误报(20人)<br>IQ>画面紫红(11人)<br>APP>信号显示不一致(7人)</div>
+      <div class="label">TOP3 问题点</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>核心洞察</h2>
+    <div class="insight-box">
+    <p style="margin:8px 0;line-height:1.8"><strong>AI人形误报问题持续发酵</strong>：累计58条反馈，涉及20人，是当前反馈量最大、影响面最广的问题。用户反映夜间红外灯触发误报、衣物被误识别为人形等场景频发。</p>
+    <p style="margin:8px 0;line-height:1.8"><strong>设备离线问题不容忽视</strong>：稳定性>设备离线6条+APP>假离线2条，共6人遇到。本次新增陶双反馈APP显示离线但实际在线（假离线）、张鹏鑫反馈异常离线，假离线和真离线问题并存。</p>
+    <p style="margin:8px 0;line-height:1.8"><strong>APP加载失败新增案例</strong>：郭智育反馈打开APP查看监控时提示"加载失败"，重启APP后恢复但分辨率自动降为标清。该问题累计2条2人反馈。</p>
+    <p style="margin:8px 0;line-height:1.8"><strong>云台校准问题新增反馈</strong>：谢光位反馈云台校准无法复位，建议校准后自动恢复初始位置。该问题累计3条3人反馈，影响云台定位精度。</p>
+    <p style="margin:8px 0;line-height:1.8"><strong>0825新固件反馈分析</strong>：共48条反馈来自19人，主要问题集中在APP加载、云台校准、卡录查看等。新固件下人形误报问题依然存在。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>核心问题分析</h2>
+    <table>
+      <thead>
+        <tr><th>等级</th><th>一级标签</th><th>二级标签</th><th>反馈量</th><th>用户原声</th><th>状态</th><th>责任人</th></tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><span style="color:#E74C3C;font-weight:700">P0</span></td>
+        <td>AI算法</td>
+        <td>人形误报</td>
+        <td>58条(20人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 陈建建: 提示有人出现，反复查看视频确实无人出现<br>• 黄显森: 把悬挂的衣服识别成人<br>• 王亚兵: 发现晚上室内灯熄灭以后，左侧圆桌上的水瓶容易误触发有人出现的<span style="color:#E74C3C">误报</span>，这个技术优化优化哦。</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#E74C3C;font-weight:700">P0</span></td>
+        <td>IQ</td>
+        <td>画面紫红</td>
+        <td>15条(11人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 高瑞: 做了设备断电更换内存卡后上电操作，遇到设备上线后画面显示<span style="color:#E74C3C">异常</span>问题。(显示紫红色)<br>• 蒋牧吟: 监控画面颜色在正常与不正常中来回切换。<br>• 高瑞: 做了开启摄像头操作，遇到画面切换到红外，但是颜色为紫红色，画面颜色切换<span style="color:#E74C3C">失败</span>问题。关机重启后，恢复正常。</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#E74C3C;font-weight:700">P0</span></td>
+        <td>APP</td>
+        <td>信号显示不一致</td>
+        <td>13条(7人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 高瑞: 16，51分，做了查看设备操作，遇到缩略图的信号显示与实际的信号显示不符的问题。<br>• 王亚兵: 怎么现在app设备主页面的4g信号条是2格蓝色的，但是进入设备正常实时以后4g信号条确实黄色的2格，这给人表里不一的感觉。而且让用户产生怀疑这到底是信号一般还是<br>• 蒋牧吟: 已多次发现信号条显示不一致:进入app时显示的信号条经常比进入实时监控时显示的信号条多一条线。</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#E74C3C;font-weight:700">P0</span></td>
+        <td>APP</td>
+        <td>电子说明书未更新</td>
+        <td>9条(7人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 高瑞: 做了开箱操作，遇到在线版说明书与实际纸质版说明书不符(电子版说明书依旧是老款设备说明)的问题<br>• 林志澄: 在线电子说明书未更新。<br>• 汤远鹏: APP里面的电子说明书仍然是用的WiFi版的摄像头电子说明书</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#E74C3C;font-weight:700">P0</span></td>
+        <td>卡录</td>
+        <td>卡录加载慢</td>
+        <td>8条(7人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 龚粒宇: 查看存储卡是，很<span style="color:#E74C3C">慢</span>才能进去看到存储卡上的视频<br>• 林志澄: 卡录加载很<span style="color:#E74C3C">慢</span>。差不多20秒才出来。<br>• 高瑞: 做了查看卡录回放操作，遇到有时候查看卡录，需要等待的时间过长，甚至达到8秒以上的问题。</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#E74C3C;font-weight:700">P0</span></td>
+        <td>APP</td>
+        <td>定时开关机难用</td>
+        <td>8条(5人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 王刚红: 摄像机定时开关机很难用，提过好几次。如果我要星期五晚上22点关机，到星期一早上8点开机。就是想双休日关摄像头，这如何设置？普通用户设置这个像要做数学推理题似的。<br>• 张鹏鑫: 定时开关机不便捷，周一之周五，周六周日分组不合理，因为中国绝大多数人不是双休，我觉得应该整合到一起，更方便。<br>• 杜劲: 设置的周一至周五自动开机时间是上午9:00，但是现在（周一）近10:00了还没开机。</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#E74C3C;font-weight:700">P0</span></td>
+        <td>AI算法</td>
+        <td>画面变化误触发</td>
+        <td>6条(5人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 高瑞: 8月19日，16时36分，做了查看卡录操作，遇到发现在15时，59分的画面变化，实际无画面变化问题，但是前几秒有声音，是因为声音才有的画面变化吗？<br>• 王亚兵: 发现如果摄像头前面有其他是摄像头的aov模式工作是的红外灯有规律的闪烁会频繁触发画面变化，技术看看这个怎么着规避一下。<br>• 程永权: 画面变化误识别</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#E74C3C;font-weight:700">P0</span></td>
+        <td>IQ</td>
+        <td>夜视切换异常</td>
+        <td>6条(5人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 杜劲: 同一位置、同样设置，9pro400万or7max图像为彩色，（本机）9pro4G图像是黑白（夜视）。<br>• 张宁: 夜视算法好像有bug，夜色设置为自动时，环境光线应该是够的，并不会启动夜视，但是手动旋转到暗光方向启动夜视后转回光源方向不会自动切回彩色模式。<br>• 郭智育: 时间进入夜晚，外围光线变暗后，摄像机未自动开启红外模式，或者说切换红外模式出现问题，导致监控视频和实时画面出现花屏和<span style="color:#E74C3C">异常</span>颜色</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#E74C3C;font-weight:700">P0</span></td>
+        <td>稳定性</td>
+        <td>设备离线</td>
+        <td>6条(5人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 王亚兵: 昨天15点多准备打开摄像头看看，发现摄像头封面上原本有点信号条标识没有了，点进去也不能实时，然后等了一下显示摄像头<span style="color:#E74C3C">离线</span>。就去看卡录发现15点28分07秒卡录开始<br>• 蒋牧吟: 进入实时监控，一直刷新不出新的界面，再退出，显示<span style="color:#E74C3C">离线</span>，最后界面时间是14时33分。<br>• 赖峰: 上半夜正常，凌晨突然<span style="color:#E74C3C">离线</span></td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#E74C3C;font-weight:700">P0</span></td>
+        <td>云台</td>
+        <td>云台限位异常</td>
+        <td>5条(5人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 谢光位: 首次绑定后向下移动视角，提示已到达边缘。实际并未到达底部边缘。向上移动到顶后再向下，底部边缘正常位置。建议：上次绑定时自动执行一次校准。<br>• 朱秀澍: 下边缘未到底，需要先到上边缘再到下边缘才是真的下边缘。<br>• 黄显森: 偶发下移底部只到平时最底部偏上位置，只有把摄像头移到顶部边缘，后面下移才可以到底部边缘，摄像头没有手动挪过</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#F39C12;font-weight:700">P1</span></td>
+        <td>IQ</td>
+        <td>花屏</td>
+        <td>5条(4人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 朱秀澍: 花屏<br>• 王亚兵: 第一次发现早上切换白天时会出现各种花屏的交替出现而且花屏里局部还有一些马赛克，还会出现黑屏，会这样反复一下，请技术排查修复。<br>• 龚粒宇: 进行全景扫描时，出现花屏。</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#F39C12;font-weight:700">P1</span></td>
+        <td>卡录</td>
+        <td>插卡格式化提示需求</td>
+        <td>4条(4人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 高瑞: 做了查看设备卡录操作，遇到卡录回放只有一个小时左右的回放，其他回放视频<span style="color:#E74C3C">丢失</span>(由于该内存卡之前在其他摄像头内使用，视频已占满，按道理应该会覆盖存储，怀疑未覆盖，正<br>• 方家欢: 提个建议∶建议插卡后APP提示格式化，我装的就卡，没空间，就能一点点，就开始循化，设备，和APP都没任何提示，插卡就一个人加载声音，然后就正常循环录制了，感觉提<br>• 王亚兵: 有群友反馈:发现卡录回放只有一个小时左右的回放，其他回放视频<span style="color:#E74C3C">丢失</span>(由于该内存卡之前在其他摄像头内使用，视频已占满，按道理应该会覆盖存储，怀疑未覆盖)，其实这种是</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#F39C12;font-weight:700">P1</span></td>
+        <td>AI算法</td>
+        <td>智慧通知描述错误</td>
+        <td>3条(3人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 王亚兵: 这智慧通知描述有点离谱，明明一个女子开门进来，智慧通知描述:男子赤裸上身站在客厅门口。<br>• 谢光位: AI描述问题: 画面过爆，无法辨识人物及具体动作。实际画面正常，人物画面可正常识别。瞬间过曝可以忽略<br>• 陈建建: 有消息提示，点进去一看提示与图片相符，但与视频不符。提示室内空无一人，实际有人刚要进来。根据图片分析确实，但结合视频就不对了</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#F39C12;font-weight:700">P1</span></td>
+        <td>APP</td>
+        <td>流量管理显示异常</td>
+        <td>3条(3人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 高瑞: 做了查看实时画面，发现网络不稳定，在手机端切换为数据流量操作，遇到切换流量后紧接着点击云台的流量图标(预览界面右上角)，卡出图片中的画面问题。<br>• 王亚兵: 手机流量不好的时候点流量管理菜单时会出现显示剩余详细日期36141天，套餐有效期2026年8月11日到2125年7月31日，我的套餐:又是终身套餐，这样的<span style="color:#E74C3C">异常</span>画<br>• 杜劲: 本来应该显示无限流量，偶尔会显示流量卡起止时间倒置</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#F39C12;font-weight:700">P1</span></td>
+        <td>开流</td>
+        <td>开流失败</td>
+        <td>3条(3人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 谢光位: 首次绑定成功后，5min内多次查看提示加载<span style="color:#E74C3C">失败</span><br>• 孙洪士: 多次开流<span style="color:#E74C3C">失败</span>，然后出了一个这个<br>• 陈建建: 查看实时预览和卡录均<span style="color:#E74C3C">失败</span></td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#F39C12;font-weight:700">P1</span></td>
+        <td>巡航</td>
+        <td>巡航速度过快</td>
+        <td>3条(3人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 高瑞: 8月18日，7时3分，做了巡航测试操作，遇到巡航速度过快，导致画面不清晰的问题(建议调节一下能否稍微再<span style="color:#E74C3C">慢</span>一点呢？但是真喜欢这个速度，转的是真快，真有效率，能优化<br>• 杜劲: 巡航转动速度太快，建议适当降低续航是的转动速度。<br>• 王刚红: 摄像机巡航速度太快了，根本看不了。</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#F39C12;font-weight:700">P1</span></td>
+        <td>云台</td>
+        <td>云台校准异常</td>
+        <td>3条(3人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 孙洪士: 通过云台校准后摄像机往下的视角更低，用一阵视频追踪后最低视角会高一些<br>• 王亚兵: 3.0.0app在进行云台校准之后，设备已保存的云台收藏预置点会出现严重向右偏移，偏移幅度非常大。校准完毕后，之前所有收藏点位基本等同于失效，无法回到原先设定的<br>• 谢光位: 云台校准无法复位，建议校准自动恢复其实位置，提高用户使用体验</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#00B050;font-weight:700">P2</span></td>
+        <td>AI算法</td>
+        <td>人形漏报</td>
+        <td>3条(2人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 王亚兵: 目前如果人躺在沙发上活动会被识别成画面变化，这个明显不多啊，请技术优化优化。<br>• 蒋牧吟: 监控画面中有两人，但只识别到一个人。<br>• 蒋牧吟: 监控画面中有4人，沙发上的人一直未识别出。</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#00B050;font-weight:700">P2</span></td>
+        <td>云台</td>
+        <td>云台边缘检测异常</td>
+        <td>3条(2人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 王亚兵: 新app还是会有向下调整云台的时候没有到最下方就报:我转到边缘了。然后只能云台向上抬，然后再向下调整才能转到最下面看看需要看到的角度。可以肯定云台没有手动拜过，<br>• 邱天顺: 向下调整摄像头方向时提示已经到边缘，但实际没到。<br>• 邱天顺: 调整摄像头上下位置时显示已经到达边缘位置，但实际没有。再往上调到最上位置，后下调后到达实际最低边缘。</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      <tr>
+        <td><span style="color:#00B050;font-weight:700">P2</span></td>
+        <td>AI算法</td>
+        <td>性别识别错误</td>
+        <td>2条(2人)</td>
+        <td style="text-align:left;font-size:12px;color:#666">• 程永权: 性别识别<span style="color:#E74C3C">错误</span><br>• 陶双: 智慧通知识别有<span style="color:#E74C3C">错误</span>，性别为男孩被识别为女子，需要优化算法，提高识别精确度</td>
+        <td style="font-size:12px;color:#999">跟进中</td>
+        <td style="font-size:12px;color:#999">—</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>一级标签分布</h2>
+    <div id="chart_p" class="chart"></div>
+    <script>
+      var chart_p = echarts.init(document.getElementById('chart_p'));
+      chart_p.setOption({
+        tooltip: { trigger: 'item', formatter: '{b}: {c}条 ({d}%)' },
+        legend: { bottom: 0, type: 'scroll' },
+        series: [{
+          type: 'pie', radius: ['35%', '65%'],
+          label: { formatter: '{b}\n{c}条' },
+          data: [{value:92,name:"APP"}, {value:81,name:"AI算法"}, {value:35,name:"卡录"}, {value:31,name:"IQ"}, {value:18,name:"云台"}, {value:17,name:"开流"}, {value:14,name:"功能需求"}, {value:10,name:"巡航"}, {value:10,name:"云录"}, {value:9,name:"稳定性"}, {value:2,name:"云录/卡录"}, {value:1,name:"微信小程序"}, {value:1,name:"云录卡录"}, {value:1,name:"产品"}],
+          color: ['#00B050','#2BBD6E','#4ECDC4','#F39C12','#E74C3C','#999','#666','#FFB84D','#FF6B6B','#C7CEEA','#FFD93D','#6BCB77','#FF9F43','#54a0ff','#576574','#ff9ff3','#48dbfb','#1dd1a1','#ee5253','#10ac84','#feca57']
+        }]
+      });
+    </script>
+  </div>
+
+  <div class="section">
+    <h2>固件版本对比</h2>
+    <div class="fw-compare">
+    <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0f0f0">
+      <span style="font-weight:600">固件 0729</span>
+      <span>274条 / 27人</span>
+    </div>
+    <div style="font-size:12px;color:#999;padding:5px 0 15px">AI算法>人形误报(52)、IQ>画面紫红(14)、APP>信号显示不一致(13)、APP>电子说明书未更新(9)、APP>定时开关机难用(8)</div>
+    <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0f0f0">
+      <span style="font-weight:600">固件 0825</span>
+      <span>48条 / 19人</span>
+    </div>
+    <div style="font-size:12px;color:#999;padding:5px 0 15px">AI算法>人形误报(6)、卡录>卡录加载慢(3)、AI算法>智慧通知描述错误(2)、开流>长时间开流后失败(2)、IQ>花屏(2)</div>
+    </div>
+    <div id="chart_fw" class="chart"></div>
+    <script>
+      var chart_fw = echarts.init(document.getElementById('chart_fw'));
+      chart_fw.setOption({
+        tooltip: { trigger: 'axis' },
+        legend: { bottom: 0 },
+        xAxis: { type: 'category', data: ["0729", "0825"] },
+        yAxis: [{ type: 'value', name: '反馈量' }, { type: 'value', name: '人数' }],
+        series: [
+          { name: '反馈量', type: 'bar', data: [274, 48], itemStyle: { color: '#00B050' } },
+          { name: '人数', type: 'line', yAxisIndex: 1, data: [27, 19], itemStyle: { color: '#F39C12' } }
+        ]
+      });
+    </script>
+  </div>
+
+  <div class="section">
+    <h2>今日新增反馈明细（8/29-8/30）</h2>
+    <table>
+      <thead>
+        <tr><th>一级标签</th><th>二级标签</th><th>反馈量</th><th>用户原声</th></tr>
+      </thead>
+      <tbody>
+      <tr style="background:#fffde7">
+        <td>APP</td>
+        <td>APP加载失败</td>
+        <td>1条</td>
+        <td style="text-align:left;font-size:12px">郭智育: 今天早上打开APP，查看监控画面，APP提示“加载<span style="color:#E74C3C">失败</span>”，且杀死APP后，再次开启，实时画面显示，但是分辨率自动变成“标清”，但是自主切换到“超清”是可以操作的</td>
+      </tr>
+      <tr style="background:#fffde7">
+        <td>云台</td>
+        <td>云台校准异常</td>
+        <td>1条</td>
+        <td style="text-align:left;font-size:12px">谢光位: 云台校准无法复位，建议校准自动恢复其实位置，提高用户使用体验</td>
+      </tr>
+      <tr style="background:#fffde7">
+        <td>卡录</td>
+        <td>卡录无法查看</td>
+        <td>1条</td>
+        <td style="text-align:left;font-size:12px">高瑞: 做了查看云录回放操作，遇到正在查看云录时，提示储存卡数据加载<span style="color:#E74C3C">失败</span>提示，然后进入卡录发现是<span style="color:#E74C3C">空白</span>问题。退出到APP主界面后再重新进入，恢复正常。</td>
+      </tr>
+      <tr style="background:#fffde7">
+        <td>云录</td>
+        <td>云录广告无法关闭</td>
+        <td>1条</td>
+        <td style="text-align:left;font-size:12px">高瑞: 云录界面的广告无法关闭，建议优化，容易造成误会</td>
+      </tr>
+      <tr style="background:#fffde7">
+        <td>APP</td>
+        <td>假离线</td>
+        <td>1条</td>
+        <td style="text-align:left;font-size:12px">陶双: 28日17:58打开APP的时候突然显现一次设备<span style="color:#E74C3C">离线</span>，从APP点进设备之后正常显示，退出APP后再重新进入，正常显示没有再出现<span style="color:#E74C3C">离线</span>的问题,此次假<span style="color:#E74C3C">离线</span>已经通过日志</td>
+      </tr>
+      <tr style="background:#fffde7">
+        <td>稳定性</td>
+        <td>设备离线</td>
+        <td>1条</td>
+        <td style="text-align:left;font-size:12px">张鹏鑫: <span style="color:#E74C3C">异常</span><span style="color:#E74C3C">离线</span></td>
+      </tr>
+      <tr style="background:#fffde7">
+        <td>APP</td>
+        <td>设备信息网络异常提示</td>
+        <td>1条</td>
+        <td style="text-align:left;font-size:12px">朱秀澍: 删除回家关机提示网络<span style="color:#E74C3C">异常</span>。删除其他场景正常。</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    数据来源：飞书电子表格「日常问题反馈」sheet | 统计范围：仅日常使用问题（不含开箱/配网/包装/安装/硬件/说明书）<br>
+    报告合集：<a href="https://yanlingyin001.github.io/reports/9pro-index.html">9pro公测报告合集</a>
+  </div>
+</div>
+</body>
+</html>
