@@ -1,267 +1,176 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>9pro 400万4G云台 云录卡录专项分析报告</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<title>9pro 400万4G云台公测 - 云录卡录专项报告</title>
 <style>
-:root { --primary: #00B050; --primary2: #2BBD6E; --dark: #333; --gray: #666; --light: #999; --red: #E74C3C; --orange: #E67E22; --bg: #f5f7fa; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; color: #333; background: #fff; line-height: 1.6; }
-h1 { font-size: 28px; color: #333; text-align: center; margin-bottom: 8px; }
-h2 { font-size: 20px; color: #333; margin: 40px 0 15px; padding-left: 12px; border-left: 4px solid #00B050; }
-h3 { font-size: 16px; color: #333; margin: 25px 0 10px; }
-.subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 30px; }
-.kpi-row { display: flex; gap: 16px; margin: 30px 0; flex-wrap: wrap; }
-.kpi { flex: 1; min-width: 180px; background: #f5f7fa; border-radius: 10px; padding: 20px; text-align: center; }
-.kpi .val { font-size: 32px; font-weight: 700; color: #00B050; }
-.kpi .label { font-size: 13px; color: #666; margin-top: 4px; }
-.kpi .sub { font-size: 12px; color: #999; margin-top: 2px; }
-.chart-cloud { width: 100%; height: 480px; margin: 20px 0; }
-.chart-card { width: 100%; height: 400px; margin: 20px 0; }
-.chart-load { width: 100%; height: 400px; margin: 20px 0; }
-.summary { background: #f0faf3; border-left: 4px solid #00B050; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; font-size: 14px; }
-.summary-red { background: #fef5f5; border-left: 4px solid #E74C3C; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; font-size: 14px; }
-.summary-orange { background: #fef9f0; border-left: 4px solid #E67E22; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; font-size: 14px; }
-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 13px; }
-th { background: #00B050; color: #fff; padding: 10px 12px; text-align: left; font-weight: 500; }
-td { padding: 10px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
-tr:nth-child(even) { background: #fafafa; }
-.red { color: #E74C3C; }
-.orange { color: #E67E22; }
-.green { color: #00B050; }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-right: 4px; }
-.tag-p0 { background: #fde8e8; color: #E74C3C; }
-.tag-p1 { background: #fef3e2; color: #E67E22; }
-.tag-p2 { background: #e8f8ee; color: #00B050; }
-.footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; color: #999; font-size: 12px; text-align: center; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#f5f7fa; color:#333; line-height:1.6; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; padding:30px 20px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header p { font-size:14px; opacity:0.92; }
+.update-time { font-size:12px; opacity:0.8; margin-top:8px; }
+.container { max-width:900px; margin:0 auto; padding:20px; }
+.kpi-row { display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap; }
+.kpi-card { flex:1; min-width:140px; background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .num { font-size:32px; font-weight:700; color:#00B050; }
+.kpi-card .num.warn { color:#E67E22; }
+.kpi-card .num.bad { color:#E74C3C; }
+.kpi-card .label { font-size:13px; color:#888; margin-top:4px; }
+.kpi-card .sub { font-size:11px; color:#bbb; margin-top:2px; }
+.section { margin-bottom:32px; }
+.section-title { font-size:20px; font-weight:700; color:#00B050; border-bottom:2px solid #00B050; padding-bottom:8px; margin-bottom:16px; }
+.module { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.module-title { font-size:16px; font-weight:700; margin-bottom:12px; }
+.module-insight { font-size:13px; padding:8px 12px; border-radius:8px; margin-bottom:10px; }
+.insight-good { background:#f0fdf4; color:#00B050; border-left:4px solid #00B050; }
+.insight-warn { background:#fff7ed; color:#E67E22; border-left:4px solid #E67E22; }
+.insight-bad { background:#fef2f2; color:#E74C3C; border-left:4px solid #E74C3C; }
+.chart-bar { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.bar-track { flex:1; background:#f0f0f0; border-radius:4px; height:24px; }
+.bar-fill { height:100%; border-radius:4px; display:flex; align-items:center; padding-left:8px; color:#fff; font-size:12px; font-weight:600; min-width:34px; }
+.bar-label { width:128px; font-size:13px; text-align:right; color:#555; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#f8faf8; padding:8px; text-align:left; font-weight:600; color:#666; border-bottom:2px solid #e0e0e0; }
+td { padding:8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+.score-low { color:#E74C3C; font-weight:600; }
+.voice-text { color:#555; line-height:1.6; }
+.v-src { color:#999; font-size:11px; }
+.v-cnt { color:#00B050; font-weight:700; }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:12px; }
+.tag-p0 { background:#fde8e8; color:#E74C3C; }
+.tag-p1 { background:#fef3e2; color:#E67E22; }
+.tag-p2 { background:#e8f8ee; color:#00B050; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
 </style>
 </head>
 <body>
 
-<h1>9pro 400万4G云台 云录卡录专项分析报告</h1>
-<p class="subtitle">数据来源：飞书表格「云录卡录专题」专项问卷 | 有效样本：29份 | 11维度云录评分 + 9维度卡录评分 + 卡录加载耗时测试 | 生成时间：2026-08-31</p>
-
-<div class="kpi-row">
-  <div class="kpi"><div class="val">9.0</div><div class="label">云录总体评价</div><div class="sub">29人评分</div></div>
-  <div class="kpi"><div class="val">8.9</div><div class="label">卡录总体评价</div><div class="sub">29人评分</div></div>
-  <div class="kpi"><div class="val">83%</div><div class="label">事件一致性</div><div class="sub">24/29人基本一致</div></div>
-  <div class="kpi"><div class="val">29</div><div class="label">参与人数</div><div class="sub">专项问卷有效填写</div></div>
+<div class="header">
+  <h1>📡 9pro 400万4G云台公测</h1>
+  <p>云录卡录专项报告</p>
+  <div class="update-time">数据截止：2026-08-31 · 样本量：29份 · 11维云录 + 9维卡录 + 卡录加载耗时测试</div>
 </div>
+<div class="container">
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="num">9.0</div><div class="label">云录总体评价</div><div class="sub">29人评分</div></div>
+    <div class="kpi-card"><div class="num">8.9</div><div class="label">卡录总体评价</div><div class="sub">29人评分</div></div>
+    <div class="kpi-card"><div class="num bad">8.1</div><div class="label">云录准确性 ⚠最低</div><div class="sub">人形误报集中</div></div>
+    <div class="kpi-card"><div class="num warn">8.8</div><div class="label">卡录视频下载 ⚠最低</div><div class="sub">下载速度慢</div></div>
+    <div class="kpi-card"><div class="num">83%</div><div class="label">事件一致性</div><div class="sub">24/29基本一致</div></div>
+  </div>
 
-<h2>一、云录评价分析</h2>
-<div class="summary">
-  云录总体表现稳健，11个维度均分区间8.1-9.7。画面清晰度(9.7)、音质/视频下载(9.6)表现优异；<span class="red">准确性(无误报)是最大短板，均分仅8.1</span>，11人评分低于8分，主要问题是人形误报（物体/动物/照片识别为人）。消息分类准确度(8.8)次低。
-</div>
+  <div class="section">
+    <div class="section-title">💡 核心洞察</div>
+    <div class="module">
+      <div class="module-insight insight-good"><strong>云录画面表现优异</strong>：画面清晰度9.7、音质/视频下载9.6领跑全维度，云录总体9.0稳健。</div>
+      <div class="module-insight insight-good"><strong>卡录基础能力扎实</strong>：TF卡格式化成功率9.4、音质9.5、画面清晰度9.5，卡录总体8.9。</div>
+      <div class="module-insight insight-warn"><strong>事件一致性83%</strong>：24/29人基本一致，但云录卡录不同步/时间偏差仍有零星反馈。</div>
+      <div class="module-insight insight-bad"><strong>云录准确性是最大短板（8.1）</strong>：11人评分低于8分（38%），人形误报集中——物体/动物/晾晒衣物/婚纱照均被误识别为人。</div>
+      <div class="module-insight insight-bad"><strong>卡录视频下载拖后腿（8.8）</strong>：13人评分低于9分（45%），4G网速限制致下载速度慢，2分31秒视频下载耗时2分30秒。</div>
+    </div>
+  </div>
 
-<h3>1.1 云录11维度评分</h3>
-<div id="cloud_bar" class="chart-cloud"></div>
+  <div class="section">
+    <div class="section-title">☁️ 云录评价分析</div>
+    <div class="module">
+      <div class="module-title">云录 11 维度评分</div>
+      <div class="chart-bar"><div class="bar-label">画面清晰度</div><div class="bar-track"><div class="bar-fill" style="width:90.0%;background:#00B050">9.7</div></div></div>
+<div class="chart-bar"><div class="bar-label">画面流畅性</div><div class="bar-track"><div class="bar-fill" style="width:86.7%;background:#00B050">9.6</div></div></div>
+<div class="chart-bar"><div class="bar-label">音质清晰</div><div class="bar-track"><div class="bar-fill" style="width:86.7%;background:#00B050">9.6</div></div></div>
+<div class="chart-bar"><div class="bar-label">视频下载</div><div class="bar-track"><div class="bar-fill" style="width:86.7%;background:#00B050">9.6</div></div></div>
+<div class="chart-bar"><div class="bar-label">消息列表清晰性</div><div class="bar-track"><div class="bar-fill" style="width:80.0%;background:#00B050">9.4</div></div></div>
+<div class="chart-bar"><div class="bar-label">完整性(无漏录)</div><div class="bar-track"><div class="bar-fill" style="width:73.3%;background:#00B050">9.2</div></div></div>
+<div class="chart-bar"><div class="bar-label">音量大小合适</div><div class="bar-track"><div class="bar-fill" style="width:73.3%;background:#00B050">9.2</div></div></div>
+<div class="chart-bar"><div class="bar-label">云录总体评价</div><div class="bar-track"><div class="bar-fill" style="width:66.7%;background:#00B050">9.0</div></div></div>
+<div class="chart-bar"><div class="bar-label">事件完整性</div><div class="bar-track"><div class="bar-fill" style="width:66.7%;background:#00B050">9.0</div></div></div>
+<div class="chart-bar"><div class="bar-label">消息分类准确度</div><div class="bar-track"><div class="bar-fill" style="width:60.0%;background:#E67E22">8.8</div></div></div>
+<div class="chart-bar"><div class="bar-label">准确性(无误报)</div><div class="bar-track"><div class="bar-fill" style="width:36.7%;background:#E74C3C">8.1</div></div></div>
+    </div>
+    <div class="module">
+      <div class="module-title">云录准确性深挖（均分8.1 · 最低维度）</div>
+      <div class="module-insight insight-bad"><strong>11人评分&lt;8分（38%）</strong>：① 物体/动物误识别人形 ② 婚纱照/衣物误识别 ③ 性别识别错误 ④ 夜间误报频发。</div>
+      <table><thead><tr><th>姓名</th><th>准确性评分</th><th>总体评分</th><th>打分原因</th></tr></thead><tbody><tr><td>任孝鹏</td><td class="score-low">3</td><td>10</td><td class="voice-text">有误报</td></tr><tr><td>汤远鹏</td><td class="score-low">4</td><td>9</td><td class="voice-text">夜间环境误报过多</td></tr><tr><td>闫贺</td><td class="score-low">5</td><td>9</td><td class="voice-text">云录还是有误报的，物体和动物老说有人出现</td></tr><tr><td>黄显森</td><td class="score-low">6</td><td>8</td><td class="voice-text">事件识别整体不太行，经常误报人形</td></tr><tr><td>张一明</td><td class="score-low">6</td><td>9</td><td class="voice-text">无</td></tr><tr><td>程永权</td><td class="score-low">6</td><td>7</td><td class="voice-text">偶尔会把婚纱照识别人形</td></tr><tr><td>齐彩英</td><td class="score-low">7</td><td>7</td><td class="voice-text">(未填写)</td></tr><tr><td>陶双</td><td class="score-low">7</td><td>8</td><td class="voice-text">(未填写)</td></tr><tr><td>张宁</td><td class="score-low">7</td><td>9</td><td class="voice-text">人形识别错误还是比较多的</td></tr><tr><td>朱秀澍</td><td class="score-low">7</td><td>9</td><td class="voice-text">(未填写)</td></tr><tr><td>曾文彬</td><td class="score-low">7</td><td>8</td><td class="voice-text">(未填写)</td></tr></tbody></table>
+    </div>
+  </div>
 
-<h3>1.2 云录准确性深挖（均分8.1 · 最低维度）</h3>
-<div class="summary-red">
-  <strong>11人评分&lt;8分（38%），误报场景：</strong><br>
-  ① 物体/动物误识别为人形（闫贺、任孝鹏、黄显森）<br>
-  ② 人形识别错误较多（张宁、汤远鹏4分）<br>
-  ③ 婚纱照/衣服误识别（程永权、陈建建）<br>
-  ④ 性别识别错误（蒋牧吟：短发女性被认成男性）<br>
-  ⑤ 夜间误报频发（汤远鹏）
-</div>
-<table>
-<tr><th>姓名</th><th>准确性评分</th><th>总体评分</th><th>打分原因</th></tr>
-<tr><td>任孝鹏</td><td class="red">3</td><td>10</td><td>有误报</td></tr>
-<tr><td>汤远鹏</td><td class="red">4</td><td>9</td><td>夜间环境误报过多</td></tr>
-<tr><td>闫贺</td><td class="red">5</td><td>9</td><td>云录还是有误报的，物体和动物老说有人出现</td></tr>
-<tr><td>黄显森</td><td class="red">6</td><td>8</td><td>事件识别整体不太行，经常误报人形</td></tr>
-<tr><td>张一明</td><td class="red">6</td><td>9</td><td>无</td></tr>
-<tr><td>程永权</td><td class="red">6</td><td>7</td><td>偶尔会把婚纱照识别人形</td></tr>
-<tr><td>齐彩英</td><td class="red">7</td><td>7</td><td>(未填写)</td></tr>
-<tr><td>陶双</td><td class="red">7</td><td>8</td><td>(未填写)</td></tr>
-<tr><td>张宁</td><td class="red">7</td><td>9</td><td>人形识别错误还是比较多的</td></tr>
-<tr><td>朱秀澍</td><td class="red">7</td><td>9</td><td>(未填写)</td></tr>
-<tr><td>曾文彬</td><td class="red">7</td><td>8</td><td>(未填写)</td></tr>
+  <div class="section">
+    <div class="section-title">💾 卡录评价分析</div>
+    <div class="module">
+      <div class="module-title">卡录 9 维度评分</div>
+      <div class="chart-bar"><div class="bar-label">画面清晰度</div><div class="bar-track"><div class="bar-fill" style="width:83.3%;background:#00B050">9.5</div></div></div>
+<div class="chart-bar"><div class="bar-label">音质清晰性</div><div class="bar-track"><div class="bar-fill" style="width:83.3%;background:#00B050">9.5</div></div></div>
+<div class="chart-bar"><div class="bar-label">TF卡格式化成功率</div><div class="bar-track"><div class="bar-fill" style="width:80.0%;background:#00B050">9.4</div></div></div>
+<div class="chart-bar"><div class="bar-label">音量大小</div><div class="bar-track"><div class="bar-fill" style="width:80.0%;background:#00B050">9.4</div></div></div>
+<div class="chart-bar"><div class="bar-label">画面流畅性</div><div class="bar-track"><div class="bar-fill" style="width:73.3%;background:#00B050">9.2</div></div></div>
+<div class="chart-bar"><div class="bar-label">完整性(事件时长)</div><div class="bar-track"><div class="bar-fill" style="width:70.0%;background:#00B050">9.1</div></div></div>
+<div class="chart-bar"><div class="bar-label">存储卡兼容性</div><div class="bar-track"><div class="bar-fill" style="width:66.7%;background:#00B050">9.0</div></div></div>
+<div class="chart-bar"><div class="bar-label">卡录总体评价</div><div class="bar-track"><div class="bar-fill" style="width:63.3%;background:#E67E22">8.9</div></div></div>
+<div class="chart-bar"><div class="bar-label">视频下载</div><div class="bar-track"><div class="bar-fill" style="width:60.0%;background:#E67E22">8.8</div></div></div>
+    </div>
+    <div class="module">
+      <div class="module-title">卡录视频下载深挖（均分8.8 · 最低维度）</div>
+      <div class="module-insight insight-bad"><strong>13人评分&lt;9分（45%）</strong>：下载速度慢于云录、长视频下载超时长、受4G网速限制，建议增加NFC/蓝牙近场下载。</div>
+      <table><thead><tr><th>姓名</th><th>下载评分</th><th>打分原因</th></tr></thead><tbody><tr><td>邱天顺</td><td class="score-low">7</td><td class="voice-text">下载速度比云录下载慢很多</td></tr><tr><td>高瑞</td><td class="score-low">7</td><td class="voice-text">卡录的下载速度较慢，如果时间段较长，下载速度会很慢。</td></tr><tr><td>谢光位</td><td class="score-low">7</td><td class="voice-text">下载速度慢，下载47s视频，下载时长超过50s</td></tr><tr><td>王亚兵</td><td class="score-low">7</td><td class="voice-text">受限摄像头本身的4g网速下载速度很慢。</td></tr><tr><td>陈建建</td><td class="score-low">7</td><td class="voice-text">速度一般</td></tr><tr><td>王刚红</td><td class="score-low">7</td><td class="voice-text">下载一个2分31秒时长的事件，耗时2分30秒，有点过长。</td></tr><tr><td>齐彩英</td><td class="score-low">8</td><td class="voice-text">(未填写)</td></tr><tr><td>陶双</td><td class="score-low">8</td><td class="voice-text">(未填写)</td></tr><tr><td>方家欢</td><td class="score-low">8</td><td class="voice-text">略慢，对于4G设备，算正常。</td></tr><tr><td>黄显森</td><td class="score-low">8</td><td class="voice-text">下载速度慢云录一大截，总体还能接受</td></tr><tr><td>曾文彬</td><td class="score-low">8</td><td class="voice-text">(未填写)</td></tr><tr><td>程永权</td><td class="score-low">8</td><td class="voice-text">不错</td></tr><tr><td>汤远鹏</td><td class="score-low">8</td><td class="voice-text">完美</td></tr></tbody></table>
+    </div>
+    <div class="module">
+      <div class="module-title">卡录加载耗时分布（29人×5次=145次测试）</div>
+      <div class="module-insight insight-warn"><strong>"10秒以上"占比最高(17.9%)</strong>，加载失败7次(4.8%)，已知Bug(卡录加载慢)需持续跟进。</div>
+      <div class="chart-bar"><div class="bar-label">3秒以内 (13.1%)</div><div class="bar-track"><div class="bar-fill" style="width:73.1%;background:#00B050">19次</div></div></div>
+<div class="chart-bar"><div class="bar-label">3-5秒 (17.9%)</div><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#2BBD6E">26次</div></div></div>
+<div class="chart-bar"><div class="bar-label">5-6秒 (15.2%)</div><div class="bar-track"><div class="bar-fill" style="width:84.6%;background:#00B050">22次</div></div></div>
+<div class="chart-bar"><div class="bar-label">6-7秒 (13.8%)</div><div class="bar-track"><div class="bar-fill" style="width:76.9%;background:#2BBD6E">20次</div></div></div>
+<div class="chart-bar"><div class="bar-label">7-8秒 (4.8%)</div><div class="bar-track"><div class="bar-fill" style="width:26.9%;background:#F1C40F">7次</div></div></div>
+<div class="chart-bar"><div class="bar-label">8-9秒 (4.8%)</div><div class="bar-track"><div class="bar-fill" style="width:26.9%;background:#F1C40F">7次</div></div></div>
+<div class="chart-bar"><div class="bar-label">9-10秒 (7.6%)</div><div class="bar-track"><div class="bar-fill" style="width:42.3%;background:#E67E22">11次</div></div></div>
+<div class="chart-bar"><div class="bar-label">10秒以上 (17.9%)</div><div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#E67E22">26次</div></div></div>
+<div class="chart-bar"><div class="bar-label">加载失败 (4.8%)</div><div class="bar-track"><div class="bar-fill" style="width:26.9%;background:#E74C3C">7次</div></div></div>
+    </div>
+  </div>
 
-</table>
-
-<h2>二、卡录评价分析</h2>
-<div class="summary">
-  卡录9个维度均分区间8.8-9.5，整体表现良好。<span class="red">卡录视频下载是短板（均分8.8）</span>，13人评分低于9分，核心问题是下载速度慢。TF卡格式化成功率(9.4)、音质(9.5)、画面清晰度(9.5)表现较好。
-</div>
-
-<h3>2.1 卡录9维度评分</h3>
-<div id="card_bar" class="chart-card"></div>
-
-<h3>2.2 卡录视频下载深挖（均分8.8 · 最低维度）</h3>
-<div class="summary-red">
-  <strong>13人评分&lt;9分（45%），核心问题：</strong><br>
-  ① 下载速度慢于云录（邱天顺、黄显森、王亚兵）<br>
-  ② 长视频下载耗时过长（王刚红：2分31秒视频下载耗时2分30秒）<br>
-  ③ 4G网络限制导致下载慢（王亚兵、方家欢）<br>
-  ④ 建议增加NFC/蓝牙近场下载
-</div>
-<table>
-<tr><th>姓名</th><th>下载评分</th><th>打分原因</th></tr>
-<tr><td>邱天顺</td><td class="red">7</td><td>下载速度比云录下载慢很多</td></tr>
-<tr><td>高瑞</td><td class="red">7</td><td>卡录的下载速度较慢，如果时间段较长，下载速度会很慢。</td></tr>
-<tr><td>谢光位</td><td class="red">7</td><td>下载速度慢，下载47s视频，下载时长超过50s</td></tr>
-<tr><td>王亚兵</td><td class="red">7</td><td>受限摄像头本身的4g网速下载速度很慢甚至有太煎熬的感觉。希望后续的室内4g设备能加上NCF或者蓝牙的近场下载。提升目前的下载体验。</td></tr>
-<tr><td>陈建建</td><td class="red">7</td><td>速度一般</td></tr>
-<tr><td>王刚红</td><td class="red">7</td><td>下载一个2分31秒时长的事件，耗时2分30秒，有点过长，下载速度慢了。</td></tr>
-<tr><td>齐彩英</td><td class="red">8</td><td>(未填写)</td></tr>
-<tr><td>陶双</td><td class="red">8</td><td>(未填写)</td></tr>
-<tr><td>方家欢</td><td class="red">8</td><td>略慢，对于4G设备，算正常。</td></tr>
-<tr><td>黄显森</td><td class="red">8</td><td>下载速度慢云录一大截，总体还能接受</td></tr>
-<tr><td>曾文彬</td><td class="red">8</td><td>(未填写)</td></tr>
-<tr><td>程永权</td><td class="red">8</td><td>不错</td></tr>
-<tr><td>汤远鹏</td><td class="red">8</td><td>完美</td></tr>
-
-</table>
-
-<h3>2.3 卡录加载耗时分布</h3>
-<div class="summary-orange">
-  29人×5次=145次加载测试中，<span class="orange">"10秒以上"占比最高(17.9%)</span>，其次为"3-5秒"(17.9%)和"5-6秒"(15.2%)。<span class="red">加载失败7次(4.8%)</span>，涉及3位用户。整体加载速度有待优化，已知Bug(卡录加载慢)需持续跟进。
-</div>
-<div id="load_bar" class="chart-load"></div>
-
-<h2>三、用户原声标签分类汇总</h2>
-<div class="summary">
-  对云录卡录专项问卷 + 日常问题反馈中的用户原声进行打标分类，共 <b>80条原声 · 38个标签</b>，按三大类组织：云录问题(29条)、卡录问题(47条)、云录/卡录同步问题(4条)。每条原声标注来源（[专题]/[日常]）。
-</div>
-
-<h3>3.1 云录问题（29条）</h3>
-<div class="summary-red">
-  <span class="red">云录误报(11条)是反馈最集中的问题</span>，与评分最低的"准确性(8.1)"完全吻合——物体/动物/晾晒衣物/婚纱照误识别为人形。其次云录缺失、进度条难用、音量小、智能改写错误各2条。
-</div>
-<div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-云录误报</span> <span style="color:#00B050;font-weight:600;">(11条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>谢光位</b>：AI识别错误，沙发上无人</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>闫贺</b>：云录还是有误报的，物体和动物老说有人出现</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>闫贺</b>：云录画面里面事件会有文字说明文字说明里面写的有只猫但是提示还是有人出现</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>张宁</b>：人形识别错误还是比较多的</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>张宁</b>：因为人形识别有时错误所以分类不算太准</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>任孝鹏</b>：分类有错误，不能准确识别人，物体，</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>黄显森</b>：主要是人形识别把晾晒的衣服都识别成人了</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>陈建建</b>：误报率还是有，容易把类似人的玩具，椅子识别成人</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>曾文彬</b>：经常把包和晾晒物当作人</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>程永权</b>：偶尔会把婚纱照识别人形</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>汤远鹏</b>：夜间环境误报过多</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-云录缺失</span> <span style="color:#00B050;font-weight:600;">(2条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>林志澄</b>：卡录事件有，云录缺失。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>陶双</b>：同一时间段内回放云录卡录事件，发现云录事件少于卡录事件，在18.41-18.46分内，卡录生成两个事件，云录没有</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-云录进度条难用</span> <span style="color:#00B050;font-weight:600;">(2条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>高瑞</b>：做了查看云录操作，遇到拖动云录进度条，无法进行选定特定时间位置查看，只能通过云录回放界面的进度条拖动查看的问题。建议可以拖动云录时间条进行查看，因为时间条有具体时间，可以快速定位事件位置。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>高瑞</b>：简单优化一下云录的信息描述。云录界面中间的进度条，希望也能像卡录一样拖拽。这样就能快速地去定位一些时间点。（目前只能大致定位时间点，然后在界面上拖动进度条，相比较稍微繁琐一点。）</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-音量小</span> <span style="color:#00B050;font-weight:600;">(2条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>杜劲</b>：感觉音量比0729小声</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>杜劲</b>：音量偏小</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-智能改写错误</span> <span style="color:#00B050;font-weight:600;">(2条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>蒋牧吟</b>：AI会有误报，大概率把短发的我(女)认成男人，也会偶尔把我家奶奶认成男人。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>高瑞</b>：准确，但是在 AI 列表描述中，容易出现误识别。比如男生被识别成女生，女生被识别成男生，或者出现其他动作，都容易出错。不过影响不大。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-超长云录</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>王亚兵</b>：现在的云录会经常出现接近30分钟的超长云录，这个对用户来说没什么甚至用户会喜欢，但是从品牌成本的角度想，这不是增加了流量的消耗吗，技术看看这个逻辑是不是有问题。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-付费云录未立即生效</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>王亚兵</b>：今天早起为了测试方便转移过来一个月的云录，隔了一阵时间打开app卡没有产生任何云录记录，云录是已经转移成功的，卡录上也有正常的事件记录就是云录没有能正常工作，技术看看这个问题哈。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-云录回放卡顿</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>张宁</b>：app里查看事件录像，云录的有卡顿，卡录流畅，视频下载到本地后都流畅，可见不是文件问题。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-云录列表未更新</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>谢光位</b>：早上首次打开，云录视频列表未正常更新，需要手动点击刷新才能同步完视频列表。卡录正常。发现问题时未能录屏。明天继续观察</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-存储卡故障导致离线</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>王亚兵</b>：目前我的云录出现异常，实际录制效果接近连续卡录。我推测该问题和存储卡故障直接相关：内存卡容量异常、录像文件列表丢失，只能在约1小时时长内循环覆盖录像。
+  <div class="section">
+    <div class="section-title">🗣️ 用户原声标签分类汇总</div>
+    <div class="module">
+      <div class="module-insight insight-good">对云录卡录专项问卷 + 日常问题反馈中的用户原声打标分类，共 <strong>80条原声 · 38个标签</strong>，分三大类：云录问题(29条)、卡录问题(47条)、云录/卡录同步问题(4条)。</div>
+      <div class="module-title">云录问题（29条）</div>
+<table><thead><tr><th>问题标签</th><th>数量</th><th>用户原声</th></tr></thead><tbody><tr><td style="width:150px">云录误报</td><td class="v-cnt" style="width:44px">11</td><td class="voice-text"><span class="v-src">[专题]</span> <b>闫贺</b>：云录还是有误报的，物体和动物老说有人出现<br><span class="v-src">[专题]</span> <b>闫贺</b>：云录画面里面事件会有文字说明文字说明里面写的有只猫但是提示还是有人出现<br><span class="v-src">[专题]</span> <b>张宁</b>：人形识别错误还是比较多的<br><span class="v-src">[专题]</span> <b>张宁</b>：因为人形识别有时错误所以分类不算太准<br><span class="v-src">[专题]</span> <b>任孝鹏</b>：分类有错误，不能准确识别人，物体，<br><span class="v-src">[专题]</span> <b>黄显森</b>：主要是人形识别把晾晒的衣服都识别成人了<br><span class="v-src">[专题]</span> <b>陈建建</b>：误报率还是有，容易把类似人的玩具，椅子识别成人<br><span class="v-src">[专题]</span> <b>曾文彬</b>：经常把包和晾晒物当作人<br><span class="v-src">[专题]</span> <b>程永权</b>：偶尔会把婚纱照识别人形<br><span class="v-src">[专题]</span> <b>汤远鹏</b>：夜间环境误报过多<br><span class="v-src">[日常]</span> <b>谢光位</b>：AI识别错误，沙发上无人</td></tr><tr><td style="width:150px">云录缺失</td><td class="v-cnt" style="width:44px">2</td><td class="voice-text"><span class="v-src">[日常]</span> <b>林志澄</b>：卡录事件有，云录缺失。<br><span class="v-src">[日常]</span> <b>陶双</b>：同一时间段内回放云录卡录事件，发现云录事件少于卡录事件，在18.41-18.46分内，卡录生成两个事件，云录没有</td></tr><tr><td style="width:150px">云录进度条难用</td><td class="v-cnt" style="width:44px">2</td><td class="voice-text"><span class="v-src">[专题]</span> <b>高瑞</b>：简单优化一下云录的信息描述。云录界面中间的进度条，希望也能像卡录一样拖拽。这样就能快速地去定位一些时间点。（目前只能大致定位时间点，然后在界面上拖动进度条，相比较稍微繁琐一点。）<br><span class="v-src">[日常]</span> <b>高瑞</b>：做了查看云录操作，遇到拖动云录进度条，无法进行选定特定时间位置查看，只能通过云录回放界面的进度条拖动查看的问题。建议可以拖动云录时间条进行查看，因为时间条有具体时间，可以快速定位事件位置。</td></tr><tr><td style="width:150px">音量小</td><td class="v-cnt" style="width:44px">2</td><td class="voice-text"><span class="v-src">[专题]</span> <b>杜劲</b>：感觉音量比0729小声<br><span class="v-src">[专题]</span> <b>杜劲</b>：音量偏小</td></tr><tr><td style="width:150px">智能改写错误</td><td class="v-cnt" style="width:44px">2</td><td class="voice-text"><span class="v-src">[专题]</span> <b>蒋牧吟</b>：AI会有误报，大概率把短发的我(女)认成男人，也会偶尔把我家奶奶认成男人。<br><span class="v-src">[专题]</span> <b>高瑞</b>：准确，但是在 AI 列表描述中，容易出现误识别。比如男生被识别成女生，女生被识别成男生，或者出现其他动作，都容易出错。不过影响不大。</td></tr><tr><td style="width:150px">超长云录</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>王亚兵</b>：现在的云录会经常出现接近30分钟的超长云录，这个对用户来说没什么甚至用户会喜欢，但是从品牌成本的角度想，这不是增加了流量的消耗吗，技术看看这个逻辑是不是有问题。</td></tr><tr><td style="width:150px">付费云录未立即生效</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>王亚兵</b>：今天早起为了测试方便转移过来一个月的云录，隔了一阵时间打开app卡没有产生任何云录记录，云录是已经转移成功的，卡录上也有正常的事件记录就是云录没有能正常工作，技术看看这个问题哈。</td></tr><tr><td style="width:150px">云录回放卡顿</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>张宁</b>：app里查看事件录像，云录的有卡顿，卡录流畅，视频下载到本地后都流畅，可见不是文件问题。</td></tr><tr><td style="width:150px">云录列表未更新</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>谢光位</b>：早上首次打开，云录视频列表未正常更新，需要手动点击刷新才能同步完视频列表。卡录正常。发现问题时未能录屏。明天继续观察</td></tr><tr><td style="width:150px">存储卡故障导致离线</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>王亚兵</b>：目前我的云录出现异常，实际录制效果接近连续卡录。我推测该问题和存储卡故障直接相关：内存卡容量异常、录像文件列表丢失，只能在约1小时时长内循环覆盖录像。
 存储卡异常进一步造成摄像头频繁离线、反复重连。起初我误以为故障是云台转动引起的，经过细致排查观察，确认根源出在存储卡上。
 期间更换过电源、数据线，设备故障依旧没有改善；拔掉存储卡之后，摄像头立刻恢复正常。
 将内存卡接入电脑查看：总容量53.3GB，可用空间仅剩4.72GB。卡内录像文件夹只有8月22日、8月23日一共7个录像文件，并且8月23日本身的录制片段也不连续。
-单靠这7个视频文件远不可能占用全部存储空间，大量录像文件出现文件列表丢失、空间被隐性占用的问题，存储卡只能在极小一部分存储空间循环录制，这就是摄像头今天故障不断加重的核心诱因。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-云录卡录不一致</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>杜劲</b>：云录与卡录不一致</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-云录缩略图异常</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>高瑞</b>：做了查看云录操作，遇到个别云录缩略图显示异常问题。（5时43分的缩略图没显示）</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-云录延迟</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>张宁</b>：有活动物体时基本都能录上，但是因为是检测到活动才开始录，有可能最开始的影像少那么1～2秒的感觉。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-云录回看卡顿</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>张宁</b>：云录下载后播放流畅，在线查看有卡顿。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录-云录收藏需求</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>王亚兵</b>：希望云录还可以加一个收藏功能，在需要的云录上点一下收藏，可以直接把这些收藏的云录归集在云录上的专门的云录收藏的目录里一定时间，不会因为云录循环录制而覆盖掉。增加了用户对云录的依赖性和粘合性，激发用户去主动购买和续约云录。</div></div>
+单靠这7个视频文件远不可能占用全部存储空间，大量录像文件出现文件列表丢失、空间被隐性占用的问题，存储卡只能在极小一部分存储空间循环录制，这就是摄像头今天故障不断加重的核心诱因。</td></tr><tr><td style="width:150px">云录卡录不一致</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>杜劲</b>：云录与卡录不一致</td></tr><tr><td style="width:150px">云录缩略图异常</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>高瑞</b>：做了查看云录操作，遇到个别云录缩略图显示异常问题。（5时43分的缩略图没显示）</td></tr><tr><td style="width:150px">云录延迟</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[专题]</span> <b>张宁</b>：有活动物体时基本都能录上，但是因为是检测到活动才开始录，有可能最开始的影像少那么1～2秒的感觉。</td></tr><tr><td style="width:150px">云录回看卡顿</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[专题]</span> <b>张宁</b>：云录下载后播放流畅，在线查看有卡顿。</td></tr><tr><td style="width:150px">云录收藏需求</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[专题]</span> <b>王亚兵</b>：希望云录还可以加一个收藏功能，在需要的云录上点一下收藏，可以直接把这些收藏的云录归集在云录上的专门的云录收藏的目录里一定时间，不会因为云录循环录制而覆盖掉。增加了用户对云录的依赖性和粘合性，激发用户去主动购买和续约云录。</td></tr></tbody></table>
+<div class="module-title">卡录问题（47条）</div>
+<table><thead><tr><th>问题标签</th><th>数量</th><th>用户原声</th></tr></thead><tbody><tr><td style="width:150px">卡录加载慢</td><td class="v-cnt" style="width:44px">10</td><td class="voice-text"><span class="v-src">[专题]</span> <b>闫贺</b>：首次进入卡录明显比这个云录要慢，当然这这应该是卡的问题，不知道能不能优化<br><span class="v-src">[专题]</span> <b>林志澄</b>：加载稍微有些慢，都要10秒以上。<br><span class="v-src">[日常]</span> <b>林志澄</b>：卡录加载很慢。差不多20秒才出来。<br><span class="v-src">[日常]</span> <b>龚粒宇</b>：查看存储卡是，很慢才能进去看到存储卡上的视频<br><span class="v-src">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到有时候查看卡录，需要等待的时间过长，甚至达到8秒以上的问题。<br><span class="v-src">[日常]</span> <b>王亚兵</b>：想看卡录像时拖动了进度条以后，一直是刷新界面，这样持续很久以后画面是黑屏状态。<br><span class="v-src">[日常]</span> <b>谢光位</b>：每次重新打开设备（关闭60s后），卡录读取速度太慢，时间＞10s<br><span class="v-src">[日常]</span> <b>陶双</b>：升级0825固件后，卡录明显加载过慢，已上传视频，升级之前云录卡录大约1-2秒加载时间，升级后卡录成功打开需要4秒左右，云录1秒左右。<br><span class="v-src">[日常]</span> <b>谢光位</b>：卡录列表更新不及时，需要手动下拉更新。<br><span class="v-src">[日常]</span> <b>曾文彬</b>：去测试卡录打开时间发现加载不出</td></tr><tr><td style="width:150px">视频下载慢</td><td class="v-cnt" style="width:44px">8</td><td class="voice-text"><span class="v-src">[专题]</span> <b>邱天顺</b>：下载速度比云录下载慢很多<br><span class="v-src">[专题]</span> <b>邱天顺</b>：希望能提高卡录下载速度<br><span class="v-src">[专题]</span> <b>陶双</b>：新固件卡录总体加载慢<br><span class="v-src">[专题]</span> <b>蒋牧吟</b>：下载速度比云录慢太多，能否快一点？<br><span class="v-src">[专题]</span> <b>高瑞</b>：卡录的下载速度较慢，如果时间段较长，下载速度会很慢。<br><span class="v-src">[专题]</span> <b>谢光位</b>：下载速度慢，下载47s视频，下载时长超过50s<br><span class="v-src">[专题]</span> <b>王亚兵</b>：卡录总体不错的就是受限摄像头本身的4g网速下载速度太煎熬了。<br><span class="v-src">[专题]</span> <b>王刚红</b>：下载一个2分31秒时长的事件，耗时2分30秒，有点过长，下载速度慢了。</td></tr><tr><td style="width:150px">卡录加载失败</td><td class="v-cnt" style="width:44px">5</td><td class="voice-text"><span class="v-src">[日常]</span> <b>高瑞</b>：做了查看云录回放操作，遇到正在查看云录时，提示储存卡数据加载失败提示，然后进入卡录发现是空白问题。退出到APP主界面后再重新进入，恢复正常。<br><span class="v-src">[日常]</span> <b>龚粒宇</b>：点击查看卡录像时，无法播放，需要点击重试后，又可以了。<br><span class="v-src">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到卡录加载失败的问题，(查看卡录时，一直显示正在加载，然后拖动了下时间条，依旧显示正在加载，过一段时间显示加载失败)<br><span class="v-src">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到无法正常显示卡录视频问题。（退出卡录界面但软件的主页面，再重新进入后恢复）<br><span class="v-src">[日常]</span> <b>孙洪士</b>：开流正常，但是信号显示强度为零</td></tr><tr><td style="width:150px">插卡格式化提示需求</td><td class="v-cnt" style="width:44px">4</td><td class="voice-text"><span class="v-src">[日常]</span> <b>高瑞</b>：做了查看设备卡录操作，遇到卡录回放只有一个小时左右的回放，其他回放视频丢失(由于该内存卡之前在其他摄像头内使用，视频已占满，按道理应该会覆盖存储，怀疑未覆盖，正在进行格式化后测试。)问题<br><span class="v-src">[日常]</span> <b>王亚兵</b>：有群友反馈:发现卡录回放只有一个小时左右的回放，其他回放视频丢失(由于该内存卡之前在其他摄像头内使用，视频已占满，按道理应该会覆盖存储，怀疑未覆盖)，其实这种是他覆盖的只是咱们4这个360摄像头目录下的，其他的目录下占用没有覆盖的。针对这种从别的摄像头上拿出来的卡，特别是360咱们自己的，建议直接弹窗提示:发现卡上有资料，需要格式化嘛的提示<br><span class="v-src">[日常]</span> <b>方家欢</b>：提个建议∶建议插卡后APP提示格式化，我装的就卡，没空间，就能一点点，就开始循化，设备，和APP都没任何提示，插卡就一个人加载声音，然后就正常循环录制了，感觉提示用户用其它设备用过的卡，需要格式化，保证存储空间最大化利用。<br><span class="v-src">[日常]</span> <b>杜劲</b>：经过讨论，认为插上新卡后确实有必要提示格式化内存卡。</td></tr><tr><td style="width:150px">回放卡顿</td><td class="v-cnt" style="width:44px">2</td><td class="voice-text"><span class="v-src">[日常]</span> <b>王亚兵</b>：现在视频里人活动明显人真正的活动在摄像头里会明显慢一点的过程甚至有停滞的情况，其实慢1秒左右可以理解，但是不能有停滞的情况，请技术看看哈。<br><span class="v-src">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到卡录回放存在卡顿问题，但是下载下来的视频观看是很流畅的。</td></tr><tr><td style="width:150px">内存卡兼容性</td><td class="v-cnt" style="width:44px">2</td><td class="voice-text"><span class="v-src">[日常]</span> <b>张宁</b>：好像不兼容小米的固速牌监控专用tf卡，插入卡后app显示无tf卡。<br><span class="v-src">[日常]</span> <b>张宁</b>：刚才我反馈的不兼容小米tf卡问题，好像是个bug，我是在断电状态下插入的tf卡，通电后显示无tf卡，然后我在通电状态下重新插拔tf卡后又能正确识别到tf卡了，不过显示容量耗尽，格式化后正常了。</td></tr><tr><td style="width:150px">卡录漏录</td><td class="v-cnt" style="width:44px">2</td><td class="voice-text"><span class="v-src">[日常]</span> <b>孙洪士</b>：卡录还会有漏录现象<br><span class="v-src">[日常]</span> <b>厚晓霞</b>：早上回看卡录有漏录出现一次</td></tr><tr><td style="width:150px">卡录启动延迟</td><td class="v-cnt" style="width:44px">2</td><td class="voice-text"><span class="v-src">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到在有人事件中，都是在已经发生的状态中开始问题，能否调整一下在检测到人物后前1秒或者2秒开始？这样能大概率有效的查看完整的事件。<br><span class="v-src">[日常]</span> <b>张宁</b>：有人出现这个记录的截图能看到拍到了车尾巴，而对应的录像里却没有录到车尾，建议调整录像开始时间，提前一两秒录像，让截图和实际录像能够同步。</td></tr><tr><td style="width:150px">内存卡识别异常</td><td class="v-cnt" style="width:44px">2</td><td class="voice-text"><span class="v-src">[日常]</span> <b>黄显森</b>：插入内存卡显示0<br><span class="v-src">[日常]</span> <b>邱天顺</b>：离线重启后，不能识别存储卡</td></tr><tr><td style="width:150px">进度条颜色不清晰</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>孙洪士</b>：视频回放里的进度条颜色各代表什么？不是很清晰，尤其是云录里的橙色区域，无法播放，是漏录了吗？还挺多</td></tr><tr><td style="width:150px">卡录下载慢</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>王亚兵</b>：4g摄像头的卡录本身就非常的慢，个人建议可以把卡录的“更多”里面的“分享”菜单取消了，本身分享将就的是快叫，但是4g摄像头的卡录分享功能简直是煎熬。希望产品研判一下。</td></tr><tr><td style="width:150px">卡录列表为空</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>王亚兵</b>：今天早起想看看卡录像时点进去，卡录界面刷新了好一伙，然后出现一个:什么过多的文字弹窗提示，但是没抓到截屏，然后卡录列表什么都没有。</td></tr><tr><td style="width:150px">卡录时间轴丢失</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>王亚兵</b>：时间轴上这之前有点卡录连续录像标识全部丢失，确实也无法回看，但是卡容量里又要容量都占用有录像的，这应该又是新app带入的bug</td></tr><tr><td style="width:150px">事件录制不触发</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>林志澄</b>：设置了事件录制，实际不会录制事件</td></tr><tr><td style="width:150px">缩略图加载失败</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>杜劲</b>：卡录像有事件录像，但查看时未能加载出缩略图，之前是可以加载的，在删除设备重新绑定后出现。</td></tr><tr><td style="width:150px">卡录回放异常</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>赖峰</b>：查看内存卡回放，显示异常代码</td></tr><tr><td style="width:150px">卡录丢帧</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[专题]</span> <b>张宁</b>：在录像开始的几秒有时会出现很短的卡顿</td></tr><tr><td style="width:150px">取消卡录下载建议</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[专题]</span> <b>方家欢</b>：卡录体验比较满意，4g设备卡录下载略慢，可以评估取消卡录下载按钮，保留录制按钮就可以。</td></tr><tr><td style="width:150px">近场下载需求</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[专题]</span> <b>王亚兵</b>：希望后续的室内4g设备能加上NCF或者蓝牙的近场下载。提升目前的下载体验。</td></tr></tbody></table>
+<div class="module-title">云录/卡录同步问题（4条）</div>
+<table><thead><tr><th>问题标签</th><th>数量</th><th>用户原声</th></tr></thead><tbody><tr><td style="width:150px">云录卡录时间偏差</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>王亚兵</b>：发现目前云录的起始时间都要比卡录快1到2秒，虽然不过我个人觉得这没什么，但是强迫症用户可以觉得卡录云录的起始时间点会不一致。</td></tr><tr><td style="width:150px">云录卡录不同步</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>陶双</b>：云录卡录事件不同步，卡录17.55分有卡录事件，云录没有已提交日志</td></tr><tr><td style="width:150px">云录卡录列表空白</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>王亚兵</b>：3.0.0app打开app，云录卡录都是么没有任何列表的空白，上面播放区是黑屏，需要手动刷新列表才能出来，这应该是新app带入的bug，之前的2.31.0版本没有出现这个情况。</td></tr><tr><td style="width:150px">云录卡录事件不一致</td><td class="v-cnt" style="width:44px">1</td><td class="voice-text"><span class="v-src">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到卡录与云录事件提醒时间不一致，在查看回放时，发现16时1分之后，卡录部分事件未提醒，云录有提醒(其中有15秒时间人员离开，15秒后又出现，但是卡录没提醒，卡录把整个时长当成了一个事件)问题</td></tr></tbody></table>
+    </div>
+  </div>
 
-<h3>3.2 卡录问题（47条）</h3>
-<div class="summary-orange">
-  <span class="orange">卡录加载慢(10条) + 视频下载慢(9条) + 卡录加载失败(5条)</span> 三项合计24条，占卡录问题的一半以上，与评分最低的"视频下载(8.8)"吻合。插卡格式化提示需求(4条)是明确的强需求。
-</div>
-<div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-卡录加载慢</span> <span style="color:#00B050;font-weight:600;">(10条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>龚粒宇</b>：查看存储卡是，很慢才能进去看到存储卡上的视频</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>林志澄</b>：卡录加载很慢。差不多20秒才出来。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到有时候查看卡录，需要等待的时间过长，甚至达到8秒以上的问题。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>王亚兵</b>：想看卡录像时拖动了进度条以后，一直是刷新界面，这样持续很久以后画面是黑屏状态。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>谢光位</b>：每次重新打开设备（关闭60s后），卡录读取速度太慢，时间＞10s</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>谢光位</b>：卡录列表更新不及时，需要手动下拉更新。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>陶双</b>：升级0825固件后，卡录明显加载过慢，已上传视频，升级之前云录卡录大约1-2秒加载时间，升级后卡录成功打开需要4秒左右，云录1秒左右。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>曾文彬</b>：去测试卡录打开时间发现加载不出</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>闫贺</b>：首次进入卡录明显比这个云录要慢，当然这这应该是卡的问题，不知道能不能优化</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>林志澄</b>：加载稍微有些慢，都要10秒以上。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-视频下载慢</span> <span style="color:#00B050;font-weight:600;">(8条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>邱天顺</b>：下载速度比云录下载慢很多</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>邱天顺</b>：希望能提高卡录下载速度</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>陶双</b>：新固件卡录总体加载慢</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>蒋牧吟</b>：下载速度比云录慢太多，能否快一点？</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>高瑞</b>：卡录的下载速度较慢，如果时间段较长，下载速度会很慢。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>谢光位</b>：下载速度慢，下载47s视频，下载时长超过50s</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>王亚兵</b>：卡录总体不错的就是受限摄像头本身的4g网速下载速度太煎熬了。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>王刚红</b>：下载一个2分31秒时长的事件，耗时2分30秒，有点过长，下载速度慢了。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-卡录加载失败</span> <span style="color:#00B050;font-weight:600;">(5条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>龚粒宇</b>：点击查看卡录像时，无法播放，需要点击重试后，又可以了。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到卡录加载失败的问题，(查看卡录时，一直显示正在加载，然后拖动了下时间条，依旧显示正在加载，过一段时间显示加载失败)</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到无法正常显示卡录视频问题。（退出卡录界面但软件的主页面，再重新进入后恢复）</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>孙洪士</b>：开流正常，但是信号显示强度为零</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>高瑞</b>：做了查看云录回放操作，遇到正在查看云录时，提示储存卡数据加载失败提示，然后进入卡录发现是空白问题。退出到APP主界面后再重新进入，恢复正常。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-插卡格式化提示需求</span> <span style="color:#00B050;font-weight:600;">(4条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>高瑞</b>：做了查看设备卡录操作，遇到卡录回放只有一个小时左右的回放，其他回放视频丢失(由于该内存卡之前在其他摄像头内使用，视频已占满，按道理应该会覆盖存储，怀疑未覆盖，正在进行格式化后测试。)问题</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>方家欢</b>：提个建议∶建议插卡后APP提示格式化，我装的就卡，没空间，就能一点点，就开始循化，设备，和APP都没任何提示，插卡就一个人加载声音，然后就正常循环录制了，感觉提示用户用其它设备用过的卡，需要格式化，保证存储空间最大化利用。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>王亚兵</b>：有群友反馈:发现卡录回放只有一个小时左右的回放，其他回放视频丢失(由于该内存卡之前在其他摄像头内使用，视频已占满，按道理应该会覆盖存储，怀疑未覆盖)，其实这种是他覆盖的只是咱们4这个360摄像头目录下的，其他的目录下占用没有覆盖的。针对这种从别的摄像头上拿出来的卡，特别是360咱们自己的，建议直接弹窗提示:发现卡上有资料，需要格式化嘛的提示</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>杜劲</b>：经过讨论，认为插上新卡后确实有必要提示格式化内存卡。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-回放卡顿</span> <span style="color:#00B050;font-weight:600;">(2条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到卡录回放存在卡顿问题，但是下载下来的视频观看是很流畅的。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>王亚兵</b>：现在视频里人活动明显人真正的活动在摄像头里会明显慢一点的过程甚至有停滞的情况，其实慢1秒左右可以理解，但是不能有停滞的情况，请技术看看哈。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-内存卡兼容性</span> <span style="color:#00B050;font-weight:600;">(2条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>张宁</b>：刚才我反馈的不兼容小米tf卡问题，好像是个bug，我是在断电状态下插入的tf卡，通电后显示无tf卡，然后我在通电状态下重新插拔tf卡后又能正确识别到tf卡了，不过显示容量耗尽，格式化后正常了。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>张宁</b>：好像不兼容小米的固速牌监控专用tf卡，插入卡后app显示无tf卡。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-卡录漏录</span> <span style="color:#00B050;font-weight:600;">(2条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>孙洪士</b>：卡录还会有漏录现象</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>厚晓霞</b>：早上回看卡录有漏录出现一次</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-卡录启动延迟</span> <span style="color:#00B050;font-weight:600;">(2条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到在有人事件中，都是在已经发生的状态中开始问题，能否调整一下在检测到人物后前1秒或者2秒开始？这样能大概率有效的查看完整的事件。</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>张宁</b>：有人出现这个记录的截图能看到拍到了车尾巴，而对应的录像里却没有录到车尾，建议调整录像开始时间，提前一两秒录像，让截图和实际录像能够同步。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-内存卡识别异常</span> <span style="color:#00B050;font-weight:600;">(2条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>黄显森</b>：插入内存卡显示0</div><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>邱天顺</b>：离线重启后，不能识别存储卡</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-进度条颜色不清晰</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>孙洪士</b>：视频回放里的进度条颜色各代表什么？不是很清晰，尤其是云录里的橙色区域，无法播放，是漏录了吗？还挺多</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-卡录下载慢</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>王亚兵</b>：4g摄像头的卡录本身就非常的慢，个人建议可以把卡录的“更多”里面的“分享”菜单取消了，本身分享将就的是快叫，但是4g摄像头的卡录分享功能简直是煎熬。希望产品研判一下。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-卡录列表为空</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>王亚兵</b>：今天早起想看看卡录像时点进去，卡录界面刷新了好一伙，然后出现一个:什么过多的文字弹窗提示，但是没抓到截屏，然后卡录列表什么都没有。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-卡录时间轴丢失</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>王亚兵</b>：时间轴上这之前有点卡录连续录像标识全部丢失，确实也无法回看，但是卡容量里又要容量都占用有录像的，这应该又是新app带入的bug</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-事件录制不触发</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>林志澄</b>：设置了事件录制，实际不会录制事件</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-缩略图加载失败</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>杜劲</b>：卡录像有事件录像，但查看时未能加载出缩略图，之前是可以加载的，在删除设备重新绑定后出现。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-卡录回放异常</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>赖峰</b>：查看内存卡回放，显示异常代码</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-卡录丢帧</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>张宁</b>：在录像开始的几秒有时会出现很短的卡顿</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-取消卡录下载建议</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>方家欢</b>：卡录体验比较满意，4g设备卡录下载略慢，可以评估取消卡录下载按钮，保留录制按钮就可以。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">卡录-近场下载需求</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[专题]</span> <b>王亚兵</b>：希望后续的室内4g设备能加上NCF或者蓝牙的近场下载。提升目前的下载体验。</div></div>
+  <div class="section">
+    <div class="section-title">⚠️ 核心问题与风险</div>
+    <div class="module">
+      <table><thead><tr><th>等级</th><th>问题</th><th>影响人数</th><th>用户原声</th><th>方案状态</th></tr></thead><tbody><tr><td><span class="tag tag-p0">P0</span></td><td>P0</td><td>11人(38%)</td><td class="voice-text">汤远鹏(4分):夜间误报过多; 闫贺(5分):物体动物误报; 程永权(6分):婚纱照误识别</td><td>长期优化</td></tr><tr><td><span class="tag tag-p0">P0</span></td><td>P0</td><td>7人</td><td class="voice-text">林志澄:20秒才出来; 王亚兵:拖动进度条一直刷新黑屏</td><td>已知bug</td></tr><tr><td><span class="tag tag-p0">P0</span></td><td>P0</td><td>13人(45%)</td><td class="voice-text">王刚红:2分31秒视频下载耗时2分30秒; 王亚兵:4G网速下载很慢</td><td>无方案</td></tr><tr><td><span class="tag tag-p1">P1</span></td><td>P1</td><td>3人</td><td class="voice-text">方家欢:插卡没提示格式化; 高瑞:卡录回放只有1小时</td><td>强需求</td></tr><tr><td><span class="tag tag-p1">P1</span></td><td>P1</td><td>5人(17%)</td><td class="voice-text">任孝鹏(5分):分类有错误; 黄显森(7分):智见搜索一塌糊涂</td><td>无方案</td></tr><tr><td><span class="tag tag-p1">P1</span></td><td>P1</td><td>5人</td><td class="voice-text">陶双:卡录17:55有事件云录没有; 高瑞:卡录云录事件提醒时间不一致</td><td>无方案</td></tr><tr><td><span class="tag tag-p2">P2</span></td><td>P2</td><td>1人</td><td class="voice-text">高瑞:无法拖拽选定特定时间位置</td><td>无方案</td></tr><tr><td><span class="tag tag-p2">P2</span></td><td>P2</td><td>2人</td><td class="voice-text">高瑞:事件开始时已在发生中,建议提前1-2秒预录制</td><td>无方案</td></tr><tr><td><span class="tag tag-p2">P2</span></td><td>P2</td><td>1人</td><td class="voice-text">王亚兵:接近30分钟超长云录,增加流量消耗</td><td>无方案</td></tr></tbody></table>
+    </div>
+  </div>
 
-<h3>3.3 云录/卡录同步问题（4条）</h3>
-<div class="summary">
-  云录与卡录事件不同步/时间偏差/列表空白等问题共4条，涉及事件一致性。与专项问卷"一致性基本一致83%(24/29)"的测评结果存在差距，需关注。
-</div>
-<div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录/卡录-云录卡录时间偏差</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>王亚兵</b>：发现目前云录的起始时间都要比卡录快1到2秒，虽然不过我个人觉得这没什么，但是强迫症用户可以觉得卡录云录的起始时间点会不一致。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录/卡录-云录卡录不同步</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>陶双</b>：云录卡录事件不同步，卡录17.55分有卡录事件，云录没有已提交日志</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录/卡录-云录卡录列表空白</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>王亚兵</b>：3.0.0app打开app，云录卡录都是么没有任何列表的空白，上面播放区是黑屏，需要手动刷新列表才能出来，这应该是新app带入的bug，之前的2.31.0版本没有出现这个情况。</div></div><div style="margin:14px 0 6px;"><span style="font-weight:600;color:#333;">云录卡录-云录卡录事件不一致</span> <span style="color:#00B050;font-weight:600;">(1条)</span></div><div style="background:#fafafa;border-radius:6px;padding:8px 12px;font-size:13px;line-height:1.6;"><div style="padding:3px 0;border-bottom:1px dashed #f0f0f0;"><span style="color:#999;font-size:11px;">[日常]</span> <b>高瑞</b>：做了查看卡录回放操作，遇到卡录与云录事件提醒时间不一致，在查看回放时，发现16时1分之后，卡录部分事件未提醒，云录有提醒(其中有15秒时间人员离开，15秒后又出现，但是卡录没提醒，卡录把整个时长当成了一个事件)问题</div></div>
-<h2>四、核心问题与风险</h2>
-<table>
-<tr><th>等级</th><th>问题</th><th>影响人数</th><th>用户原声</th><th>方案状态</th></tr>
-<tr><td><span class="tag tag-p0">P0</span></td><td>云录准确性-人形误报</td><td>11人(38%)</td><td>汤远鹏(4分):夜间误报过多; 闫贺(5分):物体动物误报; 程永权(6分):婚纱照误识别</td><td>长期优化</td></tr>
-<tr><td><span class="tag tag-p0">P0</span></td><td>卡录加载慢</td><td>7人</td><td>林志澄:20秒才出来; 王亚兵:拖动进度条一直刷新黑屏</td><td>已知bug</td></tr>
-<tr><td><span class="tag tag-p0">P0</span></td><td>卡录下载速度慢</td><td>13人(45%)</td><td>王刚红:2分31秒视频下载耗时2分30秒; 王亚兵:4G网速下载很慢</td><td>无方案</td></tr>
-<tr><td><span class="tag tag-p1">P1</span></td><td>插卡格式化提示缺失</td><td>3人</td><td>方家欢:插卡没提示格式化; 高瑞:卡录回放只有1小时</td><td>强需求</td></tr>
-<tr><td><span class="tag tag-p1">P1</span></td><td>云录消息分类准确度</td><td>5人(17%)</td><td>任孝鹏(5分):分类有错误; 黄显森(7分):智见搜索一塌糊涂</td><td>无方案</td></tr>
-<tr><td><span class="tag tag-p1">P1</span></td><td>云录卡录事件不同步</td><td>5人</td><td>陶双:卡录17:55有事件云录没有; 高瑞:卡录云录事件提醒时间不一致</td><td>无方案</td></tr>
-<tr><td><span class="tag tag-p2">P2</span></td><td>云录进度条难用</td><td>1人</td><td>高瑞:无法拖拽选定特定时间位置</td><td>无方案</td></tr>
-<tr><td><span class="tag tag-p2">P2</span></td><td>卡录启动延迟</td><td>2人</td><td>高瑞:事件开始时已在发生中,建议提前1-2秒预录制</td><td>无方案</td></tr>
-<tr><td><span class="tag tag-p2">P2</span></td><td>超长云录</td><td>1人</td><td>王亚兵:接近30分钟超长云录,增加流量消耗</td><td>无方案</td></tr>
-</table>
+  <div class="section">
+    <div class="section-title">💡 用户建议汇总</div>
+    <div class="module">
+      <div class="module-title">云录建议</div>
+      <table><thead><tr><th>姓名</th><th>建议内容</th></tr></thead><tbody><tr><td style="width:90px">邱天顺</td><td class="voice-text">希望云台能增加水印功能</td></tr><tr><td style="width:90px">闫贺</td><td class="voice-text">云录画面事件有文字说明，写的有只猫但提示还是有人出现</td></tr><tr><td style="width:90px">张宁</td><td class="voice-text">继续优化人形准确度吧</td></tr><tr><td style="width:90px">方家欢</td><td class="voice-text">云录很完整，满意</td></tr><tr><td style="width:90px">高瑞</td><td class="voice-text">云录界面中间的进度条希望也能像卡录一样拖拽，快速定位时间点。</td></tr><tr><td style="width:90px">谢光位</td><td class="voice-text">下载速度需优化</td></tr><tr><td style="width:90px">黄显森</td><td class="voice-text">主要是人形识别把晾晒的衣服都识别成人了</td></tr><tr><td style="width:90px">苗欣丽</td><td class="voice-text">希望云录时间长一些，有人出现录个几秒就不录了，应该一直录到人出画面。</td></tr><tr><td style="width:90px">王亚兵</td><td class="voice-text">希望云录加收藏功能，收藏的云录归集到专门目录不被循环录制覆盖。</td></tr><tr><td style="width:90px">曾文彬</td><td class="voice-text">下载完视频希望给个跳转按钮去相册查看</td></tr><tr><td style="width:90px">程永权</td><td class="voice-text">无</td></tr><tr><td style="width:90px">郭智育</td><td class="voice-text">云录没问题</td></tr></tbody></table>
+    </div>
+    <div class="module">
+      <div class="module-title">卡录建议</div>
+      <table><thead><tr><th>姓名</th><th>建议内容</th></tr></thead><tbody><tr><td style="width:90px">邱天顺</td><td class="voice-text">希望能提高卡录下载速度</td></tr><tr><td style="width:90px">闫贺</td><td class="voice-text">首次进入卡录明显比云录要慢，不知道能不能优化</td></tr><tr><td style="width:90px">张宁</td><td class="voice-text">请优化录像开始时的卡顿掉帧问题。</td></tr><tr><td style="width:90px">蒋牧吟</td><td class="voice-text">卡录像能否增加智见搜索，感觉这个功能非常棒！</td></tr><tr><td style="width:90px">方家欢</td><td class="voice-text">卡录体验比较满意，4g设备卡录下载略慢，可评估取消卡录下载按钮。</td></tr><tr><td style="width:90px">高瑞</td><td class="voice-text">建议和云录一样提前1~2秒预录制保证事件完整；进入卡录缓冲7秒需优化；回放拖动进度条可能导致加载失败。</td></tr><tr><td style="width:90px">谢光位</td><td class="voice-text">优化卡录加载和下载速度</td></tr><tr><td style="width:90px">黄显森</td><td class="voice-text">跟云录一样人形识别有点问题，卡录事件比云录快两秒。</td></tr><tr><td style="width:90px">苗欣丽</td><td class="voice-text">存储应改为有人出现开始录、人出画面停录，现在只录几秒很鸡肋。</td></tr><tr><td style="width:90px">王亚兵</td><td class="voice-text">希望后续室内4g设备能加上NFC或蓝牙近场下载。</td></tr><tr><td style="width:90px">张一明</td><td class="voice-text">查看速度有待提高</td></tr><tr><td style="width:90px">程永权</td><td class="voice-text">无</td></tr><tr><td style="width:90px">郭智育</td><td class="voice-text">建议卡录可以自定义视频片段时长和播放节点选择</td></tr><tr><td style="width:90px">张鹏鑫</td><td class="voice-text">64g内存卡偶尔会让格式化</td></tr></tbody></table>
+    </div>
+  </div>
 
-<h2>五、用户建议汇总</h2>
-
-<h3>5.1 云录建议</h3>
-<table>
-<tr><th>姓名</th><th>建议内容</th></tr>
-<tr><td>邱天顺</td><td>希望云台能增加水印功能</td></tr>
-<tr><td>闫贺</td><td>云录画面里面事件会有文字说明文字说明里面写的有只猫但是提示还是有人出现</td></tr>
-<tr><td>张宁</td><td>继续优化人形准确度吧</td></tr>
-<tr><td>方家欢</td><td>云录很完整，满意</td></tr>
-<tr><td>高瑞</td><td>简单优化一下云录的信息描述。云录界面中间的进度条，希望也能像卡录一样拖拽。这样就能快速地去定位一些时间点。（目前只能大致定位时间点，然后在界面上拖动进度条，相比较稍微繁琐一点。）</td></tr>
-<tr><td>谢光位</td><td>下载速度需优化</td></tr>
-<tr><td>黄显森</td><td>主要是人形识别把晾晒的衣服都识别成人了</td></tr>
-<tr><td>苗欣丽</td><td>希望云录的时间长一些，有人出现录个几秒就不录了，感觉很鸡肋，应该一直录吧，直到人出画面</td></tr>
-<tr><td>王亚兵</td><td>希望云录还可以加一个收藏功能，在需要的云录上点一下收藏，可以直接把这些收藏的云录归集在云录上的专门的云录收藏的目录里一定时间，不会因为云录循环录制而覆盖掉。增加了用户对云录的依赖性和粘合性，激发用户去主动购买和续约云录。</td></tr>
-<tr><td>曾文彬</td><td>下载完视频希望给个跳转按钮去相册查看</td></tr>
-<tr><td>程永权</td><td>无</td></tr>
-<tr><td>郭智育</td><td>云录没问题</td></tr>
-
-</table>
-
-<h3>5.2 卡录建议</h3>
-<table>
-<tr><th>姓名</th><th>建议内容</th></tr>
-<tr><td>邱天顺</td><td>希望能提高卡录下载速度</td></tr>
-<tr><td>闫贺</td><td>首次进入卡录明显比这个云录要慢，当然这这应该是卡的问题，不知道能不能优化</td></tr>
-<tr><td>张宁</td><td>请优化录像开始时的卡顿掉帧问题。</td></tr>
-<tr><td>蒋牧吟</td><td>卡录像能否增加“智见搜索”，感觉这个功能非常棒！</td></tr>
-<tr><td>方家欢</td><td>卡录体验比较满意，4g设备卡录下载略慢，可以评估取消卡录下载按钮，保留录制按钮就可以。</td></tr>
-<tr><td>高瑞</td><td>1.建议和云录一样，在捕捉到事件时，提前1～2秒进行预录制，保证事件的完整性。2.进入卡录的缓冲时间较长，需要7秒左右，建议优化一下。3.进行卡录回放查找事件时，来回拖动进度条，有一定几率会导致查看卡录失败，类似网络卡顿，只能退出卡录后重新进入查找，建议优化。</td></tr>
-<tr><td>谢光位</td><td>优化卡录加载和下载速度</td></tr>
-<tr><td>黄显森</td><td>跟云录一样，人形识别有点问题，对比云录，两者卡录事件要快两秒</td></tr>
-<tr><td>苗欣丽</td><td>存储应该改一改，应该有人出现开始录，人走出画面后停录，现在人出现只录个几秒就不录了，感觉这存储回放功能很鸡肋</td></tr>
-<tr><td>王亚兵</td><td>希望后续的室内4g设备能加上NCF或者蓝牙的近场下载。提升目前的下载体验。</td></tr>
-<tr><td>张一明</td><td>查看速度有待提高</td></tr>
-<tr><td>程永权</td><td>无</td></tr>
-<tr><td>郭智育</td><td>建议卡录可以自定义视频片段时长和播放节点选择</td></tr>
-<tr><td>张鹏鑫</td><td>64g内存卡，偶尔会让格式化</td></tr>
-
-</table>
-
-<div class="footer">
-  数据来源：飞书表格「云录卡录专题」(sheet_id: AvkjDX) + 日常问题反馈(sheet_id: v0nxl4)<br>
-  报告合集：https://yanlingyin001.github.io/reports/9pro-index.html<br>
-  生成时间：2026-08-31 | 分析：尹燕玲-报告分析专家
+  <div class="footer">
+    数据来源：飞书表格「云录卡录专题」(AvkjDX) + 日常问题反馈(v0nxl4)<br>
+    报告合集：https://yanlingyin001.github.io/reports/9pro-index.html<br>
+    生成时间：2026-08-31 | 分析：尹燕玲-报告分析专家
+  </div>
 </div>
 
-<script>
-var CN = ["画面清晰度", "画面流畅性", "音质清晰", "视频下载", "消息列表清晰性", "完整性(无漏录)", "音量大小合适", "云录总体评价", "事件完整性", "消息分类准确度", "准确性(无误报)"];
-var CV = [9.7, 9.6, 9.6, 9.6, 9.4, 9.2, 9.2, 9.0, 9.0, 8.8, 8.1];
-var KN = ["画面清晰度", "音质清晰性", "TF卡格式化成功率", "音量大小", "画面流畅性", "完整性(事件时长)", "存储卡兼容性", "卡录总体评价", "视频下载"];
-var KV = [9.5, 9.5, 9.4, 9.4, 9.2, 9.1, 9.0, 8.9, 8.8];
-var LN = ["3秒以内", "3-5秒", "5-6秒", "6-7秒", "7-8秒", "8-9秒", "9-10秒", "10秒以上", "加载失败"];
-var LC = [19, 26, 22, 20, 7, 7, 11, 26, 7];
-var LP = [13.1, 17.9, 15.2, 13.8, 4.8, 4.8, 7.6, 17.9, 4.8];
-var LCO = ["#00B050", "#2BBD6E", "#00B050", "#2BBD6E", "#F1C40F", "#F1C40F", "#E67E22", "#E67E22", "#E74C3C"];
-
-// 云录条形图（横向）
-var cloudBar = echarts.init(document.getElementById('cloud_bar'));
-cloudBar.setOption({
-  tooltip: { trigger: 'axis', formatter: function(p){ return p[0].name + '：' + p[0].value + '分'; } },
-  grid: { left: '5%', right: '12%', bottom: '2%', top: '2%', containLabel: true },
-  xAxis: { type: 'value', min: 7, max: 10, axisLabel: { fontSize: 12 } },
-  yAxis: { type: 'category', data: CN, inverse: true, axisLabel: { fontSize: 12 } },
-  series: [{
-    type: 'bar', data: CV, barWidth: '55%',
-    label: { show: true, position: 'right', fontSize: 13, color: '#333', formatter: '{c}' },
-    itemStyle: { color: function(p){ return p.value < 8.5 ? '#E74C3C' : '#00B050'; } }
-  }]
-});
-
-// 卡录条形图（横向）
-var cardBar = echarts.init(document.getElementById('card_bar'));
-cardBar.setOption({
-  tooltip: { trigger: 'axis', formatter: function(p){ return p[0].name + '：' + p[0].value + '分'; } },
-  grid: { left: '5%', right: '12%', bottom: '2%', top: '2%', containLabel: true },
-  xAxis: { type: 'value', min: 8, max: 10, axisLabel: { fontSize: 12 } },
-  yAxis: { type: 'category', data: KN, inverse: true, axisLabel: { fontSize: 12 } },
-  series: [{
-    type: 'bar', data: KV, barWidth: '55%',
-    label: { show: true, position: 'right', fontSize: 13, color: '#333', formatter: '{c}' },
-    itemStyle: { color: function(p){ return p.value < 8.9 ? '#E67E22' : '#00B050'; } }
-  }]
-});
-
-// 加载耗时分布（带占比标签 + 分类颜色）
-var loadBar = echarts.init(document.getElementById('load_bar'));
-var loadData = LC.map(function(c, i){ return { value: c, itemStyle: { color: LCO[i] } }; });
-loadBar.setOption({
-  tooltip: { trigger: 'axis', formatter: function(p){ var i = p[0].dataIndex; return LN[i] + '：' + LC[i] + '次 (' + LP[i] + '%)'; } },
-  grid: { left: '5%', right: '5%', bottom: '5%', top: '12%', containLabel: true },
-  xAxis: { type: 'category', data: LN, axisLabel: { fontSize: 11 } },
-  yAxis: { type: 'value', axisLabel: { fontSize: 11 } },
-  series: [{
-    type: 'bar', data: loadData, barWidth: '50%',
-    label: { show: true, position: 'top', fontSize: 12, formatter: function(p){ return LP[p.dataIndex] + '%'; } }
-  }]
-});
-
-window.addEventListener('resize', function(){ cloudBar.resize(); cardBar.resize(); loadBar.resize(); });
-</script>
 </body>
 </html>
