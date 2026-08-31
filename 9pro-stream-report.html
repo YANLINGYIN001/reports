@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>9pro 400万4G云台公测 - 开流专项分析报告</title>
+<title>9pro 400万4G云台公测 - 开流专项报告</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#f5f7fa; color:#333; line-height:1.6; }
@@ -30,7 +30,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif
 .chart-bar { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
 .bar-track { flex:1; background:#f0f0f0; border-radius:4px; height:24px; }
 .bar-fill { height:100%; border-radius:4px; display:flex; align-items:center; padding-left:8px; color:#fff; font-size:12px; font-weight:600; min-width:34px; }
-.bar-label { width:150px; font-size:13px; text-align:right; color:#555; }
+.bar-label { width:128px; font-size:13px; text-align:right; color:#555; }
 .vchart { display:flex; align-items:flex-end; gap:6px; padding:10px 4px 0; }
 .vcol { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; }
 .vval { font-size:11px; color:#555; text-align:center; line-height:1.3; margin-bottom:4px; }
@@ -40,13 +40,10 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif
 table { width:100%; border-collapse:collapse; font-size:13px; }
 th { background:#f8faf8; padding:8px; text-align:left; font-weight:600; color:#666; border-bottom:2px solid #e0e0e0; }
 td { padding:8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+.voice-text { color:#555; line-height:1.7; }
+.v-cnt { color:#00B050; font-weight:700; }
 .red { color:#E74C3C; }
 .orange { color:#E67E22; }
-.green { color:#00B050; }
-.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:12px; }
-.tag-p0 { background:#fde8e8; color:#E74C3C; }
-.tag-p1 { background:#fef3e2; color:#E67E22; }
-.tag-p2 { background:#e8f8ee; color:#00B050; }
 .fw-badge { display:inline-block; padding:2px 6px; border-radius:3px; font-size:12px; background:#eef; color:#334; margin-left:4px; }
 .fw-old { background:#f0f0f0; color:#666; }
 .fw-new { background:#e8f4ff; color:#1a73e8; }
@@ -57,151 +54,154 @@ td { padding:8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
 
 <div class="header">
   <h1>📡 9pro 400万4G云台公测</h1>
-  <p>开流专项分析报告</p>
-  <div class="update-time">数据来源：「实时画面通话」专项问卷(29人) + 日常问题反馈「开流」类(17条) | 生成时间：2026-08-31</div>
+  <p>开流专项报告</p>
+  <div class="update-time">数据截止：2026-08-31 · 样本量：29份 · 开流耗时145次实测 + 实时画面8维 + 通话5维</div>
 </div>
 <div class="container">
   <div class="kpi-row">
-    <div class="kpi-card"><div class="num">90%</div><div class="label">开流5秒内完成</div><div class="sub">145次实测（理想环境）</div></div>
-    <div class="kpi-card"><div class="num">8.59</div><div class="label">实时画面总体</div><div class="sub">10分制</div></div>
-    <div class="kpi-card"><div class="num">9.03</div><div class="label">通话功能总体</div><div class="sub">10分制·最高维度</div></div>
-    <div class="kpi-card"><div class="num bad">7.67</div><div class="label">夜视自动切换</div><div class="sub">实时画面最低维度</div></div>
+    <div class="kpi-card"><div class="num">90%</div><div class="label">开流5秒内完成</div><div class="sub">145次实测(理想环境)</div></div>
+    <div class="kpi-card"><div class="num">9.17</div><div class="label">实时画面总体</div><div class="sub">10分制·29人</div></div>
+    <div class="kpi-card"><div class="num">9.03</div><div class="label">通话总体</div><div class="sub">10分制·29人</div></div>
+    <div class="kpi-card"><div class="num">8.79</div><div class="label">夜视自动切换</div><div class="sub">实时画面8维最低</div></div>
   </div>
 
   <div class="section">
-    <div class="section-title">一、开流性能分析</div>
+    <div class="section-title">💡 核心洞察</div>
     <div class="module">
-      <div class="module-insight insight-good">专项测试（2.5K超清、稳定信号）下开流性能整体优异：<strong>90%的开流在5秒内完成</strong>，其中"1-3秒"占比最高(55.9%)。</div>
-      <div class="module-title">1.1 开流耗时分布</div>
+      <div class="module-insight insight-good"><strong>开流性能优异</strong>：90%开流在5秒内完成（145次理想环境实测），"1-3秒"占比最高55.9%。</div>
+      <div class="module-insight insight-good"><strong>实时画面全面达标</strong>：8维均分8.79-9.34全部进入绿色区间，画质效果9.34、播放流畅9.28领跑。</div>
+      <div class="module-insight insight-good"><strong>通话是最大亮点</strong>：5维均分9.03-9.28全超9分，设备端声音9.28最高，用户评价"通话效果比以往小水滴都要好"。</div>
+      <div class="module-insight insight-bad"><strong>弱网是核心风险</strong>：日常开流卡顿/失败10条(59%)，与专项理想环境90%达成率形成反差，根因在真实4G弱网环境。</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🚀 开流性能分析</div>
+    <div class="module">
+      <div class="module-title">开流耗时分布（29人×5次=145次测试）</div>
+      <div class="module-insight insight-good"><strong>90%开流5秒内完成</strong>，"1-3秒"占55.9%，"5秒以上"仅10%，10秒以上仅1次(0.7%)。</div>
       <div class="vchart"><div class="vcol"><div class="vval">81次<br><span class="vpct">55.9%</span></div><div class="vbar" style="height:150px;background:#00B050"></div><div class="vlabel">1-3秒</div></div><div class="vcol"><div class="vval">49次<br><span class="vpct">33.8%</span></div><div class="vbar" style="height:90px;background:#2BBD6E"></div><div class="vlabel">3-5秒</div></div><div class="vcol"><div class="vval">11次<br><span class="vpct">7.6%</span></div><div class="vbar" style="height:20px;background:#F1C40F"></div><div class="vlabel">5-8秒</div></div><div class="vcol"><div class="vval">3次<br><span class="vpct">2.1%</span></div><div class="vbar" style="height:5px;background:#E67E22"></div><div class="vlabel">8-10秒</div></div><div class="vcol"><div class="vval">1次<br><span class="vpct">0.7%</span></div><div class="vbar" style="height:1px;background:#E74C3C"></div><div class="vlabel">10秒以上</div></div></div>
-      <div class="module-insight insight-warn"><strong>⚠️ 对照提醒：</strong>专项测试在稳定信号环境下开流耗时优异；但日常反馈中「开流卡顿/失败」占近6成（见第四模块），差异根因在<strong>真实4G弱网环境</strong>——陈建建反馈"卡顿与基站距离、旁边电器有关"。</div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">二、实时画面评价分析</div>
-    <div class="module">
-      <div class="module-insight insight-warn">实时画面8个维度均分区间7.67-8.59。<strong>夜视自动切换准确性是最大短板(7.67)</strong>，夜晚清晰度(8.17)、播放流畅性(8.09)次低；白天清晰度(8.43)、画质效果(8.27)表现较好。</div>
-      <div class="module-title">2.1 实时画面8维度评分</div>
-      <div class="chart-bar"><div class="bar-label">实时画面总体 (n=17)</div><div class="bar-track"><div class="bar-fill" style="width:53.0%;background:#00B050">8.59</div></div></div>
-<div class="chart-bar"><div class="bar-label">白天清晰度 (n=14)</div><div class="bar-track"><div class="bar-fill" style="width:47.7%;background:#00B050">8.43</div></div></div>
-<div class="chart-bar"><div class="bar-label">画质效果 (n=11)</div><div class="bar-track"><div class="bar-fill" style="width:42.3%;background:#E67E22">8.27</div></div></div>
-<div class="chart-bar"><div class="bar-label">夜晚清晰度 (n=18)</div><div class="bar-track"><div class="bar-fill" style="width:39.0%;background:#E67E22">8.17</div></div></div>
-<div class="chart-bar"><div class="bar-label">播放流畅性 (n=11)</div><div class="bar-track"><div class="bar-fill" style="width:36.3%;background:#E67E22">8.09</div></div></div>
-<div class="chart-bar"><div class="bar-label">画面音质 (n=16)</div><div class="bar-track"><div class="bar-fill" style="width:33.3%;background:#E67E22">8.0</div></div></div>
-<div class="chart-bar"><div class="bar-label">画面音量 (n=17)</div><div class="bar-track"><div class="bar-fill" style="width:33.3%;background:#E67E22">8.0</div></div></div>
-<div class="chart-bar"><div class="bar-label">夜视自动切换 (n=15)</div><div class="bar-track"><div class="bar-fill" style="width:22.3%;background:#E74C3C">7.67</div></div></div>
+      <div class="module-insight insight-warn"><strong>⚠️ 对照提醒：</strong>专项测试在稳定WiFi/信号下表现优异，但日常反馈「开流卡顿/失败」占近6成（见下方）。差异根因在 <strong>真实4G弱网环境</strong>——陈建建反馈"卡顿与基站距离、旁边电器有关"，需在弱网场景重点优化。</div>
     </div>
     <div class="module">
-      <div class="module-title">2.2 夜视自动切换深挖（7.67 · 最低维度）</div>
-      <div class="module-insight insight-bad"><strong>5人评分&lt;8分，核心问题：</strong>① 切回全彩不准确（张宁6分）；② 夜视画面发白/发灰（齐彩英5分）；③ 缺少用户自定义切换偏好（曾文彬6分）。</div>
+      <div class="module-title">日常开流问题（按固件版本区分 · 共17条）</div>
+      <div class="module-insight insight-bad"><strong>0729旧固件 8条</strong>：基础开流稳定性——开流卡顿(3)+开流失败(2)，陈建建一人反馈卡顿3次。</div>
       <table>
-        <tr><th>姓名</th><th>评分</th><th>打分原因</th></tr>
-        <tr><td>齐彩英</td><td class="red">5</td><td>夜视效果偶尔发白灰色</td></tr>
-        <tr><td>任孝鹏</td><td class="red">5</td><td>（未填写）</td></tr>
-        <tr><td>张宁</td><td class="red">6</td><td>开启夜视比较灵敏，夜视切回全彩感觉不太准</td></tr>
-        <tr><td>曾文彬</td><td class="red">6</td><td>希望可设置切换偏好，更喜欢全彩，极暗才开夜视</td></tr>
-        <tr><td>苗欣丽</td><td class="red">7</td><td>可以再准确一点</td></tr>
+      <tr><th>二级标签</th><th>反馈量</th><th>典型用户</th><th>问题描述</th></tr>
+      <tr><td>开流卡顿</td><td>3</td><td>陈建建×3</td><td>查看实时预览总会卡顿几秒后再出画面，卡顿严重</td></tr>
+      <tr><td>开流失败</td><td>2</td><td>谢光位、孙洪士</td><td>首次绑定后5min内多次加载失败；多次开流失败</td></tr>
+      <tr><td>开流画面变化事件</td><td>1</td><td>高瑞</td><td>切换画质偶现触发画面变化事件，视频闪、卡一下</td></tr>
+      <tr><td>开流画面灰色</td><td>1</td><td>齐彩英</td><td>实时画面灰色</td></tr>
+      <tr><td>全景图操作卡顿</td><td>1</td><td>高瑞</td><td>查看画面偶现闪现，疑网络不稳定</td></tr>
+      </table>
+      <div class="module-insight insight-warn" style="margin-top:12px"><strong>0825新固件 9条</strong>：断流续播机制新问题——长时间开流后失败(2)+断流续播异常(2)+开流加载失败(2)。<span class="red">王亚兵反馈长时间开流后失败为必现</span>。</div>
+      <table>
+      <tr><th>二级标签</th><th>反馈量</th><th>典型用户</th><th>问题描述</th></tr>
+      <tr><td>长时间开流后失败</td><td>2</td><td>王亚兵×2</td><td class="red">开流后再次开流必现失败，4G信号条消失</td></tr>
+      <tr><td>断流续播异常</td><td>2</td><td>杜劲、方家欢</td><td>开流35分钟无断流续播提示；3.0.0无断流续播，2.31.0可触发但提示语不对</td></tr>
+      <tr><td>开流加载失败</td><td>2</td><td>邱天顺、郭智育</td><td>实时画面加载失败(-604)，网络正常</td></tr>
+      <tr><td>断流续播机制缺失</td><td>1</td><td>王亚兵</td><td>4G常电设备未加断流续播机制，导致流量空耗</td></tr>
+      <tr><td>开流失败</td><td>1</td><td>陈建建</td><td>查看实时预览和卡录均失败</td></tr>
+      <tr><td>录屏时间限制异常</td><td>1</td><td>陶双</td><td>录屏连续26分钟未触发5分钟限制，手机黑屏才停</td></tr>
       </table>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">三、通话功能评价分析</div>
+    <div class="section-title">🖥️ 实时画面评价分析</div>
     <div class="module">
-      <div class="module-insight insight-good">通话功能是本次专项中<strong>表现最好的模块</strong>，5个维度均分均超9分。设备端声音(9.28)、手机端音质(9.14)表现突出。朱文虎评价"通话效果比以往小水滴都要好，是最大亮点"。</div>
-      <div class="module-title">3.1 通话5维度评分</div>
+      <div class="module-title">实时画面 8 维度评分（10分制 · 29人）</div>
+      <div class="module-insight insight-good"><strong>8维均分8.79-9.34全部达标</strong>，画质效果9.34、播放流畅9.28、白天清晰9.24表现突出；夜视自动切换8.79相对最低。</div>
+      <div class="chart-bar"><div class="bar-label">画质效果</div><div class="bar-track"><div class="bar-fill" style="width:78.0%;background:#00B050">9.34</div></div></div>
+<div class="chart-bar"><div class="bar-label">播放流畅</div><div class="bar-track"><div class="bar-fill" style="width:76.0%;background:#00B050">9.28</div></div></div>
+<div class="chart-bar"><div class="bar-label">白天清晰度</div><div class="bar-track"><div class="bar-fill" style="width:74.7%;background:#00B050">9.24</div></div></div>
+<div class="chart-bar"><div class="bar-label">实时画面总体</div><div class="bar-track"><div class="bar-fill" style="width:72.3%;background:#00B050">9.17</div></div></div>
+<div class="chart-bar"><div class="bar-label">画面音质</div><div class="bar-track"><div class="bar-fill" style="width:63.3%;background:#00B050">8.9</div></div></div>
+<div class="chart-bar"><div class="bar-label">夜晚清晰度</div><div class="bar-track"><div class="bar-fill" style="width:62.0%;background:#00B050">8.86</div></div></div>
+<div class="chart-bar"><div class="bar-label">画面音量</div><div class="bar-track"><div class="bar-fill" style="width:61.0%;background:#00B050">8.83</div></div></div>
+<div class="chart-bar"><div class="bar-label">夜视自动切换</div><div class="bar-track"><div class="bar-fill" style="width:59.7%;background:#00B050">8.79</div></div></div>
+    </div>
+    <div class="module">
+      <div class="module-title">夜视自动切换深挖（8.79 · 8维最低）</div>
+      <div class="module-insight insight-bad"><strong>5人评分&lt;8分，核心问题：</strong>① 切回全彩不准确（张宁6分）② 夜视画面发白/发灰（齐彩英5分）③ 缺少自定义切换偏好（曾文彬6分：希望极暗才开夜视，喜欢全彩模式）。</div>
+      <table><thead><tr><th style="width:90px">姓名</th><th style="width:70px">评分</th><th>打分原因</th></tr></thead><tbody><tr><td>齐彩英</td><td class="red">5分</td><td>夜视效果偶尔发白灰色</td></tr><tr><td>任孝鹏</td><td class="red">5分</td><td>(未填写)</td></tr><tr><td>张宁</td><td class="red">6分</td><td>开启夜视比较灵敏，夜视切回全彩感觉不太准</td></tr><tr><td>曾文彬</td><td class="red">6分</td><td>希望可设置切换偏好，更喜欢全彩，极暗才开夜视</td></tr><tr><td>苗欣丽</td><td class="red">7分</td><td>可以再准确一点</td></tr></tbody></table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📞 通话评价分析</div>
+    <div class="module">
+      <div class="module-title">通话 5 维度评分（10分制 · 29人）</div>
+      <div class="module-insight insight-good"><strong>通话是本次专项表现最好的模块</strong>，5维均分全超9分，设备端声音9.28最高。</div>
       <div class="chart-bar"><div class="bar-label">设备端声音</div><div class="bar-track"><div class="bar-fill" style="width:52.0%;background:#00B050">9.28</div></div></div>
 <div class="chart-bar"><div class="bar-label">手机端音质</div><div class="bar-track"><div class="bar-fill" style="width:42.7%;background:#00B050">9.14</div></div></div>
 <div class="chart-bar"><div class="bar-label">手机端声音</div><div class="bar-track"><div class="bar-fill" style="width:40.0%;background:#00B050">9.1</div></div></div>
 <div class="chart-bar"><div class="bar-label">设备端音质</div><div class="bar-track"><div class="bar-fill" style="width:38.0%;background:#00B050">9.07</div></div></div>
 <div class="chart-bar"><div class="bar-label">通话总体</div><div class="bar-track"><div class="bar-fill" style="width:35.3%;background:#00B050">9.03</div></div></div>
-      <div class="module-insight insight-warn"><strong>待优化点（来自用户建议）：</strong>通话延迟（林志澄、谢光位）、按摄像机通话键手机APP无响应（杜劲）、通话按钮红绿区分不明显对色盲不友好（朱秀澍）、缺少音量调节/设备开关（郭智育、闫贺）。</div>
+      <div class="module-insight insight-warn" style="margin-top:12px"><strong>待优化点（来自用户建议）：</strong>通话延迟（林志澄、谢光位）、按摄像机通话键手机APP无响应（杜劲）、通话按钮红绿区分不明显对色盲不友好（朱秀澍）、缺少音量调节/设备开关（郭智育、闫贺）。</div>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">四、日常问题中的开流问题（按固件版本区分）</div>
+    <div class="section-title">⚠️ 核心问题与风险</div>
     <div class="module">
-      <div class="module-insight insight-warn">日常问题反馈中「开流」类共 <strong>17条</strong>：<span class="fw-badge fw-old">0729旧固件 8条</span> 与 <span class="fw-badge fw-new">0825新固件 9条</span>。旧固件是基础开流稳定性问题，新固件是断流续播机制引入的新问题。</div>
-      <div class="module-title">4.1 0729旧固件（8条）· 基础开流稳定性</div>
-      <div class="module-insight insight-bad">问题集中在 <strong>开流卡顿(3) + 开流失败(2)</strong>，均为基础开流稳定性问题。陈建建一人反馈卡顿3次。</div>
       <table>
-        <tr><th>二级标签</th><th>反馈量</th><th>典型用户</th><th>问题描述</th></tr>
-        <tr><td>开流卡顿</td><td>3</td><td>陈建建×3</td><td>查看实时预览总会卡顿几秒后再出画面，卡顿严重</td></tr>
-        <tr><td>开流失败</td><td>2</td><td>谢光位、孙洪士</td><td>首次绑定后5min内多次加载失败；多次开流失败</td></tr>
-        <tr><td>开流画面变化事件</td><td>1</td><td>高瑞</td><td>切换画质偶现触发画面变化事件，视频闪、卡一下</td></tr>
-        <tr><td>开流画面灰色</td><td>1</td><td>齐彩英</td><td>实时画面灰色</td></tr>
-        <tr><td>全景图操作卡顿</td><td>1</td><td>高瑞</td><td>查看画面偶现闪现，疑网络不稳定</td></tr>
-      </table>
-    </div>
-    <div class="module">
-      <div class="module-title">4.2 0825新固件（9条）· 断流续播机制新问题</div>
-      <div class="module-insight insight-warn">新固件引入断流续播机制后出现「断流续播异常(2) + 长时间开流后失败(2) + 开流加载失败(2)」。<strong>王亚兵反馈长时间开流后失败为必现</strong>（开流后再次开流失败，且4G信号条消失）。</div>
-      <table>
-        <tr><th>二级标签</th><th>反馈量</th><th>典型用户</th><th>问题描述</th></tr>
-        <tr><td>长时间开流后失败</td><td>2</td><td>王亚兵×2</td><td class="red">开流后再次开流必现失败，4G信号条消失</td></tr>
-        <tr><td>断流续播异常</td><td>2</td><td>杜劲、方家欢</td><td>开流35分钟无断流续播提示；3.0.0无断流续播，2.31.0可触发但提示语不对</td></tr>
-        <tr><td>开流加载失败</td><td>2</td><td>邱天顺、郭智育</td><td>实时画面加载失败(-604)，网络正常</td></tr>
-        <tr><td>断流续播机制缺失</td><td>1</td><td>王亚兵</td><td>4G常电设备未加断流续播机制，导致流量空耗</td></tr>
-        <tr><td>开流失败</td><td>1</td><td>陈建建</td><td>查看实时预览和卡录均失败</td></tr>
-        <tr><td>录屏时间限制异常</td><td>1</td><td>陶双</td><td>录屏连续26分钟未触发5分钟限制，手机黑屏才停</td></tr>
+      <tr><th>等级</th><th>问题</th><th>影响</th><th>用户原声</th><th>状态</th></tr>
+      <tr><td class="red">P0</td><td>开流卡顿/失败（弱网）</td><td>10条(59%)</td><td>陈建建:卡顿严重; 谢光位:5min内多次加载失败</td><td>持续跟进</td></tr>
+      <tr><td class="red">P0</td><td>夜视自动切换相对最低(8.79)</td><td>5人&lt;8分</td><td>张宁:切回全彩不准; 齐彩英:发白灰色</td><td>算法优化</td></tr>
+      <tr><td class="orange">P1</td><td>长时间开流后失败</td><td>2条(必现)</td><td>王亚兵:开流后再次开流必现失败，信号条消失</td><td>新固件bug</td></tr>
+      <tr><td class="orange">P1</td><td>断流续播机制异常</td><td>3条</td><td>方家欢:3.0.0无机制，2.31.0提示语不对</td><td>新固件bug</td></tr>
+      <tr><td>P2</td><td>通话延迟</td><td>2人建议</td><td>林志澄/谢光位:优化设备端通话延时</td><td>体验优化</td></tr>
+      <tr><td>P2</td><td>画面畸变/拖影</td><td>3人建议</td><td>张宁:四边畸变修正开关; 黄显森:转动拖影</td><td>体验优化</td></tr>
+      <tr><td>P2</td><td>录屏时间限制异常</td><td>1条</td><td>陶双:连续26分钟未触发5分钟限制</td><td>待确认</td></tr>
       </table>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">五、核心问题与风险</div>
+    <div class="section-title">📝 用户建议汇总</div>
     <div class="module">
+      <div class="module-title">实时画面建议</div>
       <table>
-        <tr><th>等级</th><th>问题</th><th>影响</th><th>用户原声</th><th>状态</th></tr>
-        <tr><td><span class="tag tag-p0">P0</span></td><td>开流卡顿/失败（弱网）</td><td>10条(59%)</td><td>陈建建:卡顿严重; 谢光位:5min内多次加载失败</td><td>持续跟进</td></tr>
-        <tr><td><span class="tag tag-p0">P0</span></td><td>夜视自动切换不准</td><td>5人低分</td><td>张宁:切回全彩不准; 齐彩英:发白灰色</td><td>算法优化</td></tr>
-        <tr><td><span class="tag tag-p1">P1</span></td><td>长时间开流后失败</td><td>2条(必现)</td><td>王亚兵:开流后再次开流必现失败，信号条消失</td><td>新固件bug</td></tr>
-        <tr><td><span class="tag tag-p1">P1</span></td><td>断流续播机制异常</td><td>3条</td><td>方家欢:3.0.0无机制，2.31.0提示语不对</td><td>新固件bug</td></tr>
-        <tr><td><span class="tag tag-p2">P2</span></td><td>通话延迟</td><td>2人建议</td><td>林志澄/谢光位:优化设备端通话延时</td><td>体验优化</td></tr>
-        <tr><td><span class="tag tag-p2">P2</span></td><td>画面畸变/拖影</td><td>3人建议</td><td>张宁:四边畸变修正开关; 黄显森:转动拖影</td><td>体验优化</td></tr>
-        <tr><td><span class="tag tag-p2">P2</span></td><td>录屏时间限制异常</td><td>1条</td><td>陶双:连续26分钟未触发5分钟限制</td><td>待确认</td></tr>
+      <tr><th style="width:90px">姓名</th><th>建议内容</th></tr>
+      <tr><td>孙洪士</td><td>增加图像垂直校正，让画面更方方正正</td></tr>
+      <tr><td>张宁</td><td>增加画面四边畸变修正开关</td></tr>
+      <tr><td>谢光位</td><td>夜视模式画质再优化，半夜画面看不清楚</td></tr>
+      <tr><td>闫贺</td><td>希望夜视支持炫彩模式</td></tr>
+      <tr><td>郭智育</td><td>根据画面出现的异常实物自动对焦</td></tr>
+      <tr><td>程永权</td><td>视频界面太小，无用的东西太多</td></tr>
+      <tr><td>高瑞</td><td>通话状态下人形识别框一直显示且有卡顿，需优化</td></tr>
+      <tr><td>黄显森</td><td>转动视角时画面有点拖影（可接受）</td></tr>
+      <tr><td>邱天顺</td><td>希望能有更高清的版本</td></tr>
+      <tr><td>苗欣丽</td><td>提示继续观看的时间可以长一点</td></tr>
+      </table>
+    </div>
+    <div class="module">
+      <div class="module-title">通话建议</div>
+      <table>
+      <tr><th style="width:90px">姓名</th><th>建议内容</th></tr>
+      <tr><td>林志澄</td><td>通话延迟建议优化</td></tr>
+      <tr><td>谢光位</td><td>优化设备端通话延时</td></tr>
+      <tr><td>杜劲</td><td>按摄像机通话键手机APP没反应</td></tr>
+      <tr><td>朱秀澍</td><td>通话按钮红绿区分不明显，对红绿色盲不友好，增加信号发射动态全屏指示</td></tr>
+      <tr><td>郭智育</td><td>通话时可调节音量按钮浮出或显示</td></tr>
+      <tr><td>闫贺</td><td>通话应增加可调节设备开关</td></tr>
+      <tr><td>王亚兵</td><td>希望增加手势呼叫/语音呼叫（上墙吸顶安装场景无法从设备发起通话）</td></tr>
+      <tr><td>高瑞</td><td>暂无</td></tr>
       </table>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">六、用户建议汇总</div>
+    <div class="section-title">🗣️ 用户原声标签分类汇总</div>
     <div class="module">
-      <div class="module-title">6.1 实时画面建议</div>
-      <table>
-        <tr><th>姓名</th><th>建议内容</th></tr>
-        <tr><td>孙洪士</td><td>增加图像垂直校正，让画面更方方正正</td></tr>
-        <tr><td>张宁</td><td>增加画面四边畸变修正开关</td></tr>
-        <tr><td>谢光位</td><td>夜视模式画质再优化，半夜画面看不清楚</td></tr>
-        <tr><td>闫贺</td><td>希望夜视支持炫彩模式</td></tr>
-        <tr><td>郭智育</td><td>根据画面出现的异常实物自动对焦</td></tr>
-        <tr><td>程永权</td><td>视频界面太小，无用的东西太多</td></tr>
-        <tr><td>高瑞</td><td>通话状态下人形识别框一直显示且有卡顿，需优化</td></tr>
-        <tr><td>黄显森</td><td>转动视角时画面有点拖影（可接受）</td></tr>
-        <tr><td>邱天顺</td><td>希望能有更高清的版本</td></tr>
-        <tr><td>苗欣丽</td><td>提示继续观看的时间可以长一点</td></tr>
-      </table>
-    </div>
-    <div class="module">
-      <div class="module-title">6.2 通话建议</div>
-      <table>
-        <tr><th>姓名</th><th>建议内容</th></tr>
-        <tr><td>林志澄</td><td>通话延迟建议优化</td></tr>
-        <tr><td>谢光位</td><td>优化设备端通话延时</td></tr>
-        <tr><td>杜劲</td><td>按摄像机通话键手机APP没反应</td></tr>
-        <tr><td>朱秀澍</td><td>通话按钮红绿区分不明显，对红绿色盲不友好，增加信号发射动态全屏指示</td></tr>
-        <tr><td>郭智育</td><td>通话时可调节音量按钮浮出或显示</td></tr>
-        <tr><td>闫贺</td><td>通话应增加可调节设备开关</td></tr>
-        <tr><td>王亚兵</td><td>希望增加手势呼叫/语音呼叫（上墙吸顶安装场景无法从设备发起通话）</td></tr>
-        <tr><td>高瑞</td><td>暂无</td></tr>
-      </table>
+      <div class="module-insight insight-good">对齐专项跟进sheet「实时画面通话」模块，共 <strong>2个问题 · 10条原声</strong>（夜视不清晰7条 + 开流失败3条），研发原因&解决方案待补充。</div>
+      <table><thead><tr><th>一级标签</th><th>二级标签</th><th>反馈量</th><th>用户原声</th><th>问题原因&解决方案</th><th>责任人</th></tr></thead><tbody><tr><td style="width:80px">实时画面</td><td style="width:104px">夜视不清晰</td><td style="width:42px" class="v-cnt">7</td><td class="voice-text"><b>谢光位</b>|夜视模式画质能再优化一些更好，小朋友半夜都看不清楚是什么<br><b>高瑞</b>|不缩放的情况下画质清晰，但是放大后不太清晰，有种马赛克颗粒感<br><b>谢光位</b>|夜视远端偏模糊<br><b>郭智育</b>|清晰度没问题，但会因远处灯光影响，导致视距范围内图像看不清<br><b>王亚兵</b>|晚上夜视效果还是只能看个大概的轮廓<br><b>汤远鹏</b>|夜晚画面锐角有点多，不太清晰，红外偏红<br><b>张鹏鑫</b>|比较模糊</td><td class="voice-text" style="width:180px"><span style="color:#bbb">—</span></td><td style="width:46px">青根</td></tr><tr><td style="width:80px">开流</td><td style="width:104px">开流失败</td><td style="width:42px" class="v-cnt">3</td><td class="voice-text"><b>邱天顺</b>|实时画面加载失败<br><b>郭智育</b>|正常开流，今天第二次打开APP，刚开始显示实时画面，突然显示加载失败(-604)，实测网络正常<br><b>陈建建</b>|查看实时预览和卡录均失败</td><td class="voice-text" style="width:180px"><span style="color:#bbb">—</span></td><td style="width:46px">克涛</td></tr></tbody></table>
     </div>
   </div>
 
   <div class="footer">
-    数据来源：飞书表格「实时画面通话」(MuG6Bk) + 日常问题反馈(v0nxl4)<br>
+    数据来源：飞书表格「实时画面通话」(MuG6Bk) + 「专项跟进」sheet(2iCQDe) 实时画面通话模块 + 日常问题反馈(v0nxl4)<br>
     报告合集：https://yanlingyin001.github.io/reports/9pro-index.html<br>
     生成时间：2026-08-31 | 分析：尹燕玲-报告分析专家
   </div>
