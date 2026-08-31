@@ -37,6 +37,11 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif
 .vpct { color:#999; }
 .vbar { width:66%; border-radius:4px 4px 0 0; min-height:3px; }
 .vlabel { font-size:11px; color:#666; margin-top:6px; text-align:center; }
+.hl-card { background:#f0fdf4; border:1px solid #d1fae5; border-radius:10px; padding:14px; margin-bottom:12px; }
+.hl-title { font-size:15px; font-weight:700; color:#00B050; margin-bottom:6px; }
+.hl-score { font-size:12px; color:#333; background:#fff; padding:2px 8px; border-radius:10px; margin-left:6px; font-weight:600; }
+.hl-desc { font-size:13px; color:#555; margin-bottom:8px; }
+.hl-voices { font-size:12px; color:#666; line-height:1.8; }
 table { width:100%; border-collapse:collapse; font-size:13px; }
 th { background:#f8faf8; padding:8px; text-align:left; font-weight:600; color:#666; border-bottom:2px solid #e0e0e0; }
 td { padding:8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
@@ -44,9 +49,6 @@ td { padding:8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
 .v-cnt { color:#00B050; font-weight:700; }
 .red { color:#E74C3C; }
 .orange { color:#E67E22; }
-.fw-badge { display:inline-block; padding:2px 6px; border-radius:3px; font-size:12px; background:#eef; color:#334; margin-left:4px; }
-.fw-old { background:#f0f0f0; color:#666; }
-.fw-new { background:#e8f4ff; color:#1a73e8; }
 .footer { text-align:center; padding:20px; color:#999; font-size:12px; }
 </style>
 </head>
@@ -68,10 +70,19 @@ td { padding:8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
   <div class="section">
     <div class="section-title">💡 核心洞察</div>
     <div class="module">
-      <div class="module-insight insight-good"><strong>开流性能优异</strong>：90%开流在5秒内完成（145次理想环境实测），"1-3秒"占比最高55.9%。</div>
+      <div class="module-insight insight-good"><strong>开流性能优异</strong>：90%开流在5秒内完成（145次理想环境实测），&ldquo;1-3秒&rdquo;占比最高55.9%。</div>
       <div class="module-insight insight-good"><strong>实时画面全面达标</strong>：8维均分8.79-9.34全部进入绿色区间，画质效果9.34、播放流畅9.28领跑。</div>
-      <div class="module-insight insight-good"><strong>通话是最大亮点</strong>：5维均分9.03-9.28全超9分，设备端声音9.28最高，用户评价"通话效果比以往小水滴都要好"。</div>
+      <div class="module-insight insight-good"><strong>通话是最大亮点</strong>：5维均分9.03-9.28全超9分，设备端声音9.28最高，用户评价&ldquo;比小水滴还好&rdquo;。</div>
       <div class="module-insight insight-bad"><strong>弱网是核心风险</strong>：日常开流卡顿/失败10条(59%)，与专项理想环境90%达成率形成反差，根因在真实4G弱网环境。</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🌟 用户体验爽点</div>
+    <div class="module">
+      <div class="hl-card"><div class="hl-title">🖥 画面清晰出色 <span class="hl-score">9.34 / 9.24</span></div><div class="hl-desc">400万像素2.5K成像画质领先，画质效果9.34、白天清晰度9.24，色彩还原与细节表现获多人认可。</div><div class="hl-voices"><b>黄显森</b>：白天成像清晰，景物细节可完整辨识，色彩还原正常<br><b>张宁</b>：画面清晰达到300万像素的预期，白天清晰度很好<br><b>王刚红</b>：2.5K画质满意</div></div>
+<div class="hl-card"><div class="hl-title">📞 通话清晰无杂音 <span class="hl-score">9.03 / 9.28</span></div><div class="hl-desc">通话5维评分全超9分，双向对讲清晰稳定，用户评价“360里第一梯队”。</div><div class="hl-voices"><b>张宁</b>：通话总体满意，手边好几个摄像头，360这个效果算第一梯队了<br><b>方家欢</b>：延迟和WiFi摄像头相比几乎没什么区别<br><b>黄显森</b>：双向通话连接稳定，对讲响应迅速，整体体验良好</div></div>
+<div class="hl-card"><div class="hl-title">🚀 开流响应迅速 <span class="hl-score">90% / 55.9%</span></div><div class="hl-desc">145次实测90%开流在5秒内完成，“1-3秒”占55.9%，画面播放流畅无卡顿掉帧。</div><div class="hl-voices"><b>王亚兵</b>：目前的流畅性稳定住很OK<br><b>黄显森</b>：视频播放流畅，无卡顿掉帧现象<br><b>闫贺</b>：播放没问题，这个网络还没遇到太卡顿</div></div>
     </div>
   </div>
 
@@ -79,9 +90,9 @@ td { padding:8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
     <div class="section-title">🚀 开流性能分析</div>
     <div class="module">
       <div class="module-title">开流耗时分布（29人×5次=145次测试）</div>
-      <div class="module-insight insight-good"><strong>90%开流5秒内完成</strong>，"1-3秒"占55.9%，"5秒以上"仅10%，10秒以上仅1次(0.7%)。</div>
+      <div class="module-insight insight-good"><strong>90%开流5秒内完成</strong>，&ldquo;1-3秒&rdquo;占55.9%，&ldquo;5秒以上&rdquo;仅10%，10秒以上仅1次(0.7%)。</div>
       <div class="vchart"><div class="vcol"><div class="vval">81次<br><span class="vpct">55.9%</span></div><div class="vbar" style="height:150px;background:#00B050"></div><div class="vlabel">1-3秒</div></div><div class="vcol"><div class="vval">49次<br><span class="vpct">33.8%</span></div><div class="vbar" style="height:90px;background:#2BBD6E"></div><div class="vlabel">3-5秒</div></div><div class="vcol"><div class="vval">11次<br><span class="vpct">7.6%</span></div><div class="vbar" style="height:20px;background:#F1C40F"></div><div class="vlabel">5-8秒</div></div><div class="vcol"><div class="vval">3次<br><span class="vpct">2.1%</span></div><div class="vbar" style="height:5px;background:#E67E22"></div><div class="vlabel">8-10秒</div></div><div class="vcol"><div class="vval">1次<br><span class="vpct">0.7%</span></div><div class="vbar" style="height:1px;background:#E74C3C"></div><div class="vlabel">10秒以上</div></div></div>
-      <div class="module-insight insight-warn"><strong>⚠️ 对照提醒：</strong>专项测试在稳定WiFi/信号下表现优异，但日常反馈「开流卡顿/失败」占近6成（见下方）。差异根因在 <strong>真实4G弱网环境</strong>——陈建建反馈"卡顿与基站距离、旁边电器有关"，需在弱网场景重点优化。</div>
+      <div class="module-insight insight-warn"><strong>⚠️ 对照提醒：</strong>专项测试在稳定WiFi/信号下表现优异，但日常反馈「开流卡顿/失败」占近6成（见下方）。差异根因在 <strong>真实4G弱网环境</strong>——陈建建反馈&ldquo;卡顿与基站距离、旁边电器有关&rdquo;，需在弱网场景重点优化。</div>
     </div>
     <div class="module">
       <div class="module-title">日常开流问题（按固件版本区分 · 共17条）</div>
@@ -139,56 +150,6 @@ td { padding:8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
 <div class="chart-bar"><div class="bar-label">设备端音质</div><div class="bar-track"><div class="bar-fill" style="width:38.0%;background:#00B050">9.07</div></div></div>
 <div class="chart-bar"><div class="bar-label">通话总体</div><div class="bar-track"><div class="bar-fill" style="width:35.3%;background:#00B050">9.03</div></div></div>
       <div class="module-insight insight-warn" style="margin-top:12px"><strong>待优化点（来自用户建议）：</strong>通话延迟（林志澄、谢光位）、按摄像机通话键手机APP无响应（杜劲）、通话按钮红绿区分不明显对色盲不友好（朱秀澍）、缺少音量调节/设备开关（郭智育、闫贺）。</div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">⚠️ 核心问题与风险</div>
-    <div class="module">
-      <table>
-      <tr><th>等级</th><th>问题</th><th>影响</th><th>用户原声</th><th>状态</th></tr>
-      <tr><td class="red">P0</td><td>开流卡顿/失败（弱网）</td><td>10条(59%)</td><td>陈建建:卡顿严重; 谢光位:5min内多次加载失败</td><td>持续跟进</td></tr>
-      <tr><td class="red">P0</td><td>夜视自动切换相对最低(8.79)</td><td>5人&lt;8分</td><td>张宁:切回全彩不准; 齐彩英:发白灰色</td><td>算法优化</td></tr>
-      <tr><td class="orange">P1</td><td>长时间开流后失败</td><td>2条(必现)</td><td>王亚兵:开流后再次开流必现失败，信号条消失</td><td>新固件bug</td></tr>
-      <tr><td class="orange">P1</td><td>断流续播机制异常</td><td>3条</td><td>方家欢:3.0.0无机制，2.31.0提示语不对</td><td>新固件bug</td></tr>
-      <tr><td>P2</td><td>通话延迟</td><td>2人建议</td><td>林志澄/谢光位:优化设备端通话延时</td><td>体验优化</td></tr>
-      <tr><td>P2</td><td>画面畸变/拖影</td><td>3人建议</td><td>张宁:四边畸变修正开关; 黄显森:转动拖影</td><td>体验优化</td></tr>
-      <tr><td>P2</td><td>录屏时间限制异常</td><td>1条</td><td>陶双:连续26分钟未触发5分钟限制</td><td>待确认</td></tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">📝 用户建议汇总</div>
-    <div class="module">
-      <div class="module-title">实时画面建议</div>
-      <table>
-      <tr><th style="width:90px">姓名</th><th>建议内容</th></tr>
-      <tr><td>孙洪士</td><td>增加图像垂直校正，让画面更方方正正</td></tr>
-      <tr><td>张宁</td><td>增加画面四边畸变修正开关</td></tr>
-      <tr><td>谢光位</td><td>夜视模式画质再优化，半夜画面看不清楚</td></tr>
-      <tr><td>闫贺</td><td>希望夜视支持炫彩模式</td></tr>
-      <tr><td>郭智育</td><td>根据画面出现的异常实物自动对焦</td></tr>
-      <tr><td>程永权</td><td>视频界面太小，无用的东西太多</td></tr>
-      <tr><td>高瑞</td><td>通话状态下人形识别框一直显示且有卡顿，需优化</td></tr>
-      <tr><td>黄显森</td><td>转动视角时画面有点拖影（可接受）</td></tr>
-      <tr><td>邱天顺</td><td>希望能有更高清的版本</td></tr>
-      <tr><td>苗欣丽</td><td>提示继续观看的时间可以长一点</td></tr>
-      </table>
-    </div>
-    <div class="module">
-      <div class="module-title">通话建议</div>
-      <table>
-      <tr><th style="width:90px">姓名</th><th>建议内容</th></tr>
-      <tr><td>林志澄</td><td>通话延迟建议优化</td></tr>
-      <tr><td>谢光位</td><td>优化设备端通话延时</td></tr>
-      <tr><td>杜劲</td><td>按摄像机通话键手机APP没反应</td></tr>
-      <tr><td>朱秀澍</td><td>通话按钮红绿区分不明显，对红绿色盲不友好，增加信号发射动态全屏指示</td></tr>
-      <tr><td>郭智育</td><td>通话时可调节音量按钮浮出或显示</td></tr>
-      <tr><td>闫贺</td><td>通话应增加可调节设备开关</td></tr>
-      <tr><td>王亚兵</td><td>希望增加手势呼叫/语音呼叫（上墙吸顶安装场景无法从设备发起通话）</td></tr>
-      <tr><td>高瑞</td><td>暂无</td></tr>
-      </table>
     </div>
   </div>
 
