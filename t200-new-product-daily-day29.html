@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 4G记录仪新品跟踪日报 · Day 29</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; border-radius: 12px; padding: 30px; margin-bottom: 20px; }
+.header h1 { font-size: 24px; margin-bottom: 8px; }
+.header .subtitle { font-size: 14px; opacity: 0.9; }
+.overview { background: #fff; border-left: 4px solid #00B050; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; font-size: 14px; }
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+.kpi-card { background: #fff; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi-value { font-size: 32px; font-weight: 700; color: #00B050; }
+.kpi-label { font-size: 13px; color: #666; margin-top: 4px; }
+.kpi-delta { font-size: 12px; color: #e74c3c; margin-top: 4px; font-weight: 600; }
+.kpi-delta.green { color: #00B050; }
+.section { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 18px; color: #333; margin-bottom: 16px; border-bottom: 2px solid #00B050; padding-bottom: 8px; }
+.insight-box { border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; font-size: 14px; }
+.insight-green { background: #e8f5e9; border-left: 4px solid #00B050; }
+.insight-orange { background: #fff3e0; border-left: 4px solid #f39c12; }
+.insight-red { background: #ffebee; border-left: 4px solid #e74c3c; }
+.insight-box strong { display: block; margin-bottom: 4px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: #00B050; color: #fff; padding: 10px 8px; text-align: left; font-weight: 500; }
+td { padding: 8px; border-bottom: 1px solid #eee; }
+tr:hover { background: #f9f9f9; }
+.new-row { background: #fffde7 !important; }
+.defect { color: #e74c3c; font-weight: 600; }
+.chart-container { display: flex; gap: 20px; flex-wrap: wrap; }
+.chart-box { flex: 1; min-width: 400px; }
+.cat-group { background: #f5f5f5; font-weight: 600; padding: 8px; border-radius: 4px; margin: 12px 0 8px; }
+.footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+.footer a { color: #00B050; text-decoration: none; }
+@media (max-width: 768px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } .chart-box { min-width: 100%; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>T200 4G记录仪新品跟踪日报 · Day 29</h1>
+    <div class="subtitle">数据周期：8.4-8.31 | 累计反馈 238条 | 覆盖渠道 8个 | 问题类型 54种</div>
+  </div>
+
+  <div class="overview">
+    📊 截至8月31日，累计反馈238条（+39），覆盖8个渠道。本周新增重点关注：<strong>门店不会安装+3</strong>（京东养车门店培训问题突出）、<strong>电池/供电咨询+4</strong>（取电方式咨询集中）、<strong>4G流量收费咨询+4</strong>。新增问题类型：<strong>无行车轨迹</strong>、<strong>开流失败</strong>。
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="kpi-value">238</div><div class="kpi-label">反馈问题总数</div><div class="kpi-delta">+39</div></div>
+    <div class="kpi-card"><div class="kpi-value">8</div><div class="kpi-label">覆盖渠道数</div><div class="kpi-delta green">持平</div></div>
+    <div class="kpi-card"><div class="kpi-value">54</div><div class="kpi-label">问题类型数</div><div class="kpi-delta">+-46</div></div>
+    <div class="kpi-card"><div class="kpi-value">52</div><div class="kpi-label">实质性缺陷数</div><div class="kpi-delta">+15</div></div>
+  </div>
+
+  <div class="section">
+    <h2>核心洞察</h2>
+    <div class="insight-box insight-red"><strong>🔴 门店安装能力仍是最大痛点</strong>门店不会安装新增3条（累计5条），全部来自京东自营。用户反馈"门店不知道保险盒位置""门店不给安装"，京东养车门店培训问题持续恶化，需紧急推动渠道侧解决。</div>
+    <div class="insight-box insight-orange"><strong>🟡 供电/取电方式咨询集中爆发</strong>电池/供电咨询新增4条（累计15条），主要来自有赞和私域，用户集中询问"怎么取电""是否连电瓶""是否连点烟器"，商详页取电方式说明可能不够清晰。</div>
+    <div class="insight-box insight-green"><strong>🟢 新增问题：无行车轨迹、开流失败</strong>各出现1条，均为京东自营渠道。无行车轨迹可能与定位模块有关，开流失败为APP端画面加载异常，需研发关注。</div>
+  </div>
+
+  <div class="section">
+    <h2>渠道反馈分布</h2>
+    <div class="chart-container"><div class="chart-box" id="chart-channel" style="height:350px;"></div></div>
+  </div>
+
+  <div class="section">
+    <h2>问题主题分类</h2>
+    <div class="chart-container">
+      <div class="chart-box" id="chart-cat" style="height:350px;"></div>
+      <div class="chart-box"><table><thead><tr><th>分类</th><th>反馈量</th><th>占比</th></tr></thead><tbody><tr><td>配件</td><td>11</td><td>4.7%</td></tr><tr><td>安装</td><td>54</td><td>23.1%</td></tr><tr><td>品控</td><td>6</td><td>2.6%</td></tr><tr><td>费用</td><td>25</td><td>10.7%</td></tr><tr><td>供电</td><td>21</td><td>9.0%</td></tr><tr><td>停车监控</td><td>22</td><td>9.4%</td></tr><tr><td>视野</td><td>22</td><td>9.4%</td></tr><tr><td>参数</td><td>15</td><td>6.4%</td></tr><tr><td>功能</td><td>58</td><td>24.8%</td></tr></tbody></table></div></div></div>
+
+  <div class="section">
+    <h2>今日新增反馈明细（+39条）</h2><div class="cat-group">【配件】2条</div>
+<table><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr></thead><tbody>
+<tr class="new-row"><td>京东自营</td><td>降压线适配咨询</td><td>降压线不够长咨询是否有更长的降压线</td></tr>
+<tr class="new-row"><td>京东自营</td><td>降压线适配咨询</td><td>降压线插片不匹配</td></tr>
+</tbody></table>
+<div class="cat-group">【安装】6条</div>
+<table><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr></thead><tbody>
+<tr class="new-row"><td>京东自营</td><td>安装咨询</td><td>需要操作视频</td></tr>
+<tr class="new-row"><td>京东自营</td><td>安装咨询</td><td>需要查询辽宁省辽阳市有没有安装门店</td></tr>
+<tr class="new-row"><td>京东自营</td><td class="defect">门店不会安装</td><td>安装门店不给安装</td></tr>
+<tr class="new-row"><td>京东自营</td><td>安装门店更换咨询</td><td>安装门店更换</td></tr>
+<tr class="new-row"><td>京东自营</td><td class="defect">门店不会安装</td><td>门店不知道客户车辆保险盒位置，无法安装</td></tr>
+<tr class="new-row"><td>京东自营</td><td class="defect">门店不会安装</td><td>门店不会安装</td></tr>
+</tbody></table>
+<div class="cat-group">【费用】4条</div>
+<table><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr></thead><tbody>
+<tr class="new-row"><td>有赞</td><td>4G流量收费咨询</td><td>要流量钱不</td></tr>
+<tr class="new-row"><td>有赞</td><td>4G流量收费咨询</td><td>1、需要流量吗 2、新机带降压线吗</td></tr>
+<tr class="new-row"><td>有赞</td><td>4G流量收费咨询</td><td>这个流量免多久</td></tr>
+<tr class="new-row"><td>有赞</td><td>4G流量收费咨询</td><td>4G网怎么收费</td></tr>
+</tbody></table>
+<div class="cat-group">【供电】5条</div>
+<table><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr></thead><tbody>
+<tr class="new-row"><td>小红书</td><td>电池/供电咨询</td><td>这款行车记录仪需要连接电瓶吗？</td></tr>
+<tr class="new-row"><td>私域</td><td>电池/供电咨询</td><td>这个安装是直接连接点烟器上吗</td></tr>
+<tr class="new-row"><td>京东自营</td><td class="defect">电瓶损耗影响顾虑</td><td>对电瓶损坏大吗</td></tr>
+<tr class="new-row"><td>有赞</td><td>电池/供电咨询</td><td>这款怎么取电</td></tr>
+<tr class="new-row"><td>私域</td><td>电池/供电咨询</td><td>这个取电是怎么弄的</td></tr>
+</tbody></table>
+<div class="cat-group">【停车监控】5条</div>
+<table><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr></thead><tbody>
+<tr class="new-row"><td>京东自营</td><td>停车监控咨询</td><td>车子未熄火状态是否会录制</td></tr>
+<tr class="new-row"><td>京东自营</td><td>哨兵模式咨询</td><td>哨兵模式设备断电了视频能否保存或者上传</td></tr>
+<tr class="new-row"><td>京东自营</td><td>哨兵模式咨询</td><td>哨兵模式是否需要收费，哨兵模式没有触发</td></tr>
+<tr class="new-row"><td>京东自营</td><td>停车监控咨询</td><td>车辆熄火后如何关闭停车监控和缩时录影设置咨询</td></tr>
+<tr class="new-row"><td>京东自营</td><td>停车监控咨询</td><td>停车监控触发承担，如何才能触发</td></tr>
+</tbody></table>
+<div class="cat-group">【视野】4条</div>
+<table><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr></thead><tbody>
+<tr class="new-row"><td>京东自营</td><td>镜头调节咨询</td><td>设备不支持旋转，由于安装服务卡主服务单咨询如何退货</td></tr>
+<tr class="new-row"><td>京东自营</td><td>前后双录/全景需求</td><td>是否是前后双摄</td></tr>
+<tr class="new-row"><td>有赞</td><td>前后双录/全景需求</td><td>这款行车记录仪镜头的水平角度是多少？</td></tr>
+<tr class="new-row"><td>有赞</td><td>前后双录/全景需求</td><td>这个能看四周不</td></tr>
+</tbody></table>
+<div class="cat-group">【参数】1条</div>
+<table><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr></thead><tbody>
+<tr class="new-row"><td>京东自营</td><td>车型适配咨询</td><td>纯电车是否支持使用</td></tr>
+</tbody></table>
+<div class="cat-group">【功能】12条</div>
+<table><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th></tr></thead><tbody>
+<tr class="new-row"><td>京东自营</td><td class="defect">循环录制异常</td><td>熄火后一直录制循环视频</td></tr>
+<tr class="new-row"><td>京东自营</td><td>远程查看咨询</td><td>行驶中能否远程查看</td></tr>
+<tr class="new-row"><td>京东自营</td><td>分享咨询</td><td>一个手机查看一个行车记录仪吗</td></tr>
+<tr class="new-row"><td>京东自营</td><td>远程查看咨询</td><td>设备回放查看方法</td></tr>
+<tr class="new-row"><td>京东自营</td><td class="defect">定位偏差大</td><td>定位不准确</td></tr>
+<tr class="new-row"><td>京东自营</td><td class="defect">无行车轨迹</td><td>使用几天后，没有行车轨迹</td></tr>
+<tr class="new-row"><td>京东自营</td><td class="defect">设备离线</td><td>空旷地带设备离线，连接后画面无法加载</td></tr>
+<tr class="new-row"><td>京东自营</td><td class="defect">开流失败</td><td>APP上显示在线画面一直无法加载</td></tr>
+<tr class="new-row"><td>京东自营</td><td>分享咨询</td><td>设备是否支持分享，一个账号是否支持两个手机登录</td></tr>
+<tr class="new-row"><td>京东自营</td><td>云录功能咨询</td><td>上传云端是否需要内存卡，熄火后开关车门不触发，退货没有内存卡</td></tr>
+<tr class="new-row"><td>京东自营</td><td>云录功能咨询</td><td>客户反馈设备首绑无云录</td></tr>
+<tr class="new-row"><td>有赞</td><td>其他功能咨询</td><td>什么接口</td></tr>
+</tbody></table>
+  </div>
+
+  <div class="section">
+    <h2>重点问题跟踪</h2>
+    <table><thead><tr><th>问题分类</th><th>问题名称</th><th>反馈总量</th><th>渠道分布</th><th>用户原声</th><th>原因</th><th>解决方案</th><th>责任人</th></tr></thead><tbody><tr><td>安装</td><td>安装咨询</td><td>16条（+2）</td><td>京东自营×9, 有赞×6, 天猫官旗×1</td><td style="max-width:200px;font-size:12px;">1、怎么安装 2、24小时监控吗; 降压线如何安装; 咨询门店安装问题; 安装地址在哪等16条</td><td style="font-size:12px;">用户咨询门店安装流程、走线方式等</td><td style="font-size:12px;">提供京东养车门店预约指引及安装视频</td><td>渠道销售</td></tr>
+<tr><td>安装</td><td>门店不会安装</td><td>5条（+3）</td><td>京东自营×5</td><td style="max-width:200px;font-size:12px;">车子太大 安装门店反馈不会装降压线; 安装门店不给安装; 门店不知道客户车辆保险盒位置，无法安装; 门店不会安装</td><td style="font-size:12px;">门店对降压线安装不熟悉，安装培训不到位</td><td style="font-size:12px;">反馈安装门店，加强门店培训或提供更详细指引</td><td>渠道销售</td></tr>
+<tr><td>安装</td><td>安装门店更换咨询</td><td>2条（+1）</td><td>京东自营×2</td><td style="max-width:200px;font-size:12px;">更换安装门店; 安装门店更换</td><td style="font-size:12px;"></td><td style="font-size:12px;"></td><td></td></tr>
+<tr><td>费用</td><td>4G流量收费咨询</td><td>18条（+4）</td><td>有赞×10, 私域×3, 天猫车品×2, 京东自营×2, 小红书×1</td><td style="max-width:200px;font-size:12px;">这个4g需要流量费用吗; 是终身免流量的吗; 终身免费流量是吗？; 需要额外买流量卡吗等18条</td><td style="font-size:12px;">赠送终身免费流量，云服务到期需购买套餐</td><td style="font-size:12px;">结合用户反馈评估是否需要调整云服务套餐</td><td>徐凯来</td></tr>
+<tr><td>供电</td><td>电池/供电咨询</td><td>15条（+4）</td><td>有赞×6, 私域×4, 小红书×2, 京东自营×2, 天猫官旗×1</td><td style="max-width:200px;font-size:12px;">用充电吗; 这款是自带电池的; 有内置电池吗？; 你好请问这个是插电瓶吗等15条</td><td style="font-size:12px;">设备无内置电池，需通过降压线接保险盒供电或车充供电</td><td style="font-size:12px;">客服告知无内置电池，标配降压线接保险盒供电</td><td>徐凯来</td></tr>
+<tr><td>供电</td><td>电瓶损耗影响顾虑</td><td>7条（+1）</td><td>京东自营×6, 抖音×1</td><td style="max-width:200px;font-size:12px;">熄火录制视频会不会损耗电瓶; 一直工作对电瓶有影响吗; 担心亏电，如何关闭熄火录制等7条</td><td style="font-size:12px;">熄火后安装标配降压线，具备电压保护</td><td style="font-size:12px;">同原因</td><td>徐凯来</td></tr>
+<tr><td>停车监控</td><td>停车监控咨询</td><td>13条（+3）</td><td>京东自营×6, 有赞×3, 小红书×1, 天猫车品×1, 抖音×1, 私域×1</td><td style="max-width:200px;font-size:12px;">这个车停着也能录像吗？; 停车了怎么接电; 停车监控功能咨询等13条</td><td style="font-size:12px;"></td><td style="font-size:12px;"></td><td></td></tr>
+<tr><td>停车监控</td><td>哨兵模式咨询</td><td>10条（+2）</td><td>京东自营×5, 天猫官旗×3, 天猫车旗×1, 小红书×1</td><td style="max-width:200px;font-size:12px;">地库没信号 哨兵模式还好用吗; 哨兵模式待机多久; 哨兵误报; 哨兵模式未触发等10条</td><td style="font-size:12px;">哨兵模式用户不清楚具体功能</td><td style="font-size:12px;">8月底上线APP新版本，设置页增加功能介绍</td><td>徐凯来</td></tr>
+<tr><td>视野</td><td>前后双录/全景需求</td><td>17条（+3）</td><td>京东自营×5, 有赞×5, 私域×4, 天猫官旗×2, 抖音×1</td><td style="max-width:200px;font-size:12px;">咨询是否前后双录; 能否看到后面; 能否加配后置摄像头; 这款有后视摄像吗等17条</td><td style="font-size:12px;"></td><td style="font-size:12px;"></td><td></td></tr>
+<tr><td>视野</td><td>镜头调节咨询</td><td>7条（+1）</td><td>有赞×5, 天猫车品×1, 京东自营×1</td><td style="max-width:200px;font-size:12px;">镜头能调节吗; 可以360度监控吗; 这个有几个摄像头; 不支持旋转等7条</td><td style="font-size:12px;"></td><td style="font-size:12px;"></td><td></td></tr>
+<tr><td>功能</td><td>远程查看咨询</td><td>10条（+2）</td><td>有赞×4, 京东自营×3, 天猫官旗×2, 私域×1</td><td style="max-width:200px;font-size:12px;">T200好像有远程监控功能; 这款可以远程操作吗？; 行驶中能否远程查看等10条</td><td style="font-size:12px;"></td><td style="font-size:12px;"></td><td></td></tr>
+<tr><td>功能</td><td>云录功能咨询</td><td>8条（+2）</td><td>京东自营×8</td><td style="max-width:200px;font-size:12px;">开通了云服务，哪里能看到; 云储存过期视频存在哪; 没有云录; 设备首绑无云录等8条</td><td style="font-size:12px;"></td><td style="font-size:12px;"></td><td></td></tr>
+<tr><td>功能</td><td>分享咨询</td><td>4条（+2）</td><td>京东自营×4</td><td style="max-width:200px;font-size:12px;">如何分享; 支持分享家人查看视频吗; 一个手机查看一个记录仪吗等4条</td><td style="font-size:12px;"></td><td style="font-size:12px;"></td><td></td></tr>
+<tr><td>功能</td><td>设备离线</td><td>4条（+1）</td><td>京东自营×4</td><td style="max-width:200px;font-size:12px;">熄火后是不是就离线了？; 设备离线; 空旷地带设备离线等4条</td><td style="font-size:12px;"></td><td style="font-size:12px;"></td><td></td></tr>
+<tr><td>功能</td><td>定位偏差大</td><td>2条（+1）</td><td>京东自营×2</td><td style="max-width:200px;font-size:12px;">定位在东莞，但我在哈尔滨; 定位不准确</td><td style="font-size:12px;">怀疑产测未清除生产上电时的GPS数据</td><td style="font-size:12px;">引导安装降压线更新定位; 规范流程清除产测数据</td><td>徐凯来</td></tr>
+<tr class="new-row"><td>功能</td><td>无行车轨迹</td><td>1条（新增问题）</td><td>京东自营×1</td><td style="max-width:200px;font-size:12px;">使用几天后，没有行车轨迹</td><td style="font-size:12px;"></td><td style="font-size:12px;"></td><td></td></tr>
+<tr class="new-row"><td>功能</td><td>开流失败</td><td>1条（新增问题）</td><td>京东自营×1</td><td style="max-width:200px;font-size:12px;">APP上显示在线画面一直无法加载</td><td style="font-size:12px;"></td><td style="font-size:12px;"></td><td></td></tr>
+</tbody></table>
+    <p style="margin-top:12px;font-size:12px;color:#666;">仅展示有新增的问题（持续新增/新增问题），无新增的问题已隐藏。完整数据见飞书重点问题sheet。</p>
+  </div>
+
+  <div class="footer">
+    <p>数据来源：飞书表格「T200新品跟踪-用户反馈问题汇总」 | 自动生成 by 报告分析专家🦞</p>
+    <p><a href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">📋 T200报告合集</a></p>
+  </div>
+</div>
+
+<script>
+var chChart = echarts.init(document.getElementById('chart-channel'));
+chChart.setOption({
+  tooltip: { trigger: 'item' },
+  xAxis: { type: 'category', data: ["\u4eac\u4e1c\u81ea\u8425", "\u6709\u8d5e", "\u79c1\u57df", "\u5929\u732b\u5b98\u65d7", "\u5c0f\u7ea2\u4e66", "\u5929\u732b\u8f66\u54c1", "\u6296\u97f3", "\u5929\u732b\u8f66\u65d7"], axisLabel: { rotate: 30, fontSize: 11 } },
+  yAxis: { type: 'value' },
+  series: [{ type: 'bar', data: [113, 64, 24, 14, 8, 8, 3, 2], itemStyle: { color: '#00B050' }, label: { show: true, position: 'top', fontSize: 11 } }],
+  grid: { left: '3%', right: '4%', bottom: '10%', containLabel: true }
+});
+
+var catChart = echarts.init(document.getElementById('chart-cat'));
+catChart.setOption({
+  tooltip: { trigger: 'item', formatter: '{b}: {c}条 ({d}%)' },
+  series: [{ type: 'pie', radius: ['40%','70%'], data: [{"value": 11, "name": "\u914d\u4ef6"}, {"value": 54, "name": "\u5b89\u88c5"}, {"value": 6, "name": "\u54c1\u63a7"}, {"value": 25, "name": "\u8d39\u7528"}, {"value": 21, "name": "\u4f9b\u7535"}, {"value": 22, "name": "\u505c\u8f66\u76d1\u63a7"}, {"value": 22, "name": "\u89c6\u91ce"}, {"value": 15, "name": "\u53c2\u6570"}, {"value": 58, "name": "\u529f\u80fd"}], itemStyle: { borderRadius: 8, borderColor: '#fff', borderWidth: 2 }, label: { fontSize: 12 } }]
+});
+</script>
+</body>
+</html>
