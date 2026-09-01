@@ -449,20 +449,20 @@
         edgeSymbol:['none','arrow'],
         edgeSymbolSize:8,
         data:[
-          {name:'供电顾虑',x:350,y:225,symbolSize:100,itemStyle:{color:'#333333'},label:{color:'#fff',fontSize:14,fontWeight:'bold'}},
-          {name:'担心亏电/电瓶损耗',x:580,y:120,symbolSize:80,itemStyle:{color:'#E74C3C'},label:{color:'#fff',fontSize:13}},
-          {name:'担心影响原车线路',x:580,y:330,symbolSize:70,itemStyle:{color:'#F39C12'},label:{color:'#fff',fontSize:13}},
-          {name:'用户1：正常使用但一直担心',x:760,y:40,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:12,position:'right'}},
-          {name:'用户10：选择不安装降压线',x:760,y:160,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:12,position:'right'}},
-          {name:'用户16：手动拔掉电源线',x:760,y:280,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:12,position:'right'}}
+          {name:'供电顾虑',x:350,y:250,symbolSize:100,itemStyle:{color:'#333333'},label:{color:'#fff',fontSize:36,fontWeight:'bold'}},
+          {name:'担心亏电/电瓶损耗',x:580,y:140,symbolSize:80,itemStyle:{color:'#E74C3C'},label:{color:'#fff',fontSize:20,formatter:function(p){return '担心亏电\n电瓶损耗'}}},
+          {name:'担心影响原车线路',x:580,y:360,symbolSize:70,itemStyle:{color:'#F39C12'},label:{color:'#fff',fontSize:20,formatter:function(p){return '担心影响\n原车线路'}}},
+          {name:'用户1：正常使用但一直担心',x:760,y:120,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:14,position:'right'}},
+          {name:'用户10：选择不安装降压线',x:760,y:220,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:14,position:'right'}},
+          {name:'用户16：手动拔掉电源线',x:760,y:320,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:14,position:'right'}}
         ],
         links:[
           {source:'供电顾虑',target:'担心亏电/电瓶损耗'},
           {source:'供电顾虑',target:'担心影响原车线路'},
-          {source:'担心亏电/电瓶损耗',target:'用户1：正常使用\n但一直担心'},
-          {source:'担心亏电/电瓶损耗',target:'用户10：选择不\n安装降压线'},
-          {source:'担心亏电/电瓶损耗',target:'用户16：手动拔\n掉电源线'},
-          {source:'担心影响原车线路',target:'用户10：选择不\n安装降压线'}
+          {source:'担心亏电/电瓶损耗',target:'用户1：正常使用但一直担心'},
+          {source:'担心亏电/电瓶损耗',target:'用户10：选择不安装降压线'},
+          {source:'担心亏电/电瓶损耗',target:'用户16：手动拔掉电源线'},
+          {source:'担心影响原车线路',target:'用户10：选择不安装降压线'}
         ]
       }]
     });
