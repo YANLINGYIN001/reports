@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 4G记录仪新品跟踪日报 · Day 23</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:30px;border-radius:12px;margin-bottom:20px}
+.header h1{font-size:24px;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:.9}
+.overview{background:#fff;border-left:4px solid #00B050;padding:15px 20px;border-radius:8px;margin-bottom:20px;font-size:15px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;padding:20px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:32px;font-weight:700;color:#E74C3C}
+.kpi-card .delta{font-size:12px;color:#00B050;margin-top:4px}
+.kpi-card .delta.zero{color:#999}
+.section{background:#fff;padding:24px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section h2{font-size:18px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.insight{padding:14px 18px;border-radius:8px;margin-bottom:12px;font-size:14px}
+.insight.blue{background:#e8f4fd;border-left:4px solid #3498db}
+.insight.orange{background:#fff3e0;border-left:4px solid #F39C12}
+.insight.red{background:#fde8e8;border-left:4px solid #E74C3C}
+.insight .title{font-weight:700}
+.ch-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ch-tag{background:#f0f7f0;color:#00B050;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500}
+.ch-tag .ch-num{margin-left:4px;font-weight:700}
+.chart-box{width:100%;height:350px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #f0f0f0}
+th{background:#f8f9fa;font-weight:600;color:#666}
+tr:hover{background:#fafafa}
+.new-row{background:#fffde7}
+.new-row:hover{background:#fff9c4}
+.new-group{margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.cat-badge{color:#fff;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600}
+.cat-count{color:#999;font-size:13px}
+.delta-tag{color:#E74C3C;font-size:12px;margin-left:4px}
+.detail-table{margin-bottom:16px}
+.footer{text-align:center;padding:20px;color:#999;font-size:13px}
+.footer a{color:#00B050;text-decoration:none}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.container{padding:10px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>📊 T200 4G记录仪新品跟踪日报 · Day 23</h1>
+<div class="subtitle">数据周期：8.10 - 9.1 | 累计反馈 243 条 | 覆盖 8 个渠道 | 54 种问题类型</div>
+</div>
+
+<div class="overview">
+📊 截至9月1日，累计反馈243条（+5），覆盖8个渠道。今日新增5条，均为咨询类问题，集中在有赞渠道（4条）和私域（1条），主要涉及安装费用咨询（+2）、内存卡兼容性、供电接口和产品规格咨询。无新增缺陷问题。
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">243</div><div class="delta">+5</div></div>
+<div class="kpi-card"><div class="label">覆盖渠道数</div><div class="value">8</div><div class="delta zero">—</div></div>
+<div class="kpi-card"><div class="label">问题类型数</div><div class="value">54</div><div class="delta zero">—</div></div>
+<div class="kpi-card"><div class="label">实质性缺陷数</div><div class="value">50</div><div class="delta zero">—</div></div>
+</div>
+
+<div class="section">
+<h2>核心洞察</h2>
+<div class="insight blue"><span class="title">🔵 咨询类问题为主，无新增缺陷。</span>今日新增5条反馈全部为用户咨询（安装费用、内存卡兼容性、供电接口、产品规格），未出现新的产品缺陷或功能异常，整体趋势平稳。</div>
+<div class="insight orange"><span class="title">🟡 安装费用咨询持续增长。</span>"是否包安装咨询"新增2条（累计24条，占比9.9%），仍为反馈量最高的问题类型。用户核心疑问是"是否免费安装"，商详页安装政策说明需进一步优化。</div>
+</div>
+
+<div class="section">
+<h2>渠道反馈分布</h2>
+<div class="ch-tags"><span class="ch-tag">京东自营<span class="ch-num">113</span></span><span class="ch-tag">有赞<span class="ch-num">68</span></span><span class="ch-tag">私域<span class="ch-num">25</span></span><span class="ch-tag">天猫官旗<span class="ch-num">14</span></span><span class="ch-tag">小红书<span class="ch-num">8</span></span><span class="ch-tag">天猫车品<span class="ch-num">8</span></span><span class="ch-tag">抖音<span class="ch-num">3</span></span><span class="ch-tag">天猫车旗<span class="ch-num">1</span></span></div>
+<div id="chChart" class="chart-box"></div>
+</div>
+
+<div class="section">
+<h2>问题主题分类</h2>
+<div style="display:flex;gap:20px;flex-wrap:wrap">
+<div id="catChart" style="width:45%;height:350px"></div>
+<div style="flex:1;min-width:300px">
+<table>
+<thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>典型问题</th></tr></thead>
+<tbody>
+<tr><td style="color:#3498db;font-weight:600">配件</td><td>22</td><td>9.1%</td><td>是否带降压线咨询、内存卡咨询、降压线适配咨询等</td></tr><tr><td style="color:#e67e22;font-weight:600">安装</td><td>47</td><td>19.3%</td><td>是否包安装咨询、安装咨询、门店不会安装等</td></tr><tr><td style="color:#e74c3c;font-weight:600">品控</td><td>5</td><td>2.1%</td><td>画面清晰度低、外观瑕疵、设备发烫</td></tr><tr><td style="color:#9b59b6;font-weight:600">费用</td><td>27</td><td>11.1%</td><td>4G流量收费咨询、云录收费咨询、4G流量收费咨询；镜头调节咨询等</td></tr><tr><td style="color:#f1c40f;font-weight:600">供电</td><td>25</td><td>10.3%</td><td>电池/供电咨询、电瓶损耗影响顾虑、熄火后不通电等</td></tr><tr><td style="color:#1abc9c;font-weight:600">停车监控</td><td>23</td><td>9.5%</td><td>停车监控咨询、哨兵模式咨询、停车监控咨询；安装咨询</td></tr><tr><td style="color:#34495e;font-weight:600">视野</td><td>22</td><td>9.1%</td><td>前后双录/全景需求、镜头调节咨询</td></tr><tr><td style="color:#95a5a6;font-weight:600">参数</td><td>15</td><td>6.2%</td><td>其他规格咨询、车型适配咨询、产品参数咨询等</td></tr><tr><td style="color:#2ecc71;font-weight:600">功能</td><td>54</td><td>22.2%</td><td>远程查看咨询、云录功能咨询、定位不显示等</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>今日新增反馈明细（+5条）</h2>
+<div class="new-group"><span class="cat-badge" style="background:#3498db">配件</span><span class="cat-count">1条</span></div>
+<table class="detail-table"><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
+<tr class="new-row"><td>有赞</td><td>内存卡咨询</td><td>可以使用自己的内存卡吗</td><td>设备是需要FAT32格式 和使用class10以及以上的高速卡，您可以购买咱们的内存卡更适配 哦</td></tr>
+</tbody></table>
+<div class="new-group"><span class="cat-badge" style="background:#e67e22">安装</span><span class="cat-count">2条</span></div>
+<table class="detail-table"><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
+<tr class="new-row"><td>有赞</td><td>是否包安装咨询</td><td>包安装吗</td><td>您提供下旧记录仪照片或订单截图，您签收后提供师傅给您安装的照片或者支付凭证联系客服，直接退您40元安装费，自己找师傅装一样省心！</td></tr>
+<tr class="new-row"><td>有赞</td><td>是否包安装咨询</td><td>是免费安装还是收费的</td><td>我们不包安装哟，您可以提供一下旧照片，您设备安装好后可以联系我们返40元，相当于是安装费了哟</td></tr>
+</tbody></table>
+<div class="new-group"><span class="cat-badge" style="background:#f1c40f">供电</span><span class="cat-count">1条</span></div>
+<table class="detail-table"><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
+<tr class="new-row"><td>有赞</td><td>电池/供电咨询</td><td>什么电源接口</td><td>设备端是type-c接口的，标配的专用降压线</td></tr>
+</tbody></table>
+<div class="new-group"><span class="cat-badge" style="background:#95a5a6">参数</span><span class="cat-count">1条</span></div>
+<table class="detail-table"><thead><tr><th>渠道</th><th>问题类型</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
+<tr class="new-row"><td>私域</td><td>其他规格咨询</td><td>这款好像没有屏幕的吧</td><td>没有 ，这款支持手机远程查看 设备的流量是终身免费的，手机端查看下载更方便的呢</td></tr>
+</tbody></table>
+
+</div>
+
+<div class="section">
+<h2>重点问题跟踪</h2>
+<table>
+<thead><tr><th>问题分类</th><th>问题名称</th><th>反馈总量</th><th>渠道分布</th><th>用户原声</th><th>原因</th><th>解决方案</th><th>责任人</th></tr></thead>
+<tbody>
+<tr>
+<td style="color:#e67e22;font-weight:600">安装</td>
+<td>是否包安装咨询</td>
+<td>24条<span class="delta-tag">(+2)</span></td>
+<td>有赞×14, 京东自营×8, 天猫官旗×1, 私域×1</td>
+<td>包安装吗; 是免费安装还是收费的; 是否包安装等</td>
+<td>用户对安装费用和安装方式不清楚</td>
+<td>商详已有安装说明，客服引导查看</td>
+<td>渠道销售</td>
+</tr>
+<tr>
+<td style="color:#3498db;font-weight:600">配件</td>
+<td>内存卡咨询</td>
+<td>4条<span class="delta-tag">(+1)</span></td>
+<td>有赞×2, 京东自营×1, 天猫官旗×1</td>
+<td>可以使用自己的内存卡吗; 支持多大内存卡; 内存卡格式要求等</td>
+<td>用户对内存卡兼容性有疑问</td>
+<td>客服告知需FAT32格式和Class10以上高速卡</td>
+<td>渠道销售</td>
+</tr>
+<tr>
+<td style="color:#f1c40f;font-weight:600">供电</td>
+<td>电池/供电咨询</td>
+<td>16条<span class="delta-tag">(+1)</span></td>
+<td>有赞×7, 私域×5, 小红书×2, 京东自营×1, 天猫官旗×1</td>
+<td>什么电源接口; 怎么取电; 这款怎么供电等</td>
+<td>设备无内置电池，需降压线接保险盒供电</td>
+<td>客服告知标配降压线接保险盒供电</td>
+<td>徐凯来</td>
+</tr>
+<tr>
+<td style="color:#95a5a6;font-weight:600">参数</td>
+<td>其他规格咨询</td>
+<td>6条<span class="delta-tag">(+1)</span></td>
+<td>私域×2, 有赞×2, 京东自营×1, 天猫官旗×1</td>
+<td>这款好像没有屏幕的吧; 有没有显示屏; 屏幕多大的等</td>
+<td>T200无屏幕设计，用户有疑虑</td>
+<td>客服告知支持手机远程查看，无需屏幕</td>
+<td>渠道销售</td>
+</tr>
+
+</tbody>
+</table>
+<p style="margin-top:12px;color:#999;font-size:12px">仅展示有新增的问题（持续新增/新增问题），无新增的问题已隐藏。完整数据见飞书重点问题sheet。</p>
+</div>
+
+<div class="footer">
+<p>数据来源：飞书文档「T200用户反馈问题汇总」 | <a href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">报告合集</a></p>
+<p>由尹燕玲-报告分析专家自动生成 · 🦞</p>
+</div>
+</div>
+
+<script>
+var chChart=echarts.init(document.getElementById('chChart'));
+chChart.setOption({
+  tooltip:{trigger:'axis'},
+  grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},
+  xAxis:{type:'category',data:["京东自营", "有赞", "私域", "天猫官旗", "小红书", "天猫车品", "抖音", "天猫车旗"],axisLabel:{rotate:30}},
+  yAxis:{type:'value'},
+  series:[{type:'bar',data:[113, 68, 25, 14, 8, 8, 3, 1],itemStyle:{color:'#00B050'},barWidth:'60%'}]
+});
+
+var catChart=echarts.init(document.getElementById('catChart'));
+catChart.setOption({
+  tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
+  legend:{orient:'vertical',right:0,top:'center',textStyle:{fontSize:12}},
+  series:[{type:'pie',radius:['40%','70%'],center:['40%','50%'],data:[{"name": "配件", "value": 22, "itemStyle": {"color": "#3498db"}}, {"name": "安装", "value": 47, "itemStyle": {"color": "#e67e22"}}, {"name": "品控", "value": 5, "itemStyle": {"color": "#e74c3c"}}, {"name": "费用", "value": 27, "itemStyle": {"color": "#9b59b6"}}, {"name": "供电", "value": 25, "itemStyle": {"color": "#f1c40f"}}, {"name": "停车监控", "value": 23, "itemStyle": {"color": "#1abc9c"}}, {"name": "视野", "value": 22, "itemStyle": {"color": "#34495e"}}, {"name": "参数", "value": 15, "itemStyle": {"color": "#95a5a6"}}, {"name": "功能", "value": 54, "itemStyle": {"color": "#2ecc71"}}],label:{show:false}}]
+});
+
+window.addEventListener('resize',function(){chChart.resize();catChart.resize()});
+</script>
+</body>
+</html>
