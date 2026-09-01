@@ -88,6 +88,34 @@ td { padding:8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
   </div>
 
   <div class="section">
+    <div class="section-title">🚀 开流性能分析</div>
+    <div class="module">
+      <div class="module-title">开流耗时分布（29人×5次=145次测试）</div>
+      <div class="module-insight insight-good"><strong>90%开流5秒内完成</strong>，&ldquo;1-3秒&rdquo;占55.9%，&ldquo;5秒以上&rdquo;仅10%，10秒以上仅1次(0.7%)。</div>
+      <div class="vchart"><div class="vcol"><div class="vval">81次<br><span class="vpct">55.9%</span></div><div class="vbar" style="height:150px;background:#00B050"></div><div class="vlabel">1-3秒</div></div><div class="vcol"><div class="vval">49次<br><span class="vpct">33.8%</span></div><div class="vbar" style="height:90px;background:#2BBD6E"></div><div class="vlabel">3-5秒</div></div><div class="vcol"><div class="vval">11次<br><span class="vpct">7.6%</span></div><div class="vbar" style="height:20px;background:#F1C40F"></div><div class="vlabel">5-8秒</div></div><div class="vcol"><div class="vval">3次<br><span class="vpct">2.1%</span></div><div class="vbar" style="height:5px;background:#E67E22"></div><div class="vlabel">8-10秒</div></div><div class="vcol"><div class="vval">1次<br><span class="vpct">0.7%</span></div><div class="vbar" style="height:1px;background:#E74C3C"></div><div class="vlabel">10秒以上</div></div></div>
+      <div class="module-insight insight-warn"><strong>⚠️ 对照提醒：</strong>专项测试在稳定WiFi/信号下表现优异，但日常反馈「开流卡顿/失败」占近6成（见下方）。差异根因在 <strong>真实4G弱网环境</strong>——陈建建反馈&ldquo;卡顿与基站距离、旁边电器有关&rdquo;，需在弱网场景重点优化。</div>
+    </div>
+    
+  </div>
+
+  <div class="section">
+    <div class="section-title">🖥️ 实时画面评价分析</div>
+    <div class="module">
+      <div class="module-title">实时画面 8 维度评分（10分制 · 29人）</div>
+      <div class="chart-bar"><div class="bar-label">画质效果</div><div class="bar-track"><div class="bar-fill" style="width:78.0%;background:#00B050">9.34</div></div></div>
+<div class="chart-bar"><div class="bar-label">播放流畅</div><div class="bar-track"><div class="bar-fill" style="width:76.0%;background:#00B050">9.28</div></div></div>
+<div class="chart-bar"><div class="bar-label">白天清晰度</div><div class="bar-track"><div class="bar-fill" style="width:74.7%;background:#00B050">9.24</div></div></div>
+<div class="chart-bar"><div class="bar-label">实时画面总体</div><div class="bar-track"><div class="bar-fill" style="width:72.3%;background:#00B050">9.17</div></div></div>
+<div class="chart-bar"><div class="bar-label">画面音质</div><div class="bar-track"><div class="bar-fill" style="width:63.3%;background:#00B050">8.9</div></div></div>
+<div class="chart-bar"><div class="bar-label">夜晚清晰度</div><div class="bar-track"><div class="bar-fill" style="width:62.0%;background:#00B050">8.86</div></div></div>
+<div class="chart-bar"><div class="bar-label">画面音量</div><div class="bar-track"><div class="bar-fill" style="width:61.0%;background:#00B050">8.83</div></div></div>
+<div class="chart-bar"><div class="bar-label">夜视自动切换</div><div class="bar-track"><div class="bar-fill" style="width:59.7%;background:#00B050">8.79</div></div>      <div class="module-insight insight-good"><strong>8维均分8.79-9.34全部达标</strong>，画质效果9.34、播放流畅9.28、白天清晰9.24表现突出；夜视自动切换8.79相对最低。</div>
+    </div>
+    </div>
+    
+  </div>
+
+  <div class="section">
     <div class="section-title">📞 通话评价分析</div>
     <div class="module">
       <div class="module-title">通话 5 维度评分（10分制 · 29人）</div>
