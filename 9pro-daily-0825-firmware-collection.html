@@ -66,27 +66,6 @@ tr:hover { background: #f9fff9; }
 <div class="kpi-card"><div class="label">TOP3</div><div class="value" style="font-size:16px">开流加载失败</div><div class="sub">3人</div></div>
 </div>
 
-<!-- Firmware Overview Comparison -->
-<div class="section">
-<h2>固件版本总览对比</h2>
-<div class="legend">
-<span class="legend-item"><span class="legend-box" style="background:#ddd"></span>0729旧固件</span>
-<span class="legend-item"><span class="legend-box" style="background:#00B050"></span>0825新固件</span>
-</div>
-<div class="bar-row"><div class="tag-name">APP</div><div class="bar-wrap"><div class="bar-0729" style="width:89.2%"></div><div class="bar-0825" style="width:10.8%"></div></div><div class="bar-label">83条/10条</div></div>
-<div class="bar-row"><div class="tag-name">AI算法</div><div class="bar-wrap"><div class="bar-0729" style="width:87.8%"></div><div class="bar-0825" style="width:12.2%"></div></div><div class="bar-label">72条/10条</div></div>
-<div class="bar-row"><div class="tag-name">卡录</div><div class="bar-wrap"><div class="bar-0729" style="width:77.1%"></div><div class="bar-0825" style="width:22.9%"></div></div><div class="bar-label">27条/8条</div></div>
-<div class="bar-row"><div class="tag-name">IQ</div><div class="bar-wrap"><div class="bar-0729" style="width:90.0%"></div><div class="bar-0825" style="width:10.0%"></div></div><div class="bar-label">27条/3条</div></div>
-<div class="bar-row"><div class="tag-name">云台</div><div class="bar-wrap"><div class="bar-0729" style="width:78.9%"></div><div class="bar-0825" style="width:21.1%"></div></div><div class="bar-label">15条/4条</div></div>
-<div class="bar-row"><div class="tag-name">开流</div><div class="bar-wrap"><div class="bar-0729" style="width:47.1%"></div><div class="bar-0825" style="width:52.9%"></div></div><div class="bar-label">8条/9条</div></div>
-<div class="bar-row"><div class="tag-name">功能需求</div><div class="bar-wrap"><div class="bar-0729" style="width:100.0%"></div><div class="bar-0825" style="width:0.0%"></div></div><div class="bar-label">14条/0条</div></div>
-<div class="bar-row"><div class="tag-name">稳定性</div><div class="bar-wrap"><div class="bar-0729" style="width:70.0%"></div><div class="bar-0825" style="width:30.0%"></div></div><div class="bar-label">7条/3条</div></div>
-<div class="bar-row"><div class="tag-name">巡航</div><div class="bar-wrap"><div class="bar-0729" style="width:100.0%"></div><div class="bar-0825" style="width:0.0%"></div></div><div class="bar-label">10条/0条</div></div>
-<div class="bar-row"><div class="tag-name">云录</div><div class="bar-wrap"><div class="bar-0729" style="width:70.0%"></div><div class="bar-0825" style="width:30.0%"></div></div><div class="bar-label">7条/3条</div></div>
-<div class="bar-row"><div class="tag-name">云录/卡录</div><div class="bar-wrap"><div class="bar-0729" style="width:100.0%"></div><div class="bar-0825" style="width:0.0%"></div></div><div class="bar-label">2条/0条</div></div>
-<div class="bar-row"><div class="tag-name">微信小程序</div><div class="bar-wrap"><div class="bar-0729" style="width:100.0%"></div><div class="bar-0825" style="width:0.0%"></div></div><div class="bar-label">1条/0条</div></div>
-<div class="bar-row"><div class="tag-name">云录卡录</div><div class="bar-wrap"><div class="bar-0729" style="width:100.0%"></div><div class="bar-0825" style="width:0.0%"></div></div><div class="bar-label">1条/0条</div></div>
-<div class="bar-row"><div class="tag-name">产品</div><div class="bar-wrap"><div class="bar-0729" style="width:0.0%"></div><div class="bar-0825" style="width:100.0%"></div></div><div class="bar-label">0条/1条</div></div>
 
 <div style="margin-top:10px;font-size:13px;color:#666">
 <b>解读：</b>0825固件上线后，人形误报仍是TOP1（人形误报 7人），但新固件引入了断流续播、内存卡识别、假离线等51条新问题反馈，涉及22个问题类型。断流续播相关问题2条已全部解决。
@@ -95,23 +74,6 @@ tr:hover { background: #f9fff9; }
 
 <div class="section">
 <h2>核心洞察</h2>
-<div class="insight">
-<p><span class="tag red">P0</span><b>0825新固件引入断流续播机制，但初版体验异常</b>：多用户反馈新固件开流长时间后无断流续播提示（杜劲："开流35分钟，没有出现断流续播提示"）、3.0.0版本断流续播机制缺失（方家欢："装回2.31.0验证，10分钟成功触发，但提示语不对，此款非电池机"）。<b>该问题已于9/1确认解决</b>，新版本已修复。</p>
-</div>
-<div class="insight">
-<p><span class="tag red">P0</span><b>内存卡识别异常成为新固件高频问题</b>：黄显森"插入内存卡显示0"、邱天顺"离线重启后不能识别存储卡""插卡但突然提示未插卡"，合计3条/3人。0729固件无此问题，疑与0825固件存储卡初始化逻辑改动相关，需重点排查。</p>
-</div>
-<div class="insight">
-<p><span class="tag orange">P1</span><b>设备假离线/离线问题在0825固件集中出现</b>：陶双"打开APP突然显示设备离线，点进设备后正常"、张鹏鑫"异常离线"共4条反馈。特点为开流正常但状态显示离线，用户感知"网络异常"实为状态显示bug，已定位与信号上报逻辑相关。</p>
-</div>
-<div class="insight">
-<p><span class="tag orange">P1</span><b>长时间开流后失败，信号显示异常</b>：王亚兵反馈"长时间开流以后再次开流失败或卡顿，返回主页右上角4g信号条消失，原本稳定3格绿色变成2格黄色"。开流相关累计9条，0825固件下开流稳定性待提升。</p>
-</div>
-<div class="insight">
-<p><span class="tag">P2</span><b>云台校准与巡航偏差</b>：谢光位"云台校准无法复位"、高瑞"巡航完成后画面比原界面低"，云台相关4条，属机械/算法联动问题，建议固件侧增加校准自动复位逻辑。</p>
-</div>
-</div>
-
 <div class="section">
 <h2>0825固件核心问题分析（按反馈人数排序）</h2>
 <table>
