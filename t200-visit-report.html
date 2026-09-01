@@ -41,6 +41,7 @@
   .insight.red { border-left-color:var(--red); }
   .insight.orange { border-left-color:var(--orange); }
   .insight.green { border-left-color:var(--green); }
+  .insight.blue { border-left-color:#3498db; }
   .insight b { font-size:14px; }
   .insight.q { font-style:italic; color:var(--gray); }
 
@@ -111,6 +112,7 @@
       <div class="insight orange"><b>🟠 哨兵模式双重痛点</b><br>①24h时长限制被3人提及（用户1/3/11）；②通知频次过高被2人吐槽（用户13/16）。</div>
       <div class="insight orange"><b>🟠 视频回放交互体验差</b><br>3人（用户12/13/16）反馈回放操作不便——<span class="q">"要点很多次不能顺着看必须返回重选"</span>、<span class="q">"一个个退出再看"</span>。</div>
       <div class="insight green"><b>🟢 4G免流量+远程查看是核心竞争力</b><br><b>14人</b>明确推荐，平均评分 <b>8.9分</b>，<b>4人满分</b>，4G免流量+远程查看+哨兵停车监控构成核心推荐理由。</div>
+      <div class="insight blue"><b>🔵 研发响应总览</b><br>13项痛点中<b>6项已有方案推进</b>（哨兵人车算法9月上旬升级、OBD接线验证、IQ优化提测、APP设置说明已更新），<b>3项暂不处理</b>（APP广告、4G网速、内存卡成本），<b>4项列入新品规划</b>（前后双摄、带屏版本、广角镜头、录音优化）。9项需求中4项已有方案落地推进。</div>
     </div>
   </div>
 
@@ -326,20 +328,20 @@
     <h2>用户痛点 TOP 排行</h2>
     <p class="summary">画质清晰度以5人提及居首，哨兵24h限制、视频回放操作、亏电担忧并列第二（各3人），APP相关痛点密集（4项）。</p>
     <table>
-      <tr><th>排名</th><th>痛点</th><th>人数</th><th>用户原声</th></tr>
-      <tr><td>1</td><td class="left">画质清晰度不够</td><td>5</td><td class="left quote">"清晰度不如盯盯拍mini2" / "比G900差一截" / "晚上看不清车牌"</td></tr>
-      <tr><td>2</td><td class="left">哨兵24h时长限制</td><td>3</td><td class="left quote">"24小时太短，想整夜监控" / "时长不能自定义"</td></tr>
-      <tr><td>2</td><td class="left">视频回放操作不便</td><td>3</td><td class="left quote">"要点很多次不能顺着看必须返回重选" / "一个个退出再看"</td></tr>
-      <tr><td>2</td><td class="left">担心亏电/电瓶损耗</td><td>3</td><td class="left quote">"怕停车监控把电瓶耗亏"</td></tr>
-      <tr><td>5</td><td class="left">哨兵通知频次过高</td><td>2</td><td class="left quote">"一天通知特别多，烦"</td></tr>
-      <tr><td>5</td><td class="left">APP广告弹窗多</td><td>2</td><td class="left quote">"打开APP弹广告，体验差"</td></tr>
-      <tr><td>5</td><td class="left">APP加载/连接慢</td><td>2</td><td class="left quote">"实时画面加载慢" / "连接响应慢"</td></tr>
-      <tr><td>5</td><td class="left">APP设计简陋/功能弱</td><td>2</td><td class="left quote">"界面太简陋，功能弱"</td></tr>
-      <tr><td>9</td><td class="left">降压线安装门槛</td><td>2</td><td class="left quote">"没降压线用不了停车监控"</td></tr>
-      <tr><td>9</td><td class="left">摄像头位置/视野受限</td><td>2</td><td class="left quote">"侧边拍不到" / "视野不够广"</td></tr>
-      <tr><td>9</td><td class="left">录音不清晰</td><td>1</td><td class="left quote">"录音声音不清楚"</td></tr>
-      <tr><td>9</td><td class="left">内存卡容量不足</td><td>1</td><td class="left quote">"32G存不了一天"</td></tr>
-      <tr><td>9</td><td class="left">无屏幕不习惯</td><td>1</td><td class="left quote">"没屏幕不习惯"（用户9已退货）</td></tr>
+      <tr><th>排名</th><th>痛点</th><th>人数</th><th>用户原声</th><th>问题原因</th><th>产品解决方案</th><th>责任人</th></tr>
+      <tr><td>1</td><td class="left">画质清晰度不够</td><td>5</td><td class="left quote">"清晰度不如盯盯拍mini2" / "比G900差一截" / "晚上看不清车牌"</td><td class="left">受限于硬件模组，图像效果相对较差</td><td class="left">IQ持续优化，本周提测新版本</td><td>潘忠</td></tr>
+      <tr><td>2</td><td class="left">哨兵24h时长限制</td><td>3</td><td class="left quote">"24小时太短，想整夜监控" / "时长不能自定义"</td><td class="left">首发版本哨兵算法不完善，为避免误报过多限制最长24小时</td><td class="left">人车算法新版本测试中，9月上旬升级后增加长期监控设置项</td><td>徐凯来</td></tr>
+      <tr><td>2</td><td class="left">视频回放操作不便</td><td>3</td><td class="left quote">"要点很多次不能顺着看必须返回重选" / "一个个退出再看"</td><td class="left">受限于4G网速，视频加载较慢，不支持左滑/右滑切换</td><td class="left">8月底APP版本已支持"刚刚看过"，方便快速定位</td><td>徐凯来</td></tr>
+      <tr><td>2</td><td class="left">担心亏电/电瓶损耗</td><td>3</td><td class="left quote">"怕停车监控把电瓶耗亏"</td><td class="left">对降压线及停车监控工作模式不熟悉</td><td class="left">已推出电瓶亏电赔付，探索OBD接线方案</td><td>—</td></tr>
+      <tr><td>5</td><td class="left">哨兵通知频次过高</td><td>2</td><td class="left quote">"一天通知特别多，烦"</td><td class="left">首发版本哨兵算法不完善</td><td class="left">人车算法新版本测试中，9月上旬升级</td><td>徐凯来</td></tr>
+      <tr><td>5</td><td class="left">APP广告弹窗多</td><td>2</td><td class="left quote">"打开APP弹广告，体验差"</td><td class="left">广告增值服务收入需求</td><td class="left" style="color:var(--gray);">不处理</td><td>—</td></tr>
+      <tr><td>5</td><td class="left">APP加载/连接慢</td><td>2</td><td class="left quote">"实时画面加载慢" / "连接响应慢"</td><td class="left">受限于CAT1模组4G网速和信号影响</td><td class="left" style="color:var(--gray);">不处理</td><td>—</td></tr>
+      <tr><td>5</td><td class="left">APP设计简陋/功能弱</td><td>2</td><td class="left quote">"界面太简陋，功能弱"</td><td class="left">基于普联SDK设计，引导说明需优化</td><td class="left">8月底APP版本已增加停车监控等核心功能设置说明</td><td>徐凯来</td></tr>
+      <tr><td>9</td><td class="left">降压线安装门槛</td><td>2</td><td class="left quote">"没降压线用不了停车监控"</td><td class="left">标配降压线功能</td><td class="left">小规模验证OBD接线效果，验证通过后升级产品套餐</td><td>徐凯来</td></tr>
+      <tr><td>9</td><td class="left">摄像头位置/视野受限</td><td>2</td><td class="left quote">"侧边拍不到" / "视野不够广"</td><td class="left">T200仅支持车前区域录制监控</td><td class="left">新品解决视野缺失问题</td><td>徐凯来</td></tr>
+      <tr><td>9</td><td class="left">录音不清晰</td><td>1</td><td class="left quote">"录音声音不清楚"</td><td class="left">具体情况需测试验证</td><td class="left">具体情况需测试验证</td><td>徐凯来</td></tr>
+      <tr><td>9</td><td class="left">内存卡容量不足</td><td>1</td><td class="left quote">"32G存不了一天"</td><td class="left">普联现有逻辑重点保证紧急视频存储，循环录像预留空间较小</td><td class="left">评估优化存储空间分配逻辑方案</td><td>徐凯来</td></tr>
+      <tr><td>9</td><td class="left">无屏幕不习惯</td><td>1</td><td class="left quote">"没屏幕不习惯"（用户9已退货）</td><td class="left">T200定位无屏机</td><td class="left">新品评估屏幕的必要性</td><td>徐凯来</td></tr>
     </table>
   </div>
 
@@ -348,16 +350,16 @@
     <h2>用户需求许愿</h2>
     <p class="summary">前后双摄/多镜头是最高频需求（4人），哨兵时间延长排第二，其余需求分散但集中在安装便捷性和功能扩展。</p>
     <table>
-      <tr><th>需求</th><th>人数</th><th>说明</th></tr>
-      <tr><td>前后双摄/多镜头</td><td>4</td><td class="left">希望支持前后双录</td></tr>
-      <tr><td>哨兵时间延长+自定义</td><td>2</td><td class="left">突破24h限制或支持自定义时长</td></tr>
-      <tr><td>查看电压</td><td>1</td><td class="left">APP内可查车辆电压</td></tr>
-      <tr><td>远程开关控制录像</td><td>1</td><td class="left">随时远程开始/停止录像</td></tr>
-      <tr><td>息屏当镜子用</td><td>1</td><td class="left">熄屏后画面当车内后视镜</td></tr>
-      <tr><td>更便捷安装方式</td><td>1</td><td class="left">降低安装门槛</td></tr>
-      <tr><td>录像快照</td><td>1</td><td class="left">抓拍截图功能</td></tr>
-      <tr><td>带屏4G版本</td><td>1</td><td class="left">弥补贴膜/无屏顾虑</td></tr>
-      <tr><td>赠送大内存卡</td><td>1</td><td class="left">出厂配更大容量卡</td></tr>
+      <tr><th>需求</th><th>人数</th><th>说明</th><th>产品解决方案</th><th>责任人</th></tr>
+      <tr><td>前后双摄/多镜头</td><td>4</td><td class="left">希望支持前后双录</td><td class="left">新品支持多镜头多角度覆盖</td><td>徐凯来</td></tr>
+      <tr><td>哨兵时间延长+自定义</td><td>2</td><td class="left">突破24h限制或支持自定义时长</td><td class="left">人车算法新版本测试中，9月上旬升级后增加长期监控设置项</td><td>徐凯来</td></tr>
+      <tr><td>查看电压</td><td>1</td><td class="left">APP内可查车辆电压</td><td class="left">正在探索智能降压线方案</td><td>孙乐</td></tr>
+      <tr><td>远程开关控制录像</td><td>1</td><td class="left">随时远程开始/停止录像</td><td class="left">停车期间支持远程抓拍图片/视频</td><td>—</td></tr>
+      <tr><td>息屏当镜子用</td><td>1</td><td class="left">熄屏后画面当车内后视镜</td><td class="left">推荐使用后视镜系列产品</td><td>—</td></tr>
+      <tr><td>更便捷安装方式</td><td>1</td><td class="left">降低安装门槛</td><td class="left">小规模验证OBD接线效果，通过后升级产品套餐</td><td>徐凯来</td></tr>
+      <tr><td>录像快照</td><td>1</td><td class="left">抓拍截图功能</td><td class="left">停车期间支持远程抓拍图片/视频</td><td>—</td></tr>
+      <tr><td>带屏4G版本</td><td>1</td><td class="left">弥补贴膜/无屏顾虑</td><td class="left">新品评估屏幕的必要性</td><td>徐凯来</td></tr>
+      <tr><td>赠送大内存卡</td><td>1</td><td class="left">出厂配更大容量卡</td><td class="left" style="color:var(--gray);">受限于成本，暂不考虑</td><td>—</td></tr>
     </table>
   </div>
 
