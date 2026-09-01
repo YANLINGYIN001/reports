@@ -47,6 +47,8 @@
   /* Section */
   .section { background:#fff; border-radius:12px; padding:22px 20px; margin-top:20px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
   .section h2 { font-size:17px; font-weight:700; padding-left:10px; border-left:4px solid var(--green); margin-bottom:16px; }
+  .section h3 { font-size:14px; margin:16px 0 6px; }
+  .summary { font-size:13px; color:#666; margin-bottom:12px; }
   .chart-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
   .chart-box { min-height:300px; }
   .chart-box.full { grid-column:1 / -1; min-height:320px; }
@@ -58,6 +60,7 @@
   tr.total-row td { font-weight:700; background:#eaf6ef; color:var(--green); }
   td.left { text-align:left; }
   .quote { font-style:italic; color:var(--gray); }
+  .quote-line { display:block; margin-bottom:4px; }
 
   /* Alert */
   .alert { background:#fdf3f2; border:1px solid #f5c6bf; border-left:5px solid var(--red); border-radius:8px; padding:12px 14px; margin-top:12px; font-size:13px; line-height:1.8; }
@@ -114,6 +117,7 @@
   <!-- 用户画像 -->
   <div class="section">
     <h2>用户画像</h2>
+    <p class="summary">男性为主（12:3），京东自营是核心购买渠道（占比70%），用户主要通过电商平台搜索和短视频种草了解产品。</p>
     <div class="chart-row">
       <div class="chart-box" id="cGender"></div>
       <div class="chart-box" id="cChannel"></div>
@@ -123,6 +127,7 @@
   <!-- 购买动机 -->
   <div class="section">
     <h2>购买动机分析</h2>
+    <p class="summary">4G免流量+远程查看是最大购买驱动力（8人），哨兵停车监控次之（6人），360品牌信任也是重要加分项（4人）。</p>
     <div class="chart-row">
       <div class="chart-box" id="cMotive"></div>
       <div class="chart-box">
@@ -141,6 +146,7 @@
   <!-- 安装体验 -->
   <div class="section">
     <h2>安装体验</h2>
+    <p class="summary">门店安装是主流方式（10人），多数用户安装顺利，但门店专业度参差不齐，部分用户遇到门店不会装、需转门店等问题。</p>
     <div class="chart-row">
       <div class="chart-box" id="cInstall"></div>
       <div class="chart-box">
@@ -153,28 +159,49 @@
         </table>
       </div>
     </div>
-    <h3 style="font-size:14px;margin:16px 0 6px;">✅ 安装体验爽点</h3>
+    <h3>✅ 安装体验爽点</h3>
     <table>
-      <tr><th>用户</th><th>原声/说明</th></tr>
-      <tr><td>用户8/19/20</td><td class="left quote">挺顺利的，没问题</td></tr>
-      <tr><td>用户3</td><td class="left quote">安装比较顺利</td></tr>
-      <tr><td>用户14</td><td class="left quote">联系客服后转到县城2公里</td></tr>
-      <tr><td>用户2</td><td class="left quote">门店要拆板子觉得没必要（自己安装规避了）</td></tr>
+      <tr><th>问题类型</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td class="left">安装顺利</td><td>3</td><td class="left">
+        <span class="quote-line">用户8：<span class="quote">"挺顺利的，没问题"</span></span>
+        <span class="quote-line">用户19：<span class="quote">"顺利"</span></span>
+        <span class="quote-line">用户20：<span class="quote">"顺利"</span></span>
+      </td></tr>
+      <tr><td class="left">自己安装规避门店问题</td><td>1</td><td class="left">
+        <span class="quote-line">用户2：<span class="quote">"门店要拆开板子，觉得没必要"</span>（选择自己安装）</span>
+      </td></tr>
+      <tr><td class="left">客服协调解决</td><td>1</td><td class="left">
+        <span class="quote-line">用户14：<span class="quote">"店家推荐的是地级市，联系客服后转到县城，2公里"</span></span>
+      </td></tr>
+      <tr><td class="left">安装比较顺利</td><td>1</td><td class="left">
+        <span class="quote-line">用户3：<span class="quote">"安装比较顺利；店铺约的比较晚，所以就自己安装了"</span></span>
+      </td></tr>
     </table>
-    <h3 style="font-size:14px;margin:16px 0 6px;">⚠️ 安装体验痛点</h3>
+    <h3>⚠️ 安装体验痛点</h3>
     <table>
-      <tr><th>用户</th><th>原声/说明</th></tr>
-      <tr><td>用户5</td><td class="left quote">一直还没安装，京东养车说不会安装，吉利</td></tr>
-      <tr><td>用户7</td><td class="left quote">师傅不专业，第1次接线后无法启动；第2个门店才搞定</td></tr>
-      <tr><td>用户2</td><td class="left quote">门店要拆开板子，觉得没必要</td></tr>
-      <tr><td>用户3</td><td class="left quote">店铺约的比较晚</td></tr>
-      <tr><td>用户14</td><td class="left quote">店家推荐地级市，联系客服后转到县城</td></tr>
+      <tr><th>问题类型</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td class="left">门店不会安装</td><td>1</td><td class="left">
+        <span class="quote-line">用户5：<span class="quote">"一直还没安装，京东养车说不会安装"</span></span>
+      </td></tr>
+      <tr><td class="left">门店不专业需转门店</td><td>1</td><td class="left">
+        <span class="quote-line">用户7：<span class="quote">"师傅不专业，第1次接线后无法启动；第2个门店才搞定"</span></span>
+      </td></tr>
+      <tr><td class="left">门店要拆板子</td><td>1</td><td class="left">
+        <span class="quote-line">用户2：<span class="quote">"门店要拆开板子，觉得没必要"</span></span>
+      </td></tr>
+      <tr><td class="left">店铺约的比较晚</td><td>1</td><td class="left">
+        <span class="quote-line">用户3：<span class="quote">"店铺约的比较晚，所以就自己安装了"</span></span>
+      </td></tr>
+      <tr><td class="left">推荐门店太远</td><td>1</td><td class="left">
+        <span class="quote-line">用户14：<span class="quote">"店家推荐的是地级市，联系客服后转到县城，2公里"</span></span>
+      </td></tr>
     </table>
   </div>
 
   <!-- 供电方式 -->
   <div class="section">
     <h2>供电方式与用户顾虑</h2>
+    <p class="summary">60%用户使用标配降压线，亏电担忧和降压线安装顾虑是核心痛点，部分用户因顾虑选择不装降压线或手动拔线。</p>
     <div class="chart-row">
       <div class="chart-box" id="cPower"></div>
       <div class="chart-box">
@@ -186,7 +213,9 @@
         </table>
       </div>
     </div>
-    <h3 style="font-size:14px;margin:16px 0 6px;">⚠️ 用户顾虑点</h3>
+    <h3 style="font-size:14px;margin:16px 0 6px;">用户顾虑传导关系</h3>
+    <div id="cConcern" style="width:100%;height:350px;margin-bottom:16px;"></div>
+    <h3>⚠️ 用户顾虑点</h3>
     <table>
       <tr><th>严重程度</th><th>顾虑类型</th><th>用户</th><th>原声</th></tr>
       <tr style="background:#fdf3f2;"><td style="color:var(--red);font-weight:700;">🔴 严重</td><td class="left">担心亏电/电瓶损耗</td><td>用户1/16</td><td class="left quote">担心对电瓶有影响 / 担心很快消耗电瓶的电，可能用2-3周</td></tr>
@@ -200,12 +229,106 @@
   <!-- 功能体验评价 -->
   <div class="section">
     <h2>各功能体验评价（6维度）</h2>
-    <div class="chart-box" id="cFunc" style="min-height:320px;"></div>
+    <p class="summary">配网体验最佳（正面9人），实时画面和哨兵的负面反馈最集中，画质清晰度是跨功能的共性问题。</p>
+    <h3 style="font-size:15px;margin:12px 0 4px;color:#00B050;border-left:3px solid #00B050;padding-left:8px;">1. 配网体验</h3>
+    <p class="summary">配网体验整体最佳，9人评价正面，仅2人提出问题。</p>
+    <table>
+      <tr><th>问题类型</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>配网顺利</td><td>5</td><td class="left quote">用户3："配网比较顺利"<br>用户7："很好"<br>用户8："很顺利"<br>用户19："顺利"<br>用户20："顺利"</td></tr>
+      <tr><td>没发现问题</td><td>2</td><td class="left quote">用户9："没啥问题"<br>用户15："没发现"</td></tr>
+      <tr><td>正常</td><td>1</td><td class="left quote">用户12："正常"</td></tr>
+      <tr><td>扫码简单</td><td>1</td><td class="left quote">用户14："扫码安装和添加了"</td></tr>
+    </table>
+    <table style="margin-top:8px;">
+      <tr><th style="background:#E74C3C;">痛点</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>网络设置易误解</td><td>1</td><td class="left quote">用户6："网络设置功能容易误解（APP8月底版本已优化）"</td></tr>
+      <tr><td>通知频次过高</td><td>1</td><td class="left quote">用户13："通知的频次太高，过路的人都通知，不需要那么多"</td></tr>
+    </table>
+
+    <h3 style="font-size:15px;margin:16px 0 4px;color:#00B050;border-left:3px solid #00B050;padding-left:8px;">2. 实时画面</h3>
+    <p class="summary">7人评价正面，但5人明确批评画质差或加载慢，画质是核心短板。</p>
+    <table>
+      <tr><th>问题类型</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>流畅/方便</td><td>4</td><td class="left quote">用户1："主要看实时，挺流畅"<br>用户3："速度比较快"<br>用户8："体验非常好"<br>用户10："挺方便的，免流量"</td></tr>
+      <tr><td>清晰</td><td>1</td><td class="left quote">用户15："还可以，清晰"</td></tr>
+      <tr><td>满意</td><td>1</td><td class="left quote">用户19："满意"</td></tr>
+      <tr><td>远程连接OK</td><td>1</td><td class="left quote">用户6："远程连接还算OK"</td></tr>
+    </table>
+    <table style="margin-top:8px;">
+      <tr><th style="background:#E74C3C;">痛点</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>画质差/清晰度不够</td><td>3</td><td class="left quote">用户12："清晰度有待提高，录的声音不怎么清晰"<br>用户17："画质差"<br>用户18："画质太差了"</td></tr>
+      <tr><td>和G900对比差距大</td><td>1</td><td class="left quote">用户11："同时安装G900，感觉T200清晰度不够"</td></tr>
+      <tr><td>加载慢</td><td>1</td><td class="left quote">用户13："加载比较慢，最好能看到录像快照"</td></tr>
+      <tr><td>等待时间长</td><td>1</td><td class="left quote">用户9："远程等待时间比较长"</td></tr>
+    </table>
+
+    <h3 style="font-size:15px;margin:16px 0 4px;color:#00B050;border-left:3px solid #00B050;padding-left:8px;">3. 哨兵停车监控</h3>
+    <p class="summary">6人正面评价，但24h时长限制和通知频次是双重痛点，侧边拍不到也影响体验。</p>
+    <table>
+      <tr><th>问题类型</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>满足需要/挺好</td><td>3</td><td class="left quote">用户8："能满足需要"<br>用户10："挺好"<br>用户14："可以"</td></tr>
+      <tr><td>自动抓拍</td><td>1</td><td class="left quote">用户12："可以，有人过能自动抓拍"</td></tr>
+      <tr><td>体验不错</td><td>1</td><td class="left quote">用户7："体验不错，希望能支持前后视角"</td></tr>
+      <tr><td>还行</td><td>1</td><td class="left quote">用户18："还行"</td></tr>
+    </table>
+    <table style="margin-top:8px;">
+      <tr><th style="background:#E74C3C;">痛点</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>24h时长太短</td><td>3</td><td class="left quote">用户3："哨兵模式只能录24小时"<br>用户11："24小时有点短，希望能更长监控"<br>用户1："想设置自定义时间段"</td></tr>
+      <tr><td>通知频次过高</td><td>2</td><td class="left quote">用户13："人太多了，可以存没必要提醒"<br>用户16："没什么用，没法区分危险和有人走过"</td></tr>
+      <tr><td>侧边拍不到</td><td>1</td><td class="left quote">用户16："侧边拍不到也没法推送，视频比较多"</td></tr>
+      <tr><td>间隔太密集</td><td>1</td><td class="left quote">用户1："哨兵间隔拍的比较密集，想设置自定义时间段"</td></tr>
+    </table>
+
+    <h3 style="font-size:15px;margin:16px 0 4px;color:#00B050;border-left:3px solid #00B050;padding-left:8px;">4. GPS定位轨迹</h3>
+    <p class="summary">使用率低（13人未使用），4人正面但3人提出体验问题。</p>
+    <table>
+      <tr><th>问题类型</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>没问题</td><td>2</td><td class="left quote">用户7："没问题"<br>用户8："能满足需要"</td></tr>
+      <tr><td>感觉好</td><td>1</td><td class="left quote">用户16："有功能，感觉非常好。能看到车的位置，家人一起用"</td></tr>
+      <tr><td>正常使用</td><td>1</td><td class="left quote">用户10："经客服介绍已更改设置，正常使用"</td></tr>
+    </table>
+    <table style="margin-top:8px;">
+      <tr><th style="background:#E74C3C;">痛点</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>地库不准</td><td>1</td><td class="left quote">用户3："第一次地库不太准，开出去就好的"</td></tr>
+      <tr><td>里程查看不便</td><td>1</td><td class="left quote">用户13："不方便查看选定日期开了多少公里"</td></tr>
+      <tr><td>误删担忧</td><td>1</td><td class="left quote">用户13："删除按钮在列表上，担心不小心就删除了"</td></tr>
+    </table>
+
+    <h3 style="font-size:15px;margin:16px 0 4px;color:#00B050;border-left:3px solid #00B050;padding-left:8px;">5. 视频回放</h3>
+    <p class="summary">6人评价"还可以"，但5人集中反馈操作不便和清晰度问题。</p>
+    <table>
+      <tr><th>问题类型</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>还可以/没问题</td><td>4</td><td class="left quote">用户1："还可以"<br>用户8："正常使用没问题"<br>用户14："还可以"<br>用户15："还可以"</td></tr>
+      <tr><td>还行</td><td>2</td><td class="left quote">用户18："还行"<br>用户19："还行"</td></tr>
+    </table>
+    <table style="margin-top:8px;">
+      <tr><th style="background:#E74C3C;">痛点</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>操作不便需反复返回</td><td>2</td><td class="left quote">用户12："要点很多次，不能顺着往下走，必须返回重选"<br>用户16："一个个查看需要一个个退出再看，非常不方便"</td></tr>
+      <tr><td>加载慢</td><td>1</td><td class="left quote">用户13："有优化空间，加载有点慢"</td></tr>
+      <tr><td>清晰度不够</td><td>1</td><td class="left quote">用户11："清晰度不够"</td></tr>
+      <tr><td>看视频提示离线</td><td>1</td><td class="left quote">用户12："看视频提示离线，遇到过一次"</td></tr>
+    </table>
+
+    <h3 style="font-size:15px;margin:16px 0 4px;color:#00B050;border-left:3px solid #00B050;padding-left:8px;">6. APP整体体验</h3>
+    <p class="summary">5人正面，4人负面，广告弹窗多和设计简陋是主要批评点。</p>
+    <table>
+      <tr><th>问题类型</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>挺好/没问题</td><td>3</td><td class="left quote">用户7："体验不错"<br>用户8："挺好的"<br>用户11："没问题"</td></tr>
+      <tr><td>还行</td><td>2</td><td class="left quote">用户18："还行"<br>用户19："还行"</td></tr>
+    </table>
+    <table style="margin-top:8px;">
+      <tr><th style="background:#E74C3C;">痛点</th><th>反馈用户数</th><th>用户原声</th></tr>
+      <tr><td>广告弹窗多</td><td>2</td><td class="left quote">用户10："广告弹框太多了"<br>用户14："广告太多"</td></tr>
+      <tr><td>设计简陋/功能弱</td><td>2</td><td class="left quote">用户13："APP设计太简陋，TP-link成熟度比较高"<br>用户13："APP车联网功能比较弱，有待提升"</td></tr>
+      <tr><td>反应慢</td><td>1</td><td class="left quote">用户9："反应比较慢"</td></tr>
+      <tr><td>提示离线</td><td>1</td><td class="left quote">用户12："看视频提示离线，遇到过一次"</td></tr>
+    </table>
   </div>
 
   <!-- 评分分布 -->
   <div class="section">
     <h2>评分分布</h2>
+    <p class="summary">平均8.9分，满分率23.5%，9分及以上占比58.8%，但7分及以下用户中2人已退货，低分与画质不满高度相关。</p>
     <div class="chart-row">
       <div class="chart-box" id="cScore"></div>
       <div class="chart-box">
@@ -226,6 +349,7 @@
   <!-- 痛点TOP -->
   <div class="section">
     <h2>用户痛点 TOP 排行</h2>
+    <p class="summary">画质清晰度以5人提及居首，哨兵24h限制、视频回放操作、亏电担忧并列第二（各3人），APP相关痛点密集（4项）。</p>
     <table>
       <tr><th>排名</th><th>痛点</th><th>人数</th><th>用户原声</th></tr>
       <tr><td>1</td><td class="left">画质清晰度不够</td><td>5</td><td class="left quote">"清晰度不如盯盯拍mini2" / "比G900差一截" / "晚上看不清车牌"</td></tr>
@@ -247,6 +371,7 @@
   <!-- 用户需求许愿 -->
   <div class="section">
     <h2>用户需求许愿</h2>
+    <p class="summary">前后双摄/多镜头是最高频需求（4人），哨兵时间延长排第二，其余需求分散但集中在安装便捷性和功能扩展。</p>
     <table>
       <tr><th>需求</th><th>人数</th><th>说明</th></tr>
       <tr><td>前后双摄/多镜头</td><td>4</td><td class="left">希望支持前后双录</td></tr>
@@ -264,6 +389,7 @@
   <!-- 推荐意愿 -->
   <div class="section">
     <h2>推荐意愿</h2>
+    <p class="summary">70%用户明确推荐，核心推荐理由为4G免流量+远程查看+哨兵，1人观望（担心SIM卡高温），未回答者含3名已退货/换机用户。</p>
     <div class="chart-row">
       <div class="chart-box" id="cNps"></div>
       <div class="chart-box">
@@ -280,6 +406,7 @@
   <!-- 退货/换机专项 -->
   <div class="section">
     <h2>已退货 / 换机用户专项</h2>
+    <p class="summary">3人流失，2人因画质问题离开，1人因无屏幕离开，用户17已转向竞品海康威视并表示满意。</p>
     <table>
       <tr><th>用户</th><th>原因</th><th>去向</th></tr>
       <tr><td>用户4</td><td class="left">画质差 + 网络慢</td><td>已退货</td></tr>
@@ -330,25 +457,40 @@
   /* 供电 */
   pie('cPower',[{name:'标配降压线',value:12},{name:'车充',value:3},{name:'未回答',value:5}],[GREEN,GREEN2,GRAY]);
 
-  /* 功能评价 */
-  (function(){
-    var c=echarts.init(document.getElementById('cFunc'));
-    c.setOption({
-      tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
-      legend:{data:['正面','负面','未使用'],top:0},
-      grid:{left:40,right:20,top:40,bottom:30},
-      xAxis:{type:'value'},
-      yAxis:{type:'category',inverse:true,data:['APP整体','视频回放','GPS','哨兵','实时画面','配网']},
-      series:[
-        {name:'负面',type:'bar',stack:'f',color:RED,data:[4,5,3,5,5,2],label:{show:true,position:'inside'}},
-        {name:'正面',type:'bar',stack:'f',color:GREEN,data:[5,6,4,6,7,9],label:{show:true,position:'inside'}},
-        {name:'未使用',type:'bar',stack:'f',color:'#e8e8e8',data:[11,9,13,9,8,9],barWidth:'50%'}
-      ]
-    });
-  })();
-
   /* 评分分布 (不含未评分) */
   bar('cScore',['10分','9分','8-8.5分','7分','6-7分'],[4,6,3,2,1],[GREEN,GREEN2,'#99dbb4',ORANGE,RED]);
+
+  /* 用户顾虑关系图 */
+  (function(){
+    var c=echarts.init(document.getElementById('cConcern'));
+    c.setOption({
+      tooltip:{formatter:function(p){return p.data.name||p.data.value}},
+      series:[{
+        type:'graph',layout:'force',
+        roam:true,
+        force:{repulsion:300,edgeLength:[80,120]},
+        label:{show:true,position:'right',fontSize:12,color:'#333'},
+        lineStyle:{color:'#999',width:2,curveness:0.1},
+        edgeSymbol:['none','arrow'],
+        data:[
+          {name:'供电顾虑',symbolSize:50,itemStyle:{color:'#333'},category:0},
+          {name:'担心亏电/电瓶损耗',symbolSize:38,itemStyle:{color:'#E74C3C'},category:1},
+          {name:'担心影响原车线路',symbolSize:34,itemStyle:{color:'#F39C12'},category:1},
+          {name:'用户1：正常使用但一直担心',symbolSize:24,itemStyle:{color:'#fff3e0'},category:2},
+          {name:'用户10：选择不安装降压线',symbolSize:24,itemStyle:{color:'#fff3e0'},category:2},
+          {name:'用户16：手动拔掉电源线',symbolSize:24,itemStyle:{color:'#fff3e0'},category:2}
+        ],
+        links:[
+          {source:'供电顾虑',target:'担心亏电/电瓶损耗'},
+          {source:'供电顾虑',target:'担心影响原车线路'},
+          {source:'担心亏电/电瓶损耗',target:'用户1：正常使用但一直担心'},
+          {source:'担心亏电/电瓶损耗',target:'用户10：选择不安装降压线'},
+          {source:'担心亏电/电瓶损耗',target:'用户16：手动拔掉电源线'},
+          {source:'担心影响原车线路',target:'用户10：选择不安装降压线'}
+        ]
+      }]
+    });
+  })();
 
   /* 推荐意愿 */
   pie('cNps',[{name:'明确推荐',value:14},{name:'观望',value:1},{name:'未回答',value:5}],[GREEN,ORANGE,GRAY]);
