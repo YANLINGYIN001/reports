@@ -221,12 +221,8 @@
       <tr><td>正常</td><td>1</td><td class="left quote">用户12："正常"</td></tr>
       <tr><td>扫码简单</td><td>1</td><td class="left quote">用户14："扫码安装和添加了"</td></tr>
     </table>
-    <table style="margin-top:8px;">
-      <tr><th style="background:#E74C3C;">痛点</th><th>反馈用户数</th><th>用户原声</th></tr>
-      <tr><td>网络设置易误解</td><td>1</td><td class="left quote">用户6："网络设置功能容易误解（APP8月底版本已优化）"</td></tr>
-    </table>
 
-    <h3 style="font-size:15px;margin:16px 0 4px;color:#00B050;border-left:3px solid #00B050;padding-left:8px;">2. 实时画面</h3>
+    <h3
     <p class="summary">7人评价正面，但5人明确批评画质差或加载慢，画质是核心短板。</p>
     <table>
       <tr><th>问题类型</th><th>反馈用户数</th><th>用户原声</th></tr>
@@ -439,33 +435,34 @@
   /* 评分分布 (不含未评分) */
   bar('cScore',['10分','9分','8-8.5分','7分','6-7分'],[4,6,3,2,1],[GREEN,GREEN2,'#99dbb4',ORANGE,RED]);
 
-  /* 用户顾虑关系图 */
+  /* 用户顾虑关系图 - 固定布局流程图 */
   (function(){
     var c=echarts.init(document.getElementById('cConcern'));
     c.setOption({
       tooltip:{formatter:function(p){return p.data.name||p.data.value}},
       series:[{
-        type:'graph',layout:'force',
-        roam:true,
-        force:{repulsion:300,edgeLength:[80,120]},
-        label:{show:true,position:'right',fontSize:12,color:'#333'},
-        lineStyle:{color:'#999',width:2,curveness:0.1},
+        type:'graph',layout:'none',
+        roam:false,
+        symbol:'circle',
+        label:{show:true,fontSize:12,color:'#333'},
+        lineStyle:{color:'#999',width:2,curveness:0},
         edgeSymbol:['none','arrow'],
+        edgeSymbolSize:8,
         data:[
-          {name:'供电顾虑',symbolSize:50,itemStyle:{color:'#333'},category:0},
-          {name:'担心亏电/电瓶损耗',symbolSize:38,itemStyle:{color:'#E74C3C'},category:1},
-          {name:'担心影响原车线路',symbolSize:34,itemStyle:{color:'#F39C12'},category:1},
-          {name:'用户1：正常使用但一直担心',symbolSize:24,itemStyle:{color:'#fff3e0'},category:2},
-          {name:'用户10：选择不安装降压线',symbolSize:24,itemStyle:{color:'#fff3e0'},category:2},
-          {name:'用户16：手动拔掉电源线',symbolSize:24,itemStyle:{color:'#fff3e0'},category:2}
+          {name:'供电顾虑',x:300,y:175,symbolSize:55,itemStyle:{color:'#333333'},label:{color:'#fff',fontSize:13,fontWeight:'bold'}},
+          {name:'担心亏电/电瓶损耗',x:500,y:100,symbolSize:42,itemStyle:{color:'#E74C3C'},label:{color:'#fff',fontSize:12}},
+          {name:'担心影响原车线路',x:500,y:250,symbolSize:38,itemStyle:{color:'#F39C12'},label:{color:'#fff',fontSize:12}},
+          {name:'用户1：正常使用\n但一直担心',x:720,y:40,symbolSize:36,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:11}},
+          {name:'用户10：选择不\n安装降压线',x:720,y:130,symbolSize:36,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:11}},
+          {name:'用户16：手动拔\n掉电源线',x:720,y:210,symbolSize:36,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:11}}
         ],
         links:[
           {source:'供电顾虑',target:'担心亏电/电瓶损耗'},
           {source:'供电顾虑',target:'担心影响原车线路'},
-          {source:'担心亏电/电瓶损耗',target:'用户1：正常使用但一直担心'},
-          {source:'担心亏电/电瓶损耗',target:'用户10：选择不安装降压线'},
-          {source:'担心亏电/电瓶损耗',target:'用户16：手动拔掉电源线'},
-          {source:'担心影响原车线路',target:'用户10：选择不安装降压线'}
+          {source:'担心亏电/电瓶损耗',target:'用户1：正常使用\n但一直担心'},
+          {source:'担心亏电/电瓶损耗',target:'用户10：选择不\n安装降压线'},
+          {source:'担心亏电/电瓶损耗',target:'用户16：手动拔\n掉电源线'},
+          {source:'担心影响原车线路',target:'用户10：选择不\n安装降压线'}
         ]
       }]
     });
