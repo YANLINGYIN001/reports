@@ -208,7 +208,44 @@
     </div>
     <h3 style="font-size:14px;margin:16px 0 6px;">用户供电顾虑行为影响</h3>
     <p class="summary">多用户因担心电瓶耗电而影响实际使用行为——用户1正常使用但一直担心，用户10选择不安装降压线，用户16手动拔掉电源线，电瓶耗电顾虑直接削弱停车监控等核心功能的使用。</p>
-    <div id="cConcern" style="width:100%;height:450px;margin-bottom:16px;"></div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:0;margin:20px 0 24px;flex-wrap:wrap;">
+      <!-- 一级 -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="width:100px;height:100px;border-radius:50%;background:#333;display:flex;align-items:center;justify-content:center;flex-shrink:0;"></div>
+        <span style="font-size:14px;color:#333;margin-top:6px;font-weight:600;">供电顾虑</span>
+      </div>
+      <!-- 箭头 -->
+      <span style="font-size:24px;color:#999;margin:0 8px;">→</span>
+      <!-- 二级 -->
+      <div style="display:flex;flex-direction:column;gap:40px;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:80px;height:80px;border-radius:50%;background:#E74C3C;flex-shrink:0;"></div>
+          <span style="font-size:13px;color:#E74C3C;font-weight:600;margin-top:4px;text-align:center;">担心亏电/电瓶损耗</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:70px;height:70px;border-radius:50%;background:#F39C12;flex-shrink:0;"></div>
+          <span style="font-size:13px;color:#F39C12;font-weight:600;margin-top:4px;text-align:center;">担心影响原车线路</span>
+        </div>
+      </div>
+      <!-- 箭头 -->
+      <span style="font-size:24px;color:#999;margin:0 8px;">→</span>
+      <!-- 三级 -->
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:16px;height:16px;border-radius:50%;background:#fdf3f2;border:2px solid #E74C3C;flex-shrink:0;"></div>
+          <span style="font-size:13px;color:#E74C3C;white-space:nowrap;">用户1：正常使用但一直担心</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:16px;height:16px;border-radius:50%;background:#fdf3f2;border:2px solid #E74C3C;flex-shrink:0;"></div>
+          <span style="font-size:13px;color:#E74C3C;white-space:nowrap;">用户10：选择不安装降压线</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:16px;height:16px;border-radius:50%;background:#fdf3f2;border:2px solid #E74C3C;flex-shrink:0;"></div>
+          <span style="font-size:13px;color:#E74C3C;white-space:nowrap;">用户16：手动拔掉电源线</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#F39C12;margin-top:-8px;margin-bottom:12px;">※ "担心影响原车线路"同样指向用户10选择不安装降压线</p>
   </div>
 
   <!-- 功能体验评价 -->
@@ -437,39 +474,6 @@
 
   /* 评分分布 (不含未评分) */
   bar('cScore',['10分','9分','8-8.5分','7分','6-7分'],[4,6,3,2,1],[GREEN,GREEN2,'#99dbb4',ORANGE,RED]);
-
-  /* 用户顾虑关系图 - 固定布局流程图 */
-  (function(){
-    var c=echarts.init(document.getElementById('cConcern'));
-    c.setOption({
-      tooltip:{formatter:function(p){return p.data.name||p.data.value}},
-      series:[{
-        type:'graph',layout:'none',
-        roam:false,
-        symbol:'circle',
-        label:{show:true,fontSize:12,color:'#333'},
-        lineStyle:{color:'#999',width:2,curveness:0},
-        edgeSymbol:['none','arrow'],
-        edgeSymbolSize:8,
-        data:[
-          {name:'供电顾虑',x:300,y:180,symbolSize:100,itemStyle:{color:'#333333'},label:{color:'#333333',fontSize:16,fontWeight:'bold',position:'bottom'}},
-          {name:'担心亏电/电瓶损耗',x:480,y:100,symbolSize:80,itemStyle:{color:'#E74C3C'},label:{color:'#E74C3C',fontSize:14,formatter:function(p){return '担心亏电/电瓶损耗'},position:'bottom'}},
-          {name:'担心影响原车线路',x:480,y:280,symbolSize:70,itemStyle:{color:'#F39C12'},label:{color:'#F39C12',fontSize:14,formatter:function(p){return '担心影响原车线路'},position:'bottom'}},
-          {name:'用户1：正常使用但一直担心',x:620,y:80,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:13,position:'right',width:120,overflow:'truncate'}},
-          {name:'用户10：选择不安装降压线',x:620,y:170,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:13,position:'right',width:120,overflow:'truncate'}},
-          {name:'用户16：手动拔掉电源线',x:620,y:260,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:13,position:'right',width:120,overflow:'truncate'}}
-        ],
-        links:[
-          {source:'供电顾虑',target:'担心亏电/电瓶损耗'},
-          {source:'供电顾虑',target:'担心影响原车线路'},
-          {source:'担心亏电/电瓶损耗',target:'用户1：正常使用但一直担心'},
-          {source:'担心亏电/电瓶损耗',target:'用户10：选择不安装降压线'},
-          {source:'担心亏电/电瓶损耗',target:'用户16：手动拔掉电源线'},
-          {source:'担心影响原车线路',target:'用户10：选择不安装降压线'}
-        ]
-      }]
-    });
-  })();
 
   /* 推荐意愿 */
   pie('cNps',[{name:'明确推荐',value:14},{name:'观望',value:1},{name:'未回答',value:5}],[GREEN,ORANGE,GRAY]);
