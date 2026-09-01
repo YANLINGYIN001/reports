@@ -42,6 +42,7 @@
   .insight.orange { border-left-color:var(--orange); }
   .insight.green { border-left-color:var(--green); }
   .insight.blue { border-left-color:#3498db; }
+  .insight.full-row { grid-column: 1 / -1; }
   .insight b { font-size:14px; }
   .insight.q { font-style:italic; color:var(--gray); }
 
@@ -89,7 +90,7 @@
   <div class="kpis">
     <div class="kpi">
       <div class="label">成功访问</div>
-      <div class="num">20/76 <small>完成率26.3%</small></div>
+      <div class="num">20/76 <small>成功率26.3%</small></div>
       <div class="desc">成功触达4位回访人员，覆盖京东自营、抖音等 <b>8个渠道</b>，未填写20人。</div>
     </div>
     <div class="kpi">
@@ -112,7 +113,7 @@
       <div class="insight orange"><b>🟠 哨兵模式双重痛点</b><br>①24h时长限制被3人提及（用户1/3/11）；②通知频次过高被2人吐槽（用户13/16）。</div>
       <div class="insight orange"><b>🟠 视频回放交互体验差</b><br>3人（用户12/13/16）反馈回放操作不便——<span class="q">"要点很多次不能顺着看必须返回重选"</span>、<span class="q">"一个个退出再看"</span>。</div>
       <div class="insight green"><b>🟢 4G免流量+远程查看是核心竞争力</b><br><b>14人</b>明确推荐，平均评分 <b>8.9分</b>，<b>4人满分</b>，4G免流量+远程查看+哨兵停车监控构成核心推荐理由。</div>
-      <div class="insight blue"><b>🔵 研发响应总览</b><br>13项痛点中<b>6项已有方案推进</b>（哨兵人车算法9月上旬升级、OBD接线验证、IQ优化提测、APP设置说明已更新），<b>3项暂不处理</b>（APP广告、4G网速、内存卡成本），<b>4项列入新品规划</b>（前后双摄、带屏版本、广角镜头、录音优化）。9项需求中4项已有方案落地推进。</div>
+      <div class="insight blue full-row"><b>🔵 研发响应总览</b><br>13项痛点中<b>6项已有方案推进</b>（哨兵人车算法9月上旬升级、OBD接线验证、IQ优化提测、APP设置说明已更新），<b>3项暂不处理</b>（APP广告、4G网速、内存卡成本），<b>4项列入新品规划</b>（前后双摄、带屏版本、广角镜头、录音优化）。9项需求中4项已有方案落地推进。</div>
     </div>
   </div>
 
@@ -451,9 +452,9 @@
         edgeSymbol:['none','arrow'],
         edgeSymbolSize:8,
         data:[
-          {name:'供电顾虑',x:350,y:250,symbolSize:100,itemStyle:{color:'#333333'},label:{color:'#fff',fontSize:36,fontWeight:'bold'}},
-          {name:'担心亏电/电瓶损耗',x:580,y:140,symbolSize:80,itemStyle:{color:'#E74C3C'},label:{color:'#fff',fontSize:20,formatter:function(p){return '担心亏电\n电瓶损耗'}}},
-          {name:'担心影响原车线路',x:580,y:360,symbolSize:70,itemStyle:{color:'#F39C12'},label:{color:'#fff',fontSize:20,formatter:function(p){return '担心影响\n原车线路'}}},
+          {name:'供电顾虑',x:350,y:200,symbolSize:100,itemStyle:{color:'#333333'},label:{color:'#fff',fontSize:36,fontWeight:'bold',position:'bottom'}},
+          {name:'担心亏电/电瓶损耗',x:580,y:120,symbolSize:80,itemStyle:{color:'#E74C3C'},label:{color:'#fff',fontSize:20,formatter:function(p){return '担心亏电\n电瓶损耗'},position:'bottom'}},
+          {name:'担心影响原车线路',x:580,y:340,symbolSize:70,itemStyle:{color:'#F39C12'},label:{color:'#fff',fontSize:20,formatter:function(p){return '担心影响\n原车线路'},position:'bottom'}},
           {name:'用户1：正常使用但一直担心',x:760,y:120,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:14,position:'right'}},
           {name:'用户10：选择不安装降压线',x:760,y:220,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:14,position:'right'}},
           {name:'用户16：手动拔掉电源线',x:760,y:320,symbolSize:20,itemStyle:{color:'#fdf3f2'},label:{color:'#E74C3C',fontSize:14,position:'right'}}
