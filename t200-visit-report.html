@@ -208,69 +208,51 @@
     </div>
     <h3 style="font-size:14px;margin:16px 0 6px;">用户供电顾虑行为影响</h3>
     <p class="summary">多用户因担心电瓶耗电而影响实际使用行为——用户1正常使用但一直担心，用户10选择不安装降压线，用户16手动拔掉电源线，电瓶耗电顾虑直接削弱停车监控等核心功能的使用。</p>
-    <div style="margin:20px 0 24px;padding:16px;">
-      <!-- 供电顾虑 → 两个二级 -->
-      <div style="display:flex;align-items:flex-start;justify-content:center;gap:0;">
-        <!-- 一级 -->
-        <div style="display:flex;flex-direction:column;align-items:center;margin-top:60px;">
-          <div style="width:70px;height:70px;border-radius:50%;background:#333;flex-shrink:0;"></div>
-          <span style="font-size:14px;color:#333;margin-top:10px;font-weight:600;">供电顾虑</span>
-        </div>
-        <!-- 两条箭头 -->
-        <div style="display:flex;flex-direction:column;gap:40px;">
-          <svg width="50" height="24" style="margin-top:24px;"><line x1="2" y1="12" x2="40" y2="12" stroke="#666" stroke-width="2"/><polygon points="40,6 48,12 40,18" fill="#666"/></svg>
-          <svg width="50" height="24"><line x1="2" y1="12" x2="40" y2="12" stroke="#666" stroke-width="2"/><polygon points="40,6 48,12 40,18" fill="#666"/></svg>
-        </div>
-        <!-- 二级 -->
-        <div style="display:flex;flex-direction:column;gap:40px;">
-          <div style="display:flex;flex-direction:column;align-items:center;">
-            <div style="width:56px;height:56px;border-radius:50%;background:#E74C3C;flex-shrink:0;"></div>
-            <span style="font-size:13px;color:#E74C3C;font-weight:600;margin-top:10px;text-align:center;">担心亏电/电瓶损耗</span>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;">
-            <div style="width:50px;height:50px;border-radius:50%;background:#F39C12;flex-shrink:0;"></div>
-            <span style="font-size:13px;color:#F39C12;font-weight:600;margin-top:10px;text-align:center;">担心影响原车线路</span>
-          </div>
-        </div>
-        <!-- 二级→三级箭头 -->
-        <div style="display:flex;flex-direction:column;gap:40px;">
-          <!-- 担心亏电 → 3个用户 -->
-          <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
-            <svg width="50" height="20"><line x1="2" y1="10" x2="40" y2="10" stroke="#E74C3C" stroke-width="1.5"/><polygon points="40,5 48,10 40,15" fill="#E74C3C"/></svg>
-            <svg width="50" height="20"><line x1="2" y1="10" x2="40" y2="10" stroke="#E74C3C" stroke-width="1.5"/><polygon points="40,5 48,10 40,15" fill="#E74C3C"/></svg>
-            <svg width="50" height="20"><line x1="2" y1="10" x2="40" y2="10" stroke="#E74C3C" stroke-width="1.5"/><polygon points="40,5 48,10 40,15" fill="#E74C3C"/></svg>
-          </div>
-          <!-- 担心影响线路 → 1个用户 -->
-          <div style="margin-top:44px;">
-            <svg width="50" height="20"><line x1="2" y1="10" x2="40" y2="10" stroke="#F39C12" stroke-width="1.5"/><polygon points="40,5 48,10 40,15" fill="#F39C12"/></svg>
-          </div>
-        </div>
-        <!-- 三级 -->
-        <div style="display:flex;flex-direction:column;gap:40px;">
-          <!-- 担心亏电的3个用户 -->
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <div style="display:flex;align-items:center;gap:6px;">
-              <div style="width:12px;height:12px;border-radius:50%;background:#fdf3f2;border:2px solid #E74C3C;flex-shrink:0;"></div>
-              <span style="font-size:13px;color:#E74C3C;white-space:nowrap;">用户1：正常使用但一直担心</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;">
-              <div style="width:12px;height:12px;border-radius:50%;background:#fdf3f2;border:2px solid #E74C3C;flex-shrink:0;"></div>
-              <span style="font-size:13px;color:#E74C3C;white-space:nowrap;">用户10：选择不安装降压线</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:6px;">
-              <div style="width:12px;height:12px;border-radius:50%;background:#fdf3f2;border:2px solid #E74C3C;flex-shrink:0;"></div>
-              <span style="font-size:13px;color:#E74C3C;white-space:nowrap;">用户16：手动拔掉电源线</span>
-            </div>
-          </div>
-          <!-- 担心影响线路的1个用户 -->
-          <div style="display:flex;align-items:center;gap:6px;margin-top:44px;">
-            <div style="width:12px;height:12px;border-radius:50%;background:#fdf3f2;border:2px solid #F39C12;flex-shrink:0;"></div>
-            <span style="font-size:13px;color:#F39C12;white-space:nowrap;">用户10：选择不安装降压线</span>
-          </div>
-        </div>
-      </div>
+    <div style="margin:20px 0 24px;">
+      <!-- 路径A: 供电顾虑 → 担心亏电 → 3个用户 -->
+      <table style="border-collapse:collapse;margin:0 auto 20px auto;">
+        <tr>
+          <td rowspan="3" style="vertical-align:middle;text-align:center;padding:0 8px;width:80px;">
+            <div style="width:60px;height:60px;border-radius:50%;background:#333;margin:0 auto;"></div>
+            <span style="font-size:13px;color:#333;font-weight:600;display:block;margin-top:6px;">供电顾虑</span>
+          </td>
+          <td rowspan="3" style="vertical-align:middle;padding:0 2px;width:42px;">
+            <svg width="40" height="20"><line x1="2" y1="10" x2="30" y2="10" stroke="#666" stroke-width="2"/><polygon points="30,5 38,10 30,15" fill="#666"/></svg>
+          </td>
+          <td rowspan="3" style="vertical-align:middle;text-align:center;padding:0 8px;width:80px;">
+            <div style="width:52px;height:52px;border-radius:50%;background:#E74C3C;margin:0 auto;"></div>
+            <span style="font-size:12px;color:#E74C3C;font-weight:600;display:block;margin-top:6px;">担心亏电/<br>电瓶损耗</span>
+          </td>
+          <td style="vertical-align:middle;padding:6px 2px;width:42px;"><svg width="40" height="16"><line x1="2" y1="8" x2="30" y2="8" stroke="#E74C3C" stroke-width="1.5"/><polygon points="30,4 38,8 30,12" fill="#E74C3C"/></svg></td>
+          <td style="vertical-align:middle;padding:6px 0;"><div style="display:flex;align-items:center;gap:6px;"><div style="width:10px;height:10px;border-radius:50%;background:#fdf3f2;border:2px solid #E74C3C;flex-shrink:0;"></div><span style="font-size:13px;color:#E74C3C;white-space:nowrap;">用户1：正常使用但一直担心</span></div></td>
+        </tr>
+        <tr>
+          <td style="vertical-align:middle;padding:6px 2px;"><svg width="40" height="16"><line x1="2" y1="8" x2="30" y2="8" stroke="#E74C3C" stroke-width="1.5"/><polygon points="30,4 38,8 30,12" fill="#E74C3C"/></svg></td>
+          <td style="vertical-align:middle;padding:6px 0;"><div style="display:flex;align-items:center;gap:6px;"><div style="width:10px;height:10px;border-radius:50%;background:#fdf3f2;border:2px solid #E74C3C;flex-shrink:0;"></div><span style="font-size:13px;color:#E74C3C;white-space:nowrap;">用户10：选择不安装降压线</span></div></td>
+        </tr>
+        <tr>
+          <td style="vertical-align:middle;padding:6px 2px;"><svg width="40" height="16"><line x1="2" y1="8" x2="30" y2="8" stroke="#E74C3C" stroke-width="1.5"/><polygon points="30,4 38,8 30,12" fill="#E74C3C"/></svg></td>
+          <td style="vertical-align:middle;padding:6px 0;"><div style="display:flex;align-items:center;gap:6px;"><div style="width:10px;height:10px;border-radius:50%;background:#fdf3f2;border:2px solid #E74C3C;flex-shrink:0;"></div><span style="font-size:13px;color:#E74C3C;white-space:nowrap;">用户16：手动拔掉电源线</span></div></td>
+        </tr>
+      </table>
+      <!-- 路径B: 供电顾虑 → 担心影响线路 → 用户10 -->
+      <table style="border-collapse:collapse;margin:0 auto;">
+        <tr>
+          <td style="text-align:center;padding:0 8px;width:80px;">
+            <div style="width:60px;height:60px;border-radius:50%;background:#333;opacity:0.3;margin:0 auto;"></div>
+            <span style="font-size:12px;color:#999;display:block;margin-top:6px;">（同上）</span>
+          </td>
+          <td style="vertical-align:middle;padding:0 2px;width:42px;"><svg width="40" height="20"><line x1="2" y1="10" x2="30" y2="10" stroke="#666" stroke-width="2"/><polygon points="30,5 38,10 30,15" fill="#666"/></svg></td>
+          <td style="text-align:center;padding:0 8px;width:80px;">
+            <div style="width:48px;height:48px;border-radius:50%;background:#F39C12;margin:0 auto;"></div>
+            <span style="font-size:12px;color:#F39C12;font-weight:600;display:block;margin-top:6px;">担心影响<br>原车线路</span>
+          </td>
+          <td style="vertical-align:middle;padding:0 2px;width:42px;"><svg width="40" height="16"><line x1="2" y1="8" x2="30" y2="8" stroke="#F39C12" stroke-width="1.5"/><polygon points="30,4 38,8 30,12" fill="#F39C12"/></svg></td>
+          <td style="vertical-align:middle;padding:0;"><div style="display:flex;align-items:center;gap:6px;"><div style="width:10px;height:10px;border-radius:50%;background:#fdf3f2;border:2px solid #F39C12;flex-shrink:0;"></div><span style="font-size:13px;color:#F39C12;white-space:nowrap;">用户10：选择不安装降压线</span></div></td>
+        </tr>
+      </table>
     </div>
-    <p style="font-size:12px;color:#999;margin-top:-4px;margin-bottom:12px;">※ 用户10同时受“担心亏电”和“担心影响原车线路”双重顾虑影响</p>
+    <p style="font-size:12px;color:#999;margin-top:-4px;margin-bottom:12px;text-align:center;">※ 用户10同时受“担心亏电”和“担心影响原车线路”双重顾虑影响</p>
   </div>
 
   <!-- 功能体验评价 -->
