@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>6pro 4G门铃 日常问题反馈日报 2026-09-01</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--primary:#00B050;--primary2:#2BBD6E;--dark:#333;--gray:#999;--red:#E74C3C;--orange:#F39C12;--bg:#f5f7fa}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--dark);padding:20px}
+.container{max-width:900px;margin:0 auto}
+.header{text-align:center;padding:30px 20px;background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;border-radius:12px;margin-bottom:24px}
+.header h1{font-size:24px;margin-bottom:8px}
+.header p{font-size:13px;opacity:.9}
+.summary{background:#f0faf3;border-left:4px solid var(--primary);padding:20px;margin:20px 0;border-radius:0 8px 8px 0;line-height:1.8}
+.summary h2{font-size:16px;margin-bottom:10px;color:var(--primary)}
+.section{background:#fff;border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section h2{font-size:18px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--primary)}
+.chart{width:100%;height:350px;margin:20px 0}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:var(--primary);color:#fff;padding:10px 8px;text-align:center;font-weight:600}
+td{padding:8px;border:1px solid #eee;text-align:left}
+td:first-child,td:nth-child(2),td:nth-child(3){text-align:center}
+tr:hover{background:#f9f9f9}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.tag{display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;background:#e8f5e9;color:#00B050;border:1px solid #c8e6c9}
+.tag.hot{background:#fff3e0;color:#F39C12;border-color:#ffe0b2}
+.tag.critical{background:#ffebee;color:#E74C3C;border-color:#ffcdd2}
+.insight{padding:12px 16px;margin:8px 0;border-radius:6px;background:#f8f9fa;border-left:3px solid var(--primary)}
+.insight.red{border-left-color:var(--red)}
+.insight.orange{border-left-color:var(--orange)}
+.insight strong{color:var(--dark)}
+.footer{text-align:center;padding:20px;color:var(--gray);font-size:12px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>📊 6pro 4G门铃 日常问题反馈日报</h1>
+<p>数据截止：2026-09-01 09:12 | 累计517条（新增3条） | 19人参与 | 🦞</p>
+</div>
+
+<!-- 核心洞察 -->
+<div class="summary">
+<h2>🎯 核心洞察</h2>
+<p><strong>本次新增3条反馈，全部来自云录模块，涉及2位用户（何三涛、周军），均使用0828固件版本。</strong></p>
+<p>① <strong>云录缩略图不显示</strong>（何三涛）：画面变化事件无缩略图，且实际画面未变化，兼具缩略图缺失和误报双重问题。该问题累计已达21条，是云录模块第4大问题。</p>
+<p>② <strong>录制事件不完整</strong>（周军，2条）：逗留事件中途停止录像无完整视频、报警视频无头片段。录制不完整累计5条，属近期新暴露问题，0828固件上连续出现需关注。</p>
+</div>
+
+<!-- 新增反馈明细 -->
+<div class="section">
+<h2>一、新增反馈明细（按问题分类分组）</h2>
+<table>
+<tr><th>序号</th><th>一级标签</th><th>二级标签</th><th>姓名</th><th>提交时间</th><th>固件版本</th><th>问题详情</th></tr>
+<tr>
+<td>1</td><td>云录</td><td>云录缩略图不显示</td><td>何三涛</td><td>8/31 15:09</td><td>0828</td>
+<td>云录的画面变化无缩略图，并且画面实际没有变化！</td>
+</tr>
+<tr>
+<td>2</td><td>云录</td><td>录制事件不完整</td><td>周军</td><td>8/31 18:53</td><td>0828</td>
+<td>人还在逗留，已经停止录像，无单个完整视频。</td>
+</tr>
+<tr>
+<td>3</td><td>云录</td><td>录制事件不完整</td><td>周军</td><td>9/1 07:31</td><td>0828</td>
+<td>报警视频无头</td>
+</tr>
+</table>
+<div class="insight orange">
+<strong>模块小结：</strong>3条新增全部指向云录模块。0828固件上缩略图缺失+录制不完整问题连续出现，建议研发重点关注0828固件云录相关改动。
+</div>
+</div>
+
+<!-- 云录模块累计趋势 -->
+<div class="section">
+<h2>二、云录模块累计问题分布</h2>
+<p>云录模块累计216条反馈，占全部反馈的41.8%，是6pro门铃最大问题模块。各二级标签分布如下：</p>
+<div id="chart-cloud" class="chart"></div>
+<script>
+const cloudData = [
+  {name:'画面变化误报', value:48},
+  {name:'漏录/漏拍', value:33},
+  {name:'录制延迟', value:25},
+  {name:'云录缩略图不显示', value:21},
+  {name:'有人误报', value:21},
+  {name:'误报', value:15},
+  {name:'云录卡录时间不同步', value:5},
+  {name:'录制事件不完整', value:5},
+  {name:'事件分类不准', value:4},
+  {name:'云录播放失败', value:3},
+  {name:'云录加载失败', value:3},
+  {name:'首帧过曝', value:3},
+  {name:'其他', value:30}
+];
+const chart1 = echarts.init(document.getElementById('chart-cloud'));
+chart1.setOption({
+  title:{text:'云录模块二级标签分布（累计216条）',left:'center',textStyle:{fontSize:14}},
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+  grid:{left:'15%',right:'5%',top:40,bottom:20},
+  xAxis:{type:'value',axisLabel:{fontSize:11}},
+  yAxis:{type:'category',data:cloudData.map(d=>d.name).reverse(),axisLabel:{fontSize:11}},
+  series:[{
+    type:'bar',
+    data:cloudData.map(d=>d.value).reverse(),
+    itemStyle:{
+      color:function(p){
+        const colors=['#999','#999','#999','#999','#999','#999','#999','#F39C12','#F39C12','#00B050','#00B050','#00B050','#00B050','#00B050','#00B050','#00B050','#00B050','#00B050','#00B050','#00B050','#00B050','#00B050','#00B050'];
+        return colors[p.dataIndex]||'#00B050';
+      }
+    },
+    label:{show:true,position:'right',fontSize:11}
+  }]
+});
+</script>
+<div class="insight">
+<strong>趋势分析：</strong>云录TOP3问题（画面变化误报48条、漏录/漏拍33条、录制延迟25条）占云录模块49%，是核心痛点。本次新增的"云录缩略图不显示"（累计21条）和"录制事件不完整"（累计5条）虽非TOP3，但在0828固件上持续出现，需关注是否为新版固件引入的回归问题。
+</div>
+</div>
+
+<!-- 全模块累计分布 -->
+<div class="section">
+<h2>三、全模块问题分布（累计517条）</h2>
+<div id="chart-all" class="chart"></div>
+<script>
+const allData=[
+  {name:'云录',value:216},
+  {name:'卡录',value:56},
+  {name:'APP功能/交互',value:46},
+  {name:'IQ画质',value:27},
+  {name:'功能需求',value:20},
+  {name:'开流',value:19},
+  {name:'OTA',value:14},
+  {name:'按门铃',value:12},
+  {name:'续航',value:11},
+  {name:'夜视切换',value:9},
+  {name:'稳定性',value:8},
+  {name:'配网/安装引导',value:7},
+  {name:'其他',value:15}
+];
+const chart2=echarts.init(document.getElementById('chart-all'));
+chart2.setOption({
+  title:{text:'一级标签分布',left:'center',textStyle:{fontSize:14}},
+  tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
+  legend:{bottom:0,type:'scroll',itemWidth:10,itemHeight:10,textStyle:{fontSize:11}},
+  series:[{
+    type:'pie',
+    radius:['35%','65%'],
+    center:['50%','45%'],
+    data:allData.map(d=>({name:d.name,value:d.value})),
+    itemStyle:{borderRadius:4,borderColor:'#fff',borderWidth:2},
+    label:{show:true,formatter:'{b}\n{d}%',fontSize:10},
+    color:['#00B050','#2BBD6E','#4ECDC4','#F39C12','#E74C3C','#999','#FFB84D','#666','#87CEEB','#DDA0DD','#F0E68C','#90EE90','#CCC']
+  }]
+});
+</script>
+</div>
+
+<!-- 用户原声 -->
+<div class="section">
+<h2>四、新增用户原声</h2>
+<table>
+<tr><th>序号</th><th>模块</th><th>反馈量</th><th>典型原声</th></tr>
+<tr>
+<td>1</td><td>云录 / 云录缩略图不显示</td><td>1人（1条）</td>
+<td>"云录的画面变化无缩略图，并且画面实际没有变化！" —— <strong>何三涛</strong>（8/31 15:09，FW 0828）</td>
+</tr>
+<tr>
+<td>2</td><td>云录 / 录制事件不完整</td><td>1人（2条）</td>
+<td>"人还在逗留，已经停止录像，无单个完整视频。" —— <strong>周军</strong>（8/31 18:53，FW 0828）</td>
+</tr>
+<tr>
+<td>3</td><td>云录 / 录制事件不完整</td><td>—</td>
+<td>"报警视频无头" —— <strong>周军</strong>（9/1 07:31，FW 0828）</td>
+</tr>
+</table>
+</div>
+
+<div class="footer">
+6pro 4G门铃公测 · 日常问题反馈日报 · 2026-09-01 · 🦞<br>
+作业完成情况：https://yanlingyin001.github.io/reports/6pro-homework-status.html
+</div>
+
+</div>
+</body>
+</html>
