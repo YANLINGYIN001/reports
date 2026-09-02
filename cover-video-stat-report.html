@@ -64,22 +64,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 <div class="section">
   <h2><span class="num">1</span>各型号封面图缺失率</h2>
   <div class="formula">计算公式：缺失率 = 8.1-9.1累计无封面图事件数 / 8.1-9.1累计事件总数</div>
-  <div id="chart_model_nocover" class="chart-box"></div>
+  <div id="chart_model_nocover" class="chart-box tall"></div>
   <div class="insight-box">
     <div class="title">📊 缺失率洞察</div>
-    <p>• R6 PRO 4G缺失率4.39%，在16款型号中排名第二，仅次于R811S（1.19%）——等等，R811S更低？让我确认...<br>• 实际上R811S因8/11-8/12两天极端值拉高了整体，32天加权后为1.19%<br>• R6 PRO 4G虽事件量小（28.4万），但缺失率稳定偏高，系统性问题特征明显</p>
+    <p>• R811S缺失率1.19%排第一，R6 PRO 4G以4.39%排第二——但两者性质不同<br>• R811S的高缺失率主要由8/11-8/12两天的极端值（70%/62%）拉高，属偶发服务故障<br>• R6 PRO 4G缺失率稳定在4%-10%区间波动，无单日极端值但持续偏高，属系统性问题<br>• R5Pro-4G同为4G型号仅2.11%，R6 PRO 4G是其2.1倍，排除4G网络因素</p>
   </div>
 </div>
 
 <div class="section">
-  <h2><span class="num">2</span>各型号视频时长分布</h2>
-  <div class="formula">计算公式：各时长占比 = 8.1-9.1各时长累计事件数 / 8.1-9.1累计事件总数</div>
+  <h2><span class="num">2</span>各型号0-6s视频占比</h2>
+  <div class="formula">计算公式：0-6s占比 = 8.1-9.1累计0-6s事件数 / 8.1-9.1累计事件总数</div>
   <div id="chart_model_dur" class="chart-box"></div>
   <div class="insight-box">
-    <div class="title">📊 时长分布洞察</div>
-    <p>• R5 Pro / R5Pro-4G / R4 Pro 偏长：6-15s占比66%-67%，15s+占比24%-27%<br>
-    • R5 MAX / R6 MAX 偏短：0-6s占比约12%，但三档合计仅37%，说明大量事件未生成视频<br>
-    • R6 PRO 4G：0-6s占15.6%，6-15s占42.8%，15s+占30.7%，三档合计89%，视频生成率高于R5 MAX</p>
+    <div class="title">📊 0-6s占比洞察</div>
+    <p>• R6以30.37%的0-6s占比显著高于其他型号，短时频事件最为集中<br>
+    • R6 PRO 4G为15.59%，在4G型号中偏高（R5Pro-4G仅6.28%），可能与封面图缺失问题存在关联<br>
+    • R4 PRO（2.04%）、R811S（2.50%）、AR3X（0.29%）等型号0-6s占比极低，视频时长普遍较长</p>
   </div>
 </div>
 
@@ -105,6 +105,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
   <h3 style="font-size:15px;color:#666;margin:20px 0 8px">3.2 R6 PRO 4G 日趋势 — 事件数 + 缺失率</h3>
   <div id="chart_r6pro4g_trend" class="chart-box"></div>
 
+  <h3 style="font-size:15px;color:#666;margin:20px 0 8px">3.3 R6 PRO 4G 日趋势 — 0-6s占比</h3>
+  <div id="chart_r6pro4g_d06" class="chart-box"></div>
+
   <div class="insight-box alert">
     <div class="title">🚨 关键发现</div>
     <p>• R6 PRO 4G在8月有7天缺失率超过5%，集中在8/23-8/31时段<br>
@@ -125,6 +128,7 @@ var MS=ALL.model_summary,OV=ALL.overall,R6D=ALL.r6_daily,DATES=ALL.dates;
 var R6_DATES=Object.keys(R6D);
 var R6_EVENTS=R6_DATES.map(function(d){return R6D[d].events});
 var R6_NC=R6_DATES.map(function(d){return R6D[d].nocover_pct});
+var R6_D06=R6_DATES.map(function(d){return R6D[d].d06_pct});
 
 function fmt(n){return n>=1e8?(n/1e8).toFixed(2)+'亿':n>=1e4?(n/1e4).toFixed(1)+'万':n.toLocaleString()}
 function fmtPct(n){return n.toFixed(2)+'%'}
@@ -142,19 +146,15 @@ echarts.init(document.getElementById('chart_model_nocover')).setOption({
   grid:{left:90,right:60,top:10,bottom:20}
 });
 
-// 2. Model duration stacked (denominator = total events)
-var msEv=Object.keys(MS).sort(function(a,b){return MS[b].events-MS[a].events});
+// 2. Model 0-6s pct only (sorted desc)
+var msD06=Object.keys(MS).sort(function(a,b){return MS[b].d06_pct-MS[a].d06_pct});
 echarts.init(document.getElementById('chart_model_dur')).setOption({
-  tooltip:{trigger:'axis',formatter:function(p){var s=p[0].name;p.forEach(function(i){s+='<br/>'+i.marker+i.seriesName+': '+fmtPct(i.value)});return s}},
-  legend:{top:0,textStyle:{fontSize:11}},
-  xAxis:{type:'category',data:msEv,axisLabel:{color:'#999',rotate:30,fontSize:10}},
-  yAxis:{type:'value',axisLabel:{formatter:function(v){return v+'%'},color:'#999'},splitLine:{lineStyle:{color:'#f0f0f0'}}},
-  series:[
-    {name:'0-6s',type:'bar',stack:'a',data:msEv.map(function(m){return MS[m].d06_pct}),itemStyle:{color:'#E74C3C'},barWidth:20},
-    {name:'6-15s',type:'bar',stack:'a',data:msEv.map(function(m){return MS[m].d15_pct}),itemStyle:{color:'#00B050'},barWidth:20},
-    {name:'15s+',type:'bar',stack:'a',data:msEv.map(function(m){return MS[m].d15plus_pct}),itemStyle:{color:'#F39C12'},barWidth:20}
-  ],
-  grid:{left:50,right:20,top:30,bottom:50}
+  tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+fmtPct(p[0].value)}},
+  xAxis:{type:'value',axisLabel:{formatter:function(v){return v+'%'},color:'#999'},splitLine:{lineStyle:{color:'#f0f0f0'}}},
+  yAxis:{type:'category',data:msD06.slice().reverse(),axisLabel:{color:'#666',fontSize:11}},
+  series:[{type:'bar',data:msD06.map(function(m){return {value:MS[m].d06_pct,itemStyle:{color:m==='R6 PRO 4G'?'#E74C3C':'#00B050'}}}).reverse(),barWidth:16,
+    label:{show:true,position:'right',formatter:function(p){return fmtPct(p.value)},fontSize:10}}],
+  grid:{left:90,right:60,top:10,bottom:20}
 });
 
 // 3.1 R6 PRO 4G vs R5Pro-4G vs overall - nocover pct
@@ -194,6 +194,21 @@ echarts.init(document.getElementById('chart_r6pro4g_trend')).setOption({
       ]}}
   ],
   grid:{left:55,right:55,top:40,bottom:40}
+});
+
+
+// 3.3 R6 PRO 4G 0-6s daily trend
+echarts.init(document.getElementById('chart_r6pro4g_d06')).setOption({
+  tooltip:{trigger:'axis',formatter:function(p){var s=p[0].axisValue;p.forEach(function(i){s+='<br/>'+i.marker+i.seriesName+': '+fmtPct(i.value)});return s}},
+  legend:{top:0,textStyle:{fontSize:11}},
+  xAxis:{type:'category',data:R6_DATES,axisLabel:{color:'#999',rotate:30,fontSize:9}},
+  yAxis:{type:'value',name:'0-6s占比',axisLabel:{formatter:function(v){return v+'%'},color:'#999'},splitLine:{lineStyle:{color:'#f0f0f0'}}},
+  series:[
+    {name:'0-6s占比',type:'line',data:R6_D06,lineStyle:{color:'#E74C3C',width:2},itemStyle:{color:'#E74C3C'},symbol:'circle',symbolSize:6,
+      label:{show:true,position:'top',formatter:function(p){return p.value+'%'},fontSize:10,color:'#E74C3C',fontWeight:'bold'},
+      markLine:{data:[{yAxis:MS['R6 PRO 4G'].d06_pct,lineStyle:{color:'#666',type:'dashed'},label:{formatter:'32天均值 '+MS['R6 PRO 4G'].d06_pct+'%',color:'#666',fontSize:10}}]}}
+  ],
+  grid:{left:55,right:20,top:40,bottom:40}
 });
 
 window.addEventListener('resize',function(){document.querySelectorAll('.chart-box').forEach(function(el){var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
