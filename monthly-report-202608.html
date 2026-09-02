@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年8月月报 | 尹燕玲</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  :root {
+    --brand: #00B050;
+    --brand-light: #2BBD6E;
+    --brand-dark: #008040;
+    --dark: #333333;
+    --gray: #666666;
+    --light-gray: #999999;
+    --bg: #F5F7FA;
+    --white: #FFFFFF;
+    --red: #E74C3C;
+    --orange: #F39C12;
+    --border: #E8E8E8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+    color: white;
+    padding: 40px 32px;
+    border-radius: 12px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+  .header .subtitle { font-size: 16px; opacity: 0.9; }
+  .header .meta { font-size: 13px; opacity: 0.75; margin-top: 12px; }
+
+  /* Section Title */
+  .section-title {
+    font-size: 20px; font-weight: 700; color: var(--dark);
+    margin: 32px 0 16px;
+    padding-left: 12px;
+    border-left: 4px solid var(--brand);
+  }
+
+  /* KPI Cards */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .kpi-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-2px); }
+  .kpi-value {
+    font-size: 36px; font-weight: 700;
+    color: var(--red);
+    line-height: 1.2;
+  }
+  .kpi-label { font-size: 13px; color: var(--gray); margin-top: 6px; }
+  .kpi-sub { font-size: 11px; color: var(--light-gray); margin-top: 4px; }
+
+  /* Project Cards */
+  .project-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--brand);
+  }
+  .project-card.ended { border-left-color: var(--light-gray); }
+  .project-card.prep { border-left-color: var(--orange); }
+  .project-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .project-title { font-size: 17px; font-weight: 700; color: var(--dark); }
+  .project-status {
+    font-size: 12px; padding: 3px 10px; border-radius: 20px;
+    font-weight: 600; white-space: nowrap;
+  }
+  .status-active { background: #E8F8EE; color: var(--brand); }
+  .status-ended { background: #F0F0F0; color: var(--light-gray); }
+  .status-prep { background: #FFF4E5; color: var(--orange); }
+  .project-body { font-size: 14px; color: var(--gray); }
+  .project-body ul { margin: 8px 0 0 20px; }
+  .project-body li { margin-bottom: 4px; }
+  .project-link {
+    display: inline-block; margin-top: 10px;
+    color: var(--brand); text-decoration: none;
+    font-size: 13px; font-weight: 600;
+  }
+  .project-link:hover { text-decoration: underline; }
+
+  .tag {
+    display: inline-block; font-size: 11px;
+    padding: 2px 8px; border-radius: 4px;
+    margin: 2px 4px 2px 0;
+  }
+  .tag-red { background: #FDECEA; color: var(--red); }
+  .tag-orange { background: #FEF3E2; color: var(--orange); }
+  .tag-green { background: #E8F8EE; color: var(--brand); }
+  .tag-gray { background: #F0F0F0; color: var(--gray); }
+
+  /* Charts */
+  .chart-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-bottom: 16px;
+  }
+  .chart-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .chart-card.full { grid-column: 1 / -1; }
+  .chart-title { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 12px; }
+  .chart-box { width: 100%; height: 320px; }
+
+  /* Tech & Growth */
+  .tech-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-bottom: 16px;
+  }
+  .tech-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .tech-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
+  .tech-card ul { list-style: none; padding: 0; }
+  .tech-card li {
+    padding: 6px 0; font-size: 13px; color: var(--gray);
+    border-bottom: 1px solid var(--border);
+  }
+  .tech-card li:last-child { border-bottom: none; }
+  .tech-card li::before {
+    content: '✓'; color: var(--brand); font-weight: 700; margin-right: 8px;
+  }
+
+  /* Outlook */
+  .outlook-card {
+    background: linear-gradient(135deg, #E8F8EE 0%, #F0FBF4 100%);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .outlook-card h3 { font-size: 16px; font-weight: 700; color: var(--brand-dark); margin-bottom: 12px; }
+  .outlook-card ul { margin: 0 0 0 20px; }
+  .outlook-card li { margin-bottom: 6px; font-size: 14px; color: var(--dark); }
+
+  /* Footer */
+  .footer {
+    text-align: center; padding: 24px;
+    font-size: 12px; color: var(--light-gray);
+  }
+
+  @media (max-width: 768px) {
+    .chart-row { grid-template-columns: 1fr; }
+    .tech-grid { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>📊 2026年8月工作月报</h1>
+    <div class="subtitle">公测分析 · 新品跟踪 · 数据洞察</div>
+    <div class="meta">报告人：尹燕玲 ｜ 生成时间：2026-09-02 ｜ 🦞</div>
+  </div>
+
+  <!-- KPI Overview -->
+  <div class="section-title">月度概览</div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value">10</div>
+      <div class="kpi-label">活跃项目数</div>
+      <div class="kpi-sub">4个公测 + 2个新品跟踪 + 周报 + 一次性 + 管理</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">1207</div>
+      <div class="kpi-label">累计处理反馈数据</div>
+      <div class="kpi-sub">T200新品258 + 9pro 431 + 6pro 505 + V6 13</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">40+</div>
+      <div class="kpi-label">生成报告份数</div>
+      <div class="kpi-sub">日报24份 + 专项15+份 + 其他若干</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">1225</div>
+      <div class="kpi-label">公测用户池</div>
+      <div class="kpi-sub">51个项目 · 65个黑名单</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">7</div>
+      <div class="kpi-label">海外周报期数</div>
+      <div class="kpi-sub">第29-35周</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">10.42亿</div>
+      <div class="kpi-label">封面图统计事件量</div>
+      <div class="kpi-sub">16款型号 · 1013条记录</div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="chart-row">
+    <div class="chart-card">
+      <div class="chart-title">各项目反馈数据量对比</div>
+      <div id="chart-feedback" class="chart-box"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">项目状态分布</div>
+      <div id="chart-status" class="chart-box"></div>
+    </div>
+  </div>
+
+  <!-- Project Cards -->
+  <div class="section-title">项目进展</div>
+
+  <!-- 1. T200 公测 -->
+  <div class="project-card ended">
+    <div class="project-header">
+      <span class="project-title">1. T200 4G记录仪公测</span>
+      <span class="project-status status-ended">已结项</span>
+    </div>
+    <div class="project-body">
+      <ul>
+        <li>产出 <strong>15+份报告</strong>，覆盖开箱、安装、日常、专项体验、终测、价格、营销全链路</li>
+        <li>终测阶段 <strong>67条有效数据</strong>，遗留问题 <strong>42条</strong></li>
+        <li>报告合集含总览页，可一站式查阅全部报告</li>
+      </ul>
+      <a class="project-link" href="https://yanlingyin001.github.io/reports/t200-public-test-index.html" target="_blank">→ 查看报告合集</a>
+    </div>
+  </div>
+
+  <!-- 2. T200 新品跟踪 -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">2. T200 4G记录仪新品跟踪</span>
+      <span class="project-status status-active">活跃</span>
+    </div>
+    <div class="project-body">
+      <ul>
+        <li>8月3日启动，已从 <strong>Day 1(8.10)</strong> 追踪至 <strong>Day 24(9.2)</strong></li>
+        <li>累计 <strong>258条反馈</strong>，覆盖 <strong>8个渠道</strong>，<strong>60种问题类型</strong>，<strong>50+缺陷</strong></li>
+        <li>产出 <strong>24份日报</strong>，重点问题sheet定期更新</li>
+        <li><span class="tag tag-red">核心问题</span>安装咨询持续主导（"是否包安装"累计24条），哨兵模式问题集中出现</li>
+      </ul>
+      <a class="project-link" href="https://yanlingyin001.github.io/reports/t200-new-product-index.html" target="_blank">→ 查看报告合集</a>
+    </div>
+  </div>
+
+  <!-- 3. 9pro -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">3. 9pro 400万4G云台公测</span>
+      <span class="project-status status-active">活跃</span>
+    </div>
+    <div class="project-body">
+      <ul>
+        <li><strong>30人公测</strong>，事件驱动日报模式，累计 <strong>431条日常反馈</strong>，<strong>28人参与</strong></li>
+        <li>TOP3问题：<span class="tag tag-red">AI算法人形误报(20人)</span> <span class="tag tag-orange">IQ画面紫红(11人)</span> <span class="tag tag-orange">APP信号显示不一致(7人)</span></li>
+        <li>专项报告：开箱(均分<strong>9.2</strong>) · 配网(均分<strong>9.6</strong>) · 云录卡录(云录<strong>9.0</strong>/卡录<strong>8.9</strong>) · 开流</li>
+        <li>0825固件45条反馈，人形误报仍为主要问题</li>
+      </ul>
+      <a class="project-link" href="https://yanlingyin001.github.io/reports/9pro-index.html" target="_blank">→ 查看报告合集</a>
+    </div>
+  </div>
+
+  <!-- 4. 6pro -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">4. 6pro 4G门铃公测</span>
+      <span class="project-status status-active">活跃</span>
+    </div>
+    <div class="project-body">
+      <ul>
+        <li><strong>20人公测</strong>，事件驱动日报模式，累计 <strong>505条数据</strong>，<strong>19人参与</strong></li>
+        <li>TOP3问题：<span class="tag tag-red">云录画面变化误报(16人/53条)</span> <span class="tag tag-red">云录漏录(14人/38条)</span> <span class="tag tag-orange">云录有人误报(13人/29条)</span></li>
+        <li>0812固件云录问题集中爆发，0817固件缩略图不显示新发</li>
+        <li>专项报告：开箱 · 配网 · 插拔卡 · 门铃通话 · 云录卡录专题 · 云录事件统计</li>
+      </ul>
+      <a class="project-link" href="https://yanlingyin001.github.io/reports/6pro-index.html" target="_blank">→ 查看报告合集</a>
+    </div>
+  </div>
+
+  <!-- 5. G980H -->
+  <div class="project-card prep">
+    <div class="project-header">
+      <span class="project-title">5. G980H 4G记录仪公测</span>
+      <span class="project-status status-prep">筹备中</span>
+    </div>
+    <div class="project-body">
+      <ul>
+        <li>报名截止8/30，预计 <strong>9-11月</strong> 开展公测</li>
+        <li><strong>17项KPI指标</strong>已定义，<strong>5份问卷</strong>设计完成</li>
+        <li><strong>76个已知Bug清单</strong> + <strong>10项功能限制项</strong>已梳理</li>
+        <li>招募海报已生成并部署上线</li>
+      </ul>
+      <a class="project-link" href="https://yanlingyin001.github.io/reports/g980h-index.html" target="_blank">→ 查看报告合集</a>
+    </div>
+  </div>
+
+  <!-- 6. V6 -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">6. V6骑行新品跟踪</span>
+      <span class="project-status status-active">活跃 · 新启动</span>
+    </div>
+    <div class="project-body">
+      <ul>
+        <li>Day 1 = 8/30，每天18:00 cron自动日报</li>
+        <li>当前 <strong>13条数据</strong>，<strong>6渠道</strong>，<strong>14类型</strong>，<strong>0缺陷</strong></li>
+        <li>数据量仍小，等数据增长后与燕玲共建分类体系</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7. 海外评价周报 -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">7. 海外评价周报</span>
+      <span class="project-status status-active">活跃</span>
+    </div>
+    <div class="project-body">
+      <ul>
+        <li>每周一16:00自动更新飞书文档</li>
+        <li>覆盖 <strong>Amazon + Tiktok</strong> 渠道，车品 + 安防全系列</li>
+        <li>第 <strong>29-35周</strong> 周报已生成（8月覆盖7期）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 8. 门铃封面图统计 -->
+  <div class="project-card ended">
+    <div class="project-header">
+      <span class="project-title">8. 门铃封面图及视频时长统计分析</span>
+      <span class="project-status status-ended">一次性</span>
+    </div>
+    <div class="project-body">
+      <ul>
+        <li><strong>16款型号</strong> · <strong>4大区</strong> · 8.1-9.1 · <strong>1013条记录</strong> · 累计 <strong>10.42亿事件</strong></li>
+        <li><span class="tag tag-red">核心发现</span>R6 PRO 4G封面图缺失率 <strong>4.39%</strong>（整体均值2.6倍）</li>
+      </ul>
+      <a class="project-link" href="https://yanlingyin001.github.io/reports/cover-video-stat-report.html" target="_blank">→ 查看报告</a>
+    </div>
+  </div>
+
+  <!-- 9. Petal AI -->
+  <div class="project-card ended">
+    <div class="project-header">
+      <span class="project-title">9. Petal AI桌面宠物内测</span>
+      <span class="project-status status-ended">已出报告</span>
+    </div>
+    <div class="project-body">
+      <ul>
+        <li>6份问卷，满意度 <strong>7.33/10</strong></li>
+      </ul>
+      <a class="project-link" href="https://yanlingyin001.github.io/reports/petal-ai-v1.5.0-report.html" target="_blank">→ 查看报告</a>
+    </div>
+  </div>
+
+  <!-- 10. 用户清单管理 -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">10. 公测用户清单管理</span>
+      <span class="project-status status-active">持续</span>
+    </div>
+    <div class="project-body">
+      <ul>
+        <li>累计 <strong>1225人</strong>，<strong>51个项目</strong>，<strong>65个黑名单</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tech Growth -->
+  <div class="section-title">技术成长与教训</div>
+  <div class="tech-grid">
+    <div class="tech-card">
+      <h3>🔧 工程能力沉淀</h3>
+      <ul>
+        <li>GitHub API上传方法沉淀（Bearer认证 + ?ref=main参数）</li>
+        <li>chromium截图自检规则建立</li>
+        <li>HTML报告图表渲染防呆规则 + 校验脚本</li>
+        <li>飞书评分列混合取值归一化处理</li>
+      </ul>
+    </div>
+    <div class="tech-card">
+      <h3>💡 流程优化与教训</h3>
+      <ul>
+        <li>打标行号映射教训（seq ≠ 行号，必须动态建立映射）</li>
+        <li>事件驱动流程替代定时cron（9pro/6pro）</li>
+        <li>数据同步严禁重灌旧数据</li>
+        <li>先框架后执行，确认再动手</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Outlook -->
+  <div class="section-title">下月展望</div>
+  <div class="outlook-card">
+    <h3>🎯 2026年9月重点</h3>
+    <ul>
+      <li><strong>G980H公测启动</strong>：完成招募，启动KPI考核，开始第1轮问卷回收</li>
+      <li><strong>T200新品跟踪</strong>：持续日报，关注安装咨询问题趋势变化</li>
+      <li><strong>9pro / 6pro固件迭代</strong>：跟踪新固件修复效果，关注人形误报 & 云录问题收敛</li>
+      <li><strong>V6骑行跟踪</strong>：数据量增长后建立分类体系，完善日报流程</li>
+      <li><strong>海外周报</strong>：持续自动化输出，探索评价趋势分析</li>
+      <li><strong>工具链优化</strong>：进一步固化报告生成流程，减少人工干预</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    🦞 尹燕玲 · 2026年8月月报 · 由AI报告分析专家自动生成
+  </div>
+
+</div>
+
+<script>
+// Chart: Feedback Volume
+const feedbackChart = echarts.init(document.getElementById('chart-feedback'));
+feedbackChart.setOption({
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  grid: { left: '3%', right: '4%', bottom: '3%', top: '10%', containLabel: true },
+  xAxis: {
+    type: 'category',
+    data: ['T200新品', '9pro', '6pro', 'V6骑行'],
+    axisLabel: { fontSize: 11, color: '#666' }
+  },
+  yAxis: { type: 'value', axisLabel: { color: '#999' }, splitLine: { lineStyle: { color: '#F0F0F0' } } },
+  series: [{
+    type: 'bar',
+    data: [258, 431, 505, 13],
+    itemStyle: {
+      color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+        { offset: 0, color: '#2BBD6E' },
+        { offset: 1, color: '#00B050' }
+      ]),
+      borderRadius: [4, 4, 0, 0]
+    },
+    barWidth: '45%',
+    label: { show: true, position: 'top', fontSize: 13, fontWeight: 'bold', color: '#333' }
+  }]
+});
+
+// Chart: Project Status
+const statusChart = echarts.init(document.getElementById('chart-status'));
+statusChart.setOption({
+  tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+  legend: { bottom: 5, left: 'center', itemWidth: 10, itemHeight: 10, textStyle: { fontSize: 12, color: '#666' } },
+  series: [{
+    type: 'pie',
+    radius: ['40%', '65%'],
+    center: ['50%', '45%'],
+    avoidLabelOverlap: false,
+    itemStyle: { borderRadius: 6, borderColor: '#fff', borderWidth: 2 },
+    label: { show: false },
+    emphasis: { label: { show: true, fontSize: 14, fontWeight: 'bold' } },
+    data: [
+      { value: 4, name: '活跃公测', itemStyle: { color: '#00B050' } },
+      { value: 2, name: '新品跟踪', itemStyle: { color: '#2BBD6E' } },
+      { value: 1, name: '筹备中', itemStyle: { color: '#F39C12' } },
+      { value: 3, name: '已结项/一次性', itemStyle: { color: '#999999' } }
+    ]
+  }]
+});
+
+// Responsive
+window.addEventListener('resize', () => {
+  feedbackChart.resize();
+  statusChart.resize();
+});
+</script>
+</body>
+</html>
