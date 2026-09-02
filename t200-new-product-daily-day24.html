@@ -83,16 +83,15 @@ tr:hover{background:#fafafa}
 <div style="flex:1;min-width:300px">
 <table>
 <thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>典型问题</th></tr></thead>
-<tbody>
-<tr><td style="color:#3498db;font-weight:600">配件</td><td>21</td><td>8.2%</td><td>内存卡咨询、内存卡损坏、降压线适配咨询等</td></tr>
-<tr><td style="color:#e67e22;font-weight:600">安装</td><td>51</td><td>20.0%</td><td>是否包安装咨询、安装咨询、门店不会安装、降压线安装故障等</td></tr>
-<tr><td style="color:#e74c3c;font-weight:600">品控</td><td>2</td><td>0.8%</td><td>外观瑕疵、设备发烫</td></tr>
-<tr><td style="color:#9b59b6;font-weight:600">费用</td><td>38</td><td>14.9%</td><td>4G流量收费咨询、云录收费咨询等</td></tr>
-<tr><td style="color:#f1c40f;font-weight:600">供电</td><td>26</td><td>10.2%</td><td>电池/供电咨询、电瓶损耗影响顾虑、熄火后不通电等</td></tr>
-<tr><td style="color:#1abc9c;font-weight:600">停车监控</td><td>26</td><td>10.2%</td><td>停车监控咨询、哨兵模式咨询、哨兵模式不灵敏等</td></tr>
+<tr><td style="color:#2ecc71;font-weight:600">功能</td><td>55</td><td>21.6%</td><td>远程查看咨询等、定位不显示等、其他功能咨询等</td></tr>
+<tr><td style="color:#e67e22;font-weight:600">安装</td><td>51</td><td>20.0%</td><td>是否包安装咨询等、安装咨询等、门店不会安装等</td></tr>
+<tr><td style="color:#9b59b6;font-weight:600">费用</td><td>38</td><td>14.9%</td><td>4G流量收费咨询等、云录收费咨询等、云录功能咨询等</td></tr>
+<tr><td style="color:#1abc9c;font-weight:600">停车监控</td><td>26</td><td>10.2%</td><td>停车监控咨询等、哨兵模式咨询等、停车监控咨询等</td></tr>
+<tr><td style="color:#f1c40f;font-weight:600">供电</td><td>26</td><td>10.2%</td><td>电池/供电咨询等、电瓶损耗影响顾虑等、车充和降压线差异咨询等</td></tr>
 <tr><td style="color:#34495e;font-weight:600">视野</td><td>22</td><td>8.6%</td><td>前后双录/全景需求、镜头调节咨询</td></tr>
-<tr><td style="color:#95a5a6;font-weight:600">参数</td><td>14</td><td>5.5%</td><td>其他规格咨询、车型适配咨询、是否只有前录咨询等</td></tr>
-<tr><td style="color:#2ecc71;font-weight:600">功能</td><td>55</td><td>21.6%</td><td>远程查看咨询、定位不显示、画面清晰度低、无行车轨迹等</td></tr>
+<tr><td style="color:#3498db;font-weight:600">配件</td><td>21</td><td>8.2%</td><td>是否带降压线咨询等、内存卡咨询等、降压线适配咨询等</td></tr>
+<tr><td style="color:#95a5a6;font-weight:600">参数</td><td>14</td><td>5.5%</td><td>其他规格咨询等、车型适配咨询等、产品参数咨询等</td></tr>
+<tr><td style="color:#e74c3c;font-weight:600">品控</td><td>2</td><td>0.8%</td><td>外观瑕疵、设备发烫</td></tr>
 </tbody>
 </table>
 </div>
@@ -157,7 +156,7 @@ var catChart=echarts.init(document.getElementById('catChart'));
 catChart.setOption({
   tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
   legend:{orient:'vertical',right:0,top:'center',textStyle:{fontSize:12}},
-  series:[{type:'pie',radius:['40%','70%'],center:['40%','50%'],data:[{"name": "配件", "value": 21, "itemStyle": {"color": "#3498db"}}, {"name": "安装", "value": 51, "itemStyle": {"color": "#e67e22"}}, {"name": "品控", "value": 2, "itemStyle": {"color": "#e74c3c"}}, {"name": "费用", "value": 38, "itemStyle": {"color": "#9b59b6"}}, {"name": "供电", "value": 26, "itemStyle": {"color": "#f1c40f"}}, {"name": "停车监控", "value": 26, "itemStyle": {"color": "#1abc9c"}}, {"name": "视野", "value": 22, "itemStyle": {"color": "#34495e"}}, {"name": "参数", "value": 14, "itemStyle": {"color": "#95a5a6"}}, {"name": "功能", "value": 55, "itemStyle": {"color": "#2ecc71"}}],label:{show:false}}]
+  series:[{type:'pie',radius:['40%','70%'],center:['40%','50%'],data:[{"name": "功能", "value": 55, "itemStyle": {"color": "#2ecc71"}}, {"name": "安装", "value": 51, "itemStyle": {"color": "#e67e22"}}, {"name": "费用", "value": 38, "itemStyle": {"color": "#9b59b6"}}, {"name": "停车监控", "value": 26, "itemStyle": {"color": "#1abc9c"}}, {"name": "供电", "value": 26, "itemStyle": {"color": "#f1c40f"}}, {"name": "视野", "value": 22, "itemStyle": {"color": "#34495e"}}, {"name": "配件", "value": 21, "itemStyle": {"color": "#3498db"}}, {"name": "参数", "value": 14, "itemStyle": {"color": "#95a5a6"}}, {"name": "品控", "value": 2, "itemStyle": {"color": "#e74c3c"}}],label:{show:false}}],label:{show:false}}]
 });
 
 window.addEventListener('resize',function(){chChart.resize();catChart.resize()});
