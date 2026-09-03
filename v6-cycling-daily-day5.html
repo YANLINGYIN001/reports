@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V6骑行新品跟踪反馈报告 | Day 5</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:30px; margin-bottom:24px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .subtitle { font-size:14px; opacity:0.9; }
+.header .date-range { font-size:13px; opacity:0.8; margin-top:6px; }
+.overview { background:#fff; border-left:4px solid #00B050; border-radius:8px; padding:14px 20px; margin-bottom:20px; font-size:14px; color:#333; }
+.kpi-row { display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap; }
+.kpi-card { flex:1; min-width:200px; background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-value { font-size:32px; font-weight:700; color:#E74C3C; }
+.kpi-label { font-size:13px; color:#666; margin-top:4px; }
+.kpi-sub { font-size:12px; color:#999; margin-top:2px; }
+.kpi-sub .delta { color:#E74C3C; font-weight:600; }
+.kpi-sub .flat { color:#999; font-weight:600; }
+.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
+.insight-box { border-radius:10px; padding:16px; margin-bottom:12px; }
+.insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
+.insight-orange { background:#fff3e0; border-left:4px solid #F39C12; }
+.insight-blue { background:#e3f2fd; border-left:4px solid #2196F3; }
+.insight-box p { font-size:14px; line-height:1.8; }
+.insight-box strong { color:#00B050; }
+.insight-orange strong { color:#F39C12; }
+.insight-blue strong { color:#1976D2; }
+.channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
+.channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
+.chart-container { width:100%; height:280px; }
+.cat-cards { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:16px; }
+.cat-card { flex:1; min-width:120px; border-radius:10px; padding:16px; text-align:center; color:#fff; }
+.cat-card .cat-icon { font-size:24px; }
+.cat-card .cat-name { font-size:13px; margin-top:4px; }
+.cat-card .cat-count { font-size:24px; font-weight:700; margin-top:4px; }
+.detail-table { width:100%; border-collapse:collapse; font-size:13px; }
+.detail-table th { background:#f0f7f0; padding:10px 12px; text-align:left; font-weight:600; color:#333; border-bottom:2px solid #00B050; white-space:nowrap; }
+.detail-table td { padding:10px 12px; border-bottom:1px solid #eee; vertical-align:top; }
+.detail-table tr:hover { background:#fafafa; }
+.detail-table tr.new-row { background:#fffde7; }
+.type-badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:12px; font-weight:500; }
+.solution-text { color:#666; max-width:300px; }
+.problem-text { max-width:280px; }
+.date-badge { color:#999; font-size:12px; white-space:nowrap; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+.no-data { text-align:center; padding:30px; color:#999; font-size:14px; }
+@media (max-width:768px) {
+  .kpi-card { min-width:140px; }
+  .cat-card { min-width:100px; }
+  .detail-table { font-size:12px; }
+  .detail-table th, .detail-table td { padding:8px 6px; }
+  .solution-text, .problem-text { max-width:none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🚲 360记录仪V6骑行版 · 新品跟踪反馈报告</h1>
+  <div class="subtitle">Day 5 累计汇总 | 数据周期 2026.08.29 - 2026.09.03</div>
+  <div class="date-range">数据来源：飞书表格「用户问题反馈汇总」 | 更新时间：2026-09-03 18:08</div>
+</div>
+
+<div class="overview">
+  新品上市第5天，累计收集19条反馈（较上期+1），覆盖7个渠道与18种问题类型，0实质性缺陷。9/3新增1条私域反馈，用户询问摩托车兼容性与防水性能，产品仍处于功能咨询为主阶段。
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="kpi-value">19</div><div class="kpi-label">反馈问题总数</div><div class="kpi-sub"><span class="delta">+1</span> 较上期</div></div>
+  <div class="kpi-card"><div class="kpi-value">7</div><div class="kpi-label">覆盖渠道数</div><div class="kpi-sub"><span class="flat">—</span> 无变化</div></div>
+  <div class="kpi-card"><div class="kpi-value">18</div><div class="kpi-label">问题类型数</div><div class="kpi-sub"><span class="flat">—</span> 无变化</div></div>
+  <div class="kpi-card"><div class="kpi-value">0</div><div class="kpi-label">实质性缺陷</div><div class="kpi-sub">暂无</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">核心洞察</div>
+  <div class="insight-box insight-green">
+    <p><strong>连续5天0缺陷，产品基础质量持续稳定</strong>：累计19条反馈全部为咨询类，未出现实质性质量问题或功能缺陷。防抖、防水、循环覆盖等核心功能多次被咨询但无异常反馈，产品实际体验良好。</p>
+  </div>
+  <div class="insight-box insight-orange">
+    <p><strong>9/3私域新增1条反馈，用户关注摩托车场景兼容性</strong>：用户询问"摩托车可以使用吗，防水不"，客服确认可使用且防水。该条反馈标签为"防抖咨询"，但实际内容涉及摩托车兼容性与防水性能，建议在飞书表格中修正为"兼容性咨询"或"防水咨询"。</p>
+  </div>
+  <div class="insight-box insight-blue">
+    <p><strong>飞书表格标签已更新</strong>：row 138（小红书9/2）的"问题类型"已从空值补填为"供电咨询"，与Day 4报告中的推断标签"回放查看咨询"不同，本期已采用表格实际标签进行统计。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">渠道反馈分布</div>
+  <div class="channel-tags">
+    <span class="channel-tag">有赞<span class="count">6</span></span>
+    <span class="channel-tag">小红书<span class="count">3</span></span>
+    <span class="channel-tag">京东自营<span class="count">3</span></span>
+    <span class="channel-tag">抖音<span class="count">3</span></span>
+    <span class="channel-tag">私域<span class="count">2</span></span>
+    <span class="channel-tag">微信小店<span class="count">1</span></span>
+    <span class="channel-tag">天猫官旗<span class="count">1</span></span>
+  </div>
+  <div id="chart-channel" class="chart-container"></div>
+</div>
+
+<div class="section">
+  <div class="section-title">问题主题分类</div>
+  <div class="cat-cards">
+    <div class="cat-card" style="background:#00B050"><div class="cat-icon">💡</div><div class="cat-name">功能咨询</div><div class="cat-count">15</div></div>
+    <div class="cat-card" style="background:#F39C12"><div class="cat-icon">🔒</div><div class="cat-name">安全/防盗</div><div class="cat-count">2</div></div>
+    <div class="cat-card" style="background:#95A5A6"><div class="cat-icon">📋</div><div class="cat-name">其他</div><div class="cat-count">2</div></div>
+  </div>
+  <div id="chart-category" class="chart-container" style="margin-top:16px;"></div>
+  <table class="detail-table" style="margin-top:16px;">
+    <thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型</th></tr></thead>
+    <tbody>
+    <tr><td style="color:#00B050;font-weight:600">💡 功能咨询</td><td>15</td><td>78.9%</td><td>USB接口咨询、停车监控咨询、循环覆盖咨询、实时查看咨询、防抖咨询(×3)、是否双摄咨询、后录咨询、前车起步提醒咨询、视频倒置咨询、最大内存卡大小咨询、无接电口使用咨询、防水级别咨询、配件咨询、供电咨询</td></tr>
+    <tr><td style="color:#F39C12;font-weight:600">🔒 安全/防盗</td><td>2</td><td>10.5%</td><td>防盗咨询、被盗赔付咨询</td></tr>
+    <tr><td style="color:#95A5A6;font-weight:600">📋 其他</td><td>2</td><td>10.5%</td><td>其他、价格咨询</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">今日新增反馈明细（9/3 新增 1 条）</div>
+  <table class="detail-table">
+    <thead><tr><th>分类</th><th>问题类型</th><th>渠道</th><th>日期</th><th>用户问题</th><th>客服方案</th></tr></thead>
+    <tbody>
+    <tr class="new-row"><td style="color:#00B050;font-weight:600">💡 功能咨询</td><td><span class="type-badge" style="background:#00B05020;color:#00B050">防抖咨询</span></td><td>私域</td><td><span class="date-badge">09/03</span></td><td class="problem-text">摩托车可以使用吗，防水不</td><td class="solution-text">可以使用的呢，是防水的哦</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注：该条反馈标签为"防抖咨询"，但实际内容涉及摩托车兼容性与防水性能，建议在飞书表格中修正标签。</p>
+</div>
+
+<div class="footer">
+  数据来源：飞书表格「V6骑行新品跟踪表」· 用户问题反馈汇总<br>
+  由 🦞尹燕玲-报告分析专家 自动生成
+</div>
+
+</div>
+
+<script>
+var chChart = echarts.init(document.getElementById('chart-channel'));
+var chData = {"names": ["有赞", "小红书", "京东自营", "抖音", "私域", "微信小店", "天猫官旗"], "vals": [6, 3, 3, 3, 2, 1, 1], "colors": ["#00B050", "#F39C12", "#E74C3C", "#2BBD6E", "#3498DB", "#9B59B6", "#95A5A6"]};
+chChart.setOption({
+  tooltip: { trigger: 'axis', formatter: '{b}: {c}条' },
+  xAxis: { type: 'category', data: chData.names, axisLabel: { fontSize: 12 } },
+  yAxis: { type: 'value', name: '反馈量' },
+  series: [{
+    type: 'bar', data: chData.vals.map(function(v, i) { return { value: v, itemStyle: { color: chData.colors[i] } }; }),
+    barWidth: '50%',
+    label: { show: true, position: 'top', formatter: '{c}' }
+  }],
+  grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true }
+});
+
+var catChart = echarts.init(document.getElementById('chart-category'));
+var catData = {"data": [{"name": "功能咨询", "value": 15}, {"name": "安全/防盗", "value": 2}, {"name": "其他", "value": 2}], "colors": ["#00B050", "#F39C12", "#95A5A6"]};
+catChart.setOption({
+  tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+  legend: { bottom: 0, fontSize: 12 },
+  color: catData.colors,
+  series: [{
+    type: 'pie', radius: ['40%', '70%'],
+    data: catData.data,
+    label: { formatter: '{b}\n{c}条 ({d}%)', fontSize: 12 }
+  }]
+});
+</script>
+</body>
+</html>
