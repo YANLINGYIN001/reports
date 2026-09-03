@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2026年8月 IOT用户问题月度分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{text-align:center;padding:40px 20px;background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;border-radius:12px;margin-bottom:30px}
+.header h1{font-size:28px;margin-bottom:10px}
+.header p{font-size:14px;opacity:.9}
+.section{background:#fff;border-radius:12px;padding:30px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section h2{font-size:20px;color:#00B050;border-left:4px solid #00B050;padding-left:12px;margin-bottom:20px}
+.section h3{font-size:16px;color:#333;margin:20px 0 12px}
+.kpi-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.kpi-card{flex:1;min-width:200px;background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:20px;text-align:center}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:28px;font-weight:700;color:#E74C3C}
+.kpi-card .sub{font-size:12px;color:#999;margin-top:4px}
+.chart{width:100%;height:400px;margin:16px 0}
+.chart-sm{width:100%;height:320px;margin:16px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#00B050;color:#fff;padding:10px 12px;text-align:left;font-weight:500}
+td{padding:8px 12px;border-bottom:1px solid #f0f0f0}
+tr:hover{background:#f9f9f9}
+.neg{color:#E74C3C}.pos{color:#00B050}
+.summary-box{background:#f0f9f4;border-left:4px solid #00B050;padding:12px 16px;margin:12px 0;font-size:14px}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px}
+.tag-device{background:#fdecea;color:#E74C3C}
+.tag-network{background:#fff3e0;color:#F39C12}
+.tag-app{background:#e3f2fd;color:#1976D2}
+.tag-other{background:#f5f5f5;color:#999}
+.tag-video{background:#f3e5f5;color:#7B1FA2}
+.tag-suggest{background:#e8f5e9;color:#00B050}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>2026年8月 IOT用户问题月度分析报告</h1>
+<p>数据口径：newurm渠道 | 先dn去重再联系方式去重 | 去重后15,065条 | 2026.08.01-08.31</p>
+</div>
+
+<div class="section">
+<h2>一、国内 vs 海外总览对比</h2>
+<div class="kpi-row">
+<div class="kpi-card"><div class="label">国内反馈总量</div><div class="value">14,341</div><div class="sub">日均 463条</div></div>
+<div class="kpi-card"><div class="label">海外反馈总量</div><div class="value">724</div><div class="sub">日均 23条</div></div>
+<div class="kpi-card"><div class="label">国内占比</div><div class="value">95.2%</div><div class="sub">海外 4.8%</div></div>
+<div class="kpi-card"><div class="label">去重前总量</div><div class="value">21,176</div><div class="sub">去重率 28.9%</div></div>
+</div>
+<h3>各产品国内 vs 海外反馈量对比</h3>
+<div id="c1" class="chart"></div>
+<h3>问题类型分布对比（国内 vs 海外）</h3>
+<div id="c2" class="chart"></div>
+<h3>8月每日反馈趋势对比</h3>
+<div id="c3" class="chart"></div>
+<div class="summary-box"><strong>核心洞察：</strong>国内反馈量是海外的近20倍，但问题结构高度一致——设备问题均占主导（国内53.5%/海外41.0%），配网问题次之（国内18.2%/海外25.0%）。海外配网问题占比更高，可能与网络环境差异有关。国内8月反馈量呈明显下降趋势，上半月日均约700降至下半月约400，降幅约43%。</div>
+</div>
+
+<div class="section">
+<h2>二、国内分析报告</h2>
+<h3>2.1 产品分布</h3>
+<div id="c4" class="chart-sm"></div>
+<table><tr><th>产品</th><th>8月</th><th>7月</th><th>环比</th><th>占比</th></tr>
+<tr><td>智能摄像机</td><td>10,557</td><td>12,705</td><td class="pos">-16.9%</td><td>73.6%</td></tr>
+<tr><td>可视门铃</td><td>2,894</td><td>3,351</td><td class="pos">-13.6%</td><td>20.2%</td></tr>
+<tr><td>智能门锁</td><td>608</td><td>-</td><td>-</td><td>4.2%</td></tr>
+<tr><td>行车记录仪</td><td>255</td><td>442</td><td class="pos">-42.3%</td><td>1.8%</td></tr>
+</table>
+<div class="summary-box">智能摄像机占比超7成，是最主要的反馈来源。各产品环比均有下降，行车记录仪降幅最大（-42.3%）。</div>
+<h3>2.2 问题类型分布</h3>
+<div id="c5" class="chart-sm"></div>
+<table><tr><th>问题类型</th><th>反馈量</th><th>占比</th></tr>
+<tr><td>设备问题</td><td>7,673</td><td>53.5%</td></tr><tr><td>配网问题</td><td>2,606</td><td>18.2%</td></tr><tr><td>APP使用问题</td><td>1,631</td><td>11.4%</td></tr><tr><td>其他</td><td>1,256</td><td>8.8%</td></tr><tr><td>意见建议</td><td>604</td><td>4.2%</td></tr><tr><td>视频反馈</td><td>570</td><td>4.0%</td></tr>
+</table>
+<h3>2.3 8月每日趋势</h3>
+<div id="c6" class="chart-sm"></div>
+<div class="summary-box">上半月（1-10日）日均约690条，下半月（11-31日）日均约390条，降幅约43%。8月11日为明显拐点。</div>
+<h3>2.4 智能摄像机（10,557条）— 型号Top10</h3>
+<div id="c7" class="chart-sm"></div>
+<table><tr><th>型号</th><th>反馈量</th><th>占比</th></tr>
+<tr><td>AP1PA3</td><td>954</td><td>9.0%</td></tr>
+<tr><td>P9 Pro 4MP</td><td>464</td><td>4.4%</td></tr>
+<tr><td>P9 Pro</td><td>408</td><td>3.9%</td></tr>
+<tr><td>P8 pro</td><td>297</td><td>2.8%</td></tr>
+<tr><td>AC1P</td><td>285</td><td>2.7%</td></tr>
+<tr><td>P9 Pro 4K</td><td>282</td><td>2.7%</td></tr>
+<tr><td>T3_L_WIFI</td><td>281</td><td>2.7%</td></tr>
+<tr><td>AP1PA2</td><td>280</td><td>2.7%</td></tr>
+<tr><td>D2</td><td>252</td><td>2.4%</td></tr>
+<tr><td>2K003</td><td>238</td><td>2.3%</td></tr></table>
+<h3>问题类型细分</h3>
+<div id="c8" class="chart-sm"></div>
+<table><tr><th>问题类型</th><th>反馈量</th><th>占比</th></tr>
+<tr><td>设备问题</td><td>5,618</td><td>53.2%</td></tr><tr><td>配网问题</td><td>2,168</td><td>20.5%</td></tr><tr><td>APP使用问题</td><td>1,075</td><td>10.2%</td></tr><tr><td>其他</td><td>972</td><td>9.2%</td></tr><tr><td>意见建议</td><td>449</td><td>4.3%</td></tr><tr><td>视频反馈</td><td>275</td><td>2.6%</td></tr>
+</table>
+<h3>高频问题描述 Top15</h3>
+<div id="c9" class="chart-sm"></div>
+<div class="summary-box">核心痛点：<strong>设备离线/无法连接</strong>类问题占绝对多数，Top15中12条与离线、连网、掉线相关。</div>
+<h3>2.5 可视门铃（2,894条）— 型号Top10</h3>
+<div id="c10" class="chart-sm"></div>
+<table><tr><th>型号</th><th>反馈量</th><th>占比</th></tr>
+<tr><td>R6 PRO</td><td>1026</td><td>35.5%</td></tr>
+<tr><td>R5 MAX</td><td>512</td><td>17.7%</td></tr>
+<tr><td>R5 Pro</td><td>267</td><td>9.2%</td></tr>
+<tr><td>R6</td><td>228</td><td>7.9%</td></tr>
+<tr><td>AR1C</td><td>185</td><td>6.4%</td></tr>
+<tr><td>R6-5MP</td><td>175</td><td>6.0%</td></tr>
+<tr><td>R6 MAX</td><td>165</td><td>5.7%</td></tr>
+<tr><td>R5Pro-4G</td><td>100</td><td>3.5%</td></tr>
+<tr><td>CS2</td><td>88</td><td>3.0%</td></tr>
+<tr><td>D819</td><td>68</td><td>2.3%</td></tr></table>
+<h3>问题类型细分</h3>
+<div id="c11" class="chart-sm"></div>
+<table><tr><th>问题类型</th><th>反馈量</th><th>占比</th></tr>
+<tr><td>设备问题</td><td>1,645</td><td>56.8%</td></tr><tr><td>配网问题</td><td>337</td><td>11.6%</td></tr><tr><td>APP使用问题</td><td>311</td><td>10.7%</td></tr><tr><td>视频反馈</td><td>295</td><td>10.2%</td></tr><tr><td>其他</td><td>207</td><td>7.2%</td></tr><tr><td>意见建议</td><td>98</td><td>3.4%</td></tr>
+</table>
+<h3>高频问题描述 Top15</h3>
+<div id="c12" class="chart-sm"></div>
+<div class="summary-box">两大核心痛点：<strong>设备离线</strong>（125+条）和<strong>延迟录制</strong>（63条）。视频反馈占比明显高于摄像机（10.2% vs 2.6%）。</div>
+<h3>2.6 典型用户原声 — 智能摄像机</h3>
+<table><tr><th style="width:40px">序号</th><th style="width:100px">问题类型</th><th style="width:130px">联系方式</th><th>用户原声</th></tr>
+<tr><td>1</td><td><span class="tag tag-app">APP使用问题</span></td><td>13478095050</td><td>买完包年的云存储，但是查看不了</td></tr>
+<tr><td>2</td><td><span class="tag tag-device">设备问题</span></td><td>17319006281</td><td>怎么这个离线后就没有办法启动了</td></tr>
+<tr><td>3</td><td><span class="tag tag-device">设备问题</span></td><td>15921707014</td><td>摄像头经常无法加载 买了一年云储存完全不显示</td></tr>
+<tr><td>4</td><td><span class="tag tag-video">视频反馈</span></td><td>15637250009@wo.cn</td><td>视频、图片或音频问题;</td></tr>
+<tr><td>5</td><td><span class="tag tag-network">配网问题</span></td><td>15791937173</td><td>摄像头总是离线状态，连接几次都没成功，出现都是这个页面</td></tr>
+<tr><td>6</td><td><span class="tag tag-device">设备问题</span></td><td>congyuan15005351030@gmail.com</td><td>指示灯和网络都正常，但是手机上显示离线</td></tr>
+<tr><td>7</td><td><span class="tag tag-device">设备问题</span></td><td>18015430195</td><td>每次关机，再打开就看不到画面，不管怎么转都没有</td></tr>
+<tr><td>8</td><td><span class="tag tag-video">视频反馈</span></td><td>13122628921</td><td>视频播放异常;AI算法误报;视频、图片或音频问题;延迟录制;其他原因;回看没反应</td></tr>
+<tr><td>9</td><td><span class="tag tag-app">APP使用问题</span></td><td>448960796@qq.com</td><td>AI识别错误，沙发上无人</td></tr>
+<tr><td>10</td><td><span class="tag tag-video">视频反馈</span></td><td>rede-gxb@163.com</td><td>AI算法误报;其他原因;画面无变化，为什么反复提醒我画面变化</td></tr></table>
+<h3>典型用户原声 — 可视门铃</h3>
+<table><tr><th style="width:40px">序号</th><th style="width:100px">问题类型</th><th style="width:130px">联系方式</th><th>用户原声</th></tr>
+<tr><td>1</td><td><span class="tag tag-device">设备问题</span></td><td>zbzb82640@163.com</td><td>有问题啊，为什么强拆报警启用不了呢？</td></tr>
+<tr><td>2</td><td><span class="tag tag-device">设备问题</span></td><td>18956060730</td><td>昨晚突然开始一直这样刷个不停，间隔30-40秒一次</td></tr>
+<tr><td>3</td><td><span class="tag tag-device">设备问题</span></td><td>13268091073</td><td>天天转圈圈，连不上网干什么？</td></tr>
+<tr><td>4</td><td><span class="tag tag-video">视频反馈</span></td><td>18339261318</td><td>延迟录制;所有云储存片段都延迟录制，只有封面能看到人，点开视频片段就只有人消失后的影像。</td></tr>
+<tr><td>5</td><td><span class="tag tag-video">视频反馈</span></td><td>13598516137</td><td>现在监控有点扭，之前可以看到家门口左右边，现在只能看到左边右边电梯看不到了</td></tr>
+<tr><td>6</td><td><span class="tag tag-app">APP使用问题</span></td><td>18047190787</td><td>录像经常中断，今天一天没有录像，上周五到周四一直看不到录像，请告诉我是什么原因？</td></tr>
+<tr><td>7</td><td><span class="tag tag-network">配网问题</span></td><td>1131625723@qq.com</td><td>经常掉线。也没有一键重连，也不现实什么原因，体验感差</td></tr>
+<tr><td>8</td><td><span class="tag tag-device">设备问题</span></td><td>17308026162</td><td>现在使用可视门铃不够灵敏了，之前只有门口有人就能拍到，现在只有长时间停留才拍到</td></tr>
+<tr><td>9</td><td><span class="tag tag-video">视频反馈</span></td><td>1900625629@qq.com</td><td>其他原因;哪里有人出现，一直在弹提醒，是否故障识别</td></tr>
+<tr><td>10</td><td><span class="tag tag-device">设备问题</span></td><td>13529142093</td><td>你们这个门铃很垃圾  经常连接不上  看不了  还会漏拍</td></tr></table>
+</div>
+
+<div class="section">
+<h2>三、海外分析报告</h2>
+<h3>3.1 海外大区分布</h3>
+<div class="kpi-row">
+<div class="kpi-card"><div class="label">AP（亚太）</div><div class="value">366</div><div class="sub">50.6%</div></div>
+<div class="kpi-card"><div class="label">NA（北美）</div><div class="value">185</div><div class="sub">25.6%</div></div>
+<div class="kpi-card"><div class="label">EU（欧洲）</div><div class="value">173</div><div class="sub">23.9%</div></div>
+</div>
+<h3>3.2 产品分布</h3>
+<div id="c13" class="chart-sm"></div>
+<table><tr><th>产品</th><th>8月</th><th>7月</th><th>环比</th><th>占比</th></tr>
+<tr><td>智能摄像机</td><td>477</td><td>510</td><td class="pos">-6.5%</td><td>65.9%</td></tr>
+<tr><td>可视门铃</td><td>129</td><td>130</td><td class="pos">-0.8%</td><td>17.8%</td></tr>
+<tr><td>行车记录仪</td><td>70</td><td>24</td><td class="neg">+191.7%</td><td>9.7%</td></tr>
+<tr><td>扫地机</td><td>37</td><td>-</td><td>-</td><td>5.1%</td></tr>
+</table>
+<div class="summary-box">海外行车记录仪反馈量环比暴涨191.7%（24->70），需关注。</div>
+<h3>3.3 问题类型分布</h3>
+<div id="c14" class="chart-sm"></div>
+<table><tr><th>问题类型</th><th>反馈量</th><th>占比</th></tr>
+<tr><td>设备问题</td><td>297</td><td>41.0%</td></tr><tr><td>配网问题</td><td>181</td><td>25.0%</td></tr><tr><td>其他</td><td>98</td><td>13.5%</td></tr><tr><td>APP使用问题</td><td>87</td><td>12.0%</td></tr><tr><td>视频反馈</td><td>23</td><td>3.2%</td></tr><tr><td>意见建议</td><td>9</td><td>1.2%</td></tr>
+</table>
+<div class="summary-box">海外配网问题占比（25.0%）明显高于国内（18.2%），可能与不同地区网络环境和服务器部署有关。</div>
+<h3>3.4 8月每日趋势</h3>
+<div id="c15" class="chart-sm"></div>
+<h3>3.5 智能摄像机（477条）— 型号Top10</h3>
+<div id="c16" class="chart-sm"></div>
+<table><tr><th>型号</th><th>反馈量</th><th>占比</th></tr>
+<tr><td>C212</td><td>84</td><td>17.6%</td></tr>
+<tr><td>C211</td><td>73</td><td>15.3%</td></tr>
+<tr><td>W510</td><td>53</td><td>11.1%</td></tr>
+<tr><td>C213</td><td>47</td><td>9.9%</td></tr>
+<tr><td>C221</td><td>35</td><td>7.3%</td></tr>
+<tr><td>C201</td><td>23</td><td>4.8%</td></tr>
+<tr><td>W101</td><td>22</td><td>4.6%</td></tr>
+<tr><td>W312</td><td>18</td><td>3.8%</td></tr>
+<tr><td>W311</td><td>15</td><td>3.1%</td></tr>
+<tr><td>ANJIAYD-SMYTJ-V100</td><td>10</td><td>2.1%</td></tr></table>
+<h3>高频问题描述 Top10</h3>
+<div id="c17" class="chart-sm"></div>
+<div class="summary-box">"自动打点上报"（13条）异常突出，需确认是否为真实用户问题。其余以无法连接类为主。</div>
+<h3>3.6 可视门铃（129条）— 型号Top6</h3>
+<div id="c18" class="chart-sm"></div>
+<table><tr><th>型号</th><th>反馈量</th><th>占比</th></tr>
+<tr><td>R811</td><td>42</td><td>32.6%</td></tr>
+<tr><td>R810SE</td><td>25</td><td>19.4%</td></tr>
+<tr><td>R811S</td><td>24</td><td>18.6%</td></tr>
+<tr><td>R810</td><td>21</td><td>16.3%</td></tr>
+<tr><td>R4 Pro</td><td>9</td><td>7.0%</td></tr>
+<tr><td>AR3X</td><td>8</td><td>6.2%</td></tr></table>
+<h3>高频问题描述 Top10</h3>
+<div id="c19" class="chart-sm"></div>
+<div class="summary-box">"自动打点上报"同样突出（10条）。真实问题集中在设备断连、AI误报。有用户表示要换竞品（Ring）。</div>
+<h3>3.7 典型用户原声 — 智能摄像机</h3>
+<table><tr><th style="width:40px">序号</th><th style="width:100px">问题类型</th><th style="width:180px">联系方式</th><th>用户原声</th></tr>
+<tr><td>1</td><td><span class="tag tag-device">设备问题</span></td><td>eslekceren@gmail.com</td><td>Cihazım internete bağlı, test sonuçları iyi fakat görüntü yüklenmiyor </td></tr>
+<tr><td>2</td><td><span class="tag tag-other">其他</span></td><td>Alshahrani.mona1408@gmail.com</td><td>تعليق بالكاميره</td></tr>
+<tr><td>3</td><td><span class="tag tag-device">设备问题</span></td><td>tranhuyentrang2000vp@gmail.com</td><td>Sạc điện không vào nguồn ạ</td></tr>
+<tr><td>4</td><td><span class="tag tag-device">设备问题</span></td><td>thao1986yeosu@gmail.com</td><td>Không mở được cam</td></tr>
+<tr><td>5</td><td><span class="tag tag-other">其他</span></td><td>{"scene":"live","error":"S-136"}</td><td>自动打点上报</td></tr>
+<tr><td>6</td><td><span class="tag tag-device">设备问题</span></td><td>di.wo.nu.so.jo.22@gmail.com</td><td>не могу с телефона просмотреть картинку камеры, так же не могу подключиться не коем образом, вечная загрузка. удалить ка</td></tr>
+<tr><td>7</td><td><span class="tag tag-device">设备问题</span></td><td>phenomact@gmail.com</td><td>Ana absolutely has not reached the edge. This is incorrect.</td></tr>
+<tr><td>8</td><td><span class="tag tag-other">其他</span></td><td>luisjosevazquez1984@gmail.com</td><td>Hose todo lo que me pidio en los oasis pero siempre me pone error y no me deja ber video</td></tr>
+<tr><td>9</td><td><span class="tag tag-device">设备问题</span></td><td>kinkongo@yahoo.com.hk</td><td>after I install do you need and run for about two weeks and is this record recording, and after that he cannot record so</td></tr>
+<tr><td>10</td><td><span class="tag tag-device">设备问题</span></td><td>kyle_connolly@hotmail.com</td><td>My device will not connect to the hub. I purhased two, i've gone through all the steps your customer service has provide</td></tr></table>
+<h3>典型用户原声 — 可视门铃</h3>
+<table><tr><th style="width:40px">序号</th><th style="width:100px">问题类型</th><th style="width:180px">联系方式</th><th>用户原声</th></tr>
+<tr><td>1</td><td><span class="tag tag-other">其他</span></td><td>{"scene":"live","error":"S-140"}</td><td>自动打点上报</td></tr>
+<tr><td>2</td><td><span class="tag tag-device">设备问题</span></td><td>htcu@madisoncounty.in.gov</td><td>Doorbell disconnects every 2-3 days. Replacing w/ Ring</td></tr>
+<tr><td>3</td><td><span class="tag tag-video">视频反馈</span></td><td>Alotasnail2001@gmail.com</td><td>Video or Image or Audio issues;</td></tr>
+<tr><td>4</td><td><span class="tag tag-app">APP使用问题</span></td><td>s_zeyneb@hotmail.com</td><td>Zil çaldığında telefondan açıp konuşamıyorum bu sorun bir kaç keredir oluyor </td></tr>
+<tr><td>5</td><td><span class="tag tag-device">设备问题</span></td><td>jcewl93@gmail.com</td><td>When someone rings the doorbell, it *usually* doesn't ring on my phone, unless I just happen to open the app right after</td></tr>
+<tr><td>6</td><td><span class="tag tag-device">设备问题</span></td><td>sarahtlewisla@gmail.com</td><td>live feed stopped.. recording stopped. will not connect doorbell.to.reciever.even though receiver light is blue</td></tr>
+<tr><td>7</td><td><span class="tag tag-network">配网问题</span></td><td>Rpraga2015@gmail.com</td><td>Cannot connect to the new modem </td></tr>
+<tr><td>8</td><td><span class="tag tag-network">配网问题</span></td><td>reiche.industrie@yahoo.de</td><td>Die Basis verbindet sich nicht mehr mit dem Internet, auch nicht wenn ich den Router genau daneben stelle. Ich danke Ihn</td></tr>
+<tr><td>9</td><td><span class="tag tag-network">配网问题</span></td><td>boricm@gmail.com</td><td>Doorbell disconnect from basestation after few hours.Should connect again and same problem persist.</td></tr>
+<tr><td>10</td><td><span class="tag tag-suggest">意见建议</span></td><td>mkurjr1963@yahoo.com</td><td>Ups delivered a package. my botslab shows the truck pulling up, but dude not show the driver putting the package on my p</td></tr></table>
+</div>
+
+<div class="section" style="text-align:center;color:#999;font-size:13px">
+<p>2026年8月 IOT用户问题月度分析报告 | newurm渠道，先dn去重再联系方式去重</p>
+<p>由 尹燕玲-报告分析专家 生成</p>
+</div>
+</div>
+
+<script>
+var P=["#00B050","#2BBD6E","#E74C3C","#F39C12","#1976D2","#7B1FA2","#999","#FF6B6B","#4ECDC4","#45B7D1"];
+var AD=["2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05", "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10", "2026-08-11", "2026-08-12", "2026-08-13", "2026-08-14", "2026-08-15", "2026-08-16", "2026-08-17", "2026-08-18", "2026-08-19", "2026-08-20", "2026-08-21", "2026-08-22", "2026-08-23", "2026-08-24", "2026-08-25", "2026-08-27", "2026-08-28", "2026-08-29", "2026-08-30", "2026-08-31"];
+var CD=[736, 731, 736, 727, 700, 702, 645, 658, 640, 571, 385, 429, 377, 373, 371, 399, 412, 396, 343, 369, 357, 389, 408, 0, 397, 388, 387, 399, 414, 502],OD=[27, 27, 42, 30, 21, 24, 24, 28, 29, 37, 27, 31, 25, 21, 15, 18, 24, 21, 20, 17, 19, 19, 14, 19, 20, 13, 20, 30, 32, 30];
+var CN=["2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05", "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10", "2026-08-11", "2026-08-12", "2026-08-13", "2026-08-14", "2026-08-15", "2026-08-16", "2026-08-17", "2026-08-18", "2026-08-19", "2026-08-20", "2026-08-21", "2026-08-22", "2026-08-23", "2026-08-25", "2026-08-27", "2026-08-28", "2026-08-29", "2026-08-30", "2026-08-31"],CV=[736, 731, 736, 727, 700, 702, 645, 658, 640, 571, 385, 429, 377, 373, 371, 399, 412, 396, 343, 369, 357, 389, 408, 397, 388, 387, 399, 414, 502];
+var ON=["2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05", "2026-08-06", "2026-08-07", "2026-08-08", "2026-08-09", "2026-08-10", "2026-08-11", "2026-08-12", "2026-08-13", "2026-08-14", "2026-08-15", "2026-08-16", "2026-08-17", "2026-08-18", "2026-08-19", "2026-08-20", "2026-08-21", "2026-08-22", "2026-08-23", "2026-08-24", "2026-08-25", "2026-08-27", "2026-08-28", "2026-08-29", "2026-08-30", "2026-08-31"],OV=[27, 27, 42, 30, 21, 24, 24, 28, 29, 37, 27, 31, 25, 21, 15, 18, 24, 21, 20, 17, 19, 19, 14, 19, 20, 13, 20, 30, 32, 30];
+var CM=["2K003", "D2", "AP1PA2", "T3_L_WIFI", "P9 Pro 4K", "AC1P", "P8 pro", "P9 Pro", "P9 Pro 4MP", "AP1PA3"],CV2=[238, 252, 280, 281, 282, 285, 297, 408, 464, 954];
+var BM=["D819", "CS2", "R5Pro-4G", "R6 MAX", "R6-5MP", "AR1C", "R6", "R5 Pro", "R5 MAX", "R6 PRO"],BV2=[68, 88, 100, 165, 175, 185, 228, 267, 512, 1026];
+var OM=["ANJIAYD-SMYTJ-V100", "W311", "W312", "W101", "C201", "C221", "C213", "W510", "C211", "C212"],OV2=[10, 15, 18, 22, 23, 35, 47, 53, 73, 84];
+var OBM=["AR3X", "R4 Pro", "R810", "R811S", "R810SE", "R811"],OBV2=[8, 9, 21, 24, 25, 42];
+var CDL=["经常掉线", "连不上", "经常离线", "视频、图片或音频问题", "连不上网络", "连接不上网络", "设备离线了", "无法连接设备", "离线", "无法连接", "连接不上", "无法联网", "无法连接网络", "设备离线", "连不上网"],CDV=[25, 26, 27, 31, 31, 34, 35, 37, 61, 74, 78, 81, 98, 119, 135];
+var BDL=["显示离线", "视频、图片或音频问题;延迟录制;", "无法查看实时画面", "延迟录制;", "其他原因", "连接不上", "连不上网", "门铃离线", "设备总是离线", "设备经常离线", "视频、图片或音频问题", "无法连接", "设备离线了", "延迟录制", "设备离线"],BDV=[8, 8, 8, 9, 10, 10, 11, 11, 12, 12, 13, 14, 24, 46, 51];
+var ODL=["无法连接WiFi", "网络问题", "相机出现故障", "无法连接摄像头", "无法工作", "相机无法工作", "无法连接到互联网", "无法连接网络", "无法连接", "自动打点上报"],ODV=[2, 2, 2, 3, 3, 3, 3, 4, 11, 13];
+var OB_DL=["live feed stopped.. recording stopped. will not connect doorbell.to.reciever.even though receiver light is blue", "When someone rings the doorbell, it *usually* doesn't ring on my phone, unless I just happen to open the app right afterwards checking to see what has set off the notifications. this is a brand new doorbell.", "Zil çaldığında telefondan açıp konuşamıyorum bu sorun bir kaç keredir oluyor ", "，", "Video or Image or Audio issues;", "Doorbell disconnects every 2-3 days. Replacing w/ Ring", "无法工作", "AI误报", "其他", "自动打点上报"],OB_DV=[1, 1, 1, 1, 1, 1, 2, 3, 3, 10];
+
+function bar(id,cats,vals,color,h){var c=echarts.init(document.getElementById(id));c.setOption({tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},grid:{left:"3%",right:"8%",bottom:"3%",containLabel:true},xAxis:{type:"value"},yAxis:{type:"category",data:cats,axisLabel:{fontSize:11}},series:[{type:"bar",data:vals,itemStyle:{color:color},label:{show:true,position:"right",fontSize:11}}]});}
+function pie(id,data,h){var c=echarts.init(document.getElementById(id));c.setOption({tooltip:{trigger:"item",formatter:"{b}: {c} ({d}%)"},legend:{orient:"vertical",left:"left",top:"center"},series:[{type:"pie",radius:["40%","65%"],data:data,itemStyle:{color:function(p){return P[p.dataIndex]}},label:{formatter:"{b}\n{c} ({d}%)"}}]});}
+function line(id,cats,vals,color,area){var c=echarts.init(document.getElementById(id));c.setOption({tooltip:{trigger:"axis"},grid:{left:"3%",right:"4%",bottom:"3%",containLabel:true},xAxis:{type:"category",data:cats,axisLabel:{rotate:45,fontSize:10}},yAxis:{type:"value"},series:[{type:"line",data:vals,smooth:true,itemStyle:{color:color},areaStyle:area?{opacity:0.2,color:color}:null}]});}
+
+echarts.init(document.getElementById("c1")).setOption({tooltip:{trigger:"axis",axisPointer:{type:"shadow"}},legend:{data:["国内","海外"],top:0},grid:{left:"3%",right:"4%",bottom:"3%",containLabel:true},xAxis:{type:"category",data:["智能摄像机","可视门铃","行车记录仪","扫地机"]},yAxis:[{type:"value",name:"国内"},{type:"value",name:"海外"}],series:[{name:"国内",type:"bar",data:[10557,2894,255,5],itemStyle:{color:"#00B050"},barWidth:"35%"},{name:"海外",type:"bar",data:[477,129,70,37],itemStyle:{color:"#F39C12"},barWidth:"35%"}]});
+
+echarts.init(document.getElementById("c2")).setOption({tooltip:{trigger:"item",formatter:"{a}<br/>{b}:{c}({d}%)"},series:[{name:"国内",type:"pie",radius:["30%","55%"],center:["28%","50%"],data:[{value:7673,name:"设备问题"},{value:2606,name:"配网问题"},{value:1631,name:"APP使用"},{value:1256,name:"其他"},{value:604,name:"意见建议"},{value:570,name:"视频反馈"}],itemStyle:{color:function(p){return P[p.dataIndex]}}},{name:"海外",type:"pie",radius:["30%","55%"],center:["72%","50%"],data:[{value:297,name:"设备问题"},{value:181,name:"配网问题"},{value:98,name:"其他"},{value:87,name:"APP使用"},{value:23,name:"视频反馈"},{value:9,name:"意见建议"}],itemStyle:{color:function(p){return P[p.dataIndex]}}}]});
+
+echarts.init(document.getElementById("c3")).setOption({tooltip:{trigger:"axis"},legend:{data:["国内","海外"],top:0},grid:{left:"3%",right:"4%",bottom:"3%",containLabel:true},xAxis:{type:"category",data:AD,axisLabel:{rotate:45,fontSize:10}},yAxis:[{type:"value",name:"国内"},{type:"value",name:"海外"}],series:[{name:"国内",type:"line",data:CD,smooth:true,itemStyle:{color:"#00B050"},areaStyle:{opacity:0.15}},{name:"海外",type:"line",data:OD,smooth:true,itemStyle:{color:"#F39C12"},yAxisIndex:1}]});
+
+pie("c4",[{value:10557,name:"智能摄像机"},{value:2894,name:"可视门铃"},{value:608,name:"智能门锁"},{value:255,name:"行车记录仪"}]);
+pie("c5",[{value:7673,name:"设备问题"},{value:2606,name:"配网问题"},{value:1631,name:"APP使用"},{value:1256,name:"其他"},{value:604,name:"意见建议"},{value:570,name:"视频反馈"}]);
+line("c6",CN,CV,"#00B050",true);
+bar("c7",CM,CV2,"#00B050");
+pie("c8",[{value:5618,name:"设备问题"},{value:2168,name:"配网问题"},{value:1075,name:"APP使用"},{value:972,name:"其他"},{value:449,name:"意见建议"},{value:275,name:"视频反馈"}]);
+bar("c9",CDL,CDV,"#2BBD6E");
+bar("c10",BM,BV2,"#00B050");
+pie("c11",[{value:1645,name:"设备问题"},{value:337,name:"配网问题"},{value:311,name:"APP使用"},{value:295,name:"视频反馈"},{value:207,name:"其他"},{value:98,name:"意见建议"}]);
+bar("c12",BDL,BDV,"#2BBD6E");
+pie("c13",[{value:477,name:"智能摄像机"},{value:129,name:"可视门铃"},{value:70,name:"行车记录仪"},{value:37,name:"扫地机"}]);
+pie("c14",[{value:297,name:"设备问题"},{value:181,name:"配网问题"},{value:98,name:"其他"},{value:87,name:"APP使用"},{value:23,name:"视频反馈"},{value:9,name:"意见建议"}]);
+line("c15",ON,OV,"#F39C12",true);
+bar("c16",OM,OV2,"#00B050");
+bar("c17",ODL,ODV,"#2BBD6E");
+bar("c18",OBM,OBV2,"#00B050");
+bar("c19",OB_DL,OB_DV,"#2BBD6E");
+</script>
+</body>
+</html>
