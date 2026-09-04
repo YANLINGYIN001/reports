@@ -35,6 +35,7 @@ tr:hover td { background: #f9fff5; }
 .tag-solved { color: #00B050; font-weight: 700; }
 .tag-progress { color: #F39C12; font-weight: 700; }
 .tag-following { color: #1976D2; font-weight: 700; }
+.tag-optimize { color: #F39C12; font-weight: 700; }
 .phase-grid { display: flex; gap: 15px; flex-wrap: wrap; margin: 15px 0; }
 .phase-card { flex: 1; min-width: 250px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 18px; }
 .phase-card.current { border-color: #00B050; background: #f0fdf4; }
@@ -122,16 +123,16 @@ tr:hover td { background: #f9fff5; }
 <div class="section">
 <h2>当前现状</h2>
 <div class="insight-box">
-<div class="title">反馈进入收敛期，日均降至3条</div>
+<div class="title">1️⃣ 反馈进入收敛期，日均降至3条</div>
 <div class="body">公测第3周，日均反馈从W34峰值<span class="red">33条/天</span>降至W36的<span class="green">3条/天</span>（-91%），用户反馈趋于收敛。28/30人参与反馈，参与率93%。</div>
 </div>
 <div class="insight-box">
-<div class="title">AI人形误报仍是最大未解痛点</div>
-<div class="body"><span class="red">AI人形误报20人/62条</span>，覆盖67%公测用户，0729和0825固件均有此问题，新固件未改善。0825固件专项报告显示<span class="orange">优化中</span>，责任方为AI算法团队。</div>
+<div class="title">2️⃣ AI人形误报0825固件有明显优化，作为长期优化项</div>
+<div class="body"><span class="orange">AI人形误报20人/62条</span>仍是最大未解痛点，但0825固件有明显优化。当前误报视频持续下载给君正，模型进行长期优化。</div>
 </div>
 <div class="insight-box">
-<div class="title">0825固件反馈55条/20人，新固件问题持续暴露</div>
-<div class="body">0825固件8/25推送后反馈逐日攀升，8/26单日16条为峰值。引入新问题：设备假离线、关机无响应、APP加载失败等。断流续播异常已解决，AI误报/卡录加载慢仍优化中。</div>
+<div class="title">3️⃣ 9.4发布新固件+APP包，重点优化卡录和云台问题</div>
+<div class="body">9/4给公测用户发布新固件和APP包，<span class="green">重点优化卡录和云台问题</span>，待用户验证反馈。涉及问题：卡录加载慢、卡录加载异常、云台限位异常、云台巡航偏差等。</div>
 </div>
 </div>
 
@@ -147,7 +148,8 @@ tr:hover td { background: #f9fff5; }
 <div class="tl-item"><div class="tl-date">8/26</div><div class="tl-content">0825固件反馈爆发，<strong>16条/9人</strong>。设备假离线、卡录加载异常等新固件问题集中出现。</div></div>
 <div class="tl-item"><div class="tl-date">8/27-8/30</div><div class="tl-content">反馈持续下降，日均<strong>5条/4人</strong>。公测进入平稳期。</div></div>
 <div class="tl-item"><div class="tl-date">8/31</div><div class="tl-content">云录卡录专项报告v4.0 + 开流专项报告v3.0发布，四份专项报告版式统一。</div></div>
-<div class="tl-item"><div class="tl-date">9/1-9/4</div><div class="tl-content">反馈进入收敛期，日均<strong>3条/3人</strong>。0825固件累计55条/20人。新增问题：云录漏录、关机无响应。</div></div>
+<div class="tl-item"><div class="tl-date">9/1-9/3</div><div class="tl-content">反馈进入收敛期，日均<strong>3条/3人</strong>。0825固件累计55条/20人。</div></div>
+<div class="tl-item"><div class="tl-date">9/4</div><div class="tl-content"><strong>发布新固件+APP包</strong>，重点优化卡录和云台问题，待用户验证反馈。</div></div>
 </div>
 </div>
 
@@ -177,7 +179,7 @@ tr:hover td { background: #f9fff5; }
 <div class="stat">参与人数：<strong>11人</strong></div>
 <div class="stat">日均：<strong>3条/天</strong></div>
 <div class="stat">TOP3：AI算法4 / 卡录4 / 云录3</div>
-<div class="stat">特征：反馈趋于收敛，云录漏录/关机无响应等新问题浮现</div>
+<div class="stat">特征：9/4发布新固件+APP包，待用户验证反馈</div>
 </div>
 </div>
 </div>
@@ -188,16 +190,16 @@ tr:hover td { background: #f9fff5; }
 <table>
 <thead><tr><th>等级</th><th>一级</th><th>二级标签</th><th>人数</th><th>条数</th><th>问题进展</th><th>责任人</th></tr></thead>
 <tbody>
-<tr><td><span class="tag-p0">P0</span></td><td>AI算法</td><td>人形误报</td><td>20</td><td>62</td><td><span class="tag-progress">🔧 优化中</span> 君正算法模型较小易误报，增加置信度过滤（低于0.6忽略）</td><td>克涛</td></tr>
-<tr><td><span class="tag-solved">✅</span></td><td>IQ</td><td>画面紫红</td><td>10</td><td>14</td><td><span class="tag-solved">✅ 已解决</span> 14条全部来自0729固件，0825固件零反馈</td><td>—</td></tr>
-<tr><td><span class="tag-solved">✅</span></td><td>APP</td><td>信号显示不一致</td><td>7</td><td>14</td><td><span class="tag-solved">✅ 已解决</span> 13/14条来自0729固件，0825仅1条残留（8/31）</td><td>—</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>APP</td><td>电子说明书未更新</td><td>7</td><td>9</td><td><span class="tag-following">📝 跟进中</span> 电子版仍为WiFi版说明书，需更新为4G版</td><td>—</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>卡录</td><td>卡录加载慢</td><td>7</td><td>9</td><td><span class="tag-progress">🔧 优化中</span> 怀疑与日志打印有关，日志级别从4改为3测试中</td><td>克涛</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>IQ</td><td>夜视切换异常</td><td>6</td><td>7</td><td><span class="tag-following">📝 跟进中</span> 0825固件仍有新反馈</td><td>—</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>AI算法</td><td>画面变化误触发</td><td>5</td><td>6</td><td><span class="tag-following">📝 跟进中</span> 红外灯/云台转动触发</td><td>—</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>APP</td><td>定时开关机难用</td><td>5</td><td>8</td><td><span class="tag-following">📝 跟进中</span> 体验设计问题，设置逻辑需简化</td><td>—</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>云台</td><td>云台限位异常</td><td>5</td><td>5</td><td><span class="tag-following">📝 跟进中</span> 需先到顶再到底才能校准</td><td>—</td></tr>
-<tr><td><span class="tag-p1">P1</span></td><td>稳定性</td><td>设备离线</td><td>4</td><td>6</td><td><span class="tag-following">📝 跟进中</span> 0825固件假离线问题</td><td>固件团队</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>AI算法</td><td>人形误报</td><td>20</td><td>62</td><td><span class="tag-optimize">🔧 优化中</span> 0825固件有明显优化，误报视频持续下载给君正，模型长期优化</td><td>克涛</td></tr>
+<tr><td><span class="tag-solved">✅</span></td><td>IQ</td><td>画面紫红</td><td>10</td><td>14</td><td><span class="tag-solved">✅ 已解决</span> 14条全部来自0729固件，0825固件零反馈</td><td>克涛</td></tr>
+<tr><td><span class="tag-solved">✅</span></td><td>APP</td><td>信号显示不一致</td><td>7</td><td>14</td><td><span class="tag-solved">✅ 已解决</span> 13/14条来自0729固件，0825仅1条残留（8/31）</td><td>浩淞</td></tr>
+<tr><td><span class="tag-solved">✅</span></td><td>APP</td><td>电子说明书未更新</td><td>7</td><td>9</td><td><span class="tag-solved">✅ 已解决</span> 电子版已更新为4G版</td><td>文庆</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>卡录</td><td>卡录加载慢</td><td>7</td><td>9</td><td><span class="tag-optimize">🔧 已优化待验证</span> 9.4发新固件和APP包给用户进行验证</td><td>克涛</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>IQ</td><td>夜视切换异常</td><td>6</td><td>7</td><td><span class="tag-optimize">🔧 已优化待验证</span> 9.4发新固件和APP包给用户进行验证</td><td>青根</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>AI算法</td><td>画面变化误触发</td><td>5</td><td>6</td><td><span class="tag-optimize">🔧 已优化待验证</span> 9.4发新固件和APP包给用户进行验证</td><td>青根</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>APP</td><td>定时开关机难用</td><td>5</td><td>8</td><td><span class="tag-following">📝 保持现状</span> 通用产品设计逻辑，保持现状</td><td>文庆</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>云台</td><td>云台限位异常</td><td>5</td><td>5</td><td><span class="tag-optimize">🔧 已优化待验证</span> 9.4发新固件和APP包给用户进行验证</td><td>克涛</td></tr>
+<tr><td><span class="tag-p1">P1</span></td><td>稳定性</td><td>设备离线</td><td>4</td><td>6</td><td><span class="tag-optimize">🔧 已优化待验证</span> 9.4发新固件和APP包给用户进行验证</td><td>克涛</td></tr>
 </tbody>
 </table>
 <p style="font-size:12px;color:#999;margin-top:8px;">P0=5人以上反馈 | P1=3-4人反馈 | 问题进展以终版专项报告为准</p>
