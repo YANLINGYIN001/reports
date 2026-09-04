@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6pro 4G门铃公测 - 阶段进展报告 2026-09-04</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+.container { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 30px; border-radius: 12px; margin-bottom: 25px; }
+.header h1 { font-size: 24px; margin-bottom: 8px; }
+.header .subtitle { font-size: 14px; opacity: 0.9; }
+.kpi-row { display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
+.kpi-card { flex: 1; min-width: 160px; background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-align: center; }
+.kpi-card .label { font-size: 13px; color: #999; margin-bottom: 8px; }
+.kpi-card .value { font-size: 28px; font-weight: 700; color: #E74C3C; }
+.kpi-card .detail { font-size: 12px; color: #666; margin-top: 5px; }
+.section { background: #fff; border-radius: 8px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 18px; color: #00B050; margin-bottom: 15px; border-left: 4px solid #00B050; padding-left: 10px; }
+.insight { margin-bottom: 15px; }
+.insight-title { font-weight: 700; font-size: 15px; margin-bottom: 5px; }
+.insight-body { font-size: 14px; color: #555; line-height: 1.7; }
+.insight-body .red { color: #E74C3C; font-weight: 600; }
+.insight-body .orange { color: #F39C12; font-weight: 600; }
+.insight-body .green { color: #00B050; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+th { background: #00B050; color: #fff; padding: 10px 8px; font-size: 13px; text-align: left; font-weight: 600; }
+td { padding: 10px 8px; font-size: 13px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+tr:hover td { background: #f9fff5; }
+.tag-p0 { color: #E74C3C; font-weight: 700; }
+.tag-p1 { color: #F39C12; font-weight: 700; }
+.tag-p2 { color: #00B050; font-weight: 700; }
+.new-row td { background: #fffde7; }
+.fw-compare { display: flex; gap: 15px; flex-wrap: wrap; }
+.fw-card { flex: 1; min-width: 140px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; }
+.fw-card.latest { border-color: #00B050; background: #f0fdf4; }
+.fw-card h3 { font-size: 15px; margin-bottom: 10px; }
+.fw-card .stat { font-size: 13px; color: #666; margin: 5px 0; }
+.fw-card .stat strong { color: #333; }
+.footer { text-align: center; padding: 20px; font-size: 12px; color: #999; }
+.footer a { color: #00B050; text-decoration: none; }
+.desc-cell { max-width: 250px; word-break: break-all; }
+.progress-bar { display: inline-block; width: 80px; height: 16px; background: #f0f0f0; border-radius: 8px; overflow: hidden; vertical-align: middle; margin: 0 6px; }
+.progress-fill { height: 100%; background: #00B050; border-radius: 8px; }
+.progress-fill.warn { background: #E74C3C; }
+.progress-fill.orange { background: #F39C12; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>6pro 4G门铃公测 - 阶段进展报告</h1>
+<div class="subtitle">数据周期：2026/8/12 - 2026/9/4 | 累计反馈 510条（排除吴汞） | 参与人数 19人 | 本期新增 137条</div>
+</div>
+<div class="kpi-row">
+<div class="kpi-card"><div class="label">累计反馈</div><div class="value">510</div><div class="detail">本期137条 / 早期373条</div></div>
+<div class="kpi-card"><div class="label">云录问题占比</div><div class="value">75%</div><div class="detail">本期103/137条</div></div>
+<div class="kpi-card"><div class="label">TOP1 画面变化误报</div><div class="value">16人</div><div class="detail">52条累计</div></div>
+<div class="kpi-card"><div class="label">TOP2 漏录/漏拍</div><div class="value">14人</div><div class="detail">35条累计</div></div>
+<div class="kpi-card"><div class="label">TOP3 有人误报</div><div class="value">12人</div><div class="detail">26条累计</div></div>
+</div><div class="section">
+<h2>核心洞察</h2>
+<div class="insight">
+<div class="insight-title">云录问题持续恶化，占比从38%飙升至75%</div>
+<div class="insight-body">早期（7/25-8/11）云录问题141条，占比38%；本期（8/12-9/4）云录问题<span class="red">103条，占比75%</span>。随着0710/0717/0730固件问题逐步修复，卡录、APP、OTA等早期问题大幅减少，但<span class="red">云录成为绝对核心痛点</span>。0812→0817→0828固件迭代未根本解决云录问题，画面变化误报、缩略图不显示、录制不完整三大问题持续存在。</div>
+</div>
+<div class="insight">
+<div class="insight-title">0828最新固件暴露新问题：封面标签识别不准</div>
+<div class="insight-body">0828固件已采集<span class="orange">11条反馈</span>，9月新增4条全部来自0828固件。问题集中在<span class="red">封面标签识别不准</span>：视频有人但封面无标签、封面有人但视频无人、画面变化有人但截图无人。这表明0828固件的AI封面标签逻辑存在系统性缺陷，需重点排查。</div>
+</div>
+<div class="insight">
+<div class="insight-title">画面变化误报稳居榜首，16人52条，覆盖84%用户</div>
+<div class="insight-body">画面变化误报累计<span class="red">52条/16人</span>，覆盖84%的公测用户，是6pro门铃最大痛点。典型场景：无人但触发画面变化录像、有声音也触发画面变化、实际有人但分类为画面变化。0812-0828固件均存在此问题，<span class="red">新固件未改善</span>。建议从PIR灵敏度、AI事件分类逻辑两个方向重点优化。</div>
+</div>
+<div class="insight">
+<div class="insight-title">固件迭代成效：卡录/APP/OTA问题显著收敛</div>
+<div class="insight-body">早期卡录46条→本期仅6条，APP功能40条→5条，OTA 12条→2条，<span class="green">早期问题收敛明显</span>。但云录问题从141条到103条仅下降27%，且新固件持续暴露新的云录问题（灰屏、封面标签不准），说明云录核心逻辑需更深层的架构级优化。</div>
+</div>
+</div><div class="section">
+<h2>问题收敛对比（7/25-8/11 vs 8/12-9/4）</h2>
+<table>
+<thead><tr><th>一级标签</th><th>早期条数</th><th>本期条数</th><th>趋势</th><th>累计条数</th></tr></thead>
+<tbody>
+<tr><td>云录</td><td>141</td><td>103</td><td><span class="tag-p1">→ 持平</span></td><td>244</td></tr>
+<tr><td>卡录</td><td>46</td><td>6</td><td><span class="tag-p2">↓ 大幅收敛</span></td><td>52</td></tr>
+<tr><td>APP功能/交互</td><td>40</td><td>5</td><td><span class="tag-p2">↓ 大幅收敛</span></td><td>45</td></tr>
+<tr><td>IQ</td><td>21</td><td>6</td><td><span class="tag-p2">↓ 大幅收敛</span></td><td>27</td></tr>
+<tr><td>开流</td><td>19</td><td>4</td><td><span class="tag-p2">↓ 大幅收敛</span></td><td>23</td></tr>
+<tr><td>功能需求</td><td>18</td><td>1</td><td><span class="tag-p2">↓ 大幅收敛</span></td><td>19</td></tr>
+<tr><td>OTA</td><td>12</td><td>2</td><td><span class="tag-p2">↓ 大幅收敛</span></td><td>14</td></tr>
+<tr><td>按门铃</td><td>11</td><td>1</td><td><span class="tag-p2">↓ 大幅收敛</span></td><td>12</td></tr>
+<tr><td>续航</td><td>10</td><td>1</td><td><span class="tag-p2">↓ 大幅收敛</span></td><td>11</td></tr>
+<tr><td>夜视切换</td><td>6</td><td>3</td><td><span class="tag-p2">↓ 收敛</span></td><td>9</td></tr>
+<tr><td>稳定性</td><td>6</td><td>2</td><td><span class="tag-p2">↓ 收敛</span></td><td>8</td></tr>
+<tr><td>配网/安装引导</td><td>7</td><td>0</td><td><span class="tag-p2">↓ 已消除</span></td><td>7</td></tr>
+<tr><td>其他</td><td>5</td><td>0</td><td><span class="tag-p2">↓ 已消除</span></td><td>5</td></tr>
+<tr><td>硬件/信号</td><td>3</td><td>0</td><td><span class="tag-p2">↓ 已消除</span></td><td>3</td></tr>
+<tr><td>消息通知</td><td>3</td><td>0</td><td><span class="tag-p2">↓ 已消除</span></td><td>3</td></tr>
+<tr><td>开箱</td><td>3</td><td>0</td><td><span class="tag-p2">↓ 已消除</span></td><td>3</td></tr>
+<tr><td>硬件设计</td><td>1</td><td>0</td><td><span class="tag-p2">↓ 已消除</span></td><td>1</td></tr>
+<tr><td>指示灯</td><td>1</td><td>0</td><td><span class="tag-p2">↓ 已消除</span></td><td>1</td></tr>
+<tr><td>包装/配件</td><td>1</td><td>0</td><td><span class="tag-p2">↓ 已消除</span></td><td>1</td></tr>
+</tbody></table>
+<p style="font-size:12px;color:#999;margin-top:10px;">云录问题收敛不明显，其他模块问题大幅减少，问题集中度上升。</p>
+</div><div class="section">
+<h2>核心问题分析（累计TOP问题）</h2>
+<table>
+<thead><tr><th>等级</th><th>一级标签</th><th>二级标签</th><th>反馈量(人/条)</th><th>用户原声</th></tr></thead>
+<tbody>
+<tr class="new-row"><td><span class="tag-p0">P0</span></td><td>云录</td><td>画面变化误报</td><td>16人/52条</td><td class="desc-cell">孙晓明：app.总是推送画面变化，但是查看事件录像后没有任何变化。不清楚是设备故障还是啥问题。总是推送空事件信息会顶掉重要事件录像<br>魏健伟：有误报，提示画面有变化，但实际没有<br>相杰：画面误报，没有看到任何干扰和光线变化，但是触发云录</td></tr>
+<tr class="new-row"><td><span class="tag-p0">P0</span></td><td>云录</td><td>漏录/漏拍</td><td>14人/35条</td><td class="desc-cell">陈俊：云录漏录，卡录及时些。
+还有app标注信号介绍时。建议加注表达直接点这是门铃信号，这是基站信号。容易让用户一目了然区别<br>瑞子：漏录视频<br>魏健伟：人出门没有拍上，消息显示有人出现，但没有看到人，人应该是走过去了，只看到一点人影，能听到声音</td></tr>
+<tr class="new-row"><td><span class="tag-p0">P0</span></td><td>云录</td><td>有人误报</td><td>12人/26条</td><td class="desc-cell">朱君：大量提示有人出现，全是误报<br>瑞子：没人老是提示有人 录制视频又没人<br>孙晓明：一直频繁的提示有人出现，查看录像无人路过</td></tr>
+<tr class="new-row"><td><span class="tag-p0">P0</span></td><td>云录</td><td>录制延迟</td><td>12人/25条</td><td class="desc-cell">美诺：录了13秒的视频，前4秒有用，后边9秒人已经离开没什么用，然后人从楼上下来没有录上，应该属于延迟录像吧，录制如果提前5-8秒会比较好<br>张雷：云录像，和卡录像，动态视频太晚了，人是闪过去的，都走过去了录像没啥用了，看不到脸了，不如3606pro版本。<br>朱彤：上午8点到12点，发生的事件不显示或者延迟显示，目前进APP里面查看事件，只有8点前的，实际情况不是，我在摄像头前晃悠好几次了，云录和卡录没</td></tr>
+<tr class="new-row"><td><span class="tag-p0">P0</span></td><td>云录</td><td>云录缩略图不显示</td><td>12人/22条</td><td class="desc-cell">袁飞：云录对应片段不显示画面缩略图<br>何三涛：多次刷新后，依然无法正确显示略缩图<br>黄军剑：部分云录的视频没有封面图，如图</td></tr>
+<tr class="new-row"><td><span class="tag-p0">P0</span></td><td>云录</td><td>误报</td><td>11人/16条</td><td class="desc-cell">袁飞：存在有误触发云录情况，一共2次，间隔约1分钟左右<br>夏君：当前设备过于敏感，根据旧款门铃对比，在画面无明显变动的情况下，自行云录了几段视频。第一段视频画面无明显变动却录了云录。第一张照片为当前公测设<br>美诺：App提示有人出现，画面变化，打开查看，云录和卡录均未见人和异常，应该属于误报</td></tr>
+<tr class="new-row"><td><span class="tag-p1">P1</span></td><td>卡录</td><td>卡录加载异常</td><td>7人/15条</td><td class="desc-cell">袁飞：升级新固件后卡录无内容，无法查看<br>张雷：更新后卡录像无法加载<br>相杰：卡录加载很慢，经常加载不出来</td></tr>
+<tr class="new-row"><td><span class="tag-p1">P1</span></td><td>开流</td><td>开流失败</td><td>9人/14条</td><td class="desc-cell">朱彤：实时画面能正常进去，代表4G网络应该没问题，但是在设置里面查看网络却一直转圈显示不出来，手机5G网和Wi-Fi切换着还是转圈，无法显示。<br>王瑷珲：从下午4点28开始异常到现在都还是如此，无论使用移动，还是使用Wi-Fi都一样。9:00重新绑定后实时画面正常，按铃可以通话，卡录云录回看重<br>何三涛：提示加载失败，怀疑是服务器的问题</td></tr>
+<tr class="new-row"><td><span class="tag-p1">P1</span></td><td>OTA</td><td>固件升级失败</td><td>7人/13条</td><td class="desc-cell">于晨光：升级最新固件失败<br>周军：固件升级失败。<br>袁飞：APP不显示实时画面时间，固件无法升级</td></tr>
+<tr class="new-row"><td><span class="tag-p1">P1</span></td><td>续航</td><td>耗电快</td><td>7人/11条</td><td class="desc-cell">陈俊：21点25来看开溜画面，显示电量97%，满电19.38安装的，掉电有点快<br>于晨光：耗电量不正常<br>朱君：电量昨天充到100%，今天93%了</td></tr>
+<tr class="new-row"><td><span class="tag-p1">P1</span></td><td>云录</td><td>录制事件不完整</td><td>3人/10条</td><td class="desc-cell">瑞子：人还在但云录结束<br>何三涛：【有人出现】人还在但云录已经结束录制，大部分云录都是：人还在但云录已经结束录制，因为云录只录11秒。<br>周军：有人出现，录像无头无尾，封面并且没有人型标志。</td></tr>
+<tr><td><span class="tag-p1">P1</span></td><td>APP功能/交互</td><td>设置项自动重置</td><td>7人/10条</td><td class="desc-cell">美诺：之前设置的侦测录像是打开状态，灵敏度调的是中，强拆报警是打开，HDR打开，夜视模式自动，刚才突然发现回家时视频模糊，检查设置时发现  侦测录<br>许军州：侦测录像开关按纽打开后，过一会自己会关闭；还有灵敏度设置，几乎都不行<br>袁飞：电量低于20%以下设置被重置</td></tr>
+<tr class="new-row"><td><span class="tag-p1">P1</span></td><td>IQ</td><td>画质噪点/拖影</td><td>6人/9条</td><td class="desc-cell">许军州：实时画面，偶尔会有马赛克样的，时尔有拖影，慢慢由模糊到清晰<br>张雷：门口感应灯灭，有人过来突然点亮，红外没有及时关闭可能，会持续闪烁，曝光一样，看不清楚画面<br>于晨光：强光线下曝光不正常</td></tr>
+<tr class="new-row"><td><span class="tag-p1">P1</span></td><td>APP功能/交互</td><td>显示异常/数据错误</td><td>6人/8条</td><td class="desc-cell">黄军剑：实时画面播放时，页面上的时间有时候显示，有时候不显示。时间：7/25 13：06<br>朱君：很奇怪，刚才开流不显示电量，画面还是流畅画质，杀了后台，再打开就显示电量和超清画质了<br>袁飞：之前提议在实时画面上角增加即时网速图标，团队改进了，但是原来电量图标不见了</td></tr>
+<tr class="new-row"><td><span class="tag-p1">P1</span></td><td>稳定性</td><td>设备离线</td><td>6人/8条</td><td class="desc-cell">相杰：第一次打开APP显示设备掉线，重新连接一次才成功<br>徐婷婷：早上基站插拔通电的时候，联网灯闪烁，一直显示离线，那就重新联网，联网还是很麻烦，联网失败，后面退出后又显示正常在线了<br>瑞子：只要查询内存卡前几天视频就会掉线……</td></tr>
+</tbody></table>
+<p style="font-size:12px;color:#999;margin-top:10px;">黄色高亮行表示本期仍有新增反馈。仅展示TOP15问题。</p>
+</div><div class="section"><h2>固件版本演进</h2><div class="fw-compare"><div class="fw-card"><h3>0710</h3><div class="stat">累计反馈：<strong>161条</strong></div><div class="stat">本期反馈：<strong>0条</strong></div><div class="stat">反馈人数：<strong>18人</strong></div></div><div class="fw-card"><h3>0717</h3><div class="stat">累计反馈：<strong>53条</strong></div><div class="stat">本期反馈：<strong>0条</strong></div><div class="stat">反馈人数：<strong>15人</strong></div></div><div class="fw-card"><h3>0730</h3><div class="stat">累计反馈：<strong>56条</strong></div><div class="stat">本期反馈：<strong>0条</strong></div><div class="stat">反馈人数：<strong>18人</strong></div></div><div class="fw-card"><h3>0804</h3><div class="stat">累计反馈：<strong>113条</strong></div><div class="stat">本期反馈：<strong>10条</strong></div><div class="stat">反馈人数：<strong>19人</strong></div></div><div class="fw-card"><h3>0812</h3><div class="stat">累计反馈：<strong>81条</strong></div><div class="stat">本期反馈：<strong>81条</strong></div><div class="stat">反馈人数：<strong>16人</strong></div></div><div class="fw-card"><h3>0817</h3><div class="stat">累计反馈：<strong>30条</strong></div><div class="stat">本期反馈：<strong>30条</strong></div><div class="stat">反馈人数：<strong>15人</strong></div></div><div class="fw-card"><h3>0827</h3><div class="stat">累计反馈：<strong>5条</strong></div><div class="stat">本期反馈：<strong>5条</strong></div><div class="stat">反馈人数：<strong>3人</strong></div></div><div class="fw-card latest"><h3>0828（最新）</h3><div class="stat">累计反馈：<strong>11条</strong></div><div class="stat">本期反馈：<strong>11条</strong></div><div class="stat">反馈人数：<strong>5人</strong></div></div></div><div class="insight" style="margin-top:15px"><div class="insight-title">固件演进趋势</div><div class="insight-body">0710→0804固件问题逐步收敛，0804固件<span class="green">113条反馈覆盖全量问题</span>。0812固件成为本期主力（81条），引入灰屏、缩略图不显示等新问题。0828最新固件已采集11条反馈，<span class="red">问题集中在封面标签识别不准和录制不完整</span>，需重点关注。</div></div></div><div class="section"><h2>最新现状（9月新增反馈）</h2><p style="font-size:14px;color:#666;margin-bottom:12px">9月1日-9月4日共新增<span style="color:#E74C3C;font-weight:700">4条</span>反馈，全部来自0828固件，全部为云录问题。</p><table><thead><tr><th>seq</th><th>时间</th><th>用户</th><th>固件</th><th>一级标签</th><th>二级标签</th><th>反馈描述</th></tr></thead><tbody><tr class="new-row"><td>517</td><td>2026/9/1 7:31:35</td><td>周军</td><td>0828</td><td>云录</td><td>录制事件不完整</td><td class="desc-cell">报警视频无头</td></tr><tr class="new-row"><td>518</td><td>2026/9/1 15:35:59</td><td>周军</td><td>0828</td><td>云录</td><td>画面变化封面有人</td><td class="desc-cell">封面有人，但是没有标记，视频也没人。</td></tr><tr class="new-row"><td>519</td><td>2026/9/2 13:02:32</td><td>美诺</td><td>0828</td><td>云录</td><td>有人事件封面无人</td><td class="desc-cell">画面变化有人 ，截图没人，实际有人</td></tr><tr class="new-row"><td>520</td><td>2026/9/4 7:15:53</td><td>周军</td><td>0828</td><td>云录</td><td>有人事件封面无人</td><td class="desc-cell">视频有人，报警封面没有有人标签。</td></tr></tbody></table><div class="insight" style="margin-top:15px"><div class="insight-title">0828固件现状判断</div><div class="insight-body">9月新增4条反馈中，<span class="red">2条涉及封面标签识别不准</span>（有人事件封面无人、画面变化封面有人但视频无人），1条录制事件不完整，1条画面变化封面有人。<span class="orange">封面标签识别是0828固件新暴露的问题</span>，需研发重点排查封面生成与AI标签匹配逻辑。</div></div></div><div class="section"><h2>本期用户原声（TOP问题）</h2><table style="margin-bottom:16px"><tr><th colspan="3" style="background:#333">云录 | 画面变化误报（21条 / 10人）</th></tr><tr><th style="width:60px">姓名</th><th style="width:60px">固件</th><th>用户原声</th></tr><tr><td>周军</td><td>0812</td><td style="text-align:left">发现一个问题，好像画面异动，有声音也会录像，能不能调整有画面异动才录音。</td></tr><tr><td>美诺</td><td>0812</td><td style="text-align:left">画面变化截图无人实际无人</td></tr><tr><td>瑞子</td><td>0812</td><td style="text-align:left">画面变化有人视频</td></tr><tr><td>许军州</td><td>0812</td><td style="text-align:left">云录上画面变化；封面图上面有人</td></tr></table><table style="margin-bottom:16px"><tr><th colspan="3" style="background:#333">云录 | 云录缩略图不显示（16条 / 10人）</th></tr><tr><th style="width:60px">姓名</th><th style="width:60px">固件</th><th>用户原声</th></tr><tr><td>黄军剑</td><td>0804</td><td style="text-align:left">在云录视频中出现视频没有封面图问题，时间为8/13 07：17</td></tr><tr><td>朱彤</td><td>0812</td><td style="text-align:left">云录事件点开第一秒会闪屏，之前以为是感应灯的缘故，但是早上天亮了感应灯没有亮，但是实际第一秒还是会闪。</td></tr><tr><td>相杰</td><td>0812</td><td style="text-align:left">对应问卷中云录--画面变化--封面灰屏（8/14）</td></tr><tr><td>王瑷珲</td><td>0812</td><td style="text-align:left">问卷3画面变化有人，灰图。</td></tr></table><table style="margin-bottom:16px"><tr><th colspan="3" style="background:#333">云录 | 录制事件不完整（10条 / 3人）</th></tr><tr><th style="width:60px">姓名</th><th style="width:60px">固件</th><th>用户原声</th></tr><tr><td>瑞子</td><td>0812</td><td style="text-align:left">人还在但云录结束</td></tr><tr><td>何三涛</td><td>0812</td><td style="text-align:left">【有人出现】人还在但云录已经结束录制，大部分云录都是：人还在但云录已经结束录制，因为云录只录11秒。</td></tr><tr><td>周军</td><td>0827</td><td style="text-align:left">有人出现，录像无头无尾，封面并且没有人型标志。</td></tr></table><table style="margin-bottom:16px"><tr><th colspan="3" style="background:#333">云录 | 有人误报（7条 / 6人）</th></tr><tr><th style="width:60px">姓名</th><th style="width:60px">固件</th><th>用户原声</th></tr><tr><td>蔡坤城</td><td>0812</td><td style="text-align:left">没有人经过，但是卡录和云录都已经录像了，这个是误报吧。</td></tr><tr><td>相杰</td><td>0812</td><td style="text-align:left">提交问卷作业中封面无人相关图片（8/15）</td></tr><tr><td>朱君</td><td>0812</td><td style="text-align:left">封面无人提示有人出现</td></tr><tr><td>朱彤</td><td>0812</td><td style="text-align:left">事件有人，封面无人</td></tr></table><table style="margin-bottom:16px"><tr><th colspan="3" style="background:#333">云录 | 录制延迟（6条 / 5人）</th></tr><tr><th style="width:60px">姓名</th><th style="width:60px">固件</th><th>用户原声</th></tr><tr><td>黄军剑</td><td>0804</td><td style="text-align:left">在云录里出现一个画面变化的视频，有人正在弯腰，可以预见到肯定有画面变化。但是实际视频内容仅有1秒不到。视频时长太短。时间08/13 07：17</td></tr><tr><td>瑞子</td><td>0812</td><td style="text-align:left">人还在云录结束</td></tr><tr><td>许军州</td><td>0812</td><td style="text-align:left">8月14到8月15号，人还没离开，但录制已经结束</td></tr><tr><td>朱君</td><td>0812</td><td style="text-align:left">人还在云录结束</td></tr></table><table style="margin-bottom:16px"><tr><th colspan="3" style="background:#333">云录 | 误报（6条 / 5人）</th></tr><tr><th style="width:60px">姓名</th><th style="width:60px">固件</th><th>用户原声</th></tr><tr><td>美诺</td><td>0812</td><td style="text-align:left">刚升级完 打开 提示有人出现或者是有变化 没有看清楚 ，查看发现什么都没有</td></tr><tr><td>张雷</td><td>0817</td><td style="text-align:left">云录有人，有封面，打开只有一秒纯黑视频</td></tr><tr><td>周军</td><td>0817</td><td style="text-align:left">有人但是灰度图提醒</td></tr><tr><td>魏健伟</td><td>0817</td><td style="text-align:left">没有封面图画</td></tr></table><table style="margin-bottom:16px"><tr><th colspan="3" style="background:#333">云录 | 画面灰屏（5条 / 3人）</th></tr><tr><th style="width:60px">姓名</th><th style="width:60px">固件</th><th>用户原声</th></tr><tr><td>瑞子</td><td>0812</td><td style="text-align:left">录制hui ping</td></tr><tr><td>美诺</td><td>0827</td><td style="text-align:left">画面灰屏</td></tr><tr><td>相杰</td><td>0828</td><td style="text-align:left">云录封面灰屏，同时间段卡录没有事件</td></tr></table><table style="margin-bottom:16px"><tr><th colspan="3" style="background:#333">云录 | 漏录/漏拍（5条 / 5人）</th></tr><tr><th style="width:60px">姓名</th><th style="width:60px">固件</th><th>用户原声</th></tr><tr><td>朱君</td><td>0812</td><td style="text-align:left">卡录有漏录，且无法回放</td></tr><tr><td>许军州</td><td>0812</td><td style="text-align:left">人到门铃前了才录制，之前的没录制到</td></tr><tr><td>黄军剑</td><td>0817</td><td style="text-align:left">设备在线，可以切换4g和wifi。但是没有录像。</td></tr><tr><td>陈俊</td><td>0827</td><td style="text-align:left">漏录，优化下</td></tr></table><table style="margin-bottom:16px"><tr><th colspan="3" style="background:#333">云录 | 有人事件封面无人（4条 / 3人）</th></tr><tr><th style="width:60px">姓名</th><th style="width:60px">固件</th><th>用户原声</th></tr><tr><td>何三涛</td><td>0812</td><td style="text-align:left">【有人出现】事件封面无人情况</td></tr><tr><td>美诺</td><td>0828</td><td style="text-align:left">画面变化有人 ，截图没人，实际有人</td></tr><tr><td>周军</td><td>0828</td><td style="text-align:left">视频有人，报警封面没有有人标签。</td></tr></table><table style="margin-bottom:16px"><tr><th colspan="3" style="background:#333">云录 | 画面变化封面有人（4条 / 3人）</th></tr><tr><th style="width:60px">姓名</th><th style="width:60px">固件</th><th>用户原声</th></tr><tr><td>何三涛</td><td>0812</td><td style="text-align:left">【画面变化】封面有人情况截图</td></tr><tr><td>美诺</td><td>0812</td><td style="text-align:left">画面截图有人实际有人事件</td></tr><tr><td>周军</td><td>0828</td><td style="text-align:left">封面有人，但是没有标记，视频也没人。</td></tr></table></div><div class="footer">
+<p>数据来源：飞书表格「门铃6pro 4G公测问题跟进表」日常问题sheet</p>
+<p>报告合集：<a href="https://yanlingyin001.github.io/reports/6pro-index.html">6pro公测报告合集</a></p>
+<p>生成时间：2026-09-04 | 自动生成 by 尹燕玲-报告分析专家 🦞</p>
+</div>
+</div>
+</body>
+</html>
