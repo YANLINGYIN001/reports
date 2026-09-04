@@ -126,10 +126,14 @@ flowchart TD
     C --> D{前后端并行推进}
     D --> E[前端：GTM为接口部门]
     D --> F[后端：质量/翻新/供应链为对接部门]
-    E --> E1[联系前端各环节<br/>下架/锁库/信息更新]
-    F --> F1[质量：排查库存与品质]
+    E --> E1[联系前端各环节<br/>下架/信息更新]
+    F --> Q[质量部门接收停售信息]
+    Q --> Q1{是否需要锁库?}
+    Q1 -->|是| Q2[质量邮件提交锁库申请]
+    Q1 -->|否| F1[质量：排查库存与品质]
+    Q2 --> Q3[运管部仓库执行锁库]
+    Q3 --> F3[供应链：锁库停止发货]
     F --> F2[翻新：处理在库翻新件]
-    F --> F3[供应链：锁库停止发货]
     E1 --> G[效果确认：产品已锁库<br/>客户无法下单]
     F1 --> G
     F2 --> G
@@ -141,6 +145,9 @@ flowchart TD
     style C fill:#f3e5f5,stroke:#7B1FA2,stroke-width:2px,color:#333
     style E fill:#e3f2fd,stroke:#1976D2,stroke-width:2px,color:#333
     style F fill:#fdeaea,stroke:#E74C3C,stroke-width:2px,color:#333
+    style Q fill:#fff3e0,stroke:#F39C12,stroke-width:2px,color:#333
+    style Q2 fill:#fff3e0,stroke:#F39C12,stroke-width:2px,color:#333
+    style Q3 fill:#e8f5e9,stroke:#00B050,stroke-width:2px,color:#333
     style H fill:#e8f5e9,stroke:#00B050,stroke-width:2px,color:#333
       </div>
     </div>
@@ -170,8 +177,13 @@ flowchart TD
         </tr>
         <tr>
           <td><span class="role-backend">后端-质量</span></td>
-          <td>库存品质排查</td>
-          <td>排查在库产品质量状态，确认是否有品质问题需处理</td>
+          <td>库存品质排查 + 锁库申请</td>
+          <td>①接收停售信息 ②判定是否需要锁库 ③若需要，邮件提交锁库申请 ④排查在库产品质量状态</td>
+        </tr>
+        <tr>
+          <td>运管部-仓库</td>
+          <td>锁库执行</td>
+          <td>接收质量部门锁库申请邮件，执行系统锁库操作</td>
         </tr>
         <tr>
           <td><span class="role-backend">后端-翻新</span></td>
