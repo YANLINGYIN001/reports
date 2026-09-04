@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V6骑行记录仪升级款 · 小红薯问题复盘</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #333; line-height: 1.8; }
+.container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+.header { text-align: center; margin-bottom: 40px; }
+.header h1 { font-size: 26px; color: #1a1a1a; margin-bottom: 8px; }
+.header .meta { color: #888; font-size: 14px; }
+.header .tag { display: inline-block; background: #E74C3C; color: #fff; padding: 2px 12px; border-radius: 4px; font-size: 12px; margin-left: 8px; vertical-align: middle; }
+.section { background: #fff; border-radius: 8px; padding: 28px 32px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.section h2 { font-size: 18px; color: #1a1a1a; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid #00B050; }
+.section h3 { font-size: 15px; color: #555; margin: 16px 0 8px; }
+.problem-card { background: #fdf6f6; border: 1px solid #f5d0d0; border-radius: 6px; padding: 16px 20px; margin-bottom: 16px; }
+.problem-card .label { font-size: 13px; color: #E74C3C; font-weight: 600; margin-bottom: 6px; }
+.problem-card .desc { font-size: 14px; color: #444; }
+.rootcause { background: #fef9f0; border: 1px solid #f0d9a8; border-radius: 6px; padding: 16px 20px; margin-bottom: 16px; }
+.rootcause .label { font-size: 13px; color: #F39C12; font-weight: 600; margin-bottom: 6px; }
+.rootcause .desc { font-size: 14px; color: #444; }
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before { content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px; width: 2px; background: #ddd; }
+.timeline-item { position: relative; margin-bottom: 16px; }
+.timeline-item::before { content: ''; position: absolute; left: -22px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: #00B050; border: 2px solid #fff; box-shadow: 0 0 0 1px #ddd; }
+.timeline-item .time { font-size: 13px; color: #999; }
+.timeline-item .content { font-size: 14px; color: #333; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+th { background: #f8f9fa; text-align: left; padding: 10px 12px; border-bottom: 2px solid #e0e0e0; font-weight: 600; color: #555; }
+td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+tr:hover td { background: #fafbfc; }
+.role-GTM { color: #1976D2; font-weight: 600; }
+.role-PM { color: #7B1FA2; font-weight: 600; }
+.role-backend { color: #E74C3C; font-weight: 600; }
+.flowchart-container { background: #fafbfc; border-radius: 6px; padding: 20px; margin: 12px 0; text-align: center; }
+.mermaid { display: flex; justify-content: center; }
+.summary { background: #f0f7f0; border: 1px solid #c3e6c3; border-radius: 6px; padding: 16px 20px; margin-top: 16px; }
+.summary .label { font-size: 13px; color: #00B050; font-weight: 600; margin-bottom: 6px; }
+.summary .desc { font-size: 14px; color: #333; }
+.footer { text-align: center; color: #aaa; font-size: 12px; margin-top: 24px; padding-top: 16px; border-top: 1px solid #eee; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>V6骑行记录仪升级款 · 小红薯问题复盘<span class="tag">销售流程</span></h1>
+    <div class="meta">复盘日期：2026-09-04 ｜ 产品：V6骑行记录仪升级款（小红薯）</div>
+  </div>
+
+  <!-- 问题概述 -->
+  <div class="section">
+    <h2>一、问题概述</h2>
+    <div class="problem-card">
+      <div class="label">⚠️ 问题描述</div>
+      <div class="desc">
+        V6骑行记录仪升级款（内部代号"小红薯"）在<strong>决策停止销售后，未执行锁库操作</strong>，导致后续客户仍可下单。客户在不知情的情况下<strong>下单购买了已停售的历史产品</strong>，引发客诉与前后端信息不对齐问题。
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="time">阶段一</div>
+        <div class="content">产品决策层做出停止销售V6骑行升级款的决定</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">阶段二</div>
+        <div class="content">停售决策未触发锁库动作，产品在系统中仍处于可售状态</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">阶段三</div>
+        <div class="content">客户下单，误购已停售的历史产品</div>
+      </div>
+      <div class="timeline-item">
+        <div class="time">阶段四</div>
+        <div class="content">客诉反馈，前后端拉齐，明确改进流程</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 根因分析 -->
+  <div class="section">
+    <h2>二、根因分析</h2>
+    <div class="rootcause">
+      <div class="label">🎯 核心根因</div>
+      <div class="desc">
+        <strong>停售决策与执行脱节。</strong>决策层做出停售决定后，缺乏标准化的"锁库"执行动作，没有将决策同步到前后端各环节，导致系统状态与实际销售策略不一致。
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>维度</th><th>具体问题</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>流程缺失</td>
+          <td>停售后无标准锁库SOP，决策与执行之间没有强制衔接</td>
+        </tr>
+        <tr>
+          <td>信息断层</td>
+          <td>停售决策未同步到前端销售系统和后端供应链，各环节信息不对齐</td>
+        </tr>
+        <tr>
+          <td>责任不清</td>
+          <td>停售后的跟进动作没有明确责任人，无人跟进锁库和通知</td>
+        </tr>
+        <tr>
+          <td>系统未联动</td>
+          <td>停售决策未自动触发系统层面的产品下架/锁库，仍允许下单</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 改进流程 -->
+  <div class="section">
+    <h2>三、改进流程</h2>
+    <p style="font-size:14px;color:#666;margin-bottom:16px;">以下为已拉齐的标准化流程，明确各角色在产品停售场景下的职责与协作关系。</p>
+
+    <div class="flowchart-container">
+      <div class="mermaid">
+flowchart TD
+    A[产品销售阶段停止决策] --> B[GTM 发布相关信息公布]
+    B --> C[项目经理 负责前后端事项跟踪与效果]
+    C --> D{前后端并行推进}
+    D --> E[前端：GTM为接口部门]
+    D --> F[后端：质量/翻新/供应链为对接部门]
+    E --> E1[联系前端各环节<br/>下架/锁库/信息更新]
+    F --> F1[质量：排查库存与品质]
+    F --> F2[翻新：处理在库翻新件]
+    F --> F3[供应链：锁库停止发货]
+    E1 --> G[效果确认：产品已锁库<br/>客户无法下单]
+    F1 --> G
+    F2 --> G
+    F3 --> G
+    G --> H[项目经理 验收效果<br/>全链路闭环]
+
+    style A fill:#fdeaea,stroke:#E74C3C,stroke-width:2px,color:#333
+    style B fill:#e3f2fd,stroke:#1976D2,stroke-width:2px,color:#333
+    style C fill:#f3e5f5,stroke:#7B1FA2,stroke-width:2px,color:#333
+    style E fill:#e3f2fd,stroke:#1976D2,stroke-width:2px,color:#333
+    style F fill:#fdeaea,stroke:#E74C3C,stroke-width:2px,color:#333
+    style H fill:#e8f5e9,stroke:#00B050,stroke-width:2px,color:#333
+      </div>
+    </div>
+  </div>
+
+  <!-- 责任矩阵 -->
+  <div class="section">
+    <h2>四、责任矩阵</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>角色</th>
+          <th>职责</th>
+          <th>关键动作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="role-GTM">GTM</span></td>
+          <td>信息发布 + 前端接口</td>
+          <td>①发布停售信息公布 ②作为前端接口部门，直接联系前端各环节</td>
+        </tr>
+        <tr>
+          <td><span class="role-PM">项目经理</span></td>
+          <td>前后端事项跟踪与效果验收</td>
+          <td>①协调前后端并行推进 ②跟踪各环节执行情况 ③验收最终效果，确保闭环</td>
+        </tr>
+        <tr>
+          <td><span class="role-backend">后端-质量</span></td>
+          <td>库存品质排查</td>
+          <td>排查在库产品质量状态，确认是否有品质问题需处理</td>
+        </tr>
+        <tr>
+          <td><span class="role-backend">后端-翻新</span></td>
+          <td>翻新件处理</td>
+          <td>处理在库翻新件，确保翻新件不流入销售渠道</td>
+        </tr>
+        <tr>
+          <td><span class="role-backend">后端-供应链</span></td>
+          <td>锁库与停发</td>
+          <td>执行系统锁库操作，停止产品发货</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 总结 -->
+  <div class="section">
+    <h2>五、改进总结</h2>
+    <div class="summary">
+      <div class="label">✅ 改进要点</div>
+      <div class="desc">
+        <strong>1. 决策即执行：</strong>产品停售决策做出后，GTM立即发布信息公布，项目经理同步启动前后端协调，消除决策与执行的时间差。</p>
+        <p><strong>2. 前后端并行：</strong>前端GTM直接对接各环节推进下架/锁库，后端质量/翻新/供应链同步处理库存，避免串行等待。</p>
+        <p><strong>3. 闭环验收：</strong>项目经理负责最终效果验收，确认产品已锁库、客户无法下单，全链路闭环。</p>
+        <p><strong>4. 责任到人：</strong>每个环节有明确责任人，GTM管前端、项目经理管全局、后端各部门管各自领域，杜绝责任真空。
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    V6骑行记录仪升级款 · 小红薯问题复盘 ｜ 2026-09-04 ｜ 数据来源：内部拉齐会议
+  </div>
+</div>
+
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'base',
+  themeVariables: {
+    primaryColor: '#f5f7fa',
+    primaryTextColor: '#333',
+    primaryBorderColor: '#00B050',
+    lineColor: '#999',
+    fontSize: '14px',
+    fontFamily: 'PingFang SC, Microsoft YaHei, sans-serif'
+  },
+  flowchart: {
+    curve: 'basis',
+    padding: 20,
+    nodeSpacing: 40,
+    rankSpacing: 50
+  }
+});
+</script>
+</body>
+</html>
