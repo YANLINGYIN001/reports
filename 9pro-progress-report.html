@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>9pro 400万4G云台公测 - 项目进展报告 (8.11-9.4)</title>
+<title>9pro 400万4G云台公测 - 项目进展报告 (8.17-9.4)</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
@@ -18,9 +18,6 @@ body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
 .kpi-card .label { font-size: 13px; color: #999; margin-bottom: 8px; }
 .kpi-card .value { font-size: 28px; font-weight: 700; color: #E74C3C; }
 .kpi-card .detail { font-size: 12px; color: #666; margin-top: 5px; }
-.kpi-card .trend { font-size: 11px; color: #999; margin-top: 3px; }
-
-/* Timeline */
 .timeline { position: relative; padding-left: 20px; }
 .timeline::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: #e0e0e0; }
 .tl-item { position: relative; margin-bottom: 20px; padding-left: 25px; }
@@ -28,17 +25,6 @@ body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
 .tl-date { font-size: 13px; color: #00B050; font-weight: 600; margin-bottom: 3px; }
 .tl-content { font-size: 14px; color: #555; }
 .tl-content strong { color: #333; }
-
-/* Bar chart */
-.bar-chart { margin: 15px 0; }
-bar-row { display: flex; align-items: center; margin-bottom: 6px; }
-.bar-label { width: 90px; font-size: 12px; color: #666; text-align: right; padding-right: 10px; flex-shrink: 0; }
-.bar-track { flex: 1; background: #f0f0f0; height: 22px; border-radius: 4px; overflow: hidden; position: relative; }
-.bar-fill { height: 100%; background: #00B050; border-radius: 4px; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; }
-.bar-fill .bar-val { font-size: 11px; color: #fff; font-weight: 600; }
-.bar-fill.warn { background: #F39C12; }
-.bar-fill.danger { background: #E74C3C; }
-
 table { width: 100%; border-collapse: collapse; margin: 10px 0; }
 th { background: #00B050; color: #fff; padding: 10px 8px; font-size: 13px; text-align: left; font-weight: 600; }
 td { padding: 10px 8px; font-size: 13px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
@@ -46,7 +32,9 @@ tr:hover td { background: #f9fff5; }
 .tag-p0 { color: #E74C3C; font-weight: 700; }
 .tag-p1 { color: #F39C12; font-weight: 700; }
 .tag-p2 { color: #00B050; font-weight: 700; }
-
+.tag-solved { color: #00B050; font-weight: 700; }
+.tag-progress { color: #F39C12; font-weight: 700; }
+.tag-following { color: #1976D2; font-weight: 700; }
 .phase-grid { display: flex; gap: 15px; flex-wrap: wrap; margin: 15px 0; }
 .phase-card { flex: 1; min-width: 250px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 18px; }
 .phase-card.current { border-color: #00B050; background: #f0fdf4; }
@@ -56,26 +44,24 @@ tr:hover td { background: #f9fff5; }
 .phase-card .trend-tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; }
 .trend-tag.up { background: #fce4ec; color: #E74C3C; }
 .trend-tag.down { background: #e8f5e9; color: #00B050; }
-
-.fw-grid { display: flex; gap: 15px; flex-wrap: wrap; margin: 15px 0; }
-.fw-card { flex: 1; min-width: 200px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; }
-.fw-card.latest { border-color: #00B050; background: #f0fdf4; }
-.fw-card h3 { font-size: 14px; margin-bottom: 8px; }
-.fw-card .stat { font-size: 13px; color: #666; margin: 3px 0; }
-.fw-card .stat strong { color: #333; }
-
-.footer { text-align: center; padding: 20px; font-size: 12px; color: #999; }
-.footer a { color: #00B050; text-decoration: none; }
+.status-badge { display: inline-block; font-size: 11px; padding: 2px 10px; border-radius: 10px; font-weight: 600; }
+.status-badge.active { background: #e8f5e9; color: #00B050; }
+.status-badge.peak { background: #fff3e0; color: #F39C12; }
+.status-badge.decline { background: #e3f2fd; color: #1976D2; }
+.highlight-grid { display: flex; gap: 15px; flex-wrap: wrap; margin: 15px 0; }
+.highlight-card { flex: 1; min-width: 200px; background: #f0fdf4; border: 1px solid #00B050; border-radius: 8px; padding: 18px; }
+.highlight-card .icon { font-size: 28px; margin-bottom: 8px; }
+.highlight-card .title { font-weight: 700; font-size: 15px; margin-bottom: 5px; color: #00B050; }
+.highlight-card .body { font-size: 13px; color: #555; line-height: 1.6; }
+.highlight-card .quote { font-size: 12px; color: #888; margin-top: 6px; font-style: italic; }
 .insight-box { background: #f0fdf4; border-left: 4px solid #00B050; padding: 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
 .insight-box .title { font-weight: 700; font-size: 15px; margin-bottom: 5px; }
 .insight-box .body { font-size: 14px; color: #555; line-height: 1.7; }
 .insight-box .body .red { color: #E74C3C; font-weight: 600; }
 .insight-box .body .orange { color: #F39C12; font-weight: 600; }
 .insight-box .body .green { color: #00B050; font-weight: 600; }
-.status-badge { display: inline-block; font-size: 11px; padding: 2px 10px; border-radius: 10px; font-weight: 600; }
-.status-badge.active { background: #e8f5e9; color: #00B050; }
-.status-badge.peak { background: #fff3e0; color: #F39C12; }
-.status-badge.decline { background: #e3f2fd; color: #1976D2; }
+.footer { text-align: center; padding: 20px; font-size: 12px; color: #999; }
+.footer a { color: #00B050; text-decoration: none; }
 </style>
 </head>
 <body>
@@ -95,20 +81,57 @@ tr:hover td { background: #f9fff5; }
 <div class="kpi-card"><div class="label">已出报告</div><div class="value">12</div><div class="detail">日报+专项+作业</div></div>
 </div>
 
-<!-- 核心洞察 -->
+<!-- 项目/产品亮点 -->
+<div class="section">
+<h2>项目 / 产品亮点</h2>
+<div class="highlight-grid">
+<div class="highlight-card">
+<div class="icon">🖥</div>
+<div class="title">400万像素2.5K画质领先</div>
+<div class="body">云录画面清晰度9.7、卡录9.5，开流画质效果9.34，全维度最高分。昼间成像细节丰富，多人打出满分。</div>
+<div class="quote">黄显森：云回放画面清晰度高，细节展示完整</div>
+</div>
+<div class="highlight-card">
+<div class="icon">🎙</div>
+<div class="title">音质清晰还原</div>
+<div class="body">云录音质9.6、卡录9.5，实时画面通话设备端声音9.28最高，用户评价"比小水滴还好"。</div>
+<div class="quote">陈建建：小孩子声音都听得很清晰</div>
+</div>
+<div class="highlight-card">
+<div class="icon">⚡</div>
+<div class="title">云录稳定无漏录</div>
+<div class="body">云录总体9.0、完整性9.2，事件记录稳定完整，满足回看需求。开流8维均分8.79-9.34全部进入绿色区间。</div>
+<div class="quote">王刚红：云录暂时没问题，事件都有记录且完整</div>
+</div>
+<div class="highlight-card">
+<div class="icon">📱</div>
+<div class="title">4G免流+远程配网</div>
+<div class="body">4G终身免流+远程配网是最大卖点，特别适用于老人老家无WiFi场景。配网一次成功率88%，配网总体满意度9.6。</div>
+<div class="quote">林志澄：4G终身免流、远程配网，这两个功能是最大亮点</div>
+</div>
+<div class="highlight-card">
+<div class="icon">📞</div>
+<div class="title">通话体验超越预期</div>
+<div class="body">实时画面通话5维均分9.03-9.28全超9分，设备端声音最高，被评价"比小水滴还好"，是开流模块最大亮点。</div>
+<div class="quote">用户评价：通话质量很好</div>
+</div>
+</div>
+</div>
+
+<!-- 当前现状 -->
 <div class="section">
 <h2>当前现状</h2>
 <div class="insight-box">
-<div class="title">反馈进入收敛期，但核心痛点仍未解决</div>
-<div class="body">公测已进入第3周，日均反馈从W34峰值<span class="red">33条/天</span>降至W36的<span class="green">4条/天</span>，用户反馈趋于收敛。但<span class="red">AI人形误报（20人/62条）</span>稳居榜首且持续新增，<span class="red">IQ画面紫红（10人/14条）</span>和<span class="red">APP信号显示不一致（7人/14条）</span>等P0问题均未见修复迹象，需重点关注。</div>
+<div class="title">反馈进入收敛期，日均降至3条</div>
+<div class="body">公测第3周，日均反馈从W34峰值<span class="red">33条/天</span>降至W36的<span class="green">3条/天</span>（-91%），用户反馈趋于收敛。28/30人参与反馈，参与率93%。</div>
 </div>
 <div class="insight-box">
-<div class="title">0825新固件反馈持续增长，已达55条/20人</div>
-<div class="body">0825固件8月25日推送后，反馈量逐日攀升：8/26单日16条为峰值。W35-W36新增问题中<span class="orange">设备假离线、卡录加载异常、APP加载失败、关机无响应</span>等均来自0825固件用户。新固件引入的新问题需持续跟踪。</div>
+<div class="title">AI人形误报仍是最大未解痛点</div>
+<div class="body"><span class="red">AI人形误报20人/62条</span>，覆盖67%公测用户，0729和0825固件均有此问题，新固件未改善。0825固件专项报告显示<span class="orange">优化中</span>，责任方为AI算法团队。</div>
 </div>
 <div class="insight-box">
-<div class="title">云录广告设计问题浮现，2人独立反馈</div>
-<div class="body">9/3-9/4新增：陶双反馈"云录事件上面的提醒充值广告不能关闭"，此前高瑞也反馈同类问题。虽仅2人，但属体验设计问题，<span class="orange">建议评估增加关闭按钮</span>。</div>
+<div class="title">0825固件反馈55条/20人，新固件问题持续暴露</div>
+<div class="body">0825固件8/25推送后反馈逐日攀升，8/26单日16条为峰值。引入新问题：设备假离线、关机无响应、APP加载失败等。断流续播异常已解决，AI误报/卡录加载慢仍优化中。</div>
 </div>
 </div>
 
@@ -118,14 +141,13 @@ tr:hover td { background: #f9fff5; }
 <div class="timeline">
 <div class="tl-item"><div class="tl-date">8/17（周一）</div><div class="tl-content">公测启动，首批用户开始反馈，当日<strong>14条/8人</strong>。开箱、配网问题集中出现。</div></div>
 <div class="tl-item"><div class="tl-date">8/18-8/19</div><div class="tl-content">反馈爆发期，日均<strong>38条/14人</strong>。AI人形误报、画面紫红、电子说明书未更新等核心问题集中暴露。</div></div>
-<div class="tl-item"><div class="tl-date">8/20-8/21</div><div class="tl-content">反馈峰值，日均<strong>42条/16人</strong>。开箱（30份）、配网（29份）专项问卷数据到位，专项报告生成。</div></div>
+<div class="tl-item"><div class="tl-date">8/20-8/21</div><div class="tl-content">反馈峰值，日均<strong>42条/16人</strong>。开箱（30份）、配网（29份）专项问卷数据到位。</div></div>
 <div class="tl-item"><div class="tl-date">8/22-8/23</div><div class="tl-content">反馈开始下降，日均<strong>27条/12人</strong>。用户完成基础体验，进入日常使用阶段。</div></div>
-<div class="tl-item"><div class="tl-date">8/24（周六）</div><div class="tl-content">W35开始，日均降至<strong>29条/15人</strong>。功能需求类反馈占比上升（走廊模式、水印开关等）。</div></div>
-<div class="tl-item"><div class="tl-date">8/25（周一）</div><div class="tl-content"><strong>0825新固件推送</strong>，首批4条反馈出现。当日总反馈降至20条/11人。</div></div>
+<div class="tl-item"><div class="tl-date">8/25（周一）</div><div class="tl-content"><strong>0825新固件推送</strong>，当日反馈降至20条/11人。云录卡录、开流专项问卷同步启动。</div></div>
 <div class="tl-item"><div class="tl-date">8/26</div><div class="tl-content">0825固件反馈爆发，<strong>16条/9人</strong>。设备假离线、卡录加载异常等新固件问题集中出现。</div></div>
 <div class="tl-item"><div class="tl-date">8/27-8/30</div><div class="tl-content">反馈持续下降，日均<strong>5条/4人</strong>。公测进入平稳期。</div></div>
 <div class="tl-item"><div class="tl-date">8/31</div><div class="tl-content">云录卡录专项报告v4.0 + 开流专项报告v3.0发布，四份专项报告版式统一。</div></div>
-<div class="tl-item"><div class="tl-date">9/1-9/4</div><div class="tl-content">反馈进入收敛期，日均<strong>3条/3人</strong>。新增问题：云录漏录、关机无响应、云录广告无法关闭。0825固件累计55条/20人。</div></div>
+<div class="tl-item"><div class="tl-date">9/1-9/4</div><div class="tl-content">反馈进入收敛期，日均<strong>3条/3人</strong>。0825固件累计55条/20人。新增问题：云录漏录、关机无响应。</div></div>
 </div>
 </div>
 
@@ -138,7 +160,7 @@ tr:hover td { background: #f9fff5; }
 <div class="stat">反馈量：<strong>229条</strong></div>
 <div class="stat">参与人数：<strong>24人</strong></div>
 <div class="stat">日均：<strong>33条/天</strong></div>
-<div class="stat">TOP3：AI算法64 / APP66 / 卡录25</div>
+<div class="stat">TOP3：APP66 / AI算法64 / 卡录25</div>
 <div class="stat">特征：核心痛点集中爆发，用户开箱配网后进入日常使用</div>
 </div>
 <div class="phase-card">
@@ -155,79 +177,30 @@ tr:hover td { background: #f9fff5; }
 <div class="stat">参与人数：<strong>11人</strong></div>
 <div class="stat">日均：<strong>3条/天</strong></div>
 <div class="stat">TOP3：AI算法4 / 卡录4 / 云录3</div>
-<div class="stat">特征：反馈趋于收敛，云录广告/关机无响应等新问题浮现</div>
+<div class="stat">特征：反馈趋于收敛，云录漏录/关机无响应等新问题浮现</div>
 </div>
 </div>
-</div>
-
-<!-- 每日趋势 -->
-<div class="section">
-<h2>每日有效反馈趋势</h2>
-<div class="bar-chart">
-<div class="bar-row"><span class="bar-label">8/17</span><div class="bar-track"><div class="bar-fill" style="width:32%"><span class="bar-val">14</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/18</span><div class="bar-track"><div class="bar-fill" style="width:80%"><span class="bar-val">35</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/19</span><div class="bar-track"><div class="bar-fill danger" style="width:95%"><span class="bar-val">42</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/20</span><div class="bar-track"><div class="bar-fill danger" style="width:100%"><span class="bar-val">45</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/21</span><div class="bar-track"><div class="bar-fill warn" style="width:87%"><span class="bar-val">39</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/22</span><div class="bar-track"><div class="bar-fill" style="width:63%"><span class="bar-val">28</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/23</span><div class="bar-track"><div class="bar-fill" style="width:58%"><span class="bar-val">26</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/24</span><div class="bar-track"><div class="bar-fill" style="width:65%"><span class="bar-val">29</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/25</span><div class="bar-track"><div class="bar-fill" style="width:45%"><span class="bar-val">20</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/26</span><div class="bar-track"><div class="bar-fill" style="width:36%"><span class="bar-val">16</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/27</span><div class="bar-track"><div class="bar-fill" style="width:14%"><span class="bar-val">6</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/28</span><div class="bar-track"><div class="bar-fill" style="width:16%"><span class="bar-val">7</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/29</span><div class="bar-track"><div class="bar-fill" style="width:11%"><span class="bar-val">5</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/30</span><div class="bar-track"><div class="bar-fill" style="width:5%"><span class="bar-val">2</span></div></div></div>
-<div class="bar-row"><span class="bar-label">8/31</span><div class="bar-track"><div class="bar-fill" style="width:16%"><span class="bar-val">7</span></div></div></div>
-<div class="bar-row"><span class="bar-label">9/1</span><div class="bar-track"><div class="bar-fill" style="width:5%"><span class="bar-val">2</span></div></div></div>
-<div class="bar-row"><span class="bar-label">9/2</span><div class="bar-track"><div class="bar-fill" style="width:5%"><span class="bar-val">2</span></div></div></div>
-<div class="bar-row"><span class="bar-label">9/3</span><div class="bar-track"><div class="bar-fill" style="width:14%"><span class="bar-val">6</span></div></div></div>
-</div>
-<p style="font-size:12px;color:#999;margin-top:8px;">注：9/4新增1条已计入9/3数据。红色=峰值(40+)，橙色=高位(35+)，绿色=正常。</p>
 </div>
 
 <!-- 核心问题TOP10 -->
 <div class="section">
 <h2>核心问题TOP10（按反馈人数排序）</h2>
 <table>
-<thead><tr><th>等级</th><th>一级</th><th>二级标签</th><th>人数</th><th>条数</th><th>趋势</th><th>状态</th></tr></thead>
+<thead><tr><th>等级</th><th>一级</th><th>二级标签</th><th>人数</th><th>条数</th><th>问题进展</th><th>责任人</th></tr></thead>
 <tbody>
-<tr><td><span class="tag-p0">P0</span></td><td>AI算法</td><td>人形误报</td><td>20</td><td>62</td><td>持续新增（W34:47→W35:11→W36:4）</td><td>未修复</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>IQ</td><td>画面紫红</td><td>10</td><td>14</td><td>W34集中爆发，W35后趋缓</td><td>未修复</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>APP</td><td>信号显示不一致</td><td>7</td><td>14</td><td>陶双4次反馈，王亚兵3次</td><td>未修复</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>APP</td><td>电子说明书未更新</td><td>7</td><td>9</td><td>W34集中反馈后趋缓</td><td>未修复</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>卡录</td><td>卡录加载慢</td><td>7</td><td>9</td><td>W35后成为卡录类TOP问题</td><td>未修复</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>IQ</td><td>夜视切换异常</td><td>6</td><td>7</td><td>0825固件仍有新反馈</td><td>未修复</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>AI算法</td><td>画面变化误触发</td><td>5</td><td>6</td><td>红外灯/云台转动触发</td><td>未修复</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>APP</td><td>定时开关机难用</td><td>5</td><td>8</td><td>体验设计问题</td><td>未修复</td></tr>
-<tr><td><span class="tag-p0">P0</span></td><td>云台</td><td>云台限位异常</td><td>5</td><td>5</td><td>需先到顶再到底</td><td>未修复</td></tr>
-<tr><td><span class="tag-p1">P1</span></td><td>稳定性</td><td>设备离线</td><td>4</td><td>6</td><td>0825固件假离线问题</td><td>未修复</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>AI算法</td><td>人形误报</td><td>20</td><td>62</td><td><span class="tag-progress">🔧 优化中</span> 君正算法模型较小易误报，增加置信度过滤（低于0.6忽略）</td><td>克涛</td></tr>
+<tr><td><span class="tag-solved">✅</span></td><td>IQ</td><td>画面紫红</td><td>10</td><td>14</td><td><span class="tag-solved">✅ 已解决</span> 14条全部来自0729固件，0825固件零反馈</td><td>—</td></tr>
+<tr><td><span class="tag-solved">✅</span></td><td>APP</td><td>信号显示不一致</td><td>7</td><td>14</td><td><span class="tag-solved">✅ 已解决</span> 13/14条来自0729固件，0825仅1条残留（8/31）</td><td>—</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>APP</td><td>电子说明书未更新</td><td>7</td><td>9</td><td><span class="tag-following">📝 跟进中</span> 电子版仍为WiFi版说明书，需更新为4G版</td><td>—</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>卡录</td><td>卡录加载慢</td><td>7</td><td>9</td><td><span class="tag-progress">🔧 优化中</span> 怀疑与日志打印有关，日志级别从4改为3测试中</td><td>克涛</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>IQ</td><td>夜视切换异常</td><td>6</td><td>7</td><td><span class="tag-following">📝 跟进中</span> 0825固件仍有新反馈</td><td>—</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>AI算法</td><td>画面变化误触发</td><td>5</td><td>6</td><td><span class="tag-following">📝 跟进中</span> 红外灯/云台转动触发</td><td>—</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>APP</td><td>定时开关机难用</td><td>5</td><td>8</td><td><span class="tag-following">📝 跟进中</span> 体验设计问题，设置逻辑需简化</td><td>—</td></tr>
+<tr><td><span class="tag-p0">P0</span></td><td>云台</td><td>云台限位异常</td><td>5</td><td>5</td><td><span class="tag-following">📝 跟进中</span> 需先到顶再到底才能校准</td><td>—</td></tr>
+<tr><td><span class="tag-p1">P1</span></td><td>稳定性</td><td>设备离线</td><td>4</td><td>6</td><td><span class="tag-following">📝 跟进中</span> 0825固件假离线问题</td><td>固件团队</td></tr>
 </tbody>
 </table>
-<p style="font-size:12px;color:#999;margin-top:8px;">P0=5人以上反馈 | P1=3-4人反馈 | P2=1-2人反馈</p>
-</div>
-
-<!-- 固件版本对比 -->
-<div class="section">
-<h2>固件版本对比</h2>
-<div class="fw-grid">
-<div class="fw-card">
-<h3>0729（旧版）</h3>
-<div class="stat">反馈量：<strong>274条</strong></div>
-<div class="stat">反馈人数：<strong>27人</strong></div>
-<div class="stat">人均反馈：<strong>10.15条/人</strong></div>
-<div class="stat">主要问题：AI误报47 / 画面紫红12 / 信号不一致10</div>
-</div>
-<div class="fw-card latest">
-<h3>0825（最新）</h3>
-<div class="stat">反馈量：<strong>55条</strong></div>
-<div class="stat">反馈人数：<strong>20人</strong></div>
-<div class="stat">人均反馈：<strong>2.75条/人</strong></div>
-<div class="stat">新增问题：假离线 / 卡录加载异常 / 关机无响应 / APP加载失败</div>
-<div class="stat">时间线：8/25首发4条 → 8/26峰值16条 → 逐步收敛</div>
-</div>
-</div>
-<p style="font-size:12px;color:#999;margin-top:8px;">⚠️ 0825固件引入了设备假离线、关机无响应等新问题，且AI人形误报/夜视切换异常等老问题未改善。</p>
+<p style="font-size:12px;color:#999;margin-top:8px;">P0=5人以上反馈 | P1=3-4人反馈 | 问题进展以终版专项报告为准</p>
 </div>
 
 <!-- 报告产出 -->
@@ -245,27 +218,6 @@ tr:hover td { background: #f9fff5; }
 <tr><td>固件</td><td>0825固件问题专场</td><td>v1.0 (9/1)</td><td><a href="https://yanlingyin001.github.io/reports/9pro-daily-0825-firmware-collection.html" target="_blank">查看</a></td></tr>
 </tbody>
 </table>
-</div>
-
-<!-- 用户参与度 -->
-<div class="section">
-<h2>用户参与度TOP10</h2>
-<table>
-<thead><tr><th>排名</th><th>姓名</th><th>反馈总量</th><th>有效反馈量</th><th>贡献度</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>王亚兵</td><td>72</td><td>50</td><td><div class="bar-track" style="width:150px"><div class="bar-fill" style="width:100%">50</div></div></td></tr>
-<tr><td>2</td><td>高瑞</td><td>48</td><td>40</td><td><div class="bar-track" style="width:150px"><div class="bar-fill" style="width:80%">40</div></div></td></tr>
-<tr><td>3</td><td>陶双</td><td>31</td><td>21</td><td><div class="bar-track" style="width:150px"><div class="bar-fill" style="width:42%">21</div></div></td></tr>
-<tr><td>4</td><td>方家欢</td><td>20</td><td>16</td><td><div class="bar-track" style="width:150px"><div class="bar-fill" style="width:32%">16</div></div></td></tr>
-<tr><td>5</td><td>杜劲</td><td>20</td><td>14</td><td><div class="bar-track" style="width:150px"><div class="bar-fill" style="width:28%">14</div></div></td></tr>
-<tr><td>6</td><td>谢光位</td><td>15</td><td>12</td><td><div class="bar-track" style="width:150px"><div class="bar-fill" style="width:24%">12</div></div></td></tr>
-<tr><td>7</td><td>孙洪士</td><td>14</td><td>12</td><td><div class="bar-track" style="width:150px"><div class="bar-fill" style="width:24%">12</div></div></td></tr>
-<tr><td>8</td><td>陈建建</td><td>22</td><td>11</td><td><div class="bar-track" style="width:150px"><div class="bar-fill" style="width:22%">11</div></div></td></tr>
-<tr><td>9</td><td>林志澄</td><td>16</td><td>11</td><td><div class="bar-track" style="width:150px"><div class="bar-fill" style="width:22%">11</div></div></td></tr>
-<tr><td>10</td><td>王刚红</td><td>12</td><td>11</td><td><div class="bar-track" style="width:150px"><div class="bar-fill" style="width:22%">11</div></div></td></tr>
-</tbody>
-</table>
-<p style="font-size:12px;color:#999;margin-top:8px;">有效反馈量 = 同一用户×同一二级标签去重计数，忽略标签不统计。朱文虎0条标红。</p>
 </div>
 
 <div class="footer">
