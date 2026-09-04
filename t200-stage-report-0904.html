@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 4G记录仪新品跟踪 · 阶段性汇报（8.11-9.4）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:36px;border-radius:12px;margin-bottom:20px}
+.header h1{font-size:26px;margin-bottom:10px}
+.header .subtitle{font-size:15px;opacity:.9}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;padding:22px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:36px;font-weight:700;color:#E74C3C}
+.kpi-card .sub{font-size:13px;color:#666;margin-top:6px}
+.section{background:#fff;padding:24px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section h2{font-size:18px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.insight{padding:14px 18px;border-radius:8px;margin-bottom:12px;font-size:14px}
+.insight.blue{background:#e8f4fd;border-left:4px solid #3498db}
+.insight.orange{background:#fff3e0;border-left:4px solid #F39C12}
+.insight.red{background:#fde8e8;border-left:4px solid #E74C3C}
+.insight.green{background:#e8f8e8;border-left:4px solid #00B050}
+.insight .title{font-weight:700}
+.chart-box{width:100%;height:380px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #f0f0f0}
+th{background:#f8f9fa;font-weight:600;color:#666}
+tr:hover{background:#fafafa}
+.timeline-item{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid #f0f0f0}
+.timeline-item:last-child{border-bottom:none}
+.timeline-date{min-width:60px;font-weight:700;color:#00B050;font-size:14px}
+.timeline-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;color:#fff;margin-right:8px}
+.ch-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ch-tag{background:#f0f7f0;color:#00B050;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500}
+.ch-tag .ch-num{margin-left:4px;font-weight:700}
+.two-col{display:flex;gap:20px;flex-wrap:wrap}
+.two-col>div{flex:1;min-width:300px}
+.footer{text-align:center;padding:20px;color:#999;font-size:13px}
+.footer a{color:#00B050;text-decoration:none}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.container{padding:10px}.two-col>div{min-width:100%}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>📊 T200 4G记录仪新品跟踪 · 阶段性汇报</h1>
+<div class="subtitle">汇报周期：2026.8.11 - 2026.9.4 | 累计反馈 263 条 | 覆盖 8 个渠道 | 59 种问题类型 | 25 期日报</div>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">累计反馈总数</div><div class="value">263</div><div class="sub">8.11起持续跟踪</div></div>
+<div class="kpi-card"><div class="label">问题类型数</div><div class="value">59</div><div class="sub">9大分类</div></div>
+<div class="kpi-card"><div class="label">覆盖渠道</div><div class="value">8</div><div class="sub">京东/有赞/私域等</div></div>
+<div class="kpi-card"><div class="label">日报产出</div><div class="value">25</div><div class="sub">Day2 → Day25</div></div>
+</div>
+
+<div class="section">
+<h2>核心洞察</h2>
+<div class="insight red"><span class="title">🔴 缺陷经历爆发期后正在收敛。</span>8.14仅7个缺陷，8.31飙升至52个峰值（门店不会安装/无行车轨迹/开流失败三大问题集中爆发），9.3已趋于平缓，最近两天单日零新增缺陷。</div>
+<div class="insight orange"><span class="title">🟡 哨兵模式是当前最大问题热点。</span>9.2新增3个哨兵子类型（不灵敏/触发过于灵敏/无声录制），说明哨兵模式灵敏度调校是下一阶段需重点关注的模块。</div>
+<div class="insight blue"><span class="title">🔵 咨询类占比持续走高，用户认知盲区明显。</span>"是否包安装"(25条)、"4G流量收费"(15条)、"前后双录需求"(18条)稳居Top3，建议商详页和FAQ优化信息传达。</div>
+</div>
+
+<div class="section">
+<h2>反馈量增长趋势（Day 2 → Day 25）</h2>
+<div id="trendChart" class="chart-box"></div>
+</div>
+
+<div class="section">
+<h2>渠道反馈分布</h2>
+<div class="ch-tags"><span class="ch-tag">京东自营<span class="ch-num">125</span></span><span class="ch-tag">有赞<span class="ch-num">74</span></span><span class="ch-tag">私域<span class="ch-num">26</span></span><span class="ch-tag">天猫官旗<span class="ch-num">14</span></span><span class="ch-tag">小红书<span class="ch-num">9</span></span><span class="ch-tag">天猫车品<span class="ch-num">8</span></span><span class="ch-tag">抖音<span class="ch-num">3</span></span><span class="ch-tag">天猫车旗<span class="ch-num">2</span></span></div><div class="two-col"><div id="chChart" style="height:350px"></div><div><table><thead><tr><th>渠道</th><th>反馈量</th><th>占比</th></tr></thead><tbody><tr><td>京东自营</td><td>125</td><td>47.5%</td></tr><tr><td>有赞</td><td>74</td><td>28.1%</td></tr><tr><td>私域</td><td>26</td><td>9.9%</td></tr><tr><td>天猫官旗</td><td>14</td><td>5.3%</td></tr><tr><td>小红书</td><td>9</td><td>3.4%</td></tr><tr><td>天猫车品</td><td>8</td><td>3.0%</td></tr><tr><td>抖音</td><td>3</td><td>1.1%</td></tr><tr><td>天猫车旗</td><td>2</td><td>0.8%</td></tr></tbody></table></div></div></div><div class="section"><h2>问题主题分类全景</h2><div class="two-col"><div id="catChart" style="height:380px"></div><div><table><thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>典型问题</th></tr></thead><tbody><tr><td style="color:#e67e22;font-weight:600">安装</td><td>60</td><td>22.8%</td><td style="font-size:12px;color:#666">是否包安装咨询(25)、安装咨询(16)、镜头调节咨询(6)、门店不会安装(5)</td></tr><tr><td style="color:#2ecc71;font-weight:600">功能</td><td>47</td><td>17.9%</td><td style="font-size:12px;color:#666">远程查看咨询(11)、云录功能咨询(8)、画面清晰度低(4)、循环录制异常(3)</td></tr><tr><td style="color:#9b59b6;font-weight:600">费用</td><td>27</td><td>10.3%</td><td style="font-size:12px;color:#666">4G流量收费咨询(15)、云录收费咨询(10)、4G流量+云录(1)</td></tr><tr><td style="color:#1abc9c;font-weight:600">停车监控</td><td>25</td><td>9.5%</td><td style="font-size:12px;color:#666">停车监控咨询(13)、哨兵模式咨询(10)、哨兵模式不灵敏(1)、触发过于灵敏(1)</td></tr><tr><td style="color:#f1c40f;font-weight:600">供电</td><td>24</td><td>9.1%</td><td style="font-size:12px;color:#666">电池/供电咨询(16)、电瓶损耗影响顾虑(6)、车充和降压线差异(2)</td></tr><tr><td style="color:#3498db;font-weight:600">配件</td><td>25</td><td>9.5%</td><td style="font-size:12px;color:#666">是否带降压线咨询(7)、内存卡咨询(5)、降压线适配咨询(3)、内存卡损坏(3)</td></tr><tr><td style="color:#34495e;font-weight:600">视野</td><td>18</td><td>6.8%</td><td style="font-size:12px;color:#666">前后双录/全景需求(18)</td></tr><tr><td style="color:#e74c3c;font-weight:600">品控</td><td>18</td><td>6.8%</td><td style="font-size:12px;color:#666">定位不显示(7)、无行车轨迹(2)、远程下载慢(1)、外观瑕疵(1)</td></tr><tr><td style="color:#95a5a6;font-weight:600">参数</td><td>11</td><td>4.2%</td><td style="font-size:12px;color:#666">其他规格咨询(6)、产品参数咨询(2)、分辨率咨询(2)</td></tr></tbody></table></div></div></div><div class="section"><h2>关键问题演进时间线</h2><div class="timeline-item"><div class="timeline-date">8.14</div><div><span class="timeline-badge" style="background:#F39C12">抖音渠道首次出现</span><span style="font-size:14px;color:#555">新渠道反馈浮现，7个缺陷确认</span></div></div><div class="timeline-item"><div class="timeline-date">8.17</div><div><span class="timeline-badge" style="background:#E74C3C">降压线问题升级</span><span style="font-size:14px;color:#555">配件类问题从咨询转向投诉</span></div></div><div class="timeline-item"><div class="timeline-date">8.18</div><div><span class="timeline-badge" style="background:#F39C12">哨兵模式问题浮现</span><span style="font-size:14px;color:#555">哨兵误报+循环录制异常首次记录</span></div></div><div class="timeline-item"><div class="timeline-date">8.24</div><div><span class="timeline-badge" style="background:#E74C3C">缺陷数翻倍至28个</span><span style="font-size:14px;color:#555">品控问题集中爆发</span></div></div><div class="timeline-item"><div class="timeline-date">8.27</div><div><span class="timeline-badge" style="background:#F39C12">问题类型达96种</span><span style="font-size:14px;color:#555">问题面持续扩大</span></div></div><div class="timeline-item"><div class="timeline-date">8.31</div><div><span class="timeline-badge" style="background:#E74C3C">门店安装/开流失败爆发</span><span style="font-size:14px;color:#555">3大新问题集中出现，缺陷达52个峰值</span></div></div><div class="timeline-item"><div class="timeline-date">9.2</div><div><span class="timeline-badge" style="background:#E74C3C">哨兵模式3子类型集中出现</span><span style="font-size:14px;color:#555">不灵敏/触发过于灵敏/无声录制</span></div></div><div class="timeline-item"><div class="timeline-date">9.3</div><div><span class="timeline-badge" style="background:#00B050">产品端趋于收敛</span><span style="font-size:14px;color:#555">单日全咨询类、零新增缺陷</span></div></div></div><div class="section"><h2>日报产出记录（25期）</h2><table><thead><tr><th>Day</th><th>日期</th><th>累计反馈</th><th>关键标记</th></tr></thead><tbody><tr><td>Day 2</td><td>8.11</td><td>25 条</td><td style="color:#666">早期以咨询为主</td></tr><tr><td>Day 3</td><td>8.12</td><td>45 条</td><td style="color:#666">—</td></tr><tr><td>Day 4</td><td>8.13</td><td>53 条</td><td style="color:#666">—</td></tr><tr><td>Day 5</td><td>8.14</td><td>74 条</td><td style="color:#666">抖音渠道首次出现</td></tr><tr><td>Day 6</td><td>8.17</td><td>91 条</td><td style="color:#666">降压线问题升级</td></tr><tr><td>Day 8</td><td>8.17</td><td>91 条</td><td style="color:#666">格式调整</td></tr><tr><td>Day 9</td><td>8.18</td><td>103 条</td><td style="color:#666">哨兵误报+循环录制异常浮现，报告结构定型</td></tr><tr><td>Day 12</td><td>8.21</td><td>119 条</td><td style="color:#666">—</td></tr><tr><td>Day 15</td><td>8.24</td><td>152 条</td><td style="color:#666">缺陷数翻倍</td></tr><tr><td>Day 16</td><td>8.25</td><td>152 条</td><td style="color:#666">—</td></tr><tr><td>Day 17</td><td>8.26</td><td>175 条</td><td style="color:#666">—</td></tr><tr><td>Day 18</td><td>8.27</td><td>191 条</td><td style="color:#666">问题类型扩展到96种</td></tr><tr><td>Day 22</td><td>8.31</td><td>238 条</td><td style="color:#666">门店不会安装/无行车轨迹/开流失败爆发</td></tr><tr><td>Day 23</td><td>9.1</td><td>243 条</td><td style="color:#666">+5全咨询无新缺陷</td></tr><tr><td>Day 24</td><td>9.2</td><td>258 条</td><td style="color:#666">哨兵模式问题集中爆发（3子类型）</td></tr><tr><td>Day 25</td><td>9.3</td><td>263 条</td><td style="color:#666">首次单日全咨询类、零新增缺陷</td></tr></tbody></table></div><div class="section">
+<h2>最新现状与建议</h2>
+<div class="insight green"><span class="title">✅ 产品端趋于稳定。</span>最近两期（Day24-25）新增以咨询类为主，缺陷数从峰值52个回落至50个，未再新增实质缺陷。</div>
+<div class="insight orange"><span class="title">⚠️ 哨兵模式需重点跟进。</span>3个哨身子类型在Day24集中出现，灵敏度调校（不灵敏/过于灵敏）和无声录制是核心痛点。</div>
+<div class="insight blue"><span class="title">📋 建议优化商详页信息。</span>Top3咨询问题（是否包安装25条、4G流量收费15条、前后双录需求18条）均为信息差导致的咨询，优化商品页可大幅减少前置咨询量。</div>
+<div class="insight blue"><span class="title">📋 门店安装能力需加强培训。</span>"门店不会安装"5条+安装相关咨询60条，安装类占比24.6%居首，建议联动线下渠道做安装培训。</div>
+</div>
+
+<div class="footer">
+<p>数据来源：飞书《T200新品跟踪》反馈问题汇总表 | 报告合集：<a href="https://yanlingyin001.github.io/reports/t200-new-product-index.html" target="_blank">T200新品跟踪日报合集</a></p>
+<p>生成时间：2026-09-04 | 自动生成 by 🦞</p>
+</div>
+
+</div>
+
+<script>
+var trendData = [{day:2,date:"8.11",count:25,defects:0},{day:3,date:"8.12",count:45,defects:0},{day:4,date:"8.13",count:53,defects:0},{day:5,date:"8.14",count:74,defects:7},{day:6,date:"8.17",count:91,defects:11},{day:8,date:"8.17",count:91,defects:11},{day:9,date:"8.18",count:103,defects:15},{day:12,date:"8.21",count:119,defects:15},{day:15,date:"8.24",count:152,defects:28},{day:16,date:"8.25",count:152,defects:17},{day:17,date:"8.26",count:175,defects:18},{day:18,date:"8.27",count:191,defects:32},{day:22,date:"8.31",count:238,defects:52},{day:23,date:"9.1",count:243,defects:50},{day:24,date:"9.2",count:258,defects:50},{day:25,date:"9.3",count:263,defects:50},];
+
+var chData = [{name:"京东自营",value:125},{name:"有赞",value:74},{name:"私域",value:26},{name:"天猫官旗",value:14},{name:"小红书",value:9},{name:"天猫车品",value:8},{name:"抖音",value:3},{name:"天猫车旗",value:2},];
+
+var catData = [{name:"安装",value:60,itemStyle:{color:"#e67e22"}},{name:"功能",value:47,itemStyle:{color:"#2ecc71"}},{name:"费用",value:27,itemStyle:{color:"#9b59b6"}},{name:"停车监控",value:25,itemStyle:{color:"#1abc9c"}},{name:"供电",value:24,itemStyle:{color:"#f1c40f"}},{name:"配件",value:25,itemStyle:{color:"#3498db"}},{name:"视野",value:18,itemStyle:{color:"#34495e"}},{name:"品控",value:18,itemStyle:{color:"#e74c3c"}},{name:"参数",value:11,itemStyle:{color:"#95a5a6"}},];
+
+// 趋势图
+var tChart = echarts.init(document.getElementById('trendChart'));
+tChart.setOption({
+    tooltip:{trigger:'axis'},
+    legend:{data:['累计反馈量','缺陷数'],top:5},
+    grid:{left:'6%',right:'5%',bottom:'10%',top:'15%'},
+    xAxis:{type:'category',data:trendData.map(function(d){return 'Day'+d.day+' ('+d.date+')'}),axisLabel:{rotate:35,fontSize:11}},
+    yAxis:[
+        {type:'value',name:'反馈量',position:'left'},
+        {type:'value',name:'缺陷数',position:'right'}
+    ],
+    series:[
+        {name:'累计反馈量',type:'line',smooth:true,data:trendData.map(function(d){return d.count}),itemStyle:{color:'#00B050'},areaStyle:{color:'rgba(0,176,80,0.1)'},markPoint:{data:[{type:'max',name:'峰值'}]}},
+        {name:'缺陷数',type:'line',smooth:true,yAxisIndex:1,data:trendData.map(function(d){return d.defects}),itemStyle:{color:'#E74C3C'},markPoint:{data:[{type:'max',name:'峰值'}]}}
+    ]
+});
+
+// 渠道图
+var cChart = echarts.init(document.getElementById('chChart'));
+cChart.setOption({
+    tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
+    series:[{
+        type:'pie',radius:['35%','65%'],center:['50%','50%'],
+        label:{formatter:'{b}\n{c}条 ({d}%)',fontSize:12},
+        data:chData,
+        color:['#00B050','#2BBD6E','#4CAF50','#66BB6A','#81C784','#A5D6A7','#C8E6C9','#E8F5E9']
+    }]
+});
+
+// 分类图
+var catChart = echarts.init(document.getElementById('catChart'));
+catChart.setOption({
+    tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
+    series:[{
+        type:'pie',radius:['30%','65%'],center:['50%','50%'],
+        label:{formatter:'{b}\n{c}条',fontSize:12},
+        data:catData
+    }]
+});
+
+window.addEventListener('resize',function(){tChart.resize();cChart.resize();catChart.resize()});
+</script>
+</body>
+</html>
