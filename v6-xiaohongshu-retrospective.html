@@ -56,7 +56,7 @@ tr:hover td { background: #fafbfc; }
     <div class="problem-card">
       <div class="label">⚠️ 问题描述</div>
       <div class="desc">
-        首批V6骑行记录仪在<strong>决策停止销售后，未执行锁库操作</strong>，导致后续客户仍可下单购买旧款。此时V6骑行记录仪升级款（小红薯）已上线在售，客户本意是购买升级款，却因旧款未锁库而<strong>误购了已停售的首批产品</strong>，引发客诉与前后端信息不对齐问题。
+        首批V6骑行记录仪在<strong>决策停止销售后，未执行锁库操作</strong>，导致后续销售端仍可下单购买旧款。此时V6骑行记录仪升级款（小红薯）已上线在售，销售端本意是下单升级款，却因旧款未锁库而<strong>误购了已停售的首批产品</strong>，引发销售端反馈与前后端信息不对齐问题。
       </div>
     </div>
     <div class="timeline">
@@ -70,7 +70,7 @@ tr:hover td { background: #fafbfc; }
       </div>
       <div class="timeline-item">
         <div class="time">阶段三</div>
-        <div class="content">客户本想购买升级款，却因旧款未锁库误购了首批停售产品</div>
+        <div class="content">销售端本想下单升级款，却因旧款未锁库误购了首批停售产品</div>
       </div>
       <div class="timeline-item">
         <div class="time">阶段四</div>
@@ -134,7 +134,7 @@ flowchart TD
     Q2 --> Q3[运管部仓库执行锁库]
     Q3 --> F3[供应链：锁库停止发货]
     F --> F2[翻新：处理在库翻新件]
-    E1 --> G[效果确认：产品已锁库<br/>客户无法下单]
+    E1 --> G[效果确认：产品已锁库<br/>销售端无法下单]
     F1 --> G
     F2 --> G
     F3 --> G
@@ -207,7 +207,7 @@ flowchart TD
       <div class="desc">
         <strong>1. 决策即执行：</strong>产品停售决策做出后，GTM立即发布信息公布，项目经理同步启动前后端协调，消除决策与执行的时间差。</p>
         <p><strong>2. 前后端并行：</strong>前端GTM直接对接各环节推进下架/锁库，后端质量/翻新/供应链同步处理库存，避免串行等待。</p>
-        <p><strong>3. 闭环验收：</strong>项目经理负责最终效果验收，确认产品已锁库、客户无法下单，全链路闭环。</p>
+        <p><strong>3. 闭环验收：</strong>项目经理负责最终效果验收，确认产品已锁库、销售端无法下单，全链路闭环。</p>
         <p><strong>4. 责任到人：</strong>每个环节有明确责任人，GTM管前端、项目经理管全局、后端各部门管各自领域，杜绝责任真空。
       </div>
     </div>
