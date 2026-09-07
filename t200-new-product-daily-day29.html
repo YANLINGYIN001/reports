@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 4G记录仪新品跟踪日报 · Day 29</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:30px;border-radius:12px;margin-bottom:20px}
+.header h1{font-size:24px;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:.9}
+.overview{background:#fff;border-left:4px solid #00B050;padding:15px 20px;border-radius:8px;margin-bottom:20px;font-size:15px}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;padding:20px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:32px;font-weight:700;color:#E74C3C}
+.kpi-card .delta{font-size:12px;color:#00B050;margin-top:4px}
+.kpi-card .delta.zero{color:#999}
+.kpi-card .sub{font-size:12px;color:#666;margin-top:4px}
+.section{background:#fff;padding:24px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section h2{font-size:18px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.insight{padding:14px 18px;border-radius:8px;margin-bottom:12px;font-size:14px}
+.insight.blue{background:#e8f4fd;border-left:4px solid #3498db}
+.insight.orange{background:#fff3e0;border-left:4px solid #F39C12}
+.insight.red{background:#fde8e8;border-left:4px solid #E74C3C}
+.insight .title{font-weight:700}
+.ch-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ch-tag{background:#f0f7f0;color:#00B050;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500}
+.ch-tag .ch-num{margin-left:4px;font-weight:700}
+.ch-tag .ch-delta{margin-left:4px;font-size:11px;color:#E74C3C}
+.chart-box{width:100%;height:350px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #f0f0f0}
+th{background:#f8f9fa;font-weight:600;color:#666}
+tr:hover{background:#fafafa}
+.new-row{background:#fffde7}
+.new-row:hover{background:#fff9c4}
+.new-group{margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.cat-badge{color:#fff;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600}
+.cat-count{color:#999;font-size:13px}
+.delta-tag{color:#E74C3C;font-size:12px;margin-left:4px}
+.detail-table{margin-bottom:16px}
+.note{font-size:12px;color:#999;margin-top:8px}
+.footer{text-align:center;padding:20px;color:#999;font-size:13px}
+.footer a{color:#00B050;text-decoration:none}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.container{padding:10px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>📊 T200 4G记录仪新品跟踪日报 · Day 29</h1>
+<div class="subtitle">数据周期：8.4 - 9.7（覆盖周末） | 累计反馈 297 条 | 覆盖 8 个渠道 | 59 种问题类型</div>
+</div>
+
+<div class="overview">
+📊 截至9月7日，累计反馈297条（+18，其中3条为9/4晚间回补），覆盖8个渠道，59种问题类型。周末新增集中在京东自营（9条）和有赞（7条，含回补），小红书、私域各1条。需关注：9/5-9/6两天内出现4条画面清晰度类反馈（夜晚看不清车牌×2、实时画面不清晰、清晰度低+绑定失败），呈集中趋势；另有1条存储卡无法识别。新增行「问题类型」标签尚未在飞书标注，本报告分类为系统预判，待补标后纳入累计统计。
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">297</div><div class="delta">+18</div></div>
+<div class="kpi-card"><div class="label">Top3问题（累计+今日新增）</div><div class="value" style="font-size:16px;line-height:1.4">是否包安装咨询 25条 <span style="color:#999">+0</span><br>安装咨询 19条 <span style="color:#999">+0</span><br>前后双录/全景需求 19条 <span style="color:#999">+0</span></div><div class="delta zero">新增行未标注，下期补标后更新</div></div>
+<div class="kpi-card"><div class="label">新增疑似非咨询类反馈</div><div class="value">5</div><div class="sub">画面清晰度类4 + 存储卡不识别1</div><div class="delta zero">系统预判，待标注确认</div></div>
+</div>
+
+<div class="section">
+<h2>核心洞察</h2>
+<div class="insight blue"><span class="title">🔵 周末反馈平稳，咨询仍为主流。</span>本次覆盖周末三天（9/5-9/7）并回补9/4晚间3条，新增18条中预判13条为咨询类（安装、质保、哨兵模式为主），无集中爆发。是否包安装咨询预判再+2，安装相关咨询热度延续。</div>
+<div class="insight orange"><span class="title">🟡 画面清晰度反馈周末集中出现。</span>9/5-9/6京东自营连续出现4条清晰度相关反馈（"夜晚看不清车牌"×2、"实时画面不清晰"、"画面清晰度较低"），其中1条伴随"账号无法绑定微信"。此前"画面清晰度低"累计4条，若本轮确认，该类问题累计将达8条。夜视/清晰度可能成为新的质量信号，建议产品核实是否与夜间场景、固件版本相关。</div>
+<div class="insight red"><span class="title">🔴 数据流程提醒：新增行标签待回补。</span>本次新增的18行「问题类型」（I列）尚未在飞书表格标注，累计问题类型数（59）、实质性缺陷数（62）及分类分布暂未纳入新增数据，本报告分类为系统预判（表中灰色斜体）。请客服团队尽快回补标签，下期报告将自动纳入统计。</div>
+</div>
+
+<div class="section">
+<h2>渠道反馈分布</h2>
+<div class="ch-tags"><span class="ch-tag">京东自营<span class="ch-num">146</span><span class=ch-delta>(+9)</span></span><span class="ch-tag">有赞<span class="ch-num">83</span><span class=ch-delta>(+7)</span></span><span class="ch-tag">私域<span class="ch-num">29</span><span class=ch-delta>(+1)</span></span><span class="ch-tag">天猫官旗<span class="ch-num">14</span></span><span class="ch-tag">小红书<span class="ch-num">10</span><span class=ch-delta>(+1)</span></span><span class="ch-tag">天猫车品<span class="ch-num">8</span></span><span class="ch-tag">抖音<span class="ch-num">3</span></span><span class="ch-tag">天猫车旗<span class="ch-num">2</span></span></div>
+<div id="chChart" class="chart-box"></div>
+<p class="note">注：另有渠道聚合行（京东23单、抖音8个问题、天猫车旗）不计入明细渠道统计。</p>
+</div>
+
+<div class="section">
+<h2>问题主题分类</h2>
+<div style="display:flex;gap:20px;flex-wrap:wrap">
+<div id="catChart" style="width:45%;height:350px"></div>
+<div style="flex:1;min-width:300px">
+<table>
+<thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>典型问题</th></tr></thead>
+<tbody>
+<tr><td style="color:#3498db;font-weight:600">配件</td><td>27</td><td>9.8%</td><td>是否带降压线咨询(7)、内存卡咨询(6)、降压线适配咨询(3)、降压线安装故障(3)</td></tr>
+<tr><td style="color:#e67e22;font-weight:600">安装</td><td>66</td><td>23.9%</td><td>是否包安装咨询(25)、安装咨询(19)、镜头调节咨询(6)、门店不会安装(5)</td></tr>
+<tr><td style="color:#e74c3c;font-weight:600">品控</td><td>3</td><td>1.1%</td><td>外观瑕疵(1)、设备发烫(1)、开流失败(1)</td></tr>
+<tr><td style="color:#9b59b6;font-weight:600">费用</td><td>28</td><td>10.1%</td><td>4G流量收费咨询(15)、云录收费咨询(11)、4G流量收费咨询；云录费用咨询(1)、远程查看咨询；云录收费咨询(1)</td></tr>
+<tr><td style="color:#f1c40f;font-weight:600">供电</td><td>27</td><td>9.8%</td><td>电池/供电咨询(17)、电瓶损耗影响顾虑(6)、车充和降压线差异咨询(3)、是否亏电咨询；远程下载咨询；其他功能咨询；前后双录/全景需求(1)</td></tr>
+<tr><td style="color:#1abc9c;font-weight:600">停车监控</td><td>27</td><td>9.8%</td><td>停车监控咨询(14)、哨兵模式咨询(10)、哨兵模式咨询；停车监控咨询(1)、哨兵模式不灵敏(1)</td></tr>
+<tr><td style="color:#34495e;font-weight:600">视野</td><td>19</td><td>6.9%</td><td>前后双录/全景需求(19)</td></tr>
+<tr><td style="color:#95a5a6;font-weight:600">参数</td><td>11</td><td>4.0%</td><td>其他规格咨询(6)、产品参数咨询(2)、分辨率咨询(2)、下载分辨率咨询(1)</td></tr>
+<tr><td style="color:#2ecc71;font-weight:600">功能</td><td>68</td><td>24.6%</td><td>远程查看咨询(14)、云录功能咨询(8)、其他功能咨询(7)、定位不显示(7)</td></tr>
+
+</tbody>
+</table>
+<p class="note">注：本表为累计口径（截至9/4已标注的279条）。新增18条因标签未标注暂未计入，补标后自动更新。</p>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>今日新增反馈明细（+18条，含周末及回补）</h2>
+<div class="new-group"><span class="cat-badge" style="background:#3498db">配件</span><span class="cat-count">1条（预判）</span></div>
+<table class="detail-table"><thead><tr><th>渠道</th><th>问题类型（预判）</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
+<tr class="new-row"><td>京东自营<br><span style="color:#999;font-size:11px">09/06</span></td><td style="color:#E74C3C;font-weight:600">⚠ 内存卡不识别</td><td>存储卡无法识别</td><td>引导售后换卡</td></tr>
+</tbody></table>
+<div class="new-group"><span class="cat-badge" style="background:#e67e22">安装</span><span class="cat-count">4条（预判）</span></div>
+<table class="detail-table"><thead><tr><th>渠道</th><th>问题类型（预判）</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
+<tr class="new-row"><td>京东自营<br><span style="color:#999;font-size:11px">09/05</span></td><td style="color:#666;font-style:italic">安装咨询</td><td>是否需要走线</td><td>需要的</td></tr>
+<tr class="new-row"><td>有赞<br><span style="color:#999;font-size:11px">09/05</span></td><td style="color:#666;font-style:italic">安装咨询（走线/取电）</td><td>不需要在车里改电？</td><td>标配的是降压线的，需要接在车里保险盒上</td></tr>
+<tr class="new-row"><td>小红书<br><span style="color:#999;font-size:11px">09/05</span></td><td style="color:#666;font-style:italic">是否包安装咨询；前后双录/全景需求</td><td>1、包不包安装？<br>2、是360°的吗</td><td>1、我们是不包安装的哦～提供旧设备照片给客服您签收后提供师傅给您安装的照片或者支付凭证联系客服，直接退您40元安装费，自己找师傅装一样省心！x<br>2、是单前摄的</td></tr>
+<tr class="new-row"><td>有赞<br><span style="color:#999;font-size:11px">09/07</span></td><td style="color:#666;font-style:italic">是否包安装咨询</td><td>包安装吗</td><td>不包安装哦，提供旧设备照片以及安装支付凭证可以给您返40元哦</td></tr>
+</tbody></table>
+<div class="new-group"><span class="cat-badge" style="background:#9b59b6">费用</span><span class="cat-count">3条（预判）</span></div>
+<table class="detail-table"><thead><tr><th>渠道</th><th>问题类型（预判）</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
+<tr class="new-row"><td>有赞<br><span style="color:#999;font-size:11px">09/04</span></td><td style="color:#666;font-style:italic">质保咨询</td><td>有质保吗？</td><td>有1年的保质的</td></tr>
+<tr class="new-row"><td>有赞<br><span style="color:#999;font-size:11px">09/06</span></td><td style="color:#666;font-style:italic">质保咨询</td><td>如何质保以及维修</td><td>产品支持7天无理由退货，15天换货，1年质保服务，15天内您可以在订单内申请即可，设备维修您可以关注微信服务号【360智慧生活服务】-【服务大厅】-【我要报修】申请即可。</td></tr>
+<tr class="new-row"><td>私域<br><span style="color:#999;font-size:11px">09/06</span></td><td style="color:#666;font-style:italic">以旧换新咨询</td><td>你看这个置换顶多钱</td><td>449元，赠32G内存卡，提供旧设备照片及安装支付凭证可返40元安装费，到手价仅需409元</td></tr>
+</tbody></table>
+<div class="new-group"><span class="cat-badge" style="background:#f1c40f">供电</span><span class="cat-count">1条（预判）</span></div>
+<table class="detail-table"><thead><tr><th>渠道</th><th>问题类型（预判）</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
+<tr class="new-row"><td>京东自营<br><span style="color:#999;font-size:11px">09/06</span></td><td style="color:#666;font-style:italic">是否亏电咨询</td><td>开哨兵模式是否会亏电，使用APP咨询</td><td>降压线有低压保护，可以关闭哨兵，360智慧生活</td></tr>
+</tbody></table>
+<div class="new-group"><span class="cat-badge" style="background:#1abc9c">停车监控</span><span class="cat-count">3条（预判）</span></div>
+<table class="detail-table"><thead><tr><th>渠道</th><th>问题类型（预判）</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
+<tr class="new-row"><td>有赞<br><span style="color:#999;font-size:11px">09/04</span></td><td style="color:#666;font-style:italic">哨兵模式咨询</td><td>哨兵模式是红外感应还是？</td><td>T200哨兵模式并非依赖红外感应，而是通过摄像头检测车前区域的异常活动来触发录制</td></tr>
+<tr class="new-row"><td>有赞<br><span style="color:#999;font-size:11px">09/04</span></td><td style="color:#666;font-style:italic">停车监控咨询</td><td>我锁车下电了能够正常工作吗</td><td>可以的，您降压线接保险盒可以实现24小时停车监控的</td></tr>
+<tr class="new-row"><td>有赞<br><span style="color:#999;font-size:11px">09/07</span></td><td style="color:#666;font-style:italic">哨兵模式咨询</td><td>这个有哨兵模式吗</td><td>有的哦，需要搭配专用的降压线使用的呢</td></tr>
+</tbody></table>
+<div class="new-group"><span class="cat-badge" style="background:#95a5a6">参数</span><span class="cat-count">1条（预判）</span></div>
+<table class="detail-table"><thead><tr><th>渠道</th><th>问题类型（预判）</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
+<tr class="new-row"><td>京东自营<br><span style="color:#999;font-size:11px">09/06</span></td><td style="color:#666;font-style:italic">产品参数咨询</td><td>卡录像保存时长</td><td>订单对应内存卡4小时保存覆盖</td></tr>
+</tbody></table>
+<div class="new-group"><span class="cat-badge" style="background:#2ecc71">功能</span><span class="cat-count">5条（预判）</span></div>
+<table class="detail-table"><thead><tr><th>渠道</th><th>问题类型（预判）</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
+<tr class="new-row"><td>京东自营<br><span style="color:#999;font-size:11px">09/05</span></td><td style="color:#E74C3C;font-weight:600">⚠ 画面清晰度低</td><td>咨询夜晚看不清车牌</td><td>需要有一定光线才可以</td></tr>
+<tr class="new-row"><td>京东自营<br><span style="color:#999;font-size:11px">09/05</span></td><td style="color:#E74C3C;font-weight:600">⚠ 画面清晰度低</td><td>看不清车牌</td><td>受车速环境等因素干扰</td></tr>
+<tr class="new-row"><td>京东自营<br><span style="color:#999;font-size:11px">09/06</span></td><td style="color:#E74C3C;font-weight:600">⚠ 画面清晰度低</td><td>实时画面不清晰</td><td>引导查看回放原视频</td></tr>
+<tr class="new-row"><td>京东自营<br><span style="color:#999;font-size:11px">09/06</span></td><td style="color:#666;font-style:italic">APP使用咨询</td><td>是否和旧设备冲突，使用APP，录制时长</td><td>不冲突，360智慧生活，订单对应内存卡4小时</td></tr>
+<tr class="new-row"><td>京东自营<br><span style="color:#999;font-size:11px">09/06</span></td><td style="color:#E74C3C;font-weight:600">⚠ 画面清晰度低</td><td>画面清晰度较低，账号无法绑定微信</td><td>引导查看回放，注销微信登录对应账号后再绑定</td></tr>
+</tbody></table>
+
+<p class="note">注：⚠ 标记为系统预判的非咨询类（疑似缺陷）反馈；问题类型为灰色斜体的均为预判标签，以飞书I列补标结果为准。</p>
+</div>
+
+<div class="footer">
+<p>数据来源：飞书文档「T200用户反馈问题汇总」 | <a href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">报告合集</a></p>
+<p>由尹燕玲-报告分析专家自动生成 · 🦞</p>
+</div>
+</div>
+
+<script>
+var chChart=echarts.init(document.getElementById('chChart'));
+chChart.setOption({
+  tooltip:{trigger:'axis'},
+  grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},
+  xAxis:{type:'category',data:["京东自营", "有赞", "私域", "天猫官旗", "小红书", "天猫车品", "抖音", "天猫车旗"],axisLabel:{rotate:30}},
+  yAxis:{type:'value'},
+  series:[{type:'bar',data:[146, 83, 29, 14, 10, 8, 3, 2],itemStyle:{color:'#00B050'},barWidth:'60%'}]
+});
+
+var catChart=echarts.init(document.getElementById('catChart'));
+catChart.setOption({
+  tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
+  legend:{orient:'vertical',right:0,top:'center',textStyle:{fontSize:12}},
+  series:[{type:'pie',radius:['40%','70%'],center:['40%','50%'],data:[{"name": "配件", "value": 27, "itemStyle": {"color": "#3498db"}}, {"name": "安装", "value": 66, "itemStyle": {"color": "#e67e22"}}, {"name": "品控", "value": 3, "itemStyle": {"color": "#e74c3c"}}, {"name": "费用", "value": 28, "itemStyle": {"color": "#9b59b6"}}, {"name": "供电", "value": 27, "itemStyle": {"color": "#f1c40f"}}, {"name": "停车监控", "value": 27, "itemStyle": {"color": "#1abc9c"}}, {"name": "视野", "value": 19, "itemStyle": {"color": "#34495e"}}, {"name": "参数", "value": 11, "itemStyle": {"color": "#95a5a6"}}, {"name": "功能", "value": 68, "itemStyle": {"color": "#2ecc71"}}],label:{show:false}}]
+});
+
+window.addEventListener('resize',function(){chChart.resize();catChart.resize()});
+</script>
+</body>
+</html>
