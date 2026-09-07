@@ -40,6 +40,11 @@ tr:hover{background:#fafafa}
 .new-row{background:#fffde7}
 .new-row:hover{background:#fff9c4}
 .new-group{margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.cat-cards{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+.cat-card{flex:1;min-width:100px;border-radius:10px;padding:16px;text-align:center;color:#fff}
+.cat-card .cat-icon{font-size:24px}
+.cat-card .cat-name{font-size:13px;margin-top:4px}
+.cat-card .cat-count{font-size:24px;font-weight:700;margin-top:4px}
 .cat-badge{color:#fff;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600}
 .cat-count{color:#999;font-size:13px}
 .delta-tag{color:#E74C3C;font-size:12px;margin-left:4px}
@@ -83,26 +88,8 @@ tr:hover{background:#fafafa}
 
 <div class="section">
 <h2>问题主题分类</h2>
-<div style="display:flex;gap:20px;flex-wrap:wrap">
-<div id="catChart" style="width:45%;height:350px"></div>
-<div style="flex:1;min-width:300px">
-<table>
-<thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>典型问题</th></tr></thead>
-<tbody>
-<tr><td style="color:#3498db;font-weight:600">配件</td><td>29</td><td>9.9%</td><td>是否带降压线咨询(7)、内存卡咨询(6)、降压线适配咨询(3)、降压线安装故障(3)</td></tr>
-<tr><td style="color:#e67e22;font-weight:600">安装</td><td>70</td><td>23.8%</td><td>是否包安装咨询(26)、安装咨询(21)、镜头调节咨询(6)、门店不会安装(5)</td></tr>
-<tr><td style="color:#e74c3c;font-weight:600">品控</td><td>3</td><td>1.0%</td><td>外观瑕疵(1)、设备发烫(1)、开流失败(1)</td></tr>
-<tr><td style="color:#9b59b6;font-weight:600">费用</td><td>31</td><td>10.5%</td><td>4G流量收费咨询(15)、云录收费咨询(11)、质保咨询(2)、4G流量收费咨询；云录费用咨询(1)</td></tr>
-<tr><td style="color:#f1c40f;font-weight:600">供电</td><td>28</td><td>9.5%</td><td>电池/供电咨询(17)、电瓶损耗影响顾虑(7)、车充和降压线差异咨询(3)、是否亏电咨询；远程下载咨询；其他功能咨询；前后双录/全景需求(1)</td></tr>
-<tr><td style="color:#1abc9c;font-weight:600">停车监控</td><td>30</td><td>10.2%</td><td>停车监控咨询(15)、哨兵模式咨询(12)、哨兵模式咨询；停车监控咨询(1)、哨兵模式不灵敏(1)</td></tr>
-<tr><td style="color:#34495e;font-weight:600">视野</td><td>19</td><td>6.5%</td><td>前后双录/全景需求(19)</td></tr>
-<tr><td style="color:#95a5a6;font-weight:600">参数</td><td>11</td><td>3.7%</td><td>其他规格咨询(6)、产品参数咨询(2)、分辨率咨询(2)、下载分辨率咨询(1)</td></tr>
-<tr><td style="color:#2ecc71;font-weight:600">功能</td><td>73</td><td>24.8%</td><td>远程查看咨询(14)、云录功能咨询(8)、其他功能咨询(7)、定位不显示(7)</td></tr>
-
-</tbody>
-</table>
-</div>
-</div>
+<div class="cat-cards"><div class="cat-card" style="background:#2ecc71"><div class="cat-icon">💡</div><div class="cat-name">功能</div><div class="cat-count">73</div></div><div class="cat-card" style="background:#e67e22"><div class="cat-icon">🔧</div><div class="cat-name">安装</div><div class="cat-count">70</div></div><div class="cat-card" style="background:#9b59b6"><div class="cat-icon">💰</div><div class="cat-name">费用</div><div class="cat-count">31</div></div><div class="cat-card" style="background:#1abc9c"><div class="cat-icon">🅿️</div><div class="cat-name">停车监控</div><div class="cat-count">30</div></div><div class="cat-card" style="background:#3498db"><div class="cat-icon">🔌</div><div class="cat-name">配件</div><div class="cat-count">29</div></div><div class="cat-card" style="background:#f1c40f"><div class="cat-icon">🔋</div><div class="cat-name">供电</div><div class="cat-count">28</div></div><div class="cat-card" style="background:#34495e"><div class="cat-icon">🎥</div><div class="cat-name">视野</div><div class="cat-count">19</div></div><div class="cat-card" style="background:#95a5a6"><div class="cat-icon">📐</div><div class="cat-name">参数</div><div class="cat-count">11</div></div><div class="cat-card" style="background:#e74c3c"><div class="cat-icon">⚠️</div><div class="cat-name">品控</div><div class="cat-count">3</div></div></div>
+<table class="detail-table" style="margin-top:16px;"><thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型</th></tr></thead><tbody><tr><td style="color:#2ecc71;font-weight:600">💡 功能</td><td>73</td><td>24.8%</td><td>远程查看咨询(14)、云录功能咨询(8)、其他功能咨询(7)、定位不显示(7)</td></tr><tr><td style="color:#e67e22;font-weight:600">🔧 安装</td><td>70</td><td>23.8%</td><td>是否包安装咨询(26)、安装咨询(21)、镜头调节咨询(6)、门店不会安装(5)</td></tr><tr><td style="color:#9b59b6;font-weight:600">💰 费用</td><td>31</td><td>10.5%</td><td>4G流量收费咨询(15)、云录收费咨询(11)、质保咨询(2)、4G流量收费咨询；云录费用咨询(1)</td></tr><tr><td style="color:#1abc9c;font-weight:600">🅿️ 停车监控</td><td>30</td><td>10.2%</td><td>停车监控咨询(15)、哨兵模式咨询(12)、哨兵模式咨询；停车监控咨询(1)、哨兵模式不灵敏(1)</td></tr><tr><td style="color:#3498db;font-weight:600">🔌 配件</td><td>29</td><td>9.9%</td><td>是否带降压线咨询(7)、内存卡咨询(6)、降压线适配咨询(3)、降压线安装故障(3)</td></tr><tr><td style="color:#f1c40f;font-weight:600">🔋 供电</td><td>28</td><td>9.5%</td><td>电池/供电咨询(17)、电瓶损耗影响顾虑(7)、车充和降压线差异咨询(3)、是否亏电咨询；远程下载咨询；其他功能咨询；前后双录/全景需求(1)</td></tr><tr><td style="color:#34495e;font-weight:600">🎥 视野</td><td>19</td><td>6.5%</td><td>前后双录/全景需求(19)</td></tr><tr><td style="color:#95a5a6;font-weight:600">📐 参数</td><td>11</td><td>3.7%</td><td>其他规格咨询(6)、产品参数咨询(2)、分辨率咨询(2)、下载分辨率咨询(1)</td></tr><tr><td style="color:#e74c3c;font-weight:600">⚠️ 品控</td><td>3</td><td>1.0%</td><td>外观瑕疵(1)、设备发烫(1)、开流失败(1)</td></tr></tbody></table>
 </div>
 
 <div class="section">
@@ -163,14 +150,7 @@ chChart.setOption({
   series:[{type:'bar',data:[146, 83, 29, 14, 10, 8, 3, 2],itemStyle:{color:'#00B050'},barWidth:'60%'}]
 });
 
-var catChart=echarts.init(document.getElementById('catChart'));
-catChart.setOption({
-  tooltip:{trigger:'item',formatter:'{b}: {c} ({d}%)'},
-  legend:{orient:'vertical',right:0,top:'center',textStyle:{fontSize:12}},
-  series:[{type:'pie',radius:['40%','70%'],center:['40%','50%'],data:[{"name": "配件", "value": 29, "itemStyle": {"color": "#3498db"}}, {"name": "安装", "value": 70, "itemStyle": {"color": "#e67e22"}}, {"name": "品控", "value": 3, "itemStyle": {"color": "#e74c3c"}}, {"name": "费用", "value": 31, "itemStyle": {"color": "#9b59b6"}}, {"name": "供电", "value": 28, "itemStyle": {"color": "#f1c40f"}}, {"name": "停车监控", "value": 30, "itemStyle": {"color": "#1abc9c"}}, {"name": "视野", "value": 19, "itemStyle": {"color": "#34495e"}}, {"name": "参数", "value": 11, "itemStyle": {"color": "#95a5a6"}}, {"name": "功能", "value": 73, "itemStyle": {"color": "#2ecc71"}}],label:{show:false}}]
-});
-
-window.addEventListener('resize',function(){chChart.resize();catChart.resize()});
+window.addEventListener('resize',function(){chChart.resize()});
 </script>
 </body>
 </html>
