@@ -39,14 +39,16 @@ th{background:#f8f9fa;font-weight:600;color:#666}
 tr:hover{background:#fafafa}
 .new-row{background:#fffde7}
 .new-row:hover{background:#fff9c4}
-.new-group{margin:16px 0 8px;display:flex;align-items:center;gap:8px}
 .cat-cards{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px}
 .cat-card{flex:1;min-width:100px;border-radius:10px;padding:16px;text-align:center;color:#fff}
 .cat-card .cat-icon{font-size:24px}
 .cat-card .cat-name{font-size:13px;margin-top:4px}
 .cat-card .cat-count{font-size:24px;font-weight:700;margin-top:4px}
-.cat-badge{color:#fff;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600}
-.cat-count{color:#999;font-size:13px}
+.type-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:500}
+.date-badge{color:#999;font-size:12px;white-space:nowrap}
+.risk-row{background:#fdecea}
+.problem-text{max-width:280px}
+.solution-text{color:#666;max-width:300px}
 .delta-tag{color:#E74C3C;font-size:12px;margin-left:4px}
 .detail-table{margin-bottom:16px}
 .note{font-size:12px;color:#999;margin-top:8px}
@@ -93,45 +95,26 @@ tr:hover{background:#fafafa}
 </div>
 
 <div class="section">
-<h2>今日新增反馈明细（+18条，含周末及回补）</h2>
-<div class="new-group"><span class="cat-badge" style="background:#2ecc71">功能</span><span class="cat-count">5条</span></div>
-<table class="detail-table"><thead><tr><th>渠道</th><th>反馈时间</th><th>问题类型</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
-<tr class="new-row"><td>京东自营</td><td>09/05</td><td style="color:#E74C3C;font-weight:600">⚠ 画面清晰度低</td><td>咨询夜晚看不清车牌</td><td>需要有一定光线才可以</td></tr>
-<tr class="new-row"><td>京东自营</td><td>09/05</td><td style="color:#E74C3C;font-weight:600">⚠ 画面清晰度低</td><td>看不清车牌</td><td>受车速环境等因素干扰</td></tr>
-<tr class="new-row"><td>京东自营</td><td>09/06</td><td style="color:#E74C3C;font-weight:600">⚠ 画面清晰度低</td><td>实时画面不清晰</td><td>引导查看回放原视频</td></tr>
-<tr class="new-row"><td>京东自营</td><td>09/06</td><td>🆕 APP使用咨询</td><td>是否和旧设备冲突，使用APP，录制时长</td><td>不冲突，360智慧生活，订单对应内存卡4小时</td></tr>
-<tr class="new-row"><td>京东自营</td><td>09/06</td><td style="color:#E74C3C;font-weight:600">⚠ 🆕 画面清晰度低；账号绑定异常</td><td>画面清晰度较低，账号无法绑定微信</td><td>引导查看回放，注销微信登录对应账号后再绑定</td></tr>
-</tbody></table>
-
-<div class="new-group"><span class="cat-badge" style="background:#e67e22">安装</span><span class="cat-count">4条</span></div>
-<table class="detail-table"><thead><tr><th>渠道</th><th>反馈时间</th><th>问题类型</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
-<tr class="new-row"><td>京东自营</td><td>09/05</td><td>安装咨询</td><td>是否需要走线</td><td>需要的</td></tr>
-<tr class="new-row"><td>有赞</td><td>09/05</td><td>安装咨询</td><td>不需要在车里改电？</td><td>标配的是降压线的，需要接在车里保险盒上</td></tr>
-<tr class="new-row"><td>小红书</td><td>09/05</td><td>🆕 是否包安装咨询；前后双录/全景需求</td><td>1、包不包安装？<br>2、是360°的吗</td><td>1、我们是不包安装的哦～提供旧设备照片给客服您签收后提供师傅给您安装的照片或者支付凭证联系客服，直接退您40元安装费，自己找师傅装一样省心！x<br>2、是单前摄的</td></tr>
-<tr class="new-row"><td>有赞</td><td>09/07</td><td>是否包安装咨询</td><td>包安装吗</td><td>不包安装哦，提供旧设备照片以及安装支付凭证可以给您返40元哦</td></tr>
-</tbody></table>
-<div class="new-group"><span class="cat-badge" style="background:#9b59b6">费用</span><span class="cat-count">3条</span></div>
-<table class="detail-table"><thead><tr><th>渠道</th><th>反馈时间</th><th>问题类型</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
-<tr class="new-row"><td>有赞</td><td>09/04</td><td>🆕 质保咨询</td><td>有质保吗？</td><td>有1年的保质的</td></tr>
-<tr class="new-row"><td>有赞</td><td>09/06</td><td>🆕 质保咨询</td><td>如何质保以及维修</td><td>产品支持7天无理由退货，15天换货，1年质保服务，15天内您可以在订单内申请即可，设备维修您可以关注微信服务号【360智慧生活服务】-【服务大厅】-【我要报修】申请即可。</td></tr>
-<tr class="new-row"><td>私域</td><td>09/06</td><td>🆕 以旧换新咨询</td><td>你看这个置换顶多钱</td><td>449元，赠32G内存卡，提供旧设备照片及安装支付凭证可返40元安装费，到手价仅需409元</td></tr>
-</tbody></table>
-<div class="new-group"><span class="cat-badge" style="background:#1abc9c">停车监控</span><span class="cat-count">3条</span></div>
-<table class="detail-table"><thead><tr><th>渠道</th><th>反馈时间</th><th>问题类型</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
-<tr class="new-row"><td>有赞</td><td>09/04</td><td>哨兵模式咨询</td><td>哨兵模式是红外感应还是？</td><td>T200哨兵模式并非依赖红外感应，而是通过摄像头检测车前区域的异常活动来触发录制</td></tr>
-<tr class="new-row"><td>有赞</td><td>09/04</td><td>停车监控咨询</td><td>我锁车下电了能够正常工作吗</td><td>可以的，您降压线接保险盒可以实现24小时停车监控的</td></tr>
-<tr class="new-row"><td>有赞</td><td>09/07</td><td>哨兵模式咨询</td><td>这个有哨兵模式吗</td><td>有的哦，需要搭配专用的降压线使用的呢</td></tr>
-</tbody></table>
-<div class="new-group"><span class="cat-badge" style="background:#3498db">配件</span><span class="cat-count">2条</span></div>
-<table class="detail-table"><thead><tr><th>渠道</th><th>反馈时间</th><th>问题类型</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
-<tr class="new-row"><td>京东自营</td><td>09/06</td><td style="color:#E74C3C;font-weight:600">⚠ 内存卡不识别</td><td>存储卡无法识别</td><td>引导售后换卡</td></tr>
-<tr class="new-row"><td>京东自营</td><td>09/06</td><td>内存卡循环录制咨询</td><td>卡录像保存时长</td><td>订单对应内存卡4小时保存覆盖</td></tr>
-</tbody></table>
-<div class="new-group"><span class="cat-badge" style="background:#f1c40f">供电</span><span class="cat-count">1条</span></div>
-<table class="detail-table"><thead><tr><th>渠道</th><th>反馈时间</th><th>问题类型</th><th>用户问题</th><th>客服解决方案</th></tr></thead><tbody>
-<tr class="new-row"><td>京东自营</td><td>09/06</td><td>电瓶损耗影响顾虑</td><td>开哨兵模式是否会亏电，使用APP咨询</td><td>降压线有低压保护，可以关闭哨兵，360智慧生活</td></tr>
-</tbody></table>
-<p class="note">注：🆕 为本期新增问题类型（质保咨询、APP使用咨询、以旧换新咨询、账号绑定异常）；⚠ 标记为实质性缺陷类反馈。</p>
+<h2>今日新增反馈明细（较上周五9/4新增 18 条：京东自营×9、有赞×7、小红书×1、私域×1，含回补）</h2>
+<table class="detail-table"><thead><tr><th>分类</th><th>问题类型</th><th>渠道</th><th>日期</th><th>用户问题</th><th>客服方案</th></tr></thead><tbody><tr class="new-row risk-row"><td style="color:#2ecc71;font-weight:600">💡 功能</td><td><span class="type-badge" style="background:#E74C3C20;color:#E74C3C">画面清晰度低</span></td><td>京东自营</td><td><span class="date-badge">09/05</span></td><td class="problem-text">咨询夜晚看不清车牌</td><td class="solution-text">需要有一定光线才可以</td></tr>
+<tr class="new-row risk-row"><td style="color:#2ecc71;font-weight:600">💡 功能</td><td><span class="type-badge" style="background:#E74C3C20;color:#E74C3C">画面清晰度低</span></td><td>京东自营</td><td><span class="date-badge">09/05</span></td><td class="problem-text">看不清车牌</td><td class="solution-text">受车速环境等因素干扰</td></tr>
+<tr class="new-row risk-row"><td style="color:#2ecc71;font-weight:600">💡 功能</td><td><span class="type-badge" style="background:#E74C3C20;color:#E74C3C">画面清晰度低</span></td><td>京东自营</td><td><span class="date-badge">09/06</span></td><td class="problem-text">实时画面不清晰</td><td class="solution-text">引导查看回放原视频</td></tr>
+<tr class="new-row"><td style="color:#2ecc71;font-weight:600">💡 功能</td><td>🆕 <span class="type-badge" style="background:#2ecc7120;color:#2ecc71">APP使用咨询</span></td><td>京东自营</td><td><span class="date-badge">09/06</span></td><td class="problem-text">是否和旧设备冲突，使用APP，录制时长</td><td class="solution-text">不冲突，360智慧生活，订单对应内存卡4小时</td></tr>
+<tr class="new-row risk-row"><td style="color:#2ecc71;font-weight:600">💡 功能</td><td>🆕 <span class="type-badge" style="background:#E74C3C20;color:#E74C3C">画面清晰度低</span> <span class="type-badge" style="background:#99999920;color:#666">账号绑定异常</span></td><td>京东自营</td><td><span class="date-badge">09/06</span></td><td class="problem-text">画面清晰度较低，账号无法绑定微信</td><td class="solution-text">引导查看回放，注销微信登录对应账号后再绑定</td></tr>
+<tr class="new-row"><td style="color:#e67e22;font-weight:600">🔧 安装</td><td><span class="type-badge" style="background:#e67e2220;color:#e67e22">安装咨询</span></td><td>京东自营</td><td><span class="date-badge">09/05</span></td><td class="problem-text">是否需要走线</td><td class="solution-text">需要的</td></tr>
+<tr class="new-row"><td style="color:#e67e22;font-weight:600">🔧 安装</td><td><span class="type-badge" style="background:#e67e2220;color:#e67e22">安装咨询</span></td><td>有赞</td><td><span class="date-badge">09/05</span></td><td class="problem-text">不需要在车里改电？</td><td class="solution-text">标配的是降压线的，需要接在车里保险盒上</td></tr>
+<tr class="new-row"><td style="color:#e67e22;font-weight:600">🔧 安装</td><td>🆕 <span class="type-badge" style="background:#e67e2220;color:#e67e22">是否包安装咨询</span> <span class="type-badge" style="background:#99999920;color:#666">前后双录/全景需求</span></td><td>小红书</td><td><span class="date-badge">09/05</span></td><td class="problem-text">1、包不包安装？<br>2、是360°的吗</td><td class="solution-text">1、我们是不包安装的哦～提供旧设备照片给客服您签收后提供师傅给您安装的照片或者支付凭证联系客服，直接退您40元安装费，自己找师傅装一样省心！x<br>2、是单前摄的</td></tr>
+<tr class="new-row"><td style="color:#e67e22;font-weight:600">🔧 安装</td><td><span class="type-badge" style="background:#e67e2220;color:#e67e22">是否包安装咨询</span></td><td>有赞</td><td><span class="date-badge">09/07</span></td><td class="problem-text">包安装吗</td><td class="solution-text">不包安装哦，提供旧设备照片以及安装支付凭证可以给您返40元哦</td></tr>
+<tr class="new-row"><td style="color:#9b59b6;font-weight:600">💰 费用</td><td>🆕 <span class="type-badge" style="background:#9b59b620;color:#9b59b6">质保咨询</span></td><td>有赞</td><td><span class="date-badge">09/04</span></td><td class="problem-text">有质保吗？</td><td class="solution-text">有1年的保质的</td></tr>
+<tr class="new-row"><td style="color:#9b59b6;font-weight:600">💰 费用</td><td>🆕 <span class="type-badge" style="background:#9b59b620;color:#9b59b6">质保咨询</span></td><td>有赞</td><td><span class="date-badge">09/06</span></td><td class="problem-text">如何质保以及维修</td><td class="solution-text">产品支持7天无理由退货，15天换货，1年质保服务，15天内您可以在订单内申请即可，设备维修您可以关注微信服务号【360智慧生活服务】-【服务大厅】-【我要报修】申请即可。</td></tr>
+<tr class="new-row"><td style="color:#9b59b6;font-weight:600">💰 费用</td><td>🆕 <span class="type-badge" style="background:#9b59b620;color:#9b59b6">以旧换新咨询</span></td><td>私域</td><td><span class="date-badge">09/06</span></td><td class="problem-text">你看这个置换顶多钱</td><td class="solution-text">449元，赠32G内存卡，提供旧设备照片及安装支付凭证可返40元安装费，到手价仅需409元</td></tr>
+<tr class="new-row"><td style="color:#1abc9c;font-weight:600">🅿️ 停车监控</td><td><span class="type-badge" style="background:#1abc9c20;color:#1abc9c">哨兵模式咨询</span></td><td>有赞</td><td><span class="date-badge">09/04</span></td><td class="problem-text">哨兵模式是红外感应还是？</td><td class="solution-text">T200哨兵模式并非依赖红外感应，而是通过摄像头检测车前区域的异常活动来触发录制</td></tr>
+<tr class="new-row"><td style="color:#1abc9c;font-weight:600">🅿️ 停车监控</td><td><span class="type-badge" style="background:#1abc9c20;color:#1abc9c">停车监控咨询</span></td><td>有赞</td><td><span class="date-badge">09/04</span></td><td class="problem-text">我锁车下电了能够正常工作吗</td><td class="solution-text">可以的，您降压线接保险盒可以实现24小时停车监控的</td></tr>
+<tr class="new-row"><td style="color:#1abc9c;font-weight:600">🅿️ 停车监控</td><td><span class="type-badge" style="background:#1abc9c20;color:#1abc9c">哨兵模式咨询</span></td><td>有赞</td><td><span class="date-badge">09/07</span></td><td class="problem-text">这个有哨兵模式吗</td><td class="solution-text">有的哦，需要搭配专用的降压线使用的呢</td></tr>
+<tr class="new-row risk-row"><td style="color:#3498db;font-weight:600">🔌 配件</td><td><span class="type-badge" style="background:#E74C3C20;color:#E74C3C">内存卡不识别</span></td><td>京东自营</td><td><span class="date-badge">09/06</span></td><td class="problem-text">存储卡无法识别</td><td class="solution-text">引导售后换卡</td></tr>
+<tr class="new-row"><td style="color:#3498db;font-weight:600">🔌 配件</td><td><span class="type-badge" style="background:#3498db20;color:#3498db">内存卡循环录制咨询</span></td><td>京东自营</td><td><span class="date-badge">09/06</span></td><td class="problem-text">卡录像保存时长</td><td class="solution-text">订单对应内存卡4小时保存覆盖</td></tr>
+<tr class="new-row"><td style="color:#f1c40f;font-weight:600">🔋 供电</td><td><span class="type-badge" style="background:#f1c40f20;color:#f1c40f">电瓶损耗影响顾虑</span></td><td>京东自营</td><td><span class="date-badge">09/06</span></td><td class="problem-text">开哨兵模式是否会亏电，使用APP咨询</td><td class="solution-text">降压线有低压保护，可以关闭哨兵，360智慧生活</td></tr></tbody></table>
+<p class="note">注：🆕 为本期新增问题类型；⚠ 红底行为实质性缺陷类反馈；明细按分类反馈量降序排列。</p>
 </div>
 
 <div class="footer">
