@@ -117,7 +117,6 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
     <div class="cat-card" style="background:#F39C12"><div class="cat-icon">🔒</div><div class="cat-name">安全/防盗</div><div class="cat-count">3</div></div>
     <div class="cat-card" style="background:#95A5A6"><div class="cat-icon">📋</div><div class="cat-name">其他</div><div class="cat-count">2</div></div>
   </div>
-  <div id="chart-category" class="chart-container" style="margin-top:16px;"></div>
   <table class="detail-table" style="margin-top:16px;">
     <thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型</th></tr></thead>
     <tbody>
@@ -180,19 +179,6 @@ chChart.setOption({
     label: { show: true, position: 'top', formatter: '{c}' }
   }],
   grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true }
-});
-
-var catChart = echarts.init(document.getElementById('chart-category'));
-var catData = {"data": [{"name": "功能咨询", "value": 20}, {"name": "疑似质量问题", "value": 6}, {"name": "防水咨询", "value": 5}, {"name": "防抖咨询", "value": 4}, {"name": "安全/防盗", "value": 3}, {"name": "其他", "value": 2}], "colors": ["#00B050", "#E74C3C", "#3498DB", "#9B59B6", "#F39C12", "#95A5A6"]};
-catChart.setOption({
-  tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
-  legend: { bottom: 0, fontSize: 12 },
-  color: catData.colors,
-  series: [{
-    type: 'pie', radius: ['40%', '70%'],
-    data: catData.data,
-    label: { formatter: '{b}\n{c}条 ({d}%)', fontSize: 12 }
-  }]
 });
 </script>
 </body>
