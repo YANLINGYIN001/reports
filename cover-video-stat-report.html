@@ -45,59 +45,57 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 <div class="container">
 <div class="header">
   <h1>📊 封面图及视频时长统计分析报告</h1>
-  <div class="subtitle">门铃品类 · 16款型号 · 4大区 · 2026年8月1日–9月3日</div>
+  <div class="subtitle">门铃品类 · 16款型号 · 4大区 · 08-1 – 09-7</div>
   <div class="meta">
-    <span>📅 数据周期：2026-08-01 ~ 2026-09-03（34天）</span>
-    <span>📁 数据来源：封面图及视频时长统计_09-04</span>
-    <span>📦 数据量：1,083条记录</span>
+    <span>📅 数据周期：2026-08-01 ~ 2026-09-07（38个数据日）</span>
+    <span>📁 数据来源：封面图及视频时长统计_09-08</span>
+    <span>📦 数据量：1241条记录</span>
     <span>⚠️ 重点关注：R6 PRO 4G</span>
   </div>
 </div>
 
 <div class="kpi-row">
-  <div class="kpi-card"><div class="label">累计事件总数</div><div class="value">11.18亿</div><div class="sub">16款型号34天合计</div></div>
-  <div class="kpi-card"><div class="label">整体封面图缺失率</div><div class="value">1.72%</div><div class="sub">累计无封面图事件数 / 累计事件总数</div></div>
-  <div class="kpi-card highlight"><div class="label">R6 PRO 4G 缺失率</div><div class="value">4.63%</div><div class="sub">整体均值的2.7倍</div></div>
-  <div class="kpi-card"><div class="label">视频时长分布</div><div class="value">28.5%</div><div class="sub">6-15s占比最高，0-6s占9.7%，15s+占20.9%</div></div>
+  <div class="kpi-card"><div class="label">累计事件总数</div><div class="value">12.75亿</div><div class="sub">16款型号38天合计</div></div>
+  <div class="kpi-card"><div class="label">整体封面图缺失率</div><div class="value">1.71%</div><div class="sub">累计无封面图事件数 / 累计事件总数</div></div>
+  <div class="kpi-card highlight"><div class="label">R6 PRO 4G 缺失率</div><div class="value">4.77%</div><div class="sub">整体均值的2.8倍</div></div>
+  <div class="kpi-card"><div class="label">视频时长分布</div><div class="value">28.6%</div><div class="sub">6-15s占比最高，0-6s占9.67%，15s+占20.94%</div></div>
 </div>
 
 
-<!-- 报告总结 -->
 <div class="section" style="border-left:4px solid #00B050">
   <h2>📌 报告总结</h2>
   <div style="padding:8px 0">
     <p style="font-size:14px;color:#555;line-height:2">
-    本报告基于2026年8月1日-9月1日（34天）门铃品类16款型号、4大区的封面图及视频时长数据，共1,083条记录，累计事件10.42亿。<br>
+    本报告基于2026-08-01 ~ 2026-09-07（38个数据日）门铃品类16款型号、4大区的封面图及视频时长数据，共1241条记录，累计事件12.75亿。<br>
     <b>核心发现：</b><br>
-    1️⃣ <b>R6 PRO 4G封面图缺失率系统性偏高</b>——34天加权缺失率4.63%，是整体均值（1.72%）的2.7倍。同为4G型号的R5Pro-4G仅2.11%，排除4G网络因素，疑似封面图生成逻辑的系统性缺陷。<br>
-    2️⃣ <b>R6 PRO 4G的0-6s短时频占比16.15%</b>，在4G型号中偏高（R5Pro-4G仅6.28%），可能与封面图缺失问题存在关联。<br>
-    3️⃣ <b>R6 PRO 4G在34天有9天缺失率超过5%</b>，集中在8/23-9/3时段，峰值10.48%（08-26），呈锯齿状波动未见收敛。<br>
-    <b>建议：</b>对比R5Pro-4G与R6 PRO 4G的固件封面图模块差异，定位系统性缺失根因。
+    1️⃣ <b>R6 PRO 4G封面图缺失率系统性偏高</b>——38天加权缺失率4.77%，是整体均值（1.71%）的2.8倍。同为4G型号的R5Pro-4G仅2.11%，排除4G网络因素，疑似封面图生成逻辑的系统性缺陷。<br>
+    2️⃣ <b>R6 PRO 4G的0-6s短时频占比16.31%</b>，在4G型号中偏高（R5Pro-4G仅6.3%），可能与封面图缺失问题存在关联。<br>
+    3️⃣ <b>38天中有12天缺失率超过5%</b>，8月下旬以来持续高位震荡，峰值10.48%（08-26），呈锯齿状波动未见收敛。<br>
+    <b>建议：</b>对比R5Pro-4G与R6 PRO 4G的固件封面图模块差异，定位系统性缺失根因，并持续按周跟踪收敛情况。
     </p>
   </div>
 </div>
 
 <div class="section">
   <h2><span class="num">1</span>各型号封面图缺失率</h2>
-  <div class="formula">计算公式：缺失率 = 8.1-9.1累计无封面图事件数 / 8.1-9.1累计事件总数</div>
+  <div class="formula">计算公式：周期内累计无封面图事件数 / 周期内累计事件总数</div>
   <div id="chart_model_nocover" class="chart-box tall"></div>
   <div class="insight-box">
     <div class="title">📊 缺失率洞察</div>
-    <p>• R6 PRO 4G缺失率稳定在4%-10%区间波动，无单日极端值但持续偏高，属系统性问题<br>• R5Pro-4G同为4G型号仅2.11%，R6 PRO 4G是其2.2倍，排除4G网络因素</p>
+    <p>• R6 PRO 4G缺失率4.77%居首，38天中12天超过5%阈值，属持续性、系统性问题<br>• R5Pro-4G同为4G型号仅2.11%，R6 PRO 4G是其2.3倍，排除4G网络因素<br>• R6 PRO（2.92%）与R6-5MP（2.78%）次高，但与R6 PRO 4G差距明显</p>
   </div>
 </div>
 
 <div class="section">
   <h2><span class="num">2</span>各型号0-6s视频占比</h2>
-  <div class="formula">计算公式：0-6s占比 = 8.1-9.1累计0-6s事件数 / 8.1-9.1累计事件总数</div>
+  <div class="formula">计算公式：周期内累计无封面图事件数 / 周期内累计事件总数</div>
   <div id="chart_model_dur" class="chart-box"></div>
   <div class="insight-box">
     <div class="title">📊 0-6s占比洞察</div>
-    <p>• R6以30.37%的0-6s占比显著高于其他型号，短时频事件最为集中<br>
-    • R6 PRO 4G为16.15%，在4G型号中偏高（R5Pro-4G仅6.28%），可能与封面图缺失问题存在关联<br>
-    • CS2（0.15%）和AR3X（0.29%）0-6s占比极低，视频时长普遍较长</p>
+    <p>• R6以30.21%的0-6s占比显著高于其他型号，短时频事件最为集中<br>• R6 PRO 4G为16.31%，在4G型号中偏高（R5Pro-4G仅6.3%），可能与封面图缺失问题存在关联<br>• CS2（0.15%）和AR3X（0.28%）0-6s占比极低，视频时长普遍较长</p>
   </div>
 </div>
+
 
 <div class="section">
   <h2><span class="num">3</span>R6 PRO 4G 专项分析</h2>
@@ -105,12 +103,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 
   <div class="r6pro4g-banner">
     <h3>⚠️ R6 PRO 4G 封面图缺失率系统性偏高</h3>
-    <p style="font-size:14px;color:#666">34天加权缺失率4.63%，是整体均值（1.72%）的2.7倍。同为4G型号的R5Pro-4G仅2.11%，说明问题非4G网络限制所致。缺失率在5%-10%间波动，呈锯齿状，未见收敛趋势。</p>
+    <p style="font-size:14px;color:#666">38天加权缺失率4.77%，是整体均值（1.71%）的2.8倍。同为4G型号的R5Pro-4G仅2.11%，说明问题非4G网络限制所致。缺失率在4%-10%间锯齿状波动，未见收敛趋势。</p>
     <div class="stat-grid">
-      <div class="stat-item"><div class="v">4.63%</div><div class="l">34天加权缺失率</div></div>
+      <div class="stat-item"><div class="v">4.77%</div><div class="l">38天加权缺失率</div></div>
       <div class="stat-item"><div class="v">10.48%</div><div class="l">日峰值(08-26)</div></div>
-      <div class="stat-item"><div class="v">30.9万</div><div class="l">34天事件总量</div></div>
-      <div class="stat-item"><div class="v">9天</div><div class="l">缺失率超5%天数</div></div>
+      <div class="stat-item"><div class="v">33.7万</div><div class="l">38天事件总量</div></div>
+      <div class="stat-item"><div class="v">12天</div><div class="l">缺失率超5%天数</div></div>
       <div class="stat-item"><div class="v">2.11%</div><div class="l">R5Pro-4G同期</div></div>
     </div>
   </div>
@@ -126,20 +124,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Micr
 
   <div class="insight-box alert">
     <div class="title">🚨 关键发现</div>
-    <p>• R6 PRO 4G在34天有9天缺失率超过5%，集中在8/23-9/3时段<br>
-    • 8/24缺失率峰值10.48%，当天事件量12,394，约1,297条事件无封面图<br>
+    <p>• 38天中12天缺失率超过5%，8/23后进入持续高位区间<br>
+    • 08-26缺失率峰值10.48%，当天13,404条事件中1,405条无封面图<br>
     • 缺失率呈"高峰-回落-再升高"的锯齿状，非一次性事件，疑似封面图生成逻辑的系统性缺陷<br>
     • 对比R5Pro-4G缺失率仅2.11%，两者同为4G型号但差异显著，排除网络因素<br>
     • 建议：排查R6 PRO 4G固件封面图抓帧时序、存储写入逻辑，对比R5Pro-4G固件差异</p>
   </div>
 </div>
 
-<div class="footer">🦞 封面图及视频时长统计分析报告 | 数据周期 2026-08-01 ~ 2026-09-03 | 生成时间 2026-09-04</div>
+<div class="footer">🦞 封面图及视频时长统计分析报告 | 数据周期 2026-08-01 ~ 2026-09-07 | 生成时间 2026-09-08</div>
 </div>
 <script>
 
-var ALL={"model_summary": {"CS2": {"events": 10406162, "nocover_pct": 0.02, "d06_pct": 0.15, "d15_pct": 50.25, "d15plus_pct": 43.41}, "R810": {"events": 8640842, "nocover_pct": 0.94, "d06_pct": 1.89, "d15_pct": 44.87, "d15plus_pct": 29.97}, "AR3X": {"events": 6695840, "nocover_pct": 0.19, "d06_pct": 0.29, "d15_pct": 25.69, "d15plus_pct": 22.53}, "R5 MAX": {"events": 499533655, "nocover_pct": 1.44, "d06_pct": 11.45, "d15_pct": 14.25, "d15plus_pct": 11.22}, "R811": {"events": 17769141, "nocover_pct": 1.01, "d06_pct": 3.37, "d15_pct": 48.44, "d15plus_pct": 28.93}, "R5Pro-4G": {"events": 10722391, "nocover_pct": 2.11, "d06_pct": 6.27, "d15_pct": 66.93, "d15plus_pct": 24.24}, "R4 Pro": {"events": 3013309, "nocover_pct": 0.07, "d06_pct": 6.68, "d15_pct": 67.31, "d15plus_pct": 22.83}, "R5 Pro": {"events": 66583608, "nocover_pct": 1.53, "d06_pct": 3.6, "d15_pct": 65.98, "d15plus_pct": 27.29}, "R6 PRO 4G": {"events": 308590, "nocover_pct": 4.63, "d06_pct": 16.15, "d15_pct": 42.7, "d15plus_pct": 30.49}, "R810SE": {"events": 8630260, "nocover_pct": 0.9, "d06_pct": 5.75, "d15_pct": 72.92, "d15plus_pct": 18.44}, "R6": {"events": 49504078, "nocover_pct": 0.16, "d06_pct": 30.31, "d15_pct": 45.23, "d15plus_pct": 22.35}, "R811S": {"events": 10302134, "nocover_pct": 0.98, "d06_pct": 2.5, "d15_pct": 66.68, "d15plus_pct": 16.46}, "R6 PRO": {"events": 271651383, "nocover_pct": 2.93, "d06_pct": 5.78, "d15_pct": 37.63, "d15plus_pct": 35.56}, "R6 MAX": {"events": 93310179, "nocover_pct": 1.34, "d06_pct": 11.84, "d15_pct": 14.39, "d15plus_pct": 10.87}, "R6-5MP": {"events": 34233944, "nocover_pct": 2.8, "d06_pct": 12.09, "d15_pct": 26.03, "d15plus_pct": 42.09}, "R4 PRO": {"events": 26802664, "nocover_pct": 0.06, "d06_pct": 2.03, "d15_pct": 57.16, "d15plus_pct": 24.92}}, "overall": {"events": 1118108180, "nocover_pct": 1.72, "d06_pct": 9.71, "d15_pct": 28.56, "d15plus_pct": 20.89}, "r6_daily": {"2026-08-01": {"events": 3166, "nocover": 62, "nocover_pct": 1.96, "d06_pct": 14.59, "d15_pct": 43.11, "d15plus_pct": 31.62}, "2026-08-02": {"events": 2557, "nocover": 45, "nocover_pct": 1.76, "d06_pct": 14.0, "d15_pct": 36.53, "d15plus_pct": 35.55}, "2026-08-03": {"events": 8525, "nocover": 235, "nocover_pct": 2.76, "d06_pct": 13.02, "d15_pct": 40.38, "d15plus_pct": 33.18}, "2026-08-04": {"events": 9911, "nocover": 192, "nocover_pct": 1.94, "d06_pct": 12.3, "d15_pct": 43.22, "d15plus_pct": 31.12}, "2026-08-05": {"events": 9872, "nocover": 299, "nocover_pct": 3.03, "d06_pct": 14.21, "d15_pct": 40.14, "d15plus_pct": 32.8}, "2026-08-06": {"events": 9184, "nocover": 118, "nocover_pct": 1.28, "d06_pct": 8.59, "d15_pct": 38.34, "d15plus_pct": 38.57}, "2026-08-07": {"events": 9008, "nocover": 115, "nocover_pct": 1.28, "d06_pct": 8.89, "d15_pct": 37.69, "d15plus_pct": 38.81}, "2026-08-09": {"events": 3279, "nocover": 74, "nocover_pct": 2.26, "d06_pct": 10.7, "d15_pct": 38.12, "d15plus_pct": 37.94}, "2026-08-10": {"events": 8624, "nocover": 235, "nocover_pct": 2.72, "d06_pct": 10.31, "d15_pct": 42.6, "d15plus_pct": 34.1}, "2026-08-11": {"events": 9874, "nocover": 363, "nocover_pct": 3.68, "d06_pct": 9.5, "d15_pct": 40.32, "d15plus_pct": 36.06}, "2026-08-12": {"events": 10952, "nocover": 462, "nocover_pct": 4.22, "d06_pct": 9.69, "d15_pct": 37.06, "d15plus_pct": 39.85}, "2026-08-13": {"events": 12142, "nocover": 374, "nocover_pct": 3.08, "d06_pct": 9.86, "d15_pct": 42.04, "d15plus_pct": 35.29}, "2026-08-14": {"events": 13565, "nocover": 553, "nocover_pct": 4.08, "d06_pct": 15.9, "d15_pct": 42.07, "d15plus_pct": 30.2}, "2026-08-15": {"events": 5230, "nocover": 137, "nocover_pct": 2.62, "d06_pct": 7.44, "d15_pct": 42.31, "d15plus_pct": 35.24}, "2026-08-16": {"events": 3414, "nocover": 96, "nocover_pct": 2.81, "d06_pct": 7.21, "d15_pct": 46.66, "d15plus_pct": 36.47}, "2026-08-17": {"events": 12086, "nocover": 650, "nocover_pct": 5.38, "d06_pct": 13.94, "d15_pct": 53.02, "d15plus_pct": 24.02}, "2026-08-18": {"events": 12584, "nocover": 542, "nocover_pct": 4.31, "d06_pct": 15.13, "d15_pct": 50.6, "d15plus_pct": 24.4}, "2026-08-19": {"events": 13286, "nocover": 661, "nocover_pct": 4.98, "d06_pct": 21.17, "d15_pct": 44.32, "d15plus_pct": 25.19}, "2026-08-20": {"events": 11808, "nocover": 476, "nocover_pct": 4.03, "d06_pct": 19.3, "d15_pct": 42.51, "d15plus_pct": 28.1}, "2026-08-21": {"events": 9473, "nocover": 324, "nocover_pct": 3.42, "d06_pct": 15.92, "d15_pct": 44.42, "d15plus_pct": 31.29}, "2026-08-22": {"events": 6846, "nocover": 135, "nocover_pct": 1.97, "d06_pct": 8.22, "d15_pct": 24.86, "d15plus_pct": 52.4}, "2026-08-23": {"events": 4345, "nocover": 97, "nocover_pct": 2.23, "d06_pct": 10.26, "d15_pct": 30.03, "d15plus_pct": 44.9}, "2026-08-24": {"events": 10173, "nocover": 350, "nocover_pct": 3.44, "d06_pct": 18.16, "d15_pct": 46.53, "d15plus_pct": 26.21}, "2026-08-25": {"events": 14329, "nocover": 1039, "nocover_pct": 7.25, "d06_pct": 27.06, "d15_pct": 41.45, "d15plus_pct": 23.48}, "2026-08-26": {"events": 13404, "nocover": 1405, "nocover_pct": 10.48, "d06_pct": 24.36, "d15_pct": 42.96, "d15plus_pct": 26.64}, "2026-08-27": {"events": 13537, "nocover": 1090, "nocover_pct": 8.05, "d06_pct": 23.9, "d15_pct": 42.62, "d15plus_pct": 25.98}, "2026-08-28": {"events": 12394, "nocover": 837, "nocover_pct": 6.75, "d06_pct": 21.62, "d15_pct": 47.39, "d15plus_pct": 22.82}, "2026-08-29": {"events": 4555, "nocover": 152, "nocover_pct": 3.34, "d06_pct": 12.69, "d15_pct": 44.63, "d15plus_pct": 29.95}, "2026-08-30": {"events": 4550, "nocover": 208, "nocover_pct": 4.57, "d06_pct": 11.67, "d15_pct": 45.54, "d15plus_pct": 30.07}, "2026-08-31": {"events": 10029, "nocover": 541, "nocover_pct": 5.39, "d06_pct": 15.8, "d15_pct": 49.43, "d15plus_pct": 25.01}, "2026-09-01": {"events": 10980, "nocover": 573, "nocover_pct": 5.22, "d06_pct": 18.74, "d15_pct": 43.93, "d15plus_pct": 28.09}, "2026-09-03": {"events": 11669, "nocover": 721, "nocover_pct": 6.18, "d06_pct": 19.72, "d15_pct": 44.27, "d15plus_pct": 28.07}, "2026-09-02": {"events": 13239, "nocover": 1102, "nocover_pct": 8.32, "d06_pct": 24.89, "d15_pct": 39.51, "d15plus_pct": 28.09}}, "dates": ["2026-08-01", "2026-08-02", "2026-08-03", "2026-08-04", "2026-08-05", "2026-08-06", "2026-08-07", "2026-08-09", "2026-08-10", "2026-08-11", "2026-08-12", "2026-08-13", "2026-08-14", "2026-08-15", "2026-08-16", "2026-08-17", "2026-08-18", "2026-08-19", "2026-08-20", "2026-08-21", "2026-08-22", "2026-08-23", "2026-08-24", "2026-08-25", "2026-08-26", "2026-08-27", "2026-08-28", "2026-08-29", "2026-08-30", "2026-08-31", "2026-09-01", "2026-09-02", "2026-09-03"]};
+var ALL={"model_summary":{"R5 MAX":{"events":567690942,"nocover_pct":1.44,"d06_pct":11.42,"d15_pct":14.25,"d15plus_pct":11.25},"R6 PRO":{"events":309525512,"nocover_pct":2.92,"d06_pct":5.79,"d15_pct":37.58,"d15plus_pct":35.58},"R6 MAX":{"events":106379656,"nocover_pct":1.34,"d06_pct":11.8,"d15_pct":14.4,"d15plus_pct":10.9},"R5 Pro":{"events":76080238,"nocover_pct":1.51,"d06_pct":3.6,"d15_pct":65.86,"d15plus_pct":27.39},"R6":{"events":56661859,"nocover_pct":0.16,"d06_pct":30.21,"d15_pct":45.28,"d15plus_pct":22.39},"R6-5MP":{"events":39007289,"nocover_pct":2.78,"d06_pct":12.04,"d15_pct":26.03,"d15plus_pct":42.09},"R4 PRO":{"events":30522385,"nocover_pct":0.06,"d06_pct":2.02,"d15_pct":57.09,"d15plus_pct":24.97},"R811":{"events":20769055,"nocover_pct":1.01,"d06_pct":3.37,"d15_pct":48.39,"d15plus_pct":28.94},"R5Pro-4G":{"events":12450188,"nocover_pct":2.11,"d06_pct":6.3,"d15_pct":66.85,"d15plus_pct":24.28},"CS2":{"events":12214563,"nocover_pct":0.03,"d06_pct":0.15,"d15_pct":50.23,"d15plus_pct":43.45},"R811S":{"events":12028729,"nocover_pct":0.97,"d06_pct":2.5,"d15_pct":66.27,"d15plus_pct":16.47},"R810SE":{"events":10191233,"nocover_pct":0.9,"d06_pct":5.91,"d15_pct":72.13,"d15plus_pct":18.97},"R810":{"events":10141802,"nocover_pct":0.93,"d06_pct":1.9,"d15_pct":44.77,"d15plus_pct":29.94},"AR3X":{"events":7874491,"nocover_pct":0.17,"d06_pct":0.28,"d15_pct":25.7,"d15plus_pct":22.54},"R4 Pro":{"events":3560813,"nocover_pct":0.08,"d06_pct":6.62,"d15_pct":67.29,"d15plus_pct":22.9},"R6 PRO 4G":{"events":337117,"nocover_pct":4.77,"d06_pct":16.31,"d15_pct":42.83,"d15plus_pct":30.36}},"overall":{"events":1275435872,"nocover":21795467,"nocover_pct":1.71,"d06_pct":9.67,"d15_pct":28.6,"d15plus_pct":20.94},"r6_daily":{"2026-08-01":{"events":3166,"nocover":62,"nocover_pct":1.96,"d06_pct":14.59,"d15_pct":43.11,"d15plus_pct":31.62},"2026-08-02":{"events":2557,"nocover":45,"nocover_pct":1.76,"d06_pct":14.0,"d15_pct":36.53,"d15plus_pct":35.55},"2026-08-03":{"events":8525,"nocover":235,"nocover_pct":2.76,"d06_pct":13.02,"d15_pct":40.38,"d15plus_pct":33.18},"2026-08-04":{"events":9911,"nocover":192,"nocover_pct":1.94,"d06_pct":12.3,"d15_pct":43.22,"d15plus_pct":31.12},"2026-08-05":{"events":9872,"nocover":299,"nocover_pct":3.03,"d06_pct":14.21,"d15_pct":40.14,"d15plus_pct":32.8},"2026-08-06":{"events":9184,"nocover":118,"nocover_pct":1.28,"d06_pct":8.59,"d15_pct":38.34,"d15plus_pct":38.57},"2026-08-07":{"events":9008,"nocover":115,"nocover_pct":1.28,"d06_pct":8.89,"d15_pct":37.69,"d15plus_pct":38.81},"2026-08-09":{"events":3279,"nocover":74,"nocover_pct":2.26,"d06_pct":10.7,"d15_pct":38.12,"d15plus_pct":37.94},"2026-08-10":{"events":8624,"nocover":235,"nocover_pct":2.72,"d06_pct":10.31,"d15_pct":42.6,"d15plus_pct":34.1},"2026-08-11":{"events":9874,"nocover":363,"nocover_pct":3.68,"d06_pct":9.5,"d15_pct":40.32,"d15plus_pct":36.06},"2026-08-12":{"events":10952,"nocover":462,"nocover_pct":4.22,"d06_pct":9.69,"d15_pct":37.06,"d15plus_pct":39.85},"2026-08-13":{"events":12142,"nocover":374,"nocover_pct":3.08,"d06_pct":9.86,"d15_pct":42.04,"d15plus_pct":35.29},"2026-08-14":{"events":13565,"nocover":553,"nocover_pct":4.08,"d06_pct":15.9,"d15_pct":42.07,"d15plus_pct":30.2},"2026-08-15":{"events":5230,"nocover":137,"nocover_pct":2.62,"d06_pct":7.44,"d15_pct":42.31,"d15plus_pct":35.24},"2026-08-16":{"events":3414,"nocover":96,"nocover_pct":2.81,"d06_pct":7.21,"d15_pct":46.66,"d15plus_pct":36.47},"2026-08-17":{"events":12086,"nocover":650,"nocover_pct":5.38,"d06_pct":13.94,"d15_pct":53.02,"d15plus_pct":24.02},"2026-08-18":{"events":12584,"nocover":542,"nocover_pct":4.31,"d06_pct":15.13,"d15_pct":50.6,"d15plus_pct":24.4},"2026-08-19":{"events":13286,"nocover":661,"nocover_pct":4.98,"d06_pct":21.17,"d15_pct":44.32,"d15plus_pct":25.19},"2026-08-20":{"events":11808,"nocover":476,"nocover_pct":4.03,"d06_pct":19.3,"d15_pct":42.51,"d15plus_pct":28.1},"2026-08-21":{"events":9473,"nocover":324,"nocover_pct":3.42,"d06_pct":15.92,"d15_pct":44.42,"d15plus_pct":31.29},"2026-08-22":{"events":6846,"nocover":135,"nocover_pct":1.97,"d06_pct":8.22,"d15_pct":24.86,"d15plus_pct":52.4},"2026-08-23":{"events":4345,"nocover":97,"nocover_pct":2.23,"d06_pct":10.26,"d15_pct":30.03,"d15plus_pct":44.9},"2026-08-24":{"events":10173,"nocover":350,"nocover_pct":3.44,"d06_pct":18.16,"d15_pct":46.53,"d15plus_pct":26.21},"2026-08-25":{"events":14329,"nocover":1039,"nocover_pct":7.25,"d06_pct":27.06,"d15_pct":41.45,"d15plus_pct":23.48},"2026-08-26":{"events":13404,"nocover":1405,"nocover_pct":10.48,"d06_pct":24.36,"d15_pct":42.96,"d15plus_pct":26.64},"2026-08-27":{"events":13537,"nocover":1090,"nocover_pct":8.05,"d06_pct":23.9,"d15_pct":42.62,"d15plus_pct":25.98},"2026-08-28":{"events":12394,"nocover":837,"nocover_pct":6.75,"d06_pct":21.62,"d15_pct":47.39,"d15plus_pct":22.82},"2026-08-29":{"events":4555,"nocover":152,"nocover_pct":3.34,"d06_pct":12.69,"d15_pct":44.63,"d15plus_pct":29.95},"2026-08-30":{"events":4550,"nocover":208,"nocover_pct":4.57,"d06_pct":11.67,"d15_pct":45.54,"d15plus_pct":30.07},"2026-08-31":{"events":10029,"nocover":541,"nocover_pct":5.39,"d06_pct":15.8,"d15_pct":49.43,"d15plus_pct":25.01},"2026-09-01":{"events":10980,"nocover":573,"nocover_pct":5.22,"d06_pct":18.74,"d15_pct":43.93,"d15plus_pct":28.09},"2026-09-02":{"events":13239,"nocover":1102,"nocover_pct":8.32,"d06_pct":24.89,"d15_pct":39.51,"d15plus_pct":28.09},"2026-09-03":{"events":11669,"nocover":721,"nocover_pct":6.18,"d06_pct":19.72,"d15_pct":44.27,"d15plus_pct":28.07},"2026-09-04":{"events":9439,"nocover":714,"nocover_pct":7.56,"d06_pct":20.63,"d15_pct":46.59,"d15plus_pct":25.02},"2026-09-05":{"events":4440,"nocover":205,"nocover_pct":4.62,"d06_pct":11.71,"d15_pct":42.82,"d15plus_pct":35.97},"2026-09-06":{"events":4297,"nocover":306,"nocover_pct":7.12,"d06_pct":15.2,"d15_pct":41.38,"d15plus_pct":32.6},"2026-09-07":{"events":10351,"nocover":590,"nocover_pct":5.7,"d06_pct":19.63,"d15_pct":44.06,"d15plus_pct":27.9}},"dates":["2026-08-01","2026-08-02","2026-08-03","2026-08-04","2026-08-05","2026-08-06","2026-08-07","2026-08-08","2026-08-09","2026-08-10","2026-08-11","2026-08-12","2026-08-13","2026-08-14","2026-08-15","2026-08-16","2026-08-17","2026-08-18","2026-08-19","2026-08-20","2026-08-21","2026-08-22","2026-08-23","2026-08-24","2026-08-25","2026-08-26","2026-08-27","2026-08-28","2026-08-29","2026-08-30","2026-08-31","2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-05","2026-09-06","2026-09-07"]};
 
+var MS=ALL.model_summary,OV=ALL.overall,R6D=ALL.r6_daily,DATES=ALL.dates;
+var PL='38天';
 var MS=ALL.model_summary,OV=ALL.overall,R6D=ALL.r6_daily,DATES=ALL.dates;
 var R6_DATES=Object.keys(R6D);
 var R6_EVENTS=R6_DATES.map(function(d){return R6D[d].events});
@@ -222,7 +222,7 @@ echarts.init(document.getElementById('chart_r6pro4g_d06')).setOption({
   series:[
     {name:'0-6s占比',type:'line',data:R6_D06,lineStyle:{color:'#E74C3C',width:2},itemStyle:{color:'#E74C3C'},symbol:'circle',symbolSize:6,
       label:{show:true,position:'top',formatter:function(p){return p.value+'%'},fontSize:10,color:'#E74C3C',fontWeight:'bold'},
-      markLine:{data:[{yAxis:MS['R6 PRO 4G'].d06_pct,lineStyle:{color:'#666',type:'dashed'},label:{formatter:'34天均值 '+MS['R6 PRO 4G'].d06_pct+'%',color:'#666',fontSize:10}}]}}
+      markLine:{data:[{yAxis:MS['R6 PRO 4G'].d06_pct,lineStyle:{color:'#666',type:'dashed'},label:{formatter:PL+'均值 '+MS['R6 PRO 4G'].d06_pct+'%',color:'#666',fontSize:10}}]}}
   ],
   grid:{left:55,right:20,top:40,bottom:40}
 });
