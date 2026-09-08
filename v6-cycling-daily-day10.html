@@ -14,13 +14,14 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 .header .subtitle { font-size:14px; opacity:0.9; }
 .header .date-range { font-size:13px; opacity:0.8; margin-top:6px; }
 .overview { background:#fff; border-left:4px solid #00B050; border-radius:8px; padding:14px 20px; margin-bottom:20px; font-size:14px; color:#333; }
-.kpi-row { display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap; }
-.kpi-card { flex:1; min-width:200px; background:#fff; border-radius:12px; padding:20px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
-.kpi-value { font-size:32px; font-weight:700; color:#E74C3C; }
-.kpi-label { font-size:13px; color:#666; margin-top:4px; }
-.kpi-sub { font-size:12px; color:#999; margin-top:2px; }
-.kpi-sub .delta { color:#E74C3C; font-weight:600; }
-.kpi-sub .flat { color:#999; font-weight:600; }
+.kpi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px; }
+.kpi-card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size:13px; color:#999; margin-bottom:8px; }
+.kpi-card .value { font-size:32px; font-weight:700; color:#E74C3C; }
+.kpi-card .delta { font-size:12px; color:#00B050; margin-top:4px; }
+.kpi-card .delta.up { color:#E74C3C; }
+.kpi-card .delta.zero { color:#999; }
+.kpi-card .sub { font-size:12px; color:#666; margin-top:4px; }
 .section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
 .section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
 .section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
@@ -53,7 +54,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 .date-badge { color:#999; font-size:12px; white-space:nowrap; }
 .footer { text-align:center; padding:20px; color:#999; font-size:12px; }
 @media (max-width:768px) {
-  .kpi-card { min-width:140px; }
+  .kpi-grid { grid-template-columns:repeat(2,1fr); }
   .cat-card { min-width:100px; }
   .detail-table { font-size:12px; }
   .detail-table th, .detail-table td { padding:8px 6px; }
@@ -74,11 +75,10 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
   累计收集50条反馈（较昨日Day 9日报+10，其中9/5晚录入4条、9/7新增3条、9/8新增3条），新增以咨询类为主。核心变化：<strong style="color:#E74C3C;">"不通电/无法开机"问题再增2条至8条</strong>——"按紧电源线"话术9.8已宣贯，商详小字说明9.8已增加，安装视频增加文字说明9.9早可以上线，待持续观察反馈量；另新增"球头支架损坏"1条（引导售后换货），支架类问题累计2条，建议纳入重点观察。
 </div>
 
-<div class="kpi-row">
-  <div class="kpi-card"><div class="kpi-value">50</div><div class="kpi-label">反馈问题总数</div><div class="kpi-sub"><span class="delta">+10</span> 较昨日Day 9（9/5晚录4、9/7×3、9/8×3）</div></div>
-  <div class="kpi-card"><div class="kpi-value">7</div><div class="kpi-label">覆盖渠道数</div><div class="kpi-sub"><span class="flat">—</span> 无变化</div></div>
-  <div class="kpi-card"><div class="kpi-value">35</div><div class="kpi-label">问题类型数</div><div class="kpi-sub"><span class="delta">+7</span> 新增咨询/支架损坏等类型</div></div>
-  <div class="kpi-card"><div class="kpi-value">8</div><div class="kpi-label">无法开机/通电无反应（疑似）</div><div class="kpi-sub"><span class="delta">9/7新增2条</span>，含电源线插不紧1条</div></div>
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">50</div><div class="delta up">较9/6 +10（9/5晚录4、9/7×3、9/8×3）</div></div>
+<div class="kpi-card"><div class="label">Top3问题（累计+今日新增）</div><div class="value" style="font-size:16px;line-height:1.4">不通电/无法开机 8条 <span style="color:#999">+0</span><br>防水类咨询 5条 <span style="color:#999">+0</span><br>防抖咨询 4条 <span style="color:#999">+0</span></div><div class="delta zero">今日新增3条均为咨询类（防紫外线/支架配件/以旧换新）</div></div>
+<div class="kpi-card"><div class="label">新增疑似质量问题</div><div class="value" style="font-size:16px;line-height:1.4">不通电/无法开机 8条 <span style="color:#E74C3C;font-weight:700">+2</span><br>球头支架损坏 1条 <span style="color:#E74C3C;font-weight:700">+1</span></div><div class="sub">累计疑似质量 9 条（较9/6 +3）</div></div>
 </div>
 
 <div class="section">
