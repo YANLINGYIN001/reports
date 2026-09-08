@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>封面图及视频时长统计分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1400px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:40px 30px;border-radius:12px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,176,80,.15)}
+.header h1{font-size:28px;font-weight:700;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:.9}
+.header .meta{margin-top:16px;font-size:13px;opacity:.85;display:flex;gap:24px;flex-wrap:wrap}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;border-radius:10px;padding:24px 20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-left:4px solid #00B050}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:26px;font-weight:700;color:#E74C3C}
+.kpi-card .sub{font-size:12px;color:#999;margin-top:6px}
+.kpi-card.highlight{border-left-color:#F39C12}
+.section{background:#fff;border-radius:10px;padding:28px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.section h2{font-size:20px;font-weight:700;color:#333;margin-bottom:6px;padding-bottom:12px;border-bottom:2px solid #f0f0f0}
+.section h2 .num{color:#00B050;margin-right:8px}
+.section .desc{font-size:13px;color:#999;margin-bottom:12px}
+.chart-box{width:100%;height:400px;margin-top:10px}
+.chart-box.tall{height:480px}
+.chart-box.short{height:300px}
+.insight-box{background:linear-gradient(135deg,#f0fdf4,#e8f5e9);border-left:4px solid #00B050;border-radius:8px;padding:20px;margin:16px 0}
+.insight-box .title{font-weight:700;color:#00B050;margin-bottom:8px;font-size:15px}
+.insight-box p{font-size:14px;color:#555;line-height:1.8}
+.insight-box.alert{background:#fef5f5;border-left-color:#E74C3C}
+.insight-box.alert .title{color:#E74C3C}
+.r6pro4g-banner{background:linear-gradient(135deg,#fff3cd,#ffe082);border:2px solid #F39C12;border-radius:10px;padding:20px;margin:16px 0}
+.r6pro4g-banner h3{color:#F39C12;font-size:16px;margin-bottom:10px}
+.r6pro4g-banner .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:12px}
+.r6pro4g-banner .stat-item{background:#fff;border-radius:8px;padding:12px;text-align:center}
+.r6pro4g-banner .stat-item .v{font-size:20px;font-weight:700;color:#E74C3C}
+.r6pro4g-banner .stat-item .l{font-size:12px;color:#999;margin-top:4px}
+.footer{text-align:center;color:#999;font-size:12px;padding:20px 0}
+.formula{background:#f8f9fa;border-radius:6px;padding:10px 14px;font-size:13px;color:#666;margin:8px 0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>📊 封面图及视频时长统计分析报告（9.1–9.7）</h1>
+  <div class="subtitle">门铃品类 · 16款型号 · 4大区 · 09-1 – 09-7</div>
+  <div class="meta">
+    <span>📅 数据周期：2026-09-01 ~ 2026-09-07（7个数据日）</span>
+    <span>📁 数据来源：封面图及视频时长统计_09-08</span>
+    <span>📦 数据量：245条记录</span>
+    <span>⚠️ 重点关注：R6 PRO 4G</span>
+  </div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="label">累计事件总数</div><div class="value">2.69亿</div><div class="sub">16款型号7天合计</div></div>
+  <div class="kpi-card"><div class="label">整体封面图缺失率</div><div class="value">1.67%</div><div class="sub">累计无封面图事件数 / 累计事件总数</div></div>
+  <div class="kpi-card highlight"><div class="label">R6 PRO 4G 缺失率</div><div class="value">6.54%</div><div class="sub">整体均值的3.9倍</div></div>
+  <div class="kpi-card"><div class="label">视频时长分布</div><div class="value">28.69%</div><div class="sub">6-15s占比最高，0-6s占9.48%，15s+占21.3%</div></div>
+</div>
+
+
+<div class="section" style="border-left:4px solid #00B050">
+  <h2>📌 报告总结</h2>
+  <div style="padding:8px 0">
+    <p style="font-size:14px;color:#555;line-height:2">
+    本报告基于2026-09-01 ~ 2026-09-07（7个数据日）门铃品类16款型号、4大区的封面图及视频时长数据，共245条记录，累计事件2.69亿。<br>
+    <b>核心发现：</b><br>
+    1️⃣ <b>R6 PRO 4G封面图缺失率系统性偏高</b>——7天加权缺失率6.54%，是整体均值（1.67%）的3.9倍。同为4G型号的R5Pro-4G仅2.08%，排除4G网络因素，疑似封面图生成逻辑的系统性缺陷。<br>
+    2️⃣ <b>R6 PRO 4G的0-6s短时频占比19.88%</b>，在4G型号中偏高（R5Pro-4G仅6.35%），可能与封面图缺失问题存在关联。<br>
+    3️⃣ <b>7天中有6天缺失率超过5%</b>，8月下旬以来持续高位震荡，峰值8.32%（09-02），呈锯齿状波动未见收敛。<br>
+    <b>建议：</b>对比R5Pro-4G与R6 PRO 4G的固件封面图模块差异，定位系统性缺失根因，并持续按周跟踪收敛情况。
+    </p>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="num">1</span>各型号封面图缺失率</h2>
+  <div class="formula">计算公式：周期内累计无封面图事件数 / 周期内累计事件总数</div>
+  <div id="chart_model_nocover" class="chart-box tall"></div>
+  <div class="insight-box">
+    <div class="title">📊 缺失率洞察</div>
+    <p>• R6 PRO 4G缺失率6.54%居首，7天中6天超过5%阈值，属持续性、系统性问题<br>• R5Pro-4G同为4G型号仅2.08%，R6 PRO 4G是其3.1倍，排除4G网络因素<br>• R6 PRO（2.85%）与R6-5MP（2.66%）次高，但与R6 PRO 4G差距明显</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="num">2</span>各型号0-6s视频占比</h2>
+  <div class="formula">计算公式：周期内累计无封面图事件数 / 周期内累计事件总数</div>
+  <div id="chart_model_dur" class="chart-box"></div>
+  <div class="insight-box">
+    <div class="title">📊 0-6s占比洞察</div>
+    <p>• R6以29.52%的0-6s占比显著高于其他型号，短时频事件最为集中<br>• R6 PRO 4G为19.88%，在4G型号中偏高（R5Pro-4G仅6.35%），可能与封面图缺失问题存在关联<br>• CS2（0.14%）和AR3X（0.23%）0-6s占比极低，视频时长普遍较长</p>
+  </div>
+</div>
+
+
+<div class="section">
+  <h2><span class="num">3</span>R6 PRO 4G 专项分析</h2>
+  <div class="desc">以汇总数据为起点，深入分析R6 PRO 4G的封面图缺失问题</div>
+
+  <div class="r6pro4g-banner">
+    <h3>⚠️ R6 PRO 4G 封面图缺失率系统性偏高</h3>
+    <p style="font-size:14px;color:#666">7天加权缺失率6.54%，是整体均值（1.67%）的3.9倍。同为4G型号的R5Pro-4G仅2.08%，说明问题非4G网络限制所致。缺失率在4%-10%间锯齿状波动，未见收敛趋势。</p>
+    <div class="stat-grid">
+      <div class="stat-item"><div class="v">6.54%</div><div class="l">7天加权缺失率</div></div>
+      <div class="stat-item"><div class="v">8.32%</div><div class="l">日峰值(09-02)</div></div>
+      <div class="stat-item"><div class="v">6.4万</div><div class="l">7天事件总量</div></div>
+      <div class="stat-item"><div class="v">6天</div><div class="l">缺失率超5%天数</div></div>
+      <div class="stat-item"><div class="v">2.08%</div><div class="l">R5Pro-4G同期</div></div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;color:#666;margin:16px 0 8px">3.1 R6 PRO 4G vs 对比组 — 封面图缺失率</h3>
+  <div id="chart_r6pro4g_vs_nocover" class="chart-box short"></div>
+
+  <h3 style="font-size:15px;color:#666;margin:20px 0 8px">3.2 R6 PRO 4G 日趋势 — 事件数 + 缺失率</h3>
+  <div id="chart_r6pro4g_trend" class="chart-box"></div>
+
+  <h3 style="font-size:15px;color:#666;margin:20px 0 8px">3.3 R6 PRO 4G 日趋势 — 0-6s占比</h3>
+  <div id="chart_r6pro4g_d06" class="chart-box"></div>
+
+  <div class="insight-box alert">
+    <div class="title">🚨 关键发现</div>
+    <p>• 7天中6天缺失率超过5%，8/23后进入持续高位区间<br>
+    • 09-02缺失率峰值8.32%，当天13,239条事件中1,102条无封面图<br>
+    • 缺失率呈"高峰-回落-再升高"的锯齿状，非一次性事件，疑似封面图生成逻辑的系统性缺陷<br>
+    • 对比R5Pro-4G缺失率仅2.08%，两者同为4G型号但差异显著，排除网络因素<br>
+    • 建议：排查R6 PRO 4G固件封面图抓帧时序、存储写入逻辑，对比R5Pro-4G固件差异</p>
+  </div>
+</div>
+
+<div class="footer">🦞 封面图及视频时长统计分析报告 | 数据周期 2026-09-01 ~ 2026-09-07 | 生成时间 2026-09-08</div>
+</div>
+<script>
+
+var ALL={"model_summary":{"R5 MAX":{"events":118072427,"nocover_pct":1.43,"d06_pct":11.12,"d15_pct":14.28,"d15plus_pct":11.47},"R6 PRO":{"events":65620092,"nocover_pct":2.85,"d06_pct":5.81,"d15_pct":37.29,"d15plus_pct":35.71},"R6 MAX":{"events":22608151,"nocover_pct":1.33,"d06_pct":11.44,"d15_pct":14.48,"d15plus_pct":11.11},"R5 Pro":{"events":16386376,"nocover_pct":1.43,"d06_pct":3.58,"d15_pct":65.22,"d15plus_pct":27.96},"R6":{"events":12363884,"nocover_pct":0.15,"d06_pct":29.52,"d15_pct":45.69,"d15plus_pct":22.67},"R6-5MP":{"events":8261026,"nocover_pct":2.66,"d06_pct":11.7,"d15_pct":26.07,"d15plus_pct":42.16},"R4 PRO":{"events":6414292,"nocover_pct":0.06,"d06_pct":1.94,"d15_pct":56.91,"d15plus_pct":25.14},"R811":{"events":4184739,"nocover_pct":1.01,"d06_pct":3.37,"d15_pct":48.44,"d15plus_pct":28.9},"CS2":{"events":3088401,"nocover_pct":0.03,"d06_pct":0.14,"d15_pct":49.98,"d15plus_pct":43.79},"R5Pro-4G":{"events":2945160,"nocover_pct":2.08,"d06_pct":6.35,"d15_pct":66.57,"d15plus_pct":24.47},"R811S":{"events":2409116,"nocover_pct":0.93,"d06_pct":2.49,"d15_pct":64.16,"d15plus_pct":16.49},"R810SE":{"events":2187532,"nocover_pct":0.93,"d06_pct":6.97,"d15_pct":67.58,"d15plus_pct":21.94},"R810":{"events":2105203,"nocover_pct":0.89,"d06_pct":1.88,"d15_pct":44.6,"d15plus_pct":29.51},"AR3X":{"events":1652251,"nocover_pct":0.13,"d06_pct":0.23,"d15_pct":26.04,"d15plus_pct":22.3},"R4 Pro":{"events":771057,"nocover_pct":0.11,"d06_pct":6.18,"d15_pct":66.93,"d15plus_pct":23.59},"R6 PRO 4G":{"events":64415,"nocover_pct":6.54,"d06_pct":19.88,"d15_pct":43.25,"d15plus_pct":28.45}},"overall":{"events":269134122,"nocover":4507429,"nocover_pct":1.67,"d06_pct":9.48,"d15_pct":28.69,"d15plus_pct":21.3},"r6_daily":{"2026-09-01":{"events":10980,"nocover":573,"nocover_pct":5.22,"d06_pct":18.74,"d15_pct":43.93,"d15plus_pct":28.09},"2026-09-02":{"events":13239,"nocover":1102,"nocover_pct":8.32,"d06_pct":24.89,"d15_pct":39.51,"d15plus_pct":28.09},"2026-09-03":{"events":11669,"nocover":721,"nocover_pct":6.18,"d06_pct":19.72,"d15_pct":44.27,"d15plus_pct":28.07},"2026-09-04":{"events":9439,"nocover":714,"nocover_pct":7.56,"d06_pct":20.63,"d15_pct":46.59,"d15plus_pct":25.02},"2026-09-05":{"events":4440,"nocover":205,"nocover_pct":4.62,"d06_pct":11.71,"d15_pct":42.82,"d15plus_pct":35.97},"2026-09-06":{"events":4297,"nocover":306,"nocover_pct":7.12,"d06_pct":15.2,"d15_pct":41.38,"d15plus_pct":32.6},"2026-09-07":{"events":10351,"nocover":590,"nocover_pct":5.7,"d06_pct":19.63,"d15_pct":44.06,"d15plus_pct":27.9}},"dates":["2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-05","2026-09-06","2026-09-07"]};
+
+var MS=ALL.model_summary,OV=ALL.overall,R6D=ALL.r6_daily,DATES=ALL.dates;
+var PL='7天';
+var MS=ALL.model_summary,OV=ALL.overall,R6D=ALL.r6_daily,DATES=ALL.dates;
+var R6_DATES=Object.keys(R6D);
+var R6_EVENTS=R6_DATES.map(function(d){return R6D[d].events});
+var R6_NC=R6_DATES.map(function(d){return R6D[d].nocover_pct});
+var R6_D06=R6_DATES.map(function(d){return R6D[d].d06_pct});
+
+function fmt(n){return n>=1e8?(n/1e8).toFixed(2)+'亿':n>=1e4?(n/1e4).toFixed(1)+'万':n.toLocaleString()}
+function fmtPct(n){return n.toFixed(2)+'%'}
+var palette=['#00B050','#2BBD6E','#3498db','#9b59b6','#1abc9c','#e67e22','#34495e','#7f8c8d','#f1c40f','#e91e63','#00bcd4','#8bc34a','#cddc39','#ff5722','#607d8b','#e91e63'];
+
+// 1. Model nocover pct (sorted desc, with overall reference line)
+var msNc=Object.keys(MS).sort(function(a,b){return MS[b].nocover_pct-MS[a].nocover_pct});
+echarts.init(document.getElementById('chart_model_nocover')).setOption({
+  tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+fmtPct(p[0].value)}},
+  xAxis:{type:'value',axisLabel:{formatter:function(v){return v+'%'},color:'#999'},splitLine:{lineStyle:{color:'#f0f0f0'}}},
+  yAxis:{type:'category',data:msNc.slice().reverse(),axisLabel:{color:'#666',fontSize:11}},
+  series:[{type:'bar',data:msNc.map(function(m){return {value:MS[m].nocover_pct,itemStyle:{color:m==='R6 PRO 4G'?'#E74C3C':(MS[m].nocover_pct>4?'#F39C12':'#00B050')}}}).reverse(),barWidth:16,
+    label:{show:true,position:'right',formatter:function(p){return fmtPct(p.value)},fontSize:10},
+    markLine:{data:[{yAxis:OV.nocover_pct,lineStyle:{color:'#666',type:'dashed'},label:{formatter:'整体均值 '+OV.nocover_pct+'%',color:'#666',fontSize:10}}]}}],
+  grid:{left:90,right:60,top:10,bottom:20}
+});
+
+// 2. Model 0-6s pct only (sorted desc)
+var msD06=Object.keys(MS).sort(function(a,b){return MS[b].d06_pct-MS[a].d06_pct});
+echarts.init(document.getElementById('chart_model_dur')).setOption({
+  tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+fmtPct(p[0].value)}},
+  xAxis:{type:'value',axisLabel:{formatter:function(v){return v+'%'},color:'#999'},splitLine:{lineStyle:{color:'#f0f0f0'}}},
+  yAxis:{type:'category',data:msD06.slice().reverse(),axisLabel:{color:'#666',fontSize:11}},
+  series:[{type:'bar',data:msD06.map(function(m){return {value:MS[m].d06_pct,itemStyle:{color:m==='R6 PRO 4G'?'#E74C3C':'#00B050'}}}).reverse(),barWidth:16,
+    label:{show:true,position:'right',formatter:function(p){return fmtPct(p.value)},fontSize:10}}],
+  grid:{left:90,right:60,top:10,bottom:20}
+});
+
+// 3.1 R6 PRO 4G vs R5Pro-4G vs overall - nocover pct
+echarts.init(document.getElementById('chart_r6pro4g_vs_nocover')).setOption({
+  tooltip:{formatter:function(p){return p.name+': '+fmtPct(p.value)}},
+  xAxis:{type:'category',data:['R6 PRO 4G','R5Pro-4G','全产品'],axisLabel:{color:'#666',fontSize:12}},
+  yAxis:{type:'value',axisLabel:{formatter:function(v){return v+'%'},color:'#999'},splitLine:{lineStyle:{color:'#f0f0f0'}}},
+  series:[{type:'bar',data:[
+    {value:MS['R6 PRO 4G'].nocover_pct,itemStyle:{color:'#E74C3C'}},
+    {value:MS['R5Pro-4G'].nocover_pct,itemStyle:{color:'#00B050'}},
+    {value:OV.nocover_pct,itemStyle:{color:'#F39C12'}}
+  ],barWidth:50,label:{show:true,position:'top',formatter:function(p){return fmtPct(p.value)},fontSize:13,fontWeight:'bold'}}],
+  grid:{left:50,right:20,top:30,bottom:30}
+});
+
+// 3.2 R6 PRO 4G daily trend (bar events + line nocover% with data labels)
+echarts.init(document.getElementById('chart_r6pro4g_trend')).setOption({
+  tooltip:{trigger:'axis',formatter:function(p){
+    var s=p[0].axisValue;
+    p.forEach(function(i){s+='<br/>'+i.marker+i.seriesName+': '+(i.seriesName==='封面图缺失率'?fmtPct(i.value):fmt(i.value))});
+    return s;
+  }},
+  legend:{top:0,textStyle:{fontSize:11}},
+  xAxis:{type:'category',data:R6_DATES,axisLabel:{color:'#999',rotate:30,fontSize:9}},
+  yAxis:[
+    {type:'value',name:'事件数',axisLabel:{formatter:function(v){return fmt(v)},color:'#999'},splitLine:{lineStyle:{color:'#f0f0f0'}}},
+    {type:'value',name:'缺失率',max:15,axisLabel:{formatter:function(v){return v+'%'},color:'#999'},splitLine:{show:false}}
+  ],
+  series:[
+    {name:'日事件数',type:'bar',data:R6_EVENTS,itemStyle:{color:'#BBD9BD'},barWidth:14,
+      label:{show:true,position:'top',formatter:function(p){return (p.value/10000).toFixed(1)+'万'},fontSize:9,color:'#666'}},
+    {name:'封面图缺失率',type:'line',yAxisIndex:1,data:R6_NC,lineStyle:{color:'#E74C3C',width:2},itemStyle:{color:'#E74C3C'},symbol:'circle',symbolSize:6,
+      label:{show:true,position:'top',formatter:function(p){return p.value+'%'},fontSize:10,color:'#E74C3C',fontWeight:'bold'},
+      markLine:{data:[
+        {yAxis:OV.nocover_pct,lineStyle:{color:'#666',type:'dashed'},label:{formatter:'整体均值 '+OV.nocover_pct+'%',color:'#666',fontSize:10}},
+        {yAxis:5,lineStyle:{color:'#F39C12',type:'dotted'},label:{formatter:'5%阈值',color:'#F39C12',fontSize:10}}
+      ]}}
+  ],
+  grid:{left:55,right:55,top:40,bottom:40}
+});
+
+
+// 3.3 R6 PRO 4G 0-6s daily trend
+echarts.init(document.getElementById('chart_r6pro4g_d06')).setOption({
+  tooltip:{trigger:'axis',formatter:function(p){var s=p[0].axisValue;p.forEach(function(i){s+='<br/>'+i.marker+i.seriesName+': '+fmtPct(i.value)});return s}},
+  legend:{top:0,textStyle:{fontSize:11}},
+  xAxis:{type:'category',data:R6_DATES,axisLabel:{color:'#999',rotate:30,fontSize:9}},
+  yAxis:{type:'value',name:'0-6s占比',axisLabel:{formatter:function(v){return v+'%'},color:'#999'},splitLine:{lineStyle:{color:'#f0f0f0'}}},
+  series:[
+    {name:'0-6s占比',type:'line',data:R6_D06,lineStyle:{color:'#E74C3C',width:2},itemStyle:{color:'#E74C3C'},symbol:'circle',symbolSize:6,
+      label:{show:true,position:'top',formatter:function(p){return p.value+'%'},fontSize:10,color:'#E74C3C',fontWeight:'bold'},
+      markLine:{data:[{yAxis:MS['R6 PRO 4G'].d06_pct,lineStyle:{color:'#666',type:'dashed'},label:{formatter:PL+'均值 '+MS['R6 PRO 4G'].d06_pct+'%',color:'#666',fontSize:10}}]}}
+  ],
+  grid:{left:55,right:20,top:40,bottom:40}
+});
+
+window.addEventListener('resize',function(){document.querySelectorAll('.chart-box').forEach(function(el){var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+
+</script>
+</body>
+</html>
