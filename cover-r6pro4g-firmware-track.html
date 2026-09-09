@@ -88,10 +88,10 @@ table.data tr:hover td{background:#fafcfa}
 </div>
 <div class="section" style="border-left:4px solid #00B050">
   <h2><span class="num">1</span>三固件代表日对比：0828(9/2) vs 0903(9/7) vs 0908(9/8)</h2>
-  <p style="font-size:13px;color:#666">每个固件取一个代表日做同日历对齐：0828取9/2（升级前存量代表日）、0903取9/7（收敛终点）、0908取9/8（推送首日）。</p>
-  <div id="chartFw" style="height:360px"></div>
+  <p style="font-size:13px;color:#666">每个固件取一个代表日做同日历对齐：0828取9/2（升级前存量代表日）、0903取9/7（收敛终点）、0908取9/8（推送首日）。对比指标：封面图缺失率 + 0-6s超短事件占比。</p>
+  <div id="chartFw" style="height:380px"></div>
   <p style="font-size:12px;color:#999;margin-top:6px;text-align:center">0828@9/2：36台 / 7,474事件　·　0903@9/7：20台 / 1,951事件　·　0908@9/8：24台 / 3,194事件</p>
-  <p style="font-size:13px;color:#666;margin-top:10px">💡 三点解读：① 0903期末（9/7）1.54%，较0828存量日（9/2）的8.44%下降6.9pp，改善显著；② 0908首日4.85%，仍明显高于0903期末水平——首日数据不能下结论，需跟踪至9/14；③ 各代表日样本结构不同（36/20/24台），对比时注意口径。</p>
+  <p style="font-size:13px;color:#666;margin-top:10px">💡 三点解读：① 0903期末（9/7）缺失率1.54%，较0828存量日（9/2）的8.44%下降6.9pp，改善显著；② 0908首日4.85%，仍明显高于0903期末水平——首日数据不能下结论，需跟踪至9/14；③ <b>0-6s超短事件占比同趋势</b>：0828期20.99% → 0903期4.25% → 0908期4.13%，0908首日已与0903相当，两类指标相互印证。</p>
 </div>
 <div class="section" style="border-left:4px solid #00B050">
   <h2><span class="num">2</span>重点关注设备三期对照（20台）：0828期@9/2 → 0903期@9/7 → 0908期@9/8</h2>
@@ -125,27 +125,33 @@ table.data tr:hover td{background:#fafcfa}
   🦞 由尹燕玲-报告分析专家生成 · 2026-09-09
 </div>
 <script>
-var ALL = {"labels": ["0828版(9/2)", "0903版(9/7)", "0908版(9/8)"], "vals": [8.44, 1.54, 4.85], "subs": ["36台 / 7,474事件", "20台 / 1,951事件", "24台 / 3,194事件"]};
+var ALL = {"labels": ["0828版(9/2)", "0903版(9/7)", "0908版(9/8)"], "miss": [8.44, 1.54, 4.85], "s6": [20.99, 4.25, 4.13], "subs": ["36台 / 7,474事件", "20台 / 1,951事件", "24台 / 3,194事件"]};
 
 var chart = echarts.init(document.getElementById('chartFw'));
-var repColors = ['#999999', '#00B050', '#F39C12'];
 chart.setOption({
-  tooltip: {trigger: 'axis', axisPointer: {type: 'shadow'},
-    formatter: function(p){ var i = p[0].dataIndex;
-      return p[0].name + '<br/>缺失率：' + p[0].value + '%'; }},
+  tooltip: {trigger: 'axis', axisPointer: {type: 'shadow'}},
+  legend: {data: ['封面图缺失率', '0-6s超短事件占比'], top: 0},
   grid: {left: 60, right: 40, bottom: 50, top: 50},
   xAxis: {type: 'category', data: ALL.labels,
     axisLabel: {fontSize: 13, color: '#333', interval: 0}},
-  yAxis: {type: 'value', name: '缺失率%', max: 10,
+  yAxis: {type: 'value', name: '%', max: 25,
     axisLabel: {formatter: '{value}%'}},
   series: [{
-    name: '缺失率',
+    name: '封面图缺失率',
+    type: 'bar',
+    barWidth: 60,
+    data: ALL.miss.map(function(v, i){
+      return {value: v, itemStyle: {color: ['#999999', '#00B050', '#2BBD6E'][i], borderRadius: [6, 6, 0, 0]}};
+    }),
+    label: {show: true, position: 'top', formatter: '{c}%', fontSize: 14, fontWeight: 'bold', color: '#333'}
+  }, {
+    name: '0-6s超短事件占比',
     type: 'bar',
     barWidth: 110,
-    data: ALL.vals.map(function(v, i){
-      return {value: v, itemStyle: {color: repColors[i], borderRadius: [6, 6, 0, 0]}};
+    data: ALL.s6.map(function(v, i){
+      return {value: v, itemStyle: {color: ['#E8A87C', '#7FD8A8', '#F5C67B'][i], borderRadius: [6, 6, 0, 0]}};
     }),
-    label: {show: true, position: 'top', formatter: '{c}%', fontSize: 16, fontWeight: 'bold', color: '#333'}
+    label: {show: true, position: 'top', formatter: '{c}%', fontSize: 13, color: '#666'}
   }]
 });
 window.addEventListener("resize", function(){ chart.resize(); });
