@@ -70,9 +70,12 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
   .problem-text { color:#212121; font-weight:500; }
   .solution-text { color:#444; }
   .new-row { background:#fffdf0; }
-  /* 分类卡片固定4列网格，质量类卡片集中不与咨询类杂排 */
-  .cat-cards { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; }
-  .cat-card { min-width:0; }
+  /* 分类卡片一行展示完 */
+  .cat-cards { display:grid; grid-template-columns:repeat(8, 1fr); gap:10px; }
+  .cat-card { min-width:0; padding:12px 6px; border-radius:8px; }
+  .cat-card .cat-icon { font-size:20px; }
+  .cat-card .cat-name { font-size:12px; white-space:nowrap; }
+  .cat-card .cat-count { font-size:20px; margin-top:2px; }
 </style>
 
 </head>
