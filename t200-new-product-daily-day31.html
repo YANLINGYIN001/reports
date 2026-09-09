@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 4G记录仪新品跟踪日报 · Day 31</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:30px;border-radius:12px;margin-bottom:20px}
+.header h1{font-size:24px;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:.9}
+.overview{background:#fff;border-left:4px solid #00B050;padding:15px 20px;border-radius:8px;margin-bottom:20px;font-size:15px}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;padding:20px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:32px;font-weight:700;color:#E74C3C}
+.kpi-card .delta{font-size:12px;color:#00B050;margin-top:4px}
+.kpi-card .delta.up{color:#E74C3C}
+.kpi-card .delta.zero{color:#999}
+.kpi-card .sub{font-size:12px;color:#666;margin-top:4px}
+.section{background:#fff;padding:24px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section h2{font-size:18px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.insight{padding:14px 18px;border-radius:8px;margin-bottom:12px;font-size:14px}
+.insight.blue{background:#e8f4fd;border-left:4px solid #3498db}
+.insight.orange{background:#fff3e0;border-left:4px solid #F39C12}
+.insight.red{background:#fde8e8;border-left:4px solid #E74C3C}
+.insight .title{font-weight:700}
+.ch-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ch-tag{background:#f0f7f0;color:#00B050;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500}
+.ch-tag .ch-num{margin-left:4px;font-weight:700}
+.ch-tag .ch-delta{margin-left:4px;font-size:11px;color:#E74C3C}
+.chart-box{width:100%;height:350px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #f0f0f0}
+th{background:#f8f9fa;font-weight:600;color:#666}
+tr:hover{background:#fafafa}
+.new-row{background:#fffde7}
+.new-row:hover{background:#fff9c4}
+.cat-cards{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+.cat-card{flex:1;min-width:100px;border-radius:10px;padding:16px;text-align:center;color:#fff}
+.cat-card .cat-icon{font-size:24px}
+.cat-card .cat-name{font-size:13px;margin-top:4px}
+.cat-card .cat-count{font-size:24px;font-weight:700;margin-top:4px}
+.type-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:500}
+.date-badge{color:#999;font-size:12px;white-space:nowrap}
+.risk-row{background:#fdecea}
+.problem-text{max-width:280px}
+.solution-text{color:#666;max-width:300px}
+.delta-tag{color:#E74C3C;font-size:12px;margin-left:4px}
+.detail-table{margin-bottom:16px}
+.note{font-size:12px;color:#999;margin-top:8px}
+.footer{text-align:center;padding:20px;color:#999;font-size:13px}
+.footer a{color:#00B050;text-decoration:none}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.container{padding:10px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>📊 T200 4G记录仪新品跟踪日报 · Day 31</h1>
+<div class="subtitle">数据周期：8.4 - 9.9 | 累计反馈 319 条 | 覆盖 8 个渠道 | 70 种问题类型</div>
+</div>
+
+<div class="overview">
+📊 截至9月9日，累计反馈319条（较9/8 +14：京东自营7、有赞4、私域3），覆盖8个渠道，问题类型增至70种。今日14条新增中咨询类11条（费用、安装、停车监控等前置咨询为主），实质性缺陷3条。最需关注：首现"APP观看实时画面自动跳转广告页面"反馈（APP侧体验问题，客服已反馈技术核实）；费用类咨询集中出现5条（4G流量/云录收费），用户对流量与云存费用规则的关注度上升。实质性缺陷增至73条。
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">319</div><div class="delta">较9/8 +14</div></div>
+<div class="kpi-card"><div class="label">Top3问题（累计+今日新增）</div><div class="value" style="font-size:16px;line-height:1.4">是否包安装咨询 26条 <span style="color:#999">+0</span><br>安装咨询 22条 <span style="color:#999">+0</span><br>前后双录/全景需求 19条 <span style="color:#999">+0</span></div><div class="delta zero">是否包安装、安装咨询为前二</div></div>
+<div class="kpi-card"><div class="label">新增实质性缺陷</div><div class="value" style="font-size:16px;line-height:1.4">远程查看卡顿 5条 <span style="color:#E74C3C;font-weight:700">+1</span><br>无行车轨迹 3条 <span style="color:#E74C3C;font-weight:700">+1</span><br>APP跳转广告页面 1条 <span style="color:#E74C3C;font-weight:700">+1</span></div><div class="sub">累计缺陷 73 条（较9/8 +3）</div></div></div>
+
+<div class="section">
+<h2>核心洞察</h2>
+<div class="insight blue"><span class="title">🔵 今日新增14条，京东自营7条、有赞4条、私域3条，咨询类为主（11条）。</span>费用类咨询集中出现5条（4G流量收费相关3条、云录收费2条），"更换流量卡咨询"首次出现，用户对流量与云存费用规则的关注度上升；其余为安装、配网、内存卡等常规咨询。整体反馈节奏延续"咨询为主、缺陷零星"的平稳态势。</div>
+<div class="insight orange"><span class="title">🟡 首现"APP观看实时画面自动跳转广告页面"反馈（新增类型）。</span>用户描述APP观看实时画面时自动跳转至广告页面，客服已反馈技术核实原因；今日京东自营渠道另有远程查看卡顿（累计5条）、无行车轨迹（累计3条）各+1，三条均为实质性缺陷反馈。</div>
+<div class="insight blue"><span class="title">🔵 画面清晰度类今日零新增，此前连续3个统计日增长（4→8→10）后暂缓。</span>该类累计10条仍为当前最大的实质性缺陷簇，全部来自京东自营渠道。</div><div class="section">
+<h2>渠道反馈分布</h2>
+<span class="ch-tag">京东自营<span class="ch-num">160</span><span class=ch-delta>(+7)</span></span><span class="ch-tag">有赞<span class="ch-num">88</span><span class=ch-delta>(+4)</span></span><span class="ch-tag">私域<span class="ch-num">32</span><span class=ch-delta>(+3)</span></span><span class="ch-tag">天猫官旗<span class="ch-num">14</span></span><span class="ch-tag">小红书<span class="ch-num">10</span></span><span class="ch-tag">天猫车品<span class="ch-num">8</span></span><span class="ch-tag">抖音<span class="ch-num">3</span></span><span class="ch-tag">天猫车旗<span class="ch-num">1</span></span>
+<div id="chChart" class="chart-box"></div>
+<p class="note">注：另有渠道聚合行（京东23单、抖音8个问题、天猫车旗）不计入明细渠道统计。</p>
+</div>
+
+<div class="section">
+<h2>问题主题分类</h2>
+<div class="cat-cards"><div class="cat-card" style="background:#2ecc71"><div class="cat-icon">💡</div><div class="cat-name">功能</div><div class="cat-count">83</div></div><div class="cat-card" style="background:#e67e22"><div class="cat-icon">🔧</div><div class="cat-name">安装</div><div class="cat-count">72</div></div><div class="cat-card" style="background:#9b59b6"><div class="cat-icon">💰</div><div class="cat-name">费用</div><div class="cat-count">36</div></div><div class="cat-card" style="background:#1abc9c"><div class="cat-icon">🅿️</div><div class="cat-name">停车监控</div><div class="cat-count">31</div></div><div class="cat-card" style="background:#3498db"><div class="cat-icon">🔌</div><div class="cat-name">配件</div><div class="cat-count">31</div></div><div class="cat-card" style="background:#f1c40f"><div class="cat-icon">🔋</div><div class="cat-name">供电</div><div class="cat-count">29</div></div><div class="cat-card" style="background:#34495e"><div class="cat-icon">🎥</div><div class="cat-name">视野</div><div class="cat-count">19</div></div><div class="cat-card" style="background:#95a5a6"><div class="cat-icon">📐</div><div class="cat-name">参数</div><div class="cat-count">12</div></div><div class="cat-card" style="background:#e74c3c"><div class="cat-icon">⚠️</div><div class="cat-name">品控</div><div class="cat-count">3</div></div></div>
+<table class="detail-table" style="margin-top:16px;"><thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型</th></tr></thead><tbody><tr><td style="color:#2ecc71;font-weight:600">💡 功能</td><td>83</td><td>26.3%</td><td>远程查看咨询(14)、云录功能咨询(8)、画面清晰度低(8)、定位不显示(7)</td></tr><tr><td style="color:#e67e22;font-weight:600">🔧 安装</td><td>72</td><td>22.8%</td><td>是否包安装咨询(26)、安装咨询(22)、镜头调节咨询(7)、门店不会安装(5)</td></tr><tr><td style="color:#9b59b6;font-weight:600">💰 费用</td><td>36</td><td>11.4%</td><td>4G流量收费咨询(16)、云录收费咨询(13)、质保咨询(2)、以旧换新咨询(1)</td></tr><tr><td style="color:#1abc9c;font-weight:600">🅿️ 停车监控</td><td>31</td><td>9.8%</td><td>停车监控咨询(15)、哨兵模式咨询(13)、哨兵模式咨询；停车监控咨询(1)、哨兵模式不灵敏(1)</td></tr><tr><td style="color:#3498db;font-weight:600">🔌 配件</td><td>31</td><td>9.8%</td><td>是否带降压线咨询(7)、内存卡咨询(7)、降压线适配咨询(3)、降压线安装故障(3)</td></tr><tr><td style="color:#f1c40f;font-weight:600">🔋 供电</td><td>29</td><td>9.2%</td><td>电池/供电咨询(17)、电瓶损耗影响顾虑(8)、车充和降压线差异咨询(3)、是否亏电咨询；远程下载咨询；其他功能咨询；前后双录/全景需求(1)</td></tr><tr><td style="color:#34495e;font-weight:600">🎥 视野</td><td>19</td><td>6.0%</td><td>前后双录/全景需求(19)</td></tr><tr><td style="color:#95a5a6;font-weight:600">📐 参数</td><td>12</td><td>3.8%</td><td>其他规格咨询(6)、分辨率咨询(3)、车型适配咨询(3)、产品参数咨询(2)</td></tr><tr><td style="color:#e74c3c;font-weight:600">⚠️ 品控</td><td>3</td><td>0.9%</td><td>外观瑕疵(1)、设备发烫(1)、开流失败(1)</td></tr></tbody></table>
+</div>
+
+<div class="section">
+<div class="section">
+<h2>今日新增反馈明细（较9/8新增 14 条：京东自营×7、有赞×4、私域×3）</h2><table class="detail-table"><thead><tr><th>分类</th><th>问题类型</th><th>渠道</th><th>日期</th><th>用户问题</th><th>客服方案</th></tr></thead><tbody><tr class="new-row risk-row"><td style="color:#2ecc71;font-weight:600">💡 功能</td><td>🆕 <span class="type-badge" style="background:#E74C3C20;color:#E74C3C">APP跳转广告页面</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">app观看实时画面，自动跳转到广告页面</td><td class="solution-text">已反馈技术核实原因</td></tr>
+<tr class="new-row risk-row"><td style="color:#2ecc71;font-weight:600">💡 功能</td><td><span class="type-badge" style="background:#E74C3C20;color:#E74C3C">远程查看卡顿</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">实时画面查看卡顿有延迟</td><td class="solution-text">客服解答错误，让客户检测降压线接线</td></tr>
+<tr class="new-row risk-row"><td style="color:#2ecc71;font-weight:600">💡 功能</td><td><span class="type-badge" style="background:#E74C3C20;color:#E74C3C">无行车轨迹</span></td><td>京东自营</td><td><span class="date-badge">09/09</span></td><td class="problem-text">没有行车轨迹</td><td class="solution-text">建议检测降压线接线</td></tr>
+<tr class="new-row"><td style="color:#2ecc71;font-weight:600">💡 功能</td><td><span class="type-badge" style="background:#2ecc7120;color:#2ecc71">APP使用咨询</span></td><td>京东自营</td><td><span class="date-badge">09/09</span></td><td class="problem-text">怎么使用</td><td class="solution-text">发送二维码告知如何连接app</td></tr>
+<tr class="new-row"><td style="color:#9b59b6;font-weight:600">💰 费用</td><td><span class="type-badge" style="background:#2ecc7120;color:#2ecc71">4G流量收费咨询</span> <span class="type-badge" style="background:#2ecc7120;color:#2ecc71">远程查看咨询</span></td><td>有赞</td><td><span class="date-badge">09/09</span></td><td class="problem-text">终身免流量。远程可以观看的吗？</td><td class="solution-text">流量是终身免费的，支持远程查看</td></tr>
+<tr class="new-row"><td style="color:#9b59b6;font-weight:600">💰 费用</td><td><span class="type-badge" style="background:#2ecc7120;color:#2ecc71">4G流量收费咨询</span> 🆕 <span class="type-badge" style="background:#2ecc7120;color:#2ecc71">更换流量卡咨询</span></td><td>有赞</td><td><span class="date-badge">09/09</span></td><td class="problem-text">1、这个4G流量免费多久<br>2、设备支持自己更换其他流量卡吗？</td><td class="solution-text">1、带终身免费不限流量的哦，无需额外购买流量呢~<br>2、支持的，但是设备的流量卡不能换到别的设备使用哦</td></tr>
+<tr class="new-row"><td style="color:#9b59b6;font-weight:600">💰 费用</td><td><span class="type-badge" style="background:#2ecc7120;color:#2ecc71">云录收费咨询</span></td><td>有赞</td><td><span class="date-badge">09/09</span></td><td class="problem-text">云录多少钱一个月</td><td class="solution-text">目前暂时没有包月的参考，7天包年大概是169，您参考下，云录像需要在您APP购买，以您APP页面显示为准哦</td></tr>
+<tr class="new-row"><td style="color:#9b59b6;font-weight:600">💰 费用</td><td><span class="type-badge" style="background:#2ecc7120;color:#2ecc71">4G流量收费咨询</span></td><td>有赞</td><td><span class="date-badge">09/09</span></td><td class="problem-text">网络怎么解决的？</td><td class="solution-text">内置的流量卡，终身不限流量</td></tr>
+<tr class="new-row"><td style="color:#9b59b6;font-weight:600">💰 费用</td><td><span class="type-badge" style="background:#2ecc7120;color:#2ecc71">云录收费咨询</span></td><td>有赞</td><td><span class="date-badge">09/09</span></td><td class="problem-text">七天包月云存是送多久时间？</td><td class="solution-text">一个月时效的哦，到期可以根据需要续费</td></tr>
+<tr class="new-row"><td style="color:#e67e22;font-weight:600">🔧 安装</td><td><span class="type-badge" style="background:#2ecc7120;color:#2ecc71">镜头调节咨询</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">客户记录仪安装位置实时画面有遮挡</td><td class="solution-text">建议重新粘贴</td></tr>
+<tr class="new-row"><td style="color:#1abc9c;font-weight:600">🅿️ 停车监控</td><td><span class="type-badge" style="background:#2ecc7120;color:#2ecc71">哨兵模式咨询</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">哨兵模式24小时录完需要重新开机录制吗</td><td class="solution-text">是的</td></tr>
+<tr class="new-row"><td style="color:#3498db;font-weight:600">🔌 配件</td><td><span class="type-badge" style="background:#2ecc7120;color:#2ecc71">内存卡循环录制咨询</span></td><td>私域</td><td><span class="date-badge">09/08</span></td><td class="problem-text">32G满了怎么删除啊</td><td class="solution-text">内存卡存满以后是自动覆盖循环录制的~</td></tr>
+<tr class="new-row"><td style="color:#f1c40f;font-weight:600">🔋 供电</td><td><span class="type-badge" style="background:#2ecc7120;color:#2ecc71">电瓶损耗影响顾虑</span></td><td>京东自营</td><td><span class="date-badge">09/09</span></td><td class="problem-text">这个不会亏电打不燃火吧</td><td class="solution-text">不会的哈客官，降压线是有低压保护的</td></tr>
+<tr class="new-row"><td style="color:#95a5a6;font-weight:600">📐 参数</td><td><span class="type-badge" style="background:#2ecc7120;color:#2ecc71">分辨率咨询</span></td><td>私域</td><td><span class="date-badge">09/09</span></td><td class="problem-text">分辨率是多少的</td><td class="solution-text">1440P哦</td></tr></tbody></table>
+<p class="note">注：🆕 为本期新增问题标签；红底行为实质性缺陷类反馈，置顶展示；其余按分类分组展示。</p>
+</div>
+
+<div class="footer">
+<p>数据来源：飞书文档「T200用户反馈问题汇总」 | <a href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">报告合集</a></p>
+<p>由尹燕玲-报告分析专家自动生成 · 🦞</p>
+</div>
+</div>
+
+<script>
+var chChart=echarts.init(document.getElementById('chChart'));
+chChart.setOption({
+  tooltip:{trigger:'axis'},
+  grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},
+  xAxis:{type:'category',data:["京东自营", "有赞", "私域", "天猫官旗", "小红书", "天猫车品", "抖音", "天猫车旗"],axisLabel:{rotate:30}},
+  yAxis:{type:'value'},
+  series:[{type:'bar',data:[160, 88, 32, 14, 10, 8, 3, 1],itemStyle:{color:'#00B050'},barWidth:'60%'}]
+});
+
+window.addEventListener('resize',function(){chChart.resize()});
+</script>
+</body>
+</html>
