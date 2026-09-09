@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微信一键登录异常 · 公测群答疑手册</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; }
+body { background:#f5f7fa; color:#333; line-height:1.7; }
+.wrap { max-width:1080px; margin:0 auto; padding:0 16px; }
+.header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 60%,#28a745 100%); color:#fff; padding:34px 16px 28px; text-align:center; border-radius:0 0 18px 18px; }
+.header h1 { font-size:26px; letter-spacing:1px; }
+.header .sub { font-size:14px; opacity:.92; margin-top:8px; }
+.header .meta { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:14px; }
+.header .meta span { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35); padding:4px 14px; border-radius:20px; font-size:12.5px; }
+.section { background:#fff; border-radius:12px; padding:22px 24px; margin-top:18px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+h2 { font-size:19px; padding-left:10px; border-left:5px solid #00B050; margin-bottom:14px; }
+h2 .en { font-size:12px; color:#999; font-weight:normal; margin-left:8px; }
+.kpi-row { display:flex; flex-wrap:wrap; gap:12px; }
+.kpi-card { flex:1; min-width:260px; background:#f8faf8; border:1px solid #e8f0ea; border-radius:10px; padding:14px 16px; }
+.kpi-card .label { font-size:12.5px; color:#666; font-weight:bold; }
+.kpi-card .value { font-size:15px; font-weight:bold; color:#333; margin:4px 0; }
+.kpi-card .sub { font-size:12px; color:#888; }
+.flow { display:flex; flex-wrap:wrap; align-items:stretch; gap:0; margin:12px 0; }
+.fnode { background:#fff; border:2px solid #00B050; border-radius:10px; padding:10px 14px; font-size:13.5px; flex:1; min-width:180px; }
+.fnode .no { display:inline-block; background:#00B050; color:#fff; border-radius:50%; width:22px; height:22px; text-align:center; line-height:22px; font-size:12px; margin-right:6px; }
+.fbranch { background:#f2f9f4; border-left:3px solid #00B050; padding:8px 12px; margin:8px 0; font-size:13.5px; border-radius:0 8px 8px 0; }
+.arrow { text-align:center; color:#00B050; font-size:18px; margin:6px 0; font-weight:bold; }
+.branch { margin:6px 0; padding:8px 12px; border-radius:8px; font-size:13.5px; }
+.branch.good { background:#eef9f0; border-left:4px solid #00B050; }
+.branch.bad { background:#fdeaea; border-left:4px solid #E74C3C; }
+.branch.neutral { background:#fff7e8; border-left:4px solid #F39C12; }
+.qa-item { border:1px solid #e8e8e8; border-radius:10px; margin-bottom:10px; overflow:hidden; }
+.qa-q { background:#f7f9f7; padding:10px 14px; font-weight:bold; font-size:14px; display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.btn-copy { flex-shrink:0; border:1px solid #00B050; color:#00B050; background:#fff; border-radius:14px; padding:3px 12px; font-size:12px; cursor:pointer; }
+.btn-copy:hover { background:#00B050; color:#fff; }
+.qa-a-text { padding:12px 14px; font-size:13.5px; white-space:pre-wrap; }
+.tag { display:inline-block; padding:1px 10px; border-radius:10px; font-size:11.5px; margin-right:6px; }
+.tag.green { background:#e6f7ec; color:#00893c; }
+.tag.orange { background:#fff3e0; color:#b26a00; }
+.tag.red { background:#fdeaea; color:#c0392b; }
+.callout { border-radius:10px; padding:12px 16px; font-size:13.5px; margin:8px 0; }
+.callout.red { background:#fdeaea; border:1px solid #f5b7b1; }
+.callout.orange { background:#fef5e7; border:1px solid #fad7a0; }
+.decision { text-align:center; padding:14px; background:#fff; border:2px dashed #00B050; border-radius:12px; font-size:15px; font-weight:bold; max-width:560px; margin:0 auto; }
+.split { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:12px; }
+.split .path { flex:1; min-width:300px; max-width:480px; border-radius:12px; padding:14px 16px; }
+.path.p1 { background:#eef9f0; border:2px solid #00B050; }
+.path.p2 { background:#fff7e8; border:2px solid #F39C12; }
+.path h4 { font-size:15px; margin-bottom:6px; }
+.footer { text-align:center; color:#999; font-size:12px; padding:18px 0 30px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="header">
+  <h1>📱 微信一键登录异常 · 公测群答疑手册</h1>
+  <div class="sub">账号体系升级应对 SOP · 场景判断决策树 + 处理流程 + 话术速查</div>
+  <div class="meta">
+    <span>📅 切换账号主体时间：2026-09-15</span>
+    <span>🧩 涉及：360摄像机App & 360智慧生活App</span>
+    <span>👥 影响群体：使用微信一键登录的用户</span>
+  </div>
+</div>
+
+<div class="section">
+  <h2>1️⃣ 背景速览 <span class="en">为什么最近微信登录问题变多</span></h2>
+  <p style="font-size:14px">因账户体系升级，微信授权与APP账号绑定关系触发校验，将部分微信登录的用户踢出登录状态，后续使用微信一键登录时触发身份校验、提示重新验证身份。主要出现在两类用户：</p>
+  <div class="kpi-row" style="margin-top:10px">
+    <div class="kpi-card"><div class="label">账号情况一</div><div class="value" style="font-size:15px;color:#333">微信注册的360账号，未绑定手机号</div><div class="sub">登录后可能变成"新账号"，名下无设备</div></div>
+    <div class="kpi-card"><div class="label">账号情况二</div><div class="value" style="font-size:15px;color:#333">微信已绑定手机号，但习惯微信授权登录</div><div class="sub">登录后能进原账号，但登录态可能丢失</div></div>
+  </div>
+  <div class="callout orange">⚠️ <b>两个App的差异：</b>「360智慧生活App」登录后会弹出"需绑定手机号/邮箱"提示（若提示被占用且无法更换 → 只能申请"解除手机占用"再重新绑定微信）；「360摄像机App」登录后<b>不会</b>弹出绑定提示。</div>
+</div>
+<div class="section">
+  <h2>2️⃣ 30秒判断决策树 <span class="en">先问这一句，再对症处理</span></h2>
+  <div class="decision">第一步先问用户：「用微信一键登录后，<br>还能进入原来那个账号（看到设备）吗？」</div>
+  <div class="split">
+    <div class="path p1">
+      <h4>❌ 进不去 / 变成新账号（名下无设备）</h4>
+      <p style="font-size:13.5px">微信未绑定手机号/邮箱 → <b>场景一：找回历史账号</b>（核心工具：微信找回二维码）</p>
+    </div>
+    <div class="path p2">
+      <h4>✅ 能进原账号，但被要求重新验证</h4>
+      <p style="font-size:13.5px">微信已绑定手机号 → <b>场景二：登录原账号</b>（核心动作：验证手机号确认登录态）</p>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <h2>3️⃣ 场景一 · 微信【未绑定】手机号/邮箱（找回历史账号）</h2>
+  <p style="font-size:13.5px;color:#666">适用：用户微信登录后变成了一个新账号（名下无设备），需要找回他之前的账号。此类场景<b>无法通过APP找回</b>，必须发二维码链接。</p>
+  <div class="callout red">🔗 <b>二维码链接（发给用户）：</b>https://i.360.cn/wechat-recover/qr<br>支持多次扫码、无时间限制；<b>需通过两个不同的智能设备扫码，保存截图后扫码无效</b></div>
+  <div class="flow"><div class="fnode"><span class="no">1</span>用户扫二维码找回历史账号</div></div>
+  <div class="branch neutral">微信【未识别到账号】→ 返回登录页，结束（该微信未注册过360账号）</div>
+  <div class="branch good">微信【已识别到】→ 进入第2步：确认账号，选择绑定方式（新微信 / 手机号 / 邮箱，任选其一）</div>
+  <div class="arrow">▼</div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px">
+    <div class="fbranch" style="flex:1;min-width:300px">
+      <span class="tag green">优先方案</span> <b>选择微信号绑定</b>（判断微信号是否绑定过其他账号）<br>
+      ✅ 未占用 → 绑定成功，回到App用新微信登录，找回成功<br>
+      ⚠️ 已占用 → 确认是否换绑微信，确认换绑后账号恢复、找回成功
+    </div>
+    <div class="fbranch" style="flex:1;min-width:300px">
+      <span class="tag orange">备选</span> <b>选择手机号/邮箱绑定</b>（判断是否被占用）<br>
+      ✅ 未占用 → 绑定成功，找回成功<br>
+      ⚠️ 已占用 → 方式二选一：<b>①申请强制解绑</b>（提供下方材料）　<b>②申请"解除手机占用"</b>（剥离旧账号信息，释放后即可绑定，需登记表格）
+    </div>
+  </div>
+  <div class="callout orange" style="margin-top:12px">📋 <b>此场景强制解绑所需材料：</b>① 用户扫码后显示历史账号的截图　② 设备SN号　③ 分享账号 / 云录订单信息 / 购买订单（三选一辅助）。操作解绑后，用户可使用已注册的手机号绑定设备。</div>
+</div>
+<div class="section">
+  <h2>4️⃣ 场景二 · 微信【已绑定】手机号/邮箱（登录原账号）</h2>
+  <p style="font-size:13.5px;color:#666">适用：微信登录后能进原账号；若登录态丢失需验证手机号。<b>登录态</b>：有登录态=App知道你是谁，操作关联你的账号；无登录态=App不认识你，操作无法关联任何账号。</p>
+  <div class="flow"><div class="fnode"><span class="no">1</span>看登录态</div></div>
+  <div class="branch good">【登录态保留】→ 直接重新绑定手机号/微信号，结束</div>
+  <div class="branch neutral">【登录态丢失】→ 进入第2步</div>
+  <div class="arrow">▼</div>
+  <div class="flow"><div class="fnode"><span class="no">2</span>需验证手机号（能否收到短信验证码）</div></div>
+  <div class="branch neutral">【无法验证】→ 二选一：① 申请强制解绑　② 账号申诉（<b>不记得原手机号 → 仅支持强制解绑</b>）</div>
+  <div class="branch good">【可以验证】→ 进入第3步</div>
+  <div class="arrow">▼</div>
+  <div class="flow"><div class="fnode"><span class="no">3</span>判断输入的手机号是不是原账号绑定的手机号</div></div>
+  <div class="branch good">【是原账号】→ 登录到原账号，结束</div>
+  <div class="branch bad">【非原账号】→ 生成新账号（无设备），三选一：<br>① 用新账号登录 i.360.cn → 解绑微信 → 旧账号重新绑定此微信，或在APP中解除微信号<br>② 申请强制解绑，设备解绑后用新账号绑定设备，后续正常使用<br>③ 登录旧账号，重新验证手机号</div>
+  <div class="callout orange" style="margin-top:12px">📋 <b>此场景强制解绑所需材料：</b>① 原绑定账号　② 设备SN号　③ 购买订单　④ 分享账号 / 云录订单信息 / 购买订单（三选一辅助）。操作解绑后，用户可使用已注册的手机号绑定设备。</div>
+</div>
+<div class="section">
+  <h2>5️⃣ 重点避坑提示 <span class="en">群答疑最容易被问倒的点</span></h2>
+  <div class="callout red">🚫 <b>二维码扫码规则：</b>必须通过两个不同的智能设备现场扫码，<b>保存截图后扫码无效</b>；支持多次扫码、无时间限制。</div>
+  <div class="callout red">🚫 <b>不记得原手机号</b>的用户 → 账号申诉走不通，<b>仅支持强制解绑</b>。</div>
+  <div class="callout orange">📱 <b>App差异：</b>360智慧生活App登录会弹"绑定手机号/邮箱"提示；360摄像机App<b>不弹</b>——用户说"没看到任何提示"时不要怀疑用户。</div>
+  <div class="callout orange">📅 <b>时间窗口：</b>切换账号主体时间为 <b>2026-09-15</b>，此前问题会集中爆发，群答疑时注意安抚情绪、统一口径。</div>
+</div>
+<div class="section">
+  <h2>6️⃣ 话术速查 <span class="en">16问 · 点击复制直接发群</span></h2>
+  <div id="qaList">
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag orange">解释类</span>1. 为什么原微信登录账号丢失，变成新账号，名下没有设备了？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">由于近期360账号相关微信授权登录功能的调整，部分用户原有的微信登录信息可能发生变化。为保障您的账号权益和数据安全，需要您完成身份核验和找回，以便找回并继续使用原账号。给您带来的不便，敬请谅解。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag green">操作类</span>2. 登录账号后产品数据丢失，如何找回？之前绑定的设备如何找回？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">首轮沟通：
+话术1：您好，请您检查登录的账号是否与之前账号不一致导致？请尝试通过手机号、账号及密码等多种方式尝试操作是否可以找到相关数据。
+
+如果用户尝试多种登录方式仍找不到数据：
+话术2：请您确认之前登录账号的方式是什么（微信扫码、账号密码、手机验证码等）？
+
+如果用户确认是微信扫码登录方式：
+话术3：您尝试点击下面链接 i.360.cn，找到账号信息，点击账号绑定，找到微信，点击解除绑定。解绑完成后，您再点击下面链接操作尝试找回一下账号试试：https://i.360.cn/wechat-recover/qr</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag orange">解释类</span>3. 为什么登录账号提示绑定手机号？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，登录360账号时提示绑定手机号，是为了配合国家网络安全实名制要求，同时也是为了保护您的账号安全。绑定后您可以通过密保信息（即手机号/邮箱号）修改找回密码，避免账号遗失后无法自助找回。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag orange">解释类</span>4. 为什么突然提示绑定手机号，之前都不需要？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，非常抱歉给您带来不便，之前不需要绑定是因为平台正在逐步推进账号安全升级，现在您的账号进入了安全补全的范围。这不是针对您个人的限制，而是平台为了所有用户账号安全统一进行的升级，为了保障您的账号安全，建议您及时根据页面提示绑定密保信息（即手机号/邮箱号），感谢您的理解与配合。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag green">操作类</span>5. 微信扫码绑定手机号提示已占用怎么办？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，绑定手机号页面提示&quot;已占用&quot;，说明该手机号之前已经绑定了其他360账号。请您点击“切换邮箱绑定”提示，输入您的常用邮箱进行绑定。
+若您当前没有其他可用邮箱，请您确认手机号当前绑定的360账号是否还需要保留继续使用。
+情况1（保留）：若此账号还使用其他360产品，相关数据还需要保留，建议您看下是否方便注册一个新邮箱（比如126邮箱、新浪邮箱、QQ邮箱等）。注册新的邮箱成功后，您在微信登录页面选择邮箱绑定方式，输入您刚注册的新邮箱绑定即可；
+情况2（不保留）：若此账号后续无使用需求，可协助您申请“解除手机占用”，解除成功后，您可正常使用微信绑定此手机号。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag orange">解释类</span>6. 为什么必须要绑手机号或邮箱，不绑就不让登录？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，非常理解您对隐私的顾虑，根据相关法律法规，用户需进行实名身份认证。手机号是目前最普及、最便捷的实名认证方式。未绑定密保信息（即手机号/邮箱号）的360账号，一旦忘记密码或被盗，可能会导致数据丢失，账号无法自助找回密码。为了保护您的账号安全，建议您及时根据页面提示绑定密保信息（即手机号/邮箱号），感谢您的理解与配合。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag green">操作类</span>7. 账号之前是微信扫码登录，根据提示绑定手机号以后数据没了（微信扫码登录后找不到之前的账号了）</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，您可尝试通过邮箱/其他手机号多种方式登录查询下是否找到数据？
+
+用户说都试过了，还是没有，可评估询问：
+话术：您好，您使用产品中是否有充值过，可尝试提供充值订单号、目前已有的所有账号登录信息，以便为您反馈工作人员进一步核实。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag red">敏感诉求</span>8. 账号内有重要数据找不回来，必须赔偿？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，非常抱歉给您带来不便，烦请您提供一下您当前的360账号、手机号、邮箱等信息，稍后提交相关工作人员为您进一步核实跟进。
+
+用户着急催促：
+您好，已为您备注加急跟进，建议您耐心等待。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag green">操作类</span>9. 遇到问题无法继续，绑定过程出现异常怎么办？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，请您提供问题现象截图或视频，以便为您反馈工作人员进一步核实。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag green">操作类</span>10. 绑定完成后如何登录？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，成功绑定手机号或邮箱后，您直接进到产品页面通过微信扫码、手机号+验证码、账号+密码等方式登录即可。如果是微信扫码找回，您在产品界面通过微信扫码登录二维码即可。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag green">操作类</span>11. 扫描二维码后要确认的账号是微信账号还是360账号？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，您扫码“微信找回账号”二维码，识别的账号为您过往的360账号，请根据头像及账号名称确认，如果确认是本人账号，可以直接点击确认进行下一步操作流程。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag green">操作类</span>12. 未检测到历史账号后返回登录页面，是否会影响新用户微信扫码注册绑定新360账号操作？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，不会影响您注册新360账号的相关操作。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag green">操作类</span>13. 扫码后提示【未检测到对应历史账号】怎么办？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，需要您确认之前通过什么方式登录的360账号？请您提供360账号，以便为您反馈工作人员进一步核实。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag orange">解释类</span>14. 360如何保障个人信息及账号资产安全？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">360作为互联网安全企业，非常重视用户的个人信息及账号资产安全，并已采取了一系列技术措施：
+1. 我们会对可识别的个人身份信息进行加密传输和存储，以确保数据传输的安全性；
+2. 我们存储用户个人信息的服务器系统均为安全加固后的操作系统。我们会对服务器操作进行账户审计及监控，防止数据遭到未经授权访问、公开披露、使用、修改、损坏或丢失；
+3. 如果发现外部公告有安全问题的服务器操作系统，360会在第一时间进行服务器安全升级，确保360所有服务器系统及应用安全。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag red">敏感诉求</span>15. 账号/账号资产丢失责任不在于我（用户），我没有提供举证义务/我无法提供（不记得）必要验证信息，如何找回？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">因为账号归属涉及用户的个人信息和资产安全，我们需要您配合提供必要的验证信息，确认您是账号所有人才能进行处理。</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q"><span><span class="tag green">操作类</span>16. 微信扫码提示微信被占用，怎么办？</span><button class="btn-copy">复制</button></div>
+    <div class="qa-a-text">您好，您尝试点击下面链接 i.360.cn，找到账号信息，点击账号绑定，找到微信，点击解除绑定后再尝试。</div>
+  </div>
+  </div>
+</div>
+<div class="footer">整理自：《"微信账号"登录失败处理流程【综合》· 二维码链接 https://i.360.cn/wechat-recover/qr · 🦞 尹燕玲-报告分析专家 2026-09-09</div>
+<script>
+
+var btns = document.querySelectorAll(".btn-copy");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var item = this.closest(".qa-item");
+    var txt = item.querySelector(".qa-a-text").innerText;
+    var btn = this;
+    var done = function() { btn.textContent = "已复制✓"; setTimeout(function(){ btn.textContent = "复制"; }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(done, function(){ fallbackCopy(txt); });
+    } else { fallbackCopy(txt); }
+  });
+}
+function fallbackCopy(txt) {
+  var ta = document.createElement("textarea");
+  ta.value = txt; document.body.appendChild(ta);
+  ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
+}
+
+</script>
+</div>
+</body>
+</html>
