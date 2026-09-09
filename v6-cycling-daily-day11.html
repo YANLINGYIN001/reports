@@ -70,6 +70,9 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
   .problem-text { color:#212121; font-weight:500; }
   .solution-text { color:#444; }
   .new-row { background:#fffdf0; }
+  /* 分类卡片固定4列网格，质量类卡片集中不与咨询类杂排 */
+  .cat-cards { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; }
+  .cat-card { min-width:0; }
 </style>
 
 </head>
@@ -83,7 +86,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 </div>
 
 <div class="overview">
-  累计收集67条反馈（较昨日Day 10日报+17：9/8晚录入4条、9/9新增4条、客服渠道历史回补9条），统计口径扩大至10渠道。<strong style="color:#00B050;">"无法开机/通电无反应"京东渠道连续2日零新增（9/8、9/9）</strong>，产品端四项改进措施全部落地，待持续观察反馈量；客服渠道回补数据中新增存储卡相关3条（卡录漏录2条、内存卡损坏1条），已单列为质量观察点。<strong style="color:#F39C12;">口径调整（9/9）："插头未按紧到位"类9条单列「安装引导类」（防水紧配设计，非质量缺陷），不计入疑似质量问题。</strong>
+  累计收集67条反馈（较昨日Day 10日报+17：9/8晚录入4条、9/9新增4条、客服渠道历史回补9条），统计口径扩大至10渠道。<strong style="color:#00B050;">"无法开机/通电无反应"京东渠道连续2日零新增（9/8、9/9）</strong>，产品端四项改进措施全部落地，待持续观察反馈量；客服渠道回补数据中新增存储卡相关3条（卡录漏录2条、内存卡损坏1条），已单列「卡录问题」跟踪。
 </div>
 
 <div class="kpi-grid">
