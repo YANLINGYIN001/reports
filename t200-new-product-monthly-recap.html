@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T200 4G记录仪新品跟踪 · 月度小结（8.4-9.9）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:30px;border-radius:12px;margin-bottom:20px}
+.header h1{font-size:24px;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:.9}
+.overview{background:#fff;border-left:4px solid #00B050;padding:15px 20px;border-radius:8px;margin-bottom:20px;font-size:15px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;padding:20px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:32px;font-weight:700;color:#E74C3C}
+.kpi-card .delta{font-size:12px;color:#666;margin-top:4px}
+.section{background:#fff;padding:24px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section h2{font-size:18px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.insight{padding:14px 18px;border-radius:8px;margin-bottom:12px;font-size:14px}
+.insight.blue{background:#e8f4fd;border-left:4px solid #3498db}
+.insight.orange{background:#fff3e0;border-left:4px solid #F39C12}
+.insight.red{background:#fde8e8;border-left:4px solid #E74C3C}
+.insight .title{font-weight:700}
+.chart-box{width:100%;height:360px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #f0f0f0}
+th{background:#f8f9fa;font-weight:600;color:#666}
+tr:hover{background:#fafafa}
+.note{font-size:12px;color:#999;margin-top:8px}
+.severity{font-size:13px;padding:8px 12px;border-radius:6px;margin-top:10px}
+.severity.low{background:#e8f4fd;color:#2471a3}
+.severity.mid{background:#fff3e0;color:#b9770e}
+.severity.high{background:#fde8e8;color:#c0392b}
+.timeline{position:relative;padding-left:10px}
+.t-item{position:relative;padding-bottom:16px;border-left:2px solid #e0e0e0;padding-left:20px;margin-left:8px}
+.t-item:last-child{border-left:none}
+.t-item:before{content:'';position:absolute;left:-6px;top:4px;width:10px;height:10px;border-radius:50%;background:#00B050}
+.t-item.warn:before{background:#F39C12}
+.t-item.risk:before{background:#E74C3C}
+.t-date{font-weight:700;color:#00B050;font-size:13px}
+.t-item.warn .t-date{color:#b9770e}
+.t-item.risk .t-date{color:#E74C3C}
+.t-text{font-size:14px;margin-top:2px}
+.footer{text-align:center;padding:20px;color:#999;font-size:13px}
+.footer a{color:#00B050;text-decoration:none}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.container{padding:10px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>📊 T200 4G记录仪新品跟踪 · 月度小结</h1>
+<div class="subtitle">数据周期：8.4 - 9.9 ｜ 跟踪 Day 1-31（8.10 起算）｜ 基于期日报累计数据</div>
+</div>
+
+<div class="overview">
+📊 新品上市首月（8.10-9.9）累计收集用户反馈 319 条，覆盖 8 个销售与服务渠道，周均反馈 64 条、节奏平稳。反馈结构以咨询类为主（248 条、占 78%），实质性缺陷 68 条（占 21%）。月度内问题焦点从上市初期的定位、安装类，逐步转向 9 月的 APP 与远程功能体验类（远程查看卡顿、设备离线、APP 跳转广告页面、远程删除视频功能缺口）。
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">累计反馈总数</div><div class="value">319</div><div class="delta">跟踪 31 天 · 周均 64 条</div></div>
+<div class="kpi-card"><div class="label">覆盖渠道数</div><div class="value">8</div><div class="delta">京东自营占比 50.6%</div></div>
+<div class="kpi-card"><div class="label">问题类型数</div><div class="value">70</div><div class="delta">含组合标签</div></div>
+<div class="kpi-card"><div class="label">实质性缺陷（修正口径）</div><div class="value">68</div><div class="delta">9.9 起口径修正 · 详见附注</div></div>
+</div>
+
+<div class="section">
+<h2>核心结论</h2>
+<div class="insight blue"><span class="title">🔵 反馈节奏平稳，咨询类主导。</span>31 天累计 319 条，周度维持在 61-73 条区间。其中咨询类 248 条（78%）、实质性缺陷 68 条（21%），新品期用户反馈以"是否包安装、供电方案、费用规则"等售前与使用咨询为主。</div>
+<div class="insight orange"><span class="title">🟡 缺陷反馈高度集中：画面清晰度类为第一大缺陷簇。</span>累计 10 条（8.23 起），全部来自京东自营，9.5-9.7 一度连续翻倍（4→8→10），9.8-9.9 暂缓；客服口径提示 4G 在线默认 360P 可能与部分反馈相关。定位不显示（7条）集中于上市首月（8.10-8.28），8.28 后无新增。</div>
+<div class="insight red"><span class="title">🔴 缺陷反馈的渠道集中度极高：87% 来自京东自营。</span>全期 68 条缺陷中京东自营贡献 59 条（占其 160 条反馈的 37%），有赞、私域渠道缺陷占比仅 6%，天猫官旗、小红书等渠道零缺陷反馈。</div>
+<div class="insight blue"><span class="title">🔵 问题焦点迁移：从硬件安装类转向 APP/远程功能体验。</span>9 月新增的缺陷与功能缺口信号集中在 APP 侧（观看实时画面自动跳转广告页面、远程查看卡顿、设备离线）及"远程删除卡录视频"功能缺口。</div>
+</div>
+
+<div class="section">
+<h2>一、反馈趋势（周度）</h2>
+<div id="weekChart" class="chart-box"></div>
+<p class="note">注：9.7-9.9 为截稿前 3 天（未满周）；8.3-8.9 预售期反馈已计入累计总数。</p>
+<div class="severity low">📌 小结：周度反馈量稳定在 61-73 条区间，无明显衰减；京东自营占比从首周 34% 持续升至 63%，9 月起成为主力反馈渠道。</div>
+</div>
+
+<div class="section">
+<h2>二、渠道反馈特征</h2>
+<table><thead><tr><th>渠道</th><th>反馈量</th><th>占比</th><th>其中缺陷</th><th>渠道缺陷率</th></tr></thead><tbody>
+<tr><td><b>京东自营</b></td><td>160</td><td>50.6%</td><td style="color:#E74C3C;font-weight:600">59</td><td style="color:#E74C3C">36.9%</td></tr>
+<tr><td>有赞</td><td>88</td><td>27.8%</td><td>5</td><td>5.7%</td></tr>
+<tr><td>私域</td><td>32</td><td>10.1%</td><td>2</td><td>6.3%</td></tr>
+<tr><td>天猫官旗</td><td>14</td><td>4.4%</td><td>0</td><td>0%</td></tr>
+<tr><td>小红书</td><td>10</td><td>3.2%</td><td>0</td><td>0%</td></tr>
+<tr><td>天猫车品</td><td>8</td><td>2.5%</td><td>0</td><td>0%</td></tr>
+<tr><td>抖音</td><td>3</td><td>0.9%</td><td>2</td><td>66.7%</td></tr>
+<tr><td>天猫车旗</td><td>1</td><td>0.3%</td><td>0</td><td>0%</td></tr>
+</tbody></table>
+<div class="severity mid">📌 小结：京东自营贡献一半反馈量，且集中了 87%（59/68）的缺陷反馈；有赞以售前咨询为主（4G 流量、云录收费等）；天猫系与小红书以前置咨询为主、几乎无使用期缺陷反馈。</div>
+</div>
+<div class="section">
+<h2>三、问题主题分类全景</h2>
+<table><thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>典型问题</th></tr></thead><tbody>
+<tr><td style="color:#2ecc71;font-weight:600">💡 功能</td><td>83</td><td>26.3%</td><td>远程查看咨询(14)、画面清晰度低(8+2)、定位不显示(7)、设备离线(5)</td></tr>
+<tr><td style="color:#e67e22;font-weight:600">🔧 安装</td><td>72</td><td>22.8%</td><td>是否包安装咨询(26)、安装咨询(22)、镜头调节咨询(7)、门店不会安装(5)</td></tr>
+<tr><td style="color:#9b59b6;font-weight:600">💰 费用</td><td>36</td><td>11.4%</td><td>4G流量收费咨询(16)、云录收费咨询(13)、质保咨询(2)</td></tr>
+<tr><td style="color:#1abc9c;font-weight:600">🅿️ 停车监控</td><td>31</td><td>9.8%</td><td>停车监控咨询(15)、哨兵模式咨询(13)、哨兵模式不灵敏(1)</td></tr>
+<tr><td style="color:#3498db;font-weight:600">🔌 配件</td><td>31</td><td>9.8%</td><td>是否带降压线咨询(7)、内存卡咨询(7)、降压线安装故障(3)</td></tr>
+<tr><td style="color:#f1c40f;font-weight:600">🔋 供电</td><td>29</td><td>9.2%</td><td>电池/供电咨询(17)、电瓶损耗影响顾虑(8)、车充和降压线差异咨询(3)</td></tr>
+<tr><td style="color:#34495e;font-weight:600">🎥 视野</td><td>19</td><td>6.0%</td><td>前后双录/全景需求(19)</td></tr>
+<tr><td style="color:#95a5a6;font-weight:600">📐 参数</td><td>12</td><td>3.8%</td><td>其他规格咨询(6)、分辨率咨询(3)、车型适配咨询(3)</td></tr>
+<tr><td style="color:#e74c3c;font-weight:600">⚠️ 品控</td><td>3</td><td>0.9%</td><td>外观瑕疵(1)、设备发烫(1)、开流失败(1)</td></tr>
+</tbody></table>
+<div class="severity low">📌 小结：功能（83）与安装（72）两类占全量 49%；费用类 36 条中绝大多数为 4G 流量与云录收费咨询，用户对流量与云存费用规则的关注贯穿整月。</div>
+</div>
+
+<div class="section">
+<h2>四、实质性缺陷 TOP10（月度累计 68 条）</h2>
+<table><thead><tr><th>#</th><th>缺陷簇</th><th>累计</th><th>时间跨度</th><th>渠道集中度</th><th>状态备注</th></tr></thead><tbody>
+<tr><td>1</td><td style="color:#E74C3C;font-weight:600">画面清晰度类</td><td><b>10</b></td><td>8.23 - 9.7</td><td>京东自营 100%</td><td>9.5-9.7 连续翻倍，9.8-9.9 零新增</td></tr>
+<tr><td>2</td><td>定位不显示</td><td><b>7</b></td><td>8.10 - 8.28</td><td>京东自营 100%</td><td>上市初期集中，8.28 后无新增</td></tr>
+<tr><td>3</td><td>远程查看卡顿</td><td><b>5</b></td><td>8.16 - 9.8</td><td>京东自营 100%</td><td>持续零星出现，9.9 仍有新增</td></tr>
+<tr><td>3</td><td>设备离线</td><td><b>5</b></td><td>8.22 - 9.7</td><td>京东自营 100%</td><td>持续零星出现</td></tr>
+<tr><td>5</td><td>内存卡不识别</td><td><b>3</b></td><td>8.22 - 9.6</td><td>京东自营 100%</td><td>9.1 后无新增</td></tr>
+<tr><td>5</td><td>内存卡损坏</td><td><b>3</b></td><td>8.19 - 9.1</td><td>京东自营 100%</td><td>9.1 后无新增</td></tr>
+<tr><td>5</td><td>定位偏差大</td><td><b>3</b></td><td>8.28 - 9.3</td><td>京东自营 100%</td><td>含轨迹显示不准确</td></tr>
+<tr><td>5</td><td>无行车轨迹</td><td><b>3</b></td><td>8.30 - 9.9</td><td>京东自营 100%</td><td>9.9 仍有新增</td></tr>
+<tr><td>5</td><td>降压线安装故障</td><td><b>3</b></td><td>8.16 - 9.1</td><td>京东自营 2 / 抖音 1</td><td>—</td></tr>
+<tr><td>10</td><td>熄火后不通电</td><td><b>2</b></td><td>8.13 - 8.17</td><td>京东自营 100%</td><td>8.17 后无新增</td></tr>
+</tbody></table>
+<p class="note">注：其余 18 条为单条散点缺陷（循环录制异常、外观瑕疵、降压线断裂、无法查看回放、远程下载慢、设备发烫、开流失败、哨兵模式不灵敏等），分布在 20+ 个低频类型上，月度报告不逐条展开。</p>
+<div class="severity high">📌 小结：缺陷呈"头部集中 + 长尾分散"结构——画面清晰度、定位不显示、远程查看卡顿、设备离线四个簇合计 27 条，占缺陷总量 40%；其余 41 条分散在 20+ 类型。除画面清晰度类与无行车轨迹外，其余主要簇在 9 月上旬无新增或增量放缓。</div>
+</div>
+
+<div class="section">
+<h2>五、用户咨询热点 TOP10（前置认知盲区）</h2>
+<table><thead><tr><th>#</th><th>咨询主题</th><th>累计</th><th>信息差类别</th></tr></thead><tbody>
+<tr><td>1</td><td>是否包安装咨询</td><td>26</td><td>安装体系</td></tr>
+<tr><td>2</td><td>安装咨询</td><td>22</td><td>安装体系</td></tr>
+<tr><td>3</td><td>前后双录/全景需求</td><td>19</td><td>产品形态需求</td></tr>
+<tr><td>4</td><td>电池/供电咨询</td><td>17</td><td>供电方案</td></tr>
+<tr><td>5</td><td>4G流量收费咨询</td><td>16</td><td>费用规则</td></tr>
+<tr><td>6</td><td>停车监控咨询</td><td>15</td><td>停车/哨兵使用</td></tr>
+<tr><td>7</td><td>远程查看咨询</td><td>14</td><td>远程功能使用</td></tr>
+<tr><td>8</td><td>云录收费咨询</td><td>13</td><td>费用规则</td></tr>
+<tr><td>9</td><td>哨兵模式咨询</td><td>13</td><td>停车/哨兵使用</td></tr>
+<tr><td>10</td><td>电瓶损耗影响顾虑</td><td>8</td><td>供电方案</td></tr>
+</tbody></table>
+<div class="severity mid">📌 小结：咨询热点集中指向三类信息差——<b>安装体系</b>（是否包安装+安装咨询 48 条）、<b>供电方案</b>（电池/电瓶/降压线 25 条）、<b>费用规则</b>（4G 流量+云录 29 条）。建议强化商品页安装说明、供电方式说明与流量/云存费用提示。</div>
+</div>
+
+<div class="section">
+<h2>六、问题演进大事记</h2>
+<div class="timeline">
+<div class="t-item"><div class="t-date">8.10（Day 1）</div><div class="t-text">跟踪启动，首周反馈 73 条，定位不显示类开始累积</div></div>
+<div class="t-item warn"><div class="t-date">8.14（Day 5）</div><div class="t-text">抖音渠道首次出现反馈</div></div>
+<div class="t-item warn"><div class="t-date">8.17（Day 6）</div><div class="t-text">降压线安装类问题升级，实质缺陷增至 11 条</div></div>
+<div class="t-item"><div class="t-date">8.31（Day 22）</div><div class="t-text">"门店不会安装""无行车轨迹""开流失败"独立成类，问题类型增至 59 种</div></div>
+<div class="t-item warn"><div class="t-date">9.2（Day 24）</div><div class="t-text">哨兵模式问题簇集中出现（不灵敏/触发过于灵敏/无声录制）</div></div>
+<div class="t-item risk"><div class="t-date">9.5-9.7（Day 29）</div><div class="t-text">画面清晰度类反馈两天翻倍（4→8 条），全部来自京东自营</div></div>
+<div class="t-item risk"><div class="t-date">9.8（Day 30）</div><div class="t-text">首现"设备没有远程删除卡录视频"功能缺口反馈（客服以补偿挽留）</div></div>
+<div class="t-item risk"><div class="t-date">9.9（Day 31）</div><div class="t-text">首现"APP 观看实时画面自动跳转广告页面"反馈（APP 侧体验问题）</div></div>
+</div>
+</div>
+
+<div class="section">
+<h2>附：口径说明与日报清单</h2>
+<p style="font-size:14px"><b>口径修正说明（9.9 起）：</b>「分享咨询」5 条（8.20-9.4，内容均为"如何分享给家人查看"类咨询）在历史日报中计入实质性缺陷；自本报告起修正为咨询类，修正后全期实质性缺陷为 <b>68 条</b>（历史日报数字保持原状，如 Day 31 日报的 70+3=73 口径不再沿用）。</p>
+<p class="report-links" style="margin-top:12px"><b>期日报清单（20 期）：</b><br>
+<a href="t200-new-product-daily-day1.html">Day 1</a><a href="t200-new-product-daily-day2.html">Day 2</a><a href="t200-new-product-daily-day3.html">Day 3</a><a href="t200-new-product-daily-day4.html">Day 4</a><a href="t200-new-product-daily-day5.html">Day 5</a><a href="t200-new-product-daily-day6.html">Day 6</a><a href="t200-new-product-daily-day8.html">Day 8</a><a href="t200-new-product-daily-day9.html">Day 9</a><a href="t200-new-product-daily-day10.html">Day 10</a><a href="t200-new-product-daily-day12.html">Day 12</a><a href="t200-new-product-daily-day15.html">Day 15</a><a href="t200-new-product-daily-day16.html">Day 16</a><a href="t200-new-product-daily-day17.html">Day 17</a><a href="t200-new-product-daily-day18.html">Day 18</a><a href="t200-new-product-daily-day22.html">Day 22</a><a href="t200-new-product-daily-day23.html">Day 23</a><a href="t200-new-product-daily-day24.html">Day 24</a><a href="t200-new-product-daily-day25.html">Day 25</a><a href="t200-new-product-daily-day26.html">Day 26</a><a href="t200-new-product-daily-day29.html">Day 29</a><a href="t200-new-product-daily-day30.html">Day 30</a><a href="t200-new-product-daily-day31.html">Day 31</a></p>
+</div>
+
+<div class="footer">
+<p>数据来源：飞书文档「T200用户反馈问题汇总」 | <a href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">报告合集</a></p>
+<p>由尹燕玲-报告分析专家自动生成 · 🦞</p>
+</div>
+</div>
+
+<script>
+var wc=echarts.init(document.getElementById('weekChart'));
+wc.setOption({
+  tooltip:{trigger:'axis'},
+  legend:{data:['京东自营','其他渠道'],top:0},
+  grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},
+  xAxis:{type:'category',data:['8.10-8.16','8.17-8.23','8.24-8.30','8.31-9.6','9.7-9.9(3天)']},
+  yAxis:{type:'value'},
+  series:[
+    {name:'京东自营',type:'bar',stack:'total',data:[25,34,43,44,14],itemStyle:{color:'#E74C3C'},barWidth:'50%'},
+    {name:'其他渠道',type:'bar',stack:'total',data:[48,27,28,26,10],itemStyle:{color:'#00B050'}}
+  ]
+});
+window.addEventListener('resize',function(){wc.resize()});
+</script>
+</body>
+</html>
