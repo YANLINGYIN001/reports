@@ -61,6 +61,17 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
   .solution-text, .problem-text { max-width:none; }
 }
 </style>
+<style>
+  /* 明细表可读性优化 9/9 */
+  .detail-table { font-size:13.5px; }
+  .detail-table td { color:#333; line-height:1.55; }
+  .type-badge { font-size:13px; font-weight:700; padding:3px 10px; }
+  .date-badge { color:#555; font-weight:600; font-size:12.5px; }
+  .problem-text { color:#212121; font-weight:500; }
+  .solution-text { color:#444; }
+  .new-row { background:#fffdf0; }
+</style>
+
 </head>
 <body>
 <div class="container">
@@ -78,7 +89,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 <div class="kpi-grid">
   <div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">67</div><div class="delta up">较昨日Day 10 +17（9/8晚录4、9/9×4、客服渠道回补9）</div></div>
   <div class="kpi-card"><div class="label">Top3问题（累计+本期新增）</div><div class="value" style="font-size:16px;line-height:1.4">插头未按紧到位（安装引导） 9条 <span style="color:#E74C3C">+1</span><br>防抖咨询 4条 <span style="color:#999">+0</span><br>安装咨询 4条 <span style="color:#999">+2</span>（防水咨询4条并列）</div><div class="delta zero">9/9当日新增6条：咨询类4条＋质量观察2条（内存卡损坏、卡录漏录）</div></div>
-  <div class="kpi-card"><div class="label">疑似质量问题（累计）</div><div class="value" style="font-size:16px;line-height:1.4">卡录漏录 2条 <span style="color:#999">新增观察</span><br>设备发烫/内存卡损坏 各1条 <span style="color:#999">新增观察</span><br>球头支架损坏 1条 <span style="color:#999">+0</span></div><div class="sub">累计疑似质量5条；"插头未按紧到位"9条已单列「安装引导类」（9/9口径调整），I列空标签已全部补齐</div></div>
+  <div class="kpi-card"><div class="label">今日新增bug问题（9/9）</div><div class="value" style="font-size:16px;line-height:1.4">卡录漏录 1条 <span style="color:#E74C3C;font-weight:700">NEW</span><br>内存卡损坏 1条 <span style="color:#E74C3C;font-weight:700">NEW</span></div><div class="sub">今日新增bug共2条，均为卡录问题（客服已换卡/引导换卡排查）；卡录问题累计3条（另含9/1呼叫中心1条）</div></div>
 </div>
 
 <div class="section">
@@ -115,47 +126,49 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
   <div class="cat-cards">
     <div class="cat-card" style="background:#00B050"><div class="cat-icon">💡</div><div class="cat-name">功能咨询</div><div class="cat-count">35</div></div>
     <div class="cat-card" style="background:#F39C12"><div class="cat-icon">🔧</div><div class="cat-name">安装引导类</div><div class="cat-count">10</div></div>
-    <div class="cat-card" style="background:#E74C3C"><div class="cat-icon">⚠️</div><div class="cat-name">疑似质量问题</div><div class="cat-count">5</div></div>
     <div class="cat-card" style="background:#3498DB"><div class="cat-icon">💧</div><div class="cat-name">防水咨询</div><div class="cat-count">5</div></div>
     <div class="cat-card" style="background:#9B59B6"><div class="cat-icon">🎥</div><div class="cat-name">防抖咨询</div><div class="cat-count">4</div></div>
     <div class="cat-card" style="background:#E67E22"><div class="cat-icon">🔒</div><div class="cat-name">安全/防盗</div><div class="cat-count">4</div></div>
     <div class="cat-card" style="background:#95A5A6"><div class="cat-icon">📋</div><div class="cat-name">其他</div><div class="cat-count">4</div></div>
+    <div class="cat-card" style="background:#C0392B"><div class="cat-icon">📇</div><div class="cat-name">卡录问题</div><div class="cat-count">3</div></div>
+    <div class="cat-card" style="background:#E74C3C"><div class="cat-icon">⚠️</div><div class="cat-name">疑似质量问题</div><div class="cat-count">2</div></div>
   </div>
   <table class="detail-table" style="margin-top:16px;">
     <thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型</th></tr></thead>
     <tbody>
     <tr><td style="color:#00B050;font-weight:600">💡 功能咨询</td><td>35</td><td>52.2%</td><td>安装咨询(×4，其中2条索要安装/接电视频)、充电宝供电咨询(×2)、前车起步提醒咨询(×2)、USB接口咨询、停车监控咨询、循环覆盖咨询、实时查看咨询、是否双摄咨询、后录咨询、视频倒置咨询、最大内存卡大小咨询、无接电口使用咨询、供电咨询、电源接口咨询、快拆咨询、是否含电池咨询、螺丝大小咨询、内存卡存储容量咨询、车载使用咨询、运动相机款咨询、防紫外线咨询、支架配件咨询、配网咨询、1分钟视频咨询、视频回看咨询、插头接口咨询、车牌识别功能咨询、骑行支架购买咨询、设备参数咨询、双口电源线用途咨询、视频icon标识咨询</td></tr>
     <tr><td style="color:#F39C12;font-weight:600">🔧 安装引导类</td><td>10</td><td>14.9%</td><td>不通电/无法开机(×9，含电源线插不紧1条——防水紧配设计，按紧到位即正常使用；京东自营×8、在线咨询×1)、支架转动松开(×1，顺时针拧紧即解决)——均为安装紧固引导类问题，非硬件缺陷</td></tr>
-    <tr><td style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</td><td>5</td><td>7.5%</td><td>卡录漏录(×2)、设备发烫(×1)、内存卡损坏(×1)、球头支架损坏(×1)——客服渠道数据并入后新增观察点，处理方式以解释/换卡/升级协助为主</td></tr>
     <tr><td style="color:#3498DB;font-weight:600">💧 防水咨询</td><td>5</td><td>7.5%</td><td>防水咨询(×4)、防水级别咨询(×1)（IPX6防水等级）</td></tr>
     <tr><td style="color:#9B59B6;font-weight:600">🎥 防抖咨询</td><td>4</td><td>6.0%</td><td>防抖咨询(×4)（物理防抖：万向球减震+算法优化）</td></tr>
     <tr><td style="color:#E67E22;font-weight:600">🔒 安全/防盗</td><td>4</td><td>6.0%</td><td>防盗咨询(×2)、被盗赔付咨询(×2)（激活30天内可免费领取被盗赔付）</td></tr>
     <tr><td style="color:#95A5A6;font-weight:600">📋 其他</td><td>4</td><td>6.0%</td><td>其他、价格咨询、优惠力度咨询、以旧换新咨询</td></tr>
+    <tr><td style="color:#C0392B;font-weight:600">📇 卡录问题</td><td>3</td><td>4.5%</td><td>卡录漏录(×2：9/9在线咨询256G卡录不到、9/1呼叫中心回放无法查看)、内存卡损坏(×1，已换新卡)——卡兼容性/卡质量待确认，建议客服记录卡型与购机时间</td></tr>
+    <tr><td style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</td><td>2</td><td>3.0%</td><td>设备发烫(×1，客服已解释使用温度范围)、球头支架损坏(×1，售后换货)</td></tr>
     </tbody>
   </table>
 </div>
 <div class="section">
-  <div class="section-title">本期新增反馈明细（较昨日Day 10 新增 17 条：9/8晚录入×4、9/9×4、客服渠道回补×9）</div>
+  <div class="section-title">本期新增反馈明细（17条：bug问题置顶，其余按类型反馈量降序）</div>
   <table class="detail-table">
     <thead><tr><th>分类</th><th>问题类型</th><th>渠道</th><th>日期</th><th>用户问题</th><th>客服方案</th></tr></thead>
   <tbody>
-    <tr class="new-row risk-row"><td><span style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</span></td><td><span class="type-badge" style="background:#E74C3C20;color:#E74C3C">卡录漏录</span></td><td>在线咨询</td><td><span class="date-badge">09/09</span></td><td class="problem-text">256G内存卡经常录不到</td><td class="solution-text">建议格式化内存卡，确认是否使用C10高速存储卡，尝试更换其他卡测试</td></tr>
-    <tr class="new-row risk-row"><td><span style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</span></td><td><span class="type-badge" style="background:#E74C3C20;color:#E74C3C">卡录漏录</span></td><td>呼叫中心</td><td><span class="date-badge">09/01</span></td><td class="problem-text">卡录像漏录，实时画面正常，回放无法查看</td><td class="solution-text">刷新加载、内存卡格式化、重启设备、检查供电、近场Wi-Fi连接均无效，升级协助</td></tr>
-    <tr class="new-row risk-row"><td><span style="color:#F39C12;font-weight:600">🔧 安装引导类</span></td><td><span class="type-badge" style="background:#F39C1220;color:#F39C12">不开机·安装引导（回补）</span></td><td>在线咨询</td><td><span class="date-badge">09/04</span></td><td class="problem-text">V6新版本插电长按均无法开机，无显示</td><td class="solution-text">建议检查电源接口是否插到位或换线重新通电尝试</td></tr>
-    <tr class="new-row risk-row"><td><span style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</span></td><td><span class="type-badge" style="background:#E74C3C20;color:#E74C3C">设备发烫</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">客户反馈使用屏幕发烫，有没有降噪功能</td><td class="solution-text">正常解释设备使用温度和没有降噪功能</td></tr>
-    <tr class="new-row risk-row"><td><span style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</span></td><td><span class="type-badge" style="background:#E74C3C20;color:#E74C3C">内存卡损坏</span></td><td>京东自营</td><td><span class="date-badge">09/09</span></td><td class="problem-text">内存卡提示损坏</td><td class="solution-text">给客户换新内存卡</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">安装咨询</span></td><td>在线咨询</td><td><span class="date-badge">09/04</span></td><td class="problem-text">需要V6骑行版卡扣安装视频</td><td class="solution-text">提供安装视频链接，用户确认可以</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">安装咨询</span></td><td>微信</td><td><span class="date-badge">09/04</span></td><td class="problem-text">V6骑行版安装接电视频有吗</td><td class="solution-text">提供安装接电视频链接</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">配网咨询</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">APP怎么链接</td><td class="solution-text">发送视频给客户参考</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">1分钟视频咨询</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">每段视频只有一分钟吗</td><td class="solution-text">循环录制1分钟1段自动保存，卡满自动覆盖，时长无法修改</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">视频回看咨询</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">怎么回看录像</td><td class="solution-text">记录仪启动后连接APP在APP内查看视频回放</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">插头接口咨询</span></td><td>京东自营</td><td><span class="date-badge">09/09</span></td><td class="problem-text">和本体插头是tpc还是老式安卓</td><td class="solution-text">这款是type-c接口</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">车牌识别咨询</span></td><td>京东自营</td><td><span class="date-badge">09/09</span></td><td class="problem-text">没有车牌识别功能</td><td class="solution-text">连接APP后点击视频回看，先下载一分钟原视频后才能识别</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">骑行支架购买咨询</span></td><td>私域</td><td><span class="date-badge">09/09</span></td><td class="problem-text">请问单独的骑行支架怎么购买？</td><td class="solution-text">暂无单独支架售卖，引导关注【360智慧生活服务】公众号咨询在线人工客服</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">设备参数咨询</span></td><td>在线咨询</td><td><span class="date-badge">09/09</span></td><td class="problem-text">请问一下V6骑行版的外壳尺寸有吗？</td><td class="solution-text">裸机+保护壳+支架高度约102mm、宽度约56mm；裸机43*43*31.9mm</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">双口电源线用途咨询</span></td><td>在线咨询</td><td><span class="date-badge">09/07</span></td><td class="problem-text">V6骑行版记录仪双口电源线接口用途及使用方法</td><td class="solution-text">USB接口可直接接电源口，另一口接延长线；无需延长线可直接用USB接口供电</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">视频icon标识咨询</span></td><td>在线咨询</td><td><span class="date-badge">09/06</span></td><td class="problem-text">显示屏左上角三角感叹号一直闪</td><td class="solution-text">触发紧急视频或手动录制抓拍视频时会显示警告图标</td></tr>
-    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#00B05020;color:#00B050">防盗咨询</span></td><td>微信</td><td><span class="date-badge">09/05</span></td><td class="problem-text">v6骑行版的防盗安装是什么，真能做到防盗吗</td><td class="solution-text">（客服方案为空，建议补录）</td></tr>
+    <tr class="new-row risk-row"><td><span style="color:#C0392B;font-weight:600">📇 卡录问题</span></td><td><span class="type-badge" style="background:#F5DBD7;color:#922B21;border:1px solid #922B21;font-weight:700">卡录漏录</span></td><td>在线咨询</td><td><span class="date-badge">09/09</span></td><td class="problem-text">256G内存卡经常录不到</td><td class="solution-text">建议格式化内存卡，确认是否使用C10高速存储卡，尝试更换其他卡测试</td></tr>
+    <tr class="new-row risk-row"><td><span style="color:#C0392B;font-weight:600">📇 卡录问题</span></td><td><span class="type-badge" style="background:#F5DBD7;color:#922B21;border:1px solid #922B21;font-weight:700">卡录漏录</span></td><td>呼叫中心</td><td><span class="date-badge">09/01</span></td><td class="problem-text">卡录像漏录，实时画面正常，回放无法查看</td><td class="solution-text">刷新加载、内存卡格式化、重启设备、检查供电、近场Wi-Fi连接均无效，升级协助</td></tr>
+    <tr class="new-row risk-row"><td><span style="color:#C0392B;font-weight:600">📇 卡录问题</span></td><td><span class="type-badge" style="background:#F5DBD7;color:#922B21;border:1px solid #922B21;font-weight:700">内存卡损坏</span></td><td>京东自营</td><td><span class="date-badge">09/09</span></td><td class="problem-text">内存卡提示损坏</td><td class="solution-text">给客户换新内存卡</td></tr>
+    <tr class="new-row risk-row"><td><span style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</span></td><td><span class="type-badge" style="background:#FDECEA;color:#B03A2E;border:1px solid #B03A2E;font-weight:700">设备发烫</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">客户反馈使用屏幕发烫，有没有降噪功能</td><td class="solution-text">正常解释设备使用温度和没有降噪功能</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">安装咨询</span></td><td>在线咨询</td><td><span class="date-badge">09/04</span></td><td class="problem-text">需要V6骑行版卡扣安装视频</td><td class="solution-text">提供安装视频链接，用户确认可以</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">安装咨询</span></td><td>微信</td><td><span class="date-badge">09/04</span></td><td class="problem-text">V6骑行版安装接电视频有吗</td><td class="solution-text">提供安装接电视频链接</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">插头接口咨询</span></td><td>京东自营</td><td><span class="date-badge">09/09</span></td><td class="problem-text">和本体插头是tpc还是老式安卓</td><td class="solution-text">这款是type-c接口</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">车牌识别咨询</span></td><td>京东自营</td><td><span class="date-badge">09/09</span></td><td class="problem-text">没有车牌识别功能</td><td class="solution-text">连接APP后点击视频回看，先下载一分钟原视频后才能识别</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">骑行支架购买咨询</span></td><td>私域</td><td><span class="date-badge">09/09</span></td><td class="problem-text">请问单独的骑行支架怎么购买？</td><td class="solution-text">暂无单独支架售卖，引导关注【360智慧生活服务】公众号咨询在线人工客服</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">设备参数咨询</span></td><td>在线咨询</td><td><span class="date-badge">09/09</span></td><td class="problem-text">请问一下V6骑行版的外壳尺寸有吗？</td><td class="solution-text">裸机+保护壳+支架高度约102mm、宽度约56mm；裸机43*43*31.9mm</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">配网咨询</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">APP怎么链接</td><td class="solution-text">发送视频给客户参考</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">1分钟视频咨询</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">每段视频只有一分钟吗</td><td class="solution-text">循环录制1分钟1段自动保存，卡满自动覆盖，时长无法修改</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">视频回看咨询</span></td><td>京东自营</td><td><span class="date-badge">09/08</span></td><td class="problem-text">怎么回看录像</td><td class="solution-text">记录仪启动后连接APP在APP内查看视频回放</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">双口电源线用途咨询</span></td><td>在线咨询</td><td><span class="date-badge">09/07</span></td><td class="problem-text">V6骑行版记录仪双口电源线接口用途及使用方法</td><td class="solution-text">USB接口可直接接电源口，另一口接延长线；无需延长线可直接用USB接口供电</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">视频icon标识咨询</span></td><td>在线咨询</td><td><span class="date-badge">09/06</span></td><td class="problem-text">显示屏左上角三角感叹号一直闪</td><td class="solution-text">触发紧急视频或手动录制抓拍视频时会显示警告图标</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;font-weight:700">防盗咨询</span></td><td>微信</td><td><span class="date-badge">09/05</span></td><td class="problem-text">v6骑行版的防盗安装是什么，真能做到防盗吗</td><td class="solution-text">（客服方案为空，建议补录）</td></tr>
+    <tr class="new-row risk-row"><td><span style="color:#F39C12;font-weight:600">🔧 安装引导类</span></td><td><span class="type-badge" style="background:#FEF5E7;color:#B9770E;border:1px solid #B9770E;font-weight:700">不开机·安装引导（回补）</span></td><td>在线咨询</td><td><span class="date-badge">09/04</span></td><td class="problem-text">V6新版本插电长按均无法开机，无显示</td><td class="solution-text">建议检查电源接口是否插到位或换线重新通电尝试</td></tr>
   </tbody>
   </table>
   <p style="font-size:12px;color:#999;margin-top:8px;">注：客服渠道（在线咨询×6、微信×2、呼叫中心×1）9条为9/1-9/9历史数据集中回补，非当日新增；本期I列「问题类型」已全部补齐（含此前未打标的8条），标签漏标问题闭环。row184"防盗咨询"客服方案为空，建议补录。口径调整：自本期起"插头未按紧到位"类单列「安装引导类」，不再计入疑似质量问题。</p>
