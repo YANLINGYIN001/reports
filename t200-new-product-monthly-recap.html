@@ -35,16 +35,6 @@ tr:hover{background:#fafafa}
 .severity.low{background:#e8f4fd;color:#2471a3}
 .severity.mid{background:#fff3e0;color:#b9770e}
 .severity.high{background:#fde8e8;color:#c0392b}
-.timeline{position:relative;padding-left:10px}
-.t-item{position:relative;padding-bottom:16px;border-left:2px solid #e0e0e0;padding-left:20px;margin-left:8px}
-.t-item:last-child{border-left:none}
-.t-item:before{content:'';position:absolute;left:-6px;top:4px;width:10px;height:10px;border-radius:50%;background:#00B050}
-.t-item.warn:before{background:#F39C12}
-.t-item.risk:before{background:#E74C3C}
-.t-date{font-weight:700;color:#00B050;font-size:13px}
-.t-item.warn .t-date{color:#b9770e}
-.t-item.risk .t-date{color:#E74C3C}
-.t-text{font-size:14px;margin-top:2px}
 .footer{text-align:center;padding:20px;color:#999;font-size:13px}
 .footer a{color:#00B050;text-decoration:none}
 @media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.container{padding:10px}}
@@ -65,7 +55,7 @@ tr:hover{background:#fafafa}
 <div class="kpi-card"><div class="label">累计反馈总数</div><div class="value">319</div><div class="delta">跟踪 31 天 · 周均 64 条</div></div>
 <div class="kpi-card"><div class="label">覆盖渠道数</div><div class="value">8</div><div class="delta">京东自营占比 50.6%</div></div>
 <div class="kpi-card"><div class="label">问题类型数</div><div class="value">70</div><div class="delta">含组合标签</div></div>
-<div class="kpi-card"><div class="label">实质性缺陷（修正口径）</div><div class="value">68</div><div class="delta">9.9 起口径修正 · 详见附注</div></div>
+<div class="kpi-card"><div class="label">实质性缺陷（修正口径）</div><div class="value">68</div><div class="delta">分享咨询 5 条已计入咨询类</div></div>
 </div>
 
 <div class="section">
@@ -100,7 +90,7 @@ tr:hover{background:#fafafa}
 <div class="section">
 <h2>三、问题主题分类全景</h2>
 <table><thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>典型问题</th></tr></thead><tbody>
-<tr><td style="color:#2ecc71;font-weight:600">💡 功能</td><td>83</td><td>26.3%</td><td>远程查看咨询(14)、画面清晰度低(8+2)、定位不显示(7)、设备离线(5)</td></tr>
+<tr><td style="color:#2ecc71;font-weight:600">💡 功能</td><td>84</td><td>26.6%</td><td>远程查看咨询(14)、画面清晰度低(8+2)、定位不显示(7)、设备离线(5)</td></tr>
 <tr><td style="color:#e67e22;font-weight:600">🔧 安装</td><td>72</td><td>22.8%</td><td>是否包安装咨询(26)、安装咨询(22)、镜头调节咨询(7)、门店不会安装(5)</td></tr>
 <tr><td style="color:#9b59b6;font-weight:600">💰 费用</td><td>36</td><td>11.4%</td><td>4G流量收费咨询(16)、云录收费咨询(13)、质保咨询(2)</td></tr>
 <tr><td style="color:#1abc9c;font-weight:600">🅿️ 停车监控</td><td>31</td><td>9.8%</td><td>停车监控咨询(15)、哨兵模式咨询(13)、哨兵模式不灵敏(1)</td></tr>
@@ -108,42 +98,42 @@ tr:hover{background:#fafafa}
 <tr><td style="color:#f1c40f;font-weight:600">🔋 供电</td><td>29</td><td>9.2%</td><td>电池/供电咨询(17)、电瓶损耗影响顾虑(8)、车充和降压线差异咨询(3)</td></tr>
 <tr><td style="color:#34495e;font-weight:600">🎥 视野</td><td>19</td><td>6.0%</td><td>前后双录/全景需求(19)</td></tr>
 <tr><td style="color:#95a5a6;font-weight:600">📐 参数</td><td>12</td><td>3.8%</td><td>其他规格咨询(6)、分辨率咨询(3)、车型适配咨询(3)</td></tr>
-<tr><td style="color:#e74c3c;font-weight:600">⚠️ 品控</td><td>3</td><td>0.9%</td><td>外观瑕疵(1)、设备发烫(1)、开流失败(1)</td></tr>
+<tr><td style="color:#e74c3c;font-weight:600">⚠️ 品控</td><td>2</td><td>0.6%</td><td>外观瑕疵(1)、设备发烫(1)</td></tr>
 </tbody></table>
-<div class="severity low">📌 小结：功能（83）与安装（72）两类占全量 49%；费用类 36 条中绝大多数为 4G 流量与云录收费咨询，用户对流量与云存费用规则的关注贯穿整月。</div>
+<div class="severity low">📌 小结：功能（84）与安装（72）两类占全量 49%；费用类 36 条中绝大多数为 4G 流量与云录收费咨询，用户对流量与云存费用规则的关注贯穿整月。</div>
 </div>
 
 <div class="section">
 <h2>四、实质性缺陷 TOP10（月度累计 68 条）</h2>
-<table><thead><tr><th>#</th><th>缺陷簇</th><th>累计</th><th>时间跨度</th><th>渠道集中度</th><th>状态备注</th></tr></thead><tbody>
-<tr><td>1</td><td style="color:#E74C3C;font-weight:600">画面清晰度类</td><td><b>10</b></td><td>8.23 - 9.7</td><td>京东自营 100%</td><td>9.5-9.7 连续翻倍，9.8-9.9 零新增</td></tr>
-<tr><td>2</td><td>定位不显示</td><td><b>7</b></td><td>8.10 - 8.28</td><td>京东自营 100%</td><td>上市初期集中，8.28 后无新增</td></tr>
-<tr><td>3</td><td>远程查看卡顿</td><td><b>5</b></td><td>8.16 - 9.8</td><td>京东自营 100%</td><td>持续零星出现，9.9 仍有新增</td></tr>
-<tr><td>3</td><td>设备离线</td><td><b>5</b></td><td>8.22 - 9.7</td><td>京东自营 100%</td><td>持续零星出现</td></tr>
-<tr><td>5</td><td>内存卡不识别</td><td><b>3</b></td><td>8.22 - 9.6</td><td>京东自营 100%</td><td>9.1 后无新增</td></tr>
-<tr><td>5</td><td>内存卡损坏</td><td><b>3</b></td><td>8.19 - 9.1</td><td>京东自营 100%</td><td>9.1 后无新增</td></tr>
-<tr><td>5</td><td>定位偏差大</td><td><b>3</b></td><td>8.28 - 9.3</td><td>京东自营 100%</td><td>含轨迹显示不准确</td></tr>
-<tr><td>5</td><td>无行车轨迹</td><td><b>3</b></td><td>8.30 - 9.9</td><td>京东自营 100%</td><td>9.9 仍有新增</td></tr>
-<tr><td>5</td><td>降压线安装故障</td><td><b>3</b></td><td>8.16 - 9.1</td><td>京东自营 2 / 抖音 1</td><td>—</td></tr>
-<tr><td>10</td><td>熄火后不通电</td><td><b>2</b></td><td>8.13 - 8.17</td><td>京东自营 100%</td><td>8.17 后无新增</td></tr>
+<table><thead><tr><th>#</th><th>缺陷簇</th><th>累计</th><th>时间跨度</th><th>渠道 / 状态</th><th style="width:26%">用户原声</th><th>问题原因</th><th>解决方案</th></tr></thead><tbody>
+<tr><td>1</td><td style="color:#E74C3C;font-weight:600">画面清晰度类</td><td><b>10</b></td><td>8.23 - 9.7</td><td>京东自营 100%<br><span style="color:#E74C3C">9.5-9.7 连续翻倍，9.8-9.9 零新增</span></td><td>画面清晰度较低；咨询夜晚看不清车牌；实时画面不清晰</td><td>设备动态清晰度及夜间成像效果较差</td><td>IQ 持续优化，已提测</td></tr>
+<tr><td>2</td><td>定位不显示</td><td><b>7</b></td><td>8.10 - 8.28</td><td>京东自营 100%<br><span style="color:#999">上市初期集中，8.28 后无新增</span></td><td>定位不显示；无法定位；点烟器取电，如何调整查看定位</td><td>多数与供电模式相关（点烟器供电需在 APP 切换「车充供电」），部分为首次定位延迟</td><td>指导切换供电模式、空旷处复测；检查降压线安装是否正确</td></tr>
+<tr><td>3</td><td>远程查看卡顿</td><td><b>5</b></td><td>8.16 - 9.8</td><td>京东自营 100%<br><span style="color:#999">持续零星出现，9.9 仍有新增</span></td><td>实时画面查看卡顿有延迟；室外开阔位置远程画面经常卡死、消息发不出来</td><td>4G 网络环境下 1-3 秒延迟属正常范围，受流量与信号影响</td><td>引导连接设备热点查看原画质；换位测试信号</td></tr>
+<tr><td>3</td><td>设备离线</td><td><b>5</b></td><td>8.22 - 9.7</td><td>京东自营 100%<br><span style="color:#999">持续零星出现</span></td><td>停车几分钟后离线；设备离线连接不上</td><td>降压线接线不规范（ACC/B+ 接口）为主</td><td>安装师傅重新调试、更换 ACC/常电接口；重启设备重新配网</td></tr>
+<tr><td>5</td><td>内存卡不识别</td><td><b>3</b></td><td>8.22 - 9.6</td><td>京东自营 100%<br><span style="color:#999">9.1 后无新增</span></td><td>内存卡插入显示无内存，连续两张都不行；存储卡无法识别</td><td>随设备赠送的存储卡无法正常使用</td><td>排查插卡是否正确、格式化；引导售后换卡</td></tr>
+<tr><td>5</td><td>内存卡损坏</td><td><b>3</b></td><td>8.19 - 9.1</td><td>京东自营 100%<br><span style="color:#999">9.1 后无新增</span></td><td>内存卡提示内存卡不足；内存卡提示损坏</td><td>随设备赠送的存储卡无法正常使用</td><td>建议申请内存卡换货</td></tr>
+<tr><td>5</td><td>定位偏差大</td><td><b>3</b></td><td>8.28 - 9.3</td><td>京东自营 100%<br><span style="color:#999">含轨迹显示不准确</span></td><td>定位不准，定位在东莞，但我现在在哈尔滨；轨迹显示不准确</td><td>怀疑产测未清除生产上电时的 GPS 数据</td><td>引导车辆打火后重新定位、恢复出厂；上传日志核实</td></tr>
+<tr><td>5</td><td>无行车轨迹</td><td><b>3</b></td><td>8.30 - 9.9</td><td>京东自营 100%<br><span style="color:#999">9.9 仍有新增</span></td><td>使用几天后，没有行车轨迹；车辆行驶无法生成行车轨迹</td><td>怀疑未正常安装降压线</td><td>售后跟进确认降压线安装与设置；反馈技术核实原因</td></tr>
+<tr><td>5</td><td>降压线安装故障</td><td><b>3</b></td><td>8.16 - 9.1</td><td>京东自营 2 / 抖音 1</td><td>宝马车安装导致故障灯亮；反馈安装门店接线错误</td><td>部分车型低电压保护阈值差异；门店接线错误</td><td>更换适配降压线；反馈京东养车门店跟进</td></tr>
+<tr><td>10</td><td>熄火后不通电</td><td><b>2</b></td><td>8.13 - 8.17</td><td>京东自营 100%<br><span style="color:#999">8.17 后无新增</span></td><td>熄火后记录仪不通电；熄火不录制</td><td>安装接线问题（安装师傅操作不当）</td><td>门店检查接线；重新安装后恢复</td></tr>
 </tbody></table>
-<p class="note">注：其余 18 条为单条散点缺陷（循环录制异常、外观瑕疵、降压线断裂、无法查看回放、远程下载慢、设备发烫、开流失败、哨兵模式不灵敏等），分布在 20+ 个低频类型上，月度报告不逐条展开。</p>
+<p class="note">注：其余 18 条为单条散点缺陷（循环录制异常、外观瑕疵、降压线断裂、无法查看回放、远程下载慢、设备发烫、开流失败、哨兵模式不灵敏等），分布在 20+ 个低频类型上，月度报告不逐条展开。用户原声为典型摘录，问题原因/解决方案以重点问题跟进表为准，未覆盖簇按客服处置归纳。</p>
 <div class="severity high">📌 小结：缺陷呈"头部集中 + 长尾分散"结构——画面清晰度、定位不显示、远程查看卡顿、设备离线四个簇合计 27 条，占缺陷总量 40%；其余 41 条分散在 20+ 类型。除画面清晰度类与无行车轨迹外，其余主要簇在 9 月上旬无新增或增量放缓。</div>
 </div>
 
 <div class="section">
 <h2>五、用户咨询热点 TOP10（前置认知盲区）</h2>
-<table><thead><tr><th>#</th><th>咨询主题</th><th>累计</th><th>信息差类别</th></tr></thead><tbody>
-<tr><td>1</td><td>是否包安装咨询</td><td>26</td><td>安装体系</td></tr>
-<tr><td>2</td><td>安装咨询</td><td>22</td><td>安装体系</td></tr>
-<tr><td>3</td><td>前后双录/全景需求</td><td>19</td><td>产品形态需求</td></tr>
-<tr><td>4</td><td>电池/供电咨询</td><td>17</td><td>供电方案</td></tr>
-<tr><td>5</td><td>4G流量收费咨询</td><td>16</td><td>费用规则</td></tr>
-<tr><td>6</td><td>停车监控咨询</td><td>15</td><td>停车/哨兵使用</td></tr>
-<tr><td>7</td><td>远程查看咨询</td><td>14</td><td>远程功能使用</td></tr>
-<tr><td>8</td><td>云录收费咨询</td><td>13</td><td>费用规则</td></tr>
-<tr><td>9</td><td>哨兵模式咨询</td><td>13</td><td>停车/哨兵使用</td></tr>
-<tr><td>10</td><td>电瓶损耗影响顾虑</td><td>8</td><td>供电方案</td></tr>
+<table><thead><tr><th>#</th><th>咨询主题</th><th>累计</th><th>信息差类别</th><th style="width:22%">用户原声</th><th style="width:22%">客服解决方案</th><th style="width:22%">话术建议</th></tr></thead><tbody>
+<tr><td>1</td><td>是否包安装咨询</td><td>26</td><td>安装体系</td><td>买来有地方装吗；包安装？；线下到店安装怎么操作</td><td>告知不包安装，自行安装凭证返 40 元；可到京东养车门店安装</td><td>商详前置安装说明：「不包安装」+ 自装返现 / 门店安装两种路径直接写清</td></tr>
+<tr><td>2</td><td>安装咨询</td><td>22</td><td>安装体系</td><td>1、怎么安装 2、24小时监控吗；降压线如何安装</td><td>发送官方安装视频；引导预约京东养车门店</td><td>安装视频链接前置（商详 / 包裹卡），减少逐条发送</td></tr>
+<tr><td>3</td><td>前后双录/全景需求</td><td>19</td><td>产品形态需求</td><td>咨询是否是前后双录；能否加配后置摄像头</td><td>告知单前摄、无法加装后摄</td><td>明确「单前摄」定位，引导关注远程+哨兵核心价值；后摄需求已列入新品规划</td></tr>
+<tr><td>4</td><td>电池/供电咨询</td><td>17</td><td>供电方案</td><td>用充电吗；这款是自带电池的；有内置电池吗</td><td>告知无内置电池，两种供电方式（点烟器 / 降压线接保险盒）</td><td>「无电池 + 两种供电」一句话说清，配商详供电示意图</td></tr>
+<tr><td>5</td><td>4G流量收费咨询</td><td>16</td><td>费用规则</td><td>这个4g需要流量费用吗；是终身免流量的吗</td><td>告知内置流量卡终身免流量、无套餐费</td><td>「终身免费不限流量、无需购卡」标准话术；商详突出免流标识</td></tr>
+<tr><td>6</td><td>停车监控咨询</td><td>15</td><td>停车/哨兵使用</td><td>这个车停着也能录像吗？降压线是什么？；停车了怎么接电</td><td>说明 24h 停车监控需搭配降压线（保险盒取电 + 低压保护）</td><td>先讲「降压线是什么」再讲触发逻辑；商详配工作原理图</td></tr>
+<tr><td>7</td><td>远程查看咨询</td><td>14</td><td>远程功能使用</td><td>这款可以远程操作吗？；可以在家里看实时画面吗</td><td>确认支持远程查看，说明需降压线供电</td><td>强调「远程查看 = APP 实时查看实时画面 / 回放」，不受距离限制</td></tr>
+<tr><td>8</td><td>云录收费咨询</td><td>13</td><td>费用规则</td><td>云存储终生免费吗？；云服务你们有链接买吗</td><td>告知赠送 30 天基础版云服务；基础版 99 元/年、高级版 149 元/年，APP 内开通</td><td>说清「免费与付费功能边界」（实时画面 / 流量免费，回放 / 轨迹属云存付费）</td></tr>
+<tr><td>9</td><td>哨兵模式咨询</td><td>13</td><td>停车/哨兵使用</td><td>哨兵模式待机多久；哨兵模式是怎么运行的</td><td>讲解触发原理（车前 5 米逗留超 5 秒触发录制 1 分钟），可设 24h 时长</td><td>「一句话定义 + 触发条件 + 需降压线」三段式讲解，配演示视频</td></tr>
+<tr><td>10</td><td>电瓶损耗影响顾虑</td><td>8</td><td>供电方案</td><td>熄火录制视频会不会损耗电瓶；担心亏电，如何关闭熄火录制</td><td>告知功率仅 5W、降压线自带低压保护，电压过低自动断电</td><td>统一「5W 低功耗 + 低压保护自动断电」承诺话术，消除亏电顾虑</td></tr>
 </tbody></table>
 <div class="severity mid">📌 小结：咨询热点集中指向三类信息差——<b>安装体系</b>（是否包安装+安装咨询 48 条）、<b>供电方案</b>（电池/电瓶/降压线 25 条）、<b>费用规则</b>（4G 流量+云录 29 条）。建议强化商品页安装说明、供电方式说明与流量/云存费用提示。</div>
 </div>
@@ -154,31 +144,16 @@ tr:hover{background:#fafafa}
 <table><thead><tr><th>主题</th><th>回访发现（20人深访）</th><th>公测反馈（319条）</th><th>印证结论</th></tr></thead><tbody>
 <tr><td style="color:#E74C3C;font-weight:600">画质清晰度</td><td>5 人明确批评清晰度不够，2 人因此退货/换机，1 人转竞品</td><td>缺陷簇第 1 位：10 条（全京东自营）</td><td>双源确认第一短板；IQ 优化已提测（9 月初）</td></tr>
 <tr><td style="color:#F39C12;font-weight:600">APP 侧体验</td><td>广告弹窗多（2 人）、设计简陋/功能弱（2 人）、反应慢（1 人）</td><td>9.9 首现“APP 观看实时画面自动跳转广告页面”缺陷</td><td>APP 体验问题在两源均出现，且公测侧仍在新增</td></tr>
-<tr><td style="color:#F39C12;font-weight:600">哨兵模式</td><td>24h 时长限制（3 人）、通知频次过高（2 人）</td><td>9.2 哨兵问题簇（不灵敏/触发过于灵敏/无声录制）</td><td>算法不完善是根因；人车算法新版本 9 月上旬升级中</td></tr>
+<tr><td style="color:#F39C12;font-weight:600">哨兵模式</td><td>24h 时长限制（3 人）、通知频次过高（2 人）</td><td>9.2 哨兵问题簇（不灵敏/触发过于灵敏/无声录制）</td><td>算法不完善是根因；已增加人车算法，固件已推公测用户验证，验证通过后开始线上灰度</td></tr>
 <tr><td>供电/降压线</td><td>60% 使用标配降压线；亏电顾虑致不装降压线、手动拔线等行为改变</td><td>降压线安装故障 3 条、熄火后不通电 2 条</td><td>顾虑+安装问题直接削弱停车监控使用</td></tr>
 <tr><td>门店安装能力</td><td>1 人反馈“京东养车不会安装”</td><td>“门店不会安装”累计 5 条</td><td>安装服务网络能力待提升</td></tr>
 </tbody></table>
-<div class="insight blue" style="margin-top:12px"><span class="title">🔵 回访基本盘与满意度。</span>20 位公测用户整体满意度 8.9 分（9 分以上 58.8%），70% 明确推荐，核心推荐理由为 4G 免流量 + 远程查看 + 哨兵；购买动机以“4G免流量+远程查看”为首（8人）。京东自营是核心购买渠道（70%）——与公测反馈渠道结构互为印证。研发响应：13 项痛点中 6 项已有方案推进（哨兵算法升级/IQ优化提测等），4 项列入新品规划（前后双摄、带屏版本等）。</div>
-<div class="severity high">📌 小结：两个独立数据源共同指向三件事——画质清晰度（已致流失，IQ 优化提测中）、哨兵模式算法（升级推进中）、APP 侧体验（广告跳转与弹窗，需与回访中“暂不处理”结论重新评估）；而驱动购买的核心价值（免流量+远程+哨兵）得到高满意度与 70% 推荐意愿的确认。</div>
+<div class="insight blue" style="margin-top:12px"><span class="title">🔵 回访基本盘与满意度。</span>20 位公测用户整体满意度 8.9 分（9 分以上 58.8%），70% 明确推荐，核心推荐理由为 4G 免流量 + 远程查看 + 哨兵；购买动机以“4G免流量+远程查看”为首（8人）。京东自营是核心购买渠道（70%）——与公测反馈渠道结构互为印证。研发响应：13 项痛点中 6 项已有方案推进（哨兵人车算法固件已推公测验证/IQ优化提测等），4 项列入新品规划（前后双摄、带屏版本等）。</div>
+<div class="severity high">📌 小结：两个独立数据源共同指向三件事——画质清晰度（已致流失，IQ 优化提测中）、哨兵模式算法（人车算法已推公测验证）、APP 侧体验（广告跳转与弹窗，需与回访中“暂不处理”结论重新评估）；而驱动购买的核心价值（免流量+远程+哨兵）得到高满意度与 70% 推荐意愿的确认。</div>
 </div>
 
 <div class="section">
-<h2>七、问题演进大事记</h2>
-<div class="timeline">
-<div class="t-item"><div class="t-date">8.10（Day 1）</div><div class="t-text">跟踪启动，首周反馈 73 条，定位不显示类开始累积</div></div>
-<div class="t-item warn"><div class="t-date">8.14（Day 5）</div><div class="t-text">抖音渠道首次出现反馈</div></div>
-<div class="t-item warn"><div class="t-date">8.17（Day 6）</div><div class="t-text">降压线安装类问题升级，实质缺陷增至 11 条</div></div>
-<div class="t-item"><div class="t-date">8.31（Day 22）</div><div class="t-text">"门店不会安装""无行车轨迹""开流失败"独立成类，问题类型增至 59 种</div></div>
-<div class="t-item warn"><div class="t-date">9.2（Day 24）</div><div class="t-text">哨兵模式问题簇集中出现（不灵敏/触发过于灵敏/无声录制）</div></div>
-<div class="t-item risk"><div class="t-date">9.5-9.7（Day 29）</div><div class="t-text">画面清晰度类反馈两天翻倍（4→8 条），全部来自京东自营</div></div>
-<div class="t-item risk"><div class="t-date">9.8（Day 30）</div><div class="t-text">首现"设备没有远程删除卡录视频"功能缺口反馈（客服以补偿挽留）</div></div>
-<div class="t-item risk"><div class="t-date">9.9（Day 31）</div><div class="t-text">首现"APP 观看实时画面自动跳转广告页面"反馈（APP 侧体验问题）</div></div>
-</div>
-</div>
-
-<div class="section">
-<h2>附：口径说明与日报清单</h2>
-<p style="font-size:14px"><b>口径修正说明（9.9 起）：</b>「分享咨询」5 条（8.20-9.4，内容均为"如何分享给家人查看"类咨询）在历史日报中计入实质性缺陷；自本报告起修正为咨询类，修正后全期实质性缺陷为 <b>68 条</b>（历史日报数字保持原状，如 Day 31 日报的 70+3=73 口径不再沿用）。</p>
+<h2>附：期日报清单</h2>
 <p class="report-links" style="margin-top:12px"><b>期日报清单（20 期）：</b><br>
 <a href="t200-new-product-daily-day1.html">Day 1</a><a href="t200-new-product-daily-day2.html">Day 2</a><a href="t200-new-product-daily-day3.html">Day 3</a><a href="t200-new-product-daily-day4.html">Day 4</a><a href="t200-new-product-daily-day5.html">Day 5</a><a href="t200-new-product-daily-day6.html">Day 6</a><a href="t200-new-product-daily-day8.html">Day 8</a><a href="t200-new-product-daily-day9.html">Day 9</a><a href="t200-new-product-daily-day10.html">Day 10</a><a href="t200-new-product-daily-day12.html">Day 12</a><a href="t200-new-product-daily-day15.html">Day 15</a><a href="t200-new-product-daily-day16.html">Day 16</a><a href="t200-new-product-daily-day17.html">Day 17</a><a href="t200-new-product-daily-day18.html">Day 18</a><a href="t200-new-product-daily-day22.html">Day 22</a><a href="t200-new-product-daily-day23.html">Day 23</a><a href="t200-new-product-daily-day24.html">Day 24</a><a href="t200-new-product-daily-day25.html">Day 25</a><a href="t200-new-product-daily-day26.html">Day 26</a><a href="t200-new-product-daily-day29.html">Day 29</a><a href="t200-new-product-daily-day30.html">Day 30</a><a href="t200-new-product-daily-day31.html">Day 31</a></p>
 </div>
