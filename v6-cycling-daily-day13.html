@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V6骑行版新品跟踪日报 · Day 13</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:30px; margin-bottom:24px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .subtitle { font-size:14px; opacity:0.9; }
+.header .date-range { font-size:13px; opacity:0.8; margin-top:6px; }
+.overview { background:#fff; border-left:4px solid #00B050; border-radius:8px; padding:14px 20px; margin-bottom:20px; font-size:14px; color:#333; }
+.kpi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px; }
+.kpi-card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size:13px; color:#999; margin-bottom:8px; }
+.kpi-card .value { font-size:32px; font-weight:700; color:#E74C3C; }
+.kpi-card .delta { font-size:12px; color:#00B050; margin-top:4px; }
+.kpi-card .delta.up { color:#E74C3C; }
+.kpi-card .delta.zero { color:#999; }
+.kpi-card .sub { font-size:12px; color:#666; margin-top:4px; }
+.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
+.insight-box { border-radius:10px; padding:16px; margin-bottom:12px; }
+.insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
+.insight-orange { background:#fff3e0; border-left:4px solid #F39C12; }
+.insight-red { background:#fdecea; border-left:4px solid #E74C3C; }
+.insight-box p { font-size:14px; line-height:1.8; }
+.insight-box strong { color:#00B050; }
+.insight-orange strong { color:#F39C12; }
+.insight-red strong { color:#E74C3C; }
+.channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
+.channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
+.chart-container { width:100%; height:280px; }
+.cat-cards { display:grid; grid-template-columns:repeat(8, 1fr); gap:10px; margin-bottom:16px; }
+.cat-card { min-width:0; border-radius:8px; padding:12px 6px; text-align:center; color:#fff; }
+.cat-card .cat-icon { font-size:20px; }
+.cat-card .cat-name { font-size:12px; white-space:nowrap; margin-top:4px; }
+.cat-card .cat-count { font-size:20px; font-weight:700; margin-top:2px; }
+.detail-table { width:100%; border-collapse:collapse; font-size:13.5px; }
+.detail-table th { background:#f0f7f0; padding:10px 12px; text-align:left; font-weight:600; color:#333; border-bottom:2px solid #00B050; white-space:nowrap; }
+.detail-table td { padding:10px 12px; border-bottom:1px solid #eee; vertical-align:top; color:#333; line-height:1.55; }
+.detail-table tr:hover { background:#fafafa; }
+.detail-table tr.new-row { background:#fffdf0; }
+.detail-table tr.risk-row { background:#fdecea; }
+.type-badge { display:inline-block; padding:3px 10px; border-radius:4px; font-size:13px; font-weight:700; }
+.solution-text { color:#444; max-width:300px; }
+.problem-text { max-width:280px; color:#212121; font-weight:500; }
+.date-badge { color:#555; font-size:12.5px; font-weight:600; white-space:nowrap; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+@media (max-width:768px) {
+  .kpi-grid { grid-template-columns:repeat(2,1fr); }
+  .cat-card { min-width:100px; }
+  .detail-table { font-size:12px; }
+  .detail-table th, .detail-table td { padding:8px 6px; }
+  .solution-text, .problem-text { max-width:none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🚲 V6骑行版新品跟踪日报 · Day 13</h1>
+  <div class="subtitle">Day 13 累计汇总 | 数据周期 2026.08.29 - 2026.09.11</div>
+  <div class="date-range">数据来源：飞书表格「用户问题反馈汇总」 | 更新时间：2026-09-11 18:30</div>
+</div>
+
+<div class="overview">
+  累计收集81条反馈（较昨日Day 12日报+5，均为9/11当日新增）。今日新增全部为购前/使用咨询（防水×2、插头接口、车牌识别、夜视清晰度），<strong style="color:#00B050;">无新增疑似质量缺陷及卡录问题</strong>；"无法开机/通电无反应"9/11零新增（累计10条持平）；首现"夜视清晰度咨询""安装位置咨询"两种新类型。
+</div>
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">81</div><div class="delta up">较昨日Day 12 +5（9/11新增5条）</div></div>
+  <div class="kpi-card"><div class="label">Top3问题（累计+本期新增）</div><div class="value" style="font-size:16px;line-height:1.4">插头未按紧到位（安装引导） 10条<br>防水咨询 7条 <span style="color:#E74C3C">+2</span><br>防抖咨询 5条（安装咨询5条并列）</div><div class="delta zero">9/11当日新增5条：均为购前/使用咨询（防水×2、插头接口、车牌识别、夜视清晰度）</div></div>
+  <div class="kpi-card"><div class="label">今日新增bug问题（9/11）</div><div class="value" style="font-size:16px;line-height:1.4">今日无新增bug问题</div><div class="sub">新增5条均为咨询类；卡录问题累计3条、疑似质量问题累计2条，今日均零新增；"无法开机"累计10条持平</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">核心洞察</div>
+  <div class="insight-box insight-green">
+    <p><strong>🟢 防水咨询成最高频单一咨询类型（累计7条，+2），购前咨询特征明显</strong>：今日新增"不怕下雨吗""咨询安装位置和是否防水"，客服统一按IPX6防水等级、一体式密封防水结构引导；首现"夜视清晰度咨询"（2K昼夜高清画质）与"安装位置咨询"，均为购前决策类咨询。防水（7条）、防抖（5条）、安装（5条）咨询维持最高频，商详前置标注IPX6防水与物理防抖仍是有效分流手段。</p>
+  </div>
+  <div class="insight-box insight-green">
+    <p><strong>🟢 今日新增5条全部为咨询类，"无法开机"累计10条持平</strong>：京东自营3条均为购前咨询（插头接口、安装位置+防水、车牌识别），小红书2条（防水、夜视清晰度）呈典型购前咨询特征，客服话术覆盖完整（Type-C接口、IPX6、2K画质、APP视频识别）。产品端四项整改落地后（客服话术9.8宣贯、商详小字9.8上线、安装视频9.9替换、说明书+贴纸方案9.9确定随二批订单导入），"无法开机"连续保持零新增，持续观察反馈量。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">渠道反馈分布（10渠道）</div>
+  <div class="channel-tags">
+    <span class="channel-tag">京东自营<span class="count">34</span></span>
+    <span class="channel-tag">有赞<span class="count">11</span></span>
+    <span class="channel-tag">小红书<span class="count">10</span></span>
+    <span class="channel-tag">私域<span class="count">8</span></span>
+    <span class="channel-tag">在线咨询<span class="count">7</span></span>
+    <span class="channel-tag">抖音<span class="count">5</span></span>
+    <span class="channel-tag">天猫官旗<span class="count">2</span></span>
+    <span class="channel-tag">微信<span class="count">2</span></span>
+    <span class="channel-tag">微信小店<span class="count">1</span></span>
+    <span class="channel-tag">呼叫中心<span class="count">1</span></span>
+  </div>
+  <div id="chart-channel" class="chart-container"></div>
+</div>
+<div class="section">
+  <div class="section-title">问题主题分类</div>
+  <div class="cat-cards">
+    <div class="cat-card" style="background:#00B050"><div class="cat-icon">💡</div><div class="cat-name">功能咨询</div><div class="cat-count">46</div></div>
+    <div class="cat-card" style="background:#F39C12"><div class="cat-icon">🔧</div><div class="cat-name">安装引导类</div><div class="cat-count">11</div></div>
+    <div class="cat-card" style="background:#3498DB"><div class="cat-icon">💧</div><div class="cat-name">防水咨询</div><div class="cat-count">8</div></div>
+    <div class="cat-card" style="background:#9B59B6"><div class="cat-icon">🎥</div><div class="cat-name">防抖咨询</div><div class="cat-count">5</div></div>
+    <div class="cat-card" style="background:#E67E22"><div class="cat-icon">🔒</div><div class="cat-name">安全/防盗</div><div class="cat-count">5</div></div>
+    <div class="cat-card" style="background:#95A5A6"><div class="cat-icon">📋</div><div class="cat-name">其他</div><div class="cat-count">4</div></div>
+    <div class="cat-card" style="background:#C0392B"><div class="cat-icon">📇</div><div class="cat-name">卡录问题</div><div class="cat-count">3</div></div>
+    <div class="cat-card" style="background:#E74C3C"><div class="cat-icon">⚠️</div><div class="cat-name">疑似质量问题</div><div class="cat-count">2</div></div>
+  </div>
+  <table class="detail-table" style="margin-top:16px;">
+    <thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型</th></tr></thead>
+    <tbody>
+    <tr><td style="color:#00B050;font-weight:600">💡 功能咨询</td><td>46</td><td>56.8%</td><td>安装咨询(×5，其中3条索要安装/接电视频)、插头接口咨询(×2)、车牌识别功能咨询(×2)、供电咨询(×2)、充电宝供电咨询(×2)、设备参数咨询(×2)、前车起步提醒咨询(×2)、安装位置咨询、夜视清晰度咨询、USB接口咨询、停车监控咨询、循环覆盖咨询、实时查看咨询、是否双摄咨询、后录咨询、视频倒置咨询、最大内存卡大小咨询、无接电口使用咨询、电源接口咨询、快拆咨询、是否含电池咨询、螺丝大小咨询、内存卡存储容量咨询、车载使用咨询、运动相机款咨询、防紫外线咨询、支架配件咨询、配网咨询、1分钟视频咨询、视频回看咨询、骑行支架购买咨询、双口电源线用途咨询、视频icon标识咨询、配件咨询、保修期咨询、GPS功能咨询</td></tr>
+    <tr><td style="color:#F39C12;font-weight:600">🔧 安装引导类</td><td>11</td><td>13.6%</td><td>不通电/无法开机(×10，含电源线插不紧2条——防水紧配设计，按紧到位即正常使用；京东自营×9、在线咨询×1)、支架转动松开(×1，顺时针拧紧即解决)——均为安装紧固引导类问题，非硬件缺陷</td></tr>
+    <tr><td style="color:#3498DB;font-weight:600">💧 防水咨询</td><td>8</td><td>9.9%</td><td>防水咨询(×7)、防水级别咨询(×1)（IPX6防水等级、一体式密封防水结构）</td></tr>
+    <tr><td style="color:#9B59B6;font-weight:600">🎥 防抖咨询</td><td>5</td><td>6.2%</td><td>防抖咨询(×5)（物理防抖：万向球减震+算法优化）</td></tr>
+    <tr><td style="color:#E67E22;font-weight:600">🔒 安全/防盗</td><td>5</td><td>6.2%</td><td>防盗咨询(×2)、被盗赔付咨询(×2)、被盗赔付领取过期(×1，服务端已补充发放盗赔服务，原因系工厂抽检未正确使用工厂包APP致首次绑定时间异常)（激活30天内可免费领取被盗赔付）</td></tr>
+    <tr><td style="color:#95A5A6;font-weight:600">📋 其他</td><td>4</td><td>4.9%</td><td>其他、价格咨询、优惠力度咨询、以旧换新咨询</td></tr>
+    <tr><td style="color:#C0392B;font-weight:600">📇 卡录问题</td><td>3</td><td>3.7%</td><td>卡录漏录(×2：9/9在线咨询256G卡录不到、9/1呼叫中心回放无法查看)、内存卡损坏(×1，已换新卡)——今日无新增，卡兼容性/卡质量待确认，建议客服记录卡型与购机时间</td></tr>
+    <tr><td style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</td><td>2</td><td>2.5%</td><td>设备发烫(×1，客服已解释使用温度范围)、球头支架损坏(×1，售后换货)</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="section">
+  <div class="section-title">本期新增反馈明细（5条：无新增bug，按类型反馈量降序）</div>
+  <table class="detail-table">
+    <thead><tr><th>分类</th><th>问题类型</th><th>渠道</th><th>日期</th><th>用户问题</th><th>客服方案</th></tr></thead>
+  <tbody>
+    <tr class="new-row"><td><span style="color:#3498DB;font-weight:600">💧 防水咨询</span></td><td><span class="type-badge" style="background:#EAF2FB;color:#1F618D;border:1px solid #1F618D;">防水咨询</span></td><td>小红书</td><td><span class="date-badge">09/11</span></td><td class="problem-text">不怕下雨吗</td><td class="solution-text">是防水的，一体式密封防水结构</td></tr>
+    <tr class="new-row"><td><span style="color:#3498DB;font-weight:600">💧 防水咨询</span></td><td><span class="type-badge" style="background:#EAF2FB;color:#1F618D;border:1px solid #1F618D;">防水咨询</span> <span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">安装位置咨询</span></td><td>京东自营</td><td><span class="date-badge">09/11</span></td><td class="problem-text">咨询安装位置和是否防水</td><td class="solution-text">ipx6防水等级</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">插头接口咨询</span></td><td>京东自营</td><td><span class="date-badge">09/11</span></td><td class="problem-text">咨询对应插头接口</td><td class="solution-text">这款是type-c接口</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">车牌识别功能咨询</span></td><td>京东自营</td><td><span class="date-badge">09/11</span></td><td class="problem-text">咨询车配识别功能</td><td class="solution-text">建议链接app后下载一分钟原画视频识别看下</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">夜视清晰度咨询</span></td><td>小红书</td><td><span class="date-badge">09/11</span></td><td class="problem-text">夜晚清晰吗</td><td class="solution-text">清晰的哦，2K昼夜高清画质</td></tr>
+  </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注：本期新增类型2种（夜视清晰度咨询、安装位置咨询），I列标签全部完整无漏标；row200同时含"防水咨询+安装位置咨询"双标签，分类统计时分别计入防水咨询与功能咨询。row192"设备进水"备注为旧版订单（I列未打标"-"），未计入本期新品统计，建议客服移回旧款数据区域；渠道列"天猫"已并入"天猫官旗"统计。</p>
+</div>
+<div class="section">
+  <div class="section-title">重点问题跟踪</div>
+  <table class="detail-table">
+    <thead><tr><th>问题分类</th><th>问题名称</th><th>反馈总量</th><th>渠道分布</th><th>用户原声</th><th>原因</th><th>解决方案</th><th>责任人</th></tr></thead>
+    <tbody>
+    <tr class="risk-row"><td style="color:#F39C12;font-weight:600">🔧 安装引导类</td><td>无法开机/通电无反应（新增问题）</td><td>10条（京东自营×9、在线咨询×1；9/10京东自营新增1条，9/11零新增）</td><td>京东自营×9、在线咨询×1</td><td>"机器不通电无法开机""插电源线没反应""设备连接电源或者充电宝无法开机""电源线插不紧"</td><td>防水紧配设计，插头未按压到位——用力按紧到位即可正常使用</td><td>客服端（9.8已宣贯）：已同步客服统一话术，反馈不开机的用户请用户用力按压一下电源接头，确保插线到位；<br>产品端：①商详9.8已小字增加说明，安装视频9.9已替换更新；②纸质说明书增加说明、电源插头处增加贴纸/吊牌提示，方案已确定，随二批订单导入</td><td>吴琼</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注：反馈总量按反馈明细实际累计（10条，占比12.3%）；飞书「重点问题」sheet的9/7、9/8、9/9三段快照内容相同且仍为6条（12.5%）旧口径，解决方案/责任人两列为空，建议产品侧合并更新至10条口径。</p>
+</div>
+
+  <div class="footer">
+    数据来源：飞书表格「V6骑行新品跟踪表」· 用户问题反馈汇总（row122起，第二代升级款）<br>
+    由 🦞尹燕玲-报告分析专家 自动生成
+  </div>
+
+</div>
+<script>
+var chChart = echarts.init(document.getElementById('chart-channel'));
+var chData = {"names": ["京东自营", "有赞", "小红书", "私域", "在线咨询", "抖音", "天猫官旗", "微信", "微信小店", "呼叫中心"], "vals": [34, 11, 10, 8, 7, 5, 2, 2, 1, 1], "colors": ["#E74C3C", "#00B050", "#F39C12", "#2BBD6E", "#3498DB", "#9B59B6", "#E67E22", "#16A085", "#7F8C8D", "#C0392B"]};
+chChart.setOption({
+  tooltip: { trigger: 'axis', formatter: '{b}: {c}条' },
+  xAxis: { type: 'category', data: chData.names, axisLabel: { fontSize: 12 } },
+  yAxis: { type: 'value', name: '反馈量' },
+  series: [{
+    type: 'bar', data: chData.vals.map(function(v, i) { return { value: v, itemStyle: { color: chData.colors[i] } }; }),
+    barWidth: '50%',
+    label: { show: true, position: 'top', formatter: '{c}' }
+  }],
+  grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true }
+});
+</script>
+</body>
+</html>
