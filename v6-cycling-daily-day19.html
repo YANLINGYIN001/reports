@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V6骑行版新品跟踪日报 · Day 19</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:30px; margin-bottom:24px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .subtitle { font-size:14px; opacity:0.9; }
+.header .date-range { font-size:13px; opacity:0.8; margin-top:6px; }
+.overview { background:#fff; border-left:4px solid #00B050; border-radius:8px; padding:14px 20px; margin-bottom:20px; font-size:14px; color:#333; }
+.kpi-grid { display:grid; grid-template-columns:1fr 1.6fr 1.3fr; gap:16px; margin-bottom:24px; }
+.kpi-card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size:13px; color:#999; margin-bottom:8px; }
+.kpi-card .value { font-size:32px; font-weight:700; color:#E74C3C; }
+.kpi-card .delta { font-size:12px; color:#00B050; margin-top:4px; }
+.kpi-card .delta.up { color:#E74C3C; }
+.kpi-card .delta.zero { color:#999; }
+.kpi-card .sub { font-size:12px; color:#666; margin-top:4px; }
+.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
+.insight-box { border-radius:10px; padding:16px; margin-bottom:12px; }
+.insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
+.insight-orange { background:#fff3e0; border-left:4px solid #F39C12; }
+.insight-red { background:#fdecea; border-left:4px solid #E74C3C; }
+.insight-box p { font-size:14px; line-height:1.8; }
+.insight-box strong { color:#00B050; }
+.insight-orange strong { color:#F39C12; }
+.insight-red strong { color:#E74C3C; }
+.channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
+.channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
+.chart-container { width:100%; height:280px; }
+.cat-cards { display:grid; grid-template-columns:repeat(8, 1fr); gap:10px; margin-bottom:16px; }
+.cat-card { min-width:0; border-radius:8px; padding:12px 6px; text-align:center; color:#fff; }
+.cat-card .cat-icon { font-size:20px; }
+.cat-card .cat-name { font-size:12px; white-space:nowrap; margin-top:4px; }
+.cat-card .cat-count { font-size:20px; font-weight:700; margin-top:2px; }
+.detail-table { width:100%; border-collapse:collapse; font-size:13.5px; }
+.detail-table th { background:#f0f7f0; padding:10px 12px; text-align:left; font-weight:600; color:#333; border-bottom:2px solid #00B050; white-space:nowrap; }
+.detail-table td { padding:10px 12px; border-bottom:1px solid #eee; vertical-align:top; color:#333; line-height:1.55; }
+.detail-table tr:hover { background:#fafafa; }
+.detail-table tr.new-row { background:#fffdf0; }
+.detail-table tr.risk-row { background:#fdecea; }
+.type-badge { display:inline-block; padding:3px 10px; border-radius:4px; font-size:13px; font-weight:700; }
+.solution-text { color:#444; max-width:300px; }
+.problem-text { max-width:280px; color:#212121; font-weight:500; }
+.date-badge { color:#555; font-size:12.5px; font-weight:600; white-space:nowrap; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+@media (max-width:768px) {
+  .kpi-grid { grid-template-columns:repeat(2,1fr); }
+  .cat-card { min-width:100px; }
+  .detail-table { font-size:12px; }
+  .detail-table th, .detail-table td { padding:8px 6px; }
+  .solution-text, .problem-text { max-width:none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🚲 V6骑行版新品跟踪日报 · Day 19</h1>
+  <div class="subtitle">Day 19 累计汇总 | 数据周期 2026.08.29 - 2026.09.17</div>
+  <div class="date-range">数据来源:飞书表格「用户问题反馈汇总」 | 更新时间:2026-09-17 18:10</div>
+</div>
+
+<div class="overview">
+  累计109条(较Day 18 +4):今日新增4条全部来自有赞(反馈日期9/16×3+9/17×1),均为功能咨询类(是否含电池/联网方式/远程查看/充电宝供电时长),无新增缺陷;不开机簇累计12条,今日零新增。
+</div>
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">109</div><div class="delta up">较Day 18 +4(今日新增,均有赞)</div></div>
+  <div class="kpi-card"><div class="label">Top3问题(累计+本期新增)</div><div class="value" style="font-size:16px;line-height:1.4">不开机 12条 <span style="color:#00B050">无新增</span><br>防水咨询 7条 <span style="color:#00B050">无新增</span><br>防抖咨询 5条 <span style="color:#00B050">无新增</span><br>安装咨询 5条 <span style="color:#00B050">无新增</span></div><div class="delta zero">Top3问题今日均无新增(防抖/安装并列第3)</div></div>
+  <div class="kpi-card"><div class="label">今日新增bug问题(9/17)</div><div class="value" style="font-size:16px;line-height:1.4;color:#00B050">今日无新增bug问题</div><div class="sub">疑似缺陷累计19条持平(不开机12/卡录2/支架类3/发烫1/内存卡1);今日新增4条均为功能咨询类(均有赞)</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">核心洞察</div>
+  <div class="insight-box insight-green">
+    <p><strong>🟢 今日新增4条全部为功能咨询,集中于有赞渠道</strong>:均与供电/联网形态认知相关——设备无电池需插电使用、无需联网(通电插卡即用)、APP为扫码近场连接不支持远程控制;功能咨询累计63条(占比57.8%),此类认知差咨询可继续通过商详/FAQ前置标注分流。</p>
+  </div>
+  <div class="insight-box insight-orange">
+    <p><strong>🟠 充电宝/移动供电场景咨询持续出现,答复口径待统一</strong>:充电宝供电咨询累计2条,今日再增"充电宝供电时长咨询"1条,客服暂无续航时长官方参考;脱离车载USB的移动供电是骑行场景高频关注点,建议沉淀统一话术或给出参考区间,避免各渠道答复不一致。</p>
+  </div>
+  <div class="insight-box insight-orange">
+    <p><strong>🟠 不开机簇今日零新增,收敛待观察</strong>:累计12条,昨日单日+2后今日无新增,需连续观察2-3天确认是否收敛;建议产品/研发结合SN/批次排查供电线与接口装配一致性的排查结论尽快落地。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">渠道反馈分布(11渠道)</div>
+  <div class="channel-tags">
+    <span class="channel-tag">京东自营<span class="count">40</span></span>
+    <span class="channel-tag">有赞<span class="count">24</span></span>
+    <span class="channel-tag">在线咨询<span class="count">13</span></span>
+    <span class="channel-tag">小红书<span class="count">10</span></span>
+    <span class="channel-tag">私域<span class="count">7</span></span>
+    <span class="channel-tag">抖音<span class="count">5</span></span>
+    <span class="channel-tag">企微客服<span class="count">4</span></span>
+    <span class="channel-tag">天猫官旗<span class="count">2</span></span>
+    <span class="channel-tag">微信<span class="count">2</span></span>
+    <span class="channel-tag">微信小店<span class="count">1</span></span>
+    <span class="channel-tag">呼叫中心<span class="count">1</span></span>
+  </div>
+  <div id="chart-channel" class="chart-container"></div>
+</div>
+<div class="section">
+  <div class="section-title">问题主题分类</div>
+  <div class="cat-cards">
+    <div class="cat-card" style="background:#00B050"><div class="cat-icon">💡</div><div class="cat-name">功能咨询</div><div class="cat-count">63</div></div>
+    <div class="cat-card" style="background:#F39C12"><div class="cat-icon">🔧</div><div class="cat-name">安装引导类</div><div class="cat-count">14</div></div>
+    <div class="cat-card" style="background:#3498DB"><div class="cat-icon">💧</div><div class="cat-name">防水咨询</div><div class="cat-count">8</div></div>
+    <div class="cat-card" style="background:#E67E22"><div class="cat-icon">🔒</div><div class="cat-name">安全/防盗</div><div class="cat-count">7</div></div>
+    <div class="cat-card" style="background:#9B59B6"><div class="cat-icon">🎥</div><div class="cat-name">防抖咨询</div><div class="cat-count">5</div></div>
+    <div class="cat-card" style="background:#95A5A6"><div class="cat-icon">📋</div><div class="cat-name">其他</div><div class="cat-count">4</div></div>
+    <div class="cat-card" style="background:#E74C3C"><div class="cat-icon">⚠️</div><div class="cat-name">疑似质量问题</div><div class="cat-count">5</div></div>
+    <div class="cat-card" style="background:#C0392B"><div class="cat-icon">📇</div><div class="cat-name">卡录问题</div><div class="cat-count">3</div></div>
+  </div>
+  <table class="detail-table" style="margin-top:16px;">
+    <thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型</th></tr></thead>
+    <tbody>
+    <tr><td style="color:#00B050;font-weight:600">💡 功能咨询</td><td>63</td><td>57.8%</td><td>安装咨询(×5)、骑行支架购买咨询(×4,客服口径仅随整机售卖、单价89元)、供电咨询(×3)、是否含电池咨询(×2,超级电容无电池需插电)、充电宝供电咨询(×2)、内存卡存储容量咨询(×2)、插头接口咨询(×2)、车牌识别功能咨询(×2)、前车起步提醒咨询(×2)、设备参数咨询(×2)、安装视频咨询(×2)及39类各1条(接口/存储/APP使用/产品参数类为主,今日新增联网方式/远程查看/充电宝供电时长咨询)</td></tr>
+    <tr><td style="color:#F39C12;font-weight:600">🔧 安装引导类</td><td>14</td><td>12.8%</td><td>不通电/无法开机(×12,含电源线插不紧——防水紧配设计,按紧到位即正常使用;京东自营×11、在线咨询×1)、支架转动松开(×1,顺时针拧紧即解决)、车充供电不亮(×1,客服判断大概率车辆供电问题)</td></tr>
+    <tr><td style="color:#3498DB;font-weight:600">💧 防水咨询</td><td>8</td><td>7.3%</td><td>防水咨询(×7)、防水级别咨询(×1)(IPX6防水等级、一体式密封防水结构)</td></tr>
+    <tr><td style="color:#E67E22;font-weight:600">🔒 安全/防盗</td><td>7</td><td>6.4%</td><td>防盗咨询(×3)、被盗赔付咨询(×3)、被盗赔付领取过期(×1,服务端已补充发放)(激活30天内可免费领取被盗赔付)</td></tr>
+    <tr><td style="color:#9B59B6;font-weight:600">🎥 防抖咨询</td><td>5</td><td>4.6%</td><td>防抖咨询(×5)(物理防抖:万向球减震+算法优化)</td></tr>
+    <tr><td style="color:#95A5A6;font-weight:600">📋 其他</td><td>4</td><td>3.7%</td><td>其他、价格咨询、优惠力度咨询、以旧换新咨询</td></tr>
+    <tr><td style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</td><td>5</td><td>4.6%</td><td>支架损坏类(×2:球头支架损坏已售后换货、骑行支架安装时损坏已反馈网点核实部件)、螺丝长度不合适(×2,9/14补偿20元、9/15补偿10元)、设备发烫(×1,客服已解释使用温度范围)——均为单点反馈,持续观察</td></tr>
+    <tr><td style="color:#C0392B;font-weight:600">📇 卡录问题</td><td>3</td><td>2.8%</td><td>卡录漏录(×2)、内存卡损坏(×1,已换新卡)——本期无新增,建议客服记录卡型与购机时间</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注:row200同时含"防水咨询+安装位置咨询"双标签,安装位置咨询(×1)计入防水咨询侧、不重复计入功能咨询;row192"设备进水"备注为旧版订单(I列未打标"-"),未计入新品统计,建议客服移回旧款数据区域;row140"防抖咨询"标签与内容(防水)不符,已连续多期提醒修正;渠道列"天猫"已并入"天猫官旗"统计。</p>
+</div>
+<div class="section">
+  <div class="section-title">今日新增反馈明细（今日新增4条,均有赞,均为功能咨询类）</div>
+  <table class="detail-table">
+    <thead><tr><th>分类</th><th>问题类型</th><th>渠道</th><th>日期</th><th>用户问题</th><th>客服方案</th></tr></thead>
+    <tbody>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">是否含电池咨询</span></td><td>有赞</td><td><span class="date-badge">09/16</span></td><td class="problem-text">这个有电池吗？</td><td class="solution-text">没有的哦，需要插电使用的</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">充电宝供电时长咨询</span></td><td>有赞</td><td><span class="date-badge">09/17</span></td><td class="problem-text">这个用充电宝供电的话是可以录制多久</td><td class="solution-text">暂无具体的参考时长</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">联网方式咨询</span></td><td>有赞</td><td><span class="date-badge">09/16</span></td><td class="problem-text">联网方式</td><td class="solution-text">设备本身使用不需要联网，通电插卡即可使用；连接手机APP支持"打开APP扫一扫"一键扫码连接Wi-Fi，无需手动查找Wi-Fi并输入密码</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">远程查看咨询</span></td><td>有赞</td><td><span class="date-badge">09/16</span></td><td class="problem-text">1、如何连接App查看？连WiFi还是自带流量卡？<br>2、不能远程控制浏览吗</td><td class="solution-text">1、设备没有流量，下载360智慧生活APP后扫码快速连接查看<br>2、不支持远程控制</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注：今日新增=9/17录入sheet的4条(rows 228-231,均有赞,反馈日期9/16×3+9/17×1),按行位推进口径(基线止于row227),不按C列反馈日期回溯;今日无缺陷类新增;排序规则——缺陷置顶,其余按问题类型反馈量降序(是否含电池咨询为既有类型第2条,其余3类为今日首现)。</p>
+</div>
+  <div class="footer">
+    数据来源:飞书表格「V6骑行新品跟踪表」· 用户问题反馈汇总(row122起,第二代升级款)<br>
+    由 🦞尹燕玲-报告分析专家 自动生成
+  </div>
+
+</div>
+<script>
+var chChart = echarts.init(document.getElementById('chart-channel'));
+var chData = {"names": ["京东自营", "有赞", "在线咨询", "小红书", "私域", "抖音", "企微客服", "天猫官旗", "微信", "微信小店", "呼叫中心"], "vals": [40, 24, 13, 10, 7, 5, 4, 2, 2, 1, 1], "colors": ["#E74C3C", "#00B050", "#F39C12", "#2BBD6E", "#3498DB", "#9B59B6", "#E67E22", "#16A085", "#7F8C8D", "#C0392B", "#8E44AD"]};
+chChart.setOption({
+  tooltip: { trigger: 'axis', formatter: '{b}: {c}条' },
+  xAxis: { type: 'category', data: chData.names, axisLabel: { fontSize: 12 } },
+  yAxis: { type: 'value', name: '反馈量' },
+  series: [{
+    type: 'bar', data: chData.vals.map(function(v, i) { return { value: v, itemStyle: { color: chData.colors[i] } }; }),
+    barWidth: '50%',
+    label: { show: true, position: 'top', formatter: '{c}' }
+  }],
+  grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true }
+});
+</script>
+</body>
+</html>
