@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6pro 价格测试 · 风格预览 C</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* === FIXED STAGE BASE (viewport-base.css) === */
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#07130C}
+.deck-viewport{position:fixed;inset:0;overflow:hidden;background:#07130C}
+.deck-stage{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;transform-origin:0 0}
+.slide{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;display:block;visibility:hidden;opacity:0;pointer-events:none}
+.slide.active,.slide.visible{visibility:visible;opacity:1;pointer-events:auto;z-index:1}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}}
+
+/* === 360 GREEN DATA STYLE (custom) === */
+.slide{background:radial-gradient(1200px 700px at 72% 40%, #0D2417 0%, #07130C 60%),#07130C;color:#EAF6EE;font-family:'Sora','Noto Sans SC',sans-serif}
+.gridbg{position:absolute;inset:0;background-image:linear-gradient(rgba(43,189,110,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(43,189,110,.07) 1px,transparent 1px);background-size:96px 96px}
+.tag{position:absolute;left:120px;top:84px;font-family:'IBM Plex Mono',monospace;font-size:22px;color:#2BBD6E;letter-spacing:.22em}
+.tag .dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:#2BBD6E;margin-right:14px;box-shadow:0 0 18px #2BBD6E}
+.chart{position:absolute;right:100px;top:150px;width:860px;height:640px;opacity:.95}
+.range{position:absolute;left:120px;top:270px}
+.range .cur{font-size:64px;color:#6FCF97;font-weight:600}
+.range .num{font-weight:800;font-size:190px;line-height:1;background:linear-gradient(100deg,#00B050,#5FE39A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.range .sub{font-size:56px;font-weight:900;margin-top:18px}
+.range .sub .hl{color:#2BBD6E}
+.chips{position:absolute;left:120px;bottom:110px;display:flex;gap:22px}
+.chip{border:1px solid rgba(43,189,110,.55);border-radius:999px;padding:14px 30px;font-family:'IBM Plex Mono','Noto Sans SC',monospace;font-size:22px;color:#BFE9CF;background:rgba(43,189,110,.08)}
+.chip b{color:#2BBD6E}
+.foot{position:absolute;left:120px;bottom:52px;font-family:'IBM Plex Mono',monospace;font-size:18px;color:#4E6B58;letter-spacing:.12em}
+.draw{stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 2.2s ease forwards .5s}
+.draw2{animation-delay:.8s}.draw3{animation-delay:1.1s}.draw4{animation-delay:1.4s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.band{opacity:0;animation:fade 1s ease forwards 1.9s}
+@keyframes fade{to{opacity:1}}
+.reveal{opacity:0;transform:translateY(26px);animation:up .8s cubic-bezier(.2,.7,.2,1) forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.35s}.d3{animation-delay:.6s}.d4{animation-delay:.9s}
+@keyframes up{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="deck-viewport"><div class="deck-stage">
+<div class="slide active">
+  <div class="gridbg"></div>
+  <div class="tag reveal d1"><span class="dot"></span>6PRO 4G DOORBELL · PRICE SENSITIVITY METER</div>
+  <svg class="chart" viewBox="0 0 860 640">
+    <rect class="band" x="330" y="30" width="190" height="560" fill="rgba(43,189,110,.12)"/>
+    <line x1="40" y1="590" x2="830" y2="590" stroke="rgba(234,246,238,.25)" stroke-width="2"/>
+    <line x1="40" y1="30" x2="40" y2="590" stroke="rgba(234,246,238,.25)" stroke-width="2"/>
+    <path class="draw" d="M40,180 C200,150 330,120 500,80 C640,48 760,38 830,34" fill="none" stroke="#00B050" stroke-width="5" stroke-linecap="round"/>
+    <path class="draw draw2" d="M40,560 C180,555 300,520 460,420 C620,320 740,150 830,60" fill="none" stroke="#F39F12" stroke-width="4" stroke-linecap="round"/>
+    <path class="draw draw3" d="M40,586 C240,580 400,540 560,430 C700,330 790,140 830,80" fill="none" stroke="#E74C3C" stroke-width="4" stroke-linecap="round"/>
+    <path class="draw draw4" d="M40,588 C260,584 440,570 620,510 C720,472 790,430 830,400" fill="none" stroke="#8FA69A" stroke-width="3.5" stroke-dasharray="14 10" stroke-linecap="round"/>
+  </svg>
+  <div class="range">
+    <div class="cur reveal d2">ACCEPTABLE PRICE RANGE</div>
+    <div class="num reveal d2">¥350–499</div>
+    <div class="sub reveal d3">价格测试 <span class="hl">PSM</span> 敏感度报告</div>
+  </div>
+  <div class="chips reveal d4">
+    <div class="chip">OPP <b>≈¥399</b></div>
+    <div class="chip">样本 <b>19人</b> 全员</div>
+    <div class="chip">截至 <b>2026.09.18</b></div>
+  </div>
+  <div class="foot reveal d4">6PRO 4G DOORBELL PUBLIC BETA · FINAL PHASE</div>
+</div>
+</div></div>
+<script>
+function fit(){var s=Math.min(innerWidth/1920,innerHeight/1080);var st=document.querySelector('.deck-stage');st.style.transform='translate('+((innerWidth-1920*s)/2)+'px,'+((innerHeight-1080*s)/2)+'px) scale('+s+')'}
+addEventListener('resize',fit);fit();
+</script>
+</body>
+</html>
