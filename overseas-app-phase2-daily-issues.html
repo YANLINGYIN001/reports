@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海外APP公测 - 日常问题报告（2期 + 1期debug全量）</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+.container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
+.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 28px 30px; border-radius: 12px; margin-bottom: 22px; }
+.header h1 { font-size: 23px; margin-bottom: 8px; }
+.header .subtitle { font-size: 13px; opacity: 0.92; }
+.kpi-row { display: flex; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
+.kpi-card { flex: 1; min-width: 170px; background: #fff; border-radius: 10px; padding: 18px 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-align: center; }
+.kpi-card .label { font-size: 12px; color: #999; margin-bottom: 6px; }
+.kpi-card .value { font-size: 30px; font-weight: 700; color: #E74C3C; }
+.kpi-card .detail { font-size: 12px; color: #999; margin-top: 4px; }
+.section { background: #fff; border-radius: 10px; padding: 22px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 22px; }
+.section h2 { font-size: 17px; margin-bottom: 14px; padding-left: 10px; border-left: 4px solid #00B050; }
+.insight { margin-bottom: 14px; }
+.insight-title { font-weight: 700; font-size: 14px; }
+.insight-body { font-size: 13px; color: #555; margin-top: 3px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: #f0fdf4; color: #333; padding: 10px 8px; border: 1px solid #e8e8e8; font-size: 13px; }
+td { padding: 9px 8px; border: 1px solid #eee; vertical-align: top; }
+.tag-p0, .tag-p1, .tag-p2 { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+.tag-p0 { background: #fdecea; color: #E74C3C; }
+.tag-p1 { background: #fef5e7; color: #F39C12; }
+.tag-p2 { background: #eafaf1; color: #27ae60; }
+.red { color: #E74C3C; }
+.orange { color: #F39C12; }
+.fw-compare { display: flex; gap: 12px; flex-wrap: wrap; }
+.fw-card { flex: 1; min-width: 220px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 14px; }
+.fw-card.latest { border-color: #00B050; background: #f0fdf4; }
+.fw-card h3 { font-size: 14px; margin-bottom: 8px; }
+.fw-card .stat { font-size: 13px; color: #666; margin: 4px 0; }
+.fw-card .stat strong { color: #333; }
+.cat-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.cat-chip { display: inline-block; background: #fff; border: 1px solid #e0e0e0; border-radius: 16px; padding: 5px 12px; font-size: 13px; }
+.cat-chip b { color: #E74C3C; }
+.footer { text-align: center; padding: 18px; font-size: 12px; color: #999; }
+.footer a { color: #00B050; text-decoration: none; }
+.desc-cell { max-width: 260px; word-break: break-all; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>海外APP公测 - 日常问题报告（2期 + 1期debug）</h1>
+<div class="subtitle">数据周期：2026/9/7 ~ 2026/9/21 | 有效反馈 65 条（1期debug 40 + 2期 25）| 参与 15 人 | 去重问题 50 个</div>
+</div>
+<div class="kpi-row">
+<div class="kpi-card"><div class="label">总反馈量</div><div class="value">65</div><div class="detail">1期debug 40 + 2期 25（另有2条非问题已剔除）</div></div><div class="kpi-card"><div class="label">参与用户</div><div class="value">15</div><div class="detail">1期debug 9人 + 2期 9人（3人两期均参与）</div></div><div class="kpi-card"><div class="label">去重后问题数</div><div class="value">50</div><div class="detail">同一问题多用户/多期反馈合并计数</div></div><div class="kpi-card"><div class="label">P0 问题</div><div class="value">17</div><div class="detail">26条反馈，占有效反馈 40%</div></div>
+</div>
+<div class="section">
+<h2>核心洞察</h2>
+
+<div class="insight">
+<div class="insight-title">TOP1 门铃(811/811s)设置页按钮点击报错且无法保存——2期新爆发，3人独立反馈</div>
+<div class="insight-body">2期 John Horton、Din Bhumgara、John Fiedler 三位用户在不同设备上独立反馈<span class="red">同一问题</span>：视频/画面设置页点击选项弹出错误提示，选中状态无法保存（夜视、红外模式切换均受影响）。属交互类Bug，P0级，建议优先排查设置保存链路。</div>
+</div>
+<div class="insight">
+<div class="insight-title">TOP2 摄像头/云录开关状态显示与实际相反——跨期发酵，从1期debug 1人扩散到2期2人</div>
+<div class="insight-body">W101窗式相机设置页"摄像头开启/云录制"开关<span class="red">逻辑颠倒</span>：显示关闭实际开启，切换后状态不刷新。1期debug Taylor Newman 首报，2期 Vitalijus、Nicholas Meyer 复现，累计3人，跨期未收敛。涉及状态同步逻辑，P0级。</div>
+</div>
+<div class="insight">
+<div class="insight-title">TOP3 英文版出现中文文案——国际化缺陷，2人3条，集中在通知与首次进入页面</div>
+<div class="insight-body">APP更新后英文版首次进入设备页出现中文开头文案，部分推送通知直接以中文撰写（Taylor Newman HK40、Jonathan Mills）。海外用户对语言错乱的容忍度极低，属P0文案问题，影响产品专业度感知。</div>
+</div>
+<div class="insight">
+<div class="insight-title">2期新用户带来新增信号：AI检测类问题集中出现</div>
+<div class="insight-body">2期6位新加入用户反馈了4条AI检测类P0：车辆检测误报停放车辆并推送、门铃漏录送货事件、宠物检测数值始终为零、侦测到移动但视频内无移动物体且AI事件描述变简略。检测准确性与事件描述质量是2期用户的突出不满点。</div>
+</div>
+<div class="insight">
+<div class="insight-title">P0占比40%偏高，且2期与debug期问题几乎不重合（仅2项跨期）</div>
+<div class="insight-body">65条有效反馈中P0 26条（40%）。1期debug的TOP问题（智能搜索不可用、云存购买页菜单、ai anchor不易懂）到2期未再出现，说明debug版本问题已收敛；2期暴露的是新版本（2期改版）的新问题面，门铃设置保存、状态显示颠倒、AI检测质量三条线需重点跟进。另有4条需回访（内容混杂/排序失效/录像缺失/缩略图错乱），暂未打标。</div>
+</div>
+
+</div>
+<div class="section">
+<h2>核心问题分析（全部50个去重问题）</h2>
+<table>
+<thead><tr><th>等级</th><th>问题分类</th><th>问题标签</th><th>反馈量</th><th>涉及设备</th><th>类型</th><th>期次</th><th>用户反馈（译）</th></tr></thead>
+<tbody>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>清晰/理解性</td>
+<td class="desc-cell">摄像头和云录按钮不清晰，实为开启但设置页显示关闭</td>
+<td>3人/3条</td>
+<td class="desc-cell">window camera</td>
+<td>APP体验问题</td>
+<td>1期debug、2期</td>
+<td class="desc-cell">Taylor Newman：W101相机的“相机开启”切换按钮功能异常。当该按钮被开启时，相机实际上会关闭。这是反向操作，即便与W510相机相比，该功能的运行也存在问题。<br>Vitalijus：在设备设置中显示摄像头已关闭、云录制已关闭，尽管它们实际上是开启状态。<br>Nicholas Meyer：设置页面上的这个按钮在我看来似乎逻辑颠倒了。“相机开启”的状态显示为关闭，但相机实际上却是开启的。当我将布尔值切换为true时，相机反而离线了……</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>交互和操作</td>
+<td class="desc-cell">门铃设置里画面设置页点击按钮出现错误提示，且无法保存选中状态</td>
+<td>3人/3条</td>
+<td class="desc-cell">811s、R810、811</td>
+<td>Bug问题</td>
+<td>2期</td>
+<td class="desc-cell">John Horton：当选择图片中屏幕以及其他屏幕上的选项时，会出现错误信息。<br>Din Bhumgara：在视频设置中，当我尝试切换至自动红外模式时，出现了一个奇怪的反应。如果我点击该选项，之后再返回该界面，只会保持“夜视关闭”选项处于高亮状态。<br>John Fiedler：夜视功能在视频设置下已关闭。尝试修复时出现错误。</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>文案问题</td>
+<td class="desc-cell">英文版文案中出现中文</td>
+<td>2人/3条</td>
+<td class="desc-cell">APP、HK40、W510</td>
+<td>Bug问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Taylor Newman：自从应用程序更新后，我第一次进入我的hk-40时，开头的一些提示信息是中文的。<br>Jonathan Mills：错误的语言</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>交互和操作</td>
+<td class="desc-cell">智能搜索无法使用</td>
+<td>2人/2条</td>
+<td class="desc-cell">APP</td>
+<td>Bug问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Jonathan Mills：智能搜索无法正常工作<br>Sachin John：智能搜索功能无法正常使用。它不会根据页面上显示的任何输入内容进行排序。</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>交互和操作</td>
+<td class="desc-cell">云存购买页“已选设备”菜单选择某一设备不明显且不应该自动选择</td>
+<td>2人/2条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Nicholas Meyer：在这个新版本中，很难找到选择Secure+（安全增强）设备的地方！我在结账时差点完全没注意到它。旧版本把这个选项放在了顶部位置。<br>Taylor Newman：在Botslab的安全页面上，我认为“已选设备”菜单不应自动选择某一设备。当该菜单默认选定某一设备时，用户可能会不小心忘记将其切换为目标设备，进而为错误的设备购买订阅服务。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>清晰/理解性</td>
+<td class="desc-cell">510直播页里不懂ai anchor什么意思</td>
+<td>2人/2条</td>
+<td class="desc-cell">APP、W510</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Taylor Newman：我不确定这个区域框的作用是什么，因为没有相关说明。<br>Jonathan Mills：这款应用程序在内容清晰度方面有待提升。什么是人工智能主播？什么是目标/区域框？它仅仅是一个视觉元素吗？还是说它具备某种功能？</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>交互和操作</td>
+<td class="desc-cell">今日速览自动播放过快且无法暂停或者手动</td>
+<td>2人/2条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>1期debug、2期</td>
+<td class="desc-cell">Taylor Newman：我不喜欢这个功能总是自动滚动浏览所有事件。即便我在事件之间手动滚动，只要我一松开手指，它就会开始自动滚动到之前的事件。<br>Nicholas Meyer：这个新界面是个不错的功能，但它播放视频的速度快得离谱，而且没有暂停视频的方法。我在一定程度上喜欢它的自动滚动功能，但需要延长自动滚动的时长，或者需要一种能停止自动滚动、改为手动滑动滚动之类的方式。</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>安全和隐私</td>
+<td class="desc-cell">登录问题</td>
+<td>1人/2条</td>
+<td class="desc-cell">R810</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Nick：我退出登录了。当我使用苹果账号登录时，发现账户中没有了R810设备，而且我无法添加它。随后我再次退出登录，改用用户名和密码登录，该设备就又回来了。</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>其他</td>
+<td class="desc-cell">录像里跳帧</td>
+<td>1人/1条</td>
+<td class="desc-cell">W510</td>
+<td>固件/软件问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Jonathan Mills：截断的视频</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>其他</td>
+<td class="desc-cell">侦测遗漏、未录到</td>
+<td>1人/1条</td>
+<td class="desc-cell">W510</td>
+<td>固件/软件问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Jonathan Mills：缺失的片段</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>其他</td>
+<td class="desc-cell">314卡片页不显示最近一次事件的图像</td>
+<td>1人/1条</td>
+<td class="desc-cell">W314</td>
+<td>Bug问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Nicholas Meyer：我的w314设备常常不在主屏幕上显示最近一次检测到的图像，而只是显示为灰色。此外，它加载实时视频的速度很慢，这一点我能理解，因为它依赖于蜂窝网络，但我不明白为什么主屏幕上不显示它最后一次响应时的图像。</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>其他</td>
+<td class="desc-cell">门铃断网、不录制事件，但app上显示连接正常</td>
+<td>1人/1条</td>
+<td class="desc-cell">811s</td>
+<td>Bug问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Jeff C Espey：这款应用程序显示我的门铃处于在线状态，但它其实已经完全失灵了，而且在过去的两天半里都没有记录到任何事件！它突然停止工作了，当时它处于炎热的直射阳光下，所以我把它拿进来降温。把它放在空调地板通风口处几个小时后，它检测到了我儿子经过，于是我又把它重新安装到了室外。但应用程序上的状态从未改变过。现在门铃没有网络连接，外机也没</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>其他</td>
+<td class="desc-cell">w314设备在上午9点11分检测到了运动，但却将其记录为上午7点59分</td>
+<td>1人/1条</td>
+<td class="desc-cell">w314 LTE</td>
+<td>Bug问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Nicholas Meyer：我的w314设备在上午9点11分检测到了运动，但却将其记录为上午7点59分，还把该记录放在了我的事件页面列表的末尾。看起来时间存在错误，而且它的报告结果与应有结果不符。</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>交互和操作</td>
+<td class="desc-cell">AI技能页功能激活和提示框文案矛盾</td>
+<td>1人/1条</td>
+<td class="desc-cell">W510</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Taylor Newman：当我为我的w510相机应用“车辆检测”这一人工智能功能时，弹出的提示信息存在矛盾之处。提示框的标题显示安装失败，但错误信息内容却告知我该功能已成功应用。当我返回上一级界面时，系统又显示该功能并未激活。</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>清晰/理解性</td>
+<td class="desc-cell">开启分享但设置页未显示</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP, W510</td>
+<td>Bug问题</td>
+<td>2期</td>
+<td class="desc-cell">Jonathan Mills：共享功能令人困惑。相机设置界面显示未开启共享，但左侧的设备共享菜单却显示相机已共享。</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>通知和push</td>
+<td class="desc-cell">车辆检测捕捉停放车辆并发消息</td>
+<td>1人/1条</td>
+<td class="desc-cell">All devices</td>
+<td>APP体验问题</td>
+<td>2期</td>
+<td class="desc-cell">Jeff C Espey：每台摄像机的运动检测框都处于勾选状态，而且无法取消勾选！但在通知设置里，它却是未勾选的，我这几个月一直都是这么设置的！“车辆检测”功能本该检测移动的车辆，可它却只捕捉我那些停放着的车辆，还为此给我发送通知！这属于误报，而安防摄像机本就应该在有车辆驶入我家领地时提醒我！自从去年十月我购买这套系统以来，他们就一直说要解决这</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>其他</td>
+<td class="desc-cell">门铃没有记录记录送货上门的情况</td>
+<td>1人/1条</td>
+<td class="desc-cell">811</td>
+<td>固件/软件问题</td>
+<td>2期</td>
+<td class="desc-cell">Myia Williams：我家门铃没有记录所有的动态。它原本通常会记录送货上门的情况，现在却不记录了。</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>其他</td>
+<td class="desc-cell">摄像头没有检测到宠物</td>
+<td>1人/1条</td>
+<td class="desc-cell">W315</td>
+<td>固件/软件问题</td>
+<td>2期</td>
+<td class="desc-cell">Katarina Savić：在今日的重点内容里，有一个显示狗（宠物）的按钮，它的数值始终为0。不可能没有与宠物相关的事件，因为我的宠物一直在摄像头的拍摄范围内。正如你在截图中所见，确实有一只猫，但它显示的宠物事件数量为0。它无法检测到动物，这太令人失望了。
+ 
+ 注：原文中存在多处拼写错误，如“higliights”应为“highlights”、</td>
+</tr>
+<tr>
+<td><span class="tag-p0">P0</span></td>
+<td>稳定性</td>
+<td class="desc-cell">两台W510s相机都从应用程序中自动消失并显示目前准备好配对</td>
+<td>1人/1条</td>
+<td class="desc-cell">W510, APP</td>
+<td>Bug问题</td>
+<td>2期</td>
+<td class="desc-cell">Jonathan Mills：我的两台W510s相机都从应用程序中自行消失了。现在它们都显示已准备好配对。我不确定这是否是测试版应用程序的问题。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>查找功能问题</td>
+<td class="desc-cell">分享设备无法多选</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Jonathan Millz：分享需要能够做到包容一切。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">事件页里描述文案显示不完全</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Taylor Newman：我希望活动页面上的完整描述无需通过点击向下箭头展开就能直接查看。每个活动都有足够的空间容纳完整描述，无需隐藏其中部分内容。尤其是因为当你点击某个活动查看详情时，完整描述无需任何展开操作就能直接显示，这一点更应如此。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">主页卡片应显示当前打开首页时每个摄像头的最新快照</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Jonathan Mills：建议；意见；提议；暗示；联想</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">讨厌邮箱订阅浮窗</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Nicholas Meyer：已经无数次指出主页上的辅助叠加层有多糟糕了，现在再弄一个叠加层绝对是最馊的主意😞，这是个极其错误的方向。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>其他</td>
+<td class="desc-cell">视频卡顿</td>
+<td>1人/1条</td>
+<td class="desc-cell">W510</td>
+<td>固件/软件问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Jonathan Mills：视频加载缓慢且频繁卡顿。此外，下载好的视频播放也不流畅。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>文案问题</td>
+<td class="desc-cell">“link email”文案奇怪，且绑定邮件页有文案问题</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Nicholas Meyer：对于一个允许你更改电子邮箱地址的界面而言，“关联账户”这一术语让我感到很奇怪。我直到点击它之后才明白那是什么意思。我还注意到一些文本存在空格缺失的问题，比如“Send code toEMAIL HERE”中，“to”和电子邮箱地址之间就没有空格。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">视频设置里最后一排功能被部分遮挡</td>
+<td>1人/1条</td>
+<td class="desc-cell">window camera</td>
+<td>Bug问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Taylor Newman：在“视频”设置页面上，我屏幕底部的导航栏略微遮挡了“相机方向”这最后一个设置选项。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>查找功能问题</td>
+<td class="desc-cell">设置里功能名与打开后的页面的标题不一致</td>
+<td>1人/1条</td>
+<td class="desc-cell">window camera</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Taylor Newman：我认为设置项的标题应与设置页面的标题栏保持一致。它们要么都称为“视频设置”，要么都称为“视频与夜视功能”。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">事件页4点图标不清晰, 事件页切换视图样式必须逐个切换较麻烦</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Taylor Newman：我喜欢这款应用能让用户为活动选择不同的视图样式，但我不喜欢必须逐个切换每个选项才能找到合适的。
+ 
+ 另外，我认为右上角方框里的四个点并没有真正传达出那个按钮的功能。我看到很多其他应用都使用三个点（即“ kebob 菜单”）来提示存在更多选项，我觉得如果你们换成三个点会更好看。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">今日速览页面顶部的时间和电量看不清</td>
+<td>1人/1条</td>
+<td class="desc-cell">None</td>
+<td>APP体验问题</td>
+<td>2期</td>
+<td class="desc-cell">Nicholas Meyer：这事儿有点奇怪，不过在这个新页面上，iOS/iPhone的图标非常难以辨认，而且不像在其他页面上那样是白色的。我指的是手机时间、Wi-Fi信号和电池状态的图标。请对比下面的两张图片。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>安全和隐私</td>
+<td class="desc-cell">不理解账号登陆为什么需要验证码</td>
+<td>1人/1条</td>
+<td class="desc-cell">No device</td>
+<td>APP体验问题</td>
+<td>2期</td>
+<td class="desc-cell">Nicholas Meyer：我实在不理解登录时为何需要验证码。我认为这并不能阻止任何人入侵你的账户，只是给登录流程增添了一层额外的烦人步骤。它或许能阻止机器人登录，但这真的是个问题吗？在应用程序登录界面设置验证码，这似乎有些奇怪。我能接受通过手机号或邮箱进行两步验证，并输入发送的验证码，但验证码对我来说还是很怪异。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">卡片页各设备图标不见了，不容易区分设备</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>2期</td>
+<td class="desc-cell">Nicholas Meyer：产品图片被从主屏幕上移除了，我真的很伤心。我之前非常喜欢它在主屏幕上的设置。当我向下滚动屏幕时，它能让我很容易区分不同的设备，也能让我轻松找到自己想要的设备。
+ 
+ 我认为这是一个错误的改动。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>查找功能问题</td>
+<td class="desc-cell">811设置页找不到检测灵敏度选项</td>
+<td>1人/1条</td>
+<td class="desc-cell">811s</td>
+<td>APP体验问题</td>
+<td>2期</td>
+<td class="desc-cell">John Horton：在新布局中，我找不到检测灵敏度选项。该选项似乎仅在“先前设置布局”中可用。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>交互和操作</td>
+<td class="desc-cell">视频回放条显示时长为零</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>Bug问题</td>
+<td>2期</td>
+<td class="desc-cell">Jonathan Mills：事件视频回放未正确显示视频时长，显示时长为零。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>交互和操作</td>
+<td class="desc-cell">人工智能技能：车辆检测功能显示未激活但点击却提示已激活</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP, W510</td>
+<td>Bug问题</td>
+<td>2期</td>
+<td class="desc-cell">Jonathan Mills：人工智能技能——车辆检测功能显示需应用（似乎尚未激活）。当我点击应用时，却提示操作失败且该功能已处于激活状态。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>通知和push</td>
+<td class="desc-cell">侦测到移动的视频中实际没有移动物体, 没有ai详细描述事件的标签</td>
+<td>1人/1条</td>
+<td class="desc-cell">All devices</td>
+<td>固件/软件问题</td>
+<td>2期</td>
+<td class="desc-cell">Jeff C Espey：这些事件的描述一改以往的详尽风格，变得十分简略。人们很难找到自己想要了解的事件内容。那些“动态”视频里根本没有任何动态的东西！</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>广告</td>
+<td class="desc-cell">已订阅云存、却还能看见订阅广告图标按钮</td>
+<td>1人/1条</td>
+<td class="desc-cell">W315</td>
+<td>APP体验问题</td>
+<td>2期</td>
+<td class="desc-cell">Katarina Savić：订阅按钮本身没什么问题，但一旦有人订阅了，它就应该消失。我都已经订阅了，它还留在那里，实在是太烦人了。</td>
+</tr>
+<tr>
+<td><span class="tag-p1">P1</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">喜欢旧版设置页布局，新版中设置看起来都大同小异，没有任何层级区分或优先级排序</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>2期</td>
+<td class="desc-cell">Nicholas Meyer：我个人更喜欢“之前的设置”。我认为有些设置需要重新分组，使其更简洁、更统一，但总体而言，我对之前的视觉效果和布局的喜爱程度远远超过新布局。新布局中有很多不同的设置，但它们看起来都大同小异，而且没有任何层级区分或优先级排序……</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P2</span></td>
+<td>交互和操作</td>
+<td class="desc-cell">无法同时听音乐和观看实时视图</td>
+<td>1人/1条</td>
+<td class="desc-cell">R810</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Nick：当我开启实时视图时，我正在听的音乐就会中断，转而播放R810的音频。乍一看这似乎合情合理，但如果我只是监控视频的话，其实并不需要音频。能否让我们自主选择继续听自己的音乐或是切换到R810的音频呢？</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P2</span></td>
+<td>交互和操作</td>
+<td class="desc-cell">门铃铃声选择后文案不显示</td>
+<td>1人/1条</td>
+<td class="desc-cell">811s</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Nicholas Meyer：当我给我的r811s添加铃声后，退出该界面再重新进入时，铃声文本不会继续显示，例如“万圣节快乐”这一文本在我退出后就不会保留。我认为设置本身是保存了的，但文本没有保存，所以当我重新进入设置界面时，完全不知道之前设置的是什么。这种情况出现在音频设置项下。</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P2</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">录像的暂停、快进和快退按钮位于屏幕中央挡住重要信息</td>
+<td>1人/1条</td>
+<td class="desc-cell">R810</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Raymond bianchi：播放时，暂停、快进和快退按钮位于屏幕中央，这会遮挡人脸及其他重要信息。</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P2</span></td>
+<td>文案问题</td>
+<td class="desc-cell">W510“帮助”页面文案不清晰</td>
+<td>1人/1条</td>
+<td class="desc-cell">W510</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Taylor Newman：W510的“帮助”板块可作一些优化，我已在截图上留下了我的建议。</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P2</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">希望事件页的事件都附上日期</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Taylor Newman：我认为活动页面上每个单独的活动除了显示时间外，也附上日期会更好。有时候我会把某些录制内容的截屏分享给我的丈夫，但由于截屏上没有显示日期，他不确定我所谈论的内容是哪一天的。</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P2</span></td>
+<td>清晰/理解性</td>
+<td class="desc-cell">ai skills功能存在重复</td>
+<td>1人/1条</td>
+<td class="desc-cell">window camera</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Taylor Newman：这些人工智能技能在人工智能技能页面上似乎存在重复，我不确定实际应该使用哪一个，也不清楚为什么会有重复的选项。</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P2</span></td>
+<td>通知和push</td>
+<td class="desc-cell">一段动作被录制拆分成多个片段，推送过多消息</td>
+<td>1人/1条</td>
+<td class="desc-cell">W510, APP</td>
+<td>APP体验问题</td>
+<td>2期</td>
+<td class="desc-cell">Jonathan Mills：相机将单一动作实例记录为多个不同的片段，随后就同一活动推送多条通知，这导致通知数量过多。看看这张截图，其中显示了我收到的关于同一活动的三条通知。</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P2</span></td>
+<td>清晰/理解性</td>
+<td class="desc-cell">ai技能打开是空白，不确定是本身没有此功能还是bug</td>
+<td>1人/1条</td>
+<td class="desc-cell">H200</td>
+<td>APP体验问题</td>
+<td>2期</td>
+<td class="desc-cell">Jonathan Mills：设置项中有一个管理人工智能技能的选项。点击该选项后，系统显示没有人工智能技能。无法确定是H200确实没有任何人工智能技能，还是这是一个错误。</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P2</span></td>
+<td>查找功能问题</td>
+<td class="desc-cell">希望界面”客服“换成“在线支持和反馈”，有时不想客服只想查找手册、且老人直接打电话求助不用在线聊天</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>2期</td>
+<td class="desc-cell">Nicholas Meyer：我有理由认为，“支持”按钮应该是这四个图标之一，而非特指全天候在线客服。很多时候，我并不想与真人实时交流，只是希望能快速查阅常见问题解答、用户手册，或是提交反馈意见等。此外，许多年长人士并不喜欢通过文字聊天，而是希望能有一个可拨打的电话号码！</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P3</span></td>
+<td>其他</td>
+<td class="desc-cell">智能场景希望增加更多选项</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Jonathan Mills：智能场景需要更多选项。</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P3</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">活动图标和消息通知图标较相似</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>APP体验问题</td>
+<td>1期debug</td>
+<td class="desc-cell">Jonathan Mills：全天候支持服务与活动相关的图标看起来较为相似</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P3</span></td>
+<td>布局和视觉审美</td>
+<td class="desc-cell">Secure+页面顶部现在有大量空白区域</td>
+<td>1人/1条</td>
+<td class="desc-cell">APP</td>
+<td>Bug问题</td>
+<td>2期</td>
+<td class="desc-cell">Nicholas Meyer：Secure+页面顶部现在有大量空白区域，而以前那里原本有某种标识？从视觉上看，这很不美观。</td>
+</tr>
+<tr>
+<td><span class="tag-p2">P3</span></td>
+<td>通知和push</td>
+<td class="desc-cell">希望ai总结整个视频内容而非片段内容</td>
+<td>1人/1条</td>
+<td class="desc-cell">W510, APP</td>
+<td>APP体验问题</td>
+<td>2期</td>
+<td class="desc-cell">Jonathan Mills：摄像机人工智能对一段视频片段的描述针对的是该片段的某个瞬间。这段片段显示有一辆黑色汽车停在街道上。如果人工智能能够对这段片段进行完整扫描，并描述为“一辆黑色汽车驶入车道”就更好了。也就是说，要针对更长的时间段提供更详尽的细节。</td>
+</tr>
+</tbody></table>
+<p style="font-size:12px;color:#999;margin-top:10px;">按反馈人数从高到低排序（同人数按严重度）。用户反馈为中文翻译摘要，原文（英文）见飞书「日常问题2期」sheet。</p>
+</div>
+<div class="section">
+<h2>需回访（4条）</h2>
+<table><thead><tr><th>用户</th><th>日期</th><th>反馈内容（译）</th></tr></thead><tbody><tr><td>Sanidin Muratbegovic</td><td>2026/9/11 </td><td class='desc-cell'>我遇到了内容混杂的问题，导致应用程序访问外部页面时响应速度变慢。
+ 
+ 注：原文中“contrnt”应为“content”的拼写错误，“wtth”应为“with”的拼写错误，“respond”应为“response”的词性误用（此处需名词形</td></tr>
+<tr><td>Sachin John</td><td>2026/9/12 </td><td class='desc-cell'>活动页面的排序功能无法正常工作，使用时无法显示所有视频。</td></tr>
+<tr><td>Jonathan Millz</td><td>2026/9/12 </td><td class='desc-cell'>缺失的监控录像</td></tr>
+<tr><td>Jonathan Mills</td><td>2026/9/14 </td><td class='desc-cell'>应用程序显示的预览图/缩略图有误。你看车道摄像头显示的竟是后院摄像头的缩略图。</td></tr></tbody></table><p style="font-size:12px;color:#999;margin-top:10px;">需回访条目暂未打标分级，待补充信息后归入正式问题清单。</p>
+</div>
+<div class="section">
+<h2>问题分类分布</h2>
+<div class="cat-row"><span class="cat-chip">👆 交互和操作 <b>14</b></span><span class="cat-chip">🎨 布局和视觉审美 <b>12</b></span><span class="cat-chip">📦 其他 <b>9</b></span><span class="cat-chip">💡 清晰/理解性 <b>8</b></span><span class="cat-chip">📝 文案问题 <b>5</b></span><span class="cat-chip">🔍 查找功能问题 <b>4</b></span><span class="cat-chip">❓ 未分类(需回访) <b>4</b></span><span class="cat-chip">🔔 通知和push <b>4</b></span><span class="cat-chip">🔒 安全和隐私 <b>3</b></span><span class="cat-chip">⚡ 稳定性 <b>1</b></span><span class="cat-chip">📢 广告 <b>1</b></span></div><table><thead><tr><th>问题分类</th><th>反馈条数</th><th>占比</th></tr></thead><tbody><tr><td>👆 交互和操作</td><td>14</td><td>21.5%</td></tr><tr><td>🎨 布局和视觉审美</td><td>12</td><td>18.5%</td></tr><tr><td>📦 其他</td><td>9</td><td>13.8%</td></tr><tr><td>💡 清晰/理解性</td><td>8</td><td>12.3%</td></tr><tr><td>📝 文案问题</td><td>5</td><td>7.7%</td></tr><tr><td>🔍 查找功能问题</td><td>4</td><td>6.2%</td></tr><tr><td>❓ 未分类(需回访)</td><td>4</td><td>6.2%</td></tr><tr><td>🔔 通知和push</td><td>4</td><td>6.2%</td></tr><tr><td>🔒 安全和隐私</td><td>3</td><td>4.6%</td></tr><tr><td>⚡ 稳定性</td><td>1</td><td>1.5%</td></tr><tr><td>📢 广告</td><td>1</td><td>1.5%</td></tr></tbody></table>
+</div>
+<div class="section">
+<h2>1期debug 与 2期 对比</h2>
+<div class="fw-compare">
+<div class="fw-card"><h3>1期 debug（9/7~9/16）</h3>
+<div class="stat">反馈量：<strong>40条</strong>（另4条需回访未计入分级）</div>
+<div class="stat">参与用户：<strong>9人</strong></div>
+<div class="stat">P0/P1/P2/P3：<strong>16/12/6/2</strong></div>
+<div class="stat">TOP：英文版中文文案2人、智能搜索不可用2人、云存购买页菜单2人</div>
+</div>
+<div class="fw-card latest"><h3>2期（9/18~9/21）</h3>
+<div class="stat">反馈量：<strong>25条</strong></div>
+<div class="stat">参与用户：<strong>9人</strong>（6人为2期新加入）</div>
+<div class="stat">P0/P1/P2/P3：<strong>10/10/3/2</strong></div>
+<div class="stat">TOP：门铃设置保存报错3人、摄像头/云录开关显示颠倒2人</div>
+</div>
+</div>
+<div class="section" style="padding:14px 18px;margin-top:14px;">
+<p style="font-size:13px;"><b>跨期重合问题（2项）：</b>① 摄像头/云录按钮状态显示与实际相反（debug 1人 → 2期 2人，<span class="red">发酵中</span>）；② 今日速览自动播放过快且无法暂停（两期各1人）。其余问题两期无重合，debug期TOP问题（智能搜索、云存菜单、ai anchor文案）2期未再出现，版本迭代收敛有效。</p>
+</div>
+</div>
+<div class="footer">
+数据来源：飞书《app公测问题龙虾支持》「日常问题2期」sheet（编号158-230，2026/9/22读取）｜
+报告合集：<a href="https://yanlingyin001.github.io/reports/reports-index.html">海外APP公测报告</a>
+</div>
+</div>
+</body>
+</html>
