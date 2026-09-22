@@ -42,6 +42,18 @@ td { padding: 9px 8px; border: 1px solid #eee; vertical-align: top; }
 .footer { text-align: center; padding: 18px; font-size: 12px; color: #999; }
 .footer a { color: #00B050; text-decoration: none; }
 .desc-cell { max-width: 260px; word-break: break-all; }
+.ov-grid { display: flex; gap: 14px; flex-wrap: wrap; align-items: flex-start; }
+.ov-card { flex: 1; min-width: 300px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 14px; }
+.ov-head { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.ov-head b { color: #E74C3C; }
+.ov-sub { font-size: 12px; color: #999; font-weight: 400; margin-left: 6px; }
+.ov-sev { font-size: 13px; font-weight: 700; color: #E74C3C; margin: 10px 0 6px; }
+.ov-sev.ov-sev-danger { color: #E74C3C; }
+.ov-sev:not(.ov-sev-danger) { color: #F39C12; }
+.ov-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.ov-table td { padding: 6px 8px; border: 1px solid #eee; vertical-align: top; }
+.ov-table .ov-n { white-space: nowrap; color: #666; font-size: 12px; }
+
 </style>
 </head>
 <body>
@@ -52,6 +64,76 @@ td { padding: 9px 8px; border: 1px solid #eee; vertical-align: top; }
 </div>
 <div class="kpi-row">
 <div class="kpi-card"><div class="label">总反馈量</div><div class="value">65</div><div class="detail">1期debug 40 + 2期 25（另有2条非问题已剔除）</div></div><div class="kpi-card"><div class="label">参与用户</div><div class="value">15</div><div class="detail">1期debug 9人 + 2期 9人（3人两期均参与）</div></div><div class="kpi-card"><div class="label">去重后问题数</div><div class="value">50</div><div class="detail">同一问题多用户/多期反馈合并计数</div></div><div class="kpi-card"><div class="label">P0 问题</div><div class="value">17</div><div class="detail">26条反馈，占有效反馈 40%</div></div>
+</div>
+<div class="section">
+<h2>P0 / P1 问题概览</h2>
+<div class="ov-grid">
+<div class="ov-card">
+<div class="ov-head"><span class="ov-emoji">👆</span>体验问题 <b>20个</b> <span class="ov-sub">P0×5 · P1×15</span></div>
+<div class="ov-sev">P0（5个）</div>
+<table class="ov-table"><tbody>
+<tr><td>摄像头和云录按钮不清晰，实为开启但设置页显示关闭</td><td class="ov-n">3人/3条</td></tr>
+<tr><td>云存购买页“已选设备”菜单选择某一设备不明显且不应该自动选择</td><td class="ov-n">2人/2条</td></tr>
+<tr><td>登录问题</td><td class="ov-n">1人/2条</td></tr>
+<tr><td>AI技能页功能激活和提示框文案矛盾</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>车辆检测捕捉停放车辆并发消息</td><td class="ov-n">1人/1条</td></tr>
+</tbody></table>
+<div class="ov-sev">P1（15个）</div>
+<table class="ov-table"><tbody>
+<tr><td>510直播页里不懂ai anchor什么意思</td><td class="ov-n">2人/2条</td></tr>
+<tr><td>今日速览自动播放过快且无法暂停或者手动</td><td class="ov-n">2人/2条</td></tr>
+<tr><td>分享设备无法多选</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>事件页里描述文案显示不完全</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>主页卡片应显示当前打开首页时每个摄像头的最新快照</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>讨厌邮箱订阅浮窗</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>“link email”文案奇怪，且绑定邮件页有文案问题</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>设置里功能名与打开后的页面的标题不一致</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>事件页4点图标不清晰，事件页切换视图样式必须逐个切换较麻烦</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>今日速览页面顶部的时间和电量看不清</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>不理解账号登陆为什么需要验证码</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>卡片页各设备图标不见了，不容易区分设备</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>811设置页找不到检测灵敏度选项</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>已订阅云存、却还能看见订阅广告图标按钮</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>喜欢旧版设置页布局，新版中设置看起来都大同小异，没有任何层级区分或优先级排序</td><td class="ov-n">1人/1条</td></tr>
+</tbody></table>
+</div>
+<div class="ov-card">
+<div class="ov-head"><span class="ov-emoji">🐞</span>Bug问题 <b>11个</b> <span class="ov-sub">P0×8 · P1×3</span></div>
+<div class="ov-sev ov-sev-danger">P0（8个）</div>
+<table class="ov-table"><tbody>
+<tr><td>门铃设置里画面设置页点击按钮出现错误提示，且无法保存选中状态</td><td class="ov-n">3人/3条</td></tr>
+<tr><td>英文版文案中出现中文</td><td class="ov-n">2人/3条</td></tr>
+<tr><td>智能搜索无法使用</td><td class="ov-n">2人/2条</td></tr>
+<tr><td>314卡片页不显示最近一次事件的图像</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>门铃断网、不录制事件，但app上显示连接正常</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>w314设备在上午9点11分检测到了运动，但却将其记录为上午7点59分</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>开启分享但设置页未显示</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>两台W510s相机都从应用程序中自动消失并显示目前准备好配对</td><td class="ov-n">1人/1条</td></tr>
+</tbody></table>
+<div class="ov-sev">P1（3个）</div>
+<table class="ov-table"><tbody>
+<tr><td>视频设置里最后一排功能被部分遮挡</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>视频回放条显示时长为零</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>人工智能技能：车辆检测功能显示未激活但点击却提示已激活</td><td class="ov-n">1人/1条</td></tr>
+</tbody></table>
+</div>
+<div class="ov-card">
+<div class="ov-head"><span class="ov-emoji">💾</span>固件/软件问题 <b>6个</b> <span class="ov-sub">P0×4 · P1×2</span></div>
+<div class="ov-sev ov-sev-danger">P0（4个）</div>
+<table class="ov-table"><tbody>
+<tr><td>录像里跳帧</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>侦测遗漏、未录到</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>门铃没有记录送货上门的情况</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>摄像头没有检测到宠物</td><td class="ov-n">1人/1条</td></tr>
+</tbody></table>
+<div class="ov-sev">P1（2个）</div>
+<table class="ov-table"><tbody>
+<tr><td>视频卡顿</td><td class="ov-n">1人/1条</td></tr>
+<tr><td>侦测到移动的视频中实际没有移动物体，没有AI详细描述事件的标签</td><td class="ov-n">1人/1条</td></tr>
+</tbody></table>
+</div>
+</div>
+<p style="font-size:12px;color:#999;margin-top:10px;">P0/P1 合计 37 个问题（体验 20 + Bug 11 + 固件/软件 6）。按反馈人数从高到低排序，仅列问题与计数，用户原声见下方「核心问题分析」。</p>
 </div>
 <div class="section">
 <h2>核心洞察</h2>
