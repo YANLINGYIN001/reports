@@ -18,16 +18,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 .kv{font-size:30px;font-weight:800}
 .kl{font-size:13px;color:#666;margin-top:2px}
 .ks{font-size:11px;color:#999;margin-top:2px}
-.grid2{display:grid;grid-template-columns:340px 1fr;gap:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .tbl{width:100%;border-collapse:collapse;font-size:13px}
 .tbl th{background:#f0f7f1;color:#333;padding:9px 10px;text-align:left;font-weight:600;border-bottom:2px solid #00B050;white-space:nowrap}
 .tbl td{padding:8px 10px;border-bottom:1px solid #eee;vertical-align:middle}
 .tbl tr:hover td{background:#fafcfa}
-.bn{width:70px;font-weight:600;white-space:nowrap}
-.bv{width:auto}
-.bc{width:36px;text-align:right;font-weight:600;color:#00B050}
-.track{background:#eef2ef;border-radius:4px;height:14px;overflow:hidden}
-.fill{background:linear-gradient(90deg,#00B050,#2BBD6E);height:100%;border-radius:4px}
 .segrow td{background:#f0f7f1;font-weight:700;color:#00B050;padding:7px 10px;font-size:13px}
 .noinst{display:inline-block;margin-left:6px;font-size:10px;color:#fff;background:#F39C12;border-radius:3px;padding:1px 5px;vertical-align:1px}
 .pills{display:flex;gap:8px;flex-wrap:wrap}
@@ -48,39 +43,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue"
 <div class="kpi"><div class="kv" style="color:#E74C3C">5</div><div class="kl">30万以上</div><div class="ks">占比 10%</div></div>
 </div>
 
-<div class="grid2">
-<div class="card"><h2>品牌分布（24个）</h2><table class="tbl"><tr><th>品牌</th><th></th><th>人数</th></tr>
-<tr><td class="bn">大众</td><td class="bv"><div class="track"><div class="fill" style="width:100%"></div></div></td><td class="bc">7</td></tr>
-<tr><td class="bn">丰田</td><td class="bv"><div class="track"><div class="fill" style="width:86%"></div></div></td><td class="bc">6</td></tr>
-<tr><td class="bn">吉利</td><td class="bv"><div class="track"><div class="fill" style="width:71%"></div></div></td><td class="bc">5</td></tr>
-<tr><td class="bn">奇瑞</td><td class="bv"><div class="track"><div class="fill" style="width:71%"></div></div></td><td class="bc">5</td></tr>
-<tr><td class="bn">现代</td><td class="bv"><div class="track"><div class="fill" style="width:43%"></div></div></td><td class="bc">3</td></tr>
-<tr><td class="bn">比亚迪</td><td class="bv"><div class="track"><div class="fill" style="width:43%"></div></div></td><td class="bc">3</td></tr>
-<tr><td class="bn">奥迪</td><td class="bv"><div class="track"><div class="fill" style="width:29%"></div></div></td><td class="bc">2</td></tr>
-<tr><td class="bn">五菱</td><td class="bv"><div class="track"><div class="fill" style="width:29%"></div></div></td><td class="bc">2</td></tr>
-<tr><td class="bn">福特</td><td class="bv"><div class="track"><div class="fill" style="width:29%"></div></div></td><td class="bc">2</td></tr>
-<tr><td class="bn">东风</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">长安</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">腾势</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">凯迪拉克</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">哈弗</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">日产</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">本田</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">纳智捷</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">宝马</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">捷途</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">零跑</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">坦克</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">别克</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">马自达</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-<tr><td class="bn">红旗</td><td class="bv"><div class="track"><div class="fill" style="width:14%"></div></div></td><td class="bc">1</td></tr>
-</table></div>
-<div>
-<div class="card"><h2>能源类型</h2><div class="pills"><span class="pill" style="background:#99999921;border:1px solid #999999;color:#999999">油车 35人</span> <span class="pill" style="background:#00B05021;border:1px solid #00B050;color:#00B050">纯电 12人</span> <span class="pill" style="background:#2BBD6E21;border:1px solid #2BBD6E;color:#2BBD6E">混合动力 3人</span> </div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px">
+<div class="card" style="margin-bottom:0"><h2>能源类型</h2><div class="pills"><span class="pill" style="background:#99999921;border:1px solid #999999;color:#999999">油车 35人</span> <span class="pill" style="background:#00B05021;border:1px solid #00B050;color:#00B050">纯电 12人</span> <span class="pill" style="background:#2BBD6E21;border:1px solid #2BBD6E;color:#2BBD6E">混合动力 3人</span> </div>
 <div class="note">油车约70%，新能源（纯电+混动）约30%；微型电车7台</div></div>
-<div class="card"><h2>车辆类型</h2><div class="pills"><span class="pill" style="background:#33333321;border:1px solid #33333366;color:#333">SUV 26人</span> <span class="pill" style="background:#33333321;border:1px solid #33333366;color:#333">轿车 24人</span> </div>
+<div class="card" style="margin-bottom:0"><h2>车辆类型</h2><div class="pills"><span class="pill" style="background:#33333321;border:1px solid #33333366;color:#333">SUV 26人</span> <span class="pill" style="background:#33333321;border:1px solid #33333366;color:#333">轿车 24人</span> </div>
 <div class="note">SUV 26台（52%），轿车 24台（48%）</div></div>
-</div>
 </div>
 
 <div class="card"><h2>50人明细（按价位段分组，段内按品牌排序）</h2><table class="tbl"><tr><th>姓名</th><th>品牌</th><th>型号</th><th>价位(估)</th><th>购买年份</th><th>车辆类型</th><th>汽车类型</th></tr>
