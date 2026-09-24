@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G980H 4G记录仪公测·日常问题阶段报告（9/24）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;background:#f5f5f5;color:#333;line-height:1.6;padding:24px 12px}
+.wrap{max-width:1000px;margin:0 auto}
+.hd{background:linear-gradient(135deg,#00B050,#2BBD6E);border-radius:12px;color:#fff;padding:26px 30px;margin-bottom:18px}
+.hd h1{font-size:22px;font-weight:700}
+.hd .sub{font-size:13px;opacity:.92;margin-top:6px}
+.card{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card h2{font-size:16px;font-weight:700;margin-bottom:12px;padding-left:10px;border-left:4px solid #00B050}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:#fff;border-radius:10px;padding:16px 8px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kv{font-size:28px;font-weight:800;color:#E74C3C}
+.kl{font-size:13px;color:#666;margin-top:2px}
+.ks{font-size:11px;color:#999;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px;background:#fff}
+th{background:#00B050;color:#fff;padding:8px;text-align:center;font-weight:600;white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid #eee;text-align:center;vertical-align:middle}
+tr:hover td{background:#fafcfa}
+.insight{background:#f0f7f4;border-left:4px solid #00B050;padding:12px 16px;margin-bottom:14px;border-radius:0 6px 6px 0;font-size:14px;line-height:1.8}
+.insight .warn{color:#E74C3C;font-weight:600}
+.note{font-size:12px;color:#999;margin-top:10px;line-height:1.7}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}table{font-size:12px}td,th{padding:5px 4px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hd"><h1>📮 G980H 4G记录仪公测 · 日常问题阶段报告</h1><div class="sub">数据周期：公测启动 ~ 2026/9/24 16:35 ｜ 46人公测组 ｜ 数据来源：飞书「公测跟进-日常问题」表</div></div>
+
+<div class="kpis">
+<div class="kpi"><div class="kv">603</div><div class="kl">累计有效反馈</div><div class="ks">忽略/重复43条不计入</div></div>
+<div class="kpi"><div class="kv">77</div><div class="kl">今日新增（9/24）</div><div class="ks">bug 34 / 需求 24 / 易用 21</div></div>
+<div class="kpi"><div class="kv">46</div><div class="kl">参与用户</div><div class="ks">全员覆盖</div></div>
+<div class="kpi"><div class="kv">603</div><div class="kl">已全部分配责任人</div><div class="ks">100%分配</div></div>
+</div>
+
+<div class="card"><h2>💡 核心结论</h2><div class="insight">累计有效反馈<span class="warn">603条</span>，类型分布：bug 238条（39.5%）/ 需求建议 225条（37.3%）/ 易用性 140条（23.2%）。<span class="warn">GPS域96条居首</span>（定位偏差23、轨迹异常10、定位默认天安门9、轨迹缺失8——GPS四类问题合计50条，为最集中问题域）；<span class="warn">停车监控86条为今日增长最快域</span>（+17：误报7、熄火未进入哨兵6、远程查看哨兵进循环录像8）；<span class="warn">屏保显示异常16条连续两日上升</span>（+5）；设备离线20条（+2）持续未收敛。需求端TOP2：远程设置需求21条、电瓶电压监测12条，均与4G云能力直接相关，是用户对4G版本的核心期待。</div></div>
+
+<div class="card"><h2>🎯 问题 TOP10（bug+易用性，需求性质类不计入）</h2>
+<table><tr><th>排名</th><th>一级分类</th><th>二级标签</th><th>反馈量</th><th>较昨日</th></tr>
+<tr><td>1</td><td>GPS</td><td style="text-align:left;font-weight:600">定位偏差</td><td style="color:#E74C3C;font-weight:700">23</td><td style="color:#E74C3C;font-size:12px">↑+1</td></tr>
+<tr><td>2</td><td>设备稳定性</td><td style="text-align:left;font-weight:600">设备离线</td><td style="color:#E74C3C;font-weight:700">20</td><td style="color:#E74C3C;font-size:12px">↑+2</td></tr>
+<tr><td>3</td><td>主机交互</td><td style="text-align:left;font-weight:600">屏保显示异常</td><td style="color:#E74C3C;font-weight:700">16</td><td style="color:#E74C3C;font-size:12px">↑+5</td></tr>
+<tr><td>4</td><td>GPS</td><td style="text-align:left;font-weight:600">轨迹异常</td><td style="color:#E74C3C;font-weight:700">10</td><td style="color:#E74C3C;font-size:12px">↑+4</td></tr>
+<tr><td>5</td><td>GPS</td><td style="text-align:left;font-weight:600">定位默认天安门</td><td style="color:#E74C3C;font-weight:700">9</td><td style="color:#E74C3C;font-size:12px">↑+1</td></tr>
+<tr><td>6</td><td>GPS</td><td style="text-align:left;font-weight:600">轨迹缺失</td><td style="color:#E74C3C;font-weight:700">8</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>7</td><td>停车监控</td><td style="text-align:left;font-weight:600">远程查看哨兵进循环录像</td><td style="color:#E74C3C;font-weight:700">8</td><td style="color:#E74C3C;font-size:12px">↑+1</td></tr>
+<tr><td>8</td><td>停车监控</td><td style="text-align:left;font-weight:600">误报</td><td style="color:#E74C3C;font-weight:700">7</td><td style="color:#E74C3C;font-size:12px">↑+3</td></tr>
+<tr><td>9</td><td>停车监控</td><td style="text-align:left;font-weight:600">熄火未进入哨兵</td><td style="color:#E74C3C;font-weight:700">6</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>10</td><td>GPS</td><td style="text-align:left;font-weight:600">定位偏差大</td><td style="color:#E74C3C;font-weight:700">5</td><td style="color:#E74C3C;font-size:12px">↑+2</td></tr>
+</table>
+<div class="note">GPS相关问题占据TOP10中5席，定位/轨迹类问题为当前最大痛点；屏保显示异常为上升最快问题（+5）。</div></div>
+
+<div class="card"><h2>💡 需求 TOP10（需求建议）</h2>
+<table><tr><th>排名</th><th>一级分类</th><th>二级标签</th><th>反馈量</th><th>较昨日</th></tr>
+<tr><td>1</td><td>远程查看</td><td style="text-align:left;font-weight:600">远程设置需求</td><td style="color:#00B050;font-weight:700">21</td><td style="color:#E74C3C;font-size:12px">↑+2</td></tr>
+<tr><td>2</td><td>APP</td><td style="text-align:left;font-weight:600">电瓶电压监测需求</td><td style="color:#00B050;font-weight:700">12</td><td style="color:#E74C3C;font-size:12px">↑+2</td></tr>
+<tr><td>3</td><td>说明书</td><td style="text-align:left;font-weight:600">内容建议</td><td style="color:#00B050;font-weight:700">7</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>4</td><td>开箱</td><td style="text-align:left;font-weight:600">副摄取出不便</td><td style="color:#00B050;font-weight:700">5</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>5</td><td>停车监控</td><td style="text-align:left;font-weight:600">哨兵亮屏耗电</td><td style="color:#00B050;font-weight:700">5</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>6</td><td>说明书</td><td style="text-align:left;font-weight:600">文字错误</td><td style="color:#00B050;font-weight:700">5</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>7</td><td>说明书</td><td style="text-align:left;font-weight:600">4G云盒指示灯颜色</td><td style="color:#00B050;font-weight:700">4</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>8</td><td>说明书</td><td style="text-align:left;font-weight:600">描述歧义</td><td style="color:#00B050;font-weight:700">4</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>9</td><td>APP</td><td style="text-align:left;font-weight:600">视频分类标记建议</td><td style="color:#00B050;font-weight:700">4</td><td style="color:#E74C3C;font-size:12px">↑+1</td></tr>
+<tr><td>10</td><td>停车监控</td><td style="text-align:left;font-weight:600">远程查看哨兵进循环</td><td style="color:#00B050;font-weight:700">4</td><td style="color:#999;font-size:12px">持平</td></tr>
+</table>
+<div class="note">远程设置与电瓶电压监测为最集中需求，反映用户对4G远程能力与供电安全的核心期待。</div></div>
+
+<div class="card"><h2>🗂️ 问题域分布（17个分类）</h2>
+<table><tr><th>排名</th><th>问题域</th><th>累计反馈</th><th>较昨日</th></tr>
+<tr><td>1</td><td style="text-align:left;font-weight:600">GPS</td><td style="font-weight:700">96</td><td style="color:#E74C3C;font-size:12px">↑+14</td></tr>
+<tr><td>2</td><td style="text-align:left;font-weight:600">APP</td><td style="font-weight:700">87</td><td style="color:#E74C3C;font-size:12px">↑+12</td></tr>
+<tr><td>3</td><td style="text-align:left;font-weight:600">停车监控</td><td style="font-weight:700">86</td><td style="color:#E74C3C;font-size:12px">↑+17</td></tr>
+<tr><td>4</td><td style="text-align:left;font-weight:600">说明书</td><td style="font-weight:700">70</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>5</td><td style="text-align:left;font-weight:600">远程查看</td><td style="font-weight:700">55</td><td style="color:#E74C3C;font-size:12px">↑+7</td></tr>
+<tr><td>6</td><td style="text-align:left;font-weight:600">主机交互</td><td style="font-weight:700">49</td><td style="color:#E74C3C;font-size:12px">↑+13</td></tr>
+<tr><td>7</td><td style="text-align:left;font-weight:600">开箱</td><td style="font-weight:700">45</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>8</td><td style="text-align:left;font-weight:600">设备稳定性</td><td style="font-weight:700">33</td><td style="color:#E74C3C;font-size:12px">↑+4</td></tr>
+<tr><td>9</td><td style="text-align:left;font-weight:600">安装</td><td style="font-weight:700">25</td><td style="color:#E74C3C;font-size:12px">↑+2</td></tr>
+<tr><td>10</td><td style="text-align:left;font-weight:600">画质</td><td style="font-weight:700">18</td><td style="color:#E74C3C;font-size:12px">↑+3</td></tr>
+<tr><td>11</td><td style="text-align:left;font-weight:600">录像回放</td><td style="font-weight:700">13</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>12</td><td style="text-align:left;font-weight:600">紧急视频</td><td style="font-weight:700">7</td><td style="color:#E74C3C;font-size:12px">↑+4</td></tr>
+<tr><td>13</td><td style="text-align:left;font-weight:600">存储卡</td><td style="font-weight:700">5</td><td style="color:#E74C3C;font-size:12px">↑+1</td></tr>
+<tr><td>14</td><td style="text-align:left;font-weight:600">视频水印</td><td style="font-weight:700">4</td><td style="color:#E74C3C;font-size:12px">↑+1</td></tr>
+<tr><td>15</td><td style="text-align:left;font-weight:600">安装视频</td><td style="font-weight:700">4</td><td style="color:#999;font-size:12px">持平</td></tr>
+<tr><td>16</td><td style="text-align:left;font-weight:600">语音指令</td><td style="font-weight:700">3</td><td style="color:#999;font-size:12px">↓-1</td></tr>
+<tr><td>17</td><td style="text-align:left;font-weight:600">发热</td><td style="font-weight:700">3</td><td style="color:#999;font-size:12px">持平</td></tr>
+</table></div>
+
+<div class="card"><h2>👤 责任人分布（603条已全部分配）</h2>
+<table><tr><th>责任人</th><th>累计反馈</th><th>占比</th></tr>
+<tr><td style="font-weight:600">夏震宇</td><td style="font-weight:700">227</td><td>38%</td></tr>
+<tr><td style="font-weight:600">徐凯来</td><td style="font-weight:700">174</td><td>29%</td></tr>
+<tr><td style="font-weight:600">李良</td><td style="font-weight:700">111</td><td>18%</td></tr>
+<tr><td style="font-weight:600">吴相廷</td><td style="font-weight:700">28</td><td>5%</td></tr>
+<tr><td style="font-weight:600">潘忠</td><td style="font-weight:700">26</td><td>4%</td></tr>
+<tr><td style="font-weight:600">张旭东</td><td style="font-weight:700">26</td><td>4%</td></tr>
+<tr><td style="font-weight:600">孙乐</td><td style="font-weight:700">5</td><td>1%</td></tr>
+<tr><td style="font-weight:600">其他</td><td style="font-weight:700">6</td><td>1%</td></tr>
+</table>
+<div class="note">前三责任人（夏震宇/徐凯来/李良）承担85%反馈量，建议优先保障其排查带宽。</div></div>
+
+<div class="card" style="padding:16px 24px"><h2 style="border-left-color:#999">📌 说明</h2><div class="note" style="margin-top:0">① 有效反馈口径：全量646条提交中，忽略/重复43条不计入统计。② 对比基线：Day 3日报（9/23 12:10，有效526条）。③ 完整明细（含用户原声、每条反馈描述）见飞书「公测跟进-日常问题」表。④ 本报告为阶段汇总，适配邮件转发；日报版（含逐日对比与TOP10用户原声）：<a href="https://yanlingyin001.github.io/reports/g980h-daily-20260924.html" style="color:#00B050">g980h-daily-20260924.html</a></div></div>
+
+</div>
+</body>
+</html>
