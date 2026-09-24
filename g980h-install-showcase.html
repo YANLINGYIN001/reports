@@ -18,6 +18,9 @@ html,body{width:100%;height:100%;background:#060908;overflow:hidden;
                    radial-gradient(900px 500px at 0% 110%, rgba(43,189,110,.05), transparent 55%)}
 .slide{position:absolute;inset:0;padding:56px 80px;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .4s ease}
 .slide.active{visibility:visible;opacity:1;pointer-events:auto}
+#mhint{position:fixed;top:14px;right:14px;z-index:70;background:rgba(43,189,110,.15);border:1px solid rgba(43,189,110,.5);
+  color:#00e07f;border-radius:8px;padding:6px 14px;font-size:13px;text-decoration:none}
+#mhint:hover{background:rgba(43,189,110,.3)}
 #hud{position:fixed;left:0;right:0;bottom:0;height:44px;display:flex;align-items:center;justify-content:center;gap:14px;
   background:rgba(6,9,8,.85);backdrop-filter:blur(6px);z-index:50;border-top:1px solid var(--line);font-size:14px;color:var(--dim)}
 #hud button{background:none;border:1px solid var(--line);color:var(--dim);border-radius:6px;padding:4px 12px;cursor:pointer;font-size:14px}
@@ -74,6 +77,7 @@ figcaption{margin-top:10px}
 </head>
 <body>
 <div id="prog"></div>
+<a id="mhint" href="g980h-install-showcase-m.html">📱 手机版 →</a>
 <div id="lightbox"><img id="lbimg"><div class="lb-cap">原图展示 · 点击任意处关闭</div></div>
 <div id="viewport"><div id="stage">
 
