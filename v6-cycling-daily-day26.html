@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V6骑行版新品跟踪日报 · Day 26</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:30px; margin-bottom:24px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .subtitle { font-size:14px; opacity:0.9; }
+.header .date-range { font-size:13px; opacity:0.8; margin-top:6px; }
+.overview { background:#fff; border-left:4px solid #00B050; border-radius:8px; padding:14px 20px; margin-bottom:20px; font-size:14px; color:#333; }
+.kpi-grid { display:grid; grid-template-columns:1fr 1.6fr 1.3fr; gap:16px; margin-bottom:24px; }
+.kpi-card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size:13px; color:#999; margin-bottom:8px; }
+.kpi-card .value { font-size:32px; font-weight:700; color:#E74C3C; }
+.kpi-card .delta { font-size:12px; color:#00B050; margin-top:4px; }
+.kpi-card .delta.up { color:#E74C3C; }
+.kpi-card .delta.zero { color:#999; }
+.kpi-card .sub { font-size:12px; color:#666; margin-top:4px; }
+.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
+.insight-box { border-radius:10px; padding:16px; margin-bottom:12px; }
+.insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
+.insight-orange { background:#fff3e0; border-left:4px solid #F39F12; }
+.insight-red { background:#fdecea; border-left:4px solid #E74C3C; }
+.insight-box p { font-size:14px; line-height:1.8; }
+.insight-box strong { color:#00B050; }
+.insight-orange strong { color:#F39F12; }
+.insight-red strong { color:#E74C3C; }
+.channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
+.channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
+.chart-container { width:100%; height:280px; }
+.cat-cards { display:grid; grid-template-columns:repeat(8, 1fr); gap:10px; margin-bottom:16px; }
+.cat-card { min-width:0; border-radius:8px; padding:12px 6px; text-align:center; color:#fff; }
+.cat-card .cat-icon { font-size:20px; }
+.cat-card .cat-name { font-size:12px; white-space:nowrap; margin-top:4px; }
+.cat-card .cat-count { font-size:20px; font-weight:700; margin-top:2px; }
+.detail-table { width:100%; border-collapse:collapse; font-size:13.5px; }
+.detail-table th { background:#f0f7f0; padding:10px 12px; text-align:left; font-weight:600; color:#333; border-bottom:2px solid #00B050; white-space:nowrap; }
+.detail-table td { padding:10px 12px; border-bottom:1px solid #eee; vertical-align:top; color:#333; line-height:1.55; }
+.detail-table tr:hover { background:#fafafa; }
+.detail-table tr.new-row { background:#fffdf0; }
+.detail-table tr.risk-row { background:#fdecea; }
+.type-badge { display:inline-block; padding:3px 10px; border-radius:4px; font-size:13px; font-weight:700; }
+.solution-text { color:#444; max-width:300px; }
+.problem-text { max-width:280px; color:#212121; font-weight:500; }
+.date-badge { color:#555; font-size:12.5px; font-weight:600; white-space:nowrap; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+@media (max-width:768px) {
+  .kpi-grid { grid-template-columns:repeat(2,1fr); }
+  .cat-card { min-width:100px; }
+  .detail-table { font-size:12px; }
+  .detail-table th, .detail-table td { padding:8px 6px; }
+  .solution-text, .problem-text { max-width:none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🚲 V6骑行版新品跟踪日报 · Day 26</h1>
+  <div class="subtitle">Day 26 累计汇总 | 数据周期 2026.08.29 - 2026.09.24</div>
+  <div class="date-range">数据来源:飞书表格「用户问题反馈汇总」 | 更新时间:2026-09-24 18:56</div>
+</div>
+
+<div class="overview">
+  今日录入新增33条反馈(京东自营32+有赞1,反馈日期9/19-9/24),累计169条;不开机单日新增8条(累计13→21),其中6条为电源插头紧配按压后解决/引导中,1条补发电源线、1条电压适配引导;支架损坏新增1条(万向球支架,已补发);今日新增bug问题9条。</div>
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">169</div><div class="delta up">较昨日(Day 25) +33(京东自营32、有赞1)</div></div>
+  <div class="kpi-card"><div class="label">Top3问题(累计+本期新增)</div><div class="value" style="font-size:16px;line-height:1.4">不开机 21条 <span style="color:#E74C3C">新增8条</span><br>安装咨询 12条 <span style="color:#E74C3C">新增5条</span><br>防水咨询 8条 <span style="color:#00B050">无新增</span></div><div class="delta up">安装咨询升至第2;被盗赔付咨询7条升至第4(今日+3)</div></div>
+  <div class="kpi-card"><div class="label">今日新增bug问题(9/24录入)</div><div class="value" style="font-size:16px;line-height:1.4;color:#E74C3C">不开机 新增8条<br>①不开机(9/19反馈)<br>②不开机(9/20反馈,已补发电源线)<br>③插电源线没反应(9/20反馈)<br>④通电以后不开机(9/21反馈)<br>⑤-⑧今日反馈3条(充电口按压、按紧电源线、配套USB线按压后恢复)</div><div class="sub">支架损坏新增1条(万向球支架坏了,已补发);疑似缺陷累计22→31条(不开机13→21/支架损坏1→2);今日新增33条中24条为咨询类</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">核心洞察</div>
+  <div class="insight-box insight-red">
+    <p><strong>🔴 不开机簇单日新增8条,建议结合SN/批次排查</strong>:累计13→21条,单日增量为此前最高(此前单日最高2条);8条中6条为"插电源线没反应/通电不开机"按压后解决或引导中,1条已补发电源线,1条为电压适配引导;其中有赞1条用户反映"自有线可正常开机、配套USB线不行",按压后恢复——疑似线材/接口个体差异,值得单独关注;本次集中爆发多为京东自营批量录入,建议产品/研发结合SN与批次核实电源线/充电口装配一致性。</p>
+  </div>
+  <div class="insight-box insight-orange">
+    <p><strong>🟠 支架损坏第2起,万向球支架组件一致性需关注</strong>:9/19京东自营反馈"万向球支架坏了"已给到补发方案,与此前"骑行支架安装时损坏"累计2条;均为售后补救处理,未见部件级根因分析,建议结合退货件分析是否为注塑/装配批次问题。</p>
+  </div>
+  <div class="insight-box insight-green">
+    <p><strong>🟢 今日新增以安装/使用认知咨询为主,视频引导有效</strong>:33条中24条为咨询类(安装视频发送×5、是否含电池/超级电容×2、被盗赔付APP内领取×3等),多为售前/上手期认知差,客服均一次性解答;安装类咨询的上升与骑行场景安装复杂度相关,安装视频与快拆指引已是主要分流手段。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">渠道反馈分布(12渠道)</div>
+  <div class="channel-tags">
+    <span class="channel-tag">京东自营<span class="count">83</span></span>
+    <span class="channel-tag">有赞<span class="count">31</span></span>
+    <span class="channel-tag">在线咨询<span class="count">18</span></span>
+    <span class="channel-tag">小红书<span class="count">11</span></span>
+    <span class="channel-tag">私域<span class="count">7</span></span>
+    <span class="channel-tag">抖音<span class="count">5</span></span>
+    <span class="channel-tag">企微客服<span class="count">4</span></span>
+    <span class="channel-tag">呼叫中心<span class="count">3</span></span>
+    <span class="channel-tag">天猫官旗<span class="count">2</span></span>
+    <span class="channel-tag">微信<span class="count">2</span></span>
+    <span class="channel-tag">400热线<span class="count">2</span></span>
+    <span class="channel-tag">微信小店<span class="count">1</span></span>
+  </div>
+  <div id="chart-channel" class="chart-container"></div>
+</div>
+<div class="section">
+  <div class="section-title">问题主题分类</div>
+  <div class="cat-cards">
+    <div class="cat-card" style="background:#00B050"><div class="cat-icon">💡</div><div class="cat-name">功能咨询</div><div class="cat-count">103</div></div>
+    <div class="cat-card" style="background:#F39F12"><div class="cat-icon">🔧</div><div class="cat-name">安装引导类</div><div class="cat-count">23</div></div>
+    <div class="cat-card" style="background:#E67E22"><div class="cat-icon">🔒</div><div class="cat-name">安全/防盗</div><div class="cat-count">13</div></div>
+    <div class="cat-card" style="background:#3498DB"><div class="cat-icon">💧</div><div class="cat-name">防水咨询</div><div class="cat-count">9</div></div>
+    <div class="cat-card" style="background:#95A5A6"><div class="cat-icon">📋</div><div class="cat-name">其他</div><div class="cat-count">5</div></div>
+    <div class="cat-card" style="background:#9B59B6"><div class="cat-icon">🎥</div><div class="cat-name">防抖咨询</div><div class="cat-count">5</div></div>
+    <div class="cat-card" style="background:#E74C3C"><div class="cat-icon">⚠️</div><div class="cat-name">疑似质量问题</div><div class="cat-count">6</div></div>
+    <div class="cat-card" style="background:#C0392B"><div class="cat-icon">📇</div><div class="cat-name">卡录问题</div><div class="cat-count">5</div></div>
+  </div>
+  <table class="detail-table" style="margin-top:16px;">
+    <thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型</th></tr></thead>
+    <tbody>
+    <tr><td style="color:#00B050;font-weight:600">💡 功能咨询</td><td>103</td><td>60.9%</td><td>安装咨询(×12,客服发送安装视频为主)、是否含电池咨询(×5,超级电容无电池需插电)、APP连接咨询(×5)、骑行支架购买咨询(×4,客服口径仅随整机售卖、单价89元)、供电咨询(×3)、螺丝大小咨询(×3,1/4螺丝孔)、后录咨询(×2)、充电宝供电咨询(×2)、内存卡存储容量咨询(×2)、视频回看咨询(×2)、插头接口咨询(×2)、车牌识别功能咨询(×2)、设备参数咨询(×2)、安装视频咨询(×2)、支架拆取咨询(×2,镜头朝自己往后推可拆)及56类各1条(存储/产品参数/售前认知类为主,今日新增:屏幕不支持触摸、内存卡卡槽打开咨询、接口咨询、使用功能咨询、循环卡录咨询、是否需要一直接电咨询、方向旋转咨询)</td></tr>
+    <tr><td style="color:#F39F12;font-weight:600">🔧 安装引导类</td><td>23</td><td>13.6%</td><td>不通电/无法开机(×21,含电源线插不紧——防水紧配设计,按紧到位即正常使用;京东自营×20、在线咨询×1;今日新增8条,其中配套USB线异常按压后恢复1条疑似线材个体差异)、支架转动松开(×1,顺时针拧紧即解决)、车充供电不亮(×1,客服判断大概率车辆供电问题)</td></tr>
+    <tr><td style="color:#E67E22;font-weight:600">🔒 安全/防盗</td><td>13</td><td>7.7%</td><td>被盗赔付咨询(×7,今日+3,均在APP内激活领取)、防盗咨询(×3)、被盗赔付领取过期(×1,服务端已补充发放)、被盗赔付核实(×1,400渠道,属实可赔)、被盗赔付领取失败(×1,重装APP后已领取成功)(激活30天内可免费领取被盗赔付)</td></tr>
+    <tr><td style="color:#3498DB;font-weight:600">💧 防水咨询</td><td>9</td><td>5.3%</td><td>防水咨询(×8)、防水级别咨询(×1)(IPX6防水等级、一体式密封防水结构)</td></tr>
+    <tr><td style="color:#95A5A6;font-weight:600">📋 其他</td><td>5</td><td>3.0%</td><td>其他、价格咨询、优惠力度咨询、以旧换新咨询、配件发错货(×1,物流履约问题已由售后补发处理,网点侧改进待验证)</td></tr>
+    <tr><td style="color:#9B59B6;font-weight:600">🎥 防抖咨询</td><td>5</td><td>3.0%</td><td>防抖咨询(×5)(物理防抖:万向球减震+算法优化)</td></tr>
+    <tr><td style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</td><td>6</td><td>3.6%</td><td>支架损坏类(×2:球头支架损坏已售后换货、万向球支架坏了已补发)、螺丝长度不合适(×2,9/14补偿20元、9/15补偿10元)、设备发烫(×1,客服已解释使用温度范围)、骑行支架安装损坏(×1,已反馈网点核实部件)——持续观察</td></tr>
+    <tr><td style="color:#C0392B;font-weight:600">📇 卡录问题</td><td>5</td><td>3.0%</td><td>卡录漏录(×2)、内存卡损坏(×3,其中row251随机附送内存卡无法使用、外壳有胶状物,已提醒客服补标确认)——建议客服记录卡型与购机时间</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注:row200同时含"防水咨询+安装位置咨询"双标签,安装位置咨询(×1)计入防水咨询侧、不重复计入功能咨询;row192"设备进水"备注为旧版订单(I列未打标"-"),未计入新品统计,建议客服移回旧款数据区域;row140"防抖咨询"标签与内容(防水)不符,已连续多期提醒修正;row258(小红书9/23)已由客服补标为"是否含配件咨询",本期已归入功能咨询闭环;渠道列"天猫"已并入"天猫官旗"统计;今日新增33条(rows259-291)已全部由客服打标,无待补标项。</p>
+</div>
+<div class="section">
+  <div class="section-title">今日新增反馈明细（9/24录入33条:京东自营32+有赞1,疑似缺陷置顶、安全防盗类次之）</div>
+  <table class="detail-table">
+    <thead><tr><th>分类</th><th>问题类型</th><th>渠道</th><th>日期</th><th>用户问题</th><th>客服方案</th></tr></thead>
+    <tbody>
+    <tr class="risk-row"><td><span style="color:#F39F12;font-weight:600">🔧 安装引导类</span></td><td><span class="type-badge" style="background:#FDECEA;color:#C0392B;border:1px solid #C0392B;">不开机</span></td><td>京东自营×7、有赞×1</td><td><span class="date-badge">09/19-09/24</span></td><td class="problem-text">①不开机(9/19)<br>②不开机(9/20)<br>③插电源线没反应(9/20)<br>④通电以后不开机(9/21)<br>⑤无法开机(9/23)<br>⑥必须要在摩托车哪里插上才可以开机吗(9/24)<br>⑦开不了机(9/24)<br>⑧用我自己手机的线可以正常开机，用配套的USB 线就不行(9/24,有赞)</td><td class="solution-text">①重新插拔电源线需要用力按压试下<br>②补发电源线<br>③重新插拔电源线需要用力按压试下<br>④需要用力按压才可以<br>⑤检查充电器电流电压是否满足5V/1.5~2.4A<br>⑥充电口需要稍微用力按压一下<br>⑦重新插拔电源线按紧充电口<br>⑧用力按压+参考视频,已恢复正常开机</td></tr>
+    <tr class="risk-row"><td><span style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</span></td><td><span class="type-badge" style="background:#FDECEA;color:#C0392B;border:1px solid #C0392B;">支架损坏</span></td><td>京东自营</td><td><span class="date-badge">09/19</span></td><td class="problem-text">万向球支架坏了</td><td class="solution-text">已给到补发方案</td></tr>
+    <tr class="new-row"><td><span style="color:#E67E22;font-weight:600">🔒 安全/防盗</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">被盗赔付咨询</span></td><td>京东自营</td><td><span class="date-badge">09/20-09/22</span></td><td class="problem-text">①询问被盗赔付领取(9/20)<br>②询问被盗赔付领取(9/20)<br>③询问被盗赔付领取(9/22)</td><td class="solution-text">①APP内领取<br>②连接APP后领取被盗赔付<br>③被盗后在APP内激活被盗服务</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">安装咨询</span></td><td>京东自营</td><td><span class="date-badge">09/20-09/24</span></td><td class="problem-text">①如何安装使用(9/20)<br>②安装说明和广角(9/23)<br>③记录仪使用指南(9/23)<br>④这个有安装视频吗(9/24)<br>⑤这个安装视频是哪个(9/24)</td><td class="solution-text">①发送安装视频<br>②发送安装视频告知广角度数<br>③发送连接安装视频<br>④发送安装视频<br>⑤发送安装视频</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">APP连接咨询</span></td><td>京东自营</td><td><span class="date-badge">09/20-09/23</span></td><td class="problem-text">①无法联网(9/20)<br>②如何连接设备(9/22)<br>③为啥退出或息屏就要重新连接(9/23)</td><td class="solution-text">①扫码可以直接连接<br>②已告知操作步骤<br>③息屏后记录仪自带WiFi断开导致连接中断</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">是否含电池咨询</span></td><td>京东自营</td><td><span class="date-badge">09/19、09/21</span></td><td class="problem-text">①内置有电池吗<br>②内置有电池吗</td><td class="solution-text">①告知没有<br>②超级电容没有电池</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">螺丝大小咨询</span></td><td>京东自营</td><td><span class="date-badge">09/19、09/20</span></td><td class="problem-text">①咨询对应螺丝规格<br>②螺钉不合适</td><td class="solution-text">①1/4螺丝孔<br>②已解答</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">支架拆取咨询</span></td><td>京东自营</td><td><span class="date-badge">09/20、09/23</span></td><td class="problem-text">①支架怎么拆下来<br>②怎么随时取出来</td><td class="solution-text">①镜头面对向自己，往后推就可以<br>②告知可以使用工具拆卸</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">屏幕不支持触摸</span></td><td>京东自营</td><td><span class="date-badge">09/20</span></td><td class="problem-text">点不了记录仪屏幕</td><td class="solution-text">告知按键使用</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">内存卡卡槽打开咨询</span></td><td>京东自营</td><td><span class="date-badge">09/21</span></td><td class="problem-text">内存卡卡槽如何打开</td><td class="solution-text">已发送图片指导</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">接口咨询</span></td><td>京东自营</td><td><span class="date-badge">09/22</span></td><td class="problem-text">想买一个接车上电瓶</td><td class="solution-text">直接接USB接口使用</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">使用功能咨询</span></td><td>京东自营</td><td><span class="date-badge">09/23</span></td><td class="problem-text">询问产品使用功能和晒单登记</td><td class="solution-text">正常解答和登记晒单</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">循环卡录咨询</span></td><td>京东自营</td><td><span class="date-badge">09/23</span></td><td class="problem-text">这个内存满了会自动删除吗</td><td class="solution-text">会的哈</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">是否需要一直接电咨询</span></td><td>京东自营</td><td><span class="date-badge">09/24</span></td><td class="problem-text">这个是需要一直连接电源吗</td><td class="solution-text">需要一直接线通电才能录制呢</td></tr>
+    <tr class="new-row"><td><span style="color:#00B050;font-weight:600">💡 功能咨询</span></td><td><span class="type-badge" style="background:#E8F8F0;color:#1E8449;border:1px solid #1E8449;">方向旋转咨询</span></td><td>京东自营</td><td><span class="date-badge">09/24</span></td><td class="problem-text">他怎么扭转方向</td><td class="solution-text">旋转万向球支架就可以的</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注:今日新增按录入sheet行位推进口径计(row259起为今日新增,基线止于row258),不按C列反馈日期回溯;33条反馈日期跨度9/19-9/24,为京东自营批量录入;排序规则——缺陷置顶,安全防盗类次之,其余按问题类型反馈量降序;相同问题类型合并为一个大行、行内①②分条堆叠;"不开机"计入安装引导类口径,但作为疑似缺陷单独跟踪(累计21条)。</p>
+</div>
+  <div class="footer">
+    数据来源:飞书表格「V6骑行新品跟踪表」· 用户问题反馈汇总(row122起,第二代升级款)<br>
+    由 🦞尹燕玲-报告分析专家 自动生成
+  </div>
+
+</div>
+<script>
+var chChart = echarts.init(document.getElementById('chart-channel'));
+var chData = {"names": ["京东自营", "有赞", "在线咨询", "小红书", "私域", "抖音", "企微客服", "呼叫中心", "天猫官旗", "微信", "400热线", "微信小店"], "vals": [83, 31, 18, 11, 7, 5, 4, 3, 2, 2, 2, 1], "colors": ["#E74C3C", "#00B050", "#F39F12", "#2BBD6E", "#3498DB", "#9B59B6", "#E67E22", "#2C3E50", "#16A085", "#7F8C8D", "#C0392B", "#8E44AD"]};
+chChart.setOption({
+  tooltip: { trigger: 'axis', formatter: '{b}: {c}条' },
+  xAxis: { type: 'category', data: chData.names, axisLabel: { fontSize: 12 } },
+  yAxis: { type: 'value', name: '反馈量' },
+  series: [{
+    type: 'bar', data: chData.vals.map(function(v, i) { return { value: v, itemStyle: { color: chData.colors[i] } }; }),
+    barWidth: '50%',
+    label: { show: true, position: 'top', formatter: '{c}' }
+  }],
+  grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true }
+});
+</script>
+</body>
+</html>
