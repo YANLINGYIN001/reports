@@ -18,9 +18,6 @@ html,body{width:100%;height:100%;background:#060908;overflow:hidden;
                    radial-gradient(900px 500px at 0% 110%, rgba(43,189,110,.05), transparent 55%)}
 .slide{position:absolute;inset:0;padding:56px 80px;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .4s ease}
 .slide.active{visibility:visible;opacity:1;pointer-events:auto}
-#mhint{position:fixed;top:14px;right:14px;z-index:70;background:rgba(43,189,110,.15);border:1px solid rgba(43,189,110,.5);
-  color:#00e07f;border-radius:8px;padding:6px 14px;font-size:13px;text-decoration:none}
-#mhint:hover{background:rgba(43,189,110,.3)}
 #hud{position:fixed;left:0;right:0;bottom:0;height:44px;display:flex;align-items:center;justify-content:center;gap:14px;
   background:rgba(6,9,8,.85);backdrop-filter:blur(6px);z-index:50;border-top:1px solid var(--line);font-size:14px;color:var(--dim)}
 #hud button{background:none;border:1px solid var(--line);color:var(--dim);border-radius:6px;padding:4px 12px;cursor:pointer;font-size:14px}
@@ -51,34 +48,27 @@ h2{font-size:44px;font-weight:900;color:var(--ink)}
 .toc .b{font-size:25px;font-weight:800;color:var(--ink)}
 .toc .c{font-size:19px;color:var(--gb);font-weight:800}
 /* 用户页 */
-.uhead{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:26px}
+.uhead{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px}
 .uhead h2{margin-top:6px}
 .uhead .uname{color:var(--gb)}
-.uhead .carsub{margin-top:8px;font-size:19px;color:var(--dim)}
+.uhead .carsub{margin-top:8px;font-size:20px;color:var(--dim)}
 .bprog{display:inline-block;margin-left:14px;font-size:18px;color:var(--faint);font-weight:600;vertical-align:middle}
-.shots{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:6px}
+.shots{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .shot{display:flex;flex-direction:column}
-.imgwrap{height:520px;background:#0a0d0b;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+.imgwrap{height:640px;background:#0a0d0b;border:1px solid var(--line);border-radius:12px;overflow:hidden;
   display:flex;align-items:center;justify-content:center}
-.imgwrap{cursor:zoom-in}
-.imgwrap img{width:100%;height:100%;object-fit:cover}
+.imgwrap img{max-width:100%;max-height:100%;object-fit:contain}
 figcaption{margin-top:10px}
 .qlabel{font-size:16px;color:var(--green);font-weight:800;display:block;margin-bottom:3px}
-.tagline{font-size:12.5px;color:var(--dim);line-height:1.5;display:block;word-break:keep-all}
+.tagline{font-size:13.5px;color:var(--dim);line-height:1.55;display:block}
 .active .rv{animation:up .55s cubic-bezier(.2,.7,.2,1) both}
 .active .rv1{animation-delay:.04s}.active .rv2{animation-delay:.12s}.active .rv3{animation-delay:.2s}
 @keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-#lightbox{position:fixed;inset:0;background:rgba(4,6,5,.94);z-index:100;display:none;align-items:center;justify-content:center;cursor:zoom-out}
-#lightbox.on{display:flex}
-#lightbox img{max-width:96vw;max-height:94vh;object-fit:contain;border-radius:6px}
-#lightbox .lb-cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:var(--dim);font-size:16px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div id="prog"></div>
-<a id="mhint" href="g980h-install-showcase-m.html">📱 手机版 →</a>
-<div id="lightbox"><img id="lbimg"><div class="lb-cap">原图展示 · 点击任意处关闭</div></div>
 <div id="viewport"><div id="stage">
 
 <div class="slide cover">
@@ -104,7 +94,7 @@ figcaption{margin-top:10px}
   <div class="toc-grid rv rv3">
 <div class="toc" onclick="go(0)" data-b="大众"><span class="b">大众</span><span class="c">7人</span></div>
 <div class="toc" onclick="go(0)" data-b="丰田"><span class="b">丰田</span><span class="c">6人</span></div>
-<div class="toc" onclick="go(0)" data-b="吉利"><span class="b">吉利</span><span class="c">4人</span></div>
+<div class="toc" onclick="go(0)" data-b="吉利"><span class="b">吉利</span><span class="c">5人</span></div>
 <div class="toc" onclick="go(0)" data-b="奇瑞"><span class="b">奇瑞</span><span class="c">4人</span></div>
 <div class="toc" onclick="go(0)" data-b="比亚迪"><span class="b">比亚迪</span><span class="c">3人</span></div>
 <div class="toc" onclick="go(0)" data-b="奥迪"><span class="b">奥迪</span><span class="c">2人</span></div>
@@ -139,7 +129,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/006_周琦强_front.jpg" alt="周琦强 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ ID4X ｜ 2024-2025年 ｜ 周琦强</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/006_周琦强_obd.jpg" alt="周琦强 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ ID4X ｜ 2024-2025年 ｜ 周琦强</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/006_周琦强_rear.jpg" alt="周琦强 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ ID4X ｜ 2024-2025年 ｜ 周琦强</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/006_周琦强_live.jpg" alt="周琦强 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ ID4X ｜ 2024-2025年 ｜ 周琦强</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/006_周琦强_front.jpg" alt="周琦强 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ ID4X ｜ 2024-2025年 ｜ 周琦强</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/006_周琦强_obd.jpg" alt="周琦强 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ ID4X ｜ 2024-2025年 ｜ 周琦强</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/006_周琦强_rear.jpg" alt="周琦强 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ ID4X ｜ 2024-2025年 ｜ 周琦强</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/006_周琦强_live.jpg" alt="周琦强 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ ID4X ｜ 2024-2025年 ｜ 周琦强</span></figcaption></div>  </div>
   <div class="pnum">03</div>
 </div>
 
@@ -154,7 +144,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/008_孔德运_front.jpg" alt="孔德运 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/008_孔德运_obd.jpg" alt="孔德运 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/008_孔德运_rear.jpg" alt="孔德运 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/008_孔德运_live.jpg" alt="孔德运 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/008_孔德运_front.jpg" alt="孔德运 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/008_孔德运_obd.jpg" alt="孔德运 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/008_孔德运_rear.jpg" alt="孔德运 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/008_孔德运_live.jpg" alt="孔德运 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div>  </div>
   <div class="pnum">04</div>
 </div>
 
@@ -169,7 +159,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/016_朱君_front.jpg" alt="朱君 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ id4crozz ｜ 2023-2024年 ｜ 朱君</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/016_朱君_obd.jpg" alt="朱君 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ id4crozz ｜ 2023-2024年 ｜ 朱君</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/016_朱君_rear.jpg" alt="朱君 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ id4crozz ｜ 2023-2024年 ｜ 朱君</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/016_朱君_live.jpg" alt="朱君 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ id4crozz ｜ 2023-2024年 ｜ 朱君</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/016_朱君_front.jpg" alt="朱君 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ id4crozz ｜ 2023-2024年 ｜ 朱君</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/016_朱君_obd.jpg" alt="朱君 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ id4crozz ｜ 2023-2024年 ｜ 朱君</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/016_朱君_rear.jpg" alt="朱君 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ id4crozz ｜ 2023-2024年 ｜ 朱君</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/016_朱君_live.jpg" alt="朱君 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">大众 ｜ 纯电 ｜ SUV ｜ id4crozz ｜ 2023-2024年 ｜ 朱君</span></figcaption></div>  </div>
   <div class="pnum">05</div>
 </div>
 
@@ -184,7 +174,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/018_李栋灵_front.jpg" alt="李栋灵 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ POLL ｜ 2024-2025年 ｜ 李栋灵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/018_李栋灵_obd.jpg" alt="李栋灵 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ POLL ｜ 2024-2025年 ｜ 李栋灵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/018_李栋灵_rear.jpg" alt="李栋灵 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ POLL ｜ 2024-2025年 ｜ 李栋灵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/018_李栋灵_live.jpg" alt="李栋灵 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ POLL ｜ 2024-2025年 ｜ 李栋灵</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/018_李栋灵_front.jpg" alt="李栋灵 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ POLL ｜ 2024-2025年 ｜ 李栋灵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/018_李栋灵_obd.jpg" alt="李栋灵 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ POLL ｜ 2024-2025年 ｜ 李栋灵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/018_李栋灵_rear.jpg" alt="李栋灵 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ POLL ｜ 2024-2025年 ｜ 李栋灵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/018_李栋灵_live.jpg" alt="李栋灵 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ POLL ｜ 2024-2025年 ｜ 李栋灵</span></figcaption></div>  </div>
   <div class="pnum">06</div>
 </div>
 
@@ -199,7 +189,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/024_潘登铿_front.jpg" alt="潘登铿 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ 轿车 ｜ id3 ｜ 2021-2023年 ｜ 潘登铿</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/024_潘登铿_obd.jpg" alt="潘登铿 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ 轿车 ｜ id3 ｜ 2021-2023年 ｜ 潘登铿</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/024_潘登铿_rear.jpg" alt="潘登铿 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ 轿车 ｜ id3 ｜ 2021-2023年 ｜ 潘登铿</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/024_潘登铿_live.jpg" alt="潘登铿 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">大众 ｜ 纯电 ｜ 轿车 ｜ id3 ｜ 2021-2023年 ｜ 潘登铿</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/024_潘登铿_front.jpg" alt="潘登铿 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">大众 ｜ 纯电 ｜ 轿车 ｜ id3 ｜ 2021-2023年 ｜ 潘登铿</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/024_潘登铿_obd.jpg" alt="潘登铿 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">大众 ｜ 纯电 ｜ 轿车 ｜ id3 ｜ 2021-2023年 ｜ 潘登铿</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/024_潘登铿_rear.jpg" alt="潘登铿 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">大众 ｜ 纯电 ｜ 轿车 ｜ id3 ｜ 2021-2023年 ｜ 潘登铿</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/024_潘登铿_live.jpg" alt="潘登铿 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">大众 ｜ 纯电 ｜ 轿车 ｜ id3 ｜ 2021-2023年 ｜ 潘登铿</span></figcaption></div>  </div>
   <div class="pnum">07</div>
 </div>
 
@@ -214,7 +204,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/037_郑惟环_front.jpg" alt="郑惟环 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 速腾卓越 ｜ 2021-2023年 ｜ 郑惟环</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/037_郑惟环_obd.jpg" alt="郑惟环 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 速腾卓越 ｜ 2021-2023年 ｜ 郑惟环</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/037_郑惟环_rear.jpg" alt="郑惟环 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 速腾卓越 ｜ 2021-2023年 ｜ 郑惟环</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/037_郑惟环_live.jpg" alt="郑惟环 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 速腾卓越 ｜ 2021-2023年 ｜ 郑惟环</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/037_郑惟环_front.jpg" alt="郑惟环 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 速腾卓越 ｜ 2021-2023年 ｜ 郑惟环</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/037_郑惟环_obd.jpg" alt="郑惟环 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 速腾卓越 ｜ 2021-2023年 ｜ 郑惟环</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/037_郑惟环_rear.jpg" alt="郑惟环 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 速腾卓越 ｜ 2021-2023年 ｜ 郑惟环</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/037_郑惟环_live.jpg" alt="郑惟环 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 速腾卓越 ｜ 2021-2023年 ｜ 郑惟环</span></figcaption></div>  </div>
   <div class="pnum">08</div>
 </div>
 
@@ -229,7 +219,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/038_闫冰_front.jpg" alt="闫冰 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 高尔夫嘉旅 ｜ 2021年及之前 ｜ 闫冰</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/038_闫冰_obd.jpg" alt="闫冰 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 高尔夫嘉旅 ｜ 2021年及之前 ｜ 闫冰</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/038_闫冰_rear.jpg" alt="闫冰 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 高尔夫嘉旅 ｜ 2021年及之前 ｜ 闫冰</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/038_闫冰_live.jpg" alt="闫冰 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 高尔夫嘉旅 ｜ 2021年及之前 ｜ 闫冰</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/038_闫冰_front.jpg" alt="闫冰 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 高尔夫嘉旅 ｜ 2021年及之前 ｜ 闫冰</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/038_闫冰_obd.jpg" alt="闫冰 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 高尔夫嘉旅 ｜ 2021年及之前 ｜ 闫冰</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/038_闫冰_rear.jpg" alt="闫冰 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 高尔夫嘉旅 ｜ 2021年及之前 ｜ 闫冰</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/038_闫冰_live.jpg" alt="闫冰 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">大众 ｜ 油车 ｜ 轿车 ｜ 高尔夫嘉旅 ｜ 2021年及之前 ｜ 闫冰</span></figcaption></div>  </div>
   <div class="pnum">09</div>
 </div>
 
@@ -244,7 +234,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/004_向云俊_front.jpg" alt="向云俊 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ 卡罗拉锐放 ｜ 2023-2024年 ｜ 向云俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/004_向云俊_obd.jpg" alt="向云俊 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ 卡罗拉锐放 ｜ 2023-2024年 ｜ 向云俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/004_向云俊_rear.jpg" alt="向云俊 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ 卡罗拉锐放 ｜ 2023-2024年 ｜ 向云俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/004_向云俊_live.jpg" alt="向云俊 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ 卡罗拉锐放 ｜ 2023-2024年 ｜ 向云俊</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/004_向云俊_front.jpg" alt="向云俊 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ 卡罗拉锐放 ｜ 2023-2024年 ｜ 向云俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/004_向云俊_obd.jpg" alt="向云俊 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ 卡罗拉锐放 ｜ 2023-2024年 ｜ 向云俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/004_向云俊_rear.jpg" alt="向云俊 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ 卡罗拉锐放 ｜ 2023-2024年 ｜ 向云俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/004_向云俊_live.jpg" alt="向云俊 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ 卡罗拉锐放 ｜ 2023-2024年 ｜ 向云俊</span></figcaption></div>  </div>
   <div class="pnum">10</div>
 </div>
 
@@ -259,7 +249,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/005_吕关兴_front.jpg" alt="吕关兴 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ 轿车 ｜ 卡罗拉 ｜ 2021年及之前 ｜ 吕关兴</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/005_吕关兴_obd.jpg" alt="吕关兴 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ 轿车 ｜ 卡罗拉 ｜ 2021年及之前 ｜ 吕关兴</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/005_吕关兴_rear.jpg" alt="吕关兴 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ 轿车 ｜ 卡罗拉 ｜ 2021年及之前 ｜ 吕关兴</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/005_吕关兴_live.jpg" alt="吕关兴 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ 轿车 ｜ 卡罗拉 ｜ 2021年及之前 ｜ 吕关兴</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/005_吕关兴_front.jpg" alt="吕关兴 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">丰田 ｜ 油车 ｜ 轿车 ｜ 卡罗拉 ｜ 2021年及之前 ｜ 吕关兴</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/005_吕关兴_obd.jpg" alt="吕关兴 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">丰田 ｜ 油车 ｜ 轿车 ｜ 卡罗拉 ｜ 2021年及之前 ｜ 吕关兴</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/005_吕关兴_rear.jpg" alt="吕关兴 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">丰田 ｜ 油车 ｜ 轿车 ｜ 卡罗拉 ｜ 2021年及之前 ｜ 吕关兴</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/005_吕关兴_live.jpg" alt="吕关兴 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">丰田 ｜ 油车 ｜ 轿车 ｜ 卡罗拉 ｜ 2021年及之前 ｜ 吕关兴</span></figcaption></div>  </div>
   <div class="pnum">11</div>
 </div>
 
@@ -274,7 +264,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/017_李建_front.jpg" alt="李建 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ RAV4 ｜ 2021-2023年 ｜ 李建</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/017_李建_obd.jpg" alt="李建 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ RAV4 ｜ 2021-2023年 ｜ 李建</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/017_李建_rear.jpg" alt="李建 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ RAV4 ｜ 2021-2023年 ｜ 李建</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/017_李建_live.jpg" alt="李建 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ RAV4 ｜ 2021-2023年 ｜ 李建</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/017_李建_front.jpg" alt="李建 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ RAV4 ｜ 2021-2023年 ｜ 李建</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/017_李建_obd.jpg" alt="李建 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ RAV4 ｜ 2021-2023年 ｜ 李建</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/017_李建_rear.jpg" alt="李建 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ RAV4 ｜ 2021-2023年 ｜ 李建</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/017_李建_live.jpg" alt="李建 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ RAV4 ｜ 2021-2023年 ｜ 李建</span></figcaption></div>  </div>
   <div class="pnum">12</div>
 </div>
 
@@ -289,7 +279,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/020_林志澄_front.jpg" alt="林志澄 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 纯电 ｜ 轿车 ｜ 凯美瑞 ｜ 2021年及之前 ｜ 林志澄</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/020_林志澄_obd.jpg" alt="林志澄 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">丰田 ｜ 纯电 ｜ 轿车 ｜ 凯美瑞 ｜ 2021年及之前 ｜ 林志澄</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/020_林志澄_rear.jpg" alt="林志澄 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 纯电 ｜ 轿车 ｜ 凯美瑞 ｜ 2021年及之前 ｜ 林志澄</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/020_林志澄_live.jpg" alt="林志澄 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">丰田 ｜ 纯电 ｜ 轿车 ｜ 凯美瑞 ｜ 2021年及之前 ｜ 林志澄</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/020_林志澄_front.jpg" alt="林志澄 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">丰田 ｜ 纯电 ｜ 轿车 ｜ 凯美瑞 ｜ 2021年及之前 ｜ 林志澄</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/020_林志澄_obd.jpg" alt="林志澄 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">丰田 ｜ 纯电 ｜ 轿车 ｜ 凯美瑞 ｜ 2021年及之前 ｜ 林志澄</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/020_林志澄_rear.jpg" alt="林志澄 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">丰田 ｜ 纯电 ｜ 轿车 ｜ 凯美瑞 ｜ 2021年及之前 ｜ 林志澄</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/020_林志澄_live.jpg" alt="林志澄 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">丰田 ｜ 纯电 ｜ 轿车 ｜ 凯美瑞 ｜ 2021年及之前 ｜ 林志澄</span></figcaption></div>  </div>
   <div class="pnum">13</div>
 </div>
 
@@ -304,7 +294,7 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/029_王龙_front.jpg" alt="王龙 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 混合动力 ｜ 轿车 ｜ 双擎精英版 ｜ 2021-2023年 ｜ 王龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/029_王龙_obd.jpg" alt="王龙 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">丰田 ｜ 混合动力 ｜ 轿车 ｜ 双擎精英版 ｜ 2021-2023年 ｜ 王龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/029_王龙_rear.jpg" alt="王龙 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 混合动力 ｜ 轿车 ｜ 双擎精英版 ｜ 2021-2023年 ｜ 王龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/029_王龙_live.jpg" alt="王龙 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">丰田 ｜ 混合动力 ｜ 轿车 ｜ 双擎精英版 ｜ 2021-2023年 ｜ 王龙</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/029_王龙_front.jpg" alt="王龙 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">丰田 ｜ 混合动力 ｜ 轿车 ｜ 双擎精英版 ｜ 2021-2023年 ｜ 王龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/029_王龙_obd.jpg" alt="王龙 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">丰田 ｜ 混合动力 ｜ 轿车 ｜ 双擎精英版 ｜ 2021-2023年 ｜ 王龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/029_王龙_rear.jpg" alt="王龙 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">丰田 ｜ 混合动力 ｜ 轿车 ｜ 双擎精英版 ｜ 2021-2023年 ｜ 王龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/029_王龙_live.jpg" alt="王龙 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">丰田 ｜ 混合动力 ｜ 轿车 ｜ 双擎精英版 ｜ 2021-2023年 ｜ 王龙</span></figcaption></div>  </div>
   <div class="pnum">14</div>
 </div>
 
@@ -319,68 +309,83 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/042_陶双_front.jpg" alt="陶双 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ rav4 ｜ 2024-2025年 ｜ 陶双</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/042_陶双_obd.jpg" alt="陶双 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ rav4 ｜ 2024-2025年 ｜ 陶双</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/042_陶双_rear.jpg" alt="陶双 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ rav4 ｜ 2024-2025年 ｜ 陶双</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/042_陶双_live.jpg" alt="陶双 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ rav4 ｜ 2024-2025年 ｜ 陶双</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/042_陶双_front.jpg" alt="陶双 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ rav4 ｜ 2024-2025年 ｜ 陶双</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/042_陶双_obd.jpg" alt="陶双 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ rav4 ｜ 2024-2025年 ｜ 陶双</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/042_陶双_rear.jpg" alt="陶双 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ rav4 ｜ 2024-2025年 ｜ 陶双</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/042_陶双_live.jpg" alt="陶双 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">丰田 ｜ 油车 ｜ SUV ｜ rav4 ｜ 2024-2025年 ｜ 陶双</span></figcaption></div>  </div>
   <div class="pnum">15</div>
 </div>
 
 <div class="slide">
   <div class="brandbar"></div>
-  <div class="corner">G980H 安装作业<br>吉利 1/4</div>
+  <div class="corner">G980H 安装作业<br>吉利 1/5</div>
   <div class="uhead rv rv1">
     <div>
       <div class="kicker">BRAND · 吉利</div>
-      <h2><span class="uname">张明明</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>吉利 熊猫mini<span class="bprog">1 / 4</span></h2>
-      <div class="carsub">SUV · 纯电 · 2023-2024年购买</div>
+      <h2><span class="uname">刘晓顺</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>吉利 吉利熊猫元气熊<span class="bprog">1 / 5</span></h2>
+      <div class="carsub">轿车 · 纯电 · 2026年1月及之后购买</div>
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/012_张明明_front.jpg" alt="张明明 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">吉利 ｜ 纯电 ｜ SUV ｜ 熊猫mini ｜ 2023-2024年 ｜ 张明明</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/012_张明明_obd.jpg" alt="张明明 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">吉利 ｜ 纯电 ｜ SUV ｜ 熊猫mini ｜ 2023-2024年 ｜ 张明明</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/012_张明明_rear.jpg" alt="张明明 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">吉利 ｜ 纯电 ｜ SUV ｜ 熊猫mini ｜ 2023-2024年 ｜ 张明明</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/012_张明明_live.jpg" alt="张明明 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">吉利 ｜ 纯电 ｜ SUV ｜ 熊猫mini ｜ 2023-2024年 ｜ 张明明</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/045_刘晓顺_front.jpg" alt="刘晓顺 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">吉利 ｜ 纯电 ｜ 轿车 ｜ 吉利熊猫元气熊 ｜ 2026年1月及之后 ｜ 刘晓顺</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/045_刘晓顺_obd.jpg" alt="刘晓顺 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">吉利 ｜ 纯电 ｜ 轿车 ｜ 吉利熊猫元气熊 ｜ 2026年1月及之后 ｜ 刘晓顺</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/045_刘晓顺_rear.jpg" alt="刘晓顺 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">吉利 ｜ 纯电 ｜ 轿车 ｜ 吉利熊猫元气熊 ｜ 2026年1月及之后 ｜ 刘晓顺</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/045_刘晓顺_live.jpg" alt="刘晓顺 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">吉利 ｜ 纯电 ｜ 轿车 ｜ 吉利熊猫元气熊 ｜ 2026年1月及之后 ｜ 刘晓顺</span></figcaption></div>  </div>
   <div class="pnum">16</div>
 </div>
 
 <div class="slide">
   <div class="brandbar"></div>
-  <div class="corner">G980H 安装作业<br>吉利 2/4</div>
+  <div class="corner">G980H 安装作业<br>吉利 2/5</div>
   <div class="uhead rv rv1">
     <div>
       <div class="kicker">BRAND · 吉利</div>
-      <h2><span class="uname">汪杨</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>吉利 帝豪手动向上<span class="bprog">2 / 4</span></h2>
-      <div class="carsub">轿车 · 油车 · 2021年及之前购买</div>
+      <h2><span class="uname">张明明</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>吉利 熊猫mini<span class="bprog">2 / 5</span></h2>
+      <div class="carsub">SUV · 纯电 · 2023-2024年购买</div>
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/021_汪杨_front.jpg" alt="汪杨 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">吉利 ｜ 油车 ｜ 轿车 ｜ 帝豪手动向上 ｜ 2021年及之前 ｜ 汪杨</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/021_汪杨_obd.jpg" alt="汪杨 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">吉利 ｜ 油车 ｜ 轿车 ｜ 帝豪手动向上 ｜ 2021年及之前 ｜ 汪杨</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/021_汪杨_rear.jpg" alt="汪杨 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">吉利 ｜ 油车 ｜ 轿车 ｜ 帝豪手动向上 ｜ 2021年及之前 ｜ 汪杨</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/021_汪杨_live.jpg" alt="汪杨 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">吉利 ｜ 油车 ｜ 轿车 ｜ 帝豪手动向上 ｜ 2021年及之前 ｜ 汪杨</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/012_张明明_front.jpg" alt="张明明 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">吉利 ｜ 纯电 ｜ SUV ｜ 熊猫mini ｜ 2023-2024年 ｜ 张明明</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/012_张明明_obd.jpg" alt="张明明 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">吉利 ｜ 纯电 ｜ SUV ｜ 熊猫mini ｜ 2023-2024年 ｜ 张明明</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/012_张明明_rear.jpg" alt="张明明 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">吉利 ｜ 纯电 ｜ SUV ｜ 熊猫mini ｜ 2023-2024年 ｜ 张明明</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/012_张明明_live.jpg" alt="张明明 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">吉利 ｜ 纯电 ｜ SUV ｜ 熊猫mini ｜ 2023-2024年 ｜ 张明明</span></figcaption></div>  </div>
   <div class="pnum">17</div>
 </div>
 
 <div class="slide">
   <div class="brandbar"></div>
-  <div class="corner">G980H 安装作业<br>吉利 3/4</div>
+  <div class="corner">G980H 安装作业<br>吉利 3/5</div>
   <div class="uhead rv rv1">
     <div>
       <div class="kicker">BRAND · 吉利</div>
-      <h2><span class="uname">王刚红</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>吉利 帝豪PHEV<span class="bprog">3 / 4</span></h2>
-      <div class="carsub">轿车 · 混合动力 · 2021年及之前购买</div>
+      <h2><span class="uname">汪杨</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>吉利 帝豪手动向上<span class="bprog">3 / 5</span></h2>
+      <div class="carsub">轿车 · 油车 · 2021年及之前购买</div>
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/026_王刚红_front.jpg" alt="王刚红 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">吉利 ｜ 混合动力 ｜ 轿车 ｜ 帝豪PHEV ｜ 2021年及之前 ｜ 王刚红</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/026_王刚红_obd.jpg" alt="王刚红 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">吉利 ｜ 混合动力 ｜ 轿车 ｜ 帝豪PHEV ｜ 2021年及之前 ｜ 王刚红</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/026_王刚红_rear.jpg" alt="王刚红 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">吉利 ｜ 混合动力 ｜ 轿车 ｜ 帝豪PHEV ｜ 2021年及之前 ｜ 王刚红</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/026_王刚红_live.jpg" alt="王刚红 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">吉利 ｜ 混合动力 ｜ 轿车 ｜ 帝豪PHEV ｜ 2021年及之前 ｜ 王刚红</span></figcaption></div>  </div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/021_汪杨_front.jpg" alt="汪杨 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">吉利 ｜ 油车 ｜ 轿车 ｜ 帝豪手动向上 ｜ 2021年及之前 ｜ 汪杨</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/021_汪杨_obd.jpg" alt="汪杨 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">吉利 ｜ 油车 ｜ 轿车 ｜ 帝豪手动向上 ｜ 2021年及之前 ｜ 汪杨</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/021_汪杨_rear.jpg" alt="汪杨 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">吉利 ｜ 油车 ｜ 轿车 ｜ 帝豪手动向上 ｜ 2021年及之前 ｜ 汪杨</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/021_汪杨_live.jpg" alt="汪杨 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">吉利 ｜ 油车 ｜ 轿车 ｜ 帝豪手动向上 ｜ 2021年及之前 ｜ 汪杨</span></figcaption></div>  </div>
   <div class="pnum">18</div>
 </div>
 
 <div class="slide">
   <div class="brandbar"></div>
-  <div class="corner">G980H 安装作业<br>吉利 4/4</div>
+  <div class="corner">G980H 安装作业<br>吉利 4/5</div>
   <div class="uhead rv rv1">
     <div>
       <div class="kicker">BRAND · 吉利</div>
-      <h2><span class="uname">闫贺</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>吉利 星越L<span class="bprog">4 / 4</span></h2>
+      <h2><span class="uname">王刚红</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>吉利 帝豪PHEV<span class="bprog">4 / 5</span></h2>
+      <div class="carsub">轿车 · 混合动力 · 2021年及之前购买</div>
+    </div>
+  </div>
+  <div class="shots rv rv2">
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/026_王刚红_front.jpg" alt="王刚红 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">吉利 ｜ 混合动力 ｜ 轿车 ｜ 帝豪PHEV ｜ 2021年及之前 ｜ 王刚红</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/026_王刚红_obd.jpg" alt="王刚红 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">吉利 ｜ 混合动力 ｜ 轿车 ｜ 帝豪PHEV ｜ 2021年及之前 ｜ 王刚红</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/026_王刚红_rear.jpg" alt="王刚红 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">吉利 ｜ 混合动力 ｜ 轿车 ｜ 帝豪PHEV ｜ 2021年及之前 ｜ 王刚红</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/026_王刚红_live.jpg" alt="王刚红 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">吉利 ｜ 混合动力 ｜ 轿车 ｜ 帝豪PHEV ｜ 2021年及之前 ｜ 王刚红</span></figcaption></div>  </div>
+  <div class="pnum">19</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 安装作业<br>吉利 5/5</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">BRAND · 吉利</div>
+      <h2><span class="uname">闫贺</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>吉利 星越L<span class="bprog">5 / 5</span></h2>
       <div class="carsub">SUV · 油车 · 2021-2023年购买</div>
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/039_闫贺_front.jpg" alt="闫贺 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">吉利 ｜ 油车 ｜ SUV ｜ 星越L ｜ 2021-2023年 ｜ 闫贺</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/039_闫贺_obd.jpg" alt="闫贺 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">吉利 ｜ 油车 ｜ SUV ｜ 星越L ｜ 2021-2023年 ｜ 闫贺</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/039_闫贺_rear.jpg" alt="闫贺 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">吉利 ｜ 油车 ｜ SUV ｜ 星越L ｜ 2021-2023年 ｜ 闫贺</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/039_闫贺_live.jpg" alt="闫贺 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">吉利 ｜ 油车 ｜ SUV ｜ 星越L ｜ 2021-2023年 ｜ 闫贺</span></figcaption></div>  </div>
-  <div class="pnum">19</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/039_闫贺_front.jpg" alt="闫贺 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">吉利 ｜ 油车 ｜ SUV ｜ 星越L ｜ 2021-2023年 ｜ 闫贺</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/039_闫贺_obd.jpg" alt="闫贺 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">吉利 ｜ 油车 ｜ SUV ｜ 星越L ｜ 2021-2023年 ｜ 闫贺</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/039_闫贺_rear.jpg" alt="闫贺 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">吉利 ｜ 油车 ｜ SUV ｜ 星越L ｜ 2021-2023年 ｜ 闫贺</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/039_闫贺_live.jpg" alt="闫贺 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">吉利 ｜ 油车 ｜ SUV ｜ 星越L ｜ 2021-2023年 ｜ 闫贺</span></figcaption></div>  </div>
+  <div class="pnum">20</div>
 </div>
 
 <div class="slide">
@@ -394,8 +399,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/013_张洪伟_front.jpg" alt="张洪伟 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽5 ｜ 2021年及之前 ｜ 张洪伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/013_张洪伟_obd.jpg" alt="张洪伟 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽5 ｜ 2021年及之前 ｜ 张洪伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/013_张洪伟_rear.jpg" alt="张洪伟 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽5 ｜ 2021年及之前 ｜ 张洪伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/013_张洪伟_live.jpg" alt="张洪伟 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽5 ｜ 2021年及之前 ｜ 张洪伟</span></figcaption></div>  </div>
-  <div class="pnum">20</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/013_张洪伟_front.jpg" alt="张洪伟 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽5 ｜ 2021年及之前 ｜ 张洪伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/013_张洪伟_obd.jpg" alt="张洪伟 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽5 ｜ 2021年及之前 ｜ 张洪伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/013_张洪伟_rear.jpg" alt="张洪伟 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽5 ｜ 2021年及之前 ｜ 张洪伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/013_张洪伟_live.jpg" alt="张洪伟 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽5 ｜ 2021年及之前 ｜ 张洪伟</span></figcaption></div>  </div>
+  <div class="pnum">21</div>
 </div>
 
 <div class="slide">
@@ -409,8 +414,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/036_赵士达_front.jpg" alt="赵士达 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 纯电 ｜ 轿车 ｜ 小蚂蚁 ｜ 2024-2025年 ｜ 赵士达</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/036_赵士达_obd.jpg" alt="赵士达 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 纯电 ｜ 轿车 ｜ 小蚂蚁 ｜ 2024-2025年 ｜ 赵士达</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/036_赵士达_rear.jpg" alt="赵士达 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 纯电 ｜ 轿车 ｜ 小蚂蚁 ｜ 2024-2025年 ｜ 赵士达</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/036_赵士达_live.jpg" alt="赵士达 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">奇瑞 ｜ 纯电 ｜ 轿车 ｜ 小蚂蚁 ｜ 2024-2025年 ｜ 赵士达</span></figcaption></div>  </div>
-  <div class="pnum">21</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/036_赵士达_front.jpg" alt="赵士达 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">奇瑞 ｜ 纯电 ｜ 轿车 ｜ 小蚂蚁 ｜ 2024-2025年 ｜ 赵士达</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/036_赵士达_obd.jpg" alt="赵士达 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">奇瑞 ｜ 纯电 ｜ 轿车 ｜ 小蚂蚁 ｜ 2024-2025年 ｜ 赵士达</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/036_赵士达_rear.jpg" alt="赵士达 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">奇瑞 ｜ 纯电 ｜ 轿车 ｜ 小蚂蚁 ｜ 2024-2025年 ｜ 赵士达</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/036_赵士达_live.jpg" alt="赵士达 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">奇瑞 ｜ 纯电 ｜ 轿车 ｜ 小蚂蚁 ｜ 2024-2025年 ｜ 赵士达</span></figcaption></div>  </div>
+  <div class="pnum">22</div>
 </div>
 
 <div class="slide">
@@ -424,8 +429,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/040_闫鹰飞_front.jpg" alt="闫鹰飞 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽3 ｜ 2021年及之前 ｜ 闫鹰飞</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/040_闫鹰飞_obd.jpg" alt="闫鹰飞 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽3 ｜ 2021年及之前 ｜ 闫鹰飞</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/040_闫鹰飞_rear.jpg" alt="闫鹰飞 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽3 ｜ 2021年及之前 ｜ 闫鹰飞</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/040_闫鹰飞_live.jpg" alt="闫鹰飞 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽3 ｜ 2021年及之前 ｜ 闫鹰飞</span></figcaption></div>  </div>
-  <div class="pnum">22</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/040_闫鹰飞_front.jpg" alt="闫鹰飞 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽3 ｜ 2021年及之前 ｜ 闫鹰飞</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/040_闫鹰飞_obd.jpg" alt="闫鹰飞 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽3 ｜ 2021年及之前 ｜ 闫鹰飞</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/040_闫鹰飞_rear.jpg" alt="闫鹰飞 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽3 ｜ 2021年及之前 ｜ 闫鹰飞</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/040_闫鹰飞_live.jpg" alt="闫鹰飞 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">奇瑞 ｜ 油车 ｜ 轿车 ｜ 艾瑞泽3 ｜ 2021年及之前 ｜ 闫鹰飞</span></figcaption></div>  </div>
+  <div class="pnum">23</div>
 </div>
 
 <div class="slide">
@@ -439,8 +444,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/043_马姬_front.jpg" alt="马姬 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ SUV ｜ 瑞虎8 ｜ 2021年及之前 ｜ 马姬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/043_马姬_obd.jpg" alt="马姬 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ SUV ｜ 瑞虎8 ｜ 2021年及之前 ｜ 马姬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/043_马姬_rear.jpg" alt="马姬 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ SUV ｜ 瑞虎8 ｜ 2021年及之前 ｜ 马姬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/043_马姬_live.jpg" alt="马姬 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">奇瑞 ｜ 油车 ｜ SUV ｜ 瑞虎8 ｜ 2021年及之前 ｜ 马姬</span></figcaption></div>  </div>
-  <div class="pnum">23</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/043_马姬_front.jpg" alt="马姬 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">奇瑞 ｜ 油车 ｜ SUV ｜ 瑞虎8 ｜ 2021年及之前 ｜ 马姬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/043_马姬_obd.jpg" alt="马姬 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">奇瑞 ｜ 油车 ｜ SUV ｜ 瑞虎8 ｜ 2021年及之前 ｜ 马姬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/043_马姬_rear.jpg" alt="马姬 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">奇瑞 ｜ 油车 ｜ SUV ｜ 瑞虎8 ｜ 2021年及之前 ｜ 马姬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/043_马姬_live.jpg" alt="马姬 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">奇瑞 ｜ 油车 ｜ SUV ｜ 瑞虎8 ｜ 2021年及之前 ｜ 马姬</span></figcaption></div>  </div>
+  <div class="pnum">24</div>
 </div>
 
 <div class="slide">
@@ -454,8 +459,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/023_温开礼_front.jpg" alt="温开礼 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">比亚迪 ｜ 混合动力 ｜ SUV ｜ 唐DM ｜ 2021-2023年 ｜ 温开礼</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/023_温开礼_obd.jpg" alt="温开礼 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">比亚迪 ｜ 混合动力 ｜ SUV ｜ 唐DM ｜ 2021-2023年 ｜ 温开礼</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/023_温开礼_rear.jpg" alt="温开礼 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">比亚迪 ｜ 混合动力 ｜ SUV ｜ 唐DM ｜ 2021-2023年 ｜ 温开礼</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/023_温开礼_live.jpg" alt="温开礼 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">比亚迪 ｜ 混合动力 ｜ SUV ｜ 唐DM ｜ 2021-2023年 ｜ 温开礼</span></figcaption></div>  </div>
-  <div class="pnum">24</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/023_温开礼_front.jpg" alt="温开礼 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">比亚迪 ｜ 混合动力 ｜ SUV ｜ 唐DM ｜ 2021-2023年 ｜ 温开礼</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/023_温开礼_obd.jpg" alt="温开礼 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">比亚迪 ｜ 混合动力 ｜ SUV ｜ 唐DM ｜ 2021-2023年 ｜ 温开礼</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/023_温开礼_rear.jpg" alt="温开礼 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">比亚迪 ｜ 混合动力 ｜ SUV ｜ 唐DM ｜ 2021-2023年 ｜ 温开礼</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/023_温开礼_live.jpg" alt="温开礼 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">比亚迪 ｜ 混合动力 ｜ SUV ｜ 唐DM ｜ 2021-2023年 ｜ 温开礼</span></figcaption></div>  </div>
+  <div class="pnum">25</div>
 </div>
 
 <div class="slide">
@@ -469,8 +474,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/030_秦世游_front.jpg" alt="秦世游 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ SUV ｜ 元plus ｜ 2023-2024年 ｜ 秦世游</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/030_秦世游_obd.jpg" alt="秦世游 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ SUV ｜ 元plus ｜ 2023-2024年 ｜ 秦世游</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/030_秦世游_rear.jpg" alt="秦世游 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ SUV ｜ 元plus ｜ 2023-2024年 ｜ 秦世游</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/030_秦世游_live.jpg" alt="秦世游 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ SUV ｜ 元plus ｜ 2023-2024年 ｜ 秦世游</span></figcaption></div>  </div>
-  <div class="pnum">25</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/030_秦世游_front.jpg" alt="秦世游 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ SUV ｜ 元plus ｜ 2023-2024年 ｜ 秦世游</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/030_秦世游_obd.jpg" alt="秦世游 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ SUV ｜ 元plus ｜ 2023-2024年 ｜ 秦世游</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/030_秦世游_rear.jpg" alt="秦世游 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ SUV ｜ 元plus ｜ 2023-2024年 ｜ 秦世游</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/030_秦世游_live.jpg" alt="秦世游 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">比亚迪 ｜ 纯电 ｜ SUV ｜ 元plus ｜ 2023-2024年 ｜ 秦世游</span></figcaption></div>  </div>
+  <div class="pnum">26</div>
 </div>
 
 <div class="slide">
@@ -484,8 +489,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/035_赵华平_front.jpg" alt="赵华平 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ 轿车 ｜ 海豚 ｜ 2023-2024年 ｜ 赵华平</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/035_赵华平_obd.jpg" alt="赵华平 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ 轿车 ｜ 海豚 ｜ 2023-2024年 ｜ 赵华平</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/035_赵华平_rear.jpg" alt="赵华平 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ 轿车 ｜ 海豚 ｜ 2023-2024年 ｜ 赵华平</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/035_赵华平_live.jpg" alt="赵华平 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ 轿车 ｜ 海豚 ｜ 2023-2024年 ｜ 赵华平</span></figcaption></div>  </div>
-  <div class="pnum">26</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/035_赵华平_front.jpg" alt="赵华平 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ 轿车 ｜ 海豚 ｜ 2023-2024年 ｜ 赵华平</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/035_赵华平_obd.jpg" alt="赵华平 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ 轿车 ｜ 海豚 ｜ 2023-2024年 ｜ 赵华平</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/035_赵华平_rear.jpg" alt="赵华平 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">比亚迪 ｜ 纯电 ｜ 轿车 ｜ 海豚 ｜ 2023-2024年 ｜ 赵华平</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/035_赵华平_live.jpg" alt="赵华平 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">比亚迪 ｜ 纯电 ｜ 轿车 ｜ 海豚 ｜ 2023-2024年 ｜ 赵华平</span></figcaption></div>  </div>
+  <div class="pnum">27</div>
 </div>
 
 <div class="slide">
@@ -499,8 +504,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/007_娄泽彬_front.jpg" alt="娄泽彬 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">奥迪 ｜ 油车 ｜ SUV ｜ 25款Q5L 40豪华 ｜ 2025-2026年 ｜ 娄泽彬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/007_娄泽彬_obd.jpg" alt="娄泽彬 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">奥迪 ｜ 油车 ｜ SUV ｜ 25款Q5L 40豪华 ｜ 2025-2026年 ｜ 娄泽彬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/007_娄泽彬_rear.jpg" alt="娄泽彬 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">奥迪 ｜ 油车 ｜ SUV ｜ 25款Q5L 40豪华 ｜ 2025-2026年 ｜ 娄泽彬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/007_娄泽彬_live.jpg" alt="娄泽彬 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">奥迪 ｜ 油车 ｜ SUV ｜ 25款Q5L 40豪华 ｜ 2025-2026年 ｜ 娄泽彬</span></figcaption></div>  </div>
-  <div class="pnum">27</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/007_娄泽彬_front.jpg" alt="娄泽彬 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">奥迪 ｜ 油车 ｜ SUV ｜ 25款Q5L 40豪华 ｜ 2025-2026年 ｜ 娄泽彬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/007_娄泽彬_obd.jpg" alt="娄泽彬 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">奥迪 ｜ 油车 ｜ SUV ｜ 25款Q5L 40豪华 ｜ 2025-2026年 ｜ 娄泽彬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/007_娄泽彬_rear.jpg" alt="娄泽彬 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">奥迪 ｜ 油车 ｜ SUV ｜ 25款Q5L 40豪华 ｜ 2025-2026年 ｜ 娄泽彬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/007_娄泽彬_live.jpg" alt="娄泽彬 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">奥迪 ｜ 油车 ｜ SUV ｜ 25款Q5L 40豪华 ｜ 2025-2026年 ｜ 娄泽彬</span></figcaption></div>  </div>
+  <div class="pnum">28</div>
 </div>
 
 <div class="slide">
@@ -514,8 +519,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/033_蒋晓昀_front.jpg" alt="蒋晓昀 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">奥迪 ｜ 油车 ｜ 轿车 ｜ A6allroad ｜ 2026年1月及之后 ｜ 蒋晓昀</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/033_蒋晓昀_obd.jpg" alt="蒋晓昀 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">奥迪 ｜ 油车 ｜ 轿车 ｜ A6allroad ｜ 2026年1月及之后 ｜ 蒋晓昀</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/033_蒋晓昀_rear.jpg" alt="蒋晓昀 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">奥迪 ｜ 油车 ｜ 轿车 ｜ A6allroad ｜ 2026年1月及之后 ｜ 蒋晓昀</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/033_蒋晓昀_live.jpg" alt="蒋晓昀 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">奥迪 ｜ 油车 ｜ 轿车 ｜ A6allroad ｜ 2026年1月及之后 ｜ 蒋晓昀</span></figcaption></div>  </div>
-  <div class="pnum">28</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/033_蒋晓昀_front.jpg" alt="蒋晓昀 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">奥迪 ｜ 油车 ｜ 轿车 ｜ A6allroad ｜ 2026年1月及之后 ｜ 蒋晓昀</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/033_蒋晓昀_obd.jpg" alt="蒋晓昀 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">奥迪 ｜ 油车 ｜ 轿车 ｜ A6allroad ｜ 2026年1月及之后 ｜ 蒋晓昀</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/033_蒋晓昀_rear.jpg" alt="蒋晓昀 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">奥迪 ｜ 油车 ｜ 轿车 ｜ A6allroad ｜ 2026年1月及之后 ｜ 蒋晓昀</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/033_蒋晓昀_live.jpg" alt="蒋晓昀 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">奥迪 ｜ 油车 ｜ 轿车 ｜ A6allroad ｜ 2026年1月及之后 ｜ 蒋晓昀</span></figcaption></div>  </div>
+  <div class="pnum">29</div>
 </div>
 
 <div class="slide">
@@ -529,8 +534,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/009_孙洪士_front.jpg" alt="孙洪士 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">五菱 ｜ 油车 ｜ 轿车 ｜ 五菱宏光v ｜ 2021-2023年 ｜ 孙洪士</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/009_孙洪士_obd.jpg" alt="孙洪士 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">五菱 ｜ 油车 ｜ 轿车 ｜ 五菱宏光v ｜ 2021-2023年 ｜ 孙洪士</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/009_孙洪士_rear.jpg" alt="孙洪士 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">五菱 ｜ 油车 ｜ 轿车 ｜ 五菱宏光v ｜ 2021-2023年 ｜ 孙洪士</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/009_孙洪士_live.jpg" alt="孙洪士 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">五菱 ｜ 油车 ｜ 轿车 ｜ 五菱宏光v ｜ 2021-2023年 ｜ 孙洪士</span></figcaption></div>  </div>
-  <div class="pnum">29</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/009_孙洪士_front.jpg" alt="孙洪士 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">五菱 ｜ 油车 ｜ 轿车 ｜ 五菱宏光v ｜ 2021-2023年 ｜ 孙洪士</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/009_孙洪士_obd.jpg" alt="孙洪士 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">五菱 ｜ 油车 ｜ 轿车 ｜ 五菱宏光v ｜ 2021-2023年 ｜ 孙洪士</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/009_孙洪士_rear.jpg" alt="孙洪士 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">五菱 ｜ 油车 ｜ 轿车 ｜ 五菱宏光v ｜ 2021-2023年 ｜ 孙洪士</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/009_孙洪士_live.jpg" alt="孙洪士 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">五菱 ｜ 油车 ｜ 轿车 ｜ 五菱宏光v ｜ 2021-2023年 ｜ 孙洪士</span></figcaption></div>  </div>
+  <div class="pnum">30</div>
 </div>
 
 <div class="slide">
@@ -544,8 +549,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/044_魏健伟_front.jpg" alt="魏健伟 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">五菱 ｜ 油车 ｜ SUV ｜ 五菱宏光S ｜ 2021年及之前 ｜ 魏健伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/044_魏健伟_obd.jpg" alt="魏健伟 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">五菱 ｜ 油车 ｜ SUV ｜ 五菱宏光S ｜ 2021年及之前 ｜ 魏健伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/044_魏健伟_rear.jpg" alt="魏健伟 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">五菱 ｜ 油车 ｜ SUV ｜ 五菱宏光S ｜ 2021年及之前 ｜ 魏健伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/044_魏健伟_live.jpg" alt="魏健伟 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">五菱 ｜ 油车 ｜ SUV ｜ 五菱宏光S ｜ 2021年及之前 ｜ 魏健伟</span></figcaption></div>  </div>
-  <div class="pnum">30</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/044_魏健伟_front.jpg" alt="魏健伟 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">五菱 ｜ 油车 ｜ SUV ｜ 五菱宏光S ｜ 2021年及之前 ｜ 魏健伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/044_魏健伟_obd.jpg" alt="魏健伟 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">五菱 ｜ 油车 ｜ SUV ｜ 五菱宏光S ｜ 2021年及之前 ｜ 魏健伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/044_魏健伟_rear.jpg" alt="魏健伟 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">五菱 ｜ 油车 ｜ SUV ｜ 五菱宏光S ｜ 2021年及之前 ｜ 魏健伟</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/044_魏健伟_live.jpg" alt="魏健伟 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">五菱 ｜ 油车 ｜ SUV ｜ 五菱宏光S ｜ 2021年及之前 ｜ 魏健伟</span></figcaption></div>  </div>
+  <div class="pnum">31</div>
 </div>
 
 <div class="slide">
@@ -559,8 +564,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/015_方家欢_front.jpg" alt="方家欢 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ 锐界CAF6490A54 ｜ 2021年及之前 ｜ 方家欢</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/015_方家欢_obd.jpg" alt="方家欢 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ 锐界CAF6490A54 ｜ 2021年及之前 ｜ 方家欢</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/015_方家欢_rear.jpg" alt="方家欢 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ 锐界CAF6490A54 ｜ 2021年及之前 ｜ 方家欢</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/015_方家欢_live.jpg" alt="方家欢 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ 锐界CAF6490A54 ｜ 2021年及之前 ｜ 方家欢</span></figcaption></div>  </div>
-  <div class="pnum">31</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/015_方家欢_front.jpg" alt="方家欢 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ 锐界CAF6490A54 ｜ 2021年及之前 ｜ 方家欢</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/015_方家欢_obd.jpg" alt="方家欢 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ 锐界CAF6490A54 ｜ 2021年及之前 ｜ 方家欢</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/015_方家欢_rear.jpg" alt="方家欢 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ 锐界CAF6490A54 ｜ 2021年及之前 ｜ 方家欢</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/015_方家欢_live.jpg" alt="方家欢 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ 锐界CAF6490A54 ｜ 2021年及之前 ｜ 方家欢</span></figcaption></div>  </div>
+  <div class="pnum">32</div>
 </div>
 
 <div class="slide">
@@ -574,8 +579,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/019_杜劲_front.jpg" alt="杜劲 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ JX6462PB6 ｜ 2021年及之前 ｜ 杜劲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/019_杜劲_obd.jpg" alt="杜劲 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ JX6462PB6 ｜ 2021年及之前 ｜ 杜劲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/019_杜劲_rear.jpg" alt="杜劲 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ JX6462PB6 ｜ 2021年及之前 ｜ 杜劲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/019_杜劲_live.jpg" alt="杜劲 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ JX6462PB6 ｜ 2021年及之前 ｜ 杜劲</span></figcaption></div>  </div>
-  <div class="pnum">32</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/019_杜劲_front.jpg" alt="杜劲 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ JX6462PB6 ｜ 2021年及之前 ｜ 杜劲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/019_杜劲_obd.jpg" alt="杜劲 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ JX6462PB6 ｜ 2021年及之前 ｜ 杜劲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/019_杜劲_rear.jpg" alt="杜劲 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ JX6462PB6 ｜ 2021年及之前 ｜ 杜劲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/019_杜劲_live.jpg" alt="杜劲 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">福特 ｜ 油车 ｜ SUV ｜ JX6462PB6 ｜ 2021年及之前 ｜ 杜劲</span></figcaption></div>  </div>
+  <div class="pnum">33</div>
 </div>
 
 <div class="slide">
@@ -589,8 +594,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/001_丁政涛_front.jpg" alt="丁政涛 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">东风 ｜ 纯电 ｜ SUV ｜ EX1por ｜ 2021-2023年 ｜ 丁政涛</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/001_丁政涛_obd.jpg" alt="丁政涛 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">东风 ｜ 纯电 ｜ SUV ｜ EX1por ｜ 2021-2023年 ｜ 丁政涛</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/001_丁政涛_rear.jpg" alt="丁政涛 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">东风 ｜ 纯电 ｜ SUV ｜ EX1por ｜ 2021-2023年 ｜ 丁政涛</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/001_丁政涛_live.jpg" alt="丁政涛 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">东风 ｜ 纯电 ｜ SUV ｜ EX1por ｜ 2021-2023年 ｜ 丁政涛</span></figcaption></div>  </div>
-  <div class="pnum">33</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/001_丁政涛_front.jpg" alt="丁政涛 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">东风 ｜ 纯电 ｜ SUV ｜ EX1por ｜ 2021-2023年 ｜ 丁政涛</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/001_丁政涛_obd.jpg" alt="丁政涛 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">东风 ｜ 纯电 ｜ SUV ｜ EX1por ｜ 2021-2023年 ｜ 丁政涛</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/001_丁政涛_rear.jpg" alt="丁政涛 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">东风 ｜ 纯电 ｜ SUV ｜ EX1por ｜ 2021-2023年 ｜ 丁政涛</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/001_丁政涛_live.jpg" alt="丁政涛 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">东风 ｜ 纯电 ｜ SUV ｜ EX1por ｜ 2021-2023年 ｜ 丁政涛</span></figcaption></div>  </div>
+  <div class="pnum">34</div>
 </div>
 
 <div class="slide">
@@ -604,8 +609,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/002_公海军_front.jpg" alt="公海军 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">腾势 ｜ 纯电 ｜ SUV ｜ N8 ｜ 2025-2026年 ｜ 公海军</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/002_公海军_obd.jpg" alt="公海军 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">腾势 ｜ 纯电 ｜ SUV ｜ N8 ｜ 2025-2026年 ｜ 公海军</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/002_公海军_rear.jpg" alt="公海军 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">腾势 ｜ 纯电 ｜ SUV ｜ N8 ｜ 2025-2026年 ｜ 公海军</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/002_公海军_live.jpg" alt="公海军 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">腾势 ｜ 纯电 ｜ SUV ｜ N8 ｜ 2025-2026年 ｜ 公海军</span></figcaption></div>  </div>
-  <div class="pnum">34</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/002_公海军_front.jpg" alt="公海军 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">腾势 ｜ 纯电 ｜ SUV ｜ N8 ｜ 2025-2026年 ｜ 公海军</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/002_公海军_obd.jpg" alt="公海军 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">腾势 ｜ 纯电 ｜ SUV ｜ N8 ｜ 2025-2026年 ｜ 公海军</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/002_公海军_rear.jpg" alt="公海军 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">腾势 ｜ 纯电 ｜ SUV ｜ N8 ｜ 2025-2026年 ｜ 公海军</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/002_公海军_live.jpg" alt="公海军 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">腾势 ｜ 纯电 ｜ SUV ｜ N8 ｜ 2025-2026年 ｜ 公海军</span></figcaption></div>  </div>
+  <div class="pnum">35</div>
 </div>
 
 <div class="slide">
@@ -619,8 +624,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/003_刘尚林_front.jpg" alt="刘尚林 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">现代 ｜ 油车 ｜ 轿车 ｜ 瑞纳 ｜ 2021年及之前 ｜ 刘尚林</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/003_刘尚林_obd.jpg" alt="刘尚林 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">现代 ｜ 油车 ｜ 轿车 ｜ 瑞纳 ｜ 2021年及之前 ｜ 刘尚林</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/003_刘尚林_rear.jpg" alt="刘尚林 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">现代 ｜ 油车 ｜ 轿车 ｜ 瑞纳 ｜ 2021年及之前 ｜ 刘尚林</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/003_刘尚林_live.jpg" alt="刘尚林 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">现代 ｜ 油车 ｜ 轿车 ｜ 瑞纳 ｜ 2021年及之前 ｜ 刘尚林</span></figcaption></div>  </div>
-  <div class="pnum">35</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/003_刘尚林_front.jpg" alt="刘尚林 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">现代 ｜ 油车 ｜ 轿车 ｜ 瑞纳 ｜ 2021年及之前 ｜ 刘尚林</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/003_刘尚林_obd.jpg" alt="刘尚林 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">现代 ｜ 油车 ｜ 轿车 ｜ 瑞纳 ｜ 2021年及之前 ｜ 刘尚林</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/003_刘尚林_rear.jpg" alt="刘尚林 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">现代 ｜ 油车 ｜ 轿车 ｜ 瑞纳 ｜ 2021年及之前 ｜ 刘尚林</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/003_刘尚林_live.jpg" alt="刘尚林 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">现代 ｜ 油车 ｜ 轿车 ｜ 瑞纳 ｜ 2021年及之前 ｜ 刘尚林</span></figcaption></div>  </div>
+  <div class="pnum">36</div>
 </div>
 
 <div class="slide">
@@ -634,8 +639,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/010_张俊_front.jpg" alt="张俊 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">凯迪拉克 ｜ 油车 ｜ SUV ｜ XT5 ｜ 2023-2024年 ｜ 张俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/010_张俊_obd.jpg" alt="张俊 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">凯迪拉克 ｜ 油车 ｜ SUV ｜ XT5 ｜ 2023-2024年 ｜ 张俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/010_张俊_rear.jpg" alt="张俊 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">凯迪拉克 ｜ 油车 ｜ SUV ｜ XT5 ｜ 2023-2024年 ｜ 张俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/010_张俊_live.jpg" alt="张俊 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">凯迪拉克 ｜ 油车 ｜ SUV ｜ XT5 ｜ 2023-2024年 ｜ 张俊</span></figcaption></div>  </div>
-  <div class="pnum">36</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/010_张俊_front.jpg" alt="张俊 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">凯迪拉克 ｜ 油车 ｜ SUV ｜ XT5 ｜ 2023-2024年 ｜ 张俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/010_张俊_obd.jpg" alt="张俊 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">凯迪拉克 ｜ 油车 ｜ SUV ｜ XT5 ｜ 2023-2024年 ｜ 张俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/010_张俊_rear.jpg" alt="张俊 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">凯迪拉克 ｜ 油车 ｜ SUV ｜ XT5 ｜ 2023-2024年 ｜ 张俊</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/010_张俊_live.jpg" alt="张俊 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">凯迪拉克 ｜ 油车 ｜ SUV ｜ XT5 ｜ 2023-2024年 ｜ 张俊</span></figcaption></div>  </div>
+  <div class="pnum">37</div>
 </div>
 
 <div class="slide">
@@ -649,8 +654,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/011_张宁_front.jpg" alt="张宁 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">哈弗 ｜ 油车 ｜ SUV ｜ 2代H6 ｜ 2021年及之前 ｜ 张宁</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/011_张宁_obd.jpg" alt="张宁 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">哈弗 ｜ 油车 ｜ SUV ｜ 2代H6 ｜ 2021年及之前 ｜ 张宁</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/011_张宁_rear.jpg" alt="张宁 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">哈弗 ｜ 油车 ｜ SUV ｜ 2代H6 ｜ 2021年及之前 ｜ 张宁</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/011_张宁_live.jpg" alt="张宁 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">哈弗 ｜ 油车 ｜ SUV ｜ 2代H6 ｜ 2021年及之前 ｜ 张宁</span></figcaption></div>  </div>
-  <div class="pnum">37</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/011_张宁_front.jpg" alt="张宁 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">哈弗 ｜ 油车 ｜ SUV ｜ 2代H6 ｜ 2021年及之前 ｜ 张宁</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/011_张宁_obd.jpg" alt="张宁 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">哈弗 ｜ 油车 ｜ SUV ｜ 2代H6 ｜ 2021年及之前 ｜ 张宁</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/011_张宁_rear.jpg" alt="张宁 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">哈弗 ｜ 油车 ｜ SUV ｜ 2代H6 ｜ 2021年及之前 ｜ 张宁</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/011_张宁_live.jpg" alt="张宁 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">哈弗 ｜ 油车 ｜ SUV ｜ 2代H6 ｜ 2021年及之前 ｜ 张宁</span></figcaption></div>  </div>
+  <div class="pnum">38</div>
 </div>
 
 <div class="slide">
@@ -664,8 +669,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/014_张鹏鑫_front.jpg" alt="张鹏鑫 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">日产 ｜ 油车 ｜ 轿车 ｜ 轩逸 ｜ 2021年及之前 ｜ 张鹏鑫</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/014_张鹏鑫_obd.jpg" alt="张鹏鑫 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">日产 ｜ 油车 ｜ 轿车 ｜ 轩逸 ｜ 2021年及之前 ｜ 张鹏鑫</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/014_张鹏鑫_rear.jpg" alt="张鹏鑫 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">日产 ｜ 油车 ｜ 轿车 ｜ 轩逸 ｜ 2021年及之前 ｜ 张鹏鑫</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/014_张鹏鑫_live.jpg" alt="张鹏鑫 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">日产 ｜ 油车 ｜ 轿车 ｜ 轩逸 ｜ 2021年及之前 ｜ 张鹏鑫</span></figcaption></div>  </div>
-  <div class="pnum">38</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/014_张鹏鑫_front.jpg" alt="张鹏鑫 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">日产 ｜ 油车 ｜ 轿车 ｜ 轩逸 ｜ 2021年及之前 ｜ 张鹏鑫</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/014_张鹏鑫_obd.jpg" alt="张鹏鑫 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">日产 ｜ 油车 ｜ 轿车 ｜ 轩逸 ｜ 2021年及之前 ｜ 张鹏鑫</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/014_张鹏鑫_rear.jpg" alt="张鹏鑫 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">日产 ｜ 油车 ｜ 轿车 ｜ 轩逸 ｜ 2021年及之前 ｜ 张鹏鑫</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/014_张鹏鑫_live.jpg" alt="张鹏鑫 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">日产 ｜ 油车 ｜ 轿车 ｜ 轩逸 ｜ 2021年及之前 ｜ 张鹏鑫</span></figcaption></div>  </div>
+  <div class="pnum">39</div>
 </div>
 
 <div class="slide">
@@ -679,8 +684,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/022_洪冲_front.jpg" alt="洪冲 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">本田 ｜ 油车 ｜ 轿车 ｜ 飞度 ｜ 2021年及之前 ｜ 洪冲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/022_洪冲_obd.jpg" alt="洪冲 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">本田 ｜ 油车 ｜ 轿车 ｜ 飞度 ｜ 2021年及之前 ｜ 洪冲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/022_洪冲_rear.jpg" alt="洪冲 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">本田 ｜ 油车 ｜ 轿车 ｜ 飞度 ｜ 2021年及之前 ｜ 洪冲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/022_洪冲_live.jpg" alt="洪冲 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">本田 ｜ 油车 ｜ 轿车 ｜ 飞度 ｜ 2021年及之前 ｜ 洪冲</span></figcaption></div>  </div>
-  <div class="pnum">39</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/022_洪冲_front.jpg" alt="洪冲 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">本田 ｜ 油车 ｜ 轿车 ｜ 飞度 ｜ 2021年及之前 ｜ 洪冲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/022_洪冲_obd.jpg" alt="洪冲 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">本田 ｜ 油车 ｜ 轿车 ｜ 飞度 ｜ 2021年及之前 ｜ 洪冲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/022_洪冲_rear.jpg" alt="洪冲 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">本田 ｜ 油车 ｜ 轿车 ｜ 飞度 ｜ 2021年及之前 ｜ 洪冲</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/022_洪冲_live.jpg" alt="洪冲 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">本田 ｜ 油车 ｜ 轿车 ｜ 飞度 ｜ 2021年及之前 ｜ 洪冲</span></figcaption></div>  </div>
+  <div class="pnum">40</div>
 </div>
 
 <div class="slide">
@@ -694,8 +699,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/025_王亚兵_front.jpg" alt="王亚兵 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">纳智捷 ｜ 油车 ｜ SUV ｜ u6 ｜ 2021年及之前 ｜ 王亚兵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/025_王亚兵_obd.jpg" alt="王亚兵 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">纳智捷 ｜ 油车 ｜ SUV ｜ u6 ｜ 2021年及之前 ｜ 王亚兵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/025_王亚兵_rear.jpg" alt="王亚兵 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">纳智捷 ｜ 油车 ｜ SUV ｜ u6 ｜ 2021年及之前 ｜ 王亚兵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/025_王亚兵_live.jpg" alt="王亚兵 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">纳智捷 ｜ 油车 ｜ SUV ｜ u6 ｜ 2021年及之前 ｜ 王亚兵</span></figcaption></div>  </div>
-  <div class="pnum">40</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/025_王亚兵_front.jpg" alt="王亚兵 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">纳智捷 ｜ 油车 ｜ SUV ｜ u6 ｜ 2021年及之前 ｜ 王亚兵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/025_王亚兵_obd.jpg" alt="王亚兵 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">纳智捷 ｜ 油车 ｜ SUV ｜ u6 ｜ 2021年及之前 ｜ 王亚兵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/025_王亚兵_rear.jpg" alt="王亚兵 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">纳智捷 ｜ 油车 ｜ SUV ｜ u6 ｜ 2021年及之前 ｜ 王亚兵</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/025_王亚兵_live.jpg" alt="王亚兵 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">纳智捷 ｜ 油车 ｜ SUV ｜ u6 ｜ 2021年及之前 ｜ 王亚兵</span></figcaption></div>  </div>
+  <div class="pnum">41</div>
 </div>
 
 <div class="slide">
@@ -709,8 +714,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/027_王钰琦_front.jpg" alt="王钰琦 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">宝马 ｜ 油车 ｜ SUV ｜ X3 ｜ 2021年及之前 ｜ 王钰琦</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/027_王钰琦_obd.jpg" alt="王钰琦 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">宝马 ｜ 油车 ｜ SUV ｜ X3 ｜ 2021年及之前 ｜ 王钰琦</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/027_王钰琦_rear.jpg" alt="王钰琦 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">宝马 ｜ 油车 ｜ SUV ｜ X3 ｜ 2021年及之前 ｜ 王钰琦</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/027_王钰琦_live.jpg" alt="王钰琦 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">宝马 ｜ 油车 ｜ SUV ｜ X3 ｜ 2021年及之前 ｜ 王钰琦</span></figcaption></div>  </div>
-  <div class="pnum">41</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/027_王钰琦_front.jpg" alt="王钰琦 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">宝马 ｜ 油车 ｜ SUV ｜ X3 ｜ 2021年及之前 ｜ 王钰琦</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/027_王钰琦_obd.jpg" alt="王钰琦 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">宝马 ｜ 油车 ｜ SUV ｜ X3 ｜ 2021年及之前 ｜ 王钰琦</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/027_王钰琦_rear.jpg" alt="王钰琦 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">宝马 ｜ 油车 ｜ SUV ｜ X3 ｜ 2021年及之前 ｜ 王钰琦</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/027_王钰琦_live.jpg" alt="王钰琦 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">宝马 ｜ 油车 ｜ SUV ｜ X3 ｜ 2021年及之前 ｜ 王钰琦</span></figcaption></div>  </div>
+  <div class="pnum">42</div>
 </div>
 
 <div class="slide">
@@ -724,8 +729,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/028_王飞龙_front.jpg" alt="王飞龙 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">捷途 ｜ 油车 ｜ SUV ｜ X70 ｜ 2021年及之前 ｜ 王飞龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/028_王飞龙_obd.jpg" alt="王飞龙 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">捷途 ｜ 油车 ｜ SUV ｜ X70 ｜ 2021年及之前 ｜ 王飞龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/028_王飞龙_rear.jpg" alt="王飞龙 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">捷途 ｜ 油车 ｜ SUV ｜ X70 ｜ 2021年及之前 ｜ 王飞龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/028_王飞龙_live.jpg" alt="王飞龙 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">捷途 ｜ 油车 ｜ SUV ｜ X70 ｜ 2021年及之前 ｜ 王飞龙</span></figcaption></div>  </div>
-  <div class="pnum">42</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/028_王飞龙_front.jpg" alt="王飞龙 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">捷途 ｜ 油车 ｜ SUV ｜ X70 ｜ 2021年及之前 ｜ 王飞龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/028_王飞龙_obd.jpg" alt="王飞龙 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">捷途 ｜ 油车 ｜ SUV ｜ X70 ｜ 2021年及之前 ｜ 王飞龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/028_王飞龙_rear.jpg" alt="王飞龙 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">捷途 ｜ 油车 ｜ SUV ｜ X70 ｜ 2021年及之前 ｜ 王飞龙</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/028_王飞龙_live.jpg" alt="王飞龙 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">捷途 ｜ 油车 ｜ SUV ｜ X70 ｜ 2021年及之前 ｜ 王飞龙</span></figcaption></div>  </div>
+  <div class="pnum">43</div>
 </div>
 
 <div class="slide">
@@ -739,8 +744,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/031_程玢泽_front.jpg" alt="程玢泽 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">零跑 ｜ 纯电 ｜ 轿车 ｜ T03 ｜ 2021-2023年 ｜ 程玢泽</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/031_程玢泽_obd.jpg" alt="程玢泽 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">零跑 ｜ 纯电 ｜ 轿车 ｜ T03 ｜ 2021-2023年 ｜ 程玢泽</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/031_程玢泽_rear.jpg" alt="程玢泽 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">零跑 ｜ 纯电 ｜ 轿车 ｜ T03 ｜ 2021-2023年 ｜ 程玢泽</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/031_程玢泽_live.jpg" alt="程玢泽 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">零跑 ｜ 纯电 ｜ 轿车 ｜ T03 ｜ 2021-2023年 ｜ 程玢泽</span></figcaption></div>  </div>
-  <div class="pnum">43</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/031_程玢泽_front.jpg" alt="程玢泽 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">零跑 ｜ 纯电 ｜ 轿车 ｜ T03 ｜ 2021-2023年 ｜ 程玢泽</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/031_程玢泽_obd.jpg" alt="程玢泽 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">零跑 ｜ 纯电 ｜ 轿车 ｜ T03 ｜ 2021-2023年 ｜ 程玢泽</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/031_程玢泽_rear.jpg" alt="程玢泽 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">零跑 ｜ 纯电 ｜ 轿车 ｜ T03 ｜ 2021-2023年 ｜ 程玢泽</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/031_程玢泽_live.jpg" alt="程玢泽 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">零跑 ｜ 纯电 ｜ 轿车 ｜ T03 ｜ 2021-2023年 ｜ 程玢泽</span></figcaption></div>  </div>
+  <div class="pnum">44</div>
 </div>
 
 <div class="slide">
@@ -754,8 +759,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/032_苏冬冬_front.jpg" alt="苏冬冬 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">坦克 ｜ 油车 ｜ SUV ｜ 坦克300 ｜ 2026年1月及之后 ｜ 苏冬冬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/032_苏冬冬_obd.jpg" alt="苏冬冬 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">坦克 ｜ 油车 ｜ SUV ｜ 坦克300 ｜ 2026年1月及之后 ｜ 苏冬冬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/032_苏冬冬_rear.jpg" alt="苏冬冬 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">坦克 ｜ 油车 ｜ SUV ｜ 坦克300 ｜ 2026年1月及之后 ｜ 苏冬冬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/032_苏冬冬_live.jpg" alt="苏冬冬 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">坦克 ｜ 油车 ｜ SUV ｜ 坦克300 ｜ 2026年1月及之后 ｜ 苏冬冬</span></figcaption></div>  </div>
-  <div class="pnum">44</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/032_苏冬冬_front.jpg" alt="苏冬冬 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">坦克 ｜ 油车 ｜ SUV ｜ 坦克300 ｜ 2026年1月及之后 ｜ 苏冬冬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/032_苏冬冬_obd.jpg" alt="苏冬冬 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">坦克 ｜ 油车 ｜ SUV ｜ 坦克300 ｜ 2026年1月及之后 ｜ 苏冬冬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/032_苏冬冬_rear.jpg" alt="苏冬冬 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">坦克 ｜ 油车 ｜ SUV ｜ 坦克300 ｜ 2026年1月及之后 ｜ 苏冬冬</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/032_苏冬冬_live.jpg" alt="苏冬冬 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">坦克 ｜ 油车 ｜ SUV ｜ 坦克300 ｜ 2026年1月及之后 ｜ 苏冬冬</span></figcaption></div>  </div>
+  <div class="pnum">45</div>
 </div>
 
 <div class="slide">
@@ -769,8 +774,8 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/034_许军州_front.jpg" alt="许军州 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">别克 ｜ 油车 ｜ 轿车 ｜ 威朗2017三厢 ｜ 2021年及之前 ｜ 许军州</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/034_许军州_obd.jpg" alt="许军州 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">别克 ｜ 油车 ｜ 轿车 ｜ 威朗2017三厢 ｜ 2021年及之前 ｜ 许军州</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/034_许军州_rear.jpg" alt="许军州 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">别克 ｜ 油车 ｜ 轿车 ｜ 威朗2017三厢 ｜ 2021年及之前 ｜ 许军州</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/034_许军州_live.jpg" alt="许军州 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">别克 ｜ 油车 ｜ 轿车 ｜ 威朗2017三厢 ｜ 2021年及之前 ｜ 许军州</span></figcaption></div>  </div>
-  <div class="pnum">45</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/034_许军州_front.jpg" alt="许军州 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">别克 ｜ 油车 ｜ 轿车 ｜ 威朗2017三厢 ｜ 2021年及之前 ｜ 许军州</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/034_许军州_obd.jpg" alt="许军州 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">别克 ｜ 油车 ｜ 轿车 ｜ 威朗2017三厢 ｜ 2021年及之前 ｜ 许军州</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/034_许军州_rear.jpg" alt="许军州 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">别克 ｜ 油车 ｜ 轿车 ｜ 威朗2017三厢 ｜ 2021年及之前 ｜ 许军州</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/034_许军州_live.jpg" alt="许军州 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">别克 ｜ 油车 ｜ 轿车 ｜ 威朗2017三厢 ｜ 2021年及之前 ｜ 许军州</span></figcaption></div>  </div>
+  <div class="pnum">46</div>
 </div>
 
 <div class="slide">
@@ -784,17 +789,17 @@ figcaption{margin-top:10px}
     </div>
   </div>
   <div class="shots rv rv2">
-<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/041_陈占学_front.jpg" alt="陈占学 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图 · 点击看原图</span><span class="tagline">红旗 ｜ 油车 ｜ 轿车 ｜ H6 ｜ 2023-2024年 ｜ 陈占学</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/041_陈占学_obd.jpg" alt="陈占学 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图 · 点击看原图</span><span class="tagline">红旗 ｜ 油车 ｜ 轿车 ｜ H6 ｜ 2023-2024年 ｜ 陈占学</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/041_陈占学_rear.jpg" alt="陈占学 后录位置图"></div><figcaption><span class="qlabel">后录位置图 · 点击看原图</span><span class="tagline">红旗 ｜ 油车 ｜ 轿车 ｜ H6 ｜ 2023-2024年 ｜ 陈占学</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/041_陈占学_live.jpg" alt="陈占学 实时画面"></div><figcaption><span class="qlabel">实时画面 · 点击看原图</span><span class="tagline">红旗 ｜ 油车 ｜ 轿车 ｜ H6 ｜ 2023-2024年 ｜ 陈占学</span></figcaption></div>  </div>
-  <div class="pnum">46</div>
+<div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/041_陈占学_front.jpg" alt="陈占学 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">红旗 ｜ 油车 ｜ 轿车 ｜ H6 ｜ 2023-2024年 ｜ 陈占学</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/041_陈占学_obd.jpg" alt="陈占学 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">红旗 ｜ 油车 ｜ 轿车 ｜ H6 ｜ 2023-2024年 ｜ 陈占学</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/041_陈占学_rear.jpg" alt="陈占学 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">红旗 ｜ 油车 ｜ 轿车 ｜ H6 ｜ 2023-2024年 ｜ 陈占学</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-orig/041_陈占学_live.jpg" alt="陈占学 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">红旗 ｜ 油车 ｜ 轿车 ｜ H6 ｜ 2023-2024年 ｜ 陈占学</span></figcaption></div>  </div>
+  <div class="pnum">47</div>
 </div>
 </div></div>
 <div id="hud">
   <button onclick="nav(-1)">← 上一页</button>
-  <span id="pageno">1 / 46</span>
+  <span id="pageno">1 / 47</span>
   <button onclick="nav(1)">下一页 →</button>
 </div>
 <script>
-var BP = {"大众": 3, "丰田": 10, "吉利": 16, "奇瑞": 20, "比亚迪": 24, "奥迪": 27, "五菱": 29, "福特": 31, "东风": 33, "腾势": 34, "现代": 35, "凯迪拉克": 36, "哈弗": 37, "日产": 38, "本田": 39, "纳智捷": 40, "宝马": 41, "捷途": 42, "零跑": 43, "坦克": 44, "别克": 45, "红旗": 46};
+var BP = {"大众": 3, "丰田": 10, "吉利": 16, "奇瑞": 21, "比亚迪": 25, "奥迪": 28, "五菱": 30, "福特": 32, "东风": 34, "腾势": 35, "现代": 36, "凯迪拉克": 37, "哈弗": 38, "日产": 39, "本田": 40, "纳智捷": 41, "宝马": 42, "捷途": 43, "零跑": 44, "坦克": 45, "别克": 46, "红旗": 47};
 var slides = document.querySelectorAll('.slide');
 var cur = 0, loaded = {};
 function fit(){
@@ -830,10 +835,6 @@ document.addEventListener('keydown', function(e){
 });
 document.addEventListener('click', function(e){
   if(e.target.closest('#hud')||e.target.closest('.toc')) return;
-  var lb = e.target.closest('#lightbox');
-  if(lb){ lb.classList.remove('on'); return; }
-  var w = e.target.closest('.imgwrap');
-  if(w){ var im=w.querySelector('img'); if(im&&im.src){ document.getElementById('lbimg').src=im.src; document.getElementById('lightbox').classList.add('on'); return; } }
   nav(e.clientX > window.innerWidth/2 ? 1 : -1);
 });
 fit();
