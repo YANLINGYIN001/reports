@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V6骑行版新品跟踪日报 · Day 28</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:30px; margin-bottom:24px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .subtitle { font-size:14px; opacity:0.9; }
+.header .date-range { font-size:13px; opacity:0.8; margin-top:6px; }
+.overview { background:#fff; border-left:4px solid #00B050; border-radius:8px; padding:14px 20px; margin-bottom:20px; font-size:14px; color:#333; }
+.kpi-grid { display:grid; grid-template-columns:1fr 1.6fr 1.3fr; gap:16px; margin-bottom:24px; }
+.kpi-card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size:13px; color:#999; margin-bottom:8px; }
+.kpi-card .value { font-size:32px; font-weight:700; color:#E74C3C; }
+.kpi-card .delta { font-size:12px; color:#00B050; margin-top:4px; }
+.kpi-card .delta.up { color:#E74C3C; }
+.kpi-card .delta.zero { color:#999; }
+.kpi-card .sub { font-size:12px; color:#666; margin-top:4px; }
+.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
+.insight-box { border-radius:10px; padding:16px; margin-bottom:12px; }
+.insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
+.insight-orange { background:#fff3e0; border-left:4px solid #F39F12; }
+.insight-red { background:#fdecea; border-left:4px solid #E74C3C; }
+.insight-box p { font-size:14px; line-height:1.8; }
+.insight-box strong { color:#00B050; }
+.insight-orange strong { color:#F39F12; }
+.insight-red strong { color:#E74C3C; }
+.channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
+.channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
+.chart-container { width:100%; height:280px; }
+.cat-cards { display:grid; grid-template-columns:repeat(8, 1fr); gap:10px; margin-bottom:16px; }
+.cat-card { min-width:0; border-radius:8px; padding:12px 6px; text-align:center; color:#fff; }
+.cat-card .cat-icon { font-size:20px; }
+.cat-card .cat-name { font-size:12px; white-space:nowrap; margin-top:4px; }
+.cat-card .cat-count { font-size:20px; font-weight:700; margin-top:2px; }
+.detail-table { width:100%; border-collapse:collapse; font-size:13.5px; }
+.detail-table th { background:#f0f7f0; padding:10px 12px; text-align:left; font-weight:600; color:#333; border-bottom:2px solid #00B050; white-space:nowrap; }
+.detail-table td { padding:10px 12px; border-bottom:1px solid #eee; vertical-align:top; color:#333; line-height:1.55; }
+.detail-table tr:hover { background:#fafafa; }
+.detail-table tr.new-row { background:#fffdf0; }
+.detail-table tr.risk-row { background:#fdecea; }
+.type-badge { display:inline-block; padding:3px 10px; border-radius:4px; font-size:13px; font-weight:700; }
+.solution-text { color:#444; max-width:300px; }
+.problem-text { max-width:280px; color:#212121; font-weight:500; }
+.date-badge { color:#555; font-size:12.5px; font-weight:600; white-space:nowrap; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+@media (max-width:768px) {
+  .kpi-grid { grid-template-columns:repeat(2,1fr); }
+  .cat-card { min-width:100px; }
+  .detail-table { font-size:12px; }
+  .detail-table th, .detail-table td { padding:8px 6px; }
+  .solution-text, .problem-text { max-width:none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🚲 V6骑行版新品跟踪日报 · Day 28</h1>
+  <div class="subtitle">Day 28 累计汇总 | 数据周期 2026.08.29 - 2026.09.24</div>
+  <div class="date-range">数据来源:飞书表格「用户问题反馈汇总」 | 更新时间:2026-09-26 18:15</div>
+</div>
+
+<div class="overview">
+  今日(9/26)无新增反馈,累计169条连续两日持平;疑似缺陷31条、不开机簇21条均零新增;不开机簇连续2日零新增,收敛信号初显,SN/批次排查结论待产品/研发反馈。
+</div>
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">169</div><div class="delta zero">较昨日(Day 27) 持平,今日零新增</div></div>
+  <div class="kpi-card"><div class="label">Top3问题(累计+本期新增)</div><div class="value" style="font-size:16px;line-height:1.4">不开机 21条 <span style="color:#00B050">无新增</span><br>安装咨询 12条 <span style="color:#00B050">无新增</span><br>防水咨询 8条 <span style="color:#00B050">无新增</span></div><div class="delta zero">Top3排位与昨日持平:不开机居首,安装咨询第2、防水咨询第3</div></div>
+  <div class="kpi-card"><div class="label">今日新增bug问题(9/26)</div><div class="value" style="font-size:16px;line-height:1.4;color:#00B050">今日无新增bug</div><div class="sub">疑似缺陷累计31条(不开机21/内存卡损坏3/支架损坏2/卡录漏录2/支架松开1/设备发烫1/骑行支架安装损坏1)与昨日持平</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">核心洞察</div>
+  <div class="insight-box insight-orange">
+    <p><strong>🟠 不开机簇连续2日零新增,收敛信号初显</strong>:9/24单日+8(上市以来最高)后,9/25、9/26连续两日无新增;累计21条中多数为"电源插头紧配"按压后解决或引导中,另有补发电源线、电压适配引导各1条,与批量集中录入特征吻合;SN/批次核实电源线/充电口装配一致性的排查结论仍待产品/研发反馈,建议持续跟进并以下一期日报验证收敛是否延续。</p>
+  </div>
+  <div class="insight-box insight-green">
+    <p><strong>🟢 疑似缺陷除不开机外多日零新增,质量面整体平稳</strong>:支架损坏2条(均已补发/换货)、内存卡损坏3条、卡录漏录2条、螺丝适配补偿类已闭环;今日31条疑似缺陷口径与昨日持平,无新增质量信号。</p>
+  </div>
+  <div class="insight-box insight-green">
+    <p><strong>🟢 配件发错货连续5日未再现,网点侧改进验证信号增强</strong>:9/21第3次发错货经售后补发+错件到付寄回处理后,已连续5日未出现新的发货错误记录;以"新发错是否再现"作为网点拣货流程改进的验证口径,后续持续观察。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">渠道反馈分布(12渠道)</div>
+  <div class="channel-tags">
+    <span class="channel-tag">京东自营<span class="count">83</span></span>
+    <span class="channel-tag">有赞<span class="count">31</span></span>
+    <span class="channel-tag">在线咨询<span class="count">18</span></span>
+    <span class="channel-tag">小红书<span class="count">11</span></span>
+    <span class="channel-tag">私域<span class="count">7</span></span>
+    <span class="channel-tag">抖音<span class="count">5</span></span>
+    <span class="channel-tag">企微客服<span class="count">4</span></span>
+    <span class="channel-tag">呼叫中心<span class="count">3</span></span>
+    <span class="channel-tag">天猫官旗<span class="count">2</span></span>
+    <span class="channel-tag">微信<span class="count">2</span></span>
+    <span class="channel-tag">400热线<span class="count">2</span></span>
+    <span class="channel-tag">微信小店<span class="count">1</span></span>
+  </div>
+  <div id="chart-channel" class="chart-container"></div>
+</div>
+<div class="section">
+  <div class="section-title">问题主题分类</div>
+  <div class="cat-cards">
+    <div class="cat-card" style="background:#00B050"><div class="cat-icon">💡</div><div class="cat-name">功能咨询</div><div class="cat-count">103</div></div>
+    <div class="cat-card" style="background:#F39F12"><div class="cat-icon">🔧</div><div class="cat-name">安装引导类</div><div class="cat-count">23</div></div>
+    <div class="cat-card" style="background:#E67E22"><div class="cat-icon">🔒</div><div class="cat-name">安全/防盗</div><div class="cat-count">13</div></div>
+    <div class="cat-card" style="background:#3498DB"><div class="cat-icon">💧</div><div class="cat-name">防水咨询</div><div class="cat-count">9</div></div>
+    <div class="cat-card" style="background:#95A5A6"><div class="cat-icon">📋</div><div class="cat-name">其他</div><div class="cat-count">5</div></div>
+    <div class="cat-card" style="background:#9B59B6"><div class="cat-icon">🎥</div><div class="cat-name">防抖咨询</div><div class="cat-count">5</div></div>
+    <div class="cat-card" style="background:#E74C3C"><div class="cat-icon">⚠️</div><div class="cat-name">疑似质量问题</div><div class="cat-count">6</div></div>
+    <div class="cat-card" style="background:#C0392B"><div class="cat-icon">📇</div><div class="cat-name">卡录问题</div><div class="cat-count">5</div></div>
+  </div>
+  <table class="detail-table" style="margin-top:16px;">
+    <thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型</th></tr></thead>
+    <tbody>
+    <tr><td style="color:#00B050;font-weight:600">💡 功能咨询</td><td>103</td><td>60.9%</td><td>安装咨询(×12,客服发送安装视频为主)、是否含电池咨询(×5,超级电容无电池需插电)、APP连接咨询(×5)、骑行支架购买咨询(×4,客服口径仅随整机售卖、单价89元)、供电咨询(×4)、螺丝大小咨询(×3,1/4螺丝孔)、被盗赔付咨询(计入安全/防盗侧)、后录咨询(×2)、充电宝供电咨询(×2)、内存卡存储容量咨询(×2)、视频回看咨询(×2)、插头接口咨询(×2)、车牌识别功能咨询(×2)、设备参数咨询(×2)、安装视频咨询(×2)、支架拆取咨询(×2,镜头朝自己往后推可拆)及59类各1条(存储/产品参数/售前认知类为主,含屏幕不支持触摸、内存卡卡槽打开咨询、接口咨询、使用功能咨询、循环卡录咨询、是否需要一直接电咨询、方向旋转咨询、是否含配件咨询等)</td></tr>
+    <tr><td style="color:#F39F12;font-weight:600">🔧 安装引导类</td><td>23</td><td>13.6%</td><td>不通电/无法开机(×21,含电源线插不紧——防水紧配设计,按紧到位即正常使用;京东自营×20、在线咨询×1;其中1条配套USB线异常按压后恢复,疑似线材个体差异)、支架转动松开(×1,顺时针拧紧即解决)、车充供电不亮(×1,客服判断大概率车辆供电问题)</td></tr>
+    <tr><td style="color:#E67E22;font-weight:600">🔒 安全/防盗</td><td>13</td><td>7.7%</td><td>被盗赔付咨询(×7,均在APP内激活领取)、防盗咨询(×3)、被盗赔付领取过期(×1,服务端已补充发放)、被盗赔付核实(×1,400渠道,属实可赔)、被盗赔付领取失败(×1,重装APP后已领取成功)(激活30天内可免费领取被盗赔付)</td></tr>
+    <tr><td style="color:#3498DB;font-weight:600">💧 防水咨询</td><td>9</td><td>5.3%</td><td>防水咨询(×8)、防水级别咨询(×1)(IPX6防水等级、一体式密封防水结构)</td></tr>
+    <tr><td style="color:#95A5A6;font-weight:600">📋 其他</td><td>5</td><td>3.0%</td><td>其他、价格咨询、优惠力度咨询、以旧换新咨询、配件发错货(×1,物流履约问题已由售后补发处理,网点侧改进待持续验证)</td></tr>
+    <tr><td style="color:#9B59B6;font-weight:600">🎥 防抖咨询</td><td>5</td><td>3.0%</td><td>防抖咨询(×5)(物理防抖:万向球减震+算法优化)</td></tr>
+    <tr><td style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</td><td>6</td><td>3.6%</td><td>支架损坏类(×2:球头支架损坏已售后换货、万向球支架坏了已补发)、螺丝长度不合适(×2,9/14补偿20元、9/15补偿10元)、设备发烫(×1,客服已解释使用温度范围)、骑行支架安装损坏(×1,已反馈网点核实部件)——持续观察</td></tr>
+    <tr><td style="color:#C0392B;font-weight:600">📇 卡录问题</td><td>5</td><td>3.0%</td><td>卡录漏录(×2)、内存卡损坏(×3,其中row251随机附送内存卡无法使用、外壳有胶状物,已提醒客服补标确认)——建议客服记录卡型与购机时间</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注:row200同时含"防水咨询+安装位置咨询"双标签,安装位置咨询(×1)计入防水咨询侧、不重复计入功能咨询;row192"设备进水"备注为旧版订单(I列未打标"-"),未计入新品统计,建议客服移回旧款数据区域;row140"防抖咨询"标签与内容(防水)不符,已连续多期提醒修正;row251(在线咨询9/18)标签仅"内存卡损坏",问题含"设备外壳有胶状物"疑似外观/质量信号,建议客服补标确认;row258(小红书9/23)已由客服补标为"是否含配件咨询",已归入功能咨询闭环;渠道列"天猫"已并入"天猫官旗"统计。</p>
+</div>
+<div class="section">
+  <div class="section-title">今日新增反馈明细（0条:9/26无新增反馈）</div>
+  <div style="text-align:center;padding:28px 16px;color:#999;background:#fafafa;border:1px dashed #ddd;border-radius:8px;">
+    <div style="font-size:26px;margin-bottom:6px;">📭</div>
+    <div style="font-size:14px;font-weight:600;">9/26 全天无新增反馈（累计169条持平，连续两日零新增）</div>
+    <div style="font-size:12.5px;margin-top:4px;">最近一次新增：9/24（33条，京东自营32+有赞1，其中不开机8条），详见 <a href="https://yanlingyin001.github.io/reports/v6-cycling-daily-day26.html" style="color:#00B050;">Day 26 日报</a>；9/25起为周末零新增观察期，详见 <a href="https://yanlingyin001.github.io/reports/v6-cycling-daily-day27.html" style="color:#00B050;">Day 27 日报</a></div>
+  </div>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注:今日新增按录入sheet的行位推进口径计(基线止于row291,row292起为今日新增),不按C列反馈日期回溯;累计类型93种、疑似缺陷31条、渠道12个均与Day 27持平。</p>
+</div>
+  <div class="footer">
+    数据来源:飞书表格「V6骑行新品跟踪表」· 用户问题反馈汇总(row122起,第二代升级款)<br>
+    由 🦞尹燕玲-报告分析专家 自动生成
+  </div>
+
+</div>
+<script>
+var chChart = echarts.init(document.getElementById('chart-channel'));
+var chData = {"names": ["京东自营", "有赞", "在线咨询", "小红书", "私域", "抖音", "企微客服", "呼叫中心", "天猫官旗", "微信", "400热线", "微信小店"], "vals": [83, 31, 18, 11, 7, 5, 4, 3, 2, 2, 2, 1], "colors": ["#E74C3C", "#00B050", "#F39F12", "#2BBD6E", "#3498DB", "#9B59B6", "#E67E22", "#2C3E50", "#16A085", "#7F8C8D", "#C0392B", "#8E44AD"]};
+chChart.setOption({
+  tooltip: { trigger: 'axis', formatter: '{b}: {c}条' },
+  xAxis: { type: 'category', data: chData.names, axisLabel: { fontSize: 12 } },
+  yAxis: { type: 'value', name: '反馈量' },
+  series: [{
+    type: 'bar', data: chData.vals.map(function(v, i) { return { value: v, itemStyle: { color: chData.colors[i] } }; }),
+    barWidth: '50%',
+    label: { show: true, position: 'top', formatter: '{c}' }
+  }],
+  grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true }
+});
+</script>
+</body>
+</html>
