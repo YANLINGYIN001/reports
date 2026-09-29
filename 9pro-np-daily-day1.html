@@ -35,7 +35,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 .channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
 .channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
 .chart-container { width:100%; height:260px; }
-.cat-cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-bottom:16px; }
+.cat-cards { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-bottom:16px; }
 .cat-card { min-width:0; border-radius:8px; padding:12px 6px; text-align:center; color:#fff; }
 .cat-card .cat-icon { font-size:20px; }
 .cat-card .cat-name { font-size:13px; white-space:nowrap; margin-top:4px; }
@@ -47,14 +47,22 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 .badge-consult { background:#e8f5e9; color:#00692e; border:1px solid #a5d6a7; }
 .badge-cloud { background:#e3f2fd; color:#0d47a1; border:1px solid #90caf9; }
 .badge-card { background:#fbe9e7; color:#bf360c; border:1px solid #ffab91; }
+.badge-defect { background:#fdecea; color:#c0392b; border:1px solid #f5b7b1; }
+.badge-install { background:#fff8e1; color:#e65100; border:1px solid #ffe082; }
 .new-row td { background:#fffde7; }
 .risk-row td { background:#fdecea; }
 .q { color:#222; font-weight:600; }
 .a { color:#555; }
+.faq-table td { padding:12px 10px; }
+.faq-q { font-weight:600; color:#222; }
+.faq-a { color:#00692e; font-weight:500; }
+.baseline-table { width:100%; border-collapse:collapse; font-size:13px; }
+.baseline-table th { background:#f0f7f1; padding:8px; border-bottom:2px solid #00B050; text-align:center; }
+.baseline-table td { padding:8px; border-bottom:1px solid #f0f0f0; text-align:center; }
 .footer { text-align:center; padding:20px; color:#999; font-size:12px; }
 @media (max-width:768px) {
   .kpi-grid { grid-template-columns:repeat(2,1fr); }
-  .cat-cards { grid-template-columns:repeat(3,1fr); }
+  .cat-cards { grid-template-columns:repeat(2,1fr); }
 }
 </style>
 </head>
@@ -63,80 +71,114 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 
 <div class="header">
   <h1>🎥 云台9pro 4G新品跟踪日报 · Day 1</h1>
-  <div class="subtitle">首期(累计汇总) | 数据周期 2026.09.28 - 2026.09.29 | 累计反馈 4 条</div>
-  <div class="date-range">数据来源:飞书表格「云台9pro 4G新品跟踪表」· 用户问题反馈汇总 | 更新时间:2026-09-29 11:42</div>
+  <div class="subtitle">首期(累计汇总) | 数据周期 2026.09.28 - 2026.09.29 | 累计反馈 10 条</div>
+  <div class="date-range">数据来源:飞书表格「云台9pro 4G新品跟踪表」· 用户问题反馈汇总 | 更新时间:2026-09-29 17:37</div>
 </div>
 
 <div class="overview">
-  首期日报:9/23晚开售后,目前已累计4条反馈(全部来自京东自营、反馈日期9月28日),均为咨询类问题,无疑似缺陷;云录领取、流量资费、内存卡使用是当前用户最集中的认知咨询点。
+  首期日报:开售(9/23晚)后累计10条反馈(京东自营9/28×4+9/29×6),今日新增6条;今日新现「开流卡顿」「内存卡不识别」2条疑似缺陷,累计2条;其余均为咨询类,云录/流量/内存卡认知咨询仍是主集中点。
 </div>
 <div class="kpi-grid">
-  <div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">4</div><div class="delta">首期基线</div><div class="sub">京东自营单渠道,反馈日期9/28</div></div>
-  <div class="kpi-card"><div class="label">Top3问题(累计)</div><div class="value" style="font-size:16px;line-height:1.4">云录领取咨询 1条<br>流量是否收费咨询 1条<br>卡录循环覆盖咨询 1条</div><div class="delta zero">各类型均1条,尚无集中性问题</div></div>
-  <div class="kpi-card"><div class="label">疑似缺陷</div><div class="value" style="color:#00B050">0</div><div class="sub">当前反馈全部为咨询类,无缺陷信号</div></div>
+  <div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">10</div><div class="delta up">今日新增 6 条(9/29)</div><div class="sub">京东自营单渠道;9/28×4 + 9/29×6</div></div>
+  <div class="kpi-card"><div class="label">Top3问题类型(按二级标签·累计)</div><div class="value" style="font-size:16px;line-height:1.4">流量是否收费咨询 2条<br>云录领取咨询 1条<br>卡录循环覆盖咨询 1条</div><div class="delta zero">并列项按首现顺序列示,其余6类型各1条</div></div>
+  <div class="kpi-card"><div class="label">疑似缺陷(累计)</div><div class="value">2</div><div class="delta up">今日新现 2 条</div><div class="sub">开流卡顿1(引导后观察) + 内存卡不识别1(换卡后正常)</div></div>
 </div>
 
 <div class="section">
   <div class="section-title">核心洞察</div>
   <div class="insight-box insight-green">
-    <p><strong>🟢 首期零缺陷</strong>:开售第6天累计4条反馈全部为功能/使用认知类咨询,无设备故障、无质量投诉,产品起步阶段运行平稳。</p>
+    <p><strong>🟢 产品起步阶段质量面平稳</strong>:10条反馈中8条为咨询类(占80%),疑似缺陷2条且均已被客服引导处置(开流卡顿=信号强度建议80以上+重启观察;内存卡不识别=格式化+换卡后正常),无批量性、无重复机型故障信号。</p>
   </div>
   <div class="insight-box insight-green">
-    <p><strong>🟢 咨询点集中于「权益+存储」认知</strong>:云录权益领取(1个月云录怎么领)、4G流量资费(是否无限流量)、内存卡循环覆盖与安装朝向,均为新品权益/使用规则类问题,商详页与FAQ前置标注可直接分流。</p>
+    <p><strong>🟢 咨询集中于「权益+存储」认知</strong>:云录权益类(领取+激活)2条、流量资费2条、内存卡类(循环覆盖+朝向+容量+不识别)4条,合计8条占八成——均为商详/FAQ前置标注可直接分流的认知差问题,已沉淀FAQ候选池(见下)。</p>
   </div>
   <div class="insight-box insight-orange">
-    <p><strong>🟠 渠道尚单一,样本量小</strong>:目前反馈全部来自京东自营,其他渠道(有赞/天猫/抖音/小红书等)尚未产生反馈;后续随各渠道销售放量,反馈量与类型分布将快速扩展,主题分类体系待数据量增加后与业务共建。</p>
+    <p><strong>🟠 内存卡是当前最高频主题</strong>:4条覆盖安装朝向、容量规格、循环覆盖、不识别全链路;其中「插入无反应」1条经换卡恢复正常,暂为个体卡兼容性,若后续同类再现有集中性再升级排查。</p>
   </div>
 </div>
 
 <div class="section">
   <div class="section-title">渠道反馈分布(1渠道)</div>
   <div class="channel-tags">
-    <span class="channel-tag">京东自营<span class="count">4</span></span>
+    <span class="channel-tag">京东自营<span class="count">10</span></span>
   </div>
   <div id="chart-channel" class="chart-container"></div>
 </div>
 
 <div class="section">
-  <div class="section-title">问题类型汇总</div>
+  <div class="section-title">问题主题分类</div>
   <div class="cat-cards">
-    <div class="cat-card" style="background:#3498DB"><div class="cat-icon">☁️</div><div class="cat-name">云录咨询</div><div class="cat-count">1</div></div>
-    <div class="cat-card" style="background:#00B050"><div class="cat-icon">📶</div><div class="cat-name">流量咨询</div><div class="cat-count">1</div></div>
-    <div class="cat-card" style="background:#E67E22"><div class="cat-icon">💾</div><div class="cat-name">内存卡使用</div><div class="cat-count">2</div></div>
+    <div class="cat-card" style="background:#E67E22"><div class="cat-icon">💾</div><div class="cat-name">内存卡类</div><div class="cat-count">4</div></div>
+    <div class="cat-card" style="background:#00B050"><div class="cat-icon">📶</div><div class="cat-name">流量资费类</div><div class="cat-count">2</div></div>
+    <div class="cat-card" style="background:#3498DB"><div class="cat-icon">☁️</div><div class="cat-name">云录权益类</div><div class="cat-count">2</div></div>
+    <div class="cat-card" style="background:#E74C3C"><div class="cat-icon">⚠️</div><div class="cat-name">疑似缺陷</div><div class="cat-count">2</div></div>
   </div>
   <table class="detail-table" style="margin-top:16px;">
-    <thead><tr><th>问题类型</th><th>反馈量</th><th>典型问题</th></tr></thead>
+    <thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型(二级标签)</th></tr></thead>
     <tbody>
-    <tr><td>☁️ 云录领取咨询</td><td>1</td><td>1个月的云录怎么领取(客服已告知领取步骤)</td></tr>
-    <tr><td>📶 流量是否收费咨询</td><td>1</td><td>是不是无限流量(内置4G流量卡,终身免费不限流量)</td></tr>
-    <tr><td>💾 卡录循环覆盖咨询</td><td>1</td><td>内存卡录满后是否自动覆盖最早录像(满后自动覆盖)</td></tr>
-    <tr><td>💾 内存卡安装咨询</td><td>1</td><td>内存卡朝向(金属面朝上)</td></tr>
+    <tr><td style="color:#E67E22;font-weight:600">💾 内存卡类</td><td>4</td><td>40%</td><td>卡录循环覆盖咨询(×1)、内存卡安装咨询(×1)、支持内存卡大小咨询(×1)、内存卡不识别(×1)</td></tr>
+    <tr><td style="color:#00B050;font-weight:600">📶 流量资费类</td><td>2</td><td>20%</td><td>流量是否收费咨询(×2)</td></tr>
+    <tr><td style="color:#3498DB;font-weight:600">☁️ 云录权益类</td><td>2</td><td>20%</td><td>云录领取咨询(×1)、云录卡激活咨询(×1)</td></tr>
+    <tr><td style="color:#E74C3C;font-weight:600">⚠️ 疑似缺陷</td><td>2</td><td>20%</td><td>开流卡顿(×1)、内存卡不识别(×1,换卡后正常,亦计入内存卡类明细)</td></tr>
+    <tr><td style="color:#F39C12;font-weight:600">🔧 安装引导类</td><td>1</td><td>10%</td><td>安装咨询(×1,设备指导使用,发送安装视频)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注:占比按反馈条数计算;「内存卡不识别」兼具缺陷属性与内存卡主题属性,在分类汇总中计入内存卡类、在疑似缺陷口径中单列,两条口径均可见;主题分类为工作分类,待数据量增加后与业务共建正式体系。</p>
+</div>
+
+<div class="section">
+  <div class="section-title">今日新增反馈明细(6条 · 9/29)</div>
+  <table class="detail-table">
+    <thead><tr><th>分类</th><th>问题类型</th><th>渠道</th><th>日期</th><th>用户问题</th><th>客服方案</th></tr></thead>
+    <tbody>
+    <tr class="risk-row"><td>⚠️ 疑似缺陷</td><td><span class="badge badge-defect">开流卡顿</span></td><td>京东自营</td><td>9.29</td><td class="q">实时画面卡顿,咨询正常建议信号强度</td><td class="a">建议80以上,设备重启观察尝试</td></tr>
+    <tr class="risk-row"><td>⚠️ 疑似缺陷</td><td><span class="badge badge-defect">内存卡不识别</span></td><td>京东自营</td><td>9.29</td><td class="q">设备插入内存卡无反应,更换后正常</td><td class="a">引导内存卡格式化,存储卡换新</td></tr>
+    <tr class="new-row"><td>☁️ 云录权益类</td><td><span class="badge badge-cloud">云录卡激活咨询</span></td><td>京东自营</td><td>9.29</td><td class="q">设备云录卡如何激活</td><td class="a">已引导客户链接设备后尝试</td></tr>
+    <tr class="new-row"><td>💾 内存卡类</td><td><span class="badge badge-card">支持内存卡大小咨询</span></td><td>京东自营</td><td>9.29</td><td class="q">设备支持内存卡大小咨询</td><td class="a">告知内存卡规格和推送内存卡链接</td></tr>
+    <tr class="new-row"><td>🔧 安装引导类</td><td><span class="badge badge-install">安装咨询</span></td><td>京东自营</td><td>9.29</td><td class="q">设备指导使用</td><td class="a">发送安装视频</td></tr>
+    <tr class="new-row"><td>📶 流量资费类</td><td><span class="badge badge-consult">流量是否收费咨询</span></td><td>京东自营</td><td>9.29</td><td class="q">流量是否终身,是否能关闭广告</td><td class="a">终身流量,告知广告关闭方式</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注:9/28首日4条明细(云录领取/流量收费/卡录循环覆盖/内存卡安装)见<a href="https://yanlingyin001.github.io/reports/9pro-np-daily-day1.html?v=1" style="color:#00B050;">首版存档</a>;今日新增按录入sheet行位推进口径计(基线止于row6,本期rows7-12)。</p>
+</div>
+
+<div class="section">
+  <div class="section-title">📋 FAQ候选池(可直接输出商详/客服)</div>
+  <p style="font-size:12.5px;color:#666;margin-bottom:12px;">以下为当前已有标准答案的高频咨询,建议商详页/FAQ前置标注,客服话术可直接复用:</p>
+  <table class="detail-table faq-table">
+    <thead><tr><th>#</th><th>用户问法</th><th>标准答案</th><th>建议动作</th></tr></thead>
+    <tbody>
+    <tr><td>1</td><td class="faq-q">1个月的云录怎么领取?</td><td class="faq-a">按领取步骤引导激活</td><td>商详页「云录权益领取」入口前置</td></tr>
+    <tr><td>2</td><td class="faq-q">是不是无限流量?</td><td class="faq-a">内置4G流量卡,享终身免费流量,不限流量</td><td>商详页卖点区标注「终身免费流量」</td></tr>
+    <tr><td>3</td><td class="faq-q">内存卡录满会怎样?</td><td class="faq-a">录制满后自动覆盖最早录像(循环录制)</td><td>商详页存储说明区标注</td></tr>
+    <tr><td>4</td><td class="faq-q">内存卡怎么装/朝向?</td><td class="faq-a">金属面朝上插入</td><td>安装指引图示标注</td></tr>
+    <tr><td>5</td><td class="faq-q">支持多大内存卡?</td><td class="faq-a">告知内存卡规格(客服现有话术)</td><td>商详参数区标注支持容量规格</td></tr>
+    <tr><td>6</td><td class="faq-q">能关闭广告吗?</td><td class="faq-a">可关闭,客服有引导路径</td><td>APP设置项/FAQ标注关闭路径</td></tr>
     </tbody>
   </table>
 </div>
 
 <div class="section">
-  <div class="section-title">反馈明细(4条·首期全量)</div>
-  <table class="detail-table">
-    <thead><tr><th>分类</th><th>问题类型</th><th>渠道</th><th>日期</th><th>用户问题</th><th>客服方案</th></tr></thead>
+  <div class="section-title">📈 趋势基线(首期定标 · 后续每期对比)</div>
+  <table class="baseline-table">
+    <thead><tr><th>指标</th><th>Day 1 基线(9/29)</th><th>趋势判断标准</th></tr></thead>
     <tbody>
-    <tr class="new-row"><td>☁️ 云录咨询</td><td><span class="badge badge-cloud">云录领取咨询</span></td><td>京东自营</td><td>9.28</td><td class="q">1个月的云录怎么领取</td><td class="a">告知领取步骤</td></tr>
-    <tr class="new-row"><td>📶 流量咨询</td><td><span class="badge badge-consult">流量是否收费咨询</span></td><td>京东自营</td><td>9.28</td><td class="q">是不是无限流量</td><td class="a">这款内置4G流量卡,享终身免费流量,不限流量</td></tr>
-    <tr class="new-row"><td>💾 内存卡使用</td><td><span class="badge badge-card">卡录循环覆盖咨询</span></td><td>京东自营</td><td>9.28</td><td class="q">内存卡连续录制,如果录制满了,自动把最早录制的冲没了</td><td class="a">录制满后会自动覆盖</td></tr>
-    <tr class="new-row"><td>💾 内存卡使用</td><td><span class="badge badge-card">内存卡安装咨询</span></td><td>京东自营</td><td>9.28</td><td class="q">内存卡朝向</td><td class="a">金属面朝上</td></tr>
+    <tr><td>咨询类占比</td><td><strong>80%</strong>(8/10)</td><td>新品期正常区间;持续&gt;70%为认知差主导,骤降伴随缺陷集中需警惕</td></tr>
+    <tr><td>疑似缺陷累计</td><td><strong>2 条</strong></td><td>单日新增≥3或同类缺陷再现即升级提示</td></tr>
+    <tr><td>覆盖渠道数</td><td><strong>1 个</strong>(京东自营)</td><td>随各渠道销售放量增长;单渠道集中度100%仅限首期</td></tr>
     </tbody>
   </table>
 </div>
 
   <div class="footer">
-    数据来源:飞书表格「云台9pro 4G新品跟踪表」· 用户问题反馈汇总<br>
+    数据来源:飞书表格「云台9pro 4G新品跟踪表」· 用户问题反馈汇总 | 9/23晚开售,开售第6天(9/28)起累计<br>
     由 🦞尹燕玲-报告分析专家 自动生成 · 每个工作日17:40更新
   </div>
 
 </div>
 <script>
 var chChart = echarts.init(document.getElementById('chart-channel'));
-var chData = {"names": ["京东自营"], "vals": [4], "colors": ["#E74C3C"]};
+var chData = {"names": ["京东自营"], "vals": [10], "colors": ["#E74C3C"]};
 chChart.setOption({
   tooltip: { trigger: 'axis', formatter: '{b}: {c}条' },
   xAxis: { type: 'category', data: chData.names, axisLabel: { fontSize: 12 } },
