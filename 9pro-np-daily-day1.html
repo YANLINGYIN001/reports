@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>云台9pro 4G新品跟踪日报 · Day 1</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
@@ -34,7 +33,6 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 .channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
 .channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
 .channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
-.chart-container { width:100%; height:260px; }
 .cat-cards { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-bottom:16px; }
 .cat-card { min-width:0; border-radius:8px; padding:12px 6px; text-align:center; color:#fff; }
 .cat-card .cat-icon { font-size:20px; }
@@ -72,7 +70,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 <div class="header">
   <h1>🎥 云台9pro 4G新品跟踪日报 · Day 1</h1>
   <div class="subtitle">首期(累计汇总) | 数据周期 2026.09.28 - 2026.09.29 | 累计反馈 10 条</div>
-  <div class="date-range">数据来源:飞书表格「云台9pro 4G新品跟踪表」· 用户问题反馈汇总 | 更新时间:2026-09-29 17:37</div>
+  <div class="date-range">数据来源:飞书表格「云台9pro 4G新品跟踪表」· 用户问题反馈汇总 | 更新时间:2026-09-29 17:50</div>
 </div>
 
 <div class="overview">
@@ -81,13 +79,13 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 <div class="kpi-grid">
   <div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">10</div><div class="delta up">今日新增 6 条(9/29)</div><div class="sub">京东自营单渠道;9/28×4 + 9/29×6</div></div>
   <div class="kpi-card"><div class="label">Top3问题类型(按二级标签·累计)</div><div class="value" style="font-size:16px;line-height:1.4">流量是否收费咨询 2条<br>云录领取咨询 1条<br>卡录循环覆盖咨询 1条</div><div class="delta zero">并列项按首现顺序列示,其余6类型各1条</div></div>
-  <div class="kpi-card"><div class="label">疑似缺陷(累计)</div><div class="value">2</div><div class="delta up">今日新现 2 条</div><div class="sub">开流卡顿1(引导后观察) + 内存卡不识别1(换卡后正常)</div></div>
+  <div class="kpi-card"><div class="label">疑似缺陷(今日新现)</div><div class="value" style="font-size:16px;line-height:1.4">开流卡顿 1条 <span style="color:#E74C3C">N</span><br>内存卡不识别 1条 <span style="color:#E74C3C">N</span></div><div class="delta zero">开流卡顿:建议信号强度80以上+重启观察;内存卡不识别:格式化+换卡后正常</div><div class="sub">累计2条(今日新现),均已被客服引导处置</div></div>
 </div>
 
 <div class="section">
   <div class="section-title">核心洞察</div>
   <div class="insight-box insight-green">
-    <p><strong>🟢 产品起步阶段质量面平稳</strong>:10条反馈中8条为咨询类(占80%),疑似缺陷2条且均已被客服引导处置(开流卡顿=信号强度建议80以上+重启观察;内存卡不识别=格式化+换卡后正常),无批量性、无重复机型故障信号。</p>
+    <p><strong>🟢 开售首周以咨询为主,设备故障零集中</strong>:10条反馈中8条是"怎么用、怎么领"类咨询,真正涉及设备异常的仅2条,且都是个案——1条实时画面卡顿(按客服建议调信号强度后观察)、1条内存卡不识别(换卡后已正常)——没有出现同型号、同场景的重复故障,设备质量面处于正常水平。</p>
   </div>
   <div class="insight-box insight-green">
     <p><strong>🟢 咨询集中于「权益+存储」认知</strong>:云录权益类(领取+激活)2条、流量资费2条、内存卡类(循环覆盖+朝向+容量+不识别)4条,合计8条占八成——均为商详/FAQ前置标注可直接分流的认知差问题,已沉淀FAQ候选池(见下)。</p>
@@ -102,7 +100,7 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
   <div class="channel-tags">
     <span class="channel-tag">京东自营<span class="count">10</span></span>
   </div>
-  <div id="chart-channel" class="chart-container"></div>
+  <p style="font-size:12.5px;color:#666;margin-top:4px;">当前反馈全部来自京东自营,其他渠道暂无反馈;随各渠道销售放量持续观察渠道扩展情况。</p>
 </div>
 
 <div class="section">
@@ -176,20 +174,6 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
   </div>
 
 </div>
-<script>
-var chChart = echarts.init(document.getElementById('chart-channel'));
-var chData = {"names": ["京东自营"], "vals": [10], "colors": ["#E74C3C"]};
-chChart.setOption({
-  tooltip: { trigger: 'axis', formatter: '{b}: {c}条' },
-  xAxis: { type: 'category', data: chData.names, axisLabel: { fontSize: 12 } },
-  yAxis: { type: 'value', name: '反馈量', minInterval: 1 },
-  series: [{
-    type: 'bar', data: chData.vals.map(function(v, i) { return { value: v, itemStyle: { color: chData.colors[i] } }; }),
-    barWidth: '30%',
-    label: { show: true, position: 'top', formatter: '{c}' }
-  }],
-  grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true }
-});
-</script>
+
 </body>
 </html>
