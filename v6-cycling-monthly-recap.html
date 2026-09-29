@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>360记录仪V6小魔方骑行版上市后1个月用户反馈跟踪总结（8.29-9.28）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:30px;border-radius:12px;margin-bottom:20px}
+.header h1{font-size:24px;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:.9}
+.overview{background:#fff;border-left:4px solid #00B050;padding:15px 20px;border-radius:8px;margin-bottom:20px;font-size:15px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;padding:20px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:32px;font-weight:700;color:#E74C3C}
+.kpi-card .delta{font-size:12px;color:#666;margin-top:4px}
+.section{background:#fff;padding:24px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section h2{font-size:18px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.insight{padding:14px 18px;border-radius:8px;margin-bottom:12px;font-size:14px}
+.insight.blue{background:#e8f4fd;border-left:4px solid #3498db}
+.insight.orange{background:#fff3e0;border-left:4px solid #F39C12}
+.insight.red{background:#fde8e8;border-left:4px solid #E74C3C}
+.insight .title{font-weight:700}
+.chart-box{width:100%;height:360px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #f0f0f0}
+th{background:#f8f9fa;font-weight:600;color:#666}
+tr:hover{background:#fafafa}
+.note{font-size:12px;color:#999;margin-top:8px}
+.severity{font-size:13px;padding:8px 12px;border-radius:6px;margin-top:10px;margin-bottom:10px}
+.severity.low{background:#e8f4fd;color:#2471a3}
+.severity.mid{background:#fff3e0;color:#b9770e}
+.severity.high{background:#fde8e8;color:#c0392b}
+.footer{text-align:center;padding:20px;color:#999;font-size:13px}
+.footer a{color:#00B050;text-decoration:none}
+.report-links a{display:inline-block;margin:3px 6px;padding:3px 10px;background:#f0f9f4;border-radius:4px;font-size:12.5px;color:#00B050;text-decoration:none}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.container{padding:10px}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>📊 360记录仪V6小魔方骑行版上市后1个月用户反馈跟踪总结</h1>
+<div class="subtitle">数据周期：8.29 - 9.28 ｜ 跟踪 Day 1-31（8.29 起算）｜ 基于期日报累计数据</div>
+</div>
+
+<div class="overview">
+📊 新品上市首月（8.29-9.28）累计收集用户反馈 <b>171 条</b>，覆盖 <b>12 个</b>销售与服务渠道，前 4 个整周周均反馈 42 条、节奏平稳（第 4 周受 9.24 京东批量录入抬升）。反馈结构以咨询类为主（140 条、占 82%），疑似缺陷 31 条（占 18%）。月度内问题焦点从上市初期的供电、防水、防抖等售前认知咨询，逐步转向不开机簇跟踪与安装引导验证；9.24 单日集中录入 33 条（京东自营为主）后，9.25-9.28 连续 4 日零新增，进入收敛观察期。骑行场景差异化关注点贯穿全月——被盗赔付服务（安全/防盗类累计 13 条）、防水（10 条）、物理防抖（5 条）。
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">累计反馈总数</div><div class="value">171</div><div class="delta">跟踪 31 天 · 前 4 整周周均 42 条</div></div>
+<div class="kpi-card"><div class="label">覆盖渠道数</div><div class="value">12</div><div class="delta">京东自营占比 48.5%</div></div>
+<div class="kpi-card"><div class="label">问题类型数</div><div class="value">94</div><div class="delta">含组合标签</div></div>
+<div class="kpi-card"><div class="label">疑似缺陷</div><div class="value">31</div><div class="delta">不开机 21 条为第一大簇</div></div>
+</div>
+
+<div class="section">
+<h2>核心结论</h2>
+<div class="insight blue"><span class="title">🔵 反馈节奏平稳，咨询类主导。</span>31 天累计 171 条，整周维持在 33-50 条区间。其中咨询类 140 条（82%）、疑似缺陷 31 条（18%），新品期用户反馈以「安装方法、供电方案、防水/防抖特性、被盗赔付规则」等售前与使用咨询为主。</div>
+<div class="insight orange"><span class="title">🟡 不开机为第一大疑似缺陷簇：累计 21 条，占缺陷总量 68%。</span>时间跨度 9.3-9.24，其中相当部分为电源线插头紧配（防水设计正常特性，按紧到位即恢复）的安装引导场景；9.24 单日集中 +8（京东批量录入，反馈日期 9.19-9.24），9.25 起连续 4 日零新增，收敛信号持续，SN/批次排查结论待产品/研发反馈。</div>
+<div class="insight red"><span class="title">🔴 缺陷反馈渠道集中度较高：81% 来自京东自营（25/31）。</span>全量反馈中京东自营 83 条占 48.5%，且 9.19-9.25 单周渠道占比升至 80%——与电商渠道批量出货、反馈集中录入的节奏强相关。</div>
+<div class="insight blue"><span class="title">🔵 问题焦点迁移：从形态认知咨询转向质量信号验证。</span>上市初期（8.29-9.4）以供电、防水、防抖、双摄等形态认知咨询为主；9 月中旬起不开机、内存卡损坏、支架损坏等质量信号陆续出现并进入跟踪；同期被盗赔付服务咨询贯穿全月（安全/防盗类累计 13 条），为骑行场景的差异化关注点。</div>
+</div>
+
+<div class="section">
+<h2>一、反馈趋势（周度）</h2>
+<div class="severity low">📌 小结：整周反馈量稳定在 33-50 条区间；京东自营占比从首周 27% 波动升至第 4 周 80%（受 9.24 批量录入影响），是主力反馈渠道。9.25 起进入零新增观察期。</div>
+<div id="weekChart" class="chart-box"></div>
+<p class="note">注：9.26-9.28 为截稿前 3 天（仅 2 条）；9.19-9.25 周含 9.24 京东批量录入 33 条（反馈日期 9.19-9.24），为该周峰值主因。</p>
+</div>
+
+<div class="section">
+<h2>二、问题主题分类全景</h2>
+<div class="severity low">📌 小结：功能咨询（104）占全量 61%，安装方法、供电方案、APP 连接等使用认知类咨询是绝对主体；安装引导类 23 条以不开机（含电源线插头紧配）为主；安全/防盗（14）与防水（10）为骑行场景的差异化关注类目。</div>
+<table><thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>典型问题</th></tr></thead><tbody>
+<tr><td style="color:#00B050;font-weight:600">💡 功能咨询</td><td>104</td><td>60.8%</td><td>安装咨询(12)、是否含电池咨询(5)、APP连接咨询(5)、供电咨询(6)、骑行支架购买咨询(4)</td></tr>
+<tr><td style="color:#F39C12;font-weight:600">🔧 安装引导类</td><td>23</td><td>13.5%</td><td>不通电/无法开机(21，含电源线插头紧配——防水紧配设计按紧即恢复)、支架转动松开(1)、车充供电不亮(1)</td></tr>
+<tr><td style="color:#E67E22;font-weight:600">🔒 安全/防盗</td><td>14</td><td>8.2%</td><td>被盗赔付咨询(7)、防盗咨询(3)、被盗赔付领取失败/过期(2，已闭环)、被盗赔付核实(1，属实可赔)</td></tr>
+<tr><td style="color:#3498DB;font-weight:600">💧 防水咨询</td><td>10</td><td>5.8%</td><td>防水咨询(9)、防水级别咨询(1)——IPX6防水等级、一体式密封防水结构</td></tr>
+<tr><td style="color:#E74C3C;font-weight:600">⚠️ 疑似质量问题</td><td>6</td><td>3.5%</td><td>支架损坏类(2)、螺丝长度不合适(2)、设备发烫(1)、骑行支架安装损坏(1)</td></tr>
+<tr><td style="color:#9B59B6;font-weight:600">🎥 防抖咨询</td><td>5</td><td>2.9%</td><td>防抖咨询(5)——物理防抖：万向球减震结构+算法优化</td></tr>
+<tr><td style="color:#C0392B;font-weight:600">📇 卡录问题</td><td>5</td><td>2.9%</td><td>内存卡损坏(3)、卡录漏录(2)</td></tr>
+<tr><td style="color:#95A5A6;font-weight:600">📋 其他</td><td>4</td><td>2.3%</td><td>价格/优惠咨询、以旧换新咨询、配件发错货(1，已售后补发闭环)</td></tr>
+</tbody></table>
+<p class="note">注：分类为记录级口径（每条归 1 类）；row192「设备进水」备注为旧版订单、未计入新品统计；缺陷明细（不开机 21、内存卡损坏 3、卡录漏录 2 等）已在「安装引导类」「卡录问题」「疑似质量问题」中按属性归类展示。</p>
+</div>
+
+<div class="section">
+<h2>三、疑似缺陷 TOP7（月度累计 31 条）</h2>
+<div class="severity high">📌 小结：缺陷呈「头部集中」结构——不开机一个簇即占 68%（21/31），其余 10 条分散在 6 个类型；不开机簇中相当比例为电源线插头紧配（防水设计）的安装引导场景，非全部为硬件故障。</div>
+<table><thead><tr><th>#</th><th>缺陷簇</th><th>累计</th><th>时间跨度</th><th>渠道 / 状态</th><th style="width:26%">用户原声</th><th>问题原因</th><th>解决方案</th></tr></thead><tbody>
+<tr><td>1</td><td style="color:#E74C3C;font-weight:600">不开机</td><td><b>21</b></td><td>9.3 - 9.24</td><td>京东自营 19 / 有赞 1 / 在线咨询 1<br><span style="color:#E74C3C">9.24 单日 +8（批量录入）后连续 4 日零新增</span></td><td>电源线插不紧；插电源线没反应；机器不通电无法开机；设备连接电源或者充电宝无法开机</td><td>相当部分为电源线插头紧配——防水设计正常特性，按紧到位即恢复；个别为配套 USB 线材个体差异（自有线可开机、配套线不行）；SN/批次一致性排查结论待产品/研发反馈</td><td>引导按紧插头到位；按压后恢复；建议 SN/批次排查电源线装配一致性</td></tr>
+<tr><td>2</td><td>内存卡损坏</td><td><b>3</b></td><td>9.9 - 9.18</td><td>京东自营 2 / 在线咨询 1<br><span style="color:#999">9.18 后无新增</span></td><td>内存卡提示损坏；看不了回放提示内存卡损坏；送的内存卡无法使用，设备外壳有胶状物</td><td>随设备赠送的存储卡无法正常使用；1 条伴外壳胶状物（外观/装配信号，待客服补标确认）</td><td>格式化后再试；换新内存卡；建议寄回售后或退换货</td></tr>
+<tr><td>3</td><td>支架损坏</td><td><b>2</b></td><td>9.7 - 9.19</td><td>京东自营 2<br><span style="color:#999">均售后处理闭环</span></td><td>球头支架损坏；万向球支架坏了</td><td>万向球支架部件损坏</td><td>售后换货；补发处理</td></tr>
+<tr><td>3</td><td>卡录漏录</td><td><b>2</b></td><td>9.1 - 9.9</td><td>在线咨询 1 / 呼叫中心 1<br><span style="color:#999">9.9 后无新增</span></td><td>256G内存卡经常录不到；卡录像漏录，实时画面正常，回放无法查看</td><td>存储卡兼容性（非 C10 高速卡）或读写异常</td><td>格式化、更换 C10 高速卡测试；刷新/重启/检查供电，无效升级协助</td></tr>
+<tr><td>5</td><td>支架松开</td><td><b>1</b></td><td>9.6</td><td>京东自营 1</td><td>支架转动松开</td><td>支架未拧紧</td><td>顺时针拧紧即解决</td></tr>
+<tr><td>5</td><td>设备发烫</td><td><b>1</b></td><td>9.8</td><td>京东自营 1</td><td>使用屏幕发烫，有没有降噪功能</td><td>设备工作温度范围内正常发热</td><td>解释使用温度范围；告知无降噪功能</td></tr>
+<tr><td>5</td><td>骑行支架安装损坏</td><td><b>1</b></td><td>9.14</td><td>企微客服 1</td><td>骑行版支架安装时损坏，需圆形连接球头部件</td><td>安装过程中部件损坏，需单独补配</td><td>反馈网点核实部件价格及库存，用户后续联系核实</td></tr>
+</tbody></table>
+<p class="note">注：口径沿用期日报——「插头未按紧到位」簇单列安装引导类（不计疑似质量），但不开机相关反馈整体在此按缺陷簇口径展示其规模与处置；row251「外壳有胶状物」待客服补标确认。用户原声为典型摘录，问题原因/解决方案按客服处置归纳。</p>
+</div>
+
+<div class="section">
+<h2>四、用户咨询热点 TOP10（前置认知盲区）</h2>
+<div class="severity mid">📌 小结：咨询热点集中指向四类信息差——<b>安装体系</b>（安装+支架+螺丝 19 条）、<b>供电方案</b>（电池/充电宝/USB 13 条）、<b>骑行场景特性</b>（防水 10+防抖 5）、<b>防盗/盗赔规则</b>（10 条）。建议强化商品页安装说明、供电方式说明与盗赔权益领取提示。</div>
+<table><thead><tr><th>#</th><th>咨询主题</th><th>累计</th><th>信息差类别</th><th style="width:22%">用户原声</th><th style="width:22%">客服解决方案</th><th style="width:22%">话术建议</th></tr></thead><tbody>
+<tr><td>1</td><td>安装咨询</td><td>12</td><td>安装体系</td><td>如何安装；需要V6骑行版卡扣安装视频；安装接电视频有吗</td><td>发送安装视频（车把/后视镜两种）；提供安装接电视频链接</td><td>安装视频链接前置（商详/包裹卡），车把与后视镜两种方式分开列</td></tr>
+<tr><td>2</td><td>防水咨询</td><td>9</td><td>骑行场景特性</td><td>防水不；防水级别是多少；这个插头会进水短路吗</td><td>告知 IPX6 防水等级、一体式密封防水结构，一般雨天可正常使用</td><td>「IPX6 + 4 重防水」写进商详首位卖点；说明雨天使用边界</td></tr>
+<tr><td>3</td><td>被盗赔付咨询</td><td>7</td><td>防盗/盗赔规则</td><td>咨询被盗赔付；被盗赔付，怎么赔；记录仪被盗能找回吗</td><td>激活 30 天内 APP 免费领取，365 天保障期内被盗审核通过免费获赔一台</td><td>商详前置盗赔权益说明：「绑定 APP 后 30 天内领取」醒目提示，防领取过期</td></tr>
+<tr><td>4</td><td>防抖咨询</td><td>5</td><td>骑行场景特性</td><td>防抖吗？是电子防抖还是陀螺仪防抖？；V6支持防抖吗</td><td>物理防抖：万向球支架内置减震胶圈缓解颠簸 + 图像算法消除水波纹</td><td>「物理防抖 = 支架减震 + 算法优化」一句话说清，配颠簸路面演示视频</td></tr>
+<tr><td>4</td><td>是否含电池咨询</td><td>5</td><td>供电方案</td><td>含有电池吗；内置有电池吗；这个有电池吗？</td><td>不含锂电池，为超级电容，需插电使用、断电会关机</td><td>「超级电容、无锂电池、需持续供电」一句话说清，配供电示意图</td></tr>
+<tr><td>4</td><td>APP连接咨询</td><td>5</td><td>功能使用</td><td>设备无法连接；无法联网；如何连接设备</td><td>扫码直接连接（连接错设备时重新扫码）；发送二维码告知连接步骤</td><td>首连指引前置：扫码连接流程图放商详与说明书首页</td></tr>
+<tr><td>7</td><td>供电咨询</td><td>4</td><td>供电方案</td><td>骑车怎么通电；是否支持充电宝供电；怎么供电</td><td>双口 USB 设计，可插车辆 USB 接口或充电宝供电</td><td>「车辆 USB / 充电宝」两种供电路径配图说明；商详突出双口充电卖点</td></tr>
+<tr><td>7</td><td>骑行支架购买咨询</td><td>4</td><td>配件体系</td><td>请问单独的骑行支架怎么购买？；咨询配件是否单独购买</td><td>仅随整机整套售卖，单价 89 元，建议查看其他电商平台</td><td>商详明确「支架仅整套售卖 89 元」，减少逐条人工答复</td></tr>
+<tr><td>9</td><td>防盗咨询</td><td>3</td><td>防盗/盗赔规则</td><td>怎么防盗，装车上不会被拆吗；防盗安装是什么，真能做到防盗吗</td><td>支架固定螺丝安装（车把/后视镜视频）；被盗有盗赔服务兜底</td><td>「螺丝固定安装 + 盗赔服务兜底」组合话术，先讲安装再讲权益</td></tr>
+<tr><td>9</td><td>螺丝大小咨询</td><td>3</td><td>安装体系</td><td>咨询螺丝大小规格；咨询对应螺丝规格；螺钉不合适</td><td>M2 螺钉（手工测量约 3cm）；1/4 螺丝孔</td><td>规格参数表（螺丝规格/螺丝孔径）前置到商详参数区</td></tr>
+</tbody></table>
+<p class="note">注：多标签记录按分号拆分统计；不含缺陷类标签。充电宝供电时长无官方口径（「1 万毫安能录多久」客服答复无参考值），已列持续关注项。</p>
+</div>
+
+<div class="section">
+<h2>五、需持续关注的问题</h2>
+<table><thead><tr><th>关注项</th><th>累计</th><th>现状</th><th>关注点</th></tr></thead><tbody>
+<tr><td style="color:#E74C3C;font-weight:600">不开机簇 SN/批次排查</td><td>21</td><td>9.25-9.28 连续 4 日零新增</td><td>SN/批次一致性排查结论待产品/研发反馈，是收敛判定闭环的最后缺口；若后续再现单日多新增需升级排查</td></tr>
+<tr><td>充电宝供电时长无官方口径</td><td>—</td><td>9.17 首现</td><td>「1 万毫安充电宝能录多久」客服无参考值可答，需产品侧沉淀统一话术</td></tr>
+<tr><td>row251 外壳胶状物</td><td>1</td><td>9.18 至今待补标</td><td>随机附送卡无法使用 + 外壳有胶状物，疑似外观/装配信号，待客服补标确认归类</td></tr>
+<tr><td>三项标签旧遗留</td><td>—</td><td>持续未闭环</td><td>row192 旧版订单待移回旧款区、row140 标签与内容不符、row200 双标签口径，影响分类统计精度</td></tr>
+</tbody></table>
+</div>
+
+<div class="section">
+<h2>六、已闭环 / 验证信号（观察期收尾）</h2>
+<table><thead><tr><th>问题</th><th>累计</th><th>最后新增</th><th>闭环状态</th></tr></thead><tbody>
+<tr><td>不开机簇（增量侧）</td><td>21</td><td>9.24</td><td>连续 4 日零新增，收敛信号持续（SN/批次排查结论待反馈后可正式闭环）</td></tr>
+<tr><td>配件发错货</td><td>1</td><td>9.21</td><td>第 3 次发错后售后重新补发闭环；连续 7 日未再现，网点侧发货流程改进验证信号持续增强</td></tr>
+<tr><td>支架损坏类</td><td>2</td><td>9.19</td><td>售后换货 + 补发处理闭环</td></tr>
+<tr><td>卡录漏录</td><td>2</td><td>9.9</td><td>格式化/换卡指导后无新增</td></tr>
+<tr><td>被盗赔付领取失败/过期</td><td>2</td><td>9.18</td><td>重装 APP 后领取成功、服务端补充发放，均已闭环</td></tr>
+<tr><td>被盗赔付核实个案</td><td>1</td><td>9.18</td><td>400 渠道核实属实可赔，已走赔付流程</td></tr>
+</tbody></table>
+<p class="note">注：电源线插头紧配为防水设计的正常特性（按紧到位即正常使用），非设计缺陷——相关反馈按安装引导类口径引导「按紧到位」安装认知，不计入质量问题。</p>
+</div>
+
+<div class="section">
+<h2>七、跟踪期结束，转入常规运营</h2>
+<div class="insight blue"><span class="title">🔵 新品跟踪一个月（8.29-9.28）正式结束。</span>后续产品情况由售后客服、质量团队持续跟进；如出现异常或突发问题，请随时同步，将第一时间跟进分析。</div>
+</div>
+
+<div class="section">
+<h2>附：期日报清单</h2>
+<p class="report-links" style="margin-top:12px"><b>期日报清单（28 期）：</b><br>
+<a href="v6-cycling-daily-day3.html">Day 3</a><a href="v6-cycling-daily-day4.html">Day 4</a><a href="v6-cycling-daily-day5.html">Day 5</a><a href="v6-cycling-daily-day6.html">Day 6</a><a href="v6-cycling-daily-day7.html">Day 7</a><a href="v6-cycling-daily-day8.html">Day 8</a><a href="v6-cycling-daily-day9.html">Day 9</a><a href="v6-cycling-daily-day10.html">Day 10</a><a href="v6-cycling-daily-day11.html">Day 11</a><a href="v6-cycling-daily-day12.html">Day 12</a><a href="v6-cycling-daily-day13.html">Day 13</a><a href="v6-cycling-daily-day14.html">Day 14</a><a href="v6-cycling-daily-day15.html">Day 15</a><a href="v6-cycling-daily-day16.html">Day 16</a><a href="v6-cycling-daily-day17.html">Day 17</a><a href="v6-cycling-daily-day18.html">Day 18</a><a href="v6-cycling-daily-day19.html">Day 19</a><a href="v6-cycling-daily-day20.html">Day 20</a><a href="v6-cycling-daily-day21.html">Day 21</a><a href="v6-cycling-daily-day22.html">Day 22</a><a href="v6-cycling-daily-day23.html">Day 23</a><a href="v6-cycling-daily-day24.html">Day 24</a><a href="v6-cycling-daily-day25.html">Day 25</a><a href="v6-cycling-daily-day26.html">Day 26</a><a href="v6-cycling-daily-day27.html">Day 27</a><a href="v6-cycling-daily-day28.html">Day 28</a><a href="v6-cycling-daily-day29.html">Day 29</a><a href="v6-cycling-daily-day30.html">Day 30</a></p>
+<p class="note">注：Day 1-2 为项目筹备期未产出日报，Day 3 起连续产出；日编号按自然日连续（8.29=Day 1）。</p>
+</div>
+
+<div class="footer">
+<p>数据来源：飞书表格「V6骑行新品跟踪表」· 用户问题反馈汇总（row122 起，第二代升级款） | <a href="https://yanlingyin001.github.io/reports/v6-cycling-index.html">报告合集</a></p>
+<p>由尹燕玲-报告分析专家自动生成 · 🦞</p>
+</div>
+</div>
+
+<script>
+var wc=echarts.init(document.getElementById('weekChart'));
+wc.setOption({
+  tooltip:{trigger:'axis'},
+  grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},
+  xAxis:{type:'category',data:['8.29-9.4','9.5-9.11','9.12-9.18','9.19-9.25','9.26-9.28(3天)']},
+  yAxis:{type:'value'},
+  series:[
+    {name:'反馈总量',type:'bar',data:[33,50,46,40,2],itemStyle:{color:'#00B050'},barWidth:'50%',
+     label:{show:true,position:'top',fontWeight:'bold',color:'#333'}}
+  ]
+});
+window.addEventListener('resize',function(){wc.resize()});
+</script>
+</body>
+</html>
