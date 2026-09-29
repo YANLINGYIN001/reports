@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>云台9pro 4G新品跟踪日报 · Day 1</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:30px; margin-bottom:24px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .subtitle { font-size:14px; opacity:0.9; }
+.header .date-range { font-size:13px; opacity:0.8; margin-top:6px; }
+.overview { background:#fff; border-left:4px solid #00B050; border-radius:8px; padding:14px 20px; margin-bottom:20px; font-size:14px; color:#333; }
+.kpi-grid { display:grid; grid-template-columns:1fr 1.6fr 1.3fr; gap:16px; margin-bottom:24px; }
+.kpi-card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size:13px; color:#999; margin-bottom:8px; }
+.kpi-card .value { font-size:32px; font-weight:700; color:#E74C3C; }
+.kpi-card .delta { font-size:12px; color:#00B050; margin-top:4px; }
+.kpi-card .delta.up { color:#E74C3C; }
+.kpi-card .delta.zero { color:#999; }
+.kpi-card .sub { font-size:12px; color:#666; margin-top:4px; }
+.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
+.insight-box { border-radius:10px; padding:16px; margin-bottom:12px; }
+.insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
+.insight-orange { background:#fff3e0; border-left:4px solid #F39C12; }
+.insight-box p { font-size:14px; line-height:1.8; }
+.insight-box strong { color:#00B050; }
+.insight-orange strong { color:#F39C12; }
+.channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
+.channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
+.chart-container { width:100%; height:260px; }
+.cat-cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-bottom:16px; }
+.cat-card { min-width:0; border-radius:8px; padding:12px 6px; text-align:center; color:#fff; }
+.cat-card .cat-icon { font-size:20px; }
+.cat-card .cat-name { font-size:13px; white-space:nowrap; margin-top:4px; }
+.cat-card .cat-count { font-size:20px; font-weight:700; margin-top:2px; }
+.detail-table { width:100%; border-collapse:collapse; font-size:13px; }
+.detail-table th { background:#f0f7f1; color:#333; padding:10px 8px; text-align:left; font-weight:600; border-bottom:2px solid #00B050; white-space:nowrap; }
+.detail-table td { padding:10px 8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+.badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:12px; font-weight:600; }
+.badge-consult { background:#e8f5e9; color:#00692e; border:1px solid #a5d6a7; }
+.badge-cloud { background:#e3f2fd; color:#0d47a1; border:1px solid #90caf9; }
+.badge-card { background:#fbe9e7; color:#bf360c; border:1px solid #ffab91; }
+.new-row td { background:#fffde7; }
+.risk-row td { background:#fdecea; }
+.q { color:#222; font-weight:600; }
+.a { color:#555; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+@media (max-width:768px) {
+  .kpi-grid { grid-template-columns:repeat(2,1fr); }
+  .cat-cards { grid-template-columns:repeat(3,1fr); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🎥 云台9pro 4G新品跟踪日报 · Day 1</h1>
+  <div class="subtitle">首期(累计汇总) | 数据周期 2026.09.28 - 2026.09.29 | 累计反馈 4 条</div>
+  <div class="date-range">数据来源:飞书表格「云台9pro 4G新品跟踪表」· 用户问题反馈汇总 | 更新时间:2026-09-29 11:42</div>
+</div>
+
+<div class="overview">
+  首期日报:9/23晚开售后,目前已累计4条反馈(全部来自京东自营、反馈日期9月28日),均为咨询类问题,无疑似缺陷;云录领取、流量资费、内存卡使用是当前用户最集中的认知咨询点。
+</div>
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="label">反馈问题总数</div><div class="value">4</div><div class="delta">首期基线</div><div class="sub">京东自营单渠道,反馈日期9/28</div></div>
+  <div class="kpi-card"><div class="label">Top3问题(累计)</div><div class="value" style="font-size:16px;line-height:1.4">云录领取咨询 1条<br>流量是否收费咨询 1条<br>卡录循环覆盖咨询 1条</div><div class="delta zero">各类型均1条,尚无集中性问题</div></div>
+  <div class="kpi-card"><div class="label">疑似缺陷</div><div class="value" style="color:#00B050">0</div><div class="sub">当前反馈全部为咨询类,无缺陷信号</div></div>
+</div>
+
+<div class="section">
+  <div class="section-title">核心洞察</div>
+  <div class="insight-box insight-green">
+    <p><strong>🟢 首期零缺陷</strong>:开售第6天累计4条反馈全部为功能/使用认知类咨询,无设备故障、无质量投诉,产品起步阶段运行平稳。</p>
+  </div>
+  <div class="insight-box insight-green">
+    <p><strong>🟢 咨询点集中于「权益+存储」认知</strong>:云录权益领取(1个月云录怎么领)、4G流量资费(是否无限流量)、内存卡循环覆盖与安装朝向,均为新品权益/使用规则类问题,商详页与FAQ前置标注可直接分流。</p>
+  </div>
+  <div class="insight-box insight-orange">
+    <p><strong>🟠 渠道尚单一,样本量小</strong>:目前反馈全部来自京东自营,其他渠道(有赞/天猫/抖音/小红书等)尚未产生反馈;后续随各渠道销售放量,反馈量与类型分布将快速扩展,主题分类体系待数据量增加后与业务共建。</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">渠道反馈分布(1渠道)</div>
+  <div class="channel-tags">
+    <span class="channel-tag">京东自营<span class="count">4</span></span>
+  </div>
+  <div id="chart-channel" class="chart-container"></div>
+</div>
+
+<div class="section">
+  <div class="section-title">问题类型汇总</div>
+  <div class="cat-cards">
+    <div class="cat-card" style="background:#3498DB"><div class="cat-icon">☁️</div><div class="cat-name">云录咨询</div><div class="cat-count">1</div></div>
+    <div class="cat-card" style="background:#00B050"><div class="cat-icon">📶</div><div class="cat-name">流量咨询</div><div class="cat-count">1</div></div>
+    <div class="cat-card" style="background:#E67E22"><div class="cat-icon">💾</div><div class="cat-name">内存卡使用</div><div class="cat-count">2</div></div>
+  </div>
+  <table class="detail-table" style="margin-top:16px;">
+    <thead><tr><th>问题类型</th><th>反馈量</th><th>典型问题</th></tr></thead>
+    <tbody>
+    <tr><td>☁️ 云录领取咨询</td><td>1</td><td>1个月的云录怎么领取(客服已告知领取步骤)</td></tr>
+    <tr><td>📶 流量是否收费咨询</td><td>1</td><td>是不是无限流量(内置4G流量卡,终身免费不限流量)</td></tr>
+    <tr><td>💾 卡录循环覆盖咨询</td><td>1</td><td>内存卡录满后是否自动覆盖最早录像(满后自动覆盖)</td></tr>
+    <tr><td>💾 内存卡安装咨询</td><td>1</td><td>内存卡朝向(金属面朝上)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">反馈明细(4条·首期全量)</div>
+  <table class="detail-table">
+    <thead><tr><th>分类</th><th>问题类型</th><th>渠道</th><th>日期</th><th>用户问题</th><th>客服方案</th></tr></thead>
+    <tbody>
+    <tr class="new-row"><td>☁️ 云录咨询</td><td><span class="badge badge-cloud">云录领取咨询</span></td><td>京东自营</td><td>9.28</td><td class="q">1个月的云录怎么领取</td><td class="a">告知领取步骤</td></tr>
+    <tr class="new-row"><td>📶 流量咨询</td><td><span class="badge badge-consult">流量是否收费咨询</span></td><td>京东自营</td><td>9.28</td><td class="q">是不是无限流量</td><td class="a">这款内置4G流量卡,享终身免费流量,不限流量</td></tr>
+    <tr class="new-row"><td>💾 内存卡使用</td><td><span class="badge badge-card">卡录循环覆盖咨询</span></td><td>京东自营</td><td>9.28</td><td class="q">内存卡连续录制,如果录制满了,自动把最早录制的冲没了</td><td class="a">录制满后会自动覆盖</td></tr>
+    <tr class="new-row"><td>💾 内存卡使用</td><td><span class="badge badge-card">内存卡安装咨询</span></td><td>京东自营</td><td>9.28</td><td class="q">内存卡朝向</td><td class="a">金属面朝上</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="footer">
+    数据来源:飞书表格「云台9pro 4G新品跟踪表」· 用户问题反馈汇总<br>
+    由 🦞尹燕玲-报告分析专家 自动生成 · 每个工作日17:40更新
+  </div>
+
+</div>
+<script>
+var chChart = echarts.init(document.getElementById('chart-channel'));
+var chData = {"names": ["京东自营"], "vals": [4], "colors": ["#E74C3C"]};
+chChart.setOption({
+  tooltip: { trigger: 'axis', formatter: '{b}: {c}条' },
+  xAxis: { type: 'category', data: chData.names, axisLabel: { fontSize: 12 } },
+  yAxis: { type: 'value', name: '反馈量', minInterval: 1 },
+  series: [{
+    type: 'bar', data: chData.vals.map(function(v, i) { return { value: v, itemStyle: { color: chData.colors[i] } }; }),
+    barWidth: '30%',
+    label: { show: true, position: 'top', formatter: '{c}' }
+  }],
+  grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true }
+});
+</script>
+</body>
+</html>
