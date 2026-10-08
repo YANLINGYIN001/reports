@@ -1933,6 +1933,8 @@ document.addEventListener('keydown', function(e){
 });
 document.addEventListener('click', function(e){
   if(e.target.closest('#hud')||e.target.closest('.toc')) return;
+  if(e.target.closest('.bigtable-wrap')||e.target.closest('details')||e.target.closest('table')) return;
+  if(window.getSelection && String(window.getSelection())) return;
   nav(e.clientX > window.innerWidth/2 ? 1 : -1);
 });
 fit();
