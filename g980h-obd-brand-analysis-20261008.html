@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G980H OBD降压线 品牌型号交叉分析报告</title><style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: white; padding: 30px; border-radius: 12px; margin-bottom: 20px; }
+.header h1 { font-size: 22px; margin-bottom: 8px; }
+.header .meta { font-size: 14px; opacity: 0.9; }
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.kpi-card { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .number { font-size: 22px; font-weight: 700; color: #00B050; }
+.kpi-card .label { font-size: 13px; color: #666; margin-top: 4px; }
+.section { background: white; border-radius: 10px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 18px; color: #333; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #00B050; }
+.section h3 { font-size: 15px; color: #555; margin: 16px 0 10px 0; }
+.insight { background: #f0fdf4; border-left: 4px solid #00B050; padding: 12px 16px; border-radius: 4px; margin-bottom: 12px; font-size: 14px; }
+.insight.warning { background: #fef3cd; border-left-color: #F39C12; }
+.insight.danger { background: #fce4e4; border-left-color: #E74C3C; }
+.insight b { color: #333; }
+.insight .danger-text { color: #E74C3C; font-weight: 600; }
+.mod-desc { font-size: 13px; color: #666; margin-bottom: 10px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 14px; }
+th { background: #00B050; color: white; padding: 10px 12px; text-align: left; font-weight: 500; }
+td { padding: 10px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+tr:hover td { background: #f9f9f9; }
+.red { color: #E74C3C; font-weight: 600; }
+.green { color: #00B050; font-weight: 600; }
+.footer { text-align: center; padding: 20px; color: #999; font-size: 12px; }
+</style></head><body><div class="container">
+<div class="header"><h1>🚗 G980H 4G记录仪 — OBD降压线·品牌型号交叉分析报告</h1><div class="meta">数据基线：OBD问卷 95 份去重 45 人 × 车辆画像（已按姓名补全至OBD表车辆5列） | 2026-10-08 | 🦞</div></div>
+<div class="kpi-row">
+<div class="kpi-card"><div class="number">22</div><div class="label">覆盖品牌数（22个）</div></div>
+<div class="kpi-card"><div class="number">25/45（56%）</div><div class="label">任一OBD异常用户</div></div>
+<div class="kpi-card"><div class="number">%d/8</div><div class="label">纯电品牌全数出现异常</div></div>
+<div class="kpi-card"><div class="number" style="font-size:14px;line-height:1.6;color:#E74C3C">比亚迪3/3 · 奥迪2/2<br>大众5/6 · 腾势/零跑/东风/坦克 1/1</div><div class="label">异常高发品牌</div></div>
+</div>
+<div class="section"><h2>核心洞察</h2>
+<div class="insight danger"><b>新能源品牌全线「沦陷」：</b><span class="danger-text">比亚迪（海豚/元plus/唐DM）3/3、腾势N8、零跑T03、东风EX1、大众ID系（ID4X/id3）纯电用户全部报告至少一项OBD异常</span>，与上期「纯电车异常率75%」结论互证——新能源12V低压平台与铅酸电瓶的供电特性差异是主因方向。</div>
+<div class="insight warning"><b>油车并非安全区，品牌间分化明显：</b>油车品牌中奥迪（Q5L行驶断电/A6哨兵异常退出）、大众（速腾/高尔夫/波罗多异常）、现代瑞纳、哈弗H6、纳智捷u6、坦克300均有异常报告；五菱（2人）、日产、红旗、别克、宝马、本田、捷途、凯迪拉克暂无异常。油车异常集中在「解锁异常退出哨兵」（Q6）单项。</div>
+<div class="insight"><b>车龄与异常正相关：</b>2021年前老车异常率37% → 2024-2025年75% → 2025年后100%。反直觉但可解释：新能源渗透率在近年车型中更高，新车组异常主要由纯电贡献（蒋晓昀A6为2026油车例外）。</div>
+<div class="insight"><b>电压档模式（标准/兼容）与异常无显著相关（均56%）</b>，SUV（61%）略高于轿车（50%）。异常归因应聚焦能源类型与车机平台，而非档位选择。</div>
+</div>
+<div class="section"><h2>品牌 × OBD异常明细（22品牌，按人数排序）</h2>
+<div class="mod-desc">异常口径：行驶断电（Q4）/解锁异常退出哨兵（Q6）/AOV异常切循环（Q10）任一命中。纯电或含纯电的品牌以⚡标注。</div>
+<table><tr><th>品牌</th><th>人数</th><th>能源</th><th>任一异常</th><th>Q4断电</th><th>Q6哨兵退出</th><th>Q10 AOV切换</th><th>涉及用户（异常者）</th></tr>
+<tr><td>大众 ⚡</td><td>6</td><td>混合</td><td class="red">5（83%）</td><td>1</td><td>2</td><td>4</td><td style="font-size:12px">周琦强、闫冰、潘登铿、郑惟环、李栋灵</td></tr>
+<tr><td>丰田 ⚡</td><td>6</td><td>混合</td><td class="red">3（50%）</td><td>1</td><td>-</td><td>3</td><td style="font-size:12px">王龙、陶双、林志澄</td></tr>
+<tr><td>吉利 ⚡</td><td>5</td><td>混合</td><td class="red">2（40%）</td><td>1</td><td>2</td><td>2</td><td style="font-size:12px">张明明、刘晓顺</td></tr>
+<tr><td>奇瑞 ⚡</td><td>5</td><td>混合</td><td class="red">2（40%）</td><td>-</td><td>-</td><td>2</td><td style="font-size:12px">马姬、郭方胜</td></tr>
+<tr style="background:#fce4e4"><td>比亚迪 ⚡</td><td>3</td><td>混合</td><td class="red">3（100%）</td><td>-</td><td>3</td><td>2</td><td style="font-size:12px">赵华平、秦世游、温开礼</td></tr>
+<tr style="background:#fce4e4"><td>奥迪</td><td>2</td><td>油车</td><td class="red">2（100%）</td><td>1</td><td>1</td><td>1</td><td style="font-size:12px">娄泽彬、蒋晓昀</td></tr>
+<tr><td>福特</td><td>2</td><td>油车</td><td class="red">1（50%）</td><td>-</td><td>1</td><td>1</td><td style="font-size:12px">杜劲</td></tr>
+<tr><td>五菱</td><td>2</td><td>油车</td><td class="green">0（0%）</td><td>-</td><td>-</td><td>-</td><td style="font-size:12px">—</td></tr>
+<tr><td>现代</td><td>1</td><td>油车</td><td class="red">1（100%）</td><td>-</td><td>1</td><td>-</td><td style="font-size:12px">刘尚林</td></tr>
+<tr><td>哈弗</td><td>1</td><td>油车</td><td class="red">1（100%）</td><td>-</td><td>1</td><td>-</td><td style="font-size:12px">张宁</td></tr>
+<tr><td>别克</td><td>1</td><td>油车</td><td class="green">0（0%）</td><td>-</td><td>-</td><td>-</td><td style="font-size:12px">—</td></tr>
+<tr><td>纳智捷</td><td>1</td><td>油车</td><td class="red">1（100%）</td><td>-</td><td>-</td><td>1</td><td style="font-size:12px">王亚兵</td></tr>
+<tr><td>捷途</td><td>1</td><td>油车</td><td class="green">0（0%）</td><td>-</td><td>-</td><td>-</td><td style="font-size:12px">—</td></tr>
+<tr><td>日产</td><td>1</td><td>油车</td><td class="green">0（0%）</td><td>-</td><td>-</td><td>-</td><td style="font-size:12px">—</td></tr>
+<tr><td>红旗</td><td>1</td><td>油车</td><td class="green">0（0%）</td><td>-</td><td>-</td><td>-</td><td style="font-size:12px">—</td></tr>
+<tr><td>腾势 ⚡</td><td>1</td><td>纯电</td><td class="red">1（100%）</td><td>-</td><td>1</td><td>1</td><td style="font-size:12px">公海军</td></tr>
+<tr><td>零跑 ⚡</td><td>1</td><td>纯电</td><td class="red">1（100%）</td><td>-</td><td>1</td><td>1</td><td style="font-size:12px">程玢泽</td></tr>
+<tr><td>凯迪拉克</td><td>1</td><td>油车</td><td class="green">0（0%）</td><td>-</td><td>-</td><td>-</td><td style="font-size:12px">—</td></tr>
+<tr><td>东风 ⚡</td><td>1</td><td>纯电</td><td class="red">1（100%）</td><td>-</td><td>1</td><td>1</td><td style="font-size:12px">丁政涛</td></tr>
+<tr><td>宝马</td><td>1</td><td>油车</td><td class="green">0（0%）</td><td>-</td><td>-</td><td>-</td><td style="font-size:12px">—</td></tr>
+<tr><td>本田</td><td>1</td><td>油车</td><td class="green">0（0%）</td><td>-</td><td>-</td><td>-</td><td style="font-size:12px">—</td></tr>
+<tr><td>坦克</td><td>1</td><td>油车</td><td class="red">1（100%）</td><td>-</td><td>-</td><td>1</td><td style="font-size:12px">苏冬冬</td></tr>
+</table>
+<div class="mod-desc">注：单人数品牌（n=1）异常率参考意义有限，看趋势不看个案；比亚迪/奥迪为多用户全异常品牌，可信度高。</div>
+</div>
+<div class="section"><h2>异常用户车型明细（25人）</h2><table><tr><th>用户</th><th>品牌型号</th><th>能源</th><th>车龄</th><th>电压档</th><th>异常项</th></tr>
+<tr><td>丁政涛</td><td>东风 EX1por</td><td>纯电</td><td>2021-2023</td><td>11.8V，兼容</td><td class="red">哨兵退出+AOV切换</td></tr>
+<tr><td>林志澄</td><td>丰田 凯美瑞</td><td>纯电</td><td>2021年及之前</td><td>12.8V，兼容</td><td class="red">断电+AOV切换</td></tr>
+<tr><td>张明明</td><td>吉利 熊猫mini</td><td>纯电</td><td>2023-2024</td><td>11.8V，兼容</td><td class="red">断电+哨兵退出+AOV切换</td></tr>
+<tr><td>刘晓顺</td><td>吉利 吉利熊猫元气熊</td><td>纯电</td><td>2026年1月及之</td><td>12.2V，标准</td><td class="red">哨兵退出+AOV切换</td></tr>
+<tr><td>周琦强</td><td>大众 ID4X</td><td>纯电</td><td>2024-2025</td><td>12.2V，兼容</td><td class="red">AOV切换</td></tr>
+<tr><td>潘登铿</td><td>大众 id3</td><td>纯电</td><td>2021-2023</td><td>11.8V，兼容</td><td class="red">断电+AOV切换</td></tr>
+<tr><td>赵华平</td><td>比亚迪 海豚</td><td>纯电</td><td>2023-2024</td><td>11.8V，兼容</td><td class="red">哨兵退出</td></tr>
+<tr><td>秦世游</td><td>比亚迪 元plus</td><td>纯电</td><td>2023-2024</td><td>12.2V，兼容</td><td class="red">哨兵退出+AOV切换</td></tr>
+<tr><td>公海军</td><td>腾势 N8</td><td>纯电</td><td>2025-2026</td><td>12.8V，标准</td><td class="red">哨兵退出+AOV切换</td></tr>
+<tr><td>程玢泽</td><td>零跑 T03</td><td>纯电</td><td>2021-2023</td><td>12.2V，标准</td><td class="red">哨兵退出+AOV切换</td></tr>
+<tr><td>王龙</td><td>丰田 双擎精英版</td><td>混合动力</td><td>2021-2023</td><td>11.8V，标准</td><td class="red">AOV切换</td></tr>
+<tr><td>陶双</td><td>丰田 rav4</td><td>油车</td><td>2024-2025</td><td>12.2V，标准</td><td class="red">AOV切换</td></tr>
+<tr><td>张宁</td><td>哈弗 2代H6</td><td>油车</td><td>2021年及之前</td><td>12.2V，标准</td><td class="red">哨兵退出</td></tr>
+<tr><td>苏冬冬</td><td>坦克 坦克300</td><td>油车</td><td>2026年1月及之</td><td>12.2V，标准</td><td class="red">AOV切换</td></tr>
+<tr><td>闫冰</td><td>大众 高尔夫嘉旅</td><td>油车</td><td>2021年及之前</td><td>12.2V，标准</td><td class="red">哨兵退出+AOV切换</td></tr>
+<tr><td>郑惟环</td><td>大众 速腾卓越</td><td>油车</td><td>2021-2023</td><td>11.8V，标准</td><td class="red">AOV切换</td></tr>
+<tr><td>李栋灵</td><td>大众 POLL</td><td>油车</td><td>2024-2025</td><td>11.8V，标准</td><td class="red">哨兵退出</td></tr>
+<tr><td>马姬</td><td>奇瑞 瑞虎8</td><td>油车</td><td>2021年及之前</td><td>12.2V，兼容</td><td class="red">AOV切换</td></tr>
+<tr><td>郭方胜</td><td>奇瑞 瑞虎7超能英雄</td><td>油车</td><td>2023-2024</td><td>12.2V，标准</td><td class="red">AOV切换</td></tr>
+<tr><td>娄泽彬</td><td>奥迪 25款Q5L 40豪华</td><td>油车</td><td>2025-2026</td><td>12.2V，标准</td><td class="red">断电</td></tr>
+<tr><td>蒋晓昀</td><td>奥迪 A6allroad</td><td>油车</td><td>2026年1月及之</td><td>12.2V，兼容</td><td class="red">哨兵退出+AOV切换+低压1h内</td></tr>
+<tr><td>温开礼</td><td>比亚迪 唐DM</td><td>混合动力</td><td>2021-2023</td><td>12.2V，标准</td><td class="red">哨兵退出+AOV切换</td></tr>
+<tr><td>刘尚林</td><td>现代 瑞纳</td><td>油车</td><td>2021年及之前</td><td>12.2V，标准</td><td class="red">哨兵退出</td></tr>
+<tr><td>杜劲</td><td>福特 JX6462PB6</td><td>油车</td><td>2021年及之前</td><td>11.8V，标准</td><td class="red">哨兵退出+AOV切换</td></tr>
+<tr><td>王亚兵</td><td>纳智捷 u6</td><td>油车</td><td>2021年及之前</td><td>12.8V，兼容</td><td class="red">AOV切换</td></tr>
+</table></div>
+<div class="section"><h2>交叉维度速览</h2><table><tr><th>维度</th><th>分组</th><th>人数</th><th>任一异常</th></tr>
+<tr><td>能源类型</td><td>纯电</td><td>12</td><td class="red">75%</td></tr>
+<tr><td>能源类型</td><td>油车</td><td>30</td><td class="">27%</td></tr>
+<tr><td>能源类型</td><td>混动</td><td>3</td><td class="red">67%</td></tr>
+<tr><td>车龄</td><td>2021年及之前</td><td>19</td><td class="">37%</td></tr>
+<tr><td>车龄</td><td>2021-2023年</td><td>9</td><td class="red">67%</td></tr>
+<tr><td>车龄</td><td>2023-2024年</td><td>8</td><td class="">50%</td></tr>
+<tr><td>车龄</td><td>2024-2025年</td><td>4</td><td class="red">75%</td></tr>
+<tr><td>车龄</td><td>2025年后</td><td>5</td><td class="red">100%</td></tr>
+<tr><td>车型</td><td>SUV</td><td>23</td><td class="red">61%</td></tr>
+<tr><td>车型</td><td>轿车</td><td>22</td><td class="">50%</td></tr>
+<tr><td>电压档模式</td><td>标准</td><td>27</td><td class="">56%</td></tr>
+<tr><td>电压档模式</td><td>兼容</td><td>18</td><td class="">56%</td></tr>
+</table><div class="mod-desc">注：混动3人（温开礼Q6+Q10、王龙Q10）异常2人；「2025年后100%」组含纯电2人。</div></div>
+<div class="section"><h2>建议动作</h2>
+<div class="insight"><b>① 研发侧：</b>拉取比亚迪海豚/元plus、大众ID4X/id3、腾势N8、零跑T03等纯电车型用户的设备日志，核验新能源12V低压平台下的OBD取电电压曲线（与上期报告「3人1小时内低压保护」联动）。</div>
+<div class="insight"><b>② 测试侧：</b>「解锁异常退出哨兵」在油车品牌（大众速腾/高尔夫/波罗、现代、哈弗、纳智捷）也稳定出现，建议按「车机CAN协议差异」而非仅按能源类型归因排查。</div>
+<div class="insight"><b>③ 文档侧：</b>17人中途换电压档（上期）+本期品牌×档位无规律，说明用户选档缺乏指引——建议说明书按「能源类型×车龄」给出推荐档位表。</div>
+</div>
+<div class="footer">G980H 4G记录仪公测 · OBD降压线品牌型号交叉分析 · 2026-10-08 · 🦞 · 数据源：飞书OBD降压线问卷95份（去重45人，取最新提交）×车辆画像46人（郭方胜已从招募问卷补全）；OBD表R-V列车辆5列已同步写入 | 口径声明：异常=Q4断电/Q6哨兵退出/Q10AOV切换任一命中；品牌异常率按用户去重</div></div></body></html>
