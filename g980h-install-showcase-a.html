@@ -85,6 +85,15 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 
 details.obddet li.scene { color:#555; font-size:12.5px; background:#f7f7f9; border-radius:6px; padding:5px 10px; margin:2px 0 2px 15px; }
 details.obddet li.scene::before { display:none; }
+
+.bigtable-wrap { max-height: 880px; overflow-y: auto; border:1px solid var(--line); border-radius:12px; background:rgba(10,13,11,.55); }
+table.bigtable { width:100%; border-collapse:collapse; font-size:14px; }
+table.bigtable th { position:sticky; top:0; background:#0e1410; color:#9fb3a5; font-weight:700; padding:9px 10px; text-align:left; border-bottom:1px solid var(--line); font-size:12.5px; letter-spacing:.5px; z-index:2; }
+table.bigtable td { padding:7px 10px; border-bottom:1px solid rgba(44,54,47,.5); color:#dde5df; }
+table.bigtable td.bad { color:#ff8a80; font-weight:700; }
+table.bigtable td.ok { color:#2BBD6E; font-weight:700; }
+table.bigtable td.none { color:#999; }
+table.bigtable td.det { color:#b9c4bd; font-size:12.5px; max-width:420px; }
 </style>
 </head>
 <body>
@@ -136,6 +145,66 @@ details.obddet li.scene::before { display:none; }
 <div class="toc" onclick="go(0)" data-b="红旗"><span class="b">红旗</span><span class="c">1人</span></div>
   </div>
   <div class="pnum">02</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 安装作业</div>
+  <div class="kicker rv rv1">FULL LIST</div>
+  <h2 class="rv rv1" style="margin-top:10px">车辆 × OBD 测试总表</h2>
+  <div class="sub rv rv2" style="margin-top:8px">45台车全量 · 按品牌排序 · OBD异常红标 · 表内可滚动</div>
+  <div class="bigtable-wrap rv rv3" style="margin-top:18px">
+  <table class="bigtable">
+  <thead><tr><th>品牌</th><th>型号</th><th>汽车类型</th><th>购买年份</th><th>车辆类型</th><th>用户姓名</th><th>OBD测试整体情况</th><th>OBD测试具体情况</th></tr></thead>
+  <tbody>
+<tr><td>大众</td><td>ID4X</td><td>纯电</td><td>2024-2025年</td><td>SUV</td><td>周琦强</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常；12.2V 兼容有异常</td></tr>
+<tr><td>大众</td><td>19款途岳舒适版</td><td>油车</td><td>2021年及之前</td><td>SUV</td><td>孔德运</td><td class="none">未提交</td><td class="det">—</td></tr>
+<tr><td>大众</td><td>id4crozz</td><td>纯电</td><td>2023-2024年</td><td>SUV</td><td>朱君</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常；12.8V 标准有异常；12.2V 兼容有异常；12.8V 兼容正常</td></tr>
+<tr><td>大众</td><td>POLL</td><td>油车</td><td>2024-2025年</td><td>轿车</td><td>李栋灵</td><td class="ok">无异常</td><td class="det">11.8V 标准正常</td></tr>
+<tr><td>大众</td><td>id3</td><td>纯电</td><td>2021-2023年</td><td>轿车</td><td>潘登铿</td><td class="bad">有异常</td><td class="det">11.8V 兼容有异常</td></tr>
+<tr><td>大众</td><td>速腾卓越</td><td>油车</td><td>2021-2023年</td><td>轿车</td><td>郑惟环</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常；12.8V 标准有异常；11.8V 标准正常</td></tr>
+<tr><td>大众</td><td>高尔夫嘉旅</td><td>油车</td><td>2021年及之前</td><td>轿车</td><td>闫冰</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常</td></tr>
+<tr><td>丰田</td><td>卡罗拉锐放</td><td>油车</td><td>2023-2024年</td><td>SUV</td><td>向云俊</td><td class="ok">无异常</td><td class="det">12.2V 标准正常</td></tr>
+<tr><td>丰田</td><td>卡罗拉</td><td>油车</td><td>2021年及之前</td><td>轿车</td><td>吕关兴</td><td class="ok">无异常</td><td class="det">12.2V 标准正常</td></tr>
+<tr><td>丰田</td><td>RAV4</td><td>油车</td><td>2021-2023年</td><td>SUV</td><td>李建</td><td class="bad">有异常</td><td class="det">12.2V 标准正常；12.8V 标准有异常；12.8V 兼容有异常；12.2V 兼容正常；11.8V 标准正常</td></tr>
+<tr><td>丰田</td><td>凯美瑞</td><td>纯电</td><td>2021年及之前</td><td>轿车</td><td>林志澄</td><td class="bad">有异常</td><td class="det">12.2V 标准正常；12.8V 标准有异常；12.8V 兼容有异常</td></tr>
+<tr><td>丰田</td><td>双擎精英版</td><td>混合动力</td><td>2021-2023年</td><td>轿车</td><td>王龙</td><td class="bad">有异常</td><td class="det">11.8V 标准有异常</td></tr>
+<tr><td>丰田</td><td>rav4</td><td>油车</td><td>2024-2025年</td><td>SUV</td><td>陶双</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常</td></tr>
+<tr><td>吉利</td><td>吉利熊猫元气熊</td><td>纯电</td><td>2026年1月及之后</td><td>轿车</td><td>刘晓顺</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常</td></tr>
+<tr><td>吉利</td><td>熊猫mini</td><td>纯电</td><td>2023-2024年</td><td>SUV</td><td>张明明</td><td class="bad">有异常</td><td class="det">11.8V 兼容有异常</td></tr>
+<tr><td>吉利</td><td>帝豪手动向上</td><td>油车</td><td>2021年及之前</td><td>轿车</td><td>汪杨</td><td class="ok">无异常</td><td class="det">11.8V 标准正常；12.2V 标准正常</td></tr>
+<tr><td>吉利</td><td>帝豪PHEV</td><td>混合动力</td><td>2021年及之前</td><td>轿车</td><td>王刚红</td><td class="ok">无异常</td><td class="det">11.8V 标准正常；12.2V 标准正常；12.2V 兼容正常；11.8V 兼容正常</td></tr>
+<tr><td>吉利</td><td>星越L</td><td>油车</td><td>2021-2023年</td><td>SUV</td><td>闫贺</td><td class="ok">无异常</td><td class="det">11.8V 标准正常</td></tr>
+<tr><td>奇瑞</td><td>艾瑞泽5</td><td>油车</td><td>2021年及之前</td><td>轿车</td><td>张洪伟</td><td class="ok">无异常</td><td class="det">12.2V 标准正常</td></tr>
+<tr><td>奇瑞</td><td>小蚂蚁</td><td>纯电</td><td>2024-2025年</td><td>轿车</td><td>赵士达</td><td class="ok">无异常</td><td class="det">11.8V 兼容正常</td></tr>
+<tr><td>奇瑞</td><td>艾瑞泽3</td><td>油车</td><td>2021年及之前</td><td>轿车</td><td>闫鹰飞</td><td class="ok">无异常</td><td class="det">12.2V 标准正常</td></tr>
+<tr><td>奇瑞</td><td>瑞虎8</td><td>油车</td><td>2021年及之前</td><td>SUV</td><td>马姬</td><td class="bad">有异常</td><td class="det">11.8V 标准正常；12.2V 兼容有异常</td></tr>
+<tr><td>比亚迪</td><td>唐DM</td><td>混合动力</td><td>2021-2023年</td><td>SUV</td><td>温开礼</td><td class="ok">无异常</td><td class="det">12.2V 标准正常</td></tr>
+<tr><td>比亚迪</td><td>元plus</td><td>纯电</td><td>2023-2024年</td><td>SUV</td><td>秦世游</td><td class="bad">有异常</td><td class="det">12.2V 兼容有异常</td></tr>
+<tr><td>比亚迪</td><td>海豚</td><td>纯电</td><td>2023-2024年</td><td>轿车</td><td>赵华平</td><td class="bad">有异常</td><td class="det">11.8V 兼容有异常</td></tr>
+<tr><td>奥迪</td><td>25款Q5L 40豪华</td><td>油车</td><td>2025-2026年</td><td>SUV</td><td>娄泽彬</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常</td></tr>
+<tr><td>奥迪</td><td>A6allroad</td><td>油车</td><td>2026年1月及之后</td><td>轿车</td><td>蒋晓昀</td><td class="ok">无异常</td><td class="det">11.8V 标准正常；12.2V 标准正常；12.2V 兼容正常</td></tr>
+<tr><td>五菱</td><td>五菱宏光v</td><td>油车</td><td>2021-2023年</td><td>轿车</td><td>孙洪士</td><td class="bad">有异常</td><td class="det">11.8V 标准正常；12.2V 兼容有异常</td></tr>
+<tr><td>五菱</td><td>五菱宏光S</td><td>油车</td><td>2021年及之前</td><td>SUV</td><td>魏健伟</td><td class="ok">无异常</td><td class="det">12.2V 标准正常；12.8V 标准正常；12.2V 兼容正常</td></tr>
+<tr><td>福特</td><td>锐界CAF6490A54</td><td>油车</td><td>2021年及之前</td><td>SUV</td><td>方家欢</td><td class="bad">有异常</td><td class="det">11.8V 兼容正常；11.8V 标准有异常；12.2V 标准正常；12.2V 兼容正常；12.8V 标准有异常；12.8V 兼容正常</td></tr>
+<tr><td>福特</td><td>JX6462PB6</td><td>油车</td><td>2021年及之前</td><td>SUV</td><td>杜劲</td><td class="bad">有异常</td><td class="det">11.8V 标准有异常</td></tr>
+<tr><td>东风</td><td>EX1por</td><td>纯电</td><td>2021-2023年</td><td>SUV</td><td>丁政涛</td><td class="bad">有异常</td><td class="det">11.8V 兼容有异常</td></tr>
+<tr><td>腾势</td><td>N8</td><td>纯电</td><td>2025-2026年</td><td>SUV</td><td>公海军</td><td class="bad">有异常</td><td class="det">12.8V 标准有异常</td></tr>
+<tr><td>现代</td><td>瑞纳</td><td>油车</td><td>2021年及之前</td><td>轿车</td><td>刘尚林</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常</td></tr>
+<tr><td>凯迪拉克</td><td>XT5</td><td>油车</td><td>2023-2024年</td><td>SUV</td><td>张俊</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常；11.8V 标准正常；12.8V 标准正常</td></tr>
+<tr><td>哈弗</td><td>2代H6</td><td>油车</td><td>2021年及之前</td><td>SUV</td><td>张宁</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常</td></tr>
+<tr><td>日产</td><td>轩逸</td><td>油车</td><td>2021年及之前</td><td>轿车</td><td>张鹏鑫</td><td class="ok">无异常</td><td class="det">11.8V 标准正常</td></tr>
+<tr><td>本田</td><td>飞度</td><td>油车</td><td>2021年及之前</td><td>轿车</td><td>洪冲</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常；12.8V 标准正常；11.8V 标准正常；12.8V 兼容正常</td></tr>
+<tr><td>纳智捷</td><td>u6</td><td>油车</td><td>2021年及之前</td><td>SUV</td><td>王亚兵</td><td class="ok">无异常</td><td class="det">11.8V 标准正常；12.2V 标准正常；12.8V 标准正常；11.8V 兼容正常；12.2V 兼容正常；12.8V 兼容正常</td></tr>
+<tr><td>宝马</td><td>X3</td><td>油车</td><td>2021年及之前</td><td>SUV</td><td>王钰琦</td><td class="ok">无异常</td><td class="det">12.2V 标准正常</td></tr>
+<tr><td>捷途</td><td>X70</td><td>油车</td><td>2021年及之前</td><td>SUV</td><td>王飞龙</td><td class="ok">无异常</td><td class="det">12.2V 标准正常</td></tr>
+<tr><td>零跑</td><td>T03</td><td>纯电</td><td>2021-2023年</td><td>轿车</td><td>程玢泽</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常</td></tr>
+<tr><td>坦克</td><td>坦克300</td><td>油车</td><td>2026年1月及之后</td><td>SUV</td><td>苏冬冬</td><td class="bad">有异常</td><td class="det">12.2V 标准有异常</td></tr>
+<tr><td>别克</td><td>威朗2017三厢</td><td>油车</td><td>2021年及之前</td><td>轿车</td><td>许军州</td><td class="bad">有异常</td><td class="det">12.8V 标准有异常；12.8V 兼容有异常；12.2V 标准正常</td></tr>
+<tr><td>红旗</td><td>H6</td><td>油车</td><td>2023-2024年</td><td>轿车</td><td>陈占学</td><td class="bad">有异常</td><td class="det">11.8V 标准有异常；11.8V 兼容正常；12.2V 兼容正常</td></tr>
+  </tbody></table></div>
+  <div class="pnum">03</div>
+</div>
+
 </div>
 
 <div class="slide">
@@ -174,7 +243,7 @@ details.obddet li.scene::before { display:none; }
 <li class="hl">遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">03</div>
+  <div class="pnum">4</div>
 </div>
 
 <div class="slide">
@@ -190,7 +259,7 @@ details.obddet li.scene::before { display:none; }
   <div class="shots rv rv2">
 <div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-v2/177_孔德运_front.jpg" alt="孔德运 前挡位置图"></div><figcaption><span class="qlabel">前挡位置图</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-v2/178_孔德运_obd.jpg" alt="孔德运 OBD走线图"></div><figcaption><span class="qlabel">OBD走线图</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-v2/179_孔德运_rear.jpg" alt="孔德运 后录位置图"></div><figcaption><span class="qlabel">后录位置图</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div><div class="shot"><div class="imgwrap"><img data-src="g980h-install-media-v2/180_孔德运_live.jpg" alt="孔德运 实时画面"></div><figcaption><span class="qlabel">实时画面</span><span class="tagline">大众 ｜ 油车 ｜ SUV ｜ 19款途岳舒适版 ｜ 2021年及之前 ｜ 孔德运</span></figcaption></div>  </div>
   <div class="obdline obd-none">OBD测试：未提交</div>
-  <div class="pnum">04</div>
+  <div class="pnum">5</div>
 </div>
 
 <div class="slide">
@@ -251,7 +320,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">05</div>
+  <div class="pnum">6</div>
 </div>
 
 <div class="slide">
@@ -278,7 +347,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">06</div>
+  <div class="pnum">7</div>
 </div>
 
 <div class="slide">
@@ -305,7 +374,7 @@ details.obddet li.scene::before { display:none; }
 <li class="hl">遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">07</div>
+  <div class="pnum">8</div>
 </div>
 
 <div class="slide">
@@ -355,7 +424,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像（原作答：远程查看都会进去循环录像模式，远程查看场景按口径计未遇到）</li>
 </ul>
 </details>
-  <div class="pnum">08</div>
+  <div class="pnum">9</div>
 </div>
 
 <div class="slide">
@@ -382,7 +451,7 @@ details.obddet li.scene::before { display:none; }
 <li class="hl">遇到AOV异常进入循环录像（其他，请注明）</li>
 </ul>
 </details>
-  <div class="pnum">09</div>
+  <div class="pnum">10</div>
 </div>
 
 <div class="slide">
@@ -409,7 +478,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">10</div>
+  <div class="pnum">11</div>
 </div>
 
 <div class="slide">
@@ -436,7 +505,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">11</div>
+  <div class="pnum">12</div>
 </div>
 
 <div class="slide">
@@ -510,7 +579,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">12</div>
+  <div class="pnum">13</div>
 </div>
 
 <div class="slide">
@@ -560,7 +629,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像（原作答：远程查看的时候遇到，远程查看场景按口径计未遇到）</li>
 </ul>
 </details>
-  <div class="pnum">13</div>
+  <div class="pnum">14</div>
 </div>
 
 <div class="slide">
@@ -588,7 +657,7 @@ details.obddet li.scene::before { display:none; }
             <li class="scene">📋 日常反馈（9.21，封面图录像状态显示错误）：停车熄火后准备远程查看，App显示循环录像，进去看发现是哨兵模式</li>
 </ul>
 </details>
-  <div class="pnum">14</div>
+  <div class="pnum">15</div>
 </div>
 
 <div class="slide">
@@ -616,7 +685,7 @@ details.obddet li.scene::before { display:none; }
             <li class="scene">📋 日常反馈（2026.9.29 ，哨兵模式自动切循环录像）：停车监控与循环录像模式来回切换，无形中会导致耗电量的增加，通过回看事件12:33出现哨兵模式的事件，12:41打开app发现记录仪还是循…</li>
 </ul>
 </details>
-  <div class="pnum">15</div>
+  <div class="pnum">16</div>
 </div>
 
 <div class="slide">
@@ -644,7 +713,7 @@ details.obddet li.scene::before { display:none; }
             <li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：车一直在停放锁车状态下，哨兵模式自动进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">16</div>
+  <div class="pnum">17</div>
 </div>
 
 <div class="slide">
@@ -672,7 +741,7 @@ details.obddet li.scene::before { display:none; }
             <li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：AOV哨兵模式自动切循环录像，期间未充电，未做任何操作，车辆为熊猫mini纯电，OBD降压线低压保护设置：11.8V，工作模式：兼容。记…</li>
 </ul>
 </details>
-  <div class="pnum">17</div>
+  <div class="pnum">18</div>
 </div>
 
 <div class="slide">
@@ -711,7 +780,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">18</div>
+  <div class="pnum">19</div>
 </div>
 
 <div class="slide">
@@ -772,7 +841,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">19</div>
+  <div class="pnum">20</div>
 </div>
 
 <div class="slide">
@@ -799,7 +868,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">20</div>
+  <div class="pnum">21</div>
 </div>
 
 <div class="slide">
@@ -826,7 +895,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">21</div>
+  <div class="pnum">22</div>
 </div>
 
 <div class="slide">
@@ -853,7 +922,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">22</div>
+  <div class="pnum">23</div>
 </div>
 
 <div class="slide">
@@ -880,7 +949,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">23</div>
+  <div class="pnum">24</div>
 </div>
 
 <div class="slide">
@@ -920,7 +989,7 @@ details.obddet li.scene::before { display:none; }
             <li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：哨兵模式下查看卡内录像，发现是在循环录像状态，切回首页状态从哨兵模式转换为了循环录像模式，而后一段时间后又自动切回哨兵模式。设备的录像逻…</li>
 </ul>
 </details>
-  <div class="pnum">24</div>
+  <div class="pnum">25</div>
 </div>
 
 <div class="slide">
@@ -947,7 +1016,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像（原作答：远程查看后，哨兵模式更改为循环录像，远程查看场景按口径计未遇到）</li>
 </ul>
 </details>
-  <div class="pnum">25</div>
+  <div class="pnum">26</div>
 </div>
 
 <div class="slide">
@@ -974,7 +1043,7 @@ details.obddet li.scene::before { display:none; }
 <li>新能源停车情况，不熄火，没法判断。建议改进一下。</li>
 </ul>
 </details>
-  <div class="pnum">26</div>
+  <div class="pnum">27</div>
 </div>
 
 <div class="slide">
@@ -1001,7 +1070,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">27</div>
+  <div class="pnum">28</div>
 </div>
 
 <div class="slide">
@@ -1028,7 +1097,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">28</div>
+  <div class="pnum">29</div>
 </div>
 
 <div class="slide">
@@ -1078,7 +1147,7 @@ details.obddet li.scene::before { display:none; }
 <li>熄火后会关机，无此测试</li>
 </ul>
 </details>
-  <div class="pnum">29</div>
+  <div class="pnum">30</div>
 </div>
 
 <div class="slide">
@@ -1118,7 +1187,7 @@ details.obddet li.scene::before { display:none; }
             <li class="scene">📋 日常反馈（2026.9.22 ，远程查看哨兵进入循环录像）：远程实时查看的时候哨兵模式不应该自动转成循环录影，并且还录像，可以不录像</li>
 </ul>
 </details>
-  <div class="pnum">30</div>
+  <div class="pnum">31</div>
 </div>
 
 <div class="slide">
@@ -1168,7 +1237,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">31</div>
+  <div class="pnum">32</div>
 </div>
 
 <div class="slide">
@@ -1252,7 +1321,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">32</div>
+  <div class="pnum">33</div>
 </div>
 
 <div class="slide">
@@ -1280,7 +1349,7 @@ details.obddet li.scene::before { display:none; }
             <li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：刚刚从app点设备看见还是哨兵模式，但马上就切换成了循环录像。（第一次发现，不知道是必现还是偶现，暂时选择偶现）</li>
 </ul>
 </details>
-  <div class="pnum">33</div>
+  <div class="pnum">34</div>
 </div>
 
 <div class="slide">
@@ -1308,7 +1377,7 @@ details.obddet li.scene::before { display:none; }
             <li class="scene">📋 日常反馈（2026.9.23 ，AOV异常进入循环录像）：9月23日早上7:51启动车辆，记录仪语音提醒：你已连续驾驶4小时……，查看视频回看，循环视频从3时11分25秒开始的，缩时录影最后一段…</li>
 </ul>
 </details>
-  <div class="pnum">34</div>
+  <div class="pnum">35</div>
 </div>
 
 <div class="slide">
@@ -1335,7 +1404,7 @@ details.obddet li.scene::before { display:none; }
 <li class="hl">遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">35</div>
+  <div class="pnum">36</div>
 </div>
 
 <div class="slide">
@@ -1362,7 +1431,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">36</div>
+  <div class="pnum">37</div>
 </div>
 
 <div class="slide">
@@ -1412,7 +1481,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">37</div>
+  <div class="pnum">38</div>
 </div>
 
 <div class="slide">
@@ -1439,7 +1508,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">38</div>
+  <div class="pnum">39</div>
 </div>
 
 <div class="slide">
@@ -1466,7 +1535,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">39</div>
+  <div class="pnum">40</div>
 </div>
 
 <div class="slide">
@@ -1528,7 +1597,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">40</div>
+  <div class="pnum">41</div>
 </div>
 
 <div class="slide">
@@ -1611,7 +1680,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像（原作答：只是远程实时时会自动切换到循环录像，远程查看场景按口径计未遇到）</li>
 </ul>
 </details>
-  <div class="pnum">41</div>
+  <div class="pnum">42</div>
 </div>
 
 <div class="slide">
@@ -1638,7 +1707,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">42</div>
+  <div class="pnum">43</div>
 </div>
 
 <div class="slide">
@@ -1665,7 +1734,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">43</div>
+  <div class="pnum">44</div>
 </div>
 
 <div class="slide">
@@ -1692,7 +1761,7 @@ details.obddet li.scene::before { display:none; }
 <li class="hl">遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">44</div>
+  <div class="pnum">45</div>
 </div>
 
 <div class="slide">
@@ -1719,7 +1788,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像（原作答：打开app查看设备，录像会在哨兵和循环录像直角切换，远程查看场景按口径计未遇到）</li>
 </ul>
 </details>
-  <div class="pnum">45</div>
+  <div class="pnum">46</div>
 </div>
 
 <div class="slide">
@@ -1769,7 +1838,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">46</div>
+  <div class="pnum">47</div>
 </div>
 
 <div class="slide">
@@ -1819,7 +1888,7 @@ details.obddet li.scene::before { display:none; }
 <li>未遇到AOV异常进入循环录像</li>
 </ul>
 </details>
-  <div class="pnum">47</div>
+  <div class="pnum">48</div>
 </div>
 </div></div>
 <div id="hud">
@@ -1828,7 +1897,7 @@ details.obddet li.scene::before { display:none; }
   <button onclick="nav(1)">下一页 →</button>
 </div>
 <script>
-var BP = {"大众": 3, "丰田": 10, "吉利": 16, "奇瑞": 21, "比亚迪": 25, "奥迪": 28, "五菱": 30, "福特": 32, "东风": 34, "腾势": 35, "现代": 36, "凯迪拉克": 37, "哈弗": 38, "日产": 39, "本田": 40, "纳智捷": 41, "宝马": 42, "捷途": 43, "零跑": 44, "坦克": 45, "别克": 46, "红旗": 47};
+var BP = {"大众": 4, "丰田": 11, "吉利": 17, "奇瑞": 22, "比亚迪": 26, "奥迪": 29, "五菱": 31, "福特": 33, "东风": 35, "腾势": 36, "现代": 37, "凯迪拉克": 38, "哈弗": 39, "日产": 40, "本田": 41, "纳智捷": 42, "宝马": 43, "捷途": 44, "零跑": 45, "坦克": 46, "别克": 47, "红旗": 48};
 var slides = document.querySelectorAll('.slide');
 var cur = 0, loaded = {};
 function fit(){
