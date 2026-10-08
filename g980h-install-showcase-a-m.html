@@ -81,6 +81,9 @@ details.obddet .obdsum.ok { background:#12241a; border-left:4px solid #2BBD6E; }
 details.obddet .badline { color:#ff8a80; font-weight:700; }
 .obdline { font-size:12px; margin-top:6px; padding:5px 10px; border-radius:6px; display:inline-block; }
 .obd-none { background:#222; color:#999; }
+
+details.obddet li.scene { color:#888; font-size:11.5px; background:#1a1e1b; border-radius:6px; padding:5px 10px; margin:2px 0 2px 5px; }
+details.obddet li.scene::before { display:none; }
 </style>
 </head>
 <body>
@@ -273,7 +276,8 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li>锁车后：5分钟进入停车监控/缩时录影/哨兵模式</li>
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：18-24小时触发</li>
-<li>未遇到AOV异常进入循环录像</li>
+<li class="hl">遇到AOV异常进入循环录像（该档历史轮反馈遇到，最新一轮未再遇到）</li>
+<li class="scene">📋 日常反馈（9.24，哨兵模式自动切循环录像）：车辆已熄火，正常应该进入哨兵模式，现在一直是循环录像</li>
 </ul>
 <div class="gtitle">12.8V 标准 <span class="grnd">1轮</span></div>
 <div class="obdsum bad"><b>总体：12.8V 标准 —— <span class="badline">有异常</span></b></div>
@@ -285,6 +289,7 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：1小时内触发低压保护</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+<li class="scene">📋 日常反馈（9.24，哨兵模式自动切循环录像）：车辆已熄火，正常应该进入哨兵模式，现在一直是循环录像</li>
 </ul>
 <div class="gtitle">12.8V 兼容 <span class="grnd">2轮</span></div>
 <div class="obdsum bad"><b>总体：12.8V 兼容 —— <span class="badline">有异常</span></b></div>
@@ -365,6 +370,7 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：5-8小时触发</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+<li class="scene">📋 日常反馈（9.21，封面图录像状态显示错误）：停车熄火后准备远程查看，App显示循环录像，进去看发现是哨兵模式</li>
 </ul>
 </details></div><div class="ucard"><div class="uhead"><span class="uname">陶双</span><span class="ucar">SUV · 油车 · 2024-2025年购买</span></div><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/157_陶双_front.jpg" alt="陶双前挡位置图"></div><figcaption><b>前挡位置图</b><span>丰田｜油车｜SUV｜rav4｜2024-2025年｜陶双</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/158_陶双_obd.jpg" alt="陶双OBD走线图"></div><figcaption><b>OBD走线图</b><span>丰田｜油车｜SUV｜rav4｜2024-2025年｜陶双</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/159_陶双_rear.jpg" alt="陶双后录位置图"></div><figcaption><b>后录位置图</b><span>丰田｜油车｜SUV｜rav4｜2024-2025年｜陶双</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/160_陶双_live.jpg" alt="陶双实时画面"></div><figcaption><b>实时画面</b><span>丰田｜油车｜SUV｜rav4｜2024-2025年｜陶双</span></figcaption></figure>
 <details class="obddet" open><summary>OBD测试详情</summary>
@@ -377,6 +383,7 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：8-12小时触发</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+<li class="scene">📋 日常反馈（2026.9.29 ，哨兵模式自动切循环录像）：停车监控与循环录像模式来回切换，无形中会导致耗电量的增加，通过回看事件12:33出现哨兵模式的事件，12:41打开app发现记录仪还是循…</li>
 </ul>
 </details></div></section><section id="b2" class="brand"><div class="bhead"><h2>吉利</h2><span class="bcount">5位用户</span></div><div class="ucard"><div class="uhead"><span class="uname">刘晓顺</span><span class="ucar">轿车 · 纯电 · 2026年1月及之后购买</span></div><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/045_刘晓顺_front.jpg" alt="刘晓顺前挡位置图"></div><figcaption><b>前挡位置图</b><span>吉利｜纯电｜轿车｜吉利熊猫元气熊｜2026年1月及之后｜刘晓顺</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/045_刘晓顺_obd.jpg" alt="刘晓顺OBD走线图"></div><figcaption><b>OBD走线图</b><span>吉利｜纯电｜轿车｜吉利熊猫元气熊｜2026年1月及之后｜刘晓顺</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/045_刘晓顺_rear.jpg" alt="刘晓顺后录位置图"></div><figcaption><b>后录位置图</b><span>吉利｜纯电｜轿车｜吉利熊猫元气熊｜2026年1月及之后｜刘晓顺</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/045_刘晓顺_live.jpg" alt="刘晓顺实时画面"></div><figcaption><b>实时画面</b><span>吉利｜纯电｜轿车｜吉利熊猫元气熊｜2026年1月及之后｜刘晓顺</span></figcaption></figure>
 <details class="obddet" open><summary>OBD测试详情</summary>
@@ -389,6 +396,7 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li class="hl">仅解锁车门：其他，请注明〖解锁车辆会退出哨兵模式〗</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖16小时〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+<li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：车一直在停放锁车状态下，哨兵模式自动进入循环录像</li>
 </ul>
 </details></div><div class="ucard"><div class="uhead"><span class="uname">张明明</span><span class="ucar">SUV · 纯电 · 2023-2024年购买</span></div><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/097_张明明_front.jpg" alt="张明明前挡位置图"></div><figcaption><b>前挡位置图</b><span>吉利｜纯电｜SUV｜熊猫mini｜2023-2024年｜张明明</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/098_张明明_obd.jpg" alt="张明明OBD走线图"></div><figcaption><b>OBD走线图</b><span>吉利｜纯电｜SUV｜熊猫mini｜2023-2024年｜张明明</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/099_张明明_rear.jpg" alt="张明明后录位置图"></div><figcaption><b>后录位置图</b><span>吉利｜纯电｜SUV｜熊猫mini｜2023-2024年｜张明明</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/100_张明明_live.jpg" alt="张明明实时画面"></div><figcaption><b>实时画面</b><span>吉利｜纯电｜SUV｜熊猫mini｜2023-2024年｜张明明</span></figcaption></figure>
 <details class="obddet" open><summary>OBD测试详情</summary>
@@ -401,6 +409,7 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li class="hl">仅解锁车门：某次解锁车门时，突然听到记录仪异常播报退出停车监控/缩时录影模式/记录仪开机音乐</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖最迟大概36-40个小时〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+<li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：AOV哨兵模式自动切循环录像，期间未充电，未做任何操作，车辆为熊猫mini纯电，OBD降压线低压保护设置：11.8V，工作模式：兼容。记…</li>
 </ul>
 </details></div><div class="ucard"><div class="uhead"><span class="uname">汪杨</span><span class="ucar">轿车 · 油车 · 2021年及之前购买</span></div><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/085_汪杨_front.jpg" alt="汪杨前挡位置图"></div><figcaption><b>前挡位置图</b><span>吉利｜油车｜轿车｜帝豪手动向上｜2021年及之前｜汪杨</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/086_汪杨_obd.jpg" alt="汪杨OBD走线图"></div><figcaption><b>OBD走线图</b><span>吉利｜油车｜轿车｜帝豪手动向上｜2021年及之前｜汪杨</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/087_汪杨_rear.jpg" alt="汪杨后录位置图"></div><figcaption><b>后录位置图</b><span>吉利｜油车｜轿车｜帝豪手动向上｜2021年及之前｜汪杨</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/088_汪杨_live.jpg" alt="汪杨实时画面"></div><figcaption><b>实时画面</b><span>吉利｜油车｜轿车｜帝豪手动向上｜2021年及之前｜汪杨</span></figcaption></figure>
 <details class="obddet" open><summary>OBD测试详情（2个开关档位）</summary>
@@ -543,6 +552,7 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：18-24小时触发</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+<li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：哨兵模式下查看卡内录像，发现是在循环录像状态，切回首页状态从哨兵模式转换为了循环录像模式，而后一段时间后又自动切回哨兵模式。设备的录像逻…</li>
 </ul>
 </details></div></section><section id="b4" class="brand"><div class="bhead"><h2>比亚迪</h2><span class="bcount">3位用户</span></div><div class="ucard"><div class="uhead"><span class="uname">温开礼</span><span class="ucar">SUV · 混合动力 · 2021-2023年购买</span></div><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/045_温开礼_front.jpg" alt="温开礼前挡位置图"></div><figcaption><b>前挡位置图</b><span>比亚迪｜混合动力｜SUV｜唐DM｜2021-2023年｜温开礼</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/046_温开礼_obd.jpg" alt="温开礼OBD走线图"></div><figcaption><b>OBD走线图</b><span>比亚迪｜混合动力｜SUV｜唐DM｜2021-2023年｜温开礼</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/047_温开礼_rear.jpg" alt="温开礼后录位置图"></div><figcaption><b>后录位置图</b><span>比亚迪｜混合动力｜SUV｜唐DM｜2021-2023年｜温开礼</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/048_温开礼_live.jpg" alt="温开礼实时画面"></div><figcaption><b>实时画面</b><span>比亚迪｜混合动力｜SUV｜唐DM｜2021-2023年｜温开礼</span></figcaption></figure>
 <details class="obddet" open><summary>OBD测试详情</summary>
@@ -638,7 +648,8 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li>锁车后：3分钟进入停车监控/缩时录影/哨兵模式</li>
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖13个小时〗</li>
-<li>未遇到AOV异常进入循环录像</li>
+<li class="hl">遇到AOV异常进入循环录像（该档历史轮反馈遇到，最新一轮未再遇到）</li>
+<li class="scene">📋 日常反馈（2026.9.22 ，远程查看哨兵进入循环录像）：远程实时查看的时候哨兵模式不应该自动转成循环录影，并且还录像，可以不录像</li>
 </ul>
 <div class="gtitle">12.2V 兼容 <span class="grnd">3轮</span></div>
 <div class="obdsum ok"><b>总体：12.2V 兼容 —— 无异常</b></div>
@@ -709,6 +720,7 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖理士45安电瓶11.8V，最长测试了43小时未保护，参考测试12.2V，90个小时多，还没触发保护，设置11.8V保护理论不会低于90小时续航〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+<li class="scene">📋 日常反馈（9.21，封面图录像状态显示错误）：APP显示的记录仪状态不对，多次刷新都显示循环录像，远程查看确认是哨兵模式</li>
 </ul>
 <div class="gtitle">12.2V 标准 <span class="grnd">1轮</span></div>
 <div class="obdsum ok"><b>总体：12.2V 标准 —— 无异常</b></div>
@@ -765,6 +777,7 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li>仅解锁车门：其他，请注明〖出现过：未听见播报声音，但看见屏幕显示紧急录像〗</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖15小时〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+<li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：刚刚从app点设备看见还是哨兵模式，但马上就切换成了循环录像。（第一次发现，不知道是必现还是偶现，暂时选择偶现）</li>
 </ul>
 </details></div></section><section id="b8" class="brand"><div class="bhead"><h2>东风</h2><span class="bcount">1位用户</span></div><div class="ucard"><div class="uhead"><span class="uname">丁政涛</span><span class="ucar">SUV · 纯电 · 2021-2023年购买</span></div><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/081_丁政涛_front.jpg" alt="丁政涛前挡位置图"></div><figcaption><b>前挡位置图</b><span>东风｜纯电｜SUV｜EX1por｜2021-2023年｜丁政涛</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/082_丁政涛_obd.jpg" alt="丁政涛OBD走线图"></div><figcaption><b>OBD走线图</b><span>东风｜纯电｜SUV｜EX1por｜2021-2023年｜丁政涛</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/083_丁政涛_rear.jpg" alt="丁政涛后录位置图"></div><figcaption><b>后录位置图</b><span>东风｜纯电｜SUV｜EX1por｜2021-2023年｜丁政涛</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/084_丁政涛_live.jpg" alt="丁政涛实时画面"></div><figcaption><b>实时画面</b><span>东风｜纯电｜SUV｜EX1por｜2021-2023年｜丁政涛</span></figcaption></figure>
 <details class="obddet" open><summary>OBD测试详情</summary>
@@ -777,6 +790,7 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li>仅解锁车门：其他，请注明〖触发车辆异动，录完自动关屏，语音提示：360记录仪持续工作中。〗</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖目前只触发7小时左右一次，昨天17小时只切换循环录像，没触发离线。〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+<li class="scene">📋 日常反馈（2026.9.23 ，AOV异常进入循环录像）：9月23日早上7:51启动车辆，记录仪语音提醒：你已连续驾驶4小时……，查看视频回看，循环视频从3时11分25秒开始的，缩时录影最后一段…</li>
 </ul>
 </details></div></section><section id="b9" class="brand"><div class="bhead"><h2>腾势</h2><span class="bcount">1位用户</span></div><div class="ucard"><div class="uhead"><span class="uname">公海军</span><span class="ucar">SUV · 纯电 · 2025-2026年购买</span></div><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/061_公海军_front.jpg" alt="公海军前挡位置图"></div><figcaption><b>前挡位置图</b><span>腾势｜纯电｜SUV｜N8｜2025-2026年｜公海军</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/062_公海军_obd.jpg" alt="公海军OBD走线图"></div><figcaption><b>OBD走线图</b><span>腾势｜纯电｜SUV｜N8｜2025-2026年｜公海军</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/063_公海军_rear.jpg" alt="公海军后录位置图"></div><figcaption><b>后录位置图</b><span>腾势｜纯电｜SUV｜N8｜2025-2026年｜公海军</span></figcaption></figure><figure><div class="imgwrap"><img loading="lazy" data-src="g980h-install-media-v2/064_公海军_live.jpg" alt="公海军实时画面"></div><figcaption><b>实时画面</b><span>腾势｜纯电｜SUV｜N8｜2025-2026年｜公海军</span></figcaption></figure>
 <details class="obddet" open><summary>OBD测试详情</summary>
@@ -873,6 +887,7 @@ details.obddet .badline { color:#ff8a80; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖50小时〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+<li class="scene">📋 日常反馈（2026.9.20 ，远程查看哨兵进入循环录像）：进入记录仪主页发现显示是循环录像</li>
 </ul>
 <div class="gtitle">12.8V 标准 <span class="grnd">2轮</span></div>
 <div class="obdsum ok"><b>总体：12.8V 标准 —— 无异常</b></div>

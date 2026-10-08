@@ -82,6 +82,9 @@ details.obddet .obdsum.ok { background:#e8f7ee; border-left:4px solid #00B050; }
 details.obddet .badline { color:#E74C3C; font-weight:700; }
 .obdline { font-size:13px; margin-top:6px; padding:6px 12px; border-radius:6px; display:inline-block; }
 .obd-none { background:#f0f0f0; color:#999; }
+
+details.obddet li.scene { color:#555; font-size:12.5px; background:#f7f7f9; border-radius:6px; padding:5px 10px; margin:2px 0 2px 15px; }
+details.obddet li.scene::before { display:none; }
 </style>
 </head>
 <body>
@@ -470,6 +473,7 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：1小时内触发低压保护</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+            <li class="scene">📋 日常反馈（9.24，哨兵模式自动切循环录像）：车辆已熄火，正常应该进入哨兵模式，现在一直是循环录像</li>
 </ul>
 <div class="gtitle">12.8V 兼容 <span class="grnd">2轮</span></div>
 <div class="obdsum bad"><b>总体：12.8V 兼容 —— <span class="badline">有异常</span></b></div>
@@ -480,7 +484,8 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li>锁车后：5分钟进入停车监控/缩时录影/哨兵模式</li>
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：2-5小时触发</li>
-<li>未遇到AOV异常进入循环录像</li>
+<li class="hl">遇到AOV异常进入循环录像（该档历史轮反馈遇到，最新一轮未再遇到）</li>
+            <li class="scene">📋 日常反馈（9.24，哨兵模式自动切循环录像）：车辆已熄火，正常应该进入哨兵模式，现在一直是循环录像</li>
 </ul>
 <div class="gtitle">12.2V 兼容 <span class="grnd">1轮</span></div>
 <div class="obdsum ok"><b>总体：12.2V 兼容 —— 无异常</b></div>
@@ -580,6 +585,7 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：5-8小时触发</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+            <li class="scene">📋 日常反馈（9.21，封面图录像状态显示错误）：停车熄火后准备远程查看，App显示循环录像，进去看发现是哨兵模式</li>
 </ul>
 </details>
   <div class="pnum">14</div>
@@ -607,6 +613,7 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：8-12小时触发</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+            <li class="scene">📋 日常反馈（2026.9.29 ，哨兵模式自动切循环录像）：停车监控与循环录像模式来回切换，无形中会导致耗电量的增加，通过回看事件12:33出现哨兵模式的事件，12:41打开app发现记录仪还是循…</li>
 </ul>
 </details>
   <div class="pnum">15</div>
@@ -634,6 +641,7 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li class="hl">仅解锁车门：其他，请注明〖解锁车辆会退出哨兵模式〗</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖16小时〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+            <li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：车一直在停放锁车状态下，哨兵模式自动进入循环录像</li>
 </ul>
 </details>
   <div class="pnum">16</div>
@@ -661,6 +669,7 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li class="hl">仅解锁车门：某次解锁车门时，突然听到记录仪异常播报退出停车监控/缩时录影模式/记录仪开机音乐</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖最迟大概36-40个小时〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+            <li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：AOV哨兵模式自动切循环录像，期间未充电，未做任何操作，车辆为熊猫mini纯电，OBD降压线低压保护设置：11.8V，工作模式：兼容。记…</li>
 </ul>
 </details>
   <div class="pnum">17</div>
@@ -908,6 +917,7 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：18-24小时触发</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+            <li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：哨兵模式下查看卡内录像，发现是在循环录像状态，切回首页状态从哨兵模式转换为了循环录像模式，而后一段时间后又自动切回哨兵模式。设备的录像逻…</li>
 </ul>
 </details>
   <div class="pnum">24</div>
@@ -1104,7 +1114,8 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li>锁车后：3分钟进入停车监控/缩时录影/哨兵模式</li>
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：2-5小时触发</li>
-<li>未遇到AOV异常进入循环录像</li>
+<li class="hl">遇到AOV异常进入循环录像（该档历史轮反馈遇到，最新一轮未再遇到）</li>
+            <li class="scene">📋 日常反馈（2026.9.22 ，远程查看哨兵进入循环录像）：远程实时查看的时候哨兵模式不应该自动转成循环录影，并且还录像，可以不录像</li>
 </ul>
 </details>
   <div class="pnum">30</div>
@@ -1194,6 +1205,7 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖理士45安电瓶11.8V，最长测试了43小时未保护，参考测试12.2V，90个小时多，还没触发保护，设置11.8V保护理论不会低于90小时续航〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+            <li class="scene">📋 日常反馈（9.21，封面图录像状态显示错误）：APP显示的记录仪状态不对，多次刷新都显示循环录像，远程查看确认是哨兵模式</li>
 </ul>
 <div class="gtitle">12.2V 标准 <span class="grnd">1轮</span></div>
 <div class="obdsum ok"><b>总体：12.2V 标准 —— 无异常</b></div>
@@ -1265,6 +1277,7 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li>仅解锁车门：其他，请注明〖出现过：未听见播报声音，但看见屏幕显示紧急录像〗</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖15小时〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+            <li class="scene">📋 日常反馈（2026.9.24 ，哨兵模式自动切循环录像）：刚刚从app点设备看见还是哨兵模式，但马上就切换成了循环录像。（第一次发现，不知道是必现还是偶现，暂时选择偶现）</li>
 </ul>
 </details>
   <div class="pnum">33</div>
@@ -1292,6 +1305,7 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li>仅解锁车门：其他，请注明〖触发车辆异动，录完自动关屏，语音提示：360记录仪持续工作中。〗</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖目前只触发7小时左右一次，昨天17小时只切换循环录像，没触发离线。〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+            <li class="scene">📋 日常反馈（2026.9.23 ，AOV异常进入循环录像）：9月23日早上7:51启动车辆，记录仪语音提醒：你已连续驾驶4小时……，查看视频回看，循环视频从3时11分25秒开始的，缩时录影最后一段…</li>
 </ul>
 </details>
   <div class="pnum">34</div>
@@ -1478,6 +1492,7 @@ details.obddet .badline { color:#E74C3C; font-weight:700; }
 <li>仅解锁车门：仅解锁车门，记录仪继续保持停车监控/缩时录影/哨兵模式</li>
 <li>低压保护：目前停车时间短，未触发过低压保护〖50小时〗</li>
 <li class="hl">遇到AOV异常进入循环录像</li>
+            <li class="scene">📋 日常反馈（2026.9.20 ，远程查看哨兵进入循环录像）：进入记录仪主页发现显示是循环录像</li>
 </ul>
 <div class="gtitle">12.8V 标准 <span class="grnd">2轮</span></div>
 <div class="obdsum ok"><b>总体：12.8V 标准 —— 无异常</b></div>
