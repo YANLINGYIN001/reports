@@ -57,7 +57,15 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
   .kpi-grid { grid-template-columns:repeat(2,1fr); }
   .cat-cards { grid-template-columns:repeat(3,1fr); }
 }
+
+.kpi-label{font-size:13px;color:#999;margin-bottom:6px;}
+.kpi-value{font-size:30px;font-weight:700;color:#E74C3C;line-height:1.2;}
+.kpi-sub{font-size:12px;color:#999;margin-top:6px;}
+.kpi-item{font-size:16px;font-weight:700;color:#333;padding:3px 0;text-align:left;}
+.kpi-delta{color:#E74C3C;font-size:13px;font-weight:600;}
+.kpi-none{color:#00B050;font-size:13px;font-weight:600;}
 </style>
+
 </head>
 <body>
 <div class="container">
@@ -73,9 +81,18 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 </div>
 
 <div class="kpi-grid">
-  <div class="kpi-card"><div class="label">反馈问题总数(累计)</div><div class="value">71</div><div class="delta up">较昨日 +8 条</div><div class="sub">4渠道:京东自营43 · 有赞16 · APP7 · 私域5</div></div>
-  <div class="kpi-card"><div class="label">Top问题类型(按二级标签·累计)</div><div class="value kpi-item" style="font-size:13.5px">是否无需WiFi使用咨询 <span class="n">5</span> 条<br>流量后续是否收费咨询 <span class="n">4</span> 条<br>夜视不切换全彩 <span class="n">3</span> 条<br>一键呼叫按键无响应 <span class="n">3</span> 条<br>卡录存储时长/插电使用 <span class="n">各3</span> 条</div><div class="delta up">免WiFi/插电/流量为最高频认知咨询</div></div>
-  <div class="kpi-card"><div class="label">疑似缺陷(累计)</div><div class="value kpi-item" style="font-size:13.5px">夜视不切换全彩 <span class="n">3</span> 条<br>内存卡不识别 <span class="n">2</span> 条<br>设备离线 <span class="n">2</span> 条<br>其余10类型 <span class="n">各1</span> 条</div><div class="delta zero">今日零新增 · 连续两日无再现</div></div>
+  <div class="kpi-card"><div class="kpi-label">累计反馈问题</div><div class="kpi-value">71</div><div class="kpi-sub">较 Day15（63 条）+8</div></div>
+  <div class="kpi-card"><div class="kpi-label">Top3 问题（累计条数 · 本期新增）</div>
+  <div class="kpi-item">是否无需WiFi使用咨询 <span style="color:#999;font-weight:400;">5条</span> <span class="kpi-delta">+1</span></div>
+  <div class="kpi-item">流量后续是否收费咨询 <span style="color:#999;font-weight:400;">4条</span> <span class="kpi-delta">+2</span></div>
+  <div class="kpi-item">卡录存储时长咨询 <span style="color:#999;font-weight:400;">3条</span> <span class="kpi-none">持平</span></div>
+  <div class="kpi-sub">按问题类型反馈量；疑似缺陷类不在此列，单独呈现于右侧</div></div>
+  <div class="kpi-card"><div class="kpi-label">疑似缺陷（累计 17 条 · 本期新增 0 条）</div>
+  <div class="kpi-item" style="font-size:14px">夜视不切换全彩 <span style="color:#999;font-weight:400;">累计3条</span> <span class="kpi-none">持平</span></div>
+  <div class="kpi-item" style="font-size:14px">内存卡不识别 <span style="color:#999;font-weight:400;">累计2条</span> <span class="kpi-none">持平</span></div>
+  <div class="kpi-item" style="font-size:14px">设备离线 <span style="color:#999;font-weight:400;">累计2条</span> <span class="kpi-none">持平</span></div>
+  <div class="kpi-item" style="font-size:14px">其余 10 类各 1 条 <span class="kpi-none">持平</span></div>
+  <div class="kpi-sub">连续两日零新增，故障面保持平稳</div></div>
 </div>
 
 <div class="section">
