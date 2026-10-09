@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>封面图及视频时长统计分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1400px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:40px 30px;border-radius:12px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,176,80,.15)}
+.header h1{font-size:28px;font-weight:700;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:.9}
+.header .meta{margin-top:16px;font-size:13px;opacity:.85;display:flex;gap:24px;flex-wrap:wrap}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;border-radius:10px;padding:24px 20px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-left:4px solid #00B050}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:26px;font-weight:700;color:#E74C3C}
+.kpi-card .sub{font-size:12px;color:#999;margin-top:6px}
+.kpi-card.highlight{border-left-color:#F39C12}
+.section{background:#fff;border-radius:10px;padding:28px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.section h2{font-size:20px;font-weight:700;color:#333;margin-bottom:6px;padding-bottom:12px;border-bottom:2px solid #f0f0f0}
+.section h2 .num{color:#00B050;margin-right:8px}
+.section .desc{font-size:13px;color:#999;margin-bottom:12px}
+.chart-box{width:100%;height:400px;margin-top:10px}
+.chart-box.tall{height:480px}
+.chart-box.short{height:300px}
+.insight-box{background:linear-gradient(135deg,#f0fdf4,#e8f5e9);border-left:4px solid #00B050;border-radius:8px;padding:20px;margin:16px 0}
+.insight-box .title{font-weight:700;color:#00B050;margin-bottom:8px;font-size:15px}
+.insight-box p{font-size:14px;color:#555;line-height:1.8}
+.insight-box.alert{background:#fef5f5;border-left-color:#E74C3C}
+.insight-box.alert .title{color:#E74C3C}
+.r6pro4g-banner{background:linear-gradient(135deg,#fff3cd,#ffe082);border:2px solid #F39C12;border-radius:10px;padding:20px;margin:16px 0}
+.r6pro4g-banner h3{color:#F39C12;font-size:16px;margin-bottom:10px}
+.r6pro4g-banner .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:12px}
+.r6pro4g-banner .stat-item{background:#fff;border-radius:8px;padding:12px;text-align:center}
+.r6pro4g-banner .stat-item .v{font-size:20px;font-weight:700;color:#E74C3C}
+.r6pro4g-banner .stat-item .l{font-size:12px;color:#999;margin-top:4px}
+.footer{text-align:center;color:#999;font-size:12px;padding:20px 0}
+.formula{background:#f8f9fa;border-radius:6px;padding:10px 14px;font-size:13px;color:#666;margin:8px 0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>📊 封面图及视频时长统计分析报告（10.1–10.8）</h1>
+  <div class="subtitle">门铃品类 · 16款型号 · 4大区 · 10-1 – 10-8</div>
+  <div class="meta">
+    <span>📅 数据周期：2026-10-01 ~ 2026-10-08（7个数据日，10-6数据缺失已剔除）</span>
+    <span>📁 数据来源：封面图及视频时长统计_10-09</span>
+    <span>📦 数据量：231条记录</span>
+    <span>⚠️ 重点关注：R6 PRO 4G</span>
+  </div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="label">累计事件总数</div><div class="value">2.52亿</div><div class="sub">16款型号7个数据日合计</div></div>
+  <div class="kpi-card"><div class="label">整体封面图缺失率</div><div class="value">1.65%</div><div class="sub">上期1.67%，基本持平</div></div>
+  <div class="kpi-card highlight"><div class="label">R6 PRO 4G 缺失率</div><div class="value">3.90%</div><div class="sub">较上期6.54%下降2.64pct</div></div>
+  <div class="kpi-card"><div class="label">视频时长分布</div><div class="value">29.03%</div><div class="sub">6-15s占比最高，0-6s占9.47%，15s+占21.67%</div></div>
+</div>
+
+
+<div class="section" style="border-left:4px solid #00B050">
+  <h2>📌 报告总结</h2>
+  <div style="padding:8px 0">
+    <p style="font-size:14px;color:#555;line-height:2">
+    本报告基于2026-10-01 ~ 2026-10-08门铃品类16款型号、4大区的封面图及视频时长数据（10-6数据缺失已剔除，共7个数据日），累计事件2.52亿。<br>
+    <b>核心发现：</b><br>
+    1️⃣ <b>R6 PRO 4G封面图缺失率显著收敛</b>——本期3.90%，较上期（9.1-9.7）6.54%下降2.64pct，但仍为整体均值（1.65%）的2.4倍，居16款型号之首。同为4G型号的R5Pro-4G为1.76%，差距缩小。<br>
+    2️⃣ <b>R6 PRO 4G的0-6s短时频占比大幅回落至1.29%</b>（上期19.88%），短时长异常基本消除，侧面印证封面图生成链路修复效果。<br>
+    3️⃣ 按日看，缺失率仍在2.67%-4.89%区间波动，10-8回升至4.89%（事件量同时放大至1.65万/日），需持续观察事件量放大后的缺失表现。<br>
+    <b>建议：</b>保持按周跟踪R6 PRO 4G收敛情况，重点关注事件量爬升期的缺失率稳定性。
+    </p>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="num">1</span>各型号封面图缺失率</h2>
+  <div class="formula">计算公式：周期内累计无封面图事件数 / 周期内累计事件总数 · 较上期（9.1-9.7）变化以箭头标注</div>
+  <div id="chart_model_nocover" class="chart-box tall"></div>
+  <div class="insight-box">
+    <div class="title">📊 缺失率洞察</div>
+    <p>• R6 PRO 4G缺失率3.90%仍居首，但较上期6.54%明显收敛；R810SE 3.28%升至第二（上期0.93%），海外门铃需关注<br>• R6 PRO 2.80%与R6-5MP 2.55%与上期基本持平<br>• R5Pro-4G 1.76%（上期2.08%），4G型号整体改善</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="num">2</span>各型号0-6s视频占比</h2>
+  <div class="formula">计算公式：周期内累计0-6s事件数 / 周期内累计事件总数</div>
+  <div id="chart_model_d06" class="chart-box tall"></div>
+  <div class="insight-box">
+    <div class="title">📊 短时长洞察</div>
+    <p>• R6 0-6s占比28.74%居首（上期29.52%持平），属老款门铃固有特性，非本期异常<br>• R6 PRO 4G 1.29%，较上期19.88%大幅回落，短时长异常基本消除<br>• 门锁类短时长问题不在本报告口径内（本报告仅门铃品类）</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="num">3</span>R6 PRO 4G 专项分析</h2>
+  <div class="r6pro4g-banner">
+    <h3>🔔 R6 PRO 4G 关键指标（本期 vs 上期）</h3>
+    <div class="stat-grid">
+      <div class="stat-item"><div class="v">3.90%</div><div class="l">缺失率（上期6.54%↓）</div></div>
+      <div class="stat-item"><div class="v">1.29%</div><div class="l">0-6s占比（上期19.88%↓）</div></div>
+      <div class="stat-item"><div class="v">61,301</div><div class="l">累计事件（上期64,415）</div></div>
+      <div class="stat-item"><div class="v">2.4倍</div><div class="l">缺失率/整体均值</div></div>
+    </div>
+  </div>
+  <div class="formula">按日缺失率与0-6s占比走势（10-6数据缺失已剔除）</div>
+  <div id="chart_r6_daily" class="chart-box"></div>
+  <div class="insight-box">
+    <div class="title">📊 专项洞察</div>
+    <p>• 缺失率按日在2.67%-4.89%波动，未再出现上期8%+的尖峰<br>• 0-6s占比从上期的11%-25%区间回落至0.7%-2.4%区间，短时长异常基本消除<br>• 事件量后半周明显爬升（10-7起1.1万+/日，10-8达1.65万），10-8缺失率同步回升至4.89%，需关注量升后的稳定性</p>
+  </div>
+</div>
+
+<div class="footer">封面图及视频时长统计分析报告 · 2026-10-09 · 🦞 · 数据源：封面图及视频时长统计_2026-10-09 · 门铃品类16款型号 · 10-6数据缺失已剔除 · 对比基线：2026-09-01~09-07期报告</div>
+</div>
+
+<script>
+var ALL={"model_summary": {"R5 MAX": {"events": 107151020, "nocover": 1536505, "nocover_pct": 1.43, "d06_pct": 11.31, "d15_pct": 14.23, "d15plus_pct": 11.66}, "R6 PRO": {"events": 60520135, "nocover": 1694099, "nocover_pct": 2.8, "d06_pct": 6.02, "d15_pct": 36.76, "d15plus_pct": 35.89}, "R6 MAX": {"events": 21674561, "nocover": 277354, "nocover_pct": 1.28, "d06_pct": 11.57, "d15_pct": 14.44, "d15plus_pct": 11.32}, "R5 Pro": {"events": 16313579, "nocover": 217728, "nocover_pct": 1.33, "d06_pct": 3.48, "d15_pct": 63.82, "d15plus_pct": 29.07}, "R6": {"events": 12191750, "nocover": 18585, "nocover_pct": 0.15, "d06_pct": 28.74, "d15_pct": 45.85, "d15plus_pct": 23.21}, "R6-5MP": {"events": 7716950, "nocover": 197125, "nocover_pct": 2.55, "d06_pct": 11.43, "d15_pct": 25.91, "d15plus_pct": 42.23}, "R4 PRO": {"events": 6074912, "nocover": 3701, "nocover_pct": 0.06, "d06_pct": 1.88, "d15_pct": 55.9, "d15plus_pct": 25.86}, "CS2": {"events": 3721335, "nocover": 884, "nocover_pct": 0.02, "d06_pct": 0.17, "d15_pct": 50.56, "d15plus_pct": 42.94}, "R5Pro-4G": {"events": 3216070, "nocover": 56491, "nocover_pct": 1.76, "d06_pct": 5.9, "d15_pct": 64.89, "d15plus_pct": 26.26}, "R811": {"events": 4174290, "nocover": 40575, "nocover_pct": 0.97, "d06_pct": 3.34, "d15_pct": 48.14, "d15plus_pct": 29.1}, "R811S": {"events": 2617285, "nocover": 20761, "nocover_pct": 0.79, "d06_pct": 2.17, "d15_pct": 61.69, "d15plus_pct": 15.76}, "R810SE": {"events": 2178127, "nocover": 71398, "nocover_pct": 3.28, "d06_pct": 2.44, "d15_pct": 77.32, "d15plus_pct": 16.0}, "R810": {"events": 2082185, "nocover": 17750, "nocover_pct": 0.85, "d06_pct": 1.9, "d15_pct": 44.96, "d15plus_pct": 28.13}, "AR3X": {"events": 1645914, "nocover": 2008, "nocover_pct": 0.12, "d06_pct": 0.23, "d15_pct": 25.9, "d15plus_pct": 20.97}, "R4 Pro": {"events": 737634, "nocover": 617, "nocover_pct": 0.08, "d06_pct": 5.98, "d15_pct": 66.61, "d15plus_pct": 24.2}, "R6 PRO 4G": {"events": 61301, "nocover": 2389, "nocover_pct": 3.9, "d06_pct": 1.29, "d15_pct": 48.83, "d15plus_pct": 35.03}}, "overall": {"events": 252077048, "nocover": 4157970, "nocover_pct": 1.65, "d06_pct": 9.47, "d15_pct": 29.03, "d15plus_pct": 21.67}, "r6_daily": {"2026-10-01": {"events": 6751, "nocover": 253, "nocover_pct": 3.75, "d06_pct": 0.68, "d15_pct": 50.76, "d15plus_pct": 33.95}, "2026-10-02": {"events": 6412, "nocover": 241, "nocover_pct": 3.76, "d06_pct": 0.76, "d15_pct": 49.83, "d15plus_pct": 34.67}, "2026-10-03": {"events": 5759, "nocover": 242, "nocover_pct": 4.2, "d06_pct": 0.71, "d15_pct": 48.53, "d15plus_pct": 35.63}, "2026-10-04": {"events": 7146, "nocover": 300, "nocover_pct": 4.2, "d06_pct": 1.09, "d15_pct": 47.75, "d15plus_pct": 35.84}, "2026-10-05": {"events": 7440, "nocover": 199, "nocover_pct": 2.67, "d06_pct": 0.93, "d15_pct": 48.19, "d15plus_pct": 35.56}, "2026-10-07": {"events": 11244, "nocover": 344, "nocover_pct": 3.06, "d06_pct": 1.03, "d15_pct": 46.64, "d15plus_pct": 36.56}, "2026-10-08": {"events": 16549, "nocover": 810, "nocover_pct": 4.89, "d06_pct": 2.38, "d15_pct": 50.02, "d15plus_pct": 33.78}}, "dates": ["2026-10-01", "2026-10-02", "2026-10-03", "2026-10-04", "2026-10-05", "2026-10-07", "2026-10-08"]};
+var MS=ALL.model_summary,OVR=ALL.overall,R6D=ALL.r6_daily,DATES=ALL.dates;
+var R6_DATES=Object.keys(R6D);
+var R6_NC=R6_DATES.map(function(d){return R6D[d].nocover_pct});
+var R6_D06=R6_DATES.map(function(d){return R6D[d].d06_pct});
+var R6_EV=R6_DATES.map(function(d){return R6D[d].events});
+
+function fmt(n){return n>=1e8?(n/1e8).toFixed(2)+'亿':n>=1e4?(n/4).toFixed(0)+'万*4':n.toLocaleString()}
+function fmtPct(n){return n.toFixed(2)+'%'}
+var palette=['#00B050','#2BBD6E','#3498db','#9b59b6','#1abc9c','#e67e22','#34495e','#7f8c8d','#f1c40f','#e91e63','#00bcd4','#8bc34a','#cddc39','#ff5722','#607d8b','#e91e63'];
+
+var msNc=Object.keys(MS).sort(function(a,b){return MS[b].nocover_pct-MS[a].nocover_pct});
+echarts.init(document.getElementById('chart_model_nocover')).setOption({
+  tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+fmtPct(p[0].value)}},
+  xAxis:{type:'value',axisLabel:{formatter:'{value}%'},max:5},
+  yAxis:{type:'category',data:msNc.slice().reverse(),axisLabel:{fontSize:11}},
+  grid:{left:90,right:30,top:10,bottom:30},
+  series:[{type:'bar',data:msNc.slice().reverse().map(function(m){return MS[m].nocover_pct}),
+    itemStyle:{color:function(p){return msNc.slice().reverse()[p.dataIndex]==='R6 PRO 4G'?'#F39C12':'#00B050'}},
+    label:{show:true,position:'right',formatter:function(p){return fmtPct(p.value)},fontSize:10},
+    markLine:{xAxis:OVR.nocover_pct,lineStyle:{color:'#E74C3C',type:'dashed'},label:{formatter:'整体 '+OVR.nocover_pct+'%',color:'#E74C3C',fontSize:10}}}]
+});
+
+var msD06=Object.keys(MS).sort(function(a,b){return MS[b].d06_pct-MS[a].d06_pct});
+echarts.init(document.getElementById('chart_model_d06')).setOption({
+  tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+fmtPct(p[0].value)}},
+  xAxis:{type:'value',axisLabel:{formatter:'{value}%'},max:32},
+  yAxis:{type:'category',data:msD06.slice().reverse(),axisLabel:{fontSize:11}},
+  grid:{left:90,right:30,top:10,bottom:30},
+  series:[{type:'bar',data:msD06.slice().reverse().map(function(m){return MS[m].d06_pct}),
+    itemStyle:{color:function(p){return msD06.slice().reverse()[p.dataIndex]==='R6 PRO 4G'?'#F39C12':'#2BBD6E'}},
+    label:{show:true,position:'right',formatter:function(p){return fmtPct(p.value)},fontSize:10},
+    markLine:{xAxis:OVR.d06_pct,lineStyle:{color:'#E74C3C',type:'dashed'},label:{formatter:'整体 '+OVR.d06_pct+'%',color:'#E74C3C',fontSize:10}}}]
+});
+
+echarts.init(document.getElementById('chart_r6_daily')).setOption({
+  tooltip:{trigger:'axis'},
+  legend:{data:['缺失率','0-6s占比','事件量(日)'],top:0},
+  xAxis:{type:'category',data:R6_DATES},
+  yAxis:[{type:'value',max:6,axisLabel:{formatter:'{value}%'}},{type:'value',name:'事件量'}],
+  series:[
+    {name:'缺失率',type:'line',data:R6_NC,itemStyle:{color:'#E74C3C'},symbol:'circle',symbolSize:6,
+     label:{show:true,position:'top',formatter:function(p){return p.value+'%'},fontSize:10,color:'#E74C3C',fontWeight:'bold'},
+     markLine:{yAxis:OVR.nocover_pct,lineStyle:{color:'#666',type:'dashed'},label:{formatter:'整体均值 '+OVR.nocover_pct+'%',color:'#666',fontSize:10}}},
+    {name:'0-6s占比',type:'line',data:R6_D06,itemStyle:{color:'#F39C12'},symbol:'circle',symbolSize:6},
+    {name:'事件量(日)',type:'bar',yAxisIndex:1,data:R6_EV,itemStyle:{color:'rgba(0,176,80,.25)'}}
+  ],
+  grid:{left:55,right:55,top:40,bottom:40}
+});
+
+window.addEventListener('resize',function(){document.querySelectorAll('.chart-box').forEach(function(el){var inst=echarts.getInstanceByDom(el);if(inst)inst.resize();});});
+</script>
+</body>
+</html>
