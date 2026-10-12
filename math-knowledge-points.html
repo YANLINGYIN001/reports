@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初中数学知识点全表 · 概念/定理/公理/公式/应用（人教版2024新版）</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f7fa; color:#333; line-height:1.75; }
+.wrap { max-width:1080px; margin:0 auto; padding:24px 16px 60px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); border-radius:16px; padding:34px 32px; color:#fff; margin-bottom:20px; }
+.header h1 { font-size:25px; margin-bottom:8px; }
+.header .sub { font-size:14px; opacity:.92; }
+.header .meta { font-size:12.5px; opacity:.82; margin-top:10px; }
+.toc { background:#fff; border-radius:14px; padding:20px 24px; box-shadow:0 2px 8px rgba(0,0,0,.06); margin-bottom:24px; }
+.toc h2 { font-size:17px; color:#00B050; margin-bottom:10px; }
+.toc ol { margin-left:22px; font-size:13.5px; columns:2; column-gap:36px; }
+.toc li { margin:3px 0; }
+.toc a { color:#333; text-decoration:none; border-bottom:1px dashed #bbb; }
+.toc a:hover { color:#00B050; }
+@media (max-width:760px){ .toc ol { columns:1; } }
+.domain { margin-bottom:30px; }
+.domain-head { display:flex; align-items:center; gap:12px; margin:8px 0 16px; flex-wrap:wrap; }
+.domain-badge { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; font-weight:700; font-size:16px; padding:8px 20px; border-radius:10px; }
+.domain-sub { font-size:13px; color:#888; }
+.mod { background:#fff; border-radius:12px; padding:22px 24px; box-shadow:0 2px 8px rgba(0,0,0,.05); margin-bottom:16px; }
+.mod h3 { font-size:16.5px; color:#333; margin-bottom:2px; }
+.mod h3 .mtag { font-size:11.5px; font-weight:600; color:#fff; background:#00B050; border-radius:12px; padding:2px 10px; margin-left:8px; vertical-align:2px; }
+.mod .mnav { font-size:12px; color:#999; margin-bottom:10px; }
+.mod h4 { font-size:13.5px; color:#00994d; margin:14px 0 6px; border-left:3px solid #2BBD6E; padding-left:8px; }
+table { width:100%; border-collapse:collapse; font-size:13px; margin:4px 0; }
+th { background:#e8f7ef; color:#00703a; padding:6px 10px; text-align:left; font-weight:600; border:1px solid #d5e8dc; }
+td { padding:6px 10px; border:1px solid #e4ece7; vertical-align:top; }
+td.t { white-space:nowrap; font-weight:600; color:#00804a; }
+ol.thm { margin-left:22px; font-size:13px; }
+ol.thm li { margin:4px 0; }
+ol.thm b { color:#c0392b; }
+.formula { background:#f2f8f4; border-radius:8px; padding:10px 16px; font-size:13.5px; margin:6px 0; }
+.formula .fl { margin:4px 0; }
+.exam { background:#fff8f0; border-left:4px solid #F39C12; border-radius:0 8px 8px 0; padding:8px 14px; font-size:12.8px; color:#6b4a00; margin:10px 0 2px; }
+.exam b { color:#E67E22; }
+.warn { color:#E74C3C; font-weight:600; }
+.foot { text-align:center; font-size:12px; color:#999; margin-top:30px; }
+sup, sub { font-size:10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+<h1>初中数学知识点全表</h1>
+<div class="sub">概念 · 定义 · 定理 · 公理 · 公式 · 方法 · 中考应用｜按知识模块组织（配套「三年知识地图」使用）</div>
+<div class="meta">范围：人教版《义务教育教科书·数学》2024修订版 六册34章 · 北京朝阳口径<br>组织方式：三大领域 → 20个知识模块；每模块含概念表、定理公式、考点与应用<br>⚠️ 新版提示：内容以2022课标为纲，含新增的「四分位数/数据分组」；标注〔拓展〕的内容为中考压轴常用但教材为选学/延伸。</div>
+</div>
+
+<div class="toc">
+<h2>目录 · 20个知识模块</h2>
+<ol>
+<li><a href="#m1">有理数</a></li>
+<li><a href="#m2">实数</a></li>
+<li><a href="#m3">代数式与整式加减</a></li>
+<li><a href="#m4">幂·整式乘法·因式分解</a></li>
+<li><a href="#m5">分式</a></li>
+<li><a href="#m6">二次根式</a></li>
+<li><a href="#m7">方程（一次/二元/一元二次）</a></li>
+<li><a href="#m8">不等式与不等式组</a></li>
+<li><a href="#m9">函数总论</a></li>
+<li><a href="#m10">一次函数</a></li>
+<li><a href="#m11">反比例函数</a></li>
+<li><a href="#m12">二次函数</a></li>
+<li><a href="#m13">几何初步（线与角）</a></li>
+<li><a href="#m14">相交线与平行线</a></li>
+<li><a href="#m15">三角形与全等</a></li>
+<li><a href="#m16">轴对称·等腰三角形·勾股</a></li>
+<li><a href="#m17">四边形</a></li>
+<li><a href="#m18">圆</a></li>
+<li><a href="#m19">变换·相似·三角函数·视图</a></li>
+<li><a href="#m20">统计与概率</a></li>
+</ol>
+</div>
+
+<!-- ============ 数与代数 ============ -->
+<div class="domain" id="m1"><div class="domain-head"><span class="domain-badge">数与代数</span><span class="domain-sub">模块1-12 ｜ 数系 → 式 → 方程 → 不等式 → 函数</span></div>
+
+<div class="mod">
+<h3>1. 有理数<span class="mtag">七上 第1-2章</span></h3>
+<div class="mnav">来源：第1章 有理数 + 第2章 有理数的运算</div>
+<h4>概念</h4>
+<table>
+<tr><th style="width:120px;">概念</th><th>定义要点</th></tr>
+<tr><td class="t">正数/负数</td><td>大于0的数是正数；在正数前加「-」号为负数；0既不是正数也不是负数。用正负数表示<span class="warn">具有相反意义的量</span></td></tr>
+<tr><td class="t">有理数</td><td>整数（正整数、0、负整数）与分数（正分数、负分数）的统称。分类：按定义分 / 按符号分（正有理数、0、负有理数）</td></tr>
+<tr><td class="t">数轴</td><td>规定了原点、正方向、单位长度的直线。实数与数轴上的点一一对应（此处先对有理数成立）</td></tr>
+<tr><td class="t">相反数</td><td>只有符号不同的两个数。a的相反数是-a；0的相反数是0。互为相反数的两点关于原点对称</td></tr>
+<tr><td class="t">绝对值</td><td>数轴上表示数a的点与原点的距离，记|a|。正数的绝对值是它本身；负数的绝对值是它的相反数；0的绝对值是0。|a|≥0（非负性）</td></tr>
+<tr><td class="t">倒数</td><td>乘积为1的两个数互为倒数。0没有倒数。a（a≠0）的倒数是1/a</td></tr>
+<tr><td class="t">乘方</td><td>求n个相同因数积的运算：aⁿ（底数a、指数n）。负数的奇次幂为负，偶次幂为正</td></tr>
+<tr><td class="t">科学记数法</td><td>把一个数写成 a×10ⁿ（1≤|a|<10，n为整数）的形式。把大于10的数记成 a×10ⁿ（n=整数位数-1）</td></tr>
+<tr><td class="t">近似数</td><td>与实际接近的数。精确度：如3.14精确到百分位（百分位=0.01位）</td></tr>
+</table>
+<h4>运算法则</h4>
+<div class="formula">
+<div class="fl">加法：同号相加取相同符号，绝对值相加；异号相加取绝对值较大者的符号，绝对值相减；互为相反数相加得0</div>
+<div class="fl">减法：减去一个数等于加上它的相反数 a-b = a+(-b)</div>
+<div class="fl">乘法：同号得正异号得负，绝对值相乘；除以一个不等于0的数等于乘它的倒数</div>
+<div class="fl">混合运算顺序：先乘方，再乘除，后加减；有括号先算括号内</div>
+<div class="fl">运算律：交换律 a+b=b+a、ab=ba；结合律 (a+b)+c=a+(b+c)；分配律 a(b+c)=ab+ac</div>
+</div>
+<div class="exam"><b>中考考点：</b>①绝对值/相反数化简（选填高频）②科学记数法（几乎每年必考，常结合大国重器/人口数据情境）③有理数大小比较（数轴法：右总大于左）④正负数表示相反意义量（实际情境题）</div>
+</div>
+
+<div class="mod">
+<h3>2. 实数<span class="mtag">七下 第8章</span></h3>
+<h4>概念</h4>
+<table>
+<tr><th style="width:120px;">概念</th><th>定义要点</th></tr>
+<tr><td class="t">平方根</td><td>若x²=a（a≥0），x是a的平方根，记±√a。正数有两个平方根（互为相反数）；0的平方根是0；<span class="warn">负数没有平方根</span></td></tr>
+<tr><td class="t">算术平方根</td><td>正的平方根，记√a（a≥0）。双重非负性：a≥0 且 √a≥0。√0=0</td></tr>
+<tr><td class="t">立方根</td><td>若x³=a，x是a的立方根，记∛a。正数、负数、0都有唯一立方根；∛(-a)=-∛a</td></tr>
+<tr><td class="t">无理数</td><td>无限不循环小数。常见来源：√2、π、特定结构的小数（如0.1010010001…每两个1之间依次多一个0）</td></tr>
+<tr><td class="t">实数</td><td>有理数与无理数的统称。实数与数轴上的点一一对应。实数按大小分类：正实数、0、负实数</td></tr>
+</table>
+<h4>运算</h4>
+<div class="formula">
+<div class="fl">√a·√b = √(ab)（a≥0,b≥0）；√a / √b = √(a/b)（a≥0,b>0）〔七下先接触，八下系统化〕</div>
+<div class="fl">实数运算顺序与运算律同有理数；涉及无理数取近似值计算</div>
+</div>
+<div class="exam"><b>中考考点：</b>①平方根/算术平方根/立方根辨析（选填高频，注意「√16的算术平方根=2」类陷阱）②无理数识别 ③实数大小比较/估算（如判断√10在哪两个整数之间）④非负数性质：若|a|+√b=0 则 a=0,b=0（经典模型）</div>
+</div>
+
+<div class="mod">
+<h3>3. 代数式与整式加减<span class="mtag">七上 第3-4章</span></h3>
+<h4>概念</h4>
+<table>
+<tr><th style="width:120px;">概念</th><th>定义要点</th></tr>
+<tr><td class="t">代数式</td><td>用运算符号把数或字母连接而成的式子。单独一个数或字母也是代数式</td></tr>
+<tr><td class="t">列代数式</td><td>把文字语言的数量关系翻译成符号语言；注意「a与b的差」「a的2倍与b的和」等表述顺序</td></tr>
+<tr><td class="t">代数式的值</td><td>用数值代替代数式里的字母，按式子中的运算关系计算得出的结果</td></tr>
+<tr><td class="t">单项式</td><td>数与字母的积。系数=数字因数，次数=所有字母指数的和</td></tr>
+<tr><td class="t">多项式</td><td>几个单项式的和。次数=次数最高项的次数；项数=所含单项式个数（常数项也是一项）</td></tr>
+<tr><td class="t">整式</td><td>单项式与多项式的统称</td></tr>
+<tr><td class="t">同类项</td><td>字母相同且相同字母的指数也相同（与系数、字母顺序无关）。几个常数项也是同类项</td></tr>
+</table>
+<h4>法则与公式</h4>
+<div class="formula">
+<div class="fl">合并同类项：系数相加，字母和指数不变</div>
+<div class="fl">去括号：括号前是「+」去括号不变号；括号前是「-」去括号各项变号。（注意分配律漏乘：-3(x-2y)=-3x+6y）</div>
+<div class="fl">整体思想：a+2b=3，求 2a+4b-1 = 2(a+2b)-1 = 5（北京卷选填爱考整体代入）</div>
+</div>
+<div class="exam"><b>中考考点：</b>①找规律/程序框图求代数式的值（北京卷特色题型）②整体代入求值 ③化简求值综合（与后面分式、二次根式结合）</div>
+</div>
+
+<div class="mod">
+<h3>4. 幂运算 · 整式乘法 · 乘法公式 · 因式分解<span class="mtag">八上 第16-17章</span></h3>
+<h4>幂的运算法则（底数不变类）</h4>
+<div class="formula">
+<div class="fl">同底数幂相乘：aᵐ·aⁿ = aᵐ⁺ⁿ（乘加）</div>
+<div class="fl">幂的乘方：(aᵐ)ⁿ = aᵐⁿ（乘）</div>
+<div class="fl">积的乘方：(ab)ⁿ = aⁿbⁿ（分配）</div>
+<div class="fl">同底数幂相除：aᵐ÷aⁿ = aᵐ⁻ⁿ（a≠0）；a⁰=1（a≠0）；a⁻ᵖ=1/aᵖ（a≠0）〔整数指数幂，八上18.4〕</div>
+</div>
+<h4>整式乘法</h4>
+<div class="formula">
+<div class="fl">单项式×单项式：系数相乘，同底数幂相乘</div>
+<div class="fl">单项式×多项式：m(a+b)=ma+mb</div>
+<div class="fl">多项式×多项式：(a+b)(m+n)=am+an+bm+bn（不重不漏）</div>
+</div>
+<h4>乘法公式（两大恒等式）</h4>
+<div class="formula">
+<div class="fl"><b>平方差：</b>(a+b)(a-b) = a²-b² 〔特征：两项和×两项差〕</div>
+<div class="fl"><b>完全平方：</b>(a±b)² = a²±2ab+b² 〔特征：首平方尾平方，积的2倍在中央〕</div>
+<div class="fl">〔拓展〕(a+b)²-(a-b)²=4ab；a²+b²=(a+b)²-2ab（配方常用变形）</div>
+</div>
+<h4>因式分解（整式乘法的逆运算）</h4>
+<div class="formula">
+<div class="fl">一提：提公因式法 pa+pb = p(a+b)〔公因式=系数最大公约数×相同字母最低次幂〕</div>
+<div class="fl">二套：公式法 a²-b²=(a+b)(a-b)；a²±2ab+b²=(a±b)²</div>
+<div class="fl">三检验：分解要彻底（到不能再分为止）；结果为积的形式</div>
+<div class="fl">〔拓展·中考压轴〕十字相乘 x²+(p+q)x+pq=(x+p)(x+q)；分组分解法</div>
+</div>
+<div class="exam"><b>中考考点：</b>①幂运算辨析选填（a³·a²=a⁵ vs (a³)²=a⁶ 是高频陷阱）②乘法公式正用逆用（北京卷选填常考用平方差简便计算）③因式分解是分式化简/一元二次方程解法的前置技能（解答题必用）④配方法（完全平方公式逆用）是二次函数求顶点、一元二次方程求根的核心动作</div>
+</div>
+
+<div class="mod">
+<h3>5. 分式<span class="mtag">八上 第18章</span></h3>
+<h4>概念</h4>
+<table>
+<tr><th style="width:130px;">概念</th><th>定义要点</th></tr>
+<tr><td class="t">分式</td><td>形如A/B（A、B为整式，B中含有字母且B≠0）。<span class="warn">分式有意义⇔B≠0；分式值为0⇔A=0且B≠0</span></td></tr>
+<tr><td class="t">基本性质</td><td>A/B = (A×M)/(B×M) = (A÷M)/(B÷M)（M≠0）。约分与通分的依据</td></tr>
+<tr><td class="t">最简分式</td><td>分子分母没有公因式的分式</td></tr>
+</table>
+<h4>运算法则</h4>
+<div class="formula">
+<div class="fl">乘除：A/B · C/D = AC/BD；A/B ÷ C/D = A/B · D/C（除法变乘法，颠倒除式）</div>
+<div class="fl">加减：同分母 A/C±B/C=(A±B)/C；异分母先通分（最简公分母=系数最小公倍数×相同字母最高次幂）</div>
+<div class="fl">乘方：(A/B)ⁿ = Aⁿ/Bⁿ</div>
+<h4>分式方程</h4>
+<div class="formula">
+<div class="fl">解法：去分母（两边同乘最简公分母）→解整式方程→<span class="warn">检验（代入最简公分母，=0为增根舍去）</span></div>
+<div class="fl">应用：行程/工程/购买问题。验根之外还要检验实际意义</div>
+</div>
+<div class="exam"><b>中考考点：</b>①分式化简求值是北京卷解答题<b>固定题型</b>（先化简再代入，代入值需避开使分母为0的数）②分式有意义/值为0的条件（选填）③分式方程应用（注意双检验）④增根概念辨析</div>
+</div>
+
+<div class="mod">
+<h3>6. 二次根式<span class="mtag">八下 第19章</span></h3>
+<h4>概念与性质</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">二次根式</td><td>形如√a（a≥0）的式子。双重非负性：被开方数a≥0，结果√a≥0</td></tr>
+<tr><td class="t">性质1</td><td>(√a)² = a（a≥0）</td></tr>
+<tr><td class="t">性质2</td><td>√(a²) = |a| = a（a≥0）或 -a（a<0）〔化简核心，易错点〕</td></tr>
+</table>
+<h4>运算法则</h4>
+<div class="formula">
+<div class="fl">乘除：√a·√b=√(ab)；√a/√b=√(a/b)（a≥0,b>0）</div>
+<div class="fl">加减：先化简（化成最简二次根式），再合并同类二次根式（被开方数相同）</div>
+<div class="fl">最简二次根式：被开方数不含分母、不含能开尽方的因数。如√8=2√2，√(1/2)=√2/2</div>
+<div class="fl">分母有理化：1/√2 = √2/2（分子分母同乘√2）</div>
+</div>
+<div class="exam"><b>中考考点：</b>①二次根式化简求值（解答题计算题常客）②√(a²)=|a|类化简陷阱（选填）③有意义的条件（被开方数≥0同时成立）④与勾股定理/三角函数结合的精确计算</div>
+</div>
+
+<div class="mod">
+<h3>7. 方程体系（一元一次 → 二元一次 → 三元 → 一元二次）<span class="mtag">七上第5章 / 七下第10章 / 九上第25章</span></h3>
+<h4>概念</h4>
+<table>
+<tr><th style="width:140px;">概念</th><th>定义要点</th></tr>
+<tr><td class="t">方程/方程的解</td><td>含未知数的等式叫方程；使方程左右两边相等的未知数的值叫方程的解</td></tr>
+<tr><td class="t">一元一次方程</td><td>只含一个未知数、未知数次数为1的整式方程：ax+b=0（a≠0）</td></tr>
+<tr><td class="t">等式的性质</td><td>①两边同加减同一个数（式）仍相等 ②两边同乘一个数、或同除以不为0的数，仍相等（变形依据）</td></tr>
+<tr><td class="t">二元一次方程组</td><td>两个二元一次方程合在一起。解的检验：代回两个方程都成立</td></tr>
+<tr><td class="t">一元二次方程</td><td>ax²+bx+c=0（a≠0）。二次项系数/一次项系数/常数项</td></tr>
+<tr><td class="t">根的判别式</td><td>Δ=b²-4ac：Δ>0两个不相等实根；Δ=0两个相等实根；Δ<0无实根（反之亦然）</td></tr>
+<tr><td class="t">根与系数关系</td><td>〔韦达定理·拓展〕x₁+x₂=-b/a，x₁x₂=c/a（前提Δ≥0）</td></tr>
+</table>
+<h4>解法</h4>
+<div class="formula">
+<div class="fl"><b>一元一次方程五步：</b>去分母→去括号→移项→合并同类项→系数化为1</div>
+<div class="fl"><b>二元一次方程组：</b>代入消元（用一个未知数表示另一个）、加减消元（同号相减异号相加）。核心思想：<b>消元</b>（二元→一元）</div>
+<div class="fl"><b>三元一次方程组〔拓展〕：</b>逐步消元降维</div>
+<div class="fl"><b>一元二次方程四法：</b>①直接开平方法（x²=p型）②配方法（x²+px+q=0 → (x+p/2)²=(p²-4q)/4）③公式法 x=(-b±√Δ)/2a（万能）④因式分解法（化归为两个一次方程，最快）</div>
+</div>
+<h4>应用模型（北京卷应用题题库）</h4>
+<div class="formula">
+<div class="fl">行程：路程=速度×时间（相遇/追及/顺逆流：顺流速=静水+水速）</div>
+<div class="fl">工程：总工作量=工作效率×时间（常设总量为1）</div>
+<div class="fl">利润：利润=售价-进价；利润率=利润/进价；打折：售价=标价×折扣</div>
+<div class="fl">增长率：a(1+x)ⁿ=b（n期）；面积/拼接问题（列一元二次）</div>
+<div class="fl">方案选择：结合不等式取整数解，比较总费用（北京卷高频大题）</div>
+</div>
+<div class="exam"><b>中考考点：</b>①解一元二次方程（配方法/公式法过程规范）②根的判别式正用反用（选填高频：「关于x的方程有两个不相等实根求m范围」注意二次项系数≠0）③应用题建模（行程/工程/增长率/销售）④二元一次方程组与一次函数图象交点结合（选填）</div>
+</div>
+
+<div class="mod">
+<h3>8. 不等式与不等式组<span class="mtag">七下 第11章</span></h3>
+<h4>概念与性质</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">不等式</td><td>用「＞≥＜≤≠」表示大小关系的式子。不等式的解集：使不等式成立的未知数的取值范围</td></tr>
+<tr><td class="t">性质1</td><td>两边加减同一个数（式），不等号方向不变</td></tr>
+<tr><td class="t">性质2</td><td>两边同乘（除）正数，方向不变</td></tr>
+<tr><td class="t">性质3</td><td>两边同乘（除）<span class="warn">负数，不等号方向改变</span>（北京卷最爱考的易错点）</td></tr>
+<tr><td class="t">解集表示</td><td>数轴表示：≥≤实心点，＞＜空心圈，方向向右/向左</td></tr>
+</table>
+<h4>解法与应用</h4>
+<div class="formula">
+<div class="fl">一元一次不等式：同解方程五步，但两边乘除负数时变号</div>
+<div class="fl">不等式组解集口诀：同大取大、同小取小、大小小大中间找、大大小小找不到（无解）</div>
+<div class="fl">应用：设未知数→列不等式（找「至少/不超过/不超过」关键词）→解集→<span class="warn">按实际取整数解</span>→作答（方案问题）</div>
+</div>
+<div class="exam"><b>中考考点：</b>①不等式性质辨析（选填）②解不等式组并用数轴表示解集（解答题）③方案选择应用题（不等式建模+整数解+费用比较，北京卷应用大题常客）④与一次函数结合：图象上方/下方对应解集</div>
+</div>
+
+<div class="mod">
+<h3>9. 函数总论<span class="mtag">八下 第22章（新版单列章）</span></h3>
+<h4>概念</h4>
+<table>
+<tr><th style="width:140px;">概念</th><th>定义要点</th></tr>
+<tr><td class="t">变量与常量</td><td>变化过程中数值发生变化的量为变量，始终不变的量为常量</td></tr>
+<tr><td class="t">函数</td><td>在一个变化过程中，有两个变量x和y，对于x的每一个确定的值，y都有<b>唯一确定</b>的值与其对应，x叫自变量，y叫x的函数</td></tr>
+<tr><td class="t">自变量取值范围</td><td>①整式：全体实数 ②分式：分母≠0 ③根式：被开方数≥0 ④实际背景：符合实际意义（北京卷选填常考）</td></tr>
+<tr><td class="t">函数的表示</td><td>①解析式法 ②列表法 ③图象法。判断函数图象：过自变量每点作垂线，与图象至多一个交点（竖线判别）</td></tr>
+<tr><td class="t">函数图象</td><td>满足解析式的点(x,y)的集合。描点法画图象：列表→描点→连线</td></tr>
+</table>
+<div class="exam"><b>中考考点：</b>①函数图象信息读取（行程图/注水问题过程分析，北京卷选填经典题型）②自变量取值范围（复合条件求交集）③函数概念判断（y唯一对应）④从图象估算/结合实际情境解释（新课标强化情境化）</div>
+</div>
+
+<div class="mod">
+<h3>10. 一次函数<span class="mtag">八下 第23章</span></h3>
+<h4>概念与图象</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">正比例函数</td><td>y=kx（k≠0），图象是过原点的直线</td></tr>
+<tr><td class="t">一次函数</td><td>y=kx+b（k≠0），图象是直线；b为图象与y轴交点纵坐标（截距）</td></tr>
+<tr><td class="t">图象画法</td><td>两点法：取(0,b)与(-b/k, 0)</td></tr>
+<tr><td class="t">增减性</td><td>k＞0：y随x增大而增大（图象上升，必过一三象限）；k＜0：y随x增大而减小（下降）。b决定与y轴交点在正/负半轴</td></tr>
+<tr><td class="t">图象过象限</td><td>k＞0,b＞0过一二三；k＞0,b＜0过一三四；k＜0,b＞0过一二四；k＜0,b＜0过二三四</td></tr>
+<tr><td class="t">待定系数法</td><td>两点代入 y=kx+b 解方程组求k、b（求解析式的通用方法）</td></tr>
+</table>
+<h4>函数与方程/不等式的关系（数形结合核心）</h4>
+<div class="formula">
+<div class="fl">kx+b=0 的解 ⇔ 直线与x轴交点横坐标</div>
+<div class="fl">kx+b＞0 的解集 ⇔ 直线在x轴<b>上方</b>部分对应的x范围</div>
+<div class="fl">两直线交点 ⇔ 二元一次方程组的解；交点上方/下方 ⇔ 比较函数值大小（谁图象在上面谁大）</div>
+<div class="fl">平移：y=kx+b 向上平移m个单位 → y=kx+(b+m)（上加下减，沿y轴）；沿x轴左加右减</div>
+</div>
+<div class="exam"><b>中考考点：</b>①图象性质判断（k、b符号与图象位置互推，选填高频）②待定系数求解析式（解答题第一问常设）③一次函数与方程不等式综合（选填压轴常客）④实际应用：行程分段计费/最优方案（b的横截距与拐点分析，北京卷大题）⑤与几何结合：动点问题中的函数图象判断</div>
+</div>
+
+<div class="mod">
+<h3>11. 反比例函数<span class="mtag">九上 第27章</span></h3>
+<h4>概念与性质</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">定义</td><td>y=k/x（k≠0）或 xy=k。等价形式 y=kx⁻¹</td></tr>
+<tr><td class="t">图象</td><td>双曲线，两支分别位于一三象限（k＞0）或二四象限（k＜0），无限接近坐标轴但永不相交（渐进性）</td></tr>
+<tr><td class="t">增减性</td><td>k＞0：在每个象限内y随x增大而减小；k＜0：每个象限内y随x增大而增大。<span class="warn">必须强调「在每个象限内」</span>（跨象限不比较）</td></tr>
+<tr><td class="t">k的几何意义</td><td>过双曲线上任一点作两坐标轴垂线，围成矩形面积=|k|；三角形面积=|k|/2（北京卷选填压轴高频模型）</td></tr>
+<tr><td class="t">待定系数法</td><td>知道一点即可求k（一点定k）</td></tr>
+</table>
+<div class="exam"><b>中考考点：</b>①k的几何意义（矩形/三角形面积模型，与一次函数交点、平移结合出选填压轴）②图象性质与待定系数 ③实际应用：压强/杠杆/浓度反比关系（p=F/S类情境）④与一次函数联立求交点（解答题中档）</div>
+</div>
+
+<div class="mod">
+<h3>12. 二次函数<span class="mtag">九上 第26章（中考压轴之王）</span></h3>
+<h4>三种解析式形式</h4>
+<div class="formula">
+<div class="fl"><b>一般式：</b>y=ax²+bx+c（a≠0）；顶点(-b/2a, (4ac-b²)/4a)；对称轴x=-b/2a</div>
+<div class="fl"><b>顶点式：</b>y=a(x-h)²+k；顶点(h,k)，对称轴x=h</div>
+<div class="fl"><b>交点式：</b>y=a(x-x₁)(x-x₂)（x₁x₂为与x轴交点横坐标）</div>
+<div class="fl">配方法：y=ax²+bx+c → y=a(x+b/2a)²+(4ac-b²)/4a（配方法动作必须熟练）</div>
+</div>
+<h4>图象与性质</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">开口方向</td><td>a＞0开口向上（有最低点/最小值）；a＜0开口向下（有最高点/最大值）；|a|越大开口越小</td></tr>
+<tr><td class="t">对称性</td><td>抛物线关于直线x=-b/2a对称；对称轴两侧等距点函数值相等（f(h+m)=f(h-m)）</td></tr>
+<tr><td class="t">增减性</td><td>a＞0：对称轴左侧递减右侧递增；a＜0相反。比较函数值先看与对称轴的距离</td></tr>
+<tr><td class="t">平移</td><td>「左加右减（x）、上加下减（y）」：y=2(x-1)²+3 向左平移2个单位 → y=2(x+1)²+3</td></tr>
+<tr><td class="t">与x轴交点</td><td>Δ=b²-4ac＞0两个交点；=0一个（顶点在x轴）；＜0无交点。抛物线与x轴交点横坐标=对应一元二次方程的根</td></tr>
+<tr><td class="t">a·b·c符号</td><td>a看开口；b与a「左同右异」（对称轴位置）；c看y轴交点；x=1时函数值=a+b+c，x=-1时=a-b+c（选填技巧）</td></tr>
+</table>
+<h4>应用模型</h4>
+<div class="formula">
+<div class="fl">最值问题：利润最大/面积最大（先列函数关系式→配方/顶点→注意<span class="warn">自变量取值范围内的最值</span>（顶点不在范围内时看端点））</div>
+<div class="fl">抛物线拱桥/投篮/喷泉：建系→设解析式→用已知点求解→按需求答（北京卷大题情境）</div>
+<div class="fl">〔压轴〕二次函数与几何综合：动点产生的等腰/直角/相似三角形、面积最值（铅垂高法：S=½·水平宽·铅垂高）</div>
+</div>
+<div class="exam"><b>中考考点：</b>①a、b、c与图象信息互推（北京卷选填必考）②平移与顶点式 ③实际应用求最值（注意取值范围端点）④抛物线与几何动点综合压轴（北京卷倒数第一、二题的主力题型）⑤图象信息读取（方程解/不等式解集与图象对应）</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- ============ 图形与几何 ============ -->
+<div class="domain" id="m13"><div class="domain-head"><span class="domain-badge">图形与几何</span><span class="domain-sub">模块13-19 ｜ 线角 → 平行 → 三角形 → 四边形 → 圆 → 变换/相似/三角函数/视图</span></div>
+
+<div class="mod">
+<h3>13. 几何初步：线与角<span class="mtag">七上 第6章</span></h3>
+<h4>概念</h4>
+<table>
+<tr><th style="width:130px;">概念</th><th>定义要点</th></tr>
+<tr><td class="t">直线公理</td><td>经过两点<b>有且只有</b>一条直线（两点确定一条直线）〔公理〕</td></tr>
+<tr><td class="t">线段公理</td><td>两点之间<b>线段最短</b>〔公理〕。两点的距离：连接两点的线段的长度</td></tr>
+<tr><td class="t">线段中点</td><td>M在线段AB上且AM=MB，M为AB中点 → AB=2AM=2MB</td></tr>
+<tr><td class="t">角的度量</td><td>1°=60′，1′=60″。角的平分线：从顶点出发把角分成两个相等的角的射线</td></tr>
+<tr><td class="t">余角/补角</td><td>和为90°互余；和为180°互补。<span class="warn">等角（同角）的余角相等，等角（同角）的补角相等</span>（高频推理依据）</td></tr>
+<tr><td class="t">对顶角</td><td>两直线相交形成的相对的角。<b>对顶角相等</b>〔性质〕</td></tr>
+</table>
+<h4>立体图形</h4>
+<div class="formula">
+<div class="fl">立体图形展开图：正方体11种展开图；常见几何体（圆柱/圆锥/棱柱）的展开</div>
+<div class="fl">点动成线、线动成面、面动成体；点线面体是构成几何图形的基本元素</div>
+</div>
+<div class="exam"><b>中考考点：</b>①余角补角计算与推理 ②角度的度分秒运算 ③线段中点与和差计算（方程思想求线段长）④正方体展开图判断（选填）⑤对顶角性质与邻补角计算</div>
+</div>
+
+<div class="mod">
+<h3>14. 相交线与平行线<span class="mtag">七下 第7章</span></h3>
+<h4>概念与定理</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">垂直</td><td>两直线相交所成角中有一个是直角。垂线性质①：过一点有且只有一条直线与已知直线垂直；垂线段最短〔性质〕</td></tr>
+<tr><td class="t">三线八角</td><td>同位角（F形）、内错角（Z形）、同旁内角（U形）——第三条直线（截线）同侧/异侧辨识</td></tr>
+<tr><td class="t">平行公理</td><td>经过直线外一点，<b>有且只有一条</b>直线与这条直线平行〔公理〕；推论：平行于同一条直线的两直线平行（传递性）</td></tr>
+<tr><td class="t">平行线判定</td><td>①同位角相等两直线平行 ②内错角相等两直线平行 ③同旁内角互补两直线平行 ④平行公理推论</td></tr>
+<tr><td class="t">平行线性质</td><td>两直线平行→①同位角相等 ②内错角相等 ③同旁内角互补。<span class="warn">判定与性质互为因果倒置</span>（判定：角→线；性质：线→角）</td></tr>
+<tr><td class="t">命题/定理</td><td>命题=题设+结论；真命题需证明，假命题举反例。基本事实（公理）不需证明；定理由公理推出</td></tr>
+<tr><td class="t">平移</td><td>图形沿某方向移动一定距离：对应点连线平行（共线）且相等；形状大小不变</td></tr>
+</table>
+<div class="exam"><b>中考考点：</b>①平行线的判定与性质填理由（几何证明第一课）②「拐点/拐线」模型（过拐点作平行线，选填中档）③平移性质（对应点连线、坐标平移）④命题真假的判断（选填）⑤与后续三角形内角结合的角度计算</div>
+</div>
+
+<div class="mod">
+<h3>15. 三角形与全等<span class="mtag">八上 第13-14章</span></h3>
+<h4>三角形基本性质</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">三边关系</td><td>两边之和＞第三边，两边之差＜第三边（判断能否构成三角形/求第三边范围）</td></tr>
+<tr><td class="t">内角和定理</td><td>三角形内角和=180°〔定理〕；推论：外角=与它不相邻的两个内角之和；外角＞任一不相邻内角</td></tr>
+<tr><td class="t">重要线段</td><td>高（垂线）、中线（顶点连对边中点，中线平分面积）、角平分线（顶点出发平分角）；三条中线交于重心</td></tr>
+<tr><td class="t">多边形</td><td>n边形内角和=(n-2)×180°；任意多边形外角和=360°（正n边形每个外角=360°/n）</td></tr>
+</table>
+<h4>全等三角形</h4>
+<div class="formula">
+<div class="fl"><b>定义：</b>能够完全重合的两个三角形。对应边相等、对应角相等</div>
+<div class="fl"><b>判定定理：</b>SSS（三边）、SAS（两边夹角）、ASA（两角夹边）、AAS（两角及其中一角对边）、HL（直角三角形斜边直角边）</div>
+<div class="fl"><span class="warn">不能判定：</span>SSA（边边角，除HL外不能）、AAA（角角角，只能相似）——选填陷阱高频</div>
+<div class="fl"><b>角平分线性质：</b>角平分线上的点到角两边距离相等；逆定理（到两边距离相等的点在角平分线上）。尺规作图作角平分线的依据</div>
+</div>
+<h4>证明模型（中考高频几何模型）</h4>
+<div class="formula">
+<div class="fl">平移型/对称型/旋转型全等（识别基本图形）；倍长中线法（遇中点延长一倍构造全等）；截长补短法</div>
+</div>
+<div class="exam"><b>中考考点：</b>①全等判定选择（SSA陷阱）②全等证明解答题（一次全等→两次全等递进，北京卷几何证明主力）③角平分线性质与尺规作图 ④三角形内外角计算 ⑤中线/高相关面积计算</div>
+</div>
+
+<div class="mod">
+<h3>16. 轴对称 · 等腰三角形 · 勾股定理<span class="mtag">八上第15章 / 八下第20章</span></h3>
+<h4>轴对称</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">轴对称</td><td>沿一条直线折叠能完全重合的两个图形。对称轴是任意一对对应点连线的垂直平分线</td></tr>
+<tr><td class="t">垂直平分线</td><td>线段垂直平分线上的点到线段两端点距离相等；逆定理成立（到两端等距的点在中垂线上）。尺规作图依据</td></tr>
+<tr><td class="t">最短路径</td><td>「将军饮马」：定点定线找对称点，两点之间线段最短（北京卷选填/几何综合高频）</td></tr>
+</table>
+<h4>等腰三角形</h4>
+<div class="formula">
+<div class="fl"><b>性质定理：</b>等边对等角（两底角相等）；三线合一（顶角平分线=底边中线=底边高）〔等腰三角形顶角平分线、底边中线、底边高互相重合〕</div>
+<div class="fl"><b>判定定理：</b>等角对等边</div>
+<div class="fl"><b>等边三角形：</b>三边相等⇔三角都为60°；每个角60°且每条边上三线合一</div>
+<div class="fl">30°直角边定理：30°角所对直角边=斜边一半（含30°的直角三角形）〔高频计算工具〕</div>
+</div>
+<h4>勾股定理</h4>
+<div class="formula">
+<div class="fl"><b>定理：</b>直角三角形两直角边a、b，斜边c：a²+b²=c²</div>
+<div class="fl"><b>逆定理：</b>若a²+b²=c²，则该三角形为直角三角形（c所对角为直角）〔判定直角的工具〕</div>
+<div class="fl">常用勾股数：3,4,5；5,12,13；6,8,10；7,24,25；8,15,17</div>
+<div class="fl">应用：折叠问题（折叠前后全等→设未知数→勾股列方程）；最短路径（圆柱侧面展开）；实际测高测距</div>
+</div>
+<div class="exam"><b>中考考点：</b>①等腰三角形分类讨论（顶角/底角、腰/底不确定时，选填陷阱王）②三线合一的应用 ③勾股定理+折叠综合（北京卷几何高频模型）④勾股逆定理判断直角 ⑤将军饮马最值（与后续一次函数坐标结合）</div>
+</div>
+
+<div class="mod">
+<h3>17. 四边形<span class="mtag">八下 第21章（几何综合主战场）</span></h3>
+<h4>多边形基础</h4>
+<div class="formula">
+<div class="fl">n边形内角和=(n-2)·180°；外角和恒为360°；对角线条数=n(n-3)/2</div>
+</div>
+<h4>平行四边形</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">性质</td><td>①对边平行且相等 ②对角相等 ③对角线互相平分 ④（中心对称图形）</td></tr>
+<tr><td class="t">判定</td><td>①两组对边分别平行 ②两组对边分别相等 ③一组对边平行且相等 ④两组对角分别相等 ⑤对角线互相平分（五选一即可）</td></tr>
+</table>
+<h4>特殊平行四边形</h4>
+<table>
+<tr><th style="width:90px;">图形</th><th>性质（在平行四边形基础上新增）</th><th>判定（在平行四边形/四边形基础上）</th></tr>
+<tr><td class="t">矩形</td><td>四个角都是直角；对角线相等且互相平分；轴对称+中心对称；含直角三角形（斜边=对角线，斜边中线=斜边一半〔推论：直角三角形斜边中线等于斜边一半〕）</td><td>①有一个角是直角的平行四边形 ②对角线相等的平行四边形 ③三个角是直角的四边形</td></tr>
+<tr><td class="t">菱形</td><td>四边相等；对角线互相垂直平分，且每条对角线平分一组对角；面积=对角线积一半=底×高</td><td>①一组邻边相等的平行四边形 ②对角线互相垂直的平行四边形 ③四边相等的四边形</td></tr>
+<tr><td class="t">正方形</td><td>矩形性质+菱形性质全具备：四边等、四角直、对角线等且垂直平分、每条对角线平分45°角</td><td>①邻边相等的矩形 ②一个角是直角的菱形 ③对角线相等且垂直的平行四边形</td></tr>
+</table>
+<h4>中点四边形与中位线</h4>
+<div class="formula">
+<div class="fl"><b>三角形中位线定理：</b>三角形中位线平行于第三边且等于第三边一半〔倍长中线/中点问题的核心工具〕</div>
+<div class="fl">〔拓展〕中点四边形：任意四边形四边中点连线构成平行四边形；对角线相等→矩形；垂直→菱形</div>
+</div>
+<div class="exam"><b>中考考点：</b>①平行四边形/特殊四边形的性质与判定证明（北京卷几何解答主力）②矩形斜边中线推论计算 ③菱形面积双算法 ④三角形中位线（与动点/折叠结合）⑤正方形半角模型、旋转全等〔压轴〕⑥四边形中的动点最值（与将军饮马、一次函数结合〔压轴〕）</div>
+</div>
+
+<div class="mod">
+<h3>18. 圆<span class="mtag">九上 第29-30章</span></h3>
+<h4>基本概念</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">圆</td><td>到定点的距离等于定长的点的集合。定点=圆心，定长=半径。确定圆的要素：圆心+半径</td></tr>
+<tr><td class="t">弦/弧</td><td>连接圆上两点的线段=弦（过圆心的弦=直径）；圆上任意两点间的部分=弧（半圆/优弧/劣弧）</td></tr>
+<tr><td class="t">圆心角/圆周角</td><td>顶点在圆心/圆上（圆周角两边与圆相交）</td></tr>
+</table>
+<h4>定理与性质（圆的核心定理群）</h4>
+<div class="formula">
+<div class="fl"><b>垂径定理：</b>垂直于弦的直径平分弦，并且平分弦所对的两条弧〔逆定理：平分弦（非直径）的直径垂直于弦〕——2022课标调整为必修。推论应用：半径²=r²=(弦心距)²+(半弦)²〔勾股构造是圆计算的核心动作〕</div>
+<div class="fl"><b>弧弦圆心角关系：</b>在同圆或等圆中，相等的圆心角所对的弧相等、弦相等（三者等价转换）</div>
+<div class="fl"><b>圆周角定理：</b>同弧所对圆周角=圆心角的一半；推论①：同弧（等弧）所对圆周角相等〔2022课标新增为基本要求〕；推论②：直径所对圆周角是直角（90°圆周角所对弦是直径）〔圆中找直角的工具〕</div>
+<div class="fl"><b>圆内接四边形〔拓展〕：</b>对角互补；外角=内对角</div>
+</div>
+<h4>点、直线与圆的位置关系</h4>
+<div class="formula">
+<div class="fl">点与圆：d＜r在圆内；d=r在圆上；d＞r在圆外（d=点到圆心距离）</div>
+<div class="fl">直线与圆：相交（d＜r，两个公共点）→割线；相切（d=r，唯一公共点）→切线；相离（d＞r）</div>
+<div class="fl"><b>切线性质：</b>切线垂直于过切点的半径（常连半径证垂直）<b>切线判定：</b>经过半径外端且垂直于这条半径的直线是圆的切线（有公共点连半径证垂直；无公共点作距离证等于半径）</div>
+<div class="fl"><b>切线长定理：</b>从圆外一点引圆的两条切线，切线长相等；圆心与该点连线平分两切线夹角〔2022课标：探索切线与过切点半径的关系为选学，北京卷仍常考〕</div>
+<div class="fl"><b>三角形内切圆：</b>内心=三条角平分线交点，到三边距离相等；Rt△内切圆半径 r=(a+b-c)/2〔拓展〕</div>
+</div>
+<h4>计算公式</h4>
+<div class="formula">
+<div class="fl">弧长 l = nπr/180（n为圆心角度数）</div>
+<div class="fl">扇形面积 S = nπr²/360 = ½lr（弧长×半径一半，类比三角形）</div>
+<div class="fl">圆锥侧面积 = πrl（l为母线长）；全面积 = πrl+πr²。圆锥侧面展开图=扇形（弧长=底面圆周长）</div>
+<div class="fl"><b>正多边形与圆：</b>正n边形中心角=360°/n；每边所对弧相等；半径、边心距、半边构成直角三角形〔计算核心〕</div>
+</div>
+<div class="exam"><b>中考考点：</b>①垂径定理计算（弦长/拱高，勾股方程）②圆周角定理推理链（同弧等角、直径直角）③切线的判定证明（北京卷圆类解答题固定动作：连半径证垂直）④弧长扇形面积计算（选填）⑤圆锥侧面展开⑥圆与相似/三角函数结合〔压轴〕</div>
+</div>
+
+<div class="mod">
+<h3>19. 变换 · 相似 · 锐角三角函数 · 投影与视图<span class="mtag">九上第28章 / 九下第31-33章</span></h3>
+<h4>三大变换（平移/轴对称/旋转）</h4>
+<table>
+<tr><th style="width:120px;">变换</th><th>性质要点</th></tr>
+<tr><td class="t">旋转</td><td>三要素：旋转中心、方向、角度。对应点到旋转中心距离相等；对应点与中心连线夹角=旋转角；旋转前后图形全等。中心对称（旋转180°）：对应点连线过对称中心且被平分</td></tr>
+</table>
+<h4>相似（九下第31章·几何终极工具）</h4>
+<div class="formula">
+<div class="fl"><b>比例性质：</b>若a/b=c/d，则ad=bc（交叉相乘）；合比：a/b=c/d → (a±b)/b=(c±d)/d〔拓展〕</div>
+<div class="fl"><b>平行线分线段成比例：</b>两条直线被一组平行线所截，所得对应线段成比例（基本事实A型/X型模型）</div>
+<div class="fl"><b>相似三角形判定：</b>①两角对应相等（最常用）②两边成比例且夹角相等 ③三边对应成比例 ④平行于三角形一边的直线截其他两边（或延长线）所得三角形与原三角形相似〔预备定理〕</div>
+<div class="fl"><b>相似三角形性质：</b>对应角相等、对应边成比例；对应高/中线/角平分线比=相似比；周长比=相似比；<b>面积比=相似比²</b>〔高频考点〕</div>
+<div class="fl"><b>位似：</b>两个位似图形对应顶点连线交于位似中心；位似是特殊的相似（对应边平行）；坐标位似：以原点为位似中心，对应点坐标乘k（或-k）</div>
+</div>
+<h4>锐角三角函数（九下第32章）</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">定义</td><td>Rt△中（∠C=90°）：sinA=对边/斜边；cosA=邻边/斜边；tanA=对边/邻边。取值范围：0＜sinA＜1，0＜cosA＜1，tanA＞0</td></tr>
+<tr><td class="t">特殊角</td><td>sin30°=1/2，cos30°=√3/2，tan30°=√3/3；sin45°=cos45°=√2/2，tan45°=1；sin60°=√3/2，cos60°=1/2，tan60°=√3〔必背〕</td></tr>
+<tr><td class="t">关系</td><td>sinA=cos(90°-A)（互余关系）；sin²A+cos²A=1〔拓展〕；tanA=sinA/cosA〔拓展〕</td></tr>
+<tr><td class="t">解直角三角形</td><td>依据：两锐角互余+三边勾股+边角三角函数定义。已知两元素（至少一边）可解其余</td></tr>
+</table>
+<h4>应用模型</h4>
+<div class="formula">
+<div class="fl">仰角/俯角（视线与水平线夹角）；坡度i=竖直高h:水平宽l（坡角=arctan i）；方位角（北偏东30°类表述）</div>
+<div class="fl">常见构图：作垂线构造双直角三角形（公共边方程法）〔北京卷解答题固定大题〕</div>
+<div class="fl">三角函数应用四步：建系/画图→设未知边→解直角三角形→按精确度作答</div>
+</div>
+<h4>投影与视图（九下第33章）</h4>
+<div class="formula">
+<div class="fl">平行投影（太阳光，全等）与中心投影（灯光，位似放大/缩小）；正投影</div>
+<div class="fl"><b>三视图：</b>主视图（正面）、左视图（左面）、俯视图（上面）。长对正、高平齐、宽相等</div>
+<div class="fl">由三视图还原几何体：先判断组合体结构，再计算表面积/体积；常见组合（圆柱+球、长方体挖圆柱等）</div>
+</div>
+<div class="exam"><b>中考考点：</b>①相似判定与性质证明（北京卷几何综合主力，A型/8字型/母子型/一线三等角模型）②面积比=相似比²计算 ③解直角三角形应用大题（仰俯角/坡度，北京卷解答固定题）④特殊角三角函数值计算（与二次根式结合）⑤三视图判断/还原（选填）⑥旋转+相似综合〔压轴〕⑦位似坐标计算</div>
+</div>
+
+</div>
+
+<!-- ============ 统计与概率 ============ -->
+<div class="domain" id="m20"><div class="domain-head"><span class="domain-badge">统计与概率</span><span class="domain-sub">模块20 ｜ 七下第12章 + 八下第24章 + 九下第34章</span></div>
+
+<div class="mod">
+<h3>20. 统计与概率<span class="mtag">七下12 / 八下24 / 九下34</span></h3>
+<h4>统计·数据收集与整理</h4>
+<table>
+<tr><th style="width:140px;">条目</th><th>内容</th></tr>
+<tr><td class="t">全面/抽样调查</td><td>普查（全面调查）范围小/要求精确；抽样调查范围大/有破坏性。样本要<b>代表性、广泛性</b></td></tr>
+<tr><td class="t">总体/个体/样本</td><td>考察对象全体/每一个/抽取的部分。样本容量：样本中个体数目（不带单位）</td></tr>
+<tr><td class="t">统计图</td><td>条形图（具体数量）、折线图（变化趋势）、扇形图（占比：圆心角=360°×占比）、<b>频数分布直方图</b>（分组频数）、趋势图〔新版强化〕</td></tr>
+<tr><td class="t">频数与频率</td><td>频率=频数/总数；各组频率之和=1。画直方图步骤：算极差→定组距组数→列频数表→画图</td></tr>
+</table>
+<h4>统计·数据分析（八下24章）</h4>
+<table>
+<tr><th style="width:140px;">统计量</th><th>定义与公式</th></tr>
+<tr><td class="t">平均数</td><td>x̄=(x₁+x₂+…+xₙ)/n；加权平均数 x̄=(x₁f₁+…+xₖfₖ)/n（f为权）。n个数的平均数=原平均±变化值</td></tr>
+<tr><td class="t">中位数</td><td>数据排序后处于<b>中间位置</b>的数（偶数个取中间两数平均）。先排序！</td></tr>
+<tr><td class="t">众数</td><td>出现次数最多的数（可多个可没有）</td></tr>
+<tr><td class="t">方差</td><td>s²=(1/n)·Σ(xᵢ-x̄)²。<span class="warn">方差越小数据越稳定</span>；标准差=√方差（量纲还原）</td></tr>
+<tr><td class="t">四分位数〔新增〕</td><td>将数据排序后25%、50%、75%位置的数（下四分位数Q₁/中位数Q₂/上四分位数Q₃）；四分位距=Q₃-Q₁。箱线图展示〔2022课标新增〕</td></tr>
+<tr><td class="t">数据分组〔新增〕</td><td>组距/组数选择原则；累计频数〔2022课标新增，重视数据观念〕</td></tr>
+<tr><td class="t">统计量选择</td><td>平均数（整体水平，受极端值影响）；中位数（一般水平，不受极端值影响）；众数（出现最多）。情境选统计量是北京卷高频问法</td></tr>
+</table>
+<h4>概率（九下第34章）</h4>
+<div class="formula">
+<div class="fl"><b>随机事件：</b>必然事件（P=1）、不可能事件（P=0）、随机事件（0＜P＜1）</div>
+<div class="fl"><b>概率定义：</b>刻画随机事件发生可能性大小的数值。P(事件A)=m/n（等可能结果中事件A包含的结果数/总结果数）</div>
+<div class="fl"><b>列举法：</b>列表法（两步试验）；画树状图法（两步及以上，如三步取球）。注意「放回/不放回」区别〔北京卷解答固定题〕</div>
+<div class="fl"><b>用频率估计概率：</b>大量重复试验中频率稳定于概率；频率≠概率但可估计</div>
+<div class="fl">〔拓展〕几何概率：P=目标区域面积/总面积；游戏公平性判断（比较双方概率）</div>
+</div>
+<div class="exam"><b>中考考点：</b>①统计图表综合大题（补全图表+样本估计总体+选择统计量评价，北京卷解答固定题）②列表/树状图求概率（解答固定题）③扇形圆心角/频数计算 ④随机事件判断（选填）⑤用频率估计概率（选填，结合表格）⑥四分位数/新统计概念〔新考点·需关注〕</div>
+</div>
+
+<div class="foot">
+<p>内容依据：人教版《义务教育教科书·数学》（2024修订版）六册34章；《义务教育数学课程标准（2022年版）》。<br>〔拓展〕标注为中考常考但课标定位选学/延伸内容；标注〔新增〕为2022课标新增内容。<br>建议配合《三年知识地图》（按学期章节维度）交叉使用。｜ 生成：2026-10-12 · 尹燕玲的助手 🦞</p>
+</div>
+
+</div>
+</div>
+</body>
+</html>
