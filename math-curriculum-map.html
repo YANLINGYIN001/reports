@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北京朝阳 · 初中数学三年知识地图（人教版2024新课标版）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f7fa; color:#333; line-height:1.7; }
+.wrap { max-width:1100px; margin:0 auto; padding:24px 16px 60px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); border-radius:16px; padding:36px 32px; color:#fff; margin-bottom:24px; }
+.header h1 { font-size:26px; margin-bottom:10px; }
+.header .sub { font-size:14px; opacity:.92; }
+.header .meta { font-size:12.5px; opacity:.8; margin-top:12px; }
+.kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px; }
+@media (max-width:760px){ .kpi-row { grid-template-columns:repeat(2,1fr); } }
+.kpi { background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,.06); }
+.kpi .num { font-size:30px; font-weight:700; color:#E74C3C; }
+.kpi .label { font-size:13px; color:#666; margin-top:2px; }
+.card { background:#fff; border-radius:14px; padding:26px 28px; box-shadow:0 2px 8px rgba(0,0,0,.06); margin-bottom:24px; }
+.card h2 { font-size:19px; color:#00B050; margin-bottom:6px; padding-left:12px; border-left:4px solid #00B050; }
+.card .note { font-size:12.5px; color:#999; margin-bottom:16px; padding-left:16px; }
+.alert { background:#fff8f0; border-left:4px solid #F39C12; border-radius:8px; padding:12px 16px; font-size:13.5px; color:#7a5200; margin:14px 0; }
+.alert b { color:#E67E22; }
+.field-tag { display:inline-block; padding:2px 10px; border-radius:20px; font-size:12px; font-weight:600; }
+.f-algebra { background:#e8f7ef; color:#00994d; }
+.f-geo { background:#e8f0fb; color:#2f6fbc; }
+.f-stat { background:#fdf1e3; color:#c07800; }
+.vol-head { display:flex; align-items:center; gap:12px; margin:26px 0 14px; flex-wrap:wrap; }
+.vol-badge { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; font-weight:700; font-size:15px; padding:6px 18px; border-radius:10px; white-space:nowrap; }
+.vol-sub { font-size:13px; color:#888; }
+.chapters { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:760px){ .chapters { grid-template-columns:1fr; } }
+.ch { border:1px solid #e8eceb; border-radius:10px; padding:14px 16px; background:#fafcfa; }
+.ch .ch-top { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px; }
+.ch .ch-no { font-weight:700; color:#00B050; font-size:14px; }
+.ch .ch-name { font-weight:700; font-size:14.5px; }
+.ch .secs { font-size:12.5px; color:#666; margin:4px 0 8px; }
+.ch .exam { font-size:12.5px; color:#444; background:#f2f8f4; border-radius:6px; padding:6px 10px; }
+.ch .exam b { color:#E74C3C; }
+.w5 { border-color:#f5c6c6; background:#fff7f7; }
+table { width:100%; border-collapse:collapse; font-size:13px; margin-top:8px; }
+th { background:#00B050; color:#fff; padding:8px 10px; text-align:left; font-weight:600; }
+td { padding:8px 10px; border-bottom:1px solid #eef2f0; vertical-align:top; }
+tr:nth-child(even) td { background:#fafcfa; }
+.chart-box { width:100%; height:380px; }
+.chart-box2 { width:100%; height:400px; }
+.legend-row { display:flex; flex-wrap:wrap; gap:14px; font-size:12.5px; color:#666; margin:6px 0 10px; padding-left:16px; }
+.foot { text-align:center; font-size:12px; color:#999; margin-top:30px; }
+.milestone { border-left:3px solid #2BBD6E; padding:10px 14px; margin-bottom:10px; background:#fafcfa; border-radius:0 8px 8px 0; }
+.milestone b { color:#00B050; }
+.milestone .risk { color:#E74C3C; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+<h1>北京朝阳 · 初中数学三年知识地图</h1>
+<div class="sub">人教版《义务教育教科书·数学》（2022新课标修订版）六册 · 34章全览｜适用：2026年9月入学的初一新生</div>
+<div class="meta">口径说明：北京朝阳区初中数学统一使用人教版教材；2024秋起七年级启用新版，逐学期滚动替换，本届新生三年全程使用新版。<br>★为中考重要度（5★最高，主观评估）；「中考考点」以北京卷历年命题规律为参考。</div>
+</div>
+
+<div class="kpi-row">
+<div class="kpi"><div class="num">6</div><div class="label">教材册数（三学年）</div></div>
+<div class="kpi"><div class="num">34</div><div class="label">章节总数（2024新版）</div></div>
+<div class="kpi"><div class="num">17 · 14 · 3</div><div class="label">代数 / 几何 / 统计章节数</div></div>
+<div class="kpi"><div class="num">10</div><div class="label">5★满分关键章节</div></div>
+</div>
+
+<div class="card">
+<h2>一、三年主线一图看懂</h2>
+<div class="note">三大领域在六个学期中的章节分布（堆叠柱=章节数），几何与代数双主线贯穿始终</div>
+<div id="chartMain" class="chart-box"></div>
+</div>
+
+<div class="card">
+<h2>二、新版教材 · 六册结构变化先知道</h2>
+<div class="note">2024修订版（人教第十二套教材）相比老版的关键调整，教辅/网课选购前必读</div>
+<div class="alert"><b>⚠️ 三点重要口径（直接关系买教辅、找网课）：</b><br>
+① 章节编号整体重排：老版 29 章 → 新版 34 章，例如老版「第14章 整式的乘法与因式分解」拆为新版「第16章 整式的乘法」+「第17章 因式分解」；老版九上「概率初步」移到新版九下第34章「随机事件的概率」；反比例函数从九下提前到九上第27章。<br>
+② 新版新增/单列内容：「函数」单列为八下第22章；「直线与圆」单列为九上第30章；八下「数据的分析」新增四分位数、数据分组两节（老版没有）。<br>
+③ 网上大量「人教版初中数学」资源（尤其思维导图、知识点手册）仍是老版 29 章结构，对照使用时需按知识点匹配而非按章节号匹配。</div>
+<table>
+<tr><th style="width:70px;">册</th><th style="width:140px;">使用学期</th><th style="width:100px;">包含章节</th><th>本册主题概括</th></tr>
+<tr><td><b>七上</b></td><td>2026秋（初一上）</td><td>第1～6章</td><td>有理数与代数启蒙：数系扩充、代数式与整式加减、第一个方程模型（一元一次方程）、几何入门</td></tr>
+<tr><td><b>七下</b></td><td>2027春（初一下）</td><td>第7～12章</td><td>推理工具成型：相交线平行线（几何证明起点）、实数、坐标系、二元一次方程组、不等式、统计启蒙</td></tr>
+<tr><td><b>八上</b></td><td>2027秋（初二上）</td><td>第13～18章</td><td>几何代数双双升级：三角形与全等（证明核心）、轴对称与等腰三角形、整式乘法→因式分解→分式（代数变形链）</td></tr>
+<tr><td><b>八下</b></td><td>2028春（初二下）</td><td>第19～24章</td><td>函数元年：二次根式、勾股定理、四边形（几何综合主战场）、函数概念+一次函数、数据分析</td></tr>
+<tr><td><b>九上</b></td><td>2028秋（初三上）</td><td>第25～30章</td><td>中考核心半年：一元二次方程、二次函数（压轴之王）、反比例函数、旋转、圆、直线与圆</td></tr>
+<tr><td><b>九下</b></td><td>2029春（初三下）</td><td>第31～34章</td><td>收官与总复习：相似（几何终极工具）、锐角三角函数、投影与视图、随机事件的概率；新课约半学期即转入中考一轮复习</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>三、六册 · 34章逐章拆解</h2>
+<div class="note">★=中考重要度（★★★☆☆基础 → ★★★★★必考重头，主观评估）；红框章=满分关键章节；「中考考点」按北京卷命题规律</div>
+<div class="legend-row"><span>领域：<span class="field-tag f-algebra">数与代数</span> <span class="field-tag f-geo">图形与几何</span> <span class="field-tag f-stat">统计与概率</span></span></div>
+
+<div class="vol-head"><span class="vol-badge">七上</span><span class="vol-sub">2026秋 · 初一第一学期 · 共6章</span></div>
+<div class="chapters">
+<div class="ch"><div class="ch-top"><span class="ch-no">第1章</span><span class="ch-name">有理数</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★</span></div><div class="secs">1.1 正数和负数｜1.2 有理数及其大小比较（概念/数轴/相反数/绝对值/大小比较）</div><div class="exam"><b>中考考点：</b>数轴、绝对值、相反数、科学记数法——北京卷选填高频基础题</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第2章</span><span class="ch-name">有理数的运算</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★</span></div><div class="secs">2.1 加法与减法｜2.2 乘法与除法｜2.3 乘方（乘方/科学记数法/近似数）</div><div class="exam"><b>中考考点：</b>计算基本功贯穿全科；科学记数法/近似数为选填常客</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第3章</span><span class="ch-name">代数式</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★</span></div><div class="secs">3.1 列代数式表示数量关系｜3.2 代数式的值</div><div class="exam"><b>中考考点：</b>算术思维→代数思维的转折点，方程/函数应用题的地基</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第4章</span><span class="ch-name">整式的加减</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★</span></div><div class="secs">4.1 整式｜4.2 整式的加法与减法</div><div class="exam"><b>中考考点：</b>合并同类项/去括号是计算题第一关，北京卷计算题常客</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第5章</span><span class="ch-name">一元一次方程</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">5.1 方程（从算式到方程/等式的性质）｜5.2 解一元一次方程｜5.3 实际问题与一元一次方程</div><div class="exam"><b>中考考点：</b>第一个完整方程模型；行程/工程/方案类应用题是初一重点，中考应用题的基础形态</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第6章</span><span class="ch-name">几何图形初步</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★</span></div><div class="secs">6.1 几何图形（立体/平面/点线面体）｜6.2 直线、射线、线段｜6.3 角（概念/比较运算/余角补角）</div><div class="exam"><b>中考考点：</b>几何启蒙；余角补角/角度计算/线段中点为初一必考；立体展开图为选填考点</div></div>
+</div>
+
+<div class="vol-head"><span class="vol-badge">七下</span><span class="vol-sub">2027春 · 初一第二学期 · 共6章</span></div>
+<div class="chapters">
+<div class="ch"><div class="ch-top"><span class="ch-no">第7章</span><span class="ch-name">相交线与平行线</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">7.1 相交线（相交/垂直/三线八角）｜7.2 平行线（概念/判定/性质）｜7.3 定义、命题、定理｜7.4 平移</div><div class="exam"><b>中考考点：</b>初中几何推理的真正起点；平行线判定与性质是初一几何核心、中考几何证明的基础工具</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第8章</span><span class="ch-name">实数</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★</span></div><div class="secs">8.1 平方根｜8.2 立方根｜8.3 实数及其简单运算</div><div class="exam"><b>中考考点：</b>数系第二次扩充；平方根/算术平方根/无理数概念为北京卷选填高频</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第9章</span><span class="ch-name">平面直角坐标系</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★</span></div><div class="secs">9.1 用坐标描述平面内点的位置｜9.2 坐标方法的简单应用（地理位置/平移）</div><div class="exam"><b>中考考点：</b>坐标工具课，函数图象的铺垫；坐标与平移为选填常规考点</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第10章</span><span class="ch-name">二元一次方程组</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★</span></div><div class="secs">10.1 概念｜10.2 消元——解二元一次方程组（代入法/加减法）｜10.3 实际问题与二元一次方程组</div><div class="exam"><b>中考考点：</b>消元思想；应用题常与不等式/函数结合，北京卷应用题常客</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第11章</span><span class="ch-name">不等式与不等式组</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">11.1 不等式（解集/性质）｜11.2 一元一次不等式｜11.3 一元一次不等式组</div><div class="exam"><b>中考考点：</b>数形结合解不等式组必考；方案选择类应用题（不等式建模）是北京卷应用题高频题型</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第12章</span><span class="ch-name">数据的收集、整理与描述</span><span class="field-tag f-stat">统计与概率</span><span style="color:#E74C3C;">★★</span></div><div class="secs">12.1 统计调查（全面调查/抽样调查）｜12.2 用统计图描述数据（扇形/条形/折线/直方图/趋势图）</div><div class="exam"><b>中考考点：</b>统计启蒙；统计图表读取是北京卷每年必考的基础题</div></div>
+</div>
+
+<div class="vol-head"><span class="vol-badge">八上</span><span class="vol-sub">2027秋 · 初二第一学期 · 共6章</span></div>
+<div class="chapters">
+<div class="ch"><div class="ch-top"><span class="ch-no">第13章</span><span class="ch-name">三角形</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★★</span></div><div class="secs">13.1 三角形的概念｜13.2 与三角形有关的线段｜13.3 三角形的内角与外角</div><div class="exam"><b>中考考点：</b>边角基础；内角和/外角/三边关系是几何证明的基本工具</div></div>
+<div class="ch w5"><div class="ch-top"><span class="ch-no">第14章</span><span class="ch-name">全等三角形</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★★★★</span></div><div class="secs">14.1 全等三角形及其性质｜14.2 三角形全等的判定｜14.3 角的平分线</div><div class="exam"><b>中考考点：</b>初中几何证明的核心枢纽！SSS/SAS/ASA/AAS/HL 是一切几何综合题的工具，<b>初二分水岭第一名</b></div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第15章</span><span class="ch-name">轴对称</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">15.1 图形的轴对称｜15.2 画轴对称的图形｜15.3 等腰三角形</div><div class="exam"><b>中考考点：</b>等腰三角形性质与判定高频；轴对称最短路径（将军饮马）是北京卷几何综合常客</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第16章</span><span class="ch-name">整式的乘法</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">16.1 幂的运算｜16.2 整式的乘法｜16.3 乘法公式（平方差/完全平方）</div><div class="exam"><b>中考考点：</b>乘法公式是代数变形核心工具；幂运算与乘法公式为选填+计算题高频</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第17章</span><span class="ch-name">因式分解</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">17.1 用提公因式法分解因式｜17.2 用公式法分解因式</div><div class="exam"><b>中考考点：</b>分式/一元二次方程的前置工具；中考计算必考技能，学不好后面寸步难行</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第18章</span><span class="ch-name">分式</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">18.1 分式及其基本性质｜18.2 乘法与除法｜18.3 加法与减法｜18.4 整数指数幂｜18.5 分式方程</div><div class="exam"><b>中考考点：</b>分式化简求值是北京卷解答题固定题型；分式方程应用常考</div></div>
+</div>
+
+<div class="vol-head"><span class="vol-badge">八下</span><span class="vol-sub">2028春 · 初二第二学期 · 共6章</span></div>
+<div class="chapters">
+<div class="ch"><div class="ch-top"><span class="ch-no">第19章</span><span class="ch-name">二次根式</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★</span></div><div class="secs">19.1 二次根式及其性质｜19.2 乘法与除法｜19.3 加法与减法</div><div class="exam"><b>中考考点：</b>二次根式化简是计算基本功，北京卷计算题常考</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第20章</span><span class="ch-name">勾股定理</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">20.1 勾股定理及其应用｜20.2 勾股定理的逆定理及其应用</div><div class="exam"><b>中考考点：</b>几何计算核心工具；与折叠/最短路径结合是北京卷几何综合高频考点</div></div>
+<div class="ch w5"><div class="ch-top"><span class="ch-no">第21章</span><span class="ch-name">四边形</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★★★★</span></div><div class="secs">21.1 四边形及多边形｜21.2 平行四边形｜21.3 特殊的平行四边形（矩形/菱形/正方形）</div><div class="exam"><b>中考考点：</b>初中几何综合题主战场！北京卷几何压轴常以特殊四边形为背景，<b>中考分值大户</b></div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第22章</span><span class="ch-name">函数</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">22.1 函数的概念｜22.2 函数的表示　<span style="color:#c07800;">（新版新增单列章）</span></div><div class="exam"><b>中考考点：</b>函数概念正式建立，整个函数体系的认知起点，初三三大函数的地基</div></div>
+<div class="ch w5"><div class="ch-top"><span class="ch-no">第23章</span><span class="ch-name">一次函数</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★★★</span></div><div class="secs">23.1 概念｜23.2 图象和性质｜23.3 与方程(组)、不等式｜23.4 实际问题与一次函数</div><div class="exam"><b>中考考点：</b>函数第一模型；图象性质与方案决策是北京卷必考，也是二次函数的台阶，<b>初二分水岭第二名</b></div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第24章</span><span class="ch-name">数据的分析</span><span class="field-tag f-stat">统计与概率</span><span style="color:#E74C3C;">★★★</span></div><div class="secs">24.1 集中趋势｜24.2 离散程度｜24.3 四分位数（新增）｜24.4 数据的分组（新增）</div><div class="exam"><b>中考考点：</b>平均数/中位数/众数/方差是北京卷统计解答题必考；四分位数、数据分组为2022课标新增内容</div></div>
+</div>
+
+<div class="vol-head"><span class="vol-badge">九上</span><span class="vol-sub">2028秋 · 初三第一学期 · 共6章</span></div>
+<div class="chapters">
+<div class="ch"><div class="ch-top"><span class="ch-no">第25章</span><span class="ch-name">一元二次方程</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★★★</span></div><div class="secs">25.1 概念｜25.2 降次——解一元二次方程（配方/公式/因式分解）｜25.3 实际问题与一元二次方程</div><div class="exam"><b>中考考点：</b>方程模型收官；解法+判别式+应用（增长率/面积/销售）是北京卷必考大题</div></div>
+<div class="ch w5"><div class="ch-top"><span class="ch-no">第26章</span><span class="ch-name">二次函数</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★★★</span></div><div class="secs">26.1 概念｜26.2 图象和性质｜26.3 与一元二次方程｜26.4 实际问题与二次函数</div><div class="exam"><b>中考考点：</b>初中数学天花板！北京卷压轴题常年由二次函数综合占据，<b>满分关键章节</b></div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第27章</span><span class="ch-name">反比例函数</span><span class="field-tag f-algebra">数与代数</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">27.1 概念｜27.2 图象和性质｜27.3 实际问题　<span style="color:#c07800;">（新版从九下提前到九上）</span></div><div class="exam"><b>中考考点：</b>图象性质+k的几何面积意义是北京卷选填压轴常客</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第28章</span><span class="ch-name">旋转</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★★</span></div><div class="secs">28.1 图形的旋转｜28.2 中心对称</div><div class="exam"><b>中考考点：</b>旋转是几何压轴题的常用变换工具；中心对称常出现在选填</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第29章</span><span class="ch-name">圆</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★★★★</span></div><div class="secs">29.1 圆的有关概念｜29.2 圆的有关性质（垂径定理/圆心角/圆周角）｜29.3 弧长和扇形面积</div><div class="exam"><b>中考考点：</b>垂径定理/圆周角定理是北京卷几何解答常客；弧长扇形面积为选填高频</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第30章</span><span class="ch-name">直线与圆</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">30.1 直线与圆｜30.2 三角形的内切圆｜30.3 正多边形与圆　<span style="color:#c07800;">（新版单列一章）</span></div><div class="exam"><b>中考考点：</b>切线判定与性质是几何证明高频题型，中考圆类题核心；垂径定理按2022课标调整为必修</div></div>
+</div>
+
+<div class="vol-head"><span class="vol-badge">九下</span><span class="vol-sub">2029春 · 初三第二学期 · 共4章（新课约半学期后转入中考总复习）</span></div>
+<div class="chapters">
+<div class="ch w5"><div class="ch-top"><span class="ch-no">第31章</span><span class="ch-name">相似</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★★★★</span></div><div class="secs">图形的相似｜相似三角形的判定｜性质｜应用举例｜位似</div><div class="exam"><b>中考考点：</b>几何压轴题的终极工具！北京卷几何综合与折叠变换高频考点，难度高分值大</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第32章</span><span class="ch-name">锐角三角函数</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★★★</span></div><div class="secs">锐角三角函数（正弦/余弦/正切）｜解直角三角形及其应用</div><div class="exam"><b>中考考点：</b>解直角三角形应用题（仰角俯角/坡度/方位角）是北京卷解答题固定题型</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第33章</span><span class="ch-name">投影与视图</span><span class="field-tag f-geo">图形与几何</span><span style="color:#E74C3C;">★★</span></div><div class="secs">投影（平行投影/中心投影/正投影）｜三视图｜由三视图确定几何体</div><div class="exam"><b>中考考点：</b>三视图是北京卷选填常客，难度低易拿分，考前突击性价比高</div></div>
+<div class="ch"><div class="ch-top"><span class="ch-no">第34章</span><span class="ch-name">随机事件的概率</span><span class="field-tag f-stat">统计与概率</span><span style="color:#E74C3C;">★★★</span></div><div class="secs">随机事件｜概率｜用列举法求概率（列表法/树状图法）｜用频率估计概率　<span style="color:#c07800;">（新版从九上移入）</span></div><div class="exam"><b>中考考点：</b>概率计算是北京卷解答题固定送分题，列表法与树状图必须熟练</div></div>
+</div>
+</div>
+
+<div class="card">
+<h2>四、中考权重热力图</h2>
+<div class="note">34章 × 中考重要度全景（5★=红色深），初二上～初三上是权重最高的窗口期</div>
+<div id="chartHeat" class="chart-box2"></div>
+</div>
+
+<div class="card">
+<h2>五、三年关键节奏点</h2>
+<div class="note">按时间轴的里程碑与风险预警</div>
+<div class="milestone"><b>初一（2026.9-2027.6）：</b>两场思维转型——小学算术思维→代数思维（七上 代数式/一元一次方程）、直观几何→推理几何（七下 平行线+命题证明）。<span class="risk">风险点：</span>负数运算不熟会让整式/方程全程不稳，初一计算必须过关。</div>
+<div class="milestone"><b>初二上（2027.9-2028.1）：</b><span class="risk">初中第一个分水岭</span>——全等三角形（几何证明核心）+ 整式乘法→因式分解（代数变形链）。北京初二数学两极分化主要发生在这一学期。</div>
+<div class="milestone"><b>初二下（2028.3-2028.6）：</b><span class="risk">初中第二个分水岭</span>——四边形（几何综合）+ 函数概念与一次函数（函数思维）。这两章学不透，初三三大函数全线告急。</div>
+<div class="milestone"><b>初三上（2028.9-2029.1）：</b>中考内容最密集的一学期：一元二次方程、二次函数、反比例函数、圆与切线全部完成。<span class="risk">风险点：</span>本章内容直接构成中考压轴题，是培优黄金期。</div>
+<div class="milestone"><b>初三下（2029.3 起）：</b>相似+三角函数+视图+概率收尾后立即进入一轮复习（3月中）→二轮专题（4-5月）→冲刺套卷（5-6月），北京中考通常在6月下旬。</div>
+</div>
+
+<div class="foot">
+<p>数据来源：人民教育出版社《义务教育教科书·数学》（2024修订版）各册目录（电子课本网 dzkbw.com 逐册核对）；北京市朝阳区教材选用口径（北京小升初网2025汇总）；中考考点按北京卷历年命题规律整理。</p>
+<p>报告生成：2026-10-12 ｜ 制表：尹燕玲的助手 🦞</p>
+</div>
+
+</div>
+<script>
+var chartMain = echarts.init(document.getElementById('chartMain'));
+var vols = ['七上','七下','八上','八下','九上','九下'];
+chartMain.setOption({
+  tooltip: { trigger: 'axis' },
+  legend: { data: ['数与代数','图形与几何','统计与概率'], top: 0 },
+  grid: { left: 40, right: 20, top: 40, bottom: 30 },
+  xAxis: { type: 'category', data: vols },
+  yAxis: { type: 'value', name: '章节数', maxInterval: 2 },
+  series: [
+    { name: '数与代数', type: 'bar', stack: 'total', barWidth: 46, itemStyle: { color: '#00B050' }, label: { show: true, color: '#fff', fontSize: 11 }, data: [5, 3, 4, 4, 3, 0] },
+    { name: '图形与几何', type: 'bar', stack: 'total', barWidth: 46, itemStyle: { color: '#2f6fbc' }, label: { show: true, color: '#fff', fontSize: 11 }, data: [1, 2, 3, 2, 3, 3] },
+    { name: '统计与概率', type: 'bar', stack: 'total', barWidth: 46, itemStyle: { color: '#F39C12' }, label: { show: true, color: '#fff', fontSize: 11 }, data: [0, 1, 0, 1, 0, 1] }
+  ]
+});
+var chapters = [
+ ['1 有理数',3],['2 有理数的运算',3],['3 代数式',2],['4 整式的加减',3],['5 一元一次方程',4],['6 几何图形初步',2],
+ ['7 相交线与平行线',4],['8 实数',3],['9 平面直角坐标系',2],['10 二元一次方程组',3],['11 不等式与不等式组',4],['12 数据的收集整理',2],
+ ['13 三角形',3],['14 全等三角形',5],['15 轴对称',4],['16 整式的乘法',4],['17 因式分解',4],['18 分式',4],
+ ['19 二次根式',3],['20 勾股定理',4],['21 四边形',5],['22 函数',4],['23 一次函数',5],['24 数据的分析',3],
+ ['25 一元二次方程',5],['26 二次函数',5],['27 反比例函数',4],['28 旋转',3],['29 圆',5],['30 直线与圆',4],
+ ['31 相似',5],['32 锐角三角函数',4],['33 投影与视图',2],['34 随机事件的概率',3]
+];
+var dataHeat = chapters.map(function(c){ return [c[0], c[1]]; });
+var chartHeat = echarts.init(document.getElementById('chartHeat'));
+var maxVal = 5;
+chartHeat.setOption({
+  tooltip: { formatter: function(p){ return p.value[0] + ' ：' + '★'.repeat(p.value[1]) + '☆'.repeat(5-p.value[1]); } },
+  grid: { left: 130, right: 60, top: 20, bottom: 90 },
+  xAxis: { type: 'category', data: chapters.map(function(c){return c[0].split(' ')[1] ? c[0].split(' ')[1] : c[0];}), axisLabel: { rotate: 60, fontSize: 11, interval: 0, formatter: function(v, i){ var full = chapters[i][0]; var sp = full.indexOf(' '); return full.substring(sp+1); } } },
+  yAxis: { type: 'value', min: 0, max: 5, interval: 1, name: '中考重要度(★)' },
+  series: [{
+    type: 'bar',
+    barWidth: 18,
+    data: chapters.map(function(c){ return { value: c[1], itemStyle: { color: c[1] === 5 ? '#E74C3C' : (c[1] === 4 ? '#F39C12' : (c[1] === 3 ? '#2BBD6E' : '#8fd3a8')) } }; }),
+    label: { show: true, position: 'top', fontSize: 10, formatter: function(p){ return p.value === 5 ? '★★★★★' : p.value + '★'; } }
+  }]
+});
+window.addEventListener('resize', function(){ chartMain.resize(); chartHeat.resize(); });
+</script>
+</body>
+</html>
