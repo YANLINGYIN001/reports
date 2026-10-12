@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>门铃6pro 4G上市后阶段性用户反馈跟踪报告</title>
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:30px; margin-bottom:24px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .subtitle { font-size:14px; opacity:0.9; }
+.header .date-range { font-size:13px; opacity:0.8; margin-top:6px; }
+.overview { background:#fff; border-left:4px solid #00B050; border-radius:8px; padding:14px 20px; margin-bottom:20px; font-size:14px; color:#333; }
+.kpi-grid { display:grid; grid-template-columns:1.1fr 1.6fr 1.4fr; gap:14px; margin-bottom:24px; }
+.kpi-card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size:13px; color:#999; margin-bottom:8px; }
+.kpi-card .value { font-size:32px; font-weight:700; color:#E74C3C; }
+.kpi-card .delta { font-size:12px; color:#00B050; margin-top:4px; }
+.kpi-card .delta.up { color:#E74C3C; }
+.kpi-card .delta.zero { color:#999; }
+.kpi-card .sub { font-size:12px; color:#666; margin-top:4px; }
+.kpi-item { font-size:13.5px; line-height:2.0; text-align:left; white-space:nowrap; }
+.kpi-item .n { color:#E74C3C; font-weight:700; }
+.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
+.insight-box { border-radius:10px; padding:16px; margin-bottom:12px; }
+.insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
+.insight-orange { background:#fff3e0; border-left:4px solid #F39F12; }
+.insight-red { background:#fdecea; border-left:4px solid #E74C3C; }
+.insight-box p { font-size:14px; line-height:1.8; }
+.insight-box strong { color:#00B050; }
+.insight-orange strong { color:#F39F12; }
+.insight-red strong { color:#c0392b; }
+.channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
+.channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
+.cat-cards { display:grid; grid-template-columns:repeat(7, 1fr); gap:10px; margin-bottom:16px; }
+.cat-card { min-width:0; border-radius:8px; padding:12px 6px; text-align:center; color:#fff; }
+.cat-card .cat-icon { font-size:20px; }
+.cat-card .cat-name { font-size:12px; white-space:nowrap; margin-top:4px; }
+.cat-card .cat-count { font-size:20px; font-weight:700; margin-top:2px; }
+.detail-table { width:100%; border-collapse:collapse; font-size:13px; }
+.detail-table th { background:#f0f7f1; color:#333; padding:10px 8px; text-align:left; font-weight:600; border-bottom:2px solid #00B050; white-space:nowrap; }
+.detail-table td { padding:10px 8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+.badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:12px; font-weight:600; }
+.badge-consult { background:#e8f5e9; color:#00692e; border:1px solid #a5d6a7; }
+.badge-defect { background:#fdecea; color:#c0392b; border:1px solid #f5b7b1; }
+.risk-row td { background:#fdf3f2; }
+.baseline-table { width:100%; border-collapse:collapse; font-size:13px; }
+.baseline-table th { background:#f0f7f1; padding:8px; border-bottom:2px solid #00B050; text-align:center; }
+.baseline-table td { padding:8px; border-bottom:1px solid #f0f0f0; text-align:center; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+@media (max-width:768px) {
+  .kpi-grid { grid-template-columns:repeat(2,1fr); }
+  .cat-cards { grid-template-columns:repeat(3,1fr); }
+}
+
+.kpi-label{font-size:13px;color:#999;margin-bottom:6px;}
+.kpi-value{font-size:30px;font-weight:700;color:#E74C3C;line-height:1.2;}
+.kpi-sub{font-size:12px;color:#999;margin-top:6px;}
+.kpi-item{font-size:16px;font-weight:700;color:#333;padding:3px 0;text-align:left;}
+.kpi-delta{color:#E74C3C;font-size:13px;font-weight:600;}
+.kpi-none{color:#00B050;font-size:13px;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🔔 门铃6pro 4G上市后阶段性用户反馈跟踪报告</h1>
+  <div class="subtitle">数据周期：9.23 - 10.11 ｜ 上市 Day 1-19（9.23 首销起算）｜ 基于每日跟踪累计数据</div>
+  <div class="date-range">口径说明：本报告「条数」均指反馈记录条数（客服渠道逐条记录）；「疑似缺陷」为客服处置口径的疑似质量类问题合集（非咨询即缺陷计数）；开流失败/设备离线/信号弱/固件升级失败等连接类问题在分类层归「信号网络类」单独跟踪。</div>
+</div>
+
+<div class="overview">新品上市首段（9.23-10.11）累计收集用户反馈 <strong>84</strong> 条，覆盖 <strong>4</strong> 个渠道，问题类型 <strong>53</strong> 种。反馈结构以咨询类为主（60 条、占 71%），疑似缺陷 <strong>24</strong> 条（占 29%）。其中连接类问题（开流失败/设备离线/信号弱/固件升级失败/开流慢）合计 <strong>14</strong> 条，为最大的问题簇；安装类咨询贯穿全程，累计 <strong>12</strong> 条居咨询类前列。</div>
+
+<div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
+<div class="kpi-card"><div class="label">累计反馈总数</div><div class="value">84</div><div class="sub">跟踪 19 天 · 周均 31 条</div></div>
+<div class="kpi-card"><div class="label">覆盖渠道数</div><div class="value">4</div><div class="sub">京东自营占比 73%</div></div>
+<div class="kpi-card"><div class="label">问题类型数</div><div class="value">53</div><div class="sub">咨询类 60 条 · 占 71%</div></div>
+<div class="kpi-card"><div class="label">疑似缺陷</div><div class="value">24</div><div class="sub">开流/离线链条 14 条为最大簇</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">🧭 核心结论</div>
+<div class="insight-box insight-green"><p><strong>🔵 反馈节奏平稳，咨询类主导。</strong>19 天累计 84 条，W2/W3 周均 36-43 条；咨询类 60 条（71%），以「安装方法、流量资费、云录权益、拆取方式」等使用认知类咨询为主，与门铃新品期用户摸索节奏一致。</p></div>
+<div class="insight-box insight-red"><p><strong>🔴 连接类问题为第一大问题簇：开流失败/设备离线合计 10 条。</strong>叠加开流慢 2 条、信号强度弱 1 条、固件升级失败 1 条，信号网络类缺陷合计 14 条，占疑似缺陷总量 58%；处置共性是「调整基站与门铃位置/核实信号强度」，与 4G 门铃双设备形态（门铃+基站）强相关，建议将基站摆放指引前置到商详页与安装卡片。</p></div>
+<div class="insight-box insight-orange"><p><strong>🟡 硬件类疑似缺陷零散分布、未成簇：单条类型合计 9 条。</strong>基站无声音/基站不亮灯/充不进电/夜视不切彩色/续航时间短等各 1 条，其中基站不亮灯、充不进电 2 条已换货闭环，放大后不清晰为电子变焦特性属正常解释范畴——整体无批量性硬件质量信号。</p></div>
+<div class="insight-box insight-orange"><p><strong>🟡 渠道集中度高：京东自营 61 条，占 73%。</strong>与电商渠道批量出货节奏强相关；有赞 15 条、APP 5 条、私域 3 条。</p></div>
+<div class="insight-box insight-green"><p><strong>🔵 门铃场景差异化关注点清晰。</strong>「流量后续是否收费」咨询 5 条居咨询类前列，反映 4G 资费是用户购买决策核心顾虑；云录权益类 6 条围绕赠送云录的领取与激活；内存卡类咨询 8 条高频原因是「内存卡插在基站侧面而非门铃主机」，建议 FAQ 单独成条。</p></div>
+</div>
+
+<div class="section">
+<div class="section-title">📈 一、反馈趋势（周度）</div>
+<table>
+<thead><tr><th>周度</th><th style="width:36%">分布</th><th>反馈量</th><th>疑似缺陷</th><th>渠道构成</th></tr></thead>
+<tbody>
+<tr><td style="white-space:nowrap">W1 9.23-9.27</td><td><div style="background:linear-gradient(90deg,#00B050,#2BBD6E);height:16px;border-radius:8px;width:12%"></div></td><td style="font-weight:700">5</td><td>0</td><td style="color:#666">有赞 5</td></tr>
+<tr><td style="white-space:nowrap">W2 9.28-10.4</td><td><div style="background:linear-gradient(90deg,#00B050,#2BBD6E);height:16px;border-radius:8px;width:84%"></div></td><td style="font-weight:700">36</td><td>11</td><td style="color:#666">京东自营 25、有赞 7、APP 2、私域 2</td></tr>
+<tr><td style="white-space:nowrap">W3 10.5-10.11</td><td><div style="background:linear-gradient(90deg,#00B050,#2BBD6E);height:16px;border-radius:8px;width:100%"></div></td><td style="font-weight:700">43</td><td>13</td><td style="color:#666">京东自营 36、有赞 3、APP 3、私域 1</td></tr>
+</tbody></table>
+<p style="font-size:12px;color:#999;margin-top:8px">📌 小结：W1（9.23-9.27）为开售首段仅 5 条，W2 起随出货放量升至 36 条，W3（10.5-10.11）43 条为当前峰值周；疑似缺陷随反馈量同步上升（W2 11 条 / W3 13 条），主要由连接类问题贡献。</p>
+</div>
+
+<div class="section">
+<div class="section-title">🗂 二、问题主题分类全景</div>
+<div class="cat-cards" style="grid-template-columns:repeat(6,1fr)"><div class="cat-card" style="background:#3498DB"><div class="cat-icon">🔧</div><div style="font-size:13px;font-weight:700">功能使用类</div><div style="font-size:12px;opacity:.9">26 条</div></div>
+<div class="cat-card" style="background:#00B050"><div class="cat-icon">📶</div><div style="font-size:13px;font-weight:700">信号网络类</div><div style="font-size:12px;opacity:.9">23 条</div></div>
+<div class="cat-card" style="background:#16A085"><div class="cat-icon">🏠</div><div style="font-size:13px;font-weight:700">安装类</div><div style="font-size:12px;opacity:.9">12 条</div></div>
+<div class="cat-card" style="background:#E74C3C"><div class="cat-icon">⚠️</div><div style="font-size:13px;font-weight:700">疑似缺陷</div><div style="font-size:12px;opacity:.9">9 条</div></div>
+<div class="cat-card" style="background:#E67E22"><div class="cat-icon">💾</div><div style="font-size:13px;font-weight:700">存储卡录类</div><div style="font-size:12px;opacity:.9">8 条</div></div>
+<div class="cat-card" style="background:#8E44AD"><div class="cat-icon">☁️</div><div style="font-size:13px;font-weight:700">云录权益类</div><div style="font-size:12px;opacity:.9">6 条</div></div>
+</div>
+<table>
+<thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>Top 问题类型</th></tr></thead>
+<tbody><tr><td><strong>功能使用类</strong></td><td>26</td><td>31.0%</td><td style="text-align:left">设备拆取咨询(5)、产品功能咨询(2)、分享咨询(2)</td></tr>
+<tr><td><strong>信号网络类</strong></td><td>23</td><td>27.4%</td><td style="text-align:left">开流失败(5)、设备离线(5)、流量后续是否收费咨询(5)</td></tr>
+<tr><td><strong>安装类</strong></td><td>12</td><td>14.3%</td><td style="text-align:left">安装咨询(7)、配网咨询(2)、安装位置咨询(1)</td></tr>
+<tr><td><strong>疑似缺陷</strong></td><td>9</td><td>10.7%</td><td style="text-align:left">放大后不清晰(1)、基站无声音(1)、夜视不切彩色(1)</td></tr>
+<tr><td><strong>存储卡录类</strong></td><td>8</td><td>9.5%</td><td style="text-align:left">内存卡安装咨询(3)、内存卡规格咨询(2)、无内存卡使用咨询(1)</td></tr>
+<tr><td><strong>云录权益类</strong></td><td>6</td><td>7.1%</td><td style="text-align:left">免费云录领取咨询(2)、云录卡激活咨询(1)、云录关闭咨询(1)</td></tr>
+</tbody></table>
+<p style="font-size:12px;color:#999;margin-top:8px">📌 小结：功能使用类（26）与信号网络类（23）合计占 58%；安装类 12 条全部为咨询（安装位置/防盗门适配/配网），无安装类缺陷；分类为记录级口径（每条归 1 类）。</p>
+</div>
+
+<div class="section">
+<div class="section-title">⚠️ 三、疑似缺陷明细（累计 24 条）</div>
+<p style="font-size:13px;font-weight:600;color:#c0392b;margin-bottom:10px">3.1 连接类问题簇（信号网络类缺陷 14 条）——第一大问题簇</p>
+<table>
+<thead><tr><th>#</th><th>时间</th><th>渠道</th><th>类型</th><th>用户问题</th><th>客服方案</th></tr></thead>
+<tbody><tr class="risk-row"><td>1</td><td style="white-space:nowrap">10月10日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>开流慢</strong></td><td style="text-align:left">实时画面卡慢</td><td style="text-align:left;color:#666">确认基站与门铃位置调整后观察</td></tr>
+<tr class="risk-row"><td>2</td><td style="white-space:nowrap">10月11日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>开流慢</strong></td><td style="text-align:left">设备实时画面加载卡慢，如何连接家里网络</td><td style="text-align:left;color:#666">核实信号强度，重启刷新设备信号</td></tr>
+<tr class="risk-row"><td>3</td><td style="white-space:nowrap">9月29日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>固件升级失败</strong></td><td style="text-align:left">设备固件升级失败，显示离线状态</td><td style="text-align:left;color:#666">引导重新连接观察</td></tr>
+<tr class="risk-row"><td>4</td><td style="white-space:nowrap">9月28日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>信号强度弱</strong></td><td style="text-align:left">门关上就卡 信号强度55%</td><td style="text-align:left;color:#666">建议查看下网络信号 调整门铃与基站距离</td></tr>
+<tr class="risk-row"><td>5</td><td style="white-space:nowrap">9月30日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>设备离线</strong></td><td style="text-align:left">设备使用一天之后就离线</td><td style="text-align:left;color:#666">引导重新连接，调整基站和门铃的位置</td></tr>
+<tr class="risk-row"><td>6</td><td style="white-space:nowrap">10月4日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>设备离线</strong></td><td style="text-align:left">设备还没显示离线</td><td style="text-align:left;color:#666">核实信号强度</td></tr>
+<tr class="risk-row"><td>7</td><td style="white-space:nowrap">9月30日</td><td style="white-space:nowrap">APP</td><td style="white-space:nowrap"><strong>设备离线</strong></td><td style="text-align:left">一直显示离线，且无法正常显示画面</td><td style="text-align:left;color:#666">信号正常，正常上报事件</td></tr>
+<tr class="risk-row"><td>8</td><td style="white-space:nowrap">10月10日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>设备离线</strong></td><td style="text-align:left">设备离线无法正常录制</td><td style="text-align:left;color:#666">引导重新连接核实信号强度</td></tr>
+<tr class="risk-row"><td>9</td><td style="white-space:nowrap">10月11日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>设备离线</strong></td><td style="text-align:left">设备频繁离线</td><td style="text-align:left;color:#666">核实信号，重启门铃</td></tr>
+<tr class="risk-row"><td>10</td><td style="white-space:nowrap">9月28日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>开流失败</strong></td><td style="text-align:left">加载失败</td><td style="text-align:left;color:#666">建议切换网络尝试</td></tr>
+<tr class="risk-row"><td>11</td><td style="white-space:nowrap">10月3日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>开流失败</strong></td><td style="text-align:left">实时画面无法加载</td><td style="text-align:left;color:#666">确认基站状态重新插拔基站</td></tr>
+<tr class="risk-row"><td>12</td><td style="white-space:nowrap">10月7日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>开流失败</strong></td><td style="text-align:left">信号不好，实时画面无法加载</td><td style="text-align:left;color:#666">可能是网络信号值不稳定导致的呢，麻烦您查看一下网络信号值是多少呢</td></tr>
+<tr class="risk-row"><td>13</td><td style="white-space:nowrap">9月29日</td><td style="white-space:nowrap">APP</td><td style="white-space:nowrap"><strong>开流失败</strong></td><td style="text-align:left">为什么看不到了，</td><td style="text-align:left;color:#666">信号差（60，51）,已加用户微信，沟通用户购买多孔插座，后面将基站插在玄关位置</td></tr>
+<tr class="risk-row"><td>14</td><td style="white-space:nowrap">10月9日</td><td style="white-space:nowrap">APP</td><td style="white-space:nowrap"><strong>开流失败</strong></td><td style="text-align:left">没有画面呢</td><td style="text-align:left;color:#666">基站信号差（46，93），已添加用户微信，沟通用户挪动基站位置调整信号</td></tr>
+</tbody></table>
+<p style="font-size:12px;color:#999;margin:8px 0 14px">📌 小结：开流失败 5 条 + 设备离线 5 条为核心；处置共性为「核实信号强度 + 调整基站与门铃位置」，APP 渠道 3 条均为基站信号差（60/51、46/93），已加微信跟进——连接质量与基站摆放强相关，建议安装指引强化「基站位置」话术。</p>
+<p style="font-size:13px;font-weight:600;color:#c0392b;margin-bottom:10px">3.2 硬件类疑似缺陷（9 条）——零散未成簇</p>
+<table>
+<thead><tr><th>#</th><th>时间</th><th>渠道</th><th>类型</th><th>用户问题</th><th>客服方案</th></tr></thead>
+<tbody><tr class="risk-row"><td>1</td><td style="white-space:nowrap">9月30日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>放大后不清晰</strong></td><td style="text-align:left">与其他品牌相比较，放大后清晰度太差了</td><td style="text-align:left;color:#666">告知门铃是电子变焦放的太大是会模糊的</td></tr>
+<tr class="risk-row"><td>2</td><td style="white-space:nowrap">9月30日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>基站无声音</strong></td><td style="text-align:left">基站无声音</td><td style="text-align:left;color:#666">引导客户提供视频</td></tr>
+<tr class="risk-row"><td>3</td><td style="white-space:nowrap">10月1日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>夜视不切彩色</strong></td><td style="text-align:left">开自动画面黑白的</td><td style="text-align:left;color:#666">正常排障引导换货</td></tr>
+<tr class="risk-row"><td>4</td><td style="white-space:nowrap">10月5日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>续航时间短</strong></td><td style="text-align:left">设备续航时间短，如何调整</td><td style="text-align:left;color:#666">核实每天录制视频较多，降低灵敏度提高侦测间隔</td></tr>
+<tr class="risk-row"><td>5</td><td style="white-space:nowrap">10月6日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>背板安装不紧</strong></td><td style="text-align:left">背板安装不紧</td><td style="text-align:left;color:#666">您用力向下卡一下</td></tr>
+<tr class="risk-row"><td>6</td><td style="white-space:nowrap">10月6日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>画面不清晰</strong></td><td style="text-align:left">画面不清晰如何调整</td><td style="text-align:left;color:#666">告知墙体反光建议换个位置安装</td></tr>
+<tr class="risk-row"><td>7</td><td style="white-space:nowrap">10月8日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>基站不亮灯</strong></td><td style="text-align:left">基站不亮灯</td><td style="text-align:left;color:#666">已换货处理</td></tr>
+<tr class="risk-row"><td>8</td><td style="white-space:nowrap">10月10日</td><td style="white-space:nowrap">京东自营</td><td style="white-space:nowrap"><strong>充不进电</strong></td><td style="text-align:left">设备无法充电连接电源线无反应</td><td style="text-align:left;color:#666">更换供电适配器以及电源线，引导换货</td></tr>
+<tr class="risk-row"><td>9</td><td style="white-space:nowrap">10月9日</td><td style="white-space:nowrap">APP</td><td style="white-space:nowrap"><strong>隐私遮蔽无法删除</strong></td><td style="text-align:left">隐私遮蔽无法彻底删除，重启机器后依然存在</td><td style="text-align:left;color:#666">10.10：电话无人接听，语音留言告知可以清配置解绑重新配网快速解决</td></tr>
+</tbody></table>
+<p style="font-size:12px;color:#999;margin-top:8px">📌 小结：9 条全部为单条类型、无重复聚集；基站不亮灯、充不进电已换货闭环，夜视不切彩色已排障换货，隐私遮蔽无法删除已语音留言清配置方案待回访；放大后不清晰/画面不清晰属电子变焦与安装环境（墙体反光）解释范畴。</p>
+</div>
+
+<div class="section">
+<div class="section-title">💬 四、用户咨询热点 TOP10</div>
+<table>
+<thead><tr><th>#</th><th>问题类型</th><th>反馈量</th><th>典型原声</th><th>客服口径</th></tr></thead>
+<tbody><tr><td>1</td><td style="white-space:nowrap"><strong>安装咨询</strong></td><td><strong>7</strong></td><td style="text-align:left">设备指导使用<span style="color:#999">(京东自营·9月30日)</span> ｜ 设备指导使用<span style="color:#999">(京东自营·9月30日)</span></td><td style="text-align:left;color:#666">发送安装视频 ｜ 正常解答引导安装位置</td></tr>
+<tr><td>2</td><td style="white-space:nowrap"><strong>设备拆取咨询</strong></td><td><strong>5</strong></td><td style="text-align:left">如何取下来充电<span style="color:#999">(京东自营·10月2日)</span> ｜ 你好，我把这个给装上去了，但是这个怎么拿下来呀？<span style="color:#999">(京东自营·10月7日)</span></td><td style="text-align:left;color:#666">发送视频参考 ｜ 您好，门铃背板是可拆卸的，需要在app关闭强拆报警，用卡</td></tr>
+<tr><td>3</td><td style="white-space:nowrap"><strong>流量后续是否收费咨询</strong></td><td><strong>5</strong></td><td style="text-align:left">4G版是终身免费吗？<span style="color:#999">(有赞·9月26日)</span> ｜ 流量一个月多少，是无限用的还是有限制<span style="color:#999">(有赞·10月4日)</span></td><td style="text-align:left;color:#666">是终生不限流量的 ｜ 这一款是终生不限流量的哟，不需要联网的哟，不需要交流量费</td></tr>
+<tr><td>4</td><td style="white-space:nowrap"><strong>内存卡安装咨询</strong></td><td><strong>3</strong></td><td style="text-align:left">内存卡朝向<span style="color:#999">(京东自营·9月28日)</span> ｜ 内存卡如何安装<span style="color:#999">(京东自营·10月3日)</span></td><td style="text-align:left;color:#666">内存卡插在室内基站的侧面哈，有对应的图标显示的哦~插的时 ｜ 告知安装方式及图片</td></tr>
+<tr><td>5</td><td style="white-space:nowrap"><strong>产品功能咨询</strong></td><td><strong>2</strong></td><td style="text-align:left">咨询产品说明<span style="color:#999">(京东自营·9月30日)</span> ｜ 门铃响取消响声<span style="color:#999">(京东自营·10月1日)</span></td><td style="text-align:left;color:#666">正常告知各项功能设置 ｜ 发送图片告知</td></tr>
+<tr><td>6</td><td style="white-space:nowrap"><strong>分享咨询</strong></td><td><strong>2</strong></td><td style="text-align:left">设备如何分享<span style="color:#999">(京东自营·10月5日)</span> ｜ 这只能绑定一个手机吗<span style="color:#999">(京东自营·10月6日)</span></td><td style="text-align:left;color:#666">设备设置邀请家人一起查看 ｜ 门铃只能绑定一个账号。最多分享5人</td></tr>
+<tr><td>7</td><td style="white-space:nowrap"><strong>配网咨询</strong></td><td><strong>2</strong></td><td style="text-align:left">怎么连接到我手机上<span style="color:#999">(京东自营·10月6日)</span> ｜ 设备指导连接<span style="color:#999">(京东自营·10月11日)</span></td><td style="text-align:left;color:#666">发送安装视频 ｜ 已发送链接视频</td></tr>
+<tr><td>8</td><td style="white-space:nowrap"><strong>内存卡规格咨询</strong></td><td><strong>2</strong></td><td style="text-align:left">请问机器对tf卡的规格有限制吗？<span style="color:#999">(京东自营·10月6日)</span> ｜ 最大可以放多少内存啊？<span style="color:#999">(有赞·9月25日)</span></td><td style="text-align:left;color:#666">1、内存卡请使用正品有品牌保障的内存卡，尽量使用带有Cl ｜ 最大支持256G的</td></tr>
+<tr><td>9</td><td style="white-space:nowrap"><strong>视频录制时长咨询</strong></td><td><strong>2</strong></td><td style="text-align:left">视频录制时长不一样<span style="color:#999">(京东自营·10月7日)</span> ｜ 设备如何降低录制视频数量<span style="color:#999">(京东自营·10月11日)</span></td><td style="text-align:left;color:#666">小主 这个一般只看异动时间喔 有人出现后3~5秒会录制  ｜ 降低灵敏度</td></tr>
+<tr><td>10</td><td style="white-space:nowrap"><strong>免费云录领取咨询</strong></td><td><strong>2</strong></td><td style="text-align:left">三天云录在哪里开通<span style="color:#999">(京东自营·10月9日)</span> ｜ 门铃赠送云录以及安装位置<span style="color:#999">(京东自营·10月10日)</span></td><td style="text-align:left;color:#666">绑定就送三天永久云录 ｜ 绑定后自动领取，连接后画面调整安装位置</td></tr>
+</tbody></table>
+<p style="font-size:12px;color:#999;margin-top:8px">📌 小结：安装咨询 7 条居全类型第 1，叠加内存卡/配网/安装位置等，「怎么装」仍是第一话题；「流量后续是否收费」5 条与「设备拆取」5 条并列第二梯队，分别指向 4G 资费顾虑与拆装便利性；建议商详页/FAQ 前置：基站摆放位置、内存卡插基站侧面、流量资费说明、防盗门（金属门）不建议安装。</p>
+</div>
+
+<div class="section">
+<div class="section-title">✅ 五、已闭环 / 待跟进信号</div>
+<div class="insight-box insight-green"><p><strong>已闭环：</strong>基站不亮灯（换货）、充不进电（换货）、夜视不切彩色（排障后换货）、隐私遮蔽无法删除（语音留言清配置方案，待回访确认）——4 条硬件类缺陷均已处置；开流失败/设备离线类以「调位置+核实信号」现场处置为主，APP 渠道 3 例已加用户微信持续跟进。</p></div>
+<div class="insight-box insight-orange"><p><strong>待跟进：</strong>①连接类问题 14 条占比高，建议产品/研发评估基站信号强度引导话术与商详页基站摆放示意图；②「门铃响取消响声」（低置信度打标，暂归产品功能咨询）待复核口径；③10.11 新增 5 条（设备频繁离线/免打孔安装/指导连接/开流慢/降低录像量），其中离线+开流慢 2 条延续连接类主线，持续观察是否形成第二波聚集。</p></div>
+</div>
+
+<div class="section">
+<div class="section-title">📎 附：跟踪日报清单</div>
+<p style="font-size:13px;line-height:2">
+<a href="https://yanlingyin001.github.io/reports/6pro-4g-daily-day1.html" style="color:#00B050">Day 6（首期 9.29）</a> ·
+<a href="https://yanlingyin001.github.io/reports/6pro-4g-daily-day15.html" style="color:#00B050">Day 15（10.8）</a> ·
+<a href="https://yanlingyin001.github.io/reports/6pro-4g-daily-day16.html" style="color:#00B050">Day 16（10.9）</a> ·
+<a href="https://yanlingyin001.github.io/reports/6pro-4g-daily-day17.html" style="color:#00B050">Day 17（10.10）</a> ·
+<a href="https://yanlingyin001.github.io/reports/6pronp-index.html" style="color:#00B050">日报合集页</a>
+</p>
+<p style="font-size:12px;color:#999">注：Day 1-14 期间为事件驱动更新+节后补报，中间无逐日日报；本阶段报告为 9.23-10.11 全量累计口径。</p>
+</div>
+
+<div class="footer">
+数据来源:飞书表格「门铃6pro 4G新品跟踪表」· 用户问题反馈汇总 | 9.23开售起累计<br>
+由 🦞尹燕玲-报告分析专家 生成 · 2026-10-12 · 供 10.13 会议使用
+</div>
+
+</div>
+
+</body>
+</html>
