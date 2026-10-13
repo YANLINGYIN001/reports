@@ -81,20 +81,22 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
   <div class="date-range">数据来源:飞书表格「云台9pro 4G新品跟踪表」· 用户问题反馈汇总 | 更新时间:2026-10-13 17:54</div>
 </div>
 
-<div class="overview">累计反馈91条（较Day 19持平，渠道4个）；问题分布以咨询类为主（占比71%），疑似缺陷累计26条（今日无新现）；本期新增0条：无新增。</div>
+<div class="overview">累计反馈91条（较Day 19 +3，渠道4个）；问题分布以咨询类为主（占比71%），疑似缺陷累计26条（较前日+3，均为APP渠道）；本期新增3条全部为疑似缺陷（开流失败1、设备离线2），且后台跟进显示设备实际在线。</div>
 
 <div class="kpi-grid">
-  <div class="kpi-card"><div class="kpi-label">累计反馈问题</div><div class="kpi-value">91</div><div class="kpi-sub">较 Day 19（91 条）+0</div></div>
+  <div class="kpi-card"><div class="kpi-label">累计反馈问题</div><div class="kpi-value">91</div><div class="kpi-sub">较 Day 19（88 条）+3</div></div>
   <div class="kpi-card"><div class="kpi-label">Top3 问题（累计条数 · 本期新增）</div><div class="kpi-item">是否无需WiF即可使用咨询 <span style="color:#999;font-weight:400;">6条</span> <span class="kpi-none">持平</span></div><div class="kpi-item">卡录存储时长咨询 <span style="color:#999;font-weight:400;">4条</span> <span class="kpi-none">持平</span></div><div class="kpi-item">流量后续是否收费咨询 <span style="color:#999;font-weight:400;">4条</span> <span class="kpi-none">持平</span></div><div class="kpi-sub">按问题类型反馈量；疑似缺陷类不在此列，单独呈现于右侧</div></div>
-  <div class="kpi-card"><div class="kpi-label">疑似缺陷（累计 26 条 · 本期新增 0 条）</div><div class="kpi-item" style="font-size:14px">设备离线 <span style="color:#999;font-weight:400;">累计4条</span> <span class="kpi-none">持平</span></div><div class="kpi-item" style="font-size:14px">夜视不切换全彩 <span style="color:#999;font-weight:400;">累计3条</span> <span class="kpi-none">持平</span></div><div class="kpi-item" style="font-size:14px">内存卡不识别 <span style="color:#999;font-weight:400;">累计2条</span> <span class="kpi-none">持平</span></div><div class="kpi-item" style="font-size:14px">其余 14 类共 17 条 <span class="kpi-none">持平</span></div></div>
+  <div class="kpi-card"><div class="kpi-label">疑似缺陷（累计 26 条 · 本期新增 3 条）</div><div class="kpi-item" style="font-size:14px">设备离线 <span style="color:#999;font-weight:400;">累计4条</span> <span class="kpi-delta">+2</span></div><div class="kpi-item" style="font-size:14px">夜视不切换全彩 <span style="color:#999;font-weight:400;">累计3条</span> <span class="kpi-none">持平</span></div><div class="kpi-item" style="font-size:14px">内存卡不识别 <span style="color:#999;font-weight:400;">累计2条</span> <span class="kpi-none">持平</span></div><div class="kpi-item" style="font-size:14px">其余 14 类共 17 条 <span class="kpi-none">持平</span></div></div>
 </div>
 
 
 
 <div class="section">
   <div class="section-title">核心洞察</div>
-  <div class="insight-box insight-green"><p><strong>🟢 今日零新增</strong>:累计91条、疑似缺陷26条均与上期持平。缺陷存量TOP：设备离线4条、夜视不切换全彩3条、内存卡不识别2条，均无再现。</p></div>
-  <div class="insight-box insight-green"><p><strong>🟢 咨询焦点「是否无需WiF即可使用咨询」累计6条，居全类型第1位</strong>:TOP3咨询：是否无需WiF即可使用咨询6条、卡录存储时长咨询4条、流量后续是否收费咨询4条——认知差主导，商详页/FAQ前置仍是消化主路径。</p></div>
+  <div class="insight-box insight-red"><p><strong>🔴 重点问题·退货分拣发现硬件异常（3台绿灯常亮无法配网）</strong>:退货中有3台分拣发现均出现绿灯常亮、无法正常配网，已安排邮寄质量进行分析。这是首批退货侧暴露的硬件批次问题信号，建议质量侧关注绿灯常亮是否指向同一硬件/固件缺陷；与用户反馈侧"报离线/开流失败但后台设备在线"现象是否关联，待质量分析结论。</p></div>
+  <div class="insight-box insight-orange"><p><strong>🟠 新增3条全部为APP渠道缺陷类，且呈现同一模式</strong>:开流失败1条（看不到实时画面）+设备离线2条（不联网/连不上）。共同特征：用户侧感知"设备不可用"，但10.13跟进显示后台设备均在线、正常上报事件，信号强度50-79。指向"用户感知离线≠真离线"，可能与使用场景（网络切换/信号弱）或APP侧状态展示有关，建议研发关注APP端设备状态提示逻辑。</p></div>
+  <div class="insight-box insight-orange"><p><strong>🟠 疑似缺陷累计23→26，设备离线升至4条</strong>:结合退货3台绿灯常亮事件，"设备不可用"类问题（离线/开流失败/无法配网）成为本期最值得跟踪的簇，建议作为质量分析重点观察线。</p></div>
+  <div class="insight-box insight-green"><p><strong>🟢 咨询侧延续免WiFi认知差主线</strong>:免WiFi+插电使用咨询仍是第一高频主题，有赞渠道3条新增均为售前认知咨询（手机查看/不联网云台/无WiFi可用），与私域售前咨询结构一致。</p></div>
 </div>
 <div class="section">
   <div class="section-title">渠道反馈分布(4渠道)</div>
@@ -129,11 +131,16 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
 </div>
 
 <div class="section">
-  <div class="section-title">本期新增反馈明细(0条)</div>
-  <div style="background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:28px;text-align:center;color:#64748b;font-size:13.5px;">
-    📭 今日无新增反馈（表格末行 row93，与上期持平）<br>
-    <span style="font-size:12px;color:#94a3b8;">连续零新增日：新品反馈平台期，趋势对比见下方</span>
-  </div>
+  <div class="section-title">本期新增反馈明细(3条)</div>
+  <table class="detail-table">
+    <thead><tr><th>序</th><th>类型</th><th>反馈量</th><th>问题</th><th>客服方案</th></tr></thead>
+    <tbody>
+    <tr class="risk-row"><td>1</td><td><span class="badge badge-defect">设备离线</span></td><td>1</td><td>连不上</td><td>10.13：设备在线，正常上报事件，信号强度65</td></tr>
+    <tr class="risk-row"><td>2</td><td><span class="badge badge-defect">设备离线</span></td><td>1</td><td>新机刚拆封，不联网</td><td>10.13：设备已清配置解绑，信号强度79</td></tr>
+    <tr class="risk-row"><td>3</td><td><span class="badge badge-defect">开流失败</span></td><td>1</td><td>看不到实时画面</td><td>10.13：设备在线，正常上报事件，信号强度50</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#666;margin-top:6px;">本期新增3条均为APP渠道（10.11-10.12提交），缺陷类置顶；共同特征：用户感知"设备不可用"但后台设备在线。</p>
 </div>
 
 <div class="section">
@@ -141,10 +148,10 @@ body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hi
   <table class="baseline-table">
     <thead><tr><th>指标</th><th>Day 19 (10/12)</th><th>Day 20 (10/13)</th><th>趋势判断标准</th></tr></thead>
     <tbody>
-    <tr><td>累计反馈量</td><td>91 条</td><td><strong>91 条 (+0)</strong></td><td>新品期日增5-10条属正常放量节奏</td></tr>
-    <tr><td>咨询/功能类占比</td><td>71%(65/91)</td><td><strong>71%(65/91)</strong></td><td>认知差主导的咨询占比持续&gt;70%,商详页/FAQ前置是消化主路径</td></tr>
-    <tr><td>疑似缺陷累计</td><td>26 条</td><td><strong>26 条 (零新增)</strong></td><td>单日新增≥3或同类缺陷再现即升级提示</td></tr>
-    <tr><td>覆盖渠道数</td><td>4 个</td><td><strong>4 个</strong></td><td>渠道扩展期,注意各渠道咨询/缺陷结构差异</td></tr>
+    <tr><td>累计反馈量</td><td>88 条</td><td><strong>91 条 (+3)</strong></td><td>新品期日增5-10条属正常放量节奏</td></tr>
+    <tr><td>咨询/功能类占比</td><td>73%(61/84)</td><td><strong>71%(65/91)</strong></td><td>认知差主导的咨询占比持续&gt;70%,商详页/FAQ前置是消化主路径</td></tr>
+    <tr><td>疑似缺陷累计</td><td>23 条</td><td><strong>26 条 (+3)</strong></td><td>单日新增≥3或同类缺陷再现即升级提示</td></tr>
+    <tr><td>覆盖渠道数</td><td>4 个</td><td><strong>4 个 (持平)</strong></td><td>渠道扩展期,注意各渠道咨询/缺陷结构差异</td></tr>
     </tbody>
   </table>
 </div>
