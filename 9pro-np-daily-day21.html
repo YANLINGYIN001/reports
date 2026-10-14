@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>云台9pro 4G新品跟踪日报 · Day 21</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB",sans-serif; background:#f5f6fa; color:#333; line-height:1.6; }
+.container { max-width:1000px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:30px; margin-bottom:24px; text-align:center; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .subtitle { font-size:14px; opacity:0.9; }
+.header .date-range { font-size:13px; opacity:0.8; margin-top:6px; }
+.overview { background:#fff; border-left:4px solid #00B050; border-radius:8px; padding:14px 20px; margin-bottom:20px; font-size:14px; color:#333; }
+.kpi-grid { display:grid; grid-template-columns:1.1fr 1.6fr 1.4fr; gap:14px; margin-bottom:24px; }
+.kpi-card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.kpi-card .label { font-size:13px; color:#999; margin-bottom:8px; }
+.kpi-card .value { font-size:32px; font-weight:700; color:#E74C3C; }
+.kpi-card .delta { font-size:12px; color:#00B050; margin-top:4px; }
+.kpi-card .delta.up { color:#E74C3C; }
+.kpi-card .delta.zero { color:#999; }
+.kpi-card .sub { font-size:12px; color:#666; margin-top:4px; }
+.kpi-item { font-size:13.5px; line-height:2.0; text-align:left; white-space:nowrap; }
+.kpi-item .n { color:#E74C3C; font-weight:700; }
+.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size:18px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.section-title::before { content:""; width:4px; height:20px; background:#00B050; border-radius:2px; }
+.insight-box { border-radius:10px; padding:16px; margin-bottom:12px; }
+.insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
+.insight-orange { background:#fff3e0; border-left:4px solid #F39F12; }
+.insight-red { background:#fdecea; border-left:4px solid #E74C3C; }
+.insight-box p { font-size:14px; line-height:1.8; }
+.insight-box strong { color:#00B050; }
+.insight-orange strong { color:#F39F12; }
+.insight-red strong { color:#c0392b; }
+.channel-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.channel-tag { background:#e8f5e9; color:#00B050; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:500; }
+.channel-tag .count { background:#00B050; color:#fff; border-radius:10px; padding:1px 8px; margin-left:4px; font-size:12px; }
+.cat-cards { display:grid; grid-template-columns:repeat(7, 1fr); gap:10px; margin-bottom:16px; }
+.cat-card { min-width:0; border-radius:8px; padding:12px 6px; text-align:center; color:#fff; }
+.cat-card .cat-icon { font-size:20px; }
+.cat-card .cat-name { font-size:12px; white-space:nowrap; margin-top:4px; }
+.cat-card .cat-count { font-size:20px; font-weight:700; margin-top:2px; }
+.detail-table { width:100%; border-collapse:collapse; font-size:13px; }
+.detail-table th { background:#f0f7f1; color:#333; padding:10px 8px; text-align:left; font-weight:600; border-bottom:2px solid #00B050; white-space:nowrap; }
+.detail-table td { padding:10px 8px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+.badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:12px; font-weight:600; }
+.badge-consult { background:#e8f5e9; color:#00692e; border:1px solid #a5d6a7; }
+.badge-defect { background:#fdecea; color:#c0392b; border:1px solid #f5b7b1; }
+.risk-row td { background:#fdf3f2; }
+.baseline-table { width:100%; border-collapse:collapse; font-size:13px; }
+.baseline-table th { background:#f0f7f1; padding:8px; border-bottom:2px solid #00B050; text-align:center; }
+.baseline-table td { padding:8px; border-bottom:1px solid #f0f0f0; text-align:center; }
+.footer { text-align:center; padding:20px; color:#999; font-size:12px; }
+@media (max-width:768px) {
+  .kpi-grid { grid-template-columns:repeat(2,1fr); }
+  .cat-cards { grid-template-columns:repeat(3,1fr); }
+}
+
+.kpi-label{font-size:13px;color:#999;margin-bottom:6px;}
+.kpi-value{font-size:30px;font-weight:700;color:#E74C3C;line-height:1.2;}
+.kpi-sub{font-size:12px;color:#999;margin-top:6px;}
+.kpi-item{font-size:16px;font-weight:700;color:#333;padding:3px 0;text-align:left;}
+.kpi-delta{color:#E74C3C;font-size:13px;font-weight:600;}
+.kpi-none{color:#00B050;font-size:13px;font-weight:600;}
+</style>
+.insight-box { border-radius:10px; padding:16px; margin-bottom:12px; }
+.insight-green { background:#e8f5e9; border-left:4px solid #00B050; }
+.insight-orange { background:#fff3e0; border-left:4px solid #F39F12; }
+.insight-red { background:#fdecea; border-left:4px solid #E74C3C; }
+.insight-box p { margin:0; line-height:1.7; }
+
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🎥 云台9pro 4G新品跟踪日报 · Day 21</h1>
+  <div class="subtitle">累计汇总 | 数据周期 2026.09.28 - 10.12 | 累计反馈 113 条</div>
+  <div class="date-range">数据来源:飞书表格「云台9pro 4G新品跟踪表」· 用户问题反馈汇总 | 更新时间:2026-10-14 15:59</div>
+</div>
+
+<div class="overview">累计反馈113条（较Day 20+22，渠道6个）；问题分布以咨询类为主（占比72%），疑似缺陷累计32条（今日新现6条）；本期新增22条：赠送云录领取咨询(+5)、流量后续是否收费咨询(+2)、APP广告(+1)。</div>
+
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="kpi-label">累计反馈问题</div><div class="kpi-value">113</div><div class="kpi-sub">较 Day 20（91 条）+22</div></div>
+  <div class="kpi-card"><div class="kpi-label">Top3 问题（累计条数 · 本期新增）</div><div class="kpi-item">无网是否可使用咨询 <span style="color:#999;font-weight:400;">12条</span> <span class="kpi-delta">+1</span></div><div class="kpi-item">流量后续是否收费咨询 <span style="color:#999;font-weight:400;">9条</span> <span class="kpi-delta">+2</span></div><div class="kpi-item">赠送云录领取咨询 <span style="color:#999;font-weight:400;">8条</span> <span class="kpi-delta">+5</span></div><div class="kpi-sub">按问题类型反馈量；疑似缺陷类不在此列，单独呈现于右侧</div></div>
+  <div class="kpi-card"><div class="kpi-label">疑似缺陷（累计 32 条 · 本期新增 6 条）</div><div class="kpi-item" style="font-size:14px">设备离线 <span style="color:#999;font-weight:400;">累计5条</span> <span class="kpi-delta">+1</span></div><div class="kpi-item" style="font-size:14px">夜视不切换全彩 <span style="color:#999;font-weight:400;">累计3条</span> <span class="kpi-none">持平</span></div><div class="kpi-item" style="font-size:14px">无卡录 <span style="color:#999;font-weight:400;">累计3条</span> <span class="kpi-delta">+1</span></div><div class="kpi-item" style="font-size:14px">其余 18 类共 21 条 <span class="kpi-delta">+4</span></div></div>
+</div>
+
+
+
+<div class="section">
+  <div class="section-title">核心洞察</div>
+  <div class="insight-box insight-red"><p><strong>🔴 缺陷侧单日新增6条，需关注是否收敛</strong>:疑似缺陷累计32条（今日+6）；新增缺陷：APP广告+1、视觉云开流失败+1、内存卡无法取出+1、-+1、设备离线+1、无卡录+1。</p></div>
+  <div class="insight-box insight-orange"><p><strong>🟡 今日新增集中在「赠送云录领取咨询」等17类问题</strong>:新增22条分布于17类：赠送云录领取咨询(+5)、流量后续是否收费咨询(+2)、APP广告(+1)、内存卡安装咨询(+1)。</p></div>
+  <div class="insight-box insight-green"><p><strong>🟢 咨询焦点「无网是否可使用咨询」累计12条，居全类型第1位</strong>:TOP3咨询：无网是否可使用咨询12条、流量后续是否收费咨询9条、赠送云录领取咨询8条——认知差主导，商详页/FAQ前置仍是消化主路径。</p></div>
+</div>
+<div class="section">
+  <div class="section-title">渠道反馈分布(6渠道)</div>
+  <div class="channel-tags"><span class="channel-tag">京东自营<span class="count">69</span></span><span class="channel-tag">有赞<span class="count">19</span></span><span class="channel-tag">APP<span class="count">13</span></span><span class="channel-tag">私域<span class="count">7</span></span><span class="channel-tag">呼叫中心<span class="count">3</span></span><span class="channel-tag">在线咨询<span class="count">2</span></span></div>
+  <p style="font-size:12.5px;color:#666;margin-top:4px;">京东自营为主渠道(占比61%)。</p>
+</div>
+
+<div class="section">
+  <div class="section-title">问题主题分类(累计113条)</div>
+  <div class="cat-cards">
+    <div class="cat-card" style="background:#E74C3C"><div class="cat-icon">⚠️</div><div class="cat-name">疑似缺陷</div><div class="cat-count">32</div></div>
+    <div class="cat-card" style="background:#00B050"><div class="cat-icon">📶</div><div class="cat-name">流量网络供电类</div><div class="cat-count">17</div></div>
+    <div class="cat-card" style="background:#E67E22"><div class="cat-icon">💾</div><div class="cat-name">存储卡录类</div><div class="cat-count">9</div></div>
+    <div class="cat-card" style="background:#8E44AD"><div class="cat-icon">☁️</div><div class="cat-name">云录权益类</div><div class="cat-count">17</div></div>
+    <div class="cat-card" style="background:#16A085"><div class="cat-icon">🏠</div><div class="cat-name">安装类</div><div class="cat-count">6</div></div>
+    <div class="cat-card" style="background:#F39C12"><div class="cat-icon">🌙</div><div class="cat-name">夜视类(咨询)</div><div class="cat-count">1</div></div>
+    <div class="cat-card" style="background:#3498DB"><div class="cat-icon">🔧</div><div class="cat-name">功能使用类</div><div class="cat-count">31</div></div>
+  </div>
+  <table class="detail-table" style="margin-top:16px;">
+    <thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>较昨日</th><th>包含问题类型(二级标签)</th></tr></thead>
+    <tbody>
+    <tr><td style="color:#E74C3C;font-weight:600">疑似缺陷</td><td>32</td><td>28%</td><td style="color:#E74C3C">+6</td><td style="font-size:12px">设备离线(×5)、夜视不切换全彩(×3)、无卡录(×3)、开流卡顿(×2)、内存卡不识别(×2)、开流失败(×2)、设备发烫(×1)、配网失败(×1)、卡录查看失败(×1)、底座无螺丝孔(×1)、无法连接WiFi(×1)、升级失败(×1)、人形误报(×1)、卡录时间短(×1)、画面倒置(×1)、云录无法使用(×1)、固件升级失败(×1)、APP广告(×1)、视觉云开流失败(×1)、内存卡无法取出(×1)、-(×1)</td></tr>
+    <tr><td style="color:#00B050;font-weight:600">流量网络供电类</td><td>17</td><td>15%</td><td style="color:#E74C3C">+2</td><td style="font-size:12px">流量后续是否收费咨询(×9)、是否需要插电使用咨询(×3)、是否有移动联通咨询(×1)、售前不用WiFi摄像头咨询(×1)、流量是否需要办卡和实名咨询(×1)、是否需要插卡咨询(×1)、4G室内云台咨询(×1)</td></tr>
+    <tr><td style="color:#E67E22;font-weight:600">存储卡录类</td><td>9</td><td>8%</td><td style="color:#E74C3C">+1</td><td style="font-size:12px">卡录存储时长咨询(×3)、内存卡安装咨询(×2)、卡录循环覆盖咨询(×1)、支持内存卡大小咨询(×1)、无内存卡是否可以使用咨询(×1)、是否自带内存卡咨询(×1)</td></tr>
+    <tr><td style="color:#8E44AD;font-weight:600">云录权益类</td><td>17</td><td>15%</td><td style="color:#E74C3C">+7</td><td style="font-size:12px">赠送云录领取咨询(×8)、云录卡激活咨询(×3)、云录领取咨询(×1)、云录转移咨询(×1)、赠送包月云录时长咨询(×1)、赠送云录内容咨询(×1)、赠送云录到期后是否收费咨询(×1)、是否赠送云录咨询(×1)</td></tr>
+    <tr><td style="color:#16A085;font-weight:600">安装类</td><td>6</td><td>5%</td><td style="color:#E74C3C">+1</td><td style="font-size:12px">安装咨询(×2)、配网咨询(×2)、是否支持倒装咨询(×1)、是否支持上墙安装咨询(×1)</td></tr>
+    <tr><td style="color:#F39C12;font-weight:600">夜视类(咨询)</td><td>1</td><td>1%</td><td style="color:#999">持平</td><td style="font-size:12px">夜视开启咨询(×1)</td></tr>
+    <tr><td style="color:#3498DB;font-weight:600">功能使用类</td><td>31</td><td>27%</td><td style="color:#E74C3C">+5</td><td style="font-size:12px">无网是否可使用咨询(×12)、一键呼叫按键无响应(×3)、广告关闭咨询(×1)、连续录制咨询(×1)、录像回放查看咨询(×1)、质保咨询(×1)、智能追踪设置咨询(×1)、智能追踪咨询、录像回放查看咨询(×1)、分享账号查看咨询(×1)、摇杆查看咨询(×1)、通知设置咨询(×1)、一键呼叫功能咨询(×1)、设备分享及查看咨询(×1)、手机查看咨询(×1)、设备绑定账号唯一性咨询(×1)、关闭智能追踪咨询(×1)、设备功能差异咨询(×1)、质保时长咨询(×1)</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注:占比按反馈条数(累计113)计算,各分类互斥;主题分类为工作分类。</p>
+</div>
+
+<div class="section">
+  <div class="section-title">本期新增反馈明细(22条)</div>
+  <table class="detail-table">
+    <thead><tr><th>序</th><th>类型</th><th>反馈量<br><span style="font-weight:400;font-size:11px">累计(新增)</span></th><th>用户问题(渠道·时间)</th><th>客服解决方案</th></tr></thead>
+    <tbody>
+    <tr class="risk-row"><td>1</td><td><span class="badge badge-defect">设备离线</span></td><td><strong>5</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 用户问题：设备连接成功，点击升级后无法连接，中途有更换过适配器，添加设备失败，长按reset键无反应<span style="color:#999">(呼叫中心·9月28日)</span></td><td>1. 解决方案：指导使用原装适配器、远程配网、重置设备、断电后重试重新扫码配网</td></tr>
+    <tr class="risk-row"><td>2</td><td><span class="badge badge-defect">无卡录</span></td><td><strong>3</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 用户问题：卡录没有录像功能，无法回放，格式化内存卡后仍不行<span style="color:#999">(在线咨询·10月7日)</span></td><td>1. 解决方案：建议断电重启、重新插拔卡、用读卡器在电脑查看、检查固件版本、更换内存卡无效建议寄回售后 提供报修链接</td></tr>
+    <tr class="risk-row"><td>3</td><td><span class="badge badge-defect">APP广告</span></td><td><strong>1</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. APP广告太多无法进入APP<span style="color:#999">(京东自营·10月12日)</span></td><td>1. 已告知关闭广告方式</td></tr>
+    <tr class="risk-row"><td>4</td><td><span class="badge badge-defect">视觉云开流失败</span></td><td><strong>1</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 反馈无法在视觉云上播放使用<span style="color:#999">(京东自营·10月14日)</span></td><td>1. 已反馈技术核实</td></tr>
+    <tr class="risk-row"><td>5</td><td><span class="badge badge-defect">内存卡无法取出</span></td><td><strong>1</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 内存卡无法取出<span style="color:#999">(京东自营·10月14日)</span></td><td>1. 正常按压会有回弹感</td></tr>
+    <tr class="risk-row"><td>6</td><td><span class="badge badge-defect">-</span></td><td><strong>1</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 需要下载app<span style="color:#999">(京东自营·10月14日)</span></td><td>1. 下载360智慧生活app</td></tr>
+    <tr><td>7</td><td><span class="badge badge-consult">赠送云录领取咨询</span></td><td><strong>8</strong><span style="color:#E74C3C;font-size:11px"> (+5)</span></td><td>1. 设备赠送云录卡如何使用，设备是否可以分享<span style="color:#999">(京东自营·10月12日)</span><br>2. 半年云录卡如何领取<span style="color:#999">(京东自营·10月13日)</span><br>3. 赠送云录卡作用<span style="color:#999">(京东自营·10月13日)</span><br>4. 赠送云录如何激活<span style="color:#999">(京东自营·10月13日)</span><br>5. 用户问题：才购买的设备赠送了一张云录卡激活<span style="color:#999">(呼叫中心·10月10日)</span></td><td>1. 告知激活链接，设备支持分享<br>2. 告知云录激活方式<br>3. 激活后云录界面查看回放无需插入内存卡<br>4. 告知激活方式兑换<br>5. 解决方案：云录激活链接：https://jia.360.cn//mall/active_2022.htm</td></tr>
+    <tr><td>8</td><td><span class="badge badge-consult">流量后续是否收费咨询</span></td><td><strong>9</strong><span style="color:#E74C3C;font-size:11px"> (+2)</span></td><td>1. 4g流量是免费的吗<span style="color:#999">(京东自营·10月14日)</span><br>2. 流量是终身免费的吗<span style="color:#999">(京东自营·10月14日)</span></td><td>1. 是的呢，这款内置4G流量卡，享终身免费流量，不限流量的哦~<br>2. 是的呢免费的</td></tr>
+    <tr><td>9</td><td><span class="badge badge-consult">无网是否可使用咨询</span></td><td><strong>12</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 是否需要环境网络，信号情况<span style="color:#999">(京东自营·10月12日)</span></td><td>1. 不需要环境网络，依靠环境电信信号</td></tr>
+    <tr><td>10</td><td><span class="badge badge-consult">内存卡安装咨询</span></td><td><strong>2</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 内存卡如何安装<span style="color:#999">(京东自营·10月12日)</span></td><td>1. 已发送安装图片</td></tr>
+    <tr><td>11</td><td><span class="badge badge-consult">配网咨询</span></td><td><strong>2</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 设备指导连接<span style="color:#999">(京东自营·10月13日)</span></td><td>1. 告知配网按钮位置引导添加</td></tr>
+    <tr><td>12</td><td><span class="badge badge-consult">设备绑定账号唯一性咨询</span></td><td><strong>1</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 设备是否能被其他人绑定<span style="color:#999">(京东自营·10月12日)</span></td><td>1. 设备只有一个主绑，强绑定，可以分享</td></tr>
+    <tr><td>13</td><td><span class="badge badge-consult">关闭智能追踪咨询</span></td><td><strong>1</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 设备如何固定画面不动<span style="color:#999">(京东自营·10月13日)</span></td><td>1. 关闭智能追踪功能</td></tr>
+    <tr><td>14</td><td><span class="badge badge-consult">设备功能差异咨询</span></td><td><strong>1</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 一件隐私如何开启和开关机区别<span style="color:#999">(京东自营·10月13日)</span></td><td>1. 点击关机设备自动转动遮蔽画面</td></tr>
+    <tr><td>15</td><td><span class="badge badge-consult">赠送云录到期后是否收费咨询</span></td><td><strong>1</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 云录半年过后会收费吗<span style="color:#999">(京东自营·10月14日)</span></td><td>1. 过期后开通的话需要收费</td></tr>
+    <tr><td>16</td><td><span class="badge badge-consult">质保时长咨询</span></td><td><strong>1</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 用户问题：购买的360摄像头4G版宣传质保升级为3年，激活后显示剩余444天，提交质保期申诉后无改变<span style="color:#999">(呼叫中心·10月5日)</span></td><td>1. 解决方案：告知申诉一般48小时内出结果，若不行建议联系售前平台客服进一步咨询</td></tr>
+    <tr><td>17</td><td><span class="badge badge-consult">是否赠送云录咨询</span></td><td><strong>1</strong><span style="color:#E74C3C;font-size:11px"> (+1)</span></td><td>1. 用户问题：查询是否赠送云存储，请求赠送6个月7天循环云存储<span style="color:#999">(在线咨询·10月12日)</span></td><td>1. 解决方案：核实无云录，可赠送7天包月，后续需单独购买</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#999;margin-top:8px;">注:同一问题类型合并为一行;排序=疑似缺陷置顶,其余按新增降序;新增口径=表格录入行94-115;淡红底行=疑似缺陷类。</p>
+</div>
+
+<div class="section">
+  <div class="section-title">📈 趋势追踪(对比Day 20)</div>
+  <table class="baseline-table">
+    <thead><tr><th>指标</th><th>Day 20 (10/13)</th><th>Day 21 (10/14)</th><th>趋势判断标准</th></tr></thead>
+    <tbody>
+    <tr><td>累计反馈量</td><td>91 条</td><td><strong>113 条 (+22)</strong></td><td>新品期日增5-10条属正常放量节奏</td></tr>
+    <tr><td>咨询/功能类占比</td><td>71%(65/91)</td><td><strong>72%(81/113)</strong></td><td>认知差主导的咨询占比持续&gt;70%,商详页/FAQ前置是消化主路径</td></tr>
+    <tr><td>疑似缺陷累计</td><td>26 条</td><td><strong>32 条 (+6)</strong></td><td>单日新增≥3或同类缺陷再现即升级提示</td></tr>
+    <tr><td>覆盖渠道数</td><td>4 个</td><td><strong>6 个</strong></td><td>渠道扩展期,注意各渠道咨询/缺陷结构差异</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="footer">
+    数据来源:飞书表格「云台9pro 4G新品跟踪表」· 用户问题反馈汇总 | 9/23晚开售,开售第6天(9/28)起累计<br>
+    由 🦞尹燕玲-报告分析专家 自动生成 · 每个工作日17:40更新
+  </div>
+
+</div>
+
+</body>
+</html>
