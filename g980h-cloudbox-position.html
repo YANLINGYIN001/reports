@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G980H 4G云盒位置调研</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0d1210;--panel:#141b18;--line:#23302b;--green:#2BBD6E;--gb:#00e07f;--ink:#e8ede9;--dim:#9db0a6;--faint:#6b7d74}
+html,body{width:100%;height:100%;background:#060908;overflow:hidden;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{width:1920px;height:1080px;position:relative;transform-origin:center center;background:var(--bg);
+  background-image:radial-gradient(1200px 600px at 85% -10%, rgba(43,189,110,.08), transparent 60%),radial-gradient(900px 500px at 0% 110%, rgba(43,189,110,.05), transparent 55%)}
+.slide{position:absolute;inset:0;padding:56px 80px;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .4s ease}
+.slide.active{visibility:visible;opacity:1;pointer-events:auto}
+#hud{position:fixed;left:0;right:0;bottom:0;height:44px;display:flex;align-items:center;justify-content:center;gap:14px;background:rgba(6,9,8,.85);backdrop-filter:blur(6px);z-index:50;border-top:1px solid var(--line);font-size:14px;color:var(--dim)}
+#hud button{background:none;border:1px solid var(--line);color:var(--dim);border-radius:6px;padding:4px 12px;cursor:pointer;font-size:14px}
+#hud button:hover{color:var(--gb);border-color:var(--green)}
+#pageno{min-width:72px;text-align:center;color:var(--ink)}
+#prog{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--green),var(--gb));width:0;z-index:60;transition:width .3s}
+.kicker{font-size:18px;letter-spacing:.3em;color:var(--green);font-weight:700}
+h1{font-size:80px;font-weight:900;color:var(--ink);line-height:1.15}
+h2{font-size:44px;font-weight:900;color:var(--ink)}
+.sub{color:var(--dim);font-size:22px}
+.corner{position:absolute;right:80px;top:56px;text-align:right;color:var(--faint);font-size:15px;letter-spacing:.1em;line-height:1.7}
+.pnum{position:absolute;right:80px;bottom:26px;color:var(--faint);font-size:16px}
+.brandbar{position:absolute;top:0;left:0;width:10px;height:100%;background:linear-gradient(180deg,var(--green),transparent)}
+.cover{display:flex;flex-direction:column;justify-content:center;height:100%}
+.brandmark{width:88px;height:88px;border-radius:20px;background:linear-gradient(135deg,var(--green),#0e8f4d);display:flex;align-items:center;justify-content:center;color:#fff;font-size:34px;font-weight:900;margin-bottom:36px;box-shadow:0 12px 40px rgba(43,189,110,.35)}
+.stats{display:flex;gap:20px;margin-top:56px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 34px;min-width:170px}
+.stat .n{font-size:46px;font-weight:900;color:var(--gb)}
+.stat .l{font-size:17px;color:var(--dim);margin-top:4px}
+.toc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.toc{display:flex;align-items:center;justify-content:space-between;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 26px;cursor:pointer;transition:border-color .2s}
+.toc:hover{border-color:var(--green)}
+.toc .b{font-size:26px;font-weight:800;color:var(--ink)}
+.toc .c{font-size:20px;color:var(--gb);font-weight:800}
+/* 总览图表行 */
+.ovrow{display:flex;align-items:center;gap:16px;margin-top:14px}
+.ovlab{width:220px;font-size:20px;color:var(--ink);text-align:right;font-weight:600}
+.ovtrack{flex:1;height:38px;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative}
+.ovfill{height:100%;background:linear-gradient(90deg,#0e8f4d,var(--green));display:flex;align-items:center;justify-content:flex-end;padding-right:12px;color:#fff;font-weight:800;font-size:18px}
+.ovpct{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:15px}
+.uhead{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px}
+.uhead .uname{color:var(--gb)}
+.shots1{display:flex;gap:28px;height:760px}
+.imgwrap{flex:1;background:#0a0d0b;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.imgwrap img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in}
+.meta{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(6,9,8,.92) 40%);padding:46px 22px 14px;font-size:16px;color:var(--dim)}
+.meta b{color:var(--gb);font-size:20px;margin-right:14px}
+.badge{display:inline-block;background:rgba(43,189,110,.15);border:1px solid var(--green);color:var(--gb);border-radius:20px;padding:2px 14px;font-size:15px;font-weight:700;margin-right:8px}
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:100;display:none;align-items:center;justify-content:center;cursor:zoom-out}
+#lightbox img{max-width:96vw;max-height:96vh}
+.active .rv{animation:up .55s cubic-bezier(.2,.7,.2,1) both}
+.active .rv1{animation-delay:.04s}.active .rv2{animation-delay:.12s}.active .rv3{animation-delay:.2s}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="viewport"><div id="stage">
+
+<div class="slide cover">
+  <div class="brandbar"></div>
+  <div class="brandmark rv rv1">4G</div>
+  <div class="kicker rv rv1">G980H 4G记录仪 · 国内公测</div>
+  <h1 class="rv rv2">4G云盒位置调研</h1>
+  <div class="sub rv rv3" style="margin-top:18px">46位用户实拍 · 电源线规格与安装位置分布</div>
+  <div class="stats rv rv3">
+    <div class="stat"><div class="n">46</div><div class="l">位提交用户</div></div>
+    <div class="stat"><div class="n">33</div><div class="l">人贴前挡玻璃</div></div>
+    <div class="stat"><div class="n">35</div><div class="l">人使用短线供电</div></div>
+    <div class="stat"><div class="n">46</div><div class="l">张位置实拍图</div></div>
+  </div>
+  <div class="pnum">G980H 公测项目组 · 2026.10</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研</div>
+  <div class="kicker rv rv1">OVERVIEW</div>
+  <h2 class="rv rv1" style="margin-top:10px">位置与电源线分布</h2>
+  <div class="sub rv rv2" style="margin-top:8px">46人 · 33人贴前挡（72%）· 短线35人（76%）</div>
+  <div style="margin-top:28px">
+<div class="ovrow rv rv2"><div class="ovlab">贴前挡玻璃</div><div class="ovtrack"><div class="ovfill" style="width:72%">33人</div></div><div class="ovpct">72%</div></div>
+<div class="ovrow rv rv2"><div class="ovlab">摆在中控台</div><div class="ovtrack"><div class="ovfill" style="width:9%">4人</div></div><div class="ovpct">9%</div></div>
+<div class="ovrow rv rv2"><div class="ovlab">其他位置（出风口/A柱/保险盒等）</div><div class="ovtrack"><div class="ovfill" style="width:20%">9人</div></div><div class="ovpct">20%</div></div>
+<div style="height:18px"></div><div class="ovrow rv rv3"><div class="ovlab">电源线：短线</div><div class="ovtrack"><div class="ovfill" style="width:76%">35人</div></div><div class="ovpct">76%</div></div>
+<div class="ovrow rv rv3"><div class="ovlab">电源线：长线</div><div class="ovtrack"><div class="ovfill" style="width:24%">11人</div></div><div class="ovpct">24%</div></div>
+  </div>
+  <div class="toc-grid rv rv3" style="margin-top:30px">
+<div class="toc" data-g="贴前挡玻璃"><span class="b">贴前挡玻璃</span><span class="c">33人</span></div>
+<div class="toc" data-g="摆在中控台"><span class="b">摆在中控台</span><span class="c">4人</span></div>
+<div class="toc" data-g="其他位置"><span class="b">其他位置</span><span class="c">9人</span></div>
+  </div>
+  <div class="pnum">02</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 1/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">郭方胜</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">1 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/001_郭方胜.jpg" alt="郭方胜" onclick="lb(this)"><div class="meta"><b>郭方胜</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">03</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 2/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">王亚兵</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">2 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/002_王亚兵.jpg" alt="王亚兵" onclick="lb(this)"><div class="meta"><b>王亚兵</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">04</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 3/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">赵华平</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">3 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/009_赵华平.jpg" alt="赵华平" onclick="lb(this)"><div class="meta"><b>赵华平</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">05</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 4/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">汪杨</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">4 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/004_汪杨.jpg" alt="汪杨" onclick="lb(this)"><div class="meta"><b>汪杨</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">06</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 5/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">刘尚林</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">5 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/005_刘尚林.jpg" alt="刘尚林" onclick="lb(this)"><div class="meta"><b>刘尚林</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">07</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 6/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">朱君</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">6 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/007_朱君.jpg" alt="朱君" onclick="lb(this)"><div class="meta"><b>朱君</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">08</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 7/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">周琦强</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">7 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/010_周琦强.jpg" alt="周琦强" onclick="lb(this)"><div class="meta"><b>周琦强</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">09</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 8/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">蒋晓昀</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">8 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/012_蒋晓昀.jpg" alt="蒋晓昀" onclick="lb(this)"><div class="meta"><b>蒋晓昀</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">10</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 9/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">李建</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">9 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/014_李建.jpg" alt="李建" onclick="lb(this)"><div class="meta"><b>李建</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">11</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 10/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">吕关兴</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">10 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/015_吕关兴.jpg" alt="吕关兴" onclick="lb(this)"><div class="meta"><b>吕关兴</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">12</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 11/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">闫鹰飞</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">11 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/016_闫鹰飞.jpg" alt="闫鹰飞" onclick="lb(this)"><div class="meta"><b>闫鹰飞</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">13</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 12/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">王飞龙</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">12 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/017_王飞龙.jpg" alt="王飞龙" onclick="lb(this)"><div class="meta"><b>王飞龙</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">14</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 13/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">孙洪士</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">13 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/018_孙洪士.jpg" alt="孙洪士" onclick="lb(this)"><div class="meta"><b>孙洪士</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">15</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 14/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">张鹏鑫</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">14 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/020_张鹏鑫.jpg" alt="张鹏鑫" onclick="lb(this)"><div class="meta"><b>张鹏鑫</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">16</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 15/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">秦世游</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">15 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/022_秦世游.jpg" alt="秦世游" onclick="lb(this)"><div class="meta"><b>秦世游</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">17</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 16/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">闫冰</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">16 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/023_闫冰.jpg" alt="闫冰" onclick="lb(this)"><div class="meta"><b>闫冰</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">18</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 17/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">向云俊</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">17 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/024_向云俊.jpg" alt="向云俊" onclick="lb(this)"><div class="meta"><b>向云俊</b><span class="badge">贴前挡玻璃</span><span class="badge">长线</span></div></div>  </div>
+  <div class="pnum">19</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 18/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">张洪伟</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">18 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/026_张洪伟.jpg" alt="张洪伟" onclick="lb(this)"><div class="meta"><b>张洪伟</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">20</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 19/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">王龙</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">19 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/028_王龙.jpg" alt="王龙" onclick="lb(this)"><div class="meta"><b>王龙</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">21</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 20/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">丁政涛</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">20 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/029_丁政涛.jpg" alt="丁政涛" onclick="lb(this)"><div class="meta"><b>丁政涛</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">22</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 21/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">孔德运</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">21 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/030_孔德运.jpg" alt="孔德运" onclick="lb(this)"><div class="meta"><b>孔德运</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">23</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 22/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">林志澄</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">22 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/032_林志澄.jpg" alt="林志澄" onclick="lb(this)"><div class="meta"><b>林志澄</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">24</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 23/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">杜劲</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">23 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/033_杜劲.jpg" alt="杜劲" onclick="lb(this)"><div class="meta"><b>杜劲</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">25</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 24/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">潘登铿</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">24 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/034_潘登铿.jpg" alt="潘登铿" onclick="lb(this)"><div class="meta"><b>潘登铿</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">26</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 25/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">陶双</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">25 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/035_陶双.jpg" alt="陶双" onclick="lb(this)"><div class="meta"><b>陶双</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">27</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 26/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">程玢泽</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">26 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/036_程玢泽.jpg" alt="程玢泽" onclick="lb(this)"><div class="meta"><b>程玢泽</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">28</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 27/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">洪冲</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">27 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/039_洪冲.jpg" alt="洪冲" onclick="lb(this)"><div class="meta"><b>洪冲</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">29</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 28/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">公海军</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">28 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/040_公海军.jpg" alt="公海军" onclick="lb(this)"><div class="meta"><b>公海军</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">30</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 29/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">陈占学</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">29 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/041_陈占学.jpg" alt="陈占学" onclick="lb(this)"><div class="meta"><b>陈占学</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">31</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 30/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">方家欢</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">30 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/042_方家欢.jpg" alt="方家欢" onclick="lb(this)"><div class="meta"><b>方家欢</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">32</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 31/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">郑惟环</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">31 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/043_郑惟环.jpg" alt="郑惟环" onclick="lb(this)"><div class="meta"><b>郑惟环</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">33</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 32/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">娄泽彬</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">32 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/046_娄泽彬.jpg" alt="娄泽彬" onclick="lb(this)"><div class="meta"><b>娄泽彬</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">34</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>贴前挡玻璃 33/33</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 贴前挡玻璃</div>
+      <h2><span class="uname">王钰琦</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>贴前挡玻璃<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">33 / 33</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/048_王钰琦.jpg" alt="王钰琦" onclick="lb(this)"><div class="meta"><b>王钰琦</b><span class="badge">贴前挡玻璃</span><span class="badge">短线</span></div></div>  </div>
+  <div class="pnum">35</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>摆在中控台 1/4</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 摆在中控台</div>
+      <h2><span class="uname">张俊</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>摆在中控台<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">1 / 4</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/027_张俊.jpg" alt="张俊" onclick="lb(this)"><div class="meta"><b>张俊</b><span class="badge">摆在中控台</span><span class="badge">长线</span></div></div>  </div>
+  <div class="pnum">36</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>摆在中控台 2/4</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 摆在中控台</div>
+      <h2><span class="uname">许军州</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>摆在中控台<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">2 / 4</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/037_许军州.jpg" alt="许军州" onclick="lb(this)"><div class="meta"><b>许军州</b><span class="badge">摆在中控台</span><span class="badge">长线</span></div></div>  </div>
+  <div class="pnum">37</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>摆在中控台 3/4</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 摆在中控台</div>
+      <h2><span class="uname">魏健伟</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>摆在中控台<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">3 / 4</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/038_魏健伟.jpg" alt="魏健伟" onclick="lb(this)"><div class="meta"><b>魏健伟</b><span class="badge">摆在中控台</span><span class="badge">长线</span></div></div>  </div>
+  <div class="pnum">38</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>摆在中控台 4/4</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 摆在中控台</div>
+      <h2><span class="uname">温开礼</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>摆在中控台<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">4 / 4</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/045_温开礼.jpg" alt="温开礼" onclick="lb(this)"><div class="meta"><b>温开礼</b><span class="badge">摆在中控台</span><span class="badge">长线</span></div></div>  </div>
+  <div class="pnum">39</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>其他位置 1/9</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 其他位置</div>
+      <h2><span class="uname">李栋灵</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>其他位置<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">1 / 9</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/006_李栋灵.jpg" alt="李栋灵" onclick="lb(this)"><div class="meta"><b>李栋灵</b><span class="badge">其他位置</span><span class="badge">长线</span><span style="margin-left:6px">挂在空调出风口，方便查看指示灯！夏天又有便于散热</span></div></div>  </div>
+  <div class="pnum">40</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>其他位置 2/9</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 其他位置</div>
+      <h2><span class="uname">王刚红</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>其他位置<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">2 / 9</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/008_王刚红.jpg" alt="王刚红" onclick="lb(this)"><div class="meta"><b>王刚红</b><span class="badge">其他位置</span><span class="badge">长线</span><span style="margin-left:6px">粘在中控台左侧A柱底部</span></div></div>  </div>
+  <div class="pnum">41</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>其他位置 3/9</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 其他位置</div>
+      <h2><span class="uname">闫贺</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>其他位置<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">3 / 9</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/011_闫贺.jpg" alt="闫贺" onclick="lb(this)"><div class="meta"><b>闫贺</b><span class="badge">其他位置</span><span class="badge">长线</span><span style="margin-left:6px">前挡风玻璃左下角</span></div></div>  </div>
+  <div class="pnum">42</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>其他位置 4/9</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 其他位置</div>
+      <h2><span class="uname">马姬</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>其他位置<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">4 / 9</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/013_马姬.jpg" alt="马姬" onclick="lb(this)"><div class="meta"><b>马姬</b><span class="badge">其他位置</span><span class="badge">短线</span><span style="margin-left:6px">后视镜集成盒子的下面</span></div></div>  </div>
+  <div class="pnum">43</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>其他位置 5/9</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 其他位置</div>
+      <h2><span class="uname">张宁</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>其他位置<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">5 / 9</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/019_张宁.jpg" alt="张宁" onclick="lb(this)"><div class="meta"><b>张宁</b><span class="badge">其他位置</span><span class="badge">长线</span><span style="margin-left:6px">保险盒内</span></div></div>  </div>
+  <div class="pnum">44</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>其他位置 6/9</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 其他位置</div>
+      <h2><span class="uname">赵士达</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>其他位置<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">6 / 9</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/021_赵士达.jpg" alt="赵士达" onclick="lb(this)"><div class="meta"><b>赵士达</b><span class="badge">其他位置</span><span class="badge">长线</span><span style="margin-left:6px">安装在主驾 OBD 的附近</span></div></div>  </div>
+  <div class="pnum">45</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>其他位置 7/9</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 其他位置</div>
+      <h2><span class="uname">张明明</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>其他位置<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">7 / 9</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/031_张明明.jpg" alt="张明明" onclick="lb(this)"><div class="meta"><b>张明明</b><span class="badge">其他位置</span><span class="badge">短线</span><span style="margin-left:6px">前档玻璃上方顶部语音麦克风下方部位</span></div></div>  </div>
+  <div class="pnum">46</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>其他位置 8/9</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 其他位置</div>
+      <h2><span class="uname">苏冬冬</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>其他位置<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">8 / 9</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/044_苏冬冬.jpg" alt="苏冬冬" onclick="lb(this)"><div class="meta"><b>苏冬冬</b><span class="badge">其他位置</span><span class="badge">短线</span><span style="margin-left:6px">内后视镜底座</span></div></div>  </div>
+  <div class="pnum">47</div>
+</div>
+
+<div class="slide">
+  <div class="brandbar"></div>
+  <div class="corner">G980H 云盒位置调研<br>其他位置 9/9</div>
+  <div class="uhead rv rv1">
+    <div>
+      <div class="kicker">POSITION · 其他位置</div>
+      <h2><span class="uname">刘晓顺</span><span style="color:var(--faint);font-weight:300;margin:0 10px">/</span>其他位置<span class="bprog" style="margin-left:14px;font-size:18px;color:var(--faint)">9 / 9</span></h2>
+    </div>
+  </div>
+  <div class="shots1 rv rv2">
+<div class="imgwrap"><img data-src="g980h-cloudbox-media/047_刘晓顺.jpg" alt="刘晓顺" onclick="lb(this)"><div class="meta"><b>刘晓顺</b><span class="badge">其他位置</span><span class="badge">长线</span><span style="margin-left:6px">右门槛内饰板里</span></div></div>  </div>
+  <div class="pnum">48</div>
+</div>
+</div></div>
+<div id="lightbox" onclick="this.style.display='none'"><img id="lbimg"></div>
+<div id="hud">
+  <button onclick="nav(-1)">← 上一页</button>
+  <span id="pageno">1 / 48</span>
+  <button onclick="nav(1)">下一页 →</button>
+</div>
+<script>
+var GP = {"贴前挡玻璃": 3, "摆在中控台": 36, "其他位置": 40};
+var slides = document.querySelectorAll('.slide');
+var cur = 0, loaded = {};
+function fit(){
+  var s = Math.min(window.innerWidth/1920, (window.innerHeight-44)/1080);
+  document.getElementById('stage').style.transform = 'scale(' + s + ')';
+}
+function loadSlide(i){
+  if(loaded[i]) return;
+  slides[i].querySelectorAll('img[data-src]').forEach(function(im){
+    im.src = im.getAttribute('data-src'); im.removeAttribute('data-src');
+  });
+  loaded[i] = 1;
+}
+function show(i){
+  if(i<0) i=0; if(i>=slides.length) i=slides.length-1;
+  slides[cur].classList.remove('active');
+  cur = i;
+  loadSlide(cur); loadSlide(cur+1);
+  slides[cur].classList.add('active');
+  document.getElementById('pageno').textContent = (cur+1) + ' / ' + slides.length;
+  document.getElementById('prog').style.width = ((cur+1)/slides.length*100) + '%';
+}
+function nav(d){ show(cur+d); }
+function lb(im){
+  var lb = document.getElementById('lightbox');
+  document.getElementById('lbimg').src = im.src;
+  lb.style.display = 'flex';
+}
+document.querySelectorAll('.toc').forEach(function(t){
+  t.addEventListener('click', function(){ show(GP[t.getAttribute('data-g')]-1); });
+});
+window.addEventListener('resize', fit);
+document.addEventListener('keydown', function(e){
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown') nav(1);
+  if(e.key==='ArrowLeft'||e.key==='PageUp') nav(-1);
+  if(e.key==='Home') show(0);
+  if(e.key==='End') show(slides.length-1);
+  if(e.key==='Escape') document.getElementById('lightbox').style.display='none';
+});
+document.addEventListener('click', function(e){
+  if(e.target.closest('#hud')||e.target.closest('.toc')||e.target.closest('.imgwrap')||e.target.closest('#lightbox')) return;
+  nav(e.clientX > window.innerWidth/2 ? 1 : -1);
+});
+fit();
+var _p = new URLSearchParams(location.search).get('p');
+loadSlide(_p ? parseInt(_p)-1 : 0);
+show(_p ? parseInt(_p)-1 : 0);
+</script>
+</body>
+</html>
