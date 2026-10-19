@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G980H 公测月度分析报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:36px 24px 60px}
+header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;border-radius:14px;padding:34px 38px;margin-bottom:26px}
+header .k{font-size:14px;letter-spacing:.25em;opacity:.85}
+header h1{font-size:30px;margin:8px 0 6px}
+header .s{font-size:14px;opacity:.9}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:26px}
+.kpi{background:#fff;border-radius:12px;padding:20px 20px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.kpi .n{font-size:32px;font-weight:900;color:#E74C3C}
+.kpi .l{font-size:13px;color:#999;margin-top:4px}
+.sec{background:#fff;border-radius:12px;padding:26px 30px;margin-bottom:22px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.sec h2{font-size:19px;border-left:4px solid #2BBD6E;padding-left:12px;margin-bottom:16px}
+.note{font-size:13px;color:#999;margin-top:10px}
+.brow{display:flex;align-items:center;gap:12px;margin:9px 0}
+.blab{width:110px;font-size:13.5px;text-align:right;color:#555;flex-shrink:0}
+.btrack{flex:1;height:32px;background:#f0f2f5;border-radius:7px;overflow:hidden}
+.bfill{height:100%;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#fff;font-weight:700;font-size:12.5px;border-radius:7px;background:#00B050}
+.bfill.g{background:#2BBD6E}
+.bfill.o{background:#F39C12}
+.bpct{width:48px;font-size:13px;color:#999}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f0f2f5;padding:9px 8px;text-align:left;font-size:12.5px;color:#666;white-space:nowrap}
+td{padding:8px;border-bottom:1px solid #f0f2f5;vertical-align:top}
+td.tag{font-weight:700;white-space:nowrap}
+td.num{font-weight:900;color:#E74C3C;text-align:center;white-space:nowrap}
+td.vt{color:#555}
+.v{font-size:12.5px;color:#666;margin:2px 0}
+.v b{color:#333}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.insight{background:#fff8ec;border:1px solid #f5e0b8;border-radius:10px;padding:16px 20px;font-size:14px;color:#7a5b1e;margin-bottom:22px;line-height:1.8}
+.insight b{color:#c0392b}
+footer{text-align:center;color:#bbb;font-size:12px;margin-top:30px}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}.cols2{grid-template-columns:1fr}.blab{width:86px;font-size:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="k">G980H 4G记录仪 · 国内公测</div>
+<h1>公测月度分析报告</h1>
+<div class="s">数据周期：2026.09.17 - 10.19（累计）｜ 51位用户参与 ｜ 口径：条数=反馈记录数；问题数按二级标签去重；有效口径=总量-忽略-重复</div>
+</header>
+
+<div class="kpis">
+<div class="kpi"><div class="n">1206</div><div class="l">累计有效反馈（条）</div></div>
+<div class="kpi"><div class="n">631</div><div class="l">bug问题（52%）</div></div>
+<div class="kpi"><div class="n">338</div><div class="l">需求建议（28%）</div></div>
+<div class="kpi"><div class="n">237</div><div class="l">易用性问题（20%）</div></div>
+<div class="kpi"><div class="n">51</div><div class="l">参与用户（人均23.6条）</div></div>
+</div>
+
+<div class="insight">
+<b>核心结论：</b>①反馈高峰在9.21周（581条，首周作业集中提交），10月起周均回落至150条左右并趋稳；②<b>停车监控（241条/20%）为第一反馈域</b>，GPS（172条）、APP（150条）次之；③bug侧三大硬件稳定性簇——设备离线（30条/19人）、云盒离线（23条/10人）、行驶中自动重启（16条/10人）影响面广；④GPS质量簇合计约60条（定位偏差30+轨迹缺失19+轨迹异常19），18+用户受影响，为跨版本持续性问题；⑤10月中旬起新增2.0.57升级回归簇（反复开关机/低压保护提前触发/远程卡录报错），建议纳入版本质量看板跟踪。
+</div>
+
+<div class="sec">
+<h2>周度反馈趋势</h2>
+<div class="brow"><div class="blab">09.14周</div><div class="btrack"><div class="bfill" style="width:34%">199条</div></div></div>
+<div class="brow"><div class="blab">09.21周</div><div class="btrack"><div class="bfill" style="width:100%">581条</div></div></div>
+<div class="brow"><div class="blab">09.28周</div><div class="btrack"><div class="bfill" style="width:18%">104条</div></div></div>
+<div class="brow"><div class="blab">10.05周</div><div class="btrack"><div class="bfill" style="width:26%">150条</div></div></div>
+<div class="brow"><div class="blab">10.12周</div><div class="btrack"><div class="bfill" style="width:28%">165条</div></div></div>
+<div class="brow"><div class="blab">10.19周</div><div class="btrack"><div class="bfill" style="width:6%">7条</div></div></div>
+
+<div class="note">9.14周为公测启动首周（9/17开始提交）；9.21周含开箱/安装首期作业集中提交；10.19周仅统计至10/19上午</div>
+</div>
+
+<div class="sec">
+<h2>一级分类分布（TOP12，共17类）</h2>
+<div class="brow"><div class="blab">停车监控</div><div class="btrack"><div class="bfill g" style="width:100%">241条</div></div><div class="bpct">20%</div></div>
+<div class="brow"><div class="blab">GPS</div><div class="btrack"><div class="bfill g" style="width:71%">172条</div></div><div class="bpct">14%</div></div>
+<div class="brow"><div class="blab">APP</div><div class="btrack"><div class="bfill g" style="width:62%">150条</div></div><div class="bpct">12%</div></div>
+<div class="brow"><div class="blab">说明书</div><div class="btrack"><div class="bfill g" style="width:47%">113条</div></div><div class="bpct">9%</div></div>
+<div class="brow"><div class="blab">设备稳定性</div><div class="btrack"><div class="bfill g" style="width:43%">104条</div></div><div class="bpct">9%</div></div>
+<div class="brow"><div class="blab">主机交互</div><div class="btrack"><div class="bfill g" style="width:41%">100条</div></div><div class="bpct">8%</div></div>
+<div class="brow"><div class="blab">远程查看</div><div class="btrack"><div class="bfill g" style="width:33%">80条</div></div><div class="bpct">7%</div></div>
+<div class="brow"><div class="blab">录像回放</div><div class="btrack"><div class="bfill g" style="width:23%">55条</div></div><div class="bpct">5%</div></div>
+<div class="brow"><div class="blab">开箱</div><div class="btrack"><div class="bfill g" style="width:19%">45条</div></div><div class="bpct">4%</div></div>
+<div class="brow"><div class="blab">安装</div><div class="btrack"><div class="bfill g" style="width:15%">36条</div></div><div class="bpct">3%</div></div>
+<div class="brow"><div class="blab">画质</div><div class="btrack"><div class="bfill g" style="width:12%">30条</div></div><div class="bpct">2%</div></div>
+<div class="brow"><div class="blab">紧急视频</div><div class="btrack"><div class="bfill g" style="width:10%">25条</div></div><div class="bpct">2%</div></div>
+
+<div class="note">有效1206条；开箱(45)/说明书(113)/安装(36)类详见开箱及安装专项报告，本榜仅列反馈量TOP12</div>
+</div>
+
+<div class="sec">
+<h2>问题榜 TOP15（bug+易用性，剔除开箱/说明书/安装专项）</h2>
+<table>
+<tr><th style="width:36px">#</th><th style="width:150px">问题</th><th style="width:80px">一级分类</th><th style="width:60px">反馈量</th><th style="width:52px">人数</th><th>部分用户原声</th></tr>
+<tr><td>1</td><td class="tag">定位偏差</td><td>GPS</td><td class="num">30</td><td class="num">21</td><td class="vt"><div class="v"><b>闫冰</b>｜远程看界面，车辆位置显示错误，车是停在地库，这个应该是显示最后一次位置吧</div><div class="v"><b>娄泽彬</b>｜停车之后定位有偏差，差不多偏差100米，大概率出现这个问题</div><div class="v"><b>温开礼</b>｜查看了定位轨迹，最后定位点点位和实际停车位置有较大的偏差</div></td></tr>
+<tr><td>2</td><td class="tag">设备离线</td><td>设备稳定性</td><td class="num">30</td><td class="num">19</td><td class="vt"><div class="v"><b>赵华平</b>｜云盒OBD供电正常，指示灯正常，APP显示离线！</div><div class="v"><b>郑惟环</b>｜停车后没有继续监控，处于离线状态</div><div class="v"><b>方家欢</b>｜安装好记录仪，4g云盒信号还是正常的，0时10分APP端远程查看实时画面失败后APP显示设备离线，一直没有恢复，早上到车里查看了，记录仪状态正常，降压线没有保护，就是没有网络了。</div></td></tr>
+<tr><td>3</td><td class="tag">哨兵误触发</td><td>停车监控</td><td class="num">28</td><td class="num">5</td><td class="vt"><div class="v"><b>洪冲</b>｜哨兵模式时没人活动也触发了</div><div class="v"><b>马姬</b>｜夜晚模式前方有灯的情况下会误触罚。识别错误。</div><div class="v"><b>刘晓顺</b>｜查看车辆动态发现有人靠近的视频，进去查看发现其实没有人</div></td></tr>
+<tr><td>4</td><td class="tag">云盒离线</td><td>设备稳定性</td><td class="num">23</td><td class="num">10</td><td class="vt"><div class="v"><b>闫贺</b>｜公测用户：我的设备又离线啦，我在去发动车子看看，看看是云盒和记录仪一起开机还是就单独记录仪开机然后云盒还是离线状态，那肯定还是云盒的问题啊，我下楼来到这里，我进来的时候记录仪是黑屏的然后我短按了这个记录仪下面开关没反应以</div><div class="v"><b>林志澄</b>｜设备离线，查看4G云盒红绿慢闪。</div><div class="v"><b>温开礼</b>｜远程查看，无法查看。跟APP更新后，设备显示离线。到车上看云和红灯慢闪一下。机器录像正常。</div></td></tr>
+<tr><td>5</td><td class="tag">屏保显示异常</td><td>主机交互</td><td class="num">20</td><td class="num">16</td><td class="vt"><div class="v"><b>李栋灵</b>｜9月20日17时35分左右，车辆正常启动，记录仪启动完黑屏，并未进入设定的屏保时钟模式！</div><div class="v"><b>向云俊</b>｜开车启动后没有任何操作，然后是正常行驶。 装完行车记录仪回来时候是有画面的。但是这次出发启动以后，它一直都是黑屏的，我以为是关机了或者是其他问题，就用手触碰了一下，它就亮起来了，但是然后过了两几秒钟左右嘞又自动黑了。这样</div><div class="v"><b>丁政涛</b>｜调整屏幕保护界面：为动态，自动进入屏保30秒，首次设置未进入屏保，第二次设置才成功。</div></td></tr>
+<tr><td>6</td><td class="tag">轨迹缺失</td><td>GPS</td><td class="num">19</td><td class="num">14</td><td class="vt"><div class="v"><b>娄泽彬</b>｜我从外面回自己家，路上加油站熄火加了个油，然后行驶轨迹就只有加油站到家里这一段</div><div class="v"><b>许军州</b>｜这个期间有开车，停车后远程查看轨迹，发现没有这段时间的内容</div><div class="v"><b>温开礼</b>｜开车出来去停车场充电，行驶了大概3分钟左右吧，直线距离不远。但是需要绕路开车，但是看轨迹记录是没有的，</div></td></tr>
+<tr><td>7</td><td class="tag">轨迹异常</td><td>GPS</td><td class="num">19</td><td class="num">14</td><td class="vt"><div class="v"><b>温开礼</b>｜9月21日，20.42-20.46连续两天都发生了一段4分钟的轨迹记录，但是车当时是没有动的。</div><div class="v"><b>闫冰</b>｜行程轨迹异常，车停在地下库，GPS无信号，行车记录仪哨兵模式开启状态下，产生行程轨迹，点进去无任何数据</div><div class="v"><b>闫贺</b>｜这个行驶轨迹，今天一天都没开这个车，弹出来三个在原地的行驶轨迹，这是什么逻辑？意思就是你不开车他也会上传行驶轨迹？上传到无所谓，关键你上传一个还不好？还三次？这是怎么设定的？</div></td></tr>
+<tr><td>8</td><td class="tag">行驶中自动重启</td><td>设备稳定性</td><td class="num">16</td><td class="num">10</td><td class="vt"><div class="v"><b>许军州</b>｜在行驶过程中，设备重启，云盒灯不亮，点主机开关键能唤醒；或者等一会又能启动，不确定</div><div class="v"><b>丁政涛</b>｜7时28分38秒无故自动重启，车辆处于着车状态，也未做任何设置</div><div class="v"><b>林志澄</b>｜正常开车过程中出现两次记录仪重启。Obd设置12.6伏，</div></td></tr>
+<tr><td>9</td><td class="tag">定位默认天安门</td><td>GPS</td><td class="num">12</td><td class="num">12</td><td class="vt"><div class="v"><b>许军州</b>｜主页，车辆位置预览，没有实时更新，画面是北京，实际在苏州，但进去后看是正常的</div><div class="v"><b>魏健伟</b>｜车辆位置显示的画面有时不准确</div><div class="v"><b>王刚红</b>｜app打开来进入记录仪主界面后，车辆位置定位不会更新，默认天安门位置。18点42分触发哨兵模式，18点45分车辆位置未更新！</div></td></tr>
+<tr><td>10</td><td class="tag">远程查看哨兵进入循环录像</td><td>停车监控</td><td class="num">12</td><td class="num">8</td><td class="vt"><div class="v"><b>洪冲</b>｜进入记录仪主页发现显示是循环录像</div><div class="v"><b>李建</b>｜G980H记录仪远程查看时由哨兵模式切换到循环录像了，每次查看都切换这样汽车供电电瓶，长时间这样运行会馈电。</div><div class="v"><b>林志澄</b>｜每次打开app，先显示哨兵模式，再离线，再变成循环录制。这设定很不合理。打开app没有发起连接不要去更改记录仪状态。用户每次打开app有可能并不是为了看记录仪。这样次数多了，记录仪一直在切换状态很不合理。</div></td></tr>
+<tr><td>11</td><td class="tag">熄火未进入哨兵</td><td>停车监控</td><td class="num">11</td><td class="num">10</td><td class="vt"><div class="v"><b>张宁</b>｜车辆一直停着没点火，但是一直不切换哨兵模式，一直在循环录像。</div><div class="v"><b>赵士达</b>｜9月23日早上 6 把车开到外边充电桩充电，现在早上 7 点经过一个小时了，j记录仪还没有进入哨兵模式。</div><div class="v"><b>张俊</b>｜7:25停的车，离开车时看记录仪是常亮状态，7:30查看App还是提示记录仪是循环录像模式，熄火没自动切哨兵模式</div></td></tr>
+<tr><td>12</td><td class="tag">APP模式显示不一致</td><td>停车监控</td><td class="num">10</td><td class="num">7</td><td class="vt"><div class="v"><b>刘晓顺</b>｜进入APP后，看到是哨兵模式，进入记录仪后，右上角不显示当前的模式</div><div class="v"><b>陶双</b>｜现在应该是处于停车监控的状态，但是打开APP显示现在处于录像模式，这个问题在升级46固件后当天出现过一次，今天又出现了一次。</div><div class="v"><b>李栋灵</b>｜9月27日17时30分，原本应该是“哨兵模式”，打开发现主页显示“循环录像”！17时32分再次打开显示“哨兵模式”</div></td></tr>
+<tr><td>13</td><td class="tag">误报</td><td>停车监控</td><td class="num">8</td><td class="num">7</td><td class="vt"><div class="v"><b>张明明</b>｜哨兵模式下 ，没有人靠近车辆也会误报，而且比较频繁</div><div class="v"><b>秦世游</b>｜行车记录仪爆出出现行人，但是夜间报警设备视频，与360摄像机+门铃对比，未发现有行人。</div><div class="v"><b>公海军</b>｜停车状态下，提示有人靠近，查看画面没有人，查看前边卡录画面也没有人</div></td></tr>
+<tr><td>14</td><td class="tag">哨兵模式自动切循环录像</td><td>停车监控</td><td class="num">8</td><td class="num">8</td><td class="vt"><div class="v"><b>马姬</b>｜哨兵模式下查看卡内录像，发现是在循环录像状态，切回首页状态从哨兵模式转换为了循环录像模式，而后一段时间后又自动切回哨兵模式。设备的录像逻辑有问题，默认设置哨兵模式，这种模式下不应该循环录像。启动车辆后才应该触发循环录像。</div><div class="v"><b>刘晓顺</b>｜车一直在停放锁车状态下，哨兵模式自动进入循环录像</div><div class="v"><b>王龙</b>｜停车熄火后记录仪应该是哨兵模式，但进入App显示循环录像，搞不懂到底是循环录像还是哨兵模式</div></td></tr>
+<tr><td>15</td><td class="tag">哨兵人形漏检</td><td>停车监控</td><td class="num">7</td><td class="num">5</td><td class="vt"><div class="v"><b>马姬</b>｜哨兵模式未检测到行人</div><div class="v"><b>郑惟环</b>｜昨天十一点到今天七点多没有动态消息，车子没动过，监控也没有离线，上下班很多人经过，不可能没有人</div><div class="v"><b>陶双</b>｜10月7日车辆未开动，停在地下车库但是没有出现任何的事件。10月6号的时候车辆也是未开动出现了几十个事件，但10月7号一条事件也没有，按照正常情况应该会触发十几条事件，上传相关的日志。</div></td></tr>
+</table>
+<div class="note">反馈量=记录条数；问题=二级标签去重；原声取前3位不同用户</div>
+</div>
+
+<div class="sec">
+<h2>需求榜 TOP10（需求建议，剔除开箱/说明书/安装专项）</h2>
+<table>
+<tr><th style="width:36px">#</th><th style="width:150px">需求</th><th style="width:80px">一级分类</th><th style="width:60px">反馈量</th><th style="width:52px">人数</th><th>部分用户原声</th></tr>
+<tr><td>1</td><td class="tag">电瓶电压监测需求</td><td>APP</td><td class="num">12</td><td class="num">10</td><td class="vt"><div class="v"><b>闫贺</b>｜咱们这个这么高级的记录仪远程可以增加实时查看电瓶的电压，既然有4G云盒，理论上应该可以实现吧，OBD也有低压保护，官方也觉得可能会耗电，应该增加远程可以看到电瓶的电压余量，这样亏电之前用户可以及时处理。比如补电还是开车溜</div><div class="v"><b>公海军</b>｜建议加个电瓶电压显示</div><div class="v"><b>魏健伟</b>｜可不可以实现在主机屏幕或是APP上显示电瓶实时电压是多少，既然obd接口那能到一定电压就断电，接口那应该是能感知或测出电压数值的，把这个数值显示在APP或主机上应该能实现吧</div></td></tr>
+<tr><td>2</td><td class="tag">远程设置需求</td><td>远程查看</td><td class="num">11</td><td class="num">11</td><td class="vt"><div class="v"><b>林志澄</b>｜4G远程建议可以增加远程修改停车监控设置以及查看电瓶电压。参考友商70迈。</div><div class="v"><b>郑惟环</b>｜记录仪设置只能在车内看界面设置，这个不是很合理，应该远程也可以设置才对</div><div class="v"><b>公海军</b>｜建议添加上远程设置记录仪的功能，方便随时更改设置，要不太麻烦了</div></td></tr>
+<tr><td>3</td><td class="tag">哨兵亮屏耗电</td><td>停车监控</td><td class="num">7</td><td class="num">7</td><td class="vt"><div class="v"><b>陈占学</b>｜建议在哨兵模式的时候侦测触发录像屏幕不用点亮显示，因为哨兵模式的情况下车上是没有人员的点亮屏幕没有必要反而还增加功耗</div><div class="v"><b>林志澄</b>｜建议哨兵模式亮屏可以关闭。停在人多的地方一直亮屏会很浪费电。增加开关用户都有自己决定。</div><div class="v"><b>王刚红</b>｜我昨天晚上，6点多停车，到今天早上6点多。12个小时触发了哨兵模式，事件有近50条，如果这个过程中记录仪在车内报有人靠近，屏幕亮起又熄灭。这样确实很耗电，能不能把那个屏幕亮起和语音播报给关了？</div></td></tr>
+<tr><td>4</td><td class="tag">视频分类标记建议</td><td>APP</td><td class="num">5</td><td class="num">4</td><td class="vt"><div class="v"><b>王刚红</b>｜也不知道怎么区分这里面的视频分类，有几个点进去4个都有，时间正常。希望APP列表中增加标记，类似于这种停车监控标记走动，这个应该是远程查看时切换到正常录像的，4个都有。有几个点进去就只有一个前摄，时间是快速跳变的，这应该</div><div class="v"><b>陈占学</b>｜建议远程查看卡录视频的时候上面名字可以和下面选择的视频类型名字一致避免误解，现在无论选择什么类型视频上面都是显示【行程视频】</div><div class="v"><b>闫冰</b>｜已下载的视频界面，建议加入视频类型分类，和卡录列表一样做个筛选，视频做个前后左右标示</div></td></tr>
+<tr><td>5</td><td class="tag">一键导航找车需求</td><td>GPS</td><td class="num">3</td><td class="num">3</td><td class="vt"><div class="v"><b>秦世游</b>｜建议：都有定位了，是否开放部分接口？导航去车附近，适用于：商场地下室、旅游景点等？可以直接跳转到地图app或者直接在360app里一键导航？找车不再难。</div><div class="v"><b>王刚红</b>｜有车子定位了，希望增加个一键导航找车功能，调起高德地图导航。</div><div class="v"><b>方家欢</b>｜点击这辆位置不能直接调用地图导航，不知道是不是地图api套餐限制，如果没有限制建议可以一键调用地图导航，如果不能实现，地址可以考虑增加一键复制功能，方便导航。</div></td></tr>
+</table>
+</div>
+
+<div class="sec">
+<h2>责任人反馈分布（有效口径，不含待定163条）</h2>
+<div class="brow"><div class="blab">夏震宇</div><div class="btrack"><div class="bfill o" style="width:100%">377条</div></div></div>
+<div class="brow"><div class="blab">李良</div><div class="btrack"><div class="bfill o" style="width:74%">279条</div></div></div>
+<div class="brow"><div class="blab">徐凯来</div><div class="btrack"><div class="bfill o" style="width:44%">164条</div></div></div>
+<div class="brow"><div class="blab">吴相廷</div><div class="btrack"><div class="bfill o" style="width:21%">79条</div></div></div>
+<div class="brow"><div class="blab">张旭东</div><div class="btrack"><div class="bfill o" style="width:20%">74条</div></div></div>
+<div class="brow"><div class="blab">潘忠</div><div class="btrack"><div class="bfill o" style="width:8%">29条</div></div></div>
+<div class="brow"><div class="blab">孙乐</div><div class="btrack"><div class="bfill o" style="width:6%">21条</div></div></div>
+<div class="brow"><div class="blab">李思凡</div><div class="btrack"><div class="bfill o" style="width:2%">8条</div></div></div>
+
+<div class="note">待定163条主要分布于跨域问题（设备离线/GPS簇），待问题定界后分配</div>
+</div>
+
+<footer>G980H 公测项目组 · 2026.10.19 ｜ 数据源：日常问题飞书表（NvXlEW，行2-1246）｜ 打标截至10/19 09:22</footer>
+</div>
+</body>
+</html>
