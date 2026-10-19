@@ -203,15 +203,15 @@ weekChart.setOption({
   xAxis: {type:'category', data: ['开售首段(9.24-9.27)','W2(9.28-10.4)','W3(10.5-10.11)','W4前4天(10.12-10.15)']},
   yAxis: {type:'value'},
   series: [
-    {name:'反馈总量', type:'bar', barWidth:40, data: [4,43,45,27], itemStyle:{color:'#2BBD6E'}},
-    {name:'疑似缺陷', type:'bar', barWidth:40, data: [0,11,16,5], itemStyle:{color:'#E74C3C'}}
+    {name:'反馈总量', type:'bar', barWidth:40, data: [4,43,45,27], itemStyle:{color:'#2BBD6E'}, label:{show:true, position:'top', fontSize:12, fontWeight:600}},
+    {name:'疑似缺陷', type:'bar', barWidth:40, data: [0,11,16,5], itemStyle:{color:'#E74C3C'}, label:{show:true, position:'top', fontSize:12, fontWeight:600, color:'#E74C3C'}}
   ]
 });
 var chNames = ["京东自营", "有赞", "APP", "私域", "呼叫中心", "在线咨询"];
 var chSeries = [];
 var chData = {"京东自营": [0, 27, 25, 17], "有赞": [3, 7, 8, 4], "APP": [0, 5, 7, 1], "私域": [1, 3, 2, 4], "呼叫中心": [0, 1, 2, 0], "在线咨询": [0, 0, 1, 1]};
 for (var i = 0; i < chNames.length; i++) {
-  chSeries.push({name: chNames[i], type: 'bar', stack: 'w', data: chData[chNames[i]], barWidth: 48});
+  chSeries.push({name: chNames[i], type: 'bar', stack: 'w', data: chData[chNames[i]], barWidth: 48, label:{show:true, position:'insideTop', fontSize:10, color:'#fff'}});
 }
 var channelChart = echarts.init(document.getElementById('channelChart'));
 channelChart.setOption({
