@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>门铃6pro 4G新品上市月度用户反馈分析报告（9.23-10.15 · Day 1-23）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:30px;border-radius:12px;margin-bottom:20px}
+.header h1{font-size:24px;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:.9}
+.overview{background:#fff;border-left:4px solid #00B050;padding:15px 20px;border-radius:8px;margin-bottom:20px;font-size:15px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;padding:20px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:32px;font-weight:700;color:#E74C3C}
+.kpi-card .delta{font-size:12px;color:#666;margin-top:4px}
+.section{background:#fff;padding:24px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section h2{font-size:18px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.insight{padding:14px 18px;border-radius:8px;margin-bottom:12px;font-size:14px}
+.insight.blue{background:#e8f4fd;border-left:4px solid #3498db}
+.insight.orange{background:#fff3e0;border-left:4px solid #F39C12}
+.insight.red{background:#fde8e8;border-left:4px solid #E74C3C}
+.insight .title{font-weight:700}
+.chart-box{width:100%;height:360px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #f0f0f0;vertical-align:top}
+th{background:#f8f9fa;font-weight:600;color:#666}
+tr:hover{background:#fafafa}
+.note{font-size:12px;color:#999;margin-top:8px}
+.severity{font-size:13px;padding:8px 12px;border-radius:6px;margin-top:10px;margin-bottom:10px}
+.severity.low{background:#e8f4fd;color:#2471a3}
+.severity.mid{background:#fff3e0;color:#b9770e}
+.severity.high{background:#fde8e8;color:#c0392b}
+.footer{text-align:center;padding:20px;color:#999;font-size:13px}
+.footer a{color:#00B050;text-decoration:none}
+.report-links a{display:inline-block;margin:3px 6px;padding:3px 10px;background:#f0f9f4;border-radius:4px;font-size:12.5px;color:#00B050;text-decoration:none}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.container{padding:10px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>📊 门铃6pro 4G新品上市月度用户反馈分析报告</h1>
+<div class="subtitle">数据周期：9.23开售 - 10.15（数据末条）｜ 跟踪 Day 1-23 ｜ 全量112条 · 10.19快照校验</div>
+</div>
+
+<div class="overview">
+口径说明：本报告「条数」均指反馈记录条数；「疑似缺陷」为非咨询类的疑似质量/功能异常合集（判定口径：标签不含"咨询/求助/建议"）；问题类型数=二级标签去重；APP反馈sheet渠道自10.1起纳入统计。<br>📊 新品上市23天（9.23-10.15）累计收集各渠道用户反馈 <b>112 条</b>，覆盖 <b>7 个</b>渠道（京东自营 71 条占 63.4%、有赞 17、APP 9、在线咨询 6、私域 5、微信 3、呼叫中心 1）。反馈结构：咨询类 76 条（占 67.9%）、疑似缺陷 36 条（占 32.1%）。周度节奏：开售首段（9.23-9.27）7条，W2（9.28-10.4）38条、W3（10.5-10.11）48条，W4前4天（10.12-10.15）19条。问题焦点集中于<b>「设备连接类」</b>（信号网络类29条，离线/开流/信号合计24条，缺陷侧第一大簇）与门铃形态安装/拆取/续航咨询；缺陷侧无集中性单簇质量事件，个案以引导恢复+换货处置为主。
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">累计反馈总数</div><div class="value">112</div><div class="delta">Day 1-23 · W2/W3周均43条</div></div>
+<div class="kpi-card"><div class="label">覆盖渠道数</div><div class="value">7</div><div class="delta">京东自营占比 63.4%</div></div>
+<div class="kpi-card"><div class="label">问题类型数</div><div class="value">70</div><div class="delta">二级标签去重 · 咨询类为主</div></div>
+<div class="kpi-card"><div class="label">疑似缺陷</div><div class="value">36</div><div class="delta">占32.1% · 设备离线9条居首 · 连接类为大簇</div></div>
+</div>
+
+<div class="section">
+<h2>核心结论</h2>
+<div class="insight blue"><span class="title">🔵 反馈进入平台期，咨询类主导。</span>上市23天累计112条，W2 38 / W3 48 周均43条，W4前4天19条，节奏趋缓。咨询类76条占67.9%，新品期问题主体是「怎么装、怎么用、有什么权益」的认知类问题而非质量异常。</div>
+<div class="insight orange"><span class="title">🟡 「设备连接类」是全期第一大问题簇：信号网络类29条占25.9%，其中离线/开流/信号合计24条。</span>设备离线9条居缺陷首位（含关门即离线、频繁掉线、基站断线），开流失败6条、开流慢3条、信号弱/差2条——共性场景是「门铃-基站-路由器」链路上的信号衰减（关门后信号断、基站与路由器距离远），与公测期已知的关门离线问题同向，建议纳入质量周会持续跟踪基站信号方案。</div>
+<div class="insight red"><span class="title">🔴 设备离线连续两日新增，缺陷侧出现回升信号。</span>10.14-10.15 APP渠道连续出现设备离线（基站总是断线等），此前10.12京东渠道1例要求退货（核实信号后挽留引导换货）。离线簇时间跨度9.30-10.15贯穿全期，是6pro 4G最需要盯的缺陷主线。</div>
+<div class="insight orange"><span class="title">🟡 渠道结构：京东自营为反馈主力（63.4%），APP是缺陷最敏感渠道，私域/在线咨询以售前认知咨询为主。</span>APP渠道9条中6条为缺陷类（无客服跟进场景），缺陷信号密度显著高于其他渠道；在线咨询6条含WiFi支持、断网切换4G等形态认知问题，是售前心智的信号源。</div>
+<div class="insight blue"><span class="title">🔵 缺陷新增趋缓后现小幅回升：周度W2 12条 → W3 15条 → W4前4天9条。</span>36条缺陷分散在21个类型中，最高单簇9条（设备离线），其余多为1-2条的个案；处置以引导恢复（调整位置/重启/重新配网）+换货为主，基站不亮灯、充不进电2例已换货闭环。</div>
+</div>
+
+<div class="section">
+<h2>一、反馈趋势（周度）</h2>
+<div class="severity low">📌 小结：开售首段（9.23-9.27）反馈7条（销售爬坡期样本小）；W2 38条、W3 48条进入平台期，W4前4天19条回落。渠道演进：京东自营始终为主力；微信渠道10.12起进入统计；呼叫中心为9.23历史补录首现。缺陷侧W2 12 → W3 15 → W4前4天9条。</div>
+<div id="weekChart" class="chart-box"></div>
+<p class="note">注：周口径按自然周（周一至周日）；首段为9.23（周三开售）-9.27仅5天；W4仅含10.12-10.15（表格数据更新至10.15）。微信渠道反馈自10.12起进入表格；呼叫中心含历史补录。数据截至10.15（飞书表10.19快照校验）。</p>
+</div>
+
+<div class="section">
+<h2>二、问题主题分类全景</h2>
+<div class="severity low">📌 小结：功能使用类（31）与疑似缺陷（36）为前两大类，加上安装类（16）、流量网络供电类（12）、云录权益类（9）、存储卡录类（8）——新品期的问题主体是「怎么装、怎么用」，缺陷侧呈「连接类集中+其余小簇分散」结构（21型、最高单簇9条）。</div>
+<table><thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型（二级标签，括号内为条数）</th></tr></thead><tbody>
+<tr><td style="color:#E74C3C;font-weight:600">⚠️ 疑似缺陷</td><td><b>36</b></td><td>32.1%</td><td>设备离线(9)、开流失败(6)、开流慢(3)、信号强度弱(1)、固件升级失败(1)、放大后不清晰(1)、基站无声音(1)、夜视不切彩色(1)、续航时间短(1)、背板安装不紧(1)、画面不清晰(1)、基站不亮灯(1)、APP广告多(1)、充不进电(1)、隐私遮蔽无法删除(1)、信号差(1)、插卡后开流失败(1)、配网失败(1)、设备分享失败(1)、关门后离线(1)、画面变动误报(1)</td></tr>
+<tr><td style="color:#3498DB;font-weight:600">🔧 功能使用类</td><td><b>31</b></td><td>27.7%</td><td>设备拆取咨询(6)、产品功能咨询(2)、分享咨询(2)、远程绑定咨询(1)、APP下载咨询(1)、智能屏支持咨询(1)、充电咨询(1)、3M胶是否伤门咨询(1)、基站门铃距离咨询(1)、视频录制时长咨询(1)、不插基站是否可以使用咨询(1)、画面调节咨询(1)、背板拆除咨询(1)、门铃电池容量咨询(1)、是否无需WiF即可使用i咨询(1)、续航时长咨询(1)、是否需要布线咨询(1)、耗电咨询(1)、灵敏度调节咨询(1)、远程查看咨询(1)、售前是否需要下载APP咨询(1)、售前咨询(1)、设置咨询(1)、其他型号背板通用咨询(1)</td></tr>
+<tr><td style="color:#00B050;font-weight:600">📶 流量网络供电类</td><td><b>12</b></td><td>10.7%</td><td>流量后续是否收费咨询(6)、WiFi连接咨询(1)、价格同WiFi款差异咨询(1)、售前不用WiFi门铃咨询(1)、WiFi和4G是否同时使用咨询(1)、是否支持WiFi咨询(1)、WiFi和4G是否自动切换咨询(1)</td></tr>
+<tr><td style="color:#8E44AD;font-weight:600">☁️ 云录权益类</td><td><b>9</b></td><td>8.0%</td><td>免费云录领取咨询(2)、云录卡激活咨询(1)、云录关闭咨询(1)、赠送包月云录时长咨询(1)、云录时长咨询(1)、云录转移咨询(1)、免费云录咨询(1)、云录激活咨询(1)</td></tr>
+<tr><td style="color:#E67E22;font-weight:600">💾 存储卡录类</td><td><b>8</b></td><td>7.1%</td><td>内存卡安装咨询(3)、内存卡规格咨询(2)、无内存卡使用咨询(1)、是否安装内存卡差异咨询(1)、内存卡安装咨询；配网咨询；充电咨询(1)</td></tr>
+<tr><td style="color:#16A085;font-weight:600">🏠 安装类</td><td><b>16</b></td><td>14.3%</td><td>安装咨询(9)、配网咨询(4)、安装位置咨询(1)、安装客厅咨询(1)、安装防盗门咨询(1)</td></tr>
+</tbody></table>
+<p class="note">注：分类优先级自上而下匹配（疑似缺陷 > 流量网络供电 > 存储卡录 > 云录权益 > 安装 > 功能使用兜底）；设备离线/开流失败/信号弱等归「疑似缺陷」计数，与主题分类中「信号网络类」的呈现口径并行（KPI缺陷计数=非咨询即缺陷）。</p>
+</div>
+
+<div class="section">
+<h2>三、疑似缺陷累计明细（36 条 · 21 型）</h2>
+<div class="severity mid">📌 小结：设备离线9条居首（渠道分散：京东5/APP4，个案均已引导处置，1例退货挽留转换货），开流失败6条（4京东+2APP）、开流慢3条。21型中13型仅1条，处置以引导恢复/换货为主，基站不亮灯、充不进电已换货闭环。</div>
+<table><thead><tr><th>问题类型</th><th>反馈量</th><th>渠道</th><th>时间范围</th><th>典型用户问题</th><th>客服处置</th></tr></thead><tbody>
+<tr><td><b>设备离线</b></td><td><b>9</b></td><td>京东自营/APP/微信</td><td>09.30~10.04~10.10~10.11~10.12~10.13~10.14~10.15</td><td>用户问题：app显示离线 然后在重新点击又可以了,路由器就显示加载失败,流量卡就</td><td>解决方案：建议您确保基站和路由器之间在2米内 把门铃跟基站断电重启 如果有插内存卡的话把内存卡取出来不插内存卡操作 确认</td></tr>
+<tr><td><b>开流失败</b></td><td><b>6</b></td><td>京东自营/APP</td><td>09.28~09.29~10.03~10.07~10.09~10.11</td><td>这4年我一直使用360的门铃、这款有自己的基站信号不用联网我就换新了、结果不管是</td><td>—</td></tr>
+<tr><td><b>开流慢</b></td><td><b>3</b></td><td>京东自营</td><td>10.10~10.11~10.13</td><td>设备实时画面加载卡慢，如何连接家里网络</td><td>核实信号强度，重启刷新设备信号</td></tr>
+<tr><td><b>信号强度弱</b></td><td><b>1</b></td><td>京东自营</td><td>09.28</td><td>门关上就卡 信号强度55%</td><td>建议查看下网络信号 调整门铃与基站距离</td></tr>
+<tr><td><b>固件升级失败</b></td><td><b>1</b></td><td>京东自营</td><td>09.29</td><td>设备固件升级失败，显示离线状态</td><td>引导重新连接观察</td></tr>
+<tr><td><b>放大后不清晰</b></td><td><b>1</b></td><td>京东自营</td><td>09.30</td><td>与其他品牌相比较，放大后清晰度太差了</td><td>告知门铃是电子变焦放的太大是会模糊的</td></tr>
+<tr><td><b>基站无声音</b></td><td><b>1</b></td><td>京东自营</td><td>09.30</td><td>基站无声音</td><td>引导客户提供视频</td></tr>
+<tr><td><b>夜视不切彩色</b></td><td><b>1</b></td><td>京东自营</td><td>10.01</td><td>开自动画面黑白的</td><td>正常排障引导换货</td></tr>
+<tr><td><b>续航时间短</b></td><td><b>1</b></td><td>京东自营</td><td>10.05</td><td>设备续航时间短，如何调整</td><td>核实每天录制视频较多，降低灵敏度提高侦测间隔</td></tr>
+<tr><td><b>背板安装不紧</b></td><td><b>1</b></td><td>京东自营</td><td>10.06</td><td>背板安装不紧</td><td>您用力向下卡一下</td></tr>
+<tr><td><b>画面不清晰</b></td><td><b>1</b></td><td>京东自营</td><td>10.06</td><td>画面不清晰如何调整</td><td>告知墙体反光建议换个位置安装</td></tr>
+<tr><td><b>基站不亮灯</b></td><td><b>1</b></td><td>京东自营</td><td>10.08</td><td>基站不亮灯</td><td>已换货处理</td></tr>
+<tr><td><b>APP广告多</b></td><td><b>1</b></td><td>APP</td><td>10.06</td><td>最近一点开app，马上有跳转第三方广告链接，次次都有，很烦。能否一天改为跳转一次</td><td>—</td></tr>
+<tr><td><b>充不进电</b></td><td><b>1</b></td><td>京东自营</td><td>10.10</td><td>设备无法充电连接电源线无反应</td><td>更换供电适配器以及电源线，引导换货</td></tr>
+<tr><td><b>隐私遮蔽无法删除</b></td><td><b>1</b></td><td>APP</td><td>10.09</td><td>隐私遮蔽无法彻底删除，重启机器后依然存在</td><td>—</td></tr>
+<tr><td><b>信号差</b></td><td><b>1</b></td><td>京东自营</td><td>10.12</td><td>设备安装位置信号不佳</td><td>协助更换位置提高信号强度</td></tr>
+<tr><td><b>插卡后开流失败</b></td><td><b>1</b></td><td>京东自营</td><td>10.12</td><td>设备插入内存卡后实时画面无法加载</td><td>引导更换内存卡</td></tr>
+<tr><td><b>配网失败</b></td><td><b>1</b></td><td>京东自营</td><td>10.12</td><td>APP无法连接设备</td><td>引导客户内存卡取出后连接设备成功</td></tr>
+<tr><td><b>设备分享失败</b></td><td><b>1</b></td><td>微信</td><td>09.28</td><td>用户问题：门铃分享给家人，家人接受邀请后手机不显示设备</td><td>解决方案：建议扫码分享、家人APP退出重新登录、换手机登录主绑账号分享，用户尝试后仍未解决</td></tr>
+<tr><td><b>关门后离线</b></td><td><b>1</b></td><td>在线咨询</td><td>10.10</td><td>用户问题：360可视门铃6Pro4G 关上门就没有网络 无法录制 门铃放在室内就</td><td>解决方案：1.所有的门铃都需要开启侦测功能云录才可以录制，引导用户检查是否开启
+ 2.重启路由器和基站、门铃，等待自动联</td></tr>
+<tr><td><b>画面变动误报</b></td><td><b>1</b></td><td>在线咨询</td><td>10.14</td><td>用户问题：门铃画面变动就拍摄大量无用录像，浪费电力，调整相关设置后仍无改善；</td><td>解决方案：核实调整低灵敏度，侦测间隔60秒，无效。告知产品设计就是画面变化就录制的，用户不认可，要求解决</td></tr>
+</tbody></table>
+<p class="note">注：按反馈量降序；疑似缺陷口径=标签不含咨询/求助/建议；APP渠道部分条目客服方案为空（无客服跟进场景）。</p>
+</div>
+
+<div class="section">
+<h2>四、用户咨询热点 TOP10（前置认知盲区）</h2>
+<div class="severity low">📌 小结：TOP10合计36条，集中于「安装/拆取 + 流量资费 + 连接使用」：安装咨询9条、设备拆取咨询6条、流量后续是否收费6条——门铃形态特有的「装得上、拆得下、充得上」是认知盲区主体；流量资费咨询与9pro同源（4G免流量卖点前置不足）。高频咨询均有标准答案，建议FAQ双落地。</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<table><thead><tr><th>#</th><th>咨询热点</th><th>反馈量</th></tr></thead><tbody>
+<tr><td>1</td><td>安装咨询</td><td><b>9</b></td></tr>
+<tr><td>2</td><td>设备拆取咨询</td><td><b>6</b></td></tr>
+<tr><td>3</td><td>流量后续是否收费咨询</td><td><b>6</b></td></tr>
+<tr><td>4</td><td>配网咨询</td><td><b>4</b></td></tr>
+<tr><td>5</td><td>内存卡安装咨询</td><td><b>3</b></td></tr>
+<tr><td>6</td><td>产品功能咨询</td><td><b>2</b></td></tr>
+<tr><td>7</td><td>分享咨询</td><td><b>2</b></td></tr>
+<tr><td>8</td><td>内存卡规格咨询</td><td><b>2</b></td></tr>
+<tr><td>9</td><td>免费云录领取咨询</td><td><b>2</b></td></tr>
+<tr><td>10</td><td>远程绑定咨询</td><td><b>1</b></td></tr>
+</tbody></table>
+<div>
+<h3 style="font-size:14px;margin-bottom:10px;color:#333">FAQ候选池（11条）</h3>
+<table><thead><tr><th>#</th><th>FAQ</th><th>标准答案口径</th><th>建议落地位置</th></tr></thead><tbody>
+<tr><td>1</td><td>流量是否收费？</td><td>终生不限流量，无需缴纳流量费</td><td>商详首位卖点 + 包裹卡</td></tr>
+<tr><td>2</td><td>是否需要WiFi？</td><td>4G版支持WiFi配网，同时内置4G独立联网，无WiFi也能用</td><td>商详 + 帮助中心</td></tr>
+<tr><td>3</td><td>断网后能否远程切换4G？</td><td>断网后无法切换4G，需重新配网，不支持远程配网</td><td>帮助中心</td></tr>
+<tr><td>4</td><td>是否支持远程绑定？</td><td>新品门铃6pro 4G不支持远程绑定</td><td>帮助中心 + 客服快捷话术</td></tr>
+<tr><td>5</td><td>门铃怎么拆下来充电？</td><td>APP内关闭强拆报警→卡针插入拆机口→从下向上划离背板</td><td>安装图解 + 拆取视频</td></tr>
+<tr><td>6</td><td>续航多久？</td><td>5000mAh电池，实验室数据一次充电约半年，实际以使用频率为准</td><td>参数区 + 续航说明</td></tr>
+<tr><td>7</td><td>赠送云录怎么领？</td><td>绑定APP自动到账（3天永久云录），云录卡版本按卡激活</td><td>权益说明卡 + 包裹卡</td></tr>
+<tr><td>8</td><td>关上门就没网/离线？</td><td>检查门铃与基站距离及信号强度，必要时调整位置；侦测开关需开启才录制</td><td>帮助中心 + 客服话术</td></tr>
+<tr><td>9</td><td>内存卡怎么装？</td><td>内存卡插在室内基站侧面，有图标提示，插入有回弹感即正确</td><td>安装图解</td></tr>
+<tr><td>10</td><td>基站与门铃/路由器距离？</td><td>建议基站与路由器2米内、与门铃保持合理距离保证信号</td><td>帮助中心</td></tr>
+<tr><td>11</td><td>不按门铃能远程查看吗？</td><td>可以，绑定APP后随时远程查看</td><td>商详</td></tr>
+</tbody></table>
+</div>
+</div>
+<p class="note">注：FAQ池承接自Day 6起日报沉淀，口径均来自客服真实话术；远程绑定口径：新品门铃6pro 4G不支持远程绑定（燕玲9.29统一）。</p>
+</div>
+
+<div class="section">
+<h2>五、重点问题专项</h2>
+<h3 style="font-size:15px;margin:14px 0 8px;color:#c0392b">🔴 「设备连接类」簇观察（离线/开流/信号 · 24条 · 9.28-10.15贯穿全期）</h3>
+<div class="insight orange" style="margin-top:4px">设备离线（9条，含关门即离线/频繁掉线/基站断线/双通道均离线）、开流失败（6条）+插卡后开流失败（1条）、开流慢（3条）、信号强度弱/信号差（2条）——共性场景是「门铃-基站-路由器」链路信号衰减：关门后信号断、基站与路由器距离远、门铃与基站距离过远。处置以调整位置/重启/重新配网为主，1例双通道离线用户要求退货（挽留引导换货）。建议：①关门离线场景专项测试（门体遮挡对4G/WiFi双通道的影响）；②基站摆放指引前置到安装视频/包裹卡；③与公测期已知离线问题合并跟踪，纳入质量周会。</div>
+<h3 style="font-size:15px;margin:18px 0 8px;color:#b9770e">🟡 电池续航专项：6pro vs 5pro 功耗对比（10.12专项报告）</h3>
+<div class="insight orange" style="margin-top:4px">对比窗口（10.1-10.11）平均净耗电%/天：6pro 4G 2.01 vs 5pro 4G 1.16（173%）；6pro WiFi旧款1.52、WiFi升级款1.66——6pro全系列均高于5pro。10.8起耗电回升（至2.6-3.1）仅4G款出现，指向4G固件/模组特有因素；低耗电设备占比6pro 30.8% vs 5pro 70.7%。反馈侧呼应：续航时间短1条（高触发频率场景，客服已指导降低灵敏度）+耗电咨询1条。详见专项报告《6pro vs 5pro电池功耗对比》。样本差异已注明（6pro约300台 vs 5pro约5000台）。</div>
+</div>
+
+<div class="section">
+<h2>六、已闭环信号与落地建议</h2>
+<div class="insight blue"><span class="title">🔵 已闭环/验证信号：</span>①基站不亮灯、充不进电2例个案均已换货闭环；②配网失败个案（内存卡插入导致连接失败，取出后成功）已定位闭环；③背板安装不紧（用力下卡即固定）已口径统一；④远程绑定咨询已统一口径「新品门铃6pro 4G不支持远程绑定」。</div>
+<div class="insight orange"><span class="title">🟡 落地建议：</span>①FAQ 11条双落地（商详/包裹卡前置 + 客服快捷话术），优先覆盖安装/拆取/流量资费TOP3；②「关门离线」场景纳入质量周会跟踪项，与基站摆放指引联动；③拆取充电指引（关闭强拆报警→卡针拆机）建议随包裹卡前置，减少拆取类咨询6条；④电池功耗10.8回升现象持续复验，联动研发关注4G模组功耗。</div>
+</div>
+
+<div class="section">
+<h2>七、渠道结构演进（周度）</h2>
+<div class="severity low">📌 小结：京东自营始终为反馈主力（累计71条占63.4%）；有赞反馈平稳（资费/续航售前咨询为主）；APP渠道自10.1起进入统计且缺陷密度最高（6/9）；在线咨询/微信以售前形态认知咨询为主；呼叫中心为9.23历史补录首现（口径扩容，趋势判断以京东/有赞/APP为主渠道）。</div>
+<div id="channelChart" class="chart-box"></div>
+<p class="note">注：微信渠道反馈自10.12起进入表格；呼叫中心（1条）含历史补录；在线咨询部分条目为渠道工单回填口径。</p>
+</div>
+
+<div class="section">
+<h2>附：期日报清单</h2>
+<p class="report-links" style="margin-top:12px"><b>期日报清单（8期）：</b><br>
+<a href="6pro-4g-daily-day6.html">Day 6</a><a href="6pro-4g-daily-day16.html">Day 16</a><a href="6pro-4g-daily-day17.html">Day 17</a><a href="6pro-4g-daily-day19.html">Day 19</a><a href="6pro-4g-daily-day20.html">Day 20</a><a href="6pro-4g-daily-day21.html">Day 21</a><a href="6pro-4g-daily-day22.html">Day 22</a><a href="6pro-4g-daily-day23.html">Day 23</a></p>
+<p class="note">日报每个工作日17:35自动产出，合集入口：<a href="6pronp-index.html">门铃6pro 4G新品跟踪日报合集</a>；另有Day19阶段性报告（10.12）与6pro vs 5pro电池功耗对比专项（10.12）。</p>
+</div>
+
+<div class="footer">
+<p>数据来源：飞书「门铃6pro 4G新品跟踪」用户问题反馈汇总表（截至10.15）· 报告生成：2026.10.19</p>
+<p><a href="https://yanlingyin001.github.io/reports/6pronp-index.html">报告合集首页</a> · 门铃6pro 4G新品跟踪</p>
+</div>
+</div>
+
+<script>
+var weekChart = echarts.init(document.getElementById('weekChart'));
+weekChart.setOption({
+  tooltip: {trigger:'axis'},
+  legend: {data: ['反馈总量','疑似缺陷']},
+  grid: {left:40, right:20, top:40, bottom:30},
+  xAxis: {type:'category', data: ['开售首段(9.23-9.27)','W2(9.28-10.4)','W3(10.5-10.11)','W4前4天(10.12-10.15)']},
+  yAxis: {type:'value'},
+  series: [
+    {name:'反馈总量', type:'bar', barWidth:40, data: [7,38,48,19], itemStyle:{color:'#2BBD6E'}},
+    {name:'疑似缺陷', type:'bar', barWidth:40, data: [0,12,15,9], itemStyle:{color:'#E74C3C'}}
+  ]
+});
+var chNames = ['京东自营','有赞','APP','私域','在线咨询','微信','呼叫中心'];
+var chSeries = [];
+var chData = {'京东自营': [0,25,36,10], '有赞': [5,7,5,0], 'APP': [0,2,5,2], '私域': [0,2,1,2], '在线咨询': [1,1,1,3], '微信': [0,1,0,2], '呼叫中心': [1,0,0,0]};
+for (var i = 0; i < chNames.length; i++) {
+  chSeries.push({name: chNames[i], type: 'bar', stack: 'w', data: chData[chNames[i]], barWidth: 48});
+}
+var channelChart = echarts.init(document.getElementById('channelChart'));
+channelChart.setOption({
+  tooltip: {trigger:'axis'},
+  legend: {data: chNames},
+  grid: {left:40, right:20, top:70, bottom:30},
+  xAxis: {type:'category', data: ['开售首段','W2','W3','W4前4天']},
+  yAxis: {type:'value'},
+  series: chSeries
+});
+</script>
+</body>
+</html>
