@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>云台9pro 4G新品上市月度用户反馈分析报告（9.24-10.15 · Day 1-22）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;padding:30px;border-radius:12px;margin-bottom:20px}
+.header h1{font-size:24px;margin-bottom:8px}
+.header .subtitle{font-size:14px;opacity:.9}
+.overview{background:#fff;border-left:4px solid #00B050;padding:15px 20px;border-radius:8px;margin-bottom:20px;font-size:15px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:#fff;padding:20px;border-radius:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kpi-card .label{font-size:13px;color:#999;margin-bottom:8px}
+.kpi-card .value{font-size:32px;font-weight:700;color:#E74C3C}
+.kpi-card .delta{font-size:12px;color:#666;margin-top:4px}
+.section{background:#fff;padding:24px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section h2{font-size:18px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.insight{padding:14px 18px;border-radius:8px;margin-bottom:12px;font-size:14px}
+.insight.blue{background:#e8f4fd;border-left:4px solid #3498db}
+.insight.orange{background:#fff3e0;border-left:4px solid #F39C12}
+.insight.red{background:#fde8e8;border-left:4px solid #E74C3C}
+.insight .title{font-weight:700}
+.chart-box{width:100%;height:360px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #f0f0f0;vertical-align:top}
+th{background:#f8f9fa;font-weight:600;color:#666}
+tr:hover{background:#fafafa}
+.note{font-size:12px;color:#999;margin-top:8px}
+.severity{font-size:13px;padding:8px 12px;border-radius:6px;margin-top:10px;margin-bottom:10px}
+.severity.low{background:#e8f4fd;color:#2471a3}
+.severity.mid{background:#fff3e0;color:#b9770e}
+.severity.high{background:#fde8e8;color:#c0392b}
+.footer{text-align:center;padding:20px;color:#999;font-size:13px}
+.footer a{color:#00B050;text-decoration:none}
+.report-links a{display:inline-block;margin:3px 6px;padding:3px 10px;background:#f0f9f4;border-radius:4px;font-size:12.5px;color:#00B050;text-decoration:none}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.container{padding:10px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>📊 云台9pro 4G新品上市月度用户反馈分析报告</h1>
+<div class="subtitle">数据周期：9.24开售 - 10.15（数据末条）｜ 跟踪 Day 1-22 ｜ 全量119条 · 10.19快照校验</div>
+</div>
+
+<div class="overview">
+口径说明：本报告「条数」均指反馈记录条数；「疑似缺陷」为非咨询类的疑似质量/功能异常合集（一键呼叫按键无响应3条经产品确认为防误报默认关闭设计，已移出缺陷口径、归功能使用认知）；问题类型数=二级标签去重。<br>
+📊 新品上市22天（9.24-10.15）累计收集各渠道用户反馈 <b>119 条</b>，覆盖 <b>6 个</b>渠道（京东自营 69 条占 58.0%、有赞 22、APP 13、私域 10、呼叫中心 3、在线咨询 2）。反馈结构：咨询类 87 条（占 73.1%）、疑似缺陷 32 条（占 26.9%）。周度节奏：开售首段（9.24-9.27）4条，W2（9.28-10.4）43条、W3（10.5-10.11）45条、W4前4天（10.12-10.15）27条，进入周均约40余条的平台期。问题焦点高度集中于<b>「免WiFi·流量·供电」产品形态认知差</b>（合计32条、占咨询类36.8%）与云录/卡录权益存储认知；缺陷侧呈「小簇分散」结构，退货绿灯常亮4台质量分析已全部闭环。
+</div>
+
+<div class="kpi-grid">
+<div class="kpi-card"><div class="label">累计反馈总数</div><div class="value">119</div><div class="delta">Day 1-22 · W2/W3周均44条</div></div>
+<div class="kpi-card"><div class="label">覆盖渠道数</div><div class="value">6</div><div class="delta">京东自营占比 58.0%</div></div>
+<div class="kpi-card"><div class="label">问题类型数</div><div class="value">67</div><div class="delta">二级标签去重 · 咨询类为主</div></div>
+<div class="kpi-card"><div class="label">疑似缺陷</div><div class="value">32</div><div class="delta">占26.9% · 设备离线5条居首 · 无集中簇</div></div>
+</div>
+
+<div class="section">
+<h2>核心结论</h2>
+<div class="insight blue"><span class="title">🔵 反馈进入平台期，咨询类主导。</span>上市22天累计119条，W2 43 / W3 45 周均44条，W4前4天27条，节奏平稳。咨询类87条占73.1%，新品期问题主体是「怎么用、有什么权益」的认知类问题而非质量异常。</div>
+<div class="insight orange"><span class="title">🟡 「免WiFi·流量·供电」形态认知差是全期第一高频主题：合计32条，占咨询类36.8%。</span>无网是否可使用（13条，全类型第1）、流量后续是否收费（11条，第2）、是否需要插电（3条）等高频咨询，全部指向4G云台「免WiFi·插电即用」核心卖点的前置认知不足——用户仍以传统WiFi摄像头的心智在提问，商详页/包裹卡前置说明是最直接的消化路径。</div>
+<div class="insight red"><span class="title">🔴 绿灯常亮退货机4台质量分析全部闭环：2台升级失败+1台主板故障+1台复测OK。</span>升级失败根因：Flash内存仅8MB无法做系统备份、4G升级较慢致用户升级过程断电；9Pro 4G升级失败率2%（WiFi版0.8%）。临时对策：静默升级窗口02:00-03:00+关闭APP提醒（文庆）；长期对策：TF卡系统关键备份回滚+OTA2固件三次失败后放弃升级（符克涛）。</div>
+<div class="insight orange"><span class="title">🟡 「设备不可用」缺陷簇值得关注：设备离线5条居缺陷首位、无卡录3条、开流失败2条、视觉云开流失败1条。</span>集中10.8-10.14显现（含APP渠道），共同特征是「用户感知不可用但后台设备在线」，与绿灯常亮退货事件同向，建议列入质量周会持续跟踪。</div>
+<div class="insight orange"><span class="title">🟡 渠道结构：京东自营为反馈主力（58%），私域全部为售前咨询，APP是缺陷最敏感渠道。</span>私域10条全部为售前认知咨询（免WiFi、流量、插卡等），是4G形态认知差的直接信号源；APP渠道13条中12条为缺陷类（无客服跟进场景），缺陷信号密度显著高于其他渠道。</div>
+<div class="insight blue"><span class="title">🔵 缺陷新增趋缓：周度W2 11条 → W3 16条 → W4前4天5条。</span>夜视不切换全彩10.6后零再现（客服口径为无光环境红外夜视的产品特性说明）；设备离线10.12后无新增；存量TOP簇均趋收敛，无单簇集中性质量信号。</div>
+</div>
+
+<div class="section">
+<h2>一、反馈趋势（周度）</h2>
+<div class="severity low">📌 小结：开售首段（9.24-9.27）反馈4条（销售爬坡期样本小）；W2 43条、W3 45条进入周均40余条平台期；W4前4天27条。渠道演进：京东自营始终为主力；APP反馈10.1起进入统计；呼叫中心/在线咨询为10/14历史补录首现。缺陷侧W2 11 → W3 16 → W4 5条，新增趋缓。</div>
+<div id="weekChart" class="chart-box"></div>
+<p class="note">注：周口径按自然周（周一至周日）；首段为9.24（周四开售）-9.27仅4天；W4仅含10.12-10.15（表格数据更新至10.15）。APP渠道反馈自10.1起进入表格；呼叫中心、在线咨询含历史补录。数据截至10.15（飞书表10.19快照校验）。</p>
+</div>
+
+<div class="section">
+<h2>二、问题主题分类全景</h2>
+<div class="severity low">📌 小结：功能使用类（34）与疑似缺陷（32）为前两大类，加上流量网络供电（19）、云录权益（17）、存储卡录（10），五大类合计112条占94%——新品期的问题主体是「怎么用、有什么权益」，缺陷呈小簇分散结构（21型、最高单簇5条）。</div>
+<table><thead><tr><th>分类</th><th>反馈量</th><th>占比</th><th>包含问题类型（二级标签，括号内为条数）</th></tr></thead><tbody>
+<tr><td style="color:#E74C3C;font-weight:600">⚠️ 疑似缺陷</td><td><b>32</b></td><td>26.9%</td><td>设备离线(5)、夜视不切换全彩(3)、无卡录(3)、开流卡顿(2)、内存卡不识别(2)、开流失败(2)、设备发烫(1)、配网失败(1)、卡录查看失败(1)、底座无螺丝孔(1)、无法连接WiFi(1)、升级失败(1)、人形误报(1)、卡录时间短(1)、画面倒置(1)、云录无法使用(1)、固件升级失败(1)、APP广告(1)、视觉云开流失败(1)、内存卡无法取出(1)、-(1)</td></tr>
+<tr><td style="color:#3498DB;font-weight:600">🔧 功能使用类</td><td><b>34</b></td><td>28.6%</td><td>无网是否可使用咨询(13)、一键呼叫按键无响应(3)、广告关闭咨询(1)、连续录制咨询(1)、录像回放查看咨询(1)、质保咨询(1)、智能追踪设置咨询(1)、智能追踪咨询、录像回放查看咨询(1)、分享账号查看咨询(1)、摇杆查看咨询(1)、通知设置咨询(1)、一键呼叫功能咨询(1)、设备分享及查看咨询(1)、手机查看咨询(1)、设备绑定账号唯一性咨询(1)、关闭智能追踪咨询(1)、设备功能差异咨询(1)、质保时长咨询(1)、远程查看咨询(1)、分享数量咨询(1)</td></tr>
+<tr><td style="color:#00B050;font-weight:600">📶 流量网络供电类</td><td><b>19</b></td><td>16.0%</td><td>流量后续是否收费咨询(11)、是否需要插电使用咨询(3)、是否有移动联通咨询(1)、售前不用WiFi摄像头咨询(1)、流量是否需要办卡和实名咨询(1)、是否需要插卡咨询(1)、4G室内云台咨询(1)</td></tr>
+<tr><td style="color:#8E44AD;font-weight:600">☁️ 云录权益类</td><td><b>17</b></td><td>14.3%</td><td>赠送云录领取咨询(8)、云录卡激活咨询(3)、云录领取咨询(1)、云录转移咨询(1)、赠送包月云录时长咨询(1)、赠送云录内容咨询(1)、赠送云录到期后是否收费咨询(1)、是否赠送云录咨询(1)</td></tr>
+<tr><td style="color:#E67E22;font-weight:600">💾 存储卡录类</td><td><b>10</b></td><td>8.4%</td><td>卡录存储时长咨询(3)、内存卡安装咨询(2)、无内存卡是否可以使用咨询(2)、卡录循环覆盖咨询(1)、支持内存卡大小咨询(1)、是否自带内存卡咨询(1)</td></tr>
+<tr><td style="color:#16A085;font-weight:600">🏠 安装类</td><td><b>6</b></td><td>5.0%</td><td>安装咨询(2)、配网咨询(2)、是否支持倒装咨询(1)、是否支持上墙安装咨询(1)</td></tr>
+<tr><td style="color:#F39C12;font-weight:600">🌙 夜视类(咨询)</td><td><b>1</b></td><td>0.8%</td><td>夜视开启咨询(1)</td></tr>
+</tbody></table>
+<p class="note">注：分类优先级自上而下匹配（疑似缺陷 > 流量网络供电 > 存储卡录 > 云录权益 > 安装 > 夜视 > 功能使用兜底）；「无网是否可使用咨询」按分类规则归功能使用类，但其本质同属形态认知差，与流量网络供电类合计32条构成认知差主簇。</p>
+</div>
+
+<div class="section">
+<h2>三、疑似缺陷累计明细（32 条 · 20 型）</h2>
+<div class="severity mid">📌 小结：设备离线5条居首（渠道分散、个案均已引导处置），夜视不切换全彩3条（认知成分高，10.6后零再现）、无卡录3条。20型中14型仅1条，呈「小簇分散」结构，无单簇集中性质量信号。处置以引导恢复/换货为主。</div>
+<table><thead><tr><th>问题类型</th><th>反馈量</th><th>渠道</th><th>时间范围</th><th>典型用户问题</th><th>客服处置</th></tr></thead><tbody>
+<tr><td><b>设备离线</b></td><td><b>5</b></td><td>京东自营/APP/呼叫中心</td><td>09.28~10.03~10.04~10.11~10.12</td><td>用户问题：设备连接成功，点击升级后无法连接，中途有更换过适配器，添加设备失败，长</td><td>解决方案：指导使用原装适配器、远程配网、重置设备、断电后重试重新扫码配网</td></tr>
+<tr><td><b>夜视不切换全彩</b></td><td><b>3</b></td><td>京东自营</td><td>10.02~10.06</td><td>现在是不管有没有光线，夜视都是黑白</td><td>长按REST键，重启设备，重新配网看看呢</td></tr>
+<tr><td><b>无卡录</b></td><td><b>3</b></td><td>APP/在线咨询</td><td>10.07~10.10</td><td>用户问题：卡录没有录像功能，无法回放，格式化内存卡后仍不行</td><td>解决方案：建议断电重启、重新插拔卡、用读卡器在电脑查看、检查固件版本、更换内存卡无效建议寄回售后 提供报修链接</td></tr>
+<tr><td><b>开流卡顿</b></td><td><b>2</b></td><td>京东自营</td><td>09.29~10.11</td><td>实时画面卡顿，咨询正常建议信号强度</td><td>建议80以上，设备重启观察尝试</td></tr>
+<tr><td><b>内存卡不识别</b></td><td><b>2</b></td><td>京东自营</td><td>09.29~10.07</td><td>我插进摄像头，显示识别不到内存卡</td><td>您可以先断开摄像头的电源，找到机身底部的SD卡槽，把内存卡按照正确方向插入，听到“咔哒”声说明卡紧了，然后再重新通电试试</td></tr>
+<tr><td><b>开流失败</b></td><td><b>2</b></td><td>APP</td><td>10.04~10.11</td><td>看不到实时画面</td><td>10.13：设备在线，正常上报事件，信号强度50</td></tr>
+<tr><td><b>设备发烫</b></td><td><b>1</b></td><td>京东自营</td><td>09.30</td><td>摄像机发烫正常吗</td><td>轻微发烫是正常的</td></tr>
+<tr><td><b>配网失败</b></td><td><b>1</b></td><td>京东自营</td><td>10.07</td><td>无法连接app</td><td>引导换新机器</td></tr>
+<tr><td><b>卡录查看失败</b></td><td><b>1</b></td><td>京东自营</td><td>10.07</td><td>卡录像无法查看</td><td>有取出内存卡擦拭看看吗</td></tr>
+<tr><td><b>底座无螺丝孔</b></td><td><b>1</b></td><td>京东自营</td><td>10.08</td><td>原有底座没有螺丝孔</td><td>都是有的呢</td></tr>
+<tr><td><b>无法连接WiFi</b></td><td><b>1</b></td><td>APP</td><td>10.01</td><td>联不了Wi-Fi的</td><td>忽略，该型号不支持WiFi</td></tr>
+<tr><td><b>升级失败</b></td><td><b>1</b></td><td>APP</td><td>10.04</td><td>升级很久都没反应</td><td>10.9：10.4升级成功20260916（default），但当天离线，应该已经退货</td></tr>
+<tr><td><b>人形误报</b></td><td><b>1</b></td><td>APP</td><td>10.08</td><td>AI算法误报;没有人啊</td><td>—</td></tr>
+<tr><td><b>卡录时间短</b></td><td><b>1</b></td><td>京东自营</td><td>10.10</td><td>设备卡录时间短，无法查看全部视频</td><td>核实卡录像画面，引导换货处理</td></tr>
+<tr><td><b>画面倒置</b></td><td><b>1</b></td><td>APP</td><td>10.09</td><td>安装后画面是反的</td><td>10.10：电话告知可以设置画面翻转</td></tr>
+<tr><td><b>云录无法使用</b></td><td><b>1</b></td><td>APP</td><td>10.10</td><td>无法使用云存储 订单编号 2627709820504000025</td><td>10.10、移动侦测开关关闭状态，电话沟通告知开启</td></tr>
+<tr><td><b>固件升级失败</b></td><td><b>1</b></td><td>京东自营</td><td>10.11</td><td>设备一直显示固件升级无法连接</td><td>删除设备重新添加依旧不行引导售后</td></tr>
+<tr><td><b>APP广告</b></td><td><b>1</b></td><td>京东自营</td><td>10.12</td><td>APP广告太多无法进入APP</td><td>已告知关闭广告方式</td></tr>
+<tr><td><b>视觉云开流失败</b></td><td><b>1</b></td><td>京东自营</td><td>10.14</td><td>反馈无法在视觉云上播放使用</td><td>已反馈技术核实</td></tr>
+<tr><td><b>内存卡无法取出</b></td><td><b>1</b></td><td>京东自营</td><td>10.14</td><td>内存卡无法取出</td><td>正常按压会有回弹感</td></tr>
+</tbody></table>
+<p class="note">注：按反馈量降序；另有1条未分类（需要下载app，10.14京东自营）未计入上表；APP广告1条（广告过多无法进入APP）已按缺陷口径计入。</p>
+</div>
+
+<div class="section">
+<h2>四、用户咨询热点 TOP10（前置认知盲区）</h2>
+<div class="severity low">📌 小结：TOP10合计49条，全部指向「产品形态认知 + 权益认知」：免WiFi/流量收费/插电使用合计27条，云录权益合计9条（领取/激活/到期），存储卡录合计4条。高频咨询均有标准答案，建议FAQ双落地——商详/包裹卡前置（减少咨询量）+ 客服快捷话术（提升响应一致性）。</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<table><thead><tr><th>#</th><th>咨询热点</th><th>反馈量</th></tr></thead><tbody>
+<tr><td>1</td><td>无网是否可使用咨询</td><td><b>13</b></td></tr>
+<tr><td>2</td><td>流量后续是否收费咨询</td><td><b>11</b></td></tr>
+<tr><td>3</td><td>赠送云录领取咨询</td><td><b>8</b></td></tr>
+<tr><td>4</td><td>云录卡激活咨询</td><td><b>3</b></td></tr>
+<tr><td>5</td><td>卡录存储时长咨询</td><td><b>3</b></td></tr>
+<tr><td>6</td><td>是否需要插电使用咨询</td><td><b>3</b></td></tr>
+<tr><td>7</td><td>内存卡安装咨询</td><td><b>2</b></td></tr>
+<tr><td>8</td><td>安装咨询</td><td><b>2</b></td></tr>
+<tr><td>9</td><td>配网咨询</td><td><b>2</b></td></tr>
+<tr><td>10</td><td>无内存卡是否可以使用咨询</td><td><b>2</b></td></tr>
+</tbody></table>
+<div>
+<h3 style="font-size:14px;margin-bottom:10px;color:#333">FAQ候选池（11条）</h3>
+<table><thead><tr><th>#</th><th>FAQ</th><th>标准答案口径</th><th>建议落地位置</th></tr></thead><tbody>
+<tr><td>1</td><td>是否需要WiFi？</td><td>4G全网通独立联网，无需WiFi，插电即用</td><td>商详首位卖点 + 包裹卡</td></tr>
+<tr><td>2</td><td>流量是否收费？</td><td>内置4G流量卡，终身免费流量、不限流量</td><td>商详首位卖点</td></tr>
+<tr><td>3</td><td>是否需要插电？</td><td>需持续供电使用</td><td>参数区 + 供电示意图</td></tr>
+<tr><td>4</td><td>云录怎么领取？</td><td>绑定APP后自动领取一个月；半年版本为实体云录卡</td><td>权益说明卡 + 包裹卡</td></tr>
+<tr><td>5</td><td>内存卡怎么装/支持多大？</td><td>金属面朝上插入至咔哒声；支持规格以参数表为准</td><td>安装图解</td></tr>
+<tr><td>6</td><td>卡录满了怎么办/录多久？</td><td>录满自动覆盖最早录像（循环录制）；时长随卡容量</td><td>存储说明</td></tr>
+<tr><td>7</td><td>夜视为什么是黑白的？</td><td>无光环境为红外夜视模式，微光环境自动切换全彩</td><td>夜视说明 + 商详演示图</td></tr>
+<tr><td>8</td><td>支持哪些运营商/要办卡实名吗？</td><td>三网通用，内置卡无需另行办卡实名</td><td>参数区</td></tr>
+<tr><td>9</td><td>云录能转移到新设备吗？</td><td>换绑后云录权益48小时内转移</td><td>帮助中心</td></tr>
+<tr><td>10</td><td>一键呼叫没反应？</td><td>需在设置中开启一键呼叫开关（防误报默认关闭）</td><td>功能说明 + 设置指引</td></tr>
+<tr><td>11</td><td>质保多久？激活显示的444天是什么？</td><td>整机3年质保；激活页显示天数为系统字段口径，与整机质保不冲突（建议口径统一）</td><td>参数区 + 帮助中心</td></tr>
+</tbody></table>
+</div>
+</div>
+<p class="note">注：FAQ池承接自Day 6起日报沉淀（初始6条 → 现11条），本期新增质保时长口径（宣传3年质保 vs 激活显示444天）。</p>
+</div>
+
+<div class="section">
+<h2>五、重点问题专项</h2>
+<h3 style="font-size:15px;margin:14px 0 8px;color:#c0392b">🔴 绿灯常亮退货机质量分析（4台 · 已全部闭环）</h3>
+<table><thead><tr><th>台数</th><th>分析结论</th><th>对策与责任人</th></tr></thead><tbody>
+<tr><td><b>2台</b></td><td>升级失败：Flash内存仅8MB无法做系统备份，怀疑4G升级较慢、用户升级过程断电导致（9Pro 4G升级失败率2%，WiFi版0.8%）</td><td>临时：静默升级窗口02:00-03:00、关闭APP提醒（文庆）；长期：TF卡系统关键备份回滚、OTA2固件升级3次失败后放弃逻辑（符克涛）</td></tr>
+<tr><td><b>1台</b></td><td>拆机确认4G模块/FPC无异常，初步定位主板故障，需进一步分析</td><td>—</td></tr>
+<tr><td><b>1台</b></td><td>复测OK，非故障机</td><td>—</td></tr>
+</tbody></table>
+<h3 style="font-size:15px;margin:18px 0 8px;color:#b9770e">🟡 「设备不可用」簇观察（10.8-10.14）</h3>
+<div class="insight orange" style="margin-top:4px">设备离线（5条，含新机拆封不联网/换位置离线/连不上）、无卡录（3条，格式化后仍不录像）、开流失败（2条）+视觉云开流失败（1条）、云录无法使用（1条）——共同特征是「用户感知设备不可用，但后台设备在线」，与绿灯常亮退货事件同向。其中10.8-10.14集中显现10条，建议列入质量周会跟踪：①后台在线判定与用户真实体验的差异校准；②4G弱网场景下的开流/离线阈值。</div>
+</div>
+
+<div class="section">
+<h2>六、已闭环信号与落地建议</h2>
+<div class="insight blue"><span class="title">🔵 已闭环/验证信号：</span>①绿灯常亮退货4台质量分析全部闭环（见专项）；②夜视不切换全彩经客服口径统一（无光环境红外夜视）后10.6起零再现；③一键呼叫按键无响应经产品确认系防误报默认关闭设计，移出缺陷口径；④内存卡不识别个案（换卡恢复）、配网失败个案均已引导闭环。</div>
+<div class="insight orange"><span class="title">🟡 落地建议：</span>①FAQ 11条双落地（商详/包裹卡前置 + 客服快捷话术），优先覆盖「免WiFi·流量·供电」形态认知差TOP3——单此一簇即占咨询类37%；②静默升级窗口（02:00-03:00）落地后跟踪升级失败率变化；③「设备不可用」簇列入质量周会跟踪项；④私域渠道售前咨询话术前置（免WiFi/流量/插卡），转化场景直接消化认知差。</div>
+</div>
+
+<div class="section">
+<h2>附：期日报清单</h2>
+<p class="report-links" style="margin-top:12px"><b>期日报清单（15期）：</b><br>
+<a href="9pro-np-daily-day6.html">Day 6</a><a href="9pro-np-daily-day7.html">Day 7</a><a href="9pro-np-daily-day8.html">Day 8</a><a href="9pro-np-daily-day9.html">Day 9</a><a href="9pro-np-daily-day12.html">Day 12</a><a href="9pro-np-daily-day13.html">Day 13</a><a href="9pro-np-daily-day14.html">Day 14</a><a href="9pro-np-daily-day15.html">Day 15</a><a href="9pro-np-daily-day16.html">Day 16</a><a href="9pro-np-daily-day17.html">Day 17</a><a href="9pro-np-daily-day19.html">Day 19</a><a href="9pro-np-daily-day20.html">Day 20</a><a href="9pro-np-daily-day21.html">Day 21</a><a href="9pro-np-daily-day22.html">Day 22</a><a href="9pro-np-daily-day23.html">Day 23</a></p>
+<p class="note">日报每日17:35自动产出，合集入口：<a href="9pronp-index.html">9pro 4G新品跟踪日报合集</a></p>
+</div>
+
+<div class="section">
+<h2>七、渠道结构演进（周度）</h2>
+<div class="severity low">📌 小结：京东自营始终为反馈主力（累计69条占58%）；有赞反馈平稳（权益/资费咨询为主）；APP渠道10.1起进入统计且缺陷密度最高（12/13）；私域10条全部为售前认知咨询；呼叫中心/在线咨询为10/14历史补录首现（口径扩容，趋势判断以京东/有赞/APP为主渠道）。</div>
+<div id="channelChart" class="chart-box"></div>
+<p class="note">注：APP渠道反馈自10.1起进入表格；呼叫中心（3条）、在线咨询（2条）含历史补录，W2-W3分布为补录回填口径。</p>
+</div>
+
+<div class="footer">
+<p>数据来源：飞书「9pro 4G新品跟踪」用户问题反馈汇总表（截至10.15）· 报告生成：2026.10.19</p>
+<p><a href="https://yanlingyin001.github.io/reports/9pronp-index.html">报告合集首页</a> · 云台9pro 4G新品跟踪</p>
+</div>
+</div>
+
+<script>
+var weekChart = echarts.init(document.getElementById('weekChart'));
+weekChart.setOption({
+  tooltip: {trigger:'axis'},
+  legend: {data: ['反馈总量','疑似缺陷']},
+  grid: {left:40, right:20, top:40, bottom:30},
+  xAxis: {type:'category', data: ['开售首段(9.24-9.27)','W2(9.28-10.4)','W3(10.5-10.11)','W4前4天(10.12-10.15)']},
+  yAxis: {type:'value'},
+  series: [
+    {name:'反馈总量', type:'bar', barWidth:40, data: [4,43,45,27], itemStyle:{color:'#2BBD6E'}},
+    {name:'疑似缺陷', type:'bar', barWidth:40, data: [0,11,16,5], itemStyle:{color:'#E74C3C'}}
+  ]
+});
+var chNames = ["京东自营", "有赞", "APP", "私域", "呼叫中心", "在线咨询"];
+var chSeries = [];
+var chData = {"京东自营": [0, 27, 25, 17], "有赞": [3, 7, 8, 4], "APP": [0, 5, 7, 1], "私域": [1, 3, 2, 4], "呼叫中心": [0, 1, 2, 0], "在线咨询": [0, 0, 1, 1]};
+for (var i = 0; i < chNames.length; i++) {
+  chSeries.push({name: chNames[i], type: 'bar', stack: 'w', data: chData[chNames[i]], barWidth: 48});
+}
+var channelChart = echarts.init(document.getElementById('channelChart'));
+channelChart.setOption({
+  tooltip: {trigger:'axis'},
+  legend: {data: chNames},
+  grid: {left:40, right:20, top:50, bottom:30},
+  xAxis: {type:'category', data: ['开售首段','W2','W3','W4前4天']},
+  yAxis: {type:'value'},
+  series: chSeries
+});
+</script>
+</body>
+</html>
