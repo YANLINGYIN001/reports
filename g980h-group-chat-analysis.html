@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G980H 4G记录仪公测群 · 聊天记录分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif; background:#f5f6fa; color:#333; line-height:1.65; }
+.container { max-width:1080px; margin:0 auto; padding:24px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:32px; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header p { font-size:13px; opacity:.92; }
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:20px; }
+.kpi { background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.kpi .num { font-size:26px; font-weight:700; color:#E74C3C; }
+.kpi .label { font-size:12px; color:#999; margin-top:2px; }
+.kpi .sub { font-size:11px; color:#bbb; margin-top:4px; }
+.section { background:#fff; border-radius:14px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.section h2 { font-size:17px; margin-bottom:14px; padding-left:10px; border-left:4px solid #00B050; }
+.section .note { font-size:12px; color:#999; margin-bottom:10px; }
+.phase-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:6px; }
+.phase-card { background:#f8f9fb; border-radius:10px; padding:16px; text-align:center; }
+.phase-name { font-size:13px; color:#666; }
+.phase-num { font-size:24px; font-weight:700; color:#00B050; margin:4px 0; }
+.phase-sub { font-size:11px; color:#999; }
+#trend { width:100%; height:320px; }
+#topic-pie { width:100%; height:300px; }
+.bar-row { display:flex; align-items:center; margin-bottom:10px; }
+.bar-label { width:150px; font-size:13px; text-align:right; padding-right:12px; color:#555; flex-shrink:0; }
+.bar-track { flex:1; background:#f0f2f5; border-radius:6px; height:26px; position:relative; }
+.bar-fill { height:100%; background:linear-gradient(90deg,#00B050,#2BBD6E); border-radius:6px; min-width:2px; }
+.bar-val { position:absolute; left:8px; top:3px; font-size:12px; font-weight:600; color:#fff; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#00B050; color:#fff; padding:9px 10px; text-align:left; font-weight:600; }
+td { padding:9px 10px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+tr:nth-child(even) td { background:#fafbfc; }
+.th-sub { font-weight:400; font-size:11px; opacity:.85; }
+.heat { text-align:center; font-weight:600; }
+.heat-topic { font-weight:600; }
+.heat-total { text-align:center; font-weight:700; color:#00B050; }
+.uname { font-weight:600; }
+.v-pos { color:#00B050; font-weight:600; }
+.v-neg { color:#E74C3C; font-weight:600; }
+.v-neu { color:#999; font-weight:600; }
+.iname { font-weight:600; }
+.istat { color:#E67E22; font-weight:600; white-space:nowrap; }
+.tl-item { display:flex; gap:14px; padding:12px 0; border-bottom:1px dashed #eee; }
+.tl-item:last-child { border-bottom:none; }
+.tl-dot { font-size:18px; flex-shrink:0; margin-top:2px; }
+.tl-date { font-size:12px; color:#999; }
+.tl-title { font-size:14px; font-weight:700; margin:2px 0; }
+.tl-new .tl-title { color:#E74C3C; }
+.tl-resolved .tl-title { color:#00B050; }
+.tl-issue .tl-title { color:#E67E22; }
+.tl-phase .tl-title { color:#333; }
+.tl-desc { font-size:13px; color:#555; }
+.summary-box { background:#f0faf4; border-left:4px solid #00B050; border-radius:8px; padding:14px 18px; font-size:13px; margin-top:14px; }
+.risk-box { background:#fdf3f2; border-left:4px solid #E74C3C; border-radius:8px; padding:14px 18px; font-size:13px; margin-top:14px; }
+.footer { text-align:center; color:#999; font-size:12px; padding:16px 0 30px; }
+.insight { font-size:13px; margin-bottom:10px; }
+.insight b { color:#333; }
+@media (max-width:640px) {
+  .bar-label { width:100px; font-size:12px; }
+  .container { padding:12px; }
+  .section { padding:16px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>🚗 G980H 4G记录仪公测群 · 聊天记录分析报告</h1>
+<p>数据范围：2026.09.03 - 10.21（49天） · 数据来源：公测跟进群完整聊天记录导出 · 由 🦞尹燕玲-报告分析专家 生成</p>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi"><div class="num">10,813</div><div class="label">总消息量</div><div class="sub">含系统/撤回提示</div></div>
+<div class="kpi"><div class="num">7,766</div><div class="label">有效消息</div><div class="sub">已剔除乱码/加密消息 3,047 条</div></div>
+<div class="kpi"><div class="num">70</div><div class="label">发言人数</div><div class="sub">Top15 贡献 69.6% 消息</div></div>
+<div class="kpi"><div class="num">1,225</div><div class="label">单日峰值</div><div class="sub">9.20 安装高峰日</div></div>
+<div class="kpi"><div class="num">609</div><div class="label">热度第一话题</div><div class="sub">4G信号/离线</div></div>
+</div>
+
+<div class="section">
+<h2>📊 项目阶段与消息节奏</h2>
+<div class="phase-grid"><div class="phase-card"><div class="phase-name">筹备期 9.3-9.19</div><div class="phase-num">1812</div><div class="phase-sub">日均 129 条</div></div><div class="phase-card"><div class="phase-name">安装高峰 9.20-9.23</div><div class="phase-num">2762</div><div class="phase-sub">日均 690 条</div></div><div class="phase-card"><div class="phase-name">深度测试 9.24-10.15</div><div class="phase-num">2434</div><div class="phase-sub">日均 187 条</div></div><div class="phase-card"><div class="phase-name">OTA优化 10.16-10.21</div><div class="phase-num">758</div><div class="phase-sub">日均 152 条</div></div></div>
+<div class="summary-box">消息节奏与公测里程碑高度耦合：9.20（首批发货次日）消息量达峰值1225条，为基线的<strong>近10倍</strong>；此后随问题进入「定位-修复-验证」循环，消息量回落并稳定在日均150-200条。10.19（固件收敛关键日）出现二次小高峰，由换降压线方案讨论驱动。</div>
+<div id="trend"></div>
+</div>
+
+<div class="section">
+<h2>🔥 话题热度排行</h2>
+<div class="note">按关键词命中消息数统计（一条消息可命中多话题）</div>
+<div class="bar-row"><div class="bar-label">4G信号/离线</div><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div><span class="bar-val">609</span></div></div><div class="bar-row"><div class="bar-label">安装/OBD/降压线</div><div class="bar-track"><div class="bar-fill" style="width:74.9%"></div><span class="bar-val">456</span></div></div><div class="bar-row"><div class="bar-label">停车监控/哨兵</div><div class="bar-track"><div class="bar-fill" style="width:69.6%"></div><span class="bar-val">424</span></div></div><div class="bar-row"><div class="bar-label">远程/云盒</div><div class="bar-track"><div class="bar-fill" style="width:64.5%"></div><span class="bar-val">393</span></div></div><div class="bar-row"><div class="bar-label">APP/配网</div><div class="bar-track"><div class="bar-fill" style="width:40.2%"></div><span class="bar-val">245</span></div></div><div class="bar-row"><div class="bar-label">重启/死机/黑屏</div><div class="bar-track"><div class="bar-fill" style="width:25.9%"></div><span class="bar-val">158</span></div></div><div class="bar-row"><div class="bar-label">固件/OTA</div><div class="bar-track"><div class="bar-fill" style="width:24.8%"></div><span class="bar-val">151</span></div></div><div class="bar-row"><div class="bar-label">内存卡</div><div class="bar-track"><div class="bar-fill" style="width:8.9%"></div><span class="bar-val">54</span></div></div>
+<div class="summary-box"><b>核心发现：</b>①「4G信号/离线」以609条居首且贯穿全程，是本公测第一痛点；②「停车监控/哨兵」424条中约三分之一与OBD降压线ACC识别相关，本质是同一个硬件方案的衍生问题；③「远程/云盒」393条虽然排名第四，但情感明显正向——4G远程查看是被用户公认的差异化卖点（「在售980没有联网功能，这个简直不要太好」）。</div>
+</div>
+
+<div class="section">
+<h2>🗓️ 阶段 × 话题热力分布</h2>
+<div class="note">颜色越深讨论越集中</div>
+<table><thead><tr><th>话题</th><th>筹备期<br><span class="th-sub">9.3-9.19</span></th><th>安装高峰<br><span class="th-sub">9.20-9.23</span></th><th>深度测试<br><span class="th-sub">9.24-10.15</span></th><th>OTA优化<br><span class="th-sub">10.16-10.21</span></th><th>合计</th></tr></thead><tbody><tr><td class="heat-topic">4G信号/离线</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:rgba(0,176,80,1.0);color:#fff">94</td><td class="heat-total">94</td></tr><tr><td class="heat-topic">停车监控/哨兵</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:rgba(0,176,80,0.7);color:#fff">66</td><td class="heat-total">66</td></tr><tr><td class="heat-topic">安装/OBD/降压线</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:rgba(0,176,80,0.67);color:#fff">63</td><td class="heat-total">63</td></tr><tr><td class="heat-topic">固件/OTA</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:rgba(0,176,80,0.39);color:#333">37</td><td class="heat-total">37</td></tr><tr><td class="heat-topic">远程/云盒</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:rgba(0,176,80,0.28);color:#333">26</td><td class="heat-total">26</td></tr><tr><td class="heat-topic">APP/配网</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:rgba(0,176,80,0.24);color:#333">23</td><td class="heat-total">23</td></tr><tr><td class="heat-topic">重启/死机/黑屏</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:rgba(0,176,80,0.17);color:#333">16</td><td class="heat-total">16</td></tr><tr><td class="heat-topic">内存卡</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:#f5f6fa;color:#ccc">0</td><td class="heat" style="background:rgba(0,176,80,0.15);color:#333">7</td><td class="heat-total">7</td></tr></tbody></table>
+<div class="summary-box">话题重心随阶段迁移清晰可见：<b>筹备期聊OBD安全与内存卡选型 → 安装高峰期安装类话题登顶 → 深度测试期离线/哨兵成为主战场 → OTA优化期固件讨论升温</b>。安装类话题在高峰期单阶段166条，之后快速退潮，说明安装引导基本顺畅。</div>
+</div>
+
+<div class="section">
+<h2>📋 问题时间线与收敛状态</h2>
+<div class="tl-item tl-phase"><div class="tl-dot">⚪</div><div class="tl-body"><div class="tl-date">9.3-9.19</div><div class="tl-title">筹备期</div><div class="tl-desc">押金协议签订、OBD取电安全性大讨论（400客服答复第三方配件免责）、内存卡自备要求（U3+耐高温）</div></div></div><div class="tl-item tl-phase"><div class="tl-dot">⚪</div><div class="tl-body"><div class="tl-date">9.20-9.22</div><div class="tl-title">安装高峰</div><div class="tl-desc">批量收货安装，安装类问题集中：静电贴位置、后录走线、OBD接口差异；首波离线/哨兵问题出现</div></div></div><div class="tl-item tl-issue"><div class="tl-dot">🟡</div><div class="tl-body"><div class="tl-date">9.21</div><div class="tl-title">重启问题首现</div><div class="tl-desc">「行车过程中记录仪重启，云盒灯不亮」——行车重启问题首次集中爆发</div></div></div><div class="tl-item tl-issue"><div class="tl-dot">🟡</div><div class="tl-body"><div class="tl-date">9.22</div><div class="tl-title">误报争议</div><div class="tl-desc">benq88926104 停车监控画面无变动仍触发录像，用户用自家360门铃+摄像机对比验证</div></div></div><div class="tl-item tl-issue"><div class="tl-dot">🟡</div><div class="tl-body"><div class="tl-date">9.28-10.13</div><div class="tl-title">离线问题拉锯</div><div class="tl-desc">多用户规律性离线；固件51对比57版本离线表现差异明显</div></div></div><div class="tl-item tl-issue"><div class="tl-dot">🟡</div><div class="tl-body"><div class="tl-date">10.8-10.12</div><div class="tl-title">OBD+新能源不适配确认</div><div class="tl-desc">纯电车熄火后OBD仍14V→识别不到熄火→不进停车监控；官方确认「OBD降压线在优化，能优化到什么程度不确定」</div></div></div><div class="tl-item tl-resolved"><div class="tl-dot">🟢</div><div class="tl-body"><div class="tl-date">10.16-10.19</div><div class="tl-title">固件收敛</div><div class="tl-desc">固件5657（闫贺专属）上线后行车重启收敛；黑屏问题在新固件后消失</div></div></div><div class="tl-item tl-resolved"><div class="tl-dot">🟢</div><div class="tl-body"><div class="tl-date">10.19-10.20</div><div class="tl-title">换线方案落地</div><div class="tl-desc">官方建议换普通降压线，wghong实测「换成普通降压线后熄火就进哨兵，很丝滑」</div></div></div><div class="tl-item tl-new"><div class="tl-dot">🔴</div><div class="tl-body"><div class="tl-date">10.21</div><div class="tl-title">🔴 新问题</div><div class="tl-desc">视频下载卡46-47%→获取失败→设备离线，可复现（foeverhuiyi 连续3次），已@硬件-孙工</div></div></div>
+</div>
+
+<div class="section">
+<h2>🔴 未收口问题清单</h2>
+<table>
+<thead><tr><th>等级</th><th>问题</th><th>详情</th><th>首现</th><th>状态</th></tr></thead>
+<tbody><tr><td>🔴</td><td class="iname">视频下载中断致离线（新）</td><td>下载视频卡在46-47%→获取失败→设备离线→稍后自恢复；10/21 foeverhuiyi 连续3次复现，已@硬件-孙工跟进</td><td>10/21</td><td class="istat">跟进中</td></tr><tr><td>🔴</td><td class="iname">OBD降压线与新能源车不适配</td><td>纯电车熄火后OBD口仍输出14V，降压线识别不到熄火→不进停车监控；官方建议换普通降压线规避，OBD方案本身仍在优化、无明确时间表</td><td>10/8确认</td><td class="istat">规避方案已落地</td></tr><tr><td>🟡</td><td class="iname">规律性离线个案</td><td>固件51/57优化后大部分用户收敛，但仍有用户中午/下午集中离线（怀疑高温相关，被官方以数据反证）；57版本首日离线率高于51</td><td>持续</td><td class="istat">部分收敛</td></tr><tr><td>🟡</td><td class="iname">日志上传困难</td><td>上传耗时5-6分钟且频繁失败，需车辆保持通电，影响复现问题的日志采集效率</td><td>10/12集中反馈</td><td class="istat">未解决</td></tr><tr><td>🟡</td><td class="iname">停车监控触发灵敏度</td><td>画面无明显变动仍触发录像（用户以自家360门铃同机位对比验证），误报消耗流量与电量</td><td>9.22首现</td><td class="istat">待验证</td></tr></tbody>
+</table>
+<div class="risk-box"><b>风险提示：</b>①10/21 新现「视频下载中断致离线」为可复现问题，若为4G通道通用缺陷可能影响所有远程下载场景，建议优先定位；②OBD降压线与新能源车不适配已通过换线规避，但「随机性大」的根因（ACC信号判定逻辑）尚未闭环，若正式发售随附OBD线，需在商品页明确新能源车适配说明。</div>
+</div>
+
+<div class="section">
+<h2>👥 用户参与度 Top15</h2>
+<table>
+<thead><tr><th>#</th><th>用户</th><th>消息数</th><th>占比</th></tr></thead>
+<tbody><tr><td>1</td><td class="uname">wxid_u844klj9m6ou22</td><td>650</td><td>8.4%</td></tr><tr><td>2</td><td class="uname">wxid_pcq244647zd712</td><td>646</td><td>8.3%</td></tr><tr><td>3</td><td class="uname">foeverhuiyi</td><td>561</td><td>7.2%</td></tr><tr><td>4</td><td class="uname">sunhongshi001</td><td>542</td><td>7.0%</td></tr><tr><td>5</td><td class="uname">yanhe_147702934</td><td>510</td><td>6.6%</td></tr><tr><td>6</td><td class="uname">fangjiahuan001</td><td>329</td><td>4.2%</td></tr><tr><td>7</td><td class="uname">zhp19860528</td><td>326</td><td>4.2%</td></tr><tr><td>8</td><td class="uname">wxid_jweexwu3kll221</td><td>325</td><td>4.2%</td></tr><tr><td>9</td><td class="uname">wxid_f8ycmcoksg4r21</td><td>248</td><td>3.2%</td></tr><tr><td>10</td><td class="uname">benq88926104</td><td>246</td><td>3.2%</td></tr><tr><td>11</td><td class="uname">yixian515</td><td>239</td><td>3.1%</td></tr><tr><td>12</td><td class="uname">wghong</td><td>218</td><td>2.8%</td></tr><tr><td>13</td><td class="uname">lingtian</td><td>217</td><td>2.8%</td></tr><tr><td>14</td><td class="uname">wxid_6acjdw4m0ic222</td><td>183</td><td>2.4%</td></tr><tr><td>15</td><td class="uname">liuxiaoshun689494</td><td>166</td><td>2.1%</td></tr></tbody>
+</table>
+<div class="summary-box">Top15用户贡献 69.6% 的有效消息，典型的「少数深度用户驱动大部分反馈」结构。foeverhuiyi、孙洪士、闫贺三人既是问题主要报告者也是民间答疑主力（闫贺被用户误认为官方），建议在公测收尾问卷中对这批高价值用户重点回访。</div>
+</div>
+
+<div class="section">
+<h2>💬 用户原声摘录</h2>
+<table>
+<thead><tr><th>情感</th><th>用户</th><th>原声</th></tr></thead>
+<tbody><tr><td class="v-pos">正向</td><td class="uname">闫贺（yanhe_147702934）</td><td>我感觉咱们这个980目前是360的顶配记录仪了；在售的980没有联网功能，咱们测试这个简直不要太好了</td></tr><tr><td class="v-pos">正向</td><td class="uname">wghong</td><td>这两天换成普通降压线后，熄火就进哨兵模式，很丝滑！</td></tr><tr><td class="v-pos">正向</td><td class="uname">wxid_dr1boojay1w522</td><td>新固件很稳定，开远光风扇也没黑屏了</td></tr><tr><td class="v-neg">负向</td><td class="uname">foeverhuiyi</td><td>刚刚在下载视频，下到47不动，失败了，返回提示获取视频失败。然后显示离线了。（10.21连续3次复现）</td></tr><tr><td class="v-neg">负向</td><td class="uname">sunhongshi001</td><td>51系统我没有离过线，57系统头一天离线挺离谱</td></tr><tr><td class="v-neg">负向</td><td class="uname">wxid_llrg32mk5wn721</td><td>今天一路上重启3次，已提交日志；这个日志上传确实难，都5-6分钟了还没上传到，车还不能熄火</td></tr><tr><td class="v-neg">负向</td><td class="uname">许军州类用户</td><td>车辆充电锁车后记录仪未进入停车监控，一直是循环录像（纯电+OBD）</td></tr><tr><td class="v-neu">中性</td><td class="uname">lingtian</td><td>我觉得4G记录仪主要受众还是油车，毕竟电车都有哨兵啥的</td></tr><tr><td class="v-neu">中性</td><td class="uname">j903554164</td><td>打了400电话，400回复说使用第三方配件，如果责任是车辆问题有索赔……所以能放心用</td></tr></tbody>
+</table>
+</div>
+
+<div class="footer">
+数据来源：G980H 4G记录仪公测跟进群聊天记录导出（2026.09.03-10.21，10813条）<br>
+统计口径：话题命中=关键词匹配（一条消息可多话题）；有效消息=剔除乱码/加密内容 · 由 🦞尹燕玲-报告分析专家 自动生成
+</div>
+</div>
+
+<script>
+var trendChart = echarts.init(document.getElementById('trend'));
+trendChart.setOption({
+  tooltip: { trigger:'axis' },
+  grid: { left:50, right:20, top:30, bottom:60 },
+  xAxis: { type:'category', data:["2026-09-03", "2026-09-04", "2026-09-07", "2026-09-08", "2026-09-09", "2026-09-10", "2026-09-11", "2026-09-12", "2026-09-13", "2026-09-15", "2026-09-16", "2026-09-17", "2026-09-18", "2026-09-19", "2026-09-20", "2026-09-21", "2026-09-22", "2026-09-23", "2026-09-24", "2026-09-27", "2026-09-28", "2026-09-29", "2026-09-30", "2026-10-08", "2026-10-09", "2026-10-10", "2026-10-11", "2026-10-12", "2026-10-13", "2026-10-14", "2026-10-15", "2026-10-16", "2026-10-18", "2026-10-19", "2026-10-20", "2026-10-21"], axisLabel:{ rotate:60, fontSize:10 } },
+  yAxis: { type:'value', name:'消息数' },
+  dataZoom: [{ type:'inside' }, { type:'slider', height:18, bottom:8 }],
+  series: [{
+    type:'bar', name:'每日有效消息', data:[292, 370, 183, 4, 167, 21, 10, 87, 14, 42, 42, 311, 114, 155, 870, 802, 747, 343, 318, 73, 298, 203, 47, 91, 126, 214, 62, 330, 227, 203, 242, 90, 96, 303, 220, 49],
+    itemStyle:{ color:'#00B050' },
+    label: { show:true, position:'top', fontSize:9, color:'#666' }
+  }]
+});
+window.addEventListener('resize', function(){ trendChart.resize(); });
+</script>
+</body>
+</html>
