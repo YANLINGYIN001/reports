@@ -18,20 +18,17 @@
   .project-card { background: #fff; border-radius: 16px; padding: 28px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.3s; border-top: 4px solid #00B050; }
   .project-card:hover { box-shadow: 0 4px 20px rgba(0,176,80,0.12); }
   .project-card.done { border-top-color: #999; opacity: 0.85; }
-  .project-card.prep { border-top-color: #F39C12; }
   .project-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
   .project-title { font-size: 22px; font-weight: 700; color: #333; }
   .project-status { font-size: 12px; padding: 4px 12px; border-radius: 12px; font-weight: 600; }
   .project-status.active { background: #e8f5e9; color: #00B050; }
   .project-status.done { background: #f0f0f0; color: #999; }
-  .project-status.prep { background: #fff3e0; color: #F39C12; }
   .project-desc { font-size: 14px; color: #666; margin-bottom: 16px; }
   .project-meta { display: flex; gap: 16px; font-size: 13px; color: #888; margin-bottom: 16px; flex-wrap: wrap; }
   .project-meta span { background: #f5f7fa; padding: 4px 12px; border-radius: 6px; }
   .project-link { display: inline-block; background: #00B050; color: #fff; text-decoration: none; padding: 10px 28px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: all 0.2s; }
   .project-link:hover { background: #009040; transform: translateY(-1px); }
   .project-link.done { background: #999; }
-  .project-link.prep { background: #F39C12; }
   .section-title { font-size: 18px; font-weight: 700; color: #333; margin: 30px 0 16px; padding-left: 12px; border-left: 4px solid #00B050; }
   .misc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
   .misc-card { display: block; background: #fff; border-radius: 10px; padding: 16px 20px; text-decoration: none; color: #333; box-shadow: 0 2px 6px rgba(0,0,0,0.04); transition: all 0.2s; }
@@ -48,8 +45,8 @@
   <p>尹燕玲 · 数据分析专家 · 公测项目报告合集</p>
   <div class="stats">
     <div class="stat"><div class="num">13</div><div class="label">项目总数</div></div>
-    <div class="stat"><div class="num">4</div><div class="label">活跃项目</div></div>
-    <div class="stat"><div class="num">9</div><div class="label">已完成项目</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">活跃项目</div></div>
+    <div class="stat"><div class="num">7</div><div class="label">已完成项目</div></div>
   </div>
 </div>
 
@@ -83,65 +80,21 @@
       <span>📋 13份报告</span>
     </div>
     <a class="project-link" href="https://yanlingyin001.github.io/reports/6pronp-index.html">查看报告合集 →</a>
-  </div>  <!-- 6pro -->
-  <div class="project-card">
-    <div class="project-header">
-      <span class="project-title">🔔 6pro 4G门铃公测</span>
-      <span class="project-status done">已结束</span>
-    </div>
-    <div class="project-desc">20人公测 · 日常反馈打标 · 专项对比 · 固件专项均已归档</div>
-    <div class="project-meta">
-      <span>👥 20人</span>
-      <span>📋 17+份报告</span>
-      <span>💬 505条反馈</span>
-    </div>
-    <a class="project-link" href="https://yanlingyin001.github.io/reports/6pro-index.html">查看报告合集 →</a>
-  </div>  <!-- V6骑行 -->
-  <div class="project-card done">
-    <div class="project-header">
-      <span class="project-title">🚲 V6骑行版新品跟踪</span>
-      <span class="project-status done">已结束</span>
-    </div>
-    <div class="project-desc">新品跟踪日报 · 1个月小结收官 · 含用户画像</div>
-    <div class="project-meta">
-      <span>📅 Day 30</span>
-      <span>📋 31份报告</span>
-      <span>💬 169条反馈</span>
-    </div>
-    <a class="project-link done" href="https://yanlingyin001.github.io/reports/v6-cycling-index.html">查看报告合集 →</a>
-  </div>
-
-
-
-  <!-- T200新品跟踪 -->
-  <div class="project-card done">
-    <div class="project-header">
-      <span class="project-title">📱 T200 4G记录仪新品跟踪</span>
-      <span class="project-status done">已结束</span>
-    </div>
-    <div class="project-desc">多渠道反馈跟踪 · Day 1~19 日报 · 重点问题sheet</div>
-    <div class="project-meta">
-      <span>📋 10份日报</span>
-      <span>💬 198条反馈</span>
-      <span>🔗 8渠道</span>
-      <span>🐞 37缺陷</span>
-    </div>
-    <a class="project-link done" href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">查看报告合集 →</a>
   </div>
 
   <!-- G980H -->
-  <div class="project-card prep">
+  <div class="project-card">
     <div class="project-header">
       <span class="project-title">🚗 G980H 4G记录仪公测</span>
-      <span class="project-status prep">筹备中</span>
+      <span class="project-status active">进行中</span>
     </div>
-    <div class="project-desc">报名中(159人/初筛9人) · 预计9-11月公测 · KPI指标+测试问题+功能限制已梳理</div>
+    <div class="project-desc">46人口径公测 · 打标+日报+作业看板 · 安装实拍/车辆画像/阶段报告已交付</div>
     <div class="project-meta">
-      <span>📝 159人报名</span>
-      <span>✅ 9人初筛入选</span>
-      <span>📅 9-11月公测</span>
+      <span>👥 46人</span>
+      <span>📋 20+份报告</span>
+      <span>🐞 76个已知问题</span>
     </div>
-    <a class="project-link prep" href="https://yanlingyin001.github.io/reports/g980h-index.html">查看项目资料 →</a>
+    <a class="project-link" href="https://yanlingyin001.github.io/reports/g980h-index.html">查看报告合集 →</a>
   </div>
 
   <!-- 海外评价周报 -->
@@ -159,22 +112,6 @@
     <a class="project-link" href="https://360iot-uxc.feishu.cn/wiki/O29dwirj2ig8v5kCOhXcsTbZnzg">查看飞书文档 →</a>
   </div>
 
-  <!-- 海外APP公测 -->
-  <div class="project-card">
-    <div class="project-header">
-      <span class="project-title">📱 海外APP公测（app1期）</span>
-      <span class="project-status done">已结束</span>
-    </div>
-    <div class="project-desc">20人公测 · 1期体验问题汇总（110条反馈/94类去重问题）+ 满意度问卷专项报告（90%满意）</div>
-    <div class="project-meta">
-      <span>👥 20人公测</span>
-      <span>🐞 94类问题</span>
-      <span>⭐ 90%满意率</span>
-    </div>
-    <a class="project-link" href="https://yanlingyin001.github.io/reports/overseas-app-phase1-ux-issues.html">1期体验问题汇总 →</a>
-    <a class="project-link" href="https://yanlingyin001.github.io/reports/overseas-app-survey-ux-report.html" style="margin-top:6px">满意度问卷报告 →</a>
-  </div>
-
   <!-- 公测用户清单 -->
   <div class="project-card">
     <div class="project-header">
@@ -188,6 +125,31 @@
       <span>🚫 65黑名单</span>
     </div>
     <a class="project-link" href="https://360iot-uxc.feishu.cn/sheets/shtcnS1LklAuci0FLUc7BwCb08T">查看飞书表格 →</a>
+  </div>
+
+  <!-- 初中教辅（孩子作业） -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">📚 初中教辅资料（孩子作业）</span>
+      <span class="project-status active">持续更新</span>
+    </div>
+    <div class="project-desc">数学：人教版2024新版三件套；英语：外研版七上300词全等资料+三版听写音频</div>
+    <div class="project-meta">
+      <span>📐 <a href="https://yanlingyin001.github.io/reports/math-curriculum-map.html" style="color:#00B050;">数学·三年知识地图</a></span>
+      <span>📐 <a href="https://yanlingyin001.github.io/reports/math-knowledge-points.html" style="color:#00B050;">数学·知识点全表</a></span>
+      <span>📐 <a href="https://yanlingyin001.github.io/reports/math-exam-types.html" style="color:#00B050;">数学·重点考题版</a></span>
+    </div>
+    <div class="project-meta">
+      <span>📖 <a href="https://yanlingyin001.github.io/reports/word-materials/word_phrases_book_full_v3.pdf" style="color:#00B050;">英语·300词全等资料(带音标)</a></span>
+      <span>✍️ <a href="https://yanlingyin001.github.io/reports/word-materials/word_dictation.pdf" style="color:#00B050;">英语·默写卷</a></span>
+      <span>✅ <a href="https://yanlingyin001.github.io/reports/word-materials/word_dictation_answers.pdf" style="color:#00B050;">英语·默写答案卷</a></span>
+    </div>
+    <div class="project-meta">
+      <span>🎧 <a href="https://yanlingyin001.github.io/reports/word-materials/audio/dictation-words/starter.mp3" style="color:#00B050;">听写音频·纯单词</a></span>
+      <span>🎧 <a href="https://yanlingyin001.github.io/reports/word-materials/audio/dictation-sentences/starter.mp3" style="color:#00B050;">听写音频·带原句</a></span>
+      <span>🎧 <a href="https://yanlingyin001.github.io/reports/word-materials/audio/dictation-zh/starter.mp3" style="color:#00B050;">听写音频·中文释义</a></span>
+      <span style="color:#999;font-size:12px;">（音频按单元 Starter+Unit1-6，点击任一后可拼改 unit1~unit6.mp3）</span>
+    </div>
   </div>
 
   <div class="section-title">✅ 已完成项目</div>
@@ -205,6 +167,68 @@
       <span>💬 331条反馈</span>
     </div>
     <a class="project-link done" href="https://yanlingyin001.github.io/reports/9pro-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- 6pro公测 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">🔔 6pro 4G门铃公测</span>
+      <span class="project-status done">已结束</span>
+    </div>
+    <div class="project-desc">20人公测 · 日常反馈打标 · 专项对比 · 固件专项均已归档</div>
+    <div class="project-meta">
+      <span>👥 20人</span>
+      <span>📋 46份报告</span>
+      <span>💬 505条反馈</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/6pro-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- V6骑行 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">🚲 V6骑行版新品跟踪</span>
+      <span class="project-status done">已结束</span>
+    </div>
+    <div class="project-desc">新品跟踪日报 · 1个月小结收官 · 含用户画像</div>
+    <div class="project-meta">
+      <span>📅 Day 30</span>
+      <span>📋 31份报告</span>
+      <span>💬 169条反馈</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/v6-cycling-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- T200新品跟踪 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">📱 T200 4G记录仪新品跟踪</span>
+      <span class="project-status done">已结束</span>
+    </div>
+    <div class="project-desc">多渠道反馈跟踪 · Day 1~19 日报 · 重点问题sheet</div>
+    <div class="project-meta">
+      <span>📋 10份日报</span>
+      <span>💬 198条反馈</span>
+      <span>🔗 8渠道</span>
+      <span>🐞 37缺陷</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- 海外APP公测 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">📱 海外APP公测（app1期）</span>
+      <span class="project-status done">已结束</span>
+    </div>
+    <div class="project-desc">20人公测 · 1期体验问题汇总（110条反馈/94类去重问题）+ 满意度问卷专项报告（90%满意）</div>
+    <div class="project-meta">
+      <span>👥 20人公测</span>
+      <span>🐞 94类问题</span>
+      <span>⭐ 90%满意率</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/overseas-app-phase1-ux-issues.html">1期体验问题汇总 →</a>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/overseas-app-survey-ux-report.html" style="margin-top:6px">满意度问卷报告 →</a>
   </div>
 
   <!-- T200公测 -->
@@ -230,31 +254,6 @@
     <div class="project-desc">重点问题sheet参考模板 · 18段快照格式</div>
     <div class="project-meta">
       <span>📋 重点问题sheet</span>
-    </div>
-  </div>
-
-  <!-- 初中教辅（孩子作业） -->
-  <div class="project-card">
-    <div class="project-header">
-      <span class="project-title">📚 初中教辅资料（孩子作业）</span>
-      <span class="project-status">持续更新</span>
-    </div>
-    <div class="project-desc">数学：人教版2024新版三件套；英语：外研版七上300词全等资料+三版听写音频</div>
-    <div class="project-meta">
-      <span>📐 <a href="https://yanlingyin001.github.io/reports/math-curriculum-map.html" style="color:#00B050;">数学·三年知识地图</a></span>
-      <span>📐 <a href="https://yanlingyin001.github.io/reports/math-knowledge-points.html" style="color:#00B050;">数学·知识点全表</a></span>
-      <span>📐 <a href="https://yanlingyin001.github.io/reports/math-exam-types.html" style="color:#00B050;">数学·重点考题版</a></span>
-    </div>
-    <div class="project-meta">
-      <span>📖 <a href="https://yanlingyin001.github.io/reports/word-materials/word_phrases_book_full_v3.pdf" style="color:#00B050;">英语·300词全等资料(带音标)</a></span>
-      <span>✍️ <a href="https://yanlingyin001.github.io/reports/word-materials/word_dictation.pdf" style="color:#00B050;">英语·默写卷</a></span>
-      <span>✅ <a href="https://yanlingyin001.github.io/reports/word-materials/word_dictation_answers.pdf" style="color:#00B050;">英语·默写答案卷</a></span>
-    </div>
-    <div class="project-meta">
-      <span>🎧 <a href="https://yanlingyin001.github.io/reports/word-materials/audio/dictation-words/starter.mp3" style="color:#00B050;">听写音频·纯单词</a></span>
-      <span>🎧 <a href="https://yanlingyin001.github.io/reports/word-materials/audio/dictation-sentences/starter.mp3" style="color:#00B050;">听写音频·带原句</a></span>
-      <span>🎧 <a href="https://yanlingyin001.github.io/reports/word-materials/audio/dictation-zh/starter.mp3" style="color:#00B050;">听写音频·中文释义</a></span>
-      <span style="color:#999;font-size:12px;">（音频按单元 Starter+Unit1-6，点击任一后可拼改 unit1~unit6.mp3）</span>
     </div>
   </div>
 
