@@ -2,250 +2,299 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>报告合集 | 尹燕玲-报告分析专家</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 公测报告总首页 · 尹燕玲</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
-.header{text-align:center;padding:60px 20px;background:linear-gradient(135deg,#00B050,#2BBD6E);color:#fff;border-radius:0 0 20px 20px;margin-bottom:40px}
-.header h1{font-size:32px;margin-bottom:10px;font-weight:800}
-.header p{font-size:16px;opacity:.9}
-.header .meta{font-size:13px;opacity:.7;margin-top:8px}
-.container{max-width:900px;margin:0 auto;padding:0 20px 40px}
-.project-card{background:#fff;border-radius:16px;margin-bottom:20px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:all .3s;text-decoration:none;display:block;color:inherit}
-.project-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,176,80,.18)}
-.project-card .banner{padding:32px 28px;background:linear-gradient(135deg,#e8f7ee,#d1f0dc);position:relative;overflow:hidden}
-.project-card .banner::after{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;background:rgba(0,176,80,.06);border-radius:50%}
-.project-card .title-row{display:flex;align-items:center;gap:12px;position:relative;z-index:1;margin-bottom:6px}
-.project-card .icon{font-size:32px;position:relative;z-index:1}
-.project-card h2{font-size:22px;color:#1a1a1a;position:relative;z-index:1}
-.project-card .summary{font-size:14px;color:#666;position:relative;z-index:1}
-.project-card .body{padding:20px 28px;display:flex;align-items:center;justify-content:space-between}
-.project-card .tags{display:flex;gap:8px;flex-wrap:wrap}
-.project-card .tag{font-size:12px;padding:4px 12px;border-radius:20px;background:#f0f2f3;color:#666}
-.project-card .tag.green{background:#e8f7ee;color:#007a3c}
-.project-card .arrow{font-size:24px;color:#00B050;font-weight:700}
-.sub-card{margin-left:40px;background:#fff;border-radius:12px;margin-bottom:12px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.04);transition:all .3s;text-decoration:none;display:block;color:inherit;border-left:3px solid #00B050}
-.sub-card:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(0,176,80,.12)}
-.sub-card .banner{padding:20px 24px;background:#faffff;position:relative}
-.sub-card .title-row{display:flex;align-items:center;gap:10px;margin-bottom:4px}
-.sub-card .icon{font-size:24px}
-.sub-card h3{font-size:17px;color:#333}
-.sub-card .summary{font-size:13px;color:#888}
-.sub-card .body{padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
-.sub-card .tags{display:flex;gap:6px;flex-wrap:wrap}
-.sub-card .tag{font-size:11px;padding:3px 10px;border-radius:20px;background:#f0f2f3;color:#666}
-.sub-card .tag.green{background:#e8f7ee;color:#007a3c}
-.sub-card .arrow{font-size:20px;color:#00B050;font-weight:700}
-.footer{text-align:center;padding:30px;color:#999;font-size:13px}
-.footer span{color:#00B050}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #00B050, #2BBD6E); color: #fff; padding: 50px 20px; text-align: center; }
+  .header h1 { font-size: 32px; margin-bottom: 8px; }
+  .header p { font-size: 15px; opacity: 0.9; }
+  .header .stats { display: flex; gap: 20px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+  .header .stat { background: rgba(255,255,255,0.15); border-radius: 10px; padding: 10px 24px; text-align: center; }
+  .header .stat .num { font-size: 24px; font-weight: 700; }
+  .header .stat .label { font-size: 12px; opacity: 0.85; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
+  .project-card { background: #fff; border-radius: 16px; padding: 28px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.3s; border-top: 4px solid #00B050; }
+  .project-card:hover { box-shadow: 0 4px 20px rgba(0,176,80,0.12); }
+  .project-card.done { border-top-color: #999; opacity: 0.85; }
+  .project-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .project-title { font-size: 22px; font-weight: 700; color: #333; }
+  .project-status { font-size: 12px; padding: 4px 12px; border-radius: 12px; font-weight: 600; }
+  .project-status.active { background: #e8f5e9; color: #00B050; }
+  .project-status.done { background: #f0f0f0; color: #999; }
+  .project-desc { font-size: 14px; color: #666; margin-bottom: 16px; }
+  .project-meta { display: flex; gap: 16px; font-size: 13px; color: #888; margin-bottom: 16px; flex-wrap: wrap; }
+  .project-meta span { background: #f5f7fa; padding: 4px 12px; border-radius: 6px; }
+  .project-link { display: inline-block; background: #00B050; color: #fff; text-decoration: none; padding: 10px 28px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: all 0.2s; }
+  .project-link:hover { background: #009040; transform: translateY(-1px); }
+  .project-link.done { background: #999; }
+  .section-title { font-size: 18px; font-weight: 700; color: #333; margin: 30px 0 16px; padding-left: 12px; border-left: 4px solid #00B050; }
+  .misc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .misc-card { display: block; background: #fff; border-radius: 10px; padding: 16px 20px; text-decoration: none; color: #333; box-shadow: 0 2px 6px rgba(0,0,0,0.04); transition: all 0.2s; }
+  .misc-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .misc-card .title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .misc-card .desc { font-size: 12px; color: #999; }
+  .footer { text-align: center; padding: 40px 20px; color: #999; font-size: 13px; }
+  .footer a { color: #00B050; text-decoration: none; }
 </style>
 </head>
 <body>
-
 <div class="header">
-<h1>📊 报告合集</h1>
-<p>尹燕玲-报告分析专家 · 数据分析 · 用户洞察 · 竞品研究</p>
-<div class="meta">🦞 360绿色系 #00B050 / #2BBD6E</div>
+  <h1>📊 公测报告总首页</h1>
+  <p>尹燕玲 · 数据分析专家 · 公测项目报告合集</p>
+  <div class="stats">
+    <div class="stat"><div class="num">13</div><div class="label">项目总数</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">活跃项目</div></div>
+    <div class="stat"><div class="num">7</div><div class="label">已完成项目</div></div>
+  </div>
 </div>
 
 <div class="container">
 
-<a class="project-card" href="https://yanlingyin001.github.io/reports/9pronp-index.html">
-<div class="banner">
-<div class="title-row"><div class="icon">🎥</div><h2>云台9pro 4G · 新品跟踪日报</h2></div>
-<div class="summary">9/23晚开售 · 各渠道客服反馈每日跟踪 · 最新:Day 27(累计113条)</div>
-</div>
-<div class="body">
-<div class="tags">
-<span class="tag green">新品跟踪</span>
-<span class="tag">工作日更新</span>
-<span class="tag">Day 17</span>
-<span class="tag">2026-10-10</span>
-</div>
-<span class="arrow">→</span>
-</div>
-</a>
+  <div class="section-title">🔴 活跃项目</div>
 
-<a class="project-card" href="https://yanlingyin001.github.io/reports/6pronp-index.html">
-<div class="banner">
-<div class="title-row"><div class="icon">🔔</div><h2>门铃6Pro 4G · 新品跟踪日报</h2></div>
-<div class="summary">9/23晚开售 · 各渠道客服反馈每日跟踪 · 最新:Day 19(累计86条,+7) · 阶段报告已出(供10.13会议)</div>
-</div>
-<div class="body">
-<div class="tags">
-<span class="tag green">新品跟踪</span>
-<span class="tag">工作日更新</span>
-<span class="tag">Day 17</span>
-<span class="tag">2026-10-09</span>
-</div>
-<span class="arrow">→</span>
-</div>
-</a>
+  <!-- 9pro新品跟踪 -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">📡 云台9pro 4G新品跟踪</span>
+      <span class="project-status active">进行中</span>
+    </div>
+    <div class="project-desc">新品跟踪日报 · 阶段报告 · 月度报告 · 每工作日更新</div>
+    <div class="project-meta">
+      <span>📅 Day 27</span>
+      <span>📋 26份报告</span>
+    </div>
+    <a class="project-link" href="https://yanlingyin001.github.io/reports/9pronp-index.html">查看报告合集 →</a>
+  </div>
 
-<a class="project-card" href="https://yanlingyin001.github.io/reports/doorbell-compare-report.html">
-<div class="banner">
-<div class="title-row"><div class="icon">🔔</div><h2>门铃 vs 猫眼 — 漏录 & 延迟专项对比</h2></div>
-<div class="summary">1,690条反馈两级标签打标 · 漏录无提醒 & 延迟卡顿各型号占比对比 · 典型用户原声</div>
-</div>
-<div class="body">
-<div class="tags">
-<span class="tag green">专项对比</span>
-<span class="tag">1,690条样本</span>
-<span class="tag">两级标签体系</span>
-<span class="tag">2026-07-22</span>
-</div>
-<span class="arrow">→</span>
-</div>
-</a>
+  <!-- 6pro 4G新品跟踪 -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">🔔 6pro 4G门铃新品跟踪</span>
+      <span class="project-status active">进行中</span>
+    </div>
+    <div class="project-desc">新品跟踪日报 · 阶段报告 · 月度报告 · 每工作日更新</div>
+    <div class="project-meta">
+      <span>📅 Day 27</span>
+      <span>📋 13份报告</span>
+    </div>
+    <a class="project-link" href="https://yanlingyin001.github.io/reports/6pronp-index.html">查看报告合集 →</a>
+  </div>
 
-<a class="project-card" href="https://yanlingyin001.github.io/reports/t200-index.html">
-<div class="banner">
-<div class="title-row"><div class="icon">📋</div><h2>T200 4G记录仪公测</h2></div>
-<div class="summary">开箱安装 · 日常问题 · 专项体验 · 终测分析 · 价格测试 · 市场营销决策</div>
-</div>
-<div class="body">
-<div class="tags">
-<span class="tag green">15+ 报告</span>
-<span class="tag">438条公测样本</span>
-<span class="tag">67份终测</span>
-<span class="tag">67份价格测试</span>
-</div>
-<span class="arrow">→</span>
-</div>
-</a>
+  <!-- G980H -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">🚗 G980H 4G记录仪公测</span>
+      <span class="project-status active">进行中</span>
+    </div>
+    <div class="project-desc">46人口径公测 · 打标+日报+作业看板 · 安装实拍/车辆画像/阶段报告已交付</div>
+    <div class="project-meta">
+      <span>👥 46人</span>
+      <span>📋 20+份报告</span>
+      <span>🐞 76个已知问题</span>
+    </div>
+    <a class="project-link" href="https://yanlingyin001.github.io/reports/g980h-index.html">查看报告合集 →</a>
+  </div>
 
-<a class="project-card" href="https://yanlingyin001.github.io/reports/6pro-index.html">
-<div class="banner">
-<div class="title-row"><div class="icon">🔔</div><h2>门铃6pro 4G公测</h2></div>
-<div class="summary">20人公测团队 · 开箱体验 · 配网安装 · 日常问题反馈 · 作业完成情况</div>
-</div>
-<div class="body">
-<div class="tags">
-<span class="tag green">4 报告</span>
-<span class="tag">20人样本</span>
-<span class="tag">152条反馈</span>
-<span class="tag">满意度 9.5分</span>
-</div>
-<span class="arrow">→</span>
-</div>
-</a>
+  <!-- 海外评价周报 -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">🌍 海外评价周报</span>
+      <span class="project-status active">每周一更新</span>
+    </div>
+    <div class="project-desc">飞书文档 · 差评Callout · 评分表格 · 车品+安防全系列</div>
+    <div class="project-meta">
+      <span>📅 每周一16:00</span>
+      <span>📦 车品7系列 + 安防4系列</span>
+      <span>🌐 Amazon + Tiktok</span>
+    </div>
+    <a class="project-link" href="https://360iot-uxc.feishu.cn/wiki/O29dwirj2ig8v5kCOhXcsTbZnzg">查看飞书文档 →</a>
+  </div>
 
-<a class="project-card" href="https://yanlingyin001.github.io/reports/v6-cycling-index.html">
-<div class="banner">
-<div class="title-row"><div class="icon">🚲</div><h2>V6骑行版 · 新品跟踪日报</h2></div>
-<div class="summary">1个月跟踪结束(8.29-9.28) · 累计171条反馈 · 12渠道 · 咨询82%/疑似缺陷31条 · 不开机21条为第一大簇</div>
-</div>
-<div class="body">
-<div class="tags">
-<span class="tag green">1个月小结</span>
-<span class="tag">8.29起</span>
-<span class="tag">累计169条</span>
-</div>
-<span class="arrow">→</span>
-</div>
-</a>
+  <!-- 公测用户清单 -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">📋 公测用户清单管理</span>
+      <span class="project-status active">长期维护</span>
+    </div>
+    <div class="project-desc">51个项目 · 1225人次 · 打分表+黑名单+邮寄信息</div>
+    <div class="project-meta">
+      <span>👥 1225人次</span>
+      <span>📁 51个项目</span>
+      <span>🚫 65黑名单</span>
+    </div>
+    <a class="project-link" href="https://360iot-uxc.feishu.cn/sheets/shtcnS1LklAuci0FLUc7BwCb08T">查看飞书表格 →</a>
+  </div>
 
-<a class="project-card" href="https://yanlingyin001.github.io/reports/v6-rider-profile.html">
-<div class="banner">
-<div class="title-row"><div class="icon">🛵</div><h2>V6骑行版用户画像</h2></div>
-<div class="summary">用户画像 · 使用习惯 · 满意度NPS · 问题分析 · 行动建议</div>
-</div>
-<div class="body">
-<div class="tags">
-<span class="tag green">1 报告</span>
-<span class="tag">351条样本</span>
-<span class="tag">14张图表</span>
-</div>
-<span class="arrow">→</span>
-</div>
-</a>
+  <!-- 初中教辅（孩子作业） -->
+  <div class="project-card">
+    <div class="project-header">
+      <span class="project-title">📚 初中教辅资料（孩子作业）</span>
+      <span class="project-status active">持续更新</span>
+    </div>
+    <div class="project-desc">数学：人教版2024新版三件套；英语：外研版七上300词全等资料+三版听写音频</div>
+    <div class="project-meta">
+      <span>📐 <a href="https://yanlingyin001.github.io/reports/math-curriculum-map.html" style="color:#00B050;">数学·三年知识地图</a></span>
+      <span>📐 <a href="https://yanlingyin001.github.io/reports/math-knowledge-points.html" style="color:#00B050;">数学·知识点全表</a></span>
+      <span>📐 <a href="https://yanlingyin001.github.io/reports/math-exam-types.html" style="color:#00B050;">数学·重点考题版</a></span>
+    </div>
+    <div class="project-meta">
+      <span>📖 <a href="https://yanlingyin001.github.io/reports/word-materials/word_phrases_book_full_v3.pdf" style="color:#00B050;">英语·300词全等资料(带音标)</a></span>
+      <span>✍️ <a href="https://yanlingyin001.github.io/reports/word-materials/word_dictation.pdf" style="color:#00B050;">英语·默写卷</a></span>
+      <span>✅ <a href="https://yanlingyin001.github.io/reports/word-materials/word_dictation_answers.pdf" style="color:#00B050;">英语·默写答案卷</a></span>
+    </div>
+    <div class="project-meta">
+      <span>🎧 <a href="https://yanlingyin001.github.io/reports/word-materials/audio/dictation-words/starter.mp3" style="color:#00B050;">听写音频·纯单词</a></span>
+      <span>🎧 <a href="https://yanlingyin001.github.io/reports/word-materials/audio/dictation-sentences/starter.mp3" style="color:#00B050;">听写音频·带原句</a></span>
+      <span>🎧 <a href="https://yanlingyin001.github.io/reports/word-materials/audio/dictation-zh/starter.mp3" style="color:#00B050;">听写音频·中文释义</a></span>
+      <span style="color:#999;font-size:12px;">（音频按单元 Starter+Unit1-6，点击任一后可拼改 unit1~unit6.mp3）</span>
+    </div>
+  </div>
 
-<a class="project-card" href="https://yanlingyin001.github.io/reports/user-insight-course-notes.html">
-<div class="banner">
-<div class="title-row"><div class="icon">🎯</div><h2>用户洞察精品课 v3 · 学习笔记</h2></div>
-<div class="summary">研究价值链 · UA研究 · 概念测试 · JTBD理论框架 · 访谈方法论 · 落地应用</div>
-</div>
-<div class="body">
-<div class="tags">
-<span class="tag green">7大模块</span>
-<span class="tag">53,000字原文</span>
-<span class="tag">交互式笔记</span>
-</div>
-<span class="arrow">→</span>
-</div>
-</a>
+  <div class="section-title">✅ 已完成项目</div>
 
-<a class="project-card" href="https://yanlingyin001.github.io/reports/petal-ai-index.html">
-<div class="banner">
-<div class="title-row"><div class="icon">🐾</div><h2>Petal AI 桌面宠物</h2></div>
-<div class="summary">用户体验分析 · v1.4.0满意度 · 爽点痛点 · 需求与商业化探索</div>
-</div>
-<div class="body">
-<div class="tags">
-<span class="tag green">v1.4.0</span>
-<span class="tag">17人体验</span>
-<span class="tag">200条记录</span>
-<span class="tag">4份问卷</span>
-</div>
-<span class="arrow">→</span>
-</div>
-</a>
+  <!-- 9pro公测 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">📡 9pro 400万4G云台公测</span>
+      <span class="project-status done">已结束</span>
+    </div>
+    <div class="project-desc">30人公测 · 事件驱动日报 · 日常反馈打标分析</div>
+    <div class="project-meta">
+      <span>👥 30人</span>
+      <span>📋 8份报告</span>
+      <span>💬 331条反馈</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/9pro-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- 6pro公测 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">🔔 6pro 4G门铃公测</span>
+      <span class="project-status done">已结束</span>
+    </div>
+    <div class="project-desc">20人公测 · 日常反馈打标 · 专项对比 · 固件专项均已归档</div>
+    <div class="project-meta">
+      <span>👥 20人</span>
+      <span>📋 46份报告</span>
+      <span>💬 505条反馈</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/6pro-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- V6骑行 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">🚲 V6骑行版新品跟踪</span>
+      <span class="project-status done">已结束</span>
+    </div>
+    <div class="project-desc">新品跟踪日报 · 1个月小结收官 · 含用户画像</div>
+    <div class="project-meta">
+      <span>📅 Day 30</span>
+      <span>📋 31份报告</span>
+      <span>💬 169条反馈</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/v6-cycling-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- T200新品跟踪 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">📱 T200 4G记录仪新品跟踪</span>
+      <span class="project-status done">已结束</span>
+    </div>
+    <div class="project-desc">多渠道反馈跟踪 · Day 1~19 日报 · 重点问题sheet</div>
+    <div class="project-meta">
+      <span>📋 10份日报</span>
+      <span>💬 198条反馈</span>
+      <span>🔗 8渠道</span>
+      <span>🐞 37缺陷</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/t200-new-product-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- 海外APP公测 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">📱 海外APP公测（app1期）</span>
+      <span class="project-status done">已结束</span>
+    </div>
+    <div class="project-desc">20人公测 · 1期体验问题汇总（110条反馈/94类去重问题）+ 满意度问卷专项报告（90%满意）</div>
+    <div class="project-meta">
+      <span>👥 20人公测</span>
+      <span>🐞 94类问题</span>
+      <span>⭐ 90%满意率</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/overseas-app-phase1-ux-issues.html">1期体验问题汇总 →</a>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/overseas-app-survey-ux-report.html" style="margin-top:6px">满意度问卷报告 →</a>
+  </div>
+
+  <!-- T200公测 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">📱 T200 4G记录仪公测</span>
+      <span class="project-status done">已结项</span>
+    </div>
+    <div class="project-desc">15+份报告 · 开箱/安装/日常/专项/终测/价格/营销全流程</div>
+    <div class="project-meta">
+      <span>📋 15+份报告</span>
+      <span>👥 65人公测</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/t200-public-test-index.html">查看报告合集 →</a>
+  </div>
+
+  <!-- 智能猫眼 -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">👁️ 智能猫眼新品公测</span>
+      <span class="project-status done">已结项</span>
+    </div>
+    <div class="project-desc">重点问题sheet参考模板 · 18段快照格式</div>
+    <div class="project-meta">
+      <span>📋 重点问题sheet</span>
+    </div>
+  </div>
+
+  <!-- Petal AI -->
+  <div class="project-card done">
+    <div class="project-header">
+      <span class="project-title">🐾 Petal AI桌面宠物内测</span>
+      <span class="project-status done">已出报告</span>
+    </div>
+    <div class="project-desc">5个版本迭代 · 6份有效问卷 · 满意度7.33/10</div>
+    <div class="project-meta">
+      <span>📋 3份报告</span>
+      <span>👥 6人内测</span>
+    </div>
+    <a class="project-link done" href="https://yanlingyin001.github.io/reports/petal-ai-index.html">查看报告合集 →</a>
+  </div>
+
+  <div class="section-title">📎 其他报告</div>
+  <div class="misc-grid">
+    <a class="misc-card" href="https://yanlingyin001.github.io/reports/window-camera-report.html">
+      <div class="title">Windows Camera报告</div>
+      <div class="desc">Windows摄像头产品分析</div>
+    </a>
+    <a class="misc-card" href="https://yanlingyin001.github.io/reports/xhs-camera-dashboard-report.html">
+      <div class="title">小红书摄像头看板</div>
+      <div class="desc">小红书渠道数据看板</div>
+    </a>
+    <a class="misc-card" href="https://yanlingyin001.github.io/reports/user-insight-course-notes.html">
+      <div class="title">用户洞察精品课笔记</div>
+      <div class="desc">7模块交互式学习笔记</div>
+    </a>
+    <a class="misc-card" href="https://yanlingyin001.github.io/reports/wechat-login-faq-guide.html">
+      <div class="title">微信一键登录异常 · 群答疑手册</div>
+      <div class="desc">账号体系升级SOP · 决策树+流程+话术速查</div>
+    </a>
+  </div>
 
 </div>
-
 <div class="footer">
-<p>🦞 尹燕玲-报告分析专家 · <span>360绿色系</span> 主色调</p>
-<p style="margin-top:4px">所有报告链接永久有效 · 最后更新：2026-09-09</p>
-
-        <!-- 小红书评论分析报告 -->
-        <div class="report-card" onclick="window.open('xhs-camera-dashboard-report.html')">
-            <div class="report-card-icon">🚗</div>
-            <div class="report-card-info">
-                <div class="report-card-title">安防摄像头当记录仪使用 · 小红书评论分析</div>
-                <div class="report-card-desc">7篇笔记 · 321条评论 · 8大痛点分析 · 产品机会洞察</div>
-                <div class="report-card-date">2026-08-05</div>
-            </div>
-        </div>
-
-        <!-- T200新品跟踪日报 -->
-        <div class="report-card" onclick="window.open('t200-new-product-daily-day13.html')">
-            <div class="report-card-icon">🚗</div>
-            <div class="report-card-info">
-                <div class="report-card-title">T200 4G记录仪 · 新品跟踪日报 Day 13</div>
-                <div class="report-card-desc">8.4-8.22 累计119条反馈 · 7渠道 · 68种问题类型 · 15缺陷 · 哨兵模式关注上升</div>
-                <div class="report-card-date">2026-08-22</div>
-            </div>
-        </div>
-
-        <!-- 历史日报 -->
-        <div class="report-card" onclick="window.open('t200-new-product-daily-day11.html')">
-            <div class="report-card-icon">📋</div>
-            <div class="report-card-info">
-                <div class="report-card-title">T200 新品跟踪日报 Day 11</div>
-                <div class="report-card-desc">8.4-8.20 累计110条 · 7渠道 · 63类型 · 15缺陷</div>
-                <div class="report-card-date">2026-08-20</div>
-            </div>
-        </div>
-
-        <div class="report-card" onclick="window.open('t200-new-product-daily-day9.html')">
-            <div class="report-card-icon">📋</div>
-            <div class="report-card-info">
-                <div class="report-card-title">T200 新品跟踪日报 Day 9</div>
-                <div class="report-card-desc">8.4-8.18 累计103条 · 7渠道 · 60类型 · 15缺陷 · 哨兵误报+循环录制异常</div>
-                <div class="report-card-date">2026-08-18</div>
-            </div>
-        </div>
-
-        <div class="report-card" onclick="window.open('t200-new-product-daily-day6.html')">
-            <div class="report-card-icon">📋</div>
-            <div class="report-card-info">
-                <div class="report-card-title">T200 新品跟踪日报 Day 6</div>
-                <div class="report-card-desc">8.3-8.17 累计91条 · 7渠道 · 54类型 · 11缺陷 · 降压线安装问题升级</div>
-                <div class="report-card-date">2026-08-17</div>
-            </div>
-        </div>
+  <p>📊 公测报告总首页 · 尹燕玲 · 数据分析专家 🦞</p>
+  <p>最后更新: 2026-10-21 · <a href="https://github.com/YANLINGYIN001/reports">GitHub仓库</a></p>
 </div>
-
 </body>
 </html>
