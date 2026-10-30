@@ -1,0 +1,3206 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>980H 4G 记录仪 FAQ · 公测问答（更新至10.30）</title>
+<style>
+:root{--ink:#202725;--muted:#606d67;--line:#dde4df;--green:#176b54;--pale:#f1f6f3;--amber:#966012;--amberpale:#faf4e8}
+*{box-sizing:border-box;letter-spacing:0}body{margin:0;background:#fff;color:var(--ink);font:15px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}button,input,select{font:inherit}button,a,summary,input,select{ -webkit-tap-highlight-color:transparent}a{color:var(--green);text-underline-offset:3px}button{cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--green);outline-offset:3px}input:focus,select:focus{outline:2px solid #a1c3b7;outline-offset:1px}button:disabled{cursor:default}.shell{max-width:1100px;margin:0 auto;padding:0 28px}header{padding:38px 0 24px;border-bottom:1px solid var(--line)}.eyebrow{font-size:12px;color:var(--muted);margin:0 0 7px}.titleline{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}h1{font-size:28px;line-height:1.4;margin:0 0 10px;font-weight:700}h2{font-size:19px;line-height:1.5;margin:0}h3{font-size:16px;line-height:1.6;margin:0}p{margin:8px 0}.intro{max-width:880px;color:#45534c;font-size:14px}.actions{display:flex;gap:12px;flex-shrink:0;padding-top:5px}.action{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);padding:6px 10px;white-space:nowrap;text-decoration:none;font-size:13px}.action:hover{background:var(--pale)}.action svg{width:16px;height:16px}.totals{display:flex;gap:28px;flex-wrap:wrap;margin:18px 0 0}.stat{font-size:13px;color:var(--muted)}.stat strong{font-size:24px;line-height:1.4;color:var(--ink);margin-right:5px}.scope{margin:16px 0 0}.scope summary{font-size:13px;color:var(--muted);cursor:pointer}.scope p{font-size:13px;max-width:950px;color:var(--muted)}.controls{position:sticky;top:0;background:rgba(255,255,255,.97);z-index:5;border-bottom:1px solid var(--line)}.controlrow{display:grid;grid-template-columns:minmax(200px,1fr) 200px 170px;gap:12px;padding:16px 0 12px}.controlrow label{font-size:12px;color:var(--muted);display:block}.controlrow input,.controlrow select{display:block;width:100%;height:40px;border:1px solid #cdd8d1;border-radius:4px;background:#fff;color:var(--ink);padding:6px 10px}.tabsrow{display:flex;gap:22px;align-items:center;justify-content:space-between}.tabs{display:flex;gap:20px;flex-wrap:wrap}.tab{border:0;border-bottom:3px solid transparent;background:none;padding:8px 0 10px;color:var(--muted);font-size:14px}.tab[aria-selected=true]{color:var(--green);border-bottom-color:var(--green);font-weight:600}.tab span{font-size:12px;margin-left:4px}#resultCount{font-size:12px;color:var(--muted);white-space:nowrap}.mainlayout{display:grid;grid-template-columns:190px minmax(0,1fr);gap:36px;align-items:start;padding:26px 0 40px}.sidebar{position:sticky;top:162px;font-size:13px}.sidebar h2{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:8px}.sidebar a{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 0;color:#4e5d54;text-decoration:none;line-height:1.5}.sidebar a:hover{color:var(--green)}.sidebar span{font-size:12px;color:#86968b}.category{scroll-margin-top:170px;margin:0 0 26px}.categoryheading{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid #c9d9cf;padding-bottom:10px;margin-bottom:1px}.categoryheading small{font-size:12px;color:var(--muted);font-weight:400}.faq{border-bottom:1px solid var(--line);padding:19px 0 17px;scroll-margin-top:170px}.qline{display:grid;grid-template-columns:40px minmax(0,1fr) 32px;gap:8px;align-items:start}.qid{font-size:12px;color:var(--green);font-weight:700;padding-top:3px;font-variant-numeric:tabular-nums}.copy{width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:4px;background:none;color:var(--muted);padding:7px}.copy:hover{background:var(--pale);color:var(--green)}.copy svg{width:17px;height:17px}.answer{margin:7px 0 8px;padding-left:48px;overflow-wrap:anywhere}.condition{margin:7px 0 10px 48px;padding-left:10px;border-left:2px solid #d2b776;color:#756234;font-size:13px;line-height:1.75}.meta{margin:9px 0 0 48px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:11px;color:var(--muted)}.status{font-size:11px;line-height:1.7;padding:0 5px;border-radius:3px;color:var(--green);background:#ebf4ee}.status.conditional{background:var(--amberpale);color:var(--amber)}.status.issue{background:var(--redpale,#fdeeee);color:var(--red,#c0392b)}.status.guide{background:var(--greenpale,#e8f7ef);color:var(--green,#00b050)}.evidence{margin:6px 0 0 48px}.evidence>summary{cursor:pointer;color:var(--muted);font-size:12px;width:fit-content}.source{padding:10px 12px;background:#f5f7f6;border-left:2px solid #d9e3dc;margin:8px 0;font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}.source small{display:block;font-size:11px;color:#6d7e72;margin-bottom:3px}.evidence-note{font-size:11px;color:var(--muted)}.pending .qid{color:var(--amber)}.pending .categoryheading{border-color:#d9cba9}.pendingintro{font-size:14px;color:#7c653d;padding:2px 0 8px}.empty{padding:60px 10px;text-align:center;color:var(--muted);border-bottom:1px solid var(--line)}.footer{padding:20px 0 28px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#263e31;color:white;padding:7px 14px;border-radius:4px;font-size:13px;z-index:10;pointer-events:none;opacity:0;transition:opacity .15s}#toast.visible{opacity:1}[hidden]{display:none!important}
+@media(max-width:760px){.shell{padding:0 18px}header{padding-top:23px}.titleline{display:block}h1{font-size:23px}.actions{margin:12px 0 0;flex-wrap:wrap}.totals{gap:10px 22px}.stat strong{font-size:21px}.controlrow{grid-template-columns:1fr 1fr;gap:8px;padding-top:10px}.controlrow label:first-child{grid-column:1/-1}.controlrow input,.controlrow select{font-size:14px;height:38px}.mainlayout{display:block;padding-top:20px}.sidebar{display:none}.tabsrow{gap:8px}.tabs{gap:16px}.tab{font-size:13px}#resultCount{font-size:11px}.qline{grid-template-columns:34px minmax(0,1fr) 30px;gap:5px}.qid{font-size:11px}.answer{padding-left:0;margin-top:9px;font-size:14px}.condition,.meta,.evidence{margin-left:0}h3{font-size:15px}.category,.faq{scroll-margin-top:210px}.categoryheading{gap:8px}.categoryheading h2{font-size:18px}}
+@media print{body{font-size:10pt}.shell{max-width:none;padding:0}.actions,.controls,.sidebar,.copy,#toast{display:none!important}header{padding:0 0 12pt}.totals{margin:10pt 0}.mainlayout{display:block;padding:12pt 0}.faq{break-inside:avoid;padding:9pt 0}.category{margin-bottom:12pt}.categoryheading{break-after:avoid}h1{font-size:21pt}h3{font-size:11pt}.evidence{display:none}.answer{font-size:10pt}.footer{font-size:8pt}.condition{font-size:9pt}.source{background:#fff}}
+</style>
+</head>
+<body>
+<header><div class="shell">
+<p class="eyebrow">公测资料 · 2026.09.03 — 2026.10.23</p>
+<div class="titleline"><div><h1>980H 4G 记录仪 FAQ</h1><p class="intro">根据 980H 4G 记录仪公测跟进群 2026 年 9 月 3 日至 10 月 30 日的导出聊天，合并重复问法，整理出 88 条可复用问答（含 10/30 增补 12 条：流量云录收费、自有流量卡、哨兵月流量、永久云录套餐、70固件亏电、哨兵漏报档位、缩时缺口、相册加载慢、APP升级渠道、终测腾讯文档、说明书勘误、紧急录像灵敏度），另列 16 项尚待确认的问题。这是一份公测内部答复草稿，适合问题分流、测试沟通和后续客服知识库校对，不能直接替代正式产品说明。</p></div>
+<div class="actions"><button class="action" id="printButton" type="button">打印</button></div></div>
+<div class="totals"><div class="stat"><strong>88</strong>条可复用问答</div><div class="stat"><strong>9</strong>个主题类别</div><div class="stat"><strong>16</strong>项待确认</div></div>
+<details class="scope"><summary>适用范围与整理口径</summary><p>答案仅来自可读文字消息，原导出未包含可查看的图片、视频或附件；因此不补写缺失的截图步骤、附件参数和视频结论。“有明确答复”表示聊天中有直接回答，不代表已完成独立验证；“条件或排查”表示依赖版本、车型、公测安排或仍属排查建议。涉及供电、格式化、升级等操作，应先保留数据，并按对应版本及支持人员要求执行。</p><p>88 条中，30 条有明确答复、44 条条件或排查、8 条问题跟进中、6 条操作指引。消息编号沿用聊天整理报告；原文摘录省略 @提及及设备标识，不推断发言人的身份或职务。</p></details>
+</div></header>
+<div class="controls"><div class="shell">
+<div class="controlrow"><label>检索<input id="search" type="search" placeholder="搜索问题、答复或消息编号" autocomplete="off"></label><label>主题<select id="category"><option value="">全部主题</option></select></label><label>答复类型<select id="status"><option value="">全部类型</option><option value="direct">有明确答复</option><option value="conditional">条件或排查</option></select></label></div>
+<div class="tabsrow"><div class="tabs" role="tablist" aria-label="文档内容"><button class="tab" id="faqTab" role="tab" aria-controls="content" aria-selected="true" type="button">可复用问答<span>88</span></button><button class="tab" id="pendingTab" role="tab" aria-controls="content" aria-selected="false" type="button">待确认问题<span>16</span></button></div><span id="resultCount" role="status"></span></div>
+</div></div>
+<div class="shell"><div class="mainlayout"><nav class="sidebar" aria-label="主题索引"><h2>主题索引</h2><div id="nav"></div></nav><main id="content" role="tabpanel" aria-labelledby="faqTab"></main></div>
+<footer class="footer">来源：980H 4G记录仪公测跟进群导出文件 · 截至 2026年10月30日 08:11 · 仅按可读文字整理，非正式产品说明</footer></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script type="application/json" id="faqData">
+{
+  "faq": [
+    {
+      "id": "Q01",
+      "category": "公测参与与安装",
+      "question": "公测期间应该使用哪个 APP？",
+      "answer": "请使用群置顶或群内指定的公测专用 APP。群内明确说明，当时的正式版尚未完全适配，不能用正式版的表现直接判断公测功能是否正常。",
+      "sources": [
+        1927,
+        2564,
+        9227,
+        9228
+      ],
+      "condition": "适用于本轮公测；具体安装包以当次群通知为准，不把聊天中的历史版本号当作最新版本。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q02",
+      "category": "公测参与与安装",
+      "question": "发现问题后，应该通过哪些渠道反馈？",
+      "answer": "在群里说明问题，同时填写日常问卷，并按要求提交 APP 日志。问卷中写清遇到了什么问题，以及后续是如何恢复或解决的，方便汇总和跟进。",
+      "sources": [
+        847,
+        4984
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q03",
+      "category": "公测参与与安装",
+      "question": "同一个问题已经有人反馈过，我还需要提交吗？",
+      "answer": "如果自己的设备也实际出现了相同问题，仍然可以重复反馈；没有遇到的问题不用代报。重复反馈有助于收集不同设备和使用场景下的情况。",
+      "sources": [
+        822,
+        823,
+        824
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q04",
+      "category": "公测参与与安装",
+      "question": "只是提出功能建议，也必须提交日志吗？",
+      "answer": "功能需求或体验建议填写日常问卷即可，不要求为了建议额外提交 APP 日志。实际故障再按问题反馈流程取日志；不在车旁时，也可以先通过意见反馈提交描述。",
+      "sources": [
+        3770,
+        3774,
+        3794
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q05",
+      "category": "公测参与与安装",
+      "question": "公测反馈如何标记，便于后台找到记录？",
+      "answer": "按群内要求，在反馈内容开头标注【公测】，并在指定反馈渠道填写可供检索的联系方式。需要核查记录时，可向跟进人员提供提交时使用的联系方式和大致提交时间。",
+      "sources": [
+        2577,
+        6427,
+        6433
+      ],
+      "condition": "联系方式通过指定反馈渠道提供，不必公开发到群里。",
+      "kind": "direct"
+    },
+    {
+      "id": "Q06",
+      "category": "公测参与与安装",
+      "question": "包装中的两张静电贴分别用在哪里？",
+      "answer": "两张静电贴分别用于前摄和 4G 云盒安装。",
+      "sources": [
+        1989
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q07",
+      "category": "公测参与与安装",
+      "question": "左右副摄像头可以安装在车外吗？",
+      "answer": "不可以。群内明确答复，副摄不防水，只能安装在车内。",
+      "sources": [
+        4700
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q08",
+      "category": "公测参与与安装",
+      "question": "4G 云盒上的 POWER 和 CAMPORT 分别接什么？",
+      "answer": "POWER 接电源线，CAMPORT 接记录仪。群内还说明，橙色 Type-C 插头接降压线；安装时应核对实际线材和接口标识。",
+      "sources": [
+        3861,
+        5634
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q09",
+      "category": "供电与 OBD",
+      "question": "这轮公测可以使用充电宝给设备供电吗？",
+      "answer": "在 10 月 20 日相关版本的排查中，群内答复为“不支持充电宝供电”。也有用户反馈旧版本曾能使用、升级后不能使用，因此测试应采用指定供电方案，不把旧版本的可用情况作为兼容保证。",
+      "sources": [
+        10560,
+        10561,
+        10562,
+        10563
+      ],
+      "condition": "这是当时测试版本的答复，不等于已验证所有版本及所有充电宝组合。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q10",
+      "category": "供电与 OBD",
+      "question": "设备目前能读取汽车电瓶电压吗？",
+      "answer": "9 月 18 日的群内答复是“目前不支持电瓶电压读取”。需要记录电压时，应区分降压线的设定档位与实际测量值，不把档位值当作设备读出的实时电压。",
+      "sources": [
+        1893
+      ],
+      "condition": "能力结论对应当时的公测状态；后续版本是否增加，需要另行确认。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q11",
+      "category": "供电与 OBD",
+      "question": "部分新能源车熄火或充电时，为什么识别不到 ACC OFF？",
+      "answer": "群内解释，部分车型熄火后供电仍维持约 14V，OBD 降压线可能识别不到熄火；充电时电压从约 12V 升到 14V，也可能被误判为车辆启动。应同时记录车型、是否充电和实际 ACC 状态，再由跟进人员判断适配问题。",
+      "sources": [
+        2625,
+        2775,
+        8681
+      ],
+      "condition": "只描述群内提到的部分车型和电压判断场景，不代表所有新能源车都如此。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q12",
+      "category": "供电与 OBD",
+      "question": "为什么有的车熄火后，还要锁车才进入哨兵或停车监控？",
+      "answer": "部分车辆需要锁车后才输出 ACC OFF；仅熄火、未锁车时，设备可能仍判断车辆处于启动状态。群内将相关现象列为 OBD 适配排查，测试时要把熄火和锁车动作都记录下来。",
+      "sources": [
+        11003,
+        11017,
+        11216,
+        11217
+      ],
+      "condition": "依赖车型和供电适配，不能规定所有车都必须锁车，也不能由此给出统一等待时长。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q13",
+      "category": "供电与 OBD",
+      "question": "出现亏电风险或供电提示，是不是表示电瓶马上没电了？",
+      "answer": "不一定。在群内对应案例中，该提示属于熄火状态操作设备时的预防对策，并不是电瓶即将亏电的证明。应先确认车辆已启动、设备是否识别到 ACC ON，再结合实际供电情况排查。",
+      "sources": [
+        9698,
+        9701,
+        9705
+      ],
+      "condition": "只解释该案例中的软件提示，不能替代对真实电瓶状态和供电故障的检查。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q14",
+      "category": "供电与 OBD",
+      "question": "公测排查时，必须换装普通降压线吗？",
+      "answer": "不强制。群内曾让有条件的油车用户换回普通降压线作对比验证，不需要更换的用户可按问卷选“否”；对新能源车则明确提醒不要破线安装。",
+      "sources": [
+        10393,
+        10398,
+        10462,
+        10478,
+        10497
+      ],
+      "condition": "这是临时公测对比要求，不是所有用户的安装要求；具体操作应由安装或支持人员确认。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q15",
+      "category": "供电与 OBD",
+      "question": "反馈 OBD 低压保护问题时，需要记录哪些信息？",
+      "answer": "至少记录 OBD 模式、设置的电压档位、熄火后经过多久离线或进入低压保护。可按“OBD ×× 模式、××V、熄火后 ×× 小时离线”的格式填写，同时说明车型，便于对应适配情况。",
+      "sources": [
+        5096,
+        10241
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q16",
+      "category": "联网与远程连接",
+      "question": "配网应该在手机系统蓝牙列表里操作，还是在 APP 中操作？",
+      "answer": "使用群指定的 APP 发起配网，不要在手机系统蓝牙列表中自行寻找并配对设备。",
+      "sources": [
+        2573
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q17",
+      "category": "联网与远程连接",
+      "question": "蓝牙快联有什么用途，为什么默认不一直开启 Wi-Fi？",
+      "answer": "群内说明，蓝牙用于 BLE 快联，默认不必持续开启 Wi-Fi，可以减少耗电。蓝牙快联不等于让云盒提供通用上网服务。",
+      "sources": [
+        2959,
+        2960,
+        4476
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q18",
+      "category": "联网与远程连接",
+      "question": "手机连着另一台记录仪的 Wi-Fi，为什么查看 980H 会显示离线？",
+      "answer": "另一台记录仪的 Wi-Fi 热点可能不能提供互联网连接，手机连上后会影响访问 980H 的远程服务。先断开该热点，确认手机能正常上网，再重试查看。",
+      "sources": [
+        8764,
+        8765
+      ],
+      "condition": "群内具体案例为手机连接 G300H 热点后查看 G980H；不代表所有 Wi-Fi 热点都不能上网。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q19",
+      "category": "联网与远程连接",
+      "question": "设备离线时，4G 云盒指示灯应该先看什么？",
+      "answer": "先观察红灯和绿灯状态。群内说明，红灯亮表示供电正常，绿灯慢闪表示 4G 尚未驻网；如果红灯灭，要继续排查供电状态。",
+      "sources": [
+        7480,
+        7481,
+        7499
+      ],
+      "condition": "指示灯只能提供排查线索，红灯亮不代表整套远程服务一定正常。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q20",
+      "category": "联网与远程连接",
+      "question": "只有云盒离线、记录仪主机仍工作，能直接认定是低压保护吗？",
+      "answer": "不能。群内说明，OBD 降压线不会只对 4G 云盒单独进行低电保护，云盒与记录仪串联使用；主机仍工作时，应抓取 4G 日志继续定位，不要仅凭离线就归因于电瓶低压。",
+      "sources": [
+        8713,
+        8716
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q21",
+      "category": "联网与远程连接",
+      "question": "云盒 IMEI 识别不到时，需要提供什么？",
+      "answer": "拍摄云盒上的 IMEI 标识，并通过指定渠道提供给跟进人员，用于核查识别异常。",
+      "sources": [
+        4953,
+        4954
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q22",
+      "category": "联网与远程连接",
+      "question": "云盒能当作 MiFi 热点使用，或者把 SIM 卡放进手机吗？",
+      "answer": "群内答复为：当时云盒不支持 MiFi，配套物联网 SIM 卡也不能用于手机。不要把云盒和卡当作通用随身 Wi-Fi 或手机流量卡使用。",
+      "sources": [
+        4476
+      ],
+      "condition": "以本轮公测云盒和配套物联网卡为范围。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q23",
+      "category": "联网与远程连接",
+      "question": "本轮公测期间，使用 4G 下载视频会产生流量费用吗？",
+      "answer": "9 月 21 日群内明确说明，公测机器免流，并可使用 4G 下载视频。该答复仅能说明当时公测安排，没有说明公测结束后的价格、续费、额度或有效期。",
+      "sources": [
+        4471,
+        4476
+      ],
+      "condition": "不能据此承诺永久免流或推断正式商业套餐。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q24",
+      "category": "哨兵与事件通知",
+      "question": "四摄哨兵模式中，是哪个摄像头负责检测触发？",
+      "answer": "9 月 15 日群内说明，前录检测到人后，才启动四个摄像头录像。不能因为有四个摄像头，就推断左右副摄均能独立触发哨兵事件。",
+      "sources": [
+        1325
+      ],
+      "condition": "这是当时公测实现的说明；后续检测范围变更需要版本依据。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q25",
+      "category": "哨兵与事件通知",
+      "question": "远程查看或访问相册后，为什么设备显示循环录像？",
+      "answer": "远程开流或访问相册会唤醒设备，设备未休眠期间可能显示循环录像。群内也明确说明，4G 远程查看期间处于循环录像状态。",
+      "sources": [
+        2924,
+        3364
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q26",
+      "category": "哨兵与事件通知",
+      "question": "频繁远程查看，会不会影响哨兵倒计时？",
+      "answer": "会。群内说明，每次远程查看都会重置哨兵倒计时。测试模式切换耗时时，应记录期间是否做过远程查看，避免把操作造成的重置当作异常。",
+      "sources": [
+        7486
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q27",
+      "category": "哨兵与事件通知",
+      "question": "AOV 哨兵达到设置时长后，会切换到什么模式？",
+      "answer": "群内答复是：AOV 哨兵达到预定时间后转入停车监控。聊天未给出适用于所有用户的固定时长，应以设备实际设置及版本为准。",
+      "sources": [
+        10022
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q28",
+      "category": "哨兵与事件通知",
+      "question": "哨兵误报较多时，可以怎样调整监视区域？",
+      "answer": "群内建议，手动关闭后重新开启 AOV 哨兵，按设备提示重新调整监视区域，可尝试把红框下移或缩小范围，再观察误触发是否减少。",
+      "sources": [
+        3191,
+        3289,
+        8181
+      ],
+      "condition": "这是场景排查建议，不保证消除误报；严重频繁触发时应按支持人员要求处理并留样。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q29",
+      "category": "哨兵与事件通知",
+      "question": "紧急录像触发太频繁时，可以先怎样验证？",
+      "answer": "群内曾建议先把灵敏度调低，再观察触发频率。同时要检查是否出现本应触发却没有触发的情况，避免只看误触发减少。",
+      "sources": [
+        3130,
+        9456
+      ],
+      "condition": "属于临时验证建议，不代表所有频繁触发都由灵敏度造成。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q30",
+      "category": "哨兵与事件通知",
+      "question": "事件列表里出现记录，是否就表示 APP 已经推送了通知？",
+      "answer": "不是。群内说明，列表显示事件记录，是否真正通知要看 APP 有没有收到推送消息。如果关闭通知后仍实际收到推送，应把该现象另行反馈，不能仅用“列表有记录”判断开关是否生效。",
+      "sources": [
+        4338,
+        4339
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q31",
+      "category": "哨兵与事件通知",
+      "question": "AI 误识别或哨兵误报，应该提交哪些视频？",
+      "answer": "按群内排查要求，提供固件日志、触发前的一秒一帧 AOV 视频，以及触发后的事件视频。前段 AOV 样本可在车内连接后，从缩时录影相册中下载；不必先自行判断根因，再由算法和研发结合样本分析。",
+      "sources": [
+        8570,
+        8574,
+        8584,
+        10750,
+        10840
+      ],
+      "condition": "这里的“缩时录影相册”是群内给出的取样入口，不用于推导独立缩时模式与 AOV 的兼容关系。",
+      "kind": "direct"
+    },
+    {
+      "id": "Q32",
+      "category": "定位与行车轨迹",
+      "question": "怎样判断 GPS 是否已定位成功？",
+      "answer": "群内说明，S(1) 表示定位成功，S(0) 表示定位未成功；GPS 图标灰色表示未成功，白色表示成功。应结合界面实际显示核对，而不只看地图上是否有一个位置点。",
+      "sources": [
+        9133,
+        9134,
+        9139
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q33",
+      "category": "定位与行车轨迹",
+      "question": "定位信号界面的绿色、黄色分别代表什么？",
+      "answer": "群内答复为：绿色表示优秀，黄色表示良好。",
+      "sources": [
+        9115
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q34",
+      "category": "定位与行车轨迹",
+      "question": "地图定位偏差较大时，应该先核对什么？",
+      "answer": "先刷新位置，观察 GPS/BDS 信号强度，并与高德地图的位置作对照；同时记录楼宇遮挡等现场环境。如果偏差持续，保留具体时间和日志继续排查。",
+      "sources": [
+        3517,
+        3520,
+        8180,
+        10604,
+        10613
+      ],
+      "condition": "对照结果和环境仅用于缩小排查范围，不能直接证明坐标转换或硬件故障。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q35",
+      "category": "定位与行车轨迹",
+      "question": "GPS 已定位但没有轨迹，或远程轨迹与车内查看不一致，怎么办？",
+      "answer": "先记录异常时间段，对比远程查看和车内连接时的轨迹显示，再通过 APP 提交反馈及日志。定位成功与轨迹生成、上传、显示是不同环节，不能仅凭一个状态就认定整条链路正常。",
+      "sources": [
+        2215,
+        9729,
+        9730,
+        9736
+      ],
+      "condition": "聊天中没有给出这些轨迹异常的统一根因或已验证的通用修复办法。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q36",
+      "category": "定位与行车轨迹",
+      "question": "车辆启动后大约一分钟才定位成功，是否一定异常？",
+      "answer": "不一定。在 10 月 12 日的具体案例中，群内认为冷启动约一分钟定位成功属于正常情况。应记录实际耗时和定位环境，再判断是否明显偏离该设备的日常表现。",
+      "sources": [
+        8378,
+        8386
+      ],
+      "condition": "这是个案判断，不是对所有环境的定位时长承诺。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q37",
+      "category": "录像回放与存储",
+      "question": "存储卡最小需要多大容量？",
+      "answer": "群内说明，G980 要求使用 32GB 及以上存储卡，低于 32GB 不能用。聊天中的这条答复没有说明最大容量及所有卡型的兼容范围。",
+      "sources": [
+        2798
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q38",
+      "category": "录像回放与存储",
+      "question": "为什么设备格式化存储卡可能比较慢？",
+      "answer": "群内解释，G980 格卡过程中有固件备份，因此可能比较慢。聊天没有给出统一完成时长，不能把某位用户的等待时间当作固定标准。",
+      "sources": [
+        2800
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q39",
+      "category": "录像回放与存储",
+      "question": "出现存储卡异常或格式化失败，要立刻反复格式化吗？",
+      "answer": "不要急于反复格式化。群内在相关案例中要求先保留现场，确认能否继续使用并取日志；在日志已指向卡问题的个案中，才建议到电脑端深度格式化后复测。格式化前应先备份需要保留的视频和日志。",
+      "sources": [
+        8565,
+        8569,
+        9272,
+        9622
+      ],
+      "condition": "“先备份”是资料保护建议；电脑端深度格式化是特定诊断后的处理，不是所有异常的通用第一步。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q40",
+      "category": "录像回放与存储",
+      "question": "视频经常未录满设定的三分钟或五分钟，可能是什么原因？",
+      "answer": "群内根据经验提出，存储卡写入速度不足是可能原因之一，但仍要求日志复核。不能仅凭片段时长就确定是卡坏了，也不能把远程播放失败直接等同于没有录到视频。",
+      "sources": [
+        9866,
+        9868
+      ],
+      "condition": "这是经验性排查方向，不是已确认的统一根因。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q41",
+      "category": "录像回放与存储",
+      "question": "远程回放卡顿或打不开视频，应该怎样排查？",
+      "answer": "先区分是在主机本地播放，还是在 APP 远程播放，并对比同一段视频在两端的表现。群内要求结合主机系统日志和 APP 日志检查，文件异常与网络信号差都可能影响远程播放。",
+      "sources": [
+        8206,
+        8208,
+        8216,
+        9868
+      ],
+      "condition": "对比和日志用于定位问题，不能在未验证前归咎于网络或存储卡。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q42",
+      "category": "录像回放与存储",
+      "question": "下载的视频在某个播放器显示异常，如何交叉验证？",
+      "answer": "换一个播放器打开同一原始视频，并对比它在 APP 内播放时是否也异常。只有某个播放器异常时，可优先排查播放兼容性；多处均异常则保留原文件继续反馈。",
+      "sources": [
+        11144,
+        11145
+      ],
+      "condition": "播放器原因在原答复中只是可能性，不是已确认结论。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q43",
+      "category": "录像回放与存储",
+      "question": "过夜测试中，早上能正常开机就算验证完成了吗？",
+      "answer": "还不够。群内要求同时通过 APP 检查昨晚的视频，确认实际录制情况，不能只依据早上的开关机表现判断整晚录像是否正常。",
+      "sources": [
+        11225,
+        11227
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q44",
+      "category": "画面与屏幕",
+      "question": "白天左右副摄变成黑白画面，可能是什么情况？",
+      "answer": "群内对应案例中，主摄被遮挡变暗，设备判断为夜间并开启红外，左右副摄因此进入黑白模式。可先检查主摄是否被遮挡，再核对红外状态。",
+      "sources": [
+        2903,
+        2904
+      ],
+      "condition": "这只解释该遮挡场景，不代表所有黑白或偏色异常都由主摄遮挡造成。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q45",
+      "category": "画面与屏幕",
+      "question": "副摄画面偏色，可以先做什么验证？",
+      "answer": "群内建议手动切换红外开关，再观察画面是否恢复或变化。记录切换前后的表现，便于后续排查。",
+      "sources": [
+        4250,
+        4253,
+        4254
+      ],
+      "condition": "这是验证步骤，聊天未据此确认偏色的统一根因或最终修复方案。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q46",
+      "category": "画面与屏幕",
+      "question": "录像画面偏暗时，应该先查看哪个设置？",
+      "answer": "先检查曝光设置是否被手动调低，G980 提供曝光设置选项。如果设置核对后仍异常，按群内要求提交日志，并说明出现时间和场景。",
+      "sources": [
+        10319,
+        10320,
+        10325,
+        10345
+      ],
+      "condition": "曝光偏低只是排查方向，不能据此认定所有暗画面都是设置问题。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q47",
+      "category": "画面与屏幕",
+      "question": "新设备画面模糊，镜头保护膜需要取掉吗？",
+      "answer": "需要检查并取掉镜头上的运输保护膜。群内明确提醒，保护膜会影响画面清晰度。",
+      "sources": [
+        8696
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q48",
+      "category": "画面与屏幕",
+      "question": "主机屏幕黑了，是否说明设备已经关机？",
+      "answer": "不能只看屏幕判断。先核对屏保是时钟、动态还是熄屏，并检查是否仍正常循环录像；需要复测时，可按群内建议设置为常亮，观察是否还会黑屏。",
+      "sources": [
+        7695,
+        8692,
+        8693
+      ],
+      "condition": "屏幕设置与实际故障要分开判断；常亮测试不能证明所有黑屏都是屏保。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q49",
+      "category": "画面与屏幕",
+      "question": "后摄黑屏、断续或状态灯不亮，先检查什么？",
+      "answer": "先检查后摄接头是否插紧，按跟进人员要求重新插接并观察。群内说明，相关案例中状态灯不亮代表未通电；若连接确认后仍异常，应继续反馈，不要直接断定摄像头损坏。",
+      "sources": [
+        2475,
+        4084,
+        4114,
+        8201
+      ],
+      "condition": "接头排查是第一步，不代表所有后摄异常均可通过插拔解决。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q50",
+      "category": "升级与日志反馈",
+      "question": "APP 检测不到固件更新或升级检查失败，应该怎么办？",
+      "answer": "先按群内建议，在车内通过 APP 连接记录仪后重新检测版本，并向跟进人员核对是否已给这台设备推包。个别案例还要求重新上下电后再查，是否需要执行应以当次排查要求为准。",
+      "sources": [
+        6665,
+        9835,
+        9840
+      ],
+      "condition": "未检测到更新不一定是故障，也可能尚未进入定向推送范围。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q51",
+      "category": "升级与日志反馈",
+      "question": "看到别人有更高版本，是不是所有设备都应该立即升级？",
+      "answer": "不一定。群内曾说明某些高版本仍在内部验证，也存在对特定设备先推包的情况。应使用分配给自己设备的版本，不把群里出现过的最高版本号当作全量发布版本。",
+      "sources": [
+        6690,
+        9835,
+        10681
+      ],
+      "condition": "本文不提供“当前最新版本号”；是否可升级以当次推送通知为准。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q52",
+      "category": "升级与日志反馈",
+      "question": "需要持续记录系统日志时，syslog.txt 如何使用？",
+      "answer": "按支持人员提供的日志文件或脚本，把 syslog.txt 放到存储卡的 MISC 目录。群内说明，这个文件本身是日志开关，不删除时可以持续生效；不要自行猜测脚本内容。",
+      "sources": [
+        7482,
+        8464,
+        8493
+      ],
+      "condition": "具体取日志方法以对应固件及支持人员提供的文件为准。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q53",
+      "category": "升级与日志反馈",
+      "question": "为什么通过 APP 抓过一次日志后，后面没有继续记录？",
+      "answer": "群内说明，APP 取日志可能是单次有效，提交时的“下次关闭”等选项也可能关闭后续记录。需要继续抓取时，核对提交界面是否关闭了日志；必要时按支持要求重新放置 syslog.txt。",
+      "sources": [
+        3560,
+        3904,
+        7858,
+        7878,
+        10774
+      ],
+      "condition": "不同版本的选项文案和行为应以实际界面为准，不假定每次提交都会关闭。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q54",
+      "category": "升级与日志反馈",
+      "question": "现在才放入日志脚本，能找回之前发生异常时的日志吗？",
+      "answer": "不能通过该脚本回溯。群内明确说明，脚本只能获取启用之后的系统日志；应先启用，再重复异常操作或等待问题复现后取日志。",
+      "sources": [
+        2871,
+        2872
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q55",
+      "category": "升级与日志反馈",
+      "question": "准备提交日志前，可以先格式化存储卡吗？",
+      "answer": "不要先格式化。群内提醒，格式化会删除日志；应先复现问题并取出需要的日志，之后再按排查要求处理存储卡。",
+      "sources": [
+        2868,
+        2869
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q56",
+      "category": "升级与日志反馈",
+      "question": "APP 上传日志失败，或者后台打不开上传的日志，怎么办？",
+      "answer": "在群内对应排查期间，要求改用读卡器从存储卡取本地日志，并提供最新的日志文件。这样可以保留原始材料，再由跟进人员检查上传或解析环节。",
+      "sources": [
+        8404,
+        8777,
+        8778,
+        10910,
+        10938
+      ],
+      "condition": "这是当时针对上传异常的替代方式，不代表所有版本的 APP 都不能上传日志。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q57",
+      "category": "升级与日志反馈",
+      "question": "没有读卡器，能直接把记录仪接电脑读取文件吗？",
+      "answer": "群内说明，主机支持 U 盘模式，可用 USB-A 转 Type-C 数据线连接电脑；该次指导明确不要使用 C-C 线。进入 U 盘模式时会停止录像，读文件后再恢复正常连接。",
+      "sources": [
+        8448,
+        8449,
+        8457
+      ],
+      "condition": "线材和连接要求来自当时验证方案；U 盘模式不是同时持续录像的使用方式。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q58",
+      "category": "升级与日志反馈",
+      "question": "设备已经离线，必须等重新在线后才能取日志吗？",
+      "answer": "不必只等重新在线。群内说明，出现离线、无法连接时就可以抓日志；可按支持人员的指引，从本地存储卡或主机 U 盘模式取得文件。",
+      "sources": [
+        8404,
+        8448,
+        8477,
+        8478
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q59",
+      "category": "升级与日志反馈",
+      "question": "反馈离线、重启或断录，描述中最需要补充什么？",
+      "answer": "记录准确的异常时间，以及当时是行车、哨兵还是缩时等工作状态。按跟进要求同时提供记录仪日志和 4G 日志，尽量保留异常发生前后的现场，不只写一句“又离线了”。",
+      "sources": [
+        3573,
+        5041,
+        8435,
+        8819,
+        8948
+      ],
+      "condition": "",
+      "kind": "direct"
+    },
+    {
+      "id": "Q60",
+      "category": "升级与日志反馈",
+      "question": "设备支持定时自动上传日志吗？",
+      "answer": "10 月 14 日群内答复是，记录仪不支持定时自动上传日志。需要排查时，仍应按指定流程提交。",
+      "sources": [
+        9259
+      ],
+      "condition": "该结论对应当时公测能力，不能推断后续版本一定不支持。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q61",
+      "category": "升级与日志反馈",
+      "question": "缩时视频出现紫屏闪烁，应该如何提供样本？",
+      "answer": "保留并打包原始视频文件，交给跟进人员分析，不只提供转录或二次压缩的片段。10 月 22 日群内仍表示问题正在处理，只有对策验证有效后才会推送固件，不能把“在解决”写成“已修复”。",
+      "sources": [
+        11282,
+        11283
+      ],
+      "condition": "这条 FAQ 仅整理反馈方法；紫屏闪烁的最终原因、修复版本和生效情况仍待确认。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q62",
+      "category": "联网与远程连接",
+      "question": "下载视频的速度大概是什么水平？",
+      "answer": "官方在群内说明：WiFi 下载极限速度可达约 20MB/s；4G 下载视网络信号情况，大约 2MB/s 左右，信号很差时可能降到 KB 级别。下载慢时先区分当前连接方式，再判断是否属于异常。",
+      "sources": [
+        8226
+      ],
+      "condition": "速度为当时公测环境的说明值，实际速度受环境、信号和服务器影响。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q63",
+      "category": "联网与远程连接",
+      "question": "记录仪主机屏幕右下角的 4G 状态图标代表什么？",
+      "answer": "官方说明：网络状态绿色常亮表示 4G 已驻网、随时可以远程开流；图标闪烁表示通讯中，模组硬件连接正常但还没有外网；APP 远程看直播时也能看到该状态符号。4G 网络不通时，先观察屏幕上的 4G 状态再反馈。",
+      "sources": [
+        8414,
+        8417,
+        8423
+      ],
+      "condition": "该说明来自 10 月 12 日群内排障指引，界面显示以实际固件版本为准。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q64",
+      "category": "设备稳定性与恢复",
+      "question": "记录仪死机或卡死，官方是怎么跟进的？",
+      "answer": "官方在 10 月 12 日逐一回访了反馈过死机、重启、4G 离线等异常的用户：主机异常重启、死机类问题由专人负责跟进；会加用户微信一对一沟通，并指导保持 syslog 持续记录日志，遇到死机时把日志发出来定位原因。遇到死机、卡死情况也请主动上传日志。",
+      "sources": [
+        8104,
+        8398,
+        8469,
+        8596,
+        8599
+      ],
+      "condition": "个案回访不等于问题已定位；死机原因需结合日志分析。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q65",
+      "category": "设备稳定性与恢复",
+      "question": "设备卡死或无响应时，可以先尝试什么恢复操作？",
+      "answer": "群内官方给的恢复步骤：先提交日志（如有条件），然后拔掉 4G 盒子端的电源线，等待记录仪主机指示灯完全熄灭后再重新上电，一般可以恢复。恢复后继续观察是否复发。",
+      "sources": [
+        5779
+      ],
+      "condition": "这是当时个案的恢复指引，不代表所有卡死都能以此恢复；频繁复发应提交日志排查。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q66",
+      "category": "供电与 OBD",
+      "question": "新能源车的小电瓶电压低了怎么办？",
+      "answer": "官方说明：新能源车有双电瓶（动力电池+小电瓶），降压线可以设定 11.8V 低电保护；小电瓶电压降低后，动力电池会给小电瓶补电。因此新能源车的低压保护表现与油车不同。",
+      "sources": [
+        2818
+      ],
+      "condition": "以支持该特性的车型为范围；不同车型补电策略有差异。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q67",
+      "category": "录像回放与存储",
+      "question": "APP 显示的紧急视频水印速度和实际不一致？",
+      "answer": "官方解释：APP 端要解析记录仪的 GPS 数据，显示上有一点延迟；例如记录仪水印上是 4km/h，APP 端可能短时显示不同数值。判断速度以记录仪本地水印为准。",
+      "sources": [
+        7597
+      ],
+      "condition": "属于显示链路的已知延迟，不是速度测量错误。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q68",
+      "category": "画面与屏幕",
+      "question": "左右镜头镜像开关对实时画面有影响吗？",
+      "answer": "群内有用户在关闭左右镜头镜像后出现实时画面无法加载。官方要求复测该问题：打开日志开关，把镜像关闭后重新查看实时画面，复现后提交日志定位。",
+      "sources": [
+        5728,
+        5754
+      ],
+      "condition": "该问题当时在排查中，未给出最终结论；遇到同类情况按此流程复测提交。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q69",
+      "category": "录像回放与存储",
+      "question": "缩时录影出现紫屏闪烁是什么问题？",
+      "answer": "多位用户反馈缩时录影（AOV 缩时）出现紫屏/画面闪烁，集中在 61/63 固件、前录画面。官方确认：摄像头紫屏问题与官方测试发现一致，研发正在处理，对策固件有效后会推送；有用户已按官方要求打包原始视频提交。夜晚缩时录影另有「无紫屏但偶尔画面抽动闪烁」的个案。 进展更新：10/28 闫冰反馈 69 明暗变化画面震动+闪紫在 70 固件仍现，官方定性「下一版本修复」。",
+      "sources": [
+        11310,
+        11311,
+        11328,
+        11336,
+        11391,
+        11399,
+        11412
+      ],
+      "condition": "涉及前录 AOV 缩时录影；修复版本待推送",
+      "kind": "issue"
+    },
+    {
+      "id": "Q70",
+      "category": "录像回放与存储",
+      "question": "行车/停车监控录像出现漏录、断录怎么办？",
+      "answer": "10 月下旬多位用户集中反馈：行车录像或停车监控期间出现十几秒到十几分钟的漏录、断录，甚至整段缺失（如 23 号当天仅 1 条视频）。官方排查口径：先确认存储卡——已知个别记录仪与闪迪卡兼容不好，卡掉速严重会直接导致无视频；用户实测 PC 端完整格式化（去掉快速格式化勾选）后部分恢复。但孙洪士双卡（360 卡+闪迪卡、均已完整格式化）仍漏录且从 51 固件后各版本都有，属于仍在跟进的兼容性问题。 进展更新：10/23 官方发起停录/漏录专项排查，10/26 官方再问「60 以后固件是否仍停录漏录」；多用户换高速卡（如爱国者 U3）后消失，疑似与慢卡相关，孙洪士 16 秒空白事件视频个案仍在跟进。",
+      "sources": [
+        11324,
+        11331,
+        11560,
+        11562,
+        11609,
+        11610,
+        11615,
+        11618
+      ],
+      "condition": "与存储卡型号、固件版本均相关；官方尚未给出统一根因",
+      "kind": "issue"
+    },
+    {
+      "id": "Q71",
+      "category": "录像回放与存储",
+      "question": "完整格式化内存卡需要多久？",
+      "answer": "记录仪端完整格式化耗时较长（用户实测 8 分钟以上仍未完成、20 分钟未完成均有反馈），属正常现象；急用可在电脑端用读卡器做完整格式化（不勾选快速格式化，约 1 小时）。有用户反馈连接记录仪一直格式化不成功但不影响使用，可能是开了写保护。",
+      "sources": [
+        11409,
+        11605,
+        11606,
+        11625,
+        11629,
+        11630
+      ],
+      "condition": "",
+      "kind": "guide"
+    },
+    {
+      "id": "Q72",
+      "category": "画面与屏幕",
+      "question": "同一路段/路口不同时间画质差异明显，正常吗？",
+      "answer": "官方解释：哨兵模式的 AEC（自动曝光）和循环录像的 AEC 不一样，刚启动车辆时 AEC 还是哨兵模式的，几秒后切换，因此同一段路掉头后两段视频画质会有明显差异，属正常现象。若同路口不同天画质差异大（如赵华平案例），可与官方反馈对比样本。",
+      "sources": [
+        11304,
+        11350,
+        11420
+      ],
+      "condition": "",
+      "kind": "guide"
+    },
+    {
+      "id": "Q73",
+      "category": "供电与 OBD",
+      "question": "4G 云盒取电 vs 降压线直连，会影响黑屏/过热吗？",
+      "answer": "用户实测对比：记录仪通过 4G 云盒取电容易过热黑屏，改成 OBD 降压线直连记录仪后一天都没有出现行驶中黑屏。官方 10/22 也组织了「不带 4G 云盒」专项测试，目的就是验证是否为降压线保护导致的记录仪关机（进而 4G 离线）。南方高温地区用户反馈离线相对更多，北方用户基本无离线，怀疑与设备功耗和环温相关。",
+      "sources": [
+        11357,
+        11536,
+        11537,
+        11538,
+        11544,
+        11545
+      ],
+      "condition": "属用户侧实测+官方专项验证，非官方最终结论",
+      "kind": "issue"
+    },
+    {
+      "id": "Q74",
+      "category": "联网与远程连接",
+      "question": "升级 63 固件后离线问题改善了吗？",
+      "answer": "多位用户反馈升级 63 固件后全天未再离线（林志澄「63 固件今天一整天都没有离线」、闫贺「没离线，非常 good」）。官方同时定向回访：远程卡录时长不对（51 版本后）、远程录像下载失败（61 版本后）、黑屏（57 版本后）、异常离线（61 版本后）等历史问题是否复发。个别用户仍离线，自查发现车辆电瓶老化（检测后电池不行），换电池复测中——离线可能与车辆供电相关。 进展更新：10/24 推送 69 固件（优化离线、AOV 曝光、画面偏暗），10/26 推送 70 固件（优化 APP 连接记录仪），10/27 官方对历史离线用户拉网式回访，多数回复「未再离线」，离线问题大面积收敛（个别如吕关兴换新电瓶后仍有白天规律离线，转向 APP 侧离线观察）。",
+      "sources": [
+        11499,
+        11508,
+        11511,
+        11514,
+        11540,
+        11567,
+        11568,
+        12035,
+        12310
+      ],
+      "condition": "63 固件为 10/22 最新版本",
+      "kind": "issue"
+    },
+    {
+      "id": "Q75",
+      "category": "联网与远程连接",
+      "question": "远程查看行车轨迹缺失或定位中断怎么排查？",
+      "answer": "用户反馈 4G 云盒接上后当天行车轨迹没了，但蓝牙近场车内查看有轨迹。排查方向：①后台可能没有上传数据（4G 传输问题）；②远程查看可能没同步行车轨迹，可先在车内（近场）查看确认本地有轨迹再反馈。另有定位中断（每次到某位置就没有）个案待跟进。",
+      "sources": [
+        11521,
+        11532,
+        11533,
+        11535,
+        11551
+      ],
+      "condition": "",
+      "kind": "guide"
+    },
+    {
+      "id": "Q76",
+      "category": "升级与日志反馈",
+      "question": "日志提交有哪些要求和技巧？",
+      "answer": "官方指引汇总：①提交问题日志要包含固件日志（部分用户只提交了 APP 日志不算数）；②日志开关重新开启，或手动在 MISC 目录创建 syslog.txt（LOG 文件）；③孙洪士案例：拔卡后把卡接到电脑取 MISC 日志也行。提交后官方会回执确认（「看到了，感谢」）。",
+      "sources": [
+        11322,
+        11472,
+        11473,
+        11476,
+        11480
+      ],
+      "condition": "",
+      "kind": "guide"
+    },
+    {
+      "id": "Q77",
+      "category": "联网与远程连接",
+      "question": "公测结束后，4G 流量和云录是免费还是收费？",
+      "answer": "收费。群公告 9/24 已明确「上市后流量和云录按收费标准执行」，10/29 官方通知最新流量云录策略上线并向公测用户赠送一个月无限流量和云录。内测期的无限流量仅限测试期，并非终身免流。",
+      "sources": [
+        6719,
+        13077,
+        13072
+      ],
+      "condition": "收费策略以 APP 内实际套餐页为准；群内讨论不构成定价承诺。",
+      "kind": "direct"
+    },
+    {
+      "id": "Q78",
+      "category": "联网与远程连接",
+      "question": "能不能插自己的流量卡？360 物联卡能放到别的设备上用吗？",
+      "answer": "可以把自己的流量卡插入云盒使用；但 360 的物联网 SIM 卡绑定设备串码，插入其他设备会有锁卡风险（国家法规对物联网卡机卡绑定的要求）。",
+      "sources": [
+        13088,
+        13258,
+        13240,
+        13232
+      ],
+      "condition": "自行换卡后流量、远程功能的计费归属以运营商为准。",
+      "kind": "direct"
+    },
+    {
+      "id": "Q79",
+      "category": "联网与远程连接",
+      "question": "哨兵模式一个月大概要用多少流量？",
+      "answer": "取决于触发频率。有用户实测：停在不太热闹的地方，7 天触发 108 次事件，折算一个月约 37-38G。热闹路段、四摄远程查看、云录上传都会显著增加用量。",
+      "sources": [
+        13220,
+        13221
+      ],
+      "condition": "仅为个案实测参考，实际用量因触发频次、清晰度、查看频率差异极大。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q80",
+      "category": "联网与远程连接",
+      "question": "APP 里永久云录套餐购买有什么已知问题？",
+      "answer": "公测期发现两类：①已开通永久云录的账号仍能再次选中同一套餐（应只能就高升级）；②永久套餐选择器中选不中记录仪、下载受限 1 分钟。已作为 bug 提交，另有用户建议永久套餐支持换机迁移。",
+      "sources": [
+        13176,
+        13167
+      ],
+      "condition": "以修复后版本为准，购买前先确认套餐页展示。",
+      "kind": "issue"
+    },
+    {
+      "id": "Q81",
+      "category": "供电与 OBD",
+      "question": "升级 70 固件后车辆无法点火、亏电，怎么处理？",
+      "answer": "10/27 出现个案：70 固件 + OBD 降压线供电，停车熄火后电瓶亏到无法点火（此前版本从未出现）。官方已介入核对设备侧数据，公测用户遇到类似情况请立即群里 @官方并提交日志，同时记录停车时长与电量格数。",
+      "sources": [
+        12716,
+        12718,
+        12715
+      ],
+      "condition": "个案尚未定性为固件功耗回归；若停放超 72 小时未用车，请留意低压保护提醒。",
+      "kind": "issue"
+    },
+    {
+      "id": "Q82",
+      "category": "哨兵与事件通知",
+      "question": "哨兵模式会漏报？远距离的人经过没触发录像怎么办？",
+      "answer": "新固件侦测策略改为偏近距离触发，远距离漏报属当前已知问题：有用户反馈「挡风玻璃放个纸巾误报有人」与「稍远不触发」并存。用户侧建议增加灵敏度档位（高档位远近都录/低档位维持现状），官方持续收集样本中。反馈时请提交事件视频+漏报前 1 秒缩时视频+日志。",
+      "sources": [
+        12500,
+        13003,
+        12998,
+        11740,
+        12434
+      ],
+      "condition": "10/27 有用户反馈新固件已解决此前漏报，个案有差异，以实测为准。",
+      "kind": "issue"
+    },
+    {
+      "id": "Q83",
+      "category": "哨兵与事件通知",
+      "question": "缩时录影两段视频中间缺了几十秒，正常吗？",
+      "answer": "不正常，属漏录问题簇。触发事件结束后不会马上接上缩时，事件之间可能存在缺口；官方已多轮收集 MISC 日志定位。检查方法：设备端进相册连续播放缩时视频，核对时间连续性。",
+      "sources": [
+        12670,
+        11757
+      ],
+      "condition": "与存储卡速度、停车超时停录等场景相关，先换 U3 高速卡排除卡因素。",
+      "kind": "issue"
+    },
+    {
+      "id": "Q84",
+      "category": "录像回放与存储",
+      "question": "设备端相册第一次打开加载慢，是故障吗？",
+      "answer": "首次进相册会建索引，与存储卡速度强相关：官方 10/27 专项实验中，随机附赠卡用户出现 30 秒级延迟甚至卡顿，自购高速卡用户普遍秒开。若加载不出来，退出重进一次通常恢复；长期建议换高速卡。",
+      "sources": [
+        12543,
+        12112,
+        12114,
+        12540
+      ],
+      "condition": "多次复现且换高速卡无效时再提交日志，避免与卡慢混淆。",
+      "kind": "conditional"
+    },
+    {
+      "id": "Q85",
+      "category": "升级与日志反馈",
+      "question": "公测 APP 如何升级？iOS 用什么渠道？",
+      "answer": "安卓：群内 @所有人 通知后下载群文件最新 APK 安装（如 10/23 的 3.1.0 版）；iOS：通过 TestFlight 链接升级至对应版本（10/27 起 3.1.0）。升级后请继续填写日常问卷+提交日志。",
+      "sources": [
+        11898,
+        12448
+      ],
+      "condition": "TestFlight 需先接受邀请链接；版本号以当次群通知为准。",
+      "kind": "guide"
+    },
+    {
+      "id": "Q86",
+      "category": "升级与日志反馈",
+      "question": "终测阶段的腾讯文档验证怎么填？",
+      "answer": "10/28 官方将腾讯文档逐人私发：基于最新 APP+固件逐项验证，结果填 C 列（下拉选择），新问题直接在文档下补充；纯建议未实现的项 D、E 列可不强制填写。",
+      "sources": [
+        12839
+      ],
+      "condition": "文档为一人一份，请勿转发他人；以官方私发版本为准。",
+      "kind": "guide"
+    },
+    {
+      "id": "Q87",
+      "category": "公测参与与安装",
+      "question": "电子说明书有错误、拆卸不会操作，有视频教程吗？",
+      "answer": "说明书部分内容沿用了 G980 正常版，官方已确认电子说明书会更新；产品侧已制作安装视频小卡片，详细官方安装视频后续上线。反馈说明书问题请指出具体页码/条目。",
+      "sources": [
+        12843,
+        12848,
+        12986,
+        13010,
+        12997
+      ],
+      "condition": "以更新后的 APP 内电子说明书为准。",
+      "kind": "direct"
+    },
+    {
+      "id": "Q88",
+      "category": "录像回放与存储",
+      "question": "紧急录像在平路上也能触发，灵敏度怎么调？",
+      "answer": "若最高灵敏度下平路都误触发，可先将紧急录像灵敏度调低观察；官方已收到「阈值应再降低 50%」的反向反馈（即灵敏度档位区间需更宽），后续版本调整。误触发严重时提交行驶视频+日志。",
+      "sources": [
+        13066
+      ],
+      "condition": "灵敏度设置在 APP 或设备端的检测设置内。",
+      "kind": "conditional"
+    }
+  ],
+  "pending": [
+    {
+      "id": "U01",
+      "question": "所有车型通用的低压保护阈值和停车续航时长",
+      "answer": "补充不同车型、供电方案、OBD 模式与阈值下的验证结果；群内没有能覆盖所有场景的统一数值。",
+      "sources": [
+        1313,
+        2820,
+        9824
+      ]
+    },
+    {
+      "id": "U02",
+      "question": "OBD 标准模式与兼容模式的具体区别",
+      "answer": "需要明确两种模式的判断逻辑、适用车型、切换条件及影响，不能只依据模式名称推断。",
+      "sources": [
+        4359,
+        5545
+      ]
+    },
+    {
+      "id": "U03",
+      "question": "熄火后进入哨兵或停车监控的统一时长",
+      "answer": "需要区分锁车、ACC 状态、远程查看重置及固件版本；个案耗时不能作为全量承诺。",
+      "sources": [
+        11019,
+        11093,
+        11210,
+        11216
+      ]
+    },
+    {
+      "id": "U04",
+      "question": "熄火状态下电源键能否启动及其版本条件",
+      "answer": "需核对供电状态、版本和当次操作条件，现有零散反馈不足以给出一致口径。",
+      "sources": [
+        7899,
+        9689,
+        9691,
+        10585
+      ]
+    },
+    {
+      "id": "U05",
+      "question": "独立缩时模式与 AOV 缩时样本的术语和关系",
+      "answer": "需明确工作模式、相册名称和 AOV 触发前样本的区别，避免把取样入口等同于模式可同时开启。",
+      "sources": [
+        1341,
+        5819,
+        10750
+      ]
+    },
+    {
+      "id": "U06",
+      "question": "4G 离线的统一根因及保证修复的版本",
+      "answer": "需要逐案结合供电、驻网、固件和日志验证。进展更新：10/13 官方表示熄火后离线问题已提测固件尝试优化；10/15-16 定向推送 2.0.55/2.0.56；10/22 推送 63 固件后多位用户反馈全天未离线（含林志澄、闫贺）；个别用户排查发现车辆电瓶老化，换电池复测中。另用户侧实测 OBD 直连（不经云盒取电）后黑屏消失，供电链路仍是关键变量。",
+      "sources": [
+        9017,
+        9018,
+        9235,
+        9703,
+        9752,
+        9810,
+        11148
+      ]
+    },
+    {
+      "id": "U07",
+      "question": "缩时视频紫屏闪烁的最终原因和修复版本",
+      "answer": "截至 10/23 仍在处理：官方 10/22 确认「摄像头紫屏问题和我们测试发现的一样，研发同事正在处理」，林志澄已提交原始视频，周琦强/苏冬冬跟进复现；等待对策固件推送。",
+      "sources": [
+        11282,
+        11283
+      ]
+    },
+    {
+      "id": "U08",
+      "question": "清晨红外或色彩异常是否与低压保护有关",
+      "answer": "进展更新：10/22 官方判断马姬个案「看着可能是低电保护了；红外颜色错乱也是降压线低电保护导致」，怀疑该 OBD 降压线保护电压不准；用户已把低电压保护调到 11.8V 观察复现，待最终验证。",
+      "sources": [
+        11263,
+        11266,
+        11268,
+        11269
+      ]
+    },
+    {
+      "id": "U09",
+      "question": "升级后是否已解决所有 AI 误识别和误报",
+      "answer": "需要按场景和版本评估。进展更新：10/20 官方在群内征集升级后误报改善情况，多位用户回复「暂无误报」；10/22 又有陶双哨兵漏触发（有车经过没录到）、朱君误报（车辆亮灯未动却提示驶过）双方向个案，误报/漏报并存，未宣布解决。",
+      "sources": [
+        9056,
+        9451,
+        10468,
+        10472,
+        10474
+      ]
+    },
+    {
+      "id": "U10",
+      "question": "公测结束后的流量资费 额度和有效期",
+      "answer": "群内只明确过公测机器免流，不能推出正式套餐价格、长期免费或续费规则。",
+      "sources": [
+        4471,
+        9392,
+        9438
+      ]
+    },
+    {
+      "id": "U11",
+      "question": "过夜录像中途停止的最终原因",
+      "answer": "仍需对应异常时间的视频连续性、供电状态和日志。进展更新：10/22-23 孙洪士双卡复现过夜漏录十几分钟、停车监控停录需远程查看才恢复，陈占学记录仪自动重启+多处断录，多用户多卡复现，官方已要求提交固件日志，与漏录问题簇同源跟进。",
+      "sources": [
+        11258,
+        11260
+      ]
+    },
+    {
+      "id": "U12",
+      "question": "近场查看循环录像出现切换工作模式提示的最终处理",
+      "answer": "进展更新：官方答复「一直有这个逻辑」，属正常提示非故障；丁政涛 10/22 复现，官方提醒多等一会儿或确认是否又触发低压保护。",
+      "sources": [
+        11275
+      ]
+    },
+    {
+      "id": "U13",
+      "question": "远程与车内轨迹不一致或位置跳至非洲的最终处理",
+      "answer": "坐标转换等原因在聊天中只是可能方向，需确认根因、修复版本和验证结果。",
+      "sources": [
+        8253,
+        9387,
+        9730
+      ]
+    },
+    {
+      "id": "U14",
+      "question": "哨兵侦测灵敏度档位（远近分档）",
+      "answer": "用户建议提供高档位（远近全录）与低档位（近距离）两档；官方尚未答复是否采纳。",
+      "sources": [
+        13003,
+        12999
+      ]
+    },
+    {
+      "id": "U15",
+      "question": "70 固件停车功耗是否回归",
+      "answer": "王龙个案：停车熄火后电瓶亏到无法点火；官方介入核对中，待复测与定位。",
+      "sources": [
+        12716,
+        12718
+      ]
+    },
+    {
+      "id": "U16",
+      "question": "永久云录套餐购买逻辑与设备绑定",
+      "answer": "重复购买入口、记录仪选中失败、下载 1 分钟限制、换机迁移诉求，待商业侧答复。",
+      "sources": [
+        13176,
+        13167
+      ]
+    }
+  ],
+  "categories": [
+    "公测参与与安装",
+    "供电与 OBD",
+    "联网与远程连接",
+    "哨兵与事件通知",
+    "定位与行车轨迹",
+    "录像回放与存储",
+    "画面与屏幕",
+    "升级与日志反馈",
+    "设备稳定性与恢复"
+  ],
+  "messages": {
+    "822": {
+      "id": 822,
+      "time": "2026-09-07 11:50:48",
+      "sender": "2",
+      "text": "可以重复"
+    },
+    "823": {
+      "id": 823,
+      "time": "2026-09-07 11:50:56",
+      "sender": "2",
+      "text": "自己出现了就反馈"
+    },
+    "824": {
+      "id": 824,
+      "time": "2026-09-07 11:51:01",
+      "sender": "2",
+      "text": "没有出现就不用反馈"
+    },
+    "847": {
+      "id": 847,
+      "time": "2026-09-07 16:19:47",
+      "sender": "2",
+      "text": "有说明书，到时候正常体验，有问题随时反馈群里+填写日常问卷+提交APP日志"
+    },
+    "1313": {
+      "id": 1313,
+      "time": "2026-09-13 09:48:36",
+      "sender": "565",
+      "text": "Obd取电，不知道普通电瓶能坚持多久"
+    },
+    "1325": {
+      "id": 1325,
+      "time": "2026-09-15 10:11:22",
+      "sender": "2",
+      "text": "咱们虽然4摄，但是哨兵只有前录检测到人才会四个摄像头启动录像"
+    },
+    "1341": {
+      "id": 1341,
+      "time": "2026-09-15 10:14:14",
+      "sender": "2",
+      "text": "缩时和哨兵无法同时"
+    },
+    "1893": {
+      "id": 1893,
+      "time": "2026-09-18 09:06:30",
+      "sender": "45",
+      "text": "目前不支持电瓶电压读取"
+    },
+    "1927": {
+      "id": 1927,
+      "time": "2026-09-18 11:34:45",
+      "sender": "2",
+      "text": "这个不对，APP必现使用群置顶文件\n这个问题反复强调过"
+    },
+    "1989": {
+      "id": 1989,
+      "time": "2026-09-18 18:26:08",
+      "sender": "891",
+      "text": "等货到了 请注意包材里有两个记录仪静电贴 一个用于前摄 一个用于4G云盒"
+    },
+    "2215": {
+      "id": 2215,
+      "time": "2026-09-19 20:41:52",
+      "sender": "45",
+      "text": "GPS定位成功，硬件功能就OK，如果还没有轨迹，明天可以在APP提交一下反馈，请软件同事定位异常"
+    },
+    "2475": {
+      "id": 2475,
+      "time": "2026-09-20 10:46:24",
+      "sender": "45",
+      "text": "后录摄像头， 状态灯不亮就没有通电"
+    },
+    "2564": {
+      "id": 2564,
+      "time": "2026-09-20 11:31:56",
+      "sender": "2",
+      "text": "对，先检查APP版本是否是群置顶的APP，公测专用标识，3.0.0版本"
+    },
+    "2573": {
+      "id": 2573,
+      "time": "2026-09-20 11:34:27",
+      "sender": "2",
+      "text": "［提及已略］配网需要使用群置顶的APP去配网，不是在手机蓝牙列表找"
+    },
+    "2577": {
+      "id": 2577,
+      "time": "2026-09-20 11:35:18",
+      "sender": "45",
+      "text": "请提供你提交问题时的联络方式，方便我们后台查找 ［提及已略］"
+    },
+    "2625": {
+      "id": 2625,
+      "time": "2026-09-20 12:03:57",
+      "sender": "45",
+      "text": "小米汽车熄火后，电瓶电压一直维持在14V左右，obd降压线的ACC一直on"
+    },
+    "2775": {
+      "id": 2775,
+      "time": "2026-09-20 13:21:56",
+      "sender": "45",
+      "text": "［提及已略］车辆在充电吗？新能源车型，充电时电瓶电压较高，降压线也不输出ACC OFF的"
+    },
+    "2798": {
+      "id": 2798,
+      "time": "2026-09-20 13:29:40",
+      "sender": "45",
+      "text": "G980要求32GB及以上的卡，低于32GB不能用"
+    },
+    "2800": {
+      "id": 2800,
+      "time": "2026-09-20 13:30:10",
+      "sender": "45",
+      "text": "格卡慢是G980有固件备份"
+    },
+    "2820": {
+      "id": 2820,
+      "time": "2026-09-20 13:41:39",
+      "sender": "45",
+      "text": "您改成11.8V设定，看一下能否维持记录仪哨兵模式"
+    },
+    "2868": {
+      "id": 2868,
+      "time": "2026-09-20 14:15:21",
+      "sender": "45",
+      "text": "不要格式化了"
+    },
+    "2869": {
+      "id": 2869,
+      "time": "2026-09-20 14:15:27",
+      "sender": "45",
+      "text": "格式化就把日志删除了"
+    },
+    "2871": {
+      "id": 2871,
+      "time": "2026-09-20 14:16:35",
+      "sender": "45",
+      "text": "卡插回记录仪，手机APP再做一次配网。这个脚本只能取到脚本生成之后的系统日志"
+    },
+    "2872": {
+      "id": 2872,
+      "time": "2026-09-20 14:16:54",
+      "sender": "45",
+      "text": "有点拗口，就是它没有回溯能力"
+    },
+    "2903": {
+      "id": 2903,
+      "time": "2026-09-20 14:51:42",
+      "sender": "45",
+      "text": "理解了，您问的是【左右摄像头的黑白模式】。因为主摄被挡黑了，所以记录仪认为是夜间场景，就把红外灯开启，切换到夜间模式"
+    },
+    "2904": {
+      "id": 2904,
+      "time": "2026-09-20 14:52:13",
+      "sender": "45",
+      "text": "夜间模式，左右副摄的画面是黑白模式"
+    },
+    "2924": {
+      "id": 2924,
+      "time": "2026-09-20 15:13:37",
+      "sender": "45",
+      "text": "4G远程查看期间，记录仪是循环录像的"
+    },
+    "2959": {
+      "id": 2959,
+      "time": "2026-09-20 15:50:10",
+      "sender": "737",
+      "text": "这个蓝牙是不是就用于配对，没别的作用"
+    },
+    "2960": {
+      "id": 2960,
+      "time": "2026-09-20 15:51:08",
+      "sender": "45",
+      "text": "是的，BLE快联，默认WiFi不用开启（省电）"
+    },
+    "3130": {
+      "id": 3130,
+      "time": "2026-09-20 18:56:05",
+      "sender": "112",
+      "text": "［提及已略］ 紧急录像触发的灵敏度 调了一版 下一版本更新。若频繁触发 打扰开车 可以先把灵敏度调为低 [抱拳]"
+    },
+    "3191": {
+      "id": 3191,
+      "time": "2026-09-20 19:12:43",
+      "sender": "45",
+      "text": "方法，手动关闭AOV哨兵，然后再开启AOV哨兵，记录仪就会提醒你调整哨兵监视区域，红框尽量调下一点"
+    },
+    "3289": {
+      "id": 3289,
+      "time": "2026-09-20 20:25:13",
+      "sender": "45",
+      "text": "AOV哨兵区域是可以调节的，误报多就缩小一点区域"
+    },
+    "3364": {
+      "id": 3364,
+      "time": "2026-09-20 21:03:31",
+      "sender": "112",
+      "text": "［提及已略］您有没有远程开流或者访问相册 设备唤醒没有休眠就会显示循环录像。另外，建议您关闭AOV哨兵，您的场景频繁误触发事件上报会耗您电瓶电。"
+    },
+    "3517": {
+      "id": 3517,
+      "time": "2026-09-21 08:17:45",
+      "sender": "112",
+      "text": "［提及已略］定位有偏差是吗 能帮忙打开高德地图对比下位置吗 看下实际偏差有多少"
+    },
+    "3520": {
+      "id": 3520,
+      "time": "2026-09-21 08:19:21",
+      "sender": "112",
+      "text": "定位页面右下角有个刷新按钮 您手动刷新下看下位置是不是能更新过来"
+    },
+    "3560": {
+      "id": 3560,
+      "time": "2026-09-21 08:48:25",
+      "sender": "112",
+      "text": "［提及已略］是的 关闭日志框不勾选"
+    },
+    "3573": {
+      "id": 3573,
+      "time": "2026-09-21 09:02:12",
+      "sender": "112",
+      "text": "［提及已略］辛苦提交下日志 写上离线大概时间 以及记录仪的运行状态"
+    },
+    "3770": {
+      "id": 3770,
+      "time": "2026-09-21 10:16:35",
+      "sender": "2",
+      "text": "提需求，填写日常问卷哈[玫瑰]"
+    },
+    "3774": {
+      "id": 3774,
+      "time": "2026-09-21 10:19:40",
+      "sender": "2",
+      "text": "需求不用提交APP日志哈，只有问题提交"
+    },
+    "3794": {
+      "id": 3794,
+      "time": "2026-09-21 10:34:22",
+      "sender": "2",
+      "text": "不在车上，就直接意见反馈提交"
+    },
+    "3861": {
+      "id": 3861,
+      "time": "2026-09-21 11:24:58",
+      "sender": "45",
+      "text": "橙色的Type-C接降压线"
+    },
+    "3904": {
+      "id": 3904,
+      "time": "2026-09-21 11:42:46",
+      "sender": "45",
+      "text": "如果没有读卡器，就在车内用WiFi连接记录仪，APP开启日志（此方法单次有效）"
+    },
+    "4084": {
+      "id": 4084,
+      "time": "2026-09-21 14:02:41",
+      "sender": "45",
+      "text": "［提及已略］后摄接头插拔一次，然后看看后摄显示是否正常？"
+    },
+    "4114": {
+      "id": 4114,
+      "time": "2026-09-21 14:08:10",
+      "sender": "45",
+      "text": "提醒安装师傅核对一下，宝马插头是否紧固，可能安装过程中，插头没插紧 ［提及已略］"
+    },
+    "4250": {
+      "id": 4250,
+      "time": "2026-09-21 16:04:58",
+      "sender": "45",
+      "text": "［提及已略］看着有点不对，左边的摄像头有点偏色"
+    },
+    "4253": {
+      "id": 4253,
+      "time": "2026-09-21 16:06:33",
+      "sender": "45",
+      "text": "红外开关，手动切换一下"
+    },
+    "4254": {
+      "id": 4254,
+      "time": "2026-09-21 16:06:40",
+      "sender": "45",
+      "text": "然后再观察"
+    },
+    "4338": {
+      "id": 4338,
+      "time": "2026-09-21 17:36:51",
+      "sender": "2",
+      "text": "列表里显示的所有事件，是否通知是看有没有给你APP推送消息"
+    },
+    "4339": {
+      "id": 4339,
+      "time": "2026-09-21 17:37:55",
+      "sender": "804",
+      "text": "中午关闭了有人靠近提醒，还是会推送"
+    },
+    "4359": {
+      "id": 4359,
+      "time": "2026-09-21 17:52:54",
+      "sender": "4",
+      "text": "兼容模式和标准模式有什么区别吗？我刚调了兼容模式，行驶中就没有掉线了，看来油车是真老了"
+    },
+    "4471": {
+      "id": 4471,
+      "time": "2026-09-21 19:37:04",
+      "sender": "45",
+      "text": "各位都是VIP，公测机器免流"
+    },
+    "4476": {
+      "id": 4476,
+      "time": "2026-09-21 19:38:09",
+      "sender": "45",
+      "text": "放心用4G下载。目前云盒不支持MIFI，物联网SIM卡也不能用于手机。咱们记录仪端这点流量不算啥"
+    },
+    "4700": {
+      "id": 4700,
+      "time": "2026-09-21 21:45:47",
+      "sender": "45",
+      "text": "副摄不防水，只能装车内"
+    },
+    "4953": {
+      "id": 4953,
+      "time": "2026-09-22 09:11:29",
+      "sender": "45",
+      "text": "［提及已略］4G盒子上有一个IMEI打印，请拍照发给我"
+    },
+    "4954": {
+      "id": 4954,
+      "time": "2026-09-22 09:11:48",
+      "sender": "45",
+      "text": "我来跟进IMEI识别不到的问题"
+    },
+    "4984": {
+      "id": 4984,
+      "time": "2026-09-22 10:04:22",
+      "sender": "2",
+      "text": "所以大家在群里问的问题最好都填写问卷中，遇到啥问题、怎么解决的"
+    },
+    "5041": {
+      "id": 5041,
+      "time": "2026-09-22 10:27:09",
+      "sender": "89",
+      "text": "咱们要是有离线情况，提问题的时候辛苦备注一下设备状态（比如开车期间/哨兵模式/缩时模式）"
+    },
+    "5096": {
+      "id": 5096,
+      "time": "2026-09-22 10:58:39",
+      "sender": "2",
+      "text": "大家日常问卷可以反馈一下：OBD***模式，**V，熄火后***小时后设备离线进入低压保护"
+    },
+    "5545": {
+      "id": 5545,
+      "time": "2026-09-22 16:32:51",
+      "sender": "4",
+      "text": "感觉标准和兼容的没有区别呀，都能用"
+    },
+    "5634": {
+      "id": 5634,
+      "time": "2026-09-22 18:36:46",
+      "sender": "45",
+      "text": "power接电源线，camport接记录仪"
+    },
+    "5819": {
+      "id": 5819,
+      "time": "2026-09-22 22:10:50",
+      "sender": "542",
+      "text": "缩时录影打开，哨兵模式会关，这种有闪的吗"
+    },
+    "6427": {
+      "id": 6427,
+      "time": "2026-09-24 09:39:47",
+      "sender": "2",
+      "text": "大家填写APP日志时，联系方式请备注公测[玫瑰]"
+    },
+    "6433": {
+      "id": 6433,
+      "time": "2026-09-24 09:41:40",
+      "sender": "2",
+      "text": "手机号或者反馈内容开头就写【公测】，不然客服会发短信"
+    },
+    "6665": {
+      "id": 6665,
+      "time": "2026-09-24 17:38:30",
+      "sender": "112",
+      "text": "［提及已略］辛苦app车内连接下记录仪，再检测下版本试试"
+    },
+    "6690": {
+      "id": 6690,
+      "time": "2026-09-24 17:53:31",
+      "sender": "45",
+      "text": "47版本还需要内测，可能是误配置了"
+    },
+    "7480": {
+      "id": 7480,
+      "time": "2026-09-29 13:16:36",
+      "sender": "45",
+      "text": "看一下状态灯，红灯是否亮着"
+    },
+    "7481": {
+      "id": 7481,
+      "time": "2026-09-29 13:17:09",
+      "sender": "45",
+      "text": "如果红灯灭掉了，应该是降压线低电关闭了5V输出"
+    },
+    "7482": {
+      "id": 7482,
+      "time": "2026-09-29 13:18:06",
+      "sender": "45",
+      "text": "如果红灯还亮着，内存卡里的MISC文件夹里放一个syslog.txt脚本，下次再离线的时候，把日志发出来"
+    },
+    "7486": {
+      "id": 7486,
+      "time": "2026-09-29 13:20:38",
+      "sender": "45",
+      "text": "每次远程查看，哨兵倒计时都会重置"
+    },
+    "7499": {
+      "id": 7499,
+      "time": "2026-09-29 13:24:31",
+      "sender": "45",
+      "text": "红灯亮，电源供电正常，绿灯慢闪，4G没有驻网"
+    },
+    "7695": {
+      "id": 7695,
+      "time": "2026-10-08 11:55:48",
+      "sender": "112",
+      "text": "［提及已略］您好，看你反馈的“主机屏幕设置的常亮状态，实际工作中是息屏状态”为必现问题，有两点需要和您确认下：1.屏幕保护界面选的是时钟/动态/息屏哪一项？ 2.记录仪是正常循环录像吗？"
+    },
+    "7858": {
+      "id": 7858,
+      "time": "2026-10-09 14:45:26",
+      "sender": "45",
+      "text": "APP取了日志就会关闭，一次用的"
+    },
+    "7878": {
+      "id": 7878,
+      "time": "2026-10-09 18:23:35",
+      "sender": "2",
+      "text": "可以一直开着，出现问题，立即提交，提交时记得把√点掉"
+    },
+    "7899": {
+      "id": 7899,
+      "time": "2026-10-09 20:53:21",
+      "sender": "565",
+      "text": "我明天试试电源键"
+    },
+    "8180": {
+      "id": 8180,
+      "time": "2026-10-10 17:10:45",
+      "sender": "45",
+      "text": "［提及已略］看到您反馈了一个行车轨迹异常，能否在GPS界面看一下GPS/BDS信号强度，先排查一下是否有硬件不良"
+    },
+    "8181": {
+      "id": 8181,
+      "time": "2026-10-10 17:12:51",
+      "sender": "45",
+      "text": "群里有反馈AOV哨兵触发过于频繁的，请设置哨兵区域到最低，再试一下 ［提及已略］"
+    },
+    "8201": {
+      "id": 8201,
+      "time": "2026-10-10 17:27:50",
+      "sender": "45",
+      "text": "［提及已略］收到您反馈的一条问题，后摄像头一片黑。持续了4分钟。后没有发现这样的情况。\n需要请您检查一下插座的松紧度"
+    },
+    "8206": {
+      "id": 8206,
+      "time": "2026-10-10 17:40:15",
+      "sender": "45",
+      "text": "APP还是记录仪本地回看？"
+    },
+    "8208": {
+      "id": 8208,
+      "time": "2026-10-10 17:41:05",
+      "sender": "45",
+      "text": "在本地看一下，如果记录仪本地没有这个问题，就不是硬件问题了"
+    },
+    "8216": {
+      "id": 8216,
+      "time": "2026-10-10 17:51:32",
+      "sender": "45",
+      "text": "可以放一个syslog取日志，再加上APP反馈，这样硬件端和软件端可以对比分析"
+    },
+    "8253": {
+      "id": 8253,
+      "time": "2026-10-11 13:39:29",
+      "sender": "45",
+      "text": "可能是坐标转换的bug"
+    },
+    "8378": {
+      "id": 8378,
+      "time": "2026-10-12 10:27:15",
+      "sender": "45",
+      "text": "［提及已略］下次再看一下，启动车辆后，打开GPS界面，然后行驶到哪里定位成功"
+    },
+    "8386": {
+      "id": 8386,
+      "time": "2026-10-12 10:31:21",
+      "sender": "45",
+      "text": "1分钟左右冷启动定位成功，是属于正常情况"
+    },
+    "8404": {
+      "id": 8404,
+      "time": "2026-10-12 11:47:53",
+      "sender": "45",
+      "text": "日志暂时不要通过APP上传了，各位老板先用读卡器取本地日志"
+    },
+    "8435": {
+      "id": 8435,
+      "time": "2026-10-12 12:03:47",
+      "sender": "45",
+      "text": "辛苦各位老板记好异常出现的时间，我们会针对这个4G通讯异常的问题做专项跟进"
+    },
+    "8448": {
+      "id": 8448,
+      "time": "2026-10-12 12:07:49",
+      "sender": "45",
+      "text": "记录仪支持U盘模式，可以把主机直接接电脑（通过USBA——C的线）"
+    },
+    "8449": {
+      "id": 8449,
+      "time": "2026-10-12 12:08:00",
+      "sender": "45",
+      "text": "不要用C-C的数据线"
+    },
+    "8457": {
+      "id": 8457,
+      "time": "2026-10-12 12:16:38",
+      "sender": "45",
+      "text": "确认可以，记录仪开机后，开始录像，自动播报停止录像，进入U盘模式"
+    },
+    "8464": {
+      "id": 8464,
+      "time": "2026-10-12 12:18:25",
+      "sender": "45",
+      "text": "syslog文件本身就是一个开关"
+    },
+    "8477": {
+      "id": 8477,
+      "time": "2026-10-12 12:22:40",
+      "sender": "45",
+      "text": "只要离线，无法连上，就可以抓日志"
+    },
+    "8478": {
+      "id": 8478,
+      "time": "2026-10-12 12:22:48",
+      "sender": "45",
+      "text": "不一定要上线后再抓"
+    },
+    "8493": {
+      "id": 8493,
+      "time": "2026-10-12 12:45:14",
+      "sender": "45",
+      "text": "不删除这个文件，就一直有效"
+    },
+    "8565": {
+      "id": 8565,
+      "time": "2026-10-12 15:03:05",
+      "sender": "45",
+      "text": "先不用处理，不格卡，能否继续使用？"
+    },
+    "8569": {
+      "id": 8569,
+      "time": "2026-10-12 15:06:04",
+      "sender": "45",
+      "text": "先不用格式化"
+    },
+    "8570": {
+      "id": 8570,
+      "time": "2026-10-12 15:12:03",
+      "sender": "254",
+      "text": "各位，AOV的误识别的，能不能给我一段AOV的视频，就是AOV触发前的视频"
+    },
+    "8574": {
+      "id": 8574,
+      "time": "2026-10-12 15:21:35",
+      "sender": "254",
+      "text": "给我一段AOV触发发的，一秒一帧的视频，发我哈"
+    },
+    "8584": {
+      "id": 8584,
+      "time": "2026-10-12 15:24:36",
+      "sender": "254",
+      "text": "［提及已略］不用自己判断，让我们算法来判断"
+    },
+    "8681": {
+      "id": 8681,
+      "time": "2026-10-12 17:02:53",
+      "sender": "45",
+      "text": "电车类有2个问题：\n1. 部分车型熄火后一直14V，OBD降压线识别不到熄火；\n2. 电车充电时，电压会从12V升到14V，OBD会误以为汽车启动开机了"
+    },
+    "8692": {
+      "id": 8692,
+      "time": "2026-10-12 17:13:47",
+      "sender": "45",
+      "text": "您有设置自动熄屏吗？"
+    },
+    "8693": {
+      "id": 8693,
+      "time": "2026-10-12 17:14:12",
+      "sender": "45",
+      "text": "可以将屏幕设置为常亮，看看是否还会误发黑屏"
+    },
+    "8696": {
+      "id": 8696,
+      "time": "2026-10-12 17:21:29",
+      "sender": "45",
+      "text": "［提及已略］李总，镜头保护膜尽量撕掉，否则影响清晰度"
+    },
+    "8713": {
+      "id": 8713,
+      "time": "2026-10-12 17:36:54",
+      "sender": "45",
+      "text": "记录仪主机在工作，不符合低电保护的情况"
+    },
+    "8716": {
+      "id": 8716,
+      "time": "2026-10-12 17:37:45",
+      "sender": "45",
+      "text": "OBD降压线，不会单独低电保护4G盒子的，4G盒子和记录仪是串联使用的。陶总抓一下4G日志吧"
+    },
+    "8764": {
+      "id": 8764,
+      "time": "2026-10-12 18:25:02",
+      "sender": "45",
+      "text": "是的，如果你手机连上G300H的WiFi热点后，看G980H是离线的"
+    },
+    "8765": {
+      "id": 8765,
+      "time": "2026-10-12 18:25:12",
+      "sender": "45",
+      "text": "因为G300H不能提供上网服务"
+    },
+    "8777": {
+      "id": 8777,
+      "time": "2026-10-12 18:57:12",
+      "sender": "45",
+      "text": "不要APP提交，电脑或者手机接记录仪，取本地日志"
+    },
+    "8778": {
+      "id": 8778,
+      "time": "2026-10-12 18:57:28",
+      "sender": "45",
+      "text": "本地抓取一定是最新的"
+    },
+    "8819": {
+      "id": 8819,
+      "time": "2026-10-13 07:50:34",
+      "sender": "112",
+      "text": "也可以用电脑取下4G日志和记录仪日志"
+    },
+    "8948": {
+      "id": 8948,
+      "time": "2026-10-13 10:52:00",
+      "sender": "112",
+      "text": "好的，辛苦再传下4G +记录仪日志"
+    },
+    "9018": {
+      "id": 9018,
+      "time": "2026-10-13 14:40:02",
+      "sender": "45",
+      "text": "熄火后离线的问题，最近会提测一版固件，尝试优化"
+    },
+    "9056": {
+      "id": 9056,
+      "time": "2026-10-13 19:21:30",
+      "sender": "112",
+      "text": "误识别问题，算法还在优化中，后面推给大家"
+    },
+    "9115": {
+      "id": 9115,
+      "time": "2026-10-13 20:24:56",
+      "sender": "45",
+      "text": "绿=优秀，黄=良好"
+    },
+    "9133": {
+      "id": 9133,
+      "time": "2026-10-13 21:22:41",
+      "sender": "45",
+      "text": "S（1）就是定位成功"
+    },
+    "9134": {
+      "id": 9134,
+      "time": "2026-10-13 21:22:51",
+      "sender": "45",
+      "text": "定位不成功是S（0）"
+    },
+    "9139": {
+      "id": 9139,
+      "time": "2026-10-13 21:23:58",
+      "sender": "45",
+      "text": "是的，GPS符号灰色就是定位不成功，白色是定位成功"
+    },
+    "9227": {
+      "id": 9227,
+      "time": "2026-10-14 11:24:55",
+      "sender": "2",
+      "text": "APP在公测期间必须使用群里版本哈"
+    },
+    "9228": {
+      "id": 9228,
+      "time": "2026-10-14 11:25:02",
+      "sender": "2",
+      "text": "正式的还未完全适配"
+    },
+    "9259": {
+      "id": 9259,
+      "time": "2026-10-14 14:31:17",
+      "sender": "89",
+      "text": "记录仪不支持定时自动日志上传"
+    },
+    "9272": {
+      "id": 9272,
+      "time": "2026-10-14 15:00:51",
+      "sender": "89",
+      "text": "别，您先保留一下现场"
+    },
+    "9387": {
+      "id": 9387,
+      "time": "2026-10-14 20:25:19",
+      "sender": "565",
+      "text": "同样是13号18:22远程看和车内看，一个在非洲，没有行驶数据，一个是正常的"
+    },
+    "9392": {
+      "id": 9392,
+      "time": "2026-10-14 20:28:56",
+      "sender": "565",
+      "text": "还没测完，会不会给大家延长云服务"
+    },
+    "9438": {
+      "id": 9438,
+      "time": "2026-10-14 21:33:39",
+      "sender": "4",
+      "text": "云服务七天后过期吗"
+    },
+    "9456": {
+      "id": 9456,
+      "time": "2026-10-15 08:23:21",
+      "sender": "112",
+      "text": "好的 辛苦观察下 有没有频繁触发或者该触发的场景没有触发的情况"
+    },
+    "9622": {
+      "id": 9622,
+      "time": "2026-10-15 15:17:11",
+      "sender": "112",
+      "text": "［提及已略］从您反馈的日志上看是因为卡的原因导致的断录和无响应的，请您在PC端进行深度格式化再使用，如果还是有问题您随时联系我"
+    },
+    "9689": {
+      "id": 9689,
+      "time": "2026-10-15 16:50:24",
+      "sender": "217",
+      "text": "我以为电瓶要没电了呢"
+    },
+    "9691": {
+      "id": 9691,
+      "time": "2026-10-15 16:50:45",
+      "sender": "45",
+      "text": "OK，所以是没发动车辆的时候，AOV哨兵模式下，您按键开机？"
+    },
+    "9698": {
+      "id": 9698,
+      "time": "2026-10-15 16:52:23",
+      "sender": "45",
+      "text": "需要您启动车辆，确保ACC ON输出"
+    },
+    "9701": {
+      "id": 9701,
+      "time": "2026-10-15 16:53:29",
+      "sender": "45",
+      "text": "不是的，车辆熄火状态下，对记录仪做操作，有亏电风险，这个是预防对策。并不是说您的电瓶即将亏电"
+    },
+    "9703": {
+      "id": 9703,
+      "time": "2026-10-15 16:54:57",
+      "sender": "45",
+      "text": "离线的问题，软件同事还在分析"
+    },
+    "9705": {
+      "id": 9705,
+      "time": "2026-10-15 16:58:08",
+      "sender": "45",
+      "text": "信息收到，是降压线没有输出ACC ON，所以新固件生效后，只对当前状态做了检测，没有识别到ACC状态，就误以为是车充供电了"
+    },
+    "9729": {
+      "id": 9729,
+      "time": "2026-10-15 19:23:12",
+      "sender": "45",
+      "text": "［提及已略］是8:00~8:02的4G轨迹缺失吗？\n然后手机WiFi连记录仪，APP看轨迹在？"
+    },
+    "9730": {
+      "id": 9730,
+      "time": "2026-10-15 19:24:00",
+      "sender": "565",
+      "text": "是的，4g轨迹没有，车内连接记录仪是有轨迹的"
+    },
+    "9736": {
+      "id": 9736,
+      "time": "2026-10-15 19:38:27",
+      "sender": "565",
+      "text": "已提交日志"
+    },
+    "9810": {
+      "id": 9810,
+      "time": "2026-10-16 10:17:35",
+      "sender": "112",
+      "text": "@吕关兴-86ANFC2163040 @向云俊15闫贺112 早上好，2.0.56新版本优化了离线，辛苦各位有空升级下测试包观察下问题"
+    },
+    "9824": {
+      "id": 9824,
+      "time": "2026-10-16 11:18:49",
+      "sender": "45",
+      "text": "看看OBD降压线保护电压设定，不要使用12.6V"
+    },
+    "9835": {
+      "id": 9835,
+      "time": "2026-10-16 11:44:10",
+      "sender": "112",
+      "text": "［提及已略］给您先推一版离线优化固件可以吗，我们也会看下您的离线原因后面进行解决"
+    },
+    "9840": {
+      "id": 9840,
+      "time": "2026-10-16 11:45:36",
+      "sender": "112",
+      "text": "［提及已略］重新上下电也行，辛苦检测下升级"
+    },
+    "9866": {
+      "id": 9866,
+      "time": "2026-10-16 12:01:02",
+      "sender": "45",
+      "text": "根据以前的经验，经常未录满用户设定时长（比如3分钟或者5分钟）大概率是内存卡写卡速度不够了"
+    },
+    "9868": {
+      "id": 9868,
+      "time": "2026-10-16 12:01:58",
+      "sender": "45",
+      "text": "需要您的日志复核一下。录像文件异常或者网络信号差，都可能导致远程文件无法顺利播放"
+    },
+    "10022": {
+      "id": 10022,
+      "time": "2026-10-18 20:27:01",
+      "sender": "45",
+      "text": "［提及已略］AOV哨兵达到预定时间，就转停车监控了"
+    },
+    "10241": {
+      "id": 10241,
+      "time": "2026-10-19 13:55:04",
+      "sender": "45",
+      "text": "［提及已略］您的车型是？"
+    },
+    "10319": {
+      "id": 10319,
+      "time": "2026-10-19 16:58:39",
+      "sender": "45",
+      "text": "［提及已略］是不是手动把曝光调低了？"
+    },
+    "10320": {
+      "id": 10320,
+      "time": "2026-10-19 16:59:05",
+      "sender": "45",
+      "text": "G980有增加曝光设定选项"
+    },
+    "10325": {
+      "id": 10325,
+      "time": "2026-10-19 17:03:44",
+      "sender": "542",
+      "text": "［提及已略］帮忙提交一个日志哈"
+    },
+    "10345": {
+      "id": 10345,
+      "time": "2026-10-19 17:23:10",
+      "sender": "542",
+      "text": "［提及已略］视频暗的日志帮忙也发这群里"
+    },
+    "10393": {
+      "id": 10393,
+      "time": "2026-10-19 18:44:41",
+      "sender": "45",
+      "text": "新能源电车不要破线安装降压线，我们问过车厂的"
+    },
+    "10398": {
+      "id": 10398,
+      "time": "2026-10-19 18:45:08",
+      "sender": "45",
+      "text": "油车的老板，有普通降压线的可以换回来验证一下"
+    },
+    "10462": {
+      "id": 10462,
+      "time": "2026-10-30 09:34:48",
+      "sender": "2",
+      "text": "电车不用"
+    },
+    "10468": {
+      "id": 10468,
+      "time": "2026-10-30 09:42:20",
+      "sender": "254",
+      "text": "之前测试哨兵模式有误别的问题，请之前的公测同志们，观察一下，升级后是否改善了误报的"
+    },
+    "10472": {
+      "id": 10472,
+      "time": "2026-10-30 09:45:37",
+      "sender": "104",
+      "text": "暂无误报。"
+    },
+    "10474": {
+      "id": 10474,
+      "time": "2026-10-30 09:46:07",
+      "sender": "728",
+      "text": "暂无误报"
+    },
+    "10478": {
+      "id": 10478,
+      "time": "2026-10-30 09:48:45",
+      "sender": "2",
+      "text": "不强制，需要的用户换，不需要的不用换，选否就行"
+    },
+    "10497": {
+      "id": 10497,
+      "time": "2026-10-30 09:54:07",
+      "sender": "2",
+      "text": "普通降压线是临时新增的需求"
+    },
+    "10560": {
+      "id": 10560,
+      "time": "2026-10-30 11:44:54",
+      "sender": "562",
+      "text": "充电宝供电"
+    },
+    "10561": {
+      "id": 10561,
+      "time": "2026-10-30 11:45:35",
+      "sender": "45",
+      "text": "不支持充电宝供电"
+    },
+    "10562": {
+      "id": 10562,
+      "time": "2026-10-30 11:46:09",
+      "sender": "562",
+      "text": "之前那个版本我试了支持的"
+    },
+    "10563": {
+      "id": 10563,
+      "time": "2026-10-30 11:46:20",
+      "sender": "562",
+      "text": "升了版本不支持了"
+    },
+    "10585": {
+      "id": 10585,
+      "time": "2026-10-30 12:27:59",
+      "sender": "112",
+      "text": "熄火没有启动车辆按电源键是开不了机"
+    },
+    "10604": {
+      "id": 10604,
+      "time": "2026-10-30 14:17:09",
+      "sender": "45",
+      "text": "您的车辆是在临街情况，有高墙遮挡吗？"
+    },
+    "10613": {
+      "id": 10613,
+      "time": "2026-10-30 14:19:53",
+      "sender": "45",
+      "text": "密集的楼宇，对GPS、BDS定位有一些影响。国内BDS信号是强于GPS的，这种完全接收不到BDS的情况很少见。也需要日志"
+    },
+    "10681": {
+      "id": 10681,
+      "time": "2026-10-30 18:30:48",
+      "sender": "112",
+      "text": "61还没验证完，待验证完再推给大家"
+    },
+    "10750": {
+      "id": 10750,
+      "time": "2026-10-21 08:03:13",
+      "sender": "112",
+      "text": "［提及已略］辛苦提交下固件日志 有人靠近的视频 和有人靠近前面一帧一秒的AOV视频（在车内看缩时录影相册中可以下载）"
+    },
+    "10774": {
+      "id": 10774,
+      "time": "2026-10-21 08:57:39",
+      "sender": "112",
+      "text": "没关系 是不是提交日志勾选了下次关闭  卡里再放下syslog.txt"
+    },
+    "10840": {
+      "id": 10840,
+      "time": "2026-10-21 10:18:57",
+      "sender": "89",
+      "text": "收到，麻烦再发一下AOV一秒一帧之后的事件视频吧，辛苦啦~ ［提及已略］"
+    },
+    "10910": {
+      "id": 10910,
+      "time": "2026-10-21 13:05:13",
+      "sender": "112",
+      "text": "等有空了辛苦从TF卡中拷贝一份日志"
+    },
+    "10938": {
+      "id": 10938,
+      "time": "2026-10-21 15:29:37",
+      "sender": "112",
+      "text": "［提及已略］帮忙用TF卡取下日志"
+    },
+    "11003": {
+      "id": 11003,
+      "time": "2026-10-21 17:34:11",
+      "sender": "45",
+      "text": "锁车后，才能ACC OFF"
+    },
+    "11017": {
+      "id": 11017,
+      "time": "2026-10-21 17:41:14",
+      "sender": "45",
+      "text": "群里有A6L车主，不锁车，不断开ACC"
+    },
+    "11019": {
+      "id": 11019,
+      "time": "2026-10-21 17:51:35",
+      "sender": "4",
+      "text": "刚升的2.0.63，停车熄火，2分40秒后进入哨兵模式"
+    },
+    "11093": {
+      "id": 11093,
+      "time": "2026-10-21 19:36:13",
+      "sender": "45",
+      "text": "麻烦您继续测试，启动车辆，过2-3分钟后熄火，然后锁车。是否在5分钟内进入停车监控？"
+    },
+    "11144": {
+      "id": 11144,
+      "time": "2026-10-21 20:50:46",
+      "sender": "89",
+      "text": "您还有别的视频播放器吗，可以用别的软件打开一下试试"
+    },
+    "11145": {
+      "id": 11145,
+      "time": "2026-10-21 20:51:14",
+      "sender": "89",
+      "text": "有可能是播放器原因，这个视频在app上播放也是这样不"
+    },
+    "11148": {
+      "id": 11148,
+      "time": "2026-10-21 20:53:25",
+      "sender": "108",
+      "text": "升级完以后离线了"
+    },
+    "11210": {
+      "id": 11210,
+      "time": "2026-10-21 22:13:01",
+      "sender": "217",
+      "text": "7分钟进的哨兵模式"
+    },
+    "11216": {
+      "id": 11216,
+      "time": "2026-10-21 22:19:27",
+      "sender": "45",
+      "text": "有些车需要锁车才进哨兵"
+    },
+    "11217": {
+      "id": 11217,
+      "time": "2026-10-21 22:19:47",
+      "sender": "45",
+      "text": "obd降压线适配的问题"
+    },
+    "11225": {
+      "id": 11225,
+      "time": "2026-10-22 08:13:19",
+      "sender": "740",
+      "text": "早上解锁进到车里，然后点火，正常从哨兵模式进入到录像模式，这样就是正常的。然后把 4G 云盒还装上就好了，是吧？"
+    },
+    "11227": {
+      "id": 11227,
+      "time": "2026-10-22 08:14:35",
+      "sender": "45",
+      "text": "［提及已略］还需要APP看一下昨晚的视频"
+    },
+    "11258": {
+      "id": 11258,
+      "time": "2026-10-22 08:45:56",
+      "sender": "45",
+      "text": "［提及已略］看着可能是低电保护了"
+    },
+    "11260": {
+      "id": 11260,
+      "time": "2026-10-22 08:46:22",
+      "sender": "45",
+      "text": "缩时录影到了凌晨三点多就结束了"
+    },
+    "11263": {
+      "id": 11263,
+      "time": "2026-10-22 08:47:59",
+      "sender": "108",
+      "text": "另外早晨八点了。红外还开这么。衣服颜色都不对"
+    },
+    "11266": {
+      "id": 11266,
+      "time": "2026-10-22 08:51:37",
+      "sender": "45",
+      "text": "红外颜色错乱也是降压线低电保护导致的"
+    },
+    "11268": {
+      "id": 11268,
+      "time": "2026-10-22 08:52:27",
+      "sender": "108",
+      "text": "但是电瓶不应该低到11.8."
+    },
+    "11269": {
+      "id": 11269,
+      "time": "2026-10-22 08:52:39",
+      "sender": "108",
+      "text": "每天早晨我看都在12.1-3"
+    },
+    "11275": {
+      "id": 11275,
+      "time": "2026-10-22 08:55:52",
+      "sender": "230",
+      "text": "OBD线直接连记录仪，app近场查看循环录像：系统正在切换工作模式，请稍后再试"
+    },
+    "11282": {
+      "id": 11282,
+      "time": "2026-10-22 08:57:48",
+      "sender": "104",
+      "text": "缩时录影出现紫屏闪烁"
+    },
+    "11283": {
+      "id": 11283,
+      "time": "2026-10-22 08:58:33",
+      "sender": "45",
+      "text": "原视频打包给我。这个问题我们在解决了。如果对策有效，会推送固件"
+    },
+    "8226": {
+      "id": 8226,
+      "time": "2026-10-10 18:36:26",
+      "sender": "45",
+      "text": "群里也有用户反馈下载网速的问题，解释一下：\n目前WiFi速度，极限值可以达到20MB/s；\n4G视网络信号情况，大约在2MB/s左右，很差的时候可能是KB级别"
+    },
+    "8414": {
+      "id": 8414,
+      "time": "2026-10-12 11:53:56",
+      "sender": "45",
+      "text": "记录仪主机屏幕右下角：\n网络状态绿色常亮——4G驻网，随时可以开流；闪烁——通讯中，模组硬件连接正常，但是没有外网"
+    },
+    "8417": {
+      "id": 8417,
+      "time": "2026-10-12 11:56:06",
+      "sender": "45",
+      "text": "各位4G网络不通的时候，请观察一下屏幕上的4G状态"
+    },
+    "8423": {
+      "id": 8423,
+      "time": "2026-10-12 12:00:35",
+      "sender": "45",
+      "text": "您手机APP上看直播的时候，可以看到这个屏幕状态符号闪烁"
+    },
+    "8398": {
+      "id": 8398,
+      "time": "2026-10-12 11:34:27",
+      "sender": "45",
+      "text": "今天我会打扰各位反馈过死机、重启、4G离线等异常的用户，稍后一一交流"
+    },
+    "8469": {
+      "id": 8469,
+      "time": "2026-10-12 12:19:19",
+      "sender": "45",
+      "text": "主机异常重启、死机的问题@孙乐"
+    },
+    "8596": {
+      "id": 8596,
+      "time": "2026-10-12 15:40:29",
+      "sender": "45",
+      "text": "打扰，看到您9月21日反馈的车辆点火状态下，记录仪死机了，摄像头画面无变化，App后台显示离线。目前还有遇到吗？"
+    },
+    "8599": {
+      "id": 8599,
+      "time": "2026-10-12 15:43:11",
+      "sender": "45",
+      "text": "已经加您的微信，可以放syslog一直保持日志，如果遇到死机的情况，把日志发给我，我来跟进调查异常原因"
+    },
+    "8104": {
+      "id": 8104,
+      "time": "2026-10-10 14:45:57",
+      "sender": "112",
+      "text": "如果有遇到死机、卡死的情况也辛苦传下日志[抱拳]"
+    },
+    "5779": {
+      "id": 5779,
+      "time": "2026-09-22 21:18:41",
+      "sender": "112",
+      "text": "@叮当猫-秦世游-86ANFC216300000139 辛苦先提交下日志吧  提交完日志拔掉4G盒子端的电源线 等待记录仪主机指示灯完全灭了再上电应该能恢复"
+    },
+    "2818": {
+      "id": 2818,
+      "time": "2026-09-20 13:41:05",
+      "sender": "45",
+      "text": "新能源车辆有双电瓶，降压线可以设定11.8V低电保护。小电瓶电压低后，动力电池会给补电"
+    },
+    "7597": {
+      "id": 7597,
+      "time": "2026-09-30 14:44:32",
+      "sender": "45",
+      "text": "是停车很久了？还是刚停下来？"
+    },
+    "5728": {
+      "id": 5728,
+      "time": "2026-09-22 20:27:24",
+      "sender": "112",
+      "text": "@了了无期86ANFC216300000110 您好，有空时能帮忙打开日志，重新复测下这个问题吗【把左右镜头镜像关闭后，再去查看实时画面，无法加载，试了好几次了都不行】"
+    },
+    "5754": {
+      "id": 5754,
+      "time": "2026-09-22 20:45:11",
+      "sender": "112",
+      "text": "@了了无期86ANFC216300000110 需要去车上，等方便的时候就可以，不用专门去。先打开日志然后复现问题提日志。"
+    },
+    "9017": {
+      "id": 9017,
+      "time": "2026-10-13 14:40:02",
+      "sender": "45",
+      "text": "熄火后离线的问题，最近会提测一版固件，尝试优化"
+    },
+    "9235": {
+      "id": 9235,
+      "time": "2026-10-14 11:32:33",
+      "sender": "341",
+      "text": "@闫贺-86ANFC216300000112 先不用传日志了，近期会推出记录仪新固件来修复离线问题，升级后如果还有离线问题再传就行。"
+    },
+    "9752": {
+      "id": 9752,
+      "time": "2026-10-15 21:54:37",
+      "sender": "112",
+      "text": "您好，根据您反馈的离线场景我们在技术上做了优化，看下是否能解决您的问题。单独给您推一个2.0.55的测试包"
+    },
+    "9451": {
+      "id": 9451,
+      "time": "2026-10-15 08:21:27",
+      "sender": "112",
+      "text": "各位老板 紧急视频灵敏度新版本用着怎么样？"
+    },
+    "11304": {
+      "id": 11304,
+      "time": "2026-10-22 09:12:09",
+      "sender": "赵华平-980H",
+      "text": "同一段路，我就掉了个头，怎么视频差这么多？"
+    },
+    "11310": {
+      "id": 11310,
+      "time": "2026-10-22 09:16:09",
+      "sender": "周琦强-980H",
+      "text": "@硬件-孙工 我的缩时录影也出现了紫屏闪烁"
+    },
+    "11311": {
+      "id": 11311,
+      "time": "2026-10-22 09:16:26",
+      "sender": "林志澄--980H",
+      "text": "10月22日缩时录影紫屏闪烁原始视频-林志澄.zip 6 0 0 0 131241115 @cdn_7f0c000002206a9832dbb11cae5bd7e2c9fd46a9f51e414ab50fb23a0b24ff0a309eb21e3d37030107070000a0a9ca3e00040105031b020106ddf0b70107fd9ad1fc0708029ec097ed0904"
+    },
+    "11322": {
+      "id": 11322,
+      "time": "2026-10-22 09:21:47",
+      "sender": "360-孙乐",
+      "text": "@潘登铿-86ANFC216300000089 需要提供一下日志 view 57 false -1 -1 3 2818135412839092364 56027230662@chatroom panweiaa 潘登铿-86ANFC216300000089 &lt;?xml version=\"1.0\"?&gt; &lt;msg&gt; &lt;img aeskey=\"76aab053f50157af"
+    },
+    "11324": {
+      "id": 11324,
+      "time": "2026-10-22 09:22:33",
+      "sender": "360-孙乐",
+      "text": "@魏健伟86ANFC216300000187 换一张存储卡"
+    },
+    "11328": {
+      "id": 11328,
+      "time": "2026-10-22 09:27:36",
+      "sender": "林志澄--980H",
+      "text": "@硬件-孙工 夜晚的缩时录影也不正常，没有紫屏，但是偶尔画面会抽动闪烁一下。"
+    },
+    "11331": {
+      "id": 11331,
+      "time": "2026-10-22 09:29:50",
+      "sender": "360-孙乐",
+      "text": "@魏健伟86ANFC216300000187 是的。您这张卡掉速有点严重"
+    },
+    "11336": {
+      "id": 11336,
+      "time": "2026-10-22 09:31:49",
+      "sender": "360-孙乐",
+      "text": "@林志澄+86ANFC216300000103  @周琦强86ANFC216300000125 两位反馈的摄像头紫屏问题和我们测试发现的一样，研发同事正在处理"
+    },
+    "11350": {
+      "id": 11350,
+      "time": "2026-10-22 09:45:35",
+      "sender": "360-孙乐",
+      "text": "哨兵模式的AEC和循环录像的AEC不一样。刚启动车辆的时候，AEC还是哨兵模式的，几秒后切换"
+    },
+    "11357": {
+      "id": 11357,
+      "time": "2026-10-22 09:46:56",
+      "sender": "360-孙乐",
+      "text": "昨天请各位不带着4G云盒测试，目前就是想了解，是不是降压线保护导致的记录仪关机（进而4G离线）"
+    },
+    "11391": {
+      "id": 11391,
+      "time": "2026-10-22 10:03:17",
+      "sender": "林志澄--980H",
+      "text": "@产品-夏工 AOV哨兵模式。只有前路，紫屏也只有前路的。"
+    },
+    "11399": {
+      "id": 11399,
+      "time": "2026-10-22 10:22:55",
+      "sender": "陈占学-980H",
+      "text": "@产品-夏工 紫屏都是前录的aov缩时录影录制的"
+    },
+    "11409": {
+      "id": 11409,
+      "time": "2026-10-22 11:56:24",
+      "sender": "陈占学-980H",
+      "text": "11:00出现记录仪重启，开始播报:停止录像，然后自动关机重启，查看卡录视频发现有好多断录情况，日志已经上传麻烦技术查收"
+    },
+    "11412": {
+      "id": 11412,
+      "time": "2026-10-22 12:26:52",
+      "sender": "苏冬冬-980H",
+      "text": "2个缩时录影是紫屏"
+    },
+    "11420": {
+      "id": 11420,
+      "time": "2026-10-22 12:54:31",
+      "sender": "49",
+      "text": "\"闫鹰飞 -980H 4G公测\" 撤回了一条消息  0"
+    },
+    "11472": {
+      "id": 11472,
+      "time": "2026-10-22 15:17:22",
+      "sender": "360测试-刘聃",
+      "text": "@潘登铿-86ANFC216300000089 看到了，感谢 view 57 0 1 2516354758851252542 56027230662@chatroom panweiaa 1792653388 潘登铿-86ANFC216300000089 &lt;msgsource&gt; &lt;atuserlist&gt;beibanqiudengni_521&lt;/atuserlist&gt"
+    },
+    "11473": {
+      "id": 11473,
+      "time": "2026-10-22 15:23:13",
+      "sender": "360测试-刘聃",
+      "text": "@潘登铿-86ANFC216300000089 您好，您提交的日志没有固件日志，辛苦有空时在车上提交下固件日志"
+    },
+    "11476": {
+      "id": 11476,
+      "time": "2026-10-22 15:30:51",
+      "sender": "360测试-刘聃",
+      "text": "日志开关重开启下，后者手动在MISC 中创建一个syslog.txt"
+    },
+    "11480": {
+      "id": 11480,
+      "time": "2026-10-22 15:33:04",
+      "sender": "360测试-刘聃",
+      "text": "LOG文件"
+    },
+    "11499": {
+      "id": 11499,
+      "time": "2026-10-22 17:30:21",
+      "sender": "林志澄--980H",
+      "text": "@北半球 @硬件-孙工 报告一下，63固件今天一整天都没有离线～"
+    },
+    "11508": {
+      "id": 11508,
+      "time": "2026-10-22 17:46:07",
+      "sender": "金福雪-360",
+      "text": "@吕关兴-86ANFC216300000040    @闫贺-86ANFC216300000112 也辛苦两位关注一下，升级到61版本之后，设备还有没有异常离线问题~"
+    },
+    "11511": {
+      "id": 11511,
+      "time": "2026-10-22 17:46:52",
+      "sender": "闫贺-980H",
+      "text": "没离线，非常good@凌大于天"
+    },
+    "11514": {
+      "id": 11514,
+      "time": "2026-10-22 17:48:01",
+      "sender": "吕关兴-980H",
+      "text": "@凌大于天 晚上好！我的白天还是离线。今天设定电压11.8v了，推测可能和电池电量不足有关。准备换个新电池测试"
+    },
+    "11521": {
+      "id": 11521,
+      "time": "2026-10-22 17:56:17",
+      "sender": "陶双-980H",
+      "text": "定位每次到这里就没有了"
+    },
+    "11532": {
+      "id": 11532,
+      "time": "2026-10-22 18:14:58",
+      "sender": "苏冬冬-980H",
+      "text": "4G云盒接上了，今天的行车轨迹没了"
+    },
+    "11533": {
+      "id": 11533,
+      "time": "2026-10-22 18:15:21",
+      "sender": "苏冬冬-980H",
+      "text": "蓝牙连接，车内看是有轨迹的"
+    },
+    "11535": {
+      "id": 11535,
+      "time": "2026-10-22 18:21:49",
+      "sender": "闫鹰飞",
+      "text": "这个后台没有上传数据了吧"
+    },
+    "11536": {
+      "id": 11536,
+      "time": "2026-10-22 18:21:53",
+      "sender": "娄泽彬-980H",
+      "text": "之前记录仪通过4g云盒取电就容易过热黑屏，改成降压线直连就不会黑屏了 57 49 5541632299500523091 56027230662@chatroom wxid_qf702us6xred21 凌大于天 &lt;msg&gt;&lt;appmsg appid=\"\"  sdkver=\"0\"&gt;&lt;title&gt;您的意思是，之前使用的降压线有黑屏情况是么~&lt;/title&g"
+    },
+    "11537": {
+      "id": 11537,
+      "time": "2026-10-22 18:24:15",
+      "sender": "闫鹰飞",
+      "text": "主要看还是4g云盒位置，南方热可能有问题，北方用户应该没啥事，我的没有离线"
+    },
+    "11538": {
+      "id": 11538,
+      "time": "2026-10-22 18:24:45",
+      "sender": "林志澄--980H",
+      "text": "我今天没离线，也有可能是今天比较凉快"
+    },
+    "11540": {
+      "id": 11540,
+      "time": "2026-10-22 18:25:07",
+      "sender": "林志澄--980H",
+      "text": "不过，63版本是有优化离线的，所以也有可能是固件上已经解决了"
+    },
+    "11544": {
+      "id": 11544,
+      "time": "2026-10-22 18:31:41",
+      "sender": "闫鹰飞",
+      "text": "群里统计下离线的用户是南方还是北方，我感觉北方地区故障低，主要是看前期设计设备的功耗！"
+    },
+    "11545": {
+      "id": 11545,
+      "time": "2026-10-22 18:32:04",
+      "sender": "张宁-980H",
+      "text": "我北方就没离线过，可能南方太热吧，我主要遇到的问题就是gps行车轨迹，每次都短一部分，有时还没地图，有时地图路线错误。大问题还真没咋遇到。"
+    },
+    "11551": {
+      "id": 11551,
+      "time": "2026-10-22 18:38:14",
+      "sender": "闫鹰飞",
+      "text": "后续还是分开供电会更稳定！这个就是交给研发了"
+    },
+    "11560": {
+      "id": 11560,
+      "time": "2026-10-22 19:05:20",
+      "sender": "孙洪士-980H",
+      "text": "你们的停车监控期间或者是行车录像期间有没有漏路现象?没有个十几秒半分钟的漏录现象吗？停车监控期间还发现有甚至十几分钟的漏录"
+    },
+    "11562": {
+      "id": 11562,
+      "time": "2026-10-22 19:08:28",
+      "sender": "孙洪士-980H",
+      "text": "哦，但是用360的卡也会有漏录现象"
+    },
+    "11567": {
+      "id": 11567,
+      "time": "2026-10-22 19:21:40",
+      "sender": "吕关兴-980H",
+      "text": "刚去检测了电池好像不行了。"
+    },
+    "11568": {
+      "id": 11568,
+      "time": "2026-10-22 19:22:11",
+      "sender": "吕关兴-980H",
+      "text": "先别耗时确认我这个离线问题，等我换电池下周反馈"
+    },
+    "11605": {
+      "id": 11605,
+      "time": "2026-10-23 07:53:11",
+      "sender": "蒋晓昀-980H",
+      "text": "我是在电脑格式化了，去掉快速勾选，格了一个多小时[破涕为笑]"
+    },
+    "11606": {
+      "id": 11606,
+      "time": "2026-10-23 07:53:46",
+      "sender": "许军州-980H",
+      "text": "我之前连记录仪一直没格式化成功，但不影响使用，估计是开了保护了吧"
+    },
+    "11609": {
+      "id": 11609,
+      "time": "2026-10-23 08:28:33",
+      "sender": "孙洪士-980H",
+      "text": "你们的视频都是连续的吗？我用的是360行车记录仪的卡，在电脑上已经完全格式化，我只有五幺固件版本的时候，没有太多的漏录，别的版本都有漏录 view 57 false -1 -1 1 7812658231695590496 56027230662@chatroom wxid_u844klj9m6ou22 蒋晓昀-86ANFC216300000119 正常应该是连续的，你的卡大概也不大好了 &lt;m"
+    },
+    "11610": {
+      "id": 11610,
+      "time": "2026-10-23 08:29:01",
+      "sender": "孙洪士-980H",
+      "text": "这几个版本不管是360的卡或者是闪迪的卡都有断路或者漏路"
+    },
+    "11615": {
+      "id": 11615,
+      "time": "2026-10-23 08:46:07",
+      "sender": "闫贺-980H",
+      "text": "我这个就刚打开有，然后都漏录了[捂脸]"
+    },
+    "11618": {
+      "id": 11618,
+      "time": "2026-10-23 08:49:23",
+      "sender": "闫贺-980H",
+      "text": "23号我这个只有一个视频"
+    },
+    "11625": {
+      "id": 11625,
+      "time": "2026-10-23 08:55:42",
+      "sender": "孙洪士-980H",
+      "text": "平时拔内存卡都会关机，这次拔内存卡没有关机，而且格式化内存卡已经有八分钟了，还没有格式化完成"
+    },
+    "11629": {
+      "id": 11629,
+      "time": "2026-10-23 08:57:19",
+      "sender": "孙洪士-980H",
+      "text": "为啥格式化那么慢？我关机重启，再隔一次看看能隔多久"
+    },
+    "11630": {
+      "id": 11630,
+      "time": "2026-10-23 08:57:31",
+      "sender": "孙洪士-980H",
+      "text": "两分钟"
+    },
+    "6719": {
+      "id": 6719,
+      "time": "2026-09-24 18:25:22",
+      "sender": "2",
+      "text": "@所有人 提前祝大家中秋快乐 群公告补充了上市后流量和云录的收费标准，请知悉，后续会根据大家表现适当赠送流量，具体方案待定 群公告新增了1个作业，请大家及时完成，作业周期比较长，欢迎大家测试不同模式[玫瑰][玫瑰][玫瑰]"
+    },
+    "13071": {
+      "id": 13071,
+      "time": "2026-10-29 17:18:37",
+      "sender": "闫贺",
+      "text": "流量不是终身免流了吗"
+    },
+    "13072": {
+      "id": 13072,
+      "time": "2026-10-29 17:20:14",
+      "sender": "赵华平",
+      "text": "内测期间无限流量"
+    },
+    "13077": {
+      "id": 13077,
+      "time": "2026-10-29 17:23:29",
+      "sender": "2",
+      "text": "最新的流量云录策略上线了"
+    },
+    "13220": {
+      "id": 13220,
+      "time": "2026-10-29 18:23:37",
+      "sender": "周琦强",
+      "text": "我算了一下我停在不是很热闹的地方7天触发了108次事件"
+    },
+    "13221": {
+      "id": 13221,
+      "time": "2026-10-29 18:23:58",
+      "sender": "周琦强",
+      "text": "算下来一个月三十七八g流量还是要的"
+    },
+    "13088": {
+      "id": 13088,
+      "time": "2026-10-29 17:27:56",
+      "sender": "孙洪士",
+      "text": "那我们自己的流量卡插进去能用吗？"
+    },
+    "13258": {
+      "id": 13258,
+      "time": "2026-10-29 19:18:44",
+      "sender": "360",
+      "text": "可以把自己的流量卡塞入云盒来用 但是360的物联网sim卡不能插入其他设备用"
+    },
+    "13108": {
+      "id": 13108,
+      "time": "2026-10-29 17:42:33",
+      "sender": "魏健伟 ",
+      "text": "能不能出一个4G永久免流的套餐"
+    },
+    "13176": {
+      "id": 13176,
+      "time": "2026-10-29 18:12:45",
+      "sender": "郭方胜",
+      "text": "发现app一个bug，已经开通了永久云录的，还能选中开启同一个套餐 57 0 0 0 0 &lt;img hdlength=\"202752\" length=\"91524\" hevc_mid_size=\"91524\" cdnbigimgurl=\"305f020100044b30490201000204a0afda4202"
+    },
+    "13167": {
+      "id": 13167,
+      "time": "2026-10-29 18:10:24",
+      "sender": "郭方胜",
+      "text": "如果能买永久套餐，坏了可以迁移到其他设备，这个就划算了，永久里现在是选不中记录仪的"
+    },
+    "12716": {
+      "id": 12716,
+      "time": "2026-10-27 22:22:06",
+      "sender": "王龙",
+      "text": "早上9.45停车熄火后，刚才开车发现无法点火了"
+    },
+    "12718": {
+      "id": 12718,
+      "time": "2026-10-27 22:22:24",
+      "sender": "王龙",
+      "text": "更新这个版本后今天亏电到无法启动"
+    },
+    "12715": {
+      "id": 12715,
+      "time": "2026-10-27 22:22:01",
+      "sender": "360",
+      "text": "@王龙-86ANFC216300000106 汽车亏电了吗？"
+    },
+    "12500": {
+      "id": 12500,
+      "time": "2026-10-27 12:52:17",
+      "sender": "马姬",
+      "text": "@北半球 我的哨兵模式是漏报"
+    },
+    "12502": {
+      "id": 12502,
+      "time": "2026-10-27 13:15:41",
+      "sender": "马姬",
+      "text": "@北半球 新固件把之前漏报的问题解决了"
+    },
+    "13003": {
+      "id": 13003,
+      "time": "2026-10-29 08:54:48",
+      "sender": "陈占学",
+      "text": "还是建议给个高档位就是远近都录像，低档位就现在这样"
+    },
+    "12998": {
+      "id": 12998,
+      "time": "2026-10-29 08:39:12",
+      "sender": "陈占学",
+      "text": "就是现在这个哨兵侦测我还是喜欢开始那样远近全侦测录制的样子用着安心，现在漏录太多了"
+    },
+    "11740": {
+      "id": 11740,
+      "time": "2026-10-23 11:07:14",
+      "sender": "陈占学",
+      "text": "@Helen 现在设置远距离侦测相比原来的侦测还是低很多，稍微远点就不会触发录像，看看能不能设置远的情况下让侦测全画面触发，就是像原来那样远近都能触发"
+    },
+    "13061": {
+      "id": 13061,
+      "time": "2026-10-29 16:35:08",
+      "sender": "陈占学",
+      "text": "今天在车里休息发现在哨兵模式的情况下有人经过车前也看见记录仪启动了，指示灯闪烁并且后录灯长亮，应该是已经在触发录像的状态，但是查看卡录就是丢失这个时间的视频，缩录也没有事件视频也没有，就是缺少那当时启动录制视频的几十秒"
+    },
+    "12670": {
+      "id": 12670,
+      "time": "2026-10-27 20:15:30",
+      "sender": "陈占学",
+      "text": "设备端进相册一切正常没有问题，就是这种缩时录影两段视频中间会缺失几十秒"
+    },
+    "11757": {
+      "id": 11757,
+      "time": "2026-10-23 11:17:28",
+      "sender": "陈占学",
+      "text": "新版本只有车前近距离经过才触发，稍微远点就不会触发，并且现在的触发事件视频只有16秒，触发结束后还不会马上接上缩时，如果有人在车前过去再回来搞破坏是不会记录下来的"
+    },
+    "12543": {
+      "id": 12543,
+      "time": "2026-10-27 15:09:53",
+      "sender": "360测试",
+      "text": "@所有人 辛苦各位有空时再帮忙做个实验，记录仪端主界面点击相册，再进入循环视频相册点击“全部”或者“车前”查看是否可以立即进入相册 [抱拳]"
+    },
+    "12112": {
+      "id": 12112,
+      "time": "2026-10-25 09:36:05",
+      "sender": "苏冬冬",
+      "text": "正常，我的也是，要加载一次"
+    },
+    "12114": {
+      "id": 12114,
+      "time": "2026-10-25 09:37:31",
+      "sender": "260",
+      "text": "lance_zhang-: 体验不好，要优化一下，一次就要加载出来"
+    },
+    "12433": {
+      "id": 12433,
+      "time": "2026-10-27 09:35:56",
+      "sender": "魏健伟 ",
+      "text": "今天早上换了一张爱国者的试试看，手里现在只有这一张相对好点的卡，不行的话我再格式这张卡"
+    },
+    "12540": {
+      "id": 12540,
+      "time": "2026-10-27 15:05:49",
+      "sender": "360测试",
+      "text": "@魏健伟86ANFC216300000187 上午您反馈的问题是卡的原因，后面换卡或者格卡后辛苦继续观察"
+    },
+    "12839": {
+      "id": 12839,
+      "time": "2026-10-28 15:32:36",
+      "sender": "2",
+      "text": "@所有人 腾讯文档已私发各位，请大家基于最新的APP和固件进行验证，验证结果C列是选择哈 如果有新问题，请直接在私发大家的腾讯文档下面补充即可 所有未解决的问题、新问题，请确保都有图片/视频+提交了日志[玫瑰][玫瑰][玫瑰]"
+    },
+    "12843": {
+      "id": 12843,
+      "time": "2026-10-28 15:44:20",
+      "sender": "王刚红",
+      "text": "终测了，那APP里进去的电子版说明书应该修正一下错误了。。。"
+    },
+    "12848": {
+      "id": 12848,
+      "time": "2026-10-28 15:45:57",
+      "sender": "360",
+      "text": "电子说明书本周会更新 57 0 0 0 0 wghong 1 1793173460 1 1 1 76 N0_V1_6wdwA3VC|v1_bKMGb0Jl"
+    },
+    "12986": {
+      "id": 12986,
+      "time": "2026-10-29 08:21:08",
+      "sender": "王龙",
+      "text": "建议在这一块搞一个拆卸安装视频，看了这个图我表示不懂怎么拆卸，群里之前那个小姐姐录制的拆卸视频就非常好"
+    },
+    "13010": {
+      "id": 13010,
+      "time": "2026-10-29 09:01:18",
+      "sender": "2",
+      "text": "有安装视频小卡片的"
+    },
+    "12997": {
+      "id": 12997,
+      "time": "2026-10-29 08:35:12",
+      "sender": "陈占学",
+      "text": "后面会有官方的详细安装视频的"
+    },
+    "13066": {
+      "id": 13066,
+      "time": "2026-10-29 17:16:58",
+      "sender": "赵士达",
+      "text": "行车记录仪 紧急录像检测阈值应该再降低百分之 50 我试了试最高 平路都能触发"
+    },
+    "12434": {
+      "id": 12434,
+      "time": "2026-10-27 09:48:57",
+      "sender": "金福雪",
+      "text": "辛苦提供一下误报事件视频和误报前一秒一帧的缩时视频，卡取一下日志，感谢~ 57 0 0 0 0 我这个晚上又有很多人形检测 1793062034 刘晓顺86ANFC216300000124 56027230662@chatroom 1 1 1 76 &lt;sig"
+    },
+    "13303": {
+      "id": 13303,
+      "time": "2026-10-30 07:51:06",
+      "sender": "王飞龙",
+      "text": "日常问卷没有了吗"
+    },
+    "11898": {
+      "id": 11898,
+      "time": "2026-10-23 22:14:14",
+      "sender": "2@我",
+      "text": "@所有人 公测APP版本更新啦 请大家及时下载安装最新APP进行体验，有任何问题请随时群里反馈+填写日常问卷+提交日志[玫瑰][玫瑰][玫瑰] iOS可以等等testflight链接有更新时再下载更新[玫瑰][玫瑰][玫瑰] 0 0 1792764647 56027230662@chatroom 1360智慧生活_3."
+    },
+    "12035": {
+      "id": 12035,
+      "time": "2026-10-24 14:51:26",
+      "sender": "360测试",
+      "text": "@所有人 给大家推送了新固件，请及时到车上近场进行升级，2.0.69版本优化了离线、AOV视频曝光、视频画面暗等大家反馈的问题，大家可以重点关注一下 升级过程和升级后，有任何问题，请随时群里反馈+提交日志+填写日常问卷[玫瑰][玫瑰][玫瑰]"
+    },
+    "12310": {
+      "id": 12310,
+      "time": "2026-10-26 17:55:59",
+      "sender": "360测试",
+      "text": "@所有人 给大家推送了新固件，请及时到车上近场进行升级，2.0.70版本优化了app连接记录仪等大家反馈的问题，大家可以重点关注一下 升级过程和升级后，有任何问题，请随时群里反馈+提交日志+填写日常问卷[玫瑰][玫瑰][玫瑰]"
+    },
+    "12448": {
+      "id": 12448,
+      "time": "2026-10-27 11:12:22",
+      "sender": "360",
+      "text": "@所有人 iOS新版本已更新，请大家通过Testflight链接升级至3.1.0版本：https://testflight.apple.com/join/KLC18E01"
+    },
+    "12460": {
+      "id": 12460,
+      "time": "2026-10-27 11:42:06",
+      "sender": "360测试",
+      "text": "@王刚红-86ANFC216300000142 您好，有空时辛苦帮忙看下TF卡中是否还有core-开头的文件"
+    },
+    "11975": {
+      "id": 11975,
+      "time": "2026-10-24 10:07:24",
+      "sender": "360",
+      "text": "说明书近期会更新内容 57 1 56027230662@chatroom wxid_2343773437712 陶双➕86ANFC216300000176 说明书还是没更新吧 819361350 1 1 1 76&lt;/m"
+    },
+    "12329": {
+      "id": 12329,
+      "time": "2026-10-26 20:10:43",
+      "sender": "360",
+      "text": "打扰一下各位老板，最近60以后的固件，是否还遇到记录仪停录、漏录的情况？"
+    },
+    "11779": {
+      "id": 11779,
+      "time": "2026-10-23 12:35:29",
+      "sender": "闫贺",
+      "text": "@蒋晓昀-86ANFC216300000119 孙工解释的非常好，哨兵模式超时会自动转为停车监控，主要看自己设置的哨兵模式是多久。"
+    },
+    "13092": {
+      "id": 13092,
+      "time": "2026-10-29 17:30:32",
+      "sender": "张宁",
+      "text": "我记得好像卡在云盒插着呢吧"
+    },
+    "13228": {
+      "id": 13228,
+      "time": "2026-10-29 18:34:08",
+      "sender": "朱君",
+      "text": "能把 t200 的物联卡换到 980 上吗"
+    },
+    "13232": {
+      "id": 13232,
+      "time": "2026-10-29 18:36:46",
+      "sender": "周琦强",
+      "text": "物联卡肯定绑定串码的[憨笑]"
+    },
+    "13240": {
+      "id": 13240,
+      "time": "2026-10-29 18:47:06",
+      "sender": "2",
+      "text": "有锁卡风险"
+    },
+    "13125": {
+      "id": 13125,
+      "time": "2026-10-29 17:59:06",
+      "sender": "林志澄",
+      "text": "不过，70迈的是可以插自己的流量卡的。 57 0 0 0 0 70迈的4G监控线远程功能都是收费的。其他的厂家的不清楚。 1793267660 林志澄+86ANFC216300000103 foeverhuiyi 1 1 foeverhuiyi foeverhuiyi 0 1"
+    },
+    "13170": {
+      "id": 13170,
+      "time": "2026-10-29 18:10:41",
+      "sender": "陈占学",
+      "text": "需要多少取决于你用多少，要是插自己的卡5G没事就看看远程还是不太够的"
+    }
+  }
+}
+</script>
+<script>
+'use strict';
+const D = JSON.parse(document.getElementById('faqData').textContent);
+const $ = id => document.getElementById(id);
+const labels = {direct:'有明确答复',conditional:'条件或排查',issue:'问题跟进中',guide:'操作指引'};
+const esc = value => String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let mode='faq', toastTimer;
+for (const category of D.categories) { const option=document.createElement('option');option.value=category;option.textContent=category;$('category').append(option); }
+// Icon nodes are exported from the bundled Lucide library (ISC license).
+const iconNodes={"copy":[["rect",{"width":"14","height":"14","x":"8","y":"8","rx":"2","ry":"2"}],["path",{"d":"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"}]],"print":[["path",{"d":"M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"}],["path",{"d":"M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"}],["rect",{"x":"6","y":"14","width":"12","height":"8","rx":"1"}]],"download":[["path",{"d":"M12 15V3"}],["path",{"d":"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"}],["path",{"d":"m7 10 5 5 5-5"}]]};
+function icon(name){
+  const markup=iconNodes[name].map(([tag,attrs])=>`<${tag} ${Object.entries(attrs).map(([key,value])=>`${key}="${esc(value)}"`).join(' ')}></${tag}>`).join('');
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${markup}</svg>`;
+}
+$('printButton').insertAdjacentHTML('afterbegin',icon('print'));
+
+function evidence(item){return `<details class="evidence"><summary>消息依据 · ${item.sources.length} 条</summary><p class="evidence-note">仅省略 @提及及设备标识。</p>${item.sources.map(id=>{const m=D.messages[id];return `<blockquote class="source"><small>#${id} · ${esc(m.time)} · 发言者 ID ${esc(m.sender)}</small>${esc(m.text)}</blockquote>`}).join('')}</details>`;}
+function article(item,pending=false){return `<article class="faq${pending?' pending':''}" id="${item.id}"><div class="qline"><span class="qid">${item.id}</span><h3>${esc(item.question)}</h3>${pending?'':`<button class="copy" data-copy="${item.id}" type="button" title="复制问答" aria-label="复制 ${item.id} 问答">${icon('copy')}</button>`}</div><p class="answer">${esc(item.answer)}</p>${item.condition?`<p class="condition"><strong>适用说明：</strong>${esc(item.condition)}</p>`:''}<div class="meta"><span class="status ${pending?'conditional':item.kind}">${pending?'未形成标准答案':labels[item.kind]}</span><span>${[...new Set(item.sources.map(id=>D.messages[id].time.slice(0,10)))].sort().join(' / ')}</span></div>${evidence(item)}</article>`;}
+function matches(item,query){return !query || [item.id,item.question,item.answer,item.condition||'',item.category||'',...item.sources.map(String),...item.sources.map(id=>D.messages[id].text)].join(' ').toLocaleLowerCase().includes(query);}
+function render(){
+  const query=$('search').value.trim().toLocaleLowerCase(),category=$('category').value,status=$('status').value;
+  let items=(mode==='faq'?D.faq:D.pending).filter(item=>matches(item,query));
+  if(mode==='faq'){items=items.filter(item=>(!category||item.category===category)&&(!status||item.kind===status));}
+  $('resultCount').textContent=`${items.length} / ${mode==='faq'?88:16} 条`;
+  $('content').setAttribute('aria-labelledby',mode==='faq'?'faqTab':'pendingTab');
+  if(mode==='pending'){
+    $('nav').innerHTML='<a href="#pending-heading">待确认问题<span>16</span></a>';
+    $('content').innerHTML=`<section class="category pending" id="pending-heading"><div class="categoryheading"><h2>待确认问题</h2><small>不计入 88 条 FAQ</small></div><p class="pendingintro">缺少明确结论、完整条件或修复验证，暂不作为已解决问题答复。</p>${items.map(item=>article(item,true)).join('')||'<p class="empty">没有匹配的问题</p>'}</section>`;
+  }else{
+    const cats=D.categories.filter(c=>items.some(item=>item.category===c));
+    $('nav').innerHTML=cats.map(c=>`<a href="#cat-${D.categories.indexOf(c)}">${esc(c)}<span>${items.filter(item=>item.category===c).length}</span></a>`).join('');
+    $('content').innerHTML=cats.map(c=>`<section class="category" id="cat-${D.categories.indexOf(c)}"><div class="categoryheading"><h2>${esc(c)}</h2><small>${items.filter(item=>item.category===c).length} 条</small></div>${items.filter(item=>item.category===c).map(item=>article(item)).join('')}</section>`).join('')||'<p class="empty">没有匹配的问题</p>';
+  }
+}
+function setMode(next){mode=next;$('faqTab').setAttribute('aria-selected',String(next==='faq'));$('pendingTab').setAttribute('aria-selected',String(next==='pending'));$('category').disabled=next==='pending';$('status').disabled=next==='pending';render();}
+$('faqTab').addEventListener('click',()=>setMode('faq'));
+$('pendingTab').addEventListener('click',()=>setMode('pending'));
+document.querySelector('[role=tablist]').addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();setMode(mode==='faq'?'pending':'faq');$(mode==='faq'?'faqTab':'pendingTab').focus();}});
+$('search').addEventListener('input',render);$('category').addEventListener('change',render);$('status').addEventListener('change',render);
+$('printButton').addEventListener('click',()=>window.print());
+function toast(text){$('toast').textContent=text;$('toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('visible'),1800);}
+$('content').addEventListener('click',async event=>{const button=event.target.closest('[data-copy]');if(!button)return;const item=D.faq.find(f=>f.id===button.dataset.copy);const text=`${item.question}\n${item.answer}${item.condition?'\n适用说明：'+item.condition:''}`;try{await navigator.clipboard.writeText(text);toast('问答已复制');}catch{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();toast(ok?'问答已复制':'当前环境无法复制，请选中文字');}});
+render();
+</script>
+</body>
+</html>
