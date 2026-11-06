@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>门铃离线专项分析报告 · 2026-11-06</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif; background:#f4f6f5; color:#333; line-height:1.65; }
+.wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px; }
+.header { background:linear-gradient(135deg,#00B050 0%,#2BBD6E 100%); color:#fff; border-radius:14px; padding:34px 38px; margin-bottom:22px; }
+.header h1 { font-size:26px; font-weight:700; letter-spacing:1px; }
+.header .sub { margin-top:10px; font-size:14px; opacity:.92; }
+.header .meta { margin-top:14px; font-size:13px; opacity:.85; }
+.section { background:#fff; border-radius:12px; padding:26px 30px; margin-bottom:22px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+.section h2 { font-size:19px; color:#00B050; border-left:5px solid #00B050; padding-left:12px; margin-bottom:16px; }
+.section h2 .en { font-size:12px; color:#999; font-weight:normal; margin-left:8px; }
+.kpi-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:8px; }
+.kpi-card { flex:1; min-width:150px; border-radius:10px; padding:16px 18px; color:#fff; }
+.kpi-num { font-size:34px; font-weight:700; line-height:1.2; }
+.kpi-label { font-size:14px; margin-top:2px; }
+.kpi-sub { font-size:11px; opacity:.85; margin-top:6px; word-break:break-all; }
+.k-green { background:linear-gradient(135deg,#00B050,#2BBD6E); }
+.k-teal { background:linear-gradient(135deg,#0e9f6e,#31c48d); }
+.k-gray { background:linear-gradient(135deg,#6b7280,#9ca3af); }
+.k-orange { background:linear-gradient(135deg,#d97706,#F39C12); }
+.k-red { background:linear-gradient(135deg,#c0392b,#E74C3C); }
+.kpi-note { font-size:13px; color:#666; margin-top:10px; background:#f0f9f4; border-radius:8px; padding:10px 14px; }
+.kpi-note b { color:#00B050; }
+.chart-row { display:flex; gap:20px; flex-wrap:wrap; }
+.chart-box { flex:1; min-width:420px; }
+.chart-box h3 { font-size:15px; color:#333; margin-bottom:8px; }
+#chartStatus, #chartRoot { width:100%; height:340px; }
+.legend-note { font-size:12px; color:#999; margin-top:6px; }
+.root-list { margin-top:14px; }
+.root-item { display:flex; align-items:flex-start; padding:9px 14px; border-radius:8px; background:#fafbfa; margin-bottom:8px; border-left:4px solid #00B050; }
+.root-item .rn { font-weight:700; min-width:150px; color:#333; }
+.root-item .rm { color:#555; font-size:13px; }
+.root-item .rc { margin-left:auto; font-weight:700; color:#00B050; white-space:nowrap; }
+.root-item.warn { border-left-color:#F39C12; }
+.root-item.warn .rc { color:#F39C12; }
+table { width:100%; border-collapse:collapse; font-size:12.5px; }
+th { background:#00B050; color:#fff; padding:10px 8px; text-align:left; font-weight:600; white-space:nowrap; }
+td { padding:9px 8px; border-bottom:1px solid #eef1ef; vertical-align:top; }
+tr.b1 td { background:#f2fbf6; }
+tr.b3 td { background:#fff7f0; }
+tr:hover td { background:#e8f7ee; }
+tr.b3:hover td { background:#ffeadd; }
+.c-no { white-space:nowrap; }
+.batch-tag { display:inline-block; font-size:10px; color:#fff; border-radius:3px; padding:1px 5px; margin-left:4px; background:#2BBD6E; }
+tr.b3 .batch-tag { background:#F39C12; }
+.c-sn { font-family:Consolas,Menlo,monospace; font-size:11px; color:#666; white-space:nowrap; }
+.c-status { min-width:120px; white-space:nowrap; }
+.st-located, .st-closed, .st-ok, .st-ing, .st-stop { display:inline-block; font-size:12px; font-weight:700; color:#fff; border-radius:4px; padding:2px 8px; }
+.st-located { background:#00B050; }
+.st-closed { background:#0e9f6e; }
+.st-ok { background:#9ca3af; }
+.st-ing { background:#F39C12; }
+.st-stop { background:#E74C3C; }
+.st-sub { font-size:11px; color:#777; margin-top:3px; white-space:normal; }
+.tag-gray { color:#666; }
+.callout { border-radius:10px; padding:14px 18px; margin-bottom:12px; font-size:14px; }
+.co-green { background:#f0f9f4; border-left:4px solid #00B050; }
+.co-red { background:#fdf0ee; border-left:4px solid #E74C3C; }
+.co-orange { background:#fef8ee; border-left:4px solid #F39C12; }
+.callout b { color:#333; }
+.co-red b { color:#E74C3C; }
+.co-orange b { color:#d97706; }
+.co-green b { color:#00B050; }
+ul.clean { list-style:none; }
+ul.clean li { padding:7px 0 7px 20px; position:relative; border-bottom:1px dashed #eef1ef; font-size:13.5px; }
+ul.clean li:last-child { border-bottom:none; }
+ul.clean li::before { content:""; position:absolute; left:2px; top:15px; width:7px; height:7px; border-radius:50%; background:#2BBD6E; }
+ul.clean li b { color:#333; }
+.vendor-grid { display:flex; gap:14px; flex-wrap:wrap; }
+.vendor-card { flex:1; min-width:220px; border:1px solid #e5eae7; border-radius:10px; padding:16px 18px; }
+.vendor-card h4 { font-size:15px; margin-bottom:8px; }
+.vendor-card .vstat { display:inline-block; font-size:11px; font-weight:700; border-radius:4px; padding:2px 8px; color:#fff; margin-left:8px; }
+.vs-red { background:#E74C3C; }
+.vs-orange { background:#F39C12; }
+.vs-green { background:#00B050; }
+.vs-gray { background:#9ca3af; }
+.vendor-card p { font-size:12.5px; color:#555; margin-top:6px; }
+.prio { border-left:4px solid #E74C3C; background:#fdf0ee; border-radius:8px; padding:12px 16px; margin-bottom:10px; font-size:13.5px; }
+.prio .pt { font-weight:700; color:#E74C3C; }
+.prio.p2 { border-left-color:#F39C12; background:#fef8ee; }
+.prio.p2 .pt { color:#d97706; }
+.prio.p3 { border-left-color:#00B050; background:#f0f9f4; }
+.prio.p3 .pt { color:#00B050; }
+.foot { text-align:center; color:#999; font-size:12px; padding:18px 0 6px; }
+.issue { color:#E74C3C; font-weight:700; }
+.updated { display:inline-block; font-size:11px; color:#E74C3C; background:#fdf0ee; border-radius:4px; padding:1px 6px; margin-left:6px; font-weight:700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+<h1>门铃离线专项分析报告</h1>
+<div class="sub">三批 31 台离线设备 · 研发根因分析全景（第一批 8 台 + 第二批 11 台 + 第三批 12 台在途 + #20 法务复现机）</div>
+<div class="meta">数据截至：2026-11-06 11:30（wiki 过程记录 + 追踪表实态，11:30 重拉）｜报告负责人：尹燕玲｜2026年11月6日</div>
+</div>
+
+<div class="section">
+<h2>① 局面总览<span class="en">OVERVIEW</span></h2>
+<div class="kpi-row">
+<div class="kpi-card k-green"><div class="kpi-num">31</div><div class="kpi-label">三批累计涉及</div><div class="kpi-sub">门铃28台 + 连带摄像头3台 · 5个以上品</div></div>
+<div class="kpi-card k-green"><div class="kpi-num">6</div><div class="kpi-label">已定位</div><div class="kpi-sub">#1 #4 #9 #11 #13 #18</div></div>
+<div class="kpi-card k-teal"><div class="kpi-num">1</div><div class="kpi-label">已闭环</div><div class="kpi-sub">#14</div></div>
+<div class="kpi-card k-gray"><div class="kpi-num">4</div><div class="kpi-label">无异常</div><div class="kpi-sub">#3 #12 #15 #16</div></div>
+<div class="kpi-card k-orange"><div class="kpi-num">7</div><div class="kpi-label">分析中</div><div class="kpi-sub">#2 #5 #6 #7 #8 #10 #20</div></div>
+<div class="kpi-card k-red"><div class="kpi-num">1</div><div class="kpi-label">分析终止</div><div class="kpi-sub">#17</div></div>
+
+<div class="kpi-card k-gray"><div class="kpi-num">19</div><div class="kpi-label">已入追踪表</div><div class="kpi-sub">第一批8台 + 第二批11台（第三批12台在途未入表）</div></div>
+</div>
+<div class="kpi-note">三批集中挂测：<b>第一批 8 台</b>仅 1 台正常（#3），7 台自动离线/配网后开流失败；<b>第二批</b> 11 台中 4 台正常；<b>第三批 12 台</b>中 4 台正常、8 台异常（异常机已给研发，串口分析中）。#20 为法务同事赵薇的复现机（基站已复现离线，处置待决策）。</div>
+</div>
+
+<div class="section">
+<h2>② 已入表 19 台状态分布<span class="en">STATUS</span></h2>
+<div class="chart-row">
+<div class="chart-box">
+<h3>状态分布（台）</h3>
+<div id="chartStatus"></div>
+</div>
+<div class="chart-box">
+<h3>根因维度分布（台）</h3>
+<div id="chartRoot"></div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>③ 根因分布<span class="en">ROOT CAUSE</span></h2>
+<div class="root-list">
+<div class="root-item"><span class="rn">Wi-Fi 芯片</span><span class="rm">#1 爱科微：生产工艺偏差，POR电路晶体管漏电偏大，高温漏电异常增大致芯片重启（10/22 根因明确）；#18 MTK：WF0支路射频性能异常、EVM偏高（单机硬件问题）</span><span class="rc">2 台</span></div>
+<div class="root-item"><span class="rn">Sensor 模组</span><span class="rm">#4 交叉验证定位 sensor模组板异常（已寄讯美）；#6 主摄GC4653 IIC通讯异常、#8 GC3003 I2C写地址无应答（格科微分析中，供应商无回复）</span><span class="rc">3 台</span></div>
+<div class="root-item"><span class="rn">主控固件/软件</span><span class="rm">#2 主控系统循环崩溃（崩在isp_fw_process，已寄讯美）；#9 基站固件已知bug（2026.5.18版本已修复）；#11 TAG损坏致分辨率参数非法；#17 调试过程机器损坏，分析终止</span><span class="rc">4 台</span></div>
+<div class="root-item"><span class="rn">已知bug·修复验证</span><span class="rm">#14 非硬件问题，手动指令恢复配网+OTA升级即修复，测试3次配网成功（已闭环）</span><span class="rc">1 台</span></div>
+<div class="root-item warn"><span class="rn">分析中·待定位</span><span class="rm">#5 主控与WIFI-MCU通信异常(疑)；#7 主控TCP连不上基站（已寄讯美）；#10 研发挂测2天无异常疑网络环境；#20 复现机关键日志缺失、处置待决策</span><span class="rc">4 台</span></div>
+<div class="root-item"><span class="rn">无异常·对照</span><span class="rm">#3 挂测+OTA摸底双正常（对照机）；#12/#15/#16 挂测正常+OTA数据摸底PASS</span><span class="rc">4 台</span></div>
+<div class="root-item"><span class="rn">分析终止</span><span class="rm">#17（6Pro全景版）调试过程机器损坏无法继续分析；前期刷新固件后问题未复现。⚠️样本损失</span><span class="rc">1 台</span></div>
+</div>
+<div class="callout co-green" style="margin-top:14px"><b>核心判断：</b>异常分散在 Wi-Fi 芯片、Sensor 模组、主控固件、人为老化等维度，涉及爱科微、格科微、高拓、MTK、讯美多个供方，<b>不集中在某一品类、不集中某一供应商 —— 无明显共性问题</b>。</div>
+</div>
+
+<div class="section">
+<h2>④ 各批机器逐台分析<span class="en">MACHINE DETAIL</span></h2>
+<p style="font-size:12px;color:#999;margin-bottom:10px">绿底=第一批(9月分拣8台)｜白底=第二批(10月售后11台)｜橙底=第三批/#20（#20为法务复现机）。列内容有截断，完整原文见追踪表。</p>
+<table>
+<thead><tr><th>机号</th><th>机型</th><th>SN</th><th>研发分析进展（节选）</th><th>状态/根因方向</th><th>下一步（节选）</th></tr></thead>
+<tbody>
+<tr class="b1"><td class="c-no"><b>#1</b><span class="batch-tag">第一批</span></td><td>360可视门铃5Pro新版</td><td class="c-sn">86KMR5Q25462001640</td><td>（10/8）分析情况：挂测1小时左右复现，从系统侧看到是WIFI模组没跑起来，拔电再上电还是出现，但拔电冷却10分钟左右再上电正常。
+原因：怀疑是WIFI模组受热后异常，具体待再次复现后测试硬件
+（10/9李广泰）这个情况堉轩说放恒温箱里40°能复现；堉轩放3楼挂测几个小时也不复现，李广泰认为是因为没有配网，也没有门铃往基站推流，基站基本上不工作，不会升温
+…</td><td class="c-status"><span class="st-located">已定位</span><div class="st-sub">（10/10）基站WIFI模组概率性掉节点/USB枚举失败</div></td><td>（10/8会议）继续挂测wifi模组掉线问题复现，复现后检查wifi模组引脚焊接是否虚焊
+（10/9秦桠明）1号机得再进一步的看一下，可以的话，明天我们再拉个会，再对齐一下信息
+（10/10会议）热态复现不良时测试wifi模组各引脚供电是否…</td></tr>
+<tr class="b1"><td class="c-no"><b>#2</b><span class="batch-tag">第一批</span></td><td>360可视门铃6Pro旧版</td><td class="c-sn">86KMR6Q05020005398</td><td>（10/8）分析情况：大概率上电失败，上电成功后，扫不到热点。但最终能配网成功。-- 串口原因，拔掉串口后上电正常。
+门铃MCU连接基站正常，主控循环崩溃。
+原因：基站串口影响；门铃主控系统循环崩溃，崩在 isp_fw_process；故障指令是 store（往坏指针写）；又发生在 interrupt 里，很像 ISP 中断/固件回调里指针已经坏了。
+（10…</td><td class="c-status"><span class="st-ing">分析中</span><div class="st-sub">（10/10）门铃主控系统循环崩溃</div></td><td>（10/8会议）系统崩溃日志发送给讯美，由讯美分析主控进程崩溃故障，广泰对接姜子杰推进
+（10/10会议）获取2号机、7号机的故障日志和设备，广泰给到文庆→提供给迅美团队分析排查故障 -文庆/广泰
+（10/19秦桠明）定位为主控固件崩溃，目…</td></tr>
+<tr class="b1"><td class="c-no"><b>#3</b><span class="batch-tag">第一批</span></td><td>360可视门铃6Pro全景版</td><td class="c-sn">86KMR6S05471003341</td><td>（10/8）不用分析（后续考虑再摸一下OTA数据）→给硬测OTA
+10/8 OTA摸底 正常（各指标优秀）</td><td class="c-status"><span class="st-ok">无异常</span><div class="st-sub">（10/8）无异常(对照机)</div></td><td>无（对照机）</td></tr>
+<tr class="b1"><td class="c-no"><b>#4</b><span class="batch-tag">第一批</span></td><td>360可视门铃6Pro旧版</td><td class="c-sn">86KMR6Q04491004513</td><td>（10/6）分析情况： 必现，主控日志报“sensor不出帧”，换#2上的sensor板后，出流正常
+原因：sensor坏了
+（10/9李广泰）日志sensor型号：sc5239（单摄），I2C 0x30/i2c0。耿显东：虽然三个都是sensor问题，好像现象也不完全一样；问是否同一厂商/型号，秦桠明：应该不是哦
+（10/10最新分析）sensor模组异常…</td><td class="c-status"><span class="st-located">已定位</span><div class="st-sub">（10/6）sensor模组异常
+
+（10/14）定位：sensor模组板异常（交叉验证：#4芯片贴#5板正常出流，#5…</div></td><td>（10/8会议）确认不良感光模组供应商，拉沟通微信群后将模组寄给供应商分析排查
+（10/9耿显东）sensor异常就是一个共性问题，继续需要分析是对方器件的问题，还是连接通路的问题，或者是主控系统自己的问题
+（10/10会议）锐贤拉群对接，…</td></tr>
+<tr class="b1"><td class="c-no"><b>#5</b><span class="batch-tag">第一批</span></td><td>360可视门铃6Pro</td><td class="c-sn">86KMR6Q03381006050</td><td>（10/8）分析情况：必现，主控报“wifi driver can&#x27;t run,force sleep”，但MCU和基站的网络是通的，按键基站能响铃，门铃不响铃。
+原因：主控端XR871 模组握手没成功，wifi驱动加载失败。wifi不可用，导致主控与基站没有可用网络，但MCU和基站网络正常。疑似wifi模组与主控通信异常。
+关键日志：
+[09:59:43.…</td><td class="c-status"><span class="st-ing">分析中</span><div class="st-sub">（10/10）主控与WIFI-MCU通信异常(疑)</div></td><td>（10/8会议）排查主控与MCU通讯的外围硬件电路，测量引脚电信号、电源纹波，确认故障点
+（10/10会议）先保留，后续再对调wifi模块排除芯片损坏/焊接异常问题，进一步定位故障 -堉轩</td></tr>
+<tr class="b1"><td class="c-no"><b>#6</b><span class="batch-tag">第一批</span></td><td>360可视门铃6Max双摄版</td><td class="c-sn">86KMR6M06021001612</td><td>（10/8）待接串口
+（10/9李广泰）#6和#8都是sensor异常。主sensor不出流，没把有效视频流送到主控ISP，没出帧中断；日志sensor型号：主gc4653（I2C 0x29/i2c1）、副gc2063（0x37/i2c3），异常指主摄
+（10/10最新分析）主sensor不出流，没把有效视频流送到主控 ISP，没出帧中断
+（10/10文档更…</td><td class="c-status"><span class="st-ing">分析中</span><div class="st-sub">（10/10）主sensor不出流</div></td><td>（10/8会议）完成串口接入与故障分析，全部分析完成后统一结论
+（10/10会议）锐贤拉群对接，联合玉轩对接供应商格科微寄样分析故障 -锐贤/堉轩
+（10/23秦桠明）Sensor模组异常（GC4653），持续对接供应商格科微分析故障，持续…</td></tr>
+<tr class="b1"><td class="c-no"><b>#7</b><span class="batch-tag">第一批</span></td><td>360可视门铃6Pro旧版</td><td class="c-sn">86KMR6Q24491001356</td><td>（10/8）分析情况： 门铃MCU能连上基站，并且门铃按下，基站和门铃都响叮咚。但门铃主控连不上基站，并且门铃主控ping基站也ping不通。
+与#5号机器的差异：异常的阶段不一样
+-- #5号机器：wifi驱动加载失败，还没到DHCP就已经挂了
+-- #7号机器：wifi驱动加载成功，DHCP能拿到IP，是传输层连接失败
+原因：门铃主控与基站的网络连接失败…</td><td class="c-status"><span class="st-ing">分析中</span><div class="st-sub">（10/10）主控网络异常（TCP连不上基站）</div></td><td>（10/8会议）接串口抓日志和数据包，进一步排查
+（10/10会议）获取2号机、7号机的故障日志和设备，广泰给到文庆→提供给迅美团队分析排查故障 -文庆/广泰
+（10/19秦桠明）定位为网络异常，目前异常模组已给到讯美排查分析 -王振凯/海…</td></tr>
+<tr class="b1"><td class="c-no"><b>#8</b><span class="batch-tag">第一批</span></td><td>360可视门铃5Pro新版</td><td class="c-sn">86KMR5Q05431003460</td><td>（10/8）待接串口
+（10/9李广泰）sensor异常。sensor I2C写地址无应答；日志sensor型号：gc3003（单摄），I2C 0x37/i2c0，gc3003 chip found后I2C NACK、ISP probe-5
+（10/10最新分析）sensor I2C 写地址无应答
+（10/10文档更新）分析情况：门铃能连上基站，主控与基站的…</td><td class="c-status"><span class="st-ing">分析中</span><div class="st-sub">（10/10）sensor I2C写地址无应答</div></td><td>（10/8会议）完成串口接入与故障分析，全部分析完成后统一结论
+（10/10会议）先测试排查焊接、硬件本体异常，若无法定位则寄给格科微分析 -堉轩（锐贤）
+（10/23秦桠明）Sensor模组异常（GC3003），持续对接供应商格科微分析故…</td></tr>
+<tr class="b2"><td class="c-no"><b>#9</b><span class="batch-tag">第二批</span></td><td>6Pro</td><td class="c-sn">86KMR6Q24451001086</td><td>待接串口/待分析
+（wiki第二批研发分析#12）不能配网,当前基站热点不可见，但是基站不出日志;
+寄给讯美
+当前分支 此bug已经修复，基站更新到2026.5.18版本即可；</td><td class="c-status"><span class="st-located">已定位</span><div class="st-sub">待定</div></td><td>（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明
+（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）
+（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台
+（…</td></tr>
+<tr class="b2"><td class="c-no"><b>#10</b><span class="batch-tag">第二批</span></td><td>R6</td><td class="c-sn">86KMR6626102000054</td><td>待接串口/待分析
+（wiki第二批研发分析#15）15 门铃叮咚版 ，能配网说明wifi 没问题，mcu 主控之间的排查需要给门铃接串口，看串口日志；
+R6_v1.0.9.5691_20240528（default）
+R6-MCU-V1.0.9.0393（sub_mcu）
+门铃 115200
+只能看日志、不能输入命令
+我在云控开了日志，但是不能输入；这个产品…</td><td class="c-status"><span class="st-ing">分析中</span><div class="st-sub">待定</div></td><td>（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明
+（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）
+（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台
+（…</td></tr>
+<tr class="b2"><td class="c-no"><b>#11</b><span class="batch-tag">第二批</span></td><td>6Max双摄版</td><td class="c-sn">86KMR6N05471000643</td><td>待接串口/待分析
+（wiki第二批研发分析#14）门铃：R6MAX_IPC_v1.0.114.0537_20260403
+基站：R6MAX_STA_v4.1.118.791_20260403
+结论：
+#14（低概率问题，小概率问题，同一版本青霞不复现） 配网成功，但两次开流均失败，门铃日志出现 resolution param error!;
+直接根因：门铃…</td><td class="c-status"><span class="st-located">已定位</span><div class="st-sub">待定</div></td><td>（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明
+（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）
+（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台
+（…</td></tr>
+<tr class="b2"><td class="c-no"><b>#12</b><span class="batch-tag">第二批</span></td><td>5Pro新版</td><td class="c-sn">86KMR5Q05471012909</td><td>待接串口/待分析</td><td class="c-status"><span class="st-ok">无异常</span><div class="st-sub">待定</div></td><td>（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明
+（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）
+（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台
+（…</td></tr>
+<tr class="b2"><td class="c-no"><b>#13</b><span class="batch-tag">第二批</span></td><td>6Pro全景版</td><td class="c-sn">86KMR6S06171004827</td><td>待接串口/待分析
+（wiki第二批研发分析#13）#13版本问题版本号:
+R6PROV2_v1.0.2.1130_20250707
+R6PROV2-DB_v1.0.2.1130_20250707
+正常开流，低电量反复重启；
+MCU 反复上报开机、关机事件，主控随后执行关机或休眠；但 MCU 为什么误触发，尚未确认。
+6pro 全景版其他样机刷相同版本，可开流…</td><td class="c-status"><span class="st-located">已定位</span><div class="st-sub">待定</div></td><td>（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明
+（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）
+（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台
+（…</td></tr>
+<tr class="b2"><td class="c-no"><b>#14</b><span class="batch-tag">第二批</span></td><td>6Pro全景版</td><td class="c-sn">86KMR6S05471009931</td><td>待接串口/待分析
+（wiki第二批研发分析#17）非硬件问题，我们可以自己修复，已知问题，已修复，测试3次配网成功；（手动指令恢复配网，配网成功后，ota升级固件即可修复）
+异常样机R6PROV2_v1.0.2.1046_20250513 (量产 试产版本？)
+基站升级固件到20260827 ,无法配网问题修复
+门铃升级固件到 20250707，因为版本之前…</td><td class="c-status"><span class="st-closed">已闭环</span><div class="st-sub">待定</div></td><td>（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明
+（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）
+（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台
+（…</td></tr>
+<tr class="b2"><td class="c-no"><b>#15</b><span class="batch-tag">第二批</span></td><td>6Pro</td><td class="c-sn">86KMR6Q04511004204</td><td>待接串口/待分析</td><td class="c-status"><span class="st-ok">无异常</span><div class="st-sub">待定</div></td><td>（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明
+（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）
+（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台
+（…</td></tr>
+<tr class="b2"><td class="c-no"><b>#16</b><span class="batch-tag">第二批</span></td><td>5Pro新版</td><td class="c-sn">86KMR5Q05471011387</td><td>待接串口/待分析</td><td class="c-status"><span class="st-ok">无异常</span><div class="st-sub">待定</div></td><td>（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明
+（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）
+（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台
+（…</td></tr>
+<tr class="b2"><td class="c-no"><b>#17</b><span class="batch-tag">第二批</span></td><td>6Pro全景版</td><td class="c-sn">86KMR6S26142001929</td><td>待接串口/待分析
+（10/26 wiki更新）#10主控不出日志@堉轩先帮忙看看；（因与#13机型版本问题一致，离线问题在#10跟）
+（10/27 wiki更新）桠明帮忙挂测中（门铃和基站都接了串口）
+（11/4 wiki更新）固件版本：网址查到R6PROV2_v1.0.2.1130_20250707（default）/R6PROV2-DB_v1.0.2.1…</td><td class="c-status"><span class="st-stop">分析终止</span><div class="st-sub">待定</div></td><td>（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明
+（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）
+（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台
+（…</td></tr>
+<tr class="b2"><td class="c-no"><b>#18</b><span class="batch-tag">第二批</span></td><td>6Max双摄版</td><td class="c-sn">86KMR6N05351004561</td><td>待接串口/待分析
+（wiki第二批研发分析#19）相同版本 #14 基站热点可见，所以是#19单机硬件问题；未激活的产品；
+#19 添加时间：2025-08-26 17:48:21
+基站：R6MAX_STA_v4.1.114.781_20251120
+单独升级基站到R6MAX_STA_v4.1.118.791_20260403 问题还会复现；
+没有配网无法给…</td><td class="c-status"><span class="st-located">已定位</span><div class="st-sub">待定</div></td><td>（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明
+（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）
+（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台
+（…</td></tr>
+<tr class="b3"><td class="c-no"><b>#20</b><span class="batch-tag">第三批</span></td><td>360可视门铃6Pro全景版</td><td class="c-sn">86KMR6Q04441004225</td><td>待分析
+（10/22周光柱）富旭给的设备（基站86KMR6P04441003509）复现离线：10.21 9:40离线，设备一直绿灯闪烁；离线后TF卡取日志取不出，插卡没有卡识别提示音；换了几张卡后设备又上线，上线后取到TF卡日志和在线日志（3个日志文件已发群）。怀疑与TF卡有关，分析时可重点看这个方向
+（10/23雷志平分析日志）没找到问题；首次离线原因无…</td><td class="c-status"><span class="st-ing">分析中</span><div class="st-sub">待定</div></td><td>（10/11）待韩斌后台核实后安排上门排查
+（10/12）不需上门，直接换机；富旭把故障机带回职场；换回后自挂测
+（10/22周光柱）建议分析重点看TF卡方向
+（10/23雷志平）讯美设备无代码，邮寄也是拆机长时间挂串口
+（10/26韩斌@…</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h2>⑤ 11/6 第四次拉通会议定调<span class="en">MEETING 11.6</span></h2>
+<div class="callout co-green"><b>本次共涉及 31 台机器（门铃 28 台 + 连带摄像头 3 台），门铃涵盖 5 个以上品。</b>现有分析异常分散在 Wi-Fi 芯片、Sensor 模组、主控固件、人为（基站天线折断）等维度；同时涉及爱科微、格科微、高拓、MTK、讯美等不同供方，也不集中在某一品。</div>
+<ul class="clean">
+<li><b>资源投入评估（会议核心议题）：</b>目前定位问题机涉及 <b>讯美 5 台（3台已给）、爱科微 2 台、格科微 2 台、MTK 1 台</b>。爱科微与格科微内部已连续多轮联系<b>无回复</b>——是否持续投入资源跟进，待会议决策。</li>
+<li><b>老机器处置：</b>7P 接近 EOM（Wi-Fi网卡加载失败，需高拓进一步检查无线网卡注册与加载）——是否持续分析；AR1C 为4年前老产品，维护问题待议。</li>
+<li><b>价值点：</b>目前涉及的分析点可以沉淀案例，后续项目持续改进。</li>
+<li><b>背景决策（11/3 耿显东）：</b>30多台设备没有什么共性，<b>暂时不再分析更多设备</b>，节省研发人力；上门的再看看3-4例是什么情况，看有没有共性。</li>
+<li><b>11/6 wiki 增量：</b>#13 根因修正为 <b>ETA6922（充电IC）引脚虚焊</b>引起电平异常、MCU错误识别开关机信号引起重启（个例，持续监测）；#18 确认<b>个例、持续监控</b>；云台7P 会议已决策：老项目大概率单机问题，<b>不过多投入</b>，纳入案例库。</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>⑥ 供应商卡点<span class="en">VENDOR BLOCKERS</span></h2>
+<div class="vendor-grid">
+<div class="vendor-card"><h4>爱科微（Wi-Fi芯片）<span class="vstat vs-red">无回复</span></h4><p>涉及 #1 等 2 台。根因已明确（POR电路晶体管漏电），10/29 起多次联系<b>暂无回复，推进有阻力</b>。问题跟踪单已建（李雨声）。</p></div>
+<div class="vendor-card"><h4>格科微（Sensor）<span class="vstat vs-red">无回复</span></h4><p>涉及 #6/#8 等 2 台。IIC通讯异常分析中，10/29 起<b>多次联系暂无回复</b>，暂无输出分析及对策。</p></div>
+<div class="vendor-card"><h4>讯美（方案商）<span class="vstat vs-orange">推进中</span></h4><p>涉及 5 台（3台已给）。#2/#7 主控固件与网络异常、#4 sensor模组板等已寄待分析；第二批同类问题待统一推动。</p></div>
+<div class="vendor-card"><h4>MTK（Wi-Fi原厂）<span class="vstat vs-orange">待拆解</span></h4><p>涉及 #18。WF0支路射频性能异常，后续推动原厂芯片拆解分析。</p></div>
+<div class="vendor-card"><h4>高拓（Wi-Fi）<span class="vstat vs-gray">老项目</span></h4><p>涉及云台7P（ATBM6031），产品接近EOM，是否联动支持待会议定。</p></div>
+</div>
+</div>
+
+<div class="section">
+<h2>⑦ 待决策事项与下一步动作优先级<span class="en">NEXT ACTIONS</span></h2>
+<div class="prio"><span class="pt">P0</span>　<b>#20 复现机处置决策</b>（韩斌 10/26 催办中）：继续挂测 / 邮寄深圳 / 寄讯美。基站已复现离线但关键日志缺失，雷志平建议周光柱串口挂机抓到问题后反馈讯美——需拍板。</div>
+<div class="prio p2"><span class="pt">P1</span>　<b>供应商资源投入决策</b>（11/6 会议核心议题）：爱科微/格科微连续多轮无回复，是否升级渠道或止损；讯美 5 台统一推动节奏。</div>
+<div class="prio p2"><span class="pt">P1</span>　<b>第三批 12 台入表口径</b>：wiki 第三批分析持续更新（#24 内部天线折断已定位、#23 晶振频偏、#29/#30 有明确方向），SN 清单到货后是否新增入表待定；叠加 11/3「暂不再分析更多设备」决策需一并明确。</div>
+<div class="prio p2"><span class="pt">P2</span>　<b>已知bug 固件导入计划</b>（10/23 会议共识）：基站reset后蓝牙不释放问题，6Pro全景版 2026.5.18 后固件未发布未带上、5Pro wifi 2026.3.14 后未发布未带上；6Pro 4G / 5Pro 4G 已带上。未带上的机型需排导入计划。</div>
+<div class="prio p3"><span class="pt">P3</span>　<b>老机器与案例沉淀</b>：7P 纳入案例库持续监控（EOM）；AR1C 维护策略待定；31 台分析点沉淀案例供后续项目改进。</div>
+<div class="prio p3"><span class="pt">P3</span>　<b>上门个案验证</b>（11/3 耿显东）：北京2例+深圳2例已安排，重点看是否有共性；艾先生案例已实测（偶发非必现，指向设备侧待定位）。</div>
+</div>
+
+<div class="foot">门铃离线专项分析 · 数据源：wiki 过程记录 + 飞书追踪表（截至 2026-11-06 11:30）｜报告负责人：尹燕玲｜2026年11月6日</div>
+</div>
+
+<script>
+var ALL = {"status": [{"name": "已定位", "value": 6, "machines": "#1 #4 #9 #11 #13 #18"}, {"name": "已闭环", "value": 1, "machines": "#14"}, {"name": "无异常", "value": 4, "machines": "#3 #12 #15 #16"}, {"name": "分析中", "value": 7, "machines": "#2 #5 #6 #7 #8 #10 #20"}, {"name": "分析终止", "value": 1, "machines": "#17"}], "root": [{"name": "Wi-Fi芯片", "value": 2, "machines": "#1 #18"}, {"name": "Sensor模组", "value": 3, "machines": "#4 #6 #8"}, {"name": "主控固件/软件", "value": 4, "machines": "#2 #9 #11 #14"}, {"name": "已知bug(修复验证)", "value": 1, "machines": "#14"}, {"name": "分析中(待定位)", "value": 4, "machines": "#5 #7 #10 #20"}, {"name": "无异常(对照)", "value": 4, "machines": "#3 #12 #15 #16"}, {"name": "分析终止", "value": 1, "machines": "#17"}], "table": [{"no": "#1", "model": "360可视门铃5Pro新版", "sn": "86KMR5Q25462001640", "fenjian": "（9/18前）自动离线", "guace": "（9/21）挂测1小时，自动离线，再次配网，复现", "fazhan": "（10/8）分析情况：挂测1小时左右复现，从系统侧看到是WIFI模组没跑起来，拔电再上电还是出现，但拔电冷却10分钟左右再上电正常。\n原因：怀疑是WIFI模组受热后异常，具体待再次复现后测试硬件\n（10/9李广泰）这个情况堉轩说放恒温箱里40°能复现；堉轩放3楼挂测几个小时也不复现，李广泰认为是因为没有配网，也没有门铃往基站推流，基站基本上不工作，不会升温\n…", "genyin": "（10/10）基站WIFI模组概率性掉节点/USB枚举失败", "status": "已定位", "st_css": "st-located", "next": "（10/8会议）继续挂测wifi模组掉线问题复现，复现后检查wifi模组引脚焊接是否虚焊\n（10/9秦桠明）1号机得再进一步的看一下，可以的话，明天我们再拉个会，再对齐一下信息\n（10/10会议）热态复现不良时测试wifi模组各引脚供电是否…", "owner": "李广泰挂测/黄堉轩CCD检查"}, {"no": "#2", "model": "360可视门铃6Pro旧版", "sn": "86KMR6Q05020005398", "fenjian": "（9/18前）画面加载不出来 自动离线", "guace": "（9/21）初次配网失败，再次配网，均失败", "fazhan": "（10/8）分析情况：大概率上电失败，上电成功后，扫不到热点。但最终能配网成功。-- 串口原因，拔掉串口后上电正常。\n门铃MCU连接基站正常，主控循环崩溃。\n原因：基站串口影响；门铃主控系统循环崩溃，崩在 isp_fw_process；故障指令是 store（往坏指针写）；又发生在 interrupt 里，很像 ISP 中断/固件回调里指针已经坏了。\n（10…", "genyin": "（10/10）门铃主控系统循环崩溃", "status": "分析中", "st_css": "st-ing", "next": "（10/8会议）系统崩溃日志发送给讯美，由讯美分析主控进程崩溃故障，广泰对接姜子杰推进\n（10/10会议）获取2号机、7号机的故障日志和设备，广泰给到文庆→提供给迅美团队分析排查故障 -文庆/广泰\n（10/19秦桠明）定位为主控固件崩溃，目…", "owner": "李广泰/姜子杰/夏锐贤"}, {"no": "#3", "model": "360可视门铃6Pro全景版", "sn": "86KMR6S05471003341", "fenjian": "（9/18前）离线", "guace": "（9/21-22）挂测正常（2天）", "fazhan": "（10/8）不用分析（后续考虑再摸一下OTA数据）→给硬测OTA\n10/8 OTA摸底 正常（各指标优秀）", "genyin": "（10/8）无异常(对照机)", "status": "无异常", "st_css": "st-ok", "next": "无（对照机）", "owner": "方晓伟"}, {"no": "#4", "model": "360可视门铃6Pro旧版", "sn": "86KMR6Q04491004513", "fenjian": "（9/18前）画面加载不出来", "guace": "（9/21）配网后：画面加载不出来", "fazhan": "（10/6）分析情况： 必现，主控日志报“sensor不出帧”，换#2上的sensor板后，出流正常\n原因：sensor坏了\n（10/9李广泰）日志sensor型号：sc5239（单摄），I2C 0x30/i2c0。耿显东：虽然三个都是sensor问题，好像现象也不完全一样；问是否同一厂商/型号，秦桠明：应该不是哦\n（10/10最新分析）sensor模组异常…", "genyin": "（10/6）sensor模组异常\n\n（10/14）定位：sensor模组板异常（交叉验证：#4芯片贴#5板正常出流，#5芯片贴#4板无法出流）", "status": "已定位", "st_css": "st-located", "next": "（10/8会议）确认不良感光模组供应商，拉沟通微信群后将模组寄给供应商分析排查\n（10/9耿显东）sensor异常就是一个共性问题，继续需要分析是对方器件的问题，还是连接通路的问题，或者是主控系统自己的问题\n（10/10会议）锐贤拉群对接，…", "owner": "李广泰/姜子杰/夏锐贤"}, {"no": "#5", "model": "360可视门铃6Pro", "sn": "86KMR6Q03381006050", "fenjian": "（9/18前）画面加载不出来", "guace": "（9/21）配网后：画面加载不出来", "fazhan": "（10/8）分析情况：必现，主控报“wifi driver can't run,force sleep”，但MCU和基站的网络是通的，按键基站能响铃，门铃不响铃。\n原因：主控端XR871 模组握手没成功，wifi驱动加载失败。wifi不可用，导致主控与基站没有可用网络，但MCU和基站网络正常。疑似wifi模组与主控通信异常。\n关键日志：\n[09:59:43.…", "genyin": "（10/10）主控与WIFI-MCU通信异常(疑)", "status": "分析中", "st_css": "st-ing", "next": "（10/8会议）排查主控与MCU通讯的外围硬件电路，测量引脚电信号、电源纹波，确认故障点\n（10/10会议）先保留，后续再对调wifi模块排除芯片损坏/焊接异常问题，进一步定位故障 -堉轩", "owner": "黄堉轩/李广泰"}, {"no": "#6", "model": "360可视门铃6Max双摄版", "sn": "86KMR6M06021001612", "fenjian": "（9/18前）画面加载不出来", "guace": "（9/21）配网后：画面加载不出来", "fazhan": "（10/8）待接串口\n（10/9李广泰）#6和#8都是sensor异常。主sensor不出流，没把有效视频流送到主控ISP，没出帧中断；日志sensor型号：主gc4653（I2C 0x29/i2c1）、副gc2063（0x37/i2c3），异常指主摄\n（10/10最新分析）主sensor不出流，没把有效视频流送到主控 ISP，没出帧中断\n（10/10文档更…", "genyin": "（10/10）主sensor不出流", "status": "分析中", "st_css": "st-ing", "next": "（10/8会议）完成串口接入与故障分析，全部分析完成后统一结论\n（10/10会议）锐贤拉群对接，联合玉轩对接供应商格科微寄样分析故障 -锐贤/堉轩\n（10/23秦桠明）Sensor模组异常（GC4653），持续对接供应商格科微分析故障，持续…", "owner": "李广泰/黄堉轩"}, {"no": "#7", "model": "360可视门铃6Pro旧版", "sn": "86KMR6Q24491001356", "fenjian": "（9/18前）画面加载不出来", "guace": "（9/21）配网后：画面加载不出来", "fazhan": "（10/8）分析情况： 门铃MCU能连上基站，并且门铃按下，基站和门铃都响叮咚。但门铃主控连不上基站，并且门铃主控ping基站也ping不通。\n与#5号机器的差异：异常的阶段不一样\n-- #5号机器：wifi驱动加载失败，还没到DHCP就已经挂了\n-- #7号机器：wifi驱动加载成功，DHCP能拿到IP，是传输层连接失败\n原因：门铃主控与基站的网络连接失败…", "genyin": "（10/10）主控网络异常（TCP连不上基站）", "status": "分析中", "st_css": "st-ing", "next": "（10/8会议）接串口抓日志和数据包，进一步排查\n（10/10会议）获取2号机、7号机的故障日志和设备，广泰给到文庆→提供给迅美团队分析排查故障 -文庆/广泰\n（10/19秦桠明）定位为网络异常，目前异常模组已给到讯美排查分析 -王振凯/海…", "owner": "李广泰/黄堉轩"}, {"no": "#8", "model": "360可视门铃5Pro新版", "sn": "86KMR5Q05431003460", "fenjian": "（9/18前）画面加载不出来", "guace": "（9/21）配网后：画面加载不出来", "fazhan": "（10/8）待接串口\n（10/9李广泰）sensor异常。sensor I2C写地址无应答；日志sensor型号：gc3003（单摄），I2C 0x37/i2c0，gc3003 chip found后I2C NACK、ISP probe-5\n（10/10最新分析）sensor I2C 写地址无应答\n（10/10文档更新）分析情况：门铃能连上基站，主控与基站的…", "genyin": "（10/10）sensor I2C写地址无应答", "status": "分析中", "st_css": "st-ing", "next": "（10/8会议）完成串口接入与故障分析，全部分析完成后统一结论\n（10/10会议）先测试排查焊接、硬件本体异常，若无法定位则寄给格科微分析 -堉轩（锐贤）\n（10/23秦桠明）Sensor模组异常（GC3003），持续对接供应商格科微分析故…", "owner": "李广泰/黄堉轩"}, {"no": "#9", "model": "6Pro", "sn": "86KMR6Q24451001086", "fenjian": "（售后分拣）（9.7）不联网；售后复测：已复测出故障", "guace": "（10/12-14秦桠明挂测，wiki第二批编号#12）整体：不能配网\n明细：12号14点开始配网，尝试两次，无法配网，体现在配网过程中无法配网", "fazhan": "待接串口/待分析\n（wiki第二批研发分析#12）不能配网,当前基站热点不可见，但是基站不出日志;\n寄给讯美\n当前分支 此bug已经修复，基站更新到2026.5.18版本即可；", "genyin": "待定", "status": "已定位", "st_css": "st-located", "next": "（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明\n（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）\n（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台\n（…", "owner": "韩斌收集/李广泰复测"}, {"no": "#10", "model": "R6", "sn": "86KMR6626102000054", "fenjian": "（售后分拣）（9.12）画面加载不出来；售后复测：已复测出故障", "guace": "（10/12-14秦桠明挂测，wiki第二批编号#15）整体：配网成功后首次就开流失败\n13号18点左右配网成功后，，第一次开流失败，第二次失败,未显示异常", "fazhan": "待接串口/待分析\n（wiki第二批研发分析#15）15 门铃叮咚版 ，能配网说明wifi 没问题，mcu 主控之间的排查需要给门铃接串口，看串口日志；\nR6_v1.0.9.5691_20240528（default）\nR6-MCU-V1.0.9.0393（sub_mcu）\n门铃 115200\n只能看日志、不能输入命令\n我在云控开了日志，但是不能输入；这个产品…", "genyin": "待定", "status": "分析中", "st_css": "st-ing", "next": "（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明\n（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）\n（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台\n（…", "owner": "韩斌收集/李广泰复测"}, {"no": "#11", "model": "6Max双摄版", "sn": "86KMR6N05471000643", "fenjian": "（售后分拣）（9.15）画面加载不出来；售后复测：已复测出故障", "guace": "（10/12-14秦桠明挂测，wiki第二批编号#14）整体：配网成功，首次就开流失败\n12号14点配网成功，首次开流失败，第二次重新配网，再次首次开流失败，挂测1.5后，出现离线", "fazhan": "待接串口/待分析\n（wiki第二批研发分析#14）门铃：R6MAX_IPC_v1.0.114.0537_20260403\n基站：R6MAX_STA_v4.1.118.791_20260403\n结论：\n#14（低概率问题，小概率问题，同一版本青霞不复现） 配网成功，但两次开流均失败，门铃日志出现 resolution param error!;\n直接根因：门铃…", "genyin": "待定", "status": "已定位", "st_css": "st-located", "next": "（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明\n（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）\n（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台\n（…", "owner": "韩斌收集/李广泰复测"}, {"no": "#12", "model": "5Pro新版", "sn": "86KMR5Q05471012909", "fenjian": "（售后分拣）（9.14）自动离线；售后复测：已复测出故障", "guace": "（10/12-14秦桠明挂测，wiki第二批编号#16）整体：目前正常 （挂1.5天）\n12号配网成功后，第一次开流正常,后续持续查看情况，画面加载正常\n（10/20秦桠明）OTA数据摸底，结果PAS…", "fazhan": "待接串口/待分析", "genyin": "待定", "status": "无异常", "st_css": "st-ok", "next": "（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明\n（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）\n（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台\n（…", "owner": "韩斌收集/李广泰复测"}, {"no": "#13", "model": "6Pro全景版", "sn": "86KMR6S06171004827", "fenjian": "（售后分拣）（9.21）实时画面显示离线；售后复测：已复测出故障", "guace": "（10/12-14秦桠明挂测，wiki第二批编号#13）整体：配网成功开流正常，1天后续离线\n12号14点左右开始，配网成功，第一次开流正常，不过电量过低，有提示反复重启，后续充电后35%，挂测5个小…", "fazhan": "待接串口/待分析\n（wiki第二批研发分析#13）#13版本问题版本号:\nR6PROV2_v1.0.2.1130_20250707\nR6PROV2-DB_v1.0.2.1130_20250707\n正常开流，低电量反复重启；\nMCU 反复上报开机、关机事件，主控随后执行关机或休眠；但 MCU 为什么误触发，尚未确认。\n6pro 全景版其他样机刷相同版本，可开流…", "genyin": "待定", "status": "已定位", "st_css": "st-located", "next": "（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明\n（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）\n（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台\n（…", "owner": "韩斌收集/李广泰复测"}, {"no": "#14", "model": "6Pro全景版", "sn": "86KMR6S05471009931", "fenjian": "（售后分拣）（8.20左右）自动离线；售后复测：已复测出故障", "guace": "（10/12-14秦桠明挂测，wiki第二批编号#17）整体：配网失败\n13号10点开始第一次配网，配网失败，第二次也是", "fazhan": "待接串口/待分析\n（wiki第二批研发分析#17）非硬件问题，我们可以自己修复，已知问题，已修复，测试3次配网成功；（手动指令恢复配网，配网成功后，ota升级固件即可修复）\n异常样机R6PROV2_v1.0.2.1046_20250513 (量产 试产版本？)\n基站升级固件到20260827 ,无法配网问题修复\n门铃升级固件到 20250707，因为版本之前…", "genyin": "待定", "status": "已闭环", "st_css": "st-closed", "next": "（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明\n（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）\n（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台\n（…", "owner": "韩斌收集/李广泰复测"}, {"no": "#15", "model": "6Pro", "sn": "86KMR6Q04511004204", "fenjian": "（售后分拣）（未提供）自动离线；售后复测：已复测出故障", "guace": "（10/12-14秦桠明挂测，wiki第二批编号#11）整体：目前正常 （挂1.5天）\n明细：12号11点左右开始，配网成功，第一次开流正常,后续查看情况，画面加载正常\n（10/20秦桠明）OTA数据…", "fazhan": "待接串口/待分析", "genyin": "待定", "status": "无异常", "st_css": "st-ok", "next": "（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明\n（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）\n（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台\n（…", "owner": "韩斌收集/李广泰复测"}, {"no": "#16", "model": "5Pro新版", "sn": "86KMR5Q05471011387", "fenjian": "（售后分拣）（5左右）画面加载不出来；售后复测：复测出离线", "guace": "（10/12-14秦桠明挂测，wiki第二批编号#18）整体：目前正常 （挂1天）\n13号配网成功后，第一次开流正常,后续查看情况，画面加载正常\n（10/20秦桠明）OTA数据摸底，结果PASS（wi…", "fazhan": "待接串口/待分析", "genyin": "待定", "status": "无异常", "st_css": "st-ok", "next": "（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明\n（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）\n（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台\n（…", "owner": "韩斌收集/李广泰复测"}, {"no": "#17", "model": "6Pro全景版", "sn": "86KMR6S26142001929", "fenjian": "（售后分拣）（3）自动离线；售后复测：已复测出故障\n（10/9韩斌）故障发生时间2026.3应该是他们登记错了；该机是8月份用户激活使用的（发货记录保修开始20…", "guace": "（10/12-14秦桠明挂测，wiki第二批编号#10）整体：首次配网成功开流正常，挂1天左右离线\n明细：12号11点左右开始，配网成功，第一次开流正常,后续查看情况，画面加载正常，13号下午离线\n（…", "fazhan": "待接串口/待分析\n（10/26 wiki更新）#10主控不出日志@堉轩先帮忙看看；（因与#13机型版本问题一致，离线问题在#10跟）\n（10/27 wiki更新）桠明帮忙挂测中（门铃和基站都接了串口）\n（11/4 wiki更新）固件版本：网址查到R6PROV2_v1.0.2.1130_20250707（default）/R6PROV2-DB_v1.0.2.1…", "genyin": "待定", "status": "分析终止", "st_css": "st-stop", "next": "（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明\n（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）\n（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台\n（…", "owner": "韩斌收集/李广泰复测"}, {"no": "#18", "model": "6Max双摄版", "sn": "86KMR6N05351004561", "fenjian": "（售后分拣）（9.11）搜索不到设备信息；售后复测：已复测出故障", "guace": "（10/12-14秦桠明挂测，wiki第二批编号#19）整体：配网失败\n13号10点开始第一次配网，配网失败，第二次也是，主要体现在无法收到设备，多次开关机重启结果也是如此", "fazhan": "待接串口/待分析\n（wiki第二批研发分析#19）相同版本 #14 基站热点可见，所以是#19单机硬件问题；未激活的产品；\n#19 添加时间：2025-08-26 17:48:21\n基站：R6MAX_STA_v4.1.114.781_20251120\n单独升级基站到R6MAX_STA_v4.1.118.791_20260403 问题还会复现；\n没有配网无法给…", "genyin": "待定", "status": "已定位", "st_css": "st-located", "next": "（10/9会议）耿显东：扩大样本找共性——故障机邮寄秦桠明\n（10/9徐自明）这11台机器也拿回来，按机型分类整理分析（这11台涉及到5个机型）\n（10/12秦桠明）之前的11台已收到，加上之前的8台样本量够了，本次主要优先分析这19台\n（…", "owner": "韩斌收集/李广泰复测"}, {"no": "#20", "model": "360可视门铃6Pro全景版", "sn": "86KMR6Q04441004225", "fenjian": "（10/11）贾思阳反馈用户门铃离线，韩斌后台核实中，上门排查待有SN后安排\n（10/12）雷艳琴查后台：门铃86KMR6Q04441004225，基站86KM…", "guace": "待秦桠明挂测", "fazhan": "待分析\n（10/22周光柱）富旭给的设备（基站86KMR6P04441003509）复现离线：10.21 9:40离线，设备一直绿灯闪烁；离线后TF卡取日志取不出，插卡没有卡识别提示音；换了几张卡后设备又上线，上线后取到TF卡日志和在线日志（3个日志文件已发群）。怀疑与TF卡有关，分析时可重点看这个方向\n（10/23雷志平分析日志）没找到问题；首次离线原因无…", "genyin": "待定", "status": "分析中", "st_css": "st-ing", "next": "（10/11）待韩斌后台核实后安排上门排查\n（10/12）不需上门，直接换机；富旭把故障机带回职场；换回后自挂测\n（10/22周光柱）建议分析重点看TF卡方向\n（10/23雷志平）讯美设备无代码，邮寄也是拆机长时间挂串口\n（10/26韩斌@…", "owner": "韩斌/雷艳琴（后台核实）/富旭（送机换新）"}]};
+(function(){
+  var green = "#00B050", green2 = "#2BBD6E";
+  var palette = ["#00B050","#2BBD6E","#0e9f6e","#F39C12","#E74C3C","#9ca3af","#d97706"];
+  var c1 = echarts.init(document.getElementById("chartStatus"));
+  c1.setOption({
+    tooltip: { trigger:"item", formatter: function(p){ return p.name + " " + p.value + " 台<br>" + (p.data.machines || ""); } },
+    legend: { bottom: 0, textStyle:{ fontSize:11 } },
+    series: [{
+      type:"pie", radius:["38%","62%"], center:["50%","44%"],
+      label: { formatter:"{b}\n{c}台", fontSize:11 },
+      data: ALL.status
+    }]
+  });
+  var c2 = echarts.init(document.getElementById("chartRoot"));
+  c2.setOption({
+    tooltip: { trigger:"item", formatter: function(p){ return p.name + " " + p.value + " 台<br>" + (p.data.machines || ""); } },
+    legend: { bottom: 0, textStyle:{ fontSize:11 } },
+    series: [{
+      type:"pie", radius:["38%","62%"], center:["50%","44%"],
+      label: { formatter:"{b}\n{c}台", fontSize:11 },
+      data: ALL.root
+    }]
+  });
+})();
+</script>
+</body>
+</html>
