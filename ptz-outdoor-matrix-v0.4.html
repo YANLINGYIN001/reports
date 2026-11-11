@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>户外安防竞品形态矩阵 v0.4</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f5;color:#333;padding:24px;max-width:1500px;margin:0 auto}
+h1{font-size:22px;color:#00B050;margin-bottom:4px}
+.meta{font-size:12px;color:#999;margin-bottom:20px;line-height:1.6}
+h2{font-size:17px;margin:28px 0 12px;color:#333;border-left:4px solid #00B050;padding-left:8px}
+table{width:100%;border-collapse:collapse;background:#fff;font-size:13px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+th{background:#00B050;color:#fff;padding:8px 10px;text-align:left;font-weight:600;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid #eee;vertical-align:middle}
+tr:hover td{background:#f0faf4}
+.price{color:#E74C3C;font-weight:700;white-space:nowrap}
+.tag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;background:#e8f7ef;color:#00B050;white-space:nowrap}
+.tagmini{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;background:#f0f0f0;color:#666;margin:1px;white-space:nowrap}
+.b-mi{background:#FF6900;color:#fff}.b-ez{background:#3B82F6;color:#fff}.b-360{background:#00B050;color:#fff}
+.b-tp{background:#0EA5E9;color:#fff}.b-hk{background:#dc2626;color:#fff}.b-hq{background:#7C3AED;color:#fff}
+.b-ja{background:#16a34a;color:#fff}.b-aux{background:#2563eb;color:#fff}.b-other{background:#999;color:#fff}
+a{color:#00B050;text-decoration:none}
+.pname{max-width:320px}
+.skuline{font-size:11px;color:#999;margin-top:2px}
+.callout{background:#fff8e6;border-left:4px solid #F39C12;padding:10px 14px;font-size:13px;margin:12px 0;line-height:1.7}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:14px 0}
+.stat{background:#fff;padding:14px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08);text-align:center}
+.stat .num{font-size:24px;font-weight:800;color:#00B050}
+.stat .lbl{font-size:12px;color:#999;margin-top:4px}
+.footer{font-size:11px;color:#bbb;text-align:center;margin-top:30px}
+.hot-s{color:#E74C3C;font-weight:800}.hot-a{color:#F39C12;font-weight:700}
+</style>
+</head>
+<body>
+<h1>户外安防竞品形态矩阵 v0.4</h1>
+<div class="meta">2026-11-11 · 京东实采 135 SKU（204 计划池）· 品牌=主图识别(v0.3复用)+店铺名双源 · 评论数据 53/135 款完整</div>
+<div class="callout">📌 v0.4 骨架版：①SKU 池从 91 → 135（新增 4G/太阳能/双摄三组关键词去重款）②53 款评论汇总（评论数/好评率/差评数/热门标签）已入表 ③82 款评论待补——11/10 评论接口日阈值耗尽 + thor 登录态被京东吊销，待重新导出 cookie 后补完出终版 ④47 款品牌待定（无主图无店铺名，店铺名正在逐款补采）</div>
+
+<div class="stat-grid">
+<div class="stat"><div class="num">135</div><div class="lbl">实采 SKU</div></div>
+<div class="stat"><div class="num">88</div><div class="lbl">已识别品牌</div></div>
+<div class="stat"><div class="num">53</div><div class="lbl">评论数据完整</div></div>
+<div class="stat"><div class="num">76</div><div class="lbl">¥200-400 主流价位段</div></div>
+</div>
+
+<h2>一、品牌分布（135 SKU·主图识别+店铺名）</h2>
+<table><tr><th>品牌</th><th>款数</th></tr>
+<tr><td><span class="tag b-ja">乔安</span></td><td>16</td></tr><tr><td><span class="tag b-ez">萤石</span></td><td>15</td></tr><tr><td><span class="tag b-mi">小米</span></td><td>12</td></tr><tr><td><span class="tag b-hk">海康威视</span></td><td>11</td></tr><tr><td><span class="tag b-aux">奥克斯</span></td><td>7</td></tr><tr><td><span class="tag b-other">镭威视</span></td><td>4</td></tr><tr><td><span class="tag b-tp">TP-LINK</span></td><td>4</td></tr><tr><td><span class="tag b-other">康佳</span></td><td>3</td></tr><tr><td><span class="tag b-360">360</span></td><td>3</td></tr><tr><td><span class="tag b-other">九安</span></td><td>3</td></tr><tr><td><span class="tag b-hq">小豚当家(鸿蒙)</span></td><td>2</td></tr><tr><td><span class="tag b-hq">海雀(鸿蒙)</span></td><td>2</td></tr><tr><td><span class="tag b-other">网络眼</span></td><td>1</td></tr><tr><td><span class="tag b-other">威视达康</span></td><td>1</td></tr><tr><td><span class="tag b-other">神眸</span></td><td>1</td></tr><tr><td><span class="tag b-other">小湃</span></td><td>1</td></tr><tr><td><span class="tag b-other">腾达</span></td><td>1</td></tr><tr><td><span class="tag b-other">飞利浦</span></td><td>1</td></tr>
+<tr><td><span class="tag b-other">待定</span></td><td>47（店铺名补采中，随后更新）</td></tr>
+</table>
+
+<h2>二、全量 SKU 矩阵（热度降序）</h2>
+<table>
+<tr><th>#</th><th>品牌</th><th>产品（型号/分组）</th><th>价格</th><th>价位段</th><th>店铺</th><th>评论数</th><th>好评率</th><th>差评</th><th>热门标签</th></tr>
+<tr>
+<td>1</td>
+<td><span class="tag b-360">360</span></td>
+<td class="pname">云台摄像机9Pro 400万(室内)<div class="skuline"><a href="https://item.jd.com/100184820315.html" target="_blank">100184820315</a> · 室内云台</div></td>
+<td class="price">¥139.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-s">100万+</td>
+<td>98%</td>
+<td>5000+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">十分好用</span> <span class="tagmini">反应灵敏</span></td>
+</tr><tr>
+<td>2</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">太阳能4G双摄(AOV)<div class="skuline"><a href="https://item.jd.com/100118047961.html" target="_blank">100118047961</a> · 室外双摄·太阳能·4G</div></td>
+<td class="price">¥312.6</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-s">100万+</td>
+<td>95%</td>
+<td>5000+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">方便快捷</span></td>
+</tr><tr>
+<td>3</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">2K超清 全景<div class="skuline"><a href="https://item.jd.com/100126418893.html" target="_blank">100126418893</a> · 室外云台</div></td>
+<td class="price">¥118.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-s">100万+</td>
+<td>95%</td>
+<td>5000+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">操作方便</span></td>
+</tr><tr>
+<td>4</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">超清双摄 电子变焦<div class="skuline"><a href="https://item.jd.com/100129037333.html" target="_blank">100129037333</a> · 室外双摄</div></td>
+<td class="price">¥233.9</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-s">100万+</td>
+<td>95%</td>
+<td>5000+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>5</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">超清双摄 电子变焦<div class="skuline"><a href="https://item.jd.com/100162906314.html" target="_blank">100162906314</a> · 室外双摄·枪球</div></td>
+<td class="price">¥165.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-s">100万+</td>
+<td>95%</td>
+<td>5000+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>6</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">C6c 400万(室内)<div class="skuline"><a href="https://item.jd.com/100029466747.html" target="_blank">100029466747</a> · 室内云台</div></td>
+<td class="price">¥189.00</td>
+<td>100-200</td>
+<td>萤石京东自营旗舰店</td>
+<td class="hot-s">100万+</td>
+<td>96%</td>
+<td>2000+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">十分好用</span> <span class="tagmini">节省空间</span></td>
+</tr><tr>
+<td>7</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">C6c 500万(室内)<div class="skuline"><a href="https://item.jd.com/100048199952.html" target="_blank">100048199952</a> · 室内云台</div></td>
+<td class="price">¥209.00</td>
+<td>200-400</td>
+<td>萤石京东自营旗舰店</td>
+<td class="hot-s">100万+</td>
+<td>96%</td>
+<td>2000+</td>
+<td><span class="tagmini">操作简便</span> <span class="tagmini">十分好用</span> <span class="tagmini">节省空间</span></td>
+</tr><tr>
+<td>8</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100099802760.html" target="_blank">100099802760</a> · 室外摄像头-4G</div></td>
+<td class="price">¥349.0</td>
+<td>200-400</td>
+<td>萤石京东自营旗舰店</td>
+<td class="hot-s">100万+</td>
+<td>96%</td>
+<td>2000+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">功能强大</span> <span class="tagmini">十分好用</span></td>
+</tr><tr>
+<td>9</td>
+<td><span class="tag b-360">360</span></td>
+<td class="pname">可视门铃6Pro<div class="skuline"><a href="https://item.jd.com/100070244174.html" target="_blank">100070244174</a> · 门铃</div></td>
+<td class="price">¥429.0</td>
+<td>400-600</td>
+<td>360京东自营旗舰店</td>
+<td class="hot-a">50万+</td>
+<td>98%</td>
+<td>1000+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">灵敏度强</span> <span class="tagmini">十分好用</span></td>
+</tr><tr>
+<td>10</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">1000万双摄<div class="skuline"><a href="https://item.jd.com/100067678616.html" target="_blank">100067678616</a> · 双摄云台</div></td>
+<td class="price">¥199.0</td>
+<td>100-200</td>
+<td>乔安京东自营旗舰店</td>
+<td class="hot-a">50万+</td>
+<td>99%</td>
+<td>1000+</td>
+<td><span class="tagmini">安装简便</span> <span class="tagmini">十分好用</span> <span class="tagmini">节省空间</span></td>
+</tr><tr>
+<td>11</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">1000万超高清双摄 三画面<div class="skuline"><a href="https://item.jd.com/100079964042.html" target="_blank">100079964042</a> · 室外三摄</div></td>
+<td class="price">¥178.0</td>
+<td>100-200</td>
+<td>安防监控京东自营旗舰店</td>
+<td class="hot-a">20万+</td>
+<td>98%</td>
+<td>200+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">省力便捷</span></td>
+</tr><tr>
+<td>12</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">双摄三画面 4G<div class="skuline"><a href="https://item.jd.com/100151451716.html" target="_blank">100151451716</a> · 室外三摄·4G</div></td>
+<td class="price">¥273.9</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">20万+</td>
+<td>98%</td>
+<td>200+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>13</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">1000W超清双摄 4G<div class="skuline"><a href="https://item.jd.com/100164141233.html" target="_blank">100164141233</a> · 双摄·4G</div></td>
+<td class="price">¥219.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">50万+</td>
+<td>99%</td>
+<td>1000+</td>
+<td><span class="tagmini">操作简便</span> <span class="tagmini">十分好用</span> <span class="tagmini">节省空间</span></td>
+</tr><tr>
+<td>14</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">AI大模型 C2Y<div class="skuline"><a href="https://item.jd.com/100189266344.html" target="_blank">100189266344</a> · 云台</div></td>
+<td class="price">¥158.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">50万+</td>
+<td>99%</td>
+<td>1000+</td>
+<td><span class="tagmini">安装简便</span> <span class="tagmini">夜视功能强</span> <span class="tagmini">反应灵敏</span></td>
+</tr><tr>
+<td>15</td>
+<td><span class="tag b-aux">奥克斯</span></td>
+<td class="pname">双1000W 4G<div class="skuline"><a href="https://item.jd.com/100155066531.html" target="_blank">100155066531</a> · 室外双摄·4G</div></td>
+<td class="price">¥259.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">20万+</td>
+<td>97%</td>
+<td>500+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>16</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">室外摄像机BW500 电池款<div class="skuline"><a href="https://item.jd.com/100103846027.html" target="_blank">100103846027</a> · 室外电池枪机</div></td>
+<td class="price">¥399.0</td>
+<td>200-400</td>
+<td>小米京东自营旗舰店</td>
+<td class="hot-a">20万+</td>
+<td>97%</td>
+<td>500+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">十分好用</span> <span class="tagmini">灵敏度强</span></td>
+</tr><tr>
+<td>17</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">小米智能猫眼2 液晶大屏<div class="skuline"><a href="https://item.jd.com/100115192094.html" target="_blank">100115192094</a> · 猫眼</div></td>
+<td class="price">¥629.0</td>
+<td>600+</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">20万+</td>
+<td>97%</td>
+<td>500+</td>
+<td><span class="tagmini">安装简便</span> <span class="tagmini">十分好用</span> <span class="tagmini">灵敏度强</span></td>
+</tr><tr>
+<td>18</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">摄像机C300 双摄版(室内)<div class="skuline"><a href="https://item.jd.com/100123375984.html" target="_blank">100123375984</a> · 室内双摄</div></td>
+<td class="price">¥299.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">50万+</td>
+<td>98%</td>
+<td>500+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">十分好用</span> <span class="tagmini">节省空间</span></td>
+</tr><tr>
+<td>19</td>
+<td><span class="tag b-hq">小豚当家(鸿蒙)</span></td>
+<td class="pname">双摄真联动 16倍变焦<div class="skuline"><a href="https://item.jd.com/100113327400.html" target="_blank">100113327400</a> · 室外双摄</div></td>
+<td class="price">¥299.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">20万+</td>
+<td>97%</td>
+<td>500+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">十分好用</span> <span class="tagmini">做工精细</span></td>
+</tr><tr>
+<td>20</td>
+<td><span class="tag b-other">康佳</span></td>
+<td class="pname">800万双镜头双画面<div class="skuline"><a href="https://item.jd.com/100069543019.html" target="_blank">100069543019</a> · 室外双摄</div></td>
+<td class="price">¥165.0</td>
+<td>100-200</td>
+<td>康佳安防监控京东自营旗舰店</td>
+<td class="hot-a">20万+</td>
+<td>95%</td>
+<td>500+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>21</td>
+<td><span class="tag b-other">康佳</span></td>
+<td class="pname">1000万双镜头<div class="skuline"><a href="https://item.jd.com/100127084087.html" target="_blank">100127084087</a> · 室外双摄</div></td>
+<td class="price">¥234.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">20万+</td>
+<td>95%</td>
+<td>500+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>22</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100131642824.html" target="_blank">100131642824</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥269.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">50万+</td>
+<td>97%</td>
+<td>2000+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>23</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">C8c 500万 WiFi版<div class="skuline"><a href="https://item.jd.com/100052277926.html" target="_blank">100052277926</a> · 室外云台·单摄</div></td>
+<td class="price">¥288.00</td>
+<td>200-400</td>
+<td>萤石京东自营旗舰店</td>
+<td class="hot-a">20万+</td>
+<td>96%</td>
+<td>500+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">做工精细</span> <span class="tagmini">十分好用</span></td>
+</tr><tr>
+<td>24</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">C6c 800万 AI大模型(室内)<div class="skuline"><a href="https://item.jd.com/100096546829.html" target="_blank">100096546829</a> · 室内云台</div></td>
+<td class="price">¥259.0</td>
+<td>200-400</td>
+<td>萤石京东自营旗舰店</td>
+<td class="hot-a">50万+</td>
+<td>96%</td>
+<td>1000+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">十分好用</span> <span class="tagmini">节省空间</span></td>
+</tr><tr>
+<td>25</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100098988707.html" target="_blank">100098988707</a> · 室外摄像头-4G</div></td>
+<td class="price">¥309.0</td>
+<td>200-400</td>
+<td>萤石京东自营旗舰店</td>
+<td class="hot-a">20万+</td>
+<td>97%</td>
+<td>500+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">节省空间</span> <span class="tagmini">十分好用</span></td>
+</tr><tr>
+<td>26</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">C8c 800万 WiFi版<div class="skuline"><a href="https://item.jd.com/100112816356.html" target="_blank">100112816356</a> · 室外云台·单摄</div></td>
+<td class="price">¥344.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">20万+</td>
+<td>96%</td>
+<td>500+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">做工精细</span> <span class="tagmini">十分好用</span></td>
+</tr><tr>
+<td>27</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">C6c 1000万(室内)<div class="skuline"><a href="https://item.jd.com/100174833823.html" target="_blank">100174833823</a> · 室内云台</div></td>
+<td class="price">¥509.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">50万+</td>
+<td>96%</td>
+<td>1000+</td>
+<td><span class="tagmini">操作简便</span> <span class="tagmini">十分好用</span> <span class="tagmini">连接稳定</span></td>
+</tr><tr>
+<td>28</td>
+<td><span class="tag b-other">镭威视</span></td>
+<td class="pname">三镜头·太阳能<div class="skuline"><a href="https://item.jd.com/100157820551.html" target="_blank">100157820551</a> · 室外三摄·太阳能</div></td>
+<td class="price">¥329.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">50万+</td>
+<td>97%</td>
+<td>2000+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>29</td>
+<td><span class="tag b-other">镭威视</span></td>
+<td class="pname">1500万 三镜头可转 4G<div class="skuline"><a href="https://item.jd.com/100177876230.html" target="_blank">100177876230</a> · 室外三摄·4G</div></td>
+<td class="price">¥309.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">50万+</td>
+<td>97%</td>
+<td>2000+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>30</td>
+<td><span class="tag b-other">镭威视</span></td>
+<td class="pname">三目<div class="skuline"><a href="https://item.jd.com/100177876262.html" target="_blank">100177876262</a> · 室外三摄</div></td>
+<td class="price">¥248.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-a">50万+</td>
+<td>97%</td>
+<td>2000+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">操作方便</span></td>
+</tr><tr>
+<td>31</td>
+<td><span class="tag b-360">360</span></td>
+<td class="pname">户外球机5C 双摄3K版<div class="skuline"><a href="https://item.jd.com/100097007811.html" target="_blank">100097007811</a> · 室外双摄</div></td>
+<td class="price">¥254.00</td>
+<td>200-400</td>
+<td>360京东自营旗舰店</td>
+<td class="hot-b">10万+</td>
+<td>97%</td>
+<td>500+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">十分好用</span> <span class="tagmini">做工精细</span></td>
+</tr><tr>
+<td>32</td>
+<td><span class="tag b-other">九安</span></td>
+<td class="pname">免插电 500万<div class="skuline"><a href="https://item.jd.com/100177155351.html" target="_blank">100177155351</a> · 电池/太阳能枪机</div></td>
+<td class="price">¥143.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-b">5万+</td>
+<td>98%</td>
+<td>62</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">十分好用</span> <span class="tagmini">小巧方便</span></td>
+</tr><tr>
+<td>33</td>
+<td><span class="tag b-aux">奥克斯</span></td>
+<td class="pname">太阳能供电 4G<div class="skuline"><a href="https://item.jd.com/100150481347.html" target="_blank">100150481347</a> · 室外三摄·太阳能</div></td>
+<td class="price">¥319.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-b">10万+</td>
+<td>96%</td>
+<td>200+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">操作方便</span></td>
+</tr><tr>
+<td>34</td>
+<td><span class="tag b-aux">奥克斯</span></td>
+<td class="pname">365天 0费用 双太阳能板 4G<div class="skuline"><a href="https://item.jd.com/100150481363.html" target="_blank">100150481363</a> · 室外三摄·太阳能·4G</div></td>
+<td class="price">¥339.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-b">10万+</td>
+<td>96%</td>
+<td>200+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>35</td>
+<td><span class="tag b-other">康佳</span></td>
+<td class="pname">1600万双镜头 三画面<div class="skuline"><a href="https://item.jd.com/100092854265.html" target="_blank">100092854265</a> · 室外三摄</div></td>
+<td class="price">¥219.0</td>
+<td>200-400</td>
+<td>康佳安防监控京东自营旗舰店</td>
+<td class="hot-b">10万+</td>
+<td>96%</td>
+<td>200+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>36</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100128160828.html" target="_blank">100128160828</a> · 室外摄像头-4G</div></td>
+<td class="price">¥219.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-b">5万+</td>
+<td>97%</td>
+<td>86</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">十分好用</span> <span class="tagmini">节省空间</span></td>
+</tr><tr>
+<td>37</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100153171097.html" target="_blank">100153171097</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥199.9</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-b">10万+</td>
+<td>98%</td>
+<td>200+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>38</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100162231072.html" target="_blank">100162231072</a> · 室外摄像头-4G</div></td>
+<td class="price">¥249.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-b">10万+</td>
+<td>97%</td>
+<td>200+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">操作方便</span></td>
+</tr><tr>
+<td>39</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100176934465.html" target="_blank">100176934465</a> · 室外摄像头-4G</div></td>
+<td class="price">¥498.99</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-b">5万+</td>
+<td>96%</td>
+<td>200+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">操作方便</span></td>
+</tr><tr>
+<td>40</td>
+<td><span class="tag b-hk">海康威视</span></td>
+<td class="pname">400万全彩 枪机(网线)<div class="skuline"><a href="https://item.jd.com/100024876704.html" target="_blank">100024876704</a> · 室外枪机</div></td>
+<td class="price">¥361.0</td>
+<td>200-400</td>
+<td>海康威视京东自营旗舰店</td>
+<td class="hot-b">10万+</td>
+<td>98%</td>
+<td>100+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">质量上乘</span></td>
+</tr><tr>
+<td>41</td>
+<td><span class="tag b-hk">海康威视</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100095435261.html" target="_blank">100095435261</a> · 室外双摄</div></td>
+<td class="price">¥662.0</td>
+<td>600+</td>
+<td>海康威视京东自营旗舰店</td>
+<td class="hot-b">10万+</td>
+<td>98%</td>
+<td>100+</td>
+<td><span class="tagmini">灵敏度佳</span> <span class="tagmini">质量上乘</span> <span class="tagmini">简单方便</span></td>
+</tr><tr>
+<td>42</td>
+<td><span class="tag b-hk">海康威视</span></td>
+<td class="pname">海康威视（HIKVISION）监控器双摄像头800万全彩夜视360度全景室内外手<div class="skuline"><a href="https://item.jd.com/100107493010.html" target="_blank">100107493010</a> · 室外双摄</div></td>
+<td class="price">¥690.0</td>
+<td>600+</td>
+<td>海康威视京东自营旗舰店</td>
+<td class="hot-b">10万+</td>
+<td>98%</td>
+<td>100+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">质量上乘</span> <span class="tagmini">方便快捷</span></td>
+</tr><tr>
+<td>43</td>
+<td><span class="tag b-hk">海康威视</span></td>
+<td class="pname">800万双摄 枪球联动<div class="skuline"><a href="https://item.jd.com/100143598838.html" target="_blank">100143598838</a> · 室外双摄·枪球</div></td>
+<td class="price">¥442.99</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-b">5万+</td>
+<td>97%</td>
+<td>100+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">省力便捷</span></td>
+</tr><tr>
+<td>44</td>
+<td><span class="tag b-hk">海康威视</span></td>
+<td class="pname">终身免流 500万<div class="skuline"><a href="https://item.jd.com/100165084423.html" target="_blank">100165084423</a> · 室外4G</div></td>
+<td class="price">¥399.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-b">5万+</td>
+<td>97%</td>
+<td>200+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">操作方便</span></td>
+</tr><tr>
+<td>45</td>
+<td><span class="tag b-other">网络眼</span></td>
+<td class="pname">网络眼4g太阳能摄像头终身免流量AI监控手机远程免插电360度无死角带夜视户外无<div class="skuline"><a href="https://item.jd.com/100023197135.html" target="_blank">100023197135</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥241.0</td>
+<td>200-400</td>
+<td>网络眼安防监控京东自营旗舰店</td>
+<td class="hot-b">10万+</td>
+<td>97%</td>
+<td>200+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">操作方便</span></td>
+</tr><tr>
+<td>46</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">H80X?(HB8魔丸太阳能4G)<div class="skuline"><a href="https://item.jd.com/100144250930.html" target="_blank">100144250930</a> · 室外云台·太阳能·4G</div></td>
+<td class="price">¥368.1</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-b">10万+</td>
+<td>94%</td>
+<td>500+</td>
+<td><span class="tagmini">操作简便</span> <span class="tagmini">做工精细</span> <span class="tagmini">防水防尘</span></td>
+</tr><tr>
+<td>47</td>
+<td><span class="tag b-other">威视达康</span></td>
+<td class="pname">双镜头双画面<div class="skuline"><a href="https://item.jd.com/100122177341.html" target="_blank">100122177341</a> · 室外双摄·枪球</div></td>
+<td class="price">¥288.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-c">2万+</td>
+<td>96%</td>
+<td>100+</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>48</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">摄像机C700(室内)<div class="skuline"><a href="https://item.jd.com/100109850402.html" target="_blank">100109850402</a> · 室内云台</div></td>
+<td class="price">¥299.0</td>
+<td>200-400</td>
+<td>小米京东自营旗舰店</td>
+<td class="hot-c">300万+</td>
+<td>97%</td>
+<td>5000+</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">十分好用</span> <span class="tagmini">做工精细</span></td>
+</tr><tr>
+<td>49</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100150221460.html" target="_blank">100150221460</a> · 室外摄像头-4G</div></td>
+<td class="price">¥239.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-c">2万+</td>
+<td>98%</td>
+<td>59</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">功能丰富</span> <span class="tagmini">十分好用</span></td>
+</tr><tr>
+<td>50</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100150221548.html" target="_blank">100150221548</a> · 室外摄像头-4G</div></td>
+<td class="price">¥219.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-c">2万+</td>
+<td>98%</td>
+<td>59</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">十分好用</span> <span class="tagmini">极其好用</span></td>
+</tr><tr>
+<td>51</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100156263641.html" target="_blank">100156263641</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥239.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-c">1万+</td>
+<td>92%</td>
+<td>88</td>
+<td><span class="tagmini">画质清晰</span> <span class="tagmini">简单方便</span> <span class="tagmini">网络稳定</span></td>
+</tr><tr>
+<td>52</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100169412637.html" target="_blank">100169412637</a> · 室外双摄</div></td>
+<td class="price">¥375.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-c">2万+</td>
+<td>97%</td>
+<td>62</td>
+<td><span class="tagmini">操作简便</span> <span class="tagmini">颜值够高</span> <span class="tagmini">十分好用</span></td>
+</tr><tr>
+<td>53</td>
+<td><span class="tag b-tp">TP-LINK</span></td>
+<td class="pname">800万4K全彩云台<div class="skuline"><a href="https://item.jd.com/100266404734.html" target="_blank">100266404734</a> · 室外云台</div></td>
+<td class="price">¥219.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>54</td>
+<td><span class="tag b-tp">TP-LINK</span></td>
+<td class="pname">600万全彩 有线/WiFi<div class="skuline"><a href="https://item.jd.com/100266404756.html" target="_blank">100266404756</a> · 室外云台</div></td>
+<td class="price">¥200.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>55</td>
+<td><span class="tag b-tp">TP-LINK</span></td>
+<td class="pname">双摄1200万 枪球联动<div class="skuline"><a href="https://item.jd.com/100286204238.html" target="_blank">100286204238</a> · 室外双摄·枪球</div></td>
+<td class="price">¥295.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>56</td>
+<td><span class="tag b-tp">TP-LINK</span></td>
+<td class="pname">双摄1000万 枪球联动<div class="skuline"><a href="https://item.jd.com/100357467620.html" target="_blank">100357467620</a> · 室外双摄·枪球</div></td>
+<td class="price">¥269.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>57</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">4G 双镜头双画面<div class="skuline"><a href="https://item.jd.com/100211963876.html" target="_blank">100211963876</a> · 室外双摄·4G</div></td>
+<td class="price">¥253.9</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>58</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">双摄AI大模型 1600万<div class="skuline"><a href="https://item.jd.com/100212806048.html" target="_blank">100212806048</a> · 双摄云台</div></td>
+<td class="price">¥208.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>59</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">365天 15倍变焦 4G<div class="skuline"><a href="https://item.jd.com/100215512788.html" target="_blank">100215512788</a> · 室外多摄·太阳能·4G</div></td>
+<td class="price">¥350.9</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>60</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">磁吸电池摄像机 500万<div class="skuline"><a href="https://item.jd.com/100222570428.html" target="_blank">100222570428</a> · 电池枪机</div></td>
+<td class="price">¥179.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>61</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">1600W AI人形 360°<div class="skuline"><a href="https://item.jd.com/100233029154.html" target="_blank">100233029154</a> · 室外双摄</div></td>
+<td class="price">¥243.9</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>62</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">独立三镜头<div class="skuline"><a href="https://item.jd.com/100249247378.html" target="_blank">100249247378</a> · 室外三摄</div></td>
+<td class="price">¥333.9</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>63</td>
+<td><span class="tag b-ja">乔安</span></td>
+<td class="pname">AOV低功耗 快充 365天 4G<div class="skuline"><a href="https://item.jd.com/100301638962.html" target="_blank">100301638962</a> · 室外三摄·太阳能·4G</div></td>
+<td class="price">¥407.9</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>64</td>
+<td><span class="tag b-other">九安</span></td>
+<td class="pname">真四摄 太阳能<div class="skuline"><a href="https://item.jd.com/100282308871.html" target="_blank">100282308871</a> · 室外四摄·太阳能</div></td>
+<td class="price">¥447.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>65</td>
+<td><span class="tag b-other">九安</span></td>
+<td class="pname">可旋转三镜头 4G<div class="skuline"><a href="https://item.jd.com/100359956442.html" target="_blank">100359956442</a> · 室外三摄·太阳能·4G</div></td>
+<td class="price">¥380.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>66</td>
+<td><span class="tag b-aux">奥克斯</span></td>
+<td class="pname">1600万(室内)<div class="skuline"><a href="https://item.jd.com/100195051365.html" target="_blank">100195051365</a> · 室内云台</div></td>
+<td class="price">¥169.0</td>
+<td>100-200</td>
+<td>奥克斯安防监控京东自营旗舰店</td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>67</td>
+<td><span class="tag b-aux">奥克斯</span></td>
+<td class="pname">超清双摄 电子变焦<div class="skuline"><a href="https://item.jd.com/100196929146.html" target="_blank">100196929146</a> · 室外双摄·枪球</div></td>
+<td class="price">¥168.9</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>68</td>
+<td><span class="tag b-aux">奥克斯</span></td>
+<td class="pname">全彩800万(室内)<div class="skuline"><a href="https://item.jd.com/100256892734.html" target="_blank">100256892734</a> · 室内云台</div></td>
+<td class="price">¥130.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>69</td>
+<td><span class="tag b-aux">奥克斯</span></td>
+<td class="pname">1600万 双摄(室内)<div class="skuline"><a href="https://item.jd.com/100319615369.html" target="_blank">100319615369</a> · 室内双摄</div></td>
+<td class="price">¥238.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>70</td>
+<td><span class="tag b-other">小湃</span></td>
+<td class="pname">P50Pro 500万(室内)<div class="skuline"><a href="https://item.jd.com/100257301196.html" target="_blank">100257301196</a> · 室内云台</div></td>
+<td class="price">¥116.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>71</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">室外摄像机4 4K<div class="skuline"><a href="https://item.jd.com/100193155631.html" target="_blank">100193155631</a> · 室外单摄</div></td>
+<td class="price">¥299.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>72</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">小米智能摄像机4C 3.5K(室内)<div class="skuline"><a href="https://item.jd.com/100198764205.html" target="_blank">100198764205</a> · 室内云台</div></td>
+<td class="price">¥239.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>73</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">小米智能室外摄像机4 Pro 三摄变焦版<div class="skuline"><a href="https://item.jd.com/100198764243.html" target="_blank">100198764243</a> · 室外云台·三摄</div></td>
+<td class="price">¥449.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>74</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">室外摄像机4 双摄版<div class="skuline"><a href="https://item.jd.com/100222853738.html" target="_blank">100222853738</a> · 室外双摄·枪球</div></td>
+<td class="price">¥349.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>75</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">小米智能室外摄像机4C 3K<div class="skuline"><a href="https://item.jd.com/100222853784.html" target="_blank">100222853784</a> · 室外云台·单摄</div></td>
+<td class="price">¥241.9</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>76</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">太阳能摄像机4Pro 4G双摄版<div class="skuline"><a href="https://item.jd.com/100285455157.html" target="_blank">100285455157</a> · 室外双摄·太阳能·4G</div></td>
+<td class="price">¥649.0</td>
+<td>600+</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>77</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">摄像机4Pro(室内)<div class="skuline"><a href="https://item.jd.com/100320355029.html" target="_blank">100320355029</a> · 室内云台</div></td>
+<td class="price">¥329.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>78</td>
+<td><span class="tag b-mi">小米</span></td>
+<td class="pname">室外摄像机4 4G双摄版<div class="skuline"><a href="https://item.jd.com/100326477850.html" target="_blank">100326477850</a> · 室外双摄·4G</div></td>
+<td class="price">¥399.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>79</td>
+<td><span class="tag b-hq">小豚当家(鸿蒙)</span></td>
+<td class="pname">智能摄像头6 4K<div class="skuline"><a href="https://item.jd.com/100322545385.html" target="_blank">100322545385</a> · 室外云台</div></td>
+<td class="price">¥221.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>80</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100193771897.html" target="_blank">100193771897</a> · 室外摄像头-4G</div></td>
+<td class="price">¥373.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>81</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100197020512.html" target="_blank">100197020512</a> · 室外双摄</div></td>
+<td class="price">¥464.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>82</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100205313108.html" target="_blank">100205313108</a> · 室外摄像头-4G</div></td>
+<td class="price">¥199.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">5000+</td>
+<td>99%</td>
+<td>5</td>
+<td><span class="tagmini">简单方便</span> <span class="tagmini">做工精细</span> <span class="tagmini">颜色鲜艳</span></td>
+</tr><tr>
+<td>83</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100205501297.html" target="_blank">100205501297</a> · 室外双摄</div></td>
+<td class="price">¥999.0</td>
+<td>600+</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>84</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100213536346.html" target="_blank">100213536346</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥329.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>85</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100218477713.html" target="_blank">100218477713</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥498.99</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>86</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100220899647.html" target="_blank">100220899647</a> · 室外摄像头-4G</div></td>
+<td class="price">¥309.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>87</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100222034753.html" target="_blank">100222034753</a> · 室外双摄</div></td>
+<td class="price">¥243.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>88</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100224830689.html" target="_blank">100224830689</a> · 室外摄像头-4G</div></td>
+<td class="price">¥349.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>89</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100227314357.html" target="_blank">100227314357</a> · 室外摄像头-4G</div></td>
+<td class="price">¥240.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>90</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100252409573.html" target="_blank">100252409573</a> · 室外摄像头-4G</div></td>
+<td class="price">¥98.0</td>
+<td><100</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>91</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100253495359.html" target="_blank">100253495359</a> · 室外摄像头-4G</div></td>
+<td class="price">¥88.0</td>
+<td><100</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>92</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100256892846.html" target="_blank">100256892846</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥599.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>93</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100261529892.html" target="_blank">100261529892</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥479.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>94</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100266842798.html" target="_blank">100266842798</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥429.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>95</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100270695273.html" target="_blank">100270695273</a> · 室外摄像头-4G</div></td>
+<td class="price">¥279.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>96</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100273245910.html" target="_blank">100273245910</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥413.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>97</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100277490488.html" target="_blank">100277490488</a> · 室外摄像头-4G</div></td>
+<td class="price">¥199.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>98</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100278973236.html" target="_blank">100278973236</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥349.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>99</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100284801904.html" target="_blank">100284801904</a> · 室外摄像头-4G</div></td>
+<td class="price">¥222.78</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>100</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100286262290.html" target="_blank">100286262290</a> · 室外摄像头-4G</div></td>
+<td class="price">¥224.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>101</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100287182974.html" target="_blank">100287182974</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥399.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>102</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100289929157.html" target="_blank">100289929157</a> · 室外摄像头-4G</div></td>
+<td class="price">¥488.98</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>103</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100291443490.html" target="_blank">100291443490</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥698.98</td>
+<td>600+</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>104</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100291567510.html" target="_blank">100291567510</a> · 室外摄像头-4G</div></td>
+<td class="price">¥188.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>105</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100291849081.html" target="_blank">100291849081</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥378.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>106</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100298910802.html" target="_blank">100298910802</a> · 室外摄像头-4G</div></td>
+<td class="price">¥348.99</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>107</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100299515809.html" target="_blank">100299515809</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥294.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>108</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100301602159.html" target="_blank">100301602159</a> · 室外摄像头-太阳能</div></td>
+<td class="price">¥269.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>109</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100304821764.html" target="_blank">100304821764</a> · 室外摄像头-4G</div></td>
+<td class="price">¥176.5</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>110</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100317159889.html" target="_blank">100317159889</a> · 室外摄像头-4G</div></td>
+<td class="price">¥519.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>111</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100323448072.html" target="_blank">100323448072</a> · 室外双摄</div></td>
+<td class="price">¥368.99</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>112</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100323968207.html" target="_blank">100323968207</a> · 室外多摄</div></td>
+<td class="price">¥588.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>113</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/10033152889062.html" target="_blank">10033152889062</a> · 室外摄像头-4G</div></td>
+<td class="price">¥1109.0</td>
+<td>600+</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>114</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100336788722.html" target="_blank">100336788722</a> · 室外摄像头-4G</div></td>
+<td class="price">¥118.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>115</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/10034277557434.html" target="_blank">10034277557434</a> · 室外摄像头-4G</div></td>
+<td class="price">¥625.0</td>
+<td>600+</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>116</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">京东验证<div class="skuline"><a href="https://item.jd.com/100358327556.html" target="_blank">100358327556</a> · 室外摄像头-4G</div></td>
+<td class="price">¥499.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>117</td>
+<td><span class="tag b-other">待定</span></td>
+<td class="pname">多快好省，购物上京东<div class="skuline"><a href="https://item.jd.com/100389173698.html" target="_blank">100389173698</a> · 室外摄像头-4G</div></td>
+<td class="price">¥333.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>118</td>
+<td><span class="tag b-hk">海康威视</span></td>
+<td class="pname">4G终身免流 800万双摄 太阳能<div class="skuline"><a href="https://item.jd.com/100196726997.html" target="_blank">100196726997</a> · 室外双摄·太阳能·4G</div></td>
+<td class="price">¥698.98</td>
+<td>600+</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>119</td>
+<td><span class="tag b-hk">海康威视</span></td>
+<td class="pname">1000万双摄<div class="skuline"><a href="https://item.jd.com/100242678782.html" target="_blank">100242678782</a> · 室外双摄</div></td>
+<td class="price">¥498.98</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>120</td>
+<td><span class="tag b-hk">海康威视</span></td>
+<td class="pname">1000万双摄 4G球机<div class="skuline"><a href="https://item.jd.com/100270573753.html" target="_blank">100270573753</a> · 室外双摄·4G</div></td>
+<td class="price">¥529.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>121</td>
+<td><span class="tag b-hk">海康威视</span></td>
+<td class="pname">4G终身免流 400万<div class="skuline"><a href="https://item.jd.com/100289826807.html" target="_blank">100289826807</a> · 双摄·4G</div></td>
+<td class="price">¥488.99</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>122</td>
+<td><span class="tag b-hk">海康威视</span></td>
+<td class="pname">800万双摄 臻全彩2.0<div class="skuline"><a href="https://item.jd.com/100312388825.html" target="_blank">100312388825</a> · 室外双摄·枪球</div></td>
+<td class="price">¥629.0</td>
+<td>600+</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>123</td>
+<td><span class="tag b-hk">海康威视</span></td>
+<td class="pname">臻全彩2.0 4G免充值<div class="skuline"><a href="https://item.jd.com/100333519306.html" target="_blank">100333519306</a> · 室外双摄·4G</div></td>
+<td class="price">¥599.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>124</td>
+<td><span class="tag b-hq">海雀(鸿蒙)</span></td>
+<td class="pname">雀蛋Pro(室内)<div class="skuline"><a href="https://item.jd.com/100212809615.html" target="_blank">100212809615</a> · 室内云台</div></td>
+<td class="price">¥329.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>125</td>
+<td><span class="tag b-hq">海雀(鸿蒙)</span></td>
+<td class="pname">5Pro 4K<div class="skuline"><a href="https://item.jd.com/100376069768.html" target="_blank">100376069768</a> · 室外枪机</div></td>
+<td class="price">¥273.5</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>126</td>
+<td><span class="tag b-other">神眸</span></td>
+<td class="pname">BC4 PRO 4G免流 2.5K<div class="skuline"><a href="https://item.jd.com/100234608164.html" target="_blank">100234608164</a> · 电池枪机·4G</div></td>
+<td class="price">¥348.99</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>127</td>
+<td><span class="tag b-other">腾达</span></td>
+<td class="pname">CQ8W 室外<div class="skuline"><a href="https://item.jd.com/100307283605.html" target="_blank">100307283605</a> · 室外云台</div></td>
+<td class="price">¥157.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>128</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">C6c 800万 4G版(室内)<div class="skuline"><a href="https://item.jd.com/100225097047.html" target="_blank">100225097047</a> · 室内云台·4G</div></td>
+<td class="price">¥399.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>129</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">C8C 800万 双模版<div class="skuline"><a href="https://item.jd.com/100307018368.html" target="_blank">100307018368</a> · 室外云台·单摄</div></td>
+<td class="price">¥449.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>130</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">CB8C 魔丸球机太阳能4G版<div class="skuline"><a href="https://item.jd.com/100307018396.html" target="_blank">100307018396</a> · 室外云台·太阳能·4G</div></td>
+<td class="price">¥499.0</td>
+<td>400-600</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>131</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">CB90 魔丸太阳能电池4G版<div class="skuline"><a href="https://item.jd.com/100307018416.html" target="_blank">100307018416</a> · 室外双摄·太阳能·4G</div></td>
+<td class="price">¥638.0</td>
+<td>600+</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>132</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">C6c AI精灵球 600万 pro(室内)<div class="skuline"><a href="https://item.jd.com/100317037500.html" target="_blank">100317037500</a> · 室内云台</div></td>
+<td class="price">¥229.0</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>133</td>
+<td><span class="tag b-ez">萤石</span></td>
+<td class="pname">C8c 800万 无限流量版(4G)<div class="skuline"><a href="https://item.jd.com/100355077406.html" target="_blank">100355077406</a> · 室外云台·4G·单摄</div></td>
+<td class="price">¥399.99</td>
+<td>200-400</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>134</td>
+<td><span class="tag b-other">镭威视</span></td>
+<td class="pname">吸顶 1000万 双镜头<div class="skuline"><a href="https://item.jd.com/100368342046.html" target="_blank">100368342046</a> · 室内双摄·吸顶</div></td>
+<td class="price">¥179.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr><tr>
+<td>135</td>
+<td><span class="tag b-other">飞利浦</span></td>
+<td class="pname">一机双画面 4G<div class="skuline"><a href="https://item.jd.com/100375758754.html" target="_blank">100375758754</a> · 室外双摄·4G</div></td>
+<td class="price">¥159.0</td>
+<td>100-200</td>
+<td><span style="color:#bbb">采集中</span></td>
+<td class="hot-d">待补</td>
+<td>—</td>
+<td>—</td>
+<td></td>
+</tr>
+</table>
+
+<h2>三、用户之声：热门评论标签 TOP15（53 款聚合加权）</h2>
+<table><tr><th>标签</th><th>提及量</th></tr>
+<tr><td>简单方便</td><td>12163</td></tr><tr><td>画质清晰</td><td>9874</td></tr><tr><td>安装简便</td><td>3365</td></tr><tr><td>网络稳定</td><td>2200</td></tr><tr><td>操作方便</td><td>1778</td></tr><tr><td>反应灵敏</td><td>1659</td></tr><tr><td>十分好用</td><td>1465</td></tr><tr><td>做工精细</td><td>1421</td></tr><tr><td>夜视功能强</td><td>1139</td></tr><tr><td>功能强大</td><td>975</td></tr><tr><td>节省空间</td><td>756</td></tr><tr><td>灵敏度强</td><td>642</td></tr><tr><td>操作简便</td><td>387</td></tr><tr><td>方便快捷</td><td>357</td></tr><tr><td>结实耐用</td><td>237</td></tr>
+</table>
+
+<div class="callout">⏭ 待办（v0.4 → v0.5 终版）：①82 款评论补采（等 cookie）②47 款品牌判定（店铺名补采完成后重判）③评价采集型号清单（每品牌不同价位段、不同类型各 1-2 款，燕玲确认矩阵后出）</div>
+<div class="footer">球机品类洞察研究 W1 · 数据源：京东实采（价格/评论数为页面显示口径）· 生成：尹燕玲-报告分析专家 🦞</div>
+</body>
+</html>
