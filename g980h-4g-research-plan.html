@@ -47,7 +47,14 @@ tr:nth-child(even) td { background:#fafcfa; }
 .doing { background:#fff3e0; color:#F39C12; }
 .todo2 { background:#f0f0f0; color:#999; }
 .small { font-size:12px; color:#999; }
-.concl { border:1px solid #e3ebe5; border-radius:10px; padding:14px 16px; margin:8px 0; }
+.colhead { display:flex; align-items:center; gap:10px; border-radius:10px; padding:12px 18px; margin:16px 0 10px; color:#fff; }
+.colhead .letter { font-size:26px; font-weight:bold; background:rgba(255,255,255,.25); border-radius:8px; width:40px; height:40px; min-width:40px; display:flex; align-items:center; justify-content:center; }
+.colhead .ct { font-size:17px; font-weight:bold; }
+.colhead .cs { font-size:12px; opacity:.92; font-weight:normal; margin-top:2px; }
+.concl { border:1px solid #e3ebe5; border-radius:10px; padding:14px 16px; margin:8px 0 8px 12px; }
+.conclA { border-left:6px solid #2BBD6E; }
+.conclB { border-left:6px solid #F39C12; }
+.conclC { border-left:6px solid #3498DB; }
 .concl .ch { font-size:14px; font-weight:bold; margin-bottom:6px; }
 </style>
 </head>
@@ -85,17 +92,17 @@ tr:nth-child(even) td { background:#fafcfa; }
 </table>
 <h3>11.30 报告可交付的结论清单（按数据来源分栏）</h3>
 
-<p style="font-size:14px;margin:10px 0 4px"><b>【A栏】基于公测用户的初步结论</b>（样本：真实体验设备2-3个月的公测用户；性质：初步/参照性，待上市后验证）</p>
-<div class="concl"><div class="ch">✅ 结论1：价格预期与敏感度区间（PSM）<span style="font-size:12px;color:#999">｜数据源：公测用户</span></div>体验人群的可接受价格区间+最优价格点+敏感度拐点，对照官方定价给出溢价空间判断</div>
-<div class="concl"><div class="ch">✅ 结论2：目标群体画像雏形<span style="font-size:12px;color:#999">｜数据源：公测用户</span></div>基于PSM样本结构（使用频率/常用功能/人群字段）交叉，标注样本局限</div>
-<div class="concl"><div class="ch">✅ 结论3：4G增值服务需求优先级<span style="font-size:12px;color:#999">｜数据源：公测用户</span></div>基于PSM常用功能分布，输出需求优先级（体验后视角）</div>
+<div class="colhead" style="background:linear-gradient(90deg,#00B050,#2BBD6E)"><div class="letter">A</div><div><div class="ct">基于公测用户的初步结论</div><div class="cs">样本：真实体验设备2-3个月的公测用户 ｜ 性质：初步/参照性，待上市后验证</div></div></div>
+<div class="concl conclA"><div class="ch">✅ 结论1：价格预期与敏感度区间（PSM）<span style="font-size:12px;color:#999">｜数据源：公测用户</span></div>体验人群的可接受价格区间+最优价格点+敏感度拐点，对照官方定价给出溢价空间判断</div>
+<div class="concl conclA"><div class="ch">✅ 结论2：目标群体画像雏形<span style="font-size:12px;color:#999">｜数据源：公测用户</span></div>基于PSM样本结构（使用频率/常用功能/人群字段）交叉，标注样本局限</div>
+<div class="concl conclA"><div class="ch">✅ 结论3：4G增值服务需求优先级<span style="font-size:12px;color:#999">｜数据源：公测用户</span></div>基于PSM常用功能分布，输出需求优先级（体验后视角）</div>
 
-<p style="font-size:14px;margin:14px 0 4px"><b>【B栏】基于上市后真实用户情况的结论</b>（窗口：11.19-11.29约10天；性质：初期信号，窗口短需谨慎解读）</p>
-<div class="concl"><div class="ch">✅ 结论4：上市初期价格信号<span style="font-size:12px;color:#999">｜数据源：真实用户</span></div>全渠道咨询投诉中的售前价格/套餐咨询归类，首批评价中的价格提及——真实购买决策前的价格关注点</div>
-<div class="concl"><div class="ch">✅ 结论5：上市初期TOP问题与需求信号<span style="font-size:12px;color:#999">｜数据源：真实用户</span></div>咨询投诉问题分布+评价原声，显式标注窗口局限</div>
+<div class="colhead" style="background:linear-gradient(90deg,#E67E22,#F39C12)"><div class="letter">B</div><div><div class="ct">基于上市后真实用户情况的结论</div><div class="cs">窗口：11.19-11.29约10天 ｜ 性质：初期信号，窗口短需谨慎解读</div></div></div>
+<div class="concl conclB"><div class="ch">✅ 结论4：上市初期价格信号<span style="font-size:12px;color:#999">｜数据源：真实用户</span></div>全渠道咨询投诉中的售前价格/套餐咨询归类，首批评价中的价格提及——真实购买决策前的价格关注点</div>
+<div class="concl conclB"><div class="ch">✅ 结论5：上市初期TOP问题与需求信号<span style="font-size:12px;color:#999">｜数据源：真实用户</span></div>咨询投诉问题分布+评价原声，显式标注窗口局限</div>
 
-<p style="font-size:14px;margin:14px 0 4px"><b>【C栏】跨源综合（公测+市场+竞品交叉）</b></p>
-<div class="concl"><div class="ch">✅ 结论6：竞争定价位置与风险<span style="font-size:12px;color:#999">｜数据源：竞品采集+双栏交叉</span></div>车品竞品锚点下的定位判断（含70迈续费60元锚点风险）</div>
+<div class="colhead" style="background:linear-gradient(90deg,#2980B9,#3498DB)"><div class="letter">C</div><div><div class="ct">跨源综合（公测+市场+竞品交叉）</div></div></div>
+<div class="concl conclC"><div class="ch">✅ 结论6：竞争定价位置与风险<span style="font-size:12px;color:#999">｜数据源：竞品采集+双栏交叉</span></div>车品竞品锚点下的定位判断（含70迈续费60元锚点风险）</div>
 
 <div class="concl"><div class="ch" style="color:#E74C3C">⛔ 不在11.30下结论：转化率、套餐选购分布、留存退订、真实购买人群画像</div>首月免费期无转化行为；回访12.3后启动——统一进入v2.0</div>
 </div>
