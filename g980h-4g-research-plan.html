@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G980H 4G增值服务用户研究 · 项目规划 v2.4</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f7f6; color:#333; line-height:1.7; }
+.wrap { max-width:1080px; margin:0 auto; padding:24px 16px 60px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:14px; padding:36px 32px; margin-bottom:24px; }
+.header h1 { font-size:26px; margin-bottom:8px; }
+.header .sub { font-size:14px; opacity:.92; }
+.header .tags { margin-top:14px; }
+.header .tag { display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.4); border-radius:20px; padding:2px 12px; font-size:12px; margin-right:8px; }
+.section { background:#fff; border-radius:14px; padding:28px 30px; margin-bottom:22px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+h2 { font-size:19px; color:#00B050; border-left:5px solid #00B050; padding-left:12px; margin-bottom:18px; }
+h3 { font-size:15px; color:#333; margin:16px 0 8px; }
+p { font-size:14px; margin-bottom:10px; }
+table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+th { background:#00B050; color:#fff; padding:8px 10px; text-align:left; font-weight:500; }
+td { padding:8px 10px; border-bottom:1px solid #eee; vertical-align:top; }
+tr:nth-child(even) td { background:#fafcfa; }
+.red { color:#E74C3C; font-weight:bold; }
+.note { background:#fffbe8; border-left:4px solid #F39C12; border-radius:6px; padding:10px 14px; font-size:13px; margin:12px 0; }
+.gnote { background:#eaf7ef; border-left:4px solid #00B050; border-radius:6px; padding:10px 14px; font-size:13px; margin:12px 0; }
+.rnote { background:#fdecea; border-left:4px solid #E74C3C; border-radius:6px; padding:10px 14px; font-size:13px; margin:12px 0; }
+.kpis { display:flex; gap:14px; flex-wrap:wrap; margin:14px 0; }
+.kpi { flex:1; min-width:150px; background:#fafcfa; border:1px solid #e3ebe5; border-radius:10px; padding:14px 16px; }
+.kpi .num { font-size:22px; font-weight:bold; color:#E74C3C; }
+.kpi .lbl { font-size:12px; color:#888; margin-top:2px; }
+.goal { display:flex; gap:12px; margin:10px 0; align-items:stretch; }
+.goal .no { background:#00B050; color:#fff; border-radius:50%; width:28px; height:28px; min-width:28px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:bold; margin-top:2px; }
+.goal .gc { flex:1; background:#fafcfa; border-radius:8px; padding:10px 14px; font-size:13px; }
+.goal .gc b { color:#00B050; }
+.phase { border:1px solid #e3ebe5; border-radius:12px; padding:18px 20px; margin:14px 0; }
+.phase .ph { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
+.phase .ph .t { font-size:16px; font-weight:bold; color:#333; }
+.phase .ph .time { background:#00B050; color:#fff; border-radius:14px; padding:2px 12px; font-size:12px; }
+.phase .out { background:#eaf7ef; border-radius:6px; padding:8px 12px; font-size:13px; margin-top:10px; }
+.check { margin:6px 0; padding-left:0; list-style:none; }
+.check li { font-size:13px; padding:5px 0 5px 26px; position:relative; }
+.check li:before { content:"✓"; position:absolute; left:4px; color:#00B050; font-weight:bold; }
+.check li.todo:before { content:"○"; color:#F39C12; }
+.pstatus { display:inline-block; font-size:12px; border-radius:4px; padding:1px 8px; margin-left:8px; }
+.done { background:#eaf7ef; color:#00B050; }
+.doing { background:#fff3e0; color:#F39C12; }
+.todo2 { background:#f0f0f0; color:#999; }
+.small { font-size:12px; color:#999; }
+.concl { border:1px solid #e3ebe5; border-radius:10px; padding:14px 16px; margin:8px 0; }
+.concl .ch { font-size:14px; font-weight:bold; margin-bottom:6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+<h1>🚗 G980H 4G增值服务用户研究 · 项目规划 v2.4</h1>
+<div class="sub">两段式交付：11.30 阶段结论（领导节点）→ 12月底 v2.0 深度报告 ｜ 11.19开卖 · 首月流量免费 · 回访12.3后启动</div>
+<div class="tags">
+<span class="tag">📅 v2.4 2026-11-12</span><span class="tag">🎯 结论节点 11.30</span><span class="tag">📡 主数据源：咨询投诉+用户回访</span><span class="tag">🧪 PSM 11.13-11.17</span><span class="tag">💳 首月免费→真实转化窗口12.19+</span>
+</div>
+</div>
+
+<div class="section">
+<h2>一、研究定位与关键约束</h2>
+<p>G980H 4G记录仪 <b>11月19日开卖</b>，领导要求 <b>11.30 前有结论</b>。三个客观约束决定研究必须两段式：</p>
+<div class="kpis">
+<div class="kpi"><div class="num">11.30</div><div class="lbl">领导要求的结论节点</div></div>
+<div class="kpi"><div class="num">10天</div><div class="lbl">上市后实际数据窗口（销量暂不明确）</div></div>
+<div class="kpi"><div class="num">首月免费</div><div class="lbl">流量免费期→早期无套餐转化行为</div></div>
+<div class="kpi"><div class="num">12.3</div><div class="lbl">新品用户回访启动（上市2周后）</div></div>
+</div>
+<div class="rnote">⚠️ 核心判断：11.30 结论的主体是<b>上市前数据（PSM+公测基线+竞品对标）</b>，上市10天数据只做「初期市场信号」佐证章节——售前咨询中的价格疑问、首批评价中的价格提及。转化/选购/留存类行为结论全部后移到 v2.0（首月免费到期 12.19 前后才是真实转化决策窗口）。</div>
+</div>
+
+<div class="section">
+<h2>二、11.30 数据→结论映射（本规划核心）</h2>
+<table>
+<tr><th>#</th><th>数据源</th><th>可用时点</th><th>支撑的结论</th><th>证据强度</th></tr>
+<tr><td>1</td><td>公测用户PSM价格测试</td><td>11.17回收</td><td>套包229/云服务199的可接受价格区间、最优价格点、敏感度拐点（体验过产品人群的价格判断）</td><td><b>强</b></td></tr>
+<tr><td>2</td><td>上市后全渠道咨询投诉（10天）</td><td>11.19-11.29滚动</td><td>售前套餐/价格咨询信号（购买决策前的价格关注点）；上市初期TOP问题</td><td>弱-中（窗口短）</td></tr>
+<tr><td>3</td><td>电商首批评价（量取决于销量）</td><td>11.25+</td><td>购买者原声初判（量小则仅定性呈现）</td><td>弱</td></tr>
+<tr><td>4</td><td>车品竞品锚点+周扫描</td><td>已采集</td><td>G980H定价在车品4G服务市场的竞争位置与风险点</td><td><b>强</b></td></tr>
+</table>
+<h3>11.30 报告可交付的结论清单（按数据来源分栏）</h3>
+
+<p style="font-size:14px;margin:10px 0 4px"><b>【A栏】基于公测用户的初步结论</b>（样本：真实体验设备2-3个月的公测用户；性质：初步/参照性，待上市后验证）</p>
+<div class="concl"><div class="ch">✅ 结论1：价格预期与敏感度区间（PSM）<span style="font-size:12px;color:#999">｜数据源：公测用户</span></div>体验人群的可接受价格区间+最优价格点+敏感度拐点，对照官方定价给出溢价空间判断</div>
+<div class="concl"><div class="ch">✅ 结论2：目标群体画像雏形<span style="font-size:12px;color:#999">｜数据源：公测用户</span></div>基于PSM样本结构（使用频率/常用功能/人群字段）交叉，标注样本局限</div>
+<div class="concl"><div class="ch">✅ 结论3：4G增值服务需求优先级<span style="font-size:12px;color:#999">｜数据源：公测用户</span></div>基于PSM常用功能分布，输出需求优先级（体验后视角）</div>
+
+<p style="font-size:14px;margin:14px 0 4px"><b>【B栏】基于上市后真实用户情况的结论</b>（窗口：11.19-11.29约10天；性质：初期信号，窗口短需谨慎解读）</p>
+<div class="concl"><div class="ch">✅ 结论4：上市初期价格信号<span style="font-size:12px;color:#999">｜数据源：真实用户</span></div>全渠道咨询投诉中的售前价格/套餐咨询归类，首批评价中的价格提及——真实购买决策前的价格关注点</div>
+<div class="concl"><div class="ch">✅ 结论5：上市初期TOP问题与需求信号<span style="font-size:12px;color:#999">｜数据源：真实用户</span></div>咨询投诉问题分布+评价原声，显式标注窗口局限</div>
+
+<p style="font-size:14px;margin:14px 0 4px"><b>【C栏】跨源综合（公测+市场+竞品交叉）</b></p>
+<div class="concl"><div class="ch">✅ 结论6：竞争定价位置与风险<span style="font-size:12px;color:#999">｜数据源：竞品采集+双栏交叉</span></div>车品竞品锚点下的定位判断（含70迈续费60元锚点风险）</div>
+
+<div class="concl"><div class="ch" style="color:#E74C3C">⛔ 不在11.30下结论：转化率、套餐选购分布、留存退订、真实购买人群画像</div>首月免费期无转化行为；回访12.3后启动——统一进入v2.0</div>
+</div>
+
+<div class="section">
+<h2>三、主数据源采集设计（服务两个节点）</h2>
+<h3>① 用户全渠道咨询投诉数据（11.19起持续）</h3>
+<ul class="check">
+<li class="todo">渠道盘点：客服热线/在线客服/电商客服/APP反馈/社区——待确认取数方式与频率（依赖项①）</li>
+<li class="todo">打标体系：问题类型×价格相关单独标记；11.30前重点标记<b>售前价格/套餐咨询</b>（免费期内的价格关注=购买决策前价格敏感信号）</li>
+<li class="todo">12.19+ 增加标记：<b>到期转化期咨询</b>（为何扣费/如何续费/如何取消——真实转化行为的原声）</li>
+</ul>
+<h3>② 新品用户回访（12.3后启动，服务v2.0）</h3>
+<ul class="check">
+<li class="todo">对象：首购用户分批（套包/单流量/单云服务/未订阅四组覆盖），上市2周后启动</li>
+<li class="todo">问卷：画像+购买动机+功能使用评价+价格接受度（PSM式）+续费意愿，12-15题，我设计我分析</li>
+<li class="todo">样本目标30-50人/批×2-3批</li>
+</ul>
+<h3>③ 公测用户PSM价格测试（11.13-11.17，11.30结论的关键证据）</h3>
+<ul class="check">
+<li class="todo">Van Westendorp四问，主测套包229、辅测云服务199，8-10题</li>
+<li class="todo">对象：实际参测用户（真实使用2-3个月，价格感受最准的存量人群）</li>
+<li class="todo">11.13发出、11.17回收，分析结果直接进11.30报告核心章节</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>四、阶段计划（两段式）</h2>
+
+<div class="phase">
+<div class="ph"><span class="t">P0 通道准备+PSM执行 <span class="pstatus doing">进行中</span></span><span class="time">11.12-11.17</span></div>
+<ul class="check">
+<li class="todo">PSM问卷设计（今天可出）→ 11.13发放 → 11.17回收分析</li>
+<li class="todo">咨询投诉取数口径确认（渠道/字段/频率）</li>
+<li class="todo">打标体系+11.30报告模板定版</li>
+<li>车品竞品锚点已落档 ✅</li>
+</ul>
+</div>
+
+<div class="phase">
+<div class="ph"><span class="t">P1 上市监测+报告冲刺 <span class="pstatus todo2">11.19-11.29</span></span><span class="time">11.19-11.29</span></div>
+<ul class="check">
+<li class="todo">11.19起：咨询投诉滚动拉取+打标，售前价格咨询单独成池</li>
+<li class="todo">11.25+：首批评价采集（量视销量而定，定性处理）</li>
+<li class="todo">11.25-11.29：11.30报告冲刺（主体章节11.24前备好，上市信号章节最后合入）</li>
+</ul>
+<div class="out">📦 交付：<b>阶段结论报告（11.30）</b>——结论1-5（见第二节映射），HTML外网+飞书</div>
+</div>
+
+<div class="phase">
+<div class="ph"><span class="t">P2 深度研究（v2.0主战场）<span class="pstatus todo2">12月</span></span><span class="time">12.3-12.31</span></div>
+<ul class="check">
+<li class="todo">12.3起：新品用户回访执行（2-3批）</li>
+<li class="todo">12.19+：首月免费到期转化窗口观测——到期咨询激增信号+（若可得）转化数据</li>
+<li class="todo">咨询投诉全量打标分析（含到期转化期原声）</li>
+<li class="todo">真实购买画像+价格接受度验证 → Persona修正版+定价策略修订</li>
+</ul>
+<div class="out">📦 交付：<b>v2.0 深度报告（12月底）</b>——真实购买人群画像、转化与价格行为证据、定价策略修订建议</div>
+</div>
+</div>
+
+<div class="section">
+<h2>五、公测数据说明（单独说明，不进入主结论展开）</h2>
+<h3>实际公测用户PSM价格测试</h3>
+<p>对真实使用设备2-3个月的参测用户执行PSM四问。定位：11.30价格结论的核心证据（「体验过的人怎么评价价格」）；上市后的市场真实接受度由v2.0回访+到期转化验证。</p>
+<div class="note">📎 口径边界：公测人群≠大众购买者；其价值在体验后价格判断，不是市场接受度预测——后者由上市后主数据源回答。</div>
+</div>
+
+<div class="section">
+<h2>六、交付物清单</h2>
+<table>
+<tr><th>#</th><th>交付物</th><th>形式</th><th>时间</th></tr>
+<tr><td>1</td><td>PSM问卷+测试结果</td><td>问卷星+结果归档</td><td>11.13发/11.17收</td></tr>
+<tr><td>2</td><td><b>阶段结论报告（11.30节点·主交付物①）</b></td><td>HTML外网+飞书</td><td>11.30</td></tr>
+<tr><td>3</td><td><b>v2.0 深度报告（主交付物②）</b></td><td>HTML外网+飞书</td><td>12月底</td></tr>
+</table>
+</div>
+
+<p class="small" style="text-align:center;margin-top:30px">G980H 4G增值服务用户研究规划 v2.4 ｜ 制定：尹燕玲-报告分析专家 🦞 ｜ 2026-11-12 ｜ v2.3→v2.4：移除公测招募数据与参测问卷条目（公测数据仅保留PSM测试），结论1/2改由PSM样本+上市初期信号支撑</p>
+</div>
+</body>
+</html>
