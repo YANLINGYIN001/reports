@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>球机评价分析 v2（重算版）· 球机品类洞察研究</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f6f7;color:#333;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 16px}
+.hd{background:linear-gradient(135deg,#00B050,#2BBD6E);border-radius:14px;color:#fff;padding:28px 32px;margin-bottom:18px}
+.hd h1{font-size:23px;margin-bottom:6px}
+.hd .sub{font-size:13px;opacity:.92}
+.note{background:#fffbe6;border:1px solid #ffe58f;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#7a5c00;margin-bottom:18px}
+.card{background:#fff;border-radius:14px;padding:22px 26px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.card h2{font-size:17px;color:#00B050;border-left:4px solid #00B050;padding-left:10px;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.kpi{background:#fff;border-radius:12px;padding:16px 14px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.kpi .v{font-size:28px;font-weight:700;color:#E74C3C}
+.kpi .l{font-size:12.5px;color:#999;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f0faf4;color:#00874a;padding:8px 10px;text-align:left;font-weight:600;white-space:nowrap}
+td{padding:7px 10px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+tr:hover td{background:#fafcfa}
+.red{color:#E74C3C;font-weight:600}.green{color:#00B050;font-weight:600}
+.bar{height:14px;border-radius:7px;background:linear-gradient(90deg,#00B050,#67d69b);min-width:2px;display:inline-block;vertical-align:middle}
+.bar.r{background:linear-gradient(90deg,#E74C3C,#f58873)}
+.bw{width:170px;display:inline-block;vertical-align:middle}
+.bv{font-size:12px;color:#888;margin-left:6px}
+.quote{font-size:12.5px;color:#555;background:#f9f9f9;border-left:3px solid #ddd;padding:6px 10px;margin:4px 0;border-radius:0 6px 6px 0}
+.quote.bad{border-left-color:#E74C3C}
+.quote.good{border-left-color:#00B050}
+.insight{padding:10px 14px;border-radius:8px;margin:8px 0;font-size:13.5px}
+.insight.r{background:#fdeeee;border-left:4px solid #E74C3C}
+.insight.y{background:#fff8e8;border-left:4px solid #F39C12}
+.insight.k{background:#f7f7f7;border-left:4px solid #999}
+.tagmini{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;background:#eef7f0;color:#0a8f3c;margin:1px 2px}
+.tagmini.o{background:#fff3e6;color:#b7791f}
+.foot{font-size:11.5px;color:#aaa;text-align:center;padding:16px 0}
+a{color:#1a7f4b;text-decoration:none}
+</style>
+</head>
+<body><div class="wrap">
+<div class="hd">
+<h1>球机品类评价分析 v2（渠道剔除重算版）</h1>
+<div class="sub">球机品类洞察研究 W1 · 2026-11-13 · 三渠道 2434 条（外部bot萤石21SKU + 360系3SKU + 录屏SOP 7视频）· 17 SKU · 4 品牌</div>
+</div>
+<div class="note"><b>口径变更（v1→v2）：</b>按 11/13 指令剔除京东免登录小米2SKU、京东53SKU摘要、苏宁试运行、苏宁放量四渠道（原因：免登录通道数据为好评流快照、苏宁渠道站内模板化重复严重），保留三渠道全量重算；同步补入外部bot与录屏渠道的商品级信息（价格/好评率/卖点）。与v1的结论差异主要在总量与品牌分布，问题榜结构基本稳定。</div>
+<div class="kpis">
+<div class="kpi"><div class="v">2434</div><div class="l">评价总数（三渠道去重）</div></div>
+<div class="kpi"><div class="v">745</div><div class="l">差评（31%）</div></div>
+<div class="kpi"><div class="v">17</div><div class="l">SKU（萤石/360/小米/乔安）</div></div>
+<div class="kpi"><div class="v">170</div><div class="l">客服推诿（问题榜TOP1）</div></div>
+</div>
+<div class="card">
+<h2>一、差+中评问题榜 TOP12</h2>
+<table><tr><td>服务售后/客服推诿</td><td><span class='bw'><span class='bar r' style='width:100%'></span></span><span class='bv'><b class='red'>170</b> 条</span></td></tr><tr><td>画质夜视/画面模糊</td><td><span class='bw'><span class='bar r' style='width:73%'></span></span><span class='bv'><b class='red'>125</b> 条</span></td></tr><tr><td>连接稳定性/断连离线</td><td><span class='bw'><span class='bar r' style='width:55%'></span></span><span class='bv'><b class='red'>95</b> 条</span></td></tr><tr><td>存储云服务/存储故障</td><td><span class='bw'><span class='bar r' style='width:48%'></span></span><span class='bv'><b class='red'>82</b> 条</span></td></tr><tr><td>连接稳定性/卡顿延迟</td><td><span class='bw'><span class='bar r' style='width:45%'></span></span><span class='bv'><b class='red'>77</b> 条</span></td></tr><tr><td>价格物流/价格争议</td><td><span class='bw'><span class='bar r' style='width:38%'></span></span><span class='bv'><b class='red'>66</b> 条</span></td></tr><tr><td>存储云服务/云存付费墙</td><td><span class='bw'><span class='bar r' style='width:35%'></span></span><span class='bv'><b class='red'>60</b> 条</span></td></tr><tr><td>防水耐久/质量故障</td><td><span class='bw'><span class='bar r' style='width:32%'></span></span><span class='bv'><b class='red'>56</b> 条</span></td></tr><tr><td>服务售后/退换货难</td><td><span class='bw'><span class='bar r' style='width:31%'></span></span><span class='bv'><b class='red'>53</b> 条</span></td></tr><tr><td>APP体验/广告杂乱</td><td><span class='bw'><span class='bar r' style='width:30%'></span></span><span class='bv'><b class='red'>51</b> 条</span></td></tr><tr><td>画质夜视/夜视效果差</td><td><span class='bw'><span class='bar r' style='width:24%'></span></span><span class='bv'><b class='red'>42</b> 条</span></td></tr><tr><td>智能侦测/追踪失灵</td><td><span class='bw'><span class='bar r' style='width:17%'></span></span><span class='bv'><b class='red'>29</b> 条</span></td></tr></table>
+<div class="insight r">🔴 服务售后/客服推诿 170 条仍是第一大痛点（差中评的 17%），画像高度一致：模板化回复、推给用户自查、降价不补差。画质模糊 125 条第二——「5米外看不清车牌」是典型表达。</div>
+<div class="insight y">🟡 云存付费墙 60 条 + 存储故障 82 条 = 存储类合计 142 条，商业模式痛点在剔除苏宁渠道后反而更突出（苏宁好评稀释效应消失）。</div>
+</div>
+<div class="card">
+<h2>二、好评驱动因素</h2>
+<table><tr><td>画质夜视/画质好评</td><td><span class='bw'><span class='bar' style='width:100%'></span></span><span class='bv'><b class='green'>483</b> 条</span></td></tr><tr><td>连接稳定性/连接稳定好评</td><td><span class='bw'><span class='bar' style='width:56%'></span></span><span class='bv'><b class='green'>273</b> 条</span></td></tr><tr><td>安装使用/安装简便</td><td><span class='bw'><span class='bar' style='width:38%'></span></span><span class='bv'><b class='green'>188</b> 条</span></td></tr><tr><td>价格物流/性价比好评</td><td><span class='bw'><span class='bar' style='width:21%'></span></span><span class='bv'><b class='green'>104</b> 条</span></td></tr><tr><td>服务售后/服务好评</td><td><span class='bw'><span class='bar' style='width:11%'></span></span><span class='bv'><b class='green'>55</b> 条</span></td></tr><tr><td>防水耐久/耐用好评</td><td><span class='bw'><span class='bar' style='width:1%'></span></span><span class='bv'><b class='green'>9</b> 条</span></td></tr><tr><td>续航供电/续航好评</td><td><span class='bw'><span class='bar' style='width:0%'></span></span><span class='bv'><b class='green'>1</b> 条</span></td></tr></table>
+</div>
+<div class="card">
+<h2>三、品牌 × 差评率（三渠道同源对比）</h2>
+<table><tr><th>品牌</th><th>评价数</th><th>差评</th><th>差评率</th></tr><tr><td><b>萤石</b></td><td>1057</td><td class='red'>358</td><td>34%</td></tr><tr><td><b>360</b></td><td>651</td><td class='red'>183</td><td>28%</td></tr><tr><td><b>小米</b></td><td>385</td><td class='red'>95</td><td>25%</td></tr><tr><td><b>乔安</b></td><td>341</td><td class='red'>109</td><td>32%</td></tr></table>
+<div class="insight k">⚪ 剔除苏宁后品牌格局：萤石差评率34%（样本最大1057条）、乔安32%、360 28%、小米25%。注意：三渠道均以「中差评全量+好评前100-200」口径采集，好评被截断，绝对差评率偏高，品牌间相对排序才是有效信息。</div>
+</div>
+<div class="card">
+<h2>四、形态 × 差评率</h2>
+<table><tr><th>形态</th><th>评价数</th><th>差评</th><th>差评率</th></tr><tr><td><b>双摄款</b></td><td>1281</td><td class='red'>518</td><td>40%</td></tr><tr><td><b>4G款</b></td><td>495</td><td class='red'>103</td><td>21%</td></tr><tr><td><b>未分类</b></td><td>386</td><td class='red'>112</td><td>29%</td></tr><tr><td><b>太阳能款</b></td><td>256</td><td class='red'>11</td><td>4%</td></tr><tr><td><b>云台/球机</b></td><td>16</td><td class='red'>1</td><td>6%</td></tr></table>
+<div class="insight y">🟡 双摄款 518/1281（40%）差评率最高且样本最大——双摄是当前竞品主推形态但也是问题最集中形态；太阳能款差评率最低（4%），仅有的负面集中在充电不足。</div>
+</div>
+<div class="card">
+<h2>五、场景地图（v2 重算）</h2>
+<div class='sc' style='border:1px solid #e8f5ee;border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fcfefc'><h3 style='font-size:15px;color:#00874a'>看家防盗/安全 <span style='font-size:12px;color:#999'>（197 条 · 差评 17）</span></h3><div style='font-size:12.5px;color:#666;margin:4px 0'>「有人来了要马上知道」——侦测灵敏+推送及时是生命线，云存付费墙是高频骂点</div><div><span class='bw'><span class='bar' style='width:100%'></span></span><span class='tagmini o'>客服推诿 ×5</span><span class='tagmini o'>画面模糊 ×3</span><span class='tagmini o'>云存付费墙 ×3</span><span class='tagmini o'>断连离线 ×2</span></div><div class='quote bad'>⚠ 此用户未填写评价内容
+
+追评：监控在养宠家庭真的是必不可少的东西，自从装了萤石监控，我家毛孩子的一举一动都尽在掌握。
+	
+双镜头双画面，360 度全景视野，全方位无死角，人形追踪功</div><div class='quote bad'>⚠ 还牌子货呢，人都看不清，有人来了消息一二十分钟才发到手机上，这要是有贼一二十分钟不是早跑了，还要你这监控干嘛</div><div class='quote good'>👍 这款花园摄像头很实用，画质清晰，夜间夜视效果也不错。安装简单，手机随时远程查看院子情况，移动侦测灵敏，有人经过会及时推送提醒。防水性能靠谱，露天放着风吹雨淋也稳定，看护庭院、看家很</div><div class='quote good'>👍 双目双广角设计让视野更加开阔，无线连接也超级方便。性价比超高，绝对值得入手，晚上还可以红外夜视这款摄像头真的很不错，双目双广角设计让视野更加开阔。无线连接也非常方便，可以随时随地查</div></div><div class='sc' style='border:1px solid #e8f5ee;border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fcfefc'><h3 style='font-size:15px;color:#00874a'>农村/自建房/老家 <span style='font-size:12px;color:#999'>（117 条 · 差评 23）</span></h3><div style='font-size:12.5px;color:#666;margin:4px 0'>给老家装监控是刚需——断连离线TOP1（网络环境差），太阳能/4G免布线强相关</div><div><span class='bw'><span class='bar' style='width:59%'></span></span><span class='tagmini o'>断连离线 ×11</span><span class='tagmini o'>客服推诿 ×8</span><span class='tagmini o'>存储故障 ×6</span><span class='tagmini o'>退换货难 ×5</span></div><div class='quote bad'>⚠ 妹一个人在老家读书，这个监控器是我老婆叫我买来专门看娃的，我特意选配了256G的内存卡。监控器的清晰度一般，通话语音一般，价钱有点贵，希望耐用吧！</div><div class='quote bad'>⚠ 十年前买过萤石的猫眼，当时十年前可选项不多，萤石这牌子也是第一次听说。用了十年感觉不错，能做人脸管理，陌生人出现在画面中会做提醒。除了远程对话质量差了点，其它都超过预期，算是比较满</div><div class='quote good'>👍 给老家买的监控，白天效果很不错，追踪也很准确，可以在电脑上查看监控，还有回放，使用起来很方便，图画很清晰，是很值得推荐的一款摄像头，之前用过别家的，后来还是觉着这款好用！
+好</div><div class='quote good'>👍 双摄联动很实用，全景+特写同时兼顾，500万像素画面清晰，室外防水耐用，人形车形侦测灵敏，看家护院很省心。适合农村院落、工厂大门、鱼塘、停车场等户外场景，想要一台设备同时兼顾全景站</div></div><div class='sc' style='border:1px solid #e8f5ee;border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fcfefc'><h3 style='font-size:15px;color:#00874a'>室内看娃/看宠/看老人 <span style='font-size:12px;color:#999'>（74 条 · 差评 11）</span></h3><div style='font-size:12.5px;color:#666;margin:4px 0'>远程「看一眼」轻场景，画质与APP易用优先</div><div><span class='bw'><span class='bar' style='width:37%'></span></span><span class='tagmini o'>客服推诿 ×6</span><span class='tagmini o'>断连离线 ×5</span><span class='tagmini o'>存储故障 ×3</span><span class='tagmini o'>价格争议 ×2</span></div><div class='quote bad'>⚠ 有了对比，所以对这款摄像有点失望，第一次买H6色彩什么的挺满意的，这款比H6便宜50，颜色泛黄，泛红，不好看。想想放在室外也就算了，但颜色着实挺丑的🤣买室内拍小孩、照看老人什么的别</div><div class='quote bad'>⚠ 妹一个人在老家读书，这个监控器是我老婆叫我买来专门看娃的，我特意选配了256G的内存卡。监控器的清晰度一般，通话语音一般，价钱有点贵，希望耐用吧！</div><div class='quote good'>👍 安装使用了半个月，整体体验超出预期。H9C是双镜头设计，上面云台镜头可以360&deg;转动，下面固定镜头看固定角度，一台顶两台用，看家盲区基本没有了。400万像素清晰度很够用，白</div><div class='quote good'>👍 萤石云双摄摄像头，全域无盲区覆盖，云台转动流畅不卡顿，安装配置简单，清晰度极清，给家里老人安装的，配货速度快，头天晚上下的单，第二天上网就送到了，高端大气上档次，萤石摄像头值得信赖</div></div><div class='sc' style='border:1px solid #e8f5ee;border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fcfefc'><h3 style='font-size:15px;color:#00874a'>院子/庭院/花园 <span style='font-size:12px;color:#999'>（69 条 · 差评 3）</span></h3><div style='font-size:12.5px;color:#666;margin:4px 0'>户外部署主力场景，好评集中在防水耐用+夜视</div><div><span class='bw'><span class='bar' style='width:35%'></span></span><span class='tagmini o'>云台卡顿 ×1</span><span class='tagmini o'>客服推诿 ×1</span><span class='tagmini o'>画面模糊 ×1</span></div><div class='quote bad'>⚠ 其他的都还行，安装也不是特别的麻烦。嗯，就是晚上的时候这个灯会一直亮着，特别的刺眼可以招蚊子。
+然后还有一个就是这个摄像头没有办法识别自己人和其他人，自己在花园里活动的时候一直不停</div><div class='quote bad'>⚠ 垃圾，自家院子里二十米就看不见车牌！清晰度很差，无线网接收信号也不行！</div><div class='quote good'>👍 这款花园摄像头很实用，画质清晰，夜间夜视效果也不错。安装简单，手机随时远程查看院子情况，移动侦测灵敏，有人经过会及时推送提醒。防水性能靠谱，露天放着风吹雨淋也稳定，看护庭院、看家很</div><div class='quote good'>👍 萤石H9c双摄监控太好用了！前后双500万像素，画面清晰，夜视效果也不错。云台可以旋转，院子无死角。防水放室外放心，手机远程随时看，有人靠近会告警，安装简单，性价比很高，推荐！</div></div><div class='sc' style='border:1px solid #e8f5ee;border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fcfefc'><h3 style='font-size:15px;color:#00874a'>门口/入户/楼道 <span style='font-size:12px;color:#999'>（44 条 · 差评 2）</span></h3><div style='font-size:12.5px;color:#666;margin:4px 0'>近距部署，广角/底座是具体吐槽点</div><div><span class='bw'><span class='bar' style='width:22%'></span></span><span class='tagmini o'>云存付费墙 ×1</span><span class='tagmini o'>价格争议 ×1</span><span class='tagmini o'>画面模糊 ×1</span></div><div class='quote bad'>⚠ 摄像头不能选焦段，差评，安装到门口，焦虑过长，采集的画面单位过小，</div><div class='quote bad'>⚠ 为什么不配个倾斜底座，不管是吊装还是壁装，使用倾斜底座，上面的广角摄像头使用率会提高很多，现在挂到门口，上面广角摄像头就直接对着外面拍，往下一点的地方根本拍不到。套餐里面也没有提醒</div><div class='quote good'>👍 装在家门口，双镜头可以看两个门口，这样就不用担心拍不到另一边的视角，同时还能自动识别场景，也省了自己一个一个去找视频录像，总体好评</div><div class='quote good'>👍 这是第二次购买H9C，很稳定，所以再买直接把北院也装上了。说几点真实感受：双镜头设计是真的实用，云台镜头负责大范围转动，固定镜头守着门口，不用纠结角度怎么调。夜视效果比预期好，全黑</div></div><div class='sc' style='border:1px solid #e8f5ee;border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fcfefc'><h3 style='font-size:15px;color:#00874a'>车位/车库/车辆 <span style='font-size:12px;color:#999'>（42 条 · 差评 18）</span></h3><div style='font-size:12.5px;color:#666;margin:4px 0'>看车牌是硬指标——差评率43%全场最高（画质看不清车牌）</div><div><span class='bw'><span class='bar' style='width:21%'></span></span><span class='tagmini o'>画面模糊 ×19</span><span class='tagmini o'>客服推诿 ×3</span><span class='tagmini o'>卡顿延迟 ×3</span><span class='tagmini o'>夜视效果差 ×2</span></div><div class='quote bad'>⚠ 电子放大效果还是差一些，距离估计在5米，路过车牌看不清楚</div><div class='quote bad'>⚠ 首先在使用前，拆开包装发现少了用户指南，来回跟客服沟通还是没有补回，使用发现广角对使用环境有一定的要求（我的直接吊装在屋顶，晚上广角根本看不清），还有云台晚上看不清车牌号，会反光</div><div class='quote good'>👍 双摄联动很实用，全景+特写同时兼顾，500万像素画面清晰，室外防水耐用，人形车形侦测灵敏，看家护院很省心。适合农村院落、工厂大门、鱼塘、停车场等户外场景，想要一台设备同时兼顾全景站</div><div class='quote good'>👍 家里安全全靠它了！高清画质连车牌都能看清，夜视范围广，下雨天也没影响。设置简单老人都会用，报警推送及时，用了半年零故障，真心推荐给需要家庭监控的朋友们🛡️</div></div><div class='sc' style='border:1px solid #e8f5ee;border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fcfefc'><h3 style='font-size:15px;color:#00874a'>工地/农场/养殖 <span style='font-size:12px;color:#999'>（36 条 · 差评 11）</span></h3><div style='font-size:12.5px;color:#666;margin:4px 0'>无电无网环境，4G+太阳能是唯一解，坏了没人管</div><div><span class='bw'><span class='bar' style='width:18%'></span></span><span class='tagmini o'>客服推诿 ×7</span><span class='tagmini o'>价格争议 ×4</span><span class='tagmini o'>退换货难 ×3</span><span class='tagmini o'>存储故障 ×3</span></div><div class='quote bad'>⚠ 顶装广角摄像头夜间灯反光，夜间模式一片漆黑，鸡肋设计，客服只会抱歉，要不是已经安装，而且安装麻烦，宁愿退货，不如一百多块单摄像头好用</div><div class='quote bad'>⚠ 我也算是萤石云品牌家用监控摄像头的老用户，这几年家里但凡需要用到监控摄像的，基本都是用的他们家的，刚好又可以集合到一个平台app里面操作，方便又快捷。这次过年想给老家的养鸡鸭的农场</div><div class='quote good'>👍 自从装上这监控，我家狗子都不敢在客厅偷吃零食了。画面清晰得连它脸上的尴尬都拍得一清二楚，简直是&ldquo;抓包神器&rdquo;。本来想用它防贼，结果先治好了宠物的馋嘴毛病，这波</div><div class='quote good'>👍 双摄联动很实用，全景+特写同时兼顾，500万像素画面清晰，室外防水耐用，人形车形侦测灵敏，看家护院很省心。适合农村院落、工厂大门、鱼塘、停车场等户外场景，想要一台设备同时兼顾全景站</div></div><div class='sc' style='border:1px solid #e8f5ee;border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fcfefc'><h3 style='font-size:15px;color:#00874a'>店铺/门面/商用 <span style='font-size:12px;color:#999'>（24 条 · 差评 3）</span></h3><div style='font-size:12.5px;color:#666;margin:4px 0'>商用值守场景，售后响应要求最高</div><div><span class='bw'><span class='bar' style='width:12%'></span></span><span class='tagmini o'>客服推诿 ×2</span><span class='tagmini o'>卡顿延迟 ×1</span><span class='tagmini o'>画面模糊 ×1</span><span class='tagmini o'>存储故障 ×1</span></div><div class='quote bad'>⚠ 三天收到就降价了，也不给退补款，真是黑心商家，就知道推卸责任，都没有超过七天都不给补，谁还敢在这家店铺买了。</div><div class='quote bad'>⚠ 不知道什么时候开始，京东快递还需要客户去请求快递员送货上门，电话沟通都没有，直接放自提点了，打电话还说你自己没备注，如果京东都还需要请求送货上门，跟别家有什么区别呢？选京东的意义呢</div><div class='quote good'>👍 1.&nbsp;安装简单，APP配网很快，白天画面清晰，夜视全彩效果不错。人形侦测很灵敏，手机远程随时查看，双向语音对讲清晰，看家放心。
+2.&nbsp;室外款防水，下雨正常工作。</div><div class='quote good'>👍 这款摄像头，我买了三个，每次都很信赖，质量没的说，画面很清晰，价格也很便宜，客服服务态度好，物流信息更新快，京东超市就是有保障，操作很简单，你值得拥有</div></div><div class='sc' style='border:1px solid #e8f5ee;border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fcfefc'><h3 style='font-size:15px;color:#00874a'>看鱼塘/果园等农产 <span style='font-size:12px;color:#999'>（12 条 · 差评 1）</span></h3><div style='font-size:12.5px;color:#666;margin:4px 0'>远距离农产看护，4G太阳能双摄主力，样本小</div><div><span class='bw'><span class='bar' style='width:6%'></span></span><span class='tagmini o'>退换货难 ×1</span></div><div class='quote bad'>⚠ 第一画质一般，除了主球机勉强能看，放大还是很糊，其余两个枪机更没法看。第二设备网络响应连接太慢，软件关了两三次才能正常连接实时观看。第三关于人物识别几乎没有，看录像也看不到人形分类</div><div class='quote good'>👍 双摄联动很实用，全景+特写同时兼顾，500万像素画面清晰，室外防水耐用，人形车形侦测灵敏，看家护院很省心。适合农村院落、工厂大门、鱼塘、停车场等户外场景，想要一台设备同时兼顾全景站</div><div class='quote good'>👍 面清晰，不卡顿，财产更安全了，特别适合户外监控鱼塘、和家中看护老人。</div></div>
+<div class="insight r">🔴 车位场景差评率 43%（18/42）升至全场最高；农村场景差评率 20%，断连离线仍是TOP1。看家防盗 197 条居首。</div>
+</div>
+<div class="card">
+<h2>六、SKU 商品信息补全（价格/好评率/卖点 · 31款）</h2>
+<table><tr><th>来源</th><th>品牌</th><th>产品</th><th>价格</th><th>好评率</th><th>店铺</th><th>卖点/标签摘录</th></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石H9c室外500万双摄联动监控摄像头 360度无死角全景云台 带<div style='font-size:11px'><a href='https://item.jd.com/100077456137.html'>100077456137</a></div></td><td>¥366</td><td>94%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石H80X 800万像素4K摄像头 无线WiFi 室外双云台360<div style='font-size:11px'><a href='https://item.jd.com/100144250930.html'>100144250930</a></div></td><td>¥368</td><td>94%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸C9c 500万+500万室外监控摄像头无需WiFi 4g终<div style='font-size:11px'><a href='https://item.jd.com/100402555142.html'>100402555142</a></div></td><td>¥464</td><td>98%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸C90室外500万+500万双摄4G摄像头 WiFi+4G双<div style='font-size:11px'><a href='https://item.jd.com/100388108084.html'>100388108084</a></div></td><td>¥508</td><td>92%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸H90室外4G摄像头 家用监控三云台摄像头 400万+400<div style='font-size:11px'><a href='https://item.jd.com/100197020512.html'>100197020512</a></div></td><td>¥464</td><td>94%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸C90f室外4G摄像头 500万三摄变焦户外监控 三云台无限<div style='font-size:11px'><a href='https://item.jd.com/100270949843.html'>100270949843</a></div></td><td>¥598</td><td>95%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸CB8c 800万 4g太阳能室外监控摄像头 无需WiFi终<div style='font-size:11px'><a href='https://item.jd.com/100307018396.html'>100307018396</a></div></td><td>¥499</td><td>94%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸Pro CB90 500万+500万4g太阳能室外监控摄像头<div style='font-size:11px'><a href='https://item.jd.com/100307018416.html'>100307018416</a></div></td><td>¥638</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸HB90室外太阳能监控 摄像头 家用监控三云台 400万+4<div style='font-size:11px'><a href='https://item.jd.com/100161739317.html'>100161739317</a></div></td><td>¥589</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸低温版CB8c 800万 4g太阳能室外监控摄像头无需WiF<div style='font-size:11px'><a href='https://item.jd.com/100265449955.html'>100265449955</a></div></td><td>¥699</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸Pro低温版CB90 500万+500万 4g太阳能室外监控<div style='font-size:11px'><a href='https://item.jd.com/100265447453.html'>100265447453</a></div></td><td>¥838</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸低温版HB90室外太阳能4G摄像头 双400万三云台监控终身<div style='font-size:11px'><a href='https://item.jd.com/100315739585.html'>100315739585</a></div></td><td>¥789</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸长续航版CB8c 800万 4g太阳能室外监控摄像头无需Wi<div style='font-size:11px'><a href='https://item.jd.com/100265450615.html'>100265450615</a></div></td><td>¥899</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石魔丸Pro长续航版CB90 500万+500万 4g太阳能室外监<div style='font-size:11px'><a href='https://item.jd.com/100265450057.html'>100265450057</a></div></td><td>¥1038</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石C8c 500万摄像头 无线WiFi 室外双云台360° 防水防<div style='font-size:11px'><a href='https://item.jd.com/100052277926.html'>100052277926</a></div></td><td>¥288</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石C8c 800万 4mm摄像头 无线WiFi 室外双云台360°<div style='font-size:11px'><a href='https://item.jd.com/100112816356.html'>100112816356</a></div></td><td>¥344</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石C8c 800万 lite 4G摄像头 终身无限流量免充值 室外<div style='font-size:11px'><a href='https://item.jd.com/100355077406.html'>100355077406</a></div></td><td>¥399</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石C8c 600万摄像头 4G无限流量 室外双云台 防水防尘 人形<div style='font-size:11px'><a href='https://item.jd.com/100336817560.html'>100336817560</a></div></td><td>¥399</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石C8c 800万摄像头 WiFi/4G双模版 室外双云台360°<div style='font-size:11px'><a href='https://item.jd.com/100307018368.html'>100307018368</a></div></td><td>¥449</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石C8c 4G网络室外监控家用摄像头 双云台360全景智能摄像头 <div style='font-size:11px'><a href='https://item.jd.com/100166504986.html'>100166504986</a></div></td><td>¥333</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>萤石</b></td><td style='max-width:220px'>萤石室外300万WiFi监控摄像头 防水防尘 360度无死角全景云台<div style='font-size:11px'><a href='https://item.jd.com/100388045588.html'>100388045588</a></div></td><td>¥249</td><td>%</td><td style='font-size:12px'>萤石京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>EZVIZ萤石
+萤石2025年消费级摄像头出货量
+全球第一
+注册用户数
+8.62亿元
+2025年研发费用投入
+424项
+累计已拥有授权发明专</td></tr><tr><td>外部bot</td><td><b>360</b></td><td style='max-width:220px'>360室外双摄像头5C3K 1000万双摄超清家用远程监控360度全<div style='font-size:11px'><a href='https://item.jd.com/100097007811.html'>100097007811</a></div></td><td>¥229</td><td>97%</td><td style='font-size:12px'>360京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>双摄 1000 万，三画面同屏看，一台顶三台 | 10 倍 AI 变焦 | 智能全彩夜视 | IP66 级防尘防水 | WiFi 6 联网 </td></tr><tr><td>外部bot</td><td><b>360</b></td><td style='max-width:220px'>360室外像头终身免费流量5C3K 4G版双摄1000万超清家用36<div style='font-size:11px'><a href='https://item.jd.com/100155472824.html'>100155472824</a></div></td><td>¥354.00</td><td>96%</td><td style='font-size:12px'>360京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>与 SKU1 同属 5C3K 双摄家族，4G 版本（终身免费流量，无网无 WiFi 也可用） | 其余详情卖点图未完成采集（采集时该 SKU</td></tr><tr><td>外部bot</td><td><b>360</b></td><td style='max-width:220px'>360室外摄像头6 6MP版600万超清像素家用无线监控器手机远程监<div style='font-size:11px'><a href='https://item.jd.com/100140214952.html'>100140214952</a></div></td><td>¥</td><td>97%</td><td style='font-size:12px'>360京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>详情卖点图未完成采集（用户浏览配合时该页面详情轮播未加载）</td></tr><tr><td>录屏</td><td><b>小米</b></td><td style='max-width:220px'>小米智能室外摄像机4 4G双摄版</td><td>¥323.1（补贴后，原价 ¥599）</td><td>97%（好评2000+ </td><td style='font-size:12px'>小米京东自营旗舰店（自营）</td><td style='font-size:11.5px;color:#888'>1. 双500万像素双摄：广角看全局+长焦查细节，3K画质 | 2. 4G联网+免费流量（电信+联通双卡） | 3. 智能全彩夜视/红外夜视</td></tr><tr><td>录屏</td><td><b>小米</b></td><td style='max-width:220px'>小米太阳能摄像机4Pro 4G双摄版</td><td>¥459（国补后，原价 ¥599）</td><td>97%</td><td style='font-size:12px'>小米京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>1. 双500万像素双摄：广角看全景+长焦看细节，3K画质 | 2. 太阳能供电+9000mAh大电池：免布线免接电，AOV低功耗模式 | </td></tr><tr><td>录屏</td><td><b>小米</b></td><td style='max-width:220px'>小米室外摄像机4双摄版超清</td><td>¥399（券后约¥374）</td><td>96%（好评20万+ /</td><td style='font-size:12px'>小米京东自营旗舰店</td><td style='font-size:11.5px;color:#888'></td></tr><tr><td>录屏</td><td><b>小米</b></td><td style='max-width:220px'>小米智能室外摄像机4C</td><td>¥201.6（限时补贴后，原价约¥299</td><td>98%（好评5000+ </td><td style='font-size:12px'>小米京东自营旗舰店</td><td style='font-size:11.5px;color:#888'>画质超清晰1516 · 夜间拍摄清晰487 · 操作简单方便856 · 回头客1900+ · 追评100+</td></tr><tr><td>录屏</td><td><b>乔安</b></td><td style='max-width:220px'>乔安【WiFi双摄版】停电续航版</td><td></td><td>98%（好评2000+ </td><td style='font-size:12px'>乔安京东自营/旗舰店</td><td style='font-size:11.5px;color:#888'>画面超清晰5696 · 上手超容易788 · 夜视清晰648 · 清晰度够用1245 · 功能超全面288</td></tr><tr><td>录屏</td><td><b>乔安</b></td><td style='max-width:220px'>乔安【太阳能AOV版】4G双摄</td><td>¥255.21（补贴价）</td><td>97%（好评1万+/中评</td><td style='font-size:12px'>乔安京东自营</td><td style='font-size:11.5px;color:#888'>画面超清晰929 · 上手超容易231 · 通话超清晰59 · 夜视清晰146 · 回放超流畅4 · 远程监控超方便35 · 清晰度够用30</td></tr><tr><td>录屏</td><td><b>乔安</b></td><td style='max-width:220px'>乔安【4G流量版】双摄</td><td>¥205.66（国补价）</td><td>98%（好评5000+/</td><td style='font-size:12px'>乔安京东自营</td><td style='font-size:11.5px;color:#888'>画面超清晰238 · 回放超方便6 · 上手超简单21 · 通话超清晰18 · 夜视清晰70 · 户外适用7 · 远程查看随时16 · 清晰</td></tr></table>
+<div class="insight k">⚪ 外部bot 24 款 + 录屏 7 款的商品级信息已全部解析回补；萤石21SKU头图21张见xlsx附件。价格口径=页面补贴后价，采集时点 11/11-11/12。</div>
+</div>
+<div class="foot">球机品类洞察研究 W1 · 评价分析v2重算版 · 2026-11-13 · 三渠道：外部bot（萤石21SKU+360系3SKU）+ 录屏SOP 7视频</div>
+</div></body></html>
