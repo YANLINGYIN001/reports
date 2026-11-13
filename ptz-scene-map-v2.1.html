@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>球机场景地图 v2.1 · 球机品类洞察研究</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f6f7;color:#333;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:24px 16px}
+.hd{background:linear-gradient(135deg,#00B050,#2BBD6E);border-radius:14px;color:#fff;padding:28px 32px;margin-bottom:18px}
+.hd h1{font-size:23px;margin-bottom:6px}
+.hd .sub{font-size:13px;opacity:.92}
+.note{background:#fffbe6;border:1px solid #ffe58f;border-radius:10px;padding:12px 16px;font-size:12.5px;color:#7a5c00;margin-bottom:18px}
+.card{background:#fff;border-radius:14px;padding:22px 26px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.card h2{font-size:17px;color:#00B050;border-left:4px solid #00B050;padding-left:10px;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.kpi{background:#fff;border-radius:12px;padding:16px 14px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.kpi .v{font-size:28px;font-weight:700;color:#E74C3C}
+.kpi .l{font-size:12.5px;color:#999;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f0faf4;color:#00874a;padding:8px 10px;text-align:left;font-weight:600;white-space:nowrap}
+td{padding:7px 10px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+.concl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 10px}
+.citem{background:linear-gradient(180deg,#f7fcf8,#fff);border:1px solid #d9f0e1;border-radius:12px;padding:14px 16px;font-size:13.5px;color:#333}
+.citem b{color:#00874a}
+.sc{border:1px solid #e8f5ee;border-radius:12px;padding:16px 20px;margin-bottom:14px;background:#fcfefc}
+.sc h3{font-size:16px;color:#00874a;margin-bottom:6px;padding-bottom:6px;border-bottom:1px dashed #d9f0e1}
+.scstat{font-size:13px;color:#555;margin-bottom:6px}
+.scprof{font-size:13px;color:#444;background:#fff;border-left:3px solid #00B050;padding:6px 10px;margin:6px 0;border-radius:0 6px 6px 0}
+.scbar{margin:8px 0 4px}
+.bar{height:14px;border-radius:7px;background:linear-gradient(90deg,#00B050,#67d69b);min-width:2px;display:inline-block;vertical-align:middle}
+.bw{width:170px;display:inline-block;vertical-align:middle}
+.bv{font-size:12px;color:#888;margin-left:6px}
+.quote{font-size:12.5px;color:#555;background:#f9f9f9;border-left:3px solid #ddd;padding:6px 10px;margin:4px 0;border-radius:0 6px 6px 0}
+.quote.bad{border-left-color:#E74C3C}
+.quote.good{border-left-color:#00B050}
+.insight{padding:10px 14px;border-radius:8px;margin:8px 0;font-size:13.5px}
+.insight.r{background:#fdeeee;border-left:4px solid #E74C3C}
+.insight.k{background:#f7f7f7;border-left:4px solid #999}
+.tagmini{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;background:#eef7f0;color:#0a8f3c;margin:1px 2px}
+.tagmini.o{background:#fff3e6;color:#b7791f}
+.foot{font-size:11.5px;color:#aaa;text-align:center;padding:16px 0}
+</style>
+</head>
+<body><div class="wrap">
+<div class="hd">
+<h1>球机场景地图 v2.1（总分结构版）</h1>
+<div class="sub">球机品类洞察研究 W1 · 2026-11-13 · v2口径：三渠道2434条评价 · 显式场景提及459条（19%）· 17 SKU · 4品牌</div>
+</div>
+<div class="note"><b>口径：</b>场景频次=评价中场景使用语境关键词提及数（排除物流/商品描述语境）；场景差评率=该场景差评提及/总提及（采集口径「中差评全量+好评前100-200」，跨场景内部可比）。痛点浓度：高≥30% / 中15-30% / 低&lt;15%。</div>
+
+<div class="card">
+<h2>一、主要结论（先看这里）</h2>
+
+<div class="concl">
+<div class="citem"><b>① 看家防盗是心智默认（197条）</b><br>「有人来了马上知道」是第一诉求，痛点=推送延迟+云存付费墙；户外球机的存在意义首先是被当作「电子看门狗」。</div>
+<div class="citem"><b>② 农村老家是核心增量场景（117条，差评率20%）</b><br>「给老家装监控」是强购买动机，断连离线是TOP1痛点（无宽带环境），4G/太阳能免布线形态与此场景强绑定。</div>
+<div class="citem"><b>③ 车位场景痛点最尖锐（差评率43%全场最高）</b><br>42条提及中18条差评几乎全部指向「看不清车牌」——变焦能力+车牌识别是明确产品机会点。</div>
+<div class="citem"><b>④ 院子/门口是满意基线场景</b><br>双摄+云台+防水组合已能满足，好评集中在「无死角/夜视清晰」，差评率仅2-4%。</div>
+<div class="citem"><b>⑤ 商用/工地/农产是小而美场景</b><br>量小但需求刚性（无人值守），对售后响应和存储可靠性要求最高；459条显式提及占总样本19%，其余为泛化好评。</div>
+</div>
+
+<div class="insight r">🔴 一句话：球机的价值锚点是「电子看门狗」——看家防盗是默认心智，农村老家是最大增量，车位是痛点最尖锐的机会场景（看不清车牌），而服务类痛点（推送延迟/云存付费墙/售后推诿）贯穿所有场景。</div>
+</div>
+
+<div class="card">
+<h2>二、九大场景总览（分层：核心心智 → 增量场景 → 基线场景 → 机会场景 → 小众刚性）</h2>
+<table><tr><th>场景</th><th>提及</th><th>差评率</th><th>痛点浓度</th><th>核心诉求</th></tr><tr><td><b>看家防盗/安全</b></td><td>197</td><td style='color:#00B050;font-weight:600'>9%</td><td style='color:#00B050'>低</td><td style='font-size:12px;color:#666'>核心诉求：侦测灵敏+推送及时+事后能回看。高频骂点：推送延迟、云存要开会员、…</td></tr><tr><td><b>农村/自建房/老家</b></td><td>117</td><td style='color:#F39C12;font-weight:600'>20%</td><td style='color:#F39C12'>中</td><td style='font-size:12px;color:#666'>核心诉求：远程看老家、无宽带也能用。TOP痛点：断连离线、4G加载慢。形态强…</td></tr><tr><td><b>室内看娃/看宠/看老人</b></td><td>74</td><td style='color:#00B050;font-weight:600'>15%</td><td style='color:#00B050'>低</td><td style='font-size:12px;color:#666'>核心诉求：远程「看一眼」、双向语音。轻场景，画质与APP易用优先，差评集中在…</td></tr><tr><td><b>院子/庭院/花园</b></td><td>69</td><td style='color:#00B050;font-weight:600'>4%</td><td style='color:#00B050'>低</td><td style='font-size:12px;color:#666'>核心诉求：无死角覆盖+防水耐候。双摄云台组合满意度高（差评率4%），差评集中…</td></tr><tr><td><b>门口/入户/楼道</b></td><td>44</td><td style='color:#00B050;font-weight:600'>5%</td><td style='color:#00B050'>低</td><td style='font-size:12px;color:#666'>核心诉求：近距看人看脸。差评率2%最低；具体吐槽：广角/倾斜底座设计、近距反…</td></tr><tr><td><b>车位/车库/车辆</b></td><td>42</td><td style='color:#E74C3C;font-weight:600'>43%</td><td style='color:#E74C3C'>高</td><td style='font-size:12px;color:#666'>核心诉求：看清车牌。差评率43%全场最高——30米车牌看不清、夜间无强光抑制…</td></tr><tr><td><b>工地/农场/养殖</b></td><td>36</td><td style='color:#E74C3C;font-weight:600'>31%</td><td style='color:#E74C3C'>高</td><td style='font-size:12px;color:#666'>核心诉求：无电无网环境监控+货物安全。4G+本地存储是刚需；差评集中在售后（…</td></tr><tr><td><b>店铺/门面/商用</b></td><td>24</td><td style='color:#00B050;font-weight:600'>12%</td><td style='color:#00B050'>低</td><td style='font-size:12px;color:#666'>核心诉求：大厅+收银台双区覆盖、回看完整。对存储时长敏感（14小时记录不够用…</td></tr><tr><td><b>看鱼塘/果园等农产</b></td><td>12</td><td style='color:#00B050;font-weight:600'>8%</td><td style='color:#00B050'>低</td><td style='font-size:12px;color:#666'>核心诉求：远距离农产看护。4G终身免流量+太阳能是唯一解，好评集中，样本尚小…</td></tr></table>
+<div class="insight k">⚪ 459条显式场景提及占总样本19%；按提及量，看家防盗(197) ≫ 农村(117) > 室内看护(74) > 院子(69) > 门口(44) > 车位(42) > 工地(36) > 店铺(24) > 农产(12)。</div>
+</div>
+
+<div class="card">
+<h2>三、逐场景展开（提及降序 · 每场景=画像+痛点标签+真实原声）</h2>
+<div class="sc">
+<h3>看家防盗/安全</h3>
+<div class="scstat">提及 <b>197</b> 条 · 差评率 <b style="color:#00B050">9%</b> · 痛点浓度 <b style="color:#00B050">低</b></div>
+<div class="scprof">核心诉求：侦测灵敏+推送及时+事后能回看。高频骂点：推送延迟、云存要开会员、断电看不了录像。</div>
+<div class="scbar"><span class="bw"><span class="bar" style='width:100%'></span></span><span class="bv">提及频次</span><span class='tagmini o'>客服推诿 ×5</span><span class='tagmini o'>画面模糊 ×3</span><span class='tagmini o'>云存付费墙 ×3</span><span class='tagmini o'>断连离线 ×2</span></div>
+<div class='quote good'>👍 这款花园摄像头很实用，画质清晰，夜间夜视效果也不错。安装简单，手机随时远程查看院子情况，移动侦测灵敏，有人经过会及时推送提醒。</div><div class='quote good'>👍 效果嘎嘎好，有人来立刻就会给我提醒，从未有过的安全感。</div><div class='quote bad'>⚠ 还牌子货呢，人都看不清，有人来了消息一二十分钟才发到手机上，这要是有贼一二十分钟不是早跑了，还要你这监控干嘛</div><div class='quote bad'>⚠ 这个监控断电了连往前的录像都看不了，说好的内存卡储存，一断电根本无法查看，本来就是买来防盗的，结果不能查看</div></div><div class="sc">
+<h3>农村/自建房/老家</h3>
+<div class="scstat">提及 <b>117</b> 条 · 差评率 <b style="color:#F39C12">20%</b> · 痛点浓度 <b style="color:#F39C12">中</b></div>
+<div class="scprof">核心诉求：远程看老家、无宽带也能用。TOP痛点：断连离线、4G加载慢。形态强相关：4G/太阳能免布线。</div>
+<div class="scbar"><span class="bw"><span class="bar" style='width:59%'></span></span><span class="bv">提及频次</span><span class='tagmini o'>断连离线 ×11</span><span class='tagmini o'>客服推诿 ×8</span><span class='tagmini o'>存储故障 ×6</span><span class='tagmini o'>退换货难 ×5</span></div>
+<div class='quote good'>👍 给老家买的监控，白天效果很不错，追踪也很准确，可以在电脑上查看监控，还有回放，使用很方便，图画很清晰。</div><div class='quote good'>👍 买回来安装在老家的，室外室内各一个，可以语音喊话，看望老人比较方便，性价比很高。</div><div class='quote bad'>⚠ 垃圾 双十一买的 元旦拿回老家安装 今天居然离线了</div><div class='quote bad'>⚠ 老家在修房没有宽带没有无线网，特意买的带4G卡，结果看十分钟有9分钟都在加载转圈圈，想下手的慎拍</div></div><div class="sc">
+<h3>室内看娃/看宠/看老人</h3>
+<div class="scstat">提及 <b>74</b> 条 · 差评率 <b style="color:#00B050">15%</b> · 痛点浓度 <b style="color:#00B050">低</b></div>
+<div class="scprof">核心诉求：远程「看一眼」、双向语音。轻场景，画质与APP易用优先，差评集中在掉线和操作复杂（老人不会用）。</div>
+<div class="scbar"><span class="bw"><span class="bar" style='width:37%'></span></span><span class="bv">提及频次</span><span class='tagmini o'>客服推诿 ×6</span><span class='tagmini o'>断连离线 ×5</span><span class='tagmini o'>存储故障 ×3</span><span class='tagmini o'>价格争议 ×2</span></div>
+<div class='quote good'>👍 萤石云双摄摄像头，全域无盲区覆盖，云台转动流畅不卡顿，安装配置简单，清晰度极清，给家里老人安装的。</div><div class='quote good'>👍 自从装上这监控，我家狗子都不敢在客厅偷吃零食了。画面清晰得连它脸上的尴尬都拍得一清二楚，简直是「抓包神器」。</div><div class='quote bad'>⚠ 垃圾东西三天两头的掉线看不了，安装这个一般都是老人在家，或者为了方便看小孩，要不然谁装这个干什么，操作这么麻烦，你让老人在家里怎么办</div></div><div class="sc">
+<h3>院子/庭院/花园</h3>
+<div class="scstat">提及 <b>69</b> 条 · 差评率 <b style="color:#00B050">4%</b> · 痛点浓度 <b style="color:#00B050">低</b></div>
+<div class="scprof">核心诉求：无死角覆盖+防水耐候。双摄云台组合满意度高（差评率4%），差评集中在清晰度和夜间补光。</div>
+<div class="scbar"><span class="bw"><span class="bar" style='width:35%'></span></span><span class="bv">提及频次</span><span class='tagmini o'>云台卡顿 ×1</span><span class='tagmini o'>客服推诿 ×1</span><span class='tagmini o'>画面模糊 ×1</span></div>
+<div class='quote good'>👍 萤石H9c双摄监控太好用了！前后双500万像素，画面清晰，夜视效果也不错。云台可以旋转，院子无死角。防水放室外放心。</div><div class='quote good'>👍 萤石H9C上下双500万镜头，广角全景+云台特写，人走到哪镜头跟到哪。IP66户外防水，夜视清晰，院子监控无死角。</div><div class='quote bad'>⚠ 垃圾，自家院子里二十米就看不见车牌！清晰度很差，无线网接收信号也不行！</div><div class='quote bad'>⚠ 本来是看家护院，一直休眠半天不工作。夜间没补光啥都看不清楚，一阵亮一阵灭，下午院子曝光啥也看不清楚。</div></div><div class="sc">
+<h3>门口/入户/楼道</h3>
+<div class="scstat">提及 <b>44</b> 条 · 差评率 <b style="color:#00B050">5%</b> · 痛点浓度 <b style="color:#00B050">低</b></div>
+<div class="scprof">核心诉求：近距看人看脸。差评率2%最低；具体吐槽：广角/倾斜底座设计、近距反而糊。</div>
+<div class="scbar"><span class="bw"><span class="bar" style='width:22%'></span></span><span class="bv">提及频次</span><span class='tagmini o'>云存付费墙 ×1</span><span class='tagmini o'>价格争议 ×1</span><span class='tagmini o'>画面模糊 ×1</span></div>
+<div class='quote good'>👍 装在家门口，双镜头可以看两个门口，这样就不用担心拍不到另一边的视角，还能自动识别场景，总体好评</div><div class='quote good'>👍 我门锁也是萤石，门锁也带摄像头，现在门口俩哨兵，安全感爆炸💥</div><div class='quote bad'>⚠ 没想到视频图像这么差，不到两米的距离就是这么模糊，刚刚站在门口，最多五米距离脸都看不清。</div><div class='quote bad'>⚠ 大门口手机wifi信号几乎满格，人在车上看视频都不卡，摄像头提示网络不好，直接把人整不会了</div></div><div class="sc">
+<h3>车位/车库/车辆</h3>
+<div class="scstat">提及 <b>42</b> 条 · 差评率 <b style="color:#E74C3C">43%</b> · 痛点浓度 <b style="color:#E74C3C">高</b></div>
+<div class="scprof">核心诉求：看清车牌。差评率43%全场最高——30米车牌看不清、夜间无强光抑制，变焦/车牌识别是明确机会。</div>
+<div class="scbar"><span class="bw"><span class="bar" style='width:21%'></span></span><span class="bv">提及频次</span><span class='tagmini o'>画面模糊 ×19</span><span class='tagmini o'>客服推诿 ×3</span><span class='tagmini o'>卡顿延迟 ×3</span><span class='tagmini o'>夜视效果差 ×2</span></div>
+<div class='quote good'>👍 买回来2个月了，我放在四楼室内，隔着玻璃俯瞰楼下停车场，没想到画质还是很清晰，白天能看清车牌号，晚上画面也很清晰。</div><div class='quote good'>👍 高清画质连车牌都能看清，夜视范围广，下雨天也没影响。</div><div class='quote bad'>⚠ 不是很清晰，30左右米的车牌都看不清</div><div class='quote bad'>⚠ 晚上无法看清车牌照这类东西，无强光抑制功能。</div></div><div class="sc">
+<h3>工地/农场/养殖</h3>
+<div class="scstat">提及 <b>36</b> 条 · 差评率 <b style="color:#E74C3C">31%</b> · 痛点浓度 <b style="color:#E74C3C">高</b></div>
+<div class="scprof">核心诉求：无电无网环境监控+货物安全。4G+本地存储是刚需；差评集中在售后（无人值守场景坏了没人管）。</div>
+<div class="scbar"><span class="bw"><span class="bar" style='width:18%'></span></span><span class="bv">提及频次</span><span class='tagmini o'>客服推诿 ×7</span><span class='tagmini o'>价格争议 ×4</span><span class='tagmini o'>退换货难 ×3</span><span class='tagmini o'>存储故障 ×3</span></div>
+<div class='quote good'>👍 工地条件有限，给临时仓库准备的监控，用来保障现场货物的安全。这个监控有4G，有本地存储卡，基本能保障安全。</div><div class='quote good'>👍 画质清晰，不卡顿，财产更安全了，特别适合户外监控鱼塘、看护老人。</div><div class='quote bad'>⚠ 摄像头比较模糊，安装说明也不清楚。最鸡肋的是要用螺丝刀拆开装sd卡。比起其他系列的摄像头清晰度差很多。</div></div><div class="sc">
+<h3>店铺/门面/商用</h3>
+<div class="scstat">提及 <b>24</b> 条 · 差评率 <b style="color:#00B050">12%</b> · 痛点浓度 <b style="color:#00B050">低</b></div>
+<div class="scprof">核心诉求：大厅+收银台双区覆盖、回看完整。对存储时长敏感（14小时记录不够用）。</div>
+<div class="scbar"><span class="bw"><span class="bar" style='width:12%'></span></span><span class="bv">提及频次</span><span class='tagmini o'>客服推诿 ×2</span><span class='tagmini o'>卡顿延迟 ×1</span><span class='tagmini o'>画面模糊 ×1</span><span class='tagmini o'>存储故障 ×1</span></div>
+<div class='quote good'>👍 试了一下很好用，买回来放店里面，一边对着大厅，一边对着收银台，用了几天觉得很好用，推荐给身边的朋友。</div><div class='quote good'>👍 效果杠杠的清楚，就为看无人超市！品牌性能稳定</div><div class='quote bad'>⚠ 买了两个都不满意，第一个370多块钱，门店只能看到一点位置；后面买双摄的，结果记录时间只能保存14小时，14小时能查到什么？</div></div><div class="sc">
+<h3>看鱼塘/果园等农产</h3>
+<div class="scstat">提及 <b>12</b> 条 · 差评率 <b style="color:#00B050">8%</b> · 痛点浓度 <b style="color:#00B050">低</b></div>
+<div class="scprof">核心诉求：远距离农产看护。4G终身免流量+太阳能是唯一解，好评集中，样本尚小。</div>
+<div class="scbar"><span class="bw"><span class="bar" style='width:6%'></span></span><span class="bv">提及频次</span><span class='tagmini o'>退换货难 ×1</span></div>
+<div class='quote good'>👍 画面清晰，手机操作方便，最重要的是这款带4g终身网络，再没有WiFi的地方野外，果园，菜地均可使用，只需要电源即可。</div><div class='quote good'>👍 特别适合户外监控鱼塘、和家中看护老人。</div></div>
+</div>
+
+<div class="foot">球机品类洞察研究 W1 · 场景地图v2.1 · 2026-11-13 · v2口径（三渠道2434条）· 原声为人工精选去语境污染样本</div>
+</div></body></html>
