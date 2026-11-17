@@ -5,52 +5,51 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>京东竞品球机 · 20款初步分析（v0.1）</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#1a1d21;--ink2:#5b6470;--ink3:#8b95a1;--line:#e6e9ee;--bg:#f6f7f9;
---red:#E74C3C;--orange:#e08b2d;--green:#2f9e63;--card:#fff;--brand:#00B050}
-body{background:var(--bg);color:var(--ink);font:14px/1.75 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;padding:28px 18px 60px}
-.wrap{max-width:1080px;margin:0 auto}
-h1{font-size:24px;letter-spacing:-.3px}
-.sub{color:var(--ink3);font-size:12.5px;margin-top:6px;margin-bottom:20px}
-h2{font-size:17px;margin:26px 0 12px;padding-left:10px;border-left:3px solid var(--brand)}
-h3{font-size:15px;margin:18px 0 10px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0}
-.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.kpi{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:12px 10px;text-align:center}
-.kpi b{display:block;font-size:24px;line-height:1.3;color:var(--red)}
-.kpi span{font-size:11.5px;color:var(--ink3)}
-.kpi .g{color:var(--green)}
-table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
-td,th{padding:8px 10px;border-bottom:1px solid #f1f3f6;text-align:left;vertical-align:top}
-th{font-size:11.5px;color:var(--ink2);font-weight:600;letter-spacing:.3px;white-space:nowrap}
-td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
-.neg{color:var(--red);font-weight:700}
-.pos{color:var(--green);font-weight:700}
-.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:999px;background:#f1f5f9;color:var(--ink2);margin:1px 3px 1px 0}
-.quote{background:#fbfcfd;border-left:3px solid var(--line);border-radius:6px;padding:8px 12px;margin:8px 0;font-size:13px;color:#22262b}
-.quote b{color:var(--ink2);font-weight:500}
-.note{font-size:12.5px;color:var(--ink3);line-height:1.9}
-.bar-row{display:flex;align-items:center;gap:10px;margin:5px 0;font-size:13px}
-.bar-label{width:150px;flex:none;text-align:right;color:var(--ink2)}
-.bar-track{flex:1;background:#f1f3f6;border-radius:4px;height:18px;position:relative}
-.bar-fill{height:100%;border-radius:4px;background:var(--brand);color:#fff;font-size:11px;line-height:18px;padding:0 6px;white-space:nowrap;min-width:28px}
-.bar-fill.warn{background:var(--orange)}
-.bar-fill.bad{background:var(--red)}
-.bar-val{width:52px;flex:none;color:var(--ink2);font-variant-numeric:tabular-nums}
-.concl{border-radius:10px;padding:12px 16px;margin:10px 0;font-size:13.5px}
-.concl.red{background:#fef2f2;border:1px solid #fecaca}
-.concl.orange{background:#fffbeb;border:1px solid #fde68a}
-.concl.green{background:#f0fdf4;border:1px solid #bbf7d0}
-.concl b{font-weight:700}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f6f8; color:#333; padding:20px 0; }
+.container { max-width:1080px; margin:0 auto; padding:0 16px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:32px; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header p { font-size:13px; opacity:.92; line-height:1.7; }
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:20px; }
+.kpi { background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,.05); text-align:center; }
+.kpi b { display:block; font-size:26px; font-weight:700; color:#E74C3C; line-height:1.3; }
+.kpi span { font-size:12px; color:#999; margin-top:2px; display:block; }
+.kpi b.g { color:#00B050; }
+.section { background:#fff; border-radius:14px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.section h2 { font-size:17px; margin-bottom:14px; padding-left:10px; border-left:4px solid #00B050; }
+.section .note { font-size:12px; color:#999; margin-bottom:10px; line-height:1.8; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#00B050; color:#fff; padding:9px 10px; text-align:left; font-weight:600; font-size:12.5px; }
+td { padding:9px 10px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+tr:nth-child(even) td { background:#fafbfc; }
+td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
+.neg { color:#E74C3C; font-weight:700; }
+.pos { color:#00B050; font-weight:700; }
+.warn { color:#E67E22; font-weight:700; }
+.bar-row { display:flex; align-items:center; margin-bottom:10px; }
+.bar-label { width:150px; font-size:13px; text-align:right; padding-right:12px; color:#555; flex-shrink:0; }
+.bar-track { flex:1; background:#f0f2f5; border-radius:6px; height:26px; position:relative; min-width:120px; }
+.bar-fill { height:100%; background:linear-gradient(90deg,#00B050,#2BBD6E); border-radius:6px; min-width:2px; color:#fff; font-size:12px; font-weight:600; line-height:26px; padding:0 8px; white-space:nowrap; }
+.bar-fill.warn { background:linear-gradient(90deg,#E67E22,#f0b267); }
+.bar-val { width:60px; flex-shrink:0; color:#777; font-size:12px; padding-left:10px; font-variant-numeric:tabular-nums; }
+.insight-box { background:#f0faf4; border-left:4px solid #00B050; border-radius:8px; padding:16px 20px; font-size:13px; margin:12px 0; line-height:1.8; }
+.warn-box { background:#fdf7ec; border-left:4px solid #E67E22; border-radius:8px; padding:16px 20px; font-size:13px; margin:12px 0; line-height:1.8; }
+.risk-box { background:#fdf3f2; border-left:4px solid #E74C3C; border-radius:8px; padding:16px 20px; font-size:13px; margin:12px 0; line-height:1.8; }
+.footer { text-align:center; color:#999; font-size:12px; padding:16px 0 30px; }
+@media (max-width:640px) { .container { padding:12px; } .section { padding:16px; } .header { padding:20px; } .bar-label { width:100px; font-size:12px; } }
 </style>
 </head>
-<body><div class="wrap">
+<body>
+<div class="container">
 
-<h1>京东竞品球机 · 20 款评价数据初步分析</h1>
-<div class="sub">球机品类洞察研究 · v0.1 · 2026-11-17 · 数据源：《京东竞品球机-报告总册》（20 款 × 1,759 条评价 + 181 张商详图；采集口径=每款好评前 100 条+中差评全量，本文分析实际提取 1,594 条）</div>
+<div class="header">
+<h1>🎥 京东竞品球机 · 20 款评价数据初步分析</h1>
+<p>球机品类洞察研究 · v0.1 · 2026-11-17 · 数据源：《京东竞品球机-报告总册》（20 款 × 1,759 条评价 + 181 张商详图）· 采集口径：每款好评前 100 条+中差评全量，本文分析实际提取 1,594 条 · 由 🦞尹燕玲-报告分析专家 生成</p>
+</div>
 
-<div class="card">
-<div class="kpis">
+<div class="section">
+<div class="kpi-grid">
 <div class="kpi"><b>20</b><span>竞品 SKU（乐橙17/鸿蒙2/3601）</span></div>
 <div class="kpi"><b>1,759</b><span>评价总数（提取1,594）</span></div>
 <div class="kpi"><b>151</b><span>中差评（差107/中44）</span></div>
@@ -60,7 +59,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 </div>
 
 <h2>一、中差评主题分布（151 条全量归类）</h2>
-<div class="card">
+<div class="section">
 <table>
 <thead><tr><th>主题</th><th class="num">条数</th><th>占比</th><th>典型品牌</th><th>说明</th></tr></thead>
 <tbody>
@@ -76,11 +75,11 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 <tr><td>其他（供电/通话/价格/质量等）</td><td class="num">36</td><td>23.8%</td><td>—</td><td>含15条无具体内容的泛泛差评</td></tr>
 </tbody>
 </table>
-<div class="concl red"><b>🔴 画像/夜视虚标是竞品第一大差评源</b>：42条（27.8%）集中抱怨「800万不如500万」「变焦=放大镜」——高像素参数竞赛已经透支用户信任，谁先做「真实感知画质」谁拿差异化。</div>
+<div class="risk-box"><b>🔴 画像/夜视虚标是竞品第一大差评源</b>：42条（27.8%）集中抱怨「800万不如500万」「变焦=放大镜」——高像素参数竞赛已经透支用户信任，谁先做「真实感知画质」谁拿差异化。</div>
 </div>
 
 <h2>二、好评卖点提及（1,608 条好评关键词计数）</h2>
-<div class="card">
+<div class="section">
 <div class="bar-row"><span class="bar-label">画质清晰</span><div class="bar-track"><div class="bar-fill" style="width:55%">55%</div></div><span class="bar-val">887 条</span></div>
 <div class="bar-row"><span class="bar-label">性价比高</span><div class="bar-track"><div class="bar-fill" style="width:29%">29%</div></div><span class="bar-val">476 条</span></div>
 <div class="bar-row"><span class="bar-label">夜视好</span><div class="bar-track"><div class="bar-fill" style="width:18%">18%</div></div><span class="bar-val">303 条</span></div>
@@ -98,7 +97,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 </div>
 
 <h2>三、产品线与价格带结构</h2>
-<div class="card">
+<div class="section">
 <h3>3.1 乐橙（大华消费级）：17 款全覆盖，三条战线</h3>
 <table>
 <thead><tr><th>战线</th><th>代表 SKU</th><th class="num">价格带</th><th>评价热度</th></tr></thead>
@@ -112,16 +111,16 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 <div class="note">T5 双500万（¥339）+ 小豚当家 800万（¥239-339，2026-10 新品）。卖点 = 华为智慧生活 APP 生态 + 赠云存储会员；小豚当家 97.1% 好评率 + 1.5 个月百条评价，是<b>起量最快的竞品</b>。差评集中在「变焦虚标」「夜视不智能」。</div>
 <h3>3.3 360（本品）：1 款参照</h3>
 <div class="note">炫视球机 6Pro 4K（¥299 活动价，SKU 100133675718）。好评率 89.3% 三品牌最低；差评 5 条中 3 条离线 + 云台卡死；中评集中在 APP 卡顿。老用户复购心智强（「从小水滴开始买了几十个」），但「回放/付费墙」怨气明显。</div>
-<div class="concl orange"><b>🟡 竞品格局速读</b>：乐橙用 17 个 SKU 铺满「双摄/太阳能4G/电池」三战线打侧翼；鸿蒙智选用华为生态切精品心智；360 单款守 ¥299 主力段。球机品类没有真正的「品质标杆」，比的是谁的短板更少。</div>
+<div class="warn-box"><b>🟡 竞品格局速读</b>：乐橙用 17 个 SKU 铺满「双摄/太阳能4G/电池」三战线打侧翼；鸿蒙智选用华为生态切精品心智；360 单款守 ¥299 主力段。球机品类没有真正的「品质标杆」，比的是谁的短板更少。</div>
 </div>
 
 <h2>四、给本品的 5 条初步洞察</h2>
-<div class="card">
-<div class="concl red"><b>🔴 洞察1：画质虚标信任危机 = 差异化窗口</b>。42条差评（27.8%）骂「800万不如500万」「变焦是放大镜」。若新品敢做「实测样张+变焦真光学/混合无损」，直接命中竞品最痛的信任缺口。</div>
-<div class="concl orange"><b>🟡 洞察2：太阳能4G 是增速最快的细分，且好评率最高</b>。乐橙 SA/B7 线好评率 90%+，卖点提及「免布线」131条。360 目前在该细分无对应 SKU（总册内无）——与 G980H 4G 增值研究结论（4G 用户愿为免布线付费）互相印证。</div>
-<div class="concl orange"><b>🟡 洞察3：鸿蒙智选是最需要盯的对手</b>。小豚当家 800万 2026-10 上市即 97.1% 好评、1.5 个月上百条评价，靠「华为生态+赠云存会员」打增值免感知。对 360 的云服务付费策略是直接威胁。</div>
-<div class="concl orange"><b>🟡 洞察4：检测能力是低价位的隐性杀手</b>。小方糖 B3L 的差评几乎全是「漏拍」（一天15次进出只抓5-6次）。「看得见」只是及格线，「抓得住」才是复购理由——与 G980H 哨兵漏检高危问题同源，是行业通病也是机会。</div>
-<div class="concl green"><b>🟢 洞察5：好评心智 = 便宜+清楚+稳定</b>。前四提及（画质55%/性价比29%/夜视18%/稳定13%）都是基础项，没有一条高级 AI 功能进前四。品类仍处于「基本功竞赛」阶段，AI 卖点溢价空间尚未建立——别把资源全押在 AI 上，先把回放/离线/检测三块基本功做扎实。</div>
+<div class="section">
+<div class="risk-box"><b>🔴 洞察1：画质虚标信任危机 = 差异化窗口</b>。42条差评（27.8%）骂「800万不如500万」「变焦是放大镜」。若新品敢做「实测样张+变焦真光学/混合无损」，直接命中竞品最痛的信任缺口。</div>
+<div class="warn-box"><b>🟡 洞察2：太阳能4G 是增速最快的细分，且好评率最高</b>。乐橙 SA/B7 线好评率 90%+，卖点提及「免布线」131条。360 目前在该细分无对应 SKU（总册内无）——与 G980H 4G 增值研究结论（4G 用户愿为免布线付费）互相印证。</div>
+<div class="warn-box"><b>🟡 洞察3：鸿蒙智选是最需要盯的对手</b>。小豚当家 800万 2026-10 上市即 97.1% 好评、1.5 个月上百条评价，靠「华为生态+赠云存会员」打增值免感知。对 360 的云服务付费策略是直接威胁。</div>
+<div class="warn-box"><b>🟡 洞察4：检测能力是低价位的隐性杀手</b>。小方糖 B3L 的差评几乎全是「漏拍」（一天15次进出只抓5-6次）。「看得见」只是及格线，「抓得住」才是复购理由——与 G980H 哨兵漏检高危问题同源，是行业通病也是机会。</div>
+<div class="insight-box"><b>🟢 洞察5：好评心智 = 便宜+清楚+稳定</b>。前四提及（画质55%/性价比29%/夜视18%/稳定13%）都是基础项，没有一条高级 AI 功能进前四。品类仍处于「基本功竞赛」阶段，AI 卖点溢价空间尚未建立——别把资源全押在 AI 上，先把回放/离线/检测三块基本功做扎实。</div>
 </div>
 
 <h2>五、数据口径说明</h2>
@@ -133,5 +132,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 · ⚠️ 本报告为 v0.1 初步分析：主题规则可再迭代（如「诱导付费」仅2条可能是关键词过严漏检）；竞品矩阵全景（135 SKU 库）另见矩阵报告，两者互补
 </div>
 
-<div class="sub" style="margin-top:24px">分析：尹燕玲 🦞 · 2026-11-17 · 下一步可做：差评深读卡点清单 / 竞品 SKU 全景矩阵合并 / 周报引用素材</div>
-</div></body></html>
+<div class="footer">分析：尹燕玲 🦞 · 2026-11-17 · 下一步可做：差评深读卡点清单 / 竞品 SKU 全景矩阵合并 / 周报引用素材</div>
+</div>
+<div class="footer">🎥 竞品球机初步分析 v0.1 · 球机品类洞察研究</div>
+</body></html>
