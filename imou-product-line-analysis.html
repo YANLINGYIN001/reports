@@ -5,62 +5,62 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>乐橙产品线布局梳理（京东球机 · 17 款深读）</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#1a1d21;--ink2:#5b6470;--ink3:#8b95a1;--line:#e6e9ee;--bg:#f6f7f9;
---red:#E74C3C;--orange:#e08b2d;--green:#2f9e63;--card:#fff;--brand:#00B050}
-body{background:var(--bg);color:var(--ink);font:14px/1.75 -apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;padding:28px 18px 60px}
-.wrap{max-width:1100px;margin:0 auto}
-h1{font-size:24px;letter-spacing:-.3px}
-.sub{color:var(--ink3);font-size:12.5px;margin-top:6px;margin-bottom:20px}
-h2{font-size:17px;margin:26px 0 12px;padding-left:10px;border-left:3px solid var(--brand)}
-h3{font-size:15px;margin:18px 0 8px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:14px 0}
-.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.kpi{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:12px 10px;text-align:center}
-.kpi b{display:block;font-size:24px;line-height:1.3;color:var(--red)}
-.kpi span{font-size:11.5px;color:var(--ink3)}
-.kpi .g{color:var(--green)}
-table{width:100%;border-collapse:collapse;font-size:12.8px;margin:8px 0}
-td,th{padding:7px 9px;border-bottom:1px solid #f1f3f6;text-align:left;vertical-align:top}
-th{font-size:11.5px;color:var(--ink2);font-weight:600;letter-spacing:.3px;white-space:nowrap}
-td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
-.neg{color:var(--red);font-weight:700}
-.pos{color:var(--green);font-weight:700}
-.warn{color:var(--orange);font-weight:700}
-.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:999px;background:#f1f5f9;color:var(--ink2);margin:1px 3px 1px 0}
-.tag.hot{background:#fef2f2;color:#b91c1c}
-.tag.new{background:#f0fdf4;color:#15803d}
-.note{font-size:12.5px;color:var(--ink3);line-height:1.9}
-.concl{border-radius:10px;padding:12px 16px;margin:10px 0;font-size:13.5px}
-.concl.red{background:#fef2f2;border:1px solid #fecaca}
-.concl.orange{background:#fffbeb;border:1px solid #fde68a}
-.concl.green{background:#f0fdf4;border:1px solid #bbf7d0}
-.concl b{font-weight:700}
-.line-block{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;background:#fff}
-.line-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
-.line-head .ln{font-size:16px;font-weight:700}
-.line-head .lr{font-size:12px;color:var(--ink3)}
-.mini{display:flex;height:6px;border-radius:3px;overflow:hidden;background:#eef1f7;margin:6px 0 2px}
-.mini i{display:block;height:100%}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f6f8; color:#333; padding:20px 0; }
+.container { max-width:1080px; margin:0 auto; padding:0 16px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:32px; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header p { font-size:13px; opacity:.92; line-height:1.7; }
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:20px; }
+.kpi { background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,.05); text-align:center; }
+.kpi b { display:block; font-size:26px; font-weight:700; color:#E74C3C; line-height:1.3; }
+.kpi span { font-size:12px; color:#999; margin-top:2px; display:block; }
+.kpi b.g { color:#00B050; }
+.section { background:#fff; border-radius:14px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.section h2 { font-size:17px; margin-bottom:14px; padding-left:10px; border-left:4px solid #00B050; }
+.section h3 { font-size:15px; margin:16px 0 8px; }
+.section .note { font-size:12px; color:#999; margin-bottom:10px; line-height:1.8; }
+.line-block { border:1px solid #f0f2f5; border-radius:12px; padding:14px 16px; margin:10px 0; background:#fff; }
+.line-head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+.line-head .ln { font-size:16px; font-weight:700; }
+.line-head .lr { font-size:12px; color:#999; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#00B050; color:#fff; padding:9px 10px; text-align:left; font-weight:600; font-size:12.5px; }
+td { padding:9px 10px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+tr:nth-child(even) td { background:#fafbfc; }
+td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
+.neg { color:#E74C3C; font-weight:700; }
+.pos { color:#00B050; font-weight:700; }
+.warn { color:#E67E22; font-weight:700; }
+.tag { display:inline-block; font-size:11px; padding:1px 8px; border-radius:999px; background:#f0faf4; color:#00B050; margin:1px 3px 1px 0; }
+.tag.new { background:#f0faf4; color:#15803d; }
+.insight-box { background:#f0faf4; border-left:4px solid #00B050; border-radius:8px; padding:16px 20px; font-size:13px; margin:12px 0; line-height:1.8; }
+.warn-box { background:#fdf7ec; border-left:4px solid #E67E22; border-radius:8px; padding:16px 20px; font-size:13px; margin:12px 0; line-height:1.8; }
+.risk-box { background:#fdf3f2; border-left:4px solid #E74C3C; border-radius:8px; padding:16px 20px; font-size:13px; margin:12px 0; line-height:1.8; }
+.footer { text-align:center; color:#999; font-size:12px; padding:16px 0 30px; }
+@media (max-width:640px) { .container { padding:12px; } .section { padding:16px; } .header { padding:20px; } }
 </style>
 </head>
-<body><div class="wrap">
+<body>
+<div class="container">
 
-<h1>乐橙（imou）产品线布局梳理 · 京东球机 17 款深读</h1>
-<div class="sub">球机品类洞察研究 · v1.0 · 2026-11-17 · 数据源：《京东竞品球机-报告总册》乐橙 17 款（1,655 条评价 + 商详卖点全量），价格为主图海报到手价（登录打码口径）</div>
+<div class="header">
+<h1>🍊 乐橙（imou）产品线布局梳理 · 京东球机 17 款深读</h1>
+<p>球机品类洞察研究 · v1.1 · 2026-11-17 · 数据源：《京东竞品球机-报告总册》乐橙 17 款（1,655 条评价 + 商详卖点全量）· 价格为主图海报到手价（登录打码口径）· 由 🦞尹燕玲-报告分析专家 生成</p>
+</div>
 
-<div class="card">
-<div class="kpis">
+<div class="section">
+<div class="kpi-grid">
 <div class="kpi"><b>17</b><span>京东在售 SKU（本次采集）</span></div>
 <div class="kpi"><b>3</b><span>产品线（双摄旗舰/太阳能4G/电池便携）</span></div>
 <div class="kpi"><b>¥199-424</b><span>价格带全覆盖</span></div>
-<div class="kpi"><b class="g">92.1%</b><span>17款好评率均值</span></div>
+<div class="kpi"><b>92.1%</b><span>17款好评率均值</span></div>
 <div class="kpi"><b>5</b><span>2026下半年新品SKU</span></div>
 </div>
 </div>
 
 <h2>一、全景：三条产品线 + 三个价位段</h2>
-<div class="card">
+<div class="section">
 <table>
 <thead><tr><th>产品线</th><th>代表 SKU</th><th class="num">价格带</th><th class="num">好评率</th><th>核心打法</th></tr></thead>
 <tbody>
@@ -74,7 +74,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 
 <h2>二、逐线深读</h2>
 
-<div class="card">
+<div class="section">
 <h3>① TS 双摄旗舰线（8 款）——「一台顶两台」的形态创新 + 像素军备赛</h3>
 <div class="line-block">
 <div class="line-head"><span class="ln">TS7E 家族（双摄塔防）</span><span class="lr">2025 年起量 · 累计评价最多</span></div>
@@ -104,7 +104,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 </div>
 </div>
 
-<div class="card">
+<div class="section">
 <h3>② SA/B7 太阳能4G线（6 款）——「0电费0网费」的增量市场打法</h3>
 <div class="line-block">
 <table>
@@ -122,7 +122,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 </div>
 </div>
 
-<div class="card">
+<div class="section">
 <h3>③ 小方糖 B3L 电池线（3 款）——低门槛「微场景」入口</h3>
 <div class="line-block">
 <table>
@@ -138,22 +138,22 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 </div>
 
 <h2>三、产品线布局的 4 个战略特征</h2>
-<div class="card">
-<div class="concl red"><b>🔴 特征1：用「供电×联网」二维矩阵切市场，而不是用像素</b>。TS（有网有电）/SA·B7（无网无电）/B3L（免安装）三条线各自独立迭代；像素（500万→800万→4K）只是每条线内部的加价档位。这与多数品牌「按像素分产品线」的做法相反——乐橙卖的是<b>场景解决方案</b>，不是摄像头参数。</div>
-<div class="concl orange"><b>🟡 特征2：迭代节奏=平台化复用</b>。B7ED（2025.02）→B7ET（2025.06 加大电池）→SA70F（2025.08 双摄）→SA70F-4K（2026.09 双800万）——同一电池+太阳能平台 18 个月内 4 次迭代，每次只动一个变量（电池/镜头/像素），研发复用率极高。TS 线同理（TS7E 一个名称 4 个 SKU 共用详情页）。</div>
-<div class="concl orange"><b>🟡 特征3：卖点文案高度体系化</b>。「0电费0网费」「一台顶两台」「阴雨天20天不断电」「AOR回放更长久」——每条线有一句核心口号，且直接回应品类疑虑（回放焦虑/连阴雨断电/双摄价值）。AI 功能反而被刻意分层降级（旗舰「智能跟踪」→性价比款「人形移动」），说明乐橙清楚 AI 不是这个价位的买单理由。</div>
-<div class="concl green"><b>🟢 特征4：当前增量重心 100% 压在「太阳能4G+新品」</b>。近 3 个月评价增量几乎全部来自 4 个 2026 下半年新品（SA70F-4K 105条 / B3L-4G太阳能 36条 / B3L-4G磁吸 25条 / TS2-800万 16条）；老 SKU 全线退坡（TS7F 近3月4条、TS7E性价比版 0 条）。<b>乐橙已经把弹药全部换到「免布线免联网」赛道</b>——这与 360 当前以 WiFi 球机为主力的布局形成正面错位。</div>
+<div class="section">
+<div class="risk-box"><b>🔴 特征1：用「供电×联网」二维矩阵切市场，而不是用像素</b>。TS（有网有电）/SA·B7（无网无电）/B3L（免安装）三条线各自独立迭代；像素（500万→800万→4K）只是每条线内部的加价档位。这与多数品牌「按像素分产品线」的做法相反——乐橙卖的是<b>场景解决方案</b>，不是摄像头参数。</div>
+<div class="warn-box"><b>🟡 特征2：迭代节奏=平台化复用</b>。B7ED（2025.02）→B7ET（2025.06 加大电池）→SA70F（2025.08 双摄）→SA70F-4K（2026.09 双800万）——同一电池+太阳能平台 18 个月内 4 次迭代，每次只动一个变量（电池/镜头/像素），研发复用率极高。TS 线同理（TS7E 一个名称 4 个 SKU 共用详情页）。</div>
+<div class="warn-box"><b>🟡 特征3：卖点文案高度体系化</b>。「0电费0网费」「一台顶两台」「阴雨天20天不断电」「AOR回放更长久」——每条线有一句核心口号，且直接回应品类疑虑（回放焦虑/连阴雨断电/双摄价值）。AI 功能反而被刻意分层降级（旗舰「智能跟踪」→性价比款「人形移动」），说明乐橙清楚 AI 不是这个价位的买单理由。</div>
+<div class="insight-box"><b>🟢 特征4：当前增量重心 100% 压在「太阳能4G+新品」</b>。近 3 个月评价增量几乎全部来自 4 个 2026 下半年新品（SA70F-4K 105条 / B3L-4G太阳能 36条 / B3L-4G磁吸 25条 / TS2-800万 16条）；老 SKU 全线退坡（TS7F 近3月4条、TS7E性价比版 0 条）。<b>乐橙已经把弹药全部换到「免布线免联网」赛道</b>——这与 360 当前以 WiFi 球机为主力的布局形成正面错位。</div>
 </div>
 
 <h2>四、对 360 的机会点（基于乐橙布局的 3 个缺口）</h2>
-<div class="card">
-<div class="concl red"><b>🔴 缺口1：太阳能4G 双摄段位无强敌</b>。SA70F-4K 正在爆发（好评率95.2%）说明需求真实，但它 2026-09 才上市、评价基数还小；B7ED-4K 证明老平台堆高像素会翻车（76.5%）。若 360 以「全新平台+太阳能4G+双摄」进入，正面竞争窗口仍在。</div>
-<div class="concl orange"><b>🟡 缺口2：低价平台检测缩水是乐橙结构性弱点</b>。B3L 漏拍差评集中、TS7E 性价比版好评率 82% 全系最低——乐橙的「低价=算法降级」策略给了 360 用「全系同算法」打差异化的空间（检测一致性作为卖点，呼应 G980H 哨兵漏检教训）。</div>
-<div class="concl orange"><b>🟡 缺口3：变焦是乐橙的试验田也是软肋</b>。V70L 用「12倍混合变焦+50米人车检测」试探，但 TS7F/T5 的差评都骂「变焦=放大镜」。<b>真实变焦能力（哪怕混合）+ 可验证的距离承诺</b>是尚未被做透的卖点。</div>
+<div class="section">
+<div class="risk-box"><b>🔴 缺口1：太阳能4G 双摄段位无强敌</b>。SA70F-4K 正在爆发（好评率95.2%）说明需求真实，但它 2026-09 才上市、评价基数还小；B7ED-4K 证明老平台堆高像素会翻车（76.5%）。若 360 以「全新平台+太阳能4G+双摄」进入，正面竞争窗口仍在。</div>
+<div class="warn-box"><b>🟡 缺口2：低价平台检测缩水是乐橙结构性弱点</b>。B3L 漏拍差评集中、TS7E 性价比版好评率 82% 全系最低——乐橙的「低价=算法降级」策略给了 360 用「全系同算法」打差异化的空间（检测一致性作为卖点，呼应 G980H 哨兵漏检教训）。</div>
+<div class="warn-box"><b>🟡 缺口3：变焦是乐橙的试验田也是软肋</b>。V70L 用「12倍混合变焦+50米人车检测」试探，但 TS7F/T5 的差评都骂「变焦=放大镜」。<b>真实变焦能力（哪怕混合）+ 可验证的距离承诺</b>是尚未被做透的卖点。</div>
 </div>
 
 <h2>五、头图磨具（模具）对比：17 款仅 7 副模具</h2>
-<div class="card">
+<div class="section">
 <div class="note" style="margin-bottom:10px">方法：逐一目检各款商详头图中的产品实物本体（机身轮廓/镜头布局/天线/支架/太阳能板连接方式），归并同模组。⚠️ 头图为官方渲染图，判定以形态轮廓为准。</div>
 <table>
 <thead><tr><th>模具</th><th>形态特征</th><th>覆盖 SKU</th><th class="num">款数</th></tr></thead>
@@ -167,7 +167,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 <tr><td><b>G · B3L 方糖</b></td><td>圆角方糖磁吸本体，无外露天线；太阳能款加分体小板</td><td>B3L wifi / B3L 4G磁吸 / B3L 4G太阳能（本体同一副）</td><td class="num">3</td></tr>
 </tbody>
 </table>
-<div class="concl orange"><b>🟡 17 款 SKU = 7 副模具</b>：双摄模具 A 复用 4 次（TS7E 全系）、太阳能单摄模具 E 复用 3 次（B7 全系）、方糖模具 G 复用 3 次（B3L 全系）。<b>模具复用与产品线迭代完全对应</b>：TS7E 四档定价用同一副外壳、B7 三代迭代不动模具——印证「平台化复用」战略：模具是平台，像素/电池/联网方式是插槽。唯一新开模具是 V70L（双摄并排+12倍变焦），说明变焦是乐橙愿意付模具成本的新赌注。</div>
+<div class="warn-box"><b>🟡 17 款 SKU = 7 副模具</b>：双摄模具 A 复用 4 次（TS7E 全系）、太阳能单摄模具 E 复用 3 次（B7 全系）、方糖模具 G 复用 3 次（B3L 全系）。<b>模具复用与产品线迭代完全对应</b>：TS7E 四档定价用同一副外壳、B7 三代迭代不动模具——印证「平台化复用」战略：模具是平台，像素/电池/联网方式是插槽。唯一新开模具是 V70L（双摄并排+12倍变焦），说明变焦是乐橙愿意付模具成本的新赌注。</div>
 <div class="note">注：SA70F（模具D）= 模具A 加装分体太阳能板方案，两者主体轮廓同源；B7ED 头图太阳能板为一体连杆式、B7ET 为分体式，主体球机模具相同，板连接方式随电池升级微调。</div>
 </div>
 
@@ -180,5 +180,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 · ⚠️ B7ED-4K（76.5%）与 SA70F-4K（95.2%）同为太阳能4G双800万，好评率差 18.7pp，样本量分别为 17/105 条——前者样本小，结论需持续观察
 </div>
 
-<div class="sub" style="margin-top:24px">分析：尹燕玲 🦞 · 2026-11-17 · 供 11/20 竞品矩阵周报引用</div>
-</div></body></html>
+<div class="footer">分析：尹燕玲 🦞 · 2026-11-17 · 供 11/20 竞品矩阵周报引用</div>
+</div>
+<div class="footer">🍋 乐橙产品线布局 · 球机品类洞察研究</div>
+</body></html>
