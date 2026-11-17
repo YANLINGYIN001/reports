@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G980H 4G记录仪公测群 · 聊天记录增量分析（v7）</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f6f8; color:#333; padding:20px 0; }
+.container { max-width:1000px; margin:0 auto; padding:0 16px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:16px; padding:32px; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header p { font-size:13px; opacity:.92; }
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin-bottom:20px; }
+.kpi { background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.kpi .num { font-size:26px; font-weight:700; color:#E74C3C; }
+.kpi .label { font-size:12px; color:#999; margin-top:2px; }
+.kpi .sub { font-size:11px; color:#bbb; margin-top:4px; }
+.section { background:#fff; border-radius:14px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.section h2 { font-size:17px; margin-bottom:14px; padding-left:10px; border-left:4px solid #00B050; }
+.section .note { font-size:12px; color:#999; margin-bottom:10px; }
+#daily { width:100%; height:260px; }
+.bar-row { display:flex; align-items:center; margin-bottom:10px; }
+.bar-label { width:110px; font-size:13px; text-align:right; padding-right:12px; color:#555; flex-shrink:0; }
+.bar-track { flex:1; background:#f0f2f5; border-radius:6px; height:26px; position:relative; min-width:120px; }
+.bar-fill { height:100%; background:linear-gradient(90deg,#00B050,#2BBD6E); border-radius:6px; min-width:2px; }
+.bar-val { position:absolute; left:8px; top:3px; font-size:12px; font-weight:600; color:#fff; }
+.bar-who { width:170px; font-size:11px; color:#999; padding-left:10px; flex-shrink:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#00B050; color:#fff; padding:9px 10px; text-align:left; font-weight:600; }
+td { padding:9px 10px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+tr:nth-child(even) td { background:#fafbfc; }
+.uname { font-weight:600; }
+.insight-box { background:#f0faf4; border-left:4px solid #00B050; border-radius:8px; padding:16px 20px; font-size:13px; }
+.insight-box li { margin: 8px 0 8px 18px; }
+.risk-box { background:#fdf3f2; border-left:4px solid #E74C3C; border-radius:8px; padding:14px 18px; font-size:13px; margin-top:14px; }
+.tl-item { display:flex; gap:14px; padding:12px 0; border-bottom:1px dashed #eee; }
+.tl-item:last-child { border-bottom:none; }
+.tl-dot { font-size:16px; flex-shrink:0; margin-top:2px; }
+.tl-date { font-size:12px; color:#999; }
+.tl-title { font-size:14px; font-weight:700; margin:2px 0; color:#00B050; }
+.tl-desc { font-size:13px; color:#555; }
+.nt-date { white-space:nowrap; color:#666; }
+.nt-desc { min-width:260px; color:#444; font-size:12.5px; }
+.nt-who { white-space:nowrap; color:#666; font-size:12px; }
+.nt-st { white-space:nowrap; color:#E67E22; font-weight:600; font-size:12px; }
+.fw-ver { white-space:nowrap; font-weight:700; color:#00B050; }
+.fw-fix { min-width:220px; color:#444; font-size:12.5px; }
+.fw-new { color:#444; font-size:12.5px; }
+.footer { text-align:center; color:#999; font-size:12px; padding:16px 0 30px; }
+.back-link { display:inline-block; background:#fff; border-radius:10px; padding:10px 18px; color:#00B050; font-size:13px; text-decoration:none; font-weight:600; box-shadow:0 2px 8px rgba(0,0,0,.05); margin-bottom:16px; }
+@media (max-width:640px) {
+  .container { padding:12px; }
+  .section { padding:16px; }
+  .bar-who { display:none; }
+  .bar-label { width:90px; font-size:12px; }
+  .nt-desc { min-width:200px; }
+  .fw-fix { min-width:160px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>🚗 G980H 4G记录仪公测群 · 聊天记录增量分析（v7）</h1>
+<p>增量窗口：2026.10.27 09:17 - 11.17 06:52 · 数据来源：公测跟进群完整聊天记录导出（14882条） · 基线：<a href="g980h-group-inc-1030.html" style="color:#fff;text-decoration:underline">10.30 v6增量报告</a> · 由 🦞尹燕玲-报告分析专家 生成</p>
+</div>
+
+<a class="back-link" href="g980h-group-chat-analysis.html">← 返回全量分析报告（v4，至10.23）</a>
+
+<div class="kpi-grid"><div class="kpi"><div class="num">2414</div><div class="label">窗口内总消息</div><div class="sub">10.27 09:17 - 11.17 06:52</div></div><div class="kpi"><div class="num">2108</div><div class="label">有效消息</div><div class="sub">日均约 105 条</div></div><div class="kpi"><div class="num">68</div><div class="label">参与发言人数（用户）</div><div class="sub">官方12人另有408条</div></div><div class="kpi"><div class="num">36</div><div class="label">新增/演进线程</div><div class="sub">🔴高危10 · 🟡中23 · 🟢正向3</div></div><div class="kpi"><div class="num">v7</div><div class="label">累计数据</div><div class="sub">14882条（9.3-11.17）</div></div></div>
+
+<div class="section">
+<h2>📊 增量概览</h2>
+<div class="note">口径：有效消息=剔除系统/纯媒体无文字；话题命中=关键词匹配（一条消息可多话题）。与前三版增量报告口径一致。</div>
+<p style="font-size:13px;color:#444">本窗口（21天，有效活跃20天）新增 <b>2414</b> 条消息（日均约105条，较上期248条/日回落，公测进入收官节奏：11.9官方宣布正式公测结束）。群内主题从「终测验收+资费沟通」进入「<b>收官收尾+远程设置落地</b>」阶段：70→72→75→76固件四连推（远程设置上线，用户呼声第一的功能落地）；慢卡问题官方定性「公测标配卡质量较差」；新能源OBD不进哨兵问题定因并启动换线方案。</p>
+<div id="daily" style="margin-top:14px"></div>
+</div>
+
+<div class="section">
+<h2>🔥 增量窗口话题分布（附核心参与者）</h2>
+<div class="bar-list"><div class="bar-row"><div class="bar-label">固件升级</div><div class="bar-track"><div class="bar-fill" style="width:100.0%"></div><span class="bar-val">439</span></div><div class="bar-who">方家欢、蒋晓昀、孙洪士</div></div><div class="bar-row"><div class="bar-label">录像/存储</div><div class="bar-track"><div class="bar-fill" style="width:65.4%"></div><span class="bar-val">287</span></div><div class="bar-who">孙洪士、蒋晓昀、陈占学</div></div><div class="bar-row"><div class="bar-label">APP使用问题</div><div class="bar-track"><div class="bar-fill" style="width:47.2%"></div><span class="bar-val">207</span></div><div class="bar-who">孙洪士、程先生、许军州</div></div><div class="bar-row"><div class="bar-label">远程查看</div><div class="bar-track"><div class="bar-fill" style="width:40.5%"></div><span class="bar-val">178</span></div><div class="bar-who">蒋晓昀、程先生、孙洪士</div></div><div class="bar-row"><div class="bar-label">流量/资费</div><div class="bar-track"><div class="bar-fill" style="width:35.5%"></div><span class="bar-val">156</span></div><div class="bar-who">闫贺、孙洪士、陈占学</div></div><div class="bar-row"><div class="bar-label">停车监控</div><div class="bar-track"><div class="bar-fill" style="width:32.8%"></div><span class="bar-val">144</span></div><div class="bar-who">赵华平、陈占学、蒋晓昀</div></div><div class="bar-row"><div class="bar-label">OBD/降压线</div><div class="bar-track"><div class="bar-fill" style="width:28.0%"></div><span class="bar-val">123</span></div><div class="bar-who">赵华平、程先生、赵士达</div></div><div class="bar-row"><div class="bar-label">GPS/轨迹</div><div class="bar-track"><div class="bar-fill" style="width:17.8%"></div><span class="bar-val">78</span></div><div class="bar-who">苏冬冬、娄泽彬、王飞龙</div></div><div class="bar-row"><div class="bar-label">设备离线</div><div class="bar-track"><div class="bar-fill" style="width:14.1%"></div><span class="bar-val">62</span></div><div class="bar-who">吕关兴、程先生、赵士达</div></div><div class="bar-row"><div class="bar-label">安装问题</div><div class="bar-track"><div class="bar-fill" style="width:14.1%"></div><span class="bar-val">62</span></div><div class="bar-who">孙洪士、王龙、张宁</div></div><div class="bar-row"><div class="bar-label">设备重启/死机</div><div class="bar-track"><div class="bar-fill" style="width:8.2%"></div><span class="bar-val">36</span></div><div class="bar-who">孙洪士、程先生、陈占学</div></div></div>
+</div>
+
+<div class="section">
+<h2>💡 核心洞察</h2>
+<div class="insight-box"><ul><li><b>70→76固件四连推，主干问题持续收敛：</b>72版本官方明示优化AOV闪屏/离线/轨迹/重启（周琦强「缩时没有紫屏和抖动了」、陈占学「AOV视频暂未发现紫屏现象」、赵华平「新版本进了哨兵模式」）；76版本新增<b>远程设置</b>（王飞龙「这个远程设置应该是大家最需要的功能」→11.13落地），并修复蒋晓昀打火不录像、陈占学黑屏不录像+紧急录像过敏两大老问题（本人确认）——版本迭代进入正向循环</li><li><b>慢卡问题官方定性：</b>孙乐11.16明示「已知这次公测配的卡质量较差，建议换一张自己的卡」「台电、爱国者最好不要用，不是专业做存储卡的」——本窗口方家欢（内存卡报错格式化失败）、温开礼（一天无录像）、程先生（录像全无+死机）等多个「不录像」疑难案例最终均指向存储卡；周琦强「标配的卡我的已经写坏了」</li><li><b>新能源OBD「熄火不进哨兵」定因+换线方案启动：</b>赵华平连续多日「一直循环录像进不了哨兵」，孙乐定因「有些新能源电池熄火后电瓶电压维持14V左右高电平，方案商加了震动检测，内测中，验证充分后换线测试」——首个硬件级方案立项</li><li><b>公测正式收官：</b>11.9 17:49官方按公测反馈量赠送流量/云录套餐，18:00宣布「正式公测结束了，还需要大家持续协助测试优化」；11.13云录定价问卷作业引出大量套餐简化输入（方家欢「三档会员制」、陶双「按流量收费，多看多收费」、陈占学/吕关兴「7天云录够用」、张宁「单次查询收费」）——用户侧定价共识：简单化、低门槛、按需</li><li><b>哨兵/AOV检出率仍是唯一高危主线：</b>马姬10.9再报「有车过有人过但未触发哨兵」（孙乐介入查检测区域）；郑惟环/王钰琦「停一天无任何动静」「灵敏度两头不讨好（最高乱报、中等漏报）」；蒋晓昀「监控拍摄16秒后转缩时有1分多钟中断」——检出率+切换间隔双问题悬而未决</li></ul></div>
+<div class="risk-box">⚠️ 风险提示：①哨兵/AOV漏检（马姬、郑惟环、王钰琦，检出率与灵敏度档位设计待解）②新能源OBD不进哨兵（赵华平，新降压线内测中，换线周期待定）③「查看后卡死离线」群像（吕关兴「在线查看后记录仪卡死就离线」、娄泽彬「下车就离线」、闫贺75版离线）——离线原因从低压保护向查看后卡死偏移，建议固件侧持续跟踪。</div>
+</div>
+
+<div class="section">
+<h2>🔄 固件版本问题对比（70 → 72 → 75 → 76）</h2>
+<div class="note">按推送时间排列；「修复/收敛」含官方@回访多人确认与版本说明，「新增/回归」为窗口内用户实际报告。70为10.26晚推送（窗口起点前夜），其在窗口内的回访验证纳入对比。</div>
+<div style="overflow-x:auto">
+<table>
+<tr><th style="white-space:nowrap">版本</th><th style="white-space:nowrap">推送时间</th><th>修复/收敛</th><th>新增/回归问题</th></tr>
+<tr><td class="fw-ver">70</td><td class="nt-date">10.26晚</td><td class="fw-fix">69/70上大面积收敛：4G开流死机、远程卡录丢失、AOV误转停车监控、哨兵误触、离线等多人回访确认「未复现」</td><td class="fw-new">🔴 王龙亏电无法点火（疑似功耗回归，孙乐介入）；🟡 闫冰明暗变化画面震动+闪紫（官方定性下一版本修复）；🟡 程先生APP连接变慢；🟡 轨迹缺失/乱飘在70集中复发（王飞龙/温开礼/娄泽彬）</td></tr>
+<tr><td class="fw-ver">72</td><td class="nt-date">11.02 17:31</td><td class="fw-fix">官方明示优化：AOV录像闪屏、离线、轨迹、重启或无响应——周琦强「缩时没有紫屏和抖动了」、陈占学「AOV暂未发现紫屏」、赵华平「进了哨兵模式，上一版本一直断线」、汪杨离线已优化</td><td class="fw-new">🟡 程先生升级当日「抽风」：录像打不开+黑屏但4G在线（重启恢复，首次出现）；🟡 张宁72升级提示消失（官方直接配置75）</td></tr>
+<tr><td class="fw-ver">75<span style="font-size:11px;color:#999">（内测）</span></td><td class="nt-date">11.05起定向配置</td><td class="fw-fix">增加远程设置项（需最新APP）；实际效果与72版本一致（刘聃11.9官方口径）</td><td class="fw-new">🟡 闫贺跳过72直升75后停车监控离线：「70版本一周都没离线，升75后2天左右就离线」——窗口内唯一离线回归报告</td></tr>
+<tr><td class="fw-ver">76</td><td class="nt-date">11.13 19:26</td><td class="fw-fix">app增加<b>远程设置</b>（用户呼声第一的功能落地）+稳定性修复；蒋晓昀打火后不录像、陈占学黑屏不录像+紧急录像过敏均本人确认已修</td><td class="fw-new">🟡 升级问题群像：周琦强/朱君/刘小顺检测不到新版本（白名单）；蒋晓昀下载&lt;100k疑限速；陈占学/丁政涛远程设置进不去（4K+4路场景，官方「设3k试试，在修复」）；孙洪士「正式版APP没有超级夜视了」——暂无高危回归</td></tr>
+</table>
+</div>
+<div class="insight-box" style="margin-top:14px">📌 <b>「修复-回归」迭代节奏明显：</b>每版修复上一版主诉问题，但70（亏电功耗）、75（停车监控离线）各引入一个新回归点，均为单用户单点报告、未扩散；76暂无高危回归、仅剩升级体验问题（白名单/下载限速/远程设置兼容）。哨兵检出率是唯一跨版本未解主线（69→76均有漏检报告）。</div>
+</div>
+<div class="section">
+<h2>🧵 新增/演进问题线程（人工逐条校对）</h2>
+<div class="note">仅收录增量窗口内新出现或显著演进的问题线程；官方@回应与用户原声均已核对。累计基线：v4大表116条+v5增量16条+v6增量26条。</div>
+<div style="overflow-x:auto">
+<table>
+<tr><th style="white-space:nowrap">日期</th><th>问题</th><th>详情（用户原声摘要）</th><th>涉及用户</th><th>状态</th></tr>
+<tr><td class="nt-date">10.27</td><td class="nt-title" style="color:#00B050;font-weight:700">🟢 69/70固件大规模回归验证（官方@拉网式回访）</td><td class="nt-desc">刘聃就46~70版本历史问题逐人@回访：孙洪士4G开流死机「目前没有发现」、魏健伟远程卡录丢失「目前没有发现」、蒋晓昀AOV转停车监控「没有」、离线多人「没有离线」、哨兵误触「正常未出现误报」——历史问题大面积收敛</td><td class="nt-who">孙洪士/魏健伟/蒋晓昀等</td><td class="nt-st">已收敛(多人确认)</td></tr>
+<tr><td class="nt-date">10.27</td><td class="nt-title" style="color:#E74C3C;font-weight:700">🔴 哨兵漏报仍未解决（延续69固件问题）</td><td class="nt-desc">马姬「我的哨兵模式是漏报」（12:52，13:15称新固件已解决）；陈占学「缩时录影两段视频中间会缺失几十秒」，10.29再报「现在漏录太多了」「建议给个高档位远近都录像，低档位就现在这样」；10.29亲历「哨兵指示灯已触发录像状态，但查看卡录就是丢失那几十秒」——检出率/漏录持续，用户明确要求分档</td><td class="nt-who">马姬/陈占学</td><td class="nt-st">跟进中(用户要求分档)</td></tr>
+<tr><td class="nt-date">10.27</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 设备端相册验证专项（官方发起）</td><td class="nt-desc">刘聃@所有人发起相册加载实验：孙洪士首次操作死机断电重启（提交MISC日志）；闫鹰飞「点全部卡30s后进入」；丁政涛延迟明显（随机配卡）vs 王刚红秒开（自购卡）——首次加载慢与慢卡强相关</td><td class="nt-who">孙洪士/闫鹰飞/丁政涛等</td><td class="nt-st">已定位(慢卡相关)</td></tr>
+<tr><td class="nt-date">10.27</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 温开礼日志提交失败</td><td class="nt-desc">固件日志处理8分钟+「提示处理失败」连续两次——刘聃「不正常，后续日志提交这里让研发优化」</td><td class="nt-who">温开礼</td><td class="nt-st">已受理(待优化)</td></tr>
+<tr><td class="nt-date">10.27</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 汪杨离线20分钟自愈+文件损坏</td><td class="nt-desc">「设备17.40左右离线20点左右自己上线」「17.38有一个文件损坏」，记录仪主机一直在工作——已提交MISC日志</td><td class="nt-who">汪杨</td><td class="nt-st">跟进中</td></tr>
+<tr><td class="nt-date">10.27</td><td class="nt-title" style="color:#E74C3C;font-weight:700">🔴 王龙车辆亏电无法点火（70固件）</td><td class="nt-desc">「更新这个版本后今天亏电到无法启动」「之前版本即使晚上熄火三格电第二天也能正常启动」——OBD降压线供电，孙乐已介入；此前该用户从未亏过电</td><td class="nt-who">王龙</td><td class="nt-st">🔴 重点跟进(疑似70固件功耗回归)</td></tr>
+<tr><td class="nt-date">10.28</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 程先生APP连接记录仪变慢（69/70固件）</td><td class="nt-desc">「更新了69就开始连接app不好连接了」「蓝牙开着提示已连接，但app里面点进去连接很慢或连不上」——录屏时又正常，间歇性；刘聃请录视频+日志</td><td class="nt-who">程先生</td><td class="nt-st">跟进中(间歇性)</td></tr>
+<tr><td class="nt-date">10.28</td><td class="nt-title" style="color:#E74C3C;font-weight:700">🔴 闫冰69明暗变化画面震动+闪紫（70固件仍现）</td><td class="nt-desc">「69明暗变化时存在画画震动和闪紫」→10.28再报「这个还没修复吗？」——刘聃「下一版本修复」官方定性</td><td class="nt-who">闫冰</td><td class="nt-st">待下一版本(官方确认)</td></tr>
+<tr><td class="nt-date">10.28</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 赵士达电压未低于11.8V即掉线</td><td class="nt-desc">「我的电压还没低于11.8 掉线了」+熄火充电时进入哨兵播报——低压保护阈值与实际行为不一致疑似</td><td class="nt-who">赵士达</td><td class="nt-st">跟进中</td></tr>
+<tr><td class="nt-date">10.28</td><td class="nt-title" style="color:#E74C3C;font-weight:700">🔴 流量/云录收费策略误解风波（10.29爆发）</td><td class="nt-desc">10.29燕玲群发「流量云录策略上线，送一个月无限流量和云录」→用户误以为「4G终身免流」：闫贺/孙洪士/程先生/许军州集中误解「一直宣传的4G终身免流量」；澄清后讨论转向竞品资费对比（林志澄「70迈远程功能都收费」「比友商便宜多了」）与套餐建议（月套餐/永久套餐/分档）。周琦强实测哨兵7天108次事件≈月37G流量</td><td class="nt-who">闫贺/孙洪士/程先生等</td><td class="nt-st">已澄清(策略沟通成本显性化)</td></tr>
+<tr><td class="nt-date">10.28</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 需求集中：APP播放器现代化</td><td class="nt-desc">张宁「查看录像默认显示全部很乱，建议默认显示前录」「筛选视频选项隐蔽，出事故的人本来就慌乱」；蒋晓昀「播放器建议升级成全屏滑动」「还要在时间轴上才能拖动，太古老了」；孙洪士手势滑动+已看标记多次提——多用户共识需求</td><td class="nt-who">张宁/蒋晓昀/孙洪士</td><td class="nt-st">需求(多用户共识)</td></tr>
+<tr><td class="nt-date">10.29</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 公海军需求三连未获答复</td><td class="nt-desc">「电压显示，低电压关机app通知，远程记录仪设置这几个都实现不了了吗」程先生催「管理员可以给个答复吗」——蒋晓昀解释「目前的OBD线估计支持不了」；远程设置后于76版本落地</td><td class="nt-who">公海军/程先生</td><td class="nt-st">部分解决(远程设置已落地)</td></tr>
+<tr><td class="nt-date">10.29</td><td class="nt-title" style="color:#E74C3C;font-weight:700">🔴 哨兵漏录实锤：陈占学亲历触发但卡录缺失</td><td class="nt-desc">「有人经过车前记录仪启动了，指示灯闪烁后录灯长亮，应该已经在触发录像状态，但查看卡录就是丢失这个时间的视频，缩录也没有事件视频也没有」——日志已上传</td><td class="nt-who">陈占学</td><td class="nt-st">跟进中</td></tr>
+<tr><td class="nt-date">10.30</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 许军州内存卡异常提示</td><td class="nt-desc">「今早行驶提示内存卡异常请更换内存卡，估计和我老是远程查看不停读取内存卡有关系，格式化后正常」——远程高频读取与卡健康关联</td><td class="nt-who">许军州</td><td class="nt-st">观察中</td></tr>
+<tr><td class="nt-date">10.30-31</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 王飞龙轨迹缺失/温开礼轨迹乱飘</td><td class="nt-desc">王飞龙「每次只显示停车信息，轨迹一直没有」「前几次等几天都没轨迹」；温开礼「轨迹乱飘多会修复啊」；娄泽彬「熄火停路边十多分钟，gps轨迹只有1个直接合并」——轨迹类问题在70版本集中复发</td><td class="nt-who">王飞龙/温开礼/娄泽彬</td><td class="nt-st">跟进中(日志已交)</td></tr>
+<tr><td class="nt-date">10.31-11.2</td><td class="nt-title" style="color:#00B050;font-weight:700">🟢 远程设置官宣落地</td><td class="nt-desc">王飞龙「不能远程设置是产品最大遗憾」→刘聃10.31「下一个版本支持 进行中」；11.13 76版本推送「app增加远程设置」，多人升级验证（林志澄「远程设置正常」、陈占学「远程可以进设置里面了」）</td><td class="nt-who">王飞龙/刘聃/陈占学</td><td class="nt-st">✅ 已落地(76版本)</td></tr>
+<tr><td class="nt-date">11.1</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 魏健伟车被三轮车撞：停车监控实战立功+漏录并存</td><td class="nt-desc">三轮车撞上停驶车辆录下十几秒关键视频并报警处理；但发现「从6点22到7点46没有录像」「停车监控设置时间到了，砰之前的录像也没有」——立功与漏录并存</td><td class="nt-who">魏健伟</td><td class="nt-st">部分漏录(时间窗)</td></tr>
+<tr><td class="nt-date">11.1</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 陶双APP循环录像回看bug</td><td class="nt-desc">「只选择前录，但是也显示左右副摄，还标注为前录」——筛选与标注不一致</td><td class="nt-who">陶双</td><td class="nt-st">已提交</td></tr>
+<tr><td class="nt-date">11.2</td><td class="nt-title" style="color:#E74C3C;font-weight:700">🔴 72版本推送+集中验证收敛</td><td class="nt-desc">刘聃17:31@所有人推送2.0.72「优化AOV录像闪屏、离线、轨迹、重启或无响应问题」：赵华平「新版本进了哨兵模式，上一个版本一直都是断线」、周琦强「缩时没有紫屏和抖动了」、陈占学「AOV视频暂未发现紫屏现象」——主干问题收敛确认</td><td class="nt-who">刘聃/赵华平/周琦强/陈占学</td><td class="nt-st">✅ 大面积收敛</td></tr>
+<tr><td class="nt-date">11.2</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 方家欢紧急录像后触屏快捷键不隐藏</td><td class="nt-desc">「点了紧急录像黄三角，这三个触屏快捷键就不会隐藏了」+孙洪士「这几个按钮太碍事了，屏幕显得繁杂不干净」——UI问题，必现</td><td class="nt-who">方家欢/孙洪士</td><td class="nt-st">已记录(必现)</td></tr>
+<tr><td class="nt-date">11.2</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 苏冬冬原地升级后位置漂移0.8公里</td><td class="nt-desc">「打火原地升级，车没动，行驶轨迹漂移了0.8公里」「20分钟了车原地未动还是位置漂移」「以前位移漂移没有行驶速度，现在还有速度」——日志已提交</td><td class="nt-who">苏冬冬</td><td class="nt-st">跟进中</td></tr>
+<tr><td class="nt-date">11.3</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 吕关兴雨天误报人形</td><td class="nt-desc">「下雨误检测为有行人靠近」+此前「挡风玻璃放个纸巾误报有人靠近」——误报源从人形扩展到雨点/异物；金福雪已收日志+事件视频</td><td class="nt-who">吕关兴</td><td class="nt-st">跟进中(日志已交)</td></tr>
+<tr><td class="nt-date">11.3</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 郭方胜开热点后APP连不上记录仪</td><td class="nt-desc">「开热点后连接不了记录仪，关了就能连接」→夏震宇「热点连接其他设备的话手机wifi会被占用，后续APP上会做提示」；郭方胜补充「iPhone wifi和热点不能同时开，安卓部分支持，需确认」</td><td class="nt-who">郭方胜/夏震宇</td><td class="nt-st">已受理(提示优化中)</td></tr>
+<tr><td class="nt-date">11.4</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 王刚红云盒离线：插拔流量卡恢复</td><td class="nt-desc">「云盒亮红灯绿灯慢闪，App显示离线，断电多次无效」→「把流量卡拿出来拍照再插回去，重新启动就好了」「断电都操作过了还是无效，这次插拔流量卡有效」——云盒侧新故障模式</td><td class="nt-who">王刚红</td><td class="nt-st">已恢复(插卡恢复)</td></tr>
+<tr><td class="nt-date">11.4</td><td class="nt-title" style="color:#E74C3C;font-weight:700">🔴 陶双停车轨迹异常+定位到国外</td><td class="nt-desc">「13:48-16:35车没动，多了这段行程，没有定位」+地图显示到国外——徐凯来已转研发排查</td><td class="nt-who">陶双</td><td class="nt-st">跟进中(日志已交)</td></tr>
+<tr><td class="nt-date">11.4-6</td><td class="nt-title" style="color:#E74C3C;font-weight:700">🔴 新能源熄火不进哨兵定因（OBD线）</td><td class="nt-desc">赵华平连续多日「一直循环录像进不了哨兵」（充电时+非充电时段均有）；刘聃分析「可能是充电导致的信号变化」；11.5孙乐「我们的obd降压线在优化，验证充分后给您换一条线测试」；11.6定因「有些新能源电池熄火后电瓶电压维持14V高电平，方案商加了震动检测，内测中」</td><td class="nt-who">赵华平/孙乐/刘聃</td><td class="nt-st">🔴 硬件方案内测中(待换线)</td></tr>
+<tr><td class="nt-date">11.6</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 陈占学老问题复现：黑屏不录像+紧急录像过敏</td><td class="nt-desc">「启动车辆后黑屏提示持续工作中，录像指示灯熄灭，反复多次」+「行车中一直紧急录像，小的震动就会触发」「这两个问题算是老版本的问题，这次又复现了」——76版本验证修复</td><td class="nt-who">陈占学</td><td class="nt-st">✅ 76已修复(本人确认)</td></tr>
+<tr><td class="nt-date">11.9</td><td class="nt-title" style="color:#00B050;font-weight:700">🟢 公测正式收官+按贡献赠送套餐</td><td class="nt-desc">17:49燕玲@所有人「根据公测期间问题反馈情况，已对应赠送相应的流量或云录套餐」；18:00宣布「正式公测结束了，还需要大家持续协助测试优化」；用户感恩互动（孙洪士「从雏形变成优秀的商品，大家都会感觉到自豪」）</td><td class="nt-who">燕玲/全体</td><td class="nt-st">🟢 收官节点</td></tr>
+<tr><td class="nt-date">11.9-13</td><td class="nt-title" style="color:#E74C3C;font-weight:700">🔴 马姬哨兵持续漏检（官方介入查检测区域）</td><td class="nt-desc">马姬「一上午未触发哨兵模式，有车过有人过但未触发」；孙乐「上次反馈过AOV哨兵未触发的问题吧，我去问一下算法同事」+核对哨兵方框检测区域；11.16作业中再次反馈；郑惟环「24小时没有任何动静」+「灵敏度最高乱报警、中等有人经过也不报警」；王钰琦「停了一天车，路过的行人不可能一个没有」——检出率问题贯穿窗口始终</td><td class="nt-who">马姬/郑惟环/王钰琦</td><td class="nt-st">🔴 重点跟进(算法侧排查)</td></tr>
+<tr><td class="nt-date">11.9</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 副摄延长线需求征集（官方发起）</td><td class="nt-desc">孙乐发起挡风玻璃量测+「计划做1米的延长线，还是安装在前挡玻璃」；用户热烈响应（程先生「我想参加」、赵华平「一米应该可以装三角窗」、陶双「最好两头都是90度」、孙洪士「最好1米2以上」、闫冰「多附赠一张胶贴」）——官方主动产品共创</td><td class="nt-who">孙乐/程先生/陶双等</td><td class="nt-st">需求征集(官方发起)</td></tr>
+<tr><td class="nt-date">11.11</td><td class="nt-title" style="color:#E74C3C;font-weight:700">🔴 方家欢/温开礼「显示工作中实际不录像」</td><td class="nt-desc">方家欢「昨天下午17时10几分出现的异常，录像和日志都是那时候停的」+「停车之后也进哨兵了，一直录」+「上面是1080也没显示3k」；温开礼「从昨晚8:40停到停车场，一晚上+今早一路+下午4点半都没有录像」——孙乐「已知这次公测配的卡质量较差」指向慢卡；温开礼案例卡取日志后恢复</td><td class="nt-who">方家欢/温开礼/孙乐</td><td class="nt-st">已定位(慢卡相关)</td></tr>
+<tr><td class="nt-date">11.12</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 蒋晓昀监控转缩时中断过长</td><td class="nt-desc">「监控拍摄16秒后转为缩时还是会有中断，这中间1分多钟就是没法记录了」；11.13追问「中断时间还能缩短吗，现在的3、40秒感觉也太长了」——刘聃「两种不同类型的视频有中断是正常的」；孙洪士「提过很多次了，技术上默许了，没有下文」</td><td class="nt-who">蒋晓昀/孙洪士</td><td class="nt-st">跟进中(切换间隔)</td></tr>
+<tr><td class="nt-date">11.13</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 云录定价问卷作业：套餐简化建议集中涌现</td><td class="nt-desc">方家欢「就3个阶梯就好了，黄金/白金/钻石会员」「搞的那么复杂，又是流量又是云录」；陶双「VIP.SVIP套娃收费很容易让用户反感」「直接按流量收费，多看多收费」；陈占学「记录仪使用频率不高，费用太高一般用户不会消费」；吕关兴「7天云录已经能满足」；丁政涛「每月限定流量永久套餐」；张宁「单次查询收费，一次几块钱」——共识：简单化、低门槛、按需付费</td><td class="nt-who">方家欢/陶双/陈占学等</td><td class="nt-st">需求输入(已收问卷)</td></tr>
+<tr><td class="nt-date">11.13</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 76版本升级问题群像</td><td class="nt-desc">正式版APP 3.1.1+76固件推送：周琦强/朱君/刘小顺检测不到新版本（白名单+车内开流后恢复）；蒋晓昀下载速度不到100k「感觉账号被限速」；许军州「升级包下载了15min」；陈占学「远程设置没加载出来」→董鹏鹏「76版本设置4K然后4路的时候进设置会有问题」；丁政涛「远程进不了设置」→刘聃「记录仪端设置为3k试试，这个问题在修复」；孙洪士「正式版APP没有超级夜视功能了」</td><td class="nt-who">周琦强/蒋晓昀/陈占学等</td><td class="nt-st">修复中(官方跟进)</td></tr>
+<tr><td class="nt-date">11.15-16</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 程先生死机+录像全无（恢复后指向卡）</td><td class="nt-desc">「记录仪远程查看录像打不开，试了好多次」「开车还显示哨兵模式」→「插拔了几次线都不行，最后长按关机再开机才好」「昨天晚上到现在都没有触发录像和停车拍照」→拔电源一分钟以上恢复——孙乐「用的还是标配360卡吗？已知这次公测配的卡质量较差」「换一张自己的卡」</td><td class="nt-who">程先生/孙乐</td><td class="nt-st">已恢复(待换卡验证)</td></tr>
+<tr><td class="nt-date">11.16</td><td class="nt-title" style="color:#E67E22;font-weight:700">🟡 孙洪士后台连接不上+赵华平视频丢帧</td><td class="nt-desc">孙洪士「试了好几遍都连接不上，应该是后台网络的问题」；赵华平「一秒到二秒时候右下角闪了一下，8:13:54被切了，53直接跳到55，感觉缺了几帧」——服务端/传输侧新线索</td><td class="nt-who">孙洪士/赵华平</td><td class="nt-st">跟进中(日志待交)</td></tr>
+</table>
+</div>
+</div>
+<div class="section">
+<h2>🛠 官方动作时间线</h2>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">10.27 11:12</div><div class="tl-title">iOS 3.1.0上线</div><div class="tl-desc">徐凯来@所有人：Testflight链接升级3.1.0</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">10.27 11:32起</div><div class="tl-title">历史问题拉网式回访</div><div class="tl-desc">刘聃就46~70固件历史问题逐人@核对复现情况，多人确认收敛</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">10.27 15:09</div><div class="tl-title">设备端相册专项实验</div><div class="tl-desc">刘聃@所有人：主界面→相册→循环视频→「全部/车前」加载验证</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">10.28 15:32</div><div class="tl-title">腾讯文档终测验证下发</div><div class="tl-desc">燕玲@所有人：腾讯文档私发各位，基于最新APP+固件验证，C列选择结果</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">10.29 17:23</div><div class="tl-title">流量云录策略上线通知</div><div class="tl-desc">燕玲：送一个月无限流量+云录（群内「终身免流」误解集中爆发后澄清）</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">10.29 19:18</div><div class="tl-title">物联卡政策官方解释</div><div class="tl-desc">孙乐：可插自己的流量卡入云盒；360物联卡插其他设备会被锁卡（国家法规）</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">10.30 10:59</div><div class="tl-title">智慧通知改写体验征集</div><div class="tl-desc">徐凯来@所有人：车辆动态智慧通知改写内容意见征集</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">11.02 17:31</div><div class="tl-title">72版本固件推送</div><div class="tl-desc">刘聃@所有人：优化AOV录像闪屏、离线、轨迹、重启或无响应问题</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">11.09 10:24起</div><div class="tl-title">挡风玻璃量测+副摄延长线征集</div><div class="tl-desc">孙乐：计划做1米延长线，征集参与测试用户；用户响应热烈</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">11.09 17:49</div><div class="tl-title">公测反馈回馈赠送</div><div class="tl-desc">燕玲@所有人：按公测期间问题反馈情况赠送对应流量/云录套餐</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">11.09 18:00</div><div class="tl-title">公测正式收官</div><div class="tl-desc">「正式公测结束了，还需要大家持续协助测试优化」</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">11.13 18:02</div><div class="tl-title">云录定价问卷作业</div><div class="tl-desc">燕玲@所有人：群公告新增作业，11.16早9点前完成</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">11.13 19:26</div><div class="tl-title">76版本+正式APP 3.1.1推送</div><div class="tl-desc">刘聃@所有人：app增加远程设置、稳定性问题修复；需卸载公测包装正式版</div></div></div>
+<div class="tl-item"><div class="tl-dot">🛠</div><div class="tl-body"><div class="tl-date">11.16 16:20</div><div class="tl-title">远程设置再次优化预告</div><div class="tl-desc">刘聃：「这个又紧急优化了下，这几天推新版本」</div></div></div>
+</div>
+<div class="section">
+<h2>👤 增量窗口发言榜（用户）</h2>
+<div class="note">已合并「-980H 4G公测」后缀昵称与图片标识；官方账号（360-*、金福雪-360、夏震宇-产品、田玉森-质量等）及群主账号已剔除；栏内为窗口内有效消息数。</div>
+<table>
+<tr><th>#</th><th>用户</th><th>消息数</th><th>占比</th></tr>
+<tr><td>1</td><td class="uname">程先生</td><td>272</td><td>13.6%</td></tr>
+<tr><td>2</td><td class="uname">赵华平</td><td>242</td><td>12.1%</td></tr>
+<tr><td>3</td><td class="uname">孙洪士</td><td>171</td><td>8.5%</td></tr>
+<tr><td>4</td><td class="uname">蒋晓昀</td><td>141</td><td>7.0%</td></tr>
+<tr><td>5</td><td class="uname">方家欢</td><td>112</td><td>5.6%</td></tr>
+<tr><td>6</td><td class="uname">陶双</td><td>68</td><td>3.4%</td></tr>
+<tr><td>7</td><td class="uname">陈占学</td><td>68</td><td>3.4%</td></tr>
+<tr><td>8</td><td class="uname">温开礼</td><td>60</td><td>3.0%</td></tr>
+<tr><td>9</td><td class="uname">许军州</td><td>59</td><td>2.9%</td></tr>
+<tr><td>10</td><td class="uname">闫贺</td><td>58</td><td>2.9%</td></tr>
+<tr><td>11</td><td class="uname">丁政涛</td><td>52</td><td>2.6%</td></tr>
+<tr><td>12</td><td class="uname">林志澄</td><td>47</td><td>2.3%</td></tr>
+<tr><td>13</td><td class="uname">周琦强</td><td>46</td><td>2.3%</td></tr>
+<tr><td>14</td><td class="uname">吕关兴</td><td>42</td><td>2.1%</td></tr>
+<tr><td>15</td><td class="uname">马姬</td><td>40</td><td>2.0%</td></tr>
+</table>
+</div>
+<div class="section">
+<h2>📌 与前序报告的衔接说明</h2>
+<ul style="font-size:13px;color:#444;margin-left:18px;line-height:1.9">
+<li>全量数据基线：14882条（9.3-11.17）；v6增量窗口止于10.30 08:11，本报告承接其后增量（与v6基线12433条对账吻合，本窗口新增2449条）。</li>
+<li>v4大表116条+v5增量16条+v6增量26条+本报告36条线程，下次全量更新时可合并（预计约194条）。</li>
+<li>话题分类沿用11类口径（与v5/v6一致）；用户榜昵称归并规则与v4修正版一致（群昵称为权威口径）。</li>
+<li>公测已于11.9正式收官（官方群宣），本报告覆盖收官前后完整过程，为收官阶段增量报告。</li>
+</ul>
+</div>
+
+<div class="footer">G980H 4G记录仪公测 · 群记录增量分析 v7 · 2026-11-17 生成 · 由 🦞尹燕玲-报告分析专家 生成</div>
+</div>
+
+<script>
+var el = document.getElementById('daily');
+var chart = echarts.init(el);
+chart.setOption({
+  tooltip: { trigger: 'axis' },
+  grid: { left: 40, right: 20, top: 20, bottom: 30 },
+  xAxis: { type: 'category', data: ["10-27","10-28","10-29","10-30","10-31","11-01","11-02","11-03","11-04","11-05","11-06","11-08","11-09","11-10","11-11","11-12","11-13","11-15","11-16","11-17"], axisLabel: { interval: 0, rotate: 45, fontSize: 10 } },
+  yAxis: { type: 'value' },
+  series: [{ type: 'bar', data: [251,207,281,39,27,59,268,76,153,24,25,28,221,42,73,37,207,5,83,2], itemStyle: { color: '#00B050', borderRadius: [4,4,0,0] }, barMaxWidth: 32 }]
+});
+</script>
+</body>
+</html>
