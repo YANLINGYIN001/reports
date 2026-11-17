@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4G设备信号强度分布 · HTML报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f6f7; color:#333; padding:24px 16px; }
+.wrap { max-width:1080px; margin:0 auto; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:12px; padding:28px 32px; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .sub { font-size:13px; opacity:.92; }
+.card { background:#fff; border-radius:12px; padding:24px 28px; margin-bottom:20px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+.card h2 { font-size:17px; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:14px; }
+.kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; }
+.kpi { background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+.kpi .name { font-size:13px; color:#999; margin-bottom:6px; }
+.kpi .val { font-size:26px; font-weight:700; color:#E74C3C; }
+.kpi .note { font-size:12px; color:#999; margin-top:4px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#00B050; color:#fff; padding:9px 8px; font-weight:600; text-align:center; }
+td { padding:8px; border-bottom:1px solid #eee; text-align:center; }
+tr:hover td { background:#f4faf6; }
+td.left, th.left { text-align:left; }
+.neg { color:#E74C3C; font-weight:700; }
+.pos { color:#00B050; font-weight:700; }
+.note-line { font-size:12px; color:#999; margin-top:10px; line-height:1.6; }
+.sum { font-size:14px; line-height:1.8; padding:10px 14px; border-radius:8px; margin-top:12px; }
+.sum.warn { background:#fdf2f0; border-left:4px solid #E74C3C; }
+.sum.ok { background:#f0faf4; border-left:4px solid #00B050; }
+.sum.mid { background:#fdf7ee; border-left:4px solid #F39C12; }
+#chart1, #chart2, #chart3, #chart4, #chart5 { width:100%; height:360px; }
+.footer { text-align:center; font-size:12px; color:#999; padding:8px 0 20px; }
+.rank { display:inline-block; width:22px; height:22px; line-height:22px; border-radius:50%; background:#00B050; color:#fff; font-size:12px; font-weight:700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+<h1>4G设备信号强度分布报告</h1>
+<div class="sub">数据周期：截至 2026-11-17 | 总样本 32,573 台 | 覆盖：门铃6pro 4G · 5pro 4G · 9pro 云台4G</div>
+</div>
+
+<div class="kpis">
+<div class="kpi"><div class="name">总样本量（台）</div><div class="val">32,573</div><div class="note">3个产品线 4G 设备</div></div>
+<div class="kpi"><div class="name">信号达标率（≥70）最佳</div><div class="val">57.9%</div><div class="note">5pro 4G（标杆）</div></div>
+<div class="kpi"><div class="name">门铃6pro 达标率（≥70）</div><div class="val">49.6%</div><div class="note">低于 5pro 8.3pct，中位数区间 60-70</div></div>
+<div class="kpi"><div class="name">门铃6pro 弱信号占比（&lt;50）</div><div class="val">1.9%</div><div class="note">44 台，无 &lt;40 极端弱信号</div></div>
+</div>
+
+<div class="card">
+<h2>一、信号质量排名</h2>
+<table>
+<tr><th class="left">排名</th><th class="left">产品</th><th>样本量（台）</th><th>中位数区间</th><th>≥70 占比</th><th>&lt;50 占比</th><th>&lt;40 占比</th><th>评价</th></tr>
+<tr><td class="left"><span class="rank">1</span></td><td class="left"><b>5pro 4G</b></td><td>28,375</td><td>70-80</td><td class="pos">57.9%</td><td class="pos">1.3%</td><td class="pos">0.0%</td><td>标杆基线</td></tr>
+<tr><td class="left"><span class="rank">2</span></td><td class="left"><b>9pro 云台4G</b></td><td>1,868</td><td>70-80</td><td>51.0%</td><td class="pos">2.0%</td><td class="pos">0.1%</td></tr>
+<tr><td class="left"><span class="rank">3</span></td><td class="left"><b>门铃6pro 4G</b></td><td>2,282</td><td>60-70</td><td class="neg">49.6%</td><td class="pos">1.9%</td><td class="pos">0.0%</td></tr>
+</table>
+<div class="sum ok">三产品信号质量排序：<b>5pro 4G &gt; 9pro 云台4G ≈ 门铃6pro 4G</b>。门铃6pro 虽中位数区间低于其余两者一档，但弱信号尾部干净，无极端弱信号用户。</div>
+</div>
+
+<div class="card">
+<h2>二、信号值区间分布明细</h2>
+<table>
+<tr><th class="left">信号值区间</th><th>门铃6pro 4G</th><th>占比</th><th>5pro 4G</th><th>占比</th><th>9pro 云台4G</th><th>占比</th></tr>
+<tr><td class="left">90至100</td><td>233</td><td>10.2%</td><td>2,841</td><td>10.0%</td><td>81</td><td>4.3%</td></tr>
+<tr><td class="left">80至90</td><td>285</td><td>12.5%</td><td>4,918</td><td>17.3%</td><td>296</td><td>15.8%</td></tr>
+<tr><td class="left">70至80</td><td>615</td><td>26.9%</td><td>8,675</td><td>30.6%</td><td>575</td><td>30.8%</td></tr>
+<tr><td class="left">60至70</td><td>745</td><td>32.6%</td><td>8,271</td><td>29.2%</td><td>624</td><td>33.4%</td></tr>
+<tr><td class="left">50至60</td><td>360</td><td>15.8%</td><td>3,298</td><td>11.6%</td><td>255</td><td>13.6%</td></tr>
+<tr><td class="left">40至50</td><td>44</td><td>1.9%</td><td>363</td><td>1.3%</td><td>35</td><td>1.9%</td></tr>
+<tr><td class="left">30至40</td><td>—</td><td>0.0%</td><td>9</td><td class="neg">0.03%</td><td>2</td><td>0.1%</td></tr>
+<tr><td class="left" style="color:#999">合计</td><td><b>2,282</b></td><td>100%</td><td><b>28,375</b></td><td>100%</td><td><b>1,868</b></td><td>100%</td></tr>
+</table>
+<div class="note-line">口径说明：每台设备按其最新上报信号值归入一个区间；占比=区间设备数/该产品总样本；「—」=该区间无设备。</div>
+<div class="sum mid">门铃6pro 主力区间为 60-70（32.6%），重心较 5pro（70-80）低一档；80 以上仅 22.7%（5pro 为 27.3%），高信号段占比也偏弱。</div>
+</div>
+
+<div class="card">
+<h2>三、产品分布图</h2>
+<div id="chart1"></div>
+<div id="chart2"></div>
+<div id="chart3"></div>
+</div>
+
+<div class="card">
+<h2>四、核心洞察</h2>
+<div class="sum warn">🔴 门铃6pro 4G 信号重心偏低：中位数区间 60-70（5pro/9pro 均为 70-80），≥70 达标率 49.6% 为三者最低，60 以下累计占比 50.4%，过半设备信号落在偏弱区间。</div>
+<div class="sum ok">🟢 门铃6pro 弱信号尾部可控：&lt;50 仅 44 台（1.9%），与 5pro（1.3%）、9pro（2.0%）同一水平，且无 40 以下极端弱信号，下限表现正常。</div>
+<div class="sum mid">🟡 9pro 云台4G 高信号段偏薄：90-100 区间仅 4.3%（门铃6pro 10.2%、5pro 10.0%），但整体中位数仍在 70-80，整体结构未失衡。</div>
+<div class="sum ok">🟢 5pro 4G 样本量最大（28,375 台）且分布最均衡，可作为其余产品信号评估的标杆基线。</div>
+</div>
+
+<div class="footer">数据来源：设备信号强度分布_4G设备.xlsx | 分析：尹燕玲 | 生成日期 2026-11-17</div>
+</div>
+
+<script>
+var cats = ['90至100','80至90','70至80','60至70','50至60','40至50','30至40'];
+var colors = ['#00B050','#2BBD6E','#F39C12','#E74C3C'];
+function mkChart(id, name, data, ci){
+  var chart = echarts.init(document.getElementById(id));
+  var opt = {
+    title: { text: name + ' 信号值区间分布（台）', left: 'center', textStyle: { fontSize: 14, color: '#333' } },
+    tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+    grid: { left: 60, right: 30, top: 50, bottom: 40 },
+    xAxis: { type: 'category', data: cats, axisLabel: { fontSize: 11 } },
+    yAxis: { type: 'value' },
+    series: [{
+      type: 'bar', data: data, barWidth: '55%',
+      itemStyle: { color: function(p){ return p.dataIndex <= 2 ? colors[ci] : (p.dataIndex === 3 ? '#999' : '#E74C3C'); }, borderRadius: [4,4,0,0] },
+      label: { show: true, position: 'top', fontSize: 11, color: '#333' }
+    }]
+  };
+  chart.setOption(opt);
+}
+mkChart('chart1', '门铃6pro 4G', [233,285,615,745,360,44,0], 0);
+mkChart('chart2', '5pro 4G', [2841,4918,8675,8271,3298,363,9], 1);
+mkChart('chart3', '9pro 云台4G', [81,296,575,624,255,35,2], 2);
+</script>
+</body>
+</html>
