@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年度重大事故盘点</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#F5F6F7;color:#333;line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 16px 40px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);border-radius:12px;padding:28px 24px;color:#fff;margin-bottom:16px}
+.header h1{font-size:24px;margin-bottom:6px}
+.header .sub{font-size:13px;opacity:.92}
+.scope{background:#fff;border-radius:10px;padding:12px 16px;font-size:13px;color:#555;margin-bottom:16px;border-left:4px solid #00B050}
+.kpi-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+.kpi{flex:1;min-width:160px;background:#fff;border-radius:10px;padding:18px 16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.kpi .num{font-size:34px;font-weight:700;color:#E74C3C}
+.kpi .lbl{font-size:13px;color:#666;margin-top:4px}
+.kpi-status{flex:1;min-width:220px;background:#fff;border-radius:10px;padding:18px 16px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-around}
+.kpi-sub{text-align:center}
+.kpi-subnum{font-size:30px;font-weight:700}
+.section{background:#fff;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.section h2{font-size:17px;color:#00B050;border-left:4px solid #00B050;padding-left:10px;margin-bottom:14px}
+.summary-line{font-size:14px;color:#333;background:#F0FAF4;border-radius:8px;padding:10px 14px;margin-bottom:14px}
+.cat-row{display:flex;flex-wrap:wrap;gap:10px}
+.cat-cell{flex:1;min-width:140px;background:#FAFAFA;border-radius:8px;padding:12px;text-align:center}
+.cat-name{font-size:13px;font-weight:600;padding-left:8px}
+.cat-num{font-size:26px;font-weight:700;margin:4px 0}
+.cat-sub{font-size:12px;color:#999}
+.mrow{display:flex;align-items:center;margin-bottom:8px}
+.mlabel{width:44px;font-size:13px;color:#555;text-align:right;padding-right:10px}
+.mtrack{flex:1;background:#EEE;height:22px;border-radius:4px;overflow:hidden}
+.mbar{height:100%;background:linear-gradient(90deg,#00B050,#2BBD6E);border-radius:4px}
+.mval{width:60px;font-size:13px;font-weight:600;padding-left:10px;color:#E74C3C}
+.open-dot{color:#E74C3C;font-size:11px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#333;color:#fff;padding:9px 8px;text-align:left;font-weight:600;white-space:nowrap}
+td{padding:10px 8px;border-bottom:1px solid #EEE;vertical-align:top}
+tr:nth-child(even) td{background:#FAFCFA}
+.nowrap{white-space:nowrap}
+.cat-tag{display:inline-block;font-size:11px;color:#fff;border-radius:3px;padding:1px 6px;margin-top:4px}
+.st{display:inline-block;font-size:12px;color:#fff;border-radius:3px;padding:1px 8px;font-weight:600}
+.st-已闭环{background:#00B050}
+.st-进行中{background:#E74C3C}
+.st-detail{font-size:12px;color:#555;margin-top:4px}
+.note{background:#FFF8E6;border-left:4px solid #F39C12;border-radius:6px;padding:10px 14px;font-size:13px;color:#745A22;margin-top:14px}
+.src{font-size:12px;color:#999;margin-top:14px;line-height:1.7}
+.footer{text-align:center;font-size:12px;color:#999;padding:10px}
+@media(max-width:760px){
+ .kpi-row,.cat-row{flex-direction:column}
+ table{font-size:12px}
+ td,th{padding:7px 5px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+<h1>2026年度重大事故盘点</h1>
+<div class="sub">统计周期：2026-01-01 ~ 2026-11-19 ｜ 覆盖智能硬件全品类（摄像机/门铃/记录仪/儿童手表/APP）</div>
+</div>
+
+<div class="scope">口径说明：事故判定=批量影响 / 服务中断 / 大客户 / 舆情 / 批量质量事故；计划内维护不计入；单点普通客诉不计入。数据源：重点问题响应群上报记录 + 三群监控台账（合并去重）。</div>
+
+<div class="kpi-row">
+<div class="kpi"><div class="num">21</div><div class="lbl">重大事故总数</div></div>
+<div class="kpi"><div class="num">6</div><div class="lbl">涉及品类/环节</div></div>
+<div class="kpi"><div class="num">6起</div><div class="lbl">单月最高（10月）</div></div>
+<div class="kpi-status"><div class="kpi-sub"><span class="st st-已闭环">已闭环</span><div class="kpi-subnum" style="color:#00B050">12 起</div></div>
+<div class="kpi-sub"><span class="st st-进行中">进行中</span><div class="kpi-subnum" style="color:#E74C3C">9 起</div></div>
+</div>
+</div>
+
+<div class="section">
+<h2>一、年度概览</h2>
+<div class="summary-line">2026年5月以来共发生重大事故 <b style="color:#E74C3C">21 起</b>：服务端/基础设施类占比最高（9起）；10月为事故高发月（6起）；当前 <b style="color:#E74C3C">9起进行中</b>（含iOS闪退升级放量、门铃哨兵版OTA待拍板、5C3K返工交付等）。硬件类事故3起集中在Q3-Q4出货批次（G980支架/BK6 MAX球头/5C3K花屏），均伴随渠道动作（焕新/下架/出货拦截）。</div>
+<div class="cat-row">
+<div class="cat-cell"><div class="cat-name" style="border-left:5px solid #E74C3C">服务端/基础设施</div><div class="cat-num" style="color:#E74C3C">9</div><div class="cat-sub">起 · 占43%</div></div>
+<div class="cat-cell"><div class="cat-name" style="border-left:5px solid #F39C12">客户端APP</div><div class="cat-num" style="color:#E74C3C">4</div><div class="cat-sub">起 · 占19%</div></div>
+<div class="cat-cell"><div class="cat-name" style="border-left:5px solid #2980B9">设备硬件</div><div class="cat-num" style="color:#E74C3C">5</div><div class="cat-sub">起 · 占24%</div></div>
+<div class="cat-cell"><div class="cat-name" style="border-left:5px solid #8E44AD">第三方服务</div><div class="cat-num" style="color:#E74C3C">1</div><div class="cat-sub">起 · 占5%</div></div>
+<div class="cat-cell"><div class="cat-name" style="border-left:5px solid #D35400">舆情</div><div class="cat-num" style="color:#E74C3C">1</div><div class="cat-sub">起 · 占5%</div></div>
+<div class="cat-cell"><div class="cat-name" style="border-left:5px solid #7F8C8D">内部系统</div><div class="cat-num" style="color:#E74C3C">1</div><div class="cat-sub">起 · 占5%</div></div>
+
+</div>
+</div>
+
+<div class="section">
+<h2>二、月度分布</h2>
+<div class="summary-line">10月6起为全年峰值（iOS 27.2闪退 + CSC异常 + 北美网络异常 + S3上传403 + G980支架 + 发声舆情集中爆发）；7月3起均为服务端/第三方依赖（网络异常/高德合同/云录像负载）。</div>
+<div class="mrow"><div class="mlabel">5月</div><div class="mtrack"><div class="mbar" style="width:33%"></div></div><div class="mval">2 起</div></div>
+<div class="mrow"><div class="mlabel">6月</div><div class="mtrack"><div class="mbar" style="width:17%"></div></div><div class="mval">1 起</div></div>
+<div class="mrow"><div class="mlabel">7月</div><div class="mtrack"><div class="mbar" style="width:50%"></div></div><div class="mval">3 起</div></div>
+<div class="mrow"><div class="mlabel">8月</div><div class="mtrack"><div class="mbar" style="width:33%"></div></div><div class="mval">2 起</div></div>
+<div class="mrow"><div class="mlabel">9月</div><div class="mtrack"><div class="mbar" style="width:50%"></div></div><div class="mval">3 起</div></div>
+<div class="mrow"><div class="mlabel">10月</div><div class="mtrack"><div class="mbar" style="width:100%"></div></div><div class="mval">6 起</div></div>
+<div class="mrow"><div class="mlabel">11月</div><div class="mtrack"><div class="mbar" style="width:67%"></div></div><div class="mval">4 起</div></div>
+
+</div>
+
+<div class="section">
+<h2>三、事故明细（21起 · 按发生时间排序）</h2>
+<table>
+<thead><tr><th>日期</th><th>事件</th><th>型号/载体</th><th>用户层表现</th><th>影响范围</th><th>根因</th><th>问题现状</th></tr></thead>
+<tbody>
+<tr><td class="nowrap">5.7</td><td><b>摄像机APP安卓全量闪退</b><div class="cat-tag" style="background:#F39C12">客户端APP</div></td><td>360摄像机APP（安卓/鸿蒙）</td><td>打开APP即闪退，全量安卓+鸿蒙用户受影响</td><td>全量安卓用户（鸿蒙+安卓）</td><td>运营配置JSON删对象后残留逗号，下发致空指针崩溃</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已闭环（回滚恢复）</div></td></tr>
+<tr><td class="nowrap">5.30</td><td><b>新设备联网成功即离线</b><div class="cat-tag" style="background:#E74C3C">服务端/基础设施</div></td><td>多型号摄像机/门铃（含门铃6Pro全景版）</td><td>新设备配网成功后立即掉线，无法使用；商城出现退款</td><td>10+ SN、40+台设备</td><td>视频云license不足</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已闭环（18:01恢复）</div></td></tr>
+<tr><td class="nowrap">6.7</td><td><b>双APP无法登录+开流黑屏</b><div class="cat-tag" style="background:#E74C3C">服务端/基础设施</div></td><td>智慧生活APP+360摄像机APP（iOS/安卓）</td><td>无法登录账号；登录后开流失败、画面黑屏</td><td>40+用户反馈</td><td>底层redis异常</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已闭环（切主恢复）</div></td></tr>
+<tr><td class="nowrap">7.1</td><td><b>儿童手表批量无法定位</b><div class="cat-tag" style="background:#8E44AD">第三方服务</div></td><td>儿童手表（波及T200轨迹纠偏/录音笔/安防定位）</td><td>手表定位失败无位置，轨迹无法纠偏，安防设备定位异常</td><td>客服20单+后台27条（波及4类产品）</td><td>高德服务合同到期未续费</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已闭环（恢复）</div></td></tr>
+<tr><td class="nowrap">7.17</td><td><b>公司网络异常·设备批量离线</b><div class="cat-tag" style="background:#E74C3C">服务端/基础设施</div></td><td>全品类智能设备（国内）</td><td>APP内设备批量显示离线、无法查看/控制</td><td>国内所有机房，14:38~15:58（80分钟）</td><td>公司网络异常</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已闭环（15:58恢复）</div></td></tr>
+<tr><td class="nowrap">7.21</td><td><b>门铃云录像不录制+推送延迟</b><div class="cat-tag" style="background:#E74C3C">服务端/基础设施</div></td><td>门铃（全型号）</td><td>云录像不录制、事件消息推送明显延迟；客服排队20+，用户差评</td><td>客服排队20+用户</td><td>异常流量致服务器负载过高</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已闭环</div></td></tr>
+<tr><td class="nowrap">8.21-9.18</td><td><b>S3抖动/底层存储负载异常</b><div class="cat-tag" style="background:#E74C3C">服务端/基础设施</div></td><td>云存储基础设施（摄像机云存用户）</td><td>云存视频加载慢/卡顿、偶发查看失败</td><td>云存用户</td><td>S3底层存储负载</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已闭环（9.18恢复）</div></td></tr>
+<tr><td class="nowrap">8.31</td><td><b>门铃批量设置报错+摄像机离线</b><div class="cat-tag" style="background:#E74C3C">服务端/基础设施</div></td><td>门铃+摄像机（云端批量设置服务）</td><td>APP里批量设置门铃参数报错，摄像机显示离线</td><td>批量用户</td><td>疑与前夜机房故障相关</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已闭环</div></td></tr>
+<tr><td class="nowrap">9.3</td><td><b>shm机房割接</b><div class="cat-tag" style="background:#E74C3C">服务端/基础设施</div></td><td>无终端设备（机房级操作）</td><td>割接窗口内服务短暂不可用</td><td>机房层面</td><td>计划外随故障暴露（事件本身为割接操作）</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已完成</div></td></tr>
+<tr><td class="nowrap">9.11</td><td><b>BK6 MAX 4G球头分离</b><div class="cat-tag" style="background:#2980B9">设备硬件</div></td><td>BK6 MAX 4G</td><td>球头与机身分离无法固定使用</td><td>出货2300pcs中114pcs（5.0%），已EOL产品</td><td>球头结构问题</td><td><span class="st st-进行中">进行中</span><div class="st-detail">进行中（114pcs退凯木金返工，京东下架退库）</div></td></tr>
+<tr><td class="nowrap">9.22</td><td><b>W510北美批量离线</b><div class="cat-tag" style="background:#2980B9">设备硬件</div></td><td>W510（北美）</td><td>设备在APP里显示离线、无法查看</td><td>北美8例</td><td>—</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已闭环（恢复）</div></td></tr>
+<tr><td class="nowrap">10.9</td><td><b>G980三摄支架断裂</b><div class="cat-tag" style="background:#2980B9">设备硬件</div></td><td>G980三摄记录仪（大客户）</td><td>支架断裂、设备无法固定安装</td><td>大客户11+14台中故障8台</td><td>疑2025年9-10月中框支架批次问题</td><td><span class="st st-进行中">进行中</span><div class="st-detail">进行中（7台焕新已发出；旧机待田玉森回收批次分析）</div></td></tr>
+<tr><td class="nowrap">10.12</td><td><b>摄像头异常发声舆情</b><div class="cat-tag" style="background:#D35400">舆情</div></td><td>360摄像机（SN 3601R0700098853）+9Pro（bug 152661）</td><td>用户在摄像机听到异常女人说话声（无视频画面），小红书发帖引发舆情</td><td>公开舆情（小红书发帖，后删帖）</td><td>取证链缺失，未定论（初判「设备没有录」，信令有交互）</td><td><span class="st st-进行中">进行中</span><div class="st-detail">进行中（原机寄回待分析；历史22例同类复盘无一坐实入侵）</div></td></tr>
+<tr><td class="nowrap">10.13</td><td><b>S3上传403故障</b><div class="cat-tag" style="background:#E74C3C">服务端/基础设施</div></td><td>摄像机云存</td><td>云存录像打不开、无法回看</td><td>10用户</td><td>S3 bucket权限异常</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已闭环（权限全量补刷恢复）</div></td></tr>
+<tr><td class="nowrap">10.22</td><td><b>北美底层网络异常</b><div class="cat-tag" style="background:#E74C3C">服务端/基础设施</div></td><td>360摄像机APP（北美用户）</td><td>大量用户同时上线时APP响应变慢，会员页/my orders打不开</td><td>北美用户，21:41~21:55（14分钟）</td><td>流量洪峰</td><td><span class="st st-已闭环">已闭环</span><div class="st-detail">已闭环（21:55扩容恢复，已留档）</div></td></tr>
+<tr><td class="nowrap">10.31</td><td><b>iOS 27.2回放闪退</b><div class="cat-tag" style="background:#F39C12">客户端APP</div></td><td>360摄像机APP 8.6.9（iOS 27.2，摄像机回放）</td><td>iPhone升级iOS 27.2后打开APP回放录像即闪退</td><td>14例批量</td><td>APP 8.6.9与iOS 27.2兼容缺陷</td><td><span class="st st-进行中">进行中</span><div class="st-detail">进行中（8.7.0已修复，分阶段自动升级中，首日1%）</div></td></tr>
+<tr><td class="nowrap">10.31</td><td><b>CSC加载异常（11.5复发）</b><div class="cat-tag" style="background:#7F8C8D">内部系统</div></td><td>CSC内部系统（无终端用户影响）</td><td>内部伙伴使用CSC需30秒以上才加载</td><td>多个内部伙伴</td><td>根因未公布</td><td><span class="st st-进行中">进行中</span><div class="st-detail">进行中（已好转，根因待谭雄回传）</div></td></tr>
+<tr><td class="nowrap">11.1</td><td><b>海外用户APP闪退</b><div class="cat-tag" style="background:#F39C12">客户端APP</div></td><td>360摄像机APP（海外版）</td><td>海外用户打开APP闪退（机型/系统版本未确认）</td><td>疑批量（客诺进信息量大未整理）</td><td>是否与iOS 27.2事件同源待确认</td><td><span class="st st-进行中">进行中</span><div class="st-detail">进行中（全恒跟进）</div></td></tr>
+<tr><td class="nowrap">11.2</td><td><b>北美APP部分用户退出登录</b><div class="cat-tag" style="background:#F39C12">客户端APP</div></td><td>360摄像机APP（北美）</td><td>用户被登出后再登录进其它账号看不到自己设备；部分用户Google Home验证手机号后被自动关联谷歌账号</td><td>北美批量用户</td><td>redis异常致登录态丢失 + Google Home自动关联机制</td><td><span class="st st-进行中">进行中</span><div class="st-detail">进行中（客服临时方案=引导多账号切回；同源判定待线下对齐）</div></td></tr>
+<tr><td class="nowrap">11.2</td><td><b>5C3K售后花屏</b><div class="cat-tag" style="background:#2980B9">设备硬件</div></td><td>5C3K（WIFI版）</td><td>设备画面花屏无法正常观看</td><td>激活247台中18例（7.3%）</td><td>I2C信号报错（已定位去C257电容）</td><td><span class="st st-进行中">进行中</span><div class="st-detail">进行中（封库返工+出货拦截，下批11/17、11/24交付）</div></td></tr>
+<tr><td class="nowrap">11.7</td><td><b>门铃6哨兵版二次离线</b><div class="cat-tag" style="background:#2980B9">设备硬件</div></td><td>门铃6哨兵版+基站（SN 86KMR6505040002434）</td><td>门铃离线后不自动恢复（基站长时间wifi掉线不重连），需手动断电重启</td><td>基站超1天长离线28/8830台（0.32%）</td><td>基站长时间wifi掉线不恢复缺陷（坐实，后续项目已修复）</td><td><span class="st st-进行中">进行中</span><div class="st-detail">进行中（OTA方案待拍板，已连续7日无群内进展）</div></td></tr>
+
+</tbody>
+</table>
+<div class="note"><b>附注：</b>2025.12.25 各APP无法正常登录（用户中心问题，累计咨询72例）——发生于2025年末，未计入2026年口径。</div>
+</div>
+
+<div class="section">
+<h2>四、进行中事项跟踪（9起）</h2>
+<div class="summary-line">9起进行中事项按紧迫度排序：①门铃6哨兵版OTA方案（已坐实缺陷，待拍板，连续多日无进展，建议线下催办）②iOS 8.7.0升级放量（决定10.31闪退事件收口）③北美退出登录同源判定 ④5C3K返工交付（11/17、11/24两批）⑤G980旧机批次分析 ⑥发声舆情取证 ⑦海外闪退跟进 ⑧CSC根因 ⑨BK6 MAX返工收尾。</div>
+</div>
+
+<div class="src">数据源说明：①三群监控台账（门铃离线机器分析群 / 安防异常声音投诉群 / 重点问题响应群，2026-08~11监控期）②重点问题响应群2026年上报记录（2026-05~11，含飞书「重大问题跟进」文档）③历史22例发声复盘（飞书文档 ZFOkdWqJ0oBOhJxxqfrcfOZIncf）。事件状态截至 2026-11-19。</div>
+
+<div class="footer">2026年度重大事故盘点 · 生成于 2026-11-19 · 🦞</div>
+</div>
+</body>
+</html>
