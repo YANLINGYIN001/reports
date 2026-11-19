@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4G体验专项看板 v0.1</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"PingFang SC","Microsoft YaHei",sans-serif; background:#f5f6f7; color:#333; padding:24px 16px; }
+.wrap { max-width:1080px; margin:0 auto; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); color:#fff; border-radius:12px; padding:26px 32px; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:8px; }
+.header .sub { font-size:13px; opacity:.92; line-height:1.7; }
+.card { background:#fff; border-radius:12px; padding:24px 28px; margin-bottom:20px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+.card h2 { font-size:17px; color:#00B050; border-left:4px solid #00B050; padding-left:10px; margin-bottom:14px; }
+.kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; }
+.kpi { background:#fff; border:1px solid #eee; border-radius:12px; padding:18px 20px; box-shadow:0 1px 4px rgba(0,0,0,.05); }
+.kpi .name { font-size:13px; color:#999; margin-bottom:6px; }
+.kpi .val { font-size:26px; font-weight:700; color:#E74C3C; }
+.kpi .note { font-size:12px; color:#999; margin-top:4px; line-height:1.6; }
+.concl { font-size:14px; line-height:1.9; padding:12px 16px; border-radius:8px; background:#fdf2f2; border-left:4px solid #E74C3C; margin-top:16px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#00B050; color:#fff; padding:9px 8px; font-weight:600; text-align:center; }
+td { padding:8px; border-bottom:1px solid #eee; text-align:center; }
+tr:hover td { background:#f4faf6; }
+td.left, th.left { text-align:left; }
+.pctnote { display:block; font-size:11px; color:#999; }
+.neg { color:#E74C3C; font-weight:700; }
+.pos { color:#00B050; font-weight:700; }
+.chart { width:100%; height:360px; }
+.chart-sm { width:100%; height:330px; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media (max-width:800px) { .grid2 { grid-template-columns:1fr; } }
+.domains { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; }
+.domain { background:#fafbfa; border:1px solid #e8ece9; border-radius:10px; padding:16px 18px; }
+.dhead { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.dname { font-size:15px; font-weight:700; }
+.dstat { font-size:11px; color:#fff; border-radius:10px; padding:2px 10px; }
+.dev { font-size:12.5px; color:#555; line-height:1.8; }
+.note-line { font-size:12px; color:#999; margin-top:10px; line-height:1.7; }
+.sum { font-size:13.5px; line-height:1.8; padding:10px 14px; border-radius:8px; margin-top:12px; background:#f0f9f3; }
+.footer { text-align:center; font-size:12px; color:#999; padding:16px 0 4px; line-height:1.8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="header"><h1>4G体验专项看板 v0.1</h1><div class="sub">数据周期：2026-10-17 ~ 2026-11-17（32天分日） · 覆盖：9 Pro 400万4G版 / 门铃5 Pro 4G / 门铃6 Pro 4G<br>口径：当日在线并上报信号的设备数；达标率=信号值≥70设备占比 · 更新：2026-11-19 · 月更</div></div>
+<div class="card"><h2>一、核心结论</h2><div class="kpis"><div class="kpi"><div class="name">9 Pro 400万 4G版 · 达标率(≥70)</div><div class="val" style="color:#E74C3C">50.55%</div><div class="note">32天 +3.5pct · 近7日均 50.5% · 弱信号(<50) 2.22%</div></div><div class="kpi"><div class="name">门铃5 Pro 4G · 达标率(≥70)</div><div class="val" style="color:#E74C3C">58.12%</div><div class="note">32天 +1.3pct · 近7日均 58.1% · 弱信号(<50) 1.31%</div></div><div class="kpi"><div class="name">门铃6 Pro 4G · 达标率(≥70)</div><div class="val" style="color:#E74C3C">50.51%</div><div class="note">32天 0.0pct · 近7日均 49.2% · 弱信号(<50) 1.84%</div></div><div class="kpi"><div class="name">6 Pro 32天改善幅度</div><div class="val" style="color:#E74C3C">0.0pct</div><div class="note">首尾持平，近7日均49.2%低于达标线</div></div></div><div class="concl"><b>一句话结论：</b>5 Pro 稳定领跑且持续微升；9 Pro 随设备量翻倍爬坡改善+3.5pct、近7日站稳50%线上；<span class="neg">6 Pro 一个月零改善（50.5%→50.5%），近7日均49.2%已跌破达标线，且设备量同期+175%，需优先排查是网络侧还是装机结构问题</span>。</div></div>
+<div class="card"><h2>二、信号质量横向对比</h2><div id="c_trend" class="chart"></div><div class="grid2" style="margin-top:16px"><div><h3 style="font-size:14px;color:#333;margin-bottom:8px">末日快照 · 信号区间分布占比（11-17）</h3><div id="c_dist" class="chart-sm"></div></div><div><h3 style="font-size:14px;color:#333;margin-bottom:8px">RSRP 五档基准（门铃=RSRP+159换算，9 Pro 经验口径同源）</h3><table><tr><th>等级</th><th>RSRP</th><th>对应百分比</th><th class="left">说明</th></tr><tr><td><b style="color:#00B050">极好</b></td><td>> -85 dBm</td><td>> 74%</td><td class="left">体验最佳区间</td></tr><tr><td><b style="color:#00B050">好</b></td><td>-95 ~ -85 dBm</td><td>64% ~ 74%</td><td class="left">达标下沿，≥70口径落在此档</td></tr><tr><td><b style="color:#F39C12">中</b></td><td>-105 ~ -95 dBm</td><td>54% ~ 64%</td><td class="left">一般，用户感知分水岭附近</td></tr><tr><td><b style="color:#E74C3C">差</b></td><td>-115 ~ -105 dBm</td><td>44% ~ 54%</td><td class="left">弱信号，感知不可用风险区</td></tr><tr><td><b style="color:#E74C3C">极差</b></td><td>< -115 dBm</td><td>< 44%</td><td class="left">基本不可用</td></tr></table><div class="note-line">注：TechBI区间粒度为10，70-80/60-70等区间无法精确按RSRP五档拆分，故分布图按实际区间展示，五档作为评级基准对照。</div></div></div><div style="margin-top:16px"><h3 style="font-size:14px;color:#333;margin-bottom:8px">三品对比总表（11-17快照）</h3><table><tr><th class="left">产品</th><th>设备数</th><th>≥70（优）</th><th>50-70（中）</th><th>&lt;50（差）</th><th>达标率</th><th>弱信号占比</th><th>32天趋势</th></tr><tr><td class="left"><b>9 Pro 400万 4G版</b></td><td>1895</td><td>958<span class="pctnote">50.6%</span></td><td>895<span class="pctnote">47.2%</span></td><td>42<span class="pctnote">2.2%</span></td><td><b>50.55%</b></td><td class="neg">2.22%</td><td><span class="pos">↑ +3.5pct</span></td></tr><tr><td class="left"><b>门铃5 Pro 4G</b></td><td>28454</td><td>16537<span class="pctnote">58.1%</span></td><td>11543<span class="pctnote">40.6%</span></td><td>374<span class="pctnote">1.3%</span></td><td><b>58.12%</b></td><td>1.31%</td><td><span class="pos">↑ +1.3pct</span></td></tr><tr><td class="left"><b>门铃6 Pro 4G</b></td><td>2342</td><td>1183<span class="pctnote">50.5%</span></td><td>1116<span class="pctnote">47.7%</span></td><td>43<span class="pctnote">1.8%</span></td><td><b>50.51%</b></td><td class="neg">1.84%</td><td><span class="neg">→ 0.0pct 原地</span></td></tr></table><div class="note-line">设备规模变化：9 Pro 与 6 Pro 设备数32天均约+175%，新增设备持续进入，信号分布随激活结构漂移；5 Pro 成熟期+12.3%。</div><div class="sum">小结：<span class="pos">5 Pro 三档结构最健康</span>（≥70达58.1%、弱信号仅1.3%）；<span style="color:#F39C12;font-weight:700">9 Pro 中段（50-70）偏厚</span>（47.4%，60-70区间占33.9%为三品最高）；<span class="neg">6 Pro 达标率垫底且32天无改善</span>，60-70区间占32.2%同样偏厚——两品共同特征是「不上不下」的中段用户占比过高。</div></div></div>
+<div class="card"><h2>三、六大问题域全景</h2><div class="domains"><div class="domain"><div class="dhead"><span class="dname">📡 信号质量</span><span class="dstat" style="background:#00B050">已覆盖</span></div><div class="dev">三品32天分日数据已接入本看板。5 Pro 持续领跑（≥70达58.1%）；6 Pro 一个月零改善、近7日均49.2%低于达标线；9 Pro 爬坡改善+3.5pct。</div></div><div class="domain"><div class="dhead"><span class="dname">🔗 连接稳定性</span><span class="dstat" style="background:#F39C12">数据源待接</span></div><div class="dev">已有证据：6 Pro 上市Day15信号网络类为最大缺陷类；9 Pro 存在「信号50-79、用户感知不可用但后台在线」灰区簇。待接：开流成功率/离线率（上市后全渠道咨询监测）。</div></div><div class="domain"><div class="dhead"><span class="dname">📶 信号显示一致性</span><span class="dstat" style="background:#F39C12">数据源待接</span></div><div class="dev">已有佐证：9 Pro 公测期WiFi/流量图标切换延迟、缩略图与实时信号条不符（seq16/51/66）。待接：APP反馈抽验口径。</div></div><div class="domain"><div class="dhead"><span class="dname">🛰 运营商兼容</span><span class="dstat" style="background:#F39C12">数据源待接</span></div><div class="dev">已有证据：9 Pro 存在仅支持电信单运营商案例；G980H 移远答复「运营商受限、技术可能无法解决」。待接：各品运营商覆盖数清单。</div></div><div class="domain"><div class="dhead"><span class="dname">📦 流量管理</span><span class="dstat" style="background:#F39C12">数据源待接</span></div><div class="dev">竞品标杆：萤石魔丸中差评仅2.3%、流量差评几乎为零。待接：竞品评价流量/信号差评密度采集（京东接口已封锁，需换通道：360搜索/官网/smzdm/知乎）。</div></div><div class="domain"><div class="dhead"><span class="dname">🔋 4G×功耗</span><span class="dstat" style="background:#F39C12">数据源待接</span></div><div class="dev">已有证据：G980H 带4G老化FAIL；AOV哨兵带4G死机；缩时录制带4G不开机。与硬件设计强耦合，部分无法软件解决。待接：设备日志/远程诊断口径确认。</div></div></div><div class="note-line">覆盖度：1/6 已有常态数据接入（信号质量）；其余五域已有历史证据沉淀，数据源接入计划见模块四。公测期原声仅作历史佐证，不进指标体系（2026-11-18口径）。</div></div>
+<div class="card"><h2>四、数据源与口径说明</h2><table><tr><th class="left">#</th><th class="left">数据源</th><th class="left">状态</th><th class="left">用途</th></tr><tr><td>①</td><td class="left">TechBI「设备信号强度分布」看板（设备信号强度分布_4G设备.xlsx，月更）</td><td class="left"><span class="pos">已接入</span>（3品32天分日明细）</td><td class="left">信号质量域核心指标；后续需扩到全4G品</td></tr><tr><td>②</td><td class="left">上市后全渠道咨询监测（信号网络类单列）</td><td class="left">待接</td><td class="left">连接稳定性、信号显示一致性</td></tr><tr><td>③</td><td class="left">竞品评价流量/信号差评密度（对标萤石）</td><td class="left">待接（京东接口封锁，换360搜索/官网/smzdm/知乎通道）</td><td class="left">流量管理域竞品对标</td></tr><tr><td>④</td><td class="left">设备日志 / 远程诊断数据</td><td class="left">待确认口径</td><td class="left">4G×功耗、运营商兼容</td></tr><tr><td>—</td><td class="left">公测问题验证表</td><td class="left"><span class="neg">不作为数据源</span></td><td class="left">公测=临时招募样本，原声仅作历史佐证（11-18拍板）</td></tr></table><div class="note-line">口径明细：<br>· 数值为「当日在线并上报信号的设备数」，跨日累计≠去重设备数；32天设备日累计：9 Pro 40,093 / 5 Pro 860,639 / 6 Pro 50,570。<br>· 达标线按品分设：9 Pro ≥75不错/&lt;70一般/&lt;50不可用（产品经验口径）；门铃5 Pro/6 Pro = RSRP+159换算百分比。本看板统一用≥70展示，与11-17分布报告同口径。<br>· <span class="neg">数据质量待确认：5 Pro 有6天出现「0至10」区间各1台异常低值（10-30~11-04），上报层疑似坏点，已请数据侧确认。</span></div></div>
+<div class="footer">4G信号专项 · 体验看板 v0.1 · 生成 2026-11-19 · 数据源 TechBI设备信号强度分布<br>关联报告：<a href="https://yanlingyin001.github.io/reports/4g-signal-distribution-report.html" style="color:#00B050">4G设备信号强度分布报告（2026-11-17）</a></div>
+<script>
+var D = {"dates": ["10-17", "10-18", "10-19", "10-20", "10-21", "10-22", "10-23", "10-24", "10-25", "10-26", "10-27", "10-28", "10-29", "10-30", "10-31", "11-01", "11-02", "11-03", "11-04", "11-05", "11-06", "11-07", "11-08", "11-09", "11-10", "11-11", "11-12", "11-13", "11-14", "11-15", "11-16", "11-17"], "ge70": {"9 Pro 400万 4G版": [47.08, 46.13, 48.31, 48.23, 47.77, 50.96, 52.1, 51.5, 51.04, 49.65, 50.05, 49.43, 49.91, 49.37, 50.57, 49.79, 50.4, 50.51, 49.5, 50.07, 48.62, 48.85, 49.86, 49.61, 49.78, 49.97, 51.14, 49.5, 50.11, 51.03, 50.96, 50.55], "门铃5 Pro 4G": [56.78, 56.9, 57.0, 56.84, 57.33, 57.65, 57.69, 57.3, 57.46, 57.5, 57.44, 57.72, 57.61, 57.63, 57.78, 57.8, 57.62, 57.71, 57.58, 57.73, 57.74, 57.72, 57.61, 57.94, 58.34, 58.32, 58.19, 57.87, 58.41, 58.01, 57.92, 58.12], "门铃6 Pro 4G": [50.47, 49.89, 50.16, 49.8, 50.1, 49.72, 49.55, 50.92, 50.4, 49.47, 48.8, 50.42, 51.71, 50.67, 49.8, 49.97, 48.72, 48.4, 49.05, 49.22, 48.49, 50.96, 48.33, 49.42, 49.42, 49.45, 49.5, 48.68, 48.33, 48.39, 49.65, 50.51]}, "totals": {"9 Pro 400万 4G版": [684, 737, 797, 821, 852, 887, 927, 934, 958, 997, 1025, 1044, 1080, 1118, 1145, 1197, 1254, 1281, 1299, 1334, 1378, 1435, 1478, 1526, 1565, 1639, 1668, 1711, 1760, 1799, 1868, 1895], "门铃5 Pro 4G": [25333, 25464, 25530, 25631, 25716, 25777, 25982, 26102, 26239, 26421, 26361, 26492, 26529, 26600, 26730, 26903, 26992, 27094, 27153, 26938, 27102, 27280, 27443, 27568, 27606, 27772, 27964, 28092, 28654, 28342, 28375, 28454], "门铃6 Pro 4G": [852, 912, 967, 976, 1026, 1068, 1114, 1196, 1258, 1310, 1373, 1434, 1462, 1498, 1514, 1569, 1603, 1684, 1676, 1739, 1788, 1819, 1858, 1900, 1973, 2006, 2020, 2052, 2125, 2174, 2282, 2342]}, "distLabels": ["100以上", "90至100", "80至90", "70至80", "60至70", "50至60", "40至50", "<40"], "distPct": {"9 Pro 400万 4G版": [0.0, 4.2, 15.6, 30.8, 33.9, 13.4, 2.1, 0.1], "门铃5 Pro 4G": [0.0, 10.2, 17.3, 30.7, 29.0, 11.6, 1.3, 0.0], "门铃6 Pro 4G": [0.0, 9.7, 12.9, 27.9, 32.2, 15.5, 1.8, 0.0]}};
+function lineChart(id, series, colors, unit, min, max) {
+  var ec = echarts.init(document.getElementById(id));
+  var ls = [];
+  for (var k in series) { ls.push({name:k, type:"line", data:series[k], smooth:true, symbol:"none", lineStyle:{width:2.5}, itemStyle:{color:colors[k]}}); }
+  ec.setOption({
+    color: Object.values(colors),
+    tooltip:{trigger:"axis"},
+    legend:{top:0},
+    grid:{left:44,right:20,top:36,bottom:56},
+    xAxis:{type:"category",data:D.dates,axisLabel:{interval:3,fontSize:11}},
+    yAxis:{type:"value",min:min,max:max,axisLabel:{formatter:"{value}"},
+      splitLine:{lineStyle:{color:"#eee"}}},
+    dataZoom:[{type:"slider",height:18,bottom:8}],
+    series:ls
+  });
+}
+lineChart("c_trend", D.ge70, {"9 Pro 400万 4G版":"#2980B9","门铃5 Pro 4G":"#00B050","门铃6 Pro 4G":"#F39C12"}, "%", 40, 65);
+var dc = echarts.init(document.getElementById("c_dist"));
+var ds = [];
+for (var k in D.distPct) { ds.push({name:k, type:"bar", data:D.distPct[k], itemStyle:{color:({"9 Pro 400万 4G版":"#2980B9","门铃5 Pro 4G":"#00B050","门铃6 Pro 4G":"#F39C12"})[k]}, label:{show:true,position:"top",fontSize:9,formatter:function(p){return p.value>0.4?p.value:"";}}}); }
+dc.setOption({
+  tooltip:{trigger:"axis",valueFormatter:function(v){return v+"%"}},
+  legend:{top:0},
+  grid:{left:40,right:12,top:36,bottom:30},
+  xAxis:{type:"category",data:D.distLabels,axisLabel:{fontSize:10,interval:0}},
+  yAxis:{type:"value",axisLabel:{formatter:"{value}%"},splitLine:{lineStyle:{color:"#eee"}}},
+  series:ds
+});
+window.addEventListener("resize", function(){ dc.resize(); });
+</script>
+</div>
+</body>
+</html>
