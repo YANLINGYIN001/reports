@@ -38,6 +38,13 @@ td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
 .warn-box { background:#fdf7ec; border-left:4px solid #E67E22; border-radius:8px; padding:16px 20px; font-size:13px; margin:12px 0; line-height:1.8; }
 .risk-box { background:#fdf3f2; border-left:4px solid #E74C3C; border-radius:8px; padding:16px 20px; font-size:13px; margin:12px 0; line-height:1.8; }
 .endnote { background:#fff; border-radius:14px; padding:16px 20px; font-size:11px; color:#999; line-height:1.8; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.kpi b.g { color:#00B050; }
+.line-block { background:#fff; border-radius:14px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.line-head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px; border-left:4px solid #00B050; padding-left:10px; }
+.line-head .ln { font-size:16px; font-weight:700; }
+.line-head .lr { font-size:12px; color:#999; }
+.card { background:#fff; border-radius:14px; padding:24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.finding { background:#f0faf4; border-left:4px solid #00B050; border-radius:8px; padding:16px 20px; font-size:13px; margin:12px 0; line-height:1.8; }
 .footer { text-align:center; color:#999; font-size:12px; padding:16px 0 30px; }
 @media (max-width:640px) { .container { padding:12px; } .section { padding:16px; } .header { padding:20px; } }
 </style>
@@ -50,16 +57,15 @@ td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
 <p>球机品类洞察研究 · v1.2 · 2026-11-20 · 数据源：《京东竞品球机-报告总册》海康威视家用即插即用线 10 款（765 条评价 + 商详卖点全量）· 价格为采集时点 PC 端到手价（含政府补贴/满减叠算）· 由 🦞尹燕玲-报告分析专家 生成</p>
 </div>
 
-<div class="section">
 <div class="kpi-grid">
-<div class="kpi"><b>10</b><span>京东在售家用即插即用 SKU</span></div>
-<div class="kpi"><b>2</b><span>家用品类线（太阳能4G / 4G电池云台）</span></div>
+<div class="kpi"><b class="g">10</b><span>京东在售家用即插即用 SKU</span></div>
+<div class="kpi"><b class="g">2</b><span>家用品类线（太阳能4G / 4G电池云台）</span></div>
 <div class="kpi"><b>¥283-799</b><span>价格带</span></div>
 <div class="kpi"><b>2,186</b><span>评价池条数</span></div>
-<div class="kpi"><b>624</b><span>差评条数（好评截断+中差全量口径）</span></div>
-</div>
+<div class="kpi"><b class="g">624</b><span>差评条数（好评截断+中差全量口径）</span></div>
 </div>
 
+<div class="section">
 <h2>一、对 360 的机会点和借鉴点</h2>
 
 <div class="card">
@@ -69,7 +75,9 @@ td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
 <div class="finding"><b>🟡 机会3：「云台不能转」被用户当作「这价位就这样」。</b>海康 300 元档双摄款 4 条 5★ 好评同时吐槽镜头固定——云台能力的用户教育不足，360 的可转动云台在 300 元档是未被对手讲清楚的差异点。</div>
 
 </div>
+</div>
 
+<div class="section">
 <h2>二、产品线布局的 4 个战略特征</h2>
 <div class="section">
 <div class="risk-box"><b>🔴 特征1：家用即插即用不是海康的主力。</b>家用线（太阳能4G/4G电池云台）10 款、765 条评价，差评率 26.3%——相比其 B 端系统形态的成熟，家用线不是海康的强项。</div>
@@ -79,14 +87,23 @@ td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
 
 </div>
 
-<h2>三、全景：两条家用线 + 价位段</h2>
 <div class="section">
+<h2>三、全景：两条家用线 + 价位段</h2>
 <table><tr><th>品类线</th><th class="num">款数</th><th class="num">评价池</th><th class="num">好评</th><th class="num">中评</th><th class="num">差评</th><th class="num">差评率</th><th class="num">价格带</th></tr><tr><td><b>太阳能4G</b></td><td class='num'>7</td><td class='num'>470</td><td class='num'>289</td><td class='num'>29</td><td class='num'>152</td><td class='num bad'>32.3%</td><td class='num'>¥431–799</td></tr><tr><td><b>4G电池</b></td><td class='num'>3</td><td class='num'>295</td><td class='num'>228</td><td class='num'>18</td><td class='num'>49</td><td class='num warn'>16.6%</td><td class='num'>¥283–386</td></tr></table>
 <div class="note">差评率 = 差评条数 ÷ 评价池（好评截断100+中差全量口径，负向天然富集，跨品类可横向比较、不可与页面好评率对比）。价格带为采集时点到手价。</div>
 </div>
 
+<div class="section">
 <h2>四、逐线深读</h2>
-<h3>2.1 太阳能 4G（7 款 · 470 条）—— 差评率 32.3%：海康口碑最弱的家用线</h3><div class="line-block"><div class="note">800万双摄 ¥485 为主力（217 条），400万单摄 150 条次之；磁吸版/临时布控为长尾占位。</div><div class='insight-box'><b>差评第一名不是画质是「内存卡」：</b>800万双摄款 100 条差评正则分桶，内存卡故障/回放调不出/赠卡争议命中 28%、客服售后推诿 24%、画质 20%、太阳能续航 20%。</div><div class='insight-box'><b>400万单摄款结构相同：</b>39 条差评里客服售后 28%、存储卡 23%、画质 23%、续航 21%。</div><div class='insight-box'><b>低温卖点是差异化尝试：</b>-10℃/-20℃ 款（¥431–799）评价量极小（15/8 条），属占位测试。</div><div class='insight-box'><b>对 360 的含义：</b>360 的太阳能 4G 球机（AOV）正面竞对在这里。海康差评集中在「存储+售后+续航」三件事，360 若在「内存卡可靠性（eMMC/云存兜底）+ 售后响应」上打差异，有明确口碑错位空间。</div><table><tr><th>SKU · 型号</th><th class="num">评价</th><th class="num">差评</th><th class="num">到手价</th><th>评论区间</th><th>口径</th></tr><tr><td><span class='tag'>100256892846</span> 太阳能800万双摄</td><td class='num'>217</td><td class='num'>100</td><td class='num'>¥485</td><td>2025-08~2026-11</td><td>好评抽样</td></tr><tr><td><span class='tag'>100218477713</span> 太阳能400万单摄</td><td class='num'>150</td><td class='num'>39</td><td class='num'>—</td><td>2025-12~2026-11</td><td>好评抽样</td></tr><tr><td><span class='tag'>100335914306</span> 双400万-太阳能-0°以上可用</td><td class='num'>79</td><td class='num'>11</td><td class='num'>¥467</td><td>2026-05~2026-11</td><td>全集</td></tr><tr><td><span class='tag'>100205501297</span> 【-10C°用】-太阳能款-双镜头</td><td class='num'>15</td><td class='num'>1</td><td class='num'>¥799</td><td>2026-04~2026-10</td><td>全集</td></tr><tr><td><span class='tag'>100415683654</span> -20℃可用 太阳能监控照明一体</td><td class='num'>8</td><td class='num'>1</td><td class='num'>¥431</td><td>2026-10~2026-11</td><td>全集</td></tr><tr><td><span class='tag'>100304289949</span> 太阳能磁吸版</td><td class='num'>1</td><td class='num'>0</td><td class='num'>—</td><td>2026-08~2026-08</td><td>全集</td></tr><tr><td><span class='tag'>100424813540</span> 临时布控-800万双摄太阳能款</td><td class='num'>0</td><td class='num'>0</td><td class='num'>¥695</td><td>—</td><td>零评价</td></tr></table></div><h3>2.2 4G 电池/云台（3 款 · 295 条）—— 差评率 16.6%：离 360 最近的对位线</h3><div class="line-block"><div class="note">Y2 ¥283（127 条）、R5 ¥386（99 条）、双摄 ¥307（69 条），全部落在 280–390 元带。</div><div class='insight-box'><b>Y2 入门云台 ¥283：</b>页面承诺「无捆绑消费 无隐形消费」，但源报告交叉验证发现 3★ 评价直言「每月 50G 流量封顶」——免流承诺与流量封顶的认知落差是核心矛盾。</div><div class='insight-box'><b>R5 4G 电池款 ¥386：</b>卖点是山区/农场/鱼塘/工地场景，但 99 条评价里「工地/农场/鱼塘」合计仅 3 条、院子门口 8 条、室内 6 条——场景图与真实买家错位。</div><div class='insight-box'><b>「一台顶2台」800万双摄 ¥307：</b>四条 5★ 好评同时吐槽「镜头固定不能转、只能手动调方向」——用户把它当「这价位就这样」接受，恰是云台价值未被教育的证据。</div><div class='insight-box'><b>对 360 的含义：</b>这 3 款就是 360 云台机在 300 元档的正面竞品。360 的可转动云台+真实免流（或流量透明）直击 Y2/双摄款两大软肋。</div><table><tr><th>SKU · 型号</th><th class="num">评价</th><th class="num">差评</th><th class="num">到手价</th><th>评论区间</th><th>口径</th></tr><tr><td><span class='tag'>100298910802</span> Y2入门款云台</td><td class='num'>127</td><td class='num'>17</td><td class='num'>¥283</td><td>2026-01~2026-11</td><td>好评抽样</td></tr><tr><td><span class='tag'>100289826807</span> R5 4G电池款</td><td class='num'>99</td><td class='num'>23</td><td class='num'>¥386</td><td>2026-07~2026-11</td><td>全集</td></tr><tr><td><span class='tag'>100304986000</span> 一台顶2台800万双摄</td><td class='num'>69</td><td class='num'>9</td><td class='num'>¥307</td><td>2025-12~2026-11</td><td>全集</td></tr></table></div><h2>五、用户评价：差评痛点全景（源报告人工逐条归桶）</h2>
+
+<div class="line-block">
+<div class="line-head"><span class="ln">① 太阳能 4G（7 款 · 470 条）—— 差评率 32.3%：海康口碑最弱的家用线</span></div><div class="note">800万双摄 ¥485 为主力（217 条），400万单摄 150 条次之；磁吸版/临时布控为长尾占位。</div><div class='insight-box'><b>差评第一名不是画质是「内存卡」：</b>800万双摄款 100 条差评正则分桶，内存卡故障/回放调不出/赠卡争议命中 28%、客服售后推诿 24%、画质 20%、太阳能续航 20%。</div><div class='insight-box'><b>400万单摄款结构相同：</b>39 条差评里客服售后 28%、存储卡 23%、画质 23%、续航 21%。</div><div class='insight-box'><b>低温卖点是差异化尝试：</b>-10℃/-20℃ 款（¥431–799）评价量极小（15/8 条），属占位测试。</div><div class='insight-box'><b>对 360 的含义：</b>360 的太阳能 4G 球机（AOV）正面竞对在这里。海康差评集中在「存储+售后+续航」三件事，360 若在「内存卡可靠性（eMMC/云存兜底）+ 售后响应」上打差异，有明确口碑错位空间。</div><table><tr><th>SKU · 型号</th><th class="num">评价</th><th class="num">差评</th><th class="num">到手价</th><th>评论区间</th><th>口径</th></tr><tr><td><span class='tag'>100256892846</span> 太阳能800万双摄</td><td class='num'>217</td><td class='num'>100</td><td class='num'>¥485</td><td>2025-08~2026-11</td><td>好评抽样</td></tr><tr><td><span class='tag'>100218477713</span> 太阳能400万单摄</td><td class='num'>150</td><td class='num'>39</td><td class='num'>—</td><td>2025-12~2026-11</td><td>好评抽样</td></tr><tr><td><span class='tag'>100335914306</span> 双400万-太阳能-0°以上可用</td><td class='num'>79</td><td class='num'>11</td><td class='num'>¥467</td><td>2026-05~2026-11</td><td>全集</td></tr><tr><td><span class='tag'>100205501297</span> 【-10C°用】-太阳能款-双镜头</td><td class='num'>15</td><td class='num'>1</td><td class='num'>¥799</td><td>2026-04~2026-10</td><td>全集</td></tr><tr><td><span class='tag'>100415683654</span> -20℃可用 太阳能监控照明一体</td><td class='num'>8</td><td class='num'>1</td><td class='num'>¥431</td><td>2026-10~2026-11</td><td>全集</td></tr><tr><td><span class='tag'>100304289949</span> 太阳能磁吸版</td><td class='num'>1</td><td class='num'>0</td><td class='num'>—</td><td>2026-08~2026-08</td><td>全集</td></tr><tr><td><span class='tag'>100424813540</span> 临时布控-800万双摄太阳能款</td><td class='num'>0</td><td class='num'>0</td><td class='num'>¥695</td><td>—</td><td>零评价</td></tr></table></div></div>
+
+<div class="line-block">
+<div class="line-head"><span class="ln">② 4G 电池/云台（3 款 · 295 条）—— 差评率 16.6%：离 360 最近的对位线</span></div><div class="note">Y2 ¥283（127 条）、R5 ¥386（99 条）、双摄 ¥307（69 条），全部落在 280–390 元带。</div><div class='insight-box'><b>Y2 入门云台 ¥283：</b>页面承诺「无捆绑消费 无隐形消费」，但源报告交叉验证发现 3★ 评价直言「每月 50G 流量封顶」——免流承诺与流量封顶的认知落差是核心矛盾。</div><div class='insight-box'><b>R5 4G 电池款 ¥386：</b>卖点是山区/农场/鱼塘/工地场景，但 99 条评价里「工地/农场/鱼塘」合计仅 3 条、院子门口 8 条、室内 6 条——场景图与真实买家错位。</div><div class='insight-box'><b>「一台顶2台」800万双摄 ¥307：</b>四条 5★ 好评同时吐槽「镜头固定不能转、只能手动调方向」——用户把它当「这价位就这样」接受，恰是云台价值未被教育的证据。</div><div class='insight-box'><b>对 360 的含义：</b>这 3 款就是 360 云台机在 300 元档的正面竞品。360 的可转动云台+真实免流（或流量透明）直击 Y2/双摄款两大软肋。</div><table><tr><th>SKU · 型号</th><th class="num">评价</th><th class="num">差评</th><th class="num">到手价</th><th>评论区间</th><th>口径</th></tr><tr><td><span class='tag'>100298910802</span> Y2入门款云台</td><td class='num'>127</td><td class='num'>17</td><td class='num'>¥283</td><td>2026-01~2026-11</td><td>好评抽样</td></tr><tr><td><span class='tag'>100289826807</span> R5 4G电池款</td><td class='num'>99</td><td class='num'>23</td><td class='num'>¥386</td><td>2026-07~2026-11</td><td>全集</td></tr><tr><td><span class='tag'>100304986000</span> 一台顶2台800万双摄</td><td class='num'>69</td><td class='num'>9</td><td class='num'>¥307</td><td>2025-12~2026-11</td><td>全集</td></tr></table></div></div>
+
+<div class="section">
+<h2>五、用户评价：差评痛点全景（源报告人工逐条归桶）</h2>
 <div class="card">
 <table><tr><th>款</th><th>痛点桶（按命中数降序）</th></tr><tr><td style='min-width:150px'><b>太阳能800万双摄</b></td><td><span class="tag">内存卡故障/回放调不出/赠卡争议 28</span> <span class="tag">客服/售后推诿 24</span> <span class="tag">画质不达预期 20</span> <span class="tag">太阳能充不满/续航 20</span> <span class="tag">掉线/离线/卡顿 12</span> <span class="tag">价格/价保 11</span> <span class="tag">爆闪/硬件故障 9</span> <span class="tag">功能阉割/APP难用 8</span></td></tr><tr><td style='min-width:150px'><b>太阳能400万单摄</b></td><td><span class="tag">客服/售后推诿 11</span> <span class="tag">画质模糊 9</span> <span class="tag">存储卡故障/录像调不出 9</span> <span class="tag">太阳能续航 8</span> <span class="tag">价格波动/价保 6</span> <span class="tag">掉线/卡顿 4</span> <span class="tag">安装难/配件不含 4</span></td></tr><tr><td style='min-width:150px'><b>双400万-太阳能</b></td><td><span class="tag">功能失效 4</span> <span class="tag">售后/客服/退货 4</span> <span class="tag">夜视/低照度 2</span></td></tr><tr><td style='min-width:150px'><b>一台顶2台800万双摄</b></td><td><span class="tag">云台不能转（5★仍提及） 4</span></td></tr></table><div class="finding"><b>五大跨款共性痛点（按出现频次）：</b><br>
 
@@ -97,6 +114,9 @@ td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
 ⑤ <b>降价/价保</b>（价保不通过、买完降价）</div>
 <div class="note">分桶数字来自源报告对差评原文的人工/正则逐条归桶，一条可进多桶；分母为该款差评全量。</div></div>
 
+</div>
+
+<div class="section">
 <h2>六、数据口径说明</h2>
 
 <div class="card"><div class="note">
@@ -108,7 +128,8 @@ td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
 · 本报告聚焦家用即插即用线（太阳能4G/4G电池云台共 10 款）。<br>
 · 本报告所有结论均有总册 v6 逐条原文可回溯。
 </div></div>
-<p style="text-align:center;color:var(--ink3);font-size:12px;margin-top:30px">球机品类洞察研究 · 海康威视深读 v1.2（聚焦家用线10款）· 2026-11-20 · 🦞</p>
+</div>
+<div class="footer">球机品类洞察研究 · 海康威视深读 v1.3（聚焦家用线10款）· 2026-11-20 · 🦞</div>
 </div>
 </body>
 </html>
