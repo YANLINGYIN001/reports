@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>取消分享专项分析报告</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'PingFang SC','Microsoft YaHei',sans-serif; background:#f5f6f7; color:#333; line-height:1.6; font-size:14px; }
+.wrap { max-width:1100px; margin:0 auto; padding:24px 16px 48px; }
+.header { background:linear-gradient(135deg,#00B050,#2BBD6E); border-radius:12px; padding:28px 32px; color:#fff; margin-bottom:20px; }
+.header h1 { font-size:24px; margin-bottom:6px; }
+.header .sub { font-size:13px; opacity:.92; }
+.section { background:#fff; border-radius:10px; padding:24px 28px; margin-bottom:18px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+h2 { font-size:18px; color:#00B050; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid #E8F5EE; }
+h3 { font-size:15px; margin:16px 0 8px; color:#333; }
+.kpi-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:6px; }
+.kpi { flex:1; min-width:150px; background:#FAFDFB; border:1px solid #E3F0E8; border-radius:10px; padding:16px 18px; }
+.kpi .num { font-size:26px; font-weight:700; color:#E74C3C; }
+.kpi .num.green { color:#00B050; }
+.kpi .lbl { font-size:12px; color:#888; margin-top:2px; }
+table { width:100%; border-collapse:collapse; margin:10px 0; font-size:13px; }
+th { background:#F0F7F2; color:#333; font-weight:600; padding:8px 10px; text-align:left; border-bottom:2px solid #DCEBE2; white-space:nowrap; }
+td { padding:7px 10px; border-bottom:1px solid #EEF2EF; }
+tr:hover td { background:#FAFCFB; }
+.mono { font-family:Menlo,Consolas,monospace; font-size:12px; }
+.neg { color:#E74C3C; font-weight:600; }
+.pos { color:#00B050; font-weight:600; }
+.tag { display:inline-block; padding:2px 10px; border-radius:10px; font-size:12px; font-weight:600; margin-right:6px; }
+.tag-red { background:#FDEDEB; color:#E74C3C; }
+.tag-orange { background:#FEF5E7; color:#E67E22; }
+.tag-green { background:#E8F5EE; color:#00B050; }
+.insight { border-left:4px solid #00B050; background:#F7FBF9; padding:10px 14px; border-radius:0 8px 8px 0; margin:10px 0; font-size:13px; }
+.insight.warn { border-left-color:#E67E22; background:#FEFBF4; }
+.insight.crit { border-left-color:#E74C3C; background:#FDF4F3; }
+.bar-cell { position:relative; height:18px; min-width:200px; }
+.bar { position:absolute; left:0; top:2px; height:14px; background:linear-gradient(90deg,#2BBD6E,#00B050); border-radius:3px; }
+.small { font-size:12px; color:#999; }
+.footer { text-align:center; color:#aaa; font-size:12px; padding:20px 0; }
+.layer-card { border:1px solid #E8E8E8; border-radius:10px; padding:16px 20px; margin:10px 0; }
+.layer-card h4 { font-size:15px; margin-bottom:8px; }
+.grid2 { display:flex; gap:14px; flex-wrap:wrap; }
+.grid2 > div { flex:1; min-width:320px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+<h1>取消分享专项 · 用户行为分析报告</h1>
+<div class="sub">数据周期：截至 2026-11-23 ｜ 样本：1,636 个存在取消分享行为的主账号 ｜ 生成日期：2026-11-24</div>
+</div>
+
+<div class="section">
+<h2>一、数据概览</h2>
+<div class="kpi-row">
+<div class="kpi"><div class="num">1,636</div><div class="lbl">主账号数（均有取消行为）</div></div>
+<div class="kpi"><div class="num">7,243</div><div class="lbl">关联设备数</div></div>
+<div class="kpi"><div class="num">154,272</div><div class="lbl">分享事件总数</div></div>
+<div class="kpi"><div class="num">94.8%</div><div class="lbl">总取消率（146,312 次取消）</div></div>
+<div class="kpi"><div class="num green">7,960</div><div class="lbl">当前仍生效分享</div></div>
+</div>
+<div class="insight">口径说明：本表仅含发生过取消分享的主账号；取消率=取消分享次数÷分享次数；取消时长=分享至取消的天数（源表 days 字段）。</div>
+<div class="insight warn">总取消率 94.8% 看似极高，但分层后可见主要由疑似渠道账号驱动——剔除渠道后的真实用户取消行为呈现完全不同的模式（见第二节）。</div>
+<h3>2026 年月度趋势</h3>
+<table>
+<tr><th>月份</th><th>分享次数</th><th>取消次数</th><th>取消率</th></tr>
+<tr><td>2026-01</td><td>7,623</td><td>7,491</td><td class="neg">98%</td></tr><tr><td>2026-02</td><td>7,792</td><td>7,634</td><td class="neg">98%</td></tr><tr><td>2026-03</td><td>10,883</td><td>10,699</td><td class="neg">98%</td></tr><tr><td>2026-04</td><td>10,004</td><td>9,843</td><td class="neg">98%</td></tr><tr><td>2026-05</td><td>11,612</td><td>11,286</td><td class="neg">97%</td></tr><tr><td>2026-06</td><td>11,248</td><td>10,908</td><td class="neg">97%</td></tr><tr><td>2026-07</td><td>11,960</td><td>11,703</td><td class="neg">98%</td></tr><tr><td>2026-08</td><td>12,556</td><td>12,316</td><td class="neg">98%</td></tr><tr><td>2026-09</td><td>13,484</td><td>13,162</td><td class="neg">98%</td></tr><tr><td>2026-10</td><td>14,676</td><td>14,186</td><td class="neg">97%</td></tr><tr><td>2026-11</td><td>12,885</td><td>10,207</td><td class="neg">79%</td></tr>
+</table>
+<div class="small">2026 年分享量逐月走高（1 月 7.6k → 10 月 14.7k），取消率稳定在 97-98%；11 月取消率 79% 系部分分享尚未到取消时点。</div>
+<h3>取消时长分布（全量 146,312 次取消）</h3>
+<table>
+<tr><th>时长区间</th><th>次数</th><th>占比</th><th style="width:45%">分布</th></tr>
+<tr><td>≤1天</td><td>65,980</td><td>45.5%</td><td class="bar-cell"><div class="bar" style="width:45.5%"></div></td></tr><tr><td>2-3天</td><td>41,754</td><td>28.8%</td><td class="bar-cell"><div class="bar" style="width:28.8%"></div></td></tr><tr><td>4-7天</td><td>19,509</td><td>13.5%</td><td class="bar-cell"><div class="bar" style="width:13.5%"></div></td></tr><tr><td>8-15天</td><td>9,033</td><td>6.2%</td><td class="bar-cell"><div class="bar" style="width:6.2%"></div></td></tr><tr><td>16-30天</td><td>3,910</td><td>2.7%</td><td class="bar-cell"><div class="bar" style="width:2.7%"></div></td></tr><tr><td>31-90天</td><td>2,593</td><td>1.8%</td><td class="bar-cell"><div class="bar" style="width:1.8%"></div></td></tr><tr><td>>90天</td><td>2,260</td><td>1.6%</td><td class="bar-cell"><div class="bar" style="width:1.6%"></div></td></tr>
+</table>
+<div class="insight">45% 的取消发生在当天，73.6% 在 3 天内，87% 在一周内——取消行为高度集中在分享后极短时间内。</div>
+</div>
+
+<div class="section">
+<h2>二、人群分层：三层结构</h2>
+<div class="small">分层规则：疑似渠道批量=分享用户数&gt;100；正常家庭用户=分享用户数≤5 且取消率&lt;90%；其余为快速试探型。</div>
+<div class="layer-card" style="border-left:4px solid #E74C3C">
+<h4><span class="tag tag-red">疑似渠道批量</span>58 个主账号</h4>
+<table>
+<tr><th>分享用户</th><th>分享次数</th><th>取消次数</th><th>取消率</th><th>设备数</th><th>月均分享/账号</th><th>取消时长中位</th><th>≤1天取消</th><th>近7天活跃</th></tr>
+<tr><td><b>15,624</b></td><td>135,228</td><td class="neg">131,713</td><td class="neg">97.4%</td><td>2,878</td><td class="neg">179 次</td><td>2 天</td><td class="neg">47%</td><td>100%</td></tr>
+</table>
+<div class="insight crit">仅 3.5% 的账号（58/1636）贡献了 <b>87.7% 的分享事件</b>（135,228/154,272）和 90.0% 的取消事件。</div>
+</div>
+<div class="layer-card" style="border-left:4px solid #E67E22">
+<h4><span class="tag tag-orange">快速试探型</span>864 个主账号</h4>
+<table>
+<tr><th>分享用户</th><th>分享次数</th><th>取消次数</th><th>取消率</th><th>设备数</th><th>月均分享/账号</th><th>取消时长中位</th><th>≤1天取消</th><th>近7天活跃</th></tr>
+<tr><td><b>4,704</b></td><td>15,353</td><td class="neg">12,962</td><td class="neg">84.4%</td><td>2,472</td><td>1.1 次</td><td>4 天</td><td>27%</td><td>96.3%</td></tr>
+</table>
+<div class="insight warn">分享用户中位数仅 1 人，但取消率高（84.4%）、686 人（79.4%）当前已无任何生效分享——「试了一下就全取消」。取消时长中位 4 天，介于渠道与家庭用户之间，是回访价值最高的层。</div>
+</div>
+<div class="layer-card" style="border-left:4px solid #00B050">
+<h4><span class="tag tag-green">正常家庭用户</span>714 个主账号</h4>
+<table>
+<tr><th>分享用户</th><th>分享次数</th><th>取消次数</th><th>取消率</th><th>设备数</th><th>月均分享/账号</th><th>取消时长中位</th><th>≤7天取消</th><th>近7天活跃</th></tr>
+<tr><td><b>1,840</b></td><td>3,691</td><td>1,637</td><td>44.4%</td><td>1,893</td><td>0.3 次</td><td class="pos">248 天</td><td>9%</td><td>94.0%</td></tr>
+</table>
+<div class="insight">分享 1-5 人、取消率 44.4%、取消时长中位 248 天——分享关系长期存续后才因真实原因（设备送人/场景结束等）取消，属正常生命周期行为。</div>
+</div>
+<h3>分层汇总对比</h3>
+<table>
+<tr><th>层级</th><th>账号数</th><th>占比</th><th>分享用户</th><th>分享事件</th><th>事件占比</th><th>取消率</th><th>取消时长中位</th></tr>
+<tr><td><span class="tag tag-red">渠道批量</span></td><td>58</td><td>3.5%</td><td>15,624</td><td>135,228</td><td class="neg">87.7%</td><td>97.4%</td><td>2 天</td></tr>
+<tr><td><span class="tag tag-orange">快速试探</span></td><td>864</td><td>52.8%</td><td>4,704</td><td>15,353</td><td>10.0%</td><td>84.4%</td><td>4 天</td></tr>
+<tr><td><span class="tag tag-green">正常家庭</span></td><td>714</td><td>43.7%</td><td>1,840</td><td>3,691</td><td>2.4%</td><td>44.4%</td><td>248 天</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>三、疑似渠道批量深挖（58 账号）</h2>
+<div class="kpi-row">
+<div class="kpi"><div class="num">43/58</div><div class="lbl">设备 100% 为 AC1P 的账号数</div></div>
+<div class="kpi"><div class="num">70.6%</div><div class="lbl">渠道设备中 AC1P 占比（2,033/2,878）</div></div>
+<div class="kpi"><div class="num">179</div><div class="lbl">月均分享次数/账号（家庭用户仅 0.3）</div></div>
+<div class="kpi"><div class="num">100%</div><div class="lbl">近 7 天 app 活跃</div></div>
+</div>
+<h3>TOP10 账号明细</h3>
+<table>
+<tr><th>#</th><th>主账号qid</th><th>分享用户</th><th>分享次数</th><th>取消次数</th><th>取消率</th><th>设备数</th><th>主力型号</th><th>省市</th><th>取消中位时长</th></tr>
+<tr><td>1</td><td class="mono">2703873513</td><td><b>856</b></td><td>7354</td><td>7210</td><td>98.0%</td><td>166</td><td>360XS-WL3C-WT</td><td>广东省广州市</td><td>3天</td></tr><tr><td>2</td><td class="mono">3465915022</td><td><b>775</b></td><td>9653</td><td>9596</td><td>99.4%</td><td>49</td><td>AC1P</td><td>山东省青岛市</td><td>1天</td></tr><tr><td>3</td><td class="mono">3530566118</td><td><b>631</b></td><td>5549</td><td>5516</td><td>99.4%</td><td>44</td><td>AC1P</td><td>黑龙江省哈尔滨市</td><td>2天</td></tr><tr><td>4</td><td class="mono">3528115165</td><td><b>578</b></td><td>6377</td><td>6337</td><td>99.4%</td><td>22</td><td>AC1P</td><td>黑龙江省哈尔滨市</td><td>2天</td></tr><tr><td>5</td><td class="mono">3370799518</td><td><b>557</b></td><td>7816</td><td>7723</td><td>98.8%</td><td>27</td><td>AC1P</td><td>黑龙江省绥化市</td><td>2天</td></tr><tr><td>6</td><td class="mono">562431810</td><td><b>529</b></td><td>7440</td><td>7394</td><td>99.4%</td><td>46</td><td>AC1P</td><td>山东烟台</td><td>1天</td></tr><tr><td>7</td><td class="mono">3242599595</td><td><b>487</b></td><td>921</td><td>893</td><td>97.0%</td><td>41</td><td>AC1P</td><td>江苏省南京市</td><td>9天</td></tr><tr><td>8</td><td class="mono">3529330346</td><td><b>468</b></td><td>2584</td><td>2574</td><td>99.6%</td><td>20</td><td>AC1P</td><td>辽宁省鞍山市</td><td>2天</td></tr><tr><td>9</td><td class="mono">2787185393</td><td><b>435</b></td><td>2985</td><td>2922</td><td>97.9%</td><td>21</td><td>AC1P</td><td>重庆重庆</td><td>2天</td></tr><tr><td>10</td><td class="mono">3584734950</td><td><b>424</b></td><td>2853</td><td>2830</td><td>99.2%</td><td>23</td><td>AC1P</td><td>山东省烟台市</td><td>1天</td></tr>
+</table>
+<h3>行为特征判断</h3>
+<div class="insight crit">渠道特征①：单账号分享用户数最高 856 人、设备最高 166 台，远超家庭使用场景；设备高度集中在 AC1P（37% 全量占比，渠道层内 70.6%）。</div>
+<div class="insight crit">渠道特征②：分享节奏为「高频分享→快速取消→再分享」，月均 179 次/账号（家庭用户 0.3 次），取消时长中位 2 天，呈典型「临时授权给到店顾客/安装工人演示用」模式。</div>
+<div class="insight warn">渠道特征③：地域分散（黑龙江/湖北/山东/广东为主，无单点聚集）；设备激活时间跨 2024-2026 持续滚动（激活月份高峰 2025-04 271台、2025-12 169台），是持续经营的门店/安装商，非一次性活动。</div>
+<div class="insight warn">特殊样本：广州账号 2703873513 拥有 166 台 360XS-WL3C-WT（非 AC1P），激活集中在 2024-01~2025-04，模式与其他 AC1P 账号类似但机型不同，建议单独核实。</div>
+<h3>结论</h3>
+<div class="insight crit">判断：58 个百人账号为<b>业务行为（门店演示/渠道批量授权）而非真实家庭用户</b>，依据：①单账号分享用户/设备规模远超家庭场景 ②AC1P 机型高度集中 ③月均 179 次的高频分享-取消循环 ④100% 持续活跃。这批账号贡献了 87.7% 的分享事件，建议在取消分享专项统计与回访名单中<b>整体剔除</b>。</div>
+</div>
+
+<div class="section">
+<h2>四、回访名单设计（交付物预告）</h2>
+<div class="kpi-row">
+<div class="kpi"><div class="num">659</div><div class="lbl">回访池人数（剔除渠道+取消率100%+近7天活跃）</div></div>
+<div class="kpi"><div class="num">43</div><div class="lbl">短时取消型（中位≤7天）</div></div>
+<div class="kpi"><div class="num">616</div><div class="lbl">长时取消型（中位&gt;7天）</div></div>
+</div>
+<div class="insight">回访池筛选规则：剔除 58 个疑似渠道账号 → 取消率 100%（分享过全部取消）→ 近 7 天 app 活跃（可触达）。短时/长时两段正好对应会议纪要的两类分层：①新分享后短时间取消 ②分享较长时间后才取消。</div>
+<h3>回访池画像</h3>
+<table>
+<tr><th>维度</th><th>TOP 分布</th></tr>
+<tr><td>省份</td><td>广东省(93)、江苏省(68)、北京市(33)、山东省(31)、四川省(31)、浙江省(26)</td></tr>
+<tr><td>设备型号</td><td>R6 PRO(66台)、AC1P(63台)、P9 Pro(61台)、P9 Pro 4MP(59台)、R5 MAX(49台)、P6C(39台)</td></tr>
+<tr><td>取消时长中位数</td><td>全池中位 295 天（p25=75 / p75=637）</td></tr>
+<tr><td>短时型 43 人特征</td><td>取消次数中位 1 次，广东/江苏/山东/北京为主</td></tr>
+</table>
+<div class="insight">完整名单（含 qid/省市/设备/分享取消明细/取消时长）已同步交付飞书表格，字段对齐回访提纲 v0.2，供电话回访直接使用。</div>
+</div>
+
+<div class="footer">尹燕玲 · 数据分析 ｜ 取消分享专项 ｜ 2026-11-24 ｜ 数据源：取消分享用户列表.xlsx（owner/dn/share 三表）</div>
+</div>
+</body>
+</html>
