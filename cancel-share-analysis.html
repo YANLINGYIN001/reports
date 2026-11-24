@@ -169,7 +169,14 @@ tr:hover td { background:#FAFCFB; }
 <div class="kpi"><div class="num">43</div><div class="lbl">短时取消型（中位≤7天）</div></div>
 <div class="kpi"><div class="num">616</div><div class="lbl">长时取消型（中位&gt;7天）</div></div>
 </div>
-<div class="insight">回访池筛选规则：剔除 58 个疑似渠道账号 → 取消率 100%（分享过全部取消）→ 近 7 天 app 活跃（可触达）。短时/长时两段正好对应会议纪要的两类分层：①新分享后短时间取消 ②分享较长时间后才取消。</div>
+<h3>筛选规则</h3>
+<table>
+<tr><th style="width:120px">步骤</th><th>规则</th><th style="width:200px">口径说明</th></tr>
+<tr><td>① 剔除渠道</td><td>剔除 58 个疑似渠道批量账号（分享用户数&gt;100）</td><td>门店/安装商业务行为，非真实用户</td></tr>
+<tr><td>② 取消率 100%</td><td>保留历史分享已全部取消的主账号（1,578 个非渠道账号中取消率=100% 者）</td><td>「分享过但现已全部取消」＝取消行为明确，回访有具体事件可问</td></tr>
+<tr><td>③ 近 7 天活跃</td><td>最近一次使用 app ≥ 2026-11-17</td><td>用户可触达、app 仍在使用中，排除已流失用户</td></tr>
+</table>
+<div class="small">经 ①②③ 三步筛选后得回访池 659 人；按取消时长中位数再分两段：短时取消型 43 人（中位 ≤7 天，置顶）+ 长时取消型 616 人（中位 &gt;7 天）。两段对应调研会议纪要的两类分层：①新分享后短时间取消 ②分享较长时间后才取消。</div>
 <h3>回访池画像</h3>
 <table>
 <tr><th>维度</th><th>TOP 分布</th></tr>
