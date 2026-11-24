@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神眸DB2 双渠道口碑研究报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f0f2f5;color:#333;line-height:1.7;font-size:15px}
+.wrap{max-width:1000px;margin:0 auto;padding:24px 16px}
+.header{background:linear-gradient(135deg,#00B050,#2BBD6E);border-radius:14px;color:#fff;padding:36px 32px;margin-bottom:20px}
+.header h1{font-size:26px;margin-bottom:8px}
+.header .sub{font-size:14px;opacity:.92}
+.header .sub b{color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.kpi{background:#fff;border-radius:12px;padding:18px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi .num{font-size:26px;font-weight:800;color:#E74C3C}
+.kpi .num.small{font-size:20px}
+.kpi .lab{font-size:13px;color:#999;margin-top:4px}
+.section{background:#fff;border-radius:14px;padding:26px 28px;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.section h2{font-size:20px;color:#00B050;border-left:5px solid #00B050;padding-left:12px;margin-bottom:16px}
+.section h3{font-size:16px;color:#333;margin:18px 0 10px}
+.kw{color:#00B050;font-weight:700}
+.neg{color:#E74C3C;font-weight:700}
+.note{background:#f6ffed;border:1px solid #d9f2e3;border-radius:8px;padding:10px 14px;font-size:13px;color:#666;margin:12px 0}
+.warn{background:#fff7e6;border:1px solid #ffe3ba;border-radius:8px;padding:10px 14px;font-size:13px;color:#8a6d3b;margin:12px 0}
+.alertbox{background:#fdf0ef;border:1px solid #f5cdca;border-radius:8px;padding:10px 14px;font-size:13px;color:#a94442;margin:12px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:#00B050;color:#fff;padding:9px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #eee;vertical-align:top}
+tr:nth-child(even) td{background:#fafcfa}
+td.neg{color:#E74C3C;font-weight:700}
+td.pos{color:#00B050;font-weight:700}
+.bar{background:linear-gradient(90deg,#2BBD6E,#00B050);height:10px;border-radius:5px;min-width:2px}
+.barneg{background:linear-gradient(90deg,#f5a09a,#E74C3C);height:10px;border-radius:5px}
+.finding{border-left:4px solid #00B050;background:#f6ffed;border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+.finding.red{border-left-color:#E74C3C;background:#fdf0ef}
+.finding.orange{border-left-color:#F39C12;background:#fffaf0}
+.finding b.t{display:block;margin-bottom:6px;font-size:15px}
+.quote{background:#f9f9f9;border-radius:8px;padding:10px 14px;font-size:13px;color:#555;margin:8px 0;border-left:3px solid #ccc}
+.quote .who{font-weight:700;color:#333}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}
+.srcA{background:#e8f4fd;color:#1a6fb0;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;display:inline-block;margin-right:6px}
+.srcB{background:#fdf3e7;color:#b06a1a;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;display:inline-block;margin-right:6px}
+.srcX{background:#e8f8ee;color:#00803c;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;display:inline-block;margin-right:6px}
+.foot{color:#999;font-size:12px;text-align:center;padding:12px 0 30px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.flow .step{background:#00B050;color:#fff;border-radius:20px;padding:4px 14px;font-size:13px}
+.flow .step.bad{background:#E74C3C}
+.flow .arrow{color:#999}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #e5e5e5;border-radius:10px;overflow:hidden;margin:12px 0}
+.vs .side{padding:14px 16px}
+.vs .side.l{background:#e8f4fd;border-right:1px solid #e5e5e5}
+.vs .side.r{background:#fdf3e7}
+.vs .side h4{font-size:14px;margin-bottom:8px}
+.vs .side p{font-size:13px;color:#555}
+.badge{display:inline-block;background:#333;color:#fff;font-size:11px;border-radius:3px;padding:1px 6px;margin-right:4px}
+.badge.merchant{background:#00B050}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+<h1>神眸DB2 双渠道口碑研究报告</h1>
+<div class="sub">抖音评论 × 天猫评价 交叉验证 ｜ 抖音342条（184一级+158回复，已到可见上限）· 天猫47条文字评价（全量）· 25张详情长图 · 问大家<br>采集时间 2026-11-23 ｜ 生成 2026-11-24 ｜ 分析：尹燕玲</div>
+</div>
+
+<div class="kpis">
+<div class="kpi"><div class="num">¥341.1</div><div class="lab">天猫到手价（已售500+）</div></div>
+<div class="kpi"><div class="num">342</div><div class="lab">抖音评论入库（可见上限）</div></div>
+<div class="kpi"><div class="num">44</div><div class="lab">抖音一级评论担心「被拿走」</div></div>
+<div class="kpi"><div class="num">100<span style="font-size:15px">%</span></div><div class="lab">天猫好评率（含3条正文实为差评）</div></div>
+</div>
+
+<div class="note">口径声明：抖音条数=评论记录数，关注点按一级评论（184条）归类、一条可命中多组；天猫评价=接口全量47条带文字评价（页面标称60条，差额为仅打星无文字）；天猫好评率为平台「打星」口径。两渠道均为样本数据，不代表总体。</div>
+
+<div class="section">
+<h2>一、一句话结论</h2>
+<div class="finding"><b class="t"><span class="srcX">双源</span>DB2 的口碑底座是稳的，真正的战场在购买决策之前。</b>天猫 47 个真实买家里，兑现最稳的是「装得快、看得清、推得及时」；而抖音 184 条一级评论里，排名第一的话题是「会不会被人直接拿走」（44 条）——这个顾虑在购买前的评论区挡人，在购买后的评价区却零出现。<b>营销要解决的不是产品问题，是「信任前置」问题。</b></div>
+</div>
+
+<div class="section">
+<h2>二、核心交叉发现</h2>
+
+<div class="finding red"><b class="t"><span class="srcX">交叉</span>① 「被拿走」焦虑：抖音第一话题，天猫零出现</b>
+抖音 184 条一级评论中 <b class="neg">44 条（23.9%）</b>在担心设备被偷，热评第一就是「虽然我很想买 但是人家直接拿走了咋办」（152 赞，47 条回复）。但天猫 47 条真实买家评价里，<b>没有一条</b>提到设备被拿走或丢失。
+<div class="vs">
+<div class="side l"><h4>抖音（购买决策前）</h4><p>「人家直接拿走了咋办」「一扭一撕，带回家」「卡针一捅轻松拿掉」「带个面罩去拿」「直接暴力拆除」——用户在替拿走的人推演流程，「可拆=可偷」。</p></div>
+<div class="side r"><h4>天猫（购买使用后）</h4><p>47 条评价零提及被偷/被拿走。安全相关关键词是正向的：「安全性好」3 次；买家实际在夸「包裹放门口安全多了」。</p></div>
+</div>
+结论：<b>「被拿走」是拦在决策链路前段的虚拟顾虑，真实用户购后未被其困扰。</b>但它占据评论区最外层、最高赞位次，直接劝退潜在买家——「谢谢你。差一点就下单了」（58 赞）就是被劝退的实证。</div>
+
+<div class="finding red"><b class="t"><span class="srcA">抖音</span>② 防拆话术失效链：答案没传到最外层</b>
+商家共回复 51 条（覆盖 48 个楼层），其中 <b class="neg">34 条</b>是同一套「粘贴牢固+防拆报警+专属卡针」话术。但拆解词频后发现问题：
+<table>
+<tr><th>同一件事，两种说法</th><th>次数</th><th></th></tr>
+<tr><td>商家讲「防拆」</td><td class="neg">34</td><td><div class="bar" style="width:170px"></div></td></tr>
+<tr><td>用户说「拿走」</td><td>11</td><td><div class="bar" style="width:55px"></div></td></tr>
+<tr><td>用户说「偷」</td><td>4</td><td><div class="bar" style="width:20px"></div></td></tr>
+<tr><td>商家说「拿走/偷」</td><td class="neg">0</td><td>—</td></tr>
+</table>
+更关键的是：<b class="neg">「卡针」「报警」在 184 条一级评论里一次都没出现</b>（卡针 24 次、报警 37 次全部在子回复里）。商家在热评楼下的官方回复拿到 19 赞，但紧随其后的 12 条里仍有 4 条在反驳：「卡针一捅轻松拿掉」「报警了有啥用」「该设置一把钥匙只能开一把锁」「直接暴力拆除破坏，这个就是鸡肋」。
+<div class="flow"><span class="step bad">用户问：被拿走咋办</span><span class="arrow">→</span><span class="step">商家答：不容易拿走（34次）</span><span class="arrow">→</span><span class="step bad">用户反驳：照样拿得走</span><span class="arrow">→</span><span class="step bad">质疑未闭合</span></div>
+<b>用户问的是「被拿走了怎么办」，商家答的是「没那么容易被拿走」——答的是另一道题。</b>且这套关键解释只在楼层内部流传，只看一级评论的人根本看不到。</div>
+
+<div class="finding orange"><b class="t"><span class="srcX">交叉</span>③ 续航：抖音问在购买前，天猫骂在使用后</b>
+抖音 29 条一级评论关注充电/续航，最典型问法「粘上了怎么拿下来充电？」——与「被拿走」是同一根链条的两端。天猫侧则给出了实测落差：
+<table>
+<tr><th>口径</th><th>说法</th><th>来源</th></tr>
+<tr><td>官方宣传</td><td>每天 20 次触发约 <b>180 天</b>（实验室条件，5000mAh）</td><td>详情页</td></tr>
+<tr><td>客服口径</td><td>「卖家说可以续航 <b>45 天</b>」</td><td>买家转述</td></tr>
+<tr><td class="neg">实测反馈①</td><td class="neg">「8 天掉 55%（每天不到 10 个动态）」</td><td>天猫评价</td></tr>
+<tr><td class="neg">实测反馈②</td><td class="neg">「用了一天掉了 2 格电」（该买家仍给好评）</td><td>天猫评价</td></tr>
+</table>
+宣传口径与客服口径相差 4 倍，与高人流场景实测相差可达 10 倍以上。抖音的「续航之问」在天猫得到了不那么愉快的答案。</div>
+
+<div class="finding orange"><b class="t"><span class="srcX">交叉</span>④ 两渠道各自的独有问题</b>
+<table>
+<tr><th style="width:80px">渠道</th><th>独有问题</th><th style="width:64px;white-space:nowrap">量级</th><th>性质</th></tr>
+<tr><td><span class="srcA">抖音</span></td><td>邻里/对门/物业阻力：「上一分钟装下一分钟物业就来让拆除」「对门告到你心发慌」（22 条回复）</td><td class="neg">14 条</td><td>使用场景阻力，非产品问题</td></tr>
+<tr><td><span class="srcA">抖音</span></td><td>竞对实为固定式设备：「不如买个智能猫眼」「直接买个可视指纹锁更好」</td><td class="neg">14 条</td><td>品类竞争认知</td></tr>
+<tr><td><span class="srcB">天猫</span></td><td>漏录与灵敏度衰减：「快递员把快递拿走了，一点录像都没」「只有第一个礼拜好用，灵敏性巨差」</td><td class="neg">3 条</td><td>产品性能问题</td></tr>
+<tr><td><span class="srcB">天猫</span></td><td>单机按铃屋里听不到（详见发现⑤）</td><td class="neg">1 条</td><td>预期落差+链路设计</td></tr>
+</table></div>
+
+<div class="finding"><b class="t"><span class="srcB">天猫</span>⑤ 叮咚机专项：不满的根因不是缺配件，是接听链路</b>
+47 条评价中：10 条买「DB2+叮咚机」套装、37 条买单机。提及「按铃听不到/声音小」的仅 <b>1 条</b>，明确说「叮咚机没多大必要」的 1 条，其余 45 条未提及。
+<div class="quote"><span class="who">唯一负面原声（2026-11-18，单机）：</span>「快递员按了门铃后，我根本听不到，声音超小，就算加装接收器听到了也无法及时回复，因为需要解锁手机进入APP后接听电话，等你准备接听了，快递员等很久以为没人早就走了，所以很鸡肋。」</div>
+该买家自己点出了关键：加接收器只能解决「听见」，解决不了「接得上」。按铃→解锁手机→进APP→接听，这段链路才是「鸡肋」的根源——<b>这是产品交互问题，不是配件问题。</b>
+另注意一处预期落差：SKU 把「【DB2】」和「【DB2+叮咚机】」并列摆放，没有一句「单机不含室内响铃」；「75dB+室内接收器」说明放在第 16 张详情图（共 25 张）。</div>
+</div>
+
+<div class="section">
+<h2>三、抖音渠道深读（购买前顾虑）</h2>
+<p>样本：神眸全屋智能旗舰店 DB2 主推视频（2026-10-02 发布，5188 赞/3107 收藏/1827 分享），342 条评论=一级 184+回复 158，已到服务端可见上限（cursor=180 处 has_more=0，登录重测相同）。</p>
+
+<h3>3.1 关注点分布（一级评论 184 条，一条可命中多组）</h3>
+<table>
+<tr><th>关注点</th><th style="width:70px">条数</th><th>占比</th><th style="width:220px"></th><th>典型原声</th></tr>
+<tr><td class="neg">担心被偷/被直接拿走</td><td class="neg">44</td><td>23.9%</td><td><div class="barneg" style="width:220px"></div></td><td>「虽然我很想买 但是人家直接拿走了咋办」（152赞）</td></tr>
+<tr><td class="neg">充电/续航/电池</td><td class="neg">29</td><td>15.8%</td><td><div class="barneg" style="width:145px"></div></td><td>「粘上了怎么拿下来充电？」</td></tr>
+<tr><td>邻里/对门/物业</td><td>14</td><td>7.6%</td><td><div class="bar" style="width:70px"></div></td><td>「上一分钟装下一分钟物业就来让拆除」</td></tr>
+<tr><td>监控/猫眼替代方案</td><td>14</td><td>7.6%</td><td><div class="bar" style="width:70px"></div></td><td>「不如买个智能猫眼」</td></tr>
+<tr><td>质疑是广告/恰饭</td><td>5</td><td>2.7%</td><td><div class="bar" style="width:25px"></div></td><td>「谢谢你。差一点就下单了」（58赞，在回复里）</td></tr>
+<tr><td>问价格/怎么买</td><td>4</td><td>2.2%</td><td><div class="bar" style="width:20px"></div></td><td>「价格就是有点高」</td></tr>
+</table>
+<p style="font-size:13px;color:#999">前两大关注点（被拿走44条+续航29条）同根同源：评论区把「可拆下来充电」直接读成了「可被别人拆下来拿走」——同一根链条的两端。</p>
+
+<h3>3.2 「被拿走」焦虑的用户推演（子回复里流传的拆解手段）</h3>
+<p>热评第一楼层（47 条回复）里，用户不是笼统担心，而是替拿走的人推演具体流程：</p>
+<div class="quote">「笑死我了[捂脸]一扭一撕，带回家！」（42赞）</div>
+<div class="quote">「卡针一捅轻松拿掉，产品在这一块应严控！」</div>
+<div class="quote">「你机身再牢固也挡不过一根鱼线。鱼线一撸就拿走了。」</div>
+<div class="quote">「戴个口罩和帽子直接顺走」「带个面罩去拿」</div>
+<div class="quote">「直接暴力拆除破坏，这个就是鸡肋」</div>
+<p style="font-size:13px;color:#999">另有理性对冲声音：「敢拿监控的都是已经被盯上的，正常人直接拍到了」「拿走了也可以看到监控谁拿的」「设备绑定账号，他拿走也用不了」——但对冲声音的赞数普遍低于焦虑声音。</p>
+
+<h3>3.3 热评 TOP（点赞排序）</h3>
+<table>
+<tr><th style="width:36px">#</th><th>评论</th><th style="width:52px">赞</th><th>回复数</th></tr>
+<tr><td>1</td><td>「虽然我很想买 但是人家直接拿走了咋办」<span class="badge merchant">商家回复19赞</span>楼内仍有4条反驳</td><td class="neg">152</td><td>47</td></tr>
+<tr><td>2</td><td>「笑死我了[捂脸]一扭一撕，带回家！」</td><td class="neg">42</td><td>7</td></tr>
+<tr><td>3</td><td>「直接带走[捂脸]」</td><td class="neg">28</td><td>4</td></tr>
+<tr><td>4</td><td>「一撕一贴？恶作剧的人拆走也是一扭一撕摄像头就没了」<span class="badge merchant">商家回复</span></td><td>6</td><td>1</td></tr>
+<tr><td>5</td><td>「直接拿走怎么办」</td><td>5</td><td>3</td></tr>
+<tr><td>6</td><td>「变声这个笑死我了，一听就是女的」</td><td>4</td><td>0</td></tr>
+<tr><td>7</td><td>「对门告到你心发慌」</td><td>4</td><td>23</td></tr>
+<tr><td>8</td><td>「粘上了怎么拿下来充电？」<span class="badge merchant">商家回复</span></td><td>4</td><td>2</td></tr>
+<tr><td>9</td><td>「戴口罩直接拿走」</td><td>3</td><td>1</td></tr>
+<tr><td>10</td><td>「不用插电？」<span class="badge merchant">商家回复</span></td><td>3</td><td>1</td></tr>
+</table>
+<p style="font-size:13px;color:#999">TOP10 里 7 条与「被拿走/拆解」直接相关——评论区最外层的氛围由这个话题定义。</p>
+
+<h3>3.4 商家回复盘点（51 条，覆盖 48 楼层）</h3>
+<table>
+<tr><th>话术原文</th><th style="width:60px">次数</th></tr>
+<tr><td>「粘贴牢固机身带防拆报警 带专属卡针才可取下呢」</td><td>12</td></tr>
+<tr><td>「粘贴牢固机身带防拆报警的呢」</td><td>11</td></tr>
+<tr><td>「粘贴牢固机身带防拆报警 带专属卡针才可取下 并且需要绑定才可以使用呢」</td><td>9</td></tr>
+<tr><td>「采用低功耗长续航的呢」</td><td>5</td></tr>
+<tr><td>「充电使用的呢」</td><td>2</td></tr>
+<tr><td>「带专属卡针才可取下」</td><td>2</td></tr>
+<tr><td>其余为一句式应答（不支持车上使用/自带网络不用充值/APP没有广告等）</td><td>10</td></tr>
+</table>
+<p style="font-size:13px;color:#999">共 16 种不同文本，前 3 种占 32 条——高度模板化。商家 51 条回复里「拿走」「偷」两个词零出现。</p>
+</div>
+
+<div class="section">
+<h2>四、天猫渠道深读（购买后体验）</h2>
+<p>样本：天猫神眸智能摄像旗舰店（店铺评分 4.7，88VIP好评率 98%），到手价 ¥341.1（原价¥534，叠加立减/券/政府补贴），已售 500+。47 条文字评价全量（2026-09-18 ~ 2026-11-22），其中 3 条追评、38 条晒图。</p>
+
+<h3>4.1 卖点兑现榜（买家印象关键词）</h3>
+<table>
+<tr><th>关键词</th><th style="width:60px">提及</th><th style="width:230px"></th><th>兑现判断</th></tr>
+<tr><td>画面清晰度赞</td><td class="pos">16</td><td><div class="bar" style="width:230px"></div></td><td class="pos">✓ 稳定兑现</td></tr>
+<tr><td>安装简单</td><td class="pos">15</td><td><div class="bar" style="width:216px"></div></td><td class="pos">✓ 稳定兑现</td></tr>
+<tr><td>使用体验很棒</td><td class="pos">10</td><td><div class="bar" style="width:144px"></div></td><td class="pos">✓ 总体正向</td></tr>
+<tr><td>客服服务到位</td><td>6</td><td><div class="bar" style="width:86px"></div></td><td>—</td></tr>
+<tr><td>夜视效果一流</td><td>5</td><td><div class="bar" style="width:72px"></div></td><td class="pos">✓ 双摄夜视被点名</td></tr>
+<tr><td>网络稳定</td><td>4</td><td><div class="bar" style="width:58px"></div></td><td class="pos">✓ 4G免流兑现</td></tr>
+<tr><td>安全性好</td><td>3</td><td><div class="bar" style="width:43px"></div></td><td>—</td></tr>
+<tr><td>做工完美</td><td>2</td><td><div class="bar" style="width:29px"></div></td><td>—</td></tr>
+</table>
+
+<h3>4.2 三个争议点</h3>
+<div class="alertbox"><b>争议一：续航口径落差。</b>详情页「每天20次触发约180天」（实验室），客服口径45天，高人流实测「8天掉55%（每天不到10个动态）」。租户低频场景满意度高（「用了一天掉了2格电…还挺不错」），高人流/商用落差最大。</div>
+<div class="alertbox"><b>争议二：漏录与灵敏度衰减。</b>2 条明确漏录（快递、外卖没录上），1 条直言「只有刚开始用的第一个礼拜好用，灵敏性巨差，内存卡四五天就自己删掉了」——产品性能问题，与配件无关。「问大家」里也有「10月30日安装后，在我知道的情况下有三次漏录」。</div>
+<div class="alertbox"><b>争议三：门口按铃听不到（单机）。</b>1 条，全表唯一直接提及，根因是接听链路太长（详见发现⑤）。</div>
+<p style="font-size:13px;color:#999">注意：这 3 条正文实为差评，但在天猫「打星」口径下均计为好评——好评率 100.0% 不能当作质量证明。</p>
+
+<h3>4.3 「问大家」信号</h3>
+<div class="quote"><span class="who">问：容易漏录吗？</span>答：10月30日安装后，在我知道的情况下有三次漏录。</div>
+<div class="quote"><span class="who">问：摄像头画质清晰吗？</span>答：挺清晰的。</div>
+<p style="font-size:13px;color:#999">页内可见仅 2 条问答，其中 1 条即指向漏录——购买前咨询侧已出现同款疑虑，与抖音「问了没人信」形成对照：天猫问大家里的负面回答会直接触达犹豫买家。</p>
+
+<h3>4.4 产品形态速览（详情页口径）</h3>
+<table>
+<tr><th style="width:130px">维度</th><th>内容</th></tr>
+<tr><td>定位</td><td>4G双摄智能门铃（门铃+监控二合一），「4G双摄雷视融合智能门铃首创者」</td></tr>
+<tr><td>供网/供电</td><td>内置4G物联网卡（0月租0流量费）；内置5000mAh电池，免插电</td></tr>
+<tr><td>双摄</td><td>上摄看人脸与上半身，下摄看地面与快递，APP同屏双画面</td></tr>
+<tr><td>感知</td><td>24GHz毫米波雷达+AOR视频复检；千问大模型AI识别（家人/陌生人/快递员）</td></tr>
+<tr><td>安装</td><td>3M背胶粘贴/螺丝固定/门框支架，免打孔免布线</td></tr>
+<tr><td>价格结构</td><td>¥341.1（单机）｜【DB2】与【DB2+叮咚机】并列SKU，单机不含室内响铃</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>五、结论与建议</h2>
+
+<h3>5.1 面向产品</h3>
+<div class="finding red"><b class="t">P1 · 接听链路重构</b>「按铃→解锁手机→进APP→接听」是天猫唯一门铃类差评的根源，加叮咚机也解决不了「接得上」。建议：锁屏一键接听/通知直达通话/轻量接听入口。这是交互层问题，优先级高于配件销售。</div>
+<div class="finding red"><b class="t">P1 · 漏录与灵敏度衰减</b>2 条明确漏录+1 条灵敏度衰减+问大家 1 条漏录，跨入口同款投诉。对「门口监控」定位的产品，漏录直接击穿核心价值主张。</div>
+<div class="finding orange"><b class="t">P2 · 防拆设计升级</b>用户拆解手段已具象化：一扭一撕/卡针/鱼线/暴力破坏。当前「背胶+卡针+报警」方案在评论区被逐条推演破解。可考虑「一机一锁」配对取下（用户原话：「该设置一把钥匙只能开一把锁」）。</div>
+<div class="finding orange"><b class="t">P2 · 续航口径校准</b>实验室180天 vs 客服45天 vs 高人流实测约15天，三级口径并存。建议按场景分层给续航承诺（低频住宅/普通住宅/高人流商用），并优化低功耗策略。</div>
+
+<h3>5.2 面向营销</h3>
+<div class="finding"><b class="t">M1 · 把防拆解释从子回复提到最外层</b>「卡针」「报警」在一级评论零出现=核心解释只触达进楼层的人。建议：视频内容直接回应「被拿走」（演示防拆报警触发、绑定后无法被他人使用），置顶评论预埋完整解释，把最高赞的质疑变成转化机会。话术要回答「被拿走了怎么办」（售后/赔付/绑定锁定），而不是只说「不容易被拿走」。</div>
+<div class="finding"><b class="t">M2 · SKU 预期前置</b>「单机不含室内响铃」一句话加到 SKU 名称/主图角标；「75dB+可选叮咚机」从第16张详情图提到前3屏；客服话术前置「家里有老人或希望屋里直接响铃，建议选叮咚机套装」。</div>
+<div class="finding"><b class="t">M3 · 竞对叙事调整</b>抖音 14 条对标智能猫眼/固定监控——用户的真实比较对象不是同类门铃，而是「固定式不可拿走」这个属性。内容侧可正面处理「可拆 vs 固定」的取舍（可拆带来免打孔+充电便利），而不是回避。</div>
+
+<h3>5.3 观测建议（口径提示）</h3>
+<p style="font-size:13px;color:#666">①天猫文字评价仅47条，页面标称60条，13条无文字评价无法观测——负面占比判断受样本量限制；②抖音一级评论184条为服务端可见上限，「好评/无顾虑」声音可能被「质疑」声音挤出前排（点赞机制放大焦虑话题），渠道间差异部分来自机制而非纯用户心理；③天猫评价时间集中于 26-11（35/47），或与近期销量脉冲有关，购后体验的长期衰减（电池、灵敏度）需持续观测。</p>
+</div>
+
+<div class="foot">神眸DB2 双渠道口碑研究报告 ｜ 数据采集 2026-11-23（抖音 aweme 7691970850408434980 · 天猫商品 1082322274802）｜ 报告生成 2026-11-24 ｜ 尹燕玲-报告分析专家 🦞</div>
+
+</div>
+</body>
+</html>
