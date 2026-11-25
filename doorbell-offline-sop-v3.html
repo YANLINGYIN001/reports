@@ -1,0 +1,519 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>门铃上门排查标准流程 v3</title>
+<style>
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;margin:0;padding:24px 12px;line-height:1.75}
+.wrap{max-width:880px;margin:0 auto;background:#fff;border-radius:12px;padding:30px 26px;box-shadow:0 2px 14px rgba(0,0,0,.07)}
+h1{font-size:23px;color:#00B050;border-bottom:3px solid #00B050;padding-bottom:10px;margin:0 0 16px;line-height:1.4}
+h2{font-size:18px;color:#1a1a1a;margin:30px 0 12px;padding-left:11px;border-left:5px solid #2BBD6E}
+h3{font-size:15.5px;color:#0a7a3d;margin:20px 0 8px}
+p{margin:6px 0;font-size:14.5px}
+table{width:100%;border-collapse:collapse;margin:10px 0 16px;font-size:13.2px}
+th{background:#E8F7EF;color:#0a7a3d;text-align:left;padding:9px 10px;border:1px solid #d5e8de;font-weight:600}
+td{padding:9px 10px;border:1px solid #e5e8eb;vertical-align:top}
+tr:nth-child(even) td{background:#fafbfc}
+blockquote{margin:12px 0;padding:10px 14px;background:#FFF8E1;border-left:4px solid #F39C12;font-size:13.8px;color:#7a5b00;border-radius:4px}
+ul,ol{margin:6px 0;padding-left:24px;font-size:14.5px}
+li{margin:4px 0}
+code{background:#eef1f5;padding:1px 5px;border-radius:4px;font-size:12.8px;color:#0a7a3d}
+strong{color:#d0021b}
+hr{border:none;border-top:1px dashed #ccc;margin:20px 0}
+</style></head><body><div class="wrap">
+<h1>门铃上门排查标准流程 v3.0（通用版）</h1>
+<blockquote>
+<p>依据：v2.0（9/18 离线专项 31 台挂测 + 10/26 京深首轮上门 + 11/4 深圳复盘 + 11/5 北京艾先生首单）＋ <strong>11/18 艾先生二单实测</strong>（AP 热点搜不到完整闭环）＋ 小红书投诉技术分析群 4-11 月案例库
+版本：v3.0 · 2026-11-24 · 尹燕玲 ｜ 适用：R5 / R6 / 5Pro / 6Pro / 6Max 全系门铃
+变更：单场景（离线/配网）→ 通用 SOP；新增远程初筛闸门、4 类故障分型、取证规格、京深协同机制</p>
+</blockquote>
+<h2>0. 一页速查</h2>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>必做动作</th>
+<th>输出物</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>远程初筛</strong>（上门闸门）</td>
+<td>日志+视频达标核查 → 技术群内初判 → 三类才上门</td>
+<td>初筛单</td>
+</tr>
+<tr>
+<td><strong>上门前</strong></td>
+<td>建单 12 项 → 拉群单一出口 → 备 9 件装备+同型号手机 → 一次通话 10 项 → 确认短信</td>
+<td>工单卡</td>
+</tr>
+<tr>
+<td><strong>现场</strong></td>
+<td>看灯态拍照 → 访谈 → 分型 → 按型复测（矩阵/排查链）→ 失败点取证据 → 判定四分支</td>
+<td>录屏+日志+照片</td>
+</tr>
+<tr>
+<td><strong>上门后</strong></td>
+<td>2h 群发结论 → 24h 结论单 → 48h 复盘回写 SOP</td>
+<td>结论单/日志编号</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>三条硬条款（v2 延续，违反=白跑）</strong>
+① 用户本人必须在家，电话明确「先别 reset / 别删设备 / 别重装 APP」——故障态被用户修掉，证据丢一半
+② <strong>单次失败不作结论</strong>，必须对照组复测；11/18 二单再次验证：首次搜不到热点，卡日志后再试就搜到了
+③ iOS / Android 双端手机都带；<strong>再加一条：带一台与用户同型号的手机</strong>（11/18 定位 AP 问题时，同事安卓机同步搜热点是关键对照手段）</p>
+</blockquote>
+<h2>一、远程初筛分流（新增：上门前置闸门）</h2>
+<blockquote>
+<p>4-11 月技术分析群证明：大量投诉单可远程定性，不必上门。上门是稀缺资源，只给三类单。</p>
+</blockquote>
+<p><strong>先在技术群完成三件事：</strong>
+1. 用户上传日志（后台能查到该 SN 的日志）＋ 云录视频（<strong>时长要够</strong>：≥5 分钟或覆盖故障时段——短视频无法分析，这是 11/23 雷志平明确要求）
+2. 关键问题问全：手机型号/系统、路由器型号、是否换过网、重置过没有（<strong>重置的是门铃还是基站</strong>，11/2 雷志平要求逐字确认）
+3. 技术侧初判分型，给出「可远程定性 / 需上门」结论</p>
+<p><strong>远程即可定性的典型（已实证，别浪费上门）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>远程定性</th>
+<th>依据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>画面条纹（拍鱼缸/玻璃）</td>
+<td>玻璃光折射，物理现象</td>
+<td>4/16 雷艳琴</td>
+</tr>
+<tr>
+<td>卡顿掉帧</td>
+<td>信号差，网络原因，调开流参数</td>
+<td>4/27 徐浩淞</td>
+</tr>
+<tr>
+<td>换网后搜不到热点</td>
+<td>蓝牙热点释放问题，最新 APP 已兼容</td>
+<td>10/29 雷志平</td>
+</tr>
+<tr>
+<td>夜视全黑白</td>
+<td>引导排查，观察即可</td>
+<td>11/2 案例</td>
+</tr>
+<tr>
+<td>售后检测无故障</td>
+<td>先远程复现引导，再决定</td>
+<td>花都案例</td>
+</tr>
+</tbody>
+</table>
+<p><strong>必须上门的三类：</strong>
+- <strong>A 类</strong>：售后/远程都查不出，但用户持续发帖、舆情升级（广州花都型）
+- <strong>B 类</strong>：必须现场观察用户操作路径才能定位的（11/16 雷艳琴视频：用户按 reset 的时机、热点弹窗后的系统行为，远程永远看不到）
+- <strong>C 类</strong>：远程日志已看完仍无结论、需现场抓串口/建对照环境的（11/9 雷志平：深圳带回机拆机接串口长时间挂机）</p>
+<h2>二、上门前准备</h2>
+<h3>2.1 建单 12 项（缺一项不派单）</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>信息</th>
+<th>谁给</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>称呼+手机号+微信</td>
+<td>客服</td>
+<td>唯一标识</td>
+</tr>
+<tr>
+<td>2</td>
+<td>门铃 SN</td>
+<td>客服查后台</td>
+<td>后台查激活/绑定/日志</td>
+</tr>
+<tr>
+<td>3</td>
+<td>基站 SN</td>
+<td>客服查后台</td>
+<td>同上（11/13 教训：只给门铃 SN 会来回要）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>详细地址</td>
+<td>客服</td>
+<td>导航+预判墙体信号</td>
+</tr>
+<tr>
+<td>5</td>
+<td>机型/渠道/购买时间</td>
+<td>客服</td>
+<td>保修/批次</td>
+</tr>
+<tr>
+<td>6</td>
+<td>故障现象原话</td>
+<td>客服逐字记</td>
+<td>分型第一步，不许概括</td>
+</tr>
+<tr>
+<td>7</td>
+<td>频次+首次发生时间</td>
+<td>客服</td>
+<td>偶发/必现决定复测次数</td>
+</tr>
+<tr>
+<td>8</td>
+<td>手机型号+系统+APP版本</td>
+<td>客服</td>
+<td>配网链路差异大；<strong>现场要带同型号</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>路由器品牌型号/双频是否同名/距离</td>
+<td>客服</td>
+<td>DHCP 失败与路由器强相关（11/24 方竞）</td>
+</tr>
+<tr>
+<td>10</td>
+<td>已试过哪些操作</td>
+<td>客服</td>
+<td>避免重复</td>
+</tr>
+<tr>
+<td>11</td>
+<td>本人在家？可上门时段</td>
+<td>客服</td>
+<td>硬条款①</td>
+</tr>
+<tr>
+<td>12</td>
+<td>配合度（拆机/接线/进路由后台）</td>
+<td>客服</td>
+<td>决定能否抓串口</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 组队与单一出口</h3>
+<ul>
+<li>技术 1 人 + APP 侧 1 人（11/5 证明 APP 日志要现场看）；<strong>远程支援名单先排好</strong>：固件（雷志平）、APP（贾建兴）、路由/网络（方竞）、画质（雷艳琴）——11/18 现场 18:44 卡取日志 18:52 就有响应</li>
+<li>建对接群：拉用户+客服+上门人，全程只在这个群说话</li>
+<li>内部群提前同步该机型已知问题清单，现场对号入座</li>
+</ul>
+<h3>2.3 装备清单（9 件 + 1）</h3>
+<ol>
+<li>同型号<strong>门铃+基站整套备用机</strong></li>
+<li>iOS、Android 双端测试手机（已登录内部账号）</li>
+<li><strong>用户同型号手机 1 台</strong>（提前向建单客服要到型号，11/24 群里还在问「用户手机型号是哪个」——这就是没前置）</li>
+<li>充电宝+数据线</li>
+<li>移动路由/可开热点手机</li>
+<li>串口线/调试小板（提前问研发）</li>
+<li>螺丝刀、撬片、双面胶/安装底板</li>
+<li>打印版《上门记录表》+ 空白 SN 标签</li>
+<li>手机支架（全程录屏）+ 小礼品</li>
+</ol>
+<h3>2.4 一次通话问清 10 项（不要反复骚扰）</h3>
+<ol>
+<li>时间：给 2~3 个时间段让用户挑（11/4 教训：别问「您哪天方便」）</li>
+<li>本人是否在家</li>
+<li><strong>「先别 reset、别删设备、别重装 APP」</strong></li>
+<li>故障原话：卡在几 %、屏幕/语音提示什么</li>
+<li>手机：苹果还是安卓、具体型号</li>
+<li>网络：路由器牌子、换过 Wi-Fi 或密码吗、搬过家吗</li>
+<li>按过基站 reset 吗（用户常不知道这个键，11/4 深圳实证）</li>
+<li>环境：门铃装哪、基站放哪、隔几堵墙</li>
+<li>修不好能接受换机/带回吗</li>
+<li>短信确认：时间+上门人+「设备先别重置」</li>
+</ol>
+<h2>三、现场操作</h2>
+<h3>3.1 到场 20 分钟：先取证再动手</h3>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>动作</th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>看灯态：基站+门铃，拍照录像</td>
+<td>灯态=待配网/已配网，最关键证据</td>
+</tr>
+<tr>
+<td>2</td>
+<td>看实际状态：是否已被用户自己修好/换机</td>
+<td>11/5 教训：到场已配好=故障态消失</td>
+</tr>
+<tr>
+<td>3</td>
+<td>访谈本人/家属故障过程（录音）</td>
+<td>「跟客服电话指导也没成功」这类话极有价值</td>
+</tr>
+<tr>
+<td>4</td>
+<td>查后台：激活时间、绑定、历史日志、配网次数</td>
+<td>与用户时间线对账</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>分型定性（四类）</strong></td>
+<td>每类复测动作完全不同</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 故障分型与对应复测（v3 新增）</h3>
+<p><strong>A 类：离线 / 配网失败（卡 35% / 85%）</strong>
+沿用 v2 复测矩阵（8 组：用户原路径 / 声波 / AP+reset / 解绑不 reset / reset 后 AP / 重复失败组 / 换机 / 挂测 1h+），逐组记录时间+结果+卡点百分比+录屏，失败组日志当场提交。
+已知定性参考：卡 35% → 多为未真正进配网（未 reset/不生效）；卡 85% → 11/18 方竞从日志定位到 <strong>DHCP 失败，与路由器强相关</strong>，要录路由器配置（11/18 已录）；AP 热点连接失败 → 见 B 类。</p>
+<p><strong>B 类：AP 热点搜不到 / 连不上（换网后失联）</strong>
+11/18 完整闭环沉淀，排查链按序执行：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>动作</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>确认重置对象：<strong>用户重置的是门铃还是基站</strong>（11/2 硬要求）</td>
+<td>操作路径问题就地教学</td>
+</tr>
+<tr>
+<td>B2</td>
+<td><strong>双机同步对照</strong>：用户手机 + 自带同型号手机同时搜热点</td>
+<td>都搜不到→偏设备/环境；只有用户手机搜不到→偏手机</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>同事安卓机辅助搜（11/18 实战：贾建兴机同步搜也搜不到，说明非用户手机个体问题）</td>
+<td>交叉验证</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>手机系统限制排查：<strong>Android 9+ 前台 APP 扫描 2 分钟内不超 4 次</strong>（11/6 梁元元），系统设置页扫描不受限</td>
+<td>排除系统策略误判</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>系统设置页手动连热点（11/18 贾建兴：系统设置页都连不上=超出 APP 控制范围，纯设备-手机链路问题）</td>
+<td>分离 APP 因素</td>
+</tr>
+<tr>
+<td>B6</td>
+<td>reset 与热点释放关系：能弹系统连接弹窗=热点已释放（11/16 贾建兴）</td>
+<td>区分「不释放」和「释放但连不上」</td>
+</tr>
+<tr>
+<td>B7</td>
+<td>失败时卡取日志当场传群，远程固件/APP 侧即时分析</td>
+<td>11/18 模式：18:37 失败→18:44 传日志→19:03 定位</td>
+</tr>
+<tr>
+<td>B8</td>
+<td>声波配网兜底（11/18：搜不到热点时声波配网成功）</td>
+<td>先恢复用户可用</td>
+</tr>
+</tbody>
+</table>
+<p><strong>C 类：云录像画面/声音异常（加载不出/只有声音）</strong>
+| 步骤 | 动作 |
+|---|---|
+| C1 | 确认是否对接 S1 智能屏 / 第三方屏（小度等） |
+| C2 | 直播有无画面（按键时 APP 有无画面弹窗） |
+| C3 | 云录下载后有无画面+声音 |
+| C4 | 让用户下载<strong>长时段</strong>云录数据（≥5 分钟，覆盖故障时段）供研发分析 |</p>
+<blockquote>
+<p>11/23 案例定性方向：疑似音视频同步相关，排查链来自雷志平。</p>
+</blockquote>
+<p><strong>D 类：误识别 / 误报（无人提示有人）</strong>
+| 步骤 | 动作 |
+|---|---|
+| D1 | 查「附近视频」：该时间点画面有无异物移动（9/23 婴儿车案例） |
+| D2 | 查预录画面（PREROLL） |
+| D3 | 干扰源排查：灯光变化、震动源（PIR 灵敏度） |
+| D4 | 确认固件版本+识别模型归属（9/24 R6-5MP 模型存疑案例：现场记录版本号 R6-5MP_v1.0.9.1197 等，交 ailab 确认） |</p>
+<h3>3.3 取证规格（v3 标准化）</h3>
+<table>
+<thead>
+<tr>
+<th>证据</th>
+<th>规格</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APP 日志</td>
+<td>现场提交</td>
+<td>记录提交时间+文件名+时间戳（失败组必交）</td>
+</tr>
+<tr>
+<td>串口日志</td>
+<td>能接就接</td>
+<td>按研发要求抓</td>
+</tr>
+<tr>
+<td>录屏</td>
+<td>全程</td>
+<td>失败段单独留存</td>
+</tr>
+<tr>
+<td>云录视频</td>
+<td><strong>≥5 分钟或覆盖故障时段</strong></td>
+<td>11/23 明确：短视频不够分析，引导用户下载长数据</td>
+</tr>
+<tr>
+<td>照片六件套</td>
+<td>灯态/安装位置/基站摆放/路由器/隔墙/SN 铭牌</td>
+<td>缺一不可</td>
+</tr>
+<tr>
+<td>版本三件套</td>
+<td>门铃固件/基站固件/APP 版本</td>
+<td>含识别类问题加记模型版本</td>
+</tr>
+<tr>
+<td>网络信息</td>
+<td>路由器型号/双频是否同名/信号格数/距离/<strong>路由后台 DHCP 配置</strong></td>
+<td>11/18 已录路由配置，固化</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 判定与处置（四分支）</h3>
+<table>
+<thead>
+<tr>
+<th>现场结论</th>
+<th>处置</th>
+<th>必做</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 操作路径问题</td>
+<td>教学+图文步骤</td>
+<td>失败日志必取；用户实际路径反馈 APP 引导改版</td>
+</tr>
+<tr>
+<td>② 设备问题（同环境同操作重复失败）</td>
+<td>换备用机，旧机贴标带回</td>
+<td>标签=SN+现象+日期+日志编号</td>
+</tr>
+<tr>
+<td>③ 环境/路由器问题</td>
+<td>调路由/换热点对照</td>
+<td>移动热点做对照实验；路由型号入档</td>
+</tr>
+<tr>
+<td>④ 偶发待研发</td>
+<td>旧机留用户处观察+<strong>留 1 台备用机</strong>（11/18 模式：旧机一次配网成功留用，新 6Pro 备用，2 周正常再寄回）</td>
+<td>日志分派到人+回访计划</td>
+</tr>
+</tbody>
+</table>
+<p><strong>判定铁律</strong>：用户原环境+标准操作下<strong>重复失败</strong>才判设备问题。11/5 与 11/18 两单都证明：单次失败+复测成功=偶发，交研发看日志。</p>
+<p><strong>关于 reset 时机的判读</strong>（11/16 沉淀）：能弹出系统连接热点的弹窗，说明热点已释放，问题在连接建立；不要把一切失败归因于「用户没按 reset」。用户不会按我们预期的时间按 reset（雷艳琴原话），这本身就是要反馈产品优化的点。</p>
+<h3>3.5 沟通四条红线（不变）</h3>
+<ol>
+<li>不甩锅：「这版 APP 提示不够明显，产品已在改图示」</li>
+<li>不给模糊时间：「最晚 X 月 X 日给您结论」</li>
+<li>不承诺研发节奏</li>
+<li>不重复打扰，全程一个出口</li>
+</ol>
+<h2>四、上门后复盘</h2>
+<h3>4.1 当天 2h 内</h3>
+<ul>
+<li>[ ] 群发结论第一句：操作路径 / 设备 / 环境 / 偶发待研发，四选一</li>
+<li>[ ] 附记录表+录屏+日志文件名时间戳；日志分派到人（APP/设备/云端各给回时间）</li>
+<li>[ ] 带回机器贴标签登记</li>
+</ul>
+<h3>4.2 24h 内</h3>
+<ul>
+<li>[ ] 结论单一页：现象/现场做了什么/结论/责任方/后续计划与日期</li>
+<li>[ ] 用户侧闭环；「旧机留观+备用机」的，2 周回访</li>
+<li>[ ] 未决项挂责任人进追踪表</li>
+</ul>
+<h3>4.3 48h 内（洞察复盘）</h3>
+<ul>
+<li>[ ] 单用户 vs 全量大盘对照（该现象全量占比）</li>
+<li>[ ] 归类问题库：操作路径 / APP 引导 / 固件 / 硬件 / 环境-路由器 五条线累计</li>
+<li>[ ] 同机型横向统计；更新本 SOP（版本号+1）</li>
+</ul>
+<h2>五、京深协同机制（v3 固化）</h2>
+<table>
+<thead>
+<tr>
+<th>事项</th>
+<th>北京</th>
+<th>深圳</th>
+<th>共同</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>上门执行</td>
+<td>雷艳琴对接用户</td>
+<td>深圳侧执行</td>
+<td>统一建单模板（12 项）</td>
+</tr>
+<tr>
+<td>设备深度分析</td>
+<td>—</td>
+<td>雷志平拆机/串口/长挂</td>
+<td>配网失败卡 35% 一律寄深圳（11/5 定）</td>
+</tr>
+<tr>
+<td>备件池</td>
+<td>各自备同型号整套</td>
+<td>同左</td>
+<td>型号清单互通</td>
+</tr>
+<tr>
+<td>结论单</td>
+<td>24h 内发同群</td>
+<td>同左</td>
+<td>格式统一，双城可互查</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>寄修与上门的分流：用户拒绝上门（11/5 案例：拒绝上门也拒绝录视频）→ 引导寄修，按现象定去向（卡 35%→深圳）</li>
+<li>深圳侧长期挂机是最后手段：带回机若只概率复现，拆机+串口+长时间挂机（11/9 雷志平模式）</li>
+</ul>
+<h2>六、版本记录</h2>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>日期</th>
+<th>变更</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-10</td>
+<td>首版（离线/配网单场景）</td>
+</tr>
+<tr>
+<td>v2.0</td>
+<td>2026-11-05</td>
+<td>11/5 艾先生首单实测反推：三硬条款+复测矩阵 A~H</td>
+</tr>
+<tr>
+<td>v3.0</td>
+<td>2026-11-24</td>
+<td>通用化：远程初筛闸门+4 类故障分型+取证规格标准化（视频时长）+11/18 二单 AP 热点闭环沉淀+京深协同固化；素材新增小红书技术分析群 4-11 月案例库</td>
+</tr>
+</tbody>
+</table>
+</div></body></html>
