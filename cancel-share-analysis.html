@@ -48,7 +48,7 @@ tr:hover td { background:#FAFCFB; }
 
 <div class="header">
 <h1>取消分享专项 · 用户行为分析报告</h1>
-<div class="sub">数据口径：2026-11-23 取消分享的用户清单 ｜ 样本：1,636 个存在取消分享行为的主账号 ｜ 生成日期：2026-11-24</div>
+<div class="sub">数据口径：2026-11-23 取消分享的用户清单 ｜ 样本：1,636 个存在取消分享行为的主账号 ｜ 抽样名单 600 人已定版（11/25 规则更新） ｜ 生成日期：2026-11-25</div>
 </div>
 
 <div class="section">
@@ -57,6 +57,7 @@ tr:hover td { background:#FAFCFB; }
 <div class="insight crit">② 58 个渠道账号判定为门店/安装商业务行为（AC1P 占 70.6%、月均 179 次分享、取消时长中位 2 天），建议在专项统计与回访名单中整体剔除。</div>
 <div class="insight warn">③ 864 个快速试探型账号是回访价值最高的人群：取消率 84.4%、79.4% 已无任何生效分享，取消时长中位 4 天——大量用户「试了一下就全取消」，真实动因需电话回访验证。</div>
 <div class="insight">④ 714 个正常家庭用户取消率仅 44.4%、取消时长中位 248 天，属正常生命周期行为，无需干预；回访名单已从中筛出 659 人（取消率 100%+近 7 天活跃）。</div>
+<div class="insight">⑤ 抽样名单 600 人定版（11/25 燕玲规则）：第 2 类快速试探型 + 第 3 类正常家庭用户各 300 人、8 个细类；≤7 天极速/短时取消 88 人全取，全员近 7 天活跃，手机号回填率 97.2%——回访执行名单就绪。</div>
 </div>
 
 <div class="section">
@@ -176,7 +177,7 @@ tr:hover td { background:#FAFCFB; }
 <tr><td>② 取消率 100%</td><td>保留「历史分享已全部取消」的主账号（取消次数 = 分享次数）</td><td>取消行为明确：当前无任何生效分享，回访有具体事件可问</td><td>1,578 → 686</td></tr>
 <tr><td>③ 近 7 天活跃</td><td>最近一次使用 app 日期 ≥ 2026-11-17</td><td>app 仍在使用、电话可触达，排除已流失/卸载用户</td><td>686 → <b>659</b></td></tr>
 </table>
-<div class="small">字段口径：取消率=取消分享次数÷分享次数（owner 表 C/D 列）；活跃=owner 表「最近一次使用app的日期」；步骤②后人数为按规则②③连算的漏斗中间值。659 人按取消时长中位数（share 明细逐条 days 的中位）再分两段：短时取消型 43 人（中位 ≤7 天，置顶，对应会议纪要分层①「新分享后短时间取消」）+ 长时取消型 616 人（中位 &gt;7 天，对应分层②「分享较长时间后才取消」）。完整名单见飞书表格，B 列 qid 可在统一云后台「用户管理→用户账号查询」查手机号。</div>
+<div class="small">字段口径：取消率=取消分享次数÷分享次数（owner 表 C/D 列）；活跃=owner 表「最近一次使用app的日期」；步骤②后人数为按规则②③连算的漏斗中间值。659 人按取消时长中位数（share 明细逐条 days 的中位）再分两段：短时取消型 43 人（中位 ≤7 天，置顶，对应会议纪要分层①「新分享后短时间取消」）+ 长时取消型 616 人（中位 &gt;7 天，对应分层②「分享较长时间后才取消」）。</div>
 <h3>回访池画像</h3>
 <table>
 <tr><th>维度</th><th>TOP 分布</th></tr>
@@ -188,7 +189,45 @@ tr:hover td { background:#FAFCFB; }
 <div class="insight">完整名单（含 qid/省市/设备/分享取消明细/取消时长）已同步交付飞书表格，字段对齐回访提纲 v0.2，供电话回访直接使用。</div>
 </div>
 
-<div class="footer">尹燕玲 · 数据分析 ｜ 取消分享专项 ｜ 2026-11-24 ｜ 数据源：取消分享用户列表.xlsx（2026-11-23 取消分享的用户清单，owner/dn/share 三表）</div>
+<div class="section">
+<h2>六、抽样名单定版（600 人，11/25 规则更新）</h2>
+<div class="kpi-row">
+<div class="kpi"><div class="num">600</div><div class="lbl">抽样总人数（第2类+第3类各 300）</div></div>
+<div class="kpi"><div class="num">88</div><div class="lbl">≤7天极速/短时取消（全量全取）</div></div>
+<div class="kpi"><div class="num">100%</div><div class="lbl">全员近 7 天 app 活跃</div></div>
+<div class="kpi"><div class="num">97.2%</div><div class="lbl">手机号回填率（583/600，纳米后台反查）</div></div>
+</div>
+<h3>抽样规则（11/24 定版）</h3>
+<table>
+<tr><th style="width:110px">步骤</th><th>规则</th><th style="width:90px">人数</th></tr>
+<tr><td>① 剔除渠道</td><td>剔除 58 个疑似渠道批量账号</td><td>1,636 → 1,578</td></tr>
+<tr><td>② 两类各 300</td><td>第 2 类 = 快速试探型（取消率高、分享用户少）；第 3 类 = 正常家庭用户（取消率 100% 且近期有取消行为）；每类各抽 300 人</td><td>1,578 → 600</td></tr>
+<tr><td>③ 细类分配</td><td>按取消时长中位与新老用户维度细分：≤7天（2A-2D）全量全取 88 人，其余按时长分桶补足；第 3 类按 8-90 / 91-365 / &gt;365 天分桶 60/90/150</td><td>8 细类</td></tr>
+</table>
+<div class="small">抽样全部来自回访池 659 人内；「新老用户」按首次使用 app 时间区分（新=2026 年首次使用）；2E 补足规则：近 7 天活跃优先 + 取消时长升序。</div>
+<h3>八大细类构成与画像</h3>
+<table>
+<tr><th>细类</th><th>人数</th><th>取消时长中位</th><th>新用户</th><th>分享用户合计</th><th>分享次数</th><th>取消率</th></tr>
+<tr><td><span class="tag tag-orange">2A</span>极速取消·新用户</td><td><b>24</b></td><td>2 天</td><td>24</td><td>488</td><td>2,649</td><td class="neg">93.8%</td></tr><tr><td><span class="tag tag-orange">2B</span>极速取消·老用户</td><td><b>18</b></td><td>2 天</td><td>0</td><td>468</td><td>3,869</td><td class="neg">98.2%</td></tr><tr><td><span class="tag tag-orange">2C</span>短时取消·新用户</td><td><b>28</b></td><td>6 天</td><td>28</td><td>397</td><td>1,849</td><td class="neg">89.7%</td></tr><tr><td><span class="tag tag-orange">2D</span>短时取消·老用户</td><td><b>18</b></td><td>6 天</td><td>0</td><td>432</td><td>1,303</td><td class="neg">89.3%</td></tr><tr><td><span class="tag tag-orange">2E</span>较长时长试探</td><td><b>212</b></td><td>41 天</td><td>135</td><td>1458</td><td>3,088</td><td class="neg">76.5%</td></tr><tr><td><span class="tag tag-green">3A</span>中期取消 8-90天</td><td><b>60</b></td><td>16 天</td><td>35</td><td>154</td><td>396</td><td class="neg">49.2%</td></tr><tr><td><span class="tag tag-green">3B</span>长期取消 91-365天</td><td><b>90</b></td><td>138 天</td><td>45</td><td>219</td><td>489</td><td class="neg">46.4%</td></tr><tr><td><span class="tag tag-green">3C</span>超长取消 >365天</td><td><b>150</b></td><td>529 天</td><td>25</td><td>389</td><td>738</td><td class="neg">48.6%</td></tr>
+</table>
+<h3>第 2 类 vs 第 3 类对比</h3>
+<table>
+<tr><th>类别</th><th>人数</th><th>来源层</th><th>分享用户合计</th><th>分享次数</th><th>取消率</th><th>设备数</th><th>取消时长中位</th></tr>
+<tr><td><span class="tag tag-orange">第2类 快速试探</span></td><td>300</td><td>快速试探型 864 人</td><td>3,243</td><td>12,758</td><td class="neg">89.9%</td><td>1256</td><td>21 天</td></tr>
+<tr><td><span class="tag tag-green">第3类 正常家庭</span></td><td>300</td><td>正常家庭用户 714 人</td><td>762</td><td>1,623</td><td>48.1%</td><td>827</td><td>376 天</td></tr>
+</table>
+<div class="insight warn">两类人群行为差异显著：第 2 类取消率 89.9%、取消时长中位 21 天——「试了就取消」；第 3 类取消率 48.1%、时长中位 376 天，且 3C（&gt;365 天）150 人为最大细类——「用了很久才取消」。两类动因不同，回访提纲的追问方向也应不同。</div>
+<h3>抽样名单画像</h3>
+<table>
+<tr><th>维度</th><th>TOP 分布</th></tr>
+<tr><td>省份</td><td>广东省(99)、江苏省(54)、北京市(42)、山东省(32)、四川省(32)、浙江省(27)</td></tr>
+<tr><td>设备型号</td><td>AC1P(465台)、P9 Pro 4MP(158台)、R6 PRO(102台)、P9 Pro-4K 2.0(73台)、P8 pro(68台)、P9 Pro 6MP(67台)</td></tr>
+<tr><td>新老用户</td><td>新用户 347（2026 年首次使用，占 57.8%）/ 老用户 253</td></tr>
+</table>
+<div class="insight">交付物：飞书表「抽样名单600人」sheet（同回访名单表，19 列，O 列手机号已由纳米回填 583 人）；17 人待人工处理（15 人账号未绑手机号、2 人后台手机号字段异常）。回访执行可直接使用。</div>
+</div>
+
+<div class="footer">尹燕玲 · 数据分析 ｜ 取消分享专项 ｜ 2026-11-25 更新（v1.1 新增抽样名单600人定版节） ｜ 数据源：取消分享用户列表.xlsx（2026-11-23 取消分享的用户清单，owner/dn/share 三表）</div>
 </div>
 </body>
 </html>
