@@ -34,11 +34,35 @@ td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
 .endnote { background:#fff; border-radius:14px; padding:16px 20px; font-size:11px; color:#999; line-height:1.8; box-shadow:0 2px 8px rgba(0,0,0,.05); }
 .footer { text-align:center; color:#999; font-size:12px; padding:16px 0 30px; }
 @media (max-width:640px) { .container { padding:12px; } .section { padding:16px; } .header { padding:20px; } }
+
+/* --- 逐线深读 v1.2 布局优化 --- */
+.pl-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 4px; }
+.line-block2 { border:1px solid #e8eef2; border-radius:14px; overflow:hidden; background:#fff; display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(0,0,0,.04); margin:0; }
+.line-block2.wide { grid-column:1 / -1; }
+.line-head2 { background:linear-gradient(135deg,#f0faf4,#e6f7ee); padding:14px 18px 12px; border-bottom:1px solid #dcf0e4; }
+.line-head2 .ln { font-size:16.5px; font-weight:700; color:#0b3d21; line-height:1.5; }
+.line-head2 .lr { display:block; font-size:12px; color:#5b8a6e; margin-top:4px; font-weight:500; }
+.card2 { padding:16px 18px; display:flex; flex-direction:column; gap:12px; flex:1; }
+.pt-row { display:flex; gap:10px; align-items:flex-start; }
+.pt-badge { flex:0 0 66px; font-size:11.5px; font-weight:700; color:#fff; border-radius:8px; padding:5px 0; text-align:center; margin-top:1px; }
+.pt-badge.b1 { background:#4A90D9; }
+.pt-badge.b2 { background:#8E6FD8; }
+.pt-badge.b3 { background:#E67E22; }
+.pt-badge.b4 { background:#00B050; }
+.pt-body { flex:1; font-size:13px; line-height:1.75; color:#3a4a56; }
+.pt-body b { color:#1c2b36; }
+.pl-implication { margin-top:auto; background:#f0faf4; border-left:3px solid #00B050; border-radius:0 8px 8px 0; padding:10px 14px; font-size:12.5px; line-height:1.75; }
+.pl-implication b { color:#00B050; }
+.chip { display:inline-block; font-size:11px; font-weight:600; padding:2px 9px; border-radius:999px; margin:0 4px 4px 0; vertical-align:middle; }
+.chip.g { background:#f0faf4; color:#00B050; border:1px solid #c9ecd8; }
+.chip.r { background:#fdf3f2; color:#E74C3C; border:1px solid #f6d5d2; }
+.chip.n { background:#f4f6f8; color:#576b7a; border:1px solid #e3e9ee; }
+@media (max-width:760px) { .pl-grid { grid-template-columns:1fr; } }
 </style></head><body>
 <div class="container">
 <div class="header">
 <h1>👁️ 神眸（CINMOORE）产品线布局梳理 · 京东 17 款深读</h1>
-<p>球机品类洞察研究 · v1.0 · 2026-11-27 · 数据源：《全量采集-报告总册-2026-11-26》神眸 17 款摄像头（1,892 条评价 + 商详卖点全量）· 到手价为总册采集时点券后价 · 由 🦞尹燕玲-报告分析专家 生成</p>
+<p>球机品类洞察研究 · v1.2 · 2026-11-27 · 数据源：《全量采集-报告总册-2026-11-26》神眸 17 款摄像头（1,892 条评价 + 商详卖点全量）· 到手价为总册采集时点券后价 · 由 🦞尹燕玲-报告分析专家 生成</p>
 </div>
 <div class="section">
 <div class="kpi-grid">
@@ -79,30 +103,37 @@ td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
 <table><tr><th>产品线</th><th>款名</th><th>到手价</th><th>采集评价</th><th>低星数</th><th>低星率</th><th>评价窗口</th><th>生命周期状态</th></tr><tr><td><span style="color:#E74C3C;font-weight:700">① BC4 系</span></td><td>BC4pro 360° 云台版</td><td class="num">¥309</td><td class="num"><b>160</b></td><td class="num">60</td><td class="num" style="color:#E74C3C">37.5%</td><td class="num" style="font-size:12px">2025-10 ~ 2026-11</td><td style="font-size:12px;color:#E74C3C">老款·低星率全系最高</td></tr><tr><td><span style="color:#666;font-weight:700">① BC4 系</span></td><td>BC4pro+ 双摄（400万+400万长焦）</td><td class="num">¥359</td><td class="num"><b>196</b></td><td class="num">46</td><td class="num" style="color:#E74C3C">23.5%</td><td class="num" style="font-size:12px">2025-12 ~ 2026-11</td><td style="font-size:12px;color:#666">主力·双摄卖点</td></tr><tr><td><span style="color:#666;font-weight:700">① BC4 系</span></td><td>BC4pro+ 续航套装 12W（4 SKU 同池）</td><td class="num">¥356-485</td><td class="num"><b>146</b></td><td class="num">46</td><td class="num" style="color:#E74C3C">31.5%</td><td class="num" style="font-size:12px">2025-12 ~ 2026-11</td><td style="font-size:12px;color:#666">容量档位 16G/32G/64G</td></tr><tr><td><span style="color:#15803d;font-weight:700">① BC4 系</span></td><td>BC4proMax 续航套装 / 12项检测（2 SKU 同池）</td><td class="num">¥305-350</td><td class="num"><b>82</b></td><td class="num">6</td><td class="num" style="color:#666">7.3%</td><td class="num" style="font-size:12px">2026-08 ~ 2026-11</td><td style="font-size:12px;color:#15803d">26年新款爬坡·口碑最好</td></tr><tr><td><span style="color:#666;font-weight:700">① BC4 系</span></td><td>BC4 4G 免流版（3 链接同池）</td><td class="num">¥255-379</td><td class="num"><b>139</b></td><td class="num">39</td><td class="num" style="color:#E74C3C">28.1%</td><td class="num" style="font-size:12px">2025-03 ~ 2026-11</td><td style="font-size:12px;color:#666">起量根基·2025-03上市</td></tr><tr><td><span style="color:#999;font-weight:700">① BC4 系</span></td><td>BC4 4G 免流版（第4链接）</td><td class="num">¥331.55</td><td class="num"><b>0</b></td><td class="num">-</td><td class="num" style="color:#666">零评价</td><td class="num" style="font-size:12px">-</td><td style="font-size:12px;color:#999">无评价数据</td></tr><tr><td><span style="color:#666;font-weight:700">② 太阳能4G</span></td><td>BC7 一体式太阳能 4G</td><td class="num">¥341.10</td><td class="num"><b>114</b></td><td class="num">14</td><td class="num" style="color:#666">12.3%</td><td class="num" style="font-size:12px">2026-03 ~ 2026-11</td><td style="font-size:12px;color:#666">一体板主力</td></tr><tr><td><span style="color:#666;font-weight:700">② 太阳能4G</span></td><td>PT3 太阳能 4G 球机</td><td class="num">¥265.05</td><td class="num"><b>107</b></td><td class="num">8</td><td class="num" style="color:#666">7.5%</td><td class="num" style="font-size:12px">2025-12 ~ 2026-11</td><td style="font-size:12px;color:#666">球机形态</td></tr><tr><td><span style="color:#15803d;font-weight:700">② 太阳能4G</span></td><td>BC7lite 性价比款</td><td class="num">¥279</td><td class="num"><b>17</b></td><td class="num">1</td><td class="num" style="color:#666">5.9%</td><td class="num" style="font-size:12px">2026-07 ~ 2026-11</td><td style="font-size:12px;color:#15803d">26年新款·样本小</td></tr><tr><td><span style="color:#15803d;font-weight:700">② 太阳能4G</span></td><td>BC7Pro 云台版（360°环视）</td><td class="num">¥599</td><td class="num"><b>16</b></td><td class="num">1</td><td class="num" style="color:#666">6.2%</td><td class="num" style="font-size:12px">2026-10 ~ 2026-11</td><td style="font-size:12px;color:#15803d">26-10新款刚起步</td></tr><tr><td><span style="color:#666;font-weight:700">③ 门口免插电</span></td><td>BC22S 门口免插电款</td><td class="num">¥134.1</td><td class="num"><b>117</b></td><td class="num">17</td><td class="num" style="color:#666">14.5%</td><td class="num" style="font-size:12px">2025-10 ~ 2026-11</td><td style="font-size:12px;color:#666">全品牌最低价</td></tr></table>
 </div>
 <h2>四、逐线深读</h2><div class="section">
-<div class="line-block">
-<div class="line-head"><b>① BC4 系 4G 免流电池线（13 SKU）——品牌根基，也是口碑塌方区</b></div>
-<div class="card">
-<p><b>定位</b>：¥255-485，终身免流4G+5000mAh电池+磁吸免打孔，覆盖室内外通用监控。SKU 矩阵=同模具多容量色卡（下单送16G/32G/64G 价差 ¥356→¥485）+ 双摄/续航/Max 三个功能亚型。</p>
-<p><b>打法</b>：BC4 免流版 2025-03 上市即铺 3 链接共享评价池起量；BC4pro+ 家族 5 SKU 同池（好评100/中4/差42 完全一致）；色卡「下单享16G内存」档位控价。</p>
-<p><b>口碑结构</b>：低星率 7.3%（proMax 26新款）~ 37.5%（pro云台老款），撕裂源=续航虚标（64条差评主题第一）+ 售后推诿。「180天待机」宣传口径在差评里被「一晚耗尽」「一周掉72%」反复打脸。</p>
-<p><b>对 360 的含义</b>：同价位段（¥250-360）360 5C3K 双摄/4G版（好评1265/1253条池）正面竞争时，售后兜底+续航实测口径是最大武器；神眸老款塌方说明该段用户对「第二次购买」极度敏感。</p>
-</div>
-</div>
-<div class="line-block">
-<div class="line-head"><b>② BC7/PT3 太阳能4G线（4 SKU）——口碑最好但火力不足</b></div>
-<div class="card">
-<p><b>定位</b>：¥265-599，一体太阳能板+4G，单摄为主。BC7（2026-03）12.3% 低星率、PT3（2025-12）7.5%——全线显著健康于 BC4 系。</p>
-<p><b>缺口</b>：双摄太阳能4G 完全缺位（BC7Pro ¥599 仍单摄云台、仅16条评价）。对照乐橙 SA70F-4K 双摄爆发、萤石太阳能魔丸 8 款矩阵——神眸在增长最快的细分只有边缘存在感。</p>
-<p><b>对 360 的含义</b>：🅰 太阳能4G双摄空档结论在神眸侧再次验证；360 进入该段面对的神眸只是「低价单摄备胎」，不构成正面对手。</p>
+<div class="pl-grid">
+
+<div class="line-block2">
+<div class="line-head2"><span class="ln">① BC4 系 4G 免流电池线（13 SKU）</span><span class="lr">品牌根基 · 也是口碑塌方区</span></div>
+<div class="card2">
+<div class="pt-row"><span class="pt-badge b1">定位</span><div class="pt-body"><b>¥255-485</b>，终身免流4G + 5000mAh电池 + 磁吸免打孔，室内外通用监控。<span class="chip g">同模具多容量色卡</span><span class="chip g">双摄/续航/Max 三亚型</span><br>SKU 矩阵 = 价差 ¥356→¥485（下单送16G/32G/64G）。</div></div>
+<div class="pt-row"><span class="pt-badge b2">打法</span><div class="pt-body">BC4 免流版 2025-03 上市即铺 <b>3 链接共享评价池</b>起量；BC4pro+ 家族 5 SKU 同池（好评100/中4/差42 完全一致）；色卡「下单享16G内存」档位控价。</div></div>
+<div class="pt-row"><span class="pt-badge b3">口碑</span><div class="pt-body">低星率 <b class="neg">7.3%</b>（proMax 26新款）~ <b class="neg">37.5%</b>（pro云台老款），撕裂源 = 续航虚标（64条差评主题第一）+ 售后推诿。「180天待机」在差评里被「一晚耗尽」「一周掉72%」反复打脸。</div></div>
+<div class="pl-implication"><b>对 360 的含义：</b>同价位段（¥250-360）与 360 5C3K 双摄/4G版（好评1265/1253条池）正面竞争时，<b>售后兜底 + 续航实测口径</b>是最大武器；神眸老款塌方说明该段用户对「第二次购买」极度敏感。</div>
 </div>
 </div>
 
-<div class="line-block">
-<div class="line-head"><b>③ BC22S 门口免插电线（1 SKU）——最低价位试验田</b></div>
-<div class="card">
-<p><b>定位</b>：¥134.1 全品牌最低，门口/楼道微场景，磁吸+免插电。首个给出「续航四档表」（无触发180天/低频90天/中频30天/连续12小时）的品牌级尝试——但差评里 8 个买家给出 8 个互相打架的续航数。</p>
-<p><b>对 360 的含义</b>：续航分档透明化方向正确、执行虚标则反噬更狠（差评直接引用四档表打脸）；360 若做分档续航承诺，需绑定「实测条件」（触发频率/环境温度）才可信。</p>
+<div class="line-block2">
+<div class="line-head2"><span class="ln">② BC7/PT3 太阳能4G线（4 SKU）</span><span class="lr">口碑最好 · 但火力不足</span></div>
+<div class="card2">
+<div class="pt-row"><span class="pt-badge b1">定位</span><div class="pt-body"><b>¥265-599</b>，一体太阳能板 + 4G，单摄为主。</div></div>
+<div class="pt-row"><span class="pt-badge b2">口碑</span><div class="pt-body">BC7（2026-03）低星率 12.3%、PT3（2025-12）<b class="pos">7.5%</b>——全线显著健康于 BC4 系。</div></div>
+<div class="pt-row"><span class="pt-badge b3">缺口</span><div class="pt-body"><span class="chip r">双摄太阳能4G 完全缺位</span>BC7Pro ¥599 仍单摄云台、仅16条评价。对照乐橙 SA70F-4K 双摄爆发、萤石太阳能魔丸 8 款矩阵——神眸在增长最快的细分只有边缘存在感。</div></div>
+<div class="pt-row"><span class="pt-badge b4">对照</span><div class="pt-body">乐橙 SA70F-4K 双摄款评价量爆发式增长，萤石太阳能魔丸已铺 8 款矩阵——太阳能4G双摄是当前增长最快的细分，神眸在此仅靠 BC7Pro 单款边缘存在。</div></div>
+<div class="pl-implication"><b>对 360 的含义：</b>🅰 太阳能4G双摄空档结论在神眸侧再次验证；360 进入该段面对的神眸只是「低价单摄备胎」，不构成正面对手。</div>
 </div>
+</div>
+
+<div class="line-block2 wide">
+<div class="line-head2"><span class="ln">③ BC22S 门口免插电线（1 SKU）</span><span class="lr">最低价位试验田</span></div>
+<div class="card2">
+<div class="pt-row"><span class="pt-badge b1">定位</span><div class="pt-body"><b>¥134.1</b> 全品牌最低，门口/楼道微场景，磁吸 + 免插电。首个给出「续航四档表」的品牌级尝试：<span class="chip n">无触发180天</span><span class="chip n">低频90天</span><span class="chip n">中频30天</span><span class="chip n">连续12小时</span>——但差评里 <b class="neg">8 个买家给出 8 个互相打架的续航数</b>。</div></div>
+<div class="pl-implication"><b>对 360 的含义：</b>续航分档透明化方向正确、执行虚标则反噬更狠（差评直接引用四档表打脸）；360 若做分档续航承诺，需绑定「实测条件」（触发频率/环境温度）才可信。</div>
+</div>
+</div>
+
 </div>
 </div>
 <h2>五、头图模具对比：17 款仅 4 副主力模具</h2><div class="section">
